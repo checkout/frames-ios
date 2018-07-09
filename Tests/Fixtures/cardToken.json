@@ -1,0 +1,17 @@
+{
+    "type": "card",
+    "token": "tok_76km7r4p7woezcod36qki37iiu",
+    "expires_on": "2018-06-01T14:35:09Z",
+    "expiry_month": 6,
+    "expiry_year": 2020,
+    "name": "",
+    "scheme": "Visa",
+    "last4": "4242",
+    "bin": "424242",
+    "card_type": "Credit",
+    "card_category": "Consumer",
+    "issuer": "GOTHAM STATE BANK",
+    "issuer_country": "US",
+    "product_id": "A",
+    "product_type": "Visa Traditional"
+}

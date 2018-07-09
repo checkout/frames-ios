@@ -1,0 +1,14 @@
+"cardNumber" = "Kaartnummer";
+"cardholderName" = "Naam kaarthouder";
+"expirationDate" = "Vervaldatum";
+"cvv" = "CVV";
+"billingDetails" = "Factureringsgegevens";
+"name" = "Naam";
+"countryRegion" = "Land / regio";
+"organization" = "Organisatie";
+"streetAddress" = "Straatadres";
+"postalTown" = "Postal Town";
+"postcode" = "Postcode";
+"phone" = "Telefoon";
+
+"acceptedCards" = "Geaccepteerde kaarten";

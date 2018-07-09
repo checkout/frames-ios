@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Payments"; ObjectID = "3nM-Uy-kVV"; */
+"3nM-Uy-kVV.text" = "Payments";
+
+/* Class = "UIButton"; normalTitle = "Add Card"; ObjectID = "FvP-dH-Z1j"; */
+"FvP-dH-Z1j.normalTitle" = "Add Card";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "U3k-SI-l9D"; */
+"U3k-SI-l9D.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Visa ····4242"; ObjectID = "pkW-1G-fMG"; */
+"pkW-1G-fMG.text" = "Visa ····4242";
+
+/* Class = "UILabel"; text = "Mat Okon"; ObjectID = "rG1-t1-MpW"; */
+"rG1-t1-MpW.text" = "Mat Okon";
+
+/* Class = "UINavigationItem"; title = "Pay"; ObjectID = "xjs-Md-1CI"; */
+"xjs-Md-1CI.title" = "Pay";

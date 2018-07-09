@@ -1,0 +1,30 @@
+{
+    "object":"list",
+    "count":6,
+    "data":[
+            {
+            "id":"cp_1",
+            "name":"VISA"
+            },
+            {
+            "id":"cp_2",
+            "name":"MASTERCARD"
+            },
+            {
+            "id":"cp_3",
+            "name":"AMEX"
+            },
+            {
+            "id":"cp_4",
+            "name":"DISCOVER"
+            },
+            {
+            "id":"cp_5",
+            "name":"DINERSCLUB"
+            },
+            {
+            "id":"cp_6",
+            "name":"JCB"
+            }
+            ]
+}

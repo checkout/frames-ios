@@ -1,0 +1,14 @@
+"cardNumber" = "Número de tarjeta";
+"cardholderName" = "Nombre del titular de la tarjeta";
+"expirationDate" = "Fecha de caducidad";
+"cvv" = "CVV";
+"billingDetails" = "Detalles de facturación";
+"name" = "Nombre";
+"countryRegion" = "País / Región";
+"organization" = "Organización";
+"streetAddress" = "Dirección de la calle";
+"postalTown" = "Ciudad postal";
+"postcode" = "código postal";
+"phone" = "Teléfono";
+
+"acceptedCards" = "Tarjetas aceptadas";

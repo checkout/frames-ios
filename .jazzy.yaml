@@ -1,0 +1,53 @@
+author: Checkout
+author_url: https://www.checkout.com/
+github_url: https://github.com/checkout/frames-ios
+github_file_prefix: https://github.com/checkout/frames-ios/tree/master
+output: docs
+theme: fullwidth
+clean: true
+documentation: Documentation/**/*.md
+exclude:
+  - Source/PhoneNumberKit/*.swift
+custom_categories:
+  - name: Guides
+    children:
+      - Usage
+      - Customizing the Card View
+  - name: Walkthrough
+    children:
+      - iOS Example Frames
+  - name: Classes
+    children:
+      - AddressView
+      - AddressViewController
+      - CardListCell
+      - CardListCellName
+      - CardNumberInputView
+      - CardUtils
+      - CardView
+      - CardViewController
+      - CheckoutAPIClient
+      - CountrySelectionViewController
+      - CvvConfirmationViewController
+      - CvvInputView
+      - DetailsInputView
+      - ExpirationDateInputView
+      - ExpirationDatePicker
+      - PhoneNumberInputView
+      - SimpleLoadingViewController
+      - StandardInputView
+      - ThreedsWebViewController
+  - name: Delegates
+    children:
+      - AddressViewControllerDelegate
+      - CardNumberInputViewDelegate
+      - CardViewControllerDelegate
+      - CountrySelectionViewControllerDelegate
+      - CvvConfirmationViewControllerDelegate
+      - ExpirationDatePickerDelegate
+      - ThreedsWebViewControllerDelegate
+  - name: Enumerations
+    children:
+      - CardScheme
+      - Environment
+      - InputState

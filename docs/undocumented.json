@@ -1,0 +1,40 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/ApplePayErrorResponse.swift",
+      "line": 3,
+      "symbol": "ApplePayErrorResponse",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/ApplePayTokenRequest.swift",
+      "line": 11,
+      "symbol": "ApplePayTokenRequest.token_data",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/ApplePayTokenRequest.swift",
+      "line": 14,
+      "symbol": "ApplePayTokenData",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/ApplePayTokenRequest.swift",
+      "line": 21,
+      "symbol": "ApplePayTokenDataHeader",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/CvvInputView.swift",
+      "line": 13,
+      "symbol": "CvvInputView.onChangeDelegate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios"
+}

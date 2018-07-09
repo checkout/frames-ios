@@ -1,0 +1,12 @@
+
+{
+    "eventId": "2230c9c3-8cc9-4f4b-88fa-b27d1d99faa1",
+    "errorCode": "70000",
+    "message": "Validation error",
+    "errorMessageCodes": [
+                          "70067"
+                          ],
+    "errors": [
+               "Invalid card number"
+               ]
+}

@@ -1,0 +1,14 @@
+"cardNumber" = "Numero carta";
+"cardholderName" = "Nome del titolare della carta";
+"expirationDate" = "Data di scadenza";
+"cvv" = "CVV";
+"billingDetails" = "Dettagli di fatturazione";
+"name" = "Nome";
+"countryRegion" = "Paese / Regione";
+"organization" = "Organizzazione";
+"streetAddress" = "Indirizzo";
+"postalTown" = "Città postale";
+"postcode" = "Codice postale";
+"phone" = "Telefono";
+
+"acceptedCards" = "Carte accettate";
