@@ -2,7 +2,6 @@ language: swift
 osx_image: xcode9.4
 all_branches: true
 script:
-  - xcodebuild test -workspace FramesIos.xcworkspace -list
   - xcodebuild test -workspace FramesIos.xcworkspace -scheme FramesIos -destination 'OS=11.4,name=iPhone X'
 after_success:
   - bash <(curl -s https://codecov.io/bash)

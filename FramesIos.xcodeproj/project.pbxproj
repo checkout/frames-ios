@@ -120,6 +120,7 @@
 		E683728E209C6CB000C11D67 /* CheckoutSdkIos.swift in Sources */ = {isa = PBXBuildFile; fileRef = E683728D209C6CB000C11D67 /* CheckoutSdkIos.swift */; };
 		E688024920922FEF00220CE2 /* cardToken.json in Resources */ = {isa = PBXBuildFile; fileRef = E68802472092294B00220CE2 /* cardToken.json */; };
 		E6AC018120A9938D00310E43 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AC018020A9938D00310E43 /* Customer.swift */; };
+		E6AD845A20F4C233009D8F00 /* Frames.podspec in Resources */ = {isa = PBXBuildFile; fileRef = E6AD845920F4C233009D8F00 /* Frames.podspec */; };
 		E6AF0A0620AACE8A00D29929 /* ExpirationDatePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AF0A0520AACE8A00D29929 /* ExpirationDatePickerTests.swift */; };
 		E6AF0A0820AACEC300D29929 /* CardListCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AF0A0720AACEC300D29929 /* CardListCellTests.swift */; };
 		E6AF0A0A20AACEFA00D29929 /* AddressViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AF0A0920AACEFA00D29929 /* AddressViewControllerTests.swift */; };
@@ -136,7 +137,6 @@
 		E6BEBDBE20C171FA00C3130A /* ApplePayTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BEBDBD20C171FA00C3130A /* ApplePayTokenRequest.swift */; };
 		E6BEBDC020C1721500C3130A /* CardTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BEBDBF20C1721500C3130A /* CardTokenRequest.swift */; };
 		E6BEBDC220C1746800C3130A /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BEBDC120C1746800C3130A /* TokenResponse.swift */; };
-		E6BFBCD120E6AF37009DDD28 /* FramesIos.podspec in Resources */ = {isa = PBXBuildFile; fileRef = E6BFBCD020E6AF37009DDD28 /* FramesIos.podspec */; };
 		E6DC28F820A19F3C009FA38B /* DetailsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DC28F720A19F3C009FA38B /* DetailsInputView.swift */; };
 		E6DC28FB20A1D9EE009FA38B /* CountrySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DC28FA20A1D9EE009FA38B /* CountrySelectionViewController.swift */; };
 		E6DC28FE20A1E0E7009FA38B /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DC28FD20A1E0E7009FA38B /* UIViewExtensions.swift */; };
@@ -296,6 +296,7 @@
 		E683728D209C6CB000C11D67 /* CheckoutSdkIos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutSdkIos.swift; sourceTree = "<group>"; };
 		E68802472092294B00220CE2 /* cardToken.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cardToken.json; sourceTree = "<group>"; };
 		E6AC018020A9938D00310E43 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
+		E6AD845920F4C233009D8F00 /* Frames.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Frames.podspec; sourceTree = "<group>"; };
 		E6AF0A0520AACE8A00D29929 /* ExpirationDatePickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDatePickerTests.swift; sourceTree = "<group>"; };
 		E6AF0A0720AACEC300D29929 /* CardListCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCellTests.swift; sourceTree = "<group>"; };
 		E6AF0A0920AACEFA00D29929 /* AddressViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewControllerTests.swift; sourceTree = "<group>"; };
@@ -317,7 +318,6 @@
 		E6BEBDBD20C171FA00C3130A /* ApplePayTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayTokenRequest.swift; sourceTree = "<group>"; };
 		E6BEBDBF20C1721500C3130A /* CardTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTokenRequest.swift; sourceTree = "<group>"; };
 		E6BEBDC120C1746800C3130A /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
-		E6BFBCD020E6AF37009DDD28 /* FramesIos.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FramesIos.podspec; sourceTree = "<group>"; };
 		E6D44876208F628500B5FA14 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		E6DC28F720A19F3C009FA38B /* DetailsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInputView.swift; sourceTree = "<group>"; };
 		E6DC28FA20A1D9EE009FA38B /* CountrySelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySelectionViewController.swift; sourceTree = "<group>"; };
@@ -567,7 +567,7 @@
 			isa = PBXGroup;
 			children = (
 				E6D44876208F628500B5FA14 /* Package.swift */,
-				E6BFBCD020E6AF37009DDD28 /* FramesIos.podspec */,
+				E6AD845920F4C233009D8F00 /* Frames.podspec */,
 				E625EE652090926F0019B750 /* LICENSE */,
 			);
 			name = Deployment;
@@ -819,9 +819,9 @@
 			files = (
 				E6F6B57420ADC70A0091A8AF /* checkmarks in Resources */,
 				E625EE5920907FFE0019B750 /* README.md in Resources */,
+				E6AD845A20F4C233009D8F00 /* Frames.podspec in Resources */,
 				E625EE5C2090801C0019B750 /* CHANGELOG.md in Resources */,
 				E6AF0A4320AB29D400D29929 /* Localizable.strings in Resources */,
-				E6BFBCD120E6AF37009DDD28 /* FramesIos.podspec in Resources */,
 				E658531720D7C83600C261D7 /* iOS Example.md in Resources */,
 				E625EE63209080A40019B750 /* ISSUE_TEMPLATE.md in Resources */,
 				E6AF0A3D20AAE46600D29929 /* schemes in Resources */,
