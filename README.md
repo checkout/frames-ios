@@ -48,7 +48,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Frames', '~> 2.0'
+    pod 'FramesIos', '~> 2.0'
 end
 ```
 
