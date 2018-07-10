@@ -1,9 +1,9 @@
 # FramesIos
 
 [![Build Status](https://travis-ci.org/checkout/frames-ios.svg?branch=master)](https://travis-ci.org/checkout/frames-ios)
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/FramesIos.svg)](https://img.shields.io/cocoapods/v/FramesIos)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Frames.svg)](https://img.shields.io/cocoapods/v/Frames)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Platform](https://img.shields.io/cocoapods/p/FramesIos.svg?style=flat)]()
+[![Platform](https://img.shields.io/cocoapods/p/Frames.svg?style=flat)]()
 [![codecov](https://codecov.io/gh/checkout/frames-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/checkout/frames-ios)
 [![codebeat badge](https://codebeat.co/badges/d9bae177-78c1-40bb-94a7-187a7759d549)](https://codebeat.co/projects/github-com-checkout-frames-ios-master)
 ![license](https://img.shields.io/github/license/checkout/frames-ios.svg)
@@ -48,7 +48,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'FramesIos', :git => 'https://github.com/checkout/frames-ios.git'
+    pod 'Frames', '~> 2.0'
 end
 ```
 
