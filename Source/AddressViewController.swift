@@ -40,6 +40,7 @@ public class AddressViewController: UIViewController,
     /// Notifies the view controller that its view is about to be added to a view hierarchy.
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        title = "addressViewControllerTitle".localized(forClass: AddressViewController.self)
         registerKeyboardHandlers(notificationCenter: notificationCenter,
                                       keyboardWillShow: #selector(keyboardWillShow),
                                       keyboardWillHide: #selector(keyboardWillHide))

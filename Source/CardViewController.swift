@@ -88,6 +88,7 @@ public class CardViewController: UIViewController,
     /// Notifies the view controller that its view is about to be added to a view hierarchy.
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        title = "cardViewControllerTitle".localized(forClass: CardViewController.self)
         registerKeyboardHandlers(notificationCenter: notificationCenter,
                                  keyboardWillShow: #selector(keyboardWillShow),
                                  keyboardWillHide: #selector(keyboardWillHide))
