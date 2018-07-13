@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C05921A046069B80E37C8799 /* Pods_FramesIosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 960B3E65C846C45B1B539F24 /* Pods_FramesIosTests.framework */; };
-		E217D7725937BCB790227ECB /* Pods_FramesIos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F610F14FD7C3059AACD17BF7 /* Pods_FramesIos.framework */; };
 		E602EE79209D857900CC62A2 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = E602EE78209D857900CC62A2 /* Alamofire.swift */; };
 		E602EE7B209D85E200CC62A2 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E602EE7A209D85E200CC62A2 /* AFError.swift */; };
 		E602EE7D209D861300CC62A2 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = E602EE7C209D861300CC62A2 /* DispatchQueue+Alamofire.swift */; };
@@ -178,10 +177,6 @@
 		7A05DCA3DA23A5B90A28088B /* Pods-FramesIosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FramesIosTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FramesIosTests/Pods-FramesIosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8DBAC9EA5BF3D8D794691344 /* Pods-FramesIosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FramesIosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FramesIosTests/Pods-FramesIosTests.release.xcconfig"; sourceTree = "<group>"; };
 		960B3E65C846C45B1B539F24 /* Pods_FramesIosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FramesIosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AD6FA814FB6809EB63ED8696 /* Pods-CheckoutSdkIos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckoutSdkIos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CheckoutSdkIos/Pods-CheckoutSdkIos.debug.xcconfig"; sourceTree = "<group>"; };
-		AEEB55A033E4548ABCA89644 /* Pods-CheckoutSdkIosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckoutSdkIosTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CheckoutSdkIosTests/Pods-CheckoutSdkIosTests.debug.xcconfig"; sourceTree = "<group>"; };
-		DC7610C6EEBAE50F7D144D90 /* Pods-CheckoutSdkIos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckoutSdkIos.release.xcconfig"; path = "Pods/Target Support Files/Pods-CheckoutSdkIos/Pods-CheckoutSdkIos.release.xcconfig"; sourceTree = "<group>"; };
-		E399B53D784DF24A0A936EBC /* Pods-CheckoutSdkIosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckoutSdkIosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CheckoutSdkIosTests/Pods-CheckoutSdkIosTests.release.xcconfig"; sourceTree = "<group>"; };
 		E602EE78209D857900CC62A2 /* Alamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		E602EE7A209D85E200CC62A2 /* AFError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFError.swift; sourceTree = "<group>"; };
 		E602EE7C209D861300CC62A2 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
@@ -338,7 +333,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E217D7725937BCB790227ECB /* Pods_FramesIos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,10 +695,6 @@
 		F8441EC54C69F84B095B99CD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AD6FA814FB6809EB63ED8696 /* Pods-CheckoutSdkIos.debug.xcconfig */,
-				DC7610C6EEBAE50F7D144D90 /* Pods-CheckoutSdkIos.release.xcconfig */,
-				AEEB55A033E4548ABCA89644 /* Pods-CheckoutSdkIosTests.debug.xcconfig */,
-				E399B53D784DF24A0A936EBC /* Pods-CheckoutSdkIosTests.release.xcconfig */,
 				3370A09BC52FB4744D61DE9C /* Pods-FramesIos.debug.xcconfig */,
 				6268AF6F3674C5D4B9AB1E4C /* Pods-FramesIos.release.xcconfig */,
 				7A05DCA3DA23A5B90A28088B /* Pods-FramesIosTests.debug.xcconfig */,

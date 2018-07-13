@@ -49,7 +49,8 @@ on the _done_ button to validate the card information. Note that in the example,
 been renamed _Pay_.
 
 ```swift
-    func onTapDone(card: CkoCardTokenRequest) {
+    func onTapDone(controller: CardViewController, card: CkoCardTokenRequest) {
+        controller.navigationController?.popViewController(animated: true)
         checkoutAPIClient.createCardToken(card: card, successHandler: { cardToken in
             self.showAlert(with: cardToken.id)
         }, errorHandler: { error in

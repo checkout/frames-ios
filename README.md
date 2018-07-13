@@ -26,7 +26,6 @@ You can find the FramesIos documentation [on this website](https://checkout.gith
 - [Customizing the card view](https://checkout.github.io/frames-ios/customizing-the-card-view.html)
 - Walkthrough
   - [iOS Example Frames](https://checkout.github.io/frames-ios/ios-example-frames.html)
-  - [iOS Example](https://checkout.github.io/frames-ios/ios-example.html)
 
 ## Installation
 
@@ -48,7 +47,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Frames', '~> 2.0'
+    pod 'Frames', '~> 2.1'
 end
 ```
 
@@ -72,7 +71,7 @@ $ brew install carthage
 To integrate FramesIos into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "checkout/frames-ios" ~> 2.0
+github "checkout/frames-ios" ~> 2.1
 ```
 
 Run `carthage update` to build the framework and drag the built `FramesIos` into your Xcode project.
@@ -106,7 +105,7 @@ class ViewController: UIViewController, CardViewControllerDelegate {
         navigationController?.pushViewController(cardViewController, animated: false)
     }
 
-    func onTapDone(card: CkoCardTokenRequest) {
+    func onTapDone(controller: CardViewController, card: CkoCardTokenRequest) {
         checkoutAPIClient.createCardToken(card: card, successHandler: { cardToken in
             print(cardToken.id)
         }, errorHandler: { error in
