@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E620C49B20EA2AD900045DC6 /* FramesIos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E620C49A20EA2AD900045DC6 /* FramesIos.framework */; };
 		E620C49C20EA2AE000045DC6 /* FramesIos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E620C49A20EA2AD900045DC6 /* FramesIos.framework */; };
 		E620C49D20EA2AE000045DC6 /* FramesIos.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E620C49A20EA2AD900045DC6 /* FramesIos.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6BEBDD020C1778600C3130A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BEBDCF20C1778600C3130A /* AppDelegate.swift */; };
@@ -62,7 +61,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E620C49C20EA2AE000045DC6 /* FramesIos.framework in Frameworks */,
-				E620C49B20EA2AD900045DC6 /* FramesIos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

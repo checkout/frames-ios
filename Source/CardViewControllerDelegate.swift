@@ -5,6 +5,7 @@ public protocol CardViewControllerDelegate: class {
 
     /// Executed when an user tap on the done button.
     ///
+    /// - parameter controller: `CardViewController`
     /// - parameter card: Card entered by the user
-    func onTapDone(card: CkoCardTokenRequest)
+    func onTapDone(controller: CardViewController, card: CkoCardTokenRequest)
 }

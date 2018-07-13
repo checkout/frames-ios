@@ -90,8 +90,7 @@ public class AddressViewController: UIViewController,
                                  postcode: addressView.zipInputView.textField.text,
                                  country: regionCodeSelected,
                                  phone: phone)
-        delegate?.onTapDoneButton(address: address)
-        navigationController?.popViewController(animated: true)
+        delegate?.onTapDoneButton(controller: self, address: address)
     }
 
     private func addTextFieldsDelegate() {

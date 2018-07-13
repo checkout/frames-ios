@@ -5,6 +5,7 @@ public protocol AddressViewControllerDelegate: class {
 
     /// Executed when an user tap on the done button.
     ///
+    /// - parameter controller: `AddressViewController`
     /// - parameter address: Address entered by the user
-    func onTapDoneButton(address: CkoAddress)
+    func onTapDoneButton(controller: AddressViewController, address: CkoAddress)
 }

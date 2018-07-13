@@ -27,7 +27,8 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
         cardViewController.availableSchemes = [.visa, .mastercard, .maestro]
     }
 
-    func onTapDone(card: CkoCardTokenRequest) {
+    func onTapDone(controller: CardViewController, card: CkoCardTokenRequest) {
+        controller.navigationController?.popViewController(animated: true)
         checkoutAPIClient.createCardToken(card: card, successHandler: { cardToken in
             self.showAlert(with: cardToken.id)
         }, errorHandler: { error in

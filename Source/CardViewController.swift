@@ -161,18 +161,19 @@ public class CardViewController: UIViewController,
                                     cvv: cvv,
                                     name: cardView.cardHolderNameInputView.textField.text,
                                     billingAddress: billingDetailsAddress)
-        self.delegate?.onTapDone(card: card)
-        navigationController?.popViewController(animated: true)
+        self.delegate?.onTapDone(controller: self, card: card)
     }
 
     // MARK: - AddressViewControllerDelegate
 
     /// Executed when an user tap on the done button.
-    public func onTapDoneButton(address: CkoAddress) {
+    public func onTapDoneButton(controller: AddressViewController, address: CkoAddress) {
         billingDetailsAddress = address
         let value = "\(address.addressLine1 ?? ""), \(address.city ?? "")"
         cardView.billingDetailsInputView.value.text = value
         validateFieldsValues()
+        // return to CardViewController
+        controller.navigationController?.popViewController(animated: true)
     }
 
     private func addTextFieldsDelegate() {

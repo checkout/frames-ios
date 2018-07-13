@@ -5,7 +5,7 @@ class CardViewControllerMockDelegate: CardViewControllerDelegate {
     var calledTimes = 0
     var lastCalledWith: CkoCardTokenRequest?
 
-    func onTapDone(card: CkoCardTokenRequest) {
+    func onTapDone(controller: CardViewController, card: CkoCardTokenRequest) {
         calledTimes += 1
         lastCalledWith = card
     }
