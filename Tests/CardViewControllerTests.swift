@@ -253,7 +253,7 @@ class CardViewControllerTests: XCTestCase {
         let address = CkoAddress(name: "Pierre Paul", addressLine1: "12 rue de la boulangerie",
                                  addressLine2: nil, city: "Lyon", state: nil, postcode: "69002",
                                  country: "FR", phone: nil)
-        cardViewController.onTapDoneButton(address: address)
+        cardViewController.onTapDoneButton(controller: cardViewController.addressViewController, address: address)
         XCTAssertFalse((cardViewController.cardView.billingDetailsInputView.value.text?.isEmpty)!)
     }
 
