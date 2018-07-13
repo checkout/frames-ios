@@ -5,7 +5,14 @@ All notable changes to this project will be documented in this file.
 
 #### 2.x Releases
 
-* `2.0.x` Releases - [2.0.0](#100)
+## [2.1.0](https://github.com/checkout/frames-ios/releases/tag/2.1.0)
+
+Released on 2018-07-13.
+
+#### Modified
+
+* AddressViewControllerDelegate method onTapDoneButton takes the controller as a parameter.
+* CardViewControllerDelegate method onTapDone takes the controller as a parameter, which leave the navigation control out of the controller.
 
 ---
 
