@@ -81,7 +81,7 @@ Run `carthage update` to build the framework and drag the built `FramesIos` into
 Import the SDK:
 
 ```swift
-import FramesIos
+import Frames
 ```
 
 ### Using `CardViewController`
