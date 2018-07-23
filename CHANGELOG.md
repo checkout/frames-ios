@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 
 #### 2.x Releases
 
+## [2.2.0](https://github.com/checkout/frames-ios/releases/tag/2.2.0)
+
+Released on 2018-07-23.
+
+#### Added
+
+* Error message for the phone number input field. It will invite the user to use the country code.
+
+#### Modified
+
+* Update localization: English, French, Spanish, German, Italian, Dutch.
+
+---
+
 ## [2.1.0](https://github.com/checkout/frames-ios/releases/tag/2.1.0)
 
 Released on 2018-07-13.
