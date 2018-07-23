@@ -1,14 +1,26 @@
-"cardNumber" = "Kartennummer";
+
+"cardNumber" = "Kartennummer*";
 "cardholderName" = "Name des Karteninhabers";
-"expirationDate" = "Ablaufdatum";
-"cvv" = "CVV";
+"cardholderNameRequired" = "Name des Karteninhabers*";
+"expirationDate" = "Ablaufdatum*";
+"cvv" = "CVV*";
 "billingDetails" = "Rechnungsdetails";
+"billingDetailsRequired" = "Rechnungsdetails*";
 "name" = "Name";
-"countryRegion" = "Land / Region";
-"Organisation" = "Organisation";
-"streetAddress" = "Straßenadresse";
-"postalTown" = "Postort";
-"postcode" = "Postleitzahl";
-"phone" = "Telefon";
+"countryRegion" = "Land / Region*";
+"addressLine1" = "Adresszeile 1*";
+"addressLine2" = "Adresszeile 2*";
+"state" = "Zustand*";
+"postalTown" = "Postort*";
+"postcode" = "Postleitzahl*";
+"phone" = "Telefon*";
 
 "acceptedCards" = "Akzeptierte Karten";
+
+"cardNumberInvalid" = "Die Kartennummer ist ungültig";
+"cardTypeNotAccepted" = "Der Kartentyp wird nicht akzeptiert";
+"cvvInvalid" = "Der Lebenslauf ist ungültig";
+"phoneNumberInvalid" = "Ungültig, Ländercode verwenden (z. B. +44)";
+
+"cardViewControllerTitle" = "Zahlung";
+"addressViewControllerTitle" = "Abrechnung";

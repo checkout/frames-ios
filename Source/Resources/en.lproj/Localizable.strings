@@ -20,6 +20,7 @@
 "cardNumberInvalid" = "The card number is invalid";
 "cardTypeNotAccepted" = "The card type is not accepted";
 "cvvInvalid" = "The cvv is invalid";
+"phoneNumberInvalid" = "Invalid, use country code (e.g. +44)";
 
 "cardViewControllerTitle" = "Payment";
 "addressViewControllerTitle" = "Billing";

@@ -1,14 +1,26 @@
-"cardNumber" = "Número de tarjeta";
+
+"cardNumber" = "Número de tarjeta*";
 "cardholderName" = "Nombre del titular de la tarjeta";
-"expirationDate" = "Fecha de caducidad";
-"cvv" = "CVV";
+"cardholderNameRequired" = "Nombre del titular de la tarjeta*";
+"expirationDate" = "Fecha de caducidad*";
+"cvv" = "CVV*";
 "billingDetails" = "Detalles de facturación";
+"billingDetailsRequired" = "Detalles de facturación*";
 "name" = "Nombre";
-"countryRegion" = "País / Región";
-"organization" = "Organización";
-"streetAddress" = "Dirección de la calle";
-"postalTown" = "Ciudad postal";
-"postcode" = "código postal";
-"phone" = "Teléfono";
+"countryRegion" = "País / Región*";
+"addressLine1" = "Dirección Línea 1*";
+"addressLine2" = "Dirección Línea 2*";
+"state" = "Estado*";
+"postalTown" = "Ciudad postal*";
+"postcode" = "Código postal*";
+"phone" = "Teléfono*";
 
 "acceptedCards" = "Tarjetas aceptadas";
+
+"cardNumberInvalid" = "El número de tarjeta no es válido";
+"cardTypeNotAccepted" = "No se acepta el tipo de tarjeta";
+"cvvInvalid" = "El cvv no es válido";
+"phoneNumberInvalid" = "No válido, use el código de país (por ejemplo, +44)";
+
+"cardViewControllerTitle" = "Pago";
+"addressViewControllerTitle" = "Facturación";

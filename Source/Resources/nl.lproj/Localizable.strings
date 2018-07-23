@@ -1,14 +1,26 @@
-"cardNumber" = "Kaartnummer";
+
+"cardNumber" = "Kaartnummer*";
 "cardholderName" = "Naam kaarthouder";
-"expirationDate" = "Vervaldatum";
-"cvv" = "CVV";
+"cardholderNameRequired" = "Naam kaarthouder*";
+"expirationDate" = "Vervaldatum*";
+"cvv" = "CVV*";
 "billingDetails" = "Factureringsgegevens";
+"billingDetailsRequired" = "Factureringsgegevens*";
 "name" = "Naam";
-"countryRegion" = "Land / regio";
-"organization" = "Organisatie";
-"streetAddress" = "Straatadres";
-"postalTown" = "Postal Town";
-"postcode" = "Postcode";
-"phone" = "Telefoon";
+"countryRegion" = "Land / regio*";
+"addressLine1" = "Adres regel 1*";
+"addressLine2" = "Adres regel 2*";
+"state" = "Staat*";
+"postalTown" = "Postal Town*";
+"postcode" = "Postcode*";
+"phone" = "Telefoon*";
 
 "acceptedCards" = "Geaccepteerde kaarten";
+
+"cardNumberInvalid" = "Het kaartnummer is ongeldig";
+"cardTypeNotAccepted" = "Het kaarttype wordt niet geaccepteerd";
+"cvvInvalid" = "Het cvv is ongeldig";
+"phoneNumberInvalid" = "Ongeldig, gebruik landcode (bijvoorbeeld +44)";
+
+"cardViewControllerTitle" = "Betaling";
+"addressViewControllerTitle" = "Facturering";
