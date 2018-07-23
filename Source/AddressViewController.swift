@@ -79,9 +79,6 @@ public class AddressViewController: UIViewController,
     }
 
     @objc func onTapDoneButton() {
-        // check phone number is valid and show error message if not
-        guard isPhoneNumberValid() else { return }
-        // get information
         let countryCode = "\(addressView.phoneInputView.phoneNumber?.countryCode ?? 44)"
         let phone = CkoPhoneNumber(countryCode: countryCode,
                                    number: addressView.phoneInputView.nationalNumber)
@@ -117,28 +114,30 @@ public class AddressViewController: UIViewController,
                 return
         }
 
+        // check phone number is valid
+        guard !addressView.phoneInputView.nationalNumber.isEmpty else {
+            navigationItem.rightBarButtonItem?.isEnabled = false
+            return
+        }
+        if !addressView.phoneInputView.isValidNumber {
+            let message = "phoneNumberInvalid".localized(forClass: AddressViewController.self)
+            addressView.phoneInputView.showError(message: message)
+            navigationItem.rightBarButtonItem?.isEnabled = false
+            return
+        }
+
         // required values are not empty, and phone number is valid
         if
             name.isEmpty ||
             countryRegion.isEmpty ||
             streetAddress.isEmpty ||
             postalTown.isEmpty ||
-            postcode.isEmpty ||
-            addressView.phoneInputView.nationalNumber.isEmpty {
+            postcode.isEmpty {
                 navigationItem.rightBarButtonItem?.isEnabled = false
                 return
         }
 
         navigationItem.rightBarButtonItem?.isEnabled = true
-    }
-
-    private func isPhoneNumberValid() -> Bool {
-        if !addressView.phoneInputView.isValidNumber {
-            let message = "phoneNumberInvalid".localized(forClass: AddressViewController.self)
-            addressView.phoneInputView.showError(message: message)
-            return false
-        }
-        return true
     }
 
     // MARK: - CountrySelectionViewControllerDelegate
