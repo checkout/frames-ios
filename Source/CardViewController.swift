@@ -160,7 +160,7 @@ public class CardViewController: UIViewController,
                                     expiryYear: expiryYear,
                                     cvv: cvv,
                                     name: cardView.cardHolderNameInputView.textField.text,
-                                    billingAddress: billingDetailsAddress)
+                                    billingDetails: billingDetailsAddress)
         self.delegate?.onTapDone(controller: self, card: card)
     }
 

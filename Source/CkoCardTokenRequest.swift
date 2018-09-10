@@ -19,7 +19,7 @@ public struct CkoCardTokenRequest: Codable {
     public var name: String?
 
     /// Billing address
-    public var billingAddress: CkoAddress?
+    public var billingDetails: CkoAddress?
 
     /// Initialize `CkoCardTokenRequest`
     ///
@@ -28,17 +28,17 @@ public struct CkoCardTokenRequest: Codable {
     /// - parameter expiryYear: Expiry year
     /// - parameter cvv: CVV (card verification value)
     /// - parameter name: Name of the card owner
-    /// - parameter billingAddress: Billing Address
+    /// - parameter billingDetails: Billing Address
     ///
     ///
     /// - returns: The new `CardRequest` instance
     public init(number: String, expiryMonth: String, expiryYear: String, cvv: String,
-                name: String? = nil, billingAddress: CkoAddress? = nil) {
+                name: String? = nil, billingDetails: CkoAddress? = nil) {
         self.number = number
         self.expiryMonth = expiryMonth
         self.expiryYear = expiryYear
         self.cvv = cvv
         self.name = name
-        self.billingAddress = billingAddress
+        self.billingDetails = billingDetails
     }
 }

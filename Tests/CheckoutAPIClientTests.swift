@@ -83,7 +83,7 @@ class CheckoutAPIClientTests: XCTestCase {
         // Test the function
         let expectation = XCTestExpectation(description: "Create card token")
         let cardRequest = CkoCardTokenRequest(number: "", expiryMonth: "", expiryYear: "",
-                                              cvv: "", name: nil, billingAddress: nil)
+                                              cvv: "", name: nil, billingDetails: nil)
 
         checkoutAPIClient.createCardToken(card: cardRequest, successHandler: { cardToken in
             XCTAssertNotNil(cardToken)
@@ -103,7 +103,7 @@ class CheckoutAPIClientTests: XCTestCase {
         // Test the function
         let expectation = XCTestExpectation(description: "Create card token (error)")
         let cardRequest = CkoCardTokenRequest(number: "", expiryMonth: "", expiryYear: "", cvv: "",
-                                              name: nil, billingAddress: nil)
+                                              name: nil, billingDetails: nil)
         checkoutAPIClient.createCardToken(card: cardRequest, successHandler: { _ in
         }, errorHandler: { error in
             XCTAssertNotNil(error)
