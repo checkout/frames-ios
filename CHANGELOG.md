@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 
 #### 2.x Releases
 
+## [2.3.0](https://github.com/checkout/frames-ios/releases/tag/2.3.0)
+
+Released on 2018-09-18.
+
+#### Modified
+
+* Change the expiration date format. The expiration year is now 2 digits long (e.g. 19 for 2019).
+
+#### Fixed
+
+* Fixed UI Tests for iOS Custom.
+
 ## [2.2.0](https://github.com/checkout/frames-ios/releases/tag/2.2.0)
 
 Released on 2018-07-23.
