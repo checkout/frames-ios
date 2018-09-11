@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         let card = getCardTokenRequest()
         print(card)
         checkoutAPIClient.createCardToken(card: card, successHandler: { cardToken in
-            self.showAlert(with: cardToken.token)
+            self.showAlert(with: cardToken.id)
         }, errorHandler: { error in
             print(error)
         })
@@ -47,13 +47,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    private func getCardTokenRequest() -> CardTokenRequest {
+    private func getCardTokenRequest() -> CkoCardTokenRequest {
         let cardUtils = CardUtils()
         let cardNumber = cardUtils.standardize(cardNumber: cardNumberView.textField.text!)
         let expirationDate = expirationDateView.textField.text
         let cvv = cvvView.textField.text
         let (expiryMonth, expiryYear) = cardUtils.standardize(expirationDate: expirationDate!)
-        return CardTokenRequest(number: cardNumber, expiryMonth: Int(expiryMonth)!, expiryYear: Int(expiryYear)!, cvv: cvv)
+        return CkoCardTokenRequest(number: cardNumber, expiryMonth: expiryMonth, expiryYear: expiryYear, cvv: cvv!)
     }
 
     private func showAlert(with cardToken: String) {

@@ -25,7 +25,7 @@ class ExpirationDateInputViewTests: XCTestCase {
     func testChangeTextOnDateChanged() {
         let expirationDateInputView = ExpirationDateInputView()
         expirationDateInputView.onDateChanged(month: "12", year: "2019")
-        XCTAssertEqual(expirationDateInputView.textField.text, "12/2019")
+        XCTAssertEqual(expirationDateInputView.textField.text, "12/19")
     }
 
 }

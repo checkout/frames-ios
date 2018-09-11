@@ -114,9 +114,10 @@ public class CardViewController: UIViewController,
         let calendar = Calendar(identifier: .gregorian)
         let date = Date()
         let month = calendar.component(.month, from: date)
-        let year = calendar.component(.year, from: date)
+        let year = String(calendar.component(.year, from: date))
         let monthString = month < 10 ? "0\(month)" : "\(month)"
-        cardView.expirationDateInputView.textField.text = "\(monthString)/\(year)"
+        cardView.expirationDateInputView.textField.text =
+            "\(monthString)/\(year.substring(with: NSRange(location: 2, length: 2)))"
     }
 
     @objc func onTapAddressView() {

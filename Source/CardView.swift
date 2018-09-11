@@ -86,7 +86,7 @@ public class CardView: UIView {
         }
 
         cardNumberInputView.textField.placeholder = "4242"
-        expirationDateInputView.textField.placeholder = "06/2020"
+        expirationDateInputView.textField.placeholder = "06/20"
         cvvInputView.textField.placeholder = "100"
         cvvInputView.textField.keyboardType = .numberPad
 

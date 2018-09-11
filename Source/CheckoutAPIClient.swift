@@ -88,7 +88,6 @@ public class CheckoutAPIClient {
 
         request(urlRequest)
             .validate().responseJSON { response in
-                print(response)
             switch response.result {
             case .success:
                 do {
