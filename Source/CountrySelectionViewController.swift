@@ -33,7 +33,7 @@ public class CountrySelectionViewController: UIViewController,
     override public func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        view.backgroundColor = UIColor.groupTableViewBackground
+        view.backgroundColor = CheckoutTheme.primaryBackgroundColor
         navigationItem.title = "countryRegion".localized(forClass: CountrySelectionViewController.self)
         // table view
         filteredCountries = countries

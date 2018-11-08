@@ -75,7 +75,12 @@ import UIKit
         stackview.addArrangedSubview(errorView)
 
         errorView.isHidden = true
-        errorLabel.textColor = .red
+        errorLabel.textColor = CheckoutTheme.errorColor
+        errorLabel.font = CheckoutTheme.font
+        label.textColor = CheckoutTheme.color
+        label.font = CheckoutTheme.font
+        textField.font = CheckoutTheme.font
+        textField.textColor = CheckoutTheme.color
 
         addSubview(stackview)
 

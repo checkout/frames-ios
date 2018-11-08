@@ -137,6 +137,7 @@
 		E6BEBDBE20C171FA00C3130A /* ApplePayTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BEBDBD20C171FA00C3130A /* ApplePayTokenRequest.swift */; };
 		E6BEBDC020C1721500C3130A /* CardTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BEBDBF20C1721500C3130A /* CardTokenRequest.swift */; };
 		E6BEBDC220C1746800C3130A /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BEBDC120C1746800C3130A /* TokenResponse.swift */; };
+		E6D0208721943DE10025D0C0 /* CheckoutTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D0208621943DE10025D0C0 /* CheckoutTheme.swift */; };
 		E6DC28F820A19F3C009FA38B /* DetailsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DC28F720A19F3C009FA38B /* DetailsInputView.swift */; };
 		E6DC28FB20A1D9EE009FA38B /* CountrySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DC28FA20A1D9EE009FA38B /* CountrySelectionViewController.swift */; };
 		E6DC28FE20A1E0E7009FA38B /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DC28FD20A1E0E7009FA38B /* UIViewExtensions.swift */; };
@@ -314,6 +315,7 @@
 		E6BEBDBD20C171FA00C3130A /* ApplePayTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayTokenRequest.swift; sourceTree = "<group>"; };
 		E6BEBDBF20C1721500C3130A /* CardTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTokenRequest.swift; sourceTree = "<group>"; };
 		E6BEBDC120C1746800C3130A /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
+		E6D0208621943DE10025D0C0 /* CheckoutTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTheme.swift; sourceTree = "<group>"; };
 		E6D44876208F628500B5FA14 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		E6DC28F720A19F3C009FA38B /* DetailsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInputView.swift; sourceTree = "<group>"; };
 		E6DC28FA20A1D9EE009FA38B /* CountrySelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySelectionViewController.swift; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 				E6640720208DE2AA000431E5 /* CardUtils.swift */,
 				E664070F208DD550000431E5 /* CheckoutAPIClient.swift */,
 				E683728D209C6CB000C11D67 /* CheckoutSdkIos.swift */,
+				E6D0208621943DE10025D0C0 /* CheckoutTheme.swift */,
 				E602EE77209D855B00CC62A2 /* Alamofire */,
 				E6640707208A0753000431E5 /* Core */,
 				E6DC28FC20A1E0D0009FA38B /* Extensions */,
@@ -954,6 +957,7 @@
 				E664701F20CED6F100D8353A /* PartialFormatter.swift in Sources */,
 				E602EE7D209D861300CC62A2 /* DispatchQueue+Alamofire.swift in Sources */,
 				E602EE81209D863F00CC62A2 /* NetworkReachabilityManager.swift in Sources */,
+				E6D0208721943DE10025D0C0 /* CheckoutTheme.swift in Sources */,
 				E664701720CED6F100D8353A /* MetadataTypes.swift in Sources */,
 				E602EE97209D871D00CC62A2 /* Timeline.swift in Sources */,
 				E664702120CED6F100D8353A /* RegexManager.swift in Sources */,
@@ -1222,7 +1226,11 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.checkout.CheckoutSdkIos;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1247,7 +1255,11 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.checkout.CheckoutSdkIos;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1263,7 +1275,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.checkout.CheckoutSdkIosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -1280,7 +1296,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.checkout.CheckoutSdkIosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";

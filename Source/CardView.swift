@@ -67,22 +67,24 @@ public class CardView: UIView {
     private func setup() {
         addViews()
         addInitialConstraints()
-        backgroundColor = UIColor.groupTableViewBackground
-        acceptedCardLabel.text = "Accepted Cards"
-        cardNumberInputView.set(label: "cardNumber", backgroundColor: .white)
-        expirationDateInputView.set(label: "expirationDate", backgroundColor: .white)
-        cvvInputView.set(label: "cvv", backgroundColor: .white)
+        backgroundColor = CheckoutTheme.primaryBackgroundColor
+        acceptedCardLabel.text = "acceptedCards".localized(forClass: CardView.self)
+        acceptedCardLabel.font = CheckoutTheme.font
+        acceptedCardLabel.textColor = CheckoutTheme.color
+        cardNumberInputView.set(label: "cardNumber", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
+        expirationDateInputView.set(label: "expirationDate", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
+        cvvInputView.set(label: "cvv", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
         // card holder name
         if cardHolderNameState == .required {
-            cardHolderNameInputView.set(label: "cardholderNameRequired", backgroundColor: .white)
+            cardHolderNameInputView.set(label: "cardholderNameRequired", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
         } else {
-            cardHolderNameInputView.set(label: "cardholderName", backgroundColor: .white)
+            cardHolderNameInputView.set(label: "cardholderName", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
         }
         // billing details
         if billingDetailsState == .required {
-            billingDetailsInputView.set(label: "billingDetailsRequired", backgroundColor: .white)
+            billingDetailsInputView.set(label: "billingDetailsRequired", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
         } else {
-            billingDetailsInputView.set(label: "billingDetails", backgroundColor: .white)
+            billingDetailsInputView.set(label: "billingDetails", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
         }
 
         cardNumberInputView.textField.placeholder = "4242"

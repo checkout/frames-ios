@@ -30,6 +30,7 @@ import UIKit
         #endif
         textField.keyboardType = .default
         textField.textContentType = .creditCardNumber
+        textField.font = CheckoutTheme.font
         textField.delegate = self
         textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
     }

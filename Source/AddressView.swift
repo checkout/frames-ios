@@ -44,19 +44,19 @@ public class AddressView: UIView {
     }
 
     private func setup() {
-        backgroundColor = UIColor.groupTableViewBackground
+        backgroundColor = CheckoutTheme.primaryBackgroundColor
         stackView.axis = .vertical
         stackView.spacing = 16
         addViews()
         addInitialConstraints()
-        nameInputView.set(label: "name", backgroundColor: .white)
-        countryRegionInputView.set(label: "countryRegion", backgroundColor: .white)
-        addressLine1InputView.set(label: "addressLine1", backgroundColor: .white)
-        addressLine2InputView.set(label: "addressLine2", backgroundColor: .white)
-        cityInputView.set(label: "postalTown", backgroundColor: .white)
-        stateInputView.set(label: "state", backgroundColor: .white)
-        zipInputView.set(label: "postcode", backgroundColor: .white)
-        phoneInputView.set(label: "phone", backgroundColor: .white)
+        nameInputView.set(label: "name", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
+        countryRegionInputView.set(label: "countryRegion", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
+        addressLine1InputView.set(label: "addressLine1", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
+        addressLine2InputView.set(label: "addressLine2", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
+        cityInputView.set(label: "postalTown", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
+        stateInputView.set(label: "state", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
+        zipInputView.set(label: "postcode", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
+        phoneInputView.set(label: "phone", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
         // set content type
         nameInputView.textField.textContentType = .name
         addressLine1InputView.textField.textContentType = .streetAddressLine1
