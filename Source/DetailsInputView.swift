@@ -39,7 +39,10 @@ import UIKit
     private func setup() {
         // add values
         label.text = text
-        value.textColor = UIColor.lightGray
+        label.textColor = CheckoutTheme.color
+        value.textColor = CheckoutTheme.secondaryColor
+        label.font = CheckoutTheme.font
+        value.font = CheckoutTheme.font
 
         #if TARGET_INTERFACE_BUILDER
         self.button = UIButton(type: UIButtonType.contactAdd)

@@ -1,6 +1,13 @@
 {
   "warnings": [
     {
+      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/AddressViewController.swift",
+      "line": 166,
+      "symbol": "AddressViewController.setCountrySelected(country:regionCode:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/ApplePayErrorResponse.swift",
       "line": 3,
       "symbol": "ApplePayErrorResponse",
@@ -26,6 +33,27 @@
       "line": 21,
       "symbol": "ApplePayTokenDataHeader",
       "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/CardViewController.swift",
+      "line": 22,
+      "symbol": "CardViewController.addressViewController",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/CheckoutTheme.swift",
+      "line": 8,
+      "symbol": "CheckoutTheme.secondaryBackgroundColor",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/CountrySelectionViewController.swift",
+      "line": 77,
+      "symbol": "CountrySelectionViewController.tableView(_:willDisplay:forRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {

@@ -250,7 +250,7 @@ class CardViewControllerTests: XCTestCase {
     }
 
     func testOnTapDoneButtonAddress() {
-        let address = CkoAddress(name: "Pierre Paul", addressLine1: "12 rue de la boulangerie",
+        let address = CkoAddress(addressLine1: "12 rue de la boulangerie",
                                  addressLine2: nil, city: "Lyon", state: nil, postcode: "69002",
                                  country: "FR", phone: nil)
         cardViewController.onTapDoneButton(controller: cardViewController.addressViewController, address: address)

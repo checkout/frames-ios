@@ -27,7 +27,7 @@ public class CvvConfirmationViewController: UIViewController {
                                                             target: self,
                                                             action: #selector(onConfirmCvv))
         view.backgroundColor = .groupTableViewBackground
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = CheckoutTheme.secondaryBackgroundColor
         label.text = "Enter your cvv."
         textField.placeholder = "CVV"
         textField.keyboardType = .numberPad

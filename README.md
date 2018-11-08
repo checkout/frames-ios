@@ -47,7 +47,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Frames', '~> 2.3'
+    pod 'Frames', '~> 2.4'
 end
 ```
 
@@ -71,7 +71,7 @@ $ brew install carthage
 To integrate FramesIos into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "checkout/frames-ios" ~> 2.3
+github "checkout/frames-ios" ~> 2.4
 ```
 
 Run `carthage update` to build the framework and drag the built `FramesIos` into your Xcode project.
@@ -172,6 +172,18 @@ checkoutAPIClient.createCardToken(card: cardTokenRequest, successHandler: { card
 
 The success handler takes an array of `CkoCardTokenResponse` as a parameter.
 The error handler takes an `ErrorResponse` as a parameter.
+
+### Customize with `CheckoutTheme`
+
+```swift
+var cardViewController: CardViewController {
+CheckoutTheme.primaryBackgroundColor = .blue
+CheckoutTheme.secondaryBackgroundColor = .purple
+CheckoutTheme.errorColor = .yellow
+CheckoutTheme.color = .green
+return CardViewController(cardHolderNameState: .hidden, billingDetailsState: .normal)
+}
+```
 
 ## License
 

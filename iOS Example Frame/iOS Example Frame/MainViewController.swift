@@ -13,7 +13,14 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
 
     let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
                                               environment: .sandbox)
-    let cardViewController = CardViewController(cardHolderNameState: .hidden, billingDetailsState: .normal)
+    var cardViewController: CardViewController {
+        CheckoutTheme.primaryBackgroundColor = .blue
+        CheckoutTheme.secondaryBackgroundColor = .purple
+        CheckoutTheme.tertiaryBackgroundColor = .orange
+        CheckoutTheme.errorColor = .yellow
+        CheckoutTheme.color = .green
+        return CardViewController(cardHolderNameState: .normal, billingDetailsState: .normal, defaultRegionCode: "UK")
+    }
 
     @IBAction func onClickGoToPaymentPage(_ sender: Any) {
         navigationController?.pushViewController(cardViewController, animated: true)
@@ -25,6 +32,11 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
         cardViewController.delegate = self
         cardViewController.rightBarButtonItem = UIBarButtonItem(title: "Pay", style: .done, target: nil, action: nil)
         cardViewController.availableSchemes = [.visa, .mastercard, .maestro]
+        cardViewController.setDefault(regionCode: "UK")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        cardViewController.addressViewController.setCountrySelected(country: "yo", regionCode: "yo")
     }
 
     func onTapDone(controller: CardViewController, card: CkoCardTokenRequest) {

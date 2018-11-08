@@ -16,7 +16,7 @@ public class SimpleLoadingViewController: UIViewController {
     /// Called after the controller's view is loaded into memory.
     override public func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.groupTableViewBackground
+        view.backgroundColor = CheckoutTheme.primaryBackgroundColor
         label.text = "Loading"
         activityIndicator.color = .black
         activityIndicator.startAnimating()

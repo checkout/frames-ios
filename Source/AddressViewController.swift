@@ -19,12 +19,31 @@ public class AddressViewController: UIViewController,
     /// Delegate
     public weak var delegate: AddressViewControllerDelegate?
 
+    // MARK: - Initialization
+
+    /// Returns a newly initialized view controller with the cardholder's name and billing details
+    /// state specified.
+    public init(initialCountry: String, initialRegionCode: String? = nil) {
+        self.regionCodeSelected = initialRegionCode
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    /// Returns a newly initialized view controller with the nib file in the specified bundle.
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+
+    /// Returns an object initialized from data in a given unarchiver.
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
     // MARK: - Lifecycle
 
     /// Called after the controller's view is loaded into memory.
     override public func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.groupTableViewBackground
+        view.backgroundColor = CheckoutTheme.primaryBackgroundColor
         view.addSubview(addressView)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
                                                             target: self,
@@ -35,6 +54,13 @@ public class AddressViewController: UIViewController,
         addressView.countryRegionInputView.addGestureRecognizer(addressView.countryRegionTapGesture)
         countrySelectionViewController.delegate = self
         addTextFieldsDelegate()
+        
+        if let regionCodeSelectedUnwrap = regionCodeSelected {
+            let countryName = Locale.current.localizedString(forRegionCode: regionCodeSelectedUnwrap)
+            if let countryNameUnwrap = countryName {
+                setCountrySelected(country: countryNameUnwrap, regionCode: regionCodeSelectedUnwrap)
+            }
+        }
     }
 
     /// Notifies the view controller that its view is about to be added to a view hierarchy.
@@ -82,8 +108,7 @@ public class AddressViewController: UIViewController,
         let countryCode = "\(addressView.phoneInputView.phoneNumber?.countryCode ?? 44)"
         let phone = CkoPhoneNumber(countryCode: countryCode,
                                    number: addressView.phoneInputView.nationalNumber)
-        let address = CkoAddress(name: addressView.nameInputView.textField.text,
-                                 addressLine1: addressView.addressLine1InputView.textField.text,
+        let address = CkoAddress(addressLine1: addressView.addressLine1InputView.textField.text,
                                  addressLine2: addressView.addressLine2InputView.textField.text,
                                  city: addressView.cityInputView.textField.text,
                                  state: addressView.stateInputView.textField.text,
@@ -104,7 +129,6 @@ public class AddressViewController: UIViewController,
     private func validateFieldsValues() {
         // required values are not nil
         guard
-            let name = addressView.nameInputView.textField.text,
             let countryRegion = regionCodeSelected,
             let streetAddress = addressView.addressLine1InputView.textField.text,
             let postalTown = addressView.cityInputView.textField.text,
@@ -128,7 +152,6 @@ public class AddressViewController: UIViewController,
 
         // required values are not empty, and phone number is valid
         if
-            name.isEmpty ||
             countryRegion.isEmpty ||
             streetAddress.isEmpty ||
             postalTown.isEmpty ||
@@ -140,12 +163,16 @@ public class AddressViewController: UIViewController,
         navigationItem.rightBarButtonItem?.isEnabled = true
     }
 
+    public func setCountrySelected(country: String, regionCode: String) {
+        regionCodeSelected = regionCode
+        addressView.countryRegionInputView.value.text = country
+    }
+
     // MARK: - CountrySelectionViewControllerDelegate
 
     /// Executed when an user select a country.
     public func onCountrySelected(country: String, regionCode: String) {
-        regionCodeSelected = regionCode
-        addressView.countryRegionInputView.value.text = country
+        setCountrySelected(country: country, regionCode: regionCode)
     }
 
     // MARK: - UITextFieldDelegate
