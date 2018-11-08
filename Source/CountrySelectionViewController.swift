@@ -41,6 +41,9 @@ public class CountrySelectionViewController: UIViewController,
         tableView.dataSource = self
         // search bar
         searchBar.delegate = self
+
+        tableView.backgroundColor = CheckoutTheme.primaryBackgroundColor
+        searchBar.barStyle = CheckoutTheme.barStyle
     }
 
     private func setup() {
@@ -71,6 +74,12 @@ public class CountrySelectionViewController: UIViewController,
         return 1
     }
 
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = CheckoutTheme.tertiaryBackgroundColor
+        cell.textLabel?.font = CheckoutTheme.font
+        cell.textLabel?.textColor = CheckoutTheme.color
+    }
+    
     /// Tells the data source to return the number of rows in a given section of a table view.
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredCountries.count

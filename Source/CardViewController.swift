@@ -19,7 +19,7 @@ public class CardViewController: UIViewController,
 
     var billingDetailsAddress: CkoAddress?
     var notificationCenter = NotificationCenter.default
-    let addressViewController = AddressViewController()
+    public let addressViewController: AddressViewController
 
     /// List of available schemes
     public var availableSchemes: [CardScheme] = [.visa, .mastercard, .americanExpress,
@@ -39,11 +39,12 @@ public class CardViewController: UIViewController,
     // MARK: - Initialization
 
     /// Returns a newly initialized view controller with the cardholder's name and billing details
-    /// state specified.
-    public init(cardHolderNameState: InputState, billingDetailsState: InputState) {
+    /// state specified. You can specified the region using the Iso2 region code ("UK" for "United Kingdom")
+    public init(cardHolderNameState: InputState, billingDetailsState: InputState, defaultRegionCode: String? = nil) {
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
         cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState)
+        addressViewController = AddressViewController(initialCountry: "you", initialRegionCode: defaultRegionCode)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -52,6 +53,7 @@ public class CardViewController: UIViewController,
         cardHolderNameState = .required
         billingDetailsState = .required
         cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState)
+        addressViewController = AddressViewController()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
@@ -60,6 +62,7 @@ public class CardViewController: UIViewController,
         cardHolderNameState = .required
         billingDetailsState = .required
         cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState)
+        addressViewController = AddressViewController()
         super.init(coder: aDecoder)
     }
 
@@ -108,6 +111,11 @@ public class CardViewController: UIViewController,
         cardView.rightAnchor.constraint(equalTo: view.safeRightAnchor).isActive = true
         cardView.topAnchor.constraint(equalTo: view.safeTopAnchor).isActive = true
         cardView.bottomAnchor.constraint(equalTo: view.safeBottomAnchor).isActive = true
+    }
+
+    /// MARK: Methods
+    public func setDefault(regionCode: String) {
+        addressViewController.regionCodeSelected = regionCode
     }
 
     private func setInitialDate() {
