@@ -14,7 +14,6 @@ class AddressViewControllerTests: XCTestCase {
     }
 
     func setupAddress() {
-        addressViewController.addressView.nameInputView.textField.text = "Pierre Paul"
         addressViewController.addressView.phoneInputView.textField.text = "+33 6 22 54 56 88"
         addressViewController.regionCodeSelected = "FR"
         addressViewController.addressView.addressLine1InputView.textField.text = "12 rue de la boulangerie"
