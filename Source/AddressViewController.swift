@@ -82,8 +82,7 @@ public class AddressViewController: UIViewController,
         let countryCode = "\(addressView.phoneInputView.phoneNumber?.countryCode ?? 44)"
         let phone = CkoPhoneNumber(countryCode: countryCode,
                                    number: addressView.phoneInputView.nationalNumber)
-        let address = CkoAddress(name: addressView.nameInputView.textField.text,
-                                 addressLine1: addressView.addressLine1InputView.textField.text,
+        let address = CkoAddress(addressLine1: addressView.addressLine1InputView.textField.text,
                                  addressLine2: addressView.addressLine2InputView.textField.text,
                                  city: addressView.cityInputView.textField.text,
                                  state: addressView.stateInputView.textField.text,
@@ -104,7 +103,6 @@ public class AddressViewController: UIViewController,
     private func validateFieldsValues() {
         // required values are not nil
         guard
-            let name = addressView.nameInputView.textField.text,
             let countryRegion = regionCodeSelected,
             let streetAddress = addressView.addressLine1InputView.textField.text,
             let postalTown = addressView.cityInputView.textField.text,
@@ -128,7 +126,6 @@ public class AddressViewController: UIViewController,
 
         // required values are not empty, and phone number is valid
         if
-            name.isEmpty ||
             countryRegion.isEmpty ||
             streetAddress.isEmpty ||
             postalTown.isEmpty ||

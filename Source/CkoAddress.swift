@@ -2,10 +2,6 @@ import Foundation
 
 /// Address
 public struct CkoAddress: Codable {
-
-    /// Name
-    public var name: String?
-
     /// Line 1
     public var addressLine1: String?
 
@@ -29,7 +25,6 @@ public struct CkoAddress: Codable {
 
     /// Initialize `CkoAddress`
     ///
-    /// - parameter name: Name
     /// - parameter addressLine1: Line 1
     /// - parameter addressLine2: Line 2
     /// - parameter city: City
@@ -40,10 +35,9 @@ public struct CkoAddress: Codable {
     ///
     ///
     /// - returns: The new `CkoAddress` instance
-    public init(name: String? = nil, addressLine1: String? = nil, addressLine2: String? = nil,
+    public init(addressLine1: String? = nil, addressLine2: String? = nil,
                 city: String? = nil, state: String? = nil, postcode: String? = nil,
                 country: String? = nil, phone: CkoPhoneNumber? = nil) {
-        self.name = name
         self.addressLine1 = addressLine1
         self.addressLine2 = addressLine2
         self.city = city

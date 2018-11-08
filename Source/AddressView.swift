@@ -11,7 +11,6 @@ public class AddressView: UIView {
     let contentView = UIView()
     let stackView = UIStackView()
 
-    let nameInputView = StandardInputView()
     let addressLine1InputView = StandardInputView()
     let addressLine2InputView = StandardInputView()
     let cityInputView = StandardInputView()
@@ -49,7 +48,6 @@ public class AddressView: UIView {
         stackView.spacing = 16
         addViews()
         addInitialConstraints()
-        nameInputView.set(label: "name", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
         countryRegionInputView.set(label: "countryRegion", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
         addressLine1InputView.set(label: "addressLine1", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
         addressLine2InputView.set(label: "addressLine2", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
@@ -58,7 +56,6 @@ public class AddressView: UIView {
         zipInputView.set(label: "postcode", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
         phoneInputView.set(label: "phone", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
         // set content type
-        nameInputView.textField.textContentType = .name
         addressLine1InputView.textField.textContentType = .streetAddressLine1
         addressLine2InputView.textField.textContentType = .streetAddressLine2
         cityInputView.textField.textContentType = .addressCity
@@ -68,7 +65,6 @@ public class AddressView: UIView {
 //        phoneInputView.textField.keyboardType = .phonePad
 
         addKeyboardToolbarNavigation(textFields: [
-            nameInputView.textField,
             addressLine1InputView.textField,
             addressLine2InputView.textField,
             cityInputView.textField,
@@ -79,13 +75,12 @@ public class AddressView: UIView {
     }
 
     private func addViews() {
-        stackView.addArrangedSubview(nameInputView)
-        stackView.addArrangedSubview(countryRegionInputView)
         stackView.addArrangedSubview(addressLine1InputView)
         stackView.addArrangedSubview(addressLine2InputView)
         stackView.addArrangedSubview(cityInputView)
         stackView.addArrangedSubview(stateInputView)
         stackView.addArrangedSubview(zipInputView)
+        stackView.addArrangedSubview(countryRegionInputView)
         stackView.addArrangedSubview(phoneInputView)
         contentView.addSubview(stackView)
         scrollView.addSubview(contentView)

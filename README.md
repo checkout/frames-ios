@@ -173,6 +173,18 @@ checkoutAPIClient.createCardToken(card: cardTokenRequest, successHandler: { card
 The success handler takes an array of `CkoCardTokenResponse` as a parameter.
 The error handler takes an `ErrorResponse` as a parameter.
 
+### Customize with `CheckoutTheme`
+
+```swift
+var cardViewController: CardViewController {
+CheckoutTheme.primaryBackgroundColor = .blue
+CheckoutTheme.secondaryBackgroundColor = .purple
+CheckoutTheme.errorColor = .yellow
+CheckoutTheme.color = .green
+return CardViewController(cardHolderNameState: .hidden, billingDetailsState: .normal)
+}
+```
+
 ## License
 
 FramesIos is released under the MIT license. [See LICENSE](https://github.com/checkout/frames-ios/blob/master/LICENSE) for details.

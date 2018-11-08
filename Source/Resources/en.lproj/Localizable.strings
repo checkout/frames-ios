@@ -7,11 +7,11 @@
 "billingDetails" = "Billing Details";
 "billingDetailsRequired" = "Billing Details*";
 "name" = "Name";
-"countryRegion" = "Country/Region*";
+"countryRegion" = "Country*";
 "addressLine1" = "Address line 1*";
 "addressLine2" = "Address line 2*";
-"state" = "State*";
-"postalTown" = "Postal Town*";
+"state" = "County*";
+"postalTown" = "Town*";
 "postcode" = "Postcode*";
 "phone" = "Phone*";
 
