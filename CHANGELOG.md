@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 
 #### 2.x Releases
 
+## [2.4.0](https://github.com/checkout/frames-ios/releases/tag/2.4.0)
+
+Released on 2018-11-08.
+
+#### Added
+
+* `CheckoutTheme` that will allow to modify the colors and fonts more easily.
+
+#### Modified
+
+* Change the names and order of the Billing details text fields.
+
 ## [2.3.0](https://github.com/checkout/frames-ios/releases/tag/2.3.0)
 
 Released on 2018-09-18.
