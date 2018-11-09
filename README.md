@@ -9,7 +9,7 @@
 ![license](https://img.shields.io/github/license/checkout/frames-ios.svg)
 
 <p align="center">
-	<img src="https://github.com/checkout/frames-ios/blob/master/screenshots/demo-frames-ios.gif" width="320" alt="Demo frames ios"/>
+	<img src="https://github.com/checkout/frames-ios/blob/master/screenshots/demo-frames-ios.gif?raw=true" width="320" alt="Demo frames ios"/>
 </p>
 
 ## Requirements

@@ -5,7 +5,7 @@ You can modify the card view after the initialization.
 
 ## Customizing the Card View with `CheckoutTheme`
 
-![Checkout Theme](https://github.com/checkout/frames-ios/blob/master/screenshots/CheckoutTheme.png)
+![Checkout Theme](https://github.com/checkout/frames-ios/blob/master/screenshots/CheckoutTheme.png?raw=true)
 
 ```swift
     var cardViewController: CardViewController {
