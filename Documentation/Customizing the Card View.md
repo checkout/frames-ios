@@ -3,6 +3,20 @@
 The SDK provides a `CardViewController` that can be used to allow users to enter their card details.
 You can modify the card view after the initialization.
 
+## Customizing the Card View with `CheckoutTheme`
+
+![Checkout Theme](https://github.com/checkout/frames-ios/blob/master/screenshots/CheckoutTheme.png)
+
+```swift
+    var cardViewController: CardViewController {
+        CheckoutTheme.primaryBackgroundColor = .blue
+        CheckoutTheme.secondaryBackgroundColor = .purple
+        CheckoutTheme.errorColor = .yellow
+        CheckoutTheme.color = .green
+        return CardViewController(cardHolderNameState: .hidden, billingDetailsState: .normal)
+    }
+```
+
 ## Customizing the fields
 
 ```swift

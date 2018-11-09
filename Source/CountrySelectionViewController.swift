@@ -79,7 +79,7 @@ public class CountrySelectionViewController: UIViewController,
         cell.textLabel?.font = CheckoutTheme.font
         cell.textLabel?.textColor = CheckoutTheme.color
     }
-    
+
     /// Tells the data source to return the number of rows in a given section of a table view.
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredCountries.count
