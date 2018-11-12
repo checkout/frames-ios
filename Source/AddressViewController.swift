@@ -148,6 +148,8 @@ public class AddressViewController: UIViewController,
             addressView.phoneInputView.showError(message: message)
             navigationItem.rightBarButtonItem?.isEnabled = false
             return
+        } else {
+            addressView.phoneInputView.hideError()
         }
 
         // required values are not empty, and phone number is valid
