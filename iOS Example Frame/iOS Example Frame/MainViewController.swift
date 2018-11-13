@@ -41,6 +41,9 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
 
     func onTapDone(controller: CardViewController, card: CkoCardTokenRequest) {
         controller.navigationController?.popViewController(animated: true)
+        let shippingDetails = CkoAddress(addressLine1: "yo", addressLine2: "yo", city: "yo", state: "yo", postcode: "yo", country: "yo")
+        print(card.billingDetails)
+        var cardWithShipping = card.createWith(shippingDetails: shippingDetails)
         checkoutAPIClient.createCardToken(card: card, successHandler: { cardToken in
             self.showAlert(with: cardToken.id)
         }, errorHandler: { error in

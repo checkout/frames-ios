@@ -54,8 +54,17 @@ import UIKit
 
     /// Called when the text changed.
     @objc public func textFieldDidChange(textField: UITextField) {
+        var targetCursorPosition = 0
+        if let startPosition = textField.selectedTextRange?.start {
+            targetCursorPosition = textField.offset(from: textField.beginningOfDocument, to: startPosition)
+        }
+        
         let phoneNumber = textField.text!
         let formatted = partialFormatter.formatPartial(phoneNumber)
         textField.text = formatted
+        
+        if let targetPosition = textField.position(from: textField.beginningOfDocument, offset: targetCursorPosition) {
+            textField.selectedTextRange = textField.textRange(from: targetPosition, to: targetPosition)
+        }
     }
 }
