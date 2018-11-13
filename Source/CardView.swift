@@ -65,6 +65,7 @@ public class CardView: UIView {
     // MARK: - Methods
 
     private func setup() {
+        scrollView.keyboardDismissMode = .onDrag
         addViews()
         addInitialConstraints()
         backgroundColor = CheckoutTheme.primaryBackgroundColor

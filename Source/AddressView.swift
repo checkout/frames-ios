@@ -46,6 +46,7 @@ public class AddressView: UIView {
         backgroundColor = CheckoutTheme.primaryBackgroundColor
         stackView.axis = .vertical
         stackView.spacing = 16
+        scrollView.keyboardDismissMode = .onDrag
         addViews()
         addInitialConstraints()
         countryRegionInputView.set(label: "countryRegion", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
