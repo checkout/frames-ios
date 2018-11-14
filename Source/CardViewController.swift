@@ -17,7 +17,7 @@ public class CardViewController: UIViewController,
     let cardHolderNameState: InputState
     let billingDetailsState: InputState
 
-    var billingDetailsAddress: CkoAddress?
+    public var billingDetailsAddress: CkoAddress?
     var notificationCenter = NotificationCenter.default
     public let addressViewController: AddressViewController
 
