@@ -110,7 +110,7 @@ public class CardViewController: UIViewController,
         cardView.leftAnchor.constraint(equalTo: view.safeLeftAnchor).isActive = true
         cardView.rightAnchor.constraint(equalTo: view.safeRightAnchor).isActive = true
         cardView.topAnchor.constraint(equalTo: view.safeTopAnchor).isActive = true
-        cardView.bottomAnchor.constraint(equalTo: view.safeBottomAnchor).isActive = true
+        cardView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 
     /// MARK: Methods
