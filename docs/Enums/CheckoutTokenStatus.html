@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Address Structure Reference</title>
+    <title>CheckoutTokenStatus Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Struct/Address" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Enum/CheckoutTokenStatus" class="dashAnchor"></a>
 
-    <a title="Address Structure Reference"></a>
+    <a title="CheckoutTokenStatus Enumeration Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">FramesIos Reference</a>
       <img class="carat" src="../img/carat.png" />
-      Address Structure Reference
+      CheckoutTokenStatus Enumeration Reference
     </p>
 
     <div class="content-wrapper">
@@ -279,14 +279,19 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>Address</h1>
+            <h1>CheckoutTokenStatus</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Address</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">CheckoutTokenStatus</span></code></pre>
 
                 </div>
               </div>
-            <p>Address</p>
+            <p>CheckoutTokenStatus</p>
+
+<ul>
+<li>success</li>
+<li>failure</li>
+</ul>
 
           </div>
         </section>
@@ -298,9 +303,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9FramesIos7AddressV12addressLine1SSSgvp"></a>
-                    <a name="//apple_ref/swift/Property/addressLine1" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9FramesIos7AddressV12addressLine1SSSgvp">addressLine1</a>
+                    <a name="/s:9FramesIos19CheckoutTokenStatusO7successA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/success" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9FramesIos19CheckoutTokenStatusO7successA2CmF">success</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -308,19 +313,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Line 1 of the address</p>
+                        <p>the token has been created with success</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">addressLine1</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">success</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/checkout/frames-ios/tree/master/Source/Address.swift#L7">Show on GitHub</a>
+                        <a href="https://github.com/checkout/frames-ios/tree/master/Source/CheckoutTokenStatus.swift#L10">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -328,9 +333,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9FramesIos7AddressV12addressLine2SSSgvp"></a>
-                    <a name="//apple_ref/swift/Property/addressLine2" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9FramesIos7AddressV12addressLine2SSSgvp">addressLine2</a>
+                    <a name="/s:9FramesIos19CheckoutTokenStatusO7failureA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/failure" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9FramesIos19CheckoutTokenStatusO7failureA2CmF">failure</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -338,139 +343,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Line 2 of the address</p>
+                        <p>the token generation failed</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">addressLine2</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">failure</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/checkout/frames-ios/tree/master/Source/Address.swift#L10">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:9FramesIos7AddressV4citySSSgvp"></a>
-                    <a name="//apple_ref/swift/Property/city" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9FramesIos7AddressV4citySSSgvp">city</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The address city</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">city</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/checkout/frames-ios/tree/master/Source/Address.swift#L13">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:9FramesIos7AddressV5stateSSSgvp"></a>
-                    <a name="//apple_ref/swift/Property/state" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9FramesIos7AddressV5stateSSSgvp">state</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The address state</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">state</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/checkout/frames-ios/tree/master/Source/Address.swift#L16">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:9FramesIos7AddressV3zipSSSgvp"></a>
-                    <a name="//apple_ref/swift/Property/zip" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9FramesIos7AddressV3zipSSSgvp">zip</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The address zip/postal code</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">zip</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/checkout/frames-ios/tree/master/Source/Address.swift#L19">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:9FramesIos7AddressV7countrySSSgvp"></a>
-                    <a name="//apple_ref/swift/Property/country" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9FramesIos7AddressV7countrySSSgvp">country</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The two-letter ISO code of the address country</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">country</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/checkout/frames-ios/tree/master/Source/Address.swift#L22">Show on GitHub</a>
+                        <a href="https://github.com/checkout/frames-ios/tree/master/Source/CheckoutTokenStatus.swift#L13">Show on GitHub</a>
                       </div>
                     </section>
                   </div>

@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 #### 2.x Releases
 
+## [2.5.0](https://github.com/checkout/frames-ios/releases/tag/2.5.0)
+
+Released on 2018-11-14.
+
+#### Modified
+
+* Change the delegate method to not expose the card request in it.
+
 ## [2.4.0](https://github.com/checkout/frames-ios/releases/tag/2.4.0)
 
 Released on 2018-11-08.

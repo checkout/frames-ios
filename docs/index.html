@@ -22,7 +22,7 @@
         <a class="header-link" href="index.html">
           FramesIos Docs
         </a>
-         (97% documented)
+         (96% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -183,6 +183,14 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/CheckoutTheme.html">CheckoutTheme</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/CheckoutTokenStatus.html">CheckoutTokenStatus</a>
               </li>
             </ul>
           </li>
@@ -352,7 +360,11 @@
 
     <span class="k">let</span> <span class="nv">checkoutAPIClient</span> <span class="o">=</span> <span class="kt">CheckoutAPIClient</span><span class="p">(</span><span class="nv">publicKey</span><span class="p">:</span> <span class="s">"pk_test_6ff46046-30af-41d9-bf58-929022d2cd14"</span><span class="p">,</span>
                                               <span class="nv">environment</span><span class="p">:</span> <span class="o">.</span><span class="n">sandbox</span><span class="p">)</span>
-    <span class="k">let</span> <span class="nv">cardViewController</span> <span class="o">=</span> <span class="kt">CardViewController</span><span class="p">(</span><span class="nv">cardHolderNameState</span><span class="p">:</span> <span class="o">.</span><span class="n">hidden</span><span class="p">,</span> <span class="nv">billingDetailsState</span><span class="p">:</span> <span class="o">.</span><span class="n">hidden</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">cardViewController</span><span class="p">:</span> <span class="kt">CardViewController</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">checkoutAPIClient</span> <span class="o">=</span> <span class="kt">CheckoutAPIClient</span><span class="p">(</span><span class="nv">publicKey</span><span class="p">:</span> <span class="s">"pk_test_03728582-062b-419c-91b5-63ac2a481e07"</span><span class="p">,</span>
+        <span class="nv">environment</span><span class="p">:</span> <span class="o">.</span><span class="n">sandbox</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kt">CardViewController</span><span class="p">(</span><span class="nv">checkoutApiClient</span><span class="p">:</span> <span class="n">checkoutAPIClient</span><span class="p">,</span> <span class="nv">cardHolderNameState</span><span class="p">:</span> <span class="o">.</span><span class="n">hidden</span><span class="p">,</span> <span class="nv">billingDetailsState</span><span class="p">:</span> <span class="o">.</span><span class="n">hidden</span><span class="p">)</span>
+    <span class="p">}</span>
 
     <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
@@ -419,11 +431,13 @@
 The error handler takes an <code><a href="Structs/ErrorResponse.html">ErrorResponse</a></code> as a parameter.</p>
 <h3 id='customize-with-code-checkouttheme-code' class='heading'>Customize with <code><a href="Classes/CheckoutTheme.html">CheckoutTheme</a></code></h3>
 <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">cardViewController</span><span class="p">:</span> <span class="kt">CardViewController</span> <span class="p">{</span>
-<span class="kt">CheckoutTheme</span><span class="o">.</span><span class="n">primaryBackgroundColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">blue</span>
-<span class="kt">CheckoutTheme</span><span class="o">.</span><span class="n">secondaryBackgroundColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">purple</span>
-<span class="kt">CheckoutTheme</span><span class="o">.</span><span class="n">errorColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">yellow</span>
-<span class="kt">CheckoutTheme</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="o">.</span><span class="n">green</span>
-<span class="k">return</span> <span class="kt">CardViewController</span><span class="p">(</span><span class="nv">cardHolderNameState</span><span class="p">:</span> <span class="o">.</span><span class="n">hidden</span><span class="p">,</span> <span class="nv">billingDetailsState</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+    <span class="k">let</span> <span class="nv">checkoutAPIClient</span> <span class="o">=</span> <span class="kt">CheckoutAPIClient</span><span class="p">(</span><span class="nv">publicKey</span><span class="p">:</span> <span class="s">"pk_test_03728582-062b-419c-91b5-63ac2a481e07"</span><span class="p">,</span>
+        <span class="nv">environment</span><span class="p">:</span> <span class="o">.</span><span class="n">sandbox</span><span class="p">)</span>
+    <span class="kt">CheckoutTheme</span><span class="o">.</span><span class="n">primaryBackgroundColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">blue</span>
+    <span class="kt">CheckoutTheme</span><span class="o">.</span><span class="n">secondaryBackgroundColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">purple</span>
+    <span class="kt">CheckoutTheme</span><span class="o">.</span><span class="n">errorColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">yellow</span>
+    <span class="kt">CheckoutTheme</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="o">.</span><span class="n">green</span>
+    <span class="k">return</span> <span class="kt">CardViewController</span><span class="p">(</span><span class="nv">checkoutApiClient</span><span class="p">:</span> <span class="n">checkoutAPIClient</span><span class="p">,</span> <span class="nv">cardHolderNameState</span><span class="p">:</span> <span class="o">.</span><span class="n">hidden</span><span class="p">,</span> <span class="nv">billingDetailsState</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre>
 <h2 id='license' class='heading'>License</h2>
@@ -437,7 +451,7 @@ The error handler takes an <code><a href="Structs/ErrorResponse.html">ErrorRespo
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://www.checkout.com/" target="_blank" rel="external">Checkout</a>. All rights reserved. (Last updated: 2018-11-09)</p>
+      <p>&copy; 2018 <a class="link" href="https://www.checkout.com/" target="_blank" rel="external">Checkout</a>. All rights reserved. (Last updated: 2018-11-14)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
