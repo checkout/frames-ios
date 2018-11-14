@@ -57,21 +57,12 @@ import UIKit
 
     /// Called when the text changed.
     @objc public func textFieldDidChange(textField: UITextField) {
-        var targetCursorPosition = 0
-        if let startPosition = textField.selectedTextRange?.start {
-            targetCursorPosition = textField.offset(from: textField.beginningOfDocument, to: startPosition)
-        }
-        
         let cardNumber = cardsUtils!.standardize(cardNumber: textField.text!)
         let cardType = cardsUtils.getTypeOf(cardNumber: cardNumber)
         guard let cardTypeUnwrap = cardType else { return }
         delegate?.onChangeCardNumber(cardType: cardType)
         let cardNumberFormatted = cardsUtils.format(cardNumber: cardNumber, cardType: cardTypeUnwrap)
         textField.text = cardNumberFormatted
-        
-        if let targetPosition = textField.position(from: textField.beginningOfDocument, offset: targetCursorPosition) {
-            textField.selectedTextRange = textField.textRange(from: targetPosition, to: targetPosition)
-        }
     }
 
     /// Tells the delegate that editing stopped for the specified text field.

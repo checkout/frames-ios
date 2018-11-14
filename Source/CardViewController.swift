@@ -13,6 +13,8 @@ public class CardViewController: UIViewController,
     /// Card View
     public let cardView: CardView
     let cardUtils = CardUtils()
+    
+    public let checkoutApiClient: CheckoutAPIClient?
 
     let cardHolderNameState: InputState
     let billingDetailsState: InputState
@@ -40,7 +42,8 @@ public class CardViewController: UIViewController,
 
     /// Returns a newly initialized view controller with the cardholder's name and billing details
     /// state specified. You can specified the region using the Iso2 region code ("UK" for "United Kingdom")
-    public init(cardHolderNameState: InputState, billingDetailsState: InputState, defaultRegionCode: String? = nil) {
+    public init(checkoutApiClient: CheckoutAPIClient, cardHolderNameState: InputState, billingDetailsState: InputState, defaultRegionCode: String? = nil) {
+        self.checkoutApiClient = checkoutApiClient
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
         cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState)
@@ -54,6 +57,7 @@ public class CardViewController: UIViewController,
         billingDetailsState = .required
         cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState)
         addressViewController = AddressViewController()
+        checkoutApiClient = nil
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
@@ -63,6 +67,7 @@ public class CardViewController: UIViewController,
         billingDetailsState = .required
         cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState)
         addressViewController = AddressViewController()
+        checkoutApiClient = nil
         super.init(coder: aDecoder)
     }
 
@@ -170,7 +175,13 @@ public class CardViewController: UIViewController,
                                     cvv: cvv,
                                     name: cardView.cardHolderNameInputView.textField.text,
                                     billingDetails: billingDetailsAddress)
-        self.delegate?.onTapDone(controller: self, card: card)
+        if let checkoutApiClientUnwrap = checkoutApiClient {
+            checkoutApiClientUnwrap.createCardToken(card: card, successHandler: { cardToken in
+                self.delegate?.onTapDone(controller: self, cardToken: cardToken, status: .success)
+            }, errorHandler: { error in
+                self.delegate?.onTapDone(controller: self, cardToken: nil, status: .success)
+            })
+        }
     }
 
     // MARK: - AddressViewControllerDelegate

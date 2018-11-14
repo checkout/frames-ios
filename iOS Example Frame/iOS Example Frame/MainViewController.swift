@@ -10,16 +10,11 @@ import UIKit
 import FramesIos
 
 class MainViewController: UIViewController, CardViewControllerDelegate {
-
-    let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
-                                              environment: .sandbox)
+    
     var cardViewController: CardViewController {
-        CheckoutTheme.primaryBackgroundColor = .blue
-        CheckoutTheme.secondaryBackgroundColor = .purple
-        CheckoutTheme.tertiaryBackgroundColor = .orange
-        CheckoutTheme.errorColor = .yellow
-        CheckoutTheme.color = .green
-        return CardViewController(cardHolderNameState: .normal, billingDetailsState: .normal, defaultRegionCode: "UK")
+        let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
+                                                  environment: .sandbox)
+        return CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .normal, billingDetailsState: .normal, defaultRegionCode: "UK")
     }
 
     @IBAction func onClickGoToPaymentPage(_ sender: Any) {
@@ -38,17 +33,14 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         cardViewController.addressViewController.setCountrySelected(country: "yo", regionCode: "yo")
     }
-
-    func onTapDone(controller: CardViewController, card: CkoCardTokenRequest) {
-        controller.navigationController?.popViewController(animated: true)
-        let shippingDetails = CkoAddress(addressLine1: "yo", addressLine2: "yo", city: "yo", state: "yo", postcode: "yo", country: "yo")
-        print(card.billingDetails)
-        var cardWithShipping = card.createWith(shippingDetails: shippingDetails)
-        checkoutAPIClient.createCardToken(card: card, successHandler: { cardToken in
-            self.showAlert(with: cardToken.id)
-        }, errorHandler: { error in
-            print(error)
-        })
+    
+    func onTapDone(controller: CardViewController, cardToken: CkoCardTokenResponse?, status: CheckoutTokenStatus) {
+        switch status {
+        case .success:
+            self.showAlert(with: cardToken!.id)
+        case .failure:
+            print("failure")
+        }
     }
 
     private func showAlert(with cardToken: String) {

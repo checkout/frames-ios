@@ -108,6 +108,7 @@
 		E664702420CED6F100D8353A /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E664701420CED6F100D8353A /* PhoneNumber.swift */; };
 		E664702620CEDD7500D8353A /* PhoneNumberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E664702520CEDD7500D8353A /* PhoneNumberInputView.swift */; };
 		E670A86720CA9722002348A5 /* CvvInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E670A86620CA9722002348A5 /* CvvInputViewTests.swift */; };
+		E67AB8D2219C34E80049ADAA /* CheckoutTokenStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AB8D1219C34E80049ADAA /* CheckoutTokenStatus.swift */; };
 		E67AB96E208DF9D800593FBE /* CardUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AB96D208DF9D800593FBE /* CardUtilsTests.swift */; };
 		E67AB994208E1CC600593FBE /* CardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AB993208E1CC600593FBE /* CardProvider.swift */; };
 		E67AB996208E1CF100593FBE /* CardProviderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AB995208E1CF100593FBE /* CardProviderResponse.swift */; };
@@ -281,6 +282,7 @@
 		E664701420CED6F100D8353A /* PhoneNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumber.swift; sourceTree = "<group>"; };
 		E664702520CEDD7500D8353A /* PhoneNumberInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberInputView.swift; sourceTree = "<group>"; };
 		E670A86620CA9722002348A5 /* CvvInputViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvvInputViewTests.swift; sourceTree = "<group>"; };
+		E67AB8D1219C34E80049ADAA /* CheckoutTokenStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTokenStatus.swift; sourceTree = "<group>"; };
 		E67AB96D208DF9D800593FBE /* CardUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardUtilsTests.swift; sourceTree = "<group>"; };
 		E67AB993208E1CC600593FBE /* CardProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardProvider.swift; sourceTree = "<group>"; };
 		E67AB995208E1CF100593FBE /* CardProviderResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardProviderResponse.swift; sourceTree = "<group>"; };
@@ -546,6 +548,7 @@
 				E664071A208DE11D000431E5 /* Endpoint.swift */,
 				E625EE52208F905E0019B750 /* Environment.swift */,
 				E631CB6E2097713C00023472 /* ErrorResponse.swift */,
+				E67AB8D1219C34E80049ADAA /* CheckoutTokenStatus.swift */,
 				E632AAC120B58CE900D2B9B6 /* InputState.swift */,
 				E6BEBDB320C15EE700C3130A /* CkoPhoneNumber.swift */,
 				E6BEBDC120C1746800C3130A /* TokenResponse.swift */,
@@ -1017,6 +1020,7 @@
 				E632AAC020B57EDF00D2B9B6 /* CvvInputView.swift in Sources */,
 				E61101A120C95880000BB9F4 /* SchemeIconsStackView.swift in Sources */,
 				E602EE8B209D86B000CC62A2 /* ResponseSerialization.swift in Sources */,
+				E67AB8D2219C34E80049ADAA /* CheckoutTokenStatus.swift in Sources */,
 				E625EE4D208F8F370019B750 /* Card.swift in Sources */,
 				E63352D820A2EE09002C61C0 /* AddressViewController.swift in Sources */,
 				E63352DB20A34992002C61C0 /* AddressViewControllerDelegate.swift in Sources */,

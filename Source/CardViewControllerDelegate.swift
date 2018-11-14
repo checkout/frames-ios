@@ -7,5 +7,5 @@ public protocol CardViewControllerDelegate: class {
     ///
     /// - parameter controller: `CardViewController`
     /// - parameter card: Card entered by the user
-    func onTapDone(controller: CardViewController, card: CkoCardTokenRequest)
+    func onTapDone(controller: CardViewController, cardToken: CkoCardTokenResponse?, status: CheckoutTokenStatus)
 }

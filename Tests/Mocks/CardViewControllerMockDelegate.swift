@@ -3,10 +3,10 @@ import XCTest
 
 class CardViewControllerMockDelegate: CardViewControllerDelegate {
     var calledTimes = 0
-    var lastCalledWith: CkoCardTokenRequest?
+    var lastCalledWith: CkoCardTokenResponse?
 
-    func onTapDone(controller: CardViewController, card: CkoCardTokenRequest) {
+    func onTapDone(controller: CardViewController, cardToken: CkoCardTokenResponse?, status: CheckoutTokenStatus) {
         calledTimes += 1
-        lastCalledWith = card
+        lastCalledWith = cardToken
     }
 }
