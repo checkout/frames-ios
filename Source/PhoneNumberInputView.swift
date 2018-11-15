@@ -21,7 +21,7 @@ import UIKit
     public var isValidNumber: Bool {
         let rawNumber = self.textField.text ?? ""
         do {
-            phoneNumber = try phoneNumberKit.parse(rawNumber)
+            phoneNumber = try phoneNumberKit.parse(rawNumber.replacingOccurrences(of: " ", with: ""))
             return true
         } catch {
             return false
@@ -54,8 +54,23 @@ import UIKit
 
     /// Called when the text changed.
     @objc public func textFieldDidChange(textField: UITextField) {
+        var targetCursorPosition = 0
+        if let startPosition = textField.selectedTextRange?.start {
+            targetCursorPosition = textField.offset(from: textField.beginningOfDocument, to: startPosition)
+        }
+
         let phoneNumber = textField.text!
         let formatted = partialFormatter.formatPartial(phoneNumber)
         textField.text = formatted
+
+        if var targetPosition = textField.position(from: textField.beginningOfDocument, offset: targetCursorPosition) {
+            if targetCursorPosition != 0 {
+                let lastChar = formatted.substring(with: NSRange(location: targetCursorPosition - 1, length: 1))
+                if lastChar == " " {
+                    targetPosition = textField.position(from: textField.beginningOfDocument, offset: targetCursorPosition + 1)!
+                }
+            }
+            textField.selectedTextRange = textField.textRange(from: targetPosition, to: targetPosition)
+        }
     }
 }
