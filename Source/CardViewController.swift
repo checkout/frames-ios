@@ -177,6 +177,7 @@ public class CardViewController: UIViewController,
                                     name: cardView.cardHolderNameInputView.textField.text,
                                     billingDetails: billingDetailsAddress)
         if let checkoutApiClientUnwrap = checkoutApiClient {
+            self.delegate?.onSubmit(controller: self)
             checkoutApiClientUnwrap.createCardToken(card: card, successHandler: { cardToken in
                 self.delegate?.onTapDone(controller: self, cardToken: cardToken, status: .success)
             }, errorHandler: { error in
