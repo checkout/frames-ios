@@ -12,7 +12,12 @@ import FramesIos
 class MainViewController: UIViewController, CardViewControllerDelegate {
     
     func onSubmit(controller: CardViewController) {
-        
+        var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        indicator.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        indicator.center = view.center
+        self.view.addSubview(indicator)
+        self.view.bringSubview(toFront: indicator)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
     
@@ -21,6 +26,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
                                                   environment: .sandbox)
         var b = CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .normal, billingDetailsState: .hidden, defaultRegionCode: "UK")
         b.billingDetailsAddress = CkoAddress(addressLine1: "yo", addressLine2: "yo", city: "yo", state: "yo", postcode: "yo", country: "uk", phone: nil)
+        b.delegate = self
         return b
     }
 
@@ -42,6 +48,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
     }
     
     func onTapDone(controller: CardViewController, cardToken: CkoCardTokenResponse?, status: CheckoutTokenStatus) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         switch status {
         case .success:
             self.showAlert(with: cardToken!.id)
