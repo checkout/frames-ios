@@ -112,6 +112,7 @@ public class CardViewController: UIViewController,
     public override func viewDidLayoutSubviews() {
         view.addSubview(cardView)
         cardView.translatesAutoresizingMaskIntoConstraints = false
+
         cardView.leftAnchor.constraint(equalTo: view.safeLeftAnchor).isActive = true
         cardView.rightAnchor.constraint(equalTo: view.safeRightAnchor).isActive = true
         cardView.topAnchor.constraint(equalTo: view.safeTopAnchor).isActive = true

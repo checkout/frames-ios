@@ -117,10 +117,13 @@ import UIKit
 
         textField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8).isActive = true
         label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        label.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: 8)
+        label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8)
             .isActive = true
         textField.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         textField.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 8).isActive = true
+        if #available(iOS 11.0, *) { } else {
+            label.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        }
     }
 
     func set(label: String, backgroundColor: UIColor) {

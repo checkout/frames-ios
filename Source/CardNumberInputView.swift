@@ -9,6 +9,8 @@ import UIKit
     var cardsUtils: CardUtils!
     /// Text field delegate
     public weak var delegate: CardNumberInputViewDelegate?
+    
+    private var previousTextCount = 0
 
     // MARK: - Initialization
 
@@ -61,21 +63,24 @@ import UIKit
         if let startPosition = textField.selectedTextRange?.start {
             targetCursorPosition = textField.offset(from: textField.beginningOfDocument, to: startPosition)
         }
-        
+
         let cardNumber = cardsUtils!.standardize(cardNumber: textField.text!)
         let cardType = cardsUtils.getTypeOf(cardNumber: cardNumber)
         guard let cardTypeUnwrap = cardType else { return }
         delegate?.onChangeCardNumber(cardType: cardType)
         let cardNumberFormatted = cardsUtils.format(cardNumber: cardNumber, cardType: cardTypeUnwrap)
         textField.text = cardNumberFormatted
-        
+
         if var targetPosition = textField.position(from: textField.beginningOfDocument, offset: targetCursorPosition) {
             if targetCursorPosition != 0 {
                 let lastChar = cardNumberFormatted.substring(with: NSRange(location: targetCursorPosition - 1, length: 1))
-                if lastChar == " " { targetPosition = textField.position(from: textField.beginningOfDocument, offset: targetCursorPosition + 1)!  }
+                if lastChar == " " && previousTextCount < cardNumberFormatted.count {
+                    targetPosition = textField.position(from: textField.beginningOfDocument, offset: targetCursorPosition + 1)!
+                }
             }
             textField.selectedTextRange = textField.textRange(from: targetPosition, to: targetPosition)
         }
+        previousTextCount = cardNumberFormatted.count
     }
 
     /// Tells the delegate that editing stopped for the specified text field.

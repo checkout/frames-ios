@@ -86,6 +86,9 @@ public class AddressViewController: UIViewController,
         addressView.rightAnchor.constraint(equalTo: view.safeRightAnchor).isActive = true
         addressView.topAnchor.constraint(equalTo: view.safeTopAnchor).isActive = true
         addressView.bottomAnchor.constraint(equalTo: view.safeBottomAnchor).isActive = true
+        if #available(iOS 11.0, *) {} else {
+            addressView.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 10)
+        }
     }
 
     // MARK: - Methods
@@ -122,6 +125,7 @@ public class AddressViewController: UIViewController,
         addressView.addressLine1InputView.textField.delegate = self
         addressView.addressLine2InputView.textField.delegate = self
         addressView.cityInputView.textField.delegate = self
+        addressView.stateInputView.textField.delegate = self
         addressView.zipInputView.textField.delegate = self
         addressView.phoneInputView.textField.delegate = self
     }
