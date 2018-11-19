@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 
 #### 2.x Releases
 
+## [2.6.0](https://github.com/checkout/frames-ios/releases/tag/2.6.0)
+
+Released on 2018-11-19.
+
+#### Added
+
+* Added a delegate method `onSubmit` that is executed when the card data is submitted to create the card token.
+
+#### Fixed
+
+* Fixed issue with ios 10 where the fields on the billing address screen will display only one character.
+* Fixed cursor position when formatting card number and phone number input field.
+
 ## [2.5.0](https://github.com/checkout/frames-ios/releases/tag/2.5.0)
 
 Released on 2018-11-14.
