@@ -24,7 +24,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
     var cardViewController: CardViewController {
         let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
                                                   environment: .sandbox)
-        var b = CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .normal, billingDetailsState: .hidden, defaultRegionCode: "UK")
+        var b = CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .normal, billingDetailsState: .normal, defaultRegionCode: "UK")
         b.billingDetailsAddress = CkoAddress(addressLine1: "yo", addressLine2: "yo", city: "yo", state: "yo", postcode: "yo", country: "uk", phone: nil)
         b.delegate = self
         return b

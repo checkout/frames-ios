@@ -121,7 +121,7 @@ import UIKit
             .isActive = true
         textField.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         textField.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 8).isActive = true
-        if #available(iOS 11.0, *) { } else {
+        if #available(iOS 11.0, *) {} else {
             label.widthAnchor.constraint(equalToConstant: 150).isActive = true
         }
     }
