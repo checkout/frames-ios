@@ -16,8 +16,11 @@ public struct Address: Codable {
     public let state: String?
 
     /// The address zip/postal code
-    public let zip: String?
+    public let postcode: String?
 
     /// The two-letter ISO code of the address country
     public let country: String?
+
+    /// The phone number
+    public let phone: CkoPhoneNumber?
 }
