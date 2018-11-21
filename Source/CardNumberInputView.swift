@@ -9,7 +9,7 @@ import UIKit
     var cardsUtils: CardUtils!
     /// Text field delegate
     public weak var delegate: CardNumberInputViewDelegate?
-    
+
     private var previousTextCount = 0
 
     // MARK: - Initialization
@@ -73,9 +73,11 @@ import UIKit
 
         if var targetPosition = textField.position(from: textField.beginningOfDocument, offset: targetCursorPosition) {
             if targetCursorPosition != 0 {
-                let lastChar = cardNumberFormatted.substring(with: NSRange(location: targetCursorPosition - 1, length: 1))
+                let lastChar = cardNumberFormatted
+                    .substring(with: NSRange(location: targetCursorPosition - 1, length: 1))
                 if lastChar == " " && previousTextCount < cardNumberFormatted.count {
-                    targetPosition = textField.position(from: textField.beginningOfDocument, offset: targetCursorPosition + 1)!
+                    targetPosition = textField
+                        .position(from: textField.beginningOfDocument, offset: targetCursorPosition + 1)!
                 }
             }
             textField.selectedTextRange = textField.textRange(from: targetPosition, to: targetPosition)

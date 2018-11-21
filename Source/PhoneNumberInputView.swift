@@ -30,7 +30,7 @@ import UIKit
 
     /// Phone Number
     public var phoneNumber: PhoneNumber?
-    
+
     private var previousTextCount = 0
 
     // MARK: - Initialization
@@ -69,7 +69,8 @@ import UIKit
             if targetCursorPosition != 0 {
                 let lastChar = formatted.substring(with: NSRange(location: targetCursorPosition - 1, length: 1))
                 if lastChar == " " && previousTextCount < formatted.count {
-                    targetPosition = textField.position(from: textField.beginningOfDocument, offset: targetCursorPosition + 1)!
+                    targetPosition = textField
+                        .position(from: textField.beginningOfDocument, offset: targetCursorPosition + 1)!
                 }
             }
             textField.selectedTextRange = textField.textRange(from: targetPosition, to: targetPosition)

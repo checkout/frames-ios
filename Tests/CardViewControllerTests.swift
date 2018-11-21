@@ -30,7 +30,8 @@ class CardViewControllerTests: XCTestCase {
     func testInitializationHiddenFields() {
         let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
                                                   environment: .sandbox)
-        let cardViewController = CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .hidden, billingDetailsState: .hidden)
+        let cardViewController = CardViewController(checkoutApiClient: checkoutAPIClient,
+                                                    cardHolderNameState: .hidden, billingDetailsState: .hidden)
         XCTAssertEqual(cardViewController.cardHolderNameState, .hidden)
         XCTAssertEqual(cardViewController.billingDetailsState, .hidden)
         cardViewController.viewDidLoad()
@@ -111,7 +112,8 @@ class CardViewControllerTests: XCTestCase {
         // Setup
         let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
                                                   environment: .sandbox)
-        let cardViewController = CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .hidden, billingDetailsState: .required)
+        let cardViewController = CardViewController(checkoutApiClient: checkoutAPIClient,
+                                                    cardHolderNameState: .hidden, billingDetailsState: .required)
         cardViewController.viewDidLoad()
         XCTAssertFalse((cardViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
         // Simulate the end of a text field editing
@@ -124,7 +126,8 @@ class CardViewControllerTests: XCTestCase {
         // Setup
         let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
                                                   environment: .sandbox)
-        let cardViewController = CardViewController(checkoutApiClient: checkoutAPIClient,cardHolderNameState: .required, billingDetailsState: .hidden)
+        let cardViewController = CardViewController(checkoutApiClient: checkoutAPIClient,
+                                                    cardHolderNameState: .required, billingDetailsState: .hidden)
         cardViewController.viewDidLoad()
         XCTAssertFalse((cardViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
         // Simulate the end of a text field editing
@@ -137,7 +140,8 @@ class CardViewControllerTests: XCTestCase {
         // Setup
         let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
                                                   environment: .sandbox)
-        let cardViewController = CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .hidden, billingDetailsState: .hidden)
+        let cardViewController = CardViewController(checkoutApiClient: checkoutAPIClient,
+                                                    cardHolderNameState: .hidden, billingDetailsState: .hidden)
         cardViewController.viewDidLoad()
         XCTAssertFalse((cardViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
         cardViewController.cardView.cardNumberInputView.textField.text = "4242 4242 4242 4242"
@@ -153,7 +157,8 @@ class CardViewControllerTests: XCTestCase {
         // Setup
         let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
                                                   environment: .sandbox)
-        let cardViewController = CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .hidden, billingDetailsState: .hidden)
+        let cardViewController = CardViewController(checkoutApiClient: checkoutAPIClient,
+                                                    cardHolderNameState: .hidden, billingDetailsState: .hidden)
         cardViewController.viewDidLoad()
         XCTAssertFalse((cardViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
         // Simulate the end of a text field editing
