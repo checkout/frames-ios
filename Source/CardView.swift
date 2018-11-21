@@ -77,15 +77,19 @@ public class CardView: UIView {
         cvvInputView.set(label: "cvv", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
         // card holder name
         if cardHolderNameState == .required {
-            cardHolderNameInputView.set(label: "cardholderNameRequired", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
+            cardHolderNameInputView.set(label: "cardholderNameRequired",
+                                        backgroundColor: CheckoutTheme.secondaryBackgroundColor)
         } else {
-            cardHolderNameInputView.set(label: "cardholderName", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
+            cardHolderNameInputView.set(label: "cardholderName",
+                                        backgroundColor: CheckoutTheme.secondaryBackgroundColor)
         }
         // billing details
         if billingDetailsState == .required {
-            billingDetailsInputView.set(label: "billingDetailsRequired", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
+            billingDetailsInputView.set(label: "billingDetailsRequired",
+                                        backgroundColor: CheckoutTheme.secondaryBackgroundColor)
         } else {
-            billingDetailsInputView.set(label: "billingDetails", backgroundColor: CheckoutTheme.secondaryBackgroundColor)
+            billingDetailsInputView.set(label: "billingDetails",
+                                        backgroundColor: CheckoutTheme.secondaryBackgroundColor)
         }
 
         cardNumberInputView.textField.placeholder = "4242"
@@ -129,12 +133,13 @@ public class CardView: UIView {
         schemeIconsStackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        self.translatesAutoresizingMaskIntoConstraints = false
 
         acceptedCardLabel.trailingAnchor
             .constraint(equalTo: contentView.trailingAnchor, constant: -8)
             .isActive = true
         acceptedCardLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
-        acceptedCardLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16).isActive = true
+        acceptedCardLabel.topAnchor.constraint(equalTo: contentView.safeTopAnchor, constant: 16).isActive = true
         acceptedCardLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8)
             .isActive = true
 

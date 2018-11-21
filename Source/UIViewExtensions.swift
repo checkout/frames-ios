@@ -7,7 +7,7 @@ extension UIView {
         if #available(iOS 11.0, *) {
             return self.safeAreaLayoutGuide.topAnchor
         } else {
-            return self.topAnchor
+            return self.layoutMarginsGuide.topAnchor
         }
     }
 
@@ -67,7 +67,8 @@ extension UIView {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         scrollView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        scrollView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: safeTopAnchor).isActive = true
+
         let scrollViewBottomConstraint = scrollView.bottomAnchor.constraint(equalTo: safeBottomAnchor)
         scrollViewBottomConstraint.isActive = true
         // return scrollView bottom anchor constraint, used to manage the keyboard

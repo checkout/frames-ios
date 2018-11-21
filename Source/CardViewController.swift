@@ -13,7 +13,7 @@ public class CardViewController: UIViewController,
     /// Card View
     public let cardView: CardView
     let cardUtils = CardUtils()
-    
+
     public let checkoutApiClient: CheckoutAPIClient?
 
     let cardHolderNameState: InputState
@@ -38,11 +38,14 @@ public class CardViewController: UIViewController,
                                                     target: self,
                                                     action: #selector(onTapDoneCardButton))
 
+    var topConstraint: NSLayoutConstraint?
+
     // MARK: - Initialization
 
     /// Returns a newly initialized view controller with the cardholder's name and billing details
     /// state specified. You can specified the region using the Iso2 region code ("UK" for "United Kingdom")
-    public init(checkoutApiClient: CheckoutAPIClient, cardHolderNameState: InputState, billingDetailsState: InputState, defaultRegionCode: String? = nil) {
+    public init(checkoutApiClient: CheckoutAPIClient, cardHolderNameState: InputState,
+                billingDetailsState: InputState, defaultRegionCode: String? = nil) {
         self.checkoutApiClient = checkoutApiClient
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
@@ -91,6 +94,7 @@ public class CardViewController: UIViewController,
         view.backgroundColor = .groupTableViewBackground
         cardView.schemeIconsStackView.setIcons(schemes: availableSchemes)
         setInitialDate()
+
     }
 
     /// Notifies the view controller that its view is about to be added to a view hierarchy.
@@ -106,17 +110,35 @@ public class CardViewController: UIViewController,
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         deregisterKeyboardHandlers(notificationCenter: notificationCenter)
+
+        if !isMovingFromParentViewController{
+            if #available(iOS 11.0, *) {} else {
+                self.topConstraint = cardView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: -75)
+                self.topConstraint?.isActive = true
+            }
+            
+        }
     }
 
     /// Called to notify the view controller that its view has just laid out its subviews.
     public override func viewDidLayoutSubviews() {
         view.addSubview(cardView)
         cardView.translatesAutoresizingMaskIntoConstraints = false
-
         cardView.leftAnchor.constraint(equalTo: view.safeLeftAnchor).isActive = true
         cardView.rightAnchor.constraint(equalTo: view.safeRightAnchor).isActive = true
-        cardView.topAnchor.constraint(equalTo: view.safeTopAnchor).isActive = true
+
+        self.topConstraint = cardView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor)
+        if #available(iOS 11.0, *) {
+            cardView.topAnchor.constraint(equalTo: view.safeTopAnchor).isActive = true
+        } else {
+            self.topConstraint?.isActive = true
+        }
         cardView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        if #available(iOS 11.0, *) {} else {
+            cardView.scrollView.contentSize = CGSize(width: self.view.frame.width,
+                                                        height: self.view.frame.height + 10)
+        }
+
     }
 
     /// MARK: Methods
@@ -180,7 +202,7 @@ public class CardViewController: UIViewController,
             self.delegate?.onSubmit(controller: self)
             checkoutApiClientUnwrap.createCardToken(card: card, successHandler: { cardToken in
                 self.delegate?.onTapDone(controller: self, cardToken: cardToken, status: .success)
-            }, errorHandler: { error in
+            }, errorHandler: { _ in
                 self.delegate?.onTapDone(controller: self, cardToken: nil, status: .success)
             })
         }
@@ -195,6 +217,7 @@ public class CardViewController: UIViewController,
         cardView.billingDetailsInputView.value.text = value
         validateFieldsValues()
         // return to CardViewController
+        self.topConstraint?.isActive = false
         controller.navigationController?.popViewController(animated: true)
     }
 

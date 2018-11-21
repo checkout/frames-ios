@@ -87,7 +87,8 @@ public class AddressViewController: UIViewController,
         addressView.topAnchor.constraint(equalTo: view.safeTopAnchor).isActive = true
         addressView.bottomAnchor.constraint(equalTo: view.safeBottomAnchor).isActive = true
         if #available(iOS 11.0, *) {} else {
-            addressView.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 10)
+            addressView.scrollView.contentSize = CGSize(width: self.view.frame.width,
+                                                        height: self.view.frame.height + 10)
         }
     }
 

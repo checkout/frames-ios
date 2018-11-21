@@ -41,15 +41,13 @@ public class AddressView: UIView {
         super.init(coder: aDecoder)
         setup()
     }
-    
+
     private func setup() {
         backgroundColor = CheckoutTheme.primaryBackgroundColor
         stackView.axis = .vertical
         stackView.spacing = 16
         scrollView.keyboardDismissMode = .onDrag
-        if #available(iOS 11.0, *) {
-            scrollView.contentInsetAdjustmentBehavior = .automatic
-        } else {
+        if #available(iOS 11.0, *) {} else {
             scrollView.contentSize = CGSize(width: 2000, height: 2000)
         }
 
