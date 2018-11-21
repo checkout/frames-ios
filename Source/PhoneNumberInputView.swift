@@ -52,6 +52,7 @@ import UIKit
     private func setup() {
         textField.delegate = self
         textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
+        textField.autocorrectionType = .no
     }
 
     /// Called when the text changed.

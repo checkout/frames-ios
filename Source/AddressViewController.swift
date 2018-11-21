@@ -189,4 +189,14 @@ public class AddressViewController: UIViewController,
         validateFieldsValues()
     }
 
+    public func setFields(address: CkoAddress) {
+        addressView.addressLine1InputView.textField.text = address.addressLine1
+        addressView.addressLine2InputView.textField.text = address.addressLine2
+        addressView.cityInputView.textField.text = address.city
+        addressView.stateInputView.textField.text = address.state
+        addressView.zipInputView.textField.text = address.postcode
+        addressView.countryRegionInputView.value.text = address.country
+        addressView.phoneInputView.textField.text = "+\(address.phone?.countryCode ?? "")\(address.phone?.number ?? "")"
+    }
+
 }

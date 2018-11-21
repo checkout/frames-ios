@@ -111,12 +111,11 @@ public class CardViewController: UIViewController,
         super.viewWillDisappear(animated)
         deregisterKeyboardHandlers(notificationCenter: notificationCenter)
 
-        if !isMovingFromParentViewController{
+        if !isMovingFromParentViewController {
             if #available(iOS 11.0, *) {} else {
                 self.topConstraint = cardView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: -75)
                 self.topConstraint?.isActive = true
             }
-            
         }
     }
 
