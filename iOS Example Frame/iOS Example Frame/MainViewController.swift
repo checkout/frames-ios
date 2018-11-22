@@ -11,22 +11,24 @@ import FramesIos
 
 class MainViewController: UIViewController, CardViewControllerDelegate {
     
-    func onSubmit(controller: CardViewController) {
-        var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-        indicator.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        indicator.center = view.center
-        self.view.addSubview(indicator)
-        self.view.bringSubview(toFront: indicator)
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    @IBOutlet weak var goToPaymentPageButton: UIButton!
+    
+    @IBAction func goToPaymentPage(_ sender: Any) {
+        navigationController?.pushViewController(cardViewController, animated: true)
     }
     
     
+    func onSubmit(controller: CardViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+
     var cardViewController: CardViewController {
         let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
                                                   environment: .sandbox)
-        var b = CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .normal, billingDetailsState: .normal, defaultRegionCode: "UK")
+        let b = CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .normal, billingDetailsState: .normal, defaultRegionCode: "UK")
         b.billingDetailsAddress = CkoAddress(addressLine1: "yo", addressLine2: "yo", city: "yo", state: "yo", postcode: "yo", country: "uk", phone: nil)
         b.delegate = self
+        b.addressViewController.setFields(address: b.billingDetailsAddress!)
         return b
     }
 

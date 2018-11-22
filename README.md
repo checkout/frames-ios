@@ -47,7 +47,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Frames', '~> 2.4'
+    pod 'Frames', '~> 2.6'
 end
 ```
 
@@ -71,7 +71,7 @@ $ brew install carthage
 To integrate FramesIos into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "checkout/frames-ios" ~> 2.4
+github "checkout/frames-ios" ~> 2.6
 ```
 
 Run `carthage update` to build the framework and drag the built `FramesIos` into your Xcode project.
