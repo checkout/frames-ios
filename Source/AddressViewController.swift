@@ -197,7 +197,10 @@ public class AddressViewController: UIViewController,
         addressView.stateInputView.textField.text = address.state
         addressView.zipInputView.textField.text = address.postcode
         addressView.countryRegionInputView.value.text = address.country
-        addressView.phoneInputView.textField.text = "+\(address.phone?.countryCode ?? "")\(address.phone?.number ?? "")"
+        if address.phone != nil {
+            addressView.phoneInputView.textField.text = "+\(address.phone?.countryCode ?? "")\(address.phone?.number ?? "")"
+        }
+        
     }
 
 }

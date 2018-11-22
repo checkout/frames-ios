@@ -14,8 +14,8 @@ extension UIViewController {
                                                            bottom: keyboardSize.height + additionalSpace,
                                                            right: 0.0)
 
-                scrollView.contentInset = contentInsets
-                scrollView.scrollIndicatorInsets = contentInsets
+            scrollView.contentInset = contentInsets
+            scrollView.scrollIndicatorInsets = contentInsets
 
             // If active text field is hidden by keyboard, scroll it so it's visible
             // Your app might not need or want this behavior.

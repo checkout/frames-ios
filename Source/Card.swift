@@ -3,9 +3,6 @@ import Foundation
 /// Card used to create the card token
 public struct Card: Codable {
 
-    /// Card Id
-    public let id: String
-
     /// Expiry month
     public let expiryMonth: String
 
