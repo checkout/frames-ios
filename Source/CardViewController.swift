@@ -95,6 +95,8 @@ public class CardViewController: UIViewController,
         cardView.schemeIconsStackView.setIcons(schemes: availableSchemes)
         setInitialDate()
 
+        self.automaticallyAdjustsScrollViewInsets = false
+
     }
 
     /// Notifies the view controller that its view is about to be added to a view hierarchy.
@@ -110,13 +112,6 @@ public class CardViewController: UIViewController,
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         deregisterKeyboardHandlers(notificationCenter: notificationCenter)
-
-        if !isMovingFromParentViewController {
-            if #available(iOS 11.0, *) {} else {
-                self.topConstraint = cardView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: -75)
-                self.topConstraint?.isActive = true
-            }
-        }
     }
 
     /// Called to notify the view controller that its view has just laid out its subviews.

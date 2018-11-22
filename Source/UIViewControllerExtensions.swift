@@ -13,10 +13,9 @@ extension UIViewController {
                                                            left: 0.0,
                                                            bottom: keyboardSize.height + additionalSpace,
                                                            right: 0.0)
-            if #available(iOS 11.0, *) {
+
                 scrollView.contentInset = contentInsets
                 scrollView.scrollIndicatorInsets = contentInsets
-            }
 
             // If active text field is hidden by keyboard, scroll it so it's visible
             // Your app might not need or want this behavior.
@@ -31,11 +30,9 @@ extension UIViewController {
     }
 
     @objc func scrollViewOnKeyboardWillHide(notification: NSNotification, scrollView: UIScrollView) {
-        if #available(iOS 11.0, *) {
-            let contentInsets = UIEdgeInsets.zero
-            scrollView.contentInset = contentInsets
-            scrollView.scrollIndicatorInsets = contentInsets
-        }
+        let contentInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
     }
 
     func registerKeyboardHandlers(notificationCenter: NotificationCenter,

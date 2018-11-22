@@ -61,6 +61,7 @@ public class AddressViewController: UIViewController,
                 setCountrySelected(country: countryNameUnwrap, regionCode: regionCodeSelectedUnwrap)
             }
         }
+        self.navigationController?.navigationBar.isTranslucent = false
     }
 
     /// Notifies the view controller that its view is about to be added to a view hierarchy.
