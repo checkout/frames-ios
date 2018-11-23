@@ -62,6 +62,8 @@ public class AddressViewController: UIViewController,
             }
         }
         self.navigationController?.navigationBar.isTranslucent = false
+        
+        validateFieldsValues()
     }
 
     /// Notifies the view controller that its view is about to be added to a view hierarchy.
