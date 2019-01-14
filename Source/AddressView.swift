@@ -67,7 +67,7 @@ public class AddressView: UIView {
         stateInputView.textField.textContentType = UITextContentType.addressState
         zipInputView.textField.textContentType = .postalCode
         // set keyboard
-//        phoneInputView.textField.keyboardType = .phonePad
+        phoneInputView.textField.keyboardType = .phonePad
 
         addKeyboardToolbarNavigation(textFields: [
             addressLine1InputView.textField,
