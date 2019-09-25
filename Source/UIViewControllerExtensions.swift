@@ -8,7 +8,7 @@ extension UIViewController {
         let additionalSpace = CGFloat(80.0)
         let textField = activeField ?? UIResponder.current as? UITextField
         guard let activeField = textField else { return }
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             let contentInsets: UIEdgeInsets = UIEdgeInsets(top: 0.0,
                                                            left: 0.0,
                                                            bottom: keyboardSize.height + additionalSpace,
@@ -40,16 +40,16 @@ extension UIViewController {
                                   keyboardWillHide: Selector) {
         notificationCenter.addObserver(self,
                                        selector: keyboardWillShow,
-                                       name: NSNotification.Name.UIKeyboardWillShow,
+                                       name: UIResponder.keyboardWillShowNotification,
                                        object: nil)
         notificationCenter.addObserver(self,
                                        selector: keyboardWillHide,
-                                       name: NSNotification.Name.UIKeyboardWillHide,
+                                       name: UIResponder.keyboardWillHideNotification,
                                        object: nil)
     }
 
     func deregisterKeyboardHandlers(notificationCenter: NotificationCenter) {
-        notificationCenter.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        notificationCenter.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        notificationCenter.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        notificationCenter.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }

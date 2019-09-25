@@ -32,7 +32,7 @@ import UIKit
         textField.keyboardType = .numberPad
         textField.textContentType = nil
         textField.delegate = self
-        textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControl.Event.editingChanged)
     }
 
     // MARK: - UITextFieldDelegate

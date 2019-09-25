@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -67,7 +67,7 @@
 		039BDCB1C3392039689A4799092DBA0A /* XCTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XCTest.swift; path = Sources/Mockingjay/XCTest.swift; sourceTree = "<group>"; };
 		04B1264E1BFE43C3B59D4741D9124A1A /* URITemplate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URITemplate.swift; path = Sources/URITemplate.swift; sourceTree = "<group>"; };
 		04DB60AC9EAAB5673ADD0A181D2A0DD5 /* Mockingjay.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Mockingjay.modulemap; sourceTree = "<group>"; };
-		076E74A81F3FD9254C6282C818F985BD /* Pods_FramesIos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FramesIos.framework; path = "Pods-FramesIos.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		076E74A81F3FD9254C6282C818F985BD /* Pods_FramesIos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FramesIos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		143800B663D6E8768BE158F9F81724E8 /* Pods-FramesIos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FramesIos.release.xcconfig"; sourceTree = "<group>"; };
 		160711377E4F81D4E62694D976F57669 /* Mockingjay-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Mockingjay-umbrella.h"; sourceTree = "<group>"; };
 		1A2E87BC4FF08CE0C78C9C9B1DFF6F32 /* Pods-FramesIosTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FramesIosTests-dummy.m"; sourceTree = "<group>"; };
@@ -90,11 +90,11 @@
 		6CEC2700A349714E5B9FCFC204D4B4C5 /* Pods-FramesIos-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FramesIos-dummy.m"; sourceTree = "<group>"; };
 		71AFE872A1DCE992DF46CD5585F49E70 /* URITemplate-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "URITemplate-umbrella.h"; sourceTree = "<group>"; };
 		73E4F79849556C25CED115FE8F04F89A /* URITemplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = URITemplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A668DE145DF58CBDCE206D39BD7837C /* Mockingjay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Mockingjay.framework; path = Mockingjay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		803522873EEA8E4DBAFA9C758350FE91 /* Pods_FramesIosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FramesIosTests.framework; path = "Pods-FramesIosTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A668DE145DF58CBDCE206D39BD7837C /* Mockingjay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mockingjay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		803522873EEA8E4DBAFA9C758350FE91 /* Pods_FramesIosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FramesIosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		812EA1652D40157E47886EC6119F71B2 /* Mockingjay.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Mockingjay.xcconfig; sourceTree = "<group>"; };
 		8C38DBFEA7C40B2DC4B41E4FD61EF144 /* Pods-FramesIosTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FramesIosTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		940051C4FA9AB5B246F80555E90FB782 /* URITemplate-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "URITemplate-dummy.m"; sourceTree = "<group>"; };
 		95AB12AB2E5721A441B2CD2D9B653B3C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99C7D4CD42B77967B97423970D35C238 /* Pods-FramesIos-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FramesIos-umbrella.h"; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 		CB213A0CE82AFC5E915D18564069360A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFCD5EF68DF050E7CA1B7CBB6A5FDEA6 /* NSURLSessionConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSURLSessionConfiguration.swift; path = Sources/Mockingjay/NSURLSessionConfiguration.swift; sourceTree = "<group>"; };
 		D4514641353B2A096AC53DA68872B649 /* Mockingjay-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Mockingjay-dummy.m"; sourceTree = "<group>"; };
-		D8D6F8B23C58B12A80FD2FDC8359E38B /* URITemplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = URITemplate.framework; path = URITemplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8D6F8B23C58B12A80FD2FDC8359E38B /* URITemplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = URITemplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E802EE4853D588A2F1D6D97E1B517269 /* Pods-FramesIosTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FramesIosTests.modulemap"; sourceTree = "<group>"; };
 		E8ED09FFEE6DC6096E4B513ECE5C62A5 /* Pods-FramesIos-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FramesIos-resources.sh"; sourceTree = "<group>"; };
 		F34FFDB70D55222CCC2B0AB4DE165EBD /* Pods-FramesIos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FramesIos.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,7 +167,6 @@
 				04B1264E1BFE43C3B59D4741D9124A1A /* URITemplate.swift */,
 				B92E234B1DFBD9D576A2605EE285759E /* Support Files */,
 			);
-			name = URITemplate;
 			path = URITemplate;
 			sourceTree = "<group>";
 		};
@@ -192,7 +191,6 @@
 				4C2401CB24272B7FF19E8D4F68ECC5A4 /* Support Files */,
 				A8D5E1BBB15651BC629E0AB4C002B5BD /* XCTest */,
 			);
-			name = Mockingjay;
 			path = Mockingjay;
 			sourceTree = "<group>";
 		};
@@ -434,14 +432,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
 			productRefGroup = F30F5E250215DF7C32FE0332E286CDE8 /* Products */;
@@ -751,6 +750,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;

@@ -34,7 +34,7 @@ import UIKit
         textField.textContentType = .creditCardNumber
         textField.font = CheckoutTheme.font
         textField.delegate = self
-        textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControl.Event.editingChanged)
     }
 
     // MARK: - UITextFieldDelegate

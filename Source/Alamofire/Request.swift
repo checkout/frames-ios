@@ -87,7 +87,7 @@ class Request {
     // MARK: Properties
     
     /// The delegate for the underlying task.
-    internal(set) var delegate: TaskDelegate {
+    var delegate: TaskDelegate {
         get {
             taskDelegateLock.lock() ; defer { taskDelegateLock.unlock() }
             return taskDelegate
@@ -111,7 +111,7 @@ class Request {
     var response: HTTPURLResponse? { return task?.response as? HTTPURLResponse }
     
     /// The number of times the request has been retried.
-    internal(set) var retryCount: UInt = 0
+    var retryCount: UInt = 0
     
     let originalTask: TaskConvertible?
     

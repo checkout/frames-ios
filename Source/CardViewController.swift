@@ -284,7 +284,7 @@ public class CardViewController: UIViewController,
             lastSelected = nil
         }
         guard let type = cardType else { return }
-        let index = availableSchemes.index(of: type.scheme)
+        let index = availableSchemes.firstIndex(of: type.scheme)
         guard let indexScheme = index else { return }
         let imageView = cardView.schemeIconsStackView.arrangedSubviews[indexScheme] as? UIImageView
 

@@ -65,7 +65,7 @@ import UIKit
         let year = calendar.component(.year, from: date)
 
         let monthIndex = month - 1
-        let yearIndex = years.index(of: String(year))
+        let yearIndex = years.firstIndex(of: String(year))
 
         selectRow(monthIndex, inComponent: 0, animated: animated)
         selectRow(yearIndex!, inComponent: 1, animated: animated)
