@@ -117,10 +117,9 @@ public class AddressViewController: UIViewController,
                                  addressLine2: addressView.addressLine2InputView.textField.text,
                                  city: addressView.cityInputView.textField.text,
                                  state: addressView.stateInputView.textField.text,
-                                 postcode: addressView.zipInputView.textField.text,
-                                 country: regionCodeSelected,
-                                 phone: phone)
-        delegate?.onTapDoneButton(controller: self, address: address)
+                                 zip: addressView.zipInputView.textField.text,
+                                 country: regionCodeSelected)
+        delegate?.onTapDoneButton(controller: self, address: address, phone: phone)
     }
 
     private func addTextFieldsDelegate() {
@@ -138,7 +137,7 @@ public class AddressViewController: UIViewController,
             let countryRegion = regionCodeSelected,
             let streetAddress = addressView.addressLine1InputView.textField.text,
             let postalTown = addressView.cityInputView.textField.text,
-            let postcode = addressView.zipInputView.textField.text
+            let zip = addressView.zipInputView.textField.text
             else {
                 navigationItem.rightBarButtonItem?.isEnabled = false
                 return
@@ -163,7 +162,7 @@ public class AddressViewController: UIViewController,
             countryRegion.isEmpty ||
             streetAddress.isEmpty ||
             postalTown.isEmpty ||
-            postcode.isEmpty {
+            zip.isEmpty {
                 navigationItem.rightBarButtonItem?.isEnabled = false
                 return
         }
@@ -190,17 +189,14 @@ public class AddressViewController: UIViewController,
         validateFieldsValues()
     }
 
-    public func setFields(address: CkoAddress) {
+    public func setFields(address: CkoAddress, phone: CkoPhoneNumber) {
         addressView.addressLine1InputView.textField.text = address.addressLine1
         addressView.addressLine2InputView.textField.text = address.addressLine2
         addressView.cityInputView.textField.text = address.city
         addressView.stateInputView.textField.text = address.state
-        addressView.zipInputView.textField.text = address.postcode
+        addressView.zipInputView.textField.text = address.zip
         addressView.countryRegionInputView.value.text = address.country
-        if address.phone != nil {
-            addressView.phoneInputView.textField.text = "+\(address.phone?.countryCode ?? "")\(address.phone?.number ?? "")"
-        }
-
+        addressView.phoneInputView.textField.text = "+\(phone.countryCode ?? "")\(phone.number ?? "")"
     }
 
 }

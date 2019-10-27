@@ -20,6 +20,7 @@ public class CardViewController: UIViewController,
     let billingDetailsState: InputState
 
     public var billingDetailsAddress: CkoAddress?
+    public var billingDetailsPhone: CkoPhoneNumber?
     var notificationCenter = NotificationCenter.default
     public let addressViewController: AddressViewController
 
@@ -187,11 +188,12 @@ public class CardViewController: UIViewController,
         if !isCardNumberValid || !isExpirationDateValid || !isCvvValid || !isCardTypeValid { return }
 
         let card = CkoCardTokenRequest(number: cardNumberStandardized,
-                                    expiryMonth: expiryMonth,
-                                    expiryYear: expiryYear,
-                                    cvv: cvv,
-                                    name: cardView.cardHolderNameInputView.textField.text,
-                                    billingDetails: billingDetailsAddress)
+                                       expiryMonth: expiryMonth,
+                                       expiryYear: expiryYear,
+                                       cvv: cvv,
+                                       name: cardView.cardHolderNameInputView.textField.text,
+                                       billingAddress: billingDetailsAddress,
+                                       phone: billingDetailsPhone)
         if let checkoutApiClientUnwrap = checkoutApiClient {
             self.delegate?.onSubmit(controller: self)
             checkoutApiClientUnwrap.createCardToken(card: card, successHandler: { cardToken in
@@ -205,7 +207,7 @@ public class CardViewController: UIViewController,
     // MARK: - AddressViewControllerDelegate
 
     /// Executed when an user tap on the done button.
-    public func onTapDoneButton(controller: AddressViewController, address: CkoAddress) {
+    public func onTapDoneButton(controller: AddressViewController, address: CkoAddress, phone: CkoPhoneNumber) {
         billingDetailsAddress = address
         let value = "\(address.addressLine1 ?? ""), \(address.city ?? "")"
         cardView.billingDetailsInputView.value.text = value

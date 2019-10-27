@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         let card = getCardTokenRequest()
         print(card)
         checkoutAPIClient.createCardToken(card: card, successHandler: { cardToken in
-            self.showAlert(with: cardToken.id)
+            self.showAlert(with: cardToken.token)
         }, errorHandler: { error in
             print(error)
         })

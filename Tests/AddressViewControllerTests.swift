@@ -34,8 +34,8 @@ class AddressViewControllerTests: XCTestCase {
         addressViewController.viewWillAppear(true)
         if let notificationCenterMock = addressViewController.notificationCenter as? NotificationCenterMock {
             XCTAssertEqual(notificationCenterMock.handlers.count, 2)
-            XCTAssertEqual(notificationCenterMock.handlers[0].name, NSNotification.Name.UIKeyboardWillShow)
-            XCTAssertEqual(notificationCenterMock.handlers[1].name, NSNotification.Name.UIKeyboardWillHide)
+            XCTAssertEqual(notificationCenterMock.handlers[0].name, UIResponder.keyboardWillShowNotification)
+            XCTAssertEqual(notificationCenterMock.handlers[1].name, UIResponder.keyboardWillHideNotification)
         } else {
             XCTFail("Notification center is not a mock")
         }
@@ -56,8 +56,8 @@ class AddressViewControllerTests: XCTestCase {
 
     func testScrollViewOnKeyboardWillShow() {
         addressViewController.viewDidLoad()
-        let notification = NSNotification(name: NSNotification.Name.UIKeyboardWillShow, object: nil, userInfo: [
-                UIKeyboardFrameBeginUserInfoKey: NSValue(cgRect: CGRect(x: 0, y: 0, width: 0, height: 300))
+        let notification = NSNotification(name: UIResponder.keyboardWillShowNotification, object: nil, userInfo: [
+                UIResponder.keyboardFrameBeginUserInfoKey: NSValue(cgRect: CGRect(x: 0, y: 0, width: 0, height: 300))
             ])
 
         addressViewController
@@ -71,8 +71,8 @@ class AddressViewControllerTests: XCTestCase {
     func testScrollViewOnKeyboardWillHide() {
         addressViewController.viewDidLoad()
         testScrollViewOnKeyboardWillShow()
-        let notification = NSNotification(name: NSNotification.Name.UIKeyboardWillHide, object: nil, userInfo: [
-            UIKeyboardFrameBeginUserInfoKey: NSValue(cgRect: CGRect(x: 0, y: 0, width: 0, height: 300))
+        let notification = NSNotification(name: UIResponder.keyboardWillHideNotification, object: nil, userInfo: [
+            UIResponder.keyboardFrameBeginUserInfoKey: NSValue(cgRect: CGRect(x: 0, y: 0, width: 0, height: 300))
             ])
         addressViewController.scrollViewOnKeyboardWillHide(notification: notification,
                                                            scrollView: addressViewController.addressView.scrollView)
@@ -85,8 +85,8 @@ class AddressViewControllerTests: XCTestCase {
         let coder = NSKeyedUnarchiver(forReadingWith: Data())
         let addressVC = AddressViewControllerMock(coder: coder)
         addressVC?.viewDidLoad()
-        let notification = NSNotification(name: NSNotification.Name.UIKeyboardWillHide, object: nil, userInfo: [
-            UIKeyboardFrameBeginUserInfoKey: NSValue(cgRect: CGRect(x: 0, y: 0, width: 0, height: 300))
+        let notification = NSNotification(name: UIResponder.keyboardWillHideNotification, object: nil, userInfo: [
+            UIResponder.keyboardFrameBeginUserInfoKey: NSValue(cgRect: CGRect(x: 0, y: 0, width: 0, height: 300))
             ])
         addressVC?.keyboardWillShow(notification: notification)
         XCTAssertEqual(addressVC?.kbShowCalledTimes, 1)
@@ -99,8 +99,8 @@ class AddressViewControllerTests: XCTestCase {
         let coder = NSKeyedUnarchiver(forReadingWith: Data())
         let addressVC = AddressViewControllerMock(coder: coder)
         addressVC?.viewDidLoad()
-        let notification = NSNotification(name: NSNotification.Name.UIKeyboardWillHide, object: nil, userInfo: [
-            UIKeyboardFrameBeginUserInfoKey: NSValue(cgRect: CGRect(x: 0, y: 0, width: 0, height: 300))
+        let notification = NSNotification(name: UIResponder.keyboardWillHideNotification, object: nil, userInfo: [
+            UIResponder.keyboardFrameBeginUserInfoKey: NSValue(cgRect: CGRect(x: 0, y: 0, width: 0, height: 300))
             ])
         addressVC?.keyboardWillHide(notification: notification)
         XCTAssertEqual(addressVC?.kbHideCalledTimes, 1)
@@ -138,12 +138,12 @@ class AddressViewControllerTests: XCTestCase {
         _ = addressViewController.addressView.phoneInputView.isValidNumber
         addressViewController.onTapDoneButton()
         XCTAssertEqual(delegate.onTapDoneButtonCalledTimes, 1)
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWith?.addressLine1, "12 rue de la boulangerie")
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWith?.city, "Lyon")
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWith?.country, "FR")
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWith?.postcode, "69002")
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWith?.phone?.countryCode, "33")
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWith?.phone?.number, "622545688")
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithAddress?.addressLine1, "12 rue de la boulangerie")
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithAddress?.city, "Lyon")
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithAddress?.country, "FR")
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithAddress?.zip, "69002")
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithPhone?.countryCode, "33")
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithPhone?.number, "622545688")
     }
 
     func testSetCountryOnCountrySelected() {

@@ -7,5 +7,5 @@ public protocol AddressViewControllerDelegate: class {
     ///
     /// - parameter controller: `AddressViewController`
     /// - parameter address: Address entered by the user
-    func onTapDoneButton(controller: AddressViewController, address: CkoAddress)
+    func onTapDoneButton(controller: AddressViewController, address: CkoAddress, phone: CkoPhoneNumber)
 }

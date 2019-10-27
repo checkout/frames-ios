@@ -146,7 +146,7 @@ let cardNumber = "4242424242424242"
 let isCardValid = cardUtils.isValid(cardNumber: cardNumber)
 ```
 
-#### Create the card token request `CardTokenRequest`:
+#### Create the card token request `CkoCardTokenRequest`:
 
 ```swift
 // create the phone number

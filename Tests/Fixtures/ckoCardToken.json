@@ -1,26 +1,17 @@
 {
-    "id":"card_tok_6BF34E89-2422-4C78-8043-AB428FC6EF14",
-    "liveMode":false,
-    "created":"2018-04-26T08:44:56Z",
-    "used":false,
-    "card":{
-        "expiryMonth":"06",
-        "expiryYear":"2018",
-        "billingDetails":{
-            "addressLine1":null,
-            "addressLine2":null,
-            "postcode":null,
-            "country":null,
-            "city":null,
-            "state":null,
-            "phone":{
-                
-            }
-        },
-        "id":"",
-        "last4":"4242",
-        "bin":"424242",
-        "paymentMethod":"Visa",
-        "name":null
-    }
+    "type": "card",
+    "token": "tok_76km7r4p7woezcod36qki37iiu",
+    "expires_on": "2018-06-01T14:35:09Z",
+    "expiry_month": 6,
+    "expiry_year": 2020,
+    "name": "",
+    "scheme": "Visa",
+    "last4": "4242",
+    "bin": "424242",
+    "card_type": "Credit",
+    "card_category": "Consumer",
+    "issuer": "GOTHAM STATE BANK",
+    "issuer_country": "US",
+    "product_id": "A",
+    "product_type": "Visa Traditional"
 }

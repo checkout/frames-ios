@@ -26,9 +26,10 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
         let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
                                                   environment: .sandbox)
         let b = CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .normal, billingDetailsState: .normal, defaultRegionCode: "UK")
-        b.billingDetailsAddress = CkoAddress(addressLine1: "yo", addressLine2: "yo", city: "yo", state: "yo", postcode: "yo", country: "uk", phone: nil)
+        b.billingDetailsAddress = CkoAddress(addressLine1: "yo", addressLine2: "yo", city: "yo", state: "yo", zip: "yo", country: "uk")
+        b.billingDetailsPhone = CkoPhoneNumber(countryCode: "44", number: "7123456789")
         b.delegate = self
-        b.addressViewController.setFields(address: b.billingDetailsAddress!)
+        b.addressViewController.setFields(address: b.billingDetailsAddress!, phone: b.billingDetailsPhone!)
         return b
     }
 
@@ -53,7 +54,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         switch status {
         case .success:
-            self.showAlert(with: cardToken!.id)
+            self.showAlert(with: cardToken!.token)
         case .failure:
             print("failure")
         }

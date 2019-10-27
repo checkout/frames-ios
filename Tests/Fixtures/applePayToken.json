@@ -1,5 +1,16 @@
 {
     "type": "applepay",
-    "token": "tok_5xgrat2fiuzeraaym3qn2ozdoq",
-    "expires_on": "2018-04-27T16:16:58Z"
+    "token": "tok_ymu4qlccztkedmd6b7c3hcf6ae",
+    "expires_on": "2019-10-21T10:48:35Z",
+    "expiry_month": 8,
+    "expiry_year": 2023,
+    "scheme": "Visa",
+    "last4": "6222",
+    "bin": "481891",
+    "card_type": "Debit",
+    "card_category": "Consumer",
+    "issuer": "HSBC BANK PLC",
+    "issuer_country": "GB",
+    "product_id": "F",
+    "product_type": "Visa Classic"
 }
