@@ -150,28 +150,27 @@ let isCardValid = cardUtils.isValid(cardNumber: cardNumber)
 
 ```swift
 // create the phone number
-let phoneNumber = CkoPhoneNumber(countryCode:number:)
+let phoneNumber = CkoPhoneNumber(countryCode: "44", number: "7777777777")
 // create the address
-let address = CkoAddress(name:addressLine1:addressLine2:city:state:postcode:country:phone:)
+let address = CkoAddress(addressLine1: "test1", addressLine2: "test2", city: "London", state: "London", zip: "N12345", country: "GB")
 // create the card token request
-let cardTokenRequest = CkoCardTokenRequest(number:expiryMonth:expiryYear:cvv:name:billingAddress:)
+let cardTokenRequest = CkoCardTokenRequest(number: cardNumber, expiryMonth: "07", expiryYear: "22", cvv: "100", name: "Test Customer", billingAddress: address, phone: phoneNumber)
 ```
 
 #### Create a card token:
 
 ```swift
-let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_......", environment: .live)
+let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_.....", environment: .sandbox)
 // create the phone number
-let phoneNumber = CkoPhoneNumber(countryCode:number:)
+let phoneNumber = CkoPhoneNumber(countryCode: "44", number: "7777777777")
 // create the address
-let address = CkoAddress(name:addressLine1:addressLine2:city:state:postcode:country:phone:)
+let address = CkoAddress(addressLine1: "test1", addressLine2: "test2", city: "London", state: "London", zip: "N12345", country: "GB")
 // create the card token request
-let cardTokenRequest = CkoCardTokenRequest(number:expiryMonth:expiryYear:cvv:name:billingAddress:)
-checkoutAPIClient.createCardToken(card: cardTokenRequest, successHandler: { cardTokenResponse in
-    // success
-}, errorHandler { error in
-    // error
-})
+checkoutAPIClient.createCardToken(card: cardTokenRequest, successHandler: { cardToken in
+            // success
+        }, errorHandler:  { error in
+            // error
+        })
 ```
 
 The success handler takes an array of `CkoCardTokenResponse` as a parameter.
