@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 `checkout-sdk-ios` adheres to [Semantic Versioning](http://semver.org/).
 
+#### 3.x Releases
+
+## [3.0.0](https://github.com/checkout/frames-ios/releases/tag/3.0.0)
+
+Released on 2019-10-28.
+
+#### Fixed
+
+* Moved to the Unified Payments API tokenisation endpoint.
+* Made Swift 5 compatible
+
+
 #### 2.x Releases
 
 ## [2.6.0](https://github.com/checkout/frames-ios/releases/tag/2.6.0)
