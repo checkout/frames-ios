@@ -171,6 +171,7 @@ public class AddressViewController: UIViewController,
     }
 
     public func setCountrySelected(country: String, regionCode: String) {
+        validateFieldsValues()
         regionCodeSelected = regionCode
         addressView.countryRegionInputView.value.text = country
     }
