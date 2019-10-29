@@ -8,10 +8,10 @@ public func addKeyboardToolbarNavigation(textFields: [UITextField]) {
     // create the toolbar
     for (index, textField) in textFields.enumerated() {
         let toolbar = UIToolbar()
-        let prevButton = UIBarButtonItem(image: "keyboard-previous".image(forClass: CardUtils.self),
+        let prevButton = UIBarButtonItem(image: "arrows/keyboard-previous".image(forClass: CardUtils.self),
                                          style: .plain, target: nil, action: nil)
         prevButton.width = 30
-        let nextButton = UIBarButtonItem(image: "keyboard-next".image(forClass: CardUtils.self),
+        let nextButton = UIBarButtonItem(image: "arrows/keyboard-next".image(forClass: CardUtils.self),
                                          style: .plain, target: nil, action: nil)
         let flexspace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
                                         target: nil, action: nil)
@@ -34,10 +34,7 @@ public func addKeyboardToolbarNavigation(textFields: [UITextField]) {
         } else {
             nextButton.target = textFields[index + 1]
             nextButton.action = #selector(UITextField.becomeFirstResponder)
-            let downButton = UIBarButtonItem(image: "keyboard-down".image(forClass: CardUtils.self),
-                                             style: .plain,
-                                             target: textField,
-                                             action: #selector(UITextField.resignFirstResponder))
+            let downButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: textField, action: #selector(UITextField.resignFirstResponder))
             items.append(downButton)
         }
         toolbar.items = items
