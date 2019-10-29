@@ -4,10 +4,12 @@ import Foundation
 class AddressViewControllerMockDelegate: AddressViewControllerDelegate {
 
     var onTapDoneButtonCalledTimes = 0
-    var onTapDoneButtonLastCalledWith: CkoAddress?
+    var onTapDoneButtonLastCalledWithAddress: CkoAddress?
+    var onTapDoneButtonLastCalledWithPhone: CkoPhoneNumber?
 
-    func onTapDoneButton(controller: AddressViewController, address: CkoAddress) {
+    func onTapDoneButton(controller: AddressViewController, address: CkoAddress, phone: CkoPhoneNumber) {
         onTapDoneButtonCalledTimes += 1
-        onTapDoneButtonLastCalledWith = address
+        onTapDoneButtonLastCalledWithAddress = address
+        onTapDoneButtonLastCalledWithPhone = phone
     }
 }

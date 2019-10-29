@@ -6,7 +6,7 @@ public class CardUtils {
     // MARK: - Properties
 
     /// Dictionary of card types based on their scheme
-    let cardTypes: DictionaryLiteral<CardScheme, CardType> = [
+    let cardTypes: KeyValuePairs<CardScheme, CardType> = [
         .visa: CardType(scheme: .visa,
                         name: "Visa",
                         pattern: "^4\\d*$",

@@ -1,20 +1,19 @@
 import Foundation
 
-/// Error response returned by a call to the API
-public struct ErrorResponse: Decodable {
-
-    /// The error event ID used by Checkout.com to trace what went wrong in the transaction
-    public let eventId: String
-
+public struct ErrorResponse: Codable {
+    
+    /// The error request ID used by Checkout.com to trace what went wrong in the transaction
+    let requestId: String
+    
     /// The general code associated with the error
-    public let errorCode: String
+    let errorType: String
+    
+    /// The general code associated with the error
+    let errorCodes: [String]
 
-    /// The message describing the error
-    public let message: String
-
-    /// An array of validation errors
-    public let errors: [String]?
-
-    /// The specific code(s) associated with the error(s)
-    public let errorMessageCodes: [String]?
+    private enum CodingKeys: String, CodingKey {
+        case requestId = "request_id"
+        case errorType = "error_type"
+        case errorCodes = "error_codes"
+    }
 }

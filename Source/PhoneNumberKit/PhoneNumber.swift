@@ -65,7 +65,7 @@ public extension PhoneNumber {
     - Parameter rawNumber: String to be parsed to phone number struct.
     */
     @available(*, unavailable, message: "use PhoneNumberKit instead to produce PhoneNumbers")
-    public init(rawNumber: String) throws {
+    init(rawNumber: String) throws {
         assertionFailure(PhoneNumberError.deprecated.localizedDescription)
         throw PhoneNumberError.deprecated
     }
@@ -77,7 +77,7 @@ public extension PhoneNumber {
     - Parameter region: ISO 639 compliant region code.
     */
     @available(*, unavailable, message: "use PhoneNumberKit instead to produce PhoneNumbers")
-    public init(rawNumber: String, region: String) throws {
+    init(rawNumber: String, region: String) throws {
         throw PhoneNumberError.deprecated
     }
 

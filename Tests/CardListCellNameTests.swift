@@ -12,20 +12,20 @@ class CardListCellNameTests: XCTestCase {
     }
 
     func testEmptyInitialization() {
-        let cardListCellName = CardListCellName ()
+        let cardListCellName = CardListCellName()
         XCTAssertNil(cardListCellName.schemeImageView.image)
         XCTAssertNil(cardListCellName.selectedImageView.image)
     }
 
     func testCoderInitialization() {
         let coder = NSKeyedUnarchiver(forReadingWith: Data())
-        let cardListCellName = CardListCellName (coder: coder)
+        let cardListCellName = CardListCellName(coder: coder)
         XCTAssertNil(cardListCellName?.schemeImageView.image)
         XCTAssertNil(cardListCellName?.selectedImageView.image)
     }
 
     func testInitialization() {
-        let cardListCellName = CardListCellName (style: .default, reuseIdentifier: nil)
+        let cardListCellName = CardListCellName(style: .default, reuseIdentifier: nil)
         XCTAssertNil(cardListCellName.schemeImageView.image)
         XCTAssertNil(cardListCellName.selectedImageView.image)
     }

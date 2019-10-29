@@ -1,12 +1,7 @@
-
 {
-    "eventId": "2230c9c3-8cc9-4f4b-88fa-b27d1d99faa1",
-    "errorCode": "70000",
-    "message": "Validation error",
-    "errorMessageCodes": [
-                          "70067"
-                          ],
-    "errors": [
-               "Invalid card number"
-               ]
+    "request_id": "3c3ad5a5-d513-44c9-92ae-f8d9b3557567",
+    "error_type": "request_invalid",
+    "error_codes": [
+        "card_number_invalid"
+    ]
 }

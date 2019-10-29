@@ -269,7 +269,7 @@ class CardUtilsTests: XCTestCase {
             ["01", "2020"],
             ["07", "2025"],
             ["05", "21"],
-            ["06", "19"]
+            ["06", "22"]
         ].forEach { date in
             XCTAssertTrue(cards.isValid(expirationMonth: date[0], expirationYear: date[1]))
         }

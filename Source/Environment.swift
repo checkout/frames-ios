@@ -26,7 +26,7 @@ public enum Environment: String {
         case .live:
             return "https://api.checkout.com/"
         case .sandbox:
-            return "https://sandbox.checkout.com/api2/"
+            return "https://api.sandbox.checkout.com/"
         }
     }
 }

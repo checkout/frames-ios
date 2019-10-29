@@ -13,7 +13,7 @@ public struct CustomerCard: Codable {
     public let expiryYear: String
 
     /// Billing address
-    public let billingDetails: Address
+    public let billingDetails: CkoAddress
 
     /// Card Id
     public let id: String

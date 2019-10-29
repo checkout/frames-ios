@@ -19,7 +19,7 @@ public class CardListCell: UITableViewCell {
     // MARK: - Initialization
 
     /// Initializes a table cell with a style and a reuse identifier and returns it to the caller.
-    override public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
     }

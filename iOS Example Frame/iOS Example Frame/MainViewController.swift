@@ -25,10 +25,11 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
     var cardViewController: CardViewController {
         let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
                                                   environment: .sandbox)
-        let b = CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .normal, billingDetailsState: .normal, defaultRegionCode: "UK")
-        b.billingDetailsAddress = CkoAddress(addressLine1: "yo", addressLine2: "yo", city: "yo", state: "yo", postcode: "yo", country: "uk", phone: nil)
+        let b = CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .normal, billingDetailsState: .normal, defaultRegionCode: "GB")
+        b.billingDetailsAddress = CkoAddress(addressLine1: "Test line1", addressLine2: "Test line2", city: "London", state: "London", zip: "N12345", country: "GB")
+        b.billingDetailsPhone = CkoPhoneNumber(countryCode: "44", number: "77 1234 1234")
         b.delegate = self
-        b.addressViewController.setFields(address: b.billingDetailsAddress!)
+        b.addressViewController.setFields(address: b.billingDetailsAddress!, phone: b.billingDetailsPhone!)
         return b
     }
 
@@ -42,18 +43,18 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
         cardViewController.delegate = self
         cardViewController.rightBarButtonItem = UIBarButtonItem(title: "Pay", style: .done, target: nil, action: nil)
         cardViewController.availableSchemes = [.visa, .mastercard, .maestro]
-        cardViewController.setDefault(regionCode: "UK")
+        cardViewController.setDefault(regionCode: "GB")
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        cardViewController.addressViewController.setCountrySelected(country: "yo", regionCode: "yo")
+        cardViewController.addressViewController.setCountrySelected(country: "GB", regionCode: "GB")
     }
     
     func onTapDone(controller: CardViewController, cardToken: CkoCardTokenResponse?, status: CheckoutTokenStatus) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         switch status {
         case .success:
-            self.showAlert(with: cardToken!.id)
+            self.showAlert(with: cardToken!.token)
         case .failure:
             print("failure")
         }

@@ -1,89 +1,117 @@
 {
   "warnings": [
     {
-      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/AddressViewController.swift",
-      "line": 168,
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/AddressViewController.swift",
+      "line": 173,
       "symbol": "AddressViewController.setCountrySelected(country:regionCode:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/ApplePayErrorResponse.swift",
-      "line": 3,
-      "symbol": "ApplePayErrorResponse",
-      "symbol_kind": "source.lang.swift.decl.struct",
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/AddressViewController.swift",
+      "line": 192,
+      "symbol": "AddressViewController.setFields(address:phone:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/ApplePayTokenRequest.swift",
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/ApplePayTokenRequest.swift",
       "line": 11,
       "symbol": "ApplePayTokenRequest.token_data",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/ApplePayTokenRequest.swift",
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/ApplePayTokenRequest.swift",
       "line": 14,
       "symbol": "ApplePayTokenData",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/ApplePayTokenRequest.swift",
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/ApplePayTokenRequest.swift",
       "line": 21,
       "symbol": "ApplePayTokenDataHeader",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/CardViewController.swift",
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CardViewController.swift",
       "line": 17,
       "symbol": "CardViewController.checkoutApiClient",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/CardViewController.swift",
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CardViewController.swift",
       "line": 22,
       "symbol": "CardViewController.billingDetailsAddress",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/CardViewController.swift",
-      "line": 24,
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CardViewController.swift",
+      "line": 23,
+      "symbol": "CardViewController.billingDetailsPhone",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CardViewController.swift",
+      "line": 25,
       "symbol": "CardViewController.addressViewController",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/CheckoutTheme.swift",
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CardViewControllerDelegate.swift",
+      "line": 12,
+      "symbol": "CardViewControllerDelegate.onSubmit(controller:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CheckoutTheme.swift",
       "line": 8,
       "symbol": "CheckoutTheme.secondaryBackgroundColor",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/CkoCardTokenRequest.swift",
-      "line": 45,
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CkoAddress.swift",
+      "line": 32,
+      "symbol": "CkoAddress.init(addressLine1:addressLine2:city:state:zip:country:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CkoCardTokenRequest.swift",
+      "line": 64,
       "symbol": "CkoCardTokenRequest.createWith(shippingDetails:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/CountrySelectionViewController.swift",
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CountrySelectionViewController.swift",
       "line": 77,
       "symbol": "CountrySelectionViewController.tableView(_:willDisplay:forRowAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios/Source/CvvInputView.swift",
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CvvInputView.swift",
       "line": 13,
       "symbol": "CvvInputView.onChangeDelegate",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/ErrorResponse.swift",
+      "line": 3,
+      "symbol": "ErrorResponse",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/floriel.fedry/Documents/GitHub/checkout-frames-ios"
+  "source_directory": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios"
 }

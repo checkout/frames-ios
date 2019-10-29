@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E620C49620EA2A7A00045DC6 /* FramesIos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E620C49520EA2A7A00045DC6 /* FramesIos.framework */; };
 		E620C49720EA2A8400045DC6 /* FramesIos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E620C49520EA2A7A00045DC6 /* FramesIos.framework */; };
 		E620C49820EA2A8400045DC6 /* FramesIos.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E620C49520EA2A7A00045DC6 /* FramesIos.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6646F8E20CE6C0900D8353A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646F8D20CE6C0900D8353A /* AppDelegate.swift */; };
@@ -62,7 +61,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E620C49720EA2A8400045DC6 /* FramesIos.framework in Frameworks */,
-				E620C49620EA2A7A00045DC6 /* FramesIos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,14 +169,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = Checkout;
 				TargetAttributes = {
 					E6646F8920CE6C0900D8353A = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1100;
 					};
 					E6646F9D20CE6C0A00D8353A = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1100;
 						TestTargetID = E6646F8920CE6C0900D8353A;
 					};
 				};
@@ -398,7 +398,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.floriel.iOS-Example-Frame";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -417,7 +417,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.floriel.iOS-Example-Frame";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -436,7 +436,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.floriel.iOS-Example-FrameUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "iOS Example Frame";
 			};
@@ -456,7 +456,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.floriel.iOS-Example-FrameUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "iOS Example Frame";
 			};

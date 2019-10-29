@@ -78,44 +78,10 @@ public class CheckoutAPIClient {
     /// - parameter card: Card used to create the token
     /// - parameter successHandler: Callback to execute if the request is successful
     /// - parameter errorHandler: Callback to execute if the request failed
-    public func createCardToken(card: CardTokenRequest,
-                                successHandler: @escaping (TokenResponse) -> Void,
-                                errorHandler: @escaping (ErrorResponse) -> Void) {
-        let url = "\(environment.urlPaymentApi)\(Endpoint.tokens.rawValue)"
-        // swiftlint:disable:next force_try
-        var urlRequest = try! URLRequest(url: URL(string: url)!, method: HTTPMethod.post, headers: headers)
-        urlRequest.httpBody = try? jsonEncoder.encode(card)
-
-        request(urlRequest)
-            .validate().responseJSON { response in
-            switch response.result {
-            case .success:
-                do {
-                    let cardTokenResponse = try self.jsonDecoder.decode(TokenResponse.self, from: response.data!)
-                    successHandler(cardTokenResponse)
-                } catch let error {
-                    print(error)
-                }
-            case .failure:
-                do {
-                    let cardTokenError = try self.jsonDecoder.decode(ErrorResponse.self, from: response.data!)
-                    errorHandler(cardTokenError)
-                } catch let error {
-                    print(error)
-                }
-            }
-        }
-    }
-
-    /// Create a card token
-    ///
-    /// - parameter card: Card used to create the token
-    /// - parameter successHandler: Callback to execute if the request is successful
-    /// - parameter errorHandler: Callback to execute if the request failed
     public func createCardToken(card: CkoCardTokenRequest,
                                 successHandler: @escaping (CkoCardTokenResponse) -> Void,
                                 errorHandler: @escaping (ErrorResponse) -> Void) {
-        let url = "\(environment.urlApi)\(Endpoint.createCardToken.rawValue)"
+        let url = "\(environment.urlPaymentApi)\(Endpoint.tokens.rawValue)"
         let jsonEncoder = JSONEncoder()
         // swiftlint:disable:next force_try
         var urlRequest = try! URLRequest(url: URL(string: url)!, method: HTTPMethod.post, headers: headers)
@@ -148,9 +114,9 @@ public class CheckoutAPIClient {
     /// - parameter successHandler: Callback to execute if the request is successful
     /// - parameter erroHandler: Callback to execute if the request failed
     public func createApplePayToken(paymentData: Data,
-                                    successHandler: @escaping (ApplePayToken) -> Void,
-                                    errorHandler: @escaping (ApplePayErrorResponse) -> Void) {
-        let url = "\(environment.urlPaymentApi)\(Endpoint.tokens)"
+                                    successHandler: @escaping (CkoCardTokenResponse) -> Void,
+                                    errorHandler: @escaping (ErrorResponse) -> Void) {
+        let url = "\(environment.urlPaymentApi)\(Endpoint.tokens.rawValue)"
         // swiftlint:disable:next force_try
         var urlRequest = try! URLRequest(url: URL(string: url)!, method: HTTPMethod.post, headers: headers)
         let applePayTokenData = try? JSONDecoder().decode(ApplePayTokenData.self, from: paymentData)
@@ -158,17 +124,18 @@ public class CheckoutAPIClient {
         urlRequest.httpBody = try? JSONEncoder().encode(applePayTokenRequest)
 
         request(urlRequest).validate().responseJSON { response in
+            let decoder = JSONDecoder()
             switch response.result {
             case .success:
                 do {
-                    let applePayToken = try self.jsonDecoder.decode(ApplePayToken.self, from: response.data!)
+                    let applePayToken = try decoder.decode(CkoCardTokenResponse.self, from: response.data!)
                     successHandler(applePayToken)
                 } catch let error {
                     print(error)
                 }
             case .failure:
                 do {
-                    let applePayTokenError = try self.jsonDecoder.decode(ApplePayErrorResponse.self,
+                    let applePayTokenError = try self.jsonDecoder.decode(ErrorResponse.self,
                                                                          from: response.data!)
                     errorHandler(applePayTokenError)
                 } catch let error {
