@@ -3,13 +3,13 @@ import Foundation
 public struct ErrorResponse: Codable {
     
     /// The error request ID used by Checkout.com to trace what went wrong in the transaction
-    let requestId: String
+    public let requestId: String
     
     /// The general code associated with the error
-    let errorType: String
+    public let errorType: String
     
     /// The general code associated with the error
-    let errorCodes: [String]
+    public let errorCodes: [String]
 
     private enum CodingKeys: String, CodingKey {
         case requestId = "request_id"
