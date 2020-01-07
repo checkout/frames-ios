@@ -30,7 +30,7 @@ import UIKit
 
     private func setup() {
         textField.keyboardType = .numberPad
-        textField.textContentType = nil
+        textField.textContentType = .creditCardNumber
         textField.delegate = self
         textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControl.Event.editingChanged)
     }
