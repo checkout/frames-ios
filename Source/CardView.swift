@@ -95,7 +95,6 @@ public class CardView: UIView {
         cardNumberInputView.textField.placeholder = "4242"
         expirationDateInputView.textField.placeholder = "06/20"
         cvvInputView.textField.placeholder = "100"
-        cvvInputView.textField.keyboardType = .numberPad
 
         schemeIconsStackView.spacing = 8
         stackView.axis = .vertical

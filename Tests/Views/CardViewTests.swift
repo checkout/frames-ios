@@ -9,11 +9,13 @@ class CardViewTests: XCTestCase {
         XCTAssertNotNil(cardView)
         XCTAssertEqual(cardView?.cardHolderNameState, InputState.required)
         XCTAssertEqual(cardView?.billingDetailsState, InputState.required)
+        XCTAssertEqual(cardView?.cvvInputView.textField.keyboardType, .asciiCapableNumberPad)
     }
 
     func testFrameInitialization() {
         let cardView = CardView(frame: CGRect(x: 0, y: 0, width: 400, height: 48))
         XCTAssertEqual(cardView.cardHolderNameState, InputState.required)
         XCTAssertEqual(cardView.billingDetailsState, InputState.required)
+        XCTAssertEqual(cardView.cvvInputView.textField.keyboardType, .asciiCapableNumberPad)
     }
 }
