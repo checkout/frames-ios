@@ -16,17 +16,20 @@ class CvvInputViewTests: XCTestCase {
     func testEmptyInitialization() {
         let cvvInputView = CvvInputView()
         XCTAssertNil(cvvInputView.textField.textContentType)
+        XCTAssertEqual(cvvInputView.textField.keyboardType, .asciiCapableNumberPad)
     }
 
     func testCoderInitialization() {
         let coder = NSKeyedUnarchiver(forReadingWith: Data())
         let cvvInputView = CvvInputView(coder: coder)
         XCTAssertNil(cvvInputView!.textField.textContentType)
+        XCTAssertEqual(cvvInputView!.textField.keyboardType, .asciiCapableNumberPad)
     }
 
     func testFrameInitialization() {
         let cvvInputView = CvvInputView(frame: CGRect(x: 0, y: 0, width: 400, height: 48))
         XCTAssertNil(cvvInputView.textField.textContentType)
+        XCTAssertEqual(cvvInputView.textField.keyboardType, .asciiCapableNumberPad)
     }
 
     func testDoNotChangeCvvIfExceedingMaxLength() {

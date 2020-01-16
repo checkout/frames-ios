@@ -29,7 +29,7 @@ import UIKit
     // MARK: - Setup
 
     private func setup() {
-        textField.keyboardType = .numberPad
+        textField.keyboardType = .asciiCapableNumberPad
         textField.textContentType = nil
         textField.delegate = self
         textField.addTarget(self, action: #selector(textFieldDidChange), for: UIControl.Event.editingChanged)
