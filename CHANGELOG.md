@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 #### 3.x Releases
 
+## [3.0.2](https://github.com/checkout/frames-ios/releases/tag/3.0.2)
+
+Released on 2020-01-17.
+
+#### Fixed
+
+* Fix CVV field keyboard localisation issue
+
 ## [3.0.1](https://github.com/checkout/frames-ios/releases/tag/3.0.1)
 
 Released on 2019-10-30.
