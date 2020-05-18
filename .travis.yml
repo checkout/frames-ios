@@ -2,7 +2,7 @@ language: swift
 osx_image: xcode11.3.1
 all_branches: true
 script:
-  - xcodebuild test -workspace FramesIos.xcworkspace -scheme FramesIos -destination 'OS=13.1,name=iPhone 11'
+  - xcodebuild test -workspace FramesIos.xcworkspace -scheme FramesIos -destination 'OS=13.4.1,name=iPhone 11'
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 deploy:
