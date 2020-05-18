@@ -71,7 +71,6 @@ public class ThreedsWebViewController: UIViewController,
     public func webView(_ webView: WKWebView,
                         didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
         // stop the redirection
-        webView.stopLoading()
         shouldDismiss(absoluteUrl: webView.url!)
     }
 
