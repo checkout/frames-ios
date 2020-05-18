@@ -266,7 +266,7 @@ class CardUtilsTests: XCTestCase {
 
     func testValidExpirationDate() {
         [
-            ["01", "2020"],
+            ["01", "2022"],
             ["07", "2025"],
             ["05", "21"],
             ["06", "22"]
