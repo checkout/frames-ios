@@ -47,6 +47,12 @@ public struct CkoCardTokenResponse: Codable {
 
     /// Card product type
     public let productType: String?
+    
+    /// Billing address
+    public var billingAddress: CkoAddress?
+
+    /// Phone
+    public var phone: CkoPhoneNumber?
 
     private enum CodingKeys: String, CodingKey {
         case type = "type"
@@ -64,5 +70,7 @@ public struct CkoCardTokenResponse: Codable {
         case issuerCountry = "issuer_country"
         case productId = "product_id"
         case productType = "product_type"
+        case billingAddress = "billing_address"
+        case phone = "phone"
     }
 }
