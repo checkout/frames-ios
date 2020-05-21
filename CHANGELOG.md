@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 #### 3.x Releases
 
+## [3.0.4](https://github.com/checkout/frames-ios/releases/tag/3.0.4)
+
+Released on 2020-05-21.
+
+#### Added
+
+* Added billing address and phone number to token response
+
 ## [3.0.3](https://github.com/checkout/frames-ios/releases/tag/3.0.3)
 
 Released on 2020-05-18.
