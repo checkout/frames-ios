@@ -5,13 +5,13 @@ All notable changes to this project will be documented in this file.
 
 #### 3.x Releases
 
-#### Fixed
-
-* Fixed a crash happening while editing phone number field
-
 ## [3.0.5](https://github.com/checkout/frames-ios/releases/tag/3.0.5)
 
 Released on 2020-08-12.
+
+#### Fixed
+
+* Fixed a crash happening while editing phone number field
 
 ## [3.0.4](https://github.com/checkout/frames-ios/releases/tag/3.0.4)
 
