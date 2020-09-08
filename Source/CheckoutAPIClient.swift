@@ -80,7 +80,7 @@ public class CheckoutAPIClient {
     /// - parameter errorHandler: Callback to execute if the request failed
     public func createCardToken(card: CkoCardTokenRequest,
                                 successHandler: @escaping (CkoCardTokenResponse) -> Void,
-                                errorHandler: @escaping (ErrorResponse) -> Void) {
+                                errorHandler: @escaping (NetworkError) -> Void) {
         let url = "\(environment.urlPaymentApi)\(Endpoint.tokens.rawValue)"
         let jsonEncoder = JSONEncoder()
         // swiftlint:disable:next force_try
@@ -97,12 +97,13 @@ public class CheckoutAPIClient {
                     } catch let error {
                         print(error)
                     }
-                case .failure:
+                case .failure(let responseError):
                     do {
-                        let cardTokenError = try decoder.decode(ErrorResponse.self, from: response.data!)
-                        errorHandler(cardTokenError)
-                    } catch let error {
-                        print(error)
+                        let networkError = try JSONDecoder().decode(NetworkError.self, from: response.data!)
+                        errorHandler(networkError)
+                        return
+                    } catch {
+                        errorHandler(.other(error: responseError))
                     }
                 }
         }
@@ -115,7 +116,7 @@ public class CheckoutAPIClient {
     /// - parameter erroHandler: Callback to execute if the request failed
     public func createApplePayToken(paymentData: Data,
                                     successHandler: @escaping (CkoCardTokenResponse) -> Void,
-                                    errorHandler: @escaping (ErrorResponse) -> Void) {
+                                    errorHandler: @escaping (NetworkError) -> Void) {
         let url = "\(environment.urlPaymentApi)\(Endpoint.tokens.rawValue)"
         // swiftlint:disable:next force_try
         var urlRequest = try! URLRequest(url: URL(string: url)!, method: HTTPMethod.post, headers: headers)
@@ -133,13 +134,13 @@ public class CheckoutAPIClient {
                 } catch let error {
                     print(error)
                 }
-            case .failure:
+            case .failure(let responseError):
                 do {
-                    let applePayTokenError = try self.jsonDecoder.decode(ErrorResponse.self,
-                                                                         from: response.data!)
-                    errorHandler(applePayTokenError)
-                } catch let error {
-                    print(error)
+                    let networkError = try JSONDecoder().decode(NetworkError.self, from: response.data!)
+                    errorHandler(networkError)
+                    return
+                } catch {
+                    errorHandler(.other(error: responseError))
                 }
             }
         }

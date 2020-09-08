@@ -47,7 +47,7 @@
 		E625EE63209080A40019B750 /* ISSUE_TEMPLATE.md in Resources */ = {isa = PBXBuildFile; fileRef = E625EE60209080A40019B750 /* ISSUE_TEMPLATE.md */; };
 		E625EE672090926F0019B750 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E625EE652090926F0019B750 /* LICENSE */; };
 		E631CB69209755FF00023472 /* cardTokenInvalidNumber.json in Resources */ = {isa = PBXBuildFile; fileRef = E631CB672097552700023472 /* cardTokenInvalidNumber.json */; };
-		E631CB6F2097713C00023472 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E631CB6E2097713C00023472 /* ErrorResponse.swift */; };
+		E631CB6F2097713C00023472 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E631CB6E2097713C00023472 /* NetworkError.swift */; };
 		E631CB7F2098B5C000023472 /* ExpirationDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E631CB7E2098B5C000023472 /* ExpirationDatePicker.swift */; };
 		E631CB812098B5D900023472 /* ExpirationDatePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E631CB802098B5D900023472 /* ExpirationDatePickerDelegate.swift */; };
 		E632AAB220AECA9500D2B9B6 /* UIResponderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E632AAB120AECA9500D2B9B6 /* UIResponderExtensions.swift */; };
@@ -212,7 +212,7 @@
 		E625EE60209080A40019B750 /* ISSUE_TEMPLATE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = ISSUE_TEMPLATE.md; path = .github/ISSUE_TEMPLATE.md; sourceTree = "<group>"; };
 		E625EE652090926F0019B750 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E631CB672097552700023472 /* cardTokenInvalidNumber.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cardTokenInvalidNumber.json; sourceTree = "<group>"; };
-		E631CB6E2097713C00023472 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		E631CB6E2097713C00023472 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		E631CB7E2098B5C000023472 /* ExpirationDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDatePicker.swift; sourceTree = "<group>"; };
 		E631CB802098B5D900023472 /* ExpirationDatePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDatePickerDelegate.swift; sourceTree = "<group>"; };
 		E632AAB120AECA9500D2B9B6 /* UIResponderExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIResponderExtensions.swift; sourceTree = "<group>"; };
@@ -530,7 +530,7 @@
 				CF0E2BDC2366039B000C3418 /* CustomerCardList.swift */,
 				E664071A208DE11D000431E5 /* Endpoint.swift */,
 				E625EE52208F905E0019B750 /* Environment.swift */,
-				E631CB6E2097713C00023472 /* ErrorResponse.swift */,
+				E631CB6E2097713C00023472 /* NetworkError.swift */,
 				E632AAC120B58CE900D2B9B6 /* InputState.swift */,
 			);
 			name = Core;
@@ -954,7 +954,7 @@
 				E602EE8D209D86C200CC62A2 /* Result.swift in Sources */,
 				E6646FBA20CEA78F00D8353A /* CkoCardTokenResponse.swift in Sources */,
 				E664701A20CED6F100D8353A /* Formatter.swift in Sources */,
-				E631CB6F2097713C00023472 /* ErrorResponse.swift in Sources */,
+				E631CB6F2097713C00023472 /* NetworkError.swift in Sources */,
 				E602EE91209D86E200CC62A2 /* SessionDelegate.swift in Sources */,
 				E632AAC220B58CE900D2B9B6 /* InputState.swift in Sources */,
 				E664701D20CED6F100D8353A /* Constants.swift in Sources */,
