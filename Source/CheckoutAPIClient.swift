@@ -99,7 +99,7 @@ public class CheckoutAPIClient {
                     }
                 case .failure(let responseError):
                     do {
-                        let networkError = try JSONDecoder().decode(NetworkError.self, from: response.data!)
+                        let networkError = try decoder.decode(NetworkError.self, from: response.data!)
                         errorHandler(networkError)
                     } catch {
                         errorHandler(.other(error: responseError))
@@ -135,7 +135,7 @@ public class CheckoutAPIClient {
                 }
             case .failure(let responseError):
                 do {
-                    let networkError = try JSONDecoder().decode(NetworkError.self, from: response.data!)
+                    let networkError = try decoder.decode(NetworkError.self, from: response.data!)
                     errorHandler(networkError)
                 } catch {
                     errorHandler(.other(error: responseError))
