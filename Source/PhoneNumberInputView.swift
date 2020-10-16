@@ -6,7 +6,7 @@ import UIKit
     // MARK: - Properties
 
     /// Phone Number Kit
-    let phoneNumberKit = PhoneNumberKit()
+    let phoneNumberKit = CKOPhoneNumberKit()
     var partialFormatter: PartialFormatter {
         return PartialFormatter.init(phoneNumberKit: phoneNumberKit, defaultRegion: "GB", withPrefix: true)
     }

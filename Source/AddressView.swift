@@ -5,7 +5,7 @@ import UIKit
 public class AddressView: UIView {
 
     // MARK: - Properties
-    let phoneNumberKit = PhoneNumberKit()
+    let phoneNumberKit = CKOPhoneNumberKit()
 
     let scrollView = UIScrollView()
     let contentView = UIView()
