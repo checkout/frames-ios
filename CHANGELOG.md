@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 
 #### 3.x Releases
 
+## [3.1.0](https://github.com/checkout/frames-ios/releases/tag/3.1.0)
+
+Released on 2020-10-19.
+
+#### Changed
+
+* Update PhoneNumberKit dependency.
+* Rename PhoneNumberKit public classes to CKOPhoneNumberKit.
+
 ## [3.0.5](https://github.com/checkout/frames-ios/releases/tag/3.0.5)
 
 Released on 2020-08-12.
