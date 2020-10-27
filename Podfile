@@ -10,6 +10,6 @@ target 'FramesIos' do
     target 'FramesIosTests' do
       inherit! :search_paths
 
-      pod 'Mockingjay', '~> 2.0'
+      pod 'Mockingjay', '~> 3.0.0-alpha.1 '
     end
 end
