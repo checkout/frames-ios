@@ -1010,7 +1010,6 @@
 				E602EE8D209D86C200CC62A2 /* Result.swift in Sources */,
 				E6646FBA20CEA78F00D8353A /* CkoCardTokenResponse.swift in Sources */,
 				58238B9B25486D9900A9EB49 /* NetworkError.swift in Sources */,
-				E664701A20CED6F100D8353A /* Formatter.swift in Sources */,
 				8EA7FB642539B570002DF39F /* Constants.swift in Sources */,
 				E631CB6F2097713C00023472 /* ErrorResponse.swift in Sources */,
 				E602EE91209D86E200CC62A2 /* SessionDelegate.swift in Sources */,
