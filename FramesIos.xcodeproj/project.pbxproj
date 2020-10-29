@@ -19,7 +19,6 @@
 		8EA7FB6C2539B570002DF39F /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA7FB542539B570002DF39F /* ParseManager.swift */; };
 		8EA7FB6D2539B570002DF39F /* PhoneNumberMetadata.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7FB572539B570002DF39F /* PhoneNumberMetadata.xml */; };
 		8EA7FB6E2539B570002DF39F /* PhoneNumberMetadata.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7FB582539B570002DF39F /* PhoneNumberMetadata.json */; };
-		8EA7FB702539B570002DF39F /* update.sh in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7FB5A2539B570002DF39F /* update.sh */; };
 		8EA7FB712539B570002DF39F /* PhoneNumberKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EA7FB5B2539B570002DF39F /* PhoneNumberKit.h */; };
 		8EA7FB722539B570002DF39F /* NSRegularExpression+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA7FB5C2539B570002DF39F /* NSRegularExpression+Swift.swift */; };
 		8EA7FB732539B570002DF39F /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA7FB5D2539B570002DF39F /* Formatter.swift */; };
@@ -190,7 +189,6 @@
 		8EA7FB542539B570002DF39F /* ParseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseManager.swift; sourceTree = "<group>"; };
 		8EA7FB572539B570002DF39F /* PhoneNumberMetadata.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PhoneNumberMetadata.xml; sourceTree = "<group>"; };
 		8EA7FB582539B570002DF39F /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetadata.json; sourceTree = "<group>"; };
-		8EA7FB5A2539B570002DF39F /* update.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = update.sh; sourceTree = "<group>"; };
 		8EA7FB5B2539B570002DF39F /* PhoneNumberKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumberKit.h; sourceTree = "<group>"; };
 		8EA7FB5C2539B570002DF39F /* NSRegularExpression+Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Swift.swift"; sourceTree = "<group>"; };
 		8EA7FB5D2539B570002DF39F /* Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
@@ -392,7 +390,6 @@
 			children = (
 				8EA7FB562539B570002DF39F /* Original */,
 				8EA7FB582539B570002DF39F /* PhoneNumberMetadata.json */,
-				8EA7FB5A2539B570002DF39F /* update.sh */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -852,7 +849,6 @@
 				E6AF0A3D20AAE46600D29929 /* schemes in Resources */,
 				8EA7FB6E2539B570002DF39F /* PhoneNumberMetadata.json in Resources */,
 				E6AF0A2F20AADFF700D29929 /* arrows in Resources */,
-				8EA7FB702539B570002DF39F /* update.sh in Resources */,
 				E625EE672090926F0019B750 /* LICENSE in Resources */,
 				E658531820D7C83600C261D7 /* iOS Example Frames.md in Resources */,
 				E64B31E020D26A930088B7FD /* ckoCardToken.json in Resources */,
