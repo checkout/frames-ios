@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Frames"
-  s.version      = "3.1.0"
+  s.version      = "3.1.1"
   s.summary      = "Checkout API Client, Payment Form UI and Utilities in Swift"
   s.description  = <<-DESC
   Checkout API Client and Payment Form Utilities in Swift.
