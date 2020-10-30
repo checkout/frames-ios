@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 #### 3.x Releases
 
+## [3.1.1](https://github.com/checkout/frames-ios/releases/tag/3.1.1)
+
+Released on 2020-10-30.
+
+#### Fixed
+
+* Remove update.sh file from PhoneNumberKit to prevent validation failures.
+
 ## [3.1.0](https://github.com/checkout/frames-ios/releases/tag/3.1.0)
 
 Released on 2020-10-19.
