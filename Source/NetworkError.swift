@@ -13,13 +13,17 @@ public enum NetworkError: Error, Decodable {
     }
     
     public init(from decoder: Decoder) throws {
+
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        if let requestId = try? values.decode(String.self, forKey: .requestId),
-           let errorType = try? values.decode(String.self, forKey: .errorType),
-           let errorCodes = try? values.decode([String].self, forKey: .errorCodes) {
-            self = .checkout(requestId: requestId, errorType: errorType, errorCodes: errorCodes)
+
+        guard let requestId = try? values.decode(String.self, forKey: .requestId),
+              let errorType = try? values.decode(String.self, forKey: .errorType),
+              let errorCodes = try? values.decode([String].self, forKey: .errorCodes) else {
+
+            self = .unknown
+            return
         }
-        self = .unknown
+
+        self = .checkout(requestId: requestId, errorType: errorType, errorCodes: errorCodes)
     }
-    
 }
