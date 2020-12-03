@@ -28,6 +28,7 @@
 		8EA7FB762539B570002DF39F /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA7FB602539B570002DF39F /* PhoneNumberFormatter.swift */; };
 		8EA7FB772539B570002DF39F /* PhoneNumberKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA7FB612539B570002DF39F /* PhoneNumberKit.swift */; };
 		8EA7FB792539B570002DF39F /* PhoneNumberParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA7FB632539B570002DF39F /* PhoneNumberParser.swift */; };
+		8ED1258D2577D03500909D80 /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED1258C2577D03500909D80 /* NetworkErrorTests.swift */; };
 		C05921A046069B80E37C8799 /* Pods_FramesIosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 960B3E65C846C45B1B539F24 /* Pods_FramesIosTests.framework */; };
 		CF0E2BDE2366039C000C3418 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E2BDB2366039B000C3418 /* Customer.swift */; };
 		CF0E2BDF2366039C000C3418 /* CustomerCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E2BDC2366039B000C3418 /* CustomerCardList.swift */; };
@@ -199,6 +200,7 @@
 		8EA7FB602539B570002DF39F /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberFormatter.swift; sourceTree = "<group>"; };
 		8EA7FB612539B570002DF39F /* PhoneNumberKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberKit.swift; sourceTree = "<group>"; };
 		8EA7FB632539B570002DF39F /* PhoneNumberParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberParser.swift; sourceTree = "<group>"; };
+		8ED1258C2577D03500909D80 /* NetworkErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
 		960B3E65C846C45B1B539F24 /* Pods_FramesIosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FramesIosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF0E2BDB2366039B000C3418 /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		CF0E2BDC2366039B000C3418 /* CustomerCardList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerCardList.swift; sourceTree = "<group>"; };
@@ -641,6 +643,7 @@
 			children = (
 				E67AB96D208DF9D800593FBE /* CardUtilsTests.swift */,
 				E67AB997208E2BBA00593FBE /* CheckoutAPIClientTests.swift */,
+				8ED1258C2577D03500909D80 /* NetworkErrorTests.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -1082,6 +1085,7 @@
 				E64B31EC20D2D2FF0088B7FD /* AddressViewTests.swift in Sources */,
 				E6AF0A1020AAD00600D29929 /* ExpirationDateInputViewTests.swift in Sources */,
 				E67AB998208E2BBA00593FBE /* CheckoutAPIClientTests.swift in Sources */,
+				8ED1258D2577D03500909D80 /* NetworkErrorTests.swift in Sources */,
 				E6FC280020D8F68300809458 /* SimpleLoadingViewControllerTests.swift in Sources */,
 				E64B31DC20D1810F0088B7FD /* SchemeIconsStackViewTests.swift in Sources */,
 				E658532220D8076E00C261D7 /* AddressViewControllerMockDelegate.swift in Sources */,
