@@ -196,11 +196,15 @@ public class CardViewController: UIViewController,
                                        phone: billingDetailsPhone)
         if let checkoutApiClientUnwrap = checkoutApiClient {
             self.delegate?.onSubmit(controller: self)
-            checkoutApiClientUnwrap.createCardToken(card: card, successHandler: { cardToken in
-                self.delegate?.onTapDone(controller: self, cardToken: cardToken, status: .success)
-            }, errorHandler: { _ in
-                self.delegate?.onTapDone(controller: self, cardToken: nil, status: .success)
-            })
+            checkoutApiClientUnwrap.createCardToken(card: card) { result in
+                switch result {
+                case .success(let cardTokenResponse):
+                    self.delegate?.onTapDone(controller: self, cardToken: cardTokenResponse, status: .success)
+
+                case .failure:
+                    self.delegate?.onTapDone(controller: self, cardToken: nil, status: .success)
+                }
+            }
         }
     }
 
