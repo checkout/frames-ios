@@ -21,11 +21,16 @@ class ViewController: UIViewController {
     @IBAction func onTapPay(_ sender: Any) {
         let card = getCardTokenRequest()
         print(card)
-        checkoutAPIClient.createCardToken(card: card, successHandler: { cardToken in
-            self.showAlert(with: cardToken.token)
-        }, errorHandler: { error in
-            print(error)
-        })
+        checkoutAPIClient.createCardToken(card: card) { result in
+
+            switch result {
+            case .success(let cardTokenResponse):
+                self.showAlert(with: cardTokenResponse.token)
+
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     override func viewDidLoad() {

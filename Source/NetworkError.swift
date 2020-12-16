@@ -4,6 +4,8 @@ public enum NetworkError: Error, Decodable {
     
     case checkout(requestId: String, errorType: String, errorCodes: [String])
     case other(error: Error)
+    case invalidData
+    case invalidURL
     case unknown
     
     private enum CodingKeys: String, CodingKey {
