@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 #### 3.x Releases
 
+## [3.2.0](https://github.com/checkout/frames-ios/releases/tag/3.2.0)
+
+Released on 2021-01-11.
+
+#### Added
+
+* New methods that return a `NetworkError` in the completion handlers, with more details about the errors received.
+
 ## [3.1.1](https://github.com/checkout/frames-ios/releases/tag/3.1.1)
 
 Released on 2020-10-30.
