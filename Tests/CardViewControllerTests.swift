@@ -302,4 +302,25 @@ class CardViewControllerTests: XCTestCase {
         XCTAssertEqual(nFadedCard, 0)
     }
 
+    func test_onTapDoneCardButton_checkoutAPIClientReturnsError_delegateCalledWithFailure() {
+
+        let stubCheckoutAPIClient = StubCheckoutAPIClient(publicKey: "")
+        let stubCardViewControllerDelegate = StubCardViewControllerDelegate()
+        let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
+                                                    cardHolderNameState: .normal,
+                                                    billingDetailsState: .normal)
+
+        cardViewController.delegate = stubCardViewControllerDelegate
+        cardViewController.cardView.cardNumberInputView.textField.text = "4242 4242 4242 4242"
+        cardViewController.cardView.cvvInputView.textField.text = "123"
+        cardViewController.cardView.expirationDateInputView.textField.text = "01/23"
+
+        cardViewController.onTapDoneCardButton()
+
+        stubCheckoutAPIClient.createCardTokenCalledWith?.completion(.failure(.invalidData))
+
+        XCTAssertEqual(stubCardViewControllerDelegate.onTapDoneCalledWith?.controller, cardViewController)
+        XCTAssertEqual(stubCardViewControllerDelegate.onTapDoneCalledWith?.status, .failure)
+        XCTAssertNil(stubCardViewControllerDelegate.onTapDoneCalledWith?.cardToken)
+    }
 }
