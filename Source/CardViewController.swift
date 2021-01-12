@@ -202,7 +202,7 @@ public class CardViewController: UIViewController,
                     self.delegate?.onTapDone(controller: self, cardToken: cardTokenResponse, status: .success)
 
                 case .failure:
-                    self.delegate?.onTapDone(controller: self, cardToken: nil, status: .success)
+                    self.delegate?.onTapDone(controller: self, cardToken: nil, status: .failure)
                 }
             }
         }
