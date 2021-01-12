@@ -194,16 +194,20 @@ public class CardViewController: UIViewController,
                                        name: cardView.cardHolderNameInputView.textField.text,
                                        billingAddress: billingDetailsAddress,
                                        phone: billingDetailsPhone)
-        if let checkoutApiClientUnwrap = checkoutApiClient {
-            self.delegate?.onSubmit(controller: self)
-            checkoutApiClientUnwrap.createCardToken(card: card) { result in
-                switch result {
-                case .success(let cardTokenResponse):
-                    self.delegate?.onTapDone(controller: self, cardToken: cardTokenResponse, status: .success)
 
-                case .failure:
-                    self.delegate?.onTapDone(controller: self, cardToken: nil, status: .success)
-                }
+        guard let checkoutApiClient = checkoutApiClient else {
+            return
+        }
+
+        self.delegate?.onSubmit(controller: self)
+
+        checkoutApiClient.createCardToken(card: card) { result in
+            switch result {
+            case .success(let cardTokenResponse):
+                self.delegate?.onTapDone(controller: self, cardToken: cardTokenResponse, status: .success)
+
+            case .failure:
+                self.delegate?.onTapDone(controller: self, cardToken: nil, status: .failure)
             }
         }
     }
