@@ -13,6 +13,10 @@ Released on 2021-01-11.
 
 * New methods that return a `NetworkError` in the completion handlers, with more details about the errors received.
 
+#### Fixed
+
+* Compilation issue when using `DetailsInputView` in a Storyboard file.
+
 ## [3.1.1](https://github.com/checkout/frames-ios/releases/tag/3.1.1)
 
 Released on 2020-10-30.
