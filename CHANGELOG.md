@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 
 ## [3.2.0](https://github.com/checkout/frames-ios/releases/tag/3.2.0)
 
-Released on 2021-01-11.
+Released on 2021-01-13.
 
 #### Added
 
