@@ -12,7 +12,7 @@ import UIKit
     /// Value label
     public let value = UILabel()
     /// Button
-    public let button = UIButton()
+    public var button = UIButton()
 
     @IBInspectable var text: String = "Label" {
         didSet {
@@ -45,8 +45,8 @@ import UIKit
         value.font = CheckoutTheme.font
 
         #if TARGET_INTERFACE_BUILDER
-        self.button = UIButton(type: UIButtonType.contactAdd)
-        value!.text = "value"
+        self.button = UIButton(type: .contactAdd)
+        value.text = "value"
         #else
         let image = "arrows/keyboard-next".image(forClass: DetailsInputView.self)
         button.setImage(image, for: .normal)
