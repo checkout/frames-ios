@@ -186,6 +186,7 @@ var cardViewController: CardViewController {
     CheckoutTheme.secondaryBackgroundColor = .purple
     CheckoutTheme.errorColor = .yellow
     CheckoutTheme.color = .green
+    CheckoutTheme.chevronColor = .pink
     return CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .hidden, billingDetailsState: .normal)
 }
 ```
