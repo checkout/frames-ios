@@ -3,13 +3,6 @@ import XCTest
 
 class DetailsInputViewTests: XCTestCase {
 
-    var detailsInputView = DetailsInputView()
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        detailsInputView = DetailsInputView()
-    }
-
     func testEmptyInitialization() {
         _ = DetailsInputView()
     }
@@ -24,13 +17,31 @@ class DetailsInputViewTests: XCTestCase {
     }
 
     func testSetText() {
+        let detailsInputView = DetailsInputView()
         detailsInputView.text = "Text"
         XCTAssertEqual(detailsInputView.label.text, "Text")
     }
 
     func testSetLabelAndBackgroundColor() {
+        let detailsInputView = DetailsInputView()
         detailsInputView.set(label: "addressLine1", backgroundColor: .white)
         XCTAssertEqual(detailsInputView.label.text, "Address line 1*")
         XCTAssertEqual(detailsInputView.backgroundColor, UIColor.white)
+    }
+
+    func testChevronRenderingMode() {
+        let detailsInputView = DetailsInputView()
+        XCTAssertEqual(detailsInputView.button.image(for: .normal)?.renderingMode, .alwaysTemplate)
+    }
+
+    func testDefaultChevronColor() {
+        CheckoutTheme.chevronColor = .cyan
+        let detailsInputView = DetailsInputView()
+        XCTAssertEqual(detailsInputView.button.tintColor, .cyan)
+    }
+
+    func testCustomizedChevronColor() {
+        let detailsInputView = DetailsInputView()
+        XCTAssertEqual(detailsInputView.button.tintColor, .black)
     }
 }

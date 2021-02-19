@@ -48,8 +48,9 @@ import UIKit
         self.button = UIButton(type: .contactAdd)
         value.text = "value"
         #else
-        let image = "arrows/keyboard-next".image(forClass: DetailsInputView.self)
+        let image = "arrows/keyboard-next".image(forClass: DetailsInputView.self).withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
+        button.tintColor = CheckoutTheme.chevronColor
         #endif
         // add to view
         stackView.axis = .horizontal
