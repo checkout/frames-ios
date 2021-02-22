@@ -13,6 +13,7 @@ You can modify the card view after the initialization.
         CheckoutTheme.secondaryBackgroundColor = .purple
         CheckoutTheme.errorColor = .yellow
         CheckoutTheme.color = .green
+        CheckoutTheme.chevronColor = .pink
         return CardViewController(cardHolderNameState: .hidden, billingDetailsState: .normal)
     }
 ```

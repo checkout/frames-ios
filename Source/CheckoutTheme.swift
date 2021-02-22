@@ -14,6 +14,8 @@ public class CheckoutTheme {
     public static var secondaryColor: UIColor = .lightGray
     /// Error text color
     public static var errorColor: UIColor = .red
+    /// Chevron color
+    public static var chevronColor: UIColor = .black
     /// Font
     public static var font: UIFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
     /// Bar style, used for the search bar
