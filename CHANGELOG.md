@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 #### 3.x Releases
 
+## [3.2.1](https://github.com/checkout/frames-ios/releases/tag/3.2.1)
+
+Released on 2021-02-24.
+
+#### Added
+
+* New option on `CheckoutTheme` to change the chevron color.
+
 ## [3.2.0](https://github.com/checkout/frames-ios/releases/tag/3.2.0)
 
 Released on 2021-01-13.
