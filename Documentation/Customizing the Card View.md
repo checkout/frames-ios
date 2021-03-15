@@ -8,14 +8,11 @@ You can modify the card view after the initialization.
 ![Checkout Theme](https://github.com/checkout/frames-ios/blob/master/screenshots/CheckoutTheme.png?raw=true)
 
 ```swift
-    var cardViewController: CardViewController {
-        CheckoutTheme.primaryBackgroundColor = .blue
-        CheckoutTheme.secondaryBackgroundColor = .purple
-        CheckoutTheme.errorColor = .yellow
-        CheckoutTheme.color = .green
-        CheckoutTheme.chevronColor = .pink
-        return CardViewController(cardHolderNameState: .hidden, billingDetailsState: .normal)
-    }
+    CheckoutTheme.primaryBackgroundColor = .blue
+    CheckoutTheme.secondaryBackgroundColor = .purple
+    CheckoutTheme.errorColor = .yellow
+    CheckoutTheme.color = .green
+    CheckoutTheme.chevronColor = .pink
 ```
 
 ## Customizing the fields
