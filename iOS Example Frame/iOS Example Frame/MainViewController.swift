@@ -22,7 +22,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
 
-    var cardViewController: CardViewController {
+    lazy var cardViewController: CardViewController = {
         let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
                                                   environment: .sandbox)
         let b = CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .normal, billingDetailsState: .normal, defaultRegionCode: "GB")
@@ -31,7 +31,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
         b.delegate = self
         b.addressViewController.setFields(address: b.billingDetailsAddress!, phone: b.billingDetailsPhone!)
         return b
-    }
+    }()
 
     @IBAction func onClickGoToPaymentPage(_ sender: Any) {
         navigationController?.pushViewController(cardViewController, animated: true)

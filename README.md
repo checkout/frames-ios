@@ -91,11 +91,11 @@ class ViewController: UIViewController, CardViewControllerDelegate {
 
     let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_6ff46046-30af-41d9-bf58-929022d2cd14",
                                               environment: .sandbox)
-    var cardViewController: CardViewController {
+    lazy var cardViewController: CardViewController = {
         let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
         environment: .sandbox)
         return CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .hidden, billingDetailsState: .hidden)
-    }
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -179,16 +179,11 @@ The error handler takes an `ErrorResponse` as a parameter.
 ### Customize with `CheckoutTheme`
 
 ```swift
-var cardViewController: CardViewController {
-    let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
-        environment: .sandbox)
     CheckoutTheme.primaryBackgroundColor = .blue
     CheckoutTheme.secondaryBackgroundColor = .purple
     CheckoutTheme.errorColor = .yellow
     CheckoutTheme.color = .green
     CheckoutTheme.chevronColor = .pink
-    return CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .hidden, billingDetailsState: .normal)
-}
 ```
 
 ## License
