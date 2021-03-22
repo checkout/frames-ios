@@ -11,7 +11,7 @@ import Foundation
 import CoreTelephony
 #endif
 
-public typealias MetadataCallback = (() throws -> Data?)
+public typealias CKOMetadataCallback = (() throws -> Data?)
 
 public final class CKOPhoneNumberKit: NSObject {
     // Manager objects
@@ -21,7 +21,7 @@ public final class CKOPhoneNumberKit: NSObject {
 
     // MARK: Lifecycle
 
-    public init(metadataCallback: @escaping MetadataCallback = CKOPhoneNumberKit.defaultMetadataCallback) {
+    public init(metadataCallback: @escaping CKOMetadataCallback = CKOPhoneNumberKit.defaultMetadataCallback) {
         self.metadataManager = MetadataManager(metadataCallback: metadataCallback)
         self.parseManager = ParseManager(metadataManager: self.metadataManager, regexManager: self.regexManager)
     }
@@ -35,7 +35,7 @@ public final class CKOPhoneNumberKit: NSObject {
     ///   - region: ISO 639 compliant region code.
     ///   - ignoreType: Avoids number type checking for faster performance.
     /// - Returns: PhoneNumber object.
-    public func parse(_ numberString: String, withRegion region: String = CKOPhoneNumberKit.defaultRegionCode(), ignoreType: Bool = false) throws -> PhoneNumber {
+    public func parse(_ numberString: String, withRegion region: String = CKOPhoneNumberKit.defaultRegionCode(), ignoreType: Bool = false) throws -> CKOPhoneNumber {
         var numberStringWithPlus = numberString
 
         do {
@@ -56,7 +56,7 @@ public final class CKOPhoneNumberKit: NSObject {
     /// - parameter ignoreType:   Avoids number type checking for faster performance.
     ///
     /// - returns: array of PhoneNumber objects.
-    public func parse(_ numberStrings: [String], withRegion region: String = CKOPhoneNumberKit.defaultRegionCode(), ignoreType: Bool = false, shouldReturnFailedEmptyNumbers: Bool = false) -> [PhoneNumber] {
+    public func parse(_ numberStrings: [String], withRegion region: String = CKOPhoneNumberKit.defaultRegionCode(), ignoreType: Bool = false, shouldReturnFailedEmptyNumbers: Bool = false) -> [CKOPhoneNumber] {
         return self.parseManager.parseMultiple(numberStrings, withRegion: region, ignoreType: ignoreType, shouldReturnFailedEmptyNumbers: shouldReturnFailedEmptyNumbers)
     }
     
@@ -78,11 +78,11 @@ public final class CKOPhoneNumberKit: NSObject {
     /// Formats a PhoneNumber object for dispaly.
     ///
     /// - parameter phoneNumber: PhoneNumber object.
-    /// - parameter formatType:  PhoneNumberFormat enum.
+    /// - parameter formatType:  CKOPhoneNumberFormat enum.
     /// - parameter prefix:      whether or not to include the prefix.
     ///
     /// - returns: Formatted representation of the PhoneNumber.
-    public func format(_ phoneNumber: PhoneNumber, toType formatType: PhoneNumberFormat, withPrefix prefix: Bool = true) -> String {
+    public func format(_ phoneNumber: CKOPhoneNumber, toType formatType: CKOPhoneNumberFormat, withPrefix prefix: Bool = true) -> String {
         if formatType == .e164 {
             let formattedNationalNumber = phoneNumber.adjustedNationalNumber()
             if prefix == false {
@@ -156,7 +156,7 @@ public final class CKOPhoneNumberKit: NSObject {
     /// - parameter phoneNumber: PhoneNumber object
     ///
     /// - returns: Region code, eg "US", or nil if the region cannot be determined.
-    public func getRegionCode(of phoneNumber: PhoneNumber) -> String? {
+    public func getRegionCode(of phoneNumber: CKOPhoneNumber) -> String? {
         return self.parseManager.getRegionCode(of: phoneNumber.nationalNumber, countryCode: phoneNumber.countryCode, leadingZero: phoneNumber.leadingZero)
     }
 
@@ -166,7 +166,7 @@ public final class CKOPhoneNumberKit: NSObject {
     /// - parameter type: The `PhoneNumberType` desired. default: `.mobile`
     ///
     /// - returns: An example phone number
-    public func getExampleNumber(forCountry countryCode: String, ofType type: PhoneNumberType = .mobile) -> PhoneNumber? {
+    public func getExampleNumber(forCountry countryCode: String, ofType type: CKOPhoneNumberType = .mobile) -> CKOPhoneNumber? {
         let metadata = self.metadata(for: countryCode)
         let example: String?
         switch type {
@@ -201,40 +201,40 @@ public final class CKOPhoneNumberKit: NSObject {
     ///
     /// - returns: A formatted example phone number
     public func getFormattedExampleNumber(
-        forCountry countryCode: String, ofType type: PhoneNumberType = .mobile,
-        withFormat format: PhoneNumberFormat = .international, withPrefix prefix: Bool = true
+        forCountry countryCode: String, ofType type: CKOPhoneNumberType = .mobile,
+        withFormat format: CKOPhoneNumberFormat = .international, withPrefix prefix: Bool = true
     ) -> String? {
         return self.getExampleNumber(forCountry: countryCode, ofType: type)
             .flatMap { self.format($0, toType: format, withPrefix: prefix) }
     }
 
-    /// Get the MetadataTerritory objects for an ISO 639 compliant region code.
+    /// Get the CKOMetadataTerritory objects for an ISO 639 compliant region code.
     ///
     /// - parameter country: ISO 639 compliant region code (e.g "GB" for the UK).
     ///
-    /// - returns: A MetadataTerritory object, or nil if no metadata was found for the country code
-    public func metadata(for country: String) -> MetadataTerritory? {
+    /// - returns: A CKOMetadataTerritory object, or nil if no metadata was found for the country code
+    public func metadata(for country: String) -> CKOMetadataTerritory? {
         return self.metadataManager.filterTerritories(byCountry: country)
     }
 
-    /// Get an array of MetadataTerritory objects corresponding to a given country code.
+    /// Get an array of CKOMetadataTerritory objects corresponding to a given country code.
     ///
     /// - parameter countryCode: international country code (e.g 44 for the UK)
-    public func metadata(forCode countryCode: UInt64) -> [MetadataTerritory]? {
+    public func metadata(forCode countryCode: UInt64) -> [CKOMetadataTerritory]? {
         return self.metadataManager.filterTerritories(byCode: countryCode)
     }
 
     /// Get an array of possible phone number lengths for the country, as specified by the parameters.
     ///
     /// - parameter country: ISO 639 compliant region code.
-    /// - parameter phoneNumberType: PhoneNumberType enum.
+    /// - parameter CKOPhoneNumberType: CKOPhoneNumberType enum.
     /// - parameter lengthType: PossibleLengthType enum.
     ///
     /// - returns: Array of possible lengths for the country. May be empty.
-    public func possiblePhoneNumberLengths(forCountry country: String, phoneNumberType: PhoneNumberType, lengthType: PossibleLengthType) -> [Int] {
+    public func possiblePhoneNumberLengths(forCountry country: String, CKOPhoneNumberType: CKOPhoneNumberType, lengthType: CKOPossibleLengthType) -> [Int] {
         guard let territory = metadataManager.filterTerritories(byCountry: country) else { return [] }
 
-        let possibleLengths = possiblePhoneNumberLengths(forTerritory: territory, phoneNumberType: phoneNumberType)
+        let possibleLengths = possiblePhoneNumberLengths(forTerritory: territory, CKOPhoneNumberType: CKOPhoneNumberType)
 
         switch lengthType {
         case .national:     return possibleLengths?.national.flatMap { self.parsePossibleLengths($0) } ?? []
@@ -242,8 +242,8 @@ public final class CKOPhoneNumberKit: NSObject {
         }
     }
 
-    private func possiblePhoneNumberLengths(forTerritory territory: MetadataTerritory, phoneNumberType: PhoneNumberType) -> MetadataPossibleLengths? {
-        switch phoneNumberType {
+    private func possiblePhoneNumberLengths(forTerritory territory: CKOMetadataTerritory, CKOPhoneNumberType: CKOPhoneNumberType) -> CKOMetadataPossibleLengths? {
+        switch CKOPhoneNumberType {
         case .fixedLine:        return territory.fixedLine?.possibleLengths
         case .mobile:           return territory.mobile?.possibleLengths
         case .pager:            return territory.pager?.possibleLengths
@@ -318,7 +318,7 @@ public final class CKOPhoneNumberKit: NSObject {
     public static func defaultMetadataCallback() throws -> Data? {
         let frameworkBundle = Bundle.module
         guard let jsonPath = frameworkBundle.path(forResource: "PhoneNumberMetadata", ofType: "json") else {
-            throw PhoneNumberError.metadataNotFound
+            throw CKOPhoneNumberError.metadataNotFound
         }
         let data = try Data(contentsOf: URL(fileURLWithPath: jsonPath))
         return data
@@ -329,7 +329,7 @@ public final class CKOPhoneNumberKit: NSObject {
 extension CKOPhoneNumberKit {
 
     /// Configuration for the CountryCodePicker presented from PhoneNumberTextField if `withDefaultPickerUI` is `true`
-    public enum CountryCodePicker {
+    public enum CKOCountryCodePicker {
         /// Common Country Codes are shown below the Current section in the CountryCodePicker by default
         public static var commonCountryCodes: [String] = []
 

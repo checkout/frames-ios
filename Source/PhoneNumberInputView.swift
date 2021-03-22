@@ -7,8 +7,8 @@ import UIKit
 
     /// Phone Number Kit
     let phoneNumberKit = CKOPhoneNumberKit()
-    var partialFormatter: PartialFormatter {
-        return PartialFormatter.init(phoneNumberKit: phoneNumberKit, defaultRegion: "GB", withPrefix: true)
+    var partialFormatter: CKOPartialFormatter {
+        return CKOPartialFormatter.init(phoneNumberKit: phoneNumberKit, defaultRegion: "GB", withPrefix: true)
     }
 
     /// National Number (e.g. )
@@ -29,7 +29,7 @@ import UIKit
     }
 
     /// Phone Number
-    public var phoneNumber: PhoneNumber?
+    public var phoneNumber: CKOPhoneNumber?
 
     private var previousTextCount = 0
     private var previousFormat = ""

@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- MetadataTerritory object
+ CKOMetadataTerritory object
  - Parameter codeID: ISO 639 compliant region code
  - Parameter countryCode: International country code
  - Parameter internationalPrefix: International prefix. Optional.
@@ -32,7 +32,7 @@ import Foundation
  - Parameter uan: MetadataPhoneNumberDesc for uan numbers
  - Parameter leadingDigits: Optional leading digits for the territory
  */
-public struct MetadataTerritory: Decodable {
+public struct CKOMetadataTerritory: Decodable {
     public let codeID: String
     public let countryCode: UInt64
     public let internationalPrefix: String?
@@ -42,19 +42,19 @@ public struct MetadataTerritory: Decodable {
     public let nationalPrefixForParsing: String?
     public let nationalPrefixTransformRule: String?
     public let preferredExtnPrefix: String?
-    public let emergency: MetadataPhoneNumberDesc?
-    public let fixedLine: MetadataPhoneNumberDesc?
-    public let generalDesc: MetadataPhoneNumberDesc?
-    public let mobile: MetadataPhoneNumberDesc?
-    public let pager: MetadataPhoneNumberDesc?
-    public let personalNumber: MetadataPhoneNumberDesc?
-    public let premiumRate: MetadataPhoneNumberDesc?
-    public let sharedCost: MetadataPhoneNumberDesc?
-    public let tollFree: MetadataPhoneNumberDesc?
-    public let voicemail: MetadataPhoneNumberDesc?
-    public let voip: MetadataPhoneNumberDesc?
-    public let uan: MetadataPhoneNumberDesc?
-    public let numberFormats: [MetadataPhoneNumberFormat]
+    public let emergency: CKOMetadataPhoneNumberDesc?
+    public let fixedLine: CKOMetadataPhoneNumberDesc?
+    public let generalDesc: CKOMetadataPhoneNumberDesc?
+    public let mobile: CKOMetadataPhoneNumberDesc?
+    public let pager: CKOMetadataPhoneNumberDesc?
+    public let personalNumber: CKOMetadataPhoneNumberDesc?
+    public let premiumRate: CKOMetadataPhoneNumberDesc?
+    public let sharedCost: CKOMetadataPhoneNumberDesc?
+    public let tollFree: CKOMetadataPhoneNumberDesc?
+    public let voicemail: CKOMetadataPhoneNumberDesc?
+    public let voip: CKOMetadataPhoneNumberDesc?
+    public let uan: CKOMetadataPhoneNumberDesc?
+    public let numberFormats: [CKOMetadataPhoneNumberFormat]
     public let leadingDigits: String?
 }
 
@@ -65,20 +65,20 @@ public struct MetadataTerritory: Decodable {
  - Parameter possibleNumberPattern:  Possible number regex pattern. Optional.
  - Parameter possibleLengths: Possible phone number lengths. Optional.
  */
-public struct MetadataPhoneNumberDesc: Decodable {
+public struct CKOMetadataPhoneNumberDesc: Decodable {
     public let exampleNumber: String?
     public let nationalNumberPattern: String?
     public let possibleNumberPattern: String?
-    public let possibleLengths: MetadataPossibleLengths?
+    public let possibleLengths: CKOMetadataPossibleLengths?
 }
 
-public struct MetadataPossibleLengths: Decodable {
+public struct CKOMetadataPossibleLengths: Decodable {
     let national: String?
     let localOnly: String?
 }
 
 /**
- MetadataPhoneNumberFormat object
+ CKOMetadataPhoneNumberFormat object
  - Parameter pattern: Regex pattern. Optional.
  - Parameter format: Formatting template. Optional.
  - Parameter intlFormat: International formatting template. Optional.
@@ -88,7 +88,7 @@ public struct MetadataPossibleLengths: Decodable {
  - Parameter nationalPrefixOptionalWhenFormatting: National prefix optional bool. Optional.
  - Parameter domesticCarrierCodeFormattingRule: Domestic carrier code formatting rule. Optional.
  */
-public struct MetadataPhoneNumberFormat: Decodable {
+public struct CKOMetadataPhoneNumberFormat: Decodable {
     public let pattern: String?
     public let format: String?
     public let intlFormat: String?
@@ -99,6 +99,6 @@ public struct MetadataPhoneNumberFormat: Decodable {
 }
 
 /// Internal object for metadata parsing
-internal struct PhoneNumberMetadata: Decodable {
-    var territories: [MetadataTerritory]
+internal struct CKOPhoneNumberMetadata: Decodable {
+    var territories: [CKOMetadataTerritory]
 }

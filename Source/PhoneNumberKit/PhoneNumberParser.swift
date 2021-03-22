@@ -41,7 +41,7 @@ final class PhoneNumberParser {
      - Parameter metadata: Metadata territory object.
      - Returns: Country code is UInt64.
      */
-    func extractCountryCode(_ number: String, nationalNumber: inout String, metadata: MetadataTerritory) throws -> UInt64 {
+    func extractCountryCode(_ number: String, nationalNumber: inout String, metadata: CKOMetadataTerritory) throws -> UInt64 {
         var fullNumber = number
         guard let possibleCountryIddPrefix = metadata.internationalPrefix else {
             return 0
@@ -49,7 +49,7 @@ final class PhoneNumberParser {
         let countryCodeSource = self.stripInternationalPrefixAndNormalize(&fullNumber, possibleIddPrefix: possibleCountryIddPrefix)
         if countryCodeSource != .defaultCountry {
             if fullNumber.count <= PhoneNumberConstants.minLengthForNSN {
-                throw PhoneNumberError.tooShort
+                throw CKOPhoneNumberError.tooShort
             }
             if let potentialCountryCode = extractPotentialCountryCode(fullNumber, nationalNumber: &nationalNumber), potentialCountryCode != 0 {
                 return potentialCountryCode
@@ -113,7 +113,7 @@ final class PhoneNumberParser {
 
     // MARK: Validations
 
-    func checkNumberType(_ nationalNumber: String, metadata: MetadataTerritory, leadingZero: Bool = false) -> PhoneNumberType {
+    func checkNumberType(_ nationalNumber: String, metadata: CKOMetadataTerritory, leadingZero: Bool = false) -> CKOPhoneNumberType {
         if leadingZero {
             let type = self.checkNumberType("0" + String(nationalNumber), metadata: metadata)
             if type != .unknown {
@@ -172,7 +172,7 @@ final class PhoneNumberParser {
      - Parameter numberDesc:  MetadataPhoneNumberDesc of a given phone number type.
      - Returns: True or false.
      */
-    func isNumberMatchingDesc(_ nationalNumber: String, numberDesc: MetadataPhoneNumberDesc?) -> Bool {
+    func isNumberMatchingDesc(_ nationalNumber: String, numberDesc: CKOMetadataPhoneNumberDesc?) -> Bool {
         return self.regex.matchesEntirely(numberDesc?.nationalNumberPattern, string: nationalNumber)
     }
 
@@ -240,7 +240,7 @@ final class PhoneNumberParser {
      - Parameter possibleIddPrefix:  Possible idd prefix for a given country.
      - Returns: Modified normalized number without international prefix and a PNCountryCodeSource enumeration.
      */
-    func stripInternationalPrefixAndNormalize(_ number: inout String, possibleIddPrefix: String?) -> PhoneNumberCountryCodeSource {
+    func stripInternationalPrefixAndNormalize(_ number: inout String, possibleIddPrefix: String?) -> CKOPhoneNumberCountryCodeSource {
         if self.regex.matchesAtStart(PhoneNumberPatterns.leadingPlusCharsPattern, string: number as String) {
             number = self.regex.replaceStringByRegex(PhoneNumberPatterns.leadingPlusCharsPattern, string: number as String)
             return .numberWithPlusSign
@@ -263,7 +263,7 @@ final class PhoneNumberParser {
      - Parameter metadata:  Final country's metadata.
      - Returns: Modified number without national prefix.
      */
-    func stripNationalPrefix(_ number: inout String, metadata: MetadataTerritory) {
+    func stripNationalPrefix(_ number: inout String, metadata: CKOMetadataTerritory) {
         guard let possibleNationalPrefix = metadata.nationalPrefixForParsing else {
             return
         }

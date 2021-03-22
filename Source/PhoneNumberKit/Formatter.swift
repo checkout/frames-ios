@@ -28,7 +28,7 @@ final class Formatter {
     ///   - formatType: Format type.
     ///   - regionMetadata: Region meta data.
     /// - Returns: Formatted Modified national number ready for display.
-    func format(phoneNumber: PhoneNumber, formatType: PhoneNumberFormat, regionMetadata: MetadataTerritory?) -> String {
+    func format(phoneNumber: CKOPhoneNumber, formatType: CKOPhoneNumberFormat, regionMetadata: CKOMetadataTerritory?) -> String {
         var formattedNationalNumber = phoneNumber.adjustedNationalNumber()
         if let regionMetadata = regionMetadata {
             formattedNationalNumber = self.formatNationalNumber(formattedNationalNumber, regionMetadata: regionMetadata, formatType: formatType)
@@ -45,7 +45,7 @@ final class Formatter {
     ///   - numberExtension: Number extension string.
     ///   - regionMetadata: Region meta data.
     /// - Returns: Modified number extension with either a preferred extension prefix or the default one.
-    func formatExtension(_ numberExtension: String?, regionMetadata: MetadataTerritory) -> String? {
+    func formatExtension(_ numberExtension: String?, regionMetadata: CKOMetadataTerritory) -> String? {
         if let extns = numberExtension {
             if let preferredExtnPrefix = regionMetadata.preferredExtnPrefix {
                 return "\(preferredExtnPrefix)\(extns)"
@@ -63,10 +63,10 @@ final class Formatter {
     ///   - regionMetadata: Region meta data.
     ///   - formatType: Format type.
     /// - Returns: Modified nationalNumber for display.
-    func formatNationalNumber(_ nationalNumber: String, regionMetadata: MetadataTerritory, formatType: PhoneNumberFormat) -> String {
+    func formatNationalNumber(_ nationalNumber: String, regionMetadata: CKOMetadataTerritory, formatType: CKOPhoneNumberFormat) -> String {
         guard let regexManager = regexManager else { return nationalNumber }
         let formats = regionMetadata.numberFormats
-        var selectedFormat: MetadataPhoneNumberFormat?
+        var selectedFormat: CKOMetadataPhoneNumberFormat?
         for format in formats {
             if let leadingDigitPattern = format.leadingDigitsPatterns?.last {
                 if regexManager.stringPositionByRegex(leadingDigitPattern, string: String(nationalNumber)) == 0 {
@@ -83,7 +83,7 @@ final class Formatter {
             }
         }
         if let formatPattern = selectedFormat {
-            guard let numberFormatRule = (formatType == PhoneNumberFormat.international && formatPattern.intlFormat != nil) ? formatPattern.intlFormat : formatPattern.format, let pattern = formatPattern.pattern else {
+            guard let numberFormatRule = (formatType == CKOPhoneNumberFormat.international && formatPattern.intlFormat != nil) ? formatPattern.intlFormat : formatPattern.format, let pattern = formatPattern.pattern else {
                 return nationalNumber
             }
             var formattedNationalNumber = String()
@@ -92,7 +92,7 @@ final class Formatter {
                 prefixFormattingRule = regexManager.replaceStringByRegex(PhoneNumberPatterns.npPattern, string: nationalPrefixFormattingRule, template: nationalPrefix)
                 prefixFormattingRule = regexManager.replaceStringByRegex(PhoneNumberPatterns.fgPattern, string: prefixFormattingRule, template: "\\$1")
             }
-            if formatType == PhoneNumberFormat.national, regexManager.hasValue(prefixFormattingRule) {
+            if formatType == CKOPhoneNumberFormat.national, regexManager.hasValue(prefixFormattingRule) {
                 let replacePattern = regexManager.replaceFirstStringByRegex(PhoneNumberPatterns.firstGroupPattern, string: numberFormatRule, templateString: prefixFormattingRule)
                 formattedNationalNumber = regexManager.replaceStringByRegex(pattern, string: nationalNumber, template: replacePattern)
             } else {
@@ -105,7 +105,7 @@ final class Formatter {
     }
 }
 
-public extension PhoneNumber {
+public extension CKOPhoneNumber {
     /**
      Adjust national number for display by adding leading zero if needed. Used for basic formatting functions.
      - Returns: A string representing the adjusted national number.

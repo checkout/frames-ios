@@ -1,5 +1,5 @@
 //
-//  PhoneNumberFormatter.swift
+//  CKOPhoneNumberFormatter.swift
 //  PhoneNumberKit
 //
 //  Created by Jean-Daniel.
@@ -8,10 +8,10 @@
 
 import Foundation
 
-open class PhoneNumberFormatter: Foundation.Formatter {
+open class CKOPhoneNumberFormatter: Foundation.Formatter {
     public let phoneNumberKit: CKOPhoneNumberKit
 
-    private let partialFormatter: PartialFormatter
+    private let partialFormatter: CKOPartialFormatter
 
     // We declare all properties as @objc, so we can configure them though IB (using custom property)
     @objc public dynamic
@@ -41,13 +41,13 @@ open class PhoneNumberFormatter: Foundation.Formatter {
 
     public init(phoneNumberKit pnk: CKOPhoneNumberKit = CKOPhoneNumberKit(), defaultRegion: String = CKOPhoneNumberKit.defaultRegionCode(), withPrefix: Bool = true) {
         self.phoneNumberKit = pnk
-        self.partialFormatter = PartialFormatter(phoneNumberKit: self.phoneNumberKit, defaultRegion: defaultRegion, withPrefix: withPrefix)
+        self.partialFormatter = CKOPartialFormatter(phoneNumberKit: self.phoneNumberKit, defaultRegion: defaultRegion, withPrefix: withPrefix)
         super.init()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         self.phoneNumberKit = CKOPhoneNumberKit()
-        self.partialFormatter = PartialFormatter(phoneNumberKit: self.phoneNumberKit, defaultRegion: self.defaultRegion, withPrefix: self.withPrefix)
+        self.partialFormatter = CKOPartialFormatter(phoneNumberKit: self.phoneNumberKit, defaultRegion: self.defaultRegion, withPrefix: self.withPrefix)
         super.init(coder: aDecoder)
     }
 }
@@ -56,9 +56,9 @@ open class PhoneNumberFormatter: Foundation.Formatter {
 
 // MARK: NSFormatter implementation
 
-extension PhoneNumberFormatter {
+extension CKOPhoneNumberFormatter {
     open override func string(for obj: Any?) -> String? {
-        if let pn = obj as? PhoneNumber {
+        if let pn = obj as? CKOPhoneNumber {
             return self.phoneNumberKit.format(pn, toType: self.withPrefix ? .international : .national)
         }
         if let str = obj as? String {

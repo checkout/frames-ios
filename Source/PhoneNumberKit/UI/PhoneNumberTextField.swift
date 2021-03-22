@@ -12,7 +12,7 @@ import Foundation
 import UIKit
 
 /// Custom text field that formats phone numbers
-open class PhoneNumberTextField: UITextField, UITextFieldDelegate {
+open class CKOPhoneNumberTextField: UITextField, UITextFieldDelegate {
     public let phoneNumberKit: CKOPhoneNumberKit
 
     public lazy var flagButton = UIButton()
@@ -140,7 +140,7 @@ open class PhoneNumberTextField: UITextField, UITextFieldDelegate {
         }
     }
 
-    public private(set) lazy var partialFormatter: PartialFormatter = PartialFormatter(
+    public private(set) lazy var partialFormatter: CKOPartialFormatter = CKOPartialFormatter(
         phoneNumberKit: phoneNumberKit,
         defaultRegion: defaultRegion,
         withPrefix: withPrefix
@@ -190,7 +190,7 @@ open class PhoneNumberTextField: UITextField, UITextFieldDelegate {
      Returns the current valid phone number.
      - returns: PhoneNumber?
      */
-    public var phoneNumber: PhoneNumber? {
+    public var phoneNumber: CKOPhoneNumber? {
         guard let rawNumber = self.text else { return nil }
         do {
             return try phoneNumberKit.parse(rawNumber, withRegion: currentRegion)
@@ -292,7 +292,7 @@ open class PhoneNumberTextField: UITextField, UITextFieldDelegate {
         guard self.withExamplePlaceholder else { return }
         if isEditing, !(self.text ?? "").isEmpty { return } // No need to update a placeholder while the placeholder isn't showing
 
-        let format = self.withPrefix ? PhoneNumberFormat.international : .national
+        let format = self.withPrefix ? CKOPhoneNumberFormat.international : .national
         let example = self.phoneNumberKit.getFormattedExampleNumber(forCountry: self.currentRegion, withFormat: format, withPrefix: self.withPrefix) ?? "12345678"
         let font = self.font ?? UIFont.preferredFont(forTextStyle: .body)
         let ph = NSMutableAttributedString(string: example, attributes: [.font: font])
@@ -315,9 +315,9 @@ open class PhoneNumberTextField: UITextField, UITextFieldDelegate {
     @available(iOS 11.0, *)
     @objc func didPressFlagButton() {
         guard withDefaultPickerUI else { return }
-        let vc = CountryCodePickerViewController(phoneNumberKit: phoneNumberKit)
+        let vc = CKOCountryCodePickerViewController(phoneNumberKit: phoneNumberKit)
         vc.delegate = self
-        if let nav = containingViewController?.navigationController, !CKOPhoneNumberKit.CountryCodePicker.forceModalPresentation {
+        if let nav = containingViewController?.navigationController, !CKOPhoneNumberKit.CKOCountryCodePicker.forceModalPresentation {
             nav.pushViewController(vc, animated: true)
         } else {
             let nav = UINavigationController(rootViewController: vc)
@@ -416,7 +416,7 @@ open class PhoneNumberTextField: UITextField, UITextFieldDelegate {
         let modifiedTextField = textAsNSString.replacingCharacters(in: range, with: string)
 
         let filteredCharacters = modifiedTextField.filter {
-            String($0).rangeOfCharacter(from: (textField as! PhoneNumberTextField).nonNumericSet as CharacterSet) == nil
+            String($0).rangeOfCharacter(from: (textField as! CKOPhoneNumberTextField).nonNumericSet as CharacterSet) == nil
         }
         let rawNumberString = String(filteredCharacters)
 
@@ -501,16 +501,16 @@ open class PhoneNumberTextField: UITextField, UITextFieldDelegate {
 }
 
 @available(iOS 11.0, *)
-extension PhoneNumberTextField: CountryCodePickerDelegate {
+extension CKOPhoneNumberTextField: CountryCodePickerDelegate {
 
-    func countryCodePickerViewControllerDidPickCountry(_ country: CountryCodePickerViewController.Country) {
+    func countryCodePickerViewControllerDidPickCountry(_ country: CKOCountryCodePickerViewController.Country) {
         text = isEditing ? "+" + country.prefix : ""
         _defaultRegion = country.code
         partialFormatter.defaultRegion = country.code
         updateFlag()
         updatePlaceholder()
 
-        if let nav = containingViewController?.navigationController, !CKOPhoneNumberKit.CountryCodePicker.forceModalPresentation {
+        if let nav = containingViewController?.navigationController, !CKOPhoneNumberKit.CKOCountryCodePicker.forceModalPresentation {
             nav.popViewController(animated: true)
         } else {
             containingViewController?.dismiss(animated: true)

@@ -5,11 +5,11 @@ import UIKit
 
 @available(iOS 11.0, *)
 protocol CountryCodePickerDelegate: class {
-    func countryCodePickerViewControllerDidPickCountry(_ country: CountryCodePickerViewController.Country)
+    func countryCodePickerViewControllerDidPickCountry(_ country: CKOCountryCodePickerViewController.Country)
 }
 
 @available(iOS 11.0, *)
-public class CountryCodePickerViewController: UITableViewController {
+public class CKOCountryCodePickerViewController: UITableViewController {
 
     lazy var searchController = UISearchController(searchResultsController: nil)
 
@@ -71,7 +71,7 @@ public class CountryCodePickerViewController: UITableViewController {
      */
     public init(
         phoneNumberKit: CKOPhoneNumberKit,
-        commonCountryCodes: [String] = CKOPhoneNumberKit.CountryCodePicker.commonCountryCodes)
+        commonCountryCodes: [String] = CKOPhoneNumberKit.CKOCountryCodePicker.commonCountryCodes)
     {
         self.phoneNumberKit = phoneNumberKit
         self.commonCountryCodes = commonCountryCodes
@@ -81,7 +81,7 @@ public class CountryCodePickerViewController: UITableViewController {
 
     required init?(coder aDecoder: NSCoder) {
         self.phoneNumberKit = CKOPhoneNumberKit()
-        self.commonCountryCodes = CKOPhoneNumberKit.CountryCodePicker.commonCountryCodes
+        self.commonCountryCodes = CKOPhoneNumberKit.CKOCountryCodePicker.commonCountryCodes
         super.init(coder: aDecoder)
         self.commonInit()
     }
@@ -181,7 +181,7 @@ public class CountryCodePickerViewController: UITableViewController {
 }
 
 @available(iOS 11.0, *)
-extension CountryCodePickerViewController: UISearchResultsUpdating {
+extension CKOCountryCodePickerViewController: UISearchResultsUpdating {
 
     var isFiltering: Bool {
         searchController.isActive && !isSearchBarEmpty
@@ -206,7 +206,7 @@ extension CountryCodePickerViewController: UISearchResultsUpdating {
 // MARK: Types
 
 @available(iOS 11.0, *)
-internal extension CountryCodePickerViewController {
+internal extension CKOCountryCodePickerViewController {
 
     struct Country {
         var code: String

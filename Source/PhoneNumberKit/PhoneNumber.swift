@@ -18,18 +18,18 @@ import Foundation
  - numberExtension: Extension if available. String. Optional
  - type: Computed phone number type on access. Returns from an enumeration - PNPhoneNumberType.
  */
-public struct PhoneNumber: Codable {
+public struct CKOPhoneNumber: Codable {
     public let numberString: String
     public let countryCode: UInt64
     public let leadingZero: Bool
     public let nationalNumber: UInt64
     public let numberExtension: String?
-    public let type: PhoneNumberType
+    public let type: CKOPhoneNumberType
     public let regionID: String?
 }
 
-extension PhoneNumber: Equatable {
-    public static func == (lhs: PhoneNumber, rhs: PhoneNumber) -> Bool {
+extension CKOPhoneNumber: Equatable {
+    public static func == (lhs: CKOPhoneNumber, rhs: CKOPhoneNumber) -> Bool {
         return (lhs.countryCode == rhs.countryCode)
             && (lhs.leadingZero == rhs.leadingZero)
             && (lhs.nationalNumber == rhs.nationalNumber)
@@ -37,7 +37,7 @@ extension PhoneNumber: Equatable {
     }
 }
 
-extension PhoneNumber: Hashable {
+extension CKOPhoneNumber: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(self.countryCode)
         hasher.combine(self.nationalNumber)
@@ -50,9 +50,9 @@ extension PhoneNumber: Hashable {
     }
 }
 
-extension PhoneNumber {
-    public static func notPhoneNumber() -> PhoneNumber {
-        return PhoneNumber(numberString: "", countryCode: 0, leadingZero: false, nationalNumber: 0, numberExtension: nil, type: .notParsed, regionID: nil)
+extension CKOPhoneNumber {
+    public static func notPhoneNumber() -> CKOPhoneNumber {
+        return CKOPhoneNumber(numberString: "", countryCode: 0, leadingZero: false, nationalNumber: 0, numberExtension: nil, type: .notParsed, regionID: nil)
     }
 
     public func notParsed() -> Bool {
@@ -61,7 +61,7 @@ extension PhoneNumber {
 }
 
 /// In past versions of PhoneNumberKit you were able to initialize a PhoneNumber object to parse a String. Please use a PhoneNumberKit object's methods.
-public extension PhoneNumber {
+public extension CKOPhoneNumber {
     /**
      DEPRECATED.
      Parse a string into a phone number object using default region. Can throw.
@@ -69,8 +69,8 @@ public extension PhoneNumber {
      */
     @available(*, unavailable, message: "use PhoneNumberKit instead to produce PhoneNumbers")
     init(rawNumber: String) throws {
-        assertionFailure(PhoneNumberError.deprecated.localizedDescription)
-        throw PhoneNumberError.deprecated
+        assertionFailure(CKOPhoneNumberError.deprecated.localizedDescription)
+        throw CKOPhoneNumberError.deprecated
     }
 
     /**
@@ -81,6 +81,6 @@ public extension PhoneNumber {
      */
     @available(*, unavailable, message: "use PhoneNumberKit instead to produce PhoneNumbers")
     init(rawNumber: String, region: String) throws {
-        throw PhoneNumberError.deprecated
+        throw CKOPhoneNumberError.deprecated
     }
 }

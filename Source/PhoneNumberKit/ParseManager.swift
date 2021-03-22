@@ -28,8 +28,8 @@ final class ParseManager {
      - Parameter region: ISO 639 compliant region code.
      - parameter ignoreType:   Avoids number type checking for faster performance.
      */
-    func parse(_ numberString: String, withRegion region: String, ignoreType: Bool) throws -> PhoneNumber {
-        guard let metadataManager = metadataManager, let regexManager = regexManager else { throw PhoneNumberError.generalError }
+    func parse(_ numberString: String, withRegion region: String, ignoreType: Bool) throws -> CKOPhoneNumber {
+        guard let metadataManager = metadataManager, let regexManager = regexManager else { throw CKOPhoneNumberError.generalError }
         // Make sure region is in uppercase so that it matches metadata (1)
         let region = region.uppercased()
         // Extract number (2)
@@ -48,7 +48,7 @@ final class ParseManager {
         }
         // Country code parse (4)
         guard var regionMetadata = metadataManager.territoriesByCountry[region] else {
-            throw PhoneNumberError.invalidCountryCode
+            throw CKOPhoneNumberError.invalidCountryCode
         }
         var countryCode: UInt64 = 0
         do {
@@ -73,27 +73,27 @@ final class ParseManager {
 
         // Test number against general number description for correct metadata (8)
         if let generalNumberDesc = regionMetadata.generalDesc, regexManager.hasValue(generalNumberDesc.nationalNumberPattern) == false || parser.isNumberMatchingDesc(nationalNumber, numberDesc: generalNumberDesc) == false {
-            throw PhoneNumberError.notANumber
+            throw CKOPhoneNumberError.notANumber
         }
         // Finalize remaining parameters and create phone number object (9)
         let leadingZero = nationalNumber.hasPrefix("0")
         guard let finalNationalNumber = UInt64(nationalNumber) else {
-            throw PhoneNumberError.notANumber
+            throw CKOPhoneNumberError.notANumber
         }
 
         // Check if the number if of a known type (10)
-        var type: PhoneNumberType = .unknown
+        var type: CKOPhoneNumberType = .unknown
         if ignoreType == false {
             if let regionCode = getRegionCode(of: finalNationalNumber, countryCode: countryCode, leadingZero: leadingZero), let foundMetadata = metadataManager.territoriesByCountry[regionCode] {
                 regionMetadata = foundMetadata
             }
             type = self.parser.checkNumberType(String(nationalNumber), metadata: regionMetadata, leadingZero: leadingZero)
             if type == .unknown {
-                throw PhoneNumberError.unknownType
+                throw CKOPhoneNumberError.unknownType
             }
         }
 
-        let phoneNumber = PhoneNumber(numberString: numberString, countryCode: countryCode, leadingZero: leadingZero, nationalNumber: finalNationalNumber, numberExtension: numberExtension, type: type, regionID: regionMetadata.codeID)
+        let phoneNumber = CKOPhoneNumber(numberString: numberString, countryCode: countryCode, leadingZero: leadingZero, nationalNumber: finalNationalNumber, numberExtension: numberExtension, type: type, regionID: regionMetadata.codeID)
         return phoneNumber
     }
 
@@ -106,8 +106,8 @@ final class ParseManager {
      - parameter ignoreType:   Avoids number type checking for faster performance.
      - Returns: An array of valid PhoneNumber objects.
      */
-    func parseMultiple(_ numberStrings: [String], withRegion region: String, ignoreType: Bool, shouldReturnFailedEmptyNumbers: Bool = false, testCallback: (() -> Void)? = nil) -> [PhoneNumber] {
-        var multiParseArray = [PhoneNumber]()
+    func parseMultiple(_ numberStrings: [String], withRegion region: String, ignoreType: Bool, shouldReturnFailedEmptyNumbers: Bool = false, testCallback: (() -> Void)? = nil) -> [CKOPhoneNumber] {
+        var multiParseArray = [CKOPhoneNumber]()
         let group = DispatchGroup()
         let queue = DispatchQueue(label: "com.phonenumberkit.multipleparse", qos: .default)
         for (index, numberString) in numberStrings.enumerated() {
@@ -118,11 +118,11 @@ final class ParseManager {
                     if let phoneNumber = try self?.parse(numberString, withRegion: region, ignoreType: ignoreType) {
                         multiParseArray.append(phoneNumber)
                     } else if shouldReturnFailedEmptyNumbers {
-                        multiParseArray.append(PhoneNumber.notPhoneNumber())
+                        multiParseArray.append(CKOPhoneNumber.notPhoneNumber())
                     }
                 } catch {
                     if shouldReturnFailedEmptyNumbers {
-                        multiParseArray.append(PhoneNumber.notPhoneNumber())
+                        multiParseArray.append(CKOPhoneNumber.notPhoneNumber())
                     }
                 }
                 group.leave()

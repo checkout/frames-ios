@@ -43,7 +43,7 @@ final class RegexManager {
 
             return regex
         } catch {
-            throw PhoneNumberError.generalError
+            throw CKOPhoneNumberError.generalError
         }
     }
 
@@ -54,7 +54,7 @@ final class RegexManager {
             let matches = currentPattern.matches(in: internalString)
             return matches
         } catch {
-            throw PhoneNumberError.generalError
+            throw CKOPhoneNumberError.generalError
         }
     }
 
@@ -63,7 +63,7 @@ final class RegexManager {
         if let firstMatch = fallBackMatches.first {
             return firstMatch
         } else {
-            throw PhoneNumberError.notANumber
+            throw CKOPhoneNumberError.notANumber
         }
     }
 

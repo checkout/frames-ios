@@ -8,9 +8,9 @@
 
 import Foundation
 
-// MARK: - MetadataTerritory
+// MARK: - CKOMetadataTerritory
 
-public extension MetadataTerritory {
+public extension CKOMetadataTerritory {
     enum CodingKeys: String, CodingKey {
         case codeID = "id"
         case countryCode
@@ -52,32 +52,32 @@ public extension MetadataTerritory {
         nationalPrefixForParsing = (possibleNationalPrefixForParsing == nil && possibleNationalPrefix != nil) ? nationalPrefix : possibleNationalPrefixForParsing
         nationalPrefixFormattingRule = try? container.decode(String.self, forKey: .nationalPrefixFormattingRule)
         let availableFormats = try? container.nestedContainer(keyedBy: CodingKeys.self, forKey: .availableFormats)
-        let temporaryFormatList: [MetadataPhoneNumberFormat] = availableFormats?.decodeArrayOrObject(forKey: .numberFormats) ?? [MetadataPhoneNumberFormat]()
+        let temporaryFormatList: [CKOMetadataPhoneNumberFormat] = availableFormats?.decodeArrayOrObject(forKey: .numberFormats) ?? [CKOMetadataPhoneNumberFormat]()
         numberFormats = temporaryFormatList.withDefaultNationalPrefixFormattingRule(nationalPrefixFormattingRule)
 
         // Default parsing logic
         internationalPrefix = try? container.decode(String.self, forKey: .internationalPrefix)
         nationalPrefixTransformRule = try? container.decode(String.self, forKey: .nationalPrefixTransformRule)
         preferredExtnPrefix = try? container.decode(String.self, forKey: .preferredExtnPrefix)
-        emergency = try? container.decode(MetadataPhoneNumberDesc.self, forKey: .emergency)
-        fixedLine = try? container.decode(MetadataPhoneNumberDesc.self, forKey: .fixedLine)
-        generalDesc = try? container.decode(MetadataPhoneNumberDesc.self, forKey: .generalDesc)
-        mobile = try? container.decode(MetadataPhoneNumberDesc.self, forKey: .mobile)
-        pager = try? container.decode(MetadataPhoneNumberDesc.self, forKey: .pager)
-        personalNumber = try? container.decode(MetadataPhoneNumberDesc.self, forKey: .personalNumber)
-        premiumRate = try? container.decode(MetadataPhoneNumberDesc.self, forKey: .premiumRate)
-        sharedCost = try? container.decode(MetadataPhoneNumberDesc.self, forKey: .sharedCost)
-        tollFree = try? container.decode(MetadataPhoneNumberDesc.self, forKey: .tollFree)
-        voicemail = try? container.decode(MetadataPhoneNumberDesc.self, forKey: .voicemail)
-        voip = try? container.decode(MetadataPhoneNumberDesc.self, forKey: .voip)
-        uan = try? container.decode(MetadataPhoneNumberDesc.self, forKey: .uan)
+        emergency = try? container.decode(CKOMetadataPhoneNumberDesc.self, forKey: .emergency)
+        fixedLine = try? container.decode(CKOMetadataPhoneNumberDesc.self, forKey: .fixedLine)
+        generalDesc = try? container.decode(CKOMetadataPhoneNumberDesc.self, forKey: .generalDesc)
+        mobile = try? container.decode(CKOMetadataPhoneNumberDesc.self, forKey: .mobile)
+        pager = try? container.decode(CKOMetadataPhoneNumberDesc.self, forKey: .pager)
+        personalNumber = try? container.decode(CKOMetadataPhoneNumberDesc.self, forKey: .personalNumber)
+        premiumRate = try? container.decode(CKOMetadataPhoneNumberDesc.self, forKey: .premiumRate)
+        sharedCost = try? container.decode(CKOMetadataPhoneNumberDesc.self, forKey: .sharedCost)
+        tollFree = try? container.decode(CKOMetadataPhoneNumberDesc.self, forKey: .tollFree)
+        voicemail = try? container.decode(CKOMetadataPhoneNumberDesc.self, forKey: .voicemail)
+        voip = try? container.decode(CKOMetadataPhoneNumberDesc.self, forKey: .voip)
+        uan = try? container.decode(CKOMetadataPhoneNumberDesc.self, forKey: .uan)
         leadingDigits = try? container.decode(String.self, forKey: .leadingDigits)
     }
 }
 
-// MARK: - MetadataPhoneNumberFormat
+// MARK: - CKOMetadataPhoneNumberFormat
 
-public extension MetadataPhoneNumberFormat {
+public extension CKOMetadataPhoneNumberFormat {
     enum CodingKeys: String, CodingKey {
         case pattern
         case format
@@ -106,7 +106,7 @@ public extension MetadataPhoneNumberFormat {
 
 // MARK: - PhoneNumberMetadata
 
-extension PhoneNumberMetadata {
+extension CKOPhoneNumberMetadata {
     enum CodingKeys: String, CodingKey {
         case phoneNumberMetadata
         case territories
@@ -117,7 +117,7 @@ extension PhoneNumberMetadata {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let metadataObject = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .phoneNumberMetadata)
         let territoryObject = try metadataObject.nestedContainer(keyedBy: CodingKeys.self, forKey: .territories)
-        territories = try territoryObject.decode([MetadataTerritory].self, forKey: .territory)
+        territories = try territoryObject.decode([CKOMetadataTerritory].self, forKey: .territory)
     }
 }
 
@@ -148,9 +148,9 @@ private extension KeyedDecodingContainer where K: CodingKey {
     }
 }
 
-private extension Collection where Element == MetadataPhoneNumberFormat {
+private extension Collection where Element == CKOMetadataPhoneNumberFormat {
     func withDefaultNationalPrefixFormattingRule(_ nationalPrefixFormattingRule: String?) -> [Element] {
-        return self.map { format -> MetadataPhoneNumberFormat in
+        return self.map { format -> CKOMetadataPhoneNumberFormat in
             var modifiedFormat = format
             if modifiedFormat.nationalPrefixFormattingRule == nil {
                 modifiedFormat.nationalPrefixFormattingRule = nationalPrefixFormattingRule

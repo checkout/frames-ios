@@ -9,7 +9,7 @@
 import Foundation
 
 /// Partial formatter
-public final class PartialFormatter {
+public final class CKOPartialFormatter {
     private let phoneNumberKit: CKOPhoneNumberKit
 
     weak var metadataManager: MetadataManager?
@@ -49,8 +49,8 @@ public final class PartialFormatter {
         self.currentMetadata = self.defaultMetadata
     }
 
-    var defaultMetadata: MetadataTerritory?
-    var currentMetadata: MetadataTerritory?
+    var defaultMetadata: CKOMetadataTerritory?
+    var currentMetadata: CKOMetadataTerritory?
     var prefixBeforeNationalNumber = String()
     var shouldAddSpaceAfterNationalPrefix = false
     var withPrefix = true
@@ -172,7 +172,7 @@ public final class PartialFormatter {
         return (firstCharacter == "1" && secondCharacter != "0" && secondCharacter != "1")
     }
 
-    func isFormatEligible(_ format: MetadataPhoneNumberFormat) -> Bool {
+    func isFormatEligible(_ format: CKOMetadataPhoneNumberFormat) -> Bool {
         guard let phoneFormat = format.format else {
             return false
         }
@@ -274,10 +274,10 @@ public final class PartialFormatter {
         return (rawNumber, "")
     }
     
-    func availableFormats(_ rawNumber: String) -> [MetadataPhoneNumberFormat]? {
+    func availableFormats(_ rawNumber: String) -> [CKOMetadataPhoneNumberFormat]? {
         guard let regexManager = regexManager else { return nil }
-        var tempPossibleFormats = [MetadataPhoneNumberFormat]()
-        var possibleFormats = [MetadataPhoneNumberFormat]()
+        var tempPossibleFormats = [CKOMetadataPhoneNumberFormat]()
+        var possibleFormats = [CKOMetadataPhoneNumberFormat]()
         if let metadata = currentMetadata {
             let formatList = metadata.numberFormats
             for format in formatList {
@@ -302,7 +302,7 @@ public final class PartialFormatter {
         return nil
     }
 
-    func applyFormat(_ rawNumber: String, formats: [MetadataPhoneNumberFormat]) -> String? {
+    func applyFormat(_ rawNumber: String, formats: [CKOMetadataPhoneNumberFormat]) -> String? {
         guard let regexManager = regexManager else { return nil }
         for format in formats {
             if let pattern = format.pattern, let formatTemplate = format.format {
@@ -326,7 +326,7 @@ public final class PartialFormatter {
         return nil
     }
 
-    func createFormattingTemplate(_ format: MetadataPhoneNumberFormat, rawNumber: String) -> String? {
+    func createFormattingTemplate(_ format: CKOMetadataPhoneNumberFormat, rawNumber: String) -> String? {
         guard var numberPattern = format.pattern, let numberFormat = format.format, let regexManager = regexManager else {
             return nil
         }

@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: Private Enums
 
-enum PhoneNumberCountryCodeSource {
+enum CKOPhoneNumberCountryCodeSource {
     case numberWithPlusSign
     case numberWithIDD
     case numberWithoutPlusSign
@@ -30,7 +30,7 @@ enum PhoneNumberCountryCodeSource {
  - Deprecated: The method used was deprecated
  - metadataNotFound: PhoneNumberKit was unable to read the included metadata
  */
-public enum PhoneNumberError: Error {
+public enum CKOPhoneNumberError: Error {
     case generalError
     case invalidCountryCode
     case notANumber
@@ -41,7 +41,7 @@ public enum PhoneNumberError: Error {
     case metadataNotFound
 }
 
-extension PhoneNumberError: LocalizedError {
+extension CKOPhoneNumberError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .generalError: return NSLocalizedString("An error occured whilst validating the phone number.", comment: "")
@@ -56,7 +56,7 @@ extension PhoneNumberError: LocalizedError {
     }
 }
 
-public enum PhoneNumberFormat {
+public enum CKOPhoneNumberFormat {
     case e164 // +33689123456
     case international // +33 6 89 12 34 56
     case national // 06 89 12 34 56
@@ -77,7 +77,7 @@ public enum PhoneNumberFormat {
  - uan: UAN numbers
  - unknown: Unknown number type
  */
-public enum PhoneNumberType: String, Codable {
+public enum CKOPhoneNumberType: String, Codable {
     case fixedLine
     case mobile
     case fixedOrMobile
@@ -93,7 +93,7 @@ public enum PhoneNumberType: String, Codable {
     case notParsed
 }
 
-public enum PossibleLengthType: String, Codable {
+public enum CKOPossibleLengthType: String, Codable {
   case national
   case localOnly
 }
