@@ -1,0 +1,16 @@
+PODS:
+  - Frames (3.3.0)
+
+DEPENDENCIES:
+  - Frames (from `../`)
+
+EXTERNAL SOURCES:
+  Frames:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Frames: fcdd557295e85edfd18dec8a31de7202fddca1bb
+
+PODFILE CHECKSUM: b1c4eefa8909fec0f91acef180b95f98151dc9ff
+
+COCOAPODS: 1.10.0
