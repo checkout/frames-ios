@@ -23,7 +23,9 @@ final class NetworkErrorTests: XCTestCase {
         do {
 
             let data = try JSONSerialization.data(withJSONObject: responseJSON, options: .prettyPrinted)
-            let result = try JSONDecoder().decode(NetworkError.self, from: data)
+            let snakeCaseDecoder = JSONDecoder()
+            snakeCaseDecoder.keyDecodingStrategy = .convertFromSnakeCase
+            let result = try snakeCaseDecoder.decode(NetworkError.self, from: data)
 
             guard case .checkout(let requestId, let errorType, let errorCodes) = result else {
                 return XCTFail("Unexpected NetworkError type.")
