@@ -1,32 +1,34 @@
-// swift-tools-version:4.1
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-
+// swift-tools-version:5.1
 import PackageDescription
 
 let package = Package(
-    name: "FramesIos",
+    name: "Frames",
+    platforms: [
+        .macOS(.v10_12),
+        .iOS(.v10)
+    ],
     products: [
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
-            name: "FramesIos",
-            targets: ["FramesIos"]),
-        ],
+            name: "Frames",
+            targets: ["Frames"]
+        )
+    ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
-        .package(url: "https://github.com/Alamofire/Alamofire.git", from: "4.0.0")
+        .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.4.0"),
+        .package(url: "https://github.com/marmelroy/PhoneNumberKit.git", from: "3.3.3")
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
-       .target(
-           name: "FramesIos",
-           dependencies: ["Alamofire"],
-           path: "Source"),
-//        .testTarget(
-//            name: "FramesIosTests",
-//            dependencies: ["FramesIos"],
-//            path: "Tests")
-        ]
+        .target(
+            name: "Frames",
+            dependencies: ["Alamofire", "PhoneNumberKit"],
+            path: "Source"
+        ),
+        .testTarget(
+            name: "Frames-Tests",
+            dependencies: ["Frames"],
+            path: "Tests"
+        )
+    ],
+    swiftLanguageVersions: [.v5]
 )
 
