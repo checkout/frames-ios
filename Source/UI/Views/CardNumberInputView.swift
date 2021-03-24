@@ -73,8 +73,8 @@ import UIKit
 
         if var targetPosition = textField.position(from: textField.beginningOfDocument, offset: targetCursorPosition) {
             if targetCursorPosition != 0 {
-                let lastChar = cardNumberFormatted
-                    .substring(with: NSRange(location: targetCursorPosition - 1, length: 1))
+                let lastChar = cardNumberFormatted[cardNumberFormatted.index(cardNumberFormatted.startIndex,
+                                                                             offsetBy: targetCursorPosition - 1)]
                 if lastChar == " " && previousTextCount < cardNumberFormatted.count {
                     targetPosition = textField
                         .position(from: textField.beginningOfDocument, offset: targetCursorPosition + 1)!

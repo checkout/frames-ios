@@ -1,4 +1,5 @@
 import UIKit
+import PhoneNumberKit
 
 /// Standard Input View containing a label and an input field.
 @IBDesignable public class PhoneNumberInputView: StandardInputView, UITextFieldDelegate {
@@ -6,7 +7,7 @@ import UIKit
     // MARK: - Properties
 
     /// Phone Number Kit
-    let phoneNumberKit = CKOPhoneNumberKit()
+    let phoneNumberKit = PhoneNumberKit()
     var partialFormatter: PartialFormatter {
         return PartialFormatter.init(phoneNumberKit: phoneNumberKit, defaultRegion: "GB", withPrefix: true)
     }
@@ -69,7 +70,8 @@ import UIKit
 
         if var targetPosition = textField.position(from: textField.beginningOfDocument, offset: targetCursorPosition) {
             if targetCursorPosition != 0 {
-                let lastChar = formatted.substring(with: NSRange(location: targetCursorPosition - 1, length: 1))
+                let lastChar = formatted[formatted.index(formatted.startIndex,
+                                                         offsetBy: targetCursorPosition - 1)]
                 if lastChar == " " && previousTextCount < formatted.count && phoneNumber != formatted {
                     guard let aTargetPosition = textField.position(from: textField.beginningOfDocument,
                                                                    offset: targetCursorPosition + 1) else {

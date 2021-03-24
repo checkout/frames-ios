@@ -1,7 +1,9 @@
 PODS:
-  - Frames (3.3.0)
+  - Frames (3.3.0):
+    - PhoneNumberKit (~> 3.3.3)
   - Frames/Tests (3.3.0):
     - Mockingjay (~> 3.0.0-alpha.1)
+    - PhoneNumberKit (~> 3.3.3)
   - Mockingjay (3.0.0-alpha.1):
     - Mockingjay/Core (= 3.0.0-alpha.1)
     - Mockingjay/XCTest (= 3.0.0-alpha.1)
@@ -9,6 +11,12 @@ PODS:
     - URITemplate (~> 3.0)
   - Mockingjay/XCTest (3.0.0-alpha.1):
     - Mockingjay/Core
+  - PhoneNumberKit (3.3.3):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.3.3)
+    - PhoneNumberKit/UIKit (= 3.3.3)
+  - PhoneNumberKit/PhoneNumberKitCore (3.3.3)
+  - PhoneNumberKit/UIKit (3.3.3):
+    - PhoneNumberKit/PhoneNumberKitCore
   - URITemplate (3.0.0)
 
 DEPENDENCIES:
@@ -18,6 +26,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Mockingjay
+    - PhoneNumberKit
     - URITemplate
 
 EXTERNAL SOURCES:
@@ -25,8 +34,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Frames: 327fa43eff6d72df4133901a6ec7f999f5e3985d
+  Frames: a4658fb0c73b700cc3dcaded0f3bf9b3fe8a63b3
   Mockingjay: 0f7c5aa49c7f1b95621cee3c79b557141f5a225c
+  PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
   URITemplate: 58e0d47f967006c5d59888af5356c4a8ed3b197d
 
 PODFILE CHECKSUM: dc02696808c8fc992e3f471028bfac38ca401016

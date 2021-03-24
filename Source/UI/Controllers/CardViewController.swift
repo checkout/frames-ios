@@ -147,8 +147,9 @@ public class CardViewController: UIViewController,
         let month = calendar.component(.month, from: date)
         let year = String(calendar.component(.year, from: date))
         let monthString = month < 10 ? "0\(month)" : "\(month)"
+        let subYearIndex = year.index(year.startIndex, offsetBy: 2)
         cardView.expirationDateInputView.textField.text =
-            "\(monthString)/\(year.substring(with: NSRange(location: 2, length: 2)))"
+            "\(monthString)/\(year[subYearIndex...year.index(subYearIndex, offsetBy: 1)])"
     }
 
     @objc func onTapAddressView() {

@@ -29,6 +29,7 @@ import UIKit
     // MARK: - ExpirationDatePickerDelegate
 
     public func onDateChanged(month: String, year: String) {
-        textField.text = "\(month)/\(year.substring(with: NSRange(location: 2, length: 2)))"
+        let subYearIndex = year.index(year.startIndex, offsetBy: 2)
+        textField.text = "\(month)/\(year[subYearIndex...year.index(subYearIndex, offsetBy: 1)])"
     }
 }
