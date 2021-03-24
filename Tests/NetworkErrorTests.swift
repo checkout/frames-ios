@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import FramesIos
+@testable import Frames
 
 final class NetworkErrorTests: XCTestCase {
 

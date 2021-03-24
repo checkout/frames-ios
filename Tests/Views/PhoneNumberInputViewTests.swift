@@ -1,5 +1,5 @@
 import XCTest
-@testable import FramesIos
+@testable import Frames
 
 class PhoneNumberInputViewTests: XCTestCase {
 
@@ -21,7 +21,7 @@ class PhoneNumberInputViewTests: XCTestCase {
         XCTAssertFalse(phoneNumberInputView.isValidNumber)
     }
 
-    func testTexFieldDidChange() {
+    func testTextFieldDidChange() {
         let phoneNumberInputView = PhoneNumberInputView()
         phoneNumberInputView.textField.text = "+33622545688"
         phoneNumberInputView.textFieldDidChange(textField: phoneNumberInputView.textField)

@@ -1,6 +1,6 @@
 import Foundation
 import UIKit
-@testable import FramesIos
+@testable import Frames
 
 class AddressViewControllerMock: AddressViewController {
     var kbShowCalledTimes = 0

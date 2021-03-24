@@ -1,5 +1,5 @@
 import XCTest
-@testable import FramesIos
+@testable import Frames
 
 class CardViewControllerMockDelegate: CardViewControllerDelegate {
     func onSubmit(controller: CardViewController) {}

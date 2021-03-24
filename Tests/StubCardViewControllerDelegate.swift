@@ -6,7 +6,7 @@
 //  Copyright © 2021 Checkout. All rights reserved.
 //
 
-import FramesIos
+import Frames
 
 final class StubCardViewControllerDelegate: CardViewControllerDelegate {
 

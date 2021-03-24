@@ -1,16 +1,34 @@
 PODS:
   - Frames (3.3.0)
+  - Frames/Tests (3.3.0):
+    - Mockingjay (~> 3.0.0-alpha.1)
+  - Mockingjay (3.0.0-alpha.1):
+    - Mockingjay/Core (= 3.0.0-alpha.1)
+    - Mockingjay/XCTest (= 3.0.0-alpha.1)
+  - Mockingjay/Core (3.0.0-alpha.1):
+    - URITemplate (~> 3.0)
+  - Mockingjay/XCTest (3.0.0-alpha.1):
+    - Mockingjay/Core
+  - URITemplate (3.0.0)
 
 DEPENDENCIES:
   - Frames (from `../`)
+  - Frames/Tests (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Mockingjay
+    - URITemplate
 
 EXTERNAL SOURCES:
   Frames:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Frames: fcdd557295e85edfd18dec8a31de7202fddca1bb
+  Frames: 327fa43eff6d72df4133901a6ec7f999f5e3985d
+  Mockingjay: 0f7c5aa49c7f1b95621cee3c79b557141f5a225c
+  URITemplate: 58e0d47f967006c5d59888af5356c4a8ed3b197d
 
-PODFILE CHECKSUM: b1c4eefa8909fec0f91acef180b95f98151dc9ff
+PODFILE CHECKSUM: dc02696808c8fc992e3f471028bfac38ca401016
 
 COCOAPODS: 1.10.0

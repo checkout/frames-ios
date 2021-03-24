@@ -15,8 +15,12 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Source/**/*.swift'
   s.exclude_files = "Classes/Exclude"
-  s.resource_bundles = {
-    'FramesIos' => 'Source/Resources/**/*'
-  }
+  s.resources = ['Source/Resources/**/*', 'Source/PhoneNumberKit/Resources/**/*']
 
+  s.test_spec do |t|
+    t.source_files = 'Tests/**/*.swift'
+    t.dependency 'Mockingjay', '~> 3.0.0-alpha.1'
+    t.exclude_files = 'Tests/LinuxMain.swift'
+    t.resources = 'Tests/Fixtures/*'
+  end
 end

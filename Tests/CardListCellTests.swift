@@ -1,5 +1,5 @@
 import XCTest
-@testable import FramesIos
+@testable import Frames
 
 class CardListCellTests: XCTestCase {
 

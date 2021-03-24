@@ -1,6 +1,6 @@
 import XCTest
 import WebKit
-@testable import FramesIos
+@testable import Frames
 
 class ThreedsWebViewControllerMockDelegate: ThreedsWebViewControllerDelegate {
 

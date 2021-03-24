@@ -1,6 +1,6 @@
 import Foundation
 import UIKit
-@testable import FramesIos
+@testable import Frames
 
 class CardViewControllerMock: CardViewController {
     var kbShowCalledTimes = 0

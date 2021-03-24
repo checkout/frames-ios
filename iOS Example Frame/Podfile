@@ -6,7 +6,7 @@ target 'iOS Example Frame' do
   use_frameworks!
 
   # Pods for iOS Example Custom
-  pod 'Frames', :path => '../'
+  pod 'Frames', :path => '../', :testspecs => ['Tests']
 
   target 'iOS Example FrameUITests' do
     # Pods for testing

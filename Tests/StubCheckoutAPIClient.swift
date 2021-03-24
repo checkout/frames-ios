@@ -6,7 +6,7 @@
 //  Copyright © 2021 Checkout. All rights reserved.
 //
 
-@testable import FramesIos
+@testable import Frames
 
 final class StubCheckoutAPIClient: CheckoutAPIClient {
 
