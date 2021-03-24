@@ -17,7 +17,8 @@ Pod::Spec.new do |s|
   s.exclude_files = "Classes/Exclude"
   s.resources = 'Source/Resources/**/*'
 
-  s.dependency 'PhoneNumberKit', '~> 3.3.3'
+  s.dependency 'PhoneNumberKit', '~> 3.3.0'
+  s.dependency 'Alamofire', '~> 5.4.0'
 
   s.test_spec do |t|
     t.source_files = 'Tests/**/*.swift'
