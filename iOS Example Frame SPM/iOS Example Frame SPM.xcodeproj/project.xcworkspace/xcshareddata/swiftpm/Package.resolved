@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/checkout/frames-ios",
         "state": {
           "branch": "bug/PIMOB-422-fix-dependency-structures",
-          "revision": "d1c2e2b3f912f8c94f8ec3c58b521c970b26ffb2",
+          "revision": "3de0ba7bf48790918230e18667c945d3963b590a",
           "version": null
         }
       },
