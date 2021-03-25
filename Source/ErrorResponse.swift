@@ -10,10 +10,4 @@ public struct ErrorResponse: Codable {
     
     /// The general code associated with the error
     public let errorCodes: [String]
-
-    private enum CodingKeys: String, CodingKey {
-        case requestId = "request_id"
-        case errorType = "error_type"
-        case errorCodes = "error_codes"
-    }
 }

@@ -304,7 +304,10 @@ class CardViewControllerTests: XCTestCase {
 
     func test_onTapDoneCardButton_checkoutAPIClientReturnsError_delegateCalledWithFailure() {
 
-        let stubCheckoutAPIClient = StubCheckoutAPIClient(publicKey: "")
+        let stubCheckoutAPIClient = StubCheckoutAPIClient(publicKey: "",
+                                                          environment: .sandbox,
+                                                          jsonEncoder: JSONEncoder(),
+                                                          jsonDecoder: JSONDecoder())
         let stubCardViewControllerDelegate = StubCardViewControllerDelegate()
         let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
                                                     cardHolderNameState: .normal,

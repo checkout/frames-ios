@@ -6,14 +6,15 @@ public enum NetworkError: Error, Decodable {
     case other(error: Error)
     case invalidData
     case invalidURL
+    case objectDeallocatedUnexpectedly
     case unknown
     
     private enum CodingKeys: String, CodingKey {
-        case requestId = "request_id"
-        case errorType = "error_type"
-        case errorCodes = "error_codes"
+        case requestId
+        case errorType
+        case errorCodes
     }
-    
+
     public init(from decoder: Decoder) throws {
 
         let values = try decoder.container(keyedBy: CodingKeys.self)

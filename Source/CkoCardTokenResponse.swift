@@ -53,24 +53,4 @@ public struct CkoCardTokenResponse: Codable {
 
     /// Phone
     public var phone: CkoPhoneNumber?
-
-    private enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case token = "token"
-        case expiresOn = "expires_on"
-        case expiryMonth = "expiry_month"
-        case expiryYear = "expiry_year"
-        case name = "name"
-        case scheme = "scheme"
-        case last4 = "last4"
-        case bin = "bin"
-        case cardType = "card_type"
-        case cardCategory = "card_category"
-        case issuer = "issuer"
-        case issuerCountry = "issuer_country"
-        case productId = "product_id"
-        case productType = "product_type"
-        case billingAddress = "billing_address"
-        case phone = "phone"
-    }
 }
