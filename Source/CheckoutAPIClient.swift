@@ -1,4 +1,5 @@
 import Foundation
+import Alamofire
 
 /// Checkout API Client
 /// used to call the api endpoint of Checkout API available with your public key
@@ -13,7 +14,7 @@ public class CheckoutAPIClient {
     let environment: Environment
 
     /// headers used for the requests
-    private var headers: [String: String] {
+    private var headers: HTTPHeaders {
         return ["Authorization": self.publicKey,
                 "Content-Type": "application/json"]
     }
@@ -67,7 +68,7 @@ public class CheckoutAPIClient {
                                  errorHandler: @escaping (Error) -> Void) {
         let url = "\(environment.urlApi)\(Endpoint.cardProviders.rawValue)"
 
-        request(url, headers: headers).validate().responseJSON { [weak self] response in
+        AF.request(url, headers: headers).validate().responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
 
@@ -110,7 +111,7 @@ public class CheckoutAPIClient {
         // swiftlint:disable:next force_try
         var urlRequest = try! URLRequest(url: URL(string: url)!, method: HTTPMethod.post, headers: headers)
         urlRequest.httpBody = try? jsonEncoder.encode(card)
-        request(urlRequest)
+        AF.request(urlRequest)
             .validate().responseJSON { response in
 
                 switch response.result {
@@ -151,7 +152,7 @@ public class CheckoutAPIClient {
 
         urlRequest.httpBody = try? jsonEncoder.encode(card)
 
-        request(urlRequest)
+        AF.request(urlRequest)
             .validate().responseJSON { [weak self] response in
 
                 guard let strongSelf = self else {
@@ -206,7 +207,7 @@ public class CheckoutAPIClient {
         let applePayTokenRequest = ApplePayTokenRequest(token_data: applePayTokenData)
         urlRequest.httpBody = try? JSONEncoder().encode(applePayTokenRequest)
 
-        request(urlRequest).validate().responseJSON { response in
+        AF.request(urlRequest).validate().responseJSON { response in
             
             switch response.result {
             case .success:
@@ -249,7 +250,7 @@ public class CheckoutAPIClient {
         let applePayTokenRequest = ApplePayTokenRequest(token_data: applePayTokenData)
         urlRequest.httpBody = try? JSONEncoder().encode(applePayTokenRequest)
 
-        request(urlRequest).validate().responseJSON { [weak self] response in
+        AF.request(urlRequest).validate().responseJSON { [weak self] response in
 
             guard let self = self else {
 
