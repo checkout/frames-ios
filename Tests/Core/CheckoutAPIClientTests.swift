@@ -9,6 +9,11 @@ class CheckoutAPIClientTests: XCTestCase {
         publicKey: "pk_test_6ff46046-30af-41d9-bf58-929022d2cd14",
         environment: .sandbox)
 
+    let everythingWithCorrectUserAgent: (_ request: URLRequest) -> Bool = { request in
+        let framesVersion = Bundle(for: CheckoutAPIClient.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
+        return request.allHTTPHeaderFields?["User-Agent"] == "checkout-sdk-frames-ios/\(framesVersion)"
+    }
+
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -23,7 +28,7 @@ class CheckoutAPIClientTests: XCTestCase {
         // Stub the response
         let path = Bundle(for: type(of: self)).path(forResource: "cardProviders", ofType: "json")!
         let data = NSData(contentsOfFile: path)!
-        stub(everything, delay: 0, jsonData(data as Data))
+        stub(everythingWithCorrectUserAgent, delay: 0, jsonData(data as Data))
         // Test the function
         let expectation = XCTestExpectation(description: "Get card providers")
         checkoutAPIClient.getCardProviders(successHandler: { cardProviders in
@@ -42,7 +47,7 @@ class CheckoutAPIClientTests: XCTestCase {
         // Stub the response
         let path = Bundle(for: type(of: self)).path(forResource: "ckoCardToken", ofType: "json")!
         let data = NSData(contentsOfFile: path)!
-        stub(everything, delay: 0, jsonData(data as Data))
+        stub(everythingWithCorrectUserAgent, delay: 0, jsonData(data as Data))
         // Test the function
         let expectation = XCTestExpectation(description: "Create card token")
         let cardRequest = CkoCardTokenRequest(number: "", expiryMonth: "", expiryYear: "",
@@ -62,7 +67,7 @@ class CheckoutAPIClientTests: XCTestCase {
         // Stub the response
         let path = Bundle(for: type(of: self)).path(forResource: "cardTokenInvalidNumber", ofType: "json")!
         let data = NSData(contentsOfFile: path)!
-        stub(everything, delay: 0, jsonData(data as Data, status: 422))
+        stub(everythingWithCorrectUserAgent, delay: 0, jsonData(data as Data, status: 422))
         // Test the function
         let expectation = XCTestExpectation(description: "Create card token (error)")
         let cardRequest = CkoCardTokenRequest(number: "", expiryMonth: "", expiryYear: "",
@@ -81,7 +86,7 @@ class CheckoutAPIClientTests: XCTestCase {
         // Stub the response
         let path = Bundle(for: type(of: self)).path(forResource: "applePayToken", ofType: "json")!
         let data = NSData(contentsOfFile: path)!
-        stub(everything, delay: 0, jsonData(data as Data))
+        stub(everythingWithCorrectUserAgent, delay: 0, jsonData(data as Data))
         // Test the function
         let expectation = XCTestExpectation(description: "Create apple pay token")
         let applePayData = Data()
