@@ -10,14 +10,7 @@ class CheckoutAPIClientTests: XCTestCase {
         environment: .sandbox)
 
     let everythingWithCorrectUserAgent: (_ request: URLRequest) -> Bool = { request in
-        #if SWIFT_PACKAGE
-        let bundle = Bundle.module
-        #else
-        let bundle = Bundle(for: CheckoutAPIClient.self)
-        #endif
-
-        let framesVersion = bundle.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
-        return request.allHTTPHeaderFields?["User-Agent"] == "checkout-sdk-frames-ios/\(framesVersion)"
+        return request.allHTTPHeaderFields?["User-Agent"] == "checkout-sdk-frames-ios/\(CheckoutAPIClient.Constants.version)"
     }
 
     override func setUp() {
