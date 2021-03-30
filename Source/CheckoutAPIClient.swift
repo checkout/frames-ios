@@ -15,7 +15,13 @@ public class CheckoutAPIClient {
 
     /// headers used for the requests
     private var headers: HTTPHeaders {
-        let framesVersion = Bundle(for: CheckoutAPIClient.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
+        #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+        #else
+        let bundle = Bundle(for: CheckoutAPIClient.self)
+        #endif
+
+        let framesVersion = bundle.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
         return ["Authorization": self.publicKey,
                 "Content-Type": "application/json",
                 "User-Agent": "checkout-sdk-frames-ios/\(framesVersion)"]

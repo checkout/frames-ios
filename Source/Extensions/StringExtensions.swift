@@ -4,8 +4,12 @@ import UIKit
 extension String {
 
     private func getBundle(forClass: AnyClass) -> Bundle {
+        #if SWIFT_PACKAGE
+        let baseBundle = Bundle.module
+        #else
         let baseBundle = Bundle(for: forClass)
-        let path = baseBundle.path(forResource: "FramesIos", ofType: "bundle")
+        #endif
+        let path = baseBundle.path(forResource: "Frames", ofType: "bundle")
         return path == nil ? baseBundle : Bundle(path: path!)!
     }
 

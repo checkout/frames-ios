@@ -471,7 +471,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/checkout/frames-ios";
 			requirement = {
-				branch = "bug/PIMOB-422-fix-dependency-structure";
+				branch = "bug/fix-spm-resources";
 				kind = branch;
 			};
 		};

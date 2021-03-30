@@ -17,7 +17,7 @@ class SchemeIconsStackView: UIStackView {
     func addSchemeIcon(scheme: CardScheme) {
         let imageView = UIImageView()
         imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        let image = "schemes/icon-\(scheme.rawValue)".image(forClass: SchemeIconsStackView.self)
+        let image = "icon-\(scheme.rawValue)".image(forClass: SchemeIconsStackView.self)
         imageView.image = image
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
