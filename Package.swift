@@ -60,19 +60,21 @@ let package = Package(
                 .process("Resources/schemes/icon-dinersclub@2x.png")
             ]
         ),
-        .testTarget(
-            name: "Frames-Tests",
-            dependencies: ["Frames"],
-            path: "Tests",
-            exclude: ["Info.plist"],
-            resources: [
-                .process("Fixtures/applePayTokenInvalid.json"),
-                .process("Fixtures/cardTokenInvalidNumber.json"),
-                .process("Fixtures/applePayToken.json"),
-                .process("Fixtures/ckoCardToken.json"),
-                .process("Fixtures/cardProviders.json")
-            ]
-        )
+// Tests are currently broken as Mockingjay doesn't support SPM
+//
+//        .testTarget(
+//            name: "Frames-Tests",
+//            dependencies: ["Frames"],
+//            path: "Tests",
+//            exclude: ["Info.plist"],
+//            resources: [
+//                .process("Fixtures/applePayTokenInvalid.json"),
+//                .process("Fixtures/cardTokenInvalidNumber.json"),
+//                .process("Fixtures/applePayToken.json"),
+//                .process("Fixtures/ckoCardToken.json"),
+//                .process("Fixtures/cardProviders.json")
+//            ]
+//        )
     ],
     swiftLanguageVersions: [.v5]
 )
