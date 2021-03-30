@@ -11,15 +11,6 @@
         }
       },
       {
-        "package": "Frames",
-        "repositoryURL": "https://github.com/checkout/frames-ios",
-        "state": {
-          "branch": "bug/fix-spm-resources",
-          "revision": "74e26dd6033b6ea64c64385e1aa7bc8996d660c8",
-          "version": null
-        }
-      },
-      {
         "package": "PhoneNumberKit",
         "repositoryURL": "https://github.com/marmelroy/PhoneNumberKit.git",
         "state": {
