@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 
 #### 3.x Releases
 
+## [3.4.0](https://github.com/checkout/frames-ios/releases/tag/3.4.0)
+
+Released on 2021-03-31.
+
+#### Added
+
+* User-agent for requests.
+
+#### Fixed
+
+* Response objects are now decoded properly using snake case.
+* Distribution via Swift Package Manager is now fixed.
+
+### Removed
+* PhoneNumberKit source files have been removed, which were embedded in the framework. This includes `CKOPhoneNumberKit`. PhoneNumberKit is now referenced from the Podspec and Swift Package Manager configuration.
+
 ## [3.3.0](https://github.com/checkout/frames-ios/releases/tag/3.3.0)
 
 Released on 2021-02-24.
