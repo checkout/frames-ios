@@ -10,8 +10,7 @@ class CheckoutAPIClientTests: XCTestCase {
         environment: .sandbox)
 
     let everythingWithCorrectUserAgent: (_ request: URLRequest) -> Bool = { request in
-        let framesVersion = Bundle(for: CheckoutAPIClient.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
-        return request.allHTTPHeaderFields?["User-Agent"] == "checkout-sdk-frames-ios/\(framesVersion)"
+        return request.allHTTPHeaderFields?["User-Agent"] == "checkout-sdk-frames-ios/\(CheckoutAPIClient.Constants.version)"
     }
 
     override func setUp() {
@@ -26,7 +25,12 @@ class CheckoutAPIClientTests: XCTestCase {
 
     func testSuccessfulGetCardProviders() {
         // Stub the response
-        let path = Bundle(for: type(of: self)).path(forResource: "cardProviders", ofType: "json")!
+        #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+        #else
+        let bundle = Bundle(for: type(of: self))
+        #endif
+        let path = bundle.path(forResource: "cardProviders", ofType: "json")!
         let data = NSData(contentsOfFile: path)!
         stub(everythingWithCorrectUserAgent, delay: 0, jsonData(data as Data))
         // Test the function
@@ -45,7 +49,12 @@ class CheckoutAPIClientTests: XCTestCase {
 
     func testSuccessfulCreateCkoCardToken() {
         // Stub the response
-        let path = Bundle(for: type(of: self)).path(forResource: "ckoCardToken", ofType: "json")!
+        #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+        #else
+        let bundle = Bundle(for: type(of: self))
+        #endif
+        let path = bundle.path(forResource: "ckoCardToken", ofType: "json")!
         let data = NSData(contentsOfFile: path)!
         stub(everythingWithCorrectUserAgent, delay: 0, jsonData(data as Data))
         // Test the function
@@ -65,7 +74,12 @@ class CheckoutAPIClientTests: XCTestCase {
 
     func testFailedCreateCkoCardToken() {
         // Stub the response
-        let path = Bundle(for: type(of: self)).path(forResource: "cardTokenInvalidNumber", ofType: "json")!
+        #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+        #else
+        let bundle = Bundle(for: type(of: self))
+        #endif
+        let path = bundle.path(forResource: "cardTokenInvalidNumber", ofType: "json")!
         let data = NSData(contentsOfFile: path)!
         stub(everythingWithCorrectUserAgent, delay: 0, jsonData(data as Data, status: 422))
         // Test the function
@@ -84,7 +98,12 @@ class CheckoutAPIClientTests: XCTestCase {
 
     func testSuccessfulCreateApplePayToken() {
         // Stub the response
-        let path = Bundle(for: type(of: self)).path(forResource: "applePayToken", ofType: "json")!
+        #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+        #else
+        let bundle = Bundle(for: type(of: self))
+        #endif
+        let path = bundle.path(forResource: "applePayToken", ofType: "json")!
         let data = NSData(contentsOfFile: path)!
         stub(everythingWithCorrectUserAgent, delay: 0, jsonData(data as Data))
         // Test the function

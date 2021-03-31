@@ -15,10 +15,9 @@ public class CheckoutAPIClient {
 
     /// headers used for the requests
     private var headers: HTTPHeaders {
-        let framesVersion = Bundle(for: CheckoutAPIClient.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
         return ["Authorization": self.publicKey,
                 "Content-Type": "application/json",
-                "User-Agent": "checkout-sdk-frames-ios/\(framesVersion)"]
+                "User-Agent": "checkout-sdk-frames-ios/\(CheckoutAPIClient.Constants.version)"]
     }
 
     private let jsonEncoder: JSONEncoder

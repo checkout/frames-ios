@@ -11,15 +11,6 @@
         }
       },
       {
-        "package": "Frames",
-        "repositoryURL": "https://github.com/checkout/frames-ios",
-        "state": {
-          "branch": "bug/PIMOB-422-fix-dependency-structures",
-          "revision": "3de0ba7bf48790918230e18667c945d3963b590a",
-          "version": null
-        }
-      },
-      {
         "package": "PhoneNumberKit",
         "repositoryURL": "https://github.com/marmelroy/PhoneNumberKit.git",
         "state": {

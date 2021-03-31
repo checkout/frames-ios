@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		44E647BE260CF74200503D6C /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 44E647BD260CF74200503D6C /* Frames */; };
+		443FCD9426137A4C009D6DE6 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 443FCD9326137A4C009D6DE6 /* Frames */; };
 		E6646F8E20CE6C0900D8353A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646F8D20CE6C0900D8353A /* AppDelegate.swift */; };
 		E6646F9020CE6C0900D8353A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646F8F20CE6C0900D8353A /* MainViewController.swift */; };
 		E6646F9320CE6C0900D8353A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6646F9120CE6C0900D8353A /* Main.storyboard */; };
@@ -27,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		443FCD8F261379CB009D6DE6 /* frames-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "frames-ios"; path = ..; sourceTree = "<group>"; };
 		44E647AC260CEAFF00503D6C /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44E647B6260CF03700503D6C /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6646F8D20CE6C0900D8353A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,7 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44E647BE260CF74200503D6C /* Frames in Frameworks */,
+				443FCD9426137A4C009D6DE6 /* Frames in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +59,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		443FCD9226137A4C009D6DE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E6646F8120CE6C0900D8353A = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +73,8 @@
 				E6646FA120CE6C0A00D8353A /* iOS Example FrameUITests */,
 				44E647AC260CEAFF00503D6C /* iOS Example Frame.app */,
 				44E647B6260CF03700503D6C /* iOS Example FrameUITests.xctest */,
+				443FCD8F261379CB009D6DE6 /* frames-ios */,
+				443FCD9226137A4C009D6DE6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,7 +117,7 @@
 			);
 			name = "iOS Example Frame";
 			packageProductDependencies = (
-				44E647BD260CF74200503D6C /* Frames */,
+				443FCD9326137A4C009D6DE6 /* Frames */,
 			);
 			productName = "iOS Example Frame";
 			productReference = 44E647AC260CEAFF00503D6C /* iOS Example Frame.app */;
@@ -162,7 +172,6 @@
 			);
 			mainGroup = E6646F8120CE6C0900D8353A;
 			packageReferences = (
-				44E647BC260CF74200503D6C /* XCRemoteSwiftPackageReference "frames-ios" */,
 			);
 			productRefGroup = E6646F8120CE6C0900D8353A;
 			projectDirPath = "";
@@ -466,21 +475,9 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		44E647BC260CF74200503D6C /* XCRemoteSwiftPackageReference "frames-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/checkout/frames-ios";
-			requirement = {
-				branch = "bug/PIMOB-422-fix-dependency-structure";
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		44E647BD260CF74200503D6C /* Frames */ = {
+		443FCD9326137A4C009D6DE6 /* Frames */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 44E647BC260CF74200503D6C /* XCRemoteSwiftPackageReference "frames-ios" */;
 			productName = Frames;
 		};
 /* End XCSwiftPackageProductDependency section */
