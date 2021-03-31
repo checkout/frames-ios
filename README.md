@@ -68,13 +68,25 @@ $ brew update
 $ brew install carthage
 ```
 
-To integrate FramesIos into your Xcode project using Carthage, specify it in your `Cartfile`:
+To integrate Frames into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
 github "checkout/frames-ios" ~> 3.0
 ```
 
-Run `carthage update` to build the framework and drag the built `FramesIos` into your Xcode project.
+Run `carthage update` to build the framework and drag the built `Frames` into your Xcode project.
+
+### Swift Package Manager
+
+[Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the swift compiler.
+
+Once you have your Swift package set up, adding Frames as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
+
+```
+dependencies: [
+    .package(url: "https://github.com/checkout/frames-ios.git", .upToNextMajor(from: "3.0.0"))
+]
+```
 
 ## Usage
 

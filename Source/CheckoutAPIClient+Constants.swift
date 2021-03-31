@@ -9,6 +9,6 @@ import Foundation
 
 extension CheckoutAPIClient {
     enum Constants {
-        static let version = "3.3.0"
+        static let version = "3.4.0"
     }
 }
