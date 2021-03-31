@@ -84,18 +84,16 @@ Import the SDK:
 import Frames
 ```
 
-### Using `CardViewController`
+### Using the `CardViewController` UI
 
 ```swift
 class ViewController: UIViewController, CardViewControllerDelegate {
 
-    let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_6ff46046-30af-41d9-bf58-929022d2cd14",
+    let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
                                               environment: .sandbox)
-    var cardViewController: CardViewController {
-        let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
-        environment: .sandbox)
+    lazy var cardViewController: CardViewController = {
         return CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .hidden, billingDetailsState: .hidden)
-    }
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,13 +108,35 @@ class ViewController: UIViewController, CardViewControllerDelegate {
     }
 
     func onTapDone(controller: CardViewController, card: CkoCardTokenRequest) {
-        checkoutAPIClient.createCardToken(card: card, successHandler: { cardToken in
-            print(cardToken.id)
-        }, errorHandler: { error in
-            print(error)
-        })
+        print(card)
     }
+    
+    func onSubmit(controller: CardViewController) {
+        // Called just before a create card token request is made.
+    }
+}
+```
 
+### Headless Mode 
+
+```swift
+let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
+                                          environment: .sandbox)
+
+// create the phone number
+let phoneNumber = CkoPhoneNumber(countryCode: "44", number: "7777777777")
+// create the address
+let address = CkoAddress(addressLine1: "test1", addressLine2: "test2", city: "London", state: "London", zip: "N12345", country: "GB")
+// create the card token request
+let cardTokenRequest = CkoCardTokenRequest(number: "123456789101", expiryMonth: "07", expiryYear: "22", cvv: "100", name: "Test Customer", billingAddress: address, phone: phoneNumber)
+
+checkoutAPIClient.createCardToken(card: cardTokenRequest) { result in
+    switch result {
+    case .success(let response):
+        print(response)
+    case .failure(let error):
+        print(error.localizedDescription)
+    }
 }
 ```
 
@@ -160,17 +180,24 @@ let cardTokenRequest = CkoCardTokenRequest(number: cardNumber, expiryMonth: "07"
 #### Create a card token:
 
 ```swift
-let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_.....", environment: .sandbox)
+let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
+                                          environment: .sandbox)
+
 // create the phone number
 let phoneNumber = CkoPhoneNumber(countryCode: "44", number: "7777777777")
 // create the address
 let address = CkoAddress(addressLine1: "test1", addressLine2: "test2", city: "London", state: "London", zip: "N12345", country: "GB")
 // create the card token request
-checkoutAPIClient.createCardToken(card: cardTokenRequest, successHandler: { cardToken in
-            // success
-        }, errorHandler:  { error in
-            // error
-        })
+let cardTokenRequest = CkoCardTokenRequest(number: "123456789101", expiryMonth: "07", expiryYear: "22", cvv: "100", name: "Test Customer", billingAddress: address, phone: phoneNumber)
+
+checkoutAPIClient.createCardToken(card: cardTokenRequest) { result in
+    switch result {
+    case .success(let response):
+        print(response)
+    case .failure(let error):
+        print(error.localizedDescription)
+    }
+}
 ```
 
 The success handler takes an array of `CkoCardTokenResponse` as a parameter.
@@ -179,16 +206,11 @@ The error handler takes an `ErrorResponse` as a parameter.
 ### Customize with `CheckoutTheme`
 
 ```swift
-var cardViewController: CardViewController {
-    let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
-        environment: .sandbox)
     CheckoutTheme.primaryBackgroundColor = .blue
     CheckoutTheme.secondaryBackgroundColor = .purple
     CheckoutTheme.errorColor = .yellow
     CheckoutTheme.color = .green
     CheckoutTheme.chevronColor = .pink
-    return CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .hidden, billingDetailsState: .normal)
-}
 ```
 
 ## License

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FramesIos
+import Frames
 
 class ViewController: UIViewController {
 

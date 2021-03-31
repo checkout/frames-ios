@@ -1,4 +1,5 @@
 import Foundation
+import Alamofire
 
 /// Checkout API Client
 /// used to call the api endpoint of Checkout API available with your public key
@@ -13,21 +14,24 @@ public class CheckoutAPIClient {
     let environment: Environment
 
     /// headers used for the requests
-    private var headers: [String: String] {
+    private var headers: HTTPHeaders {
         return ["Authorization": self.publicKey,
-                "Content-Type": "application/json"]
+                "Content-Type": "application/json",
+                "User-Agent": "checkout-sdk-frames-ios/\(CheckoutAPIClient.Constants.version)"]
     }
 
-    private var jsonEncoder: JSONEncoder {
-        let jsonEncoder = JSONEncoder()
-        jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
-        return jsonEncoder
-    }
+    private let jsonEncoder: JSONEncoder
+    private let jsonDecoder: JSONDecoder
 
-    private var jsonDecoder: JSONDecoder {
-        let jsonDecoder = JSONDecoder()
-        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-        return jsonDecoder
+    init(publicKey: String,
+         environment: Environment,
+         jsonEncoder: JSONEncoder,
+         jsonDecoder: JSONDecoder) {
+
+        self.publicKey = publicKey
+        self.environment = environment
+        self.jsonEncoder = jsonEncoder
+        self.jsonDecoder = jsonDecoder
     }
 
     // MARK: - Initialization
@@ -39,9 +43,19 @@ public class CheckoutAPIClient {
     ///
     ///
     /// - returns: The new `CheckoutAPIClient` instance
-    public init(publicKey: String, environment: Environment = .sandbox) {
-        self.publicKey = publicKey
-        self.environment = environment
+    public convenience init(publicKey: String,
+                            environment: Environment = .sandbox) {
+
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+
+        let jsonEncoder = JSONEncoder()
+        jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
+
+        self.init(publicKey: publicKey,
+                  environment: environment,
+                  jsonEncoder: jsonEncoder,
+                  jsonDecoder: jsonDecoder)
     }
 
     // MARK: - Methods
@@ -55,9 +69,16 @@ public class CheckoutAPIClient {
                                  errorHandler: @escaping (Error) -> Void) {
         let url = "\(environment.urlApi)\(Endpoint.cardProviders.rawValue)"
 
-        request(url, headers: headers).validate().responseJSON { response in
+        AF.request(url, headers: headers).validate().responseJSON { [weak self] response in
             switch response.result {
             case .success(let value):
+
+                guard let strongSelf = self else {
+
+                    errorHandler(NetworkError.objectDeallocatedUnexpectedly)
+                    return
+                }
+
                 do {
                     let jsonData = try JSONSerialization.data(withJSONObject: value)
 
@@ -66,8 +87,7 @@ public class CheckoutAPIClient {
                         return
                     }
 
-                    let decoder = JSONDecoder()
-                    let cardProviderResponse = try decoder.decode(CardProviderResponse.self, from: data)
+                    let cardProviderResponse = try strongSelf.jsonDecoder.decode(CardProviderResponse.self, from: data)
                     successHandler(cardProviderResponse.data)
                 } catch let error {
                     errorHandler(error)
@@ -92,20 +112,20 @@ public class CheckoutAPIClient {
         // swiftlint:disable:next force_try
         var urlRequest = try! URLRequest(url: URL(string: url)!, method: HTTPMethod.post, headers: headers)
         urlRequest.httpBody = try? jsonEncoder.encode(card)
-        request(urlRequest)
+        AF.request(urlRequest)
             .validate().responseJSON { response in
-                let decoder = JSONDecoder()
+
                 switch response.result {
                 case .success:
                     do {
-                        let cardTokenResponse = try decoder.decode(CkoCardTokenResponse.self, from: response.data!)
+                        let cardTokenResponse = try self.jsonDecoder.decode(CkoCardTokenResponse.self, from: response.data!)
                         successHandler(cardTokenResponse)
                     } catch let error {
                         print(error)
                     }
                 case .failure:
                     do {
-                        let cardTokenError = try decoder.decode(ErrorResponse.self, from: response.data!)
+                        let cardTokenError = try self.jsonDecoder.decode(ErrorResponse.self, from: response.data!)
                         errorHandler(cardTokenError)
                     } catch let error {
                         print(error)
@@ -133,8 +153,14 @@ public class CheckoutAPIClient {
 
         urlRequest.httpBody = try? jsonEncoder.encode(card)
 
-        request(urlRequest)
-            .validate().responseJSON { response in
+        AF.request(urlRequest)
+            .validate().responseJSON { [weak self] response in
+
+                guard let strongSelf = self else {
+
+                    completion(.failure(.objectDeallocatedUnexpectedly))
+                    return
+                }
 
                 guard let data = response.data else {
 
@@ -147,18 +173,17 @@ public class CheckoutAPIClient {
                     return
                 }
 
-                let decoder = JSONDecoder()
                 switch response.result {
                 case .success:
                     do {
-                        let cardTokenResponse = try decoder.decode(CkoCardTokenResponse.self, from: data)
+                        let cardTokenResponse = try strongSelf.jsonDecoder.decode(CkoCardTokenResponse.self, from: data)
                         completion(.success(cardTokenResponse))
                     } catch let error {
                         completion(.failure(.other(error: error)))
                     }
                 case .failure(let responseError):
                     do {
-                        let networkError = try decoder.decode(NetworkError.self, from: data)
+                        let networkError = try strongSelf.jsonDecoder.decode(NetworkError.self, from: data)
                         completion(.failure(networkError))
                     } catch {
                         completion(.failure(.other(error: responseError)))
@@ -183,12 +208,12 @@ public class CheckoutAPIClient {
         let applePayTokenRequest = ApplePayTokenRequest(token_data: applePayTokenData)
         urlRequest.httpBody = try? JSONEncoder().encode(applePayTokenRequest)
 
-        request(urlRequest).validate().responseJSON { response in
-            let decoder = JSONDecoder()
+        AF.request(urlRequest).validate().responseJSON { response in
+            
             switch response.result {
             case .success:
                 do {
-                    let applePayToken = try decoder.decode(CkoCardTokenResponse.self, from: response.data!)
+                    let applePayToken = try self.jsonDecoder.decode(CkoCardTokenResponse.self, from: response.data!)
                     successHandler(applePayToken)
                 } catch let error {
                     print(error)
@@ -226,7 +251,13 @@ public class CheckoutAPIClient {
         let applePayTokenRequest = ApplePayTokenRequest(token_data: applePayTokenData)
         urlRequest.httpBody = try? JSONEncoder().encode(applePayTokenRequest)
 
-        request(urlRequest).validate().responseJSON { response in
+        AF.request(urlRequest).validate().responseJSON { [weak self] response in
+
+            guard let self = self else {
+
+                completion(.failure(.objectDeallocatedUnexpectedly))
+                return
+            }
 
             guard let data = response.data else {
 
@@ -239,18 +270,17 @@ public class CheckoutAPIClient {
                 return
             }
 
-            let decoder = JSONDecoder()
             switch response.result {
             case .success:
                 do {
-                    let applePayToken = try decoder.decode(CkoCardTokenResponse.self, from: data)
+                    let applePayToken = try self.jsonDecoder.decode(CkoCardTokenResponse.self, from: data)
                     completion(.success(applePayToken))
                 } catch let error {
                     completion(.failure(.other(error: error)))
                 }
             case .failure(let responseError):
                 do {
-                    let networkError = try decoder.decode(NetworkError.self, from: data)
+                    let networkError = try self.jsonDecoder.decode(NetworkError.self, from: data)
                     completion(.failure(networkError))
                 } catch {
                     completion(.failure(.other(error: responseError)))
