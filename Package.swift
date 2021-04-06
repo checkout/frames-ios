@@ -16,7 +16,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.4.0"),
-        .package(url: "https://github.com/marmelroy/PhoneNumberKit.git", from: "3.3.3")
+        .package(url: "https://github.com/marmelroy/PhoneNumberKit.git", from: "3.3.0")
     ],
     targets: [
         .target(
