@@ -69,3 +69,5 @@ fastlane/test_output
 iOS Example Frame/Pods/
 
 iOS Example Custom/Pods/
+
+iOS Example Frame Carthage/Carthage/
