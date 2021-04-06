@@ -5,7 +5,7 @@ script:
   - pod install --project-directory='iOS Example Frame'
   - xcodebuild test -workspace 'iOS Example Frame/iOS Example Frame.xcworkspace' -scheme 'Frames-Unit-Tests' -destination 'OS=13.5,name=iPhone 11'
   - xcodebuild build -project 'iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj' -scheme 'iOS Example Frame' -destination 'OS=13.5,name=iPhone 11'
-  - cd 'iOS Example Frame Carthage' && carthage update --use-xcframeworks && cd ..
+  - carthage update --use-xcframeworks
   - xcodebuild build -project 'iOS Example Frame Carthage/iOS Example Frame Carthage.xcodeproj' -scheme 'iOS Example Frame' -destination 'OS=13.5,name=iPhone 11'
 after_success:
   - bash <(curl -s https://codecov.io/bash)

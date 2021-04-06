@@ -97,10 +97,10 @@
 		4422783D2616376E009626A0 /* CardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277E32616376E009626A0 /* CardUtils.swift */; };
 		4422783E2616376E009626A0 /* CheckoutSdkIos.h in Headers */ = {isa = PBXBuildFile; fileRef = 442277E52616376E009626A0 /* CheckoutSdkIos.h */; };
 		442278402616376E009626A0 /* CheckoutAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277E72616376E009626A0 /* CheckoutAPIClient.swift */; };
-		442278B726164771009626A0 /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442278B526164770009626A0 /* PhoneNumberKit.xcframework */; };
-		442278B826164771009626A0 /* PhoneNumberKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 442278B526164770009626A0 /* PhoneNumberKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		442278B926164771009626A0 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442278B626164770009626A0 /* Alamofire.xcframework */; };
-		442278BA26164771009626A0 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 442278B626164770009626A0 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44A4DFE3261CC59B00E0C349 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFBD261CA91300E0C349 /* Alamofire.xcframework */; };
+		44A4DFE4261CC59B00E0C349 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFBD261CA91300E0C349 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44A4DFE5261CC59B00E0C349 /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */; settings = {ATTRIBUTES = (Required, ); }; };
+		44A4DFE6261CC59B00E0C349 /* PhoneNumberKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6646F8E20CE6C0900D8353A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646F8D20CE6C0900D8353A /* AppDelegate.swift */; };
 		E6646F9020CE6C0900D8353A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646F8F20CE6C0900D8353A /* MainViewController.swift */; };
 		E6646F9320CE6C0900D8353A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6646F9120CE6C0900D8353A /* Main.storyboard */; };
@@ -138,14 +138,14 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		442278BB26164771009626A0 /* Embed Frameworks */ = {
+		44A4DFE7261CC59B00E0C349 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				442278BA26164771009626A0 /* Alamofire.xcframework in Embed Frameworks */,
-				442278B826164771009626A0 /* PhoneNumberKit.xcframework in Embed Frameworks */,
+				44A4DFE6261CC59B00E0C349 /* PhoneNumberKit.xcframework in Embed Frameworks */,
+				44A4DFE4261CC59B00E0C349 /* Alamofire.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,7 +153,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4422772A26163643009626A0 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		4422774726163716009626A0 /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4422775D26163748009626A0 /* Frames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Frames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4422775F26163748009626A0 /* Frames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Frames.h; sourceTree = "<group>"; };
@@ -254,6 +253,11 @@
 		442278B526164770009626A0 /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
 		442278B626164770009626A0 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 		44A4DF912616477200E0C349 /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		44A4DFBD261CA91300E0C349 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = ../Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
+		44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = ../Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
+		44A4DFCF261CC17800E0C349 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
+		44A4DFF5261CCA7700E0C349 /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = ../Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
+		44A4DFF6261CCA7700E0C349 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = ../Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 		E6646F8D20CE6C0900D8353A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6646F8F20CE6C0900D8353A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E6646F9220CE6C0900D8353A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -269,8 +273,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				442278B926164771009626A0 /* Alamofire.xcframework in Frameworks */,
-				442278B726164771009626A0 /* PhoneNumberKit.xcframework in Frameworks */,
+				44A4DFE5261CC59B00E0C349 /* PhoneNumberKit.xcframework in Frameworks */,
+				44A4DFE3261CC59B00E0C349 /* Alamofire.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +489,8 @@
 		443FCD9226137A4C009D6DE6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				44A4DFBD261CA91300E0C349 /* Alamofire.xcframework */,
+				44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */,
 				442278B626164770009626A0 /* Alamofire.xcframework */,
 				442278B526164770009626A0 /* PhoneNumberKit.xcframework */,
 			);
@@ -494,7 +500,9 @@
 		E6646F8120CE6C0900D8353A = {
 			isa = PBXGroup;
 			children = (
-				4422772A26163643009626A0 /* Cartfile */,
+				44A4DFF6261CCA7700E0C349 /* Alamofire.xcframework */,
+				44A4DFF5261CCA7700E0C349 /* PhoneNumberKit.xcframework */,
+				44A4DFCF261CC17800E0C349 /* Cartfile */,
 				E6646F8C20CE6C0900D8353A /* iOS Example Frame */,
 				E6646FA120CE6C0A00D8353A /* iOS Example FrameUITests */,
 				4422775E26163748009626A0 /* Frames */,
@@ -549,7 +557,7 @@
 				4422775926163748009626A0 /* Sources */,
 				4422775A26163748009626A0 /* Frameworks */,
 				4422775B26163748009626A0 /* Resources */,
-				442278BB26164771009626A0 /* Embed Frameworks */,
+				44A4DFE7261CC59B00E0C349 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -850,6 +858,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EXCLUDED_ARCHS = i386;
 				INFOPLIST_FILE = "../Source/Suppporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -863,6 +872,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.checkout.Frames;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -884,6 +894,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EXCLUDED_ARCHS = i386;
 				INFOPLIST_FILE = "../Source/Suppporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -896,6 +907,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.checkout.Frames;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 10.0;
