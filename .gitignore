@@ -67,5 +67,6 @@ fastlane/screenshots
 fastlane/test_output
 
 iOS Example Frame/Pods/
-
 iOS Example Custom/Pods/
+
+Carthage/
