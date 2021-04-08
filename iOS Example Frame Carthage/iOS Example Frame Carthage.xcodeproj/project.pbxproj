@@ -252,6 +252,12 @@
 		442277E72616376E009626A0 /* CheckoutAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutAPIClient.swift; path = ../../Source/CheckoutAPIClient.swift; sourceTree = "<group>"; };
 		442278B526164770009626A0 /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
 		442278B626164770009626A0 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
+		446D0CFE261F48F200E0032E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		446D0D00261F492000E0032E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
+		446D0D02261F494900E0032E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		446D0D04261F497B00E0032E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		446D0D06261F498700E0032E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
+		446D0D07261F499B00E0032E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		44A4DF912616477200E0C349 /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44A4DFBD261CA91300E0C349 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = ../Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 		44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = ../Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
@@ -831,6 +837,12 @@
 			isa = PBXVariantGroup;
 			children = (
 				E6646F9220CE6C0900D8353A /* Base */,
+				446D0CFE261F48F200E0032E /* en */,
+				446D0D00261F492000E0032E /* nl */,
+				446D0D02261F494900E0032E /* fr */,
+				446D0D04261F497B00E0032E /* de */,
+				446D0D06261F498700E0032E /* it */,
+				446D0D07261F499B00E0032E /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

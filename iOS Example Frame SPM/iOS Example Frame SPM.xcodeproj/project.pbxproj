@@ -28,6 +28,16 @@
 
 /* Begin PBXFileReference section */
 		443FCD8F261379CB009D6DE6 /* frames-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "frames-ios"; path = ..; sourceTree = "<group>"; };
+		446D0CEB261F466F00E0032E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		446D0CEE261F466F00E0032E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		446D0CEF261F46A800E0032E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		446D0CF0261F46A800E0032E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		446D0CF1261F46B600E0032E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		446D0CF2261F46B600E0032E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		446D0CF3261F46EC00E0032E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
+		446D0CF4261F46EC00E0032E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		446D0CF5261F46FA00E0032E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
+		446D0CF6261F46FA00E0032E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		44E647AC260CEAFF00503D6C /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44E647B6260CF03700503D6C /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6646F8D20CE6C0900D8353A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +179,11 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
+				fr,
+				de,
+				it,
+				nl,
 			);
 			mainGroup = E6646F8120CE6C0900D8353A;
 			packageReferences = (
@@ -236,6 +251,11 @@
 			isa = PBXVariantGroup;
 			children = (
 				E6646F9220CE6C0900D8353A /* Base */,
+				446D0CEB261F466F00E0032E /* es */,
+				446D0CEF261F46A800E0032E /* fr */,
+				446D0CF1261F46B600E0032E /* de */,
+				446D0CF3261F46EC00E0032E /* it */,
+				446D0CF5261F46FA00E0032E /* nl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -244,6 +264,11 @@
 			isa = PBXVariantGroup;
 			children = (
 				E6646F9720CE6C0A00D8353A /* Base */,
+				446D0CEE261F466F00E0032E /* es */,
+				446D0CF0261F46A800E0032E /* fr */,
+				446D0CF2261F46B600E0032E /* de */,
+				446D0CF4261F46EC00E0032E /* it */,
+				446D0CF6261F46FA00E0032E /* nl */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -255,6 +280,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -315,6 +341,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
