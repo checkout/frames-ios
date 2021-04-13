@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 
 #### 3.x Releases
 
+## [3.4.1](https://github.com/checkout/frames-ios/releases/tag/3.4.1)
+
+Released on 2021-04-13.
+
+#### Fixed
+
+* All resources now load with Swift Package Manager.
+* Carthage distribution now fixed.
+
 ## [3.4.0](https://github.com/checkout/frames-ios/releases/tag/3.4.0)
 
 Released on 2021-03-31.
