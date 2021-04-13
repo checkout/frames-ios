@@ -67,7 +67,7 @@ public class CardListCell: UITableViewCell {
     /// Sets the selected state of the cell, optionally animating the transition between states.
     override public func setSelected(_ selected: Bool, animated: Bool) {
         if selected {
-            let image = "checkmarks/checkmark".image(forClass: CardListCell.self)
+            let image = "checkmark".image(forClass: CardListCell.self)
             selectedImageView.image = image
         } else {
             selectedImageView.image = nil

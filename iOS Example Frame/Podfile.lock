@@ -1,9 +1,9 @@
 PODS:
   - Alamofire (5.4.1)
-  - Frames (3.3.0):
+  - Frames (3.4.1):
     - Alamofire (~> 5.4.0)
     - PhoneNumberKit (~> 3.3.0)
-  - Frames/Tests (3.3.0):
+  - Frames/Tests (3.4.1):
     - Alamofire (~> 5.4.0)
     - Mockingjay (~> 3.0.0-alpha.1)
     - PhoneNumberKit (~> 3.3.0)
@@ -39,7 +39,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
-  Frames: ec8ba46424f167b89e0ea7d1d4710e15943f2475
+  Frames: 1d67418b33044883b625f336045f7d43734c9368
   Mockingjay: 0f7c5aa49c7f1b95621cee3c79b557141f5a225c
   PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
   URITemplate: 58e0d47f967006c5d59888af5356c4a8ed3b197d

@@ -74,7 +74,7 @@ To integrate Frames into your Xcode project using Carthage, specify it in your `
 github "checkout/frames-ios" ~> 3.0
 ```
 
-Run `carthage update` to build the framework and drag the built `Frames` into your Xcode project.
+Run `carthage update --use-xcframeworks` to build the framework and drag the built `Frames` into your Xcode project.
 
 ### Swift Package Manager
 
