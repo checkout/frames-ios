@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "CheckoutEventLoggerKit",
+        "repositoryURL": "https://github.com/checkout/checkout-event-logger-ios-framework.git",
+        "state": {
+          "branch": null,
+          "revision": "a2855c0a3effc4ee306ef0a42977e244d0ed66c6",
+          "version": "1.0.1"
+        }
+      },
+      {
         "package": "PhoneNumberKit",
         "repositoryURL": "https://github.com/marmelroy/PhoneNumberKit.git",
         "state": {
