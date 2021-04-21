@@ -1,5 +1,7 @@
 import XCTest
+import UIKit
 @testable import Frames
+import CheckoutEventLoggerKit
 
 import Mockingjay
 
@@ -119,5 +121,4 @@ class CheckoutAPIClientTests: XCTestCase {
 
         wait(for: [expectation], timeout: 1.0)
     }
-
 }

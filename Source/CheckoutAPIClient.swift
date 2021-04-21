@@ -1,5 +1,7 @@
 import Foundation
 import Alamofire
+import CheckoutEventLoggerKit
+import UIKit
 
 /// Checkout API Client
 /// used to call the api endpoint of Checkout API available with your public key
@@ -12,6 +14,9 @@ public class CheckoutAPIClient {
 
     /// Environment (sandbox or live)
     let environment: Environment
+
+    /// Checkout Logger
+    let logger: CheckoutEventLogging
 
     /// headers used for the requests
     private var headers: HTTPHeaders {
@@ -26,12 +31,14 @@ public class CheckoutAPIClient {
     init(publicKey: String,
          environment: Environment,
          jsonEncoder: JSONEncoder,
-         jsonDecoder: JSONDecoder) {
+         jsonDecoder: JSONDecoder,
+         logger: CheckoutEventLogging) {
 
         self.publicKey = publicKey
         self.environment = environment
         self.jsonEncoder = jsonEncoder
         self.jsonDecoder = jsonDecoder
+        self.logger = logger
     }
 
     // MARK: - Initialization
@@ -52,10 +59,13 @@ public class CheckoutAPIClient {
         let jsonEncoder = JSONEncoder()
         jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
 
+        let logger = CheckoutEventLogger(productName: CheckoutAPIClient.Constants.productName)
+
         self.init(publicKey: publicKey,
                   environment: environment,
                   jsonEncoder: jsonEncoder,
-                  jsonDecoder: jsonDecoder)
+                  jsonDecoder: jsonDecoder,
+                  logger: logger)
     }
 
     // MARK: - Methods
@@ -288,5 +298,4 @@ public class CheckoutAPIClient {
             }
         }
     }
-
 }
