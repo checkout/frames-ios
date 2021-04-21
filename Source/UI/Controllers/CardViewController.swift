@@ -41,7 +41,7 @@ public class CardViewController: UIViewController,
 
     var topConstraint: NSLayoutConstraint?
 
-    private var paymentFormPresented = false
+    private var isPaymentFormPresented = false
 
     // MARK: - Initialization
 
@@ -100,8 +100,8 @@ public class CardViewController: UIViewController,
 
         self.automaticallyAdjustsScrollViewInsets = false
 
-        if !paymentFormPresented {
-            paymentFormPresented = true
+        if !isPaymentFormPresented {
+            isPaymentFormPresented = true
             checkoutApiClient?.logger.log(.paymentFormPresented)
         }
     }
