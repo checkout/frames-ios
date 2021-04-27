@@ -111,7 +111,6 @@
 		4422783D2616376E009626A0 /* CardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277E32616376E009626A0 /* CardUtils.swift */; };
 		4422783E2616376E009626A0 /* CheckoutSdkIos.h in Headers */ = {isa = PBXBuildFile; fileRef = 442277E52616376E009626A0 /* CheckoutSdkIos.h */; };
 		442278402616376E009626A0 /* CheckoutAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277E72616376E009626A0 /* CheckoutAPIClient.swift */; };
-		44796B4C262F2BC100F28C6E /* CheckoutEventLoggerKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44796B4B262F2BC100F28C6E /* CheckoutEventLoggerKit.xcframework */; };
 		44796B51262F31A600F28C6E /* CheckoutEventLoggerKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44796B50262F31A600F28C6E /* CheckoutEventLoggerKit.xcframework */; };
 		44A4DFE3261CC59B00E0C349 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFBD261CA91300E0C349 /* Alamofire.xcframework */; };
 		44A4DFE5261CC59B00E0C349 /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -121,6 +120,7 @@
 		44FD98ED26302125001B8FD2 /* CheckoutEventLoggerKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44796B50262F31A600F28C6E /* CheckoutEventLoggerKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44FD98EE26302125001B8FD2 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFF6261CCA7700E0C349 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44FD98EF26302125001B8FD2 /* PhoneNumberKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFF5261CCA7700E0C349 /* PhoneNumberKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44FD9E262636B31D001B8FD2 /* CheckoutEventLoggerKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44796B50262F31A600F28C6E /* CheckoutEventLoggerKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6646F8E20CE6C0900D8353A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646F8D20CE6C0900D8353A /* AppDelegate.swift */; };
 		E6646F9020CE6C0900D8353A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646F8F20CE6C0900D8353A /* MainViewController.swift */; };
 		E6646F9320CE6C0900D8353A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6646F9120CE6C0900D8353A /* Main.storyboard */; };
@@ -136,13 +136,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4422775C26163748009626A0;
 			remoteInfo = Frames;
-		};
-		449AE40E262F1D0C0001C835 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E6646F8220CE6C0900D8353A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 449AE407262F1CDB0001C835;
-			remoteInfo = "CheckoutEventLoggerKti Download";
 		};
 		E6646F9F20CE6C0A00D8353A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -164,6 +157,17 @@
 				44FD98EE26302125001B8FD2 /* Alamofire.xcframework in Embed Frameworks */,
 				44FD98EF26302125001B8FD2 /* PhoneNumberKit.xcframework in Embed Frameworks */,
 				4422777326163748009626A0 /* Frames.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44FD9E272636B31D001B8FD2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				44FD9E262636B31D001B8FD2 /* CheckoutEventLoggerKit.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,7 +309,6 @@
 			files = (
 				44A4DFE5261CC59B00E0C349 /* PhoneNumberKit.xcframework in Frameworks */,
 				44796B51262F31A600F28C6E /* CheckoutEventLoggerKit.xcframework in Frameworks */,
-				44796B4C262F2BC100F28C6E /* CheckoutEventLoggerKit.xcframework in Frameworks */,
 				44A4DFE3261CC59B00E0C349 /* Alamofire.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -603,12 +606,11 @@
 				4422775926163748009626A0 /* Sources */,
 				4422775A26163748009626A0 /* Frameworks */,
 				4422775B26163748009626A0 /* Resources */,
-				44796B4A262F2B6500F28C6E /* ShellScript */,
+				44FD9E272636B31D001B8FD2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				449AE40F262F1D0C0001C835 /* PBXTargetDependency */,
 			);
 			name = Frames;
 			productName = Frames;
@@ -772,23 +774,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		44796B4A262F2B6500F28C6E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncp -r CheckoutEventLoggerKit.xcframework ../Carthage/Build\n";
-		};
 		449AE40D262F1CEF0001C835 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -898,11 +883,6 @@
 			target = 4422775C26163748009626A0 /* Frames */;
 			targetProxy = 4422777026163748009626A0 /* PBXContainerItemProxy */;
 		};
-		449AE40F262F1D0C0001C835 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 449AE407262F1CDB0001C835 /* CheckoutEventLoggerKit Download */;
-			targetProxy = 449AE40E262F1D0C0001C835 /* PBXContainerItemProxy */;
-		};
 		E6646FA020CE6C0A00D8353A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E6646F8920CE6C0900D8353A /* iOS Example Frame */;
@@ -961,7 +941,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EXCLUDED_ARCHS = "i386 arm64";
+				EXCLUDED_ARCHS = i386;
 				INFOPLIST_FILE = "../Source/Suppporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -997,7 +977,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EXCLUDED_ARCHS = "i386 arm64";
+				EXCLUDED_ARCHS = i386;
 				INFOPLIST_FILE = "../Source/Suppporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

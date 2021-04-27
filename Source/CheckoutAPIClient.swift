@@ -41,6 +41,23 @@ public class CheckoutAPIClient {
         self.logger = logger
     }
 
+    convenience init(publicKey: String,
+                     environment: Environment,
+                     jsonEncoder: JSONEncoder,
+                     jsonDecoder: JSONDecoder,
+                     logger: CheckoutEventLogging,
+                     remoteProcessorMetadata: RemoteProcessorMetadata) {
+
+        logger.enableRemoteProcessor(environment: environment == .sandbox ? .sandbox : .production,
+                                     remoteProcessorMetadata: remoteProcessorMetadata)
+
+        self.init(publicKey: publicKey,
+                  environment: environment,
+                  jsonEncoder: jsonEncoder,
+                  jsonDecoder: jsonDecoder,
+                  logger: logger)
+    }
+
     // MARK: - Initialization
 
     /// Create an instance with the specified public key and environment
@@ -61,11 +78,23 @@ public class CheckoutAPIClient {
 
         let logger = CheckoutEventLogger(productName: CheckoutAPIClient.Constants.productName)
 
+        let appBundle = Foundation.Bundle.main
+        let appPackageName = appBundle.bundleIdentifier ?? "unavailableAppPackageName"
+        let appPackageVersion = appBundle.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unavailableAppPackageVersion"
+
+        let uiDevice = UIKit.UIDevice.current
+
+        let remoteProcessorMetadata = CheckoutAPIClient.buildRemoteProcessorMetadata(environment: environment,
+                                                                                     appPackageName: appPackageName,
+                                                                                     appPackageVersion: appPackageVersion,
+                                                                                     uiDevice: uiDevice)
+
         self.init(publicKey: publicKey,
                   environment: environment,
                   jsonEncoder: jsonEncoder,
                   jsonDecoder: jsonDecoder,
-                  logger: logger)
+                  logger: logger,
+                  remoteProcessorMetadata: remoteProcessorMetadata)
     }
 
     // MARK: - Methods
@@ -297,5 +326,20 @@ public class CheckoutAPIClient {
                 }
             }
         }
+    }
+
+    static func buildRemoteProcessorMetadata(environment: Environment,
+                                             appPackageName: String,
+                                             appPackageVersion: String,
+                                             uiDevice: UIDevice) -> RemoteProcessorMetadata {
+
+        return RemoteProcessorMetadata(productIdentifier: CheckoutAPIClient.Constants.productName,
+                                       productVersion: CheckoutAPIClient.Constants.version,
+                                       environment: environment.rawValue,
+                                       appPackageName: appPackageName,
+                                       appPackageVersion: appPackageVersion,
+                                       deviceName: uiDevice.modelName,
+                                       platform: "iOS",
+                                       osVersion: uiDevice.systemVersion)
     }
 }
