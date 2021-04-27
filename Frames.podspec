@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'PhoneNumberKit', '~> 3.3.0'
   s.dependency 'Alamofire', '~> 5.4.0'
-  s.dependency 'CheckoutEventLoggerKit', '~> 1.0.1'
+  s.dependency 'CheckoutEventLoggerKit', '~> 1.0.2'
 
   s.test_spec do |t|
     t.source_files = 'Tests/**/*.swift'
