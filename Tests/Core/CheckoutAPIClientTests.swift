@@ -121,4 +121,24 @@ class CheckoutAPIClientTests: XCTestCase {
 
         wait(for: [expectation], timeout: 1.0)
     }
+
+    func testRemoteProcessorMetadata() {
+        let stubUIDevice = StubUIDevice(modelName: "modelName", systemVersion: "systemVersion")
+
+        let subject = CheckoutAPIClient.buildRemoteProcessorMetadata(environment: .sandbox,
+                                                                     appPackageName: "appPackageName",
+                                                                     appPackageVersion: "appPackageVersion",
+                                                                     uiDevice: stubUIDevice)
+
+        let expected = RemoteProcessorMetadata(productIdentifier: CheckoutAPIClient.Constants.productName,
+                                               productVersion: CheckoutAPIClient.Constants.version,
+                                               environment: "sandbox",
+                                               appPackageName: "appPackageName",
+                                               appPackageVersion: "appPackageVersion",
+                                               deviceName: "modelName",
+                                               platform: "iOS",
+                                               osVersion: "systemVersion")
+
+        XCTAssertEqual(subject, expected)
+    }
 }
