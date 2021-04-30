@@ -41,8 +41,6 @@ public class CardViewController: UIViewController,
 
     var topConstraint: NSLayoutConstraint?
 
-    private var isPaymentFormPresented = false
-
     // MARK: - Initialization
 
     /// Returns a newly initialized view controller with the cardholder's name and billing details
@@ -99,11 +97,6 @@ public class CardViewController: UIViewController,
         setInitialDate()
 
         self.automaticallyAdjustsScrollViewInsets = false
-
-        if !isPaymentFormPresented {
-            isPaymentFormPresented = true
-            checkoutApiClient?.logger.log(.paymentFormPresented)
-        }
     }
 
     /// Notifies the view controller that its view is about to be added to a view hierarchy.
@@ -113,6 +106,7 @@ public class CardViewController: UIViewController,
         registerKeyboardHandlers(notificationCenter: notificationCenter,
                                  keyboardWillShow: #selector(keyboardWillShow),
                                  keyboardWillHide: #selector(keyboardWillHide))
+        checkoutApiClient?.logger.log(.paymentFormPresented)
     }
 
     /// Notifies the view controller that its view is about to be removed from a view hierarchy.
