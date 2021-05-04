@@ -342,7 +342,7 @@ class CardViewControllerTests: XCTestCase {
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
 
-        cardViewController.viewDidLoad()
+        cardViewController.viewWillAppear(true)
 
         XCTAssert(stubLogger.logCalled)
         XCTAssertEqual(stubLogger.logCallArgs.count, 1)
