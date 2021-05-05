@@ -353,4 +353,34 @@ class CardViewControllerTests: XCTestCase {
         XCTAssertEqual(event.properties, [:])
         XCTAssertEqual(event.typeIdentifier, "com.checkout.frames-mobile-sdk.payment_form_presented")
     }
+
+    func test_viewDidLoad_paymentFormPresentedLogNotCalledAfterAddressView() {
+
+        let stubLogger = StubLogger()
+        let stubCheckoutAPIClient = StubCheckoutAPIClient(publicKey: "",
+                                                          environment: .sandbox,
+                                                          jsonEncoder: JSONEncoder(),
+                                                          jsonDecoder: JSONDecoder(),
+                                                          logger: stubLogger)
+
+        let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
+                                                    cardHolderNameState: .normal,
+                                                    billingDetailsState: .normal)
+
+        cardViewController.viewWillAppear(true)
+
+        cardViewController.onTapAddressView()
+        cardViewController.viewWillAppear(true)
+
+        cardViewController.viewWillAppear(true)
+
+        XCTAssert(stubLogger.logCalled)
+        XCTAssertEqual(stubLogger.logCallArgs.count, 2)
+
+        let event = stubLogger.logCallArgs[0]
+
+        XCTAssertEqual(event.monitoringLevel, .info)
+        XCTAssertEqual(event.properties, [:])
+        XCTAssertEqual(event.typeIdentifier, "com.checkout.frames-mobile-sdk.payment_form_presented")
+    }
 }
