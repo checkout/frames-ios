@@ -5,7 +5,7 @@ cache:
   directories:
   - Carthage
 script:
-  - pod install --project-directory='iOS Example Frame'
+  - pod install --project-directory='iOS Example Frame' --repo-update
   - xcodebuild test -workspace 'iOS Example Frame/iOS Example Frame.xcworkspace' -scheme 'Frames-Unit-Tests' -destination 'OS=13.5,name=iPhone 11'
   - xcodebuild build -project 'iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj' -scheme 'iOS Example Frame' -destination 'OS=13.5,name=iPhone 11'
   - carthage update --cache-builds --platform iOS --use-xcframeworks

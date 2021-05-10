@@ -1,10 +1,13 @@
 PODS:
-  - Alamofire (5.4.1)
+  - Alamofire (5.4.2)
+  - CheckoutEventLoggerKit (1.0.2)
   - Frames (3.4.1):
     - Alamofire (~> 5.4.0)
+    - CheckoutEventLoggerKit (~> 1.0.2)
     - PhoneNumberKit (~> 3.3.0)
   - Frames/Tests (3.4.1):
     - Alamofire (~> 5.4.0)
+    - CheckoutEventLoggerKit (~> 1.0.2)
     - Mockingjay (~> 3.0.0-alpha.1)
     - PhoneNumberKit (~> 3.3.0)
   - Mockingjay (3.0.0-alpha.1):
@@ -29,6 +32,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - CheckoutEventLoggerKit
     - Mockingjay
     - PhoneNumberKit
     - URITemplate
@@ -38,12 +42,13 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
-  Frames: 1d67418b33044883b625f336045f7d43734c9368
+  Alamofire: bfbc4c2fe5909b1d94fb4ef2277c6b3727ef5dae
+  CheckoutEventLoggerKit: 9cef53a950f6e3ac91a2de6f2389fb279d92e41c
+  Frames: ba1ca518b40fdc376c96b04b630f13cc90382f07
   Mockingjay: 0f7c5aa49c7f1b95621cee3c79b557141f5a225c
   PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
   URITemplate: 58e0d47f967006c5d59888af5356c4a8ed3b197d
 
-PODFILE CHECKSUM: dc02696808c8fc992e3f471028bfac38ca401016
+PODFILE CHECKSUM: 0935f6adf6dbf24cd1aebd515551bbce53bef8e5
 
 COCOAPODS: 1.10.0

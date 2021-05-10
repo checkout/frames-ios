@@ -9,6 +9,7 @@ import Foundation
 
 extension CheckoutAPIClient {
     enum Constants {
-        static let version = "3.4.1"
+        static let productName = "frames-ios-sdk"
+        static let version = "3.4.2"
     }
 }

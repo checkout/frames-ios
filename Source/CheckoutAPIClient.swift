@@ -1,5 +1,7 @@
 import Foundation
 import Alamofire
+import CheckoutEventLoggerKit
+import UIKit
 
 /// Checkout API Client
 /// used to call the api endpoint of Checkout API available with your public key
@@ -12,6 +14,9 @@ public class CheckoutAPIClient {
 
     /// Environment (sandbox or live)
     let environment: Environment
+
+    /// Checkout Logger
+    let logger: CheckoutEventLogging
 
     /// headers used for the requests
     private var headers: HTTPHeaders {
@@ -26,12 +31,31 @@ public class CheckoutAPIClient {
     init(publicKey: String,
          environment: Environment,
          jsonEncoder: JSONEncoder,
-         jsonDecoder: JSONDecoder) {
+         jsonDecoder: JSONDecoder,
+         logger: CheckoutEventLogging) {
 
         self.publicKey = publicKey
         self.environment = environment
         self.jsonEncoder = jsonEncoder
         self.jsonDecoder = jsonDecoder
+        self.logger = logger
+    }
+
+    convenience init(publicKey: String,
+                     environment: Environment,
+                     jsonEncoder: JSONEncoder,
+                     jsonDecoder: JSONDecoder,
+                     logger: CheckoutEventLogging,
+                     remoteProcessorMetadata: RemoteProcessorMetadata) {
+
+        logger.enableRemoteProcessor(environment: environment == .sandbox ? .sandbox : .production,
+                                     remoteProcessorMetadata: remoteProcessorMetadata)
+
+        self.init(publicKey: publicKey,
+                  environment: environment,
+                  jsonEncoder: jsonEncoder,
+                  jsonDecoder: jsonDecoder,
+                  logger: logger)
     }
 
     // MARK: - Initialization
@@ -52,10 +76,25 @@ public class CheckoutAPIClient {
         let jsonEncoder = JSONEncoder()
         jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
 
+        let logger = CheckoutEventLogger(productName: CheckoutAPIClient.Constants.productName)
+
+        let appBundle = Foundation.Bundle.main
+        let appPackageName = appBundle.bundleIdentifier ?? "unavailableAppPackageName"
+        let appPackageVersion = appBundle.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unavailableAppPackageVersion"
+
+        let uiDevice = UIKit.UIDevice.current
+
+        let remoteProcessorMetadata = CheckoutAPIClient.buildRemoteProcessorMetadata(environment: environment,
+                                                                                     appPackageName: appPackageName,
+                                                                                     appPackageVersion: appPackageVersion,
+                                                                                     uiDevice: uiDevice)
+
         self.init(publicKey: publicKey,
                   environment: environment,
                   jsonEncoder: jsonEncoder,
-                  jsonDecoder: jsonDecoder)
+                  jsonDecoder: jsonDecoder,
+                  logger: logger,
+                  remoteProcessorMetadata: remoteProcessorMetadata)
     }
 
     // MARK: - Methods
@@ -289,4 +328,18 @@ public class CheckoutAPIClient {
         }
     }
 
+    static func buildRemoteProcessorMetadata(environment: Environment,
+                                             appPackageName: String,
+                                             appPackageVersion: String,
+                                             uiDevice: UIDevice) -> RemoteProcessorMetadata {
+
+        return RemoteProcessorMetadata(productIdentifier: CheckoutAPIClient.Constants.productName,
+                                       productVersion: CheckoutAPIClient.Constants.version,
+                                       environment: environment.rawValue,
+                                       appPackageName: appPackageName,
+                                       appPackageVersion: appPackageVersion,
+                                       deviceName: uiDevice.modelName,
+                                       platform: "iOS",
+                                       osVersion: uiDevice.systemVersion)
+    }
 }

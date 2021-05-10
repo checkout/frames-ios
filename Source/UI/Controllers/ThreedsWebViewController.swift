@@ -27,7 +27,7 @@ public class ThreedsWebViewController: UIViewController,
     }
 
     /// Returns a newly initialized view controller with the nib file in the specified bundle.
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Foundation.Bundle?) {
         successUrl = ""
         failUrl = ""
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)

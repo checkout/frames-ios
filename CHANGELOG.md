@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 #### 3.x Releases
 
+## [3.4.2](https://github.com/checkout/frames-ios/releases/tag/3.4.2)
+
+Released on 2021-05-10.
+
+#### Fixed
+
+* App Store distribution issues for Carthage apps that use Frames and PhoneNumberKit.
+
 ## [3.4.1](https://github.com/checkout/frames-ios/releases/tag/3.4.1)
 
 Released on 2021-04-13.

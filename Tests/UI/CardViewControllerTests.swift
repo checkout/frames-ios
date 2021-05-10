@@ -1,4 +1,5 @@
 import XCTest
+import CheckoutEventLoggerKit
 @testable import Frames
 
 class CardViewControllerTests: XCTestCase {
@@ -307,7 +308,8 @@ class CardViewControllerTests: XCTestCase {
         let stubCheckoutAPIClient = StubCheckoutAPIClient(publicKey: "",
                                                           environment: .sandbox,
                                                           jsonEncoder: JSONEncoder(),
-                                                          jsonDecoder: JSONDecoder())
+                                                          jsonDecoder: JSONDecoder(),
+                                                          logger: CheckoutEventLogger(productName: ""))
         let stubCardViewControllerDelegate = StubCardViewControllerDelegate()
         let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
                                                     cardHolderNameState: .normal,
@@ -325,5 +327,60 @@ class CardViewControllerTests: XCTestCase {
         XCTAssertEqual(stubCardViewControllerDelegate.onTapDoneCalledWith?.controller, cardViewController)
         XCTAssertEqual(stubCardViewControllerDelegate.onTapDoneCalledWith?.status, .failure)
         XCTAssertNil(stubCardViewControllerDelegate.onTapDoneCalledWith?.cardToken)
+    }
+
+    func test_viewDidLoad_paymentFormPresentedLogCalled() {
+
+        let stubLogger = StubLogger()
+        let stubCheckoutAPIClient = StubCheckoutAPIClient(publicKey: "",
+                                                          environment: .sandbox,
+                                                          jsonEncoder: JSONEncoder(),
+                                                          jsonDecoder: JSONDecoder(),
+                                                          logger: stubLogger)
+
+        let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
+                                                    cardHolderNameState: .normal,
+                                                    billingDetailsState: .normal)
+
+        cardViewController.viewWillAppear(true)
+
+        XCTAssert(stubLogger.logCalled)
+        XCTAssertEqual(stubLogger.logCallArgs.count, 1)
+
+        let event = stubLogger.logCallArgs[0]
+
+        XCTAssertEqual(event.monitoringLevel, .info)
+        XCTAssertEqual(event.properties, [:])
+        XCTAssertEqual(event.typeIdentifier, "com.checkout.frames-mobile-sdk.payment_form_presented")
+    }
+
+    func test_viewDidLoad_paymentFormPresentedLogNotCalledAfterAddressView() {
+
+        let stubLogger = StubLogger()
+        let stubCheckoutAPIClient = StubCheckoutAPIClient(publicKey: "",
+                                                          environment: .sandbox,
+                                                          jsonEncoder: JSONEncoder(),
+                                                          jsonDecoder: JSONDecoder(),
+                                                          logger: stubLogger)
+
+        let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
+                                                    cardHolderNameState: .normal,
+                                                    billingDetailsState: .normal)
+
+        cardViewController.viewWillAppear(true)
+
+        cardViewController.onTapAddressView()
+        cardViewController.viewWillAppear(true)
+
+        cardViewController.viewWillAppear(true)
+
+        XCTAssert(stubLogger.logCalled)
+        XCTAssertEqual(stubLogger.logCallArgs.count, 2)
+
+        let event = stubLogger.logCallArgs[0]
+
+        XCTAssertEqual(event.monitoringLevel, .info)
+        XCTAssertEqual(event.properties, [:])
+        XCTAssertEqual(event.typeIdentifier, "com.checkout.frames-mobile-sdk.payment_form_presented")
     }
 }

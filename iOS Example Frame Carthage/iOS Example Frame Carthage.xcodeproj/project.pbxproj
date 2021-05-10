@@ -3,8 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
+
+/* Begin PBXAggregateTarget section */
+		449AE407262F1CDB0001C835 /* CheckoutEventLoggerKit Download */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 449AE408262F1CDB0001C835 /* Build configuration list for PBXAggregateTarget "CheckoutEventLoggerKit Download" */;
+			buildPhases = (
+				449AE40D262F1CEF0001C835 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "CheckoutEventLoggerKit Download";
+			productName = "CheckoutEventLoggerKti Download";
+		};
+/* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
 		4422777226163748009626A0 /* Frames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; };
@@ -97,10 +111,16 @@
 		4422783D2616376E009626A0 /* CardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277E32616376E009626A0 /* CardUtils.swift */; };
 		4422783E2616376E009626A0 /* CheckoutSdkIos.h in Headers */ = {isa = PBXBuildFile; fileRef = 442277E52616376E009626A0 /* CheckoutSdkIos.h */; };
 		442278402616376E009626A0 /* CheckoutAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277E72616376E009626A0 /* CheckoutAPIClient.swift */; };
+		44796B51262F31A600F28C6E /* CheckoutEventLoggerKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44796B50262F31A600F28C6E /* CheckoutEventLoggerKit.xcframework */; };
 		44A4DFE3261CC59B00E0C349 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFBD261CA91300E0C349 /* Alamofire.xcframework */; };
-		44A4DFE4261CC59B00E0C349 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFBD261CA91300E0C349 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44A4DFE5261CC59B00E0C349 /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */; settings = {ATTRIBUTES = (Required, ); }; };
-		44A4DFE6261CC59B00E0C349 /* PhoneNumberKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44F095202625F7E700CB287F /* FramesLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F095162625F7E600CB287F /* FramesLogEvent.swift */; };
+		44F095212625F7E700CB287F /* LoggingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F095172625F7E600CB287F /* LoggingExtensions.swift */; };
+		44F095A72629DCF200CB287F /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F095A52629DCF100CB287F /* UIDeviceExtensions.swift */; };
+		44FD98ED26302125001B8FD2 /* CheckoutEventLoggerKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44796B50262F31A600F28C6E /* CheckoutEventLoggerKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44FD98EE26302125001B8FD2 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFF6261CCA7700E0C349 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44FD98EF26302125001B8FD2 /* PhoneNumberKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFF5261CCA7700E0C349 /* PhoneNumberKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44FD9E262636B31D001B8FD2 /* CheckoutEventLoggerKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44796B50262F31A600F28C6E /* CheckoutEventLoggerKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6646F8E20CE6C0900D8353A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646F8D20CE6C0900D8353A /* AppDelegate.swift */; };
 		E6646F9020CE6C0900D8353A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646F8F20CE6C0900D8353A /* MainViewController.swift */; };
 		E6646F9320CE6C0900D8353A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6646F9120CE6C0900D8353A /* Main.storyboard */; };
@@ -133,19 +153,21 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				44FD98ED26302125001B8FD2 /* CheckoutEventLoggerKit.xcframework in Embed Frameworks */,
+				44FD98EE26302125001B8FD2 /* Alamofire.xcframework in Embed Frameworks */,
+				44FD98EF26302125001B8FD2 /* PhoneNumberKit.xcframework in Embed Frameworks */,
 				4422777326163748009626A0 /* Frames.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		44A4DFE7261CC59B00E0C349 /* Embed Frameworks */ = {
+		44FD9E272636B31D001B8FD2 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				44A4DFE6261CC59B00E0C349 /* PhoneNumberKit.xcframework in Embed Frameworks */,
-				44A4DFE4261CC59B00E0C349 /* Alamofire.xcframework in Embed Frameworks */,
+				44FD9E262636B31D001B8FD2 /* CheckoutEventLoggerKit.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,12 +280,18 @@
 		446D0D04261F497B00E0032E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		446D0D06261F498700E0032E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
 		446D0D07261F499B00E0032E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		44796B4B262F2BC100F28C6E /* CheckoutEventLoggerKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = CheckoutEventLoggerKit.xcframework; sourceTree = "<group>"; };
+		44796B50262F31A600F28C6E /* CheckoutEventLoggerKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = CheckoutEventLoggerKit.xcframework; sourceTree = "<group>"; };
 		44A4DF912616477200E0C349 /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44A4DFBD261CA91300E0C349 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = ../Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 		44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = ../Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
 		44A4DFCF261CC17800E0C349 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 		44A4DFF5261CCA7700E0C349 /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = ../Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
 		44A4DFF6261CCA7700E0C349 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = ../Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
+		44F095162625F7E600CB287F /* FramesLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesLogEvent.swift; sourceTree = "<group>"; };
+		44F095172625F7E600CB287F /* LoggingExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingExtensions.swift; sourceTree = "<group>"; };
+		44F095A12629DCB700CB287F /* CheckoutEventLoggerKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CheckoutEventLoggerKit.xcframework; path = ../Carthage/Build/CheckoutEventLoggerKit.xcframework; sourceTree = "<group>"; };
+		44F095A52629DCF100CB287F /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
 		E6646F8D20CE6C0900D8353A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6646F8F20CE6C0900D8353A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E6646F9220CE6C0900D8353A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -280,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44A4DFE5261CC59B00E0C349 /* PhoneNumberKit.xcframework in Frameworks */,
+				44796B51262F31A600F28C6E /* CheckoutEventLoggerKit.xcframework in Frameworks */,
 				44A4DFE3261CC59B00E0C349 /* Alamofire.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,6 +476,7 @@
 		442277C92616376E009626A0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				44F095152625F7E600CB287F /* Logging */,
 				442277CA2616376E009626A0 /* CkoPhoneNumber.swift */,
 				442277CB2616376E009626A0 /* Environment.swift */,
 				442277CC2616376E009626A0 /* CardScheme.swift */,
@@ -473,6 +503,7 @@
 		442277DE2616376E009626A0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				44F095A52629DCF100CB287F /* UIDeviceExtensions.swift */,
 				442277DF2616376E009626A0 /* StringExtensions.swift */,
 				442277E02616376E009626A0 /* UIViewControllerExtensions.swift */,
 				442277E12616376E009626A0 /* UIViewExtensions.swift */,
@@ -495,6 +526,8 @@
 		443FCD9226137A4C009D6DE6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				44F095A12629DCB700CB287F /* CheckoutEventLoggerKit.xcframework */,
+				44796B4B262F2BC100F28C6E /* CheckoutEventLoggerKit.xcframework */,
 				44A4DFBD261CA91300E0C349 /* Alamofire.xcframework */,
 				44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */,
 				442278B626164770009626A0 /* Alamofire.xcframework */,
@@ -503,9 +536,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		44F095152625F7E600CB287F /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				44F095162625F7E600CB287F /* FramesLogEvent.swift */,
+				44F095172625F7E600CB287F /* LoggingExtensions.swift */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
 		E6646F8120CE6C0900D8353A = {
 			isa = PBXGroup;
 			children = (
+				44796B50262F31A600F28C6E /* CheckoutEventLoggerKit.xcframework */,
 				44A4DFF6261CCA7700E0C349 /* Alamofire.xcframework */,
 				44A4DFF5261CCA7700E0C349 /* PhoneNumberKit.xcframework */,
 				44A4DFCF261CC17800E0C349 /* Cartfile */,
@@ -563,7 +606,7 @@
 				4422775926163748009626A0 /* Sources */,
 				4422775A26163748009626A0 /* Frameworks */,
 				4422775B26163748009626A0 /* Resources */,
-				44A4DFE7261CC59B00E0C349 /* Embed Frameworks */,
+				44FD9E272636B31D001B8FD2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -627,6 +670,9 @@
 						CreatedOnToolsVersion = 12.3;
 						LastSwiftMigration = 1230;
 					};
+					449AE407262F1CDB0001C835 = {
+						CreatedOnToolsVersion = 12.3;
+					};
 					E6646F8920CE6C0900D8353A = {
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 1100;
@@ -661,6 +707,7 @@
 				E6646F8920CE6C0900D8353A /* iOS Example Frame */,
 				E6646F9D20CE6C0A00D8353A /* iOS Example FrameUITests */,
 				4422775C26163748009626A0 /* Frames */,
+				449AE407262F1CDB0001C835 /* CheckoutEventLoggerKit Download */,
 			);
 		};
 /* End PBXProject section */
@@ -726,6 +773,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		449AE40D262F1CEF0001C835 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "checkoutEventLoggerKitVersion=\"1.0.2\"\nzipDownload=\"CheckoutEventLoggerKit.zip\"\n\ncurl -L \"https://github.com/checkout/checkout-event-logger-ios-framework/archive/refs/tags/$checkoutEventLoggerKitVersion.zip\" > $zipDownload\nunzip $zipDownload\ncp -r \"checkout-event-logger-ios-framework-$checkoutEventLoggerKitVersion/CheckoutEventLoggerKit.xcframework\" .\nrm -r \"checkout-event-logger-ios-framework-$checkoutEventLoggerKitVersion\"\nrm $zipDownload\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4422775926163748009626A0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -760,6 +828,9 @@
 				442278392616376E009626A0 /* StringExtensions.swift in Sources */,
 				4422781C2616376E009626A0 /* CardView.swift in Sources */,
 				442278302616376E009626A0 /* CkoCardTokenRequest.swift in Sources */,
+				44F095A72629DCF200CB287F /* UIDeviceExtensions.swift in Sources */,
+				44F095212625F7E700CB287F /* LoggingExtensions.swift in Sources */,
+				44F095202625F7E700CB287F /* FramesLogEvent.swift in Sources */,
 				4422782A2616376E009626A0 /* Customer.swift in Sources */,
 				442278282616376E009626A0 /* CardProviderResponse.swift in Sources */,
 				4422780C2616376E009626A0 /* ExpirationDatePicker.swift in Sources */,
@@ -925,6 +996,24 @@
 				TVOS_DEPLOYMENT_TARGET = 10.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		449AE409262F1CDB0001C835 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E32XBQK4Q5;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		449AE40A262F1CDB0001C835 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E32XBQK4Q5;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -1130,6 +1219,15 @@
 			buildConfigurations = (
 				4422777526163748009626A0 /* Debug */,
 				4422777626163748009626A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		449AE408262F1CDB0001C835 /* Build configuration list for PBXAggregateTarget "CheckoutEventLoggerKit Download" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				449AE409262F1CDB0001C835 /* Debug */,
+				449AE40A262F1CDB0001C835 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

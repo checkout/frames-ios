@@ -41,6 +41,8 @@ public class CardViewController: UIViewController,
 
     var topConstraint: NSLayoutConstraint?
 
+    private var suppressNextLog = false
+
     // MARK: - Initialization
 
     /// Returns a newly initialized view controller with the cardholder's name and billing details
@@ -56,7 +58,7 @@ public class CardViewController: UIViewController,
     }
 
     /// Returns a newly initialized view controller with the nib file in the specified bundle.
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Foundation.Bundle?) {
         cardHolderNameState = .required
         billingDetailsState = .required
         cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState)
@@ -97,7 +99,6 @@ public class CardViewController: UIViewController,
         setInitialDate()
 
         self.automaticallyAdjustsScrollViewInsets = false
-
     }
 
     /// Notifies the view controller that its view is about to be added to a view hierarchy.
@@ -107,6 +108,12 @@ public class CardViewController: UIViewController,
         registerKeyboardHandlers(notificationCenter: notificationCenter,
                                  keyboardWillShow: #selector(keyboardWillShow),
                                  keyboardWillHide: #selector(keyboardWillHide))
+
+        if suppressNextLog {
+            suppressNextLog = false
+        } else {
+            checkoutApiClient?.logger.log(.paymentFormPresented)
+        }
     }
 
     /// Notifies the view controller that its view is about to be removed from a view hierarchy.
@@ -154,6 +161,7 @@ public class CardViewController: UIViewController,
 
     @objc func onTapAddressView() {
         navigationController?.pushViewController(addressViewController, animated: true)
+        suppressNextLog = true
     }
 
     @objc func onTapDoneCardButton() {
