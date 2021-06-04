@@ -183,6 +183,7 @@ public class CheckoutAPIClient {
     ) {
         let urlStr = "\(environment.urlPaymentApi)\(Endpoint.tokens.rawValue)"
         let jsonEncoder = JSONEncoder()
+        jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
 
         guard let url = URL(string: urlStr),
               var urlRequest = try? URLRequest(url: url, method: .post, headers: headers) else {

@@ -196,7 +196,8 @@ public class CardViewController: UIViewController,
         }
         if !isCardNumberValid || !isExpirationDateValid || !isCvvValid || !isCardTypeValid { return }
 
-        let card = CkoCardTokenRequest(number: cardNumberStandardized,
+        let card = CkoCardTokenRequest(type: "card",
+                                       number: cardNumberStandardized,
                                        expiryMonth: expiryMonth,
                                        expiryYear: expiryYear,
                                        cvv: cvv,

@@ -4,7 +4,7 @@ import Foundation
 public struct CkoCardTokenRequest: Codable {
 
     /// Type
-    let type: String = "card"
+    let type: String
 
     /// Card number
     public let number: String
@@ -27,17 +27,6 @@ public struct CkoCardTokenRequest: Codable {
     /// Phone
     public var phone: CkoPhoneNumber?
 
-    private enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case number = "number"
-        case expiryMonth = "expiry_month"
-        case expiryYear = "expiry_year"
-        case cvv = "cvv"
-        case name = "name"
-        case billingAddress = "billing_address"
-        case phone = "phone"
-    }
-
     /// Initialize `CkoCardTokenRequest`
     ///
     /// - parameter number: Card number
@@ -50,8 +39,9 @@ public struct CkoCardTokenRequest: Codable {
     ///
     ///
     /// - returns: The new `CardRequest` instance
-    public init(number: String, expiryMonth: String, expiryYear: String, cvv: String,
+    public init(type: String, number: String, expiryMonth: String, expiryYear: String, cvv: String,
                 name: String? = nil, billingAddress: CkoAddress? = nil, phone: CkoPhoneNumber? = nil) {
+        self.type = type
         self.number = number
         self.expiryMonth = expiryMonth
         self.expiryYear = expiryYear
@@ -62,7 +52,7 @@ public struct CkoCardTokenRequest: Codable {
     }
 
     public func createWith(shippingDetails: CkoAddress) -> CkoCardTokenRequest {
-        return CkoCardTokenRequest(number: self.number, expiryMonth: self.expiryMonth,
+        return CkoCardTokenRequest(type: "card", number: self.number, expiryMonth: self.expiryMonth,
                                    expiryYear: self.expiryYear, cvv: self.cvv, name: self.name,
                                    billingAddress: shippingDetails, phone: self.phone)
     }
