@@ -1,11 +1,11 @@
 PODS:
   - Alamofire (5.4.2)
   - CheckoutEventLoggerKit (1.0.2)
-  - Frames (3.4.1):
+  - Frames (3.4.2):
     - Alamofire (~> 5.4.0)
     - CheckoutEventLoggerKit (~> 1.0.2)
     - PhoneNumberKit (~> 3.3.0)
-  - Frames/Tests (3.4.1):
+  - Frames/Tests (3.4.2):
     - Alamofire (~> 5.4.0)
     - CheckoutEventLoggerKit (~> 1.0.2)
     - Mockingjay (~> 3.0.0-alpha.1)
@@ -44,7 +44,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: bfbc4c2fe5909b1d94fb4ef2277c6b3727ef5dae
   CheckoutEventLoggerKit: 9cef53a950f6e3ac91a2de6f2389fb279d92e41c
-  Frames: ba1ca518b40fdc376c96b04b630f13cc90382f07
+  Frames: d9e4657c8c8aba84e4f533814eae39053226889a
   Mockingjay: 0f7c5aa49c7f1b95621cee3c79b557141f5a225c
   PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
   URITemplate: 58e0d47f967006c5d59888af5356c4a8ed3b197d

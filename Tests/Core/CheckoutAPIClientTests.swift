@@ -67,6 +67,55 @@ class CheckoutAPIClientTests: XCTestCase {
         checkoutAPIClient.createCardToken(card: cardRequest, successHandler: { cardToken in
             XCTAssertNotNil(cardToken)
             XCTAssertNotNil(cardToken.token)
+            XCTAssertNil(cardToken.billingAddress)
+            XCTAssertNil(cardToken.phone)
+            expectation.fulfill()
+        }, errorHandler: { _ in
+        })
+
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
+    func testSuccessfulCreateCkoCardToken_WithBillingAddressPhoneNumber() {
+        // Stub the response
+        #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+        #else
+        let bundle = Bundle(for: type(of: self))
+        #endif
+        let path = bundle.path(forResource: "ckoCardTokenBillingDetails", ofType: "json")!
+        let data = NSData(contentsOfFile: path)!
+        stub(everythingWithCorrectUserAgent, delay: 0, jsonData(data as Data))
+        // Test the function
+        let expectation = XCTestExpectation(description: "Create card token")
+        let billingAddress = CkoAddress(addressLine1: "Test Line1",
+                                        addressLine2: "Test Line2",
+                                        city: "Test Line3",
+                                        state: "London",
+                                        zip: "N1 7LH",
+                                        country: "GB")
+        let phoneNumber = CkoPhoneNumber(countryCode: "+44",
+                                         number: "7456354812")
+        
+        let cardRequest = CkoCardTokenRequest(number: "",
+                                              expiryMonth: "",
+                                              expiryYear: "",
+                                              cvv: "", name: nil,
+                                              billingAddress: billingAddress,
+                                              phone: phoneNumber)
+
+        checkoutAPIClient.createCardToken(card: cardRequest, successHandler: { cardToken in
+            XCTAssertNotNil(cardToken)
+            XCTAssertNotNil(cardToken.token)
+            XCTAssertNotNil(cardToken.billingAddress)
+            XCTAssertEqual(cardToken.billingAddress?.addressLine1, "Test Line1")
+            XCTAssertEqual(cardToken.billingAddress?.addressLine2, "Test Line2")
+            XCTAssertEqual(cardToken.billingAddress?.city, "London")
+            XCTAssertEqual(cardToken.billingAddress?.state, "London")
+            XCTAssertEqual(cardToken.billingAddress?.zip, "N1 7LH")
+            XCTAssertEqual(cardToken.billingAddress?.country, "GB")
+            XCTAssertNotNil(cardToken.phone?.countryCode, "+44")
+            XCTAssertEqual(cardToken.phone?.number, "7456354812")
             expectation.fulfill()
         }, errorHandler: { _ in
         })
