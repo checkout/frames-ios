@@ -226,6 +226,7 @@ public class CardViewController: UIViewController,
     /// Executed when an user tap on the done button.
     public func onTapDoneButton(controller: AddressViewController, address: CkoAddress, phone: CkoPhoneNumber) {
         billingDetailsAddress = address
+        billingDetailsPhone = phone
         let value = "\(address.addressLine1 ?? ""), \(address.city ?? "")"
         cardView.billingDetailsInputView.value.text = value
         validateFieldsValues()
