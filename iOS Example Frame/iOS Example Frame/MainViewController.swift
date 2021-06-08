@@ -57,7 +57,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
             
             // **** For testing only. ****
             print("addressLine1 : \(cardToken?.billingAddress?.addressLine1 ?? "")")
-            print("addressLine2 : \(cardToken?.billingAddress?.addressLine1 ?? "")")
+            print("addressLine2 : \(cardToken?.billingAddress?.addressLine2 ?? "")")
             print("countryCode \(cardToken?.phone?.countryCode ?? "")")
             print("phone number \(cardToken?.phone?.number ?? "")")
             // **** For testing only. ****
