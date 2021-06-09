@@ -54,7 +54,20 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         switch status {
         case .success:
-            self.showAlert(with: cardToken!.token)
+            
+            // **** For testing only. ****
+            print("addressLine1 : \(cardToken?.billingAddress?.addressLine1 ?? "")")
+            print("addressLine2 : \(cardToken?.billingAddress?.addressLine2 ?? "")")
+            print("countryCode \(cardToken?.phone?.countryCode ?? "")")
+            print("phone number \(cardToken?.phone?.number ?? "")")
+            // **** For testing only. ****
+            
+            guard let cardToken = cardToken else {
+                self.showAlert(with: "Token object is nil")
+                return
+            }
+            self.showAlert(with: cardToken.token)
+            
         case .failure:
             print("failure")
         }

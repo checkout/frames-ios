@@ -266,10 +266,10 @@ class CardUtilsTests: XCTestCase {
 
     func testValidExpirationDate() {
         [
-            ["01", "2022"],
-            ["07", "2025"],
-            ["05", "21"],
-            ["06", "22"]
+            ["01", "2050"],
+            ["07", "2050"],
+            ["05", "50"],
+            ["06", "50"]
         ].forEach { date in
             XCTAssertTrue(cards.isValid(expirationMonth: date[0], expirationYear: date[1]))
         }

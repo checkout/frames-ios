@@ -182,8 +182,7 @@ public class CheckoutAPIClient {
         completion: @escaping ((Swift.Result<CkoCardTokenResponse, NetworkError>) -> Void)
     ) {
         let urlStr = "\(environment.urlPaymentApi)\(Endpoint.tokens.rawValue)"
-        let jsonEncoder = JSONEncoder()
-
+        
         guard let url = URL(string: urlStr),
               var urlRequest = try? URLRequest(url: url, method: .post, headers: headers) else {
             completion(.failure(NetworkError.invalidURL))
