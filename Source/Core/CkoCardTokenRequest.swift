@@ -27,6 +27,16 @@ public struct CkoCardTokenRequest: Codable {
     /// Phone
     public var phone: CkoPhoneNumber?
 
+    enum CodingKeys: String, CodingKey {
+        case number
+        case expiryMonth
+        case expiryYear
+        case cvv
+        case name
+        case billingAddress
+        case phone
+    }
+
     /// Initialize `CkoCardTokenRequest`
     ///
     /// - parameter number: Card number

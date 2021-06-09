@@ -27,4 +27,6 @@ Pod::Spec.new do |s|
     t.exclude_files = 'Tests/LinuxMain.swift'
     t.resources = 'Tests/Fixtures/*'
   end
+
+  s.pod_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7 x86_64' }
 end

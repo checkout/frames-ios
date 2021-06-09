@@ -9,6 +9,10 @@ public struct ApplePayTokenRequest: Codable {
     /// The Apple Pay Payment Token
     // swiftlint:disable:next identifier_name
     public let token_data: ApplePayTokenData?
+
+    enum CodingKeys: String, CodingKey {
+        case token_data
+    }
 }
 
 public struct ApplePayTokenData: Codable {
