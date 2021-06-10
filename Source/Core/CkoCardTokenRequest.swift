@@ -4,7 +4,7 @@ import Foundation
 public struct CkoCardTokenRequest: Codable {
 
     /// Type
-    let type: String = "card"
+    var type: String = "card"
 
     /// Card number
     public let number: String
@@ -26,16 +26,6 @@ public struct CkoCardTokenRequest: Codable {
 
     /// Phone
     public var phone: CkoPhoneNumber?
-
-    enum CodingKeys: String, CodingKey {
-        case number
-        case expiryMonth
-        case expiryYear
-        case cvv
-        case name
-        case billingAddress
-        case phone
-    }
 
     /// Initialize `CkoCardTokenRequest`
     ///

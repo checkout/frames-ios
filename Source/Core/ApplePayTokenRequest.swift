@@ -4,15 +4,11 @@ import Foundation
 public struct ApplePayTokenRequest: Codable {
 
     /// Token Type: Apple Pay
-    let type = "applepay"
+    var type = "applepay"
 
     /// The Apple Pay Payment Token
     // swiftlint:disable:next identifier_name
     public let token_data: ApplePayTokenData?
-
-    enum CodingKeys: String, CodingKey {
-        case token_data
-    }
 }
 
 public struct ApplePayTokenData: Codable {
