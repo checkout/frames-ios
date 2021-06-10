@@ -11,10 +11,9 @@ import Frames
 
 class ViewController: UIViewController {
 
-    var checkoutAPIClient: CheckoutAPIClient {
-        return CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
-                                 environment: .sandbox)
-    }
+    var checkoutAPIClient: CheckoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
+                                                                 environment: .sandbox)
+    
     @IBOutlet weak var cardNumberView: CardNumberInputView!
     @IBOutlet weak var expirationDateView: ExpirationDateInputView!
     @IBOutlet weak var cvvView: CvvInputView!
