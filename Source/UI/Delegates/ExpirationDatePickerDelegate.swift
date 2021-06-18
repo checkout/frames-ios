@@ -1,7 +1,7 @@
 import Foundation
 
 /// Method that you can use to manage the editing of the expiration date
-public protocol ExpirationDatePickerDelegate: class {
+public protocol ExpirationDatePickerDelegate: AnyObject {
 
     /// Executed when the date is changed.
     ///

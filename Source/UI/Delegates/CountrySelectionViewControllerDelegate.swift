@@ -1,7 +1,7 @@
 import Foundation
 
 /// Method that you can use to handle the country selection by the user
-public protocol CountrySelectionViewControllerDelegate: class {
+public protocol CountrySelectionViewControllerDelegate: AnyObject {
 
     /// Executed when an user select a country
     ///
