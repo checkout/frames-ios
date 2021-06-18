@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NL5-0J-36O">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NL5-0J-36O">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,23 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2l-21-qwk">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2l-21-qwk">
                                 <rect key="frame" x="118" y="318.5" width="139" height="30"/>
                                 <state key="normal" title="Go to payment page"/>
                                 <connections>
                                     <action selector="goToPaymentPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4nn-Ps-ev4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mbc-Li-2Ms">
+                                <rect key="frame" x="33" y="404" width="309" height="30"/>
+                                <state key="normal" title="Generate Token with ApplePay Payment Data"/>
+                                <connections>
+                                    <action selector="onClickGoTokenWithApplePay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GPZ-vS-HL6"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="ruM-T0-Z7y"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Mbc-Li-2Ms" firstAttribute="centerX" secondItem="ruM-T0-Z7y" secondAttribute="centerX" id="6gT-4B-b0x"/>
                             <constraint firstItem="T2l-21-qwk" firstAttribute="centerX" secondItem="ruM-T0-Z7y" secondAttribute="centerX" id="BPg-3N-dOY"/>
                             <constraint firstItem="T2l-21-qwk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="uv4-rO-14S"/>
+                            <constraint firstItem="Mbc-Li-2Ms" firstAttribute="top" secondItem="T2l-21-qwk" secondAttribute="bottom" constant="55.5" id="yNP-eN-90O"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ruM-T0-Z7y"/>
                     </view>
                     <navigationItem key="navigationItem" id="kW7-X8-4C0"/>
                     <connections>
+                        <outlet property="createTokenWithApplePay" destination="Mbc-Li-2Ms" id="vKV-QJ-91V"/>
                         <outlet property="goToPaymentPageButton" destination="T2l-21-qwk" id="g36-bi-Q9R"/>
                     </connections>
                 </viewController>
@@ -52,7 +59,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="HtO-KB-L31">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zz9-bs-YjH">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="639"/>
@@ -74,7 +81,7 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="RHK-Zd-j81" firstAttribute="top" secondItem="zz9-bs-YjH" secondAttribute="topMargin" id="74z-Kl-LeI"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="RHK-Zd-j81" secondAttribute="trailing" id="V4K-ea-FEc"/>
@@ -92,14 +99,14 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="kf4-px-RhT"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="HtO-KB-L31" firstAttribute="top" secondItem="kf4-px-RhT" secondAttribute="top" id="2sl-yB-YMm"/>
                             <constraint firstItem="HtO-KB-L31" firstAttribute="trailing" secondItem="kf4-px-RhT" secondAttribute="trailing" id="DkQ-68-rNq"/>
                             <constraint firstAttribute="bottom" secondItem="HtO-KB-L31" secondAttribute="bottom" id="kP3-Cl-bsm"/>
                             <constraint firstItem="HtO-KB-L31" firstAttribute="leading" secondItem="kf4-px-RhT" secondAttribute="leading" id="o4V-hb-6O2"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="kf4-px-RhT"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EAT-5V-gir" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -112,7 +119,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NL5-0J-36O" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6P9-pW-gVN">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -125,4 +132,9 @@
             <point key="canvasLocation" x="39" y="11"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
