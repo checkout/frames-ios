@@ -4,7 +4,7 @@ import Foundation
 public struct CkoCardTokenRequest: Codable {
 
     /// Type
-    let type: String = "card"
+    var type: String = "card"
 
     /// Card number
     public let number: String

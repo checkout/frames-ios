@@ -17,9 +17,9 @@ Pod::Spec.new do |s|
   s.exclude_files = "Classes/Exclude"
   s.resources = 'Source/Resources/**/*'
 
-  s.dependency 'PhoneNumberKit', '~> 3.3.0'
-  s.dependency 'Alamofire', '~> 5.4.0'
-  s.dependency 'CheckoutEventLoggerKit', '~> 1.0.2'
+  s.dependency 'PhoneNumberKit', '~> 3.3'
+  s.dependency 'Alamofire', '~> 5.4'
+  s.dependency 'CheckoutEventLoggerKit', '~> 1.0'
 
   s.test_spec do |t|
     t.source_files = 'Tests/**/*.swift'
@@ -27,4 +27,6 @@ Pod::Spec.new do |s|
     t.exclude_files = 'Tests/LinuxMain.swift'
     t.resources = 'Tests/Fixtures/*'
   end
+
+  s.pod_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7 x86_64' }
 end
