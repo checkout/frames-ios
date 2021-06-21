@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 
 #### 3.x Releases
 
+## [3.4.3](https://github.com/checkout/frames-ios/releases/tag/3.4.3)
+
+Released on 2021-06-23.
+
+#### Fixed
+
+* Cocoapods build issues that blocked release
+* Billing address showing up nil inside CkoCardTokenResponse
+* iOS Custom Example project crash while creating token
+
 ## [3.4.2](https://github.com/checkout/frames-ios/releases/tag/3.4.2)
 
 Released on 2021-05-10.
