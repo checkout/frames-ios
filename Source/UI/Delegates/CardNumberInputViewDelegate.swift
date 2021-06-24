@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 /// Method that you can use to handle the card number changes.
-public protocol CardNumberInputViewDelegate: class {
+public protocol CardNumberInputViewDelegate: AnyObject {
 
     /// Called when the card number changed.
     ///

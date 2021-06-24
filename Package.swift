@@ -17,7 +17,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.4.0"),
         .package(url: "https://github.com/marmelroy/PhoneNumberKit.git", from: "3.3.0"),
-        .package(name: "CheckoutEventLoggerKit", url: "https://github.com/checkout/checkout-event-logger-ios-framework.git", from: "1.0.2")
+        .package(name: "CheckoutEventLoggerKit", url: "https://github.com/checkout/checkout-event-logger-ios-framework.git", from: "1.0.3")
     ],
     targets: [
         .target(

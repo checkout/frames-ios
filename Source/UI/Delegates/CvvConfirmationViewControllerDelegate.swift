@@ -1,7 +1,7 @@
 import Foundation
 
 /// Methods used to handle action on the cvv confirmation page
-public protocol CvvConfirmationViewControllerDelegate: class {
+public protocol CvvConfirmationViewControllerDelegate: AnyObject {
 
     /// Called when the user confirms the cvv
     ///

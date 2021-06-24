@@ -20,15 +20,6 @@ public struct CkoAddress: Codable {
     /// The two-letter ISO code of the address country
     public let country: String?
 
-    private enum CodingKeys: String, CodingKey {
-        case addressLine1 = "address_line1"
-        case addressLine2 = "address_line2"
-        case city = "city"
-        case state = "state"
-        case zip = "zip"
-        case country = "country"
-    }
-
     public init(addressLine1: String? = nil, addressLine2: String? = nil,
                 city: String? = nil, state: String? = nil, zip: String? = nil,
                 country: String? = nil) {
