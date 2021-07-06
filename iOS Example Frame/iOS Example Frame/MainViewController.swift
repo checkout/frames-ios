@@ -84,6 +84,8 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
         switch status {
         case .success:
             
+            // dummy PR comment to check PR checks from bitrise.
+            
             // **** For testing only. ****
             print("addressLine1 : \(cardToken?.billingAddress?.addressLine1 ?? "")")
             print("addressLine2 : \(cardToken?.billingAddress?.addressLine2 ?? "")")
