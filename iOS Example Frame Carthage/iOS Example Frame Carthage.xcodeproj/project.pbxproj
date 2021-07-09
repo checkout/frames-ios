@@ -127,7 +127,6 @@
 		E6646F9520CE6C0A00D8353A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6646F9420CE6C0A00D8353A /* Assets.xcassets */; };
 		E6646F9820CE6C0A00D8353A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6646F9620CE6C0A00D8353A /* LaunchScreen.storyboard */; };
 		E6646FA320CE6C0A00D8353A /* iOS_Example_FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646FA220CE6C0A00D8353A /* iOS_Example_FrameUITests.swift */; };
-		F5022B9E26986A2700355A2B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5022B9D26986A2700355A2B /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -769,7 +768,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5022B9E26986A2700355A2B /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
