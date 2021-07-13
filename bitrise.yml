@@ -196,10 +196,8 @@ workflows:
     steps:
     - slack@3:
         inputs:
-        - webhook_url: "$FRAMES_IOS_BUILDS_CHANNEL"
-    meta:
-      bitrise.io:
-        stack: osx-xcode-13.0.x
+        - webhook_url: "$iOSBuildsChannel"
+    after_run: []
   set-up:
     steps:
     - activate-ssh-key@4:
