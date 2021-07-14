@@ -1,7 +1,7 @@
 import Foundation
 
 /// Apple Pay Token
-public struct ApplePayTokenRequest: Codable {
+public struct ApplePayTokenRequest: Codable, Equatable {
 
     /// Token Type: Apple Pay
     var type = "applepay"
@@ -11,7 +11,7 @@ public struct ApplePayTokenRequest: Codable {
     public let token_data: ApplePayTokenData?
 }
 
-public struct ApplePayTokenData: Codable {
+public struct ApplePayTokenData: Codable, Equatable {
     
     let version: String
     let data: String
@@ -27,7 +27,7 @@ public struct ApplePayTokenData: Codable {
     
 }
 
-public struct ApplePayTokenDataHeader: Codable {
+public struct ApplePayTokenDataHeader: Codable, Equatable {
     let ephemeralPublicKey: String
     let publicKeyHash: String
     let transactionId: String

@@ -40,8 +40,14 @@ final class NetworkErrorTests: XCTestCase {
             XCTFail(error.localizedDescription)
         }
     }
+    
+    func test_init_emptyData_throwsError() {
+        
+        let data = Data()
+        XCTAssertThrowsError(try JSONDecoder().decode(NetworkError.self, from: data))
+    }
 
-    func test_init_requestIDNil_returnUnknown() {
+    func test_init_requestIDNil_throwsError() throws {
 
         let responseJSON = makeResponseJSON(
             requestID: nil,
@@ -49,22 +55,12 @@ final class NetworkErrorTests: XCTestCase {
             errorCodes: ["stubErrorCode1",
                          "stubErrorCode2"]
         )
-
-        do {
-
-            let data = try JSONSerialization.data(withJSONObject: responseJSON, options: .prettyPrinted)
-            let result = try JSONDecoder().decode(NetworkError.self, from: data)
-
-            guard case .unknown = result else {
-                return XCTFail("Unexpected NetworkError type.")
-            }
-
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
+        
+        let data = try XCTUnwrap(JSONSerialization.data(withJSONObject: responseJSON, options: .prettyPrinted))
+        XCTAssertThrowsError(try JSONDecoder().decode(NetworkError.self, from: data))
     }
 
-    func test_init_errorTypeNil_returnUnknown() {
+    func test_init_errorTypeNil_throwsError() throws {
 
         let responseJSON = makeResponseJSON(
             requestID: "stubRequestID",
@@ -73,21 +69,11 @@ final class NetworkErrorTests: XCTestCase {
                          "stubErrorCode2"]
         )
 
-        do {
-
-            let data = try JSONSerialization.data(withJSONObject: responseJSON, options: .prettyPrinted)
-            let result = try JSONDecoder().decode(NetworkError.self, from: data)
-
-            guard case .unknown = result else {
-                return XCTFail("Unexpected NetworkError type.")
-            }
-
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
+        let data = try XCTUnwrap(JSONSerialization.data(withJSONObject: responseJSON, options: .prettyPrinted))
+        XCTAssertThrowsError(try JSONDecoder().decode(NetworkError.self, from: data))
     }
 
-    func test_init_errorTypeErrorCodes_returnUnknown() {
+    func test_init_errorCodesNil_throwsError() throws {
 
         let responseJSON = makeResponseJSON(
             requestID: "stubRequestID",
@@ -95,18 +81,8 @@ final class NetworkErrorTests: XCTestCase {
             errorCodes: nil
         )
 
-        do {
-
-            let data = try JSONSerialization.data(withJSONObject: responseJSON, options: .prettyPrinted)
-            let result = try JSONDecoder().decode(NetworkError.self, from: data)
-
-            guard case .unknown = result else {
-                return XCTFail("Unexpected NetworkError type.")
-            }
-
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
+        let data = try XCTUnwrap(JSONSerialization.data(withJSONObject: responseJSON, options: .prettyPrinted))
+        XCTAssertThrowsError(try JSONDecoder().decode(NetworkError.self, from: data))
     }
 
 

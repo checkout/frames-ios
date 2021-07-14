@@ -1,7 +1,7 @@
 import Foundation
 
 /// Card used to create the card token
-public struct CkoCardTokenRequest: Codable {
+public struct CkoCardTokenRequest: Codable, Equatable {
 
     /// Type
     var type: String = "card"

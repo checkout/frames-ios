@@ -1,46 +1,68 @@
 import Foundation
 import CheckoutEventLoggerKit
 
-enum FramesLogEvent {
+enum FramesLogEvent: Equatable {
+
+    enum Property: String {
+        case errorCodes
+        case errorType
+        case httpStatusCode
+        case message
+        case requestID
+        case scheme
+        case serverError
+        case tokenType
+    }
 
     case paymentFormPresented
+    case tokenRequested(tokenType: TokenType)
+    case tokenResponse(tokenType: TokenType, scheme: String?, httpStatusCode: Int, errorResponse: ErrorResponse?)
+    case exception(message: String)
 
-    var event: Event {
-        Event(typeIdentifier: "com.checkout.frames-mobile-sdk.\(typeIdentifier)",
-              time: time,
-              monitoringLevel: monitoringLevel,
-              properties: properties)
-    }
-
-    var providingMetadata: [String: String] {
+    var typeIdentifier: String {
+        let suffix: String
         switch self {
         case .paymentFormPresented:
-            return [:]
+            suffix = "payment_form_presented"
+        case .tokenRequested:
+            suffix = "token_requested"
+        case .tokenResponse:
+            suffix = "token_response"
+        case .exception:
+            suffix = "exception"
         }
+        
+        return "com.checkout.frames-mobile-sdk.\(suffix)"
     }
 
-    private var typeIdentifier: String {
+    var monitoringLevel: MonitoringLevel {
         switch self {
-        case .paymentFormPresented:
-            return "payment_form_presented"
-        }
-    }
-
-    private var time: Date {
-        Date()
-    }
-
-    private var monitoringLevel: MonitoringLevel {
-        switch self {
-        case .paymentFormPresented:
+        case .paymentFormPresented,
+             .tokenRequested,
+             .tokenResponse:
             return .info
+        case .exception:
+            return .error
         }
     }
 
-    private var properties: [String: AnyCodable] {
+    var properties: [Property: AnyCodable] {
         switch self {
         case .paymentFormPresented:
             return [:]
+        case let .tokenRequested(tokenType):
+            return [.tokenType: tokenType.rawValue]
+                .mapValues { AnyCodable($0) }
+        case let .tokenResponse(tokenType, scheme, httpStatusCode, errorResponse):
+            let serverError = errorResponse?.properties.mapKeys(\.rawValue)
+            return [.tokenType: tokenType.rawValue, .httpStatusCode: httpStatusCode]
+                .updating(key: .scheme, value: scheme)
+                .updating(key: .serverError, value: serverError)
+                .mapValues { AnyCodable($0) }
+        case let .exception(message):
+            return [.message: message]
+                .mapValues { AnyCodable($0) }
         }
     }
+    
 }

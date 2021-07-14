@@ -1,7 +1,7 @@
 import Foundation
 
 /// Address
-public struct CkoAddress: Codable {
+public struct CkoAddress: Codable, Equatable {
     /// Line 1 of the address
     public let addressLine1: String?
 

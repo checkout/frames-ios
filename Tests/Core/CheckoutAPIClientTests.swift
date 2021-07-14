@@ -1,196 +1,277 @@
-import XCTest
-import UIKit
-@testable import Frames
 import CheckoutEventLoggerKit
+import XCTest
 
-import Mockingjay
+@testable import Frames
 
-class CheckoutAPIClientTests: XCTestCase {
-
-    let checkoutAPIClient: CheckoutAPIClient = CheckoutAPIClient(
-        publicKey: "pk_test_6ff46046-30af-41d9-bf58-929022d2cd14",
-        environment: .sandbox)
-
-    let everythingWithCorrectUserAgent: (_ request: URLRequest) -> Bool = { request in
-        return request.allHTTPHeaderFields?["User-Agent"] == "checkout-sdk-frames-ios/\(CheckoutAPIClient.Constants.version)"
-    }
-
+final class CheckoutAPIClientTests: XCTestCase {
+    
+    private var stubCorrelationIDGenerator: StubCorrelationIDGenerator!
+    private var stubFramesEventLogger: StubFramesEventLogger!
+    private var stubDispatcher: StubDispatcher!
+    private var stubNetworkFlowLogger: StubNetworkFlowLogger!
+    private var stubNetworkFlowLoggerProvider: StubNetworkFlowLoggerFactory!
+    
+    // MARK: - setUp
+    
     override func setUp() {
+        
+        stubCorrelationIDGenerator = StubCorrelationIDGenerator()
+        stubFramesEventLogger = StubFramesEventLogger()
+        stubDispatcher = StubDispatcher()
+        stubNetworkFlowLogger = StubNetworkFlowLogger()
+        stubNetworkFlowLoggerProvider = StubNetworkFlowLoggerFactory()
+        stubNetworkFlowLoggerProvider.createLoggerReturnValue = stubNetworkFlowLogger
+        
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-
-    func testSuccessfulGetCardProviders() {
-        // Stub the response
-        #if SWIFT_PACKAGE
-        let bundle = Bundle.module
-        #else
-        let bundle = Bundle(for: type(of: self))
-        #endif
-        let path = bundle.path(forResource: "cardProviders", ofType: "json")!
-        let data = NSData(contentsOfFile: path)!
-        stub(everythingWithCorrectUserAgent, delay: 0, jsonData(data as Data))
-        // Test the function
-        let expectation = XCTestExpectation(description: "Get card providers")
-        checkoutAPIClient.getCardProviders(successHandler: { cardProviders in
-            XCTAssertNotNil(cardProviders)
-            expectation.fulfill()
-        }, errorHandler: { _ in
-        })
-
-        wait(for: [expectation], timeout: 1.0)
-    }
-
-    func testFailedGetCardProviders() {
-    }
-
-    func testSuccessfulCreateCkoCardToken() {
-        // Stub the response
-        #if SWIFT_PACKAGE
-        let bundle = Bundle.module
-        #else
-        let bundle = Bundle(for: type(of: self))
-        #endif
-        let path = bundle.path(forResource: "ckoCardToken", ofType: "json")!
-        let data = NSData(contentsOfFile: path)!
-        stub(everythingWithCorrectUserAgent, delay: 0, jsonData(data as Data))
-        // Test the function
-        let expectation = XCTestExpectation(description: "Create card token")
-        let cardRequest = CkoCardTokenRequest(number: "", expiryMonth: "", expiryYear: "",
-                                              cvv: "", name: nil, billingAddress: nil, phone: nil)
-
-        checkoutAPIClient.createCardToken(card: cardRequest) { result in
-            switch result {
-            case .success(let cardToken):
-                XCTAssertNotNil(cardToken)
-                XCTAssertNotNil(cardToken.token)
-                XCTAssertNil(cardToken.billingAddress)
-                XCTAssertNil(cardToken.phone)
-                expectation.fulfill()
-            case .failure:
-                break
-            }
-        }
-
-        wait(for: [expectation], timeout: 1.0)
     }
     
-    func testSuccessfulCreateCkoCardToken_WithBillingAddressPhoneNumber() {
-        // Stub the response
-        #if SWIFT_PACKAGE
-        let bundle = Bundle.module
-        #else
-        let bundle = Bundle(for: type(of: self))
-        #endif
-        let path = bundle.path(forResource: "ckoCardTokenBillingDetails", ofType: "json")!
-        let data = NSData(contentsOfFile: path)!
-        stub(everythingWithCorrectUserAgent, delay: 0, jsonData(data as Data))
-        // Test the function
-        let expectation = XCTestExpectation(description: "Create card token")
-        let billingAddress = CkoAddress(addressLine1: "Test Line1",
-                                        addressLine2: "Test Line2",
-                                        city: "Test Line3",
-                                        state: "London",
-                                        zip: "N1 7LH",
-                                        country: "GB")
-        let phoneNumber = CkoPhoneNumber(countryCode: "+44",
-                                         number: "7456354812")
+    // MARK: - tearDown
+    
+    override func tearDown() {
         
-        let cardRequest = CkoCardTokenRequest(number: "",
-                                              expiryMonth: "",
-                                              expiryYear: "",
-                                              cvv: "", name: nil,
-                                              billingAddress: billingAddress,
-                                              phone: phoneNumber)
-
-        checkoutAPIClient.createCardToken(card: cardRequest) { result in
-            switch result {
-            case .success(let cardToken):
-                XCTAssertNotNil(cardToken)
-                XCTAssertNotNil(cardToken.token)
-                XCTAssertNotNil(cardToken.billingAddress)
-                XCTAssertEqual(cardToken.billingAddress?.addressLine1, "Test Line1")
-                XCTAssertEqual(cardToken.billingAddress?.addressLine2, "Test Line2")
-                XCTAssertEqual(cardToken.billingAddress?.city, "London")
-                XCTAssertEqual(cardToken.billingAddress?.state, "London")
-                XCTAssertEqual(cardToken.billingAddress?.zip, "N1 7LH")
-                XCTAssertEqual(cardToken.billingAddress?.country, "GB")
-                XCTAssertNotNil(cardToken.phone?.countryCode, "+44")
-                XCTAssertEqual(cardToken.phone?.number, "7456354812")
-                expectation.fulfill()
-            case .failure:
-                break
-            }
-        }
-
-        wait(for: [expectation], timeout: 1.0)
+        stubCorrelationIDGenerator = nil
+        stubFramesEventLogger = nil
+        stubDispatcher = nil
+        stubNetworkFlowLogger = StubNetworkFlowLogger()
+        stubNetworkFlowLoggerProvider = nil
+        
+        super.tearDown()
     }
-
-    func testFailedCreateCkoCardToken() {
-        // Stub the response
-        #if SWIFT_PACKAGE
-        let bundle = Bundle.module
-        #else
-        let bundle = Bundle(for: type(of: self))
-        #endif
-        let path = bundle.path(forResource: "cardTokenInvalidNumber", ofType: "json")!
-        let data = NSData(contentsOfFile: path)!
-        stub(everythingWithCorrectUserAgent, delay: 0, jsonData(data as Data, status: 422))
-        // Test the function
-        let expectation = XCTestExpectation(description: "Create card token (error)")
-        let cardRequest = CkoCardTokenRequest(number: "", expiryMonth: "", expiryYear: "",
-                                              cvv: "", name: nil, billingAddress: nil, phone: nil)
-        checkoutAPIClient.createCardToken(card: cardRequest) { result in
-            switch result {
-            case .success:
-                break
-            case .failure(let networkError):
-                switch networkError {
-                case .checkout(_, _, let errorCodes):
-                    XCTAssertEqual(errorCodes, ["card_number_invalid"])
-                    expectation.fulfill()
-                default:
-                    break
-                }
-            }
-        }
-
-        wait(for: [expectation], timeout: 1.0)
+    
+    // MARK: - getCardProviders
+    
+    func test_getCardProviders_executeCalledWithCorrectRequest() {
+        
+        let publicKey = "public_key"
+        let correlationID = "correlation_id"
+        
+        let stubRequestExecutor = StubRequestExecutor<CardProviderResponse>()
+        let subject = createSubject(publicKey: publicKey, requestExecutor: stubRequestExecutor)
+        stubCorrelationIDGenerator.generateCorrelationIDReturnValue = correlationID
+        
+        subject.getCardProviders { _ in } errorHandler: { _ in }
+        
+        let expectedRequest = Request.cardProviders(publicKey: publicKey, correlationID: correlationID)
+        let actualRequest = stubRequestExecutor.executeCalledWithRequestParameterProvider as? Request
+        XCTAssertEqual(expectedRequest, actualRequest)
     }
-
-    func testSuccessfulCreateApplePayToken() {
-        // Stub the response
-        #if SWIFT_PACKAGE
-        let bundle = Bundle.module
-        #else
-        let bundle = Bundle(for: type(of: self))
-        #endif
-        let path = bundle.path(forResource: "applePayToken", ofType: "json")!
-        let data = NSData(contentsOfFile: path)!
-        stub(everythingWithCorrectUserAgent, delay: 0, jsonData(data as Data))
-        // Test the function
-        let expectation = XCTestExpectation(description: "Create apple pay token")
-        let applePayData = Data()
-        checkoutAPIClient.createApplePayToken(paymentData: applePayData) { result in
-            switch result {
-            case .success(let applePayToken):
-                XCTAssertNotNil(applePayToken)
-                XCTAssertNotNil(applePayToken.token)
-                XCTAssertNotNil(applePayToken.expiresOn)
-                expectation.fulfill()
-            case .failure:
-                break
-            }
-        }
-
-        wait(for: [expectation], timeout: 1.0)
+    
+    func test_getCardProviders_successResult_successHandlerCalledWithCorrectValue() {
+        
+        let stubRequestExecutor = StubRequestExecutor<CardProviderResponse>()
+        let subject = createSubject(requestExecutor: stubRequestExecutor)
+        stubCorrelationIDGenerator.generateCorrelationIDReturnValue = ""
+        
+        var actualCardProviders: [CardProvider]?
+        subject.getCardProviders { cardProviders in
+            actualCardProviders = cardProviders
+        } errorHandler: { _ in }
+        
+        let expectedCardProviders = [
+            CardProvider(id: "test_id", name: "test_name")
+        ]
+        
+        let cardProviderResponse = CardProviderResponse(object: "list", count: 1, data: expectedCardProviders)
+        stubRequestExecutor.executeCalledWithCompletionHandler?(.success(cardProviderResponse), nil)
+        
+        stubDispatcher.asyncCalledWithBlock?()
+        
+        XCTAssertEqual(expectedCardProviders, actualCardProviders)
     }
-
+    
+    func test_getCardProviders_errorResult_successHandlerCalledWithCorrectValue() {
+        
+        let stubRequestExecutor = StubRequestExecutor<CardProviderResponse>()
+        let subject = createSubject(requestExecutor: stubRequestExecutor)
+        stubCorrelationIDGenerator.generateCorrelationIDReturnValue = ""
+        
+        var actualError: NetworkError?
+        subject.getCardProviders { _ in } errorHandler: { error in actualError = error as? NetworkError }
+        
+        let expectedError = NetworkError.checkout(requestId: "", errorType: "test", errorCodes: [])
+        stubRequestExecutor.executeCalledWithCompletionHandler?(.failure(expectedError), nil)
+        
+        stubDispatcher.asyncCalledWithBlock?()
+        
+        XCTAssertEqual(expectedError, actualError)
+    }
+    
+    // MARK: - createCardToken
+    
+    func test_createCardToken_cardTokenRequest_executeCalledWithCorrectRequest() {
+        
+        let publicKey = "public_key"
+        let correlationID = "correlation_id"
+        
+        let stubRequestExecutor = StubRequestExecutor<CkoCardTokenResponse>()
+        let subject = createSubject(publicKey: publicKey, requestExecutor: stubRequestExecutor)
+        stubCorrelationIDGenerator.generateCorrelationIDReturnValue = correlationID
+        
+        let cardTokenRequest = CkoCardTokenRequest(number: "4242", expiryMonth: "1", expiryYear: "2038", cvv: "100")
+        subject.createCardToken(card: cardTokenRequest) { _ in }
+        
+        let expectedRequest = Request.cardToken(
+            body: cardTokenRequest,
+            publicKey: publicKey,
+            correlationID: correlationID)
+        let actualRequest = stubRequestExecutor.executeCalledWithRequestParameterProvider as? Request
+        XCTAssertEqual(expectedRequest, actualRequest)
+    }
+    
+    func test_createCardToken_cardTokenRequest_logRequestCalled() {
+        
+        let stubRequestExecutor = StubRequestExecutor<CkoCardTokenResponse>()
+        let subject = createSubject(publicKey: "", requestExecutor: stubRequestExecutor)
+        stubCorrelationIDGenerator.generateCorrelationIDReturnValue = ""
+        
+        let cardTokenRequest = CkoCardTokenRequest(number: "", expiryMonth: "", expiryYear: "", cvv: "")
+        subject.createCardToken(card: cardTokenRequest) { _ in }
+        
+        XCTAssert(stubNetworkFlowLogger.logRequestCalled)
+    }
+    
+    func test_createCardToken_requestExecutorProvidesResponse_logResponseCalledWithCorrectResponse() {
+        
+        let stubRequestExecutor = StubRequestExecutor<CkoCardTokenResponse>()
+        let subject = createSubject(publicKey: "", requestExecutor: stubRequestExecutor)
+        stubCorrelationIDGenerator.generateCorrelationIDReturnValue = ""
+        
+        let cardTokenRequest = CkoCardTokenRequest(number: "", expiryMonth: "", expiryYear: "", cvv: "")
+        subject.createCardToken(card: cardTokenRequest) { _ in }
+        
+        let expectedResponse = HTTPURLResponse(
+            url: URL(staticString: "https://localhost"),
+            statusCode: 0,
+            httpVersion: nil,
+            headerFields: nil)
+        stubRequestExecutor.executeCalledWithCompletionHandler?(.failure(.unknown), expectedResponse)
+        
+        let actualResponse = stubNetworkFlowLogger.logResponseCalledWithResponse
+        XCTAssertEqual(expectedResponse, actualResponse)
+    }
+    
+    func test_createCardToken_requestExecutorProvidesResult_logResponseCalledWithCorrectResult() {
+        
+        let stubRequestExecutor = StubRequestExecutor<CkoCardTokenResponse>()
+        let subject = createSubject(publicKey: "", requestExecutor: stubRequestExecutor)
+        stubCorrelationIDGenerator.generateCorrelationIDReturnValue = ""
+        
+        let cardTokenRequest = CkoCardTokenRequest(number: "", expiryMonth: "", expiryYear: "", cvv: "")
+        subject.createCardToken(card: cardTokenRequest) { _ in }
+        
+        let expectedResult: Result<CkoCardTokenResponse, NetworkError> = .failure(
+            .checkout(requestId: "", errorType: "test", errorCodes: []))
+        stubRequestExecutor.executeCalledWithCompletionHandler?(expectedResult, nil)
+        
+        let actualResult = stubNetworkFlowLogger.logResponseCalledWithResult
+        XCTAssertEqual(expectedResult, actualResult)
+    }
+    
+    func test_createCardToken_requestExecutorProvidesResult_completionHandlerCalledWithCorrectResult() {
+        
+        let stubRequestExecutor = StubRequestExecutor<CkoCardTokenResponse>()
+        let subject = createSubject(publicKey: "", requestExecutor: stubRequestExecutor)
+        stubCorrelationIDGenerator.generateCorrelationIDReturnValue = ""
+        
+        let cardTokenRequest = CkoCardTokenRequest(number: "", expiryMonth: "", expiryYear: "", cvv: "")
+        
+        var actualResult: Result<CkoCardTokenResponse, NetworkError>?
+        subject.createCardToken(card: cardTokenRequest) { result in actualResult = result }
+        
+        let expectedResult: Result<CkoCardTokenResponse, NetworkError> = .failure(
+            .checkout(requestId: "", errorType: "test", errorCodes: []))
+        stubRequestExecutor.executeCalledWithCompletionHandler?(expectedResult, nil)
+        stubDispatcher.asyncCalledWithBlock?()
+        
+        XCTAssertEqual(expectedResult, actualResult)
+    }
+    
+    // MARK: - createApplePayToken
+    
+    func test_createApplePayToken_cardTokenRequest_executeCalledWithCorrectRequest() {
+        
+        let publicKey = "public_key"
+        let correlationID = "correlation_id"
+        
+        let stubRequestExecutor = StubRequestExecutor<CkoCardTokenResponse>()
+        let subject = createSubject(publicKey: publicKey, requestExecutor: stubRequestExecutor)
+        stubCorrelationIDGenerator.generateCorrelationIDReturnValue = correlationID
+        
+        subject.createApplePayToken(paymentData: Data()) { _ in }
+        
+        let expectedRequest = Request.applePayToken(
+            body: ApplePayTokenRequest(token_data: nil),
+            publicKey: publicKey,
+            correlationID: correlationID)
+        let actualRequest = stubRequestExecutor.executeCalledWithRequestParameterProvider as? Request
+        XCTAssertEqual(expectedRequest, actualRequest)
+    }
+    
+    func test_createApplePayToken_cardTokenRequest_logRequestCalled() {
+        
+        let stubRequestExecutor = StubRequestExecutor<CkoCardTokenResponse>()
+        let subject = createSubject(publicKey: "", requestExecutor: stubRequestExecutor)
+        stubCorrelationIDGenerator.generateCorrelationIDReturnValue = ""
+        
+        subject.createApplePayToken(paymentData: Data()) { _ in }
+        
+        XCTAssert(stubNetworkFlowLogger.logRequestCalled)
+    }
+    
+    func test_createApplePayToken_requestExecutorProvidesResponse_logResponseCalledWithCorrectResponse() {
+        
+        let stubRequestExecutor = StubRequestExecutor<CkoCardTokenResponse>()
+        let subject = createSubject(publicKey: "", requestExecutor: stubRequestExecutor)
+        stubCorrelationIDGenerator.generateCorrelationIDReturnValue = ""
+        
+        subject.createApplePayToken(paymentData: Data()) { _ in }
+        
+        let expectedResponse = HTTPURLResponse(
+            url: URL(staticString: "https://localhost"),
+            statusCode: 0,
+            httpVersion: nil,
+            headerFields: nil)
+        stubRequestExecutor.executeCalledWithCompletionHandler?(.failure(.unknown), expectedResponse)
+        
+        let actualResponse = stubNetworkFlowLogger.logResponseCalledWithResponse
+        XCTAssertEqual(expectedResponse, actualResponse)
+    }
+    
+    func test_createApplePayToken_requestExecutorProvidesResult_logResponseCalledWithCorrectResult() {
+        
+        let stubRequestExecutor = StubRequestExecutor<CkoCardTokenResponse>()
+        let subject = createSubject(publicKey: "", requestExecutor: stubRequestExecutor)
+        stubCorrelationIDGenerator.generateCorrelationIDReturnValue = ""
+        
+        subject.createApplePayToken(paymentData: Data()) { _ in }
+        
+        let expectedResult: Result<CkoCardTokenResponse, NetworkError> = .failure(
+            .checkout(requestId: "", errorType: "test", errorCodes: []))
+        stubRequestExecutor.executeCalledWithCompletionHandler?(expectedResult, nil)
+        
+        let actualResult = stubNetworkFlowLogger.logResponseCalledWithResult
+        XCTAssertEqual(expectedResult, actualResult)
+    }
+    
+    func test_createApplePayToken_requestExecutorProvidesResult_completionHandlerCalledWithCorrectResult() {
+        
+        let stubRequestExecutor = StubRequestExecutor<CkoCardTokenResponse>()
+        let subject = createSubject(publicKey: "", requestExecutor: stubRequestExecutor)
+        stubCorrelationIDGenerator.generateCorrelationIDReturnValue = ""
+        
+        var actualResult: Result<CkoCardTokenResponse, NetworkError>?
+        subject.createApplePayToken(paymentData: Data()) { result in actualResult = result }
+        
+        let expectedResult: Result<CkoCardTokenResponse, NetworkError> = .failure(
+            .checkout(requestId: "", errorType: "test", errorCodes: []))
+        stubRequestExecutor.executeCalledWithCompletionHandler?(expectedResult, nil)
+        stubDispatcher.asyncCalledWithBlock?()
+        
+        XCTAssertEqual(expectedResult, actualResult)
+    }
+    
+    // MARK: - buildRemoteProcessorMetadata
+    
     func testRemoteProcessorMetadata() {
         let stubUIDevice = StubUIDevice(modelName: "modelName", systemVersion: "systemVersion")
 
@@ -210,4 +291,21 @@ class CheckoutAPIClientTests: XCTestCase {
 
         XCTAssertEqual(subject, expected)
     }
+    
+    // MARK: - Utility
+    
+    private func createSubject(publicKey: String = "",
+                               environment: Frames.Environment = .sandbox,
+                               requestExecutor: RequestExecuting) -> CheckoutAPIClient {
+        
+        return CheckoutAPIClient(
+            publicKey: publicKey,
+            environment: environment,
+            correlationIDGenerator: stubCorrelationIDGenerator,
+            logger: stubFramesEventLogger,
+            mainDispatcher: stubDispatcher,
+            networkFlowLoggerProvider: stubNetworkFlowLoggerProvider,
+            requestExecutor: requestExecutor)
+    }
+    
 }

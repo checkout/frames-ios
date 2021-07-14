@@ -4,10 +4,10 @@ public enum NetworkError: Error, Decodable {
     
     case checkout(requestId: String, errorType: String, errorCodes: [String])
     case other(error: Error)
-    case invalidData
-    case invalidURL
-    case objectDeallocatedUnexpectedly
     case unknown
+    
+    @available(*, deprecated, message: "This error will no longer be returned.")
+    case invalidData, invalidURL, objectDeallocatedUnexpectedly
     
     private enum CodingKeys: String, CodingKey {
         case requestId
@@ -19,13 +19,9 @@ public enum NetworkError: Error, Decodable {
 
         let values = try decoder.container(keyedBy: CodingKeys.self)
 
-        guard let requestId = try? values.decode(String.self, forKey: .requestId),
-              let errorType = try? values.decode(String.self, forKey: .errorType),
-              let errorCodes = try? values.decode([String].self, forKey: .errorCodes) else {
-
-            self = .unknown
-            return
-        }
+        let requestId = try values.decode(String.self, forKey: .requestId)
+        let errorType = try values.decode(String.self, forKey: .errorType)
+        let errorCodes = try values.decode([String].self, forKey: .errorCodes)
 
         self = .checkout(requestId: requestId, errorType: errorType, errorCodes: errorCodes)
     }

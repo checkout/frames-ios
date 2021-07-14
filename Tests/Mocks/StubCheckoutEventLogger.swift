@@ -2,7 +2,7 @@ import Foundation
 @testable import Frames
 import CheckoutEventLoggerKit
 
-class StubLogger: CheckoutEventLogging {
+class StubCheckoutEventLogger: CheckoutEventLogging {
     var logCalled = false
     var logCallArgs: [Event] = []
 
@@ -11,12 +11,11 @@ class StubLogger: CheckoutEventLogging {
         logCallArgs.append(event)
     }
 
-    var registerMetadataCalled = false
-    var registerMetadataCallArgs: [AddMetadataCallArgs] = []
-
+    var addMetadataCalledWithPairs: [(metadata: String, value: String)] = []
+    
     func add(metadata: String, value: String) {
-        registerMetadataCalled = true
-        registerMetadataCallArgs.append(AddMetadataCallArgs(metadata: metadata, value: value))
+        
+        addMetadataCalledWithPairs.append((metadata, value))
     }
 
     func remove(metadata: String) {
@@ -39,9 +38,4 @@ class StubLogger: CheckoutEventLogging {
 
         enableRemoteProcessorCalledWith = (environment, remoteProcessorMetadata)
     }
-}
-
-struct AddMetadataCallArgs: Equatable {
-    let metadata: String
-    let value: String
 }

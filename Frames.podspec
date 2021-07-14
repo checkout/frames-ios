@@ -18,13 +18,10 @@ Pod::Spec.new do |s|
   s.resources = 'Source/Resources/**/*'
 
   s.dependency 'PhoneNumberKit', '~> 3.3'
-  s.dependency 'Alamofire', '~> 5.4'
   s.dependency 'CheckoutEventLoggerKit', '~> 1.0'
 
   s.test_spec do |t|
     t.source_files = 'Tests/**/*.swift'
-    t.dependency 'Mockingjay', '~> 3.0.0-alpha.1'
-    t.exclude_files = 'Tests/LinuxMain.swift'
     t.resources = 'Tests/Fixtures/*'
   end
 
