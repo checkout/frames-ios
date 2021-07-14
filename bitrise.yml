@@ -170,23 +170,6 @@ workflows:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
     - git-clone@4: {}
     - cache-pull@2: {}
-    - script@1:
-        title: Do anything with Script step
-        inputs:
-        - content: |
-            #!/usr/bin/env bash
-            # fail if any commands fails
-            set -e
-            # debug log
-            set -x
-
-            # write your script here
-            echo "Hello World!"
-
-            # or run a script from your repository, like:
-            # bash ./path/to/script.sh
-            # not just bash, e.g.:
-            # ruby ./path/to/script.rb
     - certificate-and-profile-installer@1: {}
     after_run: []
 app:
