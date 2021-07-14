@@ -43,7 +43,7 @@ class iOS_Example_FrameUITests: XCTestCase {
         elementsQuery.textFields["100"].tap()
         elementsQuery.textFields["100"].typeText("100")
         app.toolbars["Toolbar"].buttons["Done"].tap()
-        app.navigationBars["Payment"].buttons["Save"].tap()
+        app.navigationBars["Payment"].buttons["Pay"].tap()
         app.alerts["Payment"].buttons["OK"].tap()
         
         

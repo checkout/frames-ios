@@ -23,7 +23,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
     }
 
     lazy var cardViewController: CardViewController = {
-        let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
+        let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
                                                   environment: .sandbox)
         let b = CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .normal, billingDetailsState: .normal, defaultRegionCode: "GB")
         b.billingDetailsAddress = CkoAddress(addressLine1: "Test line1", addressLine2: "Test line2", city: "London", state: "London", zip: "N12345", country: "GB")

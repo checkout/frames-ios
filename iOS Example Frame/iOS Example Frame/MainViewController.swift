@@ -15,7 +15,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
     @IBOutlet weak var createTokenWithApplePay: UIButton!
     
     // Step1 : create instance of CheckoutAPIClient
-    let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
+    let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
                                               environment: .sandbox)
     
     @IBAction func goToPaymentPage(_ sender: Any) {
