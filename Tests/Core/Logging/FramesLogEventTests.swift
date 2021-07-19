@@ -15,7 +15,7 @@ final class FramesLogEventTests: XCTestCase {
     
     func test_typeIdentifier_tokenRequested_returnsCorrectValue() {
         
-        let subject = FramesLogEvent.tokenRequested(tokenType: .card)
+        let subject = FramesLogEvent.tokenRequested(tokenType: .card, publicKey: "")
         XCTAssertEqual("com.checkout.frames-mobile-sdk.token_requested", subject.typeIdentifier)
     }
     
@@ -41,7 +41,7 @@ final class FramesLogEventTests: XCTestCase {
     
     func test_monitoringLevel_tokenRequested_returnsCorrectValue() {
         
-        let subject = FramesLogEvent.tokenRequested(tokenType: .card)
+        let subject = FramesLogEvent.tokenRequested(tokenType: .card, publicKey: "")
         XCTAssertEqual(.info, subject.monitoringLevel)
     }
     
@@ -67,14 +67,14 @@ final class FramesLogEventTests: XCTestCase {
     
     func test_properties_tokenRequestedWithCardTokenType_returnsCorrectValue() {
         
-        let subject = FramesLogEvent.tokenRequested(tokenType: .card)
-        XCTAssertEqual([.tokenType: "card"], subject.properties)
+        let subject = FramesLogEvent.tokenRequested(tokenType: .card, publicKey: "public_key")
+        XCTAssertEqual([.tokenType: "card", .publicKey: AnyCodable("public_key")], subject.properties)
     }
     
     func test_properties_tokenRequestedWithApplePayTokenType_returnsCorrectValue() {
         
-        let subject = FramesLogEvent.tokenRequested(tokenType: .applePay)
-        XCTAssertEqual([.tokenType: "applepay"], subject.properties)
+        let subject = FramesLogEvent.tokenRequested(tokenType: .applePay, publicKey: "public_key")
+        XCTAssertEqual([.tokenType: "applepay", .publicKey: AnyCodable("public_key")], subject.properties)
     }
     
     func test_properties_tokenResponseWithCardTokenType_containsCorrectTokenType() {

@@ -30,6 +30,7 @@ final class NetworkFlowLoggerTests: XCTestCase {
         
         let subject = NetworkFlowLogger(
             correlationID: "",
+            publicKey: "",
             tokenType: .card,
             framesEventLogger: stubFramesEventLogger)
         
@@ -43,6 +44,7 @@ final class NetworkFlowLoggerTests: XCTestCase {
         let expectedCorrelationID = "correlation_id"
         let subject = NetworkFlowLogger(
             correlationID: expectedCorrelationID,
+            publicKey: "",
             tokenType: .card,
             framesEventLogger: stubFramesEventLogger)
         
@@ -56,11 +58,12 @@ final class NetworkFlowLoggerTests: XCTestCase {
         
         let subject = NetworkFlowLogger(
             correlationID: "",
+            publicKey: "",
             tokenType: .card,
             framesEventLogger: stubFramesEventLogger)
         subject.logRequest()
         
-        let expectedEvent = FramesLogEvent.tokenRequested(tokenType: .card)
+        let expectedEvent = FramesLogEvent.tokenRequested(tokenType: .card, publicKey: "")
         let actualEvent = stubFramesEventLogger.logCalledWithFramesLogEvents.first
         XCTAssertEqual(expectedEvent, actualEvent)
     }
@@ -71,6 +74,7 @@ final class NetworkFlowLoggerTests: XCTestCase {
         
         let subject = NetworkFlowLogger(
             correlationID: "",
+            publicKey: "",
             tokenType: .card,
             framesEventLogger: stubFramesEventLogger)
         
@@ -84,6 +88,7 @@ final class NetworkFlowLoggerTests: XCTestCase {
         let expectedCorrelationID = "correlation_id"
         let subject = NetworkFlowLogger(
             correlationID: expectedCorrelationID,
+            publicKey: "",
             tokenType: .card,
             framesEventLogger: stubFramesEventLogger)
         
@@ -105,6 +110,7 @@ final class NetworkFlowLoggerTests: XCTestCase {
         
         let subject = NetworkFlowLogger(
             correlationID: "",
+            publicKey: "",
             tokenType: .card,
             framesEventLogger: stubFramesEventLogger)
         subject.logResponse(result: result, response: response)
@@ -130,6 +136,7 @@ final class NetworkFlowLoggerTests: XCTestCase {
         
         let subject = NetworkFlowLogger(
             correlationID: "",
+            publicKey: "",
             tokenType: .card,
             framesEventLogger: stubFramesEventLogger)
         subject.logResponse(result: result, response: response)
@@ -150,6 +157,7 @@ final class NetworkFlowLoggerTests: XCTestCase {
         
         let subject = NetworkFlowLogger(
             correlationID: "",
+            publicKey: "",
             tokenType: .card,
             framesEventLogger: stubFramesEventLogger)
         subject.logResponse(result: result, response: nil)

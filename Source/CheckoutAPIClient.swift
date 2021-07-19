@@ -90,7 +90,9 @@ public class CheckoutAPIClient {
         
         let dateProvider = DateProvider()
         let framesEventLogger = FramesEventLogger(checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
-        let networkFlowLoggerFactory = NetworkFlowLoggerFactory(framesEventLogger: framesEventLogger)
+        let networkFlowLoggerFactory = NetworkFlowLoggerFactory(
+            framesEventLogger: framesEventLogger,
+            publicKey: publicKey)
         
         let correlationIDGenerator = CorrelationIDGenerator()
         let mainDispatcher = DispatchQueue.main

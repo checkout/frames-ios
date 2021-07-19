@@ -8,6 +8,7 @@ enum FramesLogEvent: Equatable {
         case errorType
         case httpStatusCode
         case message
+        case publicKey
         case requestID
         case scheme
         case serverError
@@ -15,7 +16,7 @@ enum FramesLogEvent: Equatable {
     }
 
     case paymentFormPresented
-    case tokenRequested(tokenType: TokenType)
+    case tokenRequested(tokenType: TokenType, publicKey: String)
     case tokenResponse(tokenType: TokenType, scheme: String?, httpStatusCode: Int, errorResponse: ErrorResponse?)
     case exception(message: String)
 
@@ -50,8 +51,8 @@ enum FramesLogEvent: Equatable {
         switch self {
         case .paymentFormPresented:
             return [:]
-        case let .tokenRequested(tokenType):
-            return [.tokenType: tokenType.rawValue]
+        case let .tokenRequested(tokenType, publicKey):
+            return [.tokenType: tokenType.rawValue, .publicKey: publicKey]
                 .mapValues { AnyCodable($0) }
         case let .tokenResponse(tokenType, scheme, httpStatusCode, errorResponse):
             let serverError = errorResponse?.properties.mapKeys(\.rawValue)
