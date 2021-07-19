@@ -7,8 +7,6 @@ output: docs
 theme: fullwidth
 clean: true
 documentation: Documentation/**/*.md
-exclude:
-  - Source/PhoneNumberKit/*.swift
 custom_categories:
   - name: Guides
     children:
