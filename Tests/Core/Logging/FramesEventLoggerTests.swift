@@ -40,14 +40,14 @@ final class FramesEventLoggerTests: XCTestCase {
         let expectedDate = Date()
         stubDateProvider.currentDateReturnValue = expectedDate
         
-        let event = FramesLogEvent.tokenRequested(tokenType: .card)
+        let event = FramesLogEvent.tokenRequested(tokenType: .card, publicKey: "public_key")
         subject.log(event)
         
         let expectedEvent = Event(
             typeIdentifier: "com.checkout.frames-mobile-sdk.token_requested",
             time: expectedDate,
             monitoringLevel: .info,
-            properties: ["tokenType": "card"])
+            properties: ["tokenType": "card", "publicKey": "public_key"])
         let actualEvent = stubCheckoutEventLogger.logCallArgs.first
         XCTAssertEqual(expectedEvent, actualEvent)
     }

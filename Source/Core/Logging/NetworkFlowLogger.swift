@@ -12,15 +12,18 @@ protocol NetworkFlowLogging {
 final class NetworkFlowLogger: NetworkFlowLogging {
     
     private let correlationID: String
+    private let publicKey: String
     private let tokenType: TokenType
     private let framesEventLogger: FramesEventLogging
     
     // MARK: - Init
     
     init(correlationID: String,
+         publicKey: String,
          tokenType: TokenType,
          framesEventLogger: FramesEventLogging) {
         self.correlationID = correlationID
+        self.publicKey = publicKey
         self.tokenType = tokenType
         self.framesEventLogger = framesEventLogger
     }
@@ -29,7 +32,7 @@ final class NetworkFlowLogger: NetworkFlowLogging {
     
     func logRequest() {
         
-        let event = FramesLogEvent.tokenRequested(tokenType: tokenType)
+        let event = FramesLogEvent.tokenRequested(tokenType: tokenType, publicKey: publicKey)
         
         framesEventLogger.add(metadata: correlationID, forKey: .correlationID)
         framesEventLogger.log(event)
