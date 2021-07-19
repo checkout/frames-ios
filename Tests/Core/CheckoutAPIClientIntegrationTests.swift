@@ -88,7 +88,7 @@ final class CheckoutAPIClientIntegrationTests: XCTestCase {
             cardCategory: "Consumer",
             issuer: "GOTHAM STATE BANK",
             issuerCountry: "US",
-            productId: "A",
+            productID: "A",
             productType: "Visa Traditional",
             billingAddress: nil,
             phone: nil)
@@ -131,7 +131,7 @@ final class CheckoutAPIClientIntegrationTests: XCTestCase {
             cardCategory: "Consumer",
             issuer: "GOTHAM STATE BANK",
             issuerCountry: "US",
-            productId: "A",
+            productID: "A",
             productType: "Visa Traditional",
             billingAddress: CkoAddress(
                 addressLine1: "Test Line1",
@@ -213,7 +213,7 @@ final class CheckoutAPIClientIntegrationTests: XCTestCase {
             cardCategory: "Consumer",
             issuer: "HSBC BANK PLC",
             issuerCountry: "GB",
-            productId: "F",
+            productID: "F",
             productType: "Visa Classic",
             billingAddress: nil,
             phone: nil)

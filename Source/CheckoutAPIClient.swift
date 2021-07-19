@@ -64,10 +64,7 @@ public class CheckoutAPIClient {
                      session: URLSession) {
         
         let jsonDecoder = JSONDecoder()
-        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-
         let jsonEncoder = JSONEncoder()
-        jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
 
         let requestExecutor = RequestExecutor(
             environmentURLProvider: environment,

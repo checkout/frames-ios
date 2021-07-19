@@ -2,6 +2,11 @@ import Foundation
 
 /// A phone number
 public struct CkoPhoneNumber: Codable, Equatable {
+    
+    enum CodingKeys: String, CodingKey {
+        case countryCode = "country_code"
+        case number
+    }
 
     /// The international country calling code. Required for some risk checks.
     public let countryCode: String?

@@ -10,9 +10,9 @@ public enum NetworkError: Error, Decodable {
     case invalidData, invalidURL, objectDeallocatedUnexpectedly
     
     private enum CodingKeys: String, CodingKey {
-        case requestId
-        case errorType
-        case errorCodes
+        case requestId = "request_id"
+        case errorType = "error_type"
+        case errorCodes = "error_codes"
     }
 
     public init(from decoder: Decoder) throws {

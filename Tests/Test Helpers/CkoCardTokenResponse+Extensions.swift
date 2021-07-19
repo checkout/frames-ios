@@ -19,7 +19,7 @@ extension CkoCardTokenResponse {
             cardCategory: nil,
             issuer: nil,
             issuerCountry: nil,
-            productId: nil,
+            productID: nil,
             productType: nil,
             billingAddress: nil,
             phone: nil)
