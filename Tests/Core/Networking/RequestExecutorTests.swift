@@ -120,7 +120,7 @@ final class RequestExecutorTests: XCTestCase {
         stubRequestParameterProvider.encodeBodyReturnValue = Data()
         stubRequestParameterProvider.urlReturnValue = URL(staticString: "https://localhost")
         
-        subject.execute(stubRequestParameterProvider, responseType: CkoCardTokenResponse.self) { result, _ in }
+        subject.execute(stubRequestParameterProvider, responseType: CkoCardTokenResponse.self) { _, _ in }
         
         XCTAssert(stubURLSessionDataTask.resumeCalled)
     }

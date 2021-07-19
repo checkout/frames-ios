@@ -8,32 +8,32 @@ final class EnvironmentTests: XCTestCase {
     
     func test_classicURL_live_returnsCorrectValue() {
         
-        let expectedURLString = "https://api2.checkout.com/v2/"
-        let actualURLString = Environment.live.classicURL.absoluteString
-        XCTAssertEqual(expectedURLString, actualURLString)
+        let expectedURL = URL(staticString: "https://api2.checkout.com/v2/")
+        let actualURL = Environment.live.classicURL
+        XCTAssertEqual(expectedURL, actualURL)
     }
     
     func test_classicURL_sandbox_returnsCorrectValue() {
         
-        let expectedURLString = "https://sandbox.checkout.com/api2/v2/"
-        let actualURLString = Environment.sandbox.classicURL.absoluteString
-        XCTAssertEqual(expectedURLString, actualURLString)
+        let expectedURL = URL(staticString: "https://sandbox.checkout.com/api2/v2/")
+        let actualURL = Environment.sandbox.classicURL
+        XCTAssertEqual(expectedURL, actualURL)
     }
     
     // MARK: - unifiedPaymentsURL
 
     func test_unifiedPaymentsURL_live_returnsCorrectValue() {
         
-        let expectedURLString = "https://api.checkout.com/"
-        let actualURLString = Environment.live.unifiedPaymentsURL.absoluteString
-        XCTAssertEqual(expectedURLString, actualURLString)
+        let expectedURL = URL(staticString: "https://api.checkout.com/")
+        let actualURL = Environment.live.unifiedPaymentsURL
+        XCTAssertEqual(expectedURL, actualURL)
     }
     
     func test_unifiedPaymentsURL_sandbox_returnsCorrectValue() {
         
-        let expectedURLString = "https://api.sandbox.checkout.com/"
-        let actualURLString = Environment.sandbox.unifiedPaymentsURL.absoluteString
-        XCTAssertEqual(expectedURLString, actualURLString)
+        let expectedURL = URL(staticString: "https://api.sandbox.checkout.com/")
+        let actualURL = Environment.sandbox.unifiedPaymentsURL
+        XCTAssertEqual(expectedURL, actualURL)
     }
     
 }
