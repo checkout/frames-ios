@@ -58,12 +58,12 @@ final class NetworkFlowLoggerTests: XCTestCase {
         
         let subject = NetworkFlowLogger(
             correlationID: "",
-            publicKey: "",
+            publicKey: "public_key",
             tokenType: .card,
             framesEventLogger: stubFramesEventLogger)
         subject.logRequest()
         
-        let expectedEvent = FramesLogEvent.tokenRequested(tokenType: .card, publicKey: "")
+        let expectedEvent = FramesLogEvent.tokenRequested(tokenType: .card, publicKey: "public_key")
         let actualEvent = stubFramesEventLogger.logCalledWithFramesLogEvents.first
         XCTAssertEqual(expectedEvent, actualEvent)
     }
