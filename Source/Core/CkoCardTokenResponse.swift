@@ -1,7 +1,27 @@
 import Foundation
 
 /// Card Token Response returned by a successful called to `createCardToken`.
-public struct CkoCardTokenResponse: Codable {
+public struct CkoCardTokenResponse: Codable, Equatable {
+    
+    enum CodingKeys: String, CodingKey {
+        case billingAddress = "billing_address"
+        case bin
+        case cardCategory = "card_category"
+        case cardType = "card_type"
+        case expiresOn = "expires_on"
+        case expiryMonth = "expiry_month"
+        case expiryYear = "expiry_year"
+        case issuer
+        case issuerCountry = "issuer_country"
+        case last4 = "last4"
+        case name
+        case phone
+        case productID = "product_id"
+        case productType = "product_type"
+        case scheme
+        case token
+        case type
+    }
 
     /// Type
     public let type: String
@@ -43,7 +63,7 @@ public struct CkoCardTokenResponse: Codable {
     public let issuerCountry: String?
 
     /// Card product ID
-    public let productId: String?
+    public let productID: String?
 
     /// Card product type
     public let productType: String?
@@ -53,4 +73,12 @@ public struct CkoCardTokenResponse: Codable {
 
     /// Phone
     public var phone: CkoPhoneNumber?
+}
+
+// Extension for backwards compatability.
+extension CkoCardTokenResponse {
+    
+    @available(*, deprecated, renamed: "productID")
+    public var productId: String? { return productID }
+    
 }

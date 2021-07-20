@@ -15,35 +15,28 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.4.0"),
         .package(url: "https://github.com/marmelroy/PhoneNumberKit.git", from: "3.3.0"),
         .package(name: "CheckoutEventLoggerKit", url: "https://github.com/checkout/checkout-event-logger-ios-framework.git", from: "1.0.3")
     ],
     targets: [
         .target(
             name: "Frames",
-            dependencies: ["Alamofire", "PhoneNumberKit", "CheckoutEventLoggerKit"],
+            dependencies: ["PhoneNumberKit", "CheckoutEventLoggerKit"],
             path: "Source",
             exclude: ["Suppporting Files/Info.plist"],
             resources: [
                 .process("Resources")
             ]
         ),
-// Tests are currently broken as Mockingjay doesn't support SPM
-//
-//        .testTarget(
-//            name: "Frames-Tests",
-//            dependencies: ["Frames"],
-//            path: "Tests",
-//            exclude: ["Info.plist"],
-//            resources: [
-//                .process("Fixtures/applePayTokenInvalid.json"),
-//                .process("Fixtures/cardTokenInvalidNumber.json"),
-//                .process("Fixtures/applePayToken.json"),
-//                .process("Fixtures/ckoCardToken.json"),
-//                .process("Fixtures/cardProviders.json")
-//            ]
-//        )
+        .testTarget(
+            name: "FramesTests",
+            dependencies: ["Frames"],
+            path: "Tests",
+            exclude: ["Info.plist"],
+            resources: [
+                .process("Fixtures")
+            ]
+        )
     ],
     swiftLanguageVersions: [.v5]
 )

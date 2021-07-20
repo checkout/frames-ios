@@ -7,14 +7,27 @@ class CardViewControllerTests: XCTestCase {
     var cardViewController: CardViewController!
     // swiftlint:disable:next weak_delegate
     var cardViewControllerDelegate: CardViewControllerMockDelegate!
+    var stubCheckoutAPIClient: StubCheckoutAPIClient!
+    var stubLogger: StubFramesEventLogger!
 
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
         cardViewController = CardViewController()
         cardViewControllerDelegate = CardViewControllerMockDelegate()
+        stubLogger = StubFramesEventLogger()
+        stubCheckoutAPIClient = StubCheckoutAPIClient(logger: stubLogger)
         let navigation = UINavigationController()
         navigation.viewControllers = [cardViewController]
+    }
+    
+    override func tearDown() {
+        cardViewController = nil
+        cardViewControllerDelegate = nil
+        stubLogger = nil
+        stubCheckoutAPIClient = nil
+        
+        super.tearDown()
     }
 
     func testInitialization() {
@@ -29,9 +42,7 @@ class CardViewControllerTests: XCTestCase {
     }
 
     func testInitializationHiddenFields() {
-        let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
-                                                  environment: .sandbox)
-        let cardViewController = CardViewController(checkoutApiClient: checkoutAPIClient,
+        let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
                                                     cardHolderNameState: .hidden, billingDetailsState: .hidden)
         XCTAssertEqual(cardViewController.cardHolderNameState, .hidden)
         XCTAssertEqual(cardViewController.billingDetailsState, .hidden)
@@ -111,9 +122,7 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFieldsWithRequiredBillingDetailsMissing() {
         // Setup
-        let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
-                                                  environment: .sandbox)
-        let cardViewController = CardViewController(checkoutApiClient: checkoutAPIClient,
+        let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
                                                     cardHolderNameState: .hidden, billingDetailsState: .required)
         cardViewController.viewDidLoad()
         XCTAssertFalse((cardViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
@@ -125,9 +134,7 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFieldsWithRequiredNameMissing() {
         // Setup
-        let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
-                                                  environment: .sandbox)
-        let cardViewController = CardViewController(checkoutApiClient: checkoutAPIClient,
+        let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
                                                     cardHolderNameState: .required, billingDetailsState: .hidden)
         cardViewController.viewDidLoad()
         XCTAssertFalse((cardViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
@@ -139,9 +146,7 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFields() {
         // Setup
-        let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
-                                                  environment: .sandbox)
-        let cardViewController = CardViewController(checkoutApiClient: checkoutAPIClient,
+        let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
                                                     cardHolderNameState: .hidden, billingDetailsState: .hidden)
         cardViewController.viewDidLoad()
         XCTAssertFalse((cardViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
@@ -156,9 +161,7 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFieldsWithEmptyValues() {
         // Setup
-        let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
-                                                  environment: .sandbox)
-        let cardViewController = CardViewController(checkoutApiClient: checkoutAPIClient,
+        let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
                                                     cardHolderNameState: .hidden, billingDetailsState: .hidden)
         cardViewController.viewDidLoad()
         XCTAssertFalse((cardViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
@@ -305,11 +308,6 @@ class CardViewControllerTests: XCTestCase {
 
     func test_onTapDoneCardButton_checkoutAPIClientReturnsError_delegateCalledWithFailure() {
 
-        let stubCheckoutAPIClient = StubCheckoutAPIClient(publicKey: "",
-                                                          environment: .sandbox,
-                                                          jsonEncoder: JSONEncoder(),
-                                                          jsonDecoder: JSONDecoder(),
-                                                          logger: CheckoutEventLogger(productName: ""))
         let stubCardViewControllerDelegate = StubCardViewControllerDelegate()
         let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
                                                     cardHolderNameState: .normal,
@@ -322,7 +320,7 @@ class CardViewControllerTests: XCTestCase {
 
         cardViewController.onTapDoneCardButton()
 
-        stubCheckoutAPIClient.createCardTokenCalledWith?.completion(.failure(.invalidData))
+        stubCheckoutAPIClient.createCardTokenCalledWith?.completion(.failure(.unknown))
 
         XCTAssertEqual(stubCardViewControllerDelegate.onTapDoneCalledWith?.controller, cardViewController)
         XCTAssertEqual(stubCardViewControllerDelegate.onTapDoneCalledWith?.status, .failure)
@@ -331,37 +329,20 @@ class CardViewControllerTests: XCTestCase {
 
     func test_viewDidLoad_paymentFormPresentedLogCalled() {
 
-        let stubLogger = StubLogger()
-        let stubCheckoutAPIClient = StubCheckoutAPIClient(publicKey: "",
-                                                          environment: .sandbox,
-                                                          jsonEncoder: JSONEncoder(),
-                                                          jsonDecoder: JSONDecoder(),
-                                                          logger: stubLogger)
-
         let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
 
         cardViewController.viewWillAppear(true)
+        
+        let events = stubLogger.logCalledWithFramesLogEvents
+        XCTAssertEqual(1, events.count)
 
-        XCTAssert(stubLogger.logCalled)
-        XCTAssertEqual(stubLogger.logCallArgs.count, 1)
-
-        let event = stubLogger.logCallArgs[0]
-
-        XCTAssertEqual(event.monitoringLevel, .info)
-        XCTAssertEqual(event.properties, [:])
-        XCTAssertEqual(event.typeIdentifier, "com.checkout.frames-mobile-sdk.payment_form_presented")
+        let event = events[0]
+        XCTAssertEqual(.paymentFormPresented, event)
     }
 
     func test_viewDidLoad_paymentFormPresentedLogNotCalledAfterAddressView() {
-
-        let stubLogger = StubLogger()
-        let stubCheckoutAPIClient = StubCheckoutAPIClient(publicKey: "",
-                                                          environment: .sandbox,
-                                                          jsonEncoder: JSONEncoder(),
-                                                          jsonDecoder: JSONDecoder(),
-                                                          logger: stubLogger)
 
         let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
                                                     cardHolderNameState: .normal,
@@ -374,13 +355,10 @@ class CardViewControllerTests: XCTestCase {
 
         cardViewController.viewWillAppear(true)
 
-        XCTAssert(stubLogger.logCalled)
-        XCTAssertEqual(stubLogger.logCallArgs.count, 2)
+        let events = stubLogger.logCalledWithFramesLogEvents
+        XCTAssertEqual(2, events.count)
 
-        let event = stubLogger.logCallArgs[0]
-
-        XCTAssertEqual(event.monitoringLevel, .info)
-        XCTAssertEqual(event.properties, [:])
-        XCTAssertEqual(event.typeIdentifier, "com.checkout.frames-mobile-sdk.payment_form_presented")
+        let event = events[0]
+        XCTAssertEqual(.paymentFormPresented, event)
     }
 }

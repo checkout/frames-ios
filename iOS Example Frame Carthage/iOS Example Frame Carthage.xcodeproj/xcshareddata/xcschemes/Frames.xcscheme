@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4422776426163748009626A0"
+               BlueprintIdentifier = "57256C78269F1181001EC3D8"
                BuildableName = "FramesTests.xctest"
                BlueprintName = "FramesTests"
                ReferencedContainer = "container:iOS Example Frame Carthage.xcodeproj">

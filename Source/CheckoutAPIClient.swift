@@ -1,5 +1,4 @@
 import Foundation
-import Alamofire
 import CheckoutEventLoggerKit
 import UIKit
 
@@ -15,50 +14,32 @@ public class CheckoutAPIClient {
     /// Environment (sandbox or live)
     let environment: Environment
 
-    /// Checkout Logger
-    let logger: CheckoutEventLogging
+    /// Frames event logger.
+    let logger: FramesEventLogging
 
-    /// headers used for the requests
-    private var headers: HTTPHeaders {
-        return ["Authorization": self.publicKey,
-                "Content-Type": "application/json",
-                "User-Agent": "checkout-sdk-frames-ios/\(CheckoutAPIClient.Constants.version)"]
-    }
+    private let correlationIDGenerator: CorrelationIDGenerating
+    private let mainDispatcher: Dispatching
+    private let networkFlowLoggerProvider: NetworkFlowLoggerProviding
+    private let requestExecutor: RequestExecuting
 
-    private let jsonEncoder: JSONEncoder
-    private let jsonDecoder: JSONDecoder
+    // MARK: - Init
 
     init(publicKey: String,
          environment: Environment,
-         jsonEncoder: JSONEncoder,
-         jsonDecoder: JSONDecoder,
-         logger: CheckoutEventLogging) {
+         correlationIDGenerator: CorrelationIDGenerating,
+         logger: FramesEventLogging,
+         mainDispatcher: Dispatching,
+         networkFlowLoggerProvider: NetworkFlowLoggerProviding,
+         requestExecutor: RequestExecuting) {
 
         self.publicKey = publicKey
         self.environment = environment
-        self.jsonEncoder = jsonEncoder
-        self.jsonDecoder = jsonDecoder
+        self.correlationIDGenerator = correlationIDGenerator
         self.logger = logger
+        self.mainDispatcher = mainDispatcher
+        self.networkFlowLoggerProvider = networkFlowLoggerProvider
+        self.requestExecutor = requestExecutor
     }
-
-    convenience init(publicKey: String,
-                     environment: Environment,
-                     jsonEncoder: JSONEncoder,
-                     jsonDecoder: JSONDecoder,
-                     logger: CheckoutEventLogging,
-                     remoteProcessorMetadata: RemoteProcessorMetadata) {
-
-        logger.enableRemoteProcessor(environment: environment == .sandbox ? .sandbox : .production,
-                                     remoteProcessorMetadata: remoteProcessorMetadata)
-
-        self.init(publicKey: publicKey,
-                  environment: environment,
-                  jsonEncoder: jsonEncoder,
-                  jsonDecoder: jsonDecoder,
-                  logger: logger)
-    }
-
-    // MARK: - Initialization
 
     /// Create an instance with the specified public key and environment
     ///
@@ -70,13 +51,26 @@ public class CheckoutAPIClient {
     public convenience init(publicKey: String,
                             environment: Environment = .sandbox) {
 
+        let session = URLSession(configuration: .ephemeral)
+        
+        self.init(
+            publicKey: publicKey,
+            environment: environment,
+            session: session)
+    }
+    
+    convenience init(publicKey: String,
+                     environment: Environment = .sandbox,
+                     session: URLSession) {
+        
         let jsonDecoder = JSONDecoder()
-        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-
         let jsonEncoder = JSONEncoder()
-        jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
 
-        let logger = CheckoutEventLogger(productName: CheckoutAPIClient.Constants.productName)
+        let requestExecutor = RequestExecutor(
+            environmentURLProvider: environment,
+            decoder: jsonDecoder,
+            encoder: jsonEncoder,
+            session: session)
 
         let appBundle = Foundation.Bundle.main
         let appPackageName = appBundle.bundleIdentifier ?? "unavailableAppPackageName"
@@ -89,12 +83,25 @@ public class CheckoutAPIClient {
                                                                                      appPackageVersion: appPackageVersion,
                                                                                      uiDevice: uiDevice)
 
+        let checkoutEventLogger = CheckoutEventLogger(productName: CheckoutAPIClient.Constants.productName)
+        checkoutEventLogger.enableRemoteProcessor(
+            environment: environment == .sandbox ? .sandbox : .production,
+            remoteProcessorMetadata: remoteProcessorMetadata)
+        
+        let dateProvider = DateProvider()
+        let framesEventLogger = FramesEventLogger(checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
+        let networkFlowLoggerFactory = NetworkFlowLoggerFactory(framesEventLogger: framesEventLogger)
+        
+        let correlationIDGenerator = CorrelationIDGenerator()
+        let mainDispatcher = DispatchQueue.main
+
         self.init(publicKey: publicKey,
                   environment: environment,
-                  jsonEncoder: jsonEncoder,
-                  jsonDecoder: jsonDecoder,
-                  logger: logger,
-                  remoteProcessorMetadata: remoteProcessorMetadata)
+                  correlationIDGenerator: correlationIDGenerator,
+                  logger: framesEventLogger,
+                  mainDispatcher: mainDispatcher,
+                  networkFlowLoggerProvider: networkFlowLoggerFactory,
+                  requestExecutor: requestExecutor)
     }
 
     // MARK: - Methods
@@ -106,33 +113,16 @@ public class CheckoutAPIClient {
     /// - parameter errorHandler: Callback to execute if the request failed
     public func getCardProviders(successHandler: @escaping ([CardProvider]) -> Void,
                                  errorHandler: @escaping (Error) -> Void) {
-        let url = "\(environment.urlApi)\(Endpoint.cardProviders.rawValue)"
-
-        AF.request(url, headers: headers).validate().responseJSON { [weak self] response in
-            switch response.result {
-            case .success(let value):
-
-                guard let strongSelf = self else {
-
-                    errorHandler(NetworkError.objectDeallocatedUnexpectedly)
-                    return
-                }
-
-                do {
-                    let jsonData = try JSONSerialization.data(withJSONObject: value)
-
-                    guard let data = String(data: jsonData, encoding: .utf8)?.data(using: .utf8) else {
-                        errorHandler(NetworkError.invalidData)
-                        return
-                    }
-
-                    let cardProviderResponse = try strongSelf.jsonDecoder.decode(CardProviderResponse.self, from: data)
-                    successHandler(cardProviderResponse.data)
-                } catch let error {
-                    errorHandler(error)
-                }
-            case .failure(let error):
-                errorHandler(error)
+        
+        let correlationID = correlationIDGenerator.generateCorrelationID()
+        let request = Request.cardProviders(publicKey: publicKey, correlationID: correlationID)
+        requestExecutor.execute(request, responseType: CardProviderResponse.self) { [mainDispatcher] (result, _) in
+            
+            switch result {
+            case let .success(response):
+                mainDispatcher.async { successHandler(response.data) }
+            case let .failure(error):
+                mainDispatcher.async { errorHandler(error) }
             }
         }
     }
@@ -146,30 +136,22 @@ public class CheckoutAPIClient {
     public func createCardToken(card: CkoCardTokenRequest,
                                 successHandler: @escaping (CkoCardTokenResponse) -> Void,
                                 errorHandler: @escaping (ErrorResponse) -> Void) {
-        let url = "\(environment.urlPaymentApi)\(Endpoint.tokens.rawValue)"
-        let jsonEncoder = JSONEncoder()
-        // swiftlint:disable:next force_try
-        var urlRequest = try! URLRequest(url: URL(string: url)!, method: HTTPMethod.post, headers: headers)
-        urlRequest.httpBody = try? jsonEncoder.encode(card)
-        AF.request(urlRequest)
-            .validate().responseJSON { response in
-
-                switch response.result {
-                case .success:
-                    do {
-                        let cardTokenResponse = try self.jsonDecoder.decode(CkoCardTokenResponse.self, from: response.data!)
-                        successHandler(cardTokenResponse)
-                    } catch let error {
-                        print(error)
-                    }
-                case .failure:
-                    do {
-                        let cardTokenError = try self.jsonDecoder.decode(ErrorResponse.self, from: response.data!)
-                        errorHandler(cardTokenError)
-                    } catch let error {
-                        print(error)
-                    }
-                }
+        
+        createCardToken(card: card) { result in
+            
+            switch result {
+            case let .success(cardTokenResponse):
+                successHandler(cardTokenResponse)
+            case let .failure(networkError):
+                // Ignore other errors for backwards compatability.
+                guard case let .checkout(requestID, errorType, errorCodes) = networkError else { return }
+                
+                let errorResponse = ErrorResponse(
+                    requestId: requestID,
+                    errorType: errorType,
+                    errorCodes: errorCodes)
+                errorHandler(errorResponse)
+            }
         }
     }
     
@@ -181,53 +163,26 @@ public class CheckoutAPIClient {
         card: CkoCardTokenRequest,
         completion: @escaping ((Swift.Result<CkoCardTokenResponse, NetworkError>) -> Void)
     ) {
-        let urlStr = "\(environment.urlPaymentApi)\(Endpoint.tokens.rawValue)"
+        let correlationID = correlationIDGenerator.generateCorrelationID()
+        let networkFlowLogger = networkFlowLoggerProvider.createLogger(
+            correlationID: correlationID,
+            tokenType: .card)
         
-        guard let url = URL(string: urlStr),
-              var urlRequest = try? URLRequest(url: url, method: .post, headers: headers) else {
-            completion(.failure(NetworkError.invalidURL))
-            return
-        }
-
-        urlRequest.httpBody = try? jsonEncoder.encode(card)
-
-        AF.request(urlRequest)
-            .validate().responseJSON { [weak self] response in
-
-                guard let strongSelf = self else {
-
-                    completion(.failure(.objectDeallocatedUnexpectedly))
-                    return
-                }
-
-                guard let data = response.data else {
-
-                    if let error = response.error {
-                        completion(.failure(.other(error: error)))
-                    } else {
-                        completion(.failure(NetworkError.invalidData))
-                    }
-
-                    return
-                }
-
-                switch response.result {
-                case .success:
-                    do {
-                        let cardTokenResponse = try strongSelf.jsonDecoder.decode(CkoCardTokenResponse.self, from: data)
-                        completion(.success(cardTokenResponse))
-                    } catch let error {
-                        completion(.failure(.other(error: error)))
-                    }
-                case .failure(let responseError):
-                    do {
-                        let networkError = try strongSelf.jsonDecoder.decode(NetworkError.self, from: data)
-                        completion(.failure(networkError))
-                    } catch {
-                        completion(.failure(.other(error: responseError)))
-                    }
-                }
+        networkFlowLogger.logRequest()
+        
+        let request = Request.cardToken(
+            body: card,
+            publicKey: publicKey,
+            correlationID: correlationID)
+        requestExecutor.execute(request, responseType: CkoCardTokenResponse.self) {
+            [mainDispatcher] (result, response) in
+            
+            networkFlowLogger.logResponse(result: result, response: response)
+            
+            mainDispatcher.async {
+                completion(result)
             }
+        }
     }
 
     /// Create a card token with Apple Pay
@@ -239,31 +194,21 @@ public class CheckoutAPIClient {
     public func createApplePayToken(paymentData: Data,
                                     successHandler: @escaping (CkoCardTokenResponse) -> Void,
                                     errorHandler: @escaping (ErrorResponse) -> Void) {
-        let url = "\(environment.urlPaymentApi)\(Endpoint.tokens.rawValue)"
-        // swiftlint:disable:next force_try
-        var urlRequest = try! URLRequest(url: URL(string: url)!, method: HTTPMethod.post, headers: headers)
-        let applePayTokenData = try? JSONDecoder().decode(ApplePayTokenData.self, from: paymentData)
-        let applePayTokenRequest = ApplePayTokenRequest(token_data: applePayTokenData)
-        urlRequest.httpBody = try? JSONEncoder().encode(applePayTokenRequest)
-
-        AF.request(urlRequest).validate().responseJSON { response in
+        
+        createApplePayToken(paymentData: paymentData) { result in
             
-            switch response.result {
-            case .success:
-                do {
-                    let applePayToken = try self.jsonDecoder.decode(CkoCardTokenResponse.self, from: response.data!)
-                    successHandler(applePayToken)
-                } catch let error {
-                    print(error)
-                }
-            case .failure:
-                do {
-                    let applePayTokenError = try self.jsonDecoder.decode(ErrorResponse.self,
-                                                                         from: response.data!)
-                    errorHandler(applePayTokenError)
-                } catch let error {
-                    print(error)
-                }
+            switch result {
+            case let .success(cardTokenResponse):
+                successHandler(cardTokenResponse)
+            case let .failure(networkError):
+                // Ignore other errors for backwards compatability.
+                guard case let .checkout(requestID, errorType, errorCodes) = networkError else { return }
+                
+                let errorResponse = ErrorResponse(
+                    requestId: requestID,
+                    errorType: errorType,
+                    errorCodes: errorCodes)
+                errorHandler(errorResponse)
             }
         }
     }
@@ -276,53 +221,27 @@ public class CheckoutAPIClient {
         paymentData: Data,
         completion: @escaping ((Swift.Result<CkoCardTokenResponse, NetworkError>) -> Void)
     ) {
-
-        let urlStr = "\(environment.urlPaymentApi)\(Endpoint.tokens.rawValue)"
-
-        guard let url = URL(string: urlStr),
-              var urlRequest = try? URLRequest(url: url, method: .post, headers: headers) else {
-            completion(.failure(NetworkError.invalidURL))
-            return
-        }
+        let correlationID = correlationIDGenerator.generateCorrelationID()
+        let networkFlowLogger = networkFlowLoggerProvider.createLogger(
+            correlationID: correlationID,
+            tokenType: .card)
+        
+        networkFlowLogger.logRequest()
 
         let applePayTokenData = try? JSONDecoder().decode(ApplePayTokenData.self, from: paymentData)
         let applePayTokenRequest = ApplePayTokenRequest(token_data: applePayTokenData)
-        urlRequest.httpBody = try? JSONEncoder().encode(applePayTokenRequest)
 
-        AF.request(urlRequest).validate().responseJSON { [weak self] response in
-
-            guard let self = self else {
-
-                completion(.failure(.objectDeallocatedUnexpectedly))
-                return
-            }
-
-            guard let data = response.data else {
-
-                if let error = response.error {
-                    completion(.failure(.other(error: error)))
-                } else {
-                    completion(.failure(NetworkError.invalidData))
-                }
-
-                return
-            }
-
-            switch response.result {
-            case .success:
-                do {
-                    let applePayToken = try self.jsonDecoder.decode(CkoCardTokenResponse.self, from: data)
-                    completion(.success(applePayToken))
-                } catch let error {
-                    completion(.failure(.other(error: error)))
-                }
-            case .failure(let responseError):
-                do {
-                    let networkError = try self.jsonDecoder.decode(NetworkError.self, from: data)
-                    completion(.failure(networkError))
-                } catch {
-                    completion(.failure(.other(error: responseError)))
-                }
+        let request = Request.applePayToken(
+            body: applePayTokenRequest,
+            publicKey: publicKey,
+            correlationID: correlationID)
+        requestExecutor.execute(request, responseType: CkoCardTokenResponse.self) {
+            [mainDispatcher] (result, response) in
+            
+            networkFlowLogger.logResponse(result: result, response: response)
+            
+            mainDispatcher.async {
+                completion(result)
             }
         }
     }

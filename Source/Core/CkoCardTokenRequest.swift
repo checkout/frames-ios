@@ -1,7 +1,18 @@
 import Foundation
 
 /// Card used to create the card token
-public struct CkoCardTokenRequest: Codable {
+public struct CkoCardTokenRequest: Codable, Equatable {
+    
+    enum CodingKeys: String, CodingKey {
+        case billingAddress = "billing_address"
+        case cvv
+        case expiryMonth = "expiry_month"
+        case expiryYear = "expiry_year"
+        case name
+        case number
+        case phone
+        case type
+    }
 
     /// Type
     var type: String = "card"
