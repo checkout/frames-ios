@@ -32,7 +32,7 @@ final class CheckoutAPIClientTests: XCTestCase {
         stubCorrelationIDGenerator = nil
         stubFramesEventLogger = nil
         stubDispatcher = nil
-        stubNetworkFlowLogger = StubNetworkFlowLogger()
+        stubNetworkFlowLogger = nil
         stubNetworkFlowLoggerProvider = nil
         
         super.tearDown()
@@ -97,6 +97,33 @@ final class CheckoutAPIClientTests: XCTestCase {
     }
     
     // MARK: - createCardToken
+    
+    func test_createCardToken_cardTokenRequest_createLoggerCalledWithCorrectCorrelationID() {
+        
+        let stubRequestExecutor = StubRequestExecutor<CkoCardTokenResponse>()
+        let subject = createSubject(requestExecutor: stubRequestExecutor)
+        
+        let expectedCorrelationID = "correlation_id"
+        stubCorrelationIDGenerator.generateCorrelationIDReturnValue = expectedCorrelationID
+        
+        let cardTokenRequest = CkoCardTokenRequest(number: "4242", expiryMonth: "1", expiryYear: "2038", cvv: "100")
+        subject.createCardToken(card: cardTokenRequest) { _ in }
+        
+        let actualCorrelationID = stubNetworkFlowLoggerProvider.createLoggerCalledWithCorrelationID
+        XCTAssertEqual(expectedCorrelationID, actualCorrelationID)
+    }
+    
+    func test_createCardToken_cardTokenRequest_createLoggerCalledWithCorrectTokenType() {
+        
+        let stubRequestExecutor = StubRequestExecutor<CkoCardTokenResponse>()
+        let subject = createSubject(requestExecutor: stubRequestExecutor)
+        stubCorrelationIDGenerator.generateCorrelationIDReturnValue = ""
+        
+        let cardTokenRequest = CkoCardTokenRequest(number: "4242", expiryMonth: "1", expiryYear: "2038", cvv: "100")
+        subject.createCardToken(card: cardTokenRequest) { _ in }
+        
+        XCTAssertEqual(.card, stubNetworkFlowLoggerProvider.createLoggerCalledWithTokenType)
+    }
     
     func test_createCardToken_cardTokenRequest_executeCalledWithCorrectRequest() {
         
@@ -188,7 +215,32 @@ final class CheckoutAPIClientTests: XCTestCase {
     
     // MARK: - createApplePayToken
     
-    func test_createApplePayToken_cardTokenRequest_executeCalledWithCorrectRequest() {
+    func test_createApplePayToken_paymentData_createLoggerCalledWithCorrectCorrelationID() {
+        
+        let stubRequestExecutor = StubRequestExecutor<CkoCardTokenResponse>()
+        let subject = createSubject(requestExecutor: stubRequestExecutor)
+        
+        let expectedCorrelationID = "correlation_id"
+        stubCorrelationIDGenerator.generateCorrelationIDReturnValue = expectedCorrelationID
+        
+        subject.createApplePayToken(paymentData: Data()) { _ in }
+        
+        let actualCorrelationID = stubNetworkFlowLoggerProvider.createLoggerCalledWithCorrelationID
+        XCTAssertEqual(expectedCorrelationID, actualCorrelationID)
+    }
+    
+    func test_createApplePayToken_paymentData_createLoggerCalledWithCorrectTokenType() {
+        
+        let stubRequestExecutor = StubRequestExecutor<CkoCardTokenResponse>()
+        let subject = createSubject(requestExecutor: stubRequestExecutor)
+        stubCorrelationIDGenerator.generateCorrelationIDReturnValue = ""
+        
+        subject.createApplePayToken(paymentData: Data()) { _ in }
+        
+        XCTAssertEqual(.applePay, stubNetworkFlowLoggerProvider.createLoggerCalledWithTokenType)
+    }
+    
+    func test_createApplePayToken_paymentData_executeCalledWithCorrectRequest() {
         
         let publicKey = "public_key"
         let correlationID = "correlation_id"
@@ -207,7 +259,7 @@ final class CheckoutAPIClientTests: XCTestCase {
         XCTAssertEqual(expectedRequest, actualRequest)
     }
     
-    func test_createApplePayToken_cardTokenRequest_logRequestCalled() {
+    func test_createApplePayToken_paymentData_logRequestCalled() {
         
         let stubRequestExecutor = StubRequestExecutor<CkoCardTokenResponse>()
         let subject = createSubject(publicKey: "", requestExecutor: stubRequestExecutor)
