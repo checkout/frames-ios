@@ -224,7 +224,7 @@ public class CheckoutAPIClient {
         let correlationID = correlationIDGenerator.generateCorrelationID()
         let networkFlowLogger = networkFlowLoggerProvider.createLogger(
             correlationID: correlationID,
-            tokenType: .card)
+            tokenType: .applePay)
         
         networkFlowLogger.logRequest()
 
