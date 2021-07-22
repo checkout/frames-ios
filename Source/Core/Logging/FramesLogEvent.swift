@@ -12,12 +12,18 @@ enum FramesLogEvent: Equatable {
         case requestID
         case scheme
         case serverError
+        case tokenID
         case tokenType
     }
 
     case paymentFormPresented
     case tokenRequested(tokenType: TokenType, publicKey: String)
-    case tokenResponse(tokenType: TokenType, scheme: String?, httpStatusCode: Int, errorResponse: ErrorResponse?)
+    case tokenResponse(tokenType: TokenType,
+                       publicKey: String,
+                       tokenID: String?,
+                       scheme: String?,
+                       httpStatusCode: Int,
+                       errorResponse: ErrorResponse?)
     case exception(message: String)
 
     var typeIdentifier: String {
@@ -54,11 +60,12 @@ enum FramesLogEvent: Equatable {
         case let .tokenRequested(tokenType, publicKey):
             return [.tokenType: tokenType.rawValue, .publicKey: publicKey]
                 .mapValues { AnyCodable($0) }
-        case let .tokenResponse(tokenType, scheme, httpStatusCode, errorResponse):
+        case let .tokenResponse(tokenType, publicKey, tokenID, scheme, httpStatusCode, errorResponse):
             let serverError = errorResponse?.properties.mapKeys(\.rawValue)
-            return [.tokenType: tokenType.rawValue, .httpStatusCode: httpStatusCode]
+            return [.tokenType: tokenType.rawValue, .publicKey: publicKey, .httpStatusCode: httpStatusCode]
                 .updating(key: .scheme, value: scheme)
                 .updating(key: .serverError, value: serverError)
+                .updating(key: .tokenID, value: tokenID)
                 .mapValues { AnyCodable($0) }
         case let .exception(message):
             return [.message: message]

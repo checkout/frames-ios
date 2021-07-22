@@ -100,7 +100,7 @@ final class NetworkFlowLoggerTests: XCTestCase {
     
     func test_logResponse_responseAndSuccessResult_logCalledWithCorrectEvent() {
         
-        let cardTokenResponse = CkoCardTokenResponse(scheme: "Visa")
+        let cardTokenResponse = CkoCardTokenResponse(token: "token_id", scheme: "Visa")
         let result: Result<CkoCardTokenResponse, NetworkError> = .success(cardTokenResponse)
         let response = HTTPURLResponse(
             url: URL(staticString: "https://localhost"),
@@ -110,13 +110,15 @@ final class NetworkFlowLoggerTests: XCTestCase {
         
         let subject = NetworkFlowLogger(
             correlationID: "",
-            publicKey: "",
+            publicKey: "public_key",
             tokenType: .card,
             framesEventLogger: stubFramesEventLogger)
         subject.logResponse(result: result, response: response)
         
         let expectedEvent = FramesLogEvent.tokenResponse(
             tokenType: .card,
+            publicKey: "public_key",
+            tokenID: "token_id",
             scheme: "Visa",
             httpStatusCode: 200,
             errorResponse: nil)
@@ -136,13 +138,15 @@ final class NetworkFlowLoggerTests: XCTestCase {
         
         let subject = NetworkFlowLogger(
             correlationID: "",
-            publicKey: "",
+            publicKey: "public_key",
             tokenType: .card,
             framesEventLogger: stubFramesEventLogger)
         subject.logResponse(result: result, response: response)
         
         let expectedEvent = FramesLogEvent.tokenResponse(
             tokenType: .card,
+            publicKey: "public_key",
+            tokenID: nil,
             scheme: nil,
             httpStatusCode: 500,
             errorResponse: ErrorResponse(requestId: "", errorType: "test", errorCodes: []))

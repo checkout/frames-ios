@@ -59,6 +59,8 @@ final class NetworkFlowLogger: NetworkFlowLogging {
         case let .success(cardTokenResponse):
             return .tokenResponse(
                 tokenType: tokenType,
+                publicKey: publicKey,
+                tokenID: cardTokenResponse.token,
                 scheme: cardTokenResponse.scheme,
                 httpStatusCode: httpStatusCode,
                 errorResponse: nil)
@@ -70,6 +72,8 @@ final class NetworkFlowLogger: NetworkFlowLogging {
                 errorCodes: errorCodes)
             return .tokenResponse(
                 tokenType: tokenType,
+                publicKey: publicKey,
+                tokenID: nil,
                 scheme: nil,
                 httpStatusCode: httpStatusCode,
                 errorResponse: errorResponse)
