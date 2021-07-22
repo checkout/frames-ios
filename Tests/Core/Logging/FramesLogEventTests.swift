@@ -148,7 +148,7 @@ final class FramesLogEventTests: XCTestCase {
     // MARK: - Utility
     
     private func createTokenRequestedEvent(tokenType: TokenType = .card,
-                                         publicKey: String = "") -> FramesLogEvent {
+                                           publicKey: String = "") -> FramesLogEvent {
         
         return .tokenRequested(tokenType: tokenType, publicKey: publicKey)
     }
