@@ -332,8 +332,8 @@ final class CheckoutAPIClientTests: XCTestCase {
                                                                      appPackageVersion: "appPackageVersion",
                                                                      uiDevice: stubUIDevice)
 
-        let expected = RemoteProcessorMetadata(productIdentifier: CheckoutAPIClient.Constants.productName,
-                                               productVersion: CheckoutAPIClient.Constants.version,
+        let expected = RemoteProcessorMetadata(productIdentifier: Constants.productName,
+                                               productVersion: Constants.version,
                                                environment: "sandbox",
                                                appPackageName: "appPackageName",
                                                appPackageVersion: "appPackageVersion",
