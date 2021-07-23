@@ -83,7 +83,7 @@ public class CheckoutAPIClient {
                                                                                      appPackageVersion: appPackageVersion,
                                                                                      uiDevice: uiDevice)
 
-        let checkoutEventLogger = CheckoutEventLogger(productName: CheckoutAPIClient.Constants.productName)
+        let checkoutEventLogger = CheckoutEventLogger(productName: Constants.productName)
         checkoutEventLogger.enableRemoteProcessor(
             environment: environment == .sandbox ? .sandbox : .production,
             remoteProcessorMetadata: remoteProcessorMetadata)
@@ -253,8 +253,8 @@ public class CheckoutAPIClient {
                                              appPackageVersion: String,
                                              uiDevice: UIDevice) -> RemoteProcessorMetadata {
 
-        return RemoteProcessorMetadata(productIdentifier: CheckoutAPIClient.Constants.productName,
-                                       productVersion: CheckoutAPIClient.Constants.version,
+        return RemoteProcessorMetadata(productIdentifier: Constants.productName,
+                                       productVersion: Constants.version,
                                        environment: environment.rawValue,
                                        appPackageName: appPackageName,
                                        appPackageVersion: appPackageVersion,

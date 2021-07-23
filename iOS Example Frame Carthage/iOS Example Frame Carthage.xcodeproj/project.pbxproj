@@ -102,7 +102,6 @@
 		442278342616376E009626A0 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277D92616376E009626A0 /* NetworkError.swift */; };
 		442278352616376E009626A0 /* CustomerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277DA2616376E009626A0 /* CustomerCard.swift */; };
 		442278372616376E009626A0 /* CheckoutSdkIos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277DC2616376E009626A0 /* CheckoutSdkIos.swift */; };
-		442278382616376E009626A0 /* CheckoutAPIClient+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277DD2616376E009626A0 /* CheckoutAPIClient+Constants.swift */; };
 		442278392616376E009626A0 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277DF2616376E009626A0 /* StringExtensions.swift */; };
 		4422783A2616376E009626A0 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277E02616376E009626A0 /* UIViewControllerExtensions.swift */; };
 		4422783B2616376E009626A0 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277E12616376E009626A0 /* UIViewExtensions.swift */; };
@@ -356,7 +355,6 @@
 		442277D92616376E009626A0 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		442277DA2616376E009626A0 /* CustomerCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerCard.swift; sourceTree = "<group>"; };
 		442277DC2616376E009626A0 /* CheckoutSdkIos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutSdkIos.swift; path = ../../Source/CheckoutSdkIos.swift; sourceTree = "<group>"; };
-		442277DD2616376E009626A0 /* CheckoutAPIClient+Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CheckoutAPIClient+Constants.swift"; path = "../../Source/CheckoutAPIClient+Constants.swift"; sourceTree = "<group>"; };
 		442277DF2616376E009626A0 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		442277E02616376E009626A0 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		442277E12616376E009626A0 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
@@ -523,7 +521,6 @@
 			children = (
 				442277E32616376E009626A0 /* CardUtils.swift */,
 				442277E72616376E009626A0 /* CheckoutAPIClient.swift */,
-				442277DD2616376E009626A0 /* CheckoutAPIClient+Constants.swift */,
 				442277DC2616376E009626A0 /* CheckoutSdkIos.swift */,
 				4422777E2616376D009626A0 /* CheckoutTheme.swift */,
 				442277C92616376E009626A0 /* Core */,
@@ -1260,7 +1257,6 @@
 				442278342616376E009626A0 /* NetworkError.swift in Sources */,
 				57256C45269F0F81001EC3D8 /* RequestExecutor.swift in Sources */,
 				57256C50269F0F90001EC3D8 /* DateProvider.swift in Sources */,
-				442278382616376E009626A0 /* CheckoutAPIClient+Constants.swift in Sources */,
 				57256C54269F0F90001EC3D8 /* NetworkFlowLoggerFactory.swift in Sources */,
 				442278172616376E009626A0 /* CvvConfirmationViewController.swift in Sources */,
 				4422783D2616376E009626A0 /* CardUtils.swift in Sources */,
