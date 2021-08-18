@@ -323,7 +323,8 @@ final class CheckoutAPIClientTests: XCTestCase {
     }
     
     // MARK: - buildRemoteProcessorMetadata
-    
+    #if SWIFT_PACKAGE
+    #else
     func testRemoteProcessorMetadata() {
         let stubUIDevice = StubUIDevice(modelName: "modelName", systemVersion: "systemVersion")
 
@@ -343,7 +344,8 @@ final class CheckoutAPIClientTests: XCTestCase {
 
         XCTAssertEqual(subject, expected)
     }
-    
+    #endif
+
     // MARK: - Utility
     
     private func createSubject(publicKey: String = "",
