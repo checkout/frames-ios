@@ -28,7 +28,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CheckoutEventLoggerKit: 9a5aabfc739e5a75fb28da83ea1e0aae4a13d254
-  Frames: 7770eec8a15a369ac177a84be2c8afc7a55bde46
+  Frames: ab7d74f551db68a3bdc56c862ea4fc518e5870c5
   PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
 
 PODFILE CHECKSUM: 0935f6adf6dbf24cd1aebd515551bbce53bef8e5
