@@ -217,6 +217,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4407DC4126CD0AB700BA4B06 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E6646F8220CE6C0900D8353A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E6646F8920CE6C0900D8353A;
+			remoteInfo = "iOS Example Frame";
+		};
 		4422777026163748009626A0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E6646F8220CE6C0900D8353A /* Project object */;
@@ -992,6 +999,7 @@
 			);
 			dependencies = (
 				57256C80269F1181001EC3D8 /* PBXTargetDependency */,
+				4407DC4226CD0AB700BA4B06 /* PBXTargetDependency */,
 			);
 			name = FramesTests;
 			productName = FramesTests;
@@ -1056,6 +1064,7 @@
 					};
 					57256C78269F1181001EC3D8 = {
 						CreatedOnToolsVersion = 12.4;
+						TestTargetID = E6646F8920CE6C0900D8353A;
 					};
 					E6646F8920CE6C0900D8353A = {
 						CreatedOnToolsVersion = 9.4;
@@ -1365,6 +1374,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4407DC4226CD0AB700BA4B06 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E6646F8920CE6C0900D8353A /* iOS Example Frame */;
+			targetProxy = 4407DC4126CD0AB700BA4B06 /* PBXContainerItemProxy */;
+		};
 		4422777126163748009626A0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4422775C26163748009626A0 /* Frames */;
@@ -1528,6 +1542,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOS Example Frame.app/iOS Example Frame";
 			};
 			name = Debug;
 		};
@@ -1548,6 +1563,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOS Example Frame.app/iOS Example Frame";
 			};
 			name = Release;
 		};

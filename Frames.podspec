@@ -23,6 +23,7 @@ Pod::Spec.new do |s|
   s.test_spec do |t|
     t.source_files = 'Tests/**/*.swift'
     t.resources = 'Tests/Fixtures/*'
+    t.requires_app_host = true
   end
 
   s.pod_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7 x86_64' }
