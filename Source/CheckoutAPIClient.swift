@@ -147,7 +147,6 @@ public class CheckoutAPIClient {
                                 successHandler: @escaping (CkoCardTokenResponse) -> Void,
                                 errorHandler: @escaping (ErrorResponse) -> Void) {
         let url = "\(environment.urlPaymentApi)\(Endpoint.tokens.rawValue)"
-        let jsonEncoder = JSONEncoder()
         // swiftlint:disable:next force_try
         var urlRequest = try! URLRequest(url: URL(string: url)!, method: HTTPMethod.post, headers: headers)
         urlRequest.httpBody = try? jsonEncoder.encode(card)
