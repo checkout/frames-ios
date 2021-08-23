@@ -57,6 +57,8 @@ Then, run the following command:
 $ pod install
 ```
 
+We do not support i386 builds. Cocoapods should configure this for you, but if not, see [Architecture Support](#architecture-support) for setup.
+
 ### Carthage
 
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
@@ -76,6 +78,8 @@ github "checkout/frames-ios" ~> 3.0
 
 Run `carthage update --use-xcframeworks` to build the framework and drag the built `Frames` into your Xcode project.
 
+If you are planning to run release builds for simulator, make sure to exclude the i386 architecture from your builds. See [Architecture Support](#architecture-support) for setup.
+
 ### Swift Package Manager
 
 [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the swift compiler.
@@ -87,6 +91,8 @@ dependencies: [
     .package(url: "https://github.com/checkout/frames-ios.git", .upToNextMajor(from: "3.0.0"))
 ]
 ```
+
+If you are planning to run release builds for simulator, make sure to exclude the i386 architecture from your builds. See [Architecture Support](#architecture-support) for setup.
 
 ## Usage
 
@@ -224,6 +230,13 @@ The error handler takes an `ErrorResponse` as a parameter.
     CheckoutTheme.color = .green
     CheckoutTheme.chevronColor = .pink
 ```
+
+## Architecture Support
+
+We support all available architectures in Xcode except i386.
+Cocoapods should handle this for you, but if this is not working or if you're using SPM or Carthage you will need to configure your excluded architectures in your build settings as below:
+
+![excluded architectures](screenshots/excludedArchitectures.png)
 
 ## License
 

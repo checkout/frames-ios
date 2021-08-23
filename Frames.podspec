@@ -28,5 +28,10 @@ Pod::Spec.new do |s|
     t.resources = 'Tests/Fixtures/*'
   end
 
-  s.pod_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7 x86_64' }
+  s.pod_target_xcconfig = {
+    'VALID_ARCHS' => 'arm64 armv7 x86_64',
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386 arm64'
+  }
+
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386 arm64' }
 end
