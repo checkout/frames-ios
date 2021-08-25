@@ -11,7 +11,7 @@ import Frames
 
 class ViewController: UIViewController {
 
-    var checkoutAPIClient: CheckoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
+    var checkoutAPIClient: CheckoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
                                                                  environment: .sandbox)
     
     @IBOutlet weak var cardNumberView: CardNumberInputView!
