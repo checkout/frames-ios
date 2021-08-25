@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Frames"
-  s.version      = "3.4.3"
+  s.version      = "3.4.4"
   s.summary      = "Checkout API Client, Payment Form UI and Utilities in Swift"
   s.description  = <<-DESC
   Checkout API Client and Payment Form Utilities in Swift.
@@ -28,5 +28,10 @@ Pod::Spec.new do |s|
     t.resources = 'Tests/Fixtures/*'
   end
 
-  s.pod_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7 x86_64' }
+  s.pod_target_xcconfig = {
+    'VALID_ARCHS' => 'arm64 armv7 x86_64',
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386 arm64'
+  }
+
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386 arm64' }
 end
