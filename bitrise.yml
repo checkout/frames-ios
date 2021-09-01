@@ -17,7 +17,7 @@ workflows:
     - xcode-test@2:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH_CARTHAGE"
-        - scheme: "$BITRISE_SCHEME_CARTHAGE"
+        - scheme: "$BITRISE_SCHEME_APP"
     - deploy-to-bitrise-io@1: {}
     - cache-push@2:
         inputs:
@@ -33,7 +33,7 @@ workflows:
     - xcode-test@2:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH"
-        - scheme: "$BITRISE_SCHEME"
+        - scheme: "$BITRISE_SCHEME_APP"
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     after_run: []
@@ -52,7 +52,7 @@ workflows:
     - xcode-test@2:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH_CARTHAGE"
-        - scheme: "$BITRISE_SCHEME_CARTHAGE"
+        - scheme: "$BITRISE_SCHEME_TESTS"
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     meta:
@@ -71,7 +71,7 @@ workflows:
     - xcode-test@2:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH"
-        - scheme: "$BITRISE_SCHEME"
+        - scheme: "$BITRISE_SCHEME_TESTS"
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     - slack@3:
@@ -88,7 +88,7 @@ workflows:
     - xcode-test@2:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH_SPM"
-        - scheme: "$BITRISE_SCHEME_SPM"
+        - scheme: "$BITRISE_SCHEME_TESTS"
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     - slack@3:
@@ -102,7 +102,7 @@ workflows:
     - xcode-test@2:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH_SPM"
-        - scheme: "$BITRISE_SCHEME_SPM"
+        - scheme: "$BITRISE_SCHEME_APP"
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     meta:
@@ -115,15 +115,17 @@ workflows:
     - git-clone@4: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
-    - cocoapods-install@1: {}
+    - cocoapods-install@1:
+        inputs:
+        - podfile_path: "$BITRISE_POD_FILE_PATH"
     - xcode-test@2:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH"
-        - scheme: "$BITRISE_SCHEME"
+        - scheme: "$BITRISE_SCHEME_APP"
     - xcode-archive@2:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH"
-        - scheme: "$BITRISE_SCHEME"
+        - scheme: "$BITRISE_SCHEME_APP"
         - export_method: "$BITRISE_EXPORT_METHOD"
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
@@ -132,7 +134,7 @@ workflows:
     - xcode-test@2:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH_SPM"
-        - scheme: "$BITRISE_SCHEME_SPM"
+        - scheme: "$BITRISE_SCHEME_APP"
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     - slack@3:
@@ -179,7 +181,7 @@ app:
     BITRISE_PROJECT_PATH: iOS Example Frame/iOS Example Frame.xcworkspace
   - opts:
       is_expand: false
-    BITRISE_SCHEME: Frames-Unit-Tests
+    BITRISE_SCHEME_TESTS: Frames-Unit-Tests
   - opts:
       is_expand: false
     BITRISE_EXPORT_METHOD: development
@@ -194,10 +196,7 @@ app:
     BITRISE_PROJECT_PATH_CARTHAGE: iOS Example Frame Carthage/iOS Example Frame Carthage.xcodeproj
   - opts:
       is_expand: false
-    BITRISE_SCHEME_SPM: iOS Example Frame
-  - opts:
-      is_expand: false
-    BITRISE_SCHEME_CARTHAGE: iOS Example Frame
+    BITRISE_SCHEME_APP: iOS Example Frame
   - opts:
       is_expand: false
     CARTHAGE_XCFRAMEWORK: "--use-xcframeworks --platform iOS"
