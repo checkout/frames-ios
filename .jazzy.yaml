@@ -1,8 +1,10 @@
-module: FramesIos
-author: Checkout
+module: Frames
+author: Checkout.com
 author_url: https://www.checkout.com/
-github_url: https://github.com/checkout/frames-ios
-github_file_prefix: https://github.com/checkout/frames-ios/tree/master
+source_host: github
+source_host_url: https://github.com/checkout/frames-ios
+source_host_files_url: https://github.com/checkout/frames-ios/tree/master
+podspec: Frames.podspec
 output: docs
 theme: fullwidth
 clean: true

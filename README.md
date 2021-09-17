@@ -1,4 +1,4 @@
-# FramesIos
+# Frames iOS
 
 [![Build Status](https://travis-ci.org/checkout/frames-ios.svg?branch=master)](https://travis-ci.org/checkout/frames-ios)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Frames.svg)](https://img.shields.io/cocoapods/v/Frames)
@@ -15,12 +15,24 @@
 ## Requirements
 
 - iOS 10.0+
-- Xcode 9.0+
-- Swift 5.0+
+- Xcode 12.4+
+- Swift 5.3+
 
 ## Documentation
 
-You can find the FramesIos documentation [on this website](https://checkout.github.io/frames-ios/index.html).
+Further information on using the Frames SDK is available in the [integration guide](https://docs.checkout.com/integrate/sdks/ios-sdk).
+
+Frames for iOS provides a convenient solution that can take the customer's sensitive information and exchange them for a secure token that can be used within Checkout.com's infrastructure.
+
+Frames can be integrated in 2 ways:
+
+1. Integrated with the UI
+Embed the fully customisable UI provided by the SDK to accept card details, customer name and billling details and exchange them for a secure token. (See the [`CardViewController` tab](https://docs.checkout.com/integrate/sdks/ios-sdk#iOSSDK-Step2:ImporttheiOSSDKandchooseyourapproach))
+
+2. Integrated without the UI
+Use the provided API to send sensitive data to the Checkout.com server and retrieve the secure token (See the [`Headless` tab](https://docs.checkout.com/integrate/sdks/ios-sdk#iOSSDK-Step2:ImporttheiOSSDKandchooseyourapproach)).
+
+You can find the Frames API reference [on this website](https://checkout.github.io/frames-ios/index.html).
 
 - [Usage](https://checkout.github.io/frames-ios/usage.html)
 - [Customizing the card view](https://checkout.github.io/frames-ios/customizing-the-card-view.html)
@@ -37,9 +49,9 @@ You can find the FramesIos documentation [on this website](https://checkout.gith
 $ gem install cocoapods
 ```
 
-> CocoaPods 1.1+ is required to build FramesIos 1.0+.
+> CocoaPods 1.10.0+ is required to build Frames.
 
-To integrate FramesIos into your Xcode project using CocoaPods, specify it in your `Podfile`:
+To integrate Frames into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
@@ -47,7 +59,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Frames', '~> 3.0'
+    pod 'Frames', '~> 3'
 end
 ```
 
@@ -71,7 +83,7 @@ $ brew install carthage
 To integrate Frames into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "checkout/frames-ios" ~> 3.0
+github "checkout/frames-ios" ~> 3
 ```
 
 Run `carthage update --use-xcframeworks` to build the framework and drag the built `Frames` into your Xcode project.
@@ -101,47 +113,80 @@ import Frames
 ```swift
 class ViewController: UIViewController, CardViewControllerDelegate {
 
-    let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
-                                              environment: .sandbox)
-    lazy var cardViewController: CardViewController = {
-        return CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .hidden, billingDetailsState: .hidden)
-    }()
+    // Create a CheckoutAPIClient instance with your public key.
+    let checkoutAPIClient = CheckoutAPIClient(
+        publicKey: "<Your Public Key>",
+        environment: .sandbox)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // set the card view controller delegate
+
+        // Create the CardViewController.
+        let cardViewController = CardViewController(
+            checkoutApiClient: checkoutAPIClient,
+            cardHolderNameState: .hidden,
+            billingDetailsState: .hidden)
+
+        // Set the CardViewController delegate.
         cardViewController.delegate = self
-        // replace the bar button by Pay
-        cardViewController.rightBarButtonItem = UIBarButtonItem(title: "Pay", style: .done, target: nil, action: nil)
-        // specified which schemes are allowed
+
+        // Replace the bar button with Pay.
+        cardViewController.rightBarButtonItem = UIBarButtonItem(
+            title: "Pay",
+            style: .done,
+            target: nil,
+            action: nil)
+
+        // (Optional) Specify which schemes are allowed.
         cardViewController.availableSchemes = [.visa, .mastercard]
 
+        // Push the cardViewController onto the navigation stack.
         navigationController?.pushViewController(cardViewController, animated: false)
     }
 
-    func onTapDone(controller: CardViewController, card: CkoCardTokenRequest) {
-        print(card)
+    func onTapDone(controller: CardViewController, cardToken: CkoCardTokenResponse?, status: CheckoutTokenStatus) {
+        // Called when the tokenization request has completed.
+        print(cardToken ?? "cardToken is nil")
     }
-    
+
     func onSubmit(controller: CardViewController) {
         // Called just before a create card token request is made.
     }
+
 }
 ```
 
 ### Headless Mode 
 
 ```swift
-let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
-                                          environment: .sandbox)
+// Create a CheckoutAPIClient instance with your public key.
+let checkoutAPIClient = CheckoutAPIClient(
+    publicKey: "<Your Public Key>",
+    environment: .sandbox)
 
-// create the phone number
-let phoneNumber = CkoPhoneNumber(countryCode: "44", number: "7777777777")
-// create the address
-let address = CkoAddress(addressLine1: "test1", addressLine2: "test2", city: "London", state: "London", zip: "N12345", country: "GB")
-// create the card token request
-let cardTokenRequest = CkoCardTokenRequest(number: "123456789101", expiryMonth: "07", expiryYear: "22", cvv: "100", name: "Test Customer", billingAddress: address, phone: phoneNumber)
+let phoneNumber = CkoPhoneNumber(
+    countryCode: "44",
+    number: "7700900000")
 
+let address = CkoAddress(
+    addressLine1: "Wenlock Works",
+    addressLine2: "Shepherdess Walk",
+    city: "London",
+    state: "London",
+    zip: "N1 7BQ",
+    country: "GB")
+
+// Create a CardTokenRequest instance with the phoneNumber and address values.
+let cardTokenRequest = CkoCardTokenRequest(
+    number: "4242424242424242",
+    expiryMonth: "01",
+    expiryYear: "29",
+    cvv: "100",
+    name: "Test Customer",
+    billingAddress: address,
+    phone: phoneNumber)
+
+// Request the card token.
 checkoutAPIClient.createCardToken(card: cardTokenRequest) { result in
     switch result {
     case .success(let response):
@@ -159,9 +204,10 @@ You can find more examples on the [usage guide](https://checkout.github.io/frame
 #### Create the API Client `CheckoutAPIClient`:
 
 ```swift
-// replace "pk_test_6ff46046-30af-41d9-bf58-929022d2cd14" by your own public key
-let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_6ff46046-30af-41d9-bf58-929022d2cd14",
-                                          environment: .sandbox)
+// Replace "pk_test_6ff46046-30af-41d9-bf58-929022d2cd14" with your own public key.
+let checkoutAPIClient = CheckoutAPIClient(
+    publicKey: "pk_test_6ff46046-30af-41d9-bf58-929022d2cd14",
+    environment: .sandbox)
 ```
 
 #### Create the `CardUtils` instance:
@@ -173,35 +219,97 @@ let cardUtils = CardUtils()
 #### Use `CardUtils` to verify card number:
 
 ```swift
-/// verify card number
+// Verify card number.
 let cardNumber = "4242424242424242"
-let isCardValid = cardUtils.isValid(cardNumber: cardNumber)
+let isValidCardNumber = cardUtils.isValid(cardNumber: cardNumber)
+
+print(isValidCardNumber) // true
+```
+
+### Validate a CVV with `CardUtils`
+
+```swift
+// Verify CVV.
+let cardNumber = "4242424242424242"
+guard let cardType = cardUtils.getTypeOf(cardNumber: cardNumber) else { return }
+
+let cvv = "100"
+let isValidCVV = cardUtils.isValid(cvv: cvv, cardType: cardType)
+
+print(isValidCVV) // true
+```
+
+### Validate an expiration date with CardUtils
+
+```swift
+// Verify expiration date.
+let expirationMonth = "01"
+let expirationYear = "29"
+
+let isValidExpiration = cardUtils.isValid(
+    expirationMonth: expirationMonth,
+    expirationYear: expirationYear)
+
+print(isValidExpiration) // true
+```
+
+### Get information about a card number with CardUtils
+
+```swift
+let cardNumber = "4242424242424242"
+guard let cardType = cardUtils.getTypeOf(cardNumber: cardNumber) else { return }
+print(cardType.name) // Visa
+```
+
+### Format a card number with CardUtils
+
+```swift
+let cardNumber = "4242424242424242"
+guard let cardType = cardUtils.getTypeOf(cardNumber: cardNumber) else { return }
+
+let formattedCardNumber = cardUtils.format(cardNumber: cardNumber, cardType: cardType)
+print(formattedCardNumber) // 4242 4242 4242 4242
+```
+
+### Standardize a card number with CardUtils
+
+```swift
+let cardNumber = "4242 | 4242 | 4242 | 4242 "
+let standardizedCardNumber = cardUtils.standardize(cardNumber: cardNumber)
+print(standardizedCardNumber) // "4242424242424242"
 ```
 
 #### Create the card token request `CkoCardTokenRequest`:
 
 ```swift
-// create the phone number
-let phoneNumber = CkoPhoneNumber(countryCode: "44", number: "7777777777")
-// create the address
-let address = CkoAddress(addressLine1: "test1", addressLine2: "test2", city: "London", state: "London", zip: "N12345", country: "GB")
-// create the card token request
-let cardTokenRequest = CkoCardTokenRequest(number: cardNumber, expiryMonth: "07", expiryYear: "22", cvv: "100", name: "Test Customer", billingAddress: address, phone: phoneNumber)
-```
+// Create a CheckoutAPIClient instance with your public key.
+let checkoutAPIClient = CheckoutAPIClient(
+    publicKey: "<Your Public Key>",
+    environment: .sandbox)
 
-#### Create a card token:
+let phoneNumber = CkoPhoneNumber(
+    countryCode: "44",
+    number: "7700900000")
 
-```swift
-let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_03728582-062b-419c-91b5-63ac2a481e07",
-                                          environment: .sandbox)
+let address = CkoAddress(
+    addressLine1: "Wenlock Works",
+    addressLine2: "Shepherdess Walk",
+    city: "London",
+    state: "London",
+    zip: "N1 7BQ",
+    country: "GB")
 
-// create the phone number
-let phoneNumber = CkoPhoneNumber(countryCode: "44", number: "7777777777")
-// create the address
-let address = CkoAddress(addressLine1: "test1", addressLine2: "test2", city: "London", state: "London", zip: "N12345", country: "GB")
-// create the card token request
-let cardTokenRequest = CkoCardTokenRequest(number: "123456789101", expiryMonth: "07", expiryYear: "22", cvv: "100", name: "Test Customer", billingAddress: address, phone: phoneNumber)
+// Create a CardTokenRequest instance with the phoneNumber and address values.
+let cardTokenRequest = CkoCardTokenRequest(
+    number: "4242424242424242",
+    expiryMonth: "01",
+    expiryYear: "29",
+    cvv: "100",
+    name: "Test Customer",
+    billingAddress: address,
+    phone: phoneNumber)
 
+// Request the card token.
 checkoutAPIClient.createCardToken(card: cardTokenRequest) { result in
     switch result {
     case .success(let response):
@@ -212,19 +320,81 @@ checkoutAPIClient.createCardToken(card: cardTokenRequest) { result in
 }
 ```
 
-The success handler takes an array of `CkoCardTokenResponse` as a parameter.
-The error handler takes an `ErrorResponse` as a parameter.
+The completion handler here provides a `Result<CkoCardTokenResponse, NetworkError>` value.
+
+### Prompt for CVV confirmation
+
+Create and configure a `CvvConfirmationViewController`.
+
+```swift
+let cvvConfirmationViewController = CvvConfirmationViewController()
+cvvConfirmationViewController.delegate = self
+```
+
+Handle the result by adding conformance to `CvvConfirmationViewControllerDelegate`.
+
+```swift
+extension ViewController: CvvConfirmationViewControllerDelegate {
+
+    func onConfirm(controller: CvvConfirmationViewController, cvv: String) {
+        // Handle cvv.
+    }
+
+    func onCancel(controller: CvvConfirmationViewController) {
+        // Handle cancellation.
+    }
+
+}
+```
+
+### Handle 3D Secure
+
+When you send a 3D secure charge request from your server you will get back a 3D Secure URL. This is available from `_links.redirect.href` within the JSON response. You can then pass the 3D Secure URL to a `ThreedsWebViewController` in order to handle the verification.
+
+The redirection URLs (`success_url` and `failure_url`) are set in the Checkout.com Hub, but they can be overwritten in the charge request sent from your server. It is important to provide the correct URLs to ensure a successful payment flow.
+
+
+Create and configure a `ThreedsWebViewController`.
+
+```swift
+let threeDSWebViewController = ThreedsWebViewController(
+    successUrl: "http://example.com/success",
+    failUrl: "http://example.com/failure")
+threeDSWebViewController.url = "http://example.com/3ds"
+threeDSWebViewController.delegate = self
+```
+
+Handle the result by adding conformance to `CvvConfirmationViewControllerDelegate`.
+
+```swift
+extension ViewController: ThreedsWebViewControllerDelegate {
+
+    func onSuccess3D() {
+        // Handle successful 3DS.
+    }
+
+    func onFailure3D() {
+        // Handle failed 3DS.
+    }
+
+}
+```
 
 ### Customize with `CheckoutTheme`
 
+Further documentation about customizing Frames is available from the [customization guide](https://docs.checkout.com/integrate/sdks/ios-sdk/ios-sdk-customization-guide).
+
 ```swift
-    CheckoutTheme.primaryBackgroundColor = .blue
-    CheckoutTheme.secondaryBackgroundColor = .purple
-    CheckoutTheme.errorColor = .yellow
-    CheckoutTheme.color = .green
-    CheckoutTheme.chevronColor = .pink
+CheckoutTheme.primaryBackgroundColor = .purple
+CheckoutTheme.secondaryBackgroundColor = .magenta
+CheckoutTheme.tertiaryBackgroundColor = .red
+CheckoutTheme.color = .white
+CheckoutTheme.secondaryColor = .lightGray
+CheckoutTheme.errorColor = .blue
+CheckoutTheme.chevronColor = .white
+CheckoutTheme.font = UIFont(name: "Chalkboard SE", size: 12)!
 ```
 
 ## License
 
-FramesIos is released under the MIT license. [See LICENSE](https://github.com/checkout/frames-ios/blob/master/LICENSE) for details.
+Frames iOS is released under the MIT license. [See LICENSE](https://github.com/checkout/frames-ios/blob/master/LICENSE) for details.

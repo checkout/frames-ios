@@ -1,76 +1,6 @@
 {
   "warnings": [
     {
-      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/AddressViewController.swift",
-      "line": 173,
-      "symbol": "AddressViewController.setCountrySelected(country:regionCode:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/AddressViewController.swift",
-      "line": 192,
-      "symbol": "AddressViewController.setFields(address:phone:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/ApplePayTokenRequest.swift",
-      "line": 11,
-      "symbol": "ApplePayTokenRequest.token_data",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/ApplePayTokenRequest.swift",
-      "line": 14,
-      "symbol": "ApplePayTokenData",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/ApplePayTokenRequest.swift",
-      "line": 21,
-      "symbol": "ApplePayTokenDataHeader",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CardViewController.swift",
-      "line": 17,
-      "symbol": "CardViewController.checkoutApiClient",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CardViewController.swift",
-      "line": 22,
-      "symbol": "CardViewController.billingDetailsAddress",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CardViewController.swift",
-      "line": 23,
-      "symbol": "CardViewController.billingDetailsPhone",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CardViewController.swift",
-      "line": 25,
-      "symbol": "CardViewController.addressViewController",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CardViewControllerDelegate.swift",
-      "line": 12,
-      "symbol": "CardViewControllerDelegate.onSubmit(controller:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CheckoutTheme.swift",
       "line": 8,
       "symbol": "CheckoutTheme.secondaryBackgroundColor",
@@ -78,38 +8,178 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CkoAddress.swift",
-      "line": 32,
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/Core/ApplePayTokenRequest.swift",
+      "line": 24,
+      "symbol": "ApplePayTokenRequest.token_data",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/Core/ApplePayTokenRequest.swift",
+      "line": 28,
+      "symbol": "ApplePayTokenRequest.init(token_data:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/Core/ApplePayTokenRequest.swift",
+      "line": 35,
+      "symbol": "ApplePayTokenData",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/Core/ApplePayTokenRequest.swift",
+      "line": 42,
+      "symbol": "ApplePayTokenData.init(version:data:signature:header:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/Core/ApplePayTokenRequest.swift",
+      "line": 52,
+      "symbol": "ApplePayTokenDataHeader",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/Core/ApplePayTokenRequest.swift",
+      "line": 64,
+      "symbol": "ApplePayTokenDataHeader.init(ephemeralPublicKey:publicKeyHash:transactionId:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/Core/CkoAddress.swift",
+      "line": 33,
       "symbol": "CkoAddress.init(addressLine1:addressLine2:city:state:zip:country:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CkoCardTokenRequest.swift",
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/Core/CkoCardTokenRequest.swift",
       "line": 64,
       "symbol": "CkoCardTokenRequest.createWith(shippingDetails:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CountrySelectionViewController.swift",
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/Core/CkoCardTokenResponse.swift",
+      "line": 82,
+      "symbol": "CkoCardTokenResponse.productId",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/Core/ErrorResponse.swift",
+      "line": 6,
+      "symbol": "ErrorResponse",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/Core/NetworkError.swift",
+      "line": 3,
+      "symbol": "NetworkError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/Core/NetworkError.swift",
+      "line": 5,
+      "symbol": "NetworkError.checkout(requestId:errorType:errorCodes:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/Core/NetworkError.swift",
+      "line": 6,
+      "symbol": "NetworkError.other(error:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/Core/NetworkError.swift",
+      "line": 7,
+      "symbol": "NetworkError.unknown",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/Core/NetworkError.swift",
+      "line": 10,
+      "symbol": "NetworkError.invalidData",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/Core/NetworkError.swift",
+      "line": 10,
+      "symbol": "NetworkError.invalidURL",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/Core/NetworkError.swift",
+      "line": 10,
+      "symbol": "NetworkError.objectDeallocatedUnexpectedly",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/UI/Controllers/AddressViewController.swift",
+      "line": 175,
+      "symbol": "AddressViewController.setCountrySelected(country:regionCode:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/UI/Controllers/AddressViewController.swift",
+      "line": 195,
+      "symbol": "AddressViewController.setFields(address:phone:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/UI/Controllers/CardViewController.swift",
+      "line": 17,
+      "symbol": "CardViewController.checkoutApiClient",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/UI/Controllers/CardViewController.swift",
+      "line": 22,
+      "symbol": "CardViewController.billingDetailsAddress",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/UI/Controllers/CardViewController.swift",
+      "line": 23,
+      "symbol": "CardViewController.billingDetailsPhone",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/UI/Controllers/CardViewController.swift",
+      "line": 25,
+      "symbol": "CardViewController.addressViewController",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/UI/Controllers/CountrySelectionViewController.swift",
       "line": 77,
       "symbol": "CountrySelectionViewController.tableView(_:willDisplay:forRowAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/CvvInputView.swift",
+      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/UI/Views/CvvInputView.swift",
       "line": 13,
       "symbol": "CvvInputView.onChangeDelegate",
       "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/nicolas.maalouf/Documents/GitHub/frames-ios/Source/ErrorResponse.swift",
-      "line": 3,
-      "symbol": "ErrorResponse",
-      "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     }
   ],
