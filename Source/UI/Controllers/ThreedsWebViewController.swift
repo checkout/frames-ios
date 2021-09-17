@@ -81,14 +81,25 @@ public class ThreedsWebViewController: UIViewController,
         if url == successUrl {
             // success url, dismissing the page with the payment token
             self.dismiss(animated: true) {
+                let token = self.extractToken(from: absoluteUrl)
+                self.delegate?.threeDSWebViewControllerAuthenticationDidSucceed(self, token: token)
                 self.delegate?.onSuccess3D()
             }
         } else if url == failUrl {
             // fail url, dismissing the page
             self.dismiss(animated: true) {
+                self.delegate?.threeDSWebViewControllerAuthenticationDidFail(self)
                 self.delegate?.onFailure3D()
             }
         }
+    }
+
+    private func extractToken(from url: URL) -> String? {
+
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return nil }
+
+        return components.queryItems?.first { $0.name == "cko-payment-token" }?.value
+            ?? components.queryItems?.first { $0.name == "cko-session-id" }?.value
     }
 
 }
