@@ -2,8 +2,7 @@ import UIKit
 import WebKit
 
 /// A view controller to manage 3ds
-public class ThreedsWebViewController: UIViewController,
-    WKNavigationDelegate {
+public class ThreedsWebViewController: UIViewController {
 
     // MARK: - Properties
 
@@ -53,30 +52,44 @@ public class ThreedsWebViewController: UIViewController,
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let authUrl = url else { return }
-        let myURL = URL(string: authUrl)
-        let myRequest = URLRequest(url: myURL!)
+        guard let authUrl = url,
+              let url = URL(string: authUrl) else {
+            return
+        }
+
+        let myRequest = URLRequest(url: url)
         webView.navigationDelegate = self
         webView.load(myRequest)
     }
+}
 
-    // MARK: - WKNavigationDelegate
+// MARK: - WKNavigationDelegate
+extension ThreedsWebViewController: WKNavigationDelegate {
 
     /// Called when the web view begins to receive web content.
     public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        shouldDismiss(absoluteUrl: webView.url!)
+
+        guard let absoluteUrl = webView.url else {
+            return
+        }
+
+        shouldDismiss(absoluteUrl: absoluteUrl)
     }
 
     /// Called when a web view receives a server redirect.
     public func webView(_ webView: WKWebView,
                         didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
         // stop the redirection
-        shouldDismiss(absoluteUrl: webView.url!)
+        guard let absoluteUrl = webView.url else {
+            return
+        }
+
+        shouldDismiss(absoluteUrl: absoluteUrl)
     }
 
     private func shouldDismiss(absoluteUrl: URL) {
         // get URL conforming to RFC 1808 without the query
-        let url = "\(absoluteUrl.scheme ?? "https")://\(absoluteUrl.host ?? "localhost")\(absoluteUrl.path)"
+        let url = absoluteUrl.withoutQuery?.absoluteString
 
         if url == successUrl {
             // success url, dismissing the page with the payment token
