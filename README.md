@@ -37,7 +37,7 @@ You can find the Frames API reference [on this website](https://checkout.github.
 - [Usage](https://checkout.github.io/frames-ios/usage.html)
 - [Customizing the card view](https://checkout.github.io/frames-ios/customizing-the-card-view.html)
 - Walkthrough
-  - [iOS Example Frames](https://checkout.github.io/frames-ios/ios-example-frames.html)
+  - [Frames iOS example](frames-ios-example.html)
 
 ## Installation
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Walkthrough  Reference</title>
+    <title>Frames iOS Example – Frames iOS SDK reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,8 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Section/Walkthrough" class="dashAnchor"></a>
 
-    <a title="Walkthrough  Reference"></a>
+    <a title="Frames iOS Example  Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -32,40 +31,26 @@
         </form>
       </p>
     
-        <p class="header-col header-col--secondary">
-          <a class="header-link" href="https://github.com/checkout/frames-ios">
-            <img class="header-icon" src="img/gh.png"/>
-            View on GitHub
-          </a>
-        </p>
     
     </header>
 
     <p class="breadcrumbs">
-      <a class="breadcrumb" href="index.html">Frames Reference</a>
+      <a class="breadcrumb" href="index.html">Frames</a>
       <img class="carat" src="img/carat.png" />
-      Walkthrough  Reference
+      Frames iOS Example
     </p>
 
     <div class="content-wrapper">
       <nav class="navigation">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Guides.html">Guides</a>
+            <a class="nav-group-name-link" href="Getting%20started.html">Getting started</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="usage.html">Usage</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="customizing-the-card-view.html">Customizing the Card View</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Walkthrough.html">Walkthrough</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="ios-example-frames.html">iOS Example Frames</a>
               </li>
             </ul>
           </li>
@@ -175,6 +160,9 @@
             <a class="nav-group-name-link" href="Other%20Guides.html">Other Guides</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="frames-ios-example.html">Frames iOS Example</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="ios-example.html">iOS Example</a>
               </li>
             </ul>
@@ -264,34 +252,71 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>Walkthrough</h1>
             
+            <h1 id='frames-ios-example' class='heading'>Frames iOS example</h1>
+
+<p>To create the card token, you will need to instantiate <code><a href="Classes/CheckoutAPIClient.html">CheckoutAPIClient</a></code> with
+your public key. If you don&rsquo;t have one already, <a href="https://www.checkout.com/contact-sales">request an account</a>.</p>
+<pre class="highlight swift"><code>    <span class="k">let</span> <span class="nv">checkoutAPIClient</span> <span class="o">=</span> <span class="kt">CheckoutAPIClient</span><span class="p">(</span><span class="nv">publicKey</span><span class="p">:</span> <span class="s">"pk_test_03728582-062b-419c-91b5-63ac2a481e07"</span><span class="p">,</span>
+                                              <span class="nv">environment</span><span class="p">:</span> <span class="o">.</span><span class="n">sandbox</span><span class="p">)</span>
+</code></pre>
+
+<p>You can replace <code>pk_test_03728582-062b-419c-91b5-63ac2a481e07</code> with your own public key.</p>
+<pre class="highlight swift"><code>  <span class="k">let</span> <span class="nv">cardViewController</span> <span class="o">=</span> <span class="kt">CardViewController</span><span class="p">(</span><span class="nv">cardHolderNameState</span><span class="p">:</span> <span class="o">.</span><span class="n">hidden</span><span class="p">,</span> <span class="nv">billingDetailsState</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+</code></pre>
+
+<p>Instantiate a <code><a href="Classes/CardViewController.html">CardViewController</a></code>, which will load a form to enter card details in. The constructor takes two
+arguments: <code>cardHolderNameState</code> and <code>billingDetailsState</code>. You can specify whether you want to include those fields
+in the form.</p>
+<pre class="highlight swift"><code>    <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+        <span class="c1">// set the card view controller delegate</span>
+        <span class="n">cardViewController</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+        <span class="c1">// replace the bar button by Pay</span>
+        <span class="n">cardViewController</span><span class="o">.</span><span class="n">rightBarButtonItem</span> <span class="o">=</span> <span class="kt">UIBarButtonItem</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Pay"</span><span class="p">,</span> <span class="nv">style</span><span class="p">:</span> <span class="o">.</span><span class="n">done</span><span class="p">,</span> <span class="nv">target</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+        <span class="c1">// specified which schemes are allowed</span>
+        <span class="n">cardViewController</span><span class="o">.</span><span class="n">availableSchemes</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n">visa</span><span class="p">,</span> <span class="o">.</span><span class="n">mastercard</span><span class="p">]</span>
+    <span class="p">}</span>
+</code></pre>
+
+<p>In the example, we replaced the <em>Done</em> button with <em>Pay</em>. We also specified which schemes are allowed.
+By default, all schemes are allowed (see <code><a href="Enums/CardScheme.html">CardScheme</a></code>). You can also used the <code><a href="Classes/CheckoutAPIClient.html">CheckoutAPIClient</a></code> to
+get the list of card providers that you set in the Hub.</p>
+
+<p>The controller must conform to the delegate <code><a href="Protocols/CardViewControllerDelegate.html">CardViewControllerDelegate</a></code>.</p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">MainViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt">CardViewControllerDelegate</span> <span class="p">{</span>
+</code></pre>
+
+<p>The delegate contains one method called <code>onTapDone</code>. This method is executed when the user taps
+on the <em>Done</em> button to validate the card information.</p>
+
+<blockquote>
+<p>Note that in the example, the <em>Done</em> button has been renamed <em>Pay</em>.</p>
+</blockquote>
+<pre class="highlight swift"><code>    <span class="kd">func</span> <span class="nf">onTapDone</span><span class="p">(</span><span class="nv">controller</span><span class="p">:</span> <span class="kt">CardViewController</span><span class="p">,</span> <span class="nv">card</span><span class="p">:</span> <span class="kt">CkoCardTokenRequest</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">controller</span><span class="o">.</span><span class="n">navigationController</span><span class="p">?</span><span class="o">.</span><span class="nf">popViewController</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+        <span class="n">checkoutAPIClient</span><span class="o">.</span><span class="nf">createCardToken</span><span class="p">(</span><span class="nv">card</span><span class="p">:</span> <span class="n">card</span><span class="p">,</span> <span class="nv">successHandler</span><span class="p">:</span> <span class="p">{</span> <span class="n">cardToken</span> <span class="k">in</span>
+            <span class="k">self</span><span class="o">.</span><span class="nf">showAlert</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">cardToken</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="p">},</span> <span class="nv">errorHandler</span><span class="p">:</span> <span class="p">{</span> <span class="n">error</span> <span class="k">in</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+</code></pre>
+
+<p>The <code>onTapDone</code> method takes the card token request generated by the user as an argument.</p>
+
+<p>You can use this card token request to generate a card token via our API.
+In the code above, <code>checkoutAPIClient.createCardToken</code> uses the card token request, which will make a call to the API to generate a card token. You should define a success and error handler to react to the API response.</p>
+
           </div>
         </section>
 
-        <section class="section">
-          <div class="section-content">
-            <div class="task-group">
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/documentation.iOS Example Frames"></a>
-                    <a name="//apple_ref/swift/Guide/iOS Example Frames" class="dashAnchor"></a>
-                    <a class="direct-link" href="ios-example-frames.html">iOS Example Frames</a>
-                    </code>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
 
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2021 <a class="link" href="https://www.checkout.com/" target="_blank" rel="noopener" rel="external">Checkout.com</a>. All rights reserved. (Last updated: 2021-09-17)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="noopener" rel="external">jazzy ♪♫ v0.14.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="noopener" rel="external">Realm</a> project.</p>
+      <p>&copy; 2021 <a class="link" href="https://www.checkout.com/" target="_blank" rel="external">Checkout.com</a>. All rights reserved. (Last updated: 2021-09-20)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="noopener" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="noopener" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

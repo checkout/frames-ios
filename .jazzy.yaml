@@ -6,17 +6,17 @@ source_host_url: https://github.com/checkout/frames-ios
 source_host_files_url: https://github.com/checkout/frames-ios/tree/master
 podspec: Frames.podspec
 output: docs
-theme: fullwidth
+theme: .jazzy/.themes/checkout.com
 clean: true
 documentation: Documentation/**/*.md
 custom_categories:
-  - name: Guides
+  - name: Getting started
     children:
       - Usage
       - Customizing the Card View
   - name: Walkthrough
     children:
-      - iOS Example Frames
+      - Frames iOS example
   - name: Classes
     children:
       - AddressView

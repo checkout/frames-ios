@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>iOS Example  Reference</title>
+    <title>iOS Example – Frames iOS SDK reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset="utf-8">
@@ -31,40 +31,26 @@
         </form>
       </p>
     
-        <p class="header-col header-col--secondary">
-          <a class="header-link" href="https://github.com/checkout/frames-ios">
-            <img class="header-icon" src="img/gh.png"/>
-            View on GitHub
-          </a>
-        </p>
     
     </header>
 
     <p class="breadcrumbs">
-      <a class="breadcrumb" href="index.html">Frames Reference</a>
+      <a class="breadcrumb" href="index.html">Frames</a>
       <img class="carat" src="img/carat.png" />
-      iOS Example  Reference
+      iOS Example
     </p>
 
     <div class="content-wrapper">
       <nav class="navigation">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Guides.html">Guides</a>
+            <a class="nav-group-name-link" href="Getting%20started.html">Getting started</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="usage.html">Usage</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="customizing-the-card-view.html">Customizing the Card View</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Walkthrough.html">Walkthrough</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="ios-example-frames.html">iOS Example Frames</a>
               </li>
             </ul>
           </li>
@@ -174,6 +160,9 @@
             <a class="nav-group-name-link" href="Other%20Guides.html">Other Guides</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="frames-ios-example.html">Frames iOS Example</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="ios-example.html">iOS Example</a>
               </li>
             </ul>
@@ -264,62 +253,60 @@
         <section class="section">
           <div class="section-content top-matter">
             
-            <h1 id='ios-example' class='heading'>iOS Example</h1>
-
-<p>A few examples are present in the repository. Let&rsquo;s walkthrough the example called <em>iOS Example</em>.</p>
+            <h1 id='frames-ios-example' class='heading'>Frames iOS example</h1>
 <h2 id='setup-to-launch-the-example' class='heading'>Setup to launch the example</h2>
-<h3 id='1-get-sandbox-account' class='heading'>1 - Get sandbox account</h3>
+<h3 id='step-1-create-a-hub-account' class='heading'>Step 1: Create a Hub account</h3>
 
-<p>To get a sandbox account, you need to go to the website <a href="checkout.com">checkout.com</a>, click on <strong>Get sandbox</strong> and enter your details.
-Once done, you will receive an email with your public and secret key.</p>
-<h3 id='2-clone-the-repository' class='heading'>2 - Clone the repository</h3>
+<p><a href="https://www.checkout.com/contact-sales">Request an account</a> and enter your details.</p>
 
-<p>Clone the <a href="https://github.com/checkout/frames-ios">repository</a> and open it with xcode. Replace the public key in <code>iOS Example/ExampleViewController</code> by the one received in the email.</p>
+<p>Once done, you will receive an email with your log in information so you can access your Hub account. You can find your public and secret key under <em>Settings &gt; Channels</em>.</p>
+<h3 id='step-2-clone-the-repository' class='heading'>Step 2: Clone the repository</h3>
+
+<p>Clone the <a href="https://github.com/checkout/frames-ios">repository</a> and open it with XCode. Replace the public key in <code>iOS Example/ExampleViewController</code> with your own.</p>
 
 <p>e.g.</p>
 <pre class="highlight swift"><code>  <span class="k">let</span> <span class="nv">publicKey</span> <span class="o">=</span> <span class="s">"pk_test_03728582-062b-419c-91b5-63ac2a481e07"</span>
 </code></pre>
-<h3 id='3-setup-the-example-backend' class='heading'>3 - Setup the example backend</h3>
+<h3 id='step-3-set-up-the-example-back-end' class='heading'>Step 3: Set up the example back end</h3>
 
-<p>You can setup a quick backend to launch the demo.</p>
-<div class="aside aside-note">
-    <p class="aside-title">Note</p>
-    <p>The backend is meant for demo purposes.</p>
+<p>You can set up a quick back end to launch the demo.</p>
 
-</div>
+<blockquote>
+<p>Note: The back end is meant for demo purposes.</p>
+</blockquote>
 
-<p>Deploy the backend to heroku by clicking on the button below:</p>
+<p>Deploy the back end to Heroku by selecting the button below:</p>
 
 <p><a href="https://heroku.com/deploy?template=https://github.com/checkout/mobile-sdk-backend"><img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy"></a></p>
 
-<p>Set the <code>SECRET_KEY</code> environment variable with the one received in the email and deploy the application.</p>
+<p>Set the <code>SECRET_KEY</code> environment variable with your own.</p>
 
-<p>Once the application is deployed, replaced the value of <code>baseUrl</code> in <code>iOS Example/MerchantAPIClient</code> by your application url.</p>
+<p>Once the application is deployed, replace the value of <code>baseUrl</code> in <code>iOS Example/MerchantAPIClient</code> with your application URL.</p>
 
 <p>e.g.</p>
 <pre class="highlight swift"><code>  <span class="k">let</span> <span class="nv">baseUrl</span> <span class="o">=</span> <span class="s">"https://just-a-test-2.herokuapp.com/"</span>
 </code></pre>
-<h3 id='4-launch-the-example' class='heading'>4 - Launch the example</h3>
+<h3 id='step-4-launch-the-example' class='heading'>Step 4: Launch the example</h3>
 
-<p>Select <strong>iOS Example</strong> and you can launch the example.</p>
+<p>Select <em>iOS Example</em> to launch the example.</p>
 <h2 id='walkthrough' class='heading'>Walkthrough</h2>
 
 <p>The <em>ExampleViewController</em> displays a list of saved cards for a given customer.</p>
 
-<p>To create the card token, you will need to instantiate the checkout API Client <code><a href="Classes/CheckoutAPIClient.html">CheckoutAPIClient</a></code> with
-your public key. If you don&rsquo;t have one already, go to the checkout.com website to get a sandbox account.</p>
+<p>To create the card token, you will need to instantiate <code><a href="Classes/CheckoutAPIClient.html">CheckoutAPIClient</a></code> with
+your public key. If you don&rsquo;t have one already, <a href="https://www.checkout.com/contact-sales">request an account</a>.</p>
 <pre class="highlight swift"><code>    <span class="k">let</span> <span class="nv">publicKey</span> <span class="o">=</span> <span class="s">"pk_test_03728582-062b-419c-91b5-63ac2a481e07"</span>
     <span class="k">var</span> <span class="nv">checkoutAPIClient</span><span class="p">:</span> <span class="kt">CheckoutAPIClient</span> <span class="p">{</span>
         <span class="k">return</span> <span class="kt">CheckoutAPIClient</span><span class="p">(</span><span class="nv">publicKey</span><span class="p">:</span> <span class="n">publicKey</span><span class="p">,</span> <span class="nv">environment</span><span class="p">:</span> <span class="o">.</span><span class="n">sandbox</span><span class="p">)</span>
     <span class="p">}</span>
 </code></pre>
 
-<p>You can replace <code>pk_test_03728582-062b-419c-91b5-63ac2a481e07</code> by your own public key.</p>
+<p>You can replace <code>pk_test_03728582-062b-419c-91b5-63ac2a481e07</code> with your own public key.</p>
 <pre class="highlight swift"><code>  <span class="k">let</span> <span class="nv">cardViewController</span> <span class="o">=</span> <span class="kt">CardViewController</span><span class="p">(</span><span class="nv">cardHolderNameState</span><span class="p">:</span> <span class="o">.</span><span class="n">hidden</span><span class="p">,</span> <span class="nv">billingDetailsState</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
 </code></pre>
 
-<p>Instantiate a <code><a href="Classes/CardViewController.html">CardViewController</a></code> that will show the form to enter card details. The constructor takes two
-arguments: <code>cardHolderNameState</code> and <code>billingDetailsState</code>. You can specified if you want to include those fields
+<p>Instantiate a <code><a href="Classes/CardViewController.html">CardViewController</a></code>, which will load a form to enter card details in. The constructor takes two
+arguments: <code>cardHolderNameState</code> and <code>billingDetailsState</code>. You can specify whether you want to include those fields
 in the form.</p>
 <pre class="highlight swift"><code>    <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
@@ -341,19 +328,22 @@ in the form.</p>
 
 <p>We specified which schemes are allowed.
 By default, all schemes are allowed (see <code><a href="Enums/CardScheme.html">CardScheme</a></code>). You can also used the <code><a href="Classes/CheckoutAPIClient.html">CheckoutAPIClient</a></code> to
-get the list of card providers that you set in the hub.</p>
+get the list of card providers that you set in the Hub.</p>
 
 <p>The controller must conform to the delegate <code><a href="Protocols/CardViewControllerDelegate.html">CardViewControllerDelegate</a></code>.</p>
 <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">MainViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt">CardViewControllerDelegate</span> <span class="p">{</span>
 </code></pre>
 
 <p>The delegate contains one method called <code>onTapDone</code>. This method is executed when the user tap
-on the <em>done</em> button to validate the card information. Note that in the example, the <em>done</em> button has
-been renamed <em>Pay</em>.</p>
+on the <em>Done</em> button to validate the card information.</p>
+
+<blockquote>
+<p>Note that in the example, the <em>Done</em> button has been renamed <em>Pay</em>.</p>
+</blockquote>
 
 <p>We instantiate a <code><a href="Classes/CvvConfirmationViewController.html">CvvConfirmationViewController</a></code> and <code><a href="Classes/ThreedsWebViewController.html">ThreedsWebViewController</a></code>.
 The <code><a href="Classes/CvvConfirmationViewController.html">CvvConfirmationViewController</a></code> is a simple page to allow the user to enter
-a cvv. Use a <code><a href="Protocols/CvvConfirmationViewControllerDelegate.html">CvvConfirmationViewControllerDelegate</a></code> to get the cvv.</p>
+a CVV. Use a <code><a href="Protocols/CvvConfirmationViewControllerDelegate.html">CvvConfirmationViewControllerDelegate</a></code> to get the CVV.</p>
 
 <p>The <code><a href="Classes/ThreedsWebViewController.html">ThreedsWebViewController</a></code> is a simple web view to allow the user to handle
 3D Secure. <code><a href="Protocols/ThreedsWebViewControllerDelegate.html">ThreedsWebViewControllerDelegate</a></code> contains two methods: <code>onSuccess3D</code>
@@ -383,8 +373,8 @@ and <code>onFailure3D</code> to handle the response.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2021 <a class="link" href="https://www.checkout.com/" target="_blank" rel="noopener" rel="external">Checkout.com</a>. All rights reserved. (Last updated: 2021-09-17)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="noopener" rel="external">jazzy ♪♫ v0.14.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="noopener" rel="external">Realm</a> project.</p>
+      <p>&copy; 2021 <a class="link" href="https://www.checkout.com/" target="_blank" rel="external">Checkout.com</a>. All rights reserved. (Last updated: 2021-09-20)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="noopener" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="noopener" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
