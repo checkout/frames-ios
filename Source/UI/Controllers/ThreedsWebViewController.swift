@@ -7,8 +7,8 @@ public class ThreedsWebViewController: UIViewController {
     // MARK: - Properties
 
     var webView: WKWebView!
-    let successUrl: String
-    let failUrl: String
+    let successUrl: URL?
+    let failUrl: URL?
 
     /// Delegate
     public weak var delegate: ThreedsWebViewControllerDelegate?
@@ -19,7 +19,15 @@ public class ThreedsWebViewController: UIViewController {
     // MARK: - Initialization
 
     /// Initializes a web view controller adapted to handle 3dsecure.
+    @available(*, deprecated, renamed: "init(successUrl:failUrl:)")
     public init(successUrl: String, failUrl: String) {
+        self.successUrl = URL(string: successUrl)
+        self.failUrl = URL(string: failUrl)
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    /// Initializes a web view controller adapted to handle 3dsecure.
+    public init(successUrl: URL, failUrl: URL) {
         self.successUrl = successUrl
         self.failUrl = failUrl
         super.init(nibName: nil, bundle: nil)
@@ -27,15 +35,15 @@ public class ThreedsWebViewController: UIViewController {
 
     /// Returns a newly initialized view controller with the nib file in the specified bundle.
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Foundation.Bundle?) {
-        successUrl = ""
-        failUrl = ""
+        successUrl = nil
+        failUrl = nil
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
     /// Returns an object initialized from data in a given unarchiver.
     required public init?(coder aDecoder: NSCoder) {
-        successUrl = ""
-        failUrl = ""
+        successUrl = nil
+        failUrl = nil
         super.init(coder: aDecoder)
     }
 
@@ -89,7 +97,7 @@ extension ThreedsWebViewController: WKNavigationDelegate {
 
     private func shouldDismiss(absoluteUrl: URL) {
         // get URL conforming to RFC 1808 without the query
-        let url = absoluteUrl.withoutQuery?.absoluteString
+        let url = absoluteUrl.withoutQuery
 
         if url == successUrl {
             // success url, dismissing the page with the payment token

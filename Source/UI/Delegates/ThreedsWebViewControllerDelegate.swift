@@ -24,3 +24,15 @@ public protocol ThreedsWebViewControllerDelegate: AnyObject {
     func threeDSWebViewControllerAuthenticationDidFail(_ threeDSWebViewController: ThreedsWebViewController)
 
 }
+
+public extension ThreedsWebViewControllerDelegate {
+
+    func onSuccess3D() {}
+
+    func onFailure3D() {}
+
+    func threeDSWebViewControllerAuthenticationDidSucceed(_ threeDSWebViewController: ThreedsWebViewController,
+                                                          token: String?) {}
+
+    func threeDSWebViewControllerAuthenticationDidFail(_ threeDSWebViewController: ThreedsWebViewController) {}
+}

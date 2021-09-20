@@ -45,8 +45,8 @@ class ThreedsWebViewControllerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        let successUrl = "https://www.successurl.com/"
-        let failUrl = "https://www.failurl.com/"
+        let successUrl = URL(string: "https://www.successurl.com/")!
+        let failUrl = URL(string: "https://www.failurl.com/")!
         threedsWebViewController = ThreedsWebViewControllerForDismiss(successUrl: successUrl, failUrl: failUrl)
         let window = UIWindow()
         window.rootViewController = threedsWebViewController
@@ -55,29 +55,37 @@ class ThreedsWebViewControllerTests: XCTestCase {
     func testInitialization() {
         /// Empty constructor
         let threedsWebViewController = ThreedsWebViewController()
-        XCTAssertEqual(threedsWebViewController.successUrl, "")
-        XCTAssertEqual(threedsWebViewController.failUrl, "")
+        XCTAssertEqual(threedsWebViewController.successUrl, nil)
+        XCTAssertEqual(threedsWebViewController.failUrl, nil)
     }
 
     func testInitializationWithUrls() {
-        let successUrl = "https://www.successurl.com/"
-        let failUrl = "https://www.failurl.com/"
+        let successUrl =  URL(string: "https://www.successurl.com/")!
+        let failUrl =  URL(string: "https://www.failurl.com/")!
         let threedsWebViewController = ThreedsWebViewController(successUrl: successUrl, failUrl: failUrl)
         XCTAssertEqual(threedsWebViewController.successUrl, successUrl)
         XCTAssertEqual(threedsWebViewController.failUrl, failUrl)
     }
 
+    func testInitializationWithStrings() {
+        let successUrl =  "https://www.successurl.com/"
+        let failUrl =  "https://www.failurl.com/"
+        let threedsWebViewController = ThreedsWebViewController(successUrl: successUrl, failUrl: failUrl)
+        XCTAssertEqual(threedsWebViewController.successUrl?.absoluteString, successUrl)
+        XCTAssertEqual(threedsWebViewController.failUrl?.absoluteString, failUrl)
+    }
+
     func testInitializationNibBundle() {
         let threedsWebViewController = ThreedsWebViewController(nibName: nil, bundle: nil)
-        XCTAssertEqual(threedsWebViewController.successUrl, "")
-        XCTAssertEqual(threedsWebViewController.failUrl, "")
+        XCTAssertEqual(threedsWebViewController.successUrl, nil)
+        XCTAssertEqual(threedsWebViewController.failUrl, nil)
     }
 
     func testInitializationCoder() {
         let coder = NSKeyedUnarchiver(forReadingWith: Data())
         let threedsWebViewController = ThreedsWebViewController(coder: coder)
-        XCTAssertEqual(threedsWebViewController?.successUrl, "")
-        XCTAssertEqual(threedsWebViewController?.failUrl, "")
+        XCTAssertEqual(threedsWebViewController?.successUrl, nil)
+        XCTAssertEqual(threedsWebViewController?.failUrl, nil)
     }
 
     func testLoadView() {
