@@ -14,22 +14,40 @@ public class ThreedsWebViewController: UIViewController {
     public weak var delegate: ThreedsWebViewControllerDelegate?
 
     /// Url
-    public var url: String?
+    @available(*, deprecated, renamed: "authUrl")
+    public var url: String? {
+        didSet {
+            if let url = url {
+                authUrl = URL(string: url)
+            }
+        }
+    }
+
+    /// Authentication Url
+    public var authUrl: URL?
+
+    private let urlHelper: URLHelping
 
     // MARK: - Initialization
 
     /// Initializes a web view controller adapted to handle 3dsecure.
     @available(*, deprecated, renamed: "init(successUrl:failUrl:)")
-    public init(successUrl: String, failUrl: String) {
-        self.successUrl = URL(string: successUrl)
-        self.failUrl = URL(string: failUrl)
-        super.init(nibName: nil, bundle: nil)
+    public convenience init(successUrl successUrlString: String, failUrl failUrlString: String) {
+        let successUrl = URL(string: successUrlString)
+        let failUrl = URL(string: failUrlString)
+
+        self.init(successUrl: successUrl, failUrl: failUrl, urlHelper: URLHelper())
     }
 
     /// Initializes a web view controller adapted to handle 3dsecure.
-    public init(successUrl: URL, failUrl: URL) {
+    public convenience init(successUrl: URL, failUrl: URL) {
+        self.init(successUrl: successUrl, failUrl: failUrl, urlHelper: URLHelper())
+    }
+
+    init(successUrl: URL?, failUrl: URL?, urlHelper: URLHelping) {
         self.successUrl = successUrl
         self.failUrl = failUrl
+        self.urlHelper = urlHelper
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -37,6 +55,7 @@ public class ThreedsWebViewController: UIViewController {
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Foundation.Bundle?) {
         successUrl = nil
         failUrl = nil
+        urlHelper = URLHelper()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
@@ -44,6 +63,7 @@ public class ThreedsWebViewController: UIViewController {
     required public init?(coder aDecoder: NSCoder) {
         successUrl = nil
         failUrl = nil
+        urlHelper = URLHelper()
         super.init(coder: aDecoder)
     }
 
@@ -60,14 +80,13 @@ public class ThreedsWebViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let authUrl = url,
-              let url = URL(string: authUrl) else {
+        guard let authUrl = authUrl else {
             return
         }
 
-        let myRequest = URLRequest(url: url)
+        let authRequest = URLRequest(url: authUrl)
         webView.navigationDelegate = self
-        webView.load(myRequest)
+        webView.load(authRequest)
     }
 }
 
@@ -76,51 +95,33 @@ extension ThreedsWebViewController: WKNavigationDelegate {
 
     /// Called when the web view begins to receive web content.
     public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-
-        guard let absoluteUrl = webView.url else {
-            return
-        }
-
-        shouldDismiss(absoluteUrl: absoluteUrl)
+        webView.url.map { shouldDismiss(redirectUrl: $0) }
     }
 
     /// Called when a web view receives a server redirect.
     public func webView(_ webView: WKWebView,
                         didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
-        // stop the redirection
-        guard let absoluteUrl = webView.url else {
-            return
-        }
-
-        shouldDismiss(absoluteUrl: absoluteUrl)
+        webView.url.map { shouldDismiss(redirectUrl: $0) }
     }
 
-    private func shouldDismiss(absoluteUrl: URL) {
-        // get URL conforming to RFC 1808 without the query
-        let url = absoluteUrl.withoutQuery
+    private func shouldDismiss(redirectUrl: URL) {
 
-        if url == successUrl {
+        if let successUrl = successUrl,
+           urlHelper.urlsMatch(redirectUrl: redirectUrl, matchingUrl: successUrl) {
             // success url, dismissing the page with the payment token
-            self.dismiss(animated: true) {
-                let token = self.extractToken(from: absoluteUrl)
-                self.delegate?.threeDSWebViewControllerAuthenticationDidSucceed(self, token: token)
-                self.delegate?.onSuccess3D()
+
+            self.dismiss(animated: true) { [urlHelper, delegate] in
+                let token = urlHelper.extractToken(from: redirectUrl)
+                delegate?.threeDSWebViewControllerAuthenticationDidSucceed(self, token: token)
+                delegate?.onSuccess3D()
             }
-        } else if url == failUrl {
+        } else if let failUrl = failUrl,
+                  urlHelper.urlsMatch(redirectUrl: redirectUrl, matchingUrl: failUrl) {
             // fail url, dismissing the page
-            self.dismiss(animated: true) {
-                self.delegate?.threeDSWebViewControllerAuthenticationDidFail(self)
-                self.delegate?.onFailure3D()
+            self.dismiss(animated: true) { [delegate] in
+                delegate?.threeDSWebViewControllerAuthenticationDidFail(self)
+                delegate?.onFailure3D()
             }
         }
     }
-
-    private func extractToken(from url: URL) -> String? {
-
-        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return nil }
-
-        return components.queryItems?.first { $0.name == "cko-payment-token" }?.value
-            ?? components.queryItems?.first { $0.name == "cko-session-id" }?.value
-    }
-
 }
