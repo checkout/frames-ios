@@ -109,6 +109,7 @@
 		4422783D2616376E009626A0 /* CardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277E32616376E009626A0 /* CardUtils.swift */; };
 		4422783E2616376E009626A0 /* CheckoutSdkIos.h in Headers */ = {isa = PBXBuildFile; fileRef = 442277E52616376E009626A0 /* CheckoutSdkIos.h */; };
 		442278402616376E009626A0 /* CheckoutAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277E72616376E009626A0 /* CheckoutAPIClient.swift */; };
+		4452A1AD26FB5875006AF798 /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4452A1AC26FB5874006AF798 /* URLHelper.swift */; };
 		44796B51262F31A600F28C6E /* CheckoutEventLoggerKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44796B50262F31A600F28C6E /* CheckoutEventLoggerKit.xcframework */; };
 		44A4DFE5261CC59B00E0C349 /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */; settings = {ATTRIBUTES = (Required, ); }; };
 		44F095202625F7E700CB287F /* FramesLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F095162625F7E600CB287F /* FramesLogEvent.swift */; };
@@ -371,6 +372,7 @@
 		442277E62616376E009626A0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		442277E72616376E009626A0 /* CheckoutAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutAPIClient.swift; path = ../../Source/CheckoutAPIClient.swift; sourceTree = "<group>"; };
 		442278B526164770009626A0 /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
+		4452A1AC26FB5874006AF798 /* URLHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLHelper.swift; sourceTree = "<group>"; };
 		446D0CFE261F48F200E0032E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		446D0D00261F492000E0032E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		446D0D02261F494900E0032E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -674,6 +676,7 @@
 				442277CC2616376E009626A0 /* CardScheme.swift */,
 				442277CD2616376E009626A0 /* CardProviderResponse.swift */,
 				57256C5D269F0FA0001EC3D8 /* Constants.swift */,
+				4452A1AC26FB5874006AF798 /* URLHelper.swift */,
 				57256C5C269F0FA0001EC3D8 /* ContentTypeProviding.swift */,
 				57256C5A269F0FA0001EC3D8 /* Dispatching.swift */,
 				57256C59269F0FA0001EC3D8 /* TopLevelDecoder.swift */,
@@ -1239,6 +1242,7 @@
 				57256C60269F0FA0001EC3D8 /* TopLevelEncoder.swift in Sources */,
 				4422782D2616376E009626A0 /* CardType.swift in Sources */,
 				442278242616376E009626A0 /* ExpirationDateInputView.swift in Sources */,
+				4452A1AD26FB5875006AF798 /* URLHelper.swift in Sources */,
 				57256C55269F0F90001EC3D8 /* FramesEventLogger.swift in Sources */,
 				442278392616376E009626A0 /* StringExtensions.swift in Sources */,
 				4422781C2616376E009626A0 /* CardView.swift in Sources */,
