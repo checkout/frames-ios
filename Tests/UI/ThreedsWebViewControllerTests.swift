@@ -4,17 +4,32 @@ import WebKit
 
 class ThreedsWebViewControllerMockDelegate: ThreedsWebViewControllerDelegate {
 
-    var onSuccess3DCalledTimes = 0
-    var onFailure3DCalledTimes = 0
+    private(set) var onSuccess3DCalledTimes = 0
 
     func onSuccess3D() {
         onSuccess3DCalledTimes += 1
     }
 
+    private(set) var onFailure3DCalledTimes = 0
+
     func onFailure3D() {
         onFailure3DCalledTimes += 1
     }
+
+    private(set) var threeDSWebViewControllerAuthenticationDidSucceedCalledWith: [(ThreedsWebViewController, token: String?)] = []
+
+    func threeDSWebViewControllerAuthenticationDidSucceed(_ threeDSWebViewController: ThreedsWebViewController, token: String?) {
+        threeDSWebViewControllerAuthenticationDidSucceedCalledWith.append((threeDSWebViewController, token))
+    }
+
+    private(set) var threeDSWebViewControllerAuthenticationDidFailCalledWith: [ThreedsWebViewController] = []
+
+    func threeDSWebViewControllerAuthenticationDidFail(_ threeDSWebViewController: ThreedsWebViewController) {
+        threeDSWebViewControllerAuthenticationDidFailCalledWith.append(threeDSWebViewController)
+    }
 }
+
+class WKNavigationMock: WKNavigation {}
 
 class ThreedsWebViewControllerForDismiss: ThreedsWebViewController {
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
@@ -22,59 +37,78 @@ class ThreedsWebViewControllerForDismiss: ThreedsWebViewController {
     }
 }
 
+class URLHelperMock: URLHelping {
+
+    private(set) var urlsMatchCalledWith: [(redirectUrl: URL, matchingUrl: URL)] = []
+    var urlsMatchToReturn: [URL: [URL: Bool]] = [:]
+
+    func urlsMatch(redirectUrl: URL, matchingUrl: URL) -> Bool {
+
+        urlsMatchCalledWith.append((redirectUrl, matchingUrl))
+        return urlsMatchToReturn[redirectUrl]?[matchingUrl] ?? false
+    }
+
+    private(set) var extractTokenCalledWith: [URL] = []
+    var extractTokenToReturn: String?
+
+    func extractToken(from url: URL) -> String? {
+
+        extractTokenCalledWith.append(url)
+        return extractTokenToReturn
+    }
+}
+
 class ThreedsWebViewControllerTests: XCTestCase {
 
     var threedsWebViewController: ThreedsWebViewController!
+    let navigation = WKNavigationMock()
+    var urlHelper = URLHelperMock()
+    let successUrl = URL(string: "https://www.successurl.com/")!
+    let failUrl = URL(string: "https://www.failurl.com/")!
 
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        let successUrl = "https://www.successurl.com/"
-        let failUrl = "https://www.failurl.com/"
-        threedsWebViewController = ThreedsWebViewController(successUrl: successUrl, failUrl: failUrl)
+
+        urlHelper = URLHelperMock()
+        threedsWebViewController = ThreedsWebViewControllerForDismiss(successUrl: successUrl, failUrl: failUrl, urlHelper: urlHelper)
         let window = UIWindow()
         window.rootViewController = threedsWebViewController
-    }
-
-    func loadUrl(url: String) {
-        threedsWebViewController.url = url
-        threedsWebViewController.loadView()
-        threedsWebViewController.viewDidLoad()
-    }
-
-    func addAsModal(viewController: ThreedsWebViewController) {
-        let viewController = UIViewController()
-        let window = UIWindow()
-        window.rootViewController = viewController
-        viewController.present(threedsWebViewController, animated: false, completion: nil)
     }
 
     func testInitialization() {
         /// Empty constructor
         let threedsWebViewController = ThreedsWebViewController()
-        XCTAssertEqual(threedsWebViewController.successUrl, "")
-        XCTAssertEqual(threedsWebViewController.failUrl, "")
+        XCTAssertEqual(threedsWebViewController.successUrl, nil)
+        XCTAssertEqual(threedsWebViewController.failUrl, nil)
     }
 
     func testInitializationWithUrls() {
-        let successUrl = "https://www.successurl.com/"
-        let failUrl = "https://www.failurl.com/"
+        let successUrl =  URL(string: "https://www.successurl.com/")!
+        let failUrl =  URL(string: "https://www.failurl.com/")!
         let threedsWebViewController = ThreedsWebViewController(successUrl: successUrl, failUrl: failUrl)
         XCTAssertEqual(threedsWebViewController.successUrl, successUrl)
         XCTAssertEqual(threedsWebViewController.failUrl, failUrl)
     }
 
+    func testInitializationWithStrings() {
+        let successUrl =  "https://www.successurl.com/"
+        let failUrl =  "https://www.failurl.com/"
+        let threedsWebViewController = ThreedsWebViewController(successUrl: successUrl, failUrl: failUrl)
+        XCTAssertEqual(threedsWebViewController.successUrl?.absoluteString, successUrl)
+        XCTAssertEqual(threedsWebViewController.failUrl?.absoluteString, failUrl)
+    }
+
     func testInitializationNibBundle() {
         let threedsWebViewController = ThreedsWebViewController(nibName: nil, bundle: nil)
-        XCTAssertEqual(threedsWebViewController.successUrl, "")
-        XCTAssertEqual(threedsWebViewController.failUrl, "")
+        XCTAssertEqual(threedsWebViewController.successUrl, nil)
+        XCTAssertEqual(threedsWebViewController.failUrl, nil)
     }
 
     func testInitializationCoder() {
         let coder = NSKeyedUnarchiver(forReadingWith: Data())
         let threedsWebViewController = ThreedsWebViewController(coder: coder)
-        XCTAssertEqual(threedsWebViewController?.successUrl, "")
-        XCTAssertEqual(threedsWebViewController?.failUrl, "")
+        XCTAssertEqual(threedsWebViewController?.successUrl, nil)
+        XCTAssertEqual(threedsWebViewController?.failUrl, nil)
     }
 
     func testLoadView() {
@@ -91,18 +125,90 @@ class ThreedsWebViewControllerTests: XCTestCase {
         XCTAssertEqual(threedsWebViewController.webView.url?.absoluteString, url)
     }
 
-//    func testDismissIfSuccessUrl() {
-//        addAsModal(viewController: threedsWebViewController)
-//        let delegate = ThreedsWebViewControllerMockDelegate()
-//        threedsWebViewController.delegate = delegate
-//        loadUrl(url: "https://www.successurl.com")
-//        threedsWebViewController.webView.navigationDelegate?.webView!(threedsWebViewController.webView,
-//          didCommit: WKNavigation())
-//        XCTAssertEqual(delegate.onSuccess3DCalledTimes, 1)
-//    }
-//
-//    func testDismissIfFailUrl() {
-//
-//    }
+    func testDismissIfSuccessUrl() {
+        let delegate = ThreedsWebViewControllerMockDelegate()
+        threedsWebViewController.delegate = delegate
+        threedsWebViewController.loadViewIfNeeded()
 
+        urlHelper.urlsMatchToReturn = [successUrl: [successUrl: true]]
+
+        let request = URLRequest(url: URL(string: "https://www.successurl.com/")!)
+        threedsWebViewController.webView.load(request)
+        threedsWebViewController.webView(threedsWebViewController.webView, didCommit: navigation)
+
+        XCTAssertEqual(delegate.onSuccess3DCalledTimes, 1)
+        XCTAssertEqual(delegate.threeDSWebViewControllerAuthenticationDidSucceedCalledWith.count, 1)
+
+        XCTAssertEqual(delegate.onFailure3DCalledTimes, 0)
+        XCTAssertEqual(delegate.threeDSWebViewControllerAuthenticationDidFailCalledWith.count, 0)
+
+        XCTAssertEqual(delegate.threeDSWebViewControllerAuthenticationDidSucceedCalledWith.first?.0, threedsWebViewController)
+        XCTAssertEqual(delegate.threeDSWebViewControllerAuthenticationDidSucceedCalledWith.first?.token, nil)
+
+        XCTAssertEqual(urlHelper.urlsMatchCalledWith.count, 1)
+        XCTAssertEqual(urlHelper.urlsMatchCalledWith.first?.redirectUrl, successUrl)
+        XCTAssertEqual(urlHelper.urlsMatchCalledWith.first?.matchingUrl, successUrl)
+
+        XCTAssertEqual(urlHelper.extractTokenCalledWith.count, 1)
+        XCTAssertEqual(urlHelper.extractTokenCalledWith.first, successUrl)
+    }
+
+    func testDismissIfSuccessUrl_tokenPresent() {
+        let delegate = ThreedsWebViewControllerMockDelegate()
+        threedsWebViewController.delegate = delegate
+        threedsWebViewController.loadViewIfNeeded()
+
+        let urlWithToken = URL(string: "https://www.successurl.com/?cko-payment-token=testValue")!
+
+        urlHelper.urlsMatchToReturn = [urlWithToken: [successUrl: true]]
+        urlHelper.extractTokenToReturn = "testValue"
+
+        let request = URLRequest(url: URL(string: "https://www.successurl.com/?cko-payment-token=testValue")!)
+        threedsWebViewController.webView.load(request)
+        threedsWebViewController.webView(threedsWebViewController.webView, didCommit: navigation)
+
+        XCTAssertEqual(delegate.onSuccess3DCalledTimes, 1)
+        XCTAssertEqual(delegate.threeDSWebViewControllerAuthenticationDidSucceedCalledWith.count, 1)
+
+        XCTAssertEqual(delegate.onFailure3DCalledTimes, 0)
+        XCTAssertEqual(delegate.threeDSWebViewControllerAuthenticationDidFailCalledWith.count, 0)
+
+        XCTAssertEqual(delegate.threeDSWebViewControllerAuthenticationDidSucceedCalledWith.first?.0, threedsWebViewController)
+        XCTAssertEqual(delegate.threeDSWebViewControllerAuthenticationDidSucceedCalledWith.first?.token, "testValue")
+
+        XCTAssertEqual(urlHelper.urlsMatchCalledWith.count, 1)
+        XCTAssertEqual(urlHelper.urlsMatchCalledWith.first?.redirectUrl, urlWithToken)
+        XCTAssertEqual(urlHelper.urlsMatchCalledWith.first?.matchingUrl, successUrl)
+
+        XCTAssertEqual(urlHelper.extractTokenCalledWith.count, 1)
+        XCTAssertEqual(urlHelper.extractTokenCalledWith.first, urlWithToken)
+    }
+
+    func testDismissIfFailureUrl() {
+        let delegate = ThreedsWebViewControllerMockDelegate()
+        threedsWebViewController.delegate = delegate
+        threedsWebViewController.loadViewIfNeeded()
+
+        urlHelper.urlsMatchToReturn = [failUrl: [failUrl: true]]
+
+        let request = URLRequest(url: URL(string: "https://www.failurl.com/")!)
+        threedsWebViewController.webView.load(request)
+        threedsWebViewController.webView(threedsWebViewController.webView, didCommit: navigation)
+
+        XCTAssertEqual(delegate.onSuccess3DCalledTimes, 0)
+        XCTAssertEqual(delegate.threeDSWebViewControllerAuthenticationDidSucceedCalledWith.count, 0)
+
+        XCTAssertEqual(delegate.onFailure3DCalledTimes, 1)
+        XCTAssertEqual(delegate.threeDSWebViewControllerAuthenticationDidFailCalledWith.count, 1)
+
+        XCTAssertEqual(delegate.threeDSWebViewControllerAuthenticationDidFailCalledWith.first, threedsWebViewController)
+
+        XCTAssertEqual(urlHelper.urlsMatchCalledWith.count, 2)
+        XCTAssertEqual(urlHelper.urlsMatchCalledWith[0].redirectUrl, failUrl)
+        XCTAssertEqual(urlHelper.urlsMatchCalledWith[0].matchingUrl, successUrl)
+        XCTAssertEqual(urlHelper.urlsMatchCalledWith[1].redirectUrl, failUrl)
+        XCTAssertEqual(urlHelper.urlsMatchCalledWith[1].matchingUrl, failUrl)
+
+        XCTAssertEqual(urlHelper.extractTokenCalledWith.count, 0)
+    }
 }
