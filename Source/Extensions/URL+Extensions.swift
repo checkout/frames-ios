@@ -14,5 +14,13 @@ extension URL {
 
         self = url
     }
-    
+
+    var withoutQuery: URL? {
+        guard var urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: false) else {
+            return nil
+        }
+
+        urlComponents.query = nil
+        return urlComponents.url
+    }
 }

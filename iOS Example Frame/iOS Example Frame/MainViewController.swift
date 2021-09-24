@@ -9,20 +9,24 @@
 import UIKit
 import Frames
 
-class MainViewController: UIViewController, CardViewControllerDelegate {
-    
+class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsWebViewControllerDelegate {
+
     @IBOutlet weak var goToPaymentPageButton: UIButton!
     @IBOutlet weak var createTokenWithApplePay: UIButton!
+    @IBOutlet weak var threeDSURLTextField: UITextField!
+
+    private static let successURL = URL(string: "https://httpstat.us/200")!
+    private static let failureURL = URL(string: "https://httpstat.us/403")!
     
     // Step1 : create instance of CheckoutAPIClient
     let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
                                               environment: .sandbox)
-    
+
     @IBAction func goToPaymentPage(_ sender: Any) {
         navigationController?.pushViewController(cardViewController, animated: true)
     }
-    
-    
+
+
     func onSubmit(controller: CardViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
@@ -39,7 +43,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
     @IBAction func onClickGoToPaymentPage(_ sender: Any) {
         navigationController?.pushViewController(cardViewController, animated: true)
     }
-    
+
     @IBAction func onClickGoTokenWithApplePay(_ sender: Any) {
         
         // Use example Apple Pay payment data.
@@ -49,7 +53,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
             print("Unable to get URL of Apple Pay payment data.")
             return
         }
-        
+
         let paymentData: Data
         do {
             paymentData = try Data(contentsOf: paymentDataURL)
@@ -57,7 +61,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
             print(error.localizedDescription)
             return
         }
-       
+
         checkoutAPIClient.createApplePayToken(paymentData: paymentData) { status in
             switch status {
             case .failure(let error):
@@ -66,7 +70,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
                 self.showAlert(with: CkoCardTokenResponse.token)
             }
         }
-        
+
     }
 
     override func viewDidLoad() {
@@ -77,29 +81,29 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
         cardViewController.availableSchemes = [.visa, .mastercard, .maestro]
         cardViewController.setDefault(regionCode: "GB")
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         cardViewController.addressViewController.setCountrySelected(country: "GB", regionCode: "GB")
     }
-    
+
     func onTapDone(controller: CardViewController, cardToken: CkoCardTokenResponse?, status: CheckoutTokenStatus) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         switch status {
         case .success:
-            
+
             // **** For testing only. ****
             print("addressLine1 : \(cardToken?.billingAddress?.addressLine1 ?? "")")
             print("addressLine2 : \(cardToken?.billingAddress?.addressLine2 ?? "")")
             print("countryCode \(cardToken?.phone?.countryCode ?? "")")
             print("phone number \(cardToken?.phone?.number ?? "")")
             // **** For testing only. ****
-            
+
             guard let cardToken = cardToken else {
                 self.showAlert(with: "Token object is nil")
                 return
             }
             self.showAlert(with: cardToken.token)
-            
+
         case .failure:
             print("failure")
         }
@@ -113,5 +117,28 @@ class MainViewController: UIViewController, CardViewControllerDelegate {
         }
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
+    }
+
+
+    @IBAction func onStart3DS(_ sender: Any) {
+        guard let threeDSURLString = threeDSURLTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+              let threeDSURL = URL(string: threeDSURLString) else {
+            showAlert(with: "3DS URL could not be parsed")
+            return
+        }
+
+        let threedsWebViewController = ThreedsWebViewController(successUrl: Self.successURL, failUrl: Self.failureURL)
+        threedsWebViewController.delegate = self
+        threedsWebViewController.url = threeDSURL.absoluteString
+
+        present(threedsWebViewController, animated: true, completion: nil)
+    }
+
+    func threeDSWebViewControllerAuthenticationDidSucceed(_ threeDSWebViewController: ThreedsWebViewController, token: String?) {
+        showAlert(with: "3DS success, token: \(token ?? "nil")")
+    }
+
+    func threeDSWebViewControllerAuthenticationDidFail(_ threeDSWebViewController: ThreedsWebViewController) {
+        showAlert(with: "3DS Fail")
     }
 }
