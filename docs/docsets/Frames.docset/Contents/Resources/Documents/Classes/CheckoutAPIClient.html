@@ -32,6 +32,12 @@
         </form>
       </p>
     
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/checkout/frames-ios">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
     
     </header>
 
@@ -264,6 +270,9 @@
             <p>Checkout API Client
 used to call the api endpoint of Checkout API available with your public key</p>
 
+              <div class="slightly-smaller">
+                <a href="https://github.com/checkout/frames-ios/tree/master/Source/CheckoutAPIClient.swift#L7-L265">Show on GitHub</a>
+              </div>
           </div>
         </section>
 
@@ -300,7 +309,7 @@ used to call the api endpoint of Checkout API available with your public key</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">publicKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">publicKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
                         <span class="nv">environment</span><span class="p">:</span> <span class="kt"><a href="../Enums/Environment.html">Environment</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">sandbox</span><span class="p">)</span></code></pre>
 
                         </div>
@@ -339,6 +348,9 @@ used to call the api endpoint of Checkout API available with your public key</p>
                       <div>
                         <h4>Return Value</h4>
                         <p>The new <code>CheckoutAPIClient</code> instance</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/master/Source/CheckoutAPIClient.swift#L51-L60">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -413,6 +425,9 @@ The list will contains card schemes as well as alternative payments</p>
                           </tbody>
                         </table>
                       </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/master/Source/CheckoutAPIClient.swift#L116-L130">Show on GitHub</a>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -436,7 +451,7 @@ The list will contains card schemes as well as alternative payments</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@available</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">deprecated</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="s">"Use createCardToken with a Swift Result type for completion handler."</span><span class="p">)</span>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "Use createCardToken with a Swift Result type for completion handler.")</span>
 <span class="kd">public</span> <span class="kd">func</span> <span class="nf">createCardToken</span><span class="p">(</span><span class="nv">card</span><span class="p">:</span> <span class="kt"><a href="../Structs/CkoCardTokenRequest.html">CkoCardTokenRequest</a></span><span class="p">,</span>
                             <span class="nv">successHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Structs/CkoCardTokenResponse.html">CkoCardTokenResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span>
                             <span class="nv">errorHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Structs/ErrorResponse.html">ErrorResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
@@ -485,6 +500,9 @@ The list will contains card schemes as well as alternative payments</p>
                             </tr>
                           </tbody>
                         </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/master/Source/CheckoutAPIClient.swift#L138-L158">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -547,6 +565,9 @@ The list will contains card schemes as well as alternative payments</p>
                           </tbody>
                         </table>
                       </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/master/Source/CheckoutAPIClient.swift#L164-L188">Show on GitHub</a>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -570,7 +591,7 @@ The list will contains card schemes as well as alternative payments</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@available</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">deprecated</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="s">"Use createApplePayToken with a Swift Result type for completion handler."</span><span class="p">)</span>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "Use createApplePayToken with a Swift Result type for completion handler.")</span>
 <span class="kd">public</span> <span class="kd">func</span> <span class="nf">createApplePayToken</span><span class="p">(</span><span class="nv">paymentData</span><span class="p">:</span> <span class="kt">Data</span><span class="p">,</span>
                                 <span class="nv">successHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Structs/CkoCardTokenResponse.html">CkoCardTokenResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span>
                                 <span class="nv">errorHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Structs/ErrorResponse.html">ErrorResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
@@ -619,6 +640,9 @@ The list will contains card schemes as well as alternative payments</p>
                             </tr>
                           </tbody>
                         </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/master/Source/CheckoutAPIClient.swift#L196-L216">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -681,6 +705,9 @@ The list will contains card schemes as well as alternative payments</p>
                           </tbody>
                         </table>
                       </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/master/Source/CheckoutAPIClient.swift#L222-L249">Show on GitHub</a>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -692,8 +719,8 @@ The list will contains card schemes as well as alternative payments</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2021 <a class="link" href="https://www.checkout.com/" target="_blank" rel="external">Checkout.com</a>. All rights reserved. (Last updated: 2021-09-20)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="noopener" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="noopener" rel="external">Realm</a> project.</p>
+      <p>&copy; 2021 <a class="link" href="https://www.checkout.com/" target="_blank" rel="noopener" rel="external">Checkout.com</a>. All rights reserved. (Last updated: 2021-09-24)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="noopener" rel="external">jazzy ♪♫ v0.14.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="noopener" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
