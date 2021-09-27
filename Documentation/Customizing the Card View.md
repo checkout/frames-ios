@@ -1,4 +1,4 @@
-# Customizing the Card View
+# Customizing the CardView
 
 The SDK provides a `CardViewController` that can be used to allow users to enter their card details.
 You can modify the card view after the initialization.
@@ -45,7 +45,7 @@ You can modify the card view after the initialization.
     }
 ```
 
-We start by initializing a card view controller without the card holder and billing details fields.
+We start by initializing a CardViewController without the card holder and billing details fields.
 
 ```swift
   let cardViewController = CardViewController(cardHolderNameState: .hidden, billingDetailsState: .hidden)
