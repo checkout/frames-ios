@@ -7,11 +7,23 @@ All notable changes to this project will be documented in this file.
 
 ## [3.5.0](https://github.com/checkout/frames-ios/releases/tag/3.5.0)
 
-Released on 2021-09-28.
+Released on 2021-09-29.
 
 #### Added
 
 * New delegate methods on `ThreedsWebViewControllerDelegate` to receive `token`
+
+## [3.4.4](https://github.com/checkout/frames-ios/releases/tag/3.4.4)
+
+Released on 2021-08-25.
+
+#### Fixed
+
+* Card token request serialization.
+
+### Removed
+
+* Support for i386 architecture.
 
 ## [3.4.3](https://github.com/checkout/frames-ios/releases/tag/3.4.3)
 
