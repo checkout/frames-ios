@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		35C3FD400F4ABD38B531DDEF /* Pods_iOS_Example_Frame_iOS_Example_FrameUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D75A145ECF9F25602E76617 /* Pods_iOS_Example_Frame_iOS_Example_FrameUITests.framework */; };
 		44E647B3260CEDC900503D6C /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 44E647B2260CEDC800503D6C /* .travis.yml */; };
+		577A98AC26A4F16D00CF21C1 /* example_apple_pay_payment_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 577A98AB26A4F16D00CF21C1 /* example_apple_pay_payment_data.json */; };
 		C60E12DBF563FC449CBCCFC5 /* Pods_iOS_Example_Frame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388EB899EAAEE682A6850378 /* Pods_iOS_Example_Frame.framework */; };
 		E6646F8E20CE6C0900D8353A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646F8D20CE6C0900D8353A /* AppDelegate.swift */; };
 		E6646F9020CE6C0900D8353A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646F8F20CE6C0900D8353A /* MainViewController.swift */; };
@@ -41,8 +42,10 @@
 		446D0D14261F49F800E0032E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		446D0D17261F4A3100E0032E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		446D0D18261F4A3200E0032E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		449D4E4E26E7A67300D1A614 /* bitrise.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = bitrise.yml; path = ../bitrise.yml; sourceTree = "<group>"; };
 		44E647B2260CEDC800503D6C /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		5725EFF090D7EBBDADAEDFC0 /* Pods-iOS Example Frame-iOS Example FrameUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example Frame-iOS Example FrameUITests.release.xcconfig"; path = "Target Support Files/Pods-iOS Example Frame-iOS Example FrameUITests/Pods-iOS Example Frame-iOS Example FrameUITests.release.xcconfig"; sourceTree = "<group>"; };
+		577A98AB26A4F16D00CF21C1 /* example_apple_pay_payment_data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = example_apple_pay_payment_data.json; sourceTree = "<group>"; };
 		7D75A145ECF9F25602E76617 /* Pods_iOS_Example_Frame_iOS_Example_FrameUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_Frame_iOS_Example_FrameUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B96CFB523A1AC57D1ABD79 /* Pods-iOS Example Frame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example Frame.release.xcconfig"; path = "Target Support Files/Pods-iOS Example Frame/Pods-iOS Example Frame.release.xcconfig"; sourceTree = "<group>"; };
 		C750DC94FDEB3F31E44C40DC /* Pods-iOS Example Frame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example Frame.debug.xcconfig"; path = "Target Support Files/Pods-iOS Example Frame/Pods-iOS Example Frame.debug.xcconfig"; sourceTree = "<group>"; };
@@ -82,6 +85,7 @@
 		E6646F8120CE6C0900D8353A = {
 			isa = PBXGroup;
 			children = (
+				449D4E4E26E7A67300D1A614 /* bitrise.yml */,
 				44E647B2260CEDC800503D6C /* .travis.yml */,
 				E6646F8C20CE6C0900D8353A /* iOS Example Frame */,
 				E6646FA120CE6C0A00D8353A /* iOS Example FrameUITests */,
@@ -109,6 +113,7 @@
 				E6646F9420CE6C0A00D8353A /* Assets.xcassets */,
 				E6646F9620CE6C0A00D8353A /* LaunchScreen.storyboard */,
 				E6646F9920CE6C0A00D8353A /* Info.plist */,
+				577A98AB26A4F16D00CF21C1 /* example_apple_pay_payment_data.json */,
 			);
 			path = "iOS Example Frame";
 			sourceTree = "<group>";
@@ -238,6 +243,7 @@
 				E6646F9820CE6C0A00D8353A /* LaunchScreen.storyboard in Resources */,
 				E6646F9520CE6C0A00D8353A /* Assets.xcassets in Resources */,
 				44E647B3260CEDC900503D6C /* .travis.yml in Resources */,
+				577A98AC26A4F16D00CF21C1 /* example_apple_pay_payment_data.json in Resources */,
 				E6646F9320CE6C0900D8353A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

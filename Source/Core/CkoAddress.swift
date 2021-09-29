@@ -1,7 +1,17 @@
 import Foundation
 
 /// Address
-public struct CkoAddress: Codable {
+public struct CkoAddress: Codable, Equatable {
+    
+    enum CodingKeys: String, CodingKey {
+        case addressLine1 = "address_line1"
+        case addressLine2 = "address_line2"
+        case city
+        case country
+        case state
+        case zip
+    }
+    
     /// Line 1 of the address
     public let addressLine1: String?
 

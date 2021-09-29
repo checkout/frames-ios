@@ -2,12 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "Alamofire",
-        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "package": "CheckoutEventLoggerKit",
+        "repositoryURL": "https://github.com/checkout/checkout-event-logger-ios-framework.git",
         "state": {
           "branch": null,
-          "revision": "eaf6e622dd41b07b251d8f01752eab31bc811493",
-          "version": "5.4.1"
+          "revision": "d3f87cede558cf229912ceaabe2f4ba3b8cb1e3d",
+          "version": "1.0.3"
         }
       },
       {

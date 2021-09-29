@@ -1,4 +1,2 @@
 ignore:
   - Pods
-  - Source/Alamofire
-  - Source/PhoneNumberKit

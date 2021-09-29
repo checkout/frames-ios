@@ -76,7 +76,7 @@ print(cardNumberFormatted) // 4242 4242 4242 4242
 
 ### Standardize a card number
 
-You can transform a card number by removing any non digits characters and spaces.
+You can transform a card number by removing any non-digit characters and spaces.
 
 ```swift
 let cardUtils = CardUtils()
