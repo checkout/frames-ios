@@ -375,11 +375,11 @@ Handle the result by adding conformance to `CvvConfirmationViewControllerDelegat
 ```swift
 extension ViewController: ThreedsWebViewControllerDelegate {
 
-    func onSuccess3D() {
+    func threeDSWebViewControllerAuthenticationDidSucceed(_ threeDSWebViewController: ThreedsWebViewController, token: String?) {
         // Handle successful 3DS.
     }
 
-    func onFailure3D() {
+    func threeDSWebViewControllerAuthenticationDidFail(_ threeDSWebViewController: ThreedsWebViewController) {
         // Handle failed 3DS.
     }
 
