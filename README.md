@@ -370,7 +370,7 @@ threeDSWebViewController.url = "http://example.com/3ds"
 threeDSWebViewController.delegate = self
 ```
 
-Handle the result by adding conformance to `CvvConfirmationViewControllerDelegate`.
+Handle the result by adding conformance to `ThreedsWebViewControllerDelegate`.
 
 ```swift
 extension ViewController: ThreedsWebViewControllerDelegate {
