@@ -7,7 +7,7 @@ target 'iOS Example Frame' do
 
   # Pods for iOS Example Custom
   pod 'Frames', :path => '../', :testspecs => ['Tests']
-  pod 'CheckoutEventLoggerKit', :git => 'git@github.com:checkout/checkout-event-logger-ios-framework.git', :branch => 'feature/enable-i386-disable-bitcode'
+  pod 'CheckoutEventLoggerKit', :git => 'https://github.com/checkout/checkout-event-logger-ios-framework.git', :branch => 'feature/enable-i386-disable-bitcode'
 
   target 'iOS Example FrameUITests' do
     # Pods for testing

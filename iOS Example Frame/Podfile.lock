@@ -14,7 +14,7 @@ PODS:
     - PhoneNumberKit/PhoneNumberKitCore
 
 DEPENDENCIES:
-  - "CheckoutEventLoggerKit (from `git@github.com:checkout/checkout-event-logger-ios-framework.git`, branch `feature/enable-i386-disable-bitcode`)"
+  - CheckoutEventLoggerKit (from `https://github.com/checkout/checkout-event-logger-ios-framework.git`, branch `feature/enable-i386-disable-bitcode`)
   - Frames (from `../`)
   - Frames/Tests (from `../`)
 
@@ -25,20 +25,20 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   CheckoutEventLoggerKit:
     :branch: feature/enable-i386-disable-bitcode
-    :git: "git@github.com:checkout/checkout-event-logger-ios-framework.git"
+    :git: https://github.com/checkout/checkout-event-logger-ios-framework.git
   Frames:
     :path: "../"
 
 CHECKOUT OPTIONS:
   CheckoutEventLoggerKit:
     :commit: 7a5e6e2d48e551ce92957a51bf92ca39f96a9c00
-    :git: "git@github.com:checkout/checkout-event-logger-ios-framework.git"
+    :git: https://github.com/checkout/checkout-event-logger-ios-framework.git
 
 SPEC CHECKSUMS:
   CheckoutEventLoggerKit: 9a5aabfc739e5a75fb28da83ea1e0aae4a13d254
   Frames: 53296bdb8836b1ecd274910a32bd1f884676530f
   PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
 
-PODFILE CHECKSUM: 5ff279afbbba0d3b652e403f927d86f259dcdb03
+PODFILE CHECKSUM: a5cf06f7647313b21ffc3a40fd70ad389df30aaa
 
 COCOAPODS: 1.11.0
