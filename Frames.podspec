@@ -15,7 +15,9 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Source/**/*.swift'
   s.exclude_files = "Classes/Exclude"
-  s.resources = 'Source/Resources/**/*'
+  s.resource_bundles = {
+		'Frames' => ['Source/Resources/**/*']
+	}
 
   s.dependency 'PhoneNumberKit', '~> 3.3'
   s.dependency 'CheckoutEventLoggerKit', '~> 1.0'
@@ -24,6 +26,7 @@ Pod::Spec.new do |s|
     t.source_files = 'Tests/**/*.swift'
     t.resources = 'Tests/Fixtures/*'
     t.requires_app_host = true
+    t.scheme = { :environment_variables => { 'COCOAPODS' => true }}
   end
 
   s.pod_target_xcconfig = {
