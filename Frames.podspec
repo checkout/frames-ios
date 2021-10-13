@@ -26,6 +26,7 @@ Pod::Spec.new do |s|
     t.source_files = 'Tests/**/*.swift'
     t.resources = 'Tests/Fixtures/*'
     t.requires_app_host = true
+    t.scheme = { :environment_variables => { 'COCOAPODS' => true }}
   end
 
   s.pod_target_xcconfig = {
