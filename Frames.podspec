@@ -28,11 +28,4 @@ Pod::Spec.new do |s|
     t.requires_app_host = true
     t.scheme = { :environment_variables => { 'COCOAPODS' => true }}
   end
-
-  s.pod_target_xcconfig = {
-    'VALID_ARCHS' => 'arm64 armv7 x86_64',
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386'
-  }
-
-  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
 end
