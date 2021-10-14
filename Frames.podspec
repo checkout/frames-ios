@@ -19,8 +19,8 @@ Pod::Spec.new do |s|
 		'Frames' => ['Source/Resources/**/*']
 	}
 
-  s.dependency 'PhoneNumberKit', '~> 3.3'
-  s.dependency 'CheckoutEventLoggerKit', '~> 1.0'
+  s.dependency 'PhoneNumberKit', '3.3.3'
+  s.dependency 'CheckoutEventLoggerKit', '1.1.1'
 
   s.test_spec do |t|
     t.source_files = 'Tests/**/*.swift'
