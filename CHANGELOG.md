@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 
 #### 3.x Releases
 
+## [3.5.1](https://github.com/checkout/frames-ios/releases/tag/3.5.1)
+
+Released on 2021-10-19.
+
+#### Fixed
+
+* `Localizable.strings` issue when used with Cocoapods as a static library.
+* Compilation issue for simulator release builds with Swift Package Manager.
+
 ## [3.5.0](https://github.com/checkout/frames-ios/releases/tag/3.5.0)
 
 Released on 2021-09-29.
