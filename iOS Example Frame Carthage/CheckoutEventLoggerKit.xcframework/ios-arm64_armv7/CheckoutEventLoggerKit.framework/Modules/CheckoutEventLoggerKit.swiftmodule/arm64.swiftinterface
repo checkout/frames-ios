@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
 // swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CheckoutEventLoggerKit
 import Foundation
 import Swift
@@ -7,10 +7,10 @@ public enum Environment {
   case sandbox
   case production
   public static func == (a: CheckoutEventLoggerKit.Environment, b: CheckoutEventLoggerKit.Environment) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
 @usableFromInline
 internal protocol _AnyDecodable {
@@ -51,8 +51,8 @@ extension AnyCodable : Swift.ExpressibleByFloatLiteral {
   public typealias FloatLiteralType = Swift.Double
 }
 extension AnyCodable : Swift.ExpressibleByStringLiteral {
-  public typealias StringLiteralType = Swift.String
   public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.String
   public typealias UnicodeScalarLiteralType = Swift.String
 }
 extension AnyCodable : Swift.ExpressibleByArrayLiteral {
@@ -120,15 +120,15 @@ public enum MonitoringLevel : Swift.String, Swift.CaseIterable, Swift.Comparable
   case error
   case warn
   public static func < (lhs: CheckoutEventLoggerKit.MonitoringLevel, rhs: CheckoutEventLoggerKit.MonitoringLevel) -> Swift.Bool
+  public init?(rawValue: Swift.String)
   public typealias AllCases = [CheckoutEventLoggerKit.MonitoringLevel]
+  public typealias RawValue = Swift.String
   public static var allCases: [CheckoutEventLoggerKit.MonitoringLevel] {
     get
   }
-  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
-  public init?(rawValue: Swift.String)
 }
 extension CheckoutEventLoggerKit.Environment : Swift.Equatable {}
 extension CheckoutEventLoggerKit.Environment : Swift.Hashable {}

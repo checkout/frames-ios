@@ -21,7 +21,7 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          Frames 3.5.0 Docs
+          Frames 3.5.1 Docs
         </a>
          (91% documented)
       </p>
@@ -284,7 +284,7 @@ used to call the api endpoint of Checkout API available with your public key</p>
                 <a name="//apple_ref/swift/Section/Init" class="dashAnchor"></a>
                 <div class="section-name-container">
                   <a class="section-name-link" href="#/Init"></a>
-                  <h3 class="section-name"><p>Init</p>
+                  <h3 class="section-name"><span>Init</span>
 </h3>
                 </div>
               </div>
@@ -309,7 +309,7 @@ used to call the api endpoint of Checkout API available with your public key</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">publicKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">publicKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
                         <span class="nv">environment</span><span class="p">:</span> <span class="kt"><a href="../Enums/Environment.html">Environment</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">sandbox</span><span class="p">)</span></code></pre>
 
                         </div>
@@ -363,7 +363,7 @@ used to call the api endpoint of Checkout API available with your public key</p>
                 <a name="//apple_ref/swift/Section/Methods" class="dashAnchor"></a>
                 <div class="section-name-container">
                   <a class="section-name-link" href="#/Methods"></a>
-                  <h3 class="section-name"><p>Methods</p>
+                  <h3 class="section-name"><span>Methods</span>
 </h3>
                 </div>
               </div>
@@ -451,7 +451,7 @@ The list will contains card schemes as well as alternative payments</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "Use createCardToken with a Swift Result type for completion handler.")</span>
+                          <pre class="highlight swift"><code><span class="kd">@available</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">deprecated</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="s">"Use createCardToken with a Swift Result type for completion handler."</span><span class="p">)</span>
 <span class="kd">public</span> <span class="kd">func</span> <span class="nf">createCardToken</span><span class="p">(</span><span class="nv">card</span><span class="p">:</span> <span class="kt"><a href="../Structs/CkoCardTokenRequest.html">CkoCardTokenRequest</a></span><span class="p">,</span>
                             <span class="nv">successHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Structs/CkoCardTokenResponse.html">CkoCardTokenResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span>
                             <span class="nv">errorHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Structs/ErrorResponse.html">ErrorResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
@@ -591,7 +591,7 @@ The list will contains card schemes as well as alternative payments</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "Use createApplePayToken with a Swift Result type for completion handler.")</span>
+                          <pre class="highlight swift"><code><span class="kd">@available</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">deprecated</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="s">"Use createApplePayToken with a Swift Result type for completion handler."</span><span class="p">)</span>
 <span class="kd">public</span> <span class="kd">func</span> <span class="nf">createApplePayToken</span><span class="p">(</span><span class="nv">paymentData</span><span class="p">:</span> <span class="kt">Data</span><span class="p">,</span>
                                 <span class="nv">successHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Structs/CkoCardTokenResponse.html">CkoCardTokenResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span>
                                 <span class="nv">errorHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Structs/ErrorResponse.html">ErrorResponse</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
@@ -719,8 +719,8 @@ The list will contains card schemes as well as alternative payments</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2021 <a class="link" href="https://www.checkout.com/" target="_blank" rel="noopener" rel="external">Checkout.com</a>. All rights reserved. (Last updated: 2021-09-29)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="noopener" rel="external">jazzy ♪♫ v0.14.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="noopener" rel="external">Realm</a> project.</p>
+      <p>&copy; 2021 <a class="link" href="https://www.checkout.com/" target="_blank" rel="external noopener">Checkout.com</a>. All rights reserved. (Last updated: 2021-10-15)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="noopener" rel="external">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="noopener" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

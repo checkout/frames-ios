@@ -20,7 +20,7 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          Frames 3.5.0 Docs
+          Frames 3.5.1 Docs
         </a>
          (91% documented)
       </p>
@@ -309,7 +309,7 @@ Use the provided API to send sensitive data to the Checkout.com server and retri
 <h3 id='cocoapods' class='heading'>CocoaPods</h3>
 
 <p><a href="http://cocoapods.org">CocoaPods</a> is a dependency manager for Cocoa projects. You can install it with the following command:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>gem install cocoapods
+<pre class="highlight shell"><code><span class="nv">$ </span>gem <span class="nb">install </span>cocoapods
 </code></pre>
 
 <blockquote>
@@ -327,17 +327,15 @@ Use the provided API to send sensitive data to the Checkout.com server and retri
 </code></pre>
 
 <p>Then, run the following command:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>pod install
+<pre class="highlight shell"><code><span class="nv">$ </span>pod <span class="nb">install</span>
 </code></pre>
-
-<p>We do not support i386 builds. Cocoapods should configure this for you, but if not, see <a href="#architecture-support">Architecture Support</a> for setup.</p>
 <h3 id='carthage' class='heading'>Carthage</h3>
 
 <p><a href="https://github.com/Carthage/Carthage">Carthage</a> is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.</p>
 
 <p>You can install Carthage with <a href="http://brew.sh/">Homebrew</a> using the following command:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>brew update
-<span class="gp">$ </span>brew install carthage
+<pre class="highlight shell"><code><span class="nv">$ </span>brew update
+<span class="nv">$ </span>brew <span class="nb">install </span>carthage
 </code></pre>
 
 <p>To integrate Frames into your Xcode project using Carthage, specify it in your <code>Cartfile</code>:</p>
@@ -345,8 +343,6 @@ Use the provided API to send sensitive data to the Checkout.com server and retri
 </code></pre>
 
 <p>Run <code>carthage update --use-xcframeworks</code> to build the framework and drag the built <code>Frames</code> into your Xcode project.</p>
-
-<p>If you are planning to run release builds for simulator, make sure to exclude the i386 architecture from your builds. See <a href="#architecture-support">Architecture Support</a> for setup.</p>
 <h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
 
 <p><a href="https://swift.org/package-manager/">Swift Package Manager</a> is a tool for automating the distribution of Swift code and is integrated into the swift compiler.</p>
@@ -356,8 +352,6 @@ Use the provided API to send sensitive data to the Checkout.com server and retri
     .package(url: "https://github.com/checkout/frames-ios.git", .upToNextMajor(from: "3.0.0"))
 ]
 </code></pre>
-
-<p>If you are planning to run release builds for simulator, make sure to exclude the i386 architecture from your builds. See <a href="#architecture-support">Architecture Support</a> for setup.</p>
 <h2 id='usage' class='heading'>Usage</h2>
 
 <p>Import the SDK:</p>
@@ -577,7 +571,7 @@ Use the provided API to send sensitive data to the Checkout.com server and retri
 <span class="n">threeDSWebViewController</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
 </code></pre>
 
-<p>Handle the result by adding conformance to <code><a href="Protocols/CvvConfirmationViewControllerDelegate.html">CvvConfirmationViewControllerDelegate</a></code>.</p>
+<p>Handle the result by adding conformance to <code><a href="Protocols/ThreedsWebViewControllerDelegate.html">ThreedsWebViewControllerDelegate</a></code>.</p>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">ThreedsWebViewControllerDelegate</span> <span class="p">{</span>
 
     <span class="kd">func</span> <span class="nf">threeDSWebViewControllerAuthenticationDidSucceed</span><span class="p">(</span><span class="n">_</span> <span class="nv">threeDSWebViewController</span><span class="p">:</span> <span class="kt">ThreedsWebViewController</span><span class="p">,</span> <span class="nv">token</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span> <span class="p">{</span>
@@ -602,12 +596,6 @@ Use the provided API to send sensitive data to the Checkout.com server and retri
 <span class="kt">CheckoutTheme</span><span class="o">.</span><span class="n">chevronColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">white</span>
 <span class="kt">CheckoutTheme</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="kt">UIFont</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"Chalkboard SE"</span><span class="p">,</span> <span class="nv">size</span><span class="p">:</span> <span class="mi">12</span><span class="p">)</span><span class="o">!</span>
 </code></pre>
-<h2 id='architecture-support' class='heading'>Architecture Support</h2>
-
-<p>We support all available architectures in Xcode except i386.
-Cocoapods should handle this for you, but if this is not working or if you&rsquo;re using SPM or Carthage you will need to configure your excluded architectures in your build settings as below:</p>
-
-<p><img src="screenshots/excludedArchitectures.png" alt="excluded architectures"></p>
 <h2 id='license' class='heading'>License</h2>
 
 <p>Frames iOS is released under the MIT license. <a href="https://github.com/checkout/frames-ios/blob/master/LICENSE">See LICENSE</a> for details.</p>
@@ -619,8 +607,8 @@ Cocoapods should handle this for you, but if this is not working or if you&rsquo
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2021 <a class="link" href="https://www.checkout.com/" target="_blank" rel="noopener" rel="external">Checkout.com</a>. All rights reserved. (Last updated: 2021-09-29)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="noopener" rel="external">jazzy ♪♫ v0.14.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="noopener" rel="external">Realm</a> project.</p>
+      <p>&copy; 2021 <a class="link" href="https://www.checkout.com/" target="_blank" rel="external noopener">Checkout.com</a>. All rights reserved. (Last updated: 2021-10-15)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="noopener" rel="external">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="noopener" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

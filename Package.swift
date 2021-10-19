@@ -15,13 +15,24 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/marmelroy/PhoneNumberKit.git", from: "3.3.0"),
-        .package(name: "CheckoutEventLoggerKit", url: "https://github.com/checkout/checkout-event-logger-ios-framework.git", from: "1.0.3")
+        .package(
+            name: "PhoneNumberKit",
+            url: "https://github.com/marmelroy/PhoneNumberKit.git",
+            from: "3.3.3"
+        ),
+        .package(
+            name: "CheckoutEventLoggerKit",
+            url: "https://github.com/checkout/checkout-event-logger-ios-framework.git",
+            from: "1.1.1"
+        )
     ],
     targets: [
         .target(
             name: "Frames",
-            dependencies: ["PhoneNumberKit", "CheckoutEventLoggerKit"],
+            dependencies: [
+                "PhoneNumberKit",
+                "CheckoutEventLoggerKit"
+            ],
             path: "Source",
             exclude: ["Suppporting Files/Info.plist"],
             resources: [
