@@ -176,6 +176,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/harrybrown/dev/frames-ios/Source/UI/Controllers/ThreedsWebViewController.swift",
+      "line": 96,
+      "symbol": "ThreedsWebViewController.webView(_:decidePolicyFor:decisionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/harrybrown/dev/frames-ios/Source/UI/Views/CvvInputView.swift",
       "line": 13,
       "symbol": "CvvInputView.onChangeDelegate",
