@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 #### 3.x Releases
 
+## [3.5.2](https://github.com/checkout/frames-ios/releases/tag/3.5.2)
+
+Released on 2021-11-04.
+
+#### Fixed
+
+* Issue where `ThreedsWebViewControllerDelegate` callback methods were called twice per 3DS flow
+
 ## [3.5.1](https://github.com/checkout/frames-ios/releases/tag/3.5.1)
 
 Released on 2021-10-19.
