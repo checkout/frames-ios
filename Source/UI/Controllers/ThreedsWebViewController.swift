@@ -93,18 +93,13 @@ public class ThreedsWebViewController: UIViewController {
 // MARK: - WKNavigationDelegate
 extension ThreedsWebViewController: WKNavigationDelegate {
 
-    /// Called when the web view begins to receive web content.
-    public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        webView.url.map { shouldDismiss(redirectUrl: $0) }
+    public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        let dismissed = navigationAction.request.url.map { handleDismiss(redirectUrl: $0) } ?? false
+
+        decisionHandler(dismissed ? .cancel : .allow)
     }
 
-    /// Called when a web view receives a server redirect.
-    public func webView(_ webView: WKWebView,
-                        didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
-        webView.url.map { shouldDismiss(redirectUrl: $0) }
-    }
-
-    private func shouldDismiss(redirectUrl: URL) {
+    private func handleDismiss(redirectUrl: URL) -> Bool {
 
         if let successUrl = successUrl,
            urlHelper.urlsMatch(redirectUrl: redirectUrl, matchingUrl: successUrl) {
@@ -115,6 +110,8 @@ extension ThreedsWebViewController: WKNavigationDelegate {
                 delegate?.threeDSWebViewControllerAuthenticationDidSucceed(self, token: token)
                 delegate?.onSuccess3D()
             }
+
+            return true
         } else if let failUrl = failUrl,
                   urlHelper.urlsMatch(redirectUrl: redirectUrl, matchingUrl: failUrl) {
             // fail url, dismissing the page
@@ -122,6 +119,10 @@ extension ThreedsWebViewController: WKNavigationDelegate {
                 delegate?.threeDSWebViewControllerAuthenticationDidFail(self)
                 delegate?.onFailure3D()
             }
+
+            return true
         }
+
+        return false
     }
 }
