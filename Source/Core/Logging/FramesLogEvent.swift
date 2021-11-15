@@ -17,6 +17,7 @@ enum FramesLogEvent: Equatable {
     }
 
     case paymentFormPresented
+    case billingFormPresented
     case tokenRequested(tokenType: TokenType, publicKey: String)
     case tokenResponse(tokenType: TokenType,
                        publicKey: String,
@@ -27,24 +28,28 @@ enum FramesLogEvent: Equatable {
     case exception(message: String)
 
     var typeIdentifier: String {
-        let suffix: String
+        return "com.checkout.frames-mobile-sdk.\(typeIdentifierSuffix)"
+    }
+
+    private var typeIdentifierSuffix: String {
         switch self {
         case .paymentFormPresented:
-            suffix = "payment_form_presented"
+            return "payment_form_presented"
+        case .billingFormPresented:
+            return "billing_form_presented"
         case .tokenRequested:
-            suffix = "token_requested"
+            return "token_requested"
         case .tokenResponse:
-            suffix = "token_response"
+            return "token_response"
         case .exception:
-            suffix = "exception"
+            return "exception"
         }
-        
-        return "com.checkout.frames-mobile-sdk.\(suffix)"
     }
 
     var monitoringLevel: MonitoringLevel {
         switch self {
         case .paymentFormPresented,
+             .billingFormPresented,
              .tokenRequested,
              .tokenResponse:
             return .info
@@ -55,7 +60,8 @@ enum FramesLogEvent: Equatable {
 
     var properties: [Property: AnyCodable] {
         switch self {
-        case .paymentFormPresented:
+        case .paymentFormPresented,
+             .billingFormPresented:
             return [:]
         case let .tokenRequested(tokenType, publicKey):
             return [.tokenType: tokenType.rawValue, .publicKey: publicKey]
