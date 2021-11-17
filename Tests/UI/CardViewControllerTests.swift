@@ -356,9 +356,24 @@ class CardViewControllerTests: XCTestCase {
         cardViewController.viewWillAppear(true)
 
         let events = stubLogger.logCalledWithFramesLogEvents
-        XCTAssertEqual(2, events.count)
+        XCTAssertEqual(3, events.count)
 
         let event = events[0]
         XCTAssertEqual(.paymentFormPresented, event)
+    }
+
+    func test_onTapAddressView_billingFormPresentedLogCalled() {
+
+        let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
+                                                    cardHolderNameState: .normal,
+                                                    billingDetailsState: .normal)
+
+        cardViewController.onTapAddressView()
+
+        let events = stubLogger.logCalledWithFramesLogEvents
+        XCTAssertEqual(1, events.count)
+
+        let event = events[0]
+        XCTAssertEqual(.billingFormPresented, event)
     }
 }

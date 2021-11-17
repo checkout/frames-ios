@@ -161,6 +161,7 @@ public class CardViewController: UIViewController,
 
     @objc func onTapAddressView() {
         navigationController?.pushViewController(addressViewController, animated: true)
+        checkoutApiClient?.logger.log(.billingFormPresented)
         suppressNextLog = true
     }
 
