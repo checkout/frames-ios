@@ -1,5 +1,5 @@
 enum MetadataKey: String {
     
-    case correlationID = "correlationId"
+    case correlationID = "CorrelationId"
     
 }
