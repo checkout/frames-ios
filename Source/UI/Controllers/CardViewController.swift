@@ -112,7 +112,7 @@ public class CardViewController: UIViewController,
         if suppressNextLog {
             suppressNextLog = false
         } else {
-            checkoutApiClient?.logger.log(.paymentFormPresented)
+          checkoutApiClient?.logger.log(.paymentFormPresented)
         }
     }
 

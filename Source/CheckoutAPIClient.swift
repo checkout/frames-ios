@@ -89,12 +89,13 @@ public class CheckoutAPIClient {
             remoteProcessorMetadata: remoteProcessorMetadata)
         
         let dateProvider = DateProvider()
-        let framesEventLogger = FramesEventLogger(checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
+        let correlationIDGenerator = CorrelationIDGenerator()
+        let framesEventLogger = FramesEventLogger(correlationID: correlationIDGenerator.getCorrelationID(),
+                                                checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
         let networkFlowLoggerFactory = NetworkFlowLoggerFactory(
             framesEventLogger: framesEventLogger,
             publicKey: publicKey)
-        
-        let correlationIDGenerator = CorrelationIDGenerator()
+        print(correlationIDGenerator.getCorrelationID())
         let mainDispatcher = DispatchQueue.main
 
         self.init(publicKey: publicKey,
@@ -165,7 +166,8 @@ public class CheckoutAPIClient {
         card: CkoCardTokenRequest,
         completion: @escaping ((Swift.Result<CkoCardTokenResponse, NetworkError>) -> Void)
     ) {
-        let correlationID = correlationIDGenerator.generateCorrelationID()
+        let correlationID = correlationIDGenerator.getCorrelationID()
+        print(correlationID)
         let networkFlowLogger = networkFlowLoggerProvider.createLogger(
             correlationID: correlationID,
             tokenType: .card)
@@ -178,9 +180,10 @@ public class CheckoutAPIClient {
             correlationID: correlationID)
         requestExecutor.execute(request, responseType: CkoCardTokenResponse.self) {
             [mainDispatcher] (result, response) in
-            
             networkFlowLogger.logResponse(result: result, response: response)
-            
+            // call destroy
+            self.correlationIDGenerator.destroy()
+            print(self.correlationIDGenerator.getCorrelationID())
             mainDispatcher.async {
                 completion(result)
             }
@@ -223,7 +226,7 @@ public class CheckoutAPIClient {
         paymentData: Data,
         completion: @escaping ((Swift.Result<CkoCardTokenResponse, NetworkError>) -> Void)
     ) {
-        let correlationID = correlationIDGenerator.generateCorrelationID()
+        let correlationID = correlationIDGenerator.getCorrelationID()
         let networkFlowLogger = networkFlowLoggerProvider.createLogger(
             correlationID: correlationID,
             tokenType: .applePay)
@@ -241,7 +244,7 @@ public class CheckoutAPIClient {
             [mainDispatcher] (result, response) in
             
             networkFlowLogger.logResponse(result: result, response: response)
-            
+            self.correlationIDGenerator.destroy()
             mainDispatcher.async {
                 completion(result)
             }
