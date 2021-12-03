@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import CheckoutEventLoggerKit
 
 /// A view controller that allows the user to enter card information.
 public class CardViewController: UIViewController,
@@ -112,6 +113,10 @@ public class CardViewController: UIViewController,
         if suppressNextLog {
             suppressNextLog = false
         } else {
+          let framesEventLogger = checkoutApiClient?.resetFramesEventLogger()
+          checkoutApiClient?.setLogger(logger: framesEventLogger!)
+          framesEventLogger?.add(metadata: (checkoutApiClient?.correlationIDGenerator.getCorrelationID())!,
+                                 forKey: MetadataKey.correlationID)
           checkoutApiClient?.logger.log(.paymentFormPresented)
         }
     }

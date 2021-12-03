@@ -38,7 +38,6 @@ final class FramesEventLogger: FramesEventLogging {
             monitoringLevel: framesLogEvent.monitoringLevel,
             properties: framesLogEvent.properties.mapKeys(\.rawValue))
 
-        checkoutEventLogger.add(metadata: MetadataKey.correlationID.rawValue, value: correlationID)
         checkoutEventLogger.log(event: event)
     }
     

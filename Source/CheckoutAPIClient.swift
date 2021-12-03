@@ -15,9 +15,9 @@ public class CheckoutAPIClient {
     let environment: Environment
 
     /// Frames event logger.
-    let logger: FramesEventLogging
+    var logger: FramesEventLogging
 
-    private let correlationIDGenerator: CorrelationIDGenerating
+    var correlationIDGenerator: CorrelationIDGenerating
     private let mainDispatcher: Dispatching
     private let networkFlowLoggerProvider: NetworkFlowLoggerProviding
     private let requestExecutor: RequestExecuting
@@ -95,7 +95,6 @@ public class CheckoutAPIClient {
         let networkFlowLoggerFactory = NetworkFlowLoggerFactory(
             framesEventLogger: framesEventLogger,
             publicKey: publicKey)
-        print(correlationIDGenerator.getCorrelationID())
         let mainDispatcher = DispatchQueue.main
 
         self.init(publicKey: publicKey,
@@ -181,10 +180,12 @@ public class CheckoutAPIClient {
         requestExecutor.execute(request, responseType: CkoCardTokenResponse.self) {
             [mainDispatcher] (result, response) in
             networkFlowLogger.logResponse(result: result, response: response)
+
             // call destroy
             self.correlationIDGenerator.destroy()
             print(self.correlationIDGenerator.getCorrelationID())
-            mainDispatcher.async {
+
+          mainDispatcher.async {
                 completion(result)
             }
         }
@@ -265,4 +266,30 @@ public class CheckoutAPIClient {
                                        platform: "iOS",
                                        osVersion: uiDevice.systemVersion)
     }
+
+  func resetFramesEventLogger() -> FramesEventLogger {
+    let appBundle = Foundation.Bundle.main
+    let appPackageName = appBundle.bundleIdentifier ?? "unavailableAppPackageName"
+    let appPackageVersion = appBundle.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unavailableAppPackageVersion"
+
+    let uiDevice = UIKit.UIDevice.current
+
+    let remoteProcessorMetadata = CheckoutAPIClient.buildRemoteProcessorMetadata(environment: environment,
+                                                                                 appPackageName: appPackageName,
+                                                                                 appPackageVersion: appPackageVersion,
+                                                                                 uiDevice: uiDevice)
+
+    let checkoutEventLogger = CheckoutEventLogger(productName: Constants.productName)
+    checkoutEventLogger.enableRemoteProcessor(
+      environment: environment == .sandbox ? .sandbox : .production,
+      remoteProcessorMetadata: remoteProcessorMetadata)
+
+    let dateProvider = DateProvider()
+    return FramesEventLogger(correlationID: correlationIDGenerator.getCorrelationID(),
+                             checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
+  }
+
+  func setLogger(logger: FramesEventLogger) {
+    self.logger = logger
+  }
 }
