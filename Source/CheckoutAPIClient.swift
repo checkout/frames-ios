@@ -15,7 +15,7 @@ public class CheckoutAPIClient {
     let environment: Environment
 
     /// Frames event logger.
-    var logger: FramesEventLogging
+    let logger: FramesEventLogging
 
     var correlationIDManager: CorrelationIDManaging
     private let mainDispatcher: Dispatching
