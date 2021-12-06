@@ -17,7 +17,7 @@ public class CheckoutAPIClient {
     /// Frames event logger.
     var logger: FramesEventLogging
 
-    var correlationIDGenerator: CorrelationIDGenerating
+    var correlationIDManager: CorrelationIDManaging
     private let mainDispatcher: Dispatching
     private let networkFlowLoggerProvider: NetworkFlowLoggerProviding
     private let requestExecutor: RequestExecuting
@@ -26,7 +26,7 @@ public class CheckoutAPIClient {
 
     init(publicKey: String,
          environment: Environment,
-         correlationIDGenerator: CorrelationIDGenerating,
+         correlationIDGenerator: CorrelationIDManaging,
          logger: FramesEventLogging,
          mainDispatcher: Dispatching,
          networkFlowLoggerProvider: NetworkFlowLoggerProviding,
@@ -34,7 +34,7 @@ public class CheckoutAPIClient {
 
         self.publicKey = publicKey
         self.environment = environment
-        self.correlationIDGenerator = correlationIDGenerator
+        self.correlationIDManager = correlationIDGenerator
         self.logger = logger
         self.mainDispatcher = mainDispatcher
         self.networkFlowLoggerProvider = networkFlowLoggerProvider
@@ -89,12 +89,14 @@ public class CheckoutAPIClient {
             remoteProcessorMetadata: remoteProcessorMetadata)
         
         let dateProvider = DateProvider()
-        let correlationIDGenerator = CorrelationIDGenerator()
-        let framesEventLogger = FramesEventLogger(correlationID: correlationIDGenerator.getCorrelationID(),
+        let correlationIDGenerator = CorrelationIDManager()
+        let framesEventLogger = FramesEventLogger(correlationID: correlationIDGenerator.generateCorrelationID(),
                                                 checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
+        framesEventLogger.add(metadata: correlationIDGenerator.generateCorrelationID(),
+                            forKey: MetadataKey.correlationID)
         let networkFlowLoggerFactory = NetworkFlowLoggerFactory(
-            framesEventLogger: framesEventLogger,
-            publicKey: publicKey)
+              framesEventLogger: framesEventLogger,
+              publicKey: publicKey)
         let mainDispatcher = DispatchQueue.main
 
         self.init(publicKey: publicKey,
@@ -116,7 +118,7 @@ public class CheckoutAPIClient {
     public func getCardProviders(successHandler: @escaping ([CardProvider]) -> Void,
                                  errorHandler: @escaping (Error) -> Void) {
         
-        let correlationID = correlationIDGenerator.generateCorrelationID()
+        let correlationID = correlationIDManager.generateCorrelationID()
         let request = Request.cardProviders(publicKey: publicKey, correlationID: correlationID)
         requestExecutor.execute(request, responseType: CardProviderResponse.self) { [mainDispatcher] (result, _) in
             
@@ -165,8 +167,7 @@ public class CheckoutAPIClient {
         card: CkoCardTokenRequest,
         completion: @escaping ((Swift.Result<CkoCardTokenResponse, NetworkError>) -> Void)
     ) {
-        let correlationID = correlationIDGenerator.getCorrelationID()
-        print(correlationID)
+        let correlationID = correlationIDManager.generateCorrelationID()
         let networkFlowLogger = networkFlowLoggerProvider.createLogger(
             correlationID: correlationID,
             tokenType: .card)
@@ -180,10 +181,8 @@ public class CheckoutAPIClient {
         requestExecutor.execute(request, responseType: CkoCardTokenResponse.self) {
             [mainDispatcher] (result, response) in
             networkFlowLogger.logResponse(result: result, response: response)
-
-            // call destroy
-            self.correlationIDGenerator.destroy()
-            print(self.correlationIDGenerator.getCorrelationID())
+            // call destroy to use a new correlationID
+            self.correlationIDManager.destroyCorrelationID()
 
           mainDispatcher.async {
                 completion(result)
@@ -227,7 +226,7 @@ public class CheckoutAPIClient {
         paymentData: Data,
         completion: @escaping ((Swift.Result<CkoCardTokenResponse, NetworkError>) -> Void)
     ) {
-        let correlationID = correlationIDGenerator.getCorrelationID()
+        let correlationID = correlationIDManager.generateCorrelationID()
         let networkFlowLogger = networkFlowLoggerProvider.createLogger(
             correlationID: correlationID,
             tokenType: .applePay)
@@ -245,7 +244,8 @@ public class CheckoutAPIClient {
             [mainDispatcher] (result, response) in
             
             networkFlowLogger.logResponse(result: result, response: response)
-            self.correlationIDGenerator.destroy()
+            // call destroyCorrelationID only when you need to create a new correlation ID.
+            self.correlationIDManager.destroyCorrelationID()
             mainDispatcher.async {
                 completion(result)
             }
@@ -266,30 +266,4 @@ public class CheckoutAPIClient {
                                        platform: "iOS",
                                        osVersion: uiDevice.systemVersion)
     }
-
-  func resetFramesEventLogger() -> FramesEventLogger {
-    let appBundle = Foundation.Bundle.main
-    let appPackageName = appBundle.bundleIdentifier ?? "unavailableAppPackageName"
-    let appPackageVersion = appBundle.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unavailableAppPackageVersion"
-
-    let uiDevice = UIKit.UIDevice.current
-
-    let remoteProcessorMetadata = CheckoutAPIClient.buildRemoteProcessorMetadata(environment: environment,
-                                                                                 appPackageName: appPackageName,
-                                                                                 appPackageVersion: appPackageVersion,
-                                                                                 uiDevice: uiDevice)
-
-    let checkoutEventLogger = CheckoutEventLogger(productName: Constants.productName)
-    checkoutEventLogger.enableRemoteProcessor(
-      environment: environment == .sandbox ? .sandbox : .production,
-      remoteProcessorMetadata: remoteProcessorMetadata)
-
-    let dateProvider = DateProvider()
-    return FramesEventLogger(correlationID: correlationIDGenerator.getCorrelationID(),
-                             checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
-  }
-
-  func setLogger(logger: FramesEventLogger) {
-    self.logger = logger
-  }
 }

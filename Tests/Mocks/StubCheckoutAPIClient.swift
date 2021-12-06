@@ -18,11 +18,15 @@ final class StubCheckoutAPIClient: CheckoutAPIClient {
                                                                             NetworkError>) -> Void))?
     
     convenience init(logger: FramesEventLogging = StubFramesEventLogger()) {
-        
+
+        let stubCorrelationIDManager = StubCorrelationIDManager()
+        let correlationID = "correlation_id"
+        stubCorrelationIDManager.generateCorrelationIDReturnValue = correlationID
+
         self.init(
             publicKey: "",
             environment: .sandbox,
-            correlationIDGenerator: StubCorrelationIDGenerator(),
+            correlationIDGenerator: stubCorrelationIDManager,
             logger: logger,
             mainDispatcher: StubDispatcher(),
             networkFlowLoggerProvider: StubNetworkFlowLoggerFactory(),

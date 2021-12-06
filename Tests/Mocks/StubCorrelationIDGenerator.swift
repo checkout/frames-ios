@@ -1,6 +1,6 @@
 @testable import Frames
 
-final class StubCorrelationIDGenerator: CorrelationIDGenerating {
+final class StubCorrelationIDManager: CorrelationIDManaging {
     
     var generateCorrelationIDReturnValue: String!
     
@@ -8,5 +8,8 @@ final class StubCorrelationIDGenerator: CorrelationIDGenerating {
         
         return generateCorrelationIDReturnValue
     }
-    
+
+    func destroyCorrelationID() {
+
+    }
 }

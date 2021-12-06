@@ -113,10 +113,8 @@ public class CardViewController: UIViewController,
         if suppressNextLog {
             suppressNextLog = false
         } else {
-          let framesEventLogger = checkoutApiClient?.resetFramesEventLogger()
-          checkoutApiClient?.setLogger(logger: framesEventLogger!)
-          framesEventLogger?.add(metadata: (checkoutApiClient?.correlationIDGenerator.getCorrelationID())!,
-                                 forKey: MetadataKey.correlationID)
+          checkoutApiClient?.logger.add(metadata: (checkoutApiClient?.correlationIDManager.generateCorrelationID())!,
+                                        forKey: .correlationID)
           checkoutApiClient?.logger.log(.paymentFormPresented)
         }
     }

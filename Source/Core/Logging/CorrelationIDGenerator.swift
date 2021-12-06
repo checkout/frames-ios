@@ -1,39 +1,27 @@
 import Foundation
 
-protocol CorrelationIDGenerating {
+protocol CorrelationIDManaging {
     
     func generateCorrelationID() -> String
-    func getCorrelationID() -> String
-    func destroy()
+    func destroyCorrelationID()
 }
 
-final class CorrelationIDGenerator: CorrelationIDGenerating {
-    
-    var createUUID: () -> UUID
-    var correlationID: String?
-    // MARK: - Init
-    
-    init(createUUID: @escaping () -> UUID = UUID.init) {
-        self.createUUID = createUUID
-        self.correlationID = createUUID().uuidString.lowercased()
-    }
-    
+final class CorrelationIDManager: CorrelationIDManaging {
+
+    private var correlationID: String?
+
     // MARK: - CorrelationIDGenerating
     
     func generateCorrelationID() -> String {
-        return createUUID().uuidString.lowercased()
-    }
-
-    func getCorrelationID() -> String {
-      guard let correlationID = correlationID else {
-        self.createUUID = UUID.init
-        self.correlationID = createUUID().uuidString.lowercased()
-        return self.correlationID!
+      guard let correlationIDValue = correlationID else {
+        let newCorrelationId = UUID.init().uuidString.lowercased()
+        self.correlationID = newCorrelationId
+        return newCorrelationId
       }
-      return correlationID
+      return correlationIDValue
     }
 
-  func destroy() {
+  func destroyCorrelationID() {
     correlationID = nil
   }
     

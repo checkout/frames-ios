@@ -42,7 +42,7 @@ final class NetworkFlowLogger: NetworkFlowLogging {
                      response: HTTPURLResponse?) {
         
         let event = createEvent(from: result, response: response)
-        
+      
         framesEventLogger.add(metadata: correlationID, forKey: .correlationID)
         framesEventLogger.log(event)
     }
