@@ -7,22 +7,22 @@ protocol CorrelationIDManaging {
 }
 
 final class CorrelationIDManager: CorrelationIDManaging {
-
+    
     private var correlationID: String?
-
+    
     // MARK: - CorrelationIDGenerating
     
     func generateCorrelationID() -> String {
-      guard let correlationIDValue = correlationID else {
-        let newCorrelationId = UUID.init().uuidString.lowercased()
-        self.correlationID = newCorrelationId
-        return newCorrelationId
-      }
-      return correlationIDValue
+        guard let correlationIDValue = correlationID else {
+            let newCorrelationId = UUID.init().uuidString.lowercased()
+            self.correlationID = newCorrelationId
+            return newCorrelationId
+        }
+        return correlationIDValue
     }
-
-  func destroyCorrelationID() {
-    correlationID = nil
-  }
+    
+    func destroyCorrelationID() {
+        correlationID = nil
+    }
     
 }

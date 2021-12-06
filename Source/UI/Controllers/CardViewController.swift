@@ -109,13 +109,13 @@ public class CardViewController: UIViewController,
         registerKeyboardHandlers(notificationCenter: notificationCenter,
                                  keyboardWillShow: #selector(keyboardWillShow),
                                  keyboardWillHide: #selector(keyboardWillHide))
-
+        
         if suppressNextLog {
             suppressNextLog = false
         } else {
-          checkoutApiClient?.logger.add(metadata: (checkoutApiClient?.correlationIDManager.generateCorrelationID())!,
-                                        forKey: .correlationID)
-          checkoutApiClient?.logger.log(.paymentFormPresented)
+            checkoutApiClient?.logger.add(metadata: (checkoutApiClient?.correlationID())!,
+                                          forKey: .correlationID)
+            checkoutApiClient?.logger.log(.paymentFormPresented)
         }
     }
 

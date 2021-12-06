@@ -17,7 +17,7 @@ public class CheckoutAPIClient {
     /// Frames event logger.
     let logger: FramesEventLogging
 
-    var correlationIDManager: CorrelationIDManaging
+    private let correlationIDManager: CorrelationIDManaging
     private let mainDispatcher: Dispatching
     private let networkFlowLoggerProvider: NetworkFlowLoggerProviding
     private let requestExecutor: RequestExecuting
@@ -91,12 +91,12 @@ public class CheckoutAPIClient {
         let dateProvider = DateProvider()
         let correlationIDGenerator = CorrelationIDManager()
         let framesEventLogger = FramesEventLogger(correlationID: correlationIDGenerator.generateCorrelationID(),
-                                                checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
+                                                  checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
         framesEventLogger.add(metadata: correlationIDGenerator.generateCorrelationID(),
-                            forKey: MetadataKey.correlationID)
+                              forKey: MetadataKey.correlationID)
         let networkFlowLoggerFactory = NetworkFlowLoggerFactory(
-              framesEventLogger: framesEventLogger,
-              publicKey: publicKey)
+            framesEventLogger: framesEventLogger,
+            publicKey: publicKey)
         let mainDispatcher = DispatchQueue.main
 
         self.init(publicKey: publicKey,
@@ -171,9 +171,9 @@ public class CheckoutAPIClient {
         let networkFlowLogger = networkFlowLoggerProvider.createLogger(
             correlationID: correlationID,
             tokenType: .card)
-        
+
         networkFlowLogger.logRequest()
-        
+
         let request = Request.cardToken(
             body: card,
             publicKey: publicKey,
@@ -183,8 +183,7 @@ public class CheckoutAPIClient {
             networkFlowLogger.logResponse(result: result, response: response)
             // call destroy to use a new correlationID
             self.correlationIDManager.destroyCorrelationID()
-
-          mainDispatcher.async {
+            mainDispatcher.async {
                 completion(result)
             }
         }
@@ -265,5 +264,9 @@ public class CheckoutAPIClient {
                                        deviceName: uiDevice.modelName,
                                        platform: "iOS",
                                        osVersion: uiDevice.systemVersion)
+    }
+
+    func correlationID() -> String {
+        return self.correlationIDManager.generateCorrelationID()
     }
 }
