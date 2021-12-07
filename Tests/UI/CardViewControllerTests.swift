@@ -340,6 +340,7 @@ class CardViewControllerTests: XCTestCase {
 
         let event = events[0]
         XCTAssertEqual(.paymentFormPresented, event)
+
     }
 
     func test_viewDidLoad_paymentFormPresentedLogNotCalledAfterAddressView() {

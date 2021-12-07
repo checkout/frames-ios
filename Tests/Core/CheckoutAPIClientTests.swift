@@ -153,7 +153,7 @@ final class CheckoutAPIClientTests: XCTestCase {
         
         let cardTokenRequest = CkoCardTokenRequest(number: "", expiryMonth: "", expiryYear: "", cvv: "")
         subject.createCardToken(card: cardTokenRequest) { _ in }
-        
+
         XCTAssert(stubNetworkFlowLogger.logRequestCalled)
     }
     
@@ -172,7 +172,7 @@ final class CheckoutAPIClientTests: XCTestCase {
             httpVersion: nil,
             headerFields: nil)
         stubRequestExecutor.executeCalledWithCompletionHandler?(.failure(.unknown), expectedResponse)
-        
+        XCTAssertTrue(stubCorrelationIDManager.destroyCorrelationIDCalled)
         let actualResponse = stubNetworkFlowLogger.logResponseCalledWithResponse
         XCTAssertEqual(expectedResponse, actualResponse)
     }
@@ -189,7 +189,8 @@ final class CheckoutAPIClientTests: XCTestCase {
         let expectedResult: Result<CkoCardTokenResponse, NetworkError> = .failure(
             .checkout(requestId: "", errorType: "test", errorCodes: []))
         stubRequestExecutor.executeCalledWithCompletionHandler?(expectedResult, nil)
-        
+        XCTAssertTrue(stubCorrelationIDManager.destroyCorrelationIDCalled)
+
         let actualResult = stubNetworkFlowLogger.logResponseCalledWithResult
         XCTAssertEqual(expectedResult, actualResult)
     }
@@ -209,7 +210,7 @@ final class CheckoutAPIClientTests: XCTestCase {
             .checkout(requestId: "", errorType: "test", errorCodes: []))
         stubRequestExecutor.executeCalledWithCompletionHandler?(expectedResult, nil)
         stubDispatcher.asyncCalledWithBlock?()
-        
+        XCTAssertTrue(stubCorrelationIDManager.destroyCorrelationIDCalled)
         XCTAssertEqual(expectedResult, actualResult)
     }
     
@@ -224,7 +225,7 @@ final class CheckoutAPIClientTests: XCTestCase {
         stubCorrelationIDManager.generateCorrelationIDReturnValue = expectedCorrelationID
         
         subject.createApplePayToken(paymentData: Data()) { _ in }
-        
+        XCTAssertFalse(stubCorrelationIDManager.destroyCorrelationIDCalled)
         let actualCorrelationID = stubNetworkFlowLoggerProvider.createLoggerCalledWithCorrelationID
         XCTAssertEqual(expectedCorrelationID, actualCorrelationID)
     }
@@ -236,7 +237,6 @@ final class CheckoutAPIClientTests: XCTestCase {
         stubCorrelationIDManager.generateCorrelationIDReturnValue = ""
         
         subject.createApplePayToken(paymentData: Data()) { _ in }
-        
         XCTAssertEqual(.applePay, stubNetworkFlowLoggerProvider.createLoggerCalledWithTokenType)
     }
     
@@ -250,6 +250,8 @@ final class CheckoutAPIClientTests: XCTestCase {
         stubCorrelationIDManager.generateCorrelationIDReturnValue = correlationID
         
         subject.createApplePayToken(paymentData: Data()) { _ in }
+        // Note : When just a request is tested the destroyCorrelationID should never be called
+        XCTAssertFalse(stubCorrelationIDManager.destroyCorrelationIDCalled)
         
         let expectedRequest = Request.applePayToken(
             body: ApplePayTokenRequest(token_data: nil),
@@ -266,7 +268,9 @@ final class CheckoutAPIClientTests: XCTestCase {
         stubCorrelationIDManager.generateCorrelationIDReturnValue = ""
         
         subject.createApplePayToken(paymentData: Data()) { _ in }
-        
+        // Note : When just a request is tested the destroyCorrelationID should never be called
+        XCTAssertFalse(stubCorrelationIDManager.destroyCorrelationIDCalled)
+
         XCTAssert(stubNetworkFlowLogger.logRequestCalled)
     }
     
@@ -284,7 +288,7 @@ final class CheckoutAPIClientTests: XCTestCase {
             httpVersion: nil,
             headerFields: nil)
         stubRequestExecutor.executeCalledWithCompletionHandler?(.failure(.unknown), expectedResponse)
-        
+        XCTAssertTrue(stubCorrelationIDManager.destroyCorrelationIDCalled)
         let actualResponse = stubNetworkFlowLogger.logResponseCalledWithResponse
         XCTAssertEqual(expectedResponse, actualResponse)
     }
@@ -300,7 +304,7 @@ final class CheckoutAPIClientTests: XCTestCase {
         let expectedResult: Result<CkoCardTokenResponse, NetworkError> = .failure(
             .checkout(requestId: "", errorType: "test", errorCodes: []))
         stubRequestExecutor.executeCalledWithCompletionHandler?(expectedResult, nil)
-        
+        XCTAssertTrue(stubCorrelationIDManager.destroyCorrelationIDCalled)
         let actualResult = stubNetworkFlowLogger.logResponseCalledWithResult
         XCTAssertEqual(expectedResult, actualResult)
     }
@@ -318,7 +322,7 @@ final class CheckoutAPIClientTests: XCTestCase {
             .checkout(requestId: "", errorType: "test", errorCodes: []))
         stubRequestExecutor.executeCalledWithCompletionHandler?(expectedResult, nil)
         stubDispatcher.asyncCalledWithBlock?()
-        
+        XCTAssertTrue(stubCorrelationIDManager.destroyCorrelationIDCalled)
         XCTAssertEqual(expectedResult, actualResult)
     }
     
