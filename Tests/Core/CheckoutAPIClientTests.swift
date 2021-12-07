@@ -354,7 +354,7 @@ final class CheckoutAPIClientTests: XCTestCase {
         return CheckoutAPIClient(
             publicKey: publicKey,
             environment: environment,
-            correlationIDGenerator: stubCorrelationIDManager,
+            correlationIDManager: stubCorrelationIDManager,
             logger: stubFramesEventLogger,
             mainDispatcher: stubDispatcher,
             networkFlowLoggerProvider: stubNetworkFlowLoggerProvider,

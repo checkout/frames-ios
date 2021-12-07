@@ -26,7 +26,7 @@ public class CheckoutAPIClient {
 
     init(publicKey: String,
          environment: Environment,
-         correlationIDGenerator: CorrelationIDManaging,
+         correlationIDManager: CorrelationIDManaging,
          logger: FramesEventLogging,
          mainDispatcher: Dispatching,
          networkFlowLoggerProvider: NetworkFlowLoggerProviding,
@@ -34,7 +34,7 @@ public class CheckoutAPIClient {
 
         self.publicKey = publicKey
         self.environment = environment
-        self.correlationIDManager = correlationIDGenerator
+        self.correlationIDManager = correlationIDManager
         self.logger = logger
         self.mainDispatcher = mainDispatcher
         self.networkFlowLoggerProvider = networkFlowLoggerProvider
@@ -89,10 +89,10 @@ public class CheckoutAPIClient {
             remoteProcessorMetadata: remoteProcessorMetadata)
         
         let dateProvider = DateProvider()
-        let correlationIDGenerator = CorrelationIDManager()
-        let framesEventLogger = FramesEventLogger(correlationID: correlationIDGenerator.generateCorrelationID(),
+        let correlationIDManager = CorrelationIDManager()
+        let framesEventLogger = FramesEventLogger(correlationID: correlationIDManager.generateCorrelationID(),
                                                   checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
-        framesEventLogger.add(metadata: correlationIDGenerator.generateCorrelationID(),
+        framesEventLogger.add(metadata: correlationIDManager.generateCorrelationID(),
                               forKey: MetadataKey.correlationID)
         let networkFlowLoggerFactory = NetworkFlowLoggerFactory(
             framesEventLogger: framesEventLogger,
@@ -101,7 +101,7 @@ public class CheckoutAPIClient {
 
         self.init(publicKey: publicKey,
                   environment: environment,
-                  correlationIDGenerator: correlationIDGenerator,
+                  correlationIDManager: correlationIDManager,
                   logger: framesEventLogger,
                   mainDispatcher: mainDispatcher,
                   networkFlowLoggerProvider: networkFlowLoggerFactory,

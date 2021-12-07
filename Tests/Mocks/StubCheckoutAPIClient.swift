@@ -26,7 +26,7 @@ final class StubCheckoutAPIClient: CheckoutAPIClient {
         self.init(
             publicKey: "",
             environment: .sandbox,
-            correlationIDGenerator: stubCorrelationIDManager,
+            correlationIDManager: stubCorrelationIDManager,
             logger: logger,
             mainDispatcher: StubDispatcher(),
             networkFlowLoggerProvider: StubNetworkFlowLoggerFactory(),
