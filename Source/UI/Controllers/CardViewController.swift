@@ -113,9 +113,12 @@ public class CardViewController: UIViewController,
         if suppressNextLog {
             suppressNextLog = false
         } else {
-            checkoutApiClient?.logger.add(metadata: (checkoutApiClient?.correlationID())!,
+            guard let checkoutApiClient = checkoutApiClient else {
+                return
+            }
+            checkoutApiClient.logger.add(metadata: checkoutApiClient.correlationID(),
                                           forKey: .correlationID)
-            checkoutApiClient?.logger.log(.paymentFormPresented)
+            checkoutApiClient.logger.log(.paymentFormPresented)
         }
     }
 
