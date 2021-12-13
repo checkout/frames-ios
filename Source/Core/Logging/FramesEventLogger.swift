@@ -13,18 +13,21 @@ protocol FramesEventLogging {
 }
 
 final class FramesEventLogger: FramesEventLogging {
-    
+
+    private let correlationID: String
     private let checkoutEventLogger: CheckoutEventLogging
     private let dateProvider: DateProviding
     
     // MARK: - Init
     
-    init(checkoutEventLogger: CheckoutEventLogging,
+    init(correlationID: String,
+         checkoutEventLogger: CheckoutEventLogging,
          dateProvider: DateProviding) {
-        self.checkoutEventLogger = checkoutEventLogger
-        self.dateProvider = dateProvider
+      self.correlationID = correlationID
+      self.checkoutEventLogger = checkoutEventLogger
+      self.dateProvider = dateProvider
     }
-    
+
     // MARK: - FramesEventLogging
     
     func log(_ framesLogEvent: FramesLogEvent) {
@@ -34,7 +37,7 @@ final class FramesEventLogger: FramesEventLogging {
             time: dateProvider.currentDate,
             monitoringLevel: framesLogEvent.monitoringLevel,
             properties: framesLogEvent.properties.mapKeys(\.rawValue))
-        
+
         checkoutEventLogger.log(event: event)
     }
     

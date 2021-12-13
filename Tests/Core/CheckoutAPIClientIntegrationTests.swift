@@ -94,6 +94,7 @@ final class CheckoutAPIClientIntegrationTests: XCTestCase {
             phone: nil)
 
         let card = CkoCardTokenRequest(number: "", expiryMonth: "", expiryYear: "", cvv: "")
+        let correlationID = subject.correlationID()
         subject.createCardToken(card: card) { result in
 
             switch result {
@@ -108,6 +109,8 @@ final class CheckoutAPIClientIntegrationTests: XCTestCase {
         }
 
         wait(for: [expectation], timeout: 1.0)
+        let correlationIDAfterTokenGeneration = subject.correlationID()
+        XCTAssertNotEqual(correlationID, correlationIDAfterTokenGeneration, "Correlation ID is same between 2 different token generation")
     }
 
     func test_createCardToken_successfulResponseWithBillingDetails_completionCalledWithCorrectValue() throws {
@@ -145,6 +148,7 @@ final class CheckoutAPIClientIntegrationTests: XCTestCase {
                 number: "7456354812"))
 
         let card = CkoCardTokenRequest(number: "", expiryMonth: "", expiryYear: "", cvv: "")
+        let correlationID = subject.correlationID()
         subject.createCardToken(card: card) { result in
 
             switch result {
@@ -159,6 +163,8 @@ final class CheckoutAPIClientIntegrationTests: XCTestCase {
         }
 
         wait(for: [expectation], timeout: 1.0)
+        let correlationIDAfterTokenGeneration = subject.correlationID()
+        XCTAssertNotEqual(correlationID, correlationIDAfterTokenGeneration, "Correlation ID is same between 2 different token generation")
     }
 
     func test_createCardToken_errorResponse_completionCalledWithCorrectValue() throws {
@@ -174,6 +180,7 @@ final class CheckoutAPIClientIntegrationTests: XCTestCase {
             errorCodes: ["card_number_invalid"])
 
         let card = CkoCardTokenRequest(number: "", expiryMonth: "", expiryYear: "", cvv: "")
+        let correlationID = subject.correlationID()
         subject.createCardToken(card: card) { result in
 
             switch result {
@@ -188,6 +195,8 @@ final class CheckoutAPIClientIntegrationTests: XCTestCase {
         }
 
         wait(for: [expectation], timeout: 1.0)
+        let correlationIDAfterTokenGeneration = subject.correlationID()
+        XCTAssertNotEqual(correlationID, correlationIDAfterTokenGeneration, "Correlation ID is same between 2 different token generation")
     }
 
     // MARK: - createApplePayToken
@@ -219,6 +228,7 @@ final class CheckoutAPIClientIntegrationTests: XCTestCase {
             phone: nil)
 
         let paymentData = Data()
+        let correlationID = subject.correlationID()
         subject.createApplePayToken(paymentData: paymentData) { result in
 
             switch result {
@@ -233,6 +243,8 @@ final class CheckoutAPIClientIntegrationTests: XCTestCase {
         }
 
         wait(for: [expectation], timeout: 1.0)
+        let correlationIDAfterTokenGeneration = subject.correlationID()
+        XCTAssertNotEqual(correlationID, correlationIDAfterTokenGeneration, "Correlation ID is same between 2 different token generation")
     }
 
     func test_createApplePayToken_errorResponse_completionCalledWithCorrectValue() throws {
@@ -248,6 +260,7 @@ final class CheckoutAPIClientIntegrationTests: XCTestCase {
             errorCodes: ["payment_source_required"])
 
         let paymentData = Data()
+        let correlationID = subject.correlationID()
         subject.createApplePayToken(paymentData: paymentData) { result in
 
             switch result {
@@ -261,7 +274,9 @@ final class CheckoutAPIClientIntegrationTests: XCTestCase {
             expectation.fulfill()
         }
 
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 2.0)
+        let correlationIDAfterTokenGeneration = subject.correlationID()
+        XCTAssertNotEqual(correlationID, correlationIDAfterTokenGeneration, "Correlation ID is same between 2 different token generation")
     }
 
     // MARK: - Private

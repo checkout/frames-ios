@@ -8,6 +8,7 @@ final class FramesEventLoggerTests: XCTestCase {
     private var stubCheckoutEventLogger: StubCheckoutEventLogger!
     private var stubDateProvider: StubDateProvider!
     private var subject: FramesEventLogger!
+    private var stubcorrelationID = "correlation_id"
     
     // MARK: - setUp
     
@@ -18,6 +19,7 @@ final class FramesEventLoggerTests: XCTestCase {
         stubCheckoutEventLogger = StubCheckoutEventLogger()
         stubDateProvider = StubDateProvider()
         subject = FramesEventLogger(
+            correlationID: stubcorrelationID,
             checkoutEventLogger: stubCheckoutEventLogger,
             dateProvider: stubDateProvider)
     }

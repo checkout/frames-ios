@@ -328,7 +328,7 @@ class CardViewControllerTests: XCTestCase {
     }
 
     func test_viewDidLoad_paymentFormPresentedLogCalled() {
-
+        
         let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
@@ -340,6 +340,7 @@ class CardViewControllerTests: XCTestCase {
 
         let event = events[0]
         XCTAssertEqual(.paymentFormPresented, event)
+
     }
 
     func test_viewDidLoad_paymentFormPresentedLogNotCalledAfterAddressView() {
