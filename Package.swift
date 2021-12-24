@@ -23,7 +23,7 @@ let package = Package(
         .package(
             name: "CheckoutEventLoggerKit",
             url: "https://github.com/checkout/checkout-event-logger-ios-framework.git",
-            from: "1.1.1"
+            from: "1.2.0"
         )
     ],
     targets: [
