@@ -8,7 +8,7 @@ protocol FramesEventLogging {
     func log(_ framesLogEvent: FramesLogEvent)
     
     /// Adds a metadata value for the associated key to all subsequent log events.
-    func add(metadata: String, forKey key: MetadataKey)
+    func add(metadata: String, forKey key: CheckoutEventLogger.MetadataKey)
     
 }
 
@@ -41,7 +41,7 @@ final class FramesEventLogger: FramesEventLogging {
         checkoutEventLogger.log(event: event)
     }
     
-    func add(metadata: String, forKey key: MetadataKey) {
+    func add(metadata: String, forKey key: CheckoutEventLogger.MetadataKey) {
         
         checkoutEventLogger.add(metadata: key.rawValue, value: metadata)
     }

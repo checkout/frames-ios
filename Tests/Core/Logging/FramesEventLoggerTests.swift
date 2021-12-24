@@ -58,7 +58,7 @@ final class FramesEventLoggerTests: XCTestCase {
     
     func test_add_metadataAndKey_addCalledWithCorrectMetadata() {
         
-        let key = MetadataKey.correlationID
+        let key = CheckoutEventLogger.MetadataKey.correlationID
         let expectedMetadata = key.rawValue
         
         subject.add(metadata: expectedMetadata, forKey: key)

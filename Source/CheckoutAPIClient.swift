@@ -93,7 +93,7 @@ public class CheckoutAPIClient {
         let framesEventLogger = FramesEventLogger(correlationID: correlationIDManager.generateCorrelationID(),
                                                   checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
         framesEventLogger.add(metadata: correlationIDManager.generateCorrelationID(),
-                              forKey: MetadataKey.correlationID)
+                              forKey: CheckoutEventLogger.MetadataKey.correlationID)
         let networkFlowLoggerFactory = NetworkFlowLoggerFactory(
             framesEventLogger: framesEventLogger,
             publicKey: publicKey)

@@ -1,10 +1,10 @@
 PODS:
   - CheckoutEventLoggerKit (1.1.1)
   - Frames (3.5.1):
-    - CheckoutEventLoggerKit (= 1.1.1)
+    - CheckoutEventLoggerKit (= 1.2.0)
     - PhoneNumberKit (= 3.3.3)
   - Frames/Tests (3.5.1):
-    - CheckoutEventLoggerKit (= 1.1.1)
+    - CheckoutEventLoggerKit (= 1.2.0)
     - PhoneNumberKit (= 3.3.3)
   - PhoneNumberKit (3.3.3):
     - PhoneNumberKit/PhoneNumberKitCore (= 3.3.3)

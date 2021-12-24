@@ -122,7 +122,6 @@
 		57256C46269F0F81001EC3D8 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C43269F0F81001EC3D8 /* HTTPMethod.swift */; };
 		57256C50269F0F90001EC3D8 /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C49269F0F90001EC3D8 /* DateProvider.swift */; };
 		57256C51269F0F90001EC3D8 /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C4A269F0F90001EC3D8 /* TokenType.swift */; };
-		57256C52269F0F90001EC3D8 /* MetadataKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C4B269F0F90001EC3D8 /* MetadataKey.swift */; };
 		57256C53269F0F90001EC3D8 /* CorrelationIDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C4C269F0F90001EC3D8 /* CorrelationIDGenerator.swift */; };
 		57256C54269F0F90001EC3D8 /* NetworkFlowLoggerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C4D269F0F90001EC3D8 /* NetworkFlowLoggerFactory.swift */; };
 		57256C55269F0F90001EC3D8 /* FramesEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C4E269F0F90001EC3D8 /* FramesEventLogger.swift */; };
@@ -393,7 +392,6 @@
 		57256C43269F0F81001EC3D8 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		57256C49269F0F90001EC3D8 /* DateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
 		57256C4A269F0F90001EC3D8 /* TokenType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenType.swift; sourceTree = "<group>"; };
-		57256C4B269F0F90001EC3D8 /* MetadataKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetadataKey.swift; sourceTree = "<group>"; };
 		57256C4C269F0F90001EC3D8 /* CorrelationIDGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrelationIDGenerator.swift; sourceTree = "<group>"; };
 		57256C4D269F0F90001EC3D8 /* NetworkFlowLoggerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkFlowLoggerFactory.swift; sourceTree = "<group>"; };
 		57256C4E269F0F90001EC3D8 /* FramesEventLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesEventLogger.swift; sourceTree = "<group>"; };
@@ -746,7 +744,6 @@
 				57256C4C269F0F90001EC3D8 /* CorrelationIDGenerator.swift */,
 				57256C49269F0F90001EC3D8 /* DateProvider.swift */,
 				57256C4E269F0F90001EC3D8 /* FramesEventLogger.swift */,
-				57256C4B269F0F90001EC3D8 /* MetadataKey.swift */,
 				57256C4F269F0F90001EC3D8 /* NetworkFlowLogger.swift */,
 				57256C4D269F0F90001EC3D8 /* NetworkFlowLoggerFactory.swift */,
 				57256C4A269F0F90001EC3D8 /* TokenType.swift */,
@@ -1261,7 +1258,6 @@
 				4422781B2616376E009626A0 /* AddressViewController.swift in Sources */,
 				442278202616376E009626A0 /* PhoneNumberInputView.swift in Sources */,
 				4422780B2616376E009626A0 /* CardListCell.swift in Sources */,
-				57256C52269F0F90001EC3D8 /* MetadataKey.swift in Sources */,
 				57256C6F269F0FB0001EC3D8 /* ErrorResponse+Logging.swift in Sources */,
 				4422783C2616376E009626A0 /* UIResponderExtensions.swift in Sources */,
 				442278192616376E009626A0 /* SimpleLoadingViewController.swift in Sources */,
