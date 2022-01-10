@@ -178,6 +178,10 @@ public class CardViewController: UIViewController,
 
     @objc func onTapDoneCardButton() {
 
+        cardView.cardNumberInputView.hideError()
+        cardView.expirationDateInputView.hideError()
+        cardView.cvvInputView.hideError()
+
         let cardValidator = CardValidator()
         // Get the values
         let cardNumber = cardView.cardNumberInputView.textField.text!
@@ -232,6 +236,8 @@ public class CardViewController: UIViewController,
             //The operation couldn’t be completed. (Checkout.ValidationError.ExpiryDate error 6.)
             print(error.code)
             print(error.localizedDescription)
+            let message = "expiryDateInvalid".localized(forClass: CardViewController.self)
+            cardView.expirationDateInputView.showError(message: message)
             return
         }
 
@@ -249,6 +255,11 @@ public class CardViewController: UIViewController,
 //        }
 
         //if !isCardNumberValid || !isExpirationDateValid || !isCvvValid { return }
+
+        if !validateCardDetails(cardNumber: cardNumber, cvv: cvv).isEmpty ||
+            validateCardExpiryDate(expiryMonth: expiryMonth, expiryYear: expiryYear) != nil {
+            return
+        }
 
 //        let card = CkoCardTokenRequest(number: cardNumberStandardized,
 //                                       expiryMonth: expiryMonth,
@@ -315,24 +326,19 @@ public class CardViewController: UIViewController,
 
         switch cardValidator.validate(cardNumber: cardNumber) {
         case .success(let scheme):
-            if !availableSchemes.contains(where: { scheme == $0 }) {
-                let message = "cardTypeNotAccepted".localized(forClass: CardViewController.self)
-                cardView.cardNumberInputView.showError(message: message)
-            }
+            print(scheme)
             switch cardValidator.validate(cvv: cvv, cardScheme: scheme) {
             case .success:
-                return validationError
+                print("success")
             case .failure(let error):
                 validationError.append(error)
                 return validationError
             }
         case .failure(let error):
-            // Potential Task : add cardTypeNotValid to localized string or map with Error.
-            let message = "cardTypeNotValid".localized(forClass: CardViewController.self)
-            cardView.cardNumberInputView.showError(message: message)
             validationError.append(error)
             return validationError
         }
+        return validationError
     }
 
     private func validateCardExpiryDate(expiryMonth: String, expiryYear: String) -> Error? {
