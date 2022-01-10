@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import Checkout
 
 /// A view controller that allows the user to enter address information.
 public class AddressViewController: UIViewController,
@@ -113,14 +114,17 @@ public class AddressViewController: UIViewController,
 
     @objc func onTapDoneButton() {
         let countryCode = "\(addressView.phoneInputView.phoneNumber?.countryCode ?? 44)"
-        let phone = CkoPhoneNumber(countryCode: countryCode,
-                                   number: addressView.phoneInputView.nationalNumber)
-        let address = CkoAddress(addressLine1: addressView.addressLine1InputView.textField.text,
-                                 addressLine2: addressView.addressLine2InputView.textField.text,
-                                 city: addressView.cityInputView.textField.text,
-                                 state: addressView.stateInputView.textField.text,
-                                 zip: addressView.zipInputView.textField.text,
-                                 country: regionCodeSelected)
+        let phone = Phone(
+            number:  addressView.phoneInputView.nationalNumber,
+            country: Country.allAvailable.first { $0.iso3166Alpha2 == countryCode }
+          )
+
+        let address = Address(addressLine1: addressView.addressLine1InputView.textField.text,
+                               addressLine2: addressView.addressLine2InputView.textField.text,
+                               city:  addressView.cityInputView.textField.text,
+                               state: addressView.stateInputView.textField.text,
+                               zip: addressView.zipInputView.textField.text,
+                               country: Country.allAvailable.first { $0.iso3166Alpha2 == regionCodeSelected })
         delegate?.onTapDoneButton(controller: self, address: address, phone: phone)
     }
 
@@ -192,14 +196,15 @@ public class AddressViewController: UIViewController,
         validateFieldsValues()
     }
 
-    public func setFields(address: CkoAddress, phone: CkoPhoneNumber) {
+    public func setFields(address: Address, phone: Phone) {
         addressView.addressLine1InputView.textField.text = address.addressLine1
         addressView.addressLine2InputView.textField.text = address.addressLine2
         addressView.cityInputView.textField.text = address.city
         addressView.stateInputView.textField.text = address.state
         addressView.zipInputView.textField.text = address.zip
-        addressView.countryRegionInputView.value.text = address.country
-        addressView.phoneInputView.textField.text = "+\(phone.countryCode ?? "")\(phone.number ?? "")"
+        // Potential Task : add Country as full name (united kingdom ) to Address object instead of code
+        addressView.countryRegionInputView.value.text = address.country?.iso3166Alpha2
+        addressView.phoneInputView.textField.text = "+\(phone.country)\(phone.number ?? "")"
     }
 
 }

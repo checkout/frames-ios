@@ -1,10 +1,11 @@
 import Foundation
+import Checkout
 
 /// Data about a card type
 public struct CardType: Equatable {
 
     /// Card Scheme
-    public let scheme: CardScheme
+    public let scheme: Card.Scheme
 
     /// Name of the scheme (e.g. Visa, Mastercard)
     public let name: String

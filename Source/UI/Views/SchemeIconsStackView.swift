@@ -1,4 +1,5 @@
 import UIKit
+import Checkout
 
 class SchemeIconsStackView: UIStackView {
 
@@ -14,7 +15,7 @@ class SchemeIconsStackView: UIStackView {
         translatesAutoresizingMaskIntoConstraints = false
     }
 
-    func addSchemeIcon(scheme: CardScheme) {
+    func addSchemeIcon(scheme: Card.Scheme) {
         let imageView = UIImageView()
         imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         let image = "icon-\(scheme.rawValue)".image(forClass: SchemeIconsStackView.self)
@@ -26,7 +27,7 @@ class SchemeIconsStackView: UIStackView {
         imageView.heightAnchor.constraint(equalToConstant: 22).isActive = true
     }
 
-    public func setIcons(schemes: [CardScheme]) {
+    public func setIcons(schemes: [Card.Scheme]) {
         schemes.forEach { scheme in
             addSchemeIcon(scheme: scheme)
         }

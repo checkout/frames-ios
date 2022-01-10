@@ -7,6 +7,7 @@ target 'iOS Example Frame' do
 
   # Pods for iOS Example Custom
   pod 'Frames', :path => '../', :testspecs => ['Tests']
+  pod 'Checkout', :git => 'git@github.com:cko-payment-interfaces/checkout-ios.git'
 
   target 'iOS Example FrameUITests' do
     # Pods for testing

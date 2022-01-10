@@ -1,4 +1,5 @@
 import UIKit
+import Checkout
 
 /// Card Number Input View containing a label and an input field.
 /// Handles the formatting of the text field.
