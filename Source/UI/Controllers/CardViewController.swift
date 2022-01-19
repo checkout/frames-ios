@@ -192,9 +192,6 @@ public class CardViewController: UIViewController,
         let cardNumberStandardized = cardUtils.standardize(cardNumber: cardNumber)
 
         // Validate the values
-//        guard
-//            let cardType = cardUtils.getTypeOf(cardNumber: cardNumberStandardized)
-//            else { return }
 
         // Validate Card Number
         switch cardValidator.validate(cardNumber: cardNumber) {
@@ -207,7 +204,6 @@ public class CardViewController: UIViewController,
             // Potential Task : How to use this error ? ( what about localisation ? )
             let message = "cardNumberInvalid".localized(forClass: CardViewController.self)
             cardView.cardNumberInputView.showError(message: message)
-            return
         }
 
         // Validate CVV
@@ -217,7 +213,6 @@ public class CardViewController: UIViewController,
         case .failure(let error): // Potential Task : How to use this error ? ( what about localisation ? )
             let message = "cvvInvalid".localized(forClass: CardViewController.self)
             cardView.cvvInputView.showError(message: message)
-            return
         }
 
         // Potential Task : need to add standardize function to existing checkout SDK
@@ -238,36 +233,12 @@ public class CardViewController: UIViewController,
             print(error.localizedDescription)
             let message = "expiryDateInvalid".localized(forClass: CardViewController.self)
             cardView.expirationDateInputView.showError(message: message)
-            return
         }
-
-
-        // card number invalid
-//        let isCardNumberValid = cardUtils.isValid(cardNumber: cardNumberStandardized, cardType: cardType)
-//        let isExpirationDateValid = cardUtils.isValid(expirationMonth: expiryMonth, expirationYear: expiryYear)
-//        let isCvvValid = cardUtils.isValid(cvv: cvv, cardType: cardType)
-//        let isCardTypeValid = availableSchemes.contains(where: { cardType.scheme == $0 })
-
-        // check if the card type is amongst the valid ones
-//        if !isCardNumberValid {
-//            let message = "cardNumberInvalid".localized(forClass: CardViewController.self)
-//            cardView.cardNumberInputView.showError(message: message)
-//        }
-
-        //if !isCardNumberValid || !isExpirationDateValid || !isCvvValid { return }
 
         if !validateCardDetails(cardNumber: cardNumber, cvv: cvv).isEmpty ||
             validateCardExpiryDate(expiryMonth: expiryMonth, expiryYear: expiryYear) != nil {
             return
         }
-
-//        let card = CkoCardTokenRequest(number: cardNumberStandardized,
-//                                       expiryMonth: expiryMonth,
-//                                       expiryYear: expiryYear,
-//                                       cvv: cvv,
-//                                       name: cardView.cardHolderNameInputView.textField.text,
-//                                       billingAddress: billingDetailsAddress,
-//                                       phone: billingDetailsPhone)
 
         guard let checkoutAPIService = checkoutAPIService else {
             return
@@ -293,16 +264,6 @@ public class CardViewController: UIViewController,
             self.delegate?.onTapDone(controller: self, cardToken: nil, status: .failure)
           }
         }
-
-//        checkoutAPIClient.createCardToken(card: card) { result in
-//            switch result {
-//            case .success(let cardTokenResponse):
-//                self.delegate?.onTapDone(controller: self, cardToken: cardTokenResponse, status: .success)
-//
-//            case .failure:
-//                self.delegate?.onTapDone(controller: self, cardToken: nil, status: .failure)
-//            }
-//        }
     }
 
     // MARK: - AddressViewControllerDelegate

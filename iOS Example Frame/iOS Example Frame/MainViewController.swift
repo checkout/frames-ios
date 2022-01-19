@@ -38,7 +38,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     lazy var cardViewController: CardViewController = {
         let b = CardViewController(checkoutAPIService: checkoutAPIService, cardHolderNameState: .normal, billingDetailsState: .required, defaultRegionCode: "GB")
         b.billingDetailsAddress = Address(addressLine1: "Test line1", addressLine2: "Test line2", city: "London", state: "London", zip: "N12345", country: Country.allAvailable.first { $0.iso3166Alpha2 == "GB" })
-        b.billingDetailsPhone = Phone(number: "+44 7712341234",
+        b.billingDetailsPhone = Phone(number: "77 1234 1234",
                                       country: Country.allAvailable.first { $0.iso3166Alpha2 == "GB" })
         b.delegate = self
         b.addressViewController.setFields(address: b.billingDetailsAddress!, phone: b.billingDetailsPhone!)
@@ -66,16 +66,17 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
             print(error.localizedDescription)
             return
         }
+        // public struct ApplePay in Checkout SDK needs a public init othwerwise will be treated as internal
+//        let applePay = ApplePay(paymentData)
 
-        checkoutAPIClient.createApplePayToken(paymentData: paymentData) { status in
-            switch status {
-            case .failure(let error):
-                self.showAlert(with: error.localizedDescription)
-            case .success(let CkoCardTokenResponse):
-                self.showAlert(with: CkoCardTokenResponse.token)
-            }
-        }
-
+//        checkoutAPIService.createToken(.applePay(applePay)) { status in
+//            switch status {
+//            case .failure(let error):
+//                self.showAlert(with: error.localizedDescription)
+//            case .success(let tokenDetails):
+//                self.showAlert(with: tokenDetails.token)
+//            }
+//        }
     }
 
     override func viewDidLoad() {

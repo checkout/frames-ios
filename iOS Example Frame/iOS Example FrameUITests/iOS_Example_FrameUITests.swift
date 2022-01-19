@@ -38,8 +38,9 @@ class iOS_Example_FrameUITests: XCTestCase {
         elementsQuery.textFields["4242"].tap()
         elementsQuery.textFields["4242"].typeText("424242424242424242")
         elementsQuery.textFields["06/20"].tap()
-        app.pickerWheels.element(boundBy: 0).swipeDown()
-        
+        // Potential Task to fix the expiry date in past issue
+        app.pickerWheels.element(boundBy: 1).swipeUp()
+
         elementsQuery.textFields["100"].tap()
         elementsQuery.textFields["100"].typeText("100")
         app.toolbars["Toolbar"].buttons["Done"].tap()
