@@ -202,7 +202,6 @@ public class AddressViewController: UIViewController,
         addressView.cityInputView.textField.text = address.city
         addressView.stateInputView.textField.text = address.state
         addressView.zipInputView.textField.text = address.zip
-        // Potential Task : add Country as full name (united kingdom ) to Address object instead of code
         addressView.countryRegionInputView.value.text = address.country?.iso3166Alpha2
         addressView.phoneInputView.textField.text = "+\(phone.country?.dialingCode ?? "")\(phone.number ?? "")"
     }

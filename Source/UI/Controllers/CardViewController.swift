@@ -119,7 +119,7 @@ public class CardViewController: UIViewController,
             guard let checkoutAPIService = checkoutAPIService else {
                 return
             }
-// Potential Task : add correlationID to checkoutAPIService
+// Potential Task : add correlationID and logger to checkoutAPIService or Frames
 //          checkoutAPIService.logger.add(metadata: checkoutAPIService.correlationID(),
 //                                          forKey: .correlationID)
 //          checkoutAPIService.logger.log(.paymentFormPresented)
