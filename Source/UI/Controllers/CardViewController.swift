@@ -188,8 +188,7 @@ public class CardViewController: UIViewController,
         let expirationDate = cardView.expirationDateInputView.textField.text!
         let cvv = cardView.cvvInputView.textField.text!
 
-        // Potential Task : Move standardize to Frames SDK or checkout SDK
-        let cardNumberStandardized = cardUtils.standardize(cardNumber: cardNumber)
+        let cardNumberStandardized = cardNumber.standardize()
 
         // Validate the values
 
@@ -201,21 +200,23 @@ public class CardViewController: UIViewController,
                 cardView.cardNumberInputView.showError(message: message)
             }
         case .failure(let error):
-            // Potential Task : How to use this error ? ( what about localisation ? )
-            let message = "cardNumberInvalid".localized(forClass: CardViewController.self)
-            cardView.cardNumberInputView.showError(message: message)
+            switch error {
+            case .invalidCharacters:
+                let message = "cardNumberInvalid".localized(forClass: CardViewController.self)
+                cardView.cardNumberInputView.showError(message: message)
+            }
         }
 
         // Validate CVV
         switch cardValidator.validate(cvv: cvv) {
         case .success:
             print("success cvv validation")
-        case .failure(let error): // Potential Task : How to use this error ? ( what about localisation ? )
+        case .failure(_):
             let message = "cvvInvalid".localized(forClass: CardViewController.self)
             cardView.cvvInputView.showError(message: message)
         }
 
-        // Potential Task : need to add standardize function to existing checkout SDK
+        // Potential Task : need to add standardize function to existing checkout SDK for expiry date
         let (expiryMonth, expiryYear) = cardUtils.standardize(expirationDate: expirationDate)
 
         // Validate Expiry Date
@@ -224,13 +225,6 @@ public class CardViewController: UIViewController,
         case .success(let date):
             cardExpiryDate = date
         case .failure(let error):
-            // Potential Task : display the error to user ( what about localisation ? )
-            // dont silent return like frames.
-            // how to consume this error ? as i get back below. 
-            //1011
-            //The operation couldn’t be completed. (Checkout.ValidationError.ExpiryDate error 6.)
-            print(error.code)
-            print(error.localizedDescription)
             let message = "expiryDateInvalid".localized(forClass: CardViewController.self)
             cardView.expirationDateInputView.showError(message: message)
         }
@@ -365,7 +359,7 @@ public class CardViewController: UIViewController,
 
         if let superView = view as? CardNumberInputView {
             let cardNumber = superView.textField.text!
-            let cardNumberStandardized = cardUtils.standardize(cardNumber: cardNumber)
+            let cardNumberStandardized = cardNumber.standardize()
             let cardType = cardUtils.getTypeOf(cardNumber: cardNumberStandardized)
             cardView.cvvInputView.cardType = cardType
         }

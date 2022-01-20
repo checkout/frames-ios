@@ -66,9 +66,10 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
             print(error.localizedDescription)
             return
         }
+
         // Potential Task: public struct ApplePay in Checkout SDK needs a public init othwerwise will be treated as internal
 //        let applePay = ApplePay(paymentData)
-
+//
 //        checkoutAPIService.createToken(.applePay(applePay)) { status in
 //            switch status {
 //            case .failure(let error):
