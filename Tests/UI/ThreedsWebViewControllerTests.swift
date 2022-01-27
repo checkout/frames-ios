@@ -255,4 +255,12 @@ class ThreedsWebViewControllerTests: XCTestCase {
 
         XCTAssertEqual(urlHelper.extractTokenCalledWith.count, 0)
     }
+
+  func testLocalStorageSessionStoragePresent() {
+      let delegate = ThreedsWebViewControllerMockDelegate()
+      threedsWebViewController.delegate = delegate
+      threedsWebViewController.loadViewIfNeeded()
+
+      XCTAssertFalse(threedsWebViewController.webView.configuration.websiteDataStore.isPersistent)
+  }
 }

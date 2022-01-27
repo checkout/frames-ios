@@ -72,6 +72,7 @@ public class ThreedsWebViewController: UIViewController {
     /// Creates the view that the controller manages.
     public override func loadView() {
         let webConfiguration = WKWebViewConfiguration()
+        webConfiguration.websiteDataStore = .nonPersistent()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         view = webView
     }
