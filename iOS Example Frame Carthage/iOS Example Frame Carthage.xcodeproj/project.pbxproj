@@ -23,7 +23,6 @@
 /* Begin PBXBuildFile section */
 		4422777226163748009626A0 /* Frames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; };
 		4422777326163748009626A0 /* Frames.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		442277E82616376E009626A0 /* CheckoutTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4422777E2616376D009626A0 /* CheckoutTheme.swift */; };
 		442277E92616376E009626A0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 442277802616376D009626A0 /* Localizable.strings */; };
 		442277EA2616376E009626A0 /* icon-visa.png in Resources */ = {isa = PBXBuildFile; fileRef = 442277832616376D009626A0 /* icon-visa.png */; };
 		442277EB2616376E009626A0 /* icon-maestro.png in Resources */ = {isa = PBXBuildFile; fileRef = 442277842616376D009626A0 /* icon-maestro.png */; };
@@ -58,9 +57,6 @@
 		442278082616376E009626A0 /* keyboard-next.png in Resources */ = {isa = PBXBuildFile; fileRef = 442277A62616376D009626A0 /* keyboard-next.png */; };
 		442278092616376E009626A0 /* keyboard-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 442277A72616376D009626A0 /* keyboard-down@2x.png */; };
 		4422780A2616376E009626A0 /* keyboard-down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 442277A82616376D009626A0 /* keyboard-down@3x.png */; };
-		4422780B2616376E009626A0 /* CardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277AC2616376E009626A0 /* CardListCell.swift */; };
-		4422780C2616376E009626A0 /* ExpirationDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277AD2616376E009626A0 /* ExpirationDatePicker.swift */; };
-		4422780D2616376E009626A0 /* CardListCellName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277AE2616376E009626A0 /* CardListCellName.swift */; };
 		4422780E2616376E009626A0 /* CardNumberInputViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277B02616376E009626A0 /* CardNumberInputViewDelegate.swift */; };
 		4422780F2616376E009626A0 /* CvvConfirmationViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277B12616376E009626A0 /* CvvConfirmationViewControllerDelegate.swift */; };
 		442278102616376E009626A0 /* ThreedsWebViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277B22616376E009626A0 /* ThreedsWebViewControllerDelegate.swift */; };
@@ -278,7 +274,6 @@
 		4422774726163716009626A0 /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4422775D26163748009626A0 /* Frames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Frames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4422775F26163748009626A0 /* Frames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Frames.h; sourceTree = "<group>"; };
-		4422777E2616376D009626A0 /* CheckoutTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutTheme.swift; path = ../../Source/CheckoutTheme.swift; sourceTree = "<group>"; };
 		442277812616376D009626A0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		442277832616376D009626A0 /* icon-visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-visa.png"; sourceTree = "<group>"; };
 		442277842616376D009626A0 /* icon-maestro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-maestro.png"; sourceTree = "<group>"; };
@@ -318,9 +313,6 @@
 		442277A82616376D009626A0 /* keyboard-down@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-down@3x.png"; sourceTree = "<group>"; };
 		442277A92616376D009626A0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		442277AA2616376D009626A0 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		442277AC2616376E009626A0 /* CardListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListCell.swift; sourceTree = "<group>"; };
-		442277AD2616376E009626A0 /* ExpirationDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationDatePicker.swift; sourceTree = "<group>"; };
-		442277AE2616376E009626A0 /* CardListCellName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListCellName.swift; sourceTree = "<group>"; };
 		442277B02616376E009626A0 /* CardNumberInputViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberInputViewDelegate.swift; sourceTree = "<group>"; };
 		442277B12616376E009626A0 /* CvvConfirmationViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvConfirmationViewControllerDelegate.swift; sourceTree = "<group>"; };
 		442277B22616376E009626A0 /* ThreedsWebViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreedsWebViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -529,7 +521,6 @@
 				442277E32616376E009626A0 /* CardUtils.swift */,
 				442277E72616376E009626A0 /* CheckoutAPIClient.swift */,
 				442277DC2616376E009626A0 /* CheckoutSdkIos.swift */,
-				4422777E2616376D009626A0 /* CheckoutTheme.swift */,
 				442277C92616376E009626A0 /* Core */,
 				442277DE2616376E009626A0 /* Extensions */,
 				4422777F2616376D009626A0 /* Resources */,
@@ -609,9 +600,6 @@
 		442277AB2616376E009626A0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				442277AC2616376E009626A0 /* CardListCell.swift */,
-				442277AD2616376E009626A0 /* ExpirationDatePicker.swift */,
-				442277AE2616376E009626A0 /* CardListCellName.swift */,
 				442277AF2616376E009626A0 /* Delegates */,
 				442277B82616376E009626A0 /* Controllers */,
 				442277BF2616376E009626A0 /* Views */,
@@ -1222,9 +1210,7 @@
 				4422781A2616376E009626A0 /* ThreedsWebViewController.swift in Sources */,
 				442278212616376E009626A0 /* AddressView.swift in Sources */,
 				57256C51269F0F90001EC3D8 /* TokenType.swift in Sources */,
-				4422780D2616376E009626A0 /* CardListCellName.swift in Sources */,
 				57256C70269F0FB0001EC3D8 /* DispatchQueue+Dispatching.swift in Sources */,
-				442277E82616376E009626A0 /* CheckoutTheme.swift in Sources */,
 				442278272616376E009626A0 /* CardScheme.swift in Sources */,
 				4422782C2616376E009626A0 /* CkoAddress.swift in Sources */,
 				442278222616376E009626A0 /* CardNumberInputView.swift in Sources */,
@@ -1251,13 +1237,11 @@
 				4422782A2616376E009626A0 /* Customer.swift in Sources */,
 				57256C56269F0F90001EC3D8 /* NetworkFlowLogger.swift in Sources */,
 				442278282616376E009626A0 /* CardProviderResponse.swift in Sources */,
-				4422780C2616376E009626A0 /* ExpirationDatePicker.swift in Sources */,
 				57256C6D269F0FB0001EC3D8 /* URL+Extensions.swift in Sources */,
 				442278122616376E009626A0 /* ExpirationDatePickerDelegate.swift in Sources */,
 				57256C6E269F0FB0001EC3D8 /* JSONEncoder+ContentTypeProviding.swift in Sources */,
 				4422781B2616376E009626A0 /* AddressViewController.swift in Sources */,
 				442278202616376E009626A0 /* PhoneNumberInputView.swift in Sources */,
-				4422780B2616376E009626A0 /* CardListCell.swift in Sources */,
 				57256C6F269F0FB0001EC3D8 /* ErrorResponse+Logging.swift in Sources */,
 				4422783C2616376E009626A0 /* UIResponderExtensions.swift in Sources */,
 				442278192616376E009626A0 /* SimpleLoadingViewController.swift in Sources */,
