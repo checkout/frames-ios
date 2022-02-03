@@ -31,7 +31,8 @@ import Checkout
     private func setup() {
         #if !TARGET_INTERFACE_BUILDER
         cardsUtils = CardUtils()
-        cardValidator = CardValidator()
+        // Potential Task: do not hardcode environment
+        cardValidator = CardValidator(environment: .sandbox)
         #endif
         textField.keyboardType = .default
         textField.textContentType = .creditCardNumber

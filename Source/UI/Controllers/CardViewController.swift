@@ -181,8 +181,8 @@ public class CardViewController: UIViewController,
         cardView.cardNumberInputView.hideError()
         cardView.expirationDateInputView.hideError()
         cardView.cvvInputView.hideError()
-
-        let cardValidator = CardValidator()
+        // Potential Task: do not hardcode environment
+        let cardValidator = CardValidator(environment: .sandbox)
         // Get the values
         let cardNumber = cardView.cardNumberInputView.textField.text!
         let expirationDate = cardView.expirationDateInputView.textField.text!
@@ -277,7 +277,8 @@ public class CardViewController: UIViewController,
     private func validateCardDetails(cardNumber: String, cvv: String) -> [Error] {
 
         var validationError: [Error] = [Error]()
-        let cardValidator = CardValidator()
+        // Potential Task: do not hardcode environment
+        let cardValidator = CardValidator(environment: .sandbox)
 
         switch cardValidator.validate(cardNumber: cardNumber) {
         case .success(let scheme):
@@ -297,7 +298,8 @@ public class CardViewController: UIViewController,
     }
 
     private func validateCardExpiryDate(expiryMonth: String, expiryYear: String) -> Error? {
-        let cardValidator = CardValidator()
+        // Potential Task: do not hardcode environment
+        let cardValidator = CardValidator(environment: .sandbox)
         switch cardValidator.validate(expiryMonth: expiryMonth, expiryYear: expiryYear) {
         case .success( _):
             return nil
