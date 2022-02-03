@@ -517,7 +517,8 @@
 			baseConfigurationReference = 03AAAF341A2B9CDFD2DEAB0B /* Pods-iOS Example Frame.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = E32XBQK4Q5;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				INFOPLIST_FILE = "iOS Example Frame/Info.plist";
@@ -528,6 +529,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.checkout.Pod-Example-Frame";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Release App Pod Example Sample App for Frames iOS";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -538,7 +540,8 @@
 			baseConfigurationReference = 4621CF4F9CA1A28238F59B03 /* Pods-iOS Example Frame.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = E32XBQK4Q5;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				INFOPLIST_FILE = "iOS Example Frame/Info.plist";
@@ -549,6 +552,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.checkout.Pod-Example-Frame";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Release App Pod Example Sample App for Frames iOS";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
