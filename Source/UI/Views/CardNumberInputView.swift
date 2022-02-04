@@ -8,7 +8,7 @@ import Checkout
     // MARK: - Properties
 
     var cardsUtils: CardUtils!
-    var cardValidator: CardValidator!
+    var cardValidator: CardValidator?
     /// Text field delegate
     public weak var delegate: CardNumberInputViewDelegate?
 
@@ -19,20 +19,26 @@ import Checkout
     /// Initializes and returns a newly allocated view object with the specified frame rectangle.
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        setup(cardValidator: nil)
     }
 
     /// Returns an object initialized from data in a given unarchiver.
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
+        setup(cardValidator: nil)
     }
 
-    private func setup() {
+    public init(frame: CGRect = CGRect.zero, cardValidator: CardValidator?) {
+        super.init(frame: frame)
+        setup(cardValidator: cardValidator)
+    }
+
+    private func setup(cardValidator: CardValidator?) {
         #if !TARGET_INTERFACE_BUILDER
         cardsUtils = CardUtils()
-        // Potential Task: do not hardcode environment
-        cardValidator = CardValidator(environment: .sandbox)
+        if let cardValidator = cardValidator {
+            self.cardValidator = cardValidator
+        }
         #endif
         textField.keyboardType = .default
         textField.textContentType = .creditCardNumber
@@ -54,6 +60,11 @@ import Checkout
         guard let cardNumber = textField.text else {
             return false
         }
+
+        guard let cardValidator = cardValidator else {
+            return false
+        }
+
         switch cardValidator.validate(cardNumber: "\(cardNumber)\(string)") {
         case .success(_):
             return true

@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import Checkout
 
 /// A view that displays card information inputs
 public class CardView: UIView {
@@ -16,7 +17,7 @@ public class CardView: UIView {
     public let acceptedCardLabel = UILabel()
 
     /// Card number input view
-    public let cardNumberInputView = CardNumberInputView()
+    public let cardNumberInputView: CardNumberInputView
 
     /// Card holder's name input view
     public let cardHolderNameInputView = StandardInputView()
@@ -42,6 +43,7 @@ public class CardView: UIView {
     override public init(frame: CGRect) {
         cardHolderNameState = .required
         billingDetailsState = .required
+        cardNumberInputView = CardNumberInputView(cardValidator: nil)
         super.init(frame: frame)
         setup()
     }
@@ -50,14 +52,16 @@ public class CardView: UIView {
     required public init?(coder aDecoder: NSCoder) {
         cardHolderNameState = .required
         billingDetailsState = .required
+        cardNumberInputView = CardNumberInputView(cardValidator: nil)
         super.init(coder: aDecoder)
         setup()
     }
 
     /// Initializes and returns a newly  allocated card view with the specified input states.
-    init(cardHolderNameState: InputState, billingDetailsState: InputState) {
+    init(cardHolderNameState: InputState, billingDetailsState: InputState, cardValidator: CardValidator?) {
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
+        self.cardNumberInputView = CardNumberInputView(cardValidator: cardValidator)
         super.init(frame: .zero)
         setup()
     }

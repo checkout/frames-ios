@@ -56,7 +56,7 @@ public class CardViewController: UIViewController,
         self.checkoutAPIService = checkoutAPIService
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
-        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState)
+        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: checkoutAPIService.cardValidator)
         addressViewController = AddressViewController(initialCountry: "you", initialRegionCode: defaultRegionCode)
         super.init(nibName: nil, bundle: nil)
     }
@@ -65,7 +65,7 @@ public class CardViewController: UIViewController,
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Foundation.Bundle?) {
         cardHolderNameState = .required
         billingDetailsState = .required
-        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState)
+        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: nil)
         addressViewController = AddressViewController()
         checkoutAPIService = nil
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -75,7 +75,7 @@ public class CardViewController: UIViewController,
     required public init?(coder aDecoder: NSCoder) {
         cardHolderNameState = .required
         billingDetailsState = .required
-        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState)
+        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: nil)
         addressViewController = AddressViewController()
         checkoutAPIService = nil
         super.init(coder: aDecoder)
@@ -181,8 +181,11 @@ public class CardViewController: UIViewController,
         cardView.cardNumberInputView.hideError()
         cardView.expirationDateInputView.hideError()
         cardView.cvvInputView.hideError()
-        // Potential Task: do not hardcode environment
-        let cardValidator = CardValidator(environment: .sandbox)
+
+        guard let cardValidator = checkoutAPIService?.cardValidator else {
+            return
+        }
+
         // Get the values
         let cardNumber = cardView.cardNumberInputView.textField.text!
         let expirationDate = cardView.expirationDateInputView.textField.text!
@@ -277,8 +280,9 @@ public class CardViewController: UIViewController,
     private func validateCardDetails(cardNumber: String, cvv: String) -> [Error] {
 
         var validationError: [Error] = [Error]()
-        // Potential Task: do not hardcode environment
-        let cardValidator = CardValidator(environment: .sandbox)
+        guard let cardValidator = checkoutAPIService?.cardValidator else {
+            return []
+        }
 
         switch cardValidator.validate(cardNumber: cardNumber) {
         case .success(let scheme):
@@ -298,8 +302,9 @@ public class CardViewController: UIViewController,
     }
 
     private func validateCardExpiryDate(expiryMonth: String, expiryYear: String) -> Error? {
-        // Potential Task: do not hardcode environment
-        let cardValidator = CardValidator(environment: .sandbox)
+        guard let cardValidator = checkoutAPIService?.cardValidator else {
+            return nil
+        }
         switch cardValidator.validate(expiryMonth: expiryMonth, expiryYear: expiryYear) {
         case .success( _):
             return nil
