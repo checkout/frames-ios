@@ -424,7 +424,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 635KC97JGT;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
-				INFOPLIST_FILE = "iOS Example Frame/Info.plist";
+				INFOPLIST_FILE = "../iOS Example Frame/iOS Example Frame/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -444,7 +444,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 635KC97JGT;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
-				INFOPLIST_FILE = "iOS Example Frame/Info.plist";
+				INFOPLIST_FILE = "../iOS Example Frame/iOS Example Frame/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
