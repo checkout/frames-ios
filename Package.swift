@@ -24,6 +24,11 @@ let package = Package(
             name: "CheckoutEventLoggerKit",
             url: "https://github.com/checkout/checkout-event-logger-ios-framework.git",
             from: "1.2.0"
+        ),
+        .package(
+            name: "Checkout",
+            url: "git@github.com:cko-payment-interfaces/checkout-ios.git",
+            from: "0.1.0"
         )
     ],
     targets: [
@@ -31,7 +36,8 @@ let package = Package(
             name: "Frames",
             dependencies: [
                 "PhoneNumberKit",
-                "CheckoutEventLoggerKit"
+                "CheckoutEventLoggerKit",
+                "Checkout"
             ],
             path: "Source",
             exclude: ["Suppporting Files/Info.plist"],

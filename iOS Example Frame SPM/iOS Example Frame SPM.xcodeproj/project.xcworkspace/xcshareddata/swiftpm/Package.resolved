@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "Checkout",
+        "repositoryURL": "git@github.com:cko-payment-interfaces/checkout-ios.git",
+        "state": {
+          "branch": null,
+          "revision": "2a3c3ef396daf817ade959509c47aedb73b3969e",
+          "version": "0.1.1"
+        }
+      },
+      {
         "package": "PhoneNumberKit",
         "repositoryURL": "https://github.com/marmelroy/PhoneNumberKit.git",
         "state": {
