@@ -7,14 +7,26 @@
 
 import Checkout
 
-public class CheckoutAPIService {
+protocol CheckoutAPIProtocol {
+  func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)
+  var cardValidator: CardValidating { get }
+}
 
-    private let checkoutAPIService: Checkout.CheckoutAPIService
-    let cardValidator: CardValidator
+public class CheckoutAPIService: CheckoutAPIProtocol {
 
-    public init(publicKey: String, environment: Checkout.Environment) {
-        self.checkoutAPIService = Checkout.CheckoutAPIService(publicKey: publicKey, environment: environment)
-        self.cardValidator = CardValidator(environment: environment)
+    private let checkoutAPIService: Checkout.CheckoutAPIProtocol
+    let cardValidator: CardValidating
+
+    public convenience init(publicKey: String, environment: Checkout.Environment) {
+        let checkoutAPIService = Checkout.CheckoutAPIService(publicKey: publicKey, environment: environment)
+        let cardValidator = CardValidator(environment: environment)
+
+        self.init(checkoutAPIService: checkoutAPIService, cardValidator: cardValidator)
+    }
+
+    init(checkoutAPIService: Checkout.CheckoutAPIProtocol, cardValidator: CardValidating) {
+        self.checkoutAPIService = checkoutAPIService
+        self.cardValidator = cardValidator
     }
 
     public func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) {

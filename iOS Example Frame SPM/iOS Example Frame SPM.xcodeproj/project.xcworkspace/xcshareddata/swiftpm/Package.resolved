@@ -15,8 +15,8 @@
         "repositoryURL": "git@github.com:cko-payment-interfaces/checkout-ios.git",
         "state": {
           "branch": null,
-          "revision": "2a3c3ef396daf817ade959509c47aedb73b3969e",
-          "version": "0.1.1"
+          "revision": "54122302114a9985ee87cf91eb9b1a338e2c02a6",
+          "version": "0.2.2"
         }
       },
       {

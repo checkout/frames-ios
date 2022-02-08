@@ -28,7 +28,7 @@ let package = Package(
         .package(
             name: "Checkout",
             url: "git@github.com:cko-payment-interfaces/checkout-ios.git",
-            from: "0.1.0"
+            from: "0.2.2"
         )
     ],
     targets: [
@@ -47,7 +47,10 @@ let package = Package(
         ),
         .testTarget(
             name: "FramesTests",
-            dependencies: ["Frames"],
+            dependencies: [
+              "Frames",
+              "Checkout"
+            ],
             path: "Tests",
             exclude: ["Info.plist"],
             resources: [

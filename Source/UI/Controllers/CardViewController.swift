@@ -16,7 +16,7 @@ public class CardViewController: UIViewController,
     public let cardView: CardView
     let cardUtils = CardUtils()
 
-    public let checkoutAPIService: CheckoutAPIService?
+    let checkoutAPIService: CheckoutAPIProtocol?
 
     let cardHolderNameState: InputState
     let billingDetailsState: InputState
@@ -50,9 +50,17 @@ public class CardViewController: UIViewController,
 
     /// Returns a newly initialized view controller with the cardholder's name and billing details
     /// state specified. You can specified the region using the Iso2 region code ("UK" for "United Kingdom")
-    public init(checkoutAPIService: CheckoutAPIService,
-                cardHolderNameState: InputState,
-                billingDetailsState: InputState, defaultRegionCode: String? = nil) {
+    public convenience init(checkoutAPIService: CheckoutAPIService,
+                            cardHolderNameState: InputState,
+                            billingDetailsState: InputState,
+                            defaultRegionCode: String? = nil) {
+      self.init(checkoutAPIService: checkoutAPIService, cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, defaultRegionCode: defaultRegionCode)
+    }
+
+    init(checkoutAPIService: CheckoutAPIProtocol,
+         cardHolderNameState: InputState,
+         billingDetailsState: InputState,
+         defaultRegionCode: String? = nil) {
         self.checkoutAPIService = checkoutAPIService
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
@@ -196,9 +204,12 @@ public class CardViewController: UIViewController,
         // Validate the values
 
         // Validate Card Number
+        var cardScheme = Card.Scheme.unknown
         switch cardValidator.validate(cardNumber: cardNumber) {
         case .success(let scheme):
-            if !availableSchemes.contains(where: { scheme == $0 }) {
+            if availableSchemes.contains(where: { scheme == $0 }) {
+                cardScheme = scheme
+            } else {
                 let message = "cardTypeNotAccepted".localized(forClass: CardViewController.self)
                 cardView.cardNumberInputView.showError(message: message)
             }
@@ -211,7 +222,7 @@ public class CardViewController: UIViewController,
         }
 
         // Validate CVV
-        switch cardValidator.validate(cvv: cvv) {
+        switch cardValidator.validate(cvv: cvv, cardScheme: cardScheme) {
         case .success:
             print("success cvv validation")
         case .failure(_):
