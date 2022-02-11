@@ -35,11 +35,11 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Checkout:
-    :commit: fd2222471bf9797e1b4944ea05ab6db6d544f711
+    :commit: 5328cbe1597395bf92e6108ef66b9aaed43e9002
     :git: "git@github.com:cko-payment-interfaces/checkout-ios.git"
 
 SPEC CHECKSUMS:
-  Checkout: 42b230ddda198fd222801cdba2e7ab84e376f185
+  Checkout: 5da1b5b5de5026d7667cd6305aa04dd3f0428c64
   CheckoutEventLoggerKit: 03d0076e2aa412df966517a36a3e4e3805b56ecb
   Frames: 3ca76a286871351f94faba39cf0e66139d975061
   PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f

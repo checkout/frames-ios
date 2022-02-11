@@ -16,7 +16,7 @@ public class CardViewController: UIViewController,
     public let cardView: CardView
     let cardUtils = CardUtils()
 
-    public let checkoutAPIService: CheckoutAPIService?
+    let checkoutAPIService: CheckoutAPIProtocol?
 
     let cardHolderNameState: InputState
     let billingDetailsState: InputState
@@ -50,13 +50,21 @@ public class CardViewController: UIViewController,
 
     /// Returns a newly initialized view controller with the cardholder's name and billing details
     /// state specified. You can specified the region using the Iso2 region code ("UK" for "United Kingdom")
-    public init(checkoutAPIService: CheckoutAPIService,
-                cardHolderNameState: InputState,
-                billingDetailsState: InputState, defaultRegionCode: String? = nil) {
+    public convenience init(checkoutAPIService: CheckoutAPIService,
+                            cardHolderNameState: InputState,
+                            billingDetailsState: InputState,
+                            defaultRegionCode: String? = nil) {
+      self.init(checkoutAPIService: checkoutAPIService, cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, defaultRegionCode: defaultRegionCode)
+    }
+
+    init(checkoutAPIService: CheckoutAPIProtocol,
+         cardHolderNameState: InputState,
+         billingDetailsState: InputState,
+         defaultRegionCode: String? = nil) {
         self.checkoutAPIService = checkoutAPIService
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
-        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState)
+        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: checkoutAPIService.cardValidator)
         addressViewController = AddressViewController(initialCountry: "you", initialRegionCode: defaultRegionCode)
         super.init(nibName: nil, bundle: nil)
     }
@@ -65,7 +73,7 @@ public class CardViewController: UIViewController,
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Foundation.Bundle?) {
         cardHolderNameState = .required
         billingDetailsState = .required
-        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState)
+        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: nil)
         addressViewController = AddressViewController()
         checkoutAPIService = nil
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -75,7 +83,7 @@ public class CardViewController: UIViewController,
     required public init?(coder aDecoder: NSCoder) {
         cardHolderNameState = .required
         billingDetailsState = .required
-        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState)
+        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: nil)
         addressViewController = AddressViewController()
         checkoutAPIService = nil
         super.init(coder: aDecoder)
@@ -182,7 +190,10 @@ public class CardViewController: UIViewController,
         cardView.expirationDateInputView.hideError()
         cardView.cvvInputView.hideError()
 
-        let cardValidator = CardValidator()
+        guard let cardValidator = checkoutAPIService?.cardValidator else {
+            return
+        }
+
         // Get the values
         let cardNumber = cardView.cardNumberInputView.textField.text!
         let expirationDate = cardView.expirationDateInputView.textField.text!
@@ -193,9 +204,12 @@ public class CardViewController: UIViewController,
         // Validate the values
 
         // Validate Card Number
+        var cardScheme = Card.Scheme.unknown
         switch cardValidator.validate(cardNumber: cardNumber) {
         case .success(let scheme):
-            if !availableSchemes.contains(where: { scheme == $0 }) {
+            if availableSchemes.contains(where: { scheme == $0 }) {
+                cardScheme = scheme
+            } else {
                 let message = "cardTypeNotAccepted".localized(forClass: CardViewController.self)
                 cardView.cardNumberInputView.showError(message: message)
             }
@@ -208,7 +222,7 @@ public class CardViewController: UIViewController,
         }
 
         // Validate CVV
-        switch cardValidator.validate(cvv: cvv) {
+        switch cardValidator.validate(cvv: cvv, cardScheme: cardScheme) {
         case .success:
             print("success cvv validation")
         case .failure(_):
@@ -277,7 +291,9 @@ public class CardViewController: UIViewController,
     private func validateCardDetails(cardNumber: String, cvv: String) -> [Error] {
 
         var validationError: [Error] = [Error]()
-        let cardValidator = CardValidator()
+        guard let cardValidator = checkoutAPIService?.cardValidator else {
+            return []
+        }
 
         switch cardValidator.validate(cardNumber: cardNumber) {
         case .success(let scheme):
@@ -297,7 +313,9 @@ public class CardViewController: UIViewController,
     }
 
     private func validateCardExpiryDate(expiryMonth: String, expiryYear: String) -> Error? {
-        let cardValidator = CardValidator()
+        guard let cardValidator = checkoutAPIService?.cardValidator else {
+            return nil
+        }
         switch cardValidator.validate(expiryMonth: expiryMonth, expiryYear: expiryYear) {
         case .success( _):
             return nil

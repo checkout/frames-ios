@@ -116,7 +116,7 @@ public class AddressViewController: UIViewController,
         let countryCode = "\(addressView.phoneInputView.phoneNumber?.countryCode ?? 44)"
         let phone = Phone(
             number:  addressView.phoneInputView.nationalNumber,
-            country: Country.allAvailable.first { $0.iso3166Alpha2 == countryCode }
+            country: Country.allAvailable.first { $0.dialingCode == countryCode }
           )
 
         let address = Address(addressLine1: addressView.addressLine1InputView.textField.text,
