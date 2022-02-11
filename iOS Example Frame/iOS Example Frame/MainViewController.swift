@@ -8,6 +8,7 @@
 
 import UIKit
 import Frames
+import Checkout
 
 class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsWebViewControllerDelegate {
 
@@ -22,6 +23,9 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
                                               environment: .sandbox)
 
+    let checkoutAPIService = CheckoutAPIService(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
+                                                  environment: .sandbox)
+
     @IBAction func goToPaymentPage(_ sender: Any) {
         navigationController?.pushViewController(cardViewController, animated: true)
     }
@@ -32,9 +36,10 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     }
 
     lazy var cardViewController: CardViewController = {
-        let b = CardViewController(checkoutApiClient: checkoutAPIClient, cardHolderNameState: .normal, billingDetailsState: .required, defaultRegionCode: "GB")
-        b.billingDetailsAddress = CkoAddress(addressLine1: "Test line1", addressLine2: "Test line2", city: "London", state: "London", zip: "N12345", country: "GB")
-        b.billingDetailsPhone = CkoPhoneNumber(countryCode: "44", number: "77 1234 1234")
+        let b = CardViewController(checkoutAPIService: checkoutAPIService, cardHolderNameState: .normal, billingDetailsState: .required, defaultRegionCode: "GB")
+        b.billingDetailsAddress = Address(addressLine1: "Test line1", addressLine2: "Test line2", city: "London", state: "London", zip: "N12345", country: Country.allAvailable.first { $0.iso3166Alpha2 == "GB" })
+        b.billingDetailsPhone = Phone(number: "77 1234 1234",
+                                      country: Country.allAvailable.first { $0.iso3166Alpha2 == "GB" })
         b.delegate = self
         b.addressViewController.setFields(address: b.billingDetailsAddress!, phone: b.billingDetailsPhone!)
         return b
@@ -62,15 +67,17 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
             return
         }
 
-        checkoutAPIClient.createApplePayToken(paymentData: paymentData) { status in
-            switch status {
-            case .failure(let error):
-                self.showAlert(with: error.localizedDescription)
-            case .success(let CkoCardTokenResponse):
-                self.showAlert(with: CkoCardTokenResponse.token)
-            }
-        }
-
+        // Potential Task: public struct ApplePay in Checkout SDK needs a public init othwerwise will be treated as internal
+//        let applePay = ApplePay(paymentData)
+//
+//        checkoutAPIService.createToken(.applePay(applePay)) { status in
+//            switch status {
+//            case .failure(let error):
+//                self.showAlert(with: error.localizedDescription)
+//            case .success(let tokenDetails):
+//                self.showAlert(with: tokenDetails.token)
+//            }
+//        }
     }
 
     override func viewDidLoad() {
@@ -86,8 +93,12 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         cardViewController.addressViewController.setCountrySelected(country: "GB", regionCode: "GB")
     }
 
-    func onTapDone(controller: CardViewController, cardToken: CkoCardTokenResponse?, status: CheckoutTokenStatus) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    func onTapDone(controller: CardViewController, cardToken: TokenDetails?, status: CheckoutTokenStatus) {
+
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        }
+
         switch status {
         case .success:
 
@@ -110,13 +121,15 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     }
 
     private func showAlert(with cardToken: String) {
-        let alert = UIAlertController(title: "Payment",
-                                      message: cardToken, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default) { _ in
-            alert.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Payment",
+                                          message: cardToken, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default) { _ in
+                alert.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
         }
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
     }
 
 

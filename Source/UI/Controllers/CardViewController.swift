@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import CheckoutEventLoggerKit
+import Checkout
 
 /// A view controller that allows the user to enter card information.
 public class CardViewController: UIViewController,
@@ -15,19 +16,20 @@ public class CardViewController: UIViewController,
     public let cardView: CardView
     let cardUtils = CardUtils()
 
-    public let checkoutApiClient: CheckoutAPIClient?
+    public let checkoutAPIService: CheckoutAPIService?
 
     let cardHolderNameState: InputState
     let billingDetailsState: InputState
 
-    public var billingDetailsAddress: CkoAddress?
-    public var billingDetailsPhone: CkoPhoneNumber?
+    public var billingDetailsAddress: Address?
+    public var billingDetailsPhone: Phone?
     var notificationCenter = NotificationCenter.default
     public let addressViewController: AddressViewController
 
     /// List of available schemes
-    public var availableSchemes: [CardScheme] = [.visa, .mastercard, .americanExpress,
-                                                 .dinersClub, .discover, .jcb, .unionPay]
+    /// Potential Task : rename amex , diners in checkout sdk keep it sync with frames scheme names
+    public var availableSchemes: [Card.Scheme] = [.visa, .mastercard, .amex,
+                                                 .diners, .discover, .jcb]
 
     /// Delegate
     public weak var delegate: CardViewControllerDelegate?
@@ -48,9 +50,10 @@ public class CardViewController: UIViewController,
 
     /// Returns a newly initialized view controller with the cardholder's name and billing details
     /// state specified. You can specified the region using the Iso2 region code ("UK" for "United Kingdom")
-    public init(checkoutApiClient: CheckoutAPIClient, cardHolderNameState: InputState,
+    public init(checkoutAPIService: CheckoutAPIService,
+                cardHolderNameState: InputState,
                 billingDetailsState: InputState, defaultRegionCode: String? = nil) {
-        self.checkoutApiClient = checkoutApiClient
+        self.checkoutAPIService = checkoutAPIService
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
         cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState)
@@ -64,7 +67,7 @@ public class CardViewController: UIViewController,
         billingDetailsState = .required
         cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState)
         addressViewController = AddressViewController()
-        checkoutApiClient = nil
+        checkoutAPIService = nil
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
@@ -74,7 +77,7 @@ public class CardViewController: UIViewController,
         billingDetailsState = .required
         cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState)
         addressViewController = AddressViewController()
-        checkoutApiClient = nil
+        checkoutAPIService = nil
         super.init(coder: aDecoder)
     }
 
@@ -113,12 +116,13 @@ public class CardViewController: UIViewController,
         if suppressNextLog {
             suppressNextLog = false
         } else {
-            guard let checkoutApiClient = checkoutApiClient else {
+            guard let checkoutAPIService = checkoutAPIService else {
                 return
             }
-            checkoutApiClient.logger.add(metadata: checkoutApiClient.correlationID(),
-                                          forKey: .correlationID)
-            checkoutApiClient.logger.log(.paymentFormPresented)
+// Potential Task : add correlationID and logger to checkoutAPIService or Frames
+//          checkoutAPIService.logger.add(metadata: checkoutAPIService.correlationID(),
+//                                          forKey: .correlationID)
+//          checkoutAPIService.logger.log(.paymentFormPresented)
         }
     }
 
@@ -167,71 +171,99 @@ public class CardViewController: UIViewController,
 
     @objc func onTapAddressView() {
         navigationController?.pushViewController(addressViewController, animated: true)
-        checkoutApiClient?.logger.log(.billingFormPresented)
+        // add  let logger: FramesEventLogging to checkoutAPIService
+        //checkoutApiClient?.logger.log(.billingFormPresented)
         suppressNextLog = true
     }
 
     @objc func onTapDoneCardButton() {
+
+        cardView.cardNumberInputView.hideError()
+        cardView.expirationDateInputView.hideError()
+        cardView.cvvInputView.hideError()
+
+        let cardValidator = CardValidator()
         // Get the values
         let cardNumber = cardView.cardNumberInputView.textField.text!
         let expirationDate = cardView.expirationDateInputView.textField.text!
         let cvv = cardView.cvvInputView.textField.text!
 
-        let cardNumberStandardized = cardUtils.standardize(cardNumber: cardNumber)
-        // Validate the values
-        guard
-            let cardType = cardUtils.getTypeOf(cardNumber: cardNumberStandardized)
-            else { return }
-        let (expiryMonth, expiryYear) = cardUtils.standardize(expirationDate: expirationDate)
-        // card number invalid
-        let isCardNumberValid = cardUtils.isValid(cardNumber: cardNumberStandardized, cardType: cardType)
-        let isExpirationDateValid = cardUtils.isValid(expirationMonth: expiryMonth, expirationYear: expiryYear)
-        let isCvvValid = cardUtils.isValid(cvv: cvv, cardType: cardType)
-        let isCardTypeValid = availableSchemes.contains(where: { cardType.scheme == $0 })
+        let cardNumberStandardized = cardNumber.standardize()
 
-        // check if the card type is amongst the valid ones
-        if !isCardTypeValid {
-            let message = "cardTypeNotAccepted".localized(forClass: CardViewController.self)
-            cardView.cardNumberInputView.showError(message: message)
-        } else if !isCardNumberValid {
-            let message = "cardNumberInvalid".localized(forClass: CardViewController.self)
-            cardView.cardNumberInputView.showError(message: message)
+        // Validate the values
+
+        // Validate Card Number
+        switch cardValidator.validate(cardNumber: cardNumber) {
+        case .success(let scheme):
+            if !availableSchemes.contains(where: { scheme == $0 }) {
+                let message = "cardTypeNotAccepted".localized(forClass: CardViewController.self)
+                cardView.cardNumberInputView.showError(message: message)
+            }
+        case .failure(let error):
+            switch error {
+            case .invalidCharacters:
+                let message = "cardNumberInvalid".localized(forClass: CardViewController.self)
+                cardView.cardNumberInputView.showError(message: message)
+            }
         }
-        if !isCvvValid {
+
+        // Validate CVV
+        switch cardValidator.validate(cvv: cvv) {
+        case .success:
+            print("success cvv validation")
+        case .failure(_):
             let message = "cvvInvalid".localized(forClass: CardViewController.self)
             cardView.cvvInputView.showError(message: message)
         }
-        if !isCardNumberValid || !isExpirationDateValid || !isCvvValid || !isCardTypeValid { return }
 
-        let card = CkoCardTokenRequest(number: cardNumberStandardized,
-                                       expiryMonth: expiryMonth,
-                                       expiryYear: expiryYear,
-                                       cvv: cvv,
-                                       name: cardView.cardHolderNameInputView.textField.text,
-                                       billingAddress: billingDetailsAddress,
-                                       phone: billingDetailsPhone)
+        // Potential Task : need to add standardize function to existing checkout SDK for expiry date
+        let (expiryMonth, expiryYear) = cardUtils.standardize(expirationDate: expirationDate)
 
-        guard let checkoutApiClient = checkoutApiClient else {
+        // Validate Expiry Date
+        var cardExpiryDate: ExpiryDate?
+        switch cardValidator.validate(expiryMonth: expiryMonth, expiryYear: expiryYear) {
+        case .success(let date):
+            cardExpiryDate = date
+        case .failure(let error):
+            let message = "expiryDateInvalid".localized(forClass: CardViewController.self)
+            cardView.expirationDateInputView.showError(message: message)
+        }
+
+        if !validateCardDetails(cardNumber: cardNumber, cvv: cvv).isEmpty ||
+            validateCardExpiryDate(expiryMonth: expiryMonth, expiryYear: expiryYear) != nil {
+            return
+        }
+
+        guard let checkoutAPIService = checkoutAPIService else {
             return
         }
 
         self.delegate?.onSubmit(controller: self)
 
-        checkoutApiClient.createCardToken(card: card) { result in
-            switch result {
-            case .success(let cardTokenResponse):
-                self.delegate?.onTapDone(controller: self, cardToken: cardTokenResponse, status: .success)
+        guard let cardExpiryDate = cardExpiryDate else {
+            return // dont silent return
+        }
 
-            case .failure:
-                self.delegate?.onTapDone(controller: self, cardToken: nil, status: .failure)
-            }
+        let card = Card(number: cardNumberStandardized,
+                        expiryDate: cardExpiryDate,
+                        name: cardView.cardHolderNameInputView.textField.text,
+                        cvv: cvv, billingAddress: billingDetailsAddress,
+                        phone: billingDetailsPhone)
+
+        checkoutAPIService.createToken(.card(card)) { result in
+          switch result {
+          case .success(let tokenDetails):
+              self.delegate?.onTapDone(controller: self, cardToken: tokenDetails, status: .success)
+          case .failure(let error):
+            self.delegate?.onTapDone(controller: self, cardToken: nil, status: .failure)
+          }
         }
     }
 
     // MARK: - AddressViewControllerDelegate
 
     /// Executed when an user tap on the done button.
-    public func onTapDoneButton(controller: AddressViewController, address: CkoAddress, phone: CkoPhoneNumber) {
+    public func onTapDoneButton(controller: AddressViewController, address: Address, phone: Phone) {
         billingDetailsAddress = address
         billingDetailsPhone = phone
         let value = "\(address.addressLine1 ?? ""), \(address.city ?? "")"
@@ -240,6 +272,38 @@ public class CardViewController: UIViewController,
         // return to CardViewController
         self.topConstraint?.isActive = false
         controller.navigationController?.popViewController(animated: true)
+    }
+
+    private func validateCardDetails(cardNumber: String, cvv: String) -> [Error] {
+
+        var validationError: [Error] = [Error]()
+        let cardValidator = CardValidator()
+
+        switch cardValidator.validate(cardNumber: cardNumber) {
+        case .success(let scheme):
+            print(scheme)
+            switch cardValidator.validate(cvv: cvv, cardScheme: scheme) {
+            case .success:
+                print("success")
+            case .failure(let error):
+                validationError.append(error)
+                return validationError
+            }
+        case .failure(let error):
+            validationError.append(error)
+            return validationError
+        }
+        return validationError
+    }
+
+    private func validateCardExpiryDate(expiryMonth: String, expiryYear: String) -> Error? {
+        let cardValidator = CardValidator()
+        switch cardValidator.validate(expiryMonth: expiryMonth, expiryYear: expiryYear) {
+        case .success( _):
+            return nil
+        case .failure(let error):
+            return error
+        }
     }
 
     private func addTextFieldsDelegate() {
@@ -295,7 +359,7 @@ public class CardViewController: UIViewController,
 
         if let superView = view as? CardNumberInputView {
             let cardNumber = superView.textField.text!
-            let cardNumberStandardized = cardUtils.standardize(cardNumber: cardNumber)
+            let cardNumberStandardized = cardNumber.standardize()
             let cardType = cardUtils.getTypeOf(cardNumber: cardNumberStandardized)
             cardView.cvvInputView.cardType = cardType
         }

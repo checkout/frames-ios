@@ -5,6 +5,7 @@ public class CardUtils {
 
     // MARK: - Properties
 
+    // Potential Task : add CardType and cardTypes to Checkout SDK.
     /// Dictionary of card types based on their scheme
     let cardTypes: KeyValuePairs<CardScheme, CardType> = [
         .visa: CardType(scheme: .visa,
@@ -21,14 +22,14 @@ public class CardUtils {
                               validLengths: [16],
                               validCvvLengths: [3],
                               isLuhnChecked: true),
-        .americanExpress: CardType(scheme: .americanExpress,
+        .americanExpress: CardType(scheme: .amex,
                                    name: "American Express",
                                    pattern: "^3[47]\\d*$",
                                    gaps: [4, 10],
                                    validLengths: [15],
                                    validCvvLengths: [4],
                                    isLuhnChecked: true),
-        .dinersClub: CardType(scheme: .dinersClub,
+        .dinersClub: CardType(scheme: .diners,
                               name: "Diner's Club",
                               pattern: "^3(0[0-5]|[689])\\d*$",
                               gaps: [4, 10],
@@ -49,15 +50,6 @@ public class CardUtils {
                        validLengths: [16, 17, 18, 19],
                        validCvvLengths: [3],
                        isLuhnChecked: true),
-        .unionPay: CardType(scheme: .unionPay,
-                            name: "UnionPay",
-                            // swiftlint:disable line_length
-                            pattern: "^(((620|(621(?!83|88|98|99))|622(?!06|018)|62[3-6]|627[02,06,07]|628(?!0|1)|629[1,2]))\\d*|622018\\d{12})$",
-                            // swiftlint:enable line_length_violation
-                            gaps: [4, 10],
-                            validLengths: [16, 17, 18, 19],
-                            validCvvLengths: [3],
-                            isLuhnChecked: false),
         .maestro: CardType(scheme: .maestro,
                            name: "Maestro",
                            // swiftlint: disable line_length

@@ -22,4 +22,8 @@ extension String {
         let bundle = getBundle(forClass: forClass)
         return UIImage(named: self, in: bundle, compatibleWith: nil) ?? UIImage()
     }
+
+    func standardize() -> String {
+        return self.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+    }
 }
