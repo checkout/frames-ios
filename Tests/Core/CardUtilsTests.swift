@@ -21,7 +21,6 @@ class CardUtilsTests: XCTestCase {
     var amexCardType: CardType { return cards.getCardType(scheme: .americanExpress)! }
     var dinersClubCardType: CardType { return cards.getCardType(scheme: .dinersClub)! }
     var discoverCardType: CardType { return cards.getCardType(scheme: .discover)! }
-    var unionPayCardType: CardType { return cards.getCardType(scheme: .unionPay)! }
     var maestroCardType: CardType { return cards.getCardType(scheme: .maestro)! }
     var jcbCardType: CardType { return cards.getCardType(scheme: .jcb)! }
 
@@ -98,11 +97,6 @@ class CardUtilsTests: XCTestCase {
             XCTAssertEqual(cards.getTypeOf(cardNumber: $0), cards.getCardType(scheme: .discover),
                            "Discover card \($0)")
         }
-        // Union Pay
-        unionPayCards.forEach {
-            XCTAssertEqual(cards.getTypeOf(cardNumber: $0), cards.getCardType(scheme: .unionPay),
-                           "Union Pay card \($0)")
-        }
         // Maestro
         maestroCards.forEach {
             XCTAssertEqual(cards.getTypeOf(cardNumber: $0), cards.getCardType(scheme: .maestro),
@@ -153,13 +147,6 @@ class CardUtilsTests: XCTestCase {
             ["6011111111111117", "6011 1111 1111 1117"]
             ].forEach {
                 XCTAssertEqual(cards.format(cardNumber: $0[0], cardType: discoverCardType), $0[1])
-        }
-        // Union Pay
-        [
-            ["6269992058134322", "6269 992058 134322"],
-            ["6221258812340000", "6221 258812 340000"]
-            ].forEach {
-                XCTAssertEqual(cards.format(cardNumber: $0[0], cardType: unionPayCardType), $0[1])
         }
         // Maestro
         [
@@ -229,9 +216,6 @@ class CardUtilsTests: XCTestCase {
         XCTAssertFalse(cards.isValid(cardNumber: "4651997672049323", cardType: visaCardType))
         // Mastercard
         XCTAssertFalse(cards.isValid(cardNumber: "5185868732238231", cardType: mastercardCardType))
-        // UnionPay
-        XCTAssertFalse(cards.isValid(cardNumber: "62699920581", cardType: unionPayCardType))
-        XCTAssertFalse(cards.isValid(cardNumber: "6221558812340000567678", cardType: unionPayCardType))
     }
 
     func testValidCardNumber() {

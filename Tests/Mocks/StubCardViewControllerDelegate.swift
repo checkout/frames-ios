@@ -7,6 +7,7 @@
 //
 
 import Frames
+import Checkout
 
 final class StubCardViewControllerDelegate: CardViewControllerDelegate {
 
@@ -17,11 +18,11 @@ final class StubCardViewControllerDelegate: CardViewControllerDelegate {
     }
 
     private(set) var onTapDoneCalledWith: (controller: CardViewController,
-                                           cardToken: CkoCardTokenResponse?,
+                                           cardToken: TokenDetails?,
                                            status: CheckoutTokenStatus)?
 
     func onTapDone(controller: CardViewController,
-                   cardToken: CkoCardTokenResponse?,
+                   cardToken: TokenDetails?,
                    status: CheckoutTokenStatus) {
 
         onTapDoneCalledWith = (controller, cardToken, status)

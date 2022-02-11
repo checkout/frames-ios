@@ -1,5 +1,6 @@
 import XCTest
 @testable import Frames
+import Checkout
 
 class AddressViewControllerTests: XCTestCase {
 
@@ -131,6 +132,7 @@ class AddressViewControllerTests: XCTestCase {
     }
 
     func testCallDelegateMethodOnTapDoneButton() {
+        let country = Country.allAvailable.first { $0.iso3166Alpha2 == "FR" }!
         let delegate = AddressViewControllerMockDelegate()
         addressViewController.viewDidLoad()
         addressViewController.delegate = delegate
@@ -140,9 +142,9 @@ class AddressViewControllerTests: XCTestCase {
         XCTAssertEqual(delegate.onTapDoneButtonCalledTimes, 1)
         XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithAddress?.addressLine1, "12 rue de la boulangerie")
         XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithAddress?.city, "Lyon")
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithAddress?.country, "FR")
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithAddress?.country, country)
         XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithAddress?.zip, "69002")
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithPhone?.countryCode, "33")
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithPhone?.country, country)
         XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithPhone?.number, "622545688")
     }
 

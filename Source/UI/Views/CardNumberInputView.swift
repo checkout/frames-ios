@@ -8,7 +8,7 @@ import Checkout
     // MARK: - Properties
 
     var cardsUtils: CardUtils!
-    var cardValidator: CardValidator?
+    var cardValidator: CardValidating?
     /// Text field delegate
     public weak var delegate: CardNumberInputViewDelegate?
 
@@ -28,17 +28,15 @@ import Checkout
         setup(cardValidator: nil)
     }
 
-    public init(frame: CGRect = CGRect.zero, cardValidator: CardValidator?) {
+    public init(frame: CGRect = CGRect.zero, cardValidator: CardValidating?) {
         super.init(frame: frame)
         setup(cardValidator: cardValidator)
     }
 
-    private func setup(cardValidator: CardValidator?) {
+    private func setup(cardValidator: CardValidating?) {
         #if !TARGET_INTERFACE_BUILDER
         cardsUtils = CardUtils()
-        if let cardValidator = cardValidator {
-            self.cardValidator = cardValidator
-        }
+        self.cardValidator = cardValidator
         #endif
         textField.keyboardType = .default
         textField.textContentType = .creditCardNumber
@@ -66,9 +64,9 @@ import Checkout
         }
 
         switch cardValidator.validate(cardNumber: "\(cardNumber)\(string)") {
-        case .success(_):
-            return true
-        case .failure(_):
+        case .success(let scheme):
+            return scheme != .unknown
+        case .failure:
             return false
         }
     }
