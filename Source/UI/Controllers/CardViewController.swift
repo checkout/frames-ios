@@ -7,6 +7,7 @@ public class CardViewController: UIViewController,
     AddressViewControllerDelegate,
     CardNumberInputViewDelegate,
     CvvInputViewDelegate,
+    CardViewDelegate,
     UITextFieldDelegate {
 
     // MARK: - Properties
@@ -105,6 +106,7 @@ public class CardViewController: UIViewController,
     /// Notifies the view controller that its view is about to be added to a view hierarchy.
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        cardView.delegate = self
         title = "cardViewControllerTitle".localized(forClass: CardViewController.self)
         registerKeyboardHandlers(notificationCenter: notificationCenter,
                                  keyboardWillShow: #selector(keyboardWillShow),
@@ -330,6 +332,27 @@ public class CardViewController: UIViewController,
 
     public func onChangeCvv() {
         validateFieldsValues()
+    }
+
+    // MARK: CardViewDelegate
+
+    public func didTapCardScan(scanButton: UIButton?) {
+        //  Add NSCameraUsageDescription to your Info.plist
+        if #available(iOS 13.0, *) {
+            let scannerView = CardScanner.getScanner { card, date, cvv in
+                guard let card = card, let date = date else {
+                    print("camera dissmissed")
+                    self.cardView.cardNumberInputView.text = ""
+                    self.cardView.expirationDateInputView.textField.text = ""
+                    return
+                }
+                self.cardView.cardNumberInputView.text = card
+                self.cardView.expirationDateInputView.textField.text = date
+            }
+            present(scannerView, animated: true, completion: nil)
+        } else {
+            print("sccaner availalbe in iOS 13 and above")
+        }
     }
 
 }

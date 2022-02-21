@@ -9,8 +9,12 @@ public class CardView: UIView {
     let scrollView = UIScrollView()
     let contentView = UIView()
     let stackView = UIStackView()
+    let cardNumberInputStackView = UIStackView()
+    let scanCardButton = UIButton()
     let schemeIconsStackView = SchemeIconsStackView()
     let addressTapGesture = UITapGestureRecognizer()
+
+    public weak var delegate: CardViewDelegate?
 
     /// Accepted Card Label
     public let acceptedCardLabel = UILabel()
@@ -99,6 +103,18 @@ public class CardView: UIView {
         schemeIconsStackView.spacing = 8
         stackView.axis = .vertical
         stackView.spacing = 16
+
+        cardNumberInputStackView.axis = .horizontal
+        cardNumberInputStackView.spacing = 10
+
+        scanCardButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        scanCardButton.setBackgroundImage("camera/camera-icon".image(forClass: CardView.self), for: .normal)
+        if #available(iOS 13.0, *) {
+            scanCardButton.addTarget(self, action: #selector(scanCard(_ :)), for: .touchUpInside)
+        } else {
+            print("sccaner availalbe in iOS 13 and above")
+        }
+
         // keyboard
         var textFields = [cardNumberInputView.textField,
                           expirationDateInputView.textField,
@@ -109,13 +125,24 @@ public class CardView: UIView {
         addKeyboardToolbarNavigation(textFields: textFields)
     }
 
+    @available(iOS 13.0, *)
+    @objc func scanCard(_ sender: UIButton) {
+        delegate?.didTapCardScan(scanButton: sender)
+    }
+
     private func addViews() {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(acceptedCardLabel)
         contentView.addSubview(schemeIconsStackView)
         contentView.addSubview(stackView)
-        stackView.addArrangedSubview(cardNumberInputView)
+        stackView.addArrangedSubview(cardNumberInputStackView)
+
+        cardNumberInputStackView.addArrangedSubview(cardNumberInputView)
+        scanCardButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+
+        cardNumberInputStackView.addArrangedSubview(scanCardButton)
+
         if cardHolderNameState != .hidden {
             stackView.addArrangedSubview(cardHolderNameInputView)
         }
@@ -153,3 +180,13 @@ public class CardView: UIView {
         stackView.bottomAnchor.constraint(equalTo: contentView.safeBottomAnchor).isActive = true
     }
 }
+
+public protocol CardViewDelegate: AnyObject {
+
+    /// Called when the card number changed.
+    ///
+    /// - parameter cardType: Type of the card number.
+    func didTapCardScan(scanButton: UIButton?)
+
+}
+
