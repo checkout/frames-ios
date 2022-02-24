@@ -18,7 +18,7 @@ PODS:
     - PhoneNumberKit/PhoneNumberKitCore
 
 DEPENDENCIES:
-  - "Checkout (from `git@github.com:cko-payment-interfaces/checkout-ios.git`)"
+  - "Checkout (from `git@github.com:cko-payment-interfaces/checkout-ios.git`, tag `0.2.2`)"
   - Frames (from `../`)
   - Frames/Tests (from `../`)
 
@@ -30,13 +30,14 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Checkout:
     :git: "git@github.com:cko-payment-interfaces/checkout-ios.git"
+    :tag: 0.2.2
   Frames:
     :path: "../"
 
 CHECKOUT OPTIONS:
   Checkout:
-    :commit: 5328cbe1597395bf92e6108ef66b9aaed43e9002
     :git: "git@github.com:cko-payment-interfaces/checkout-ios.git"
+    :tag: 0.2.2
 
 SPEC CHECKSUMS:
   Checkout: 5da1b5b5de5026d7667cd6305aa04dd3f0428c64
@@ -44,6 +45,6 @@ SPEC CHECKSUMS:
   Frames: 3ca76a286871351f94faba39cf0e66139d975061
   PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
 
-PODFILE CHECKSUM: 73a4cd868e0344d2c9468f48a579a3699a58059d
+PODFILE CHECKSUM: e0179613aa09a224c571ca01d9ee1ace47e9ed0c
 
 COCOAPODS: 1.11.2
