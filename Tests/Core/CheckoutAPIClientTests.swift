@@ -37,6 +37,22 @@ final class CheckoutAPIClientTests: XCTestCase {
         
         super.tearDown()
     }
+
+    // MARK: - init
+
+    func test_logOnInit_sandbox() {
+        let stubRequestExecutor = StubRequestExecutor<CardProviderResponse>()
+        _ = createSubject(environment: .sandbox, requestExecutor: stubRequestExecutor)
+
+        XCTAssertEqual(stubFramesEventLogger.logCalledWithFramesLogEvents, [.checkoutAPIServiceInitialised(environment: .sandbox)])
+    }
+
+     func test_logOnInit_live() {
+         let stubRequestExecutor = StubRequestExecutor<CardProviderResponse>()
+         _ = createSubject(environment: .live, requestExecutor: stubRequestExecutor)
+
+         XCTAssertEqual(stubFramesEventLogger.logCalledWithFramesLogEvents, [.checkoutAPIServiceInitialised(environment: .live)])
+     }
     
     // MARK: - getCardProviders
     
