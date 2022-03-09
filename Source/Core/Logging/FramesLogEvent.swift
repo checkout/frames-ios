@@ -4,6 +4,7 @@ import CheckoutEventLoggerKit
 enum FramesLogEvent: Equatable {
 
     enum Property: String {
+        case environment
         case errorCodes
         case errorType
         case httpStatusCode
@@ -16,6 +17,7 @@ enum FramesLogEvent: Equatable {
         case tokenType
     }
 
+    case checkoutAPIServiceInitialised(environment: Environment)
     case paymentFormPresented
     case billingFormPresented
     case tokenRequested(tokenType: TokenType, publicKey: String)
@@ -33,6 +35,8 @@ enum FramesLogEvent: Equatable {
 
     private var typeIdentifierSuffix: String {
         switch self {
+        case .checkoutAPIServiceInitialised:
+            return "checkout_api_service_initialised"
         case .paymentFormPresented:
             return "payment_form_presented"
         case .billingFormPresented:
@@ -48,7 +52,8 @@ enum FramesLogEvent: Equatable {
 
     var monitoringLevel: MonitoringLevel {
         switch self {
-        case .paymentFormPresented,
+        case .checkoutAPIServiceInitialised,
+             .paymentFormPresented,
              .billingFormPresented,
              .tokenRequested,
              .tokenResponse:
@@ -63,6 +68,9 @@ enum FramesLogEvent: Equatable {
         case .paymentFormPresented,
              .billingFormPresented:
             return [:]
+        case let .checkoutAPIServiceInitialised(environment):
+            let environmentString = environment.rawValue == "live" ? "production" : environment.rawValue
+            return [.environment: environmentString].mapValues { AnyCodable($0) }
         case let .tokenRequested(tokenType, publicKey):
             return [.tokenType: tokenType.rawValue, .publicKey: publicKey]
                 .mapValues { AnyCodable($0) }
