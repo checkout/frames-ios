@@ -358,7 +358,7 @@ class CardViewControllerTests: XCTestCase {
         cardViewController.viewWillAppear(true)
 
         let events = stubLogger.logCalledWithFramesLogEvents
-        XCTAssertEqual(3, events.count - initialEventCount)
+        XCTAssertEqual(2, events.count - initialEventCount)
 
         let event = events[initialEventCount]
         XCTAssertEqual(.paymentFormPresented, event)
