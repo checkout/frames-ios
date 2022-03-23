@@ -42,7 +42,7 @@ public class CardViewController: UIViewController,
 
     var topConstraint: NSLayoutConstraint?
 
-    private var suppressNextLog = false
+    private var loggedForCurrentCorrelationID = false
 
     // MARK: - Initialization
 
@@ -112,7 +112,7 @@ public class CardViewController: UIViewController,
         guard let checkoutApiClient = checkoutApiClient else {
             return
         }
-        logPaymentFormPresented(isNextLogSuppressed: suppressNextLog,
+        logPaymentFormPresented(isNextLogSuppressed: loggedForCurrentCorrelationID,
                                 checkoutApiClient: checkoutApiClient)
     }
 
@@ -162,7 +162,7 @@ public class CardViewController: UIViewController,
     @objc func onTapAddressView() {
         navigationController?.pushViewController(addressViewController, animated: true)
         checkoutApiClient?.logger.log(.billingFormPresented)
-        suppressNextLog = true
+        loggedForCurrentCorrelationID = true
     }
 
     @objc func onTapDoneCardButton() {
@@ -214,8 +214,8 @@ public class CardViewController: UIViewController,
         checkoutApiClient.createCardToken(card: card) { result in
             switch result {
             case .success(let cardTokenResponse):
-                // set suppressNextLog to false post each successfull card token generation.
-                self.suppressNextLog = false
+                // set loggedForCurrentCorrelationID to false post each successfull card token generation.
+                self.loggedForCurrentCorrelationID = false
                 self.delegate?.onTapDone(controller: self, cardToken: cardTokenResponse, status: .success)
 
             case .failure:
@@ -335,7 +335,7 @@ public class CardViewController: UIViewController,
             checkoutApiClient.logger.add(metadata: checkoutApiClient.correlationID(),
                                           forKey: .correlationID)
             checkoutApiClient.logger.log(.paymentFormPresented)
-            suppressNextLog = true
+            loggedForCurrentCorrelationID = true
         }
     }
 }
