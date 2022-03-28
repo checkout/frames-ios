@@ -42,7 +42,7 @@ public class CardViewController: UIViewController,
 
     var topConstraint: NSLayoutConstraint?
 
-    private var suppressNextLog = false
+    private var loggedForCurrentCorrelationID = false
 
     // MARK: - Initialization
 
@@ -109,17 +109,11 @@ public class CardViewController: UIViewController,
         registerKeyboardHandlers(notificationCenter: notificationCenter,
                                  keyboardWillShow: #selector(keyboardWillShow),
                                  keyboardWillHide: #selector(keyboardWillHide))
-        
-        if suppressNextLog {
-            suppressNextLog = false
-        } else {
-            guard let checkoutApiClient = checkoutApiClient else {
-                return
-            }
-            checkoutApiClient.logger.add(metadata: checkoutApiClient.correlationID(),
-                                          forKey: .correlationID)
-            checkoutApiClient.logger.log(.paymentFormPresented)
+        guard let checkoutApiClient = checkoutApiClient else {
+            return
         }
+        logPaymentFormPresented(isNextLogSuppressed: loggedForCurrentCorrelationID,
+                                checkoutApiClient: checkoutApiClient)
     }
 
     /// Notifies the view controller that its view is about to be removed from a view hierarchy.
@@ -168,7 +162,7 @@ public class CardViewController: UIViewController,
     @objc func onTapAddressView() {
         navigationController?.pushViewController(addressViewController, animated: true)
         checkoutApiClient?.logger.log(.billingFormPresented)
-        suppressNextLog = true
+        loggedForCurrentCorrelationID = true
     }
 
     @objc func onTapDoneCardButton() {
@@ -220,6 +214,8 @@ public class CardViewController: UIViewController,
         checkoutApiClient.createCardToken(card: card) { result in
             switch result {
             case .success(let cardTokenResponse):
+                // set loggedForCurrentCorrelationID to false post each successfull card token generation.
+                self.loggedForCurrentCorrelationID = false
                 self.delegate?.onTapDone(controller: self, cardToken: cardTokenResponse, status: .success)
 
             case .failure:
@@ -332,4 +328,14 @@ public class CardViewController: UIViewController,
         validateFieldsValues()
     }
 
+    // MARK: Utility Methods
+    private func logPaymentFormPresented(isNextLogSuppressed: Bool,
+                                         checkoutApiClient: CheckoutAPIClient) {
+        if !isNextLogSuppressed {
+            checkoutApiClient.logger.add(metadata: checkoutApiClient.correlationID(),
+                                          forKey: .correlationID)
+            checkoutApiClient.logger.log(.paymentFormPresented)
+            loggedForCurrentCorrelationID = true
+        }
+    }
 }
