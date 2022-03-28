@@ -17,7 +17,7 @@ enum FramesLogEvent: Equatable {
         case tokenType
     }
 
-    case checkoutAPIServiceInitialised(environment: Environment)
+    case checkoutAPIClientInitialised(environment: Environment)
     case paymentFormPresented
     case billingFormPresented
     case tokenRequested(tokenType: TokenType, publicKey: String)
@@ -35,8 +35,8 @@ enum FramesLogEvent: Equatable {
 
     private var typeIdentifierSuffix: String {
         switch self {
-        case .checkoutAPIServiceInitialised:
-            return "checkout_api_service_initialised"
+        case .checkoutAPIClientInitialised:
+            return "checkout_api_client_initialised"
         case .paymentFormPresented:
             return "payment_form_presented"
         case .billingFormPresented:
@@ -52,7 +52,7 @@ enum FramesLogEvent: Equatable {
 
     var monitoringLevel: MonitoringLevel {
         switch self {
-        case .checkoutAPIServiceInitialised,
+        case .checkoutAPIClientInitialised,
              .paymentFormPresented,
              .billingFormPresented,
              .tokenRequested,
@@ -68,7 +68,7 @@ enum FramesLogEvent: Equatable {
         case .paymentFormPresented,
              .billingFormPresented:
             return [:]
-        case let .checkoutAPIServiceInitialised(environment):
+        case let .checkoutAPIClientInitialised(environment):
             let environmentString = environment.rawValue == "live" ? "production" : environment.rawValue
             return [.environment: environmentString].mapValues { AnyCodable($0) }
         case let .tokenRequested(tokenType, publicKey):

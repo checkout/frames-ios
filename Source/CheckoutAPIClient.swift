@@ -40,7 +40,7 @@ public class CheckoutAPIClient {
         self.networkFlowLoggerProvider = networkFlowLoggerProvider
         self.requestExecutor = requestExecutor
 
-        logger.log(.checkoutAPIServiceInitialised(environment: environment))
+        logger.log(.checkoutAPIClientInitialised(environment: environment))
     }
 
     /// Create an instance with the specified public key and environment

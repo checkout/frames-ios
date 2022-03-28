@@ -44,14 +44,14 @@ final class CheckoutAPIClientTests: XCTestCase {
         let stubRequestExecutor = StubRequestExecutor<CardProviderResponse>()
         _ = createSubject(environment: .sandbox, requestExecutor: stubRequestExecutor)
 
-        XCTAssertEqual(stubFramesEventLogger.logCalledWithFramesLogEvents, [.checkoutAPIServiceInitialised(environment: .sandbox)])
+        XCTAssertEqual(stubFramesEventLogger.logCalledWithFramesLogEvents, [.checkoutAPIClientInitialised(environment: .sandbox)])
     }
 
      func test_logOnInit_live() {
          let stubRequestExecutor = StubRequestExecutor<CardProviderResponse>()
          _ = createSubject(environment: .live, requestExecutor: stubRequestExecutor)
 
-         XCTAssertEqual(stubFramesEventLogger.logCalledWithFramesLogEvents, [.checkoutAPIServiceInitialised(environment: .live)])
+         XCTAssertEqual(stubFramesEventLogger.logCalledWithFramesLogEvents, [.checkoutAPIClientInitialised(environment: .live)])
      }
     
     // MARK: - getCardProviders
