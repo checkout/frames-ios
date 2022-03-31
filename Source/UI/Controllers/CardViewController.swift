@@ -334,7 +334,7 @@ public class CardViewController: UIViewController,
         if !isNextLogSuppressed {
             checkoutApiClient.logger.add(metadata: checkoutApiClient.correlationID(),
                                           forKey: .correlationID)
-            checkoutApiClient.logger.log(.paymentFormPresented)
+            checkoutApiClient.logger.log(.paymentFormPresented(theme: Theme(), locale: Locale.current))
             loggedForCurrentCorrelationID = true
         }
     }

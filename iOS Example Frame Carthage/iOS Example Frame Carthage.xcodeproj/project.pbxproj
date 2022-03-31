@@ -134,80 +134,93 @@
 		57256C6C269F0FB0001EC3D8 /* JSONEncoder+TopLevelEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C65269F0FB0001EC3D8 /* JSONEncoder+TopLevelEncoder.swift */; };
 		57256C6D269F0FB0001EC3D8 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C66269F0FB0001EC3D8 /* URL+Extensions.swift */; };
 		57256C6E269F0FB0001EC3D8 /* JSONEncoder+ContentTypeProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C67269F0FB0001EC3D8 /* JSONEncoder+ContentTypeProviding.swift */; };
-		57256C6F269F0FB0001EC3D8 /* ErrorResponse+Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C68269F0FB0001EC3D8 /* ErrorResponse+Logging.swift */; };
+		57256C6F269F0FB0001EC3D8 /* ErrorResponse+PropertyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C68269F0FB0001EC3D8 /* ErrorResponse+PropertyProviding.swift */; };
 		57256C70269F0FB0001EC3D8 /* DispatchQueue+Dispatching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C69269F0FB0001EC3D8 /* DispatchQueue+Dispatching.swift */; };
 		57256C71269F0FB0001EC3D8 /* JSONDecoder+TopLevelDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C6A269F0FB0001EC3D8 /* JSONDecoder+TopLevelDecoder.swift */; };
 		57256C7E269F1181001EC3D8 /* Frames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; platformFilter = ios; };
-		57256CF1269F1279001EC3D8 /* DetailsInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CA3269F1278001EC3D8 /* DetailsInputViewTests.swift */; };
-		57256CF2269F1279001EC3D8 /* AddressViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CA4269F1278001EC3D8 /* AddressViewControllerTests.swift */; };
-		57256CF3269F1279001EC3D8 /* CountrySelectionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CA5269F1278001EC3D8 /* CountrySelectionViewControllerTests.swift */; };
-		57256CF4269F1279001EC3D8 /* CvvInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CA6269F1278001EC3D8 /* CvvInputViewTests.swift */; };
-		57256CF5269F1279001EC3D8 /* CardNumberInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CA7269F1278001EC3D8 /* CardNumberInputViewTests.swift */; };
-		57256CF6269F1279001EC3D8 /* CardListCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CA8269F1278001EC3D8 /* CardListCellTests.swift */; };
-		57256CF7269F1279001EC3D8 /* CvvConfirmationViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CA9269F1278001EC3D8 /* CvvConfirmationViewControllerTests.swift */; };
-		57256CF8269F1279001EC3D8 /* ExpirationDateInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CAA269F1278001EC3D8 /* ExpirationDateInputViewTests.swift */; };
-		57256CF9269F1279001EC3D8 /* CardListCellNameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CAB269F1278001EC3D8 /* CardListCellNameTests.swift */; };
-		57256CFA269F1279001EC3D8 /* StandardInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CAC269F1278001EC3D8 /* StandardInputViewTests.swift */; };
-		57256CFB269F1279001EC3D8 /* ThreedsWebViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CAD269F1278001EC3D8 /* ThreedsWebViewControllerTests.swift */; };
-		57256CFC269F1279001EC3D8 /* ExpirationDatePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CAE269F1278001EC3D8 /* ExpirationDatePickerTests.swift */; };
-		57256CFD269F1279001EC3D8 /* SimpleLoadingViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CAF269F1278001EC3D8 /* SimpleLoadingViewControllerTests.swift */; };
-		57256CFE269F1279001EC3D8 /* PhoneNumberInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CB1269F1278001EC3D8 /* PhoneNumberInputViewTests.swift */; };
-		57256CFF269F1279001EC3D8 /* AddressViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CB2269F1278001EC3D8 /* AddressViewTests.swift */; };
-		57256D00269F1279001EC3D8 /* CardViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CB3269F1278001EC3D8 /* CardViewTests.swift */; };
-		57256D01269F1279001EC3D8 /* SchemeIconsStackViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CB4269F1278001EC3D8 /* SchemeIconsStackViewTests.swift */; };
-		57256D02269F1279001EC3D8 /* CardViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CB5269F1278001EC3D8 /* CardViewControllerTests.swift */; };
-		57256D04269F1279001EC3D8 /* CheckoutAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CB8269F1278001EC3D8 /* CheckoutAPIClientTests.swift */; };
-		57256D05269F1279001EC3D8 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CBA269F1278001EC3D8 /* RequestTests.swift */; };
-		57256D06269F1279001EC3D8 /* HTTPMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CBB269F1278001EC3D8 /* HTTPMethodTests.swift */; };
-		57256D07269F1279001EC3D8 /* RequestExecutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CBC269F1278001EC3D8 /* RequestExecutorTests.swift */; };
-		57256D08269F1279001EC3D8 /* StubNetworkFlowLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CBD269F1278001EC3D8 /* StubNetworkFlowLogger.swift */; };
-		57256D09269F1279001EC3D8 /* EnvironmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CBE269F1278001EC3D8 /* EnvironmentTests.swift */; };
-		57256D0A269F1279001EC3D8 /* DispatchQueue+DispatchingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CC0269F1278001EC3D8 /* DispatchQueue+DispatchingTests.swift */; };
-		57256D0B269F1279001EC3D8 /* ErrorResponse+LoggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CC1269F1278001EC3D8 /* ErrorResponse+LoggingTests.swift */; };
-		57256D0D269F1279001EC3D8 /* CheckoutAPIClientIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CC3269F1278001EC3D8 /* CheckoutAPIClientIntegrationTests.swift */; };
-		57256D0E269F1279001EC3D8 /* CardUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CC4269F1278001EC3D8 /* CardUtilsTests.swift */; };
-		57256D0F269F1279001EC3D8 /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CC5269F1278001EC3D8 /* NetworkErrorTests.swift */; };
-		57256D10269F1279001EC3D8 /* NetworkFlowLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CC7269F1278001EC3D8 /* NetworkFlowLoggerTests.swift */; };
-		57256D11269F1279001EC3D8 /* CorrelationIDGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CC8269F1278001EC3D8 /* CorrelationIDGeneratorTests.swift */; };
-		57256D12269F1279001EC3D8 /* FramesEventLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CC9269F1278001EC3D8 /* FramesEventLoggerTests.swift */; };
-		57256D13269F1279001EC3D8 /* FramesLogEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CCA269F1278001EC3D8 /* FramesLogEventTests.swift */; };
-		57256D14269F1279001EC3D8 /* StubJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CCC269F1278001EC3D8 /* StubJSONDecoder.swift */; };
-		57256D15269F1279001EC3D8 /* StubRequestParameterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CCD269F1278001EC3D8 /* StubRequestParameterProvider.swift */; };
-		57256D16269F1279001EC3D8 /* StubFramesEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CCE269F1278001EC3D8 /* StubFramesEventLogger.swift */; };
-		57256D17269F1279001EC3D8 /* StubEnvironmentURLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CCF269F1278001EC3D8 /* StubEnvironmentURLProvider.swift */; };
-		57256D18269F1279001EC3D8 /* StubCorrelationIDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CD0269F1278001EC3D8 /* StubCorrelationIDGenerator.swift */; };
-		57256D19269F1279001EC3D8 /* StubNetworkFlowLoggerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CD1269F1278001EC3D8 /* StubNetworkFlowLoggerFactory.swift */; };
-		57256D1A269F1279001EC3D8 /* NotificationCenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CD2269F1278001EC3D8 /* NotificationCenterMock.swift */; };
-		57256D1B269F1279001EC3D8 /* NavigationControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CD3269F1278001EC3D8 /* NavigationControllerMock.swift */; };
-		57256D1C269F1279001EC3D8 /* StubCheckoutAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CD4269F1278001EC3D8 /* StubCheckoutAPIClient.swift */; };
-		57256D1D269F1279001EC3D8 /* StubUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CD5269F1278001EC3D8 /* StubUIDevice.swift */; };
-		57256D1E269F1279001EC3D8 /* CardViewControllerMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CD6269F1278001EC3D8 /* CardViewControllerMockDelegate.swift */; };
-		57256D1F269F1279001EC3D8 /* StubDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CD7269F1278001EC3D8 /* StubDispatcher.swift */; };
-		57256D20269F1279001EC3D8 /* StubRequestExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CD8269F1278001EC3D8 /* StubRequestExecutor.swift */; };
-		57256D21269F1279001EC3D8 /* StubURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CD9269F1278001EC3D8 /* StubURLSessionDataTask.swift */; };
-		57256D22269F1279001EC3D8 /* StubJSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CDA269F1278001EC3D8 /* StubJSONEncoder.swift */; };
-		57256D23269F1279001EC3D8 /* CardViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CDB269F1278001EC3D8 /* CardViewControllerMock.swift */; };
-		57256D24269F1279001EC3D8 /* CvvViewControllerDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CDC269F1278001EC3D8 /* CvvViewControllerDelegateMock.swift */; };
-		57256D25269F1279001EC3D8 /* StubURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CDD269F1278001EC3D8 /* StubURLProtocol.swift */; };
-		57256D26269F1279001EC3D8 /* StubCheckoutEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CDE269F1278001EC3D8 /* StubCheckoutEventLogger.swift */; };
-		57256D27269F1279001EC3D8 /* StubDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CDF269F1278001EC3D8 /* StubDateProvider.swift */; };
-		57256D28269F1279001EC3D8 /* AddressViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CE0269F1278001EC3D8 /* AddressViewControllerMock.swift */; };
-		57256D29269F1279001EC3D8 /* AddressViewControllerMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CE1269F1278001EC3D8 /* AddressViewControllerMockDelegate.swift */; };
-		57256D2A269F1279001EC3D8 /* CardNumberInputViewMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CE2269F1278001EC3D8 /* CardNumberInputViewMockDelegate.swift */; };
-		57256D2B269F1279001EC3D8 /* StubURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CE3269F1278001EC3D8 /* StubURLSession.swift */; };
-		57256D2C269F1279001EC3D8 /* StubCardViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CE4269F1278001EC3D8 /* StubCardViewControllerDelegate.swift */; };
-		57256D2D269F1279001EC3D8 /* StubError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CE5269F1278001EC3D8 /* StubError.swift */; };
-		57256D2E269F1279001EC3D8 /* CvvInputViewMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CE6269F1278001EC3D8 /* CvvInputViewMockDelegate.swift */; };
-		57256D2F269F1279001EC3D8 /* cardToken.json in Resources */ = {isa = PBXBuildFile; fileRef = 57256CE8269F1278001EC3D8 /* cardToken.json */; };
-		57256D30269F1279001EC3D8 /* cardTokenBillingDetails.json in Resources */ = {isa = PBXBuildFile; fileRef = 57256CE9269F1278001EC3D8 /* cardTokenBillingDetails.json */; };
-		57256D31269F1279001EC3D8 /* cardProviders.json in Resources */ = {isa = PBXBuildFile; fileRef = 57256CEA269F1278001EC3D8 /* cardProviders.json */; };
-		57256D32269F1279001EC3D8 /* applePayTokenInvalid.json in Resources */ = {isa = PBXBuildFile; fileRef = 57256CEB269F1278001EC3D8 /* applePayTokenInvalid.json */; };
-		57256D33269F1279001EC3D8 /* cardTokenInvalidNumber.json in Resources */ = {isa = PBXBuildFile; fileRef = 57256CEC269F1278001EC3D8 /* cardTokenInvalidNumber.json */; };
-		57256D34269F1279001EC3D8 /* applePayToken.json in Resources */ = {isa = PBXBuildFile; fileRef = 57256CED269F1278001EC3D8 /* applePayToken.json */; };
-		57256D35269F1279001EC3D8 /* NetworkError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CEF269F1279001EC3D8 /* NetworkError+Equatable.swift */; };
-		57256D36269F1279001EC3D8 /* CkoCardTokenResponse+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CF0269F1279001EC3D8 /* CkoCardTokenResponse+Extensions.swift */; };
 		57256DEC269FA42E001EC3D8 /* Dictionary+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256DEB269FA42E001EC3D8 /* Dictionary+Additions.swift */; };
-		57256DF1269FA45A001EC3D8 /* Dictionary+AdditionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256DF0269FA45A001EC3D8 /* Dictionary+AdditionsTests.swift */; };
+		CB00CA0427EB4B27000069BE /* UIColor+PropertyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA0327EB4B27000069BE /* UIColor+PropertyProviding.swift */; };
+		CB00CA0627EB51B8000069BE /* UIFont+PropertyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA0527EB51B8000069BE /* UIFont+PropertyProviding.swift */; };
+		CB00CA0827EB5836000069BE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA0727EB5836000069BE /* Theme.swift */; };
+		CB00CA0A27EB5842000069BE /* PropertyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA0927EB5842000069BE /* PropertyProviding.swift */; };
+		CB00CA0C27ECA7A1000069BE /* UIBarStyle+stringValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA0B27ECA7A1000069BE /* UIBarStyle+stringValue.swift */; };
+		CB00CA6527ECBE8B000069BE /* StubJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA1327ECBE8B000069BE /* StubJSONDecoder.swift */; };
+		CB00CA6627ECBE8B000069BE /* StubRequestParameterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA1427ECBE8B000069BE /* StubRequestParameterProvider.swift */; };
+		CB00CA6727ECBE8B000069BE /* StubFramesEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA1527ECBE8B000069BE /* StubFramesEventLogger.swift */; };
+		CB00CA6827ECBE8B000069BE /* StubEnvironmentURLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA1627ECBE8B000069BE /* StubEnvironmentURLProvider.swift */; };
+		CB00CA6927ECBE8B000069BE /* StubCorrelationIDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA1727ECBE8B000069BE /* StubCorrelationIDGenerator.swift */; };
+		CB00CA6A27ECBE8B000069BE /* StubNetworkFlowLoggerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA1827ECBE8B000069BE /* StubNetworkFlowLoggerFactory.swift */; };
+		CB00CA6B27ECBE8B000069BE /* NotificationCenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA1927ECBE8B000069BE /* NotificationCenterMock.swift */; };
+		CB00CA6C27ECBE8B000069BE /* NavigationControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA1A27ECBE8B000069BE /* NavigationControllerMock.swift */; };
+		CB00CA6D27ECBE8B000069BE /* StubCheckoutAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA1B27ECBE8B000069BE /* StubCheckoutAPIClient.swift */; };
+		CB00CA6E27ECBE8B000069BE /* StubUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA1C27ECBE8B000069BE /* StubUIDevice.swift */; };
+		CB00CA6F27ECBE8B000069BE /* CardViewControllerMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA1D27ECBE8B000069BE /* CardViewControllerMockDelegate.swift */; };
+		CB00CA7027ECBE8B000069BE /* StubDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA1E27ECBE8B000069BE /* StubDispatcher.swift */; };
+		CB00CA7127ECBE8B000069BE /* StubRequestExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA1F27ECBE8B000069BE /* StubRequestExecutor.swift */; };
+		CB00CA7227ECBE8B000069BE /* StubURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA2027ECBE8B000069BE /* StubURLSessionDataTask.swift */; };
+		CB00CA7327ECBE8B000069BE /* StubJSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA2127ECBE8B000069BE /* StubJSONEncoder.swift */; };
+		CB00CA7427ECBE8B000069BE /* CardViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA2227ECBE8B000069BE /* CardViewControllerMock.swift */; };
+		CB00CA7527ECBE8B000069BE /* CvvViewControllerDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA2327ECBE8B000069BE /* CvvViewControllerDelegateMock.swift */; };
+		CB00CA7627ECBE8B000069BE /* StubURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA2427ECBE8B000069BE /* StubURLProtocol.swift */; };
+		CB00CA7727ECBE8B000069BE /* StubCheckoutEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA2527ECBE8B000069BE /* StubCheckoutEventLogger.swift */; };
+		CB00CA7827ECBE8B000069BE /* StubDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA2627ECBE8B000069BE /* StubDateProvider.swift */; };
+		CB00CA7927ECBE8B000069BE /* AddressViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA2727ECBE8B000069BE /* AddressViewControllerMock.swift */; };
+		CB00CA7A27ECBE8B000069BE /* AddressViewControllerMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA2827ECBE8B000069BE /* AddressViewControllerMockDelegate.swift */; };
+		CB00CA7B27ECBE8B000069BE /* CardNumberInputViewMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA2927ECBE8B000069BE /* CardNumberInputViewMockDelegate.swift */; };
+		CB00CA7C27ECBE8B000069BE /* StubURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA2A27ECBE8B000069BE /* StubURLSession.swift */; };
+		CB00CA7D27ECBE8B000069BE /* StubCardViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA2B27ECBE8B000069BE /* StubCardViewControllerDelegate.swift */; };
+		CB00CA7E27ECBE8B000069BE /* StubError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA2C27ECBE8B000069BE /* StubError.swift */; };
+		CB00CA7F27ECBE8B000069BE /* CvvInputViewMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA2D27ECBE8B000069BE /* CvvInputViewMockDelegate.swift */; };
+		CB00CA8027ECBE8B000069BE /* DetailsInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA2F27ECBE8B000069BE /* DetailsInputViewTests.swift */; };
+		CB00CA8127ECBE8B000069BE /* AddressViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA3027ECBE8B000069BE /* AddressViewControllerTests.swift */; };
+		CB00CA8227ECBE8B000069BE /* CountrySelectionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA3127ECBE8B000069BE /* CountrySelectionViewControllerTests.swift */; };
+		CB00CA8327ECBE8B000069BE /* CvvInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA3227ECBE8B000069BE /* CvvInputViewTests.swift */; };
+		CB00CA8427ECBE8B000069BE /* CardNumberInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA3327ECBE8B000069BE /* CardNumberInputViewTests.swift */; };
+		CB00CA8527ECBE8B000069BE /* CardListCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA3427ECBE8B000069BE /* CardListCellTests.swift */; };
+		CB00CA8627ECBE8B000069BE /* CvvConfirmationViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA3527ECBE8B000069BE /* CvvConfirmationViewControllerTests.swift */; };
+		CB00CA8727ECBE8B000069BE /* ExpirationDateInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA3627ECBE8B000069BE /* ExpirationDateInputViewTests.swift */; };
+		CB00CA8827ECBE8B000069BE /* CardListCellNameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA3727ECBE8B000069BE /* CardListCellNameTests.swift */; };
+		CB00CA8927ECBE8B000069BE /* StandardInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA3827ECBE8B000069BE /* StandardInputViewTests.swift */; };
+		CB00CA8A27ECBE8B000069BE /* ThreedsWebViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA3927ECBE8B000069BE /* ThreedsWebViewControllerTests.swift */; };
+		CB00CA8B27ECBE8B000069BE /* ExpirationDatePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA3A27ECBE8B000069BE /* ExpirationDatePickerTests.swift */; };
+		CB00CA8C27ECBE8B000069BE /* SimpleLoadingViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA3B27ECBE8B000069BE /* SimpleLoadingViewControllerTests.swift */; };
+		CB00CA8D27ECBE8B000069BE /* PhoneNumberInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA3D27ECBE8B000069BE /* PhoneNumberInputViewTests.swift */; };
+		CB00CA8E27ECBE8B000069BE /* AddressViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA3E27ECBE8B000069BE /* AddressViewTests.swift */; };
+		CB00CA8F27ECBE8B000069BE /* CardViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA3F27ECBE8B000069BE /* CardViewTests.swift */; };
+		CB00CA9027ECBE8C000069BE /* SchemeIconsStackViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA4027ECBE8B000069BE /* SchemeIconsStackViewTests.swift */; };
+		CB00CA9127ECBE8C000069BE /* CardViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA4127ECBE8B000069BE /* CardViewControllerTests.swift */; };
+		CB00CA9227ECBE8C000069BE /* NetworkError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA4327ECBE8B000069BE /* NetworkError+Equatable.swift */; };
+		CB00CA9327ECBE8C000069BE /* CkoCardTokenResponse+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA4427ECBE8B000069BE /* CkoCardTokenResponse+Extensions.swift */; };
+		CB00CA9427ECBE8C000069BE /* CheckoutAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA4627ECBE8B000069BE /* CheckoutAPIClientTests.swift */; };
+		CB00CA9527ECBE8C000069BE /* URLHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA4727ECBE8B000069BE /* URLHelperTests.swift */; };
+		CB00CA9627ECBE8C000069BE /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA4927ECBE8B000069BE /* RequestTests.swift */; };
+		CB00CA9727ECBE8C000069BE /* HTTPMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA4A27ECBE8B000069BE /* HTTPMethodTests.swift */; };
+		CB00CA9827ECBE8C000069BE /* RequestExecutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA4B27ECBE8B000069BE /* RequestExecutorTests.swift */; };
+		CB00CA9927ECBE8C000069BE /* StubNetworkFlowLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA4C27ECBE8B000069BE /* StubNetworkFlowLogger.swift */; };
+		CB00CA9A27ECBE8C000069BE /* EnvironmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA4D27ECBE8B000069BE /* EnvironmentTests.swift */; };
+		CB00CA9B27ECBE8C000069BE /* Dictionary+AdditionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA4F27ECBE8B000069BE /* Dictionary+AdditionsTests.swift */; };
+		CB00CA9C27ECBE8C000069BE /* DispatchQueue+DispatchingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA5027ECBE8B000069BE /* DispatchQueue+DispatchingTests.swift */; };
+		CB00CA9D27ECBE8C000069BE /* ErrorResponse+LoggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA5127ECBE8B000069BE /* ErrorResponse+LoggingTests.swift */; };
+		CB00CA9E27ECBE8C000069BE /* URL+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA5227ECBE8B000069BE /* URL+ExtensionsTests.swift */; };
+		CB00CA9F27ECBE8C000069BE /* CheckoutAPIClientIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA5327ECBE8B000069BE /* CheckoutAPIClientIntegrationTests.swift */; };
+		CB00CAA027ECBE8C000069BE /* CardUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA5427ECBE8B000069BE /* CardUtilsTests.swift */; };
+		CB00CAA127ECBE8C000069BE /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA5527ECBE8B000069BE /* NetworkErrorTests.swift */; };
+		CB00CAA227ECBE8C000069BE /* NetworkFlowLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA5727ECBE8B000069BE /* NetworkFlowLoggerTests.swift */; };
+		CB00CAA327ECBE8C000069BE /* CorrelationIDGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA5827ECBE8B000069BE /* CorrelationIDGeneratorTests.swift */; };
+		CB00CAA427ECBE8C000069BE /* FramesEventLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA5927ECBE8B000069BE /* FramesEventLoggerTests.swift */; };
+		CB00CAA527ECBE8C000069BE /* FramesLogEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA5A27ECBE8B000069BE /* FramesLogEventTests.swift */; };
+		CB00CAA627ECBE8C000069BE /* ResourcesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA5C27ECBE8B000069BE /* ResourcesTests.swift */; };
+		CB00CAA727ECBE8C000069BE /* cardToken.json in Resources */ = {isa = PBXBuildFile; fileRef = CB00CA5E27ECBE8B000069BE /* cardToken.json */; };
+		CB00CAA827ECBE8C000069BE /* cardTokenBillingDetails.json in Resources */ = {isa = PBXBuildFile; fileRef = CB00CA5F27ECBE8B000069BE /* cardTokenBillingDetails.json */; };
+		CB00CAA927ECBE8C000069BE /* cardProviders.json in Resources */ = {isa = PBXBuildFile; fileRef = CB00CA6027ECBE8B000069BE /* cardProviders.json */; };
+		CB00CAAA27ECBE8C000069BE /* applePayTokenInvalid.json in Resources */ = {isa = PBXBuildFile; fileRef = CB00CA6127ECBE8B000069BE /* applePayTokenInvalid.json */; };
+		CB00CAAB27ECBE8C000069BE /* cardTokenInvalidNumber.json in Resources */ = {isa = PBXBuildFile; fileRef = CB00CA6227ECBE8B000069BE /* cardTokenInvalidNumber.json */; };
+		CB00CAAC27ECBE8C000069BE /* applePayToken.json in Resources */ = {isa = PBXBuildFile; fileRef = CB00CA6327ECBE8B000069BE /* applePayToken.json */; };
+		CB00CAAF27ECBEB3000069BE /* StubTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CAAE27ECBEB3000069BE /* StubTheme.swift */; };
+		CB00CAB127ECC557000069BE /* UIColor+PropertyProvidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CAB027ECC557000069BE /* UIColor+PropertyProvidingTests.swift */; };
+		CB00CAB327EDCD5F000069BE /* UIFont+PropertyProvidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CAB227EDCD5F000069BE /* UIFont+PropertyProvidingTests.swift */; };
+		CB03DA0727F5E3F1003DAC97 /* ThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB03DA0627F5E3F1003DAC97 /* ThemeTests.swift */; };
+		CB03DA0927F5F685003DAC97 /* UIBarStyle+stringValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB03DA0827F5F685003DAC97 /* UIBarStyle+stringValueTests.swift */; };
 		E6646F8E20CE6C0900D8353A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646F8D20CE6C0900D8353A /* AppDelegate.swift */; };
 		E6646F9020CE6C0900D8353A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646F8F20CE6C0900D8353A /* MainViewController.swift */; };
 		E6646F9320CE6C0900D8353A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6646F9120CE6C0900D8353A /* Main.storyboard */; };
@@ -404,81 +417,94 @@
 		57256C65269F0FB0001EC3D8 /* JSONEncoder+TopLevelEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+TopLevelEncoder.swift"; sourceTree = "<group>"; };
 		57256C66269F0FB0001EC3D8 /* URL+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		57256C67269F0FB0001EC3D8 /* JSONEncoder+ContentTypeProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+ContentTypeProviding.swift"; sourceTree = "<group>"; };
-		57256C68269F0FB0001EC3D8 /* ErrorResponse+Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ErrorResponse+Logging.swift"; sourceTree = "<group>"; };
+		57256C68269F0FB0001EC3D8 /* ErrorResponse+PropertyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ErrorResponse+PropertyProviding.swift"; sourceTree = "<group>"; };
 		57256C69269F0FB0001EC3D8 /* DispatchQueue+Dispatching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Dispatching.swift"; sourceTree = "<group>"; };
 		57256C6A269F0FB0001EC3D8 /* JSONDecoder+TopLevelDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+TopLevelDecoder.swift"; sourceTree = "<group>"; };
 		57256C79269F1181001EC3D8 /* FramesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FramesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		57256CA3269F1278001EC3D8 /* DetailsInputViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsInputViewTests.swift; sourceTree = "<group>"; };
-		57256CA4269F1278001EC3D8 /* AddressViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewControllerTests.swift; sourceTree = "<group>"; };
-		57256CA5269F1278001EC3D8 /* CountrySelectionViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrySelectionViewControllerTests.swift; sourceTree = "<group>"; };
-		57256CA6269F1278001EC3D8 /* CvvInputViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvInputViewTests.swift; sourceTree = "<group>"; };
-		57256CA7269F1278001EC3D8 /* CardNumberInputViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberInputViewTests.swift; sourceTree = "<group>"; };
-		57256CA8269F1278001EC3D8 /* CardListCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListCellTests.swift; sourceTree = "<group>"; };
-		57256CA9269F1278001EC3D8 /* CvvConfirmationViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvConfirmationViewControllerTests.swift; sourceTree = "<group>"; };
-		57256CAA269F1278001EC3D8 /* ExpirationDateInputViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationDateInputViewTests.swift; sourceTree = "<group>"; };
-		57256CAB269F1278001EC3D8 /* CardListCellNameTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListCellNameTests.swift; sourceTree = "<group>"; };
-		57256CAC269F1278001EC3D8 /* StandardInputViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardInputViewTests.swift; sourceTree = "<group>"; };
-		57256CAD269F1278001EC3D8 /* ThreedsWebViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreedsWebViewControllerTests.swift; sourceTree = "<group>"; };
-		57256CAE269F1278001EC3D8 /* ExpirationDatePickerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationDatePickerTests.swift; sourceTree = "<group>"; };
-		57256CAF269F1278001EC3D8 /* SimpleLoadingViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleLoadingViewControllerTests.swift; sourceTree = "<group>"; };
-		57256CB1269F1278001EC3D8 /* PhoneNumberInputViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberInputViewTests.swift; sourceTree = "<group>"; };
-		57256CB2269F1278001EC3D8 /* AddressViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewTests.swift; sourceTree = "<group>"; };
-		57256CB3269F1278001EC3D8 /* CardViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewTests.swift; sourceTree = "<group>"; };
-		57256CB4269F1278001EC3D8 /* SchemeIconsStackViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemeIconsStackViewTests.swift; sourceTree = "<group>"; };
-		57256CB5269F1278001EC3D8 /* CardViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewControllerTests.swift; sourceTree = "<group>"; };
-		57256CB6269F1278001EC3D8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../Tests/Info.plist; sourceTree = "<group>"; };
-		57256CB8269F1278001EC3D8 /* CheckoutAPIClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAPIClientTests.swift; sourceTree = "<group>"; };
-		57256CBA269F1278001EC3D8 /* RequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
-		57256CBB269F1278001EC3D8 /* HTTPMethodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethodTests.swift; sourceTree = "<group>"; };
-		57256CBC269F1278001EC3D8 /* RequestExecutorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestExecutorTests.swift; sourceTree = "<group>"; };
-		57256CBD269F1278001EC3D8 /* StubNetworkFlowLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubNetworkFlowLogger.swift; sourceTree = "<group>"; };
-		57256CBE269F1278001EC3D8 /* EnvironmentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentTests.swift; sourceTree = "<group>"; };
-		57256CC0269F1278001EC3D8 /* DispatchQueue+DispatchingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+DispatchingTests.swift"; sourceTree = "<group>"; };
-		57256CC1269F1278001EC3D8 /* ErrorResponse+LoggingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ErrorResponse+LoggingTests.swift"; sourceTree = "<group>"; };
-		57256CC3269F1278001EC3D8 /* CheckoutAPIClientIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAPIClientIntegrationTests.swift; sourceTree = "<group>"; };
-		57256CC4269F1278001EC3D8 /* CardUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardUtilsTests.swift; sourceTree = "<group>"; };
-		57256CC5269F1278001EC3D8 /* NetworkErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
-		57256CC7269F1278001EC3D8 /* NetworkFlowLoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkFlowLoggerTests.swift; sourceTree = "<group>"; };
-		57256CC8269F1278001EC3D8 /* CorrelationIDGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrelationIDGeneratorTests.swift; sourceTree = "<group>"; };
-		57256CC9269F1278001EC3D8 /* FramesEventLoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesEventLoggerTests.swift; sourceTree = "<group>"; };
-		57256CCA269F1278001EC3D8 /* FramesLogEventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesLogEventTests.swift; sourceTree = "<group>"; };
-		57256CCC269F1278001EC3D8 /* StubJSONDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubJSONDecoder.swift; sourceTree = "<group>"; };
-		57256CCD269F1278001EC3D8 /* StubRequestParameterProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubRequestParameterProvider.swift; sourceTree = "<group>"; };
-		57256CCE269F1278001EC3D8 /* StubFramesEventLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubFramesEventLogger.swift; sourceTree = "<group>"; };
-		57256CCF269F1278001EC3D8 /* StubEnvironmentURLProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubEnvironmentURLProvider.swift; sourceTree = "<group>"; };
-		57256CD0269F1278001EC3D8 /* StubCorrelationIDGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCorrelationIDGenerator.swift; sourceTree = "<group>"; };
-		57256CD1269F1278001EC3D8 /* StubNetworkFlowLoggerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubNetworkFlowLoggerFactory.swift; sourceTree = "<group>"; };
-		57256CD2269F1278001EC3D8 /* NotificationCenterMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterMock.swift; sourceTree = "<group>"; };
-		57256CD3269F1278001EC3D8 /* NavigationControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerMock.swift; sourceTree = "<group>"; };
-		57256CD4269F1278001EC3D8 /* StubCheckoutAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCheckoutAPIClient.swift; sourceTree = "<group>"; };
-		57256CD5269F1278001EC3D8 /* StubUIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubUIDevice.swift; sourceTree = "<group>"; };
-		57256CD6269F1278001EC3D8 /* CardViewControllerMockDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewControllerMockDelegate.swift; sourceTree = "<group>"; };
-		57256CD7269F1278001EC3D8 /* StubDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubDispatcher.swift; sourceTree = "<group>"; };
-		57256CD8269F1278001EC3D8 /* StubRequestExecutor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubRequestExecutor.swift; sourceTree = "<group>"; };
-		57256CD9269F1278001EC3D8 /* StubURLSessionDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubURLSessionDataTask.swift; sourceTree = "<group>"; };
-		57256CDA269F1278001EC3D8 /* StubJSONEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubJSONEncoder.swift; sourceTree = "<group>"; };
-		57256CDB269F1278001EC3D8 /* CardViewControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewControllerMock.swift; sourceTree = "<group>"; };
-		57256CDC269F1278001EC3D8 /* CvvViewControllerDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvViewControllerDelegateMock.swift; sourceTree = "<group>"; };
-		57256CDD269F1278001EC3D8 /* StubURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubURLProtocol.swift; sourceTree = "<group>"; };
-		57256CDE269F1278001EC3D8 /* StubCheckoutEventLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCheckoutEventLogger.swift; sourceTree = "<group>"; };
-		57256CDF269F1278001EC3D8 /* StubDateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubDateProvider.swift; sourceTree = "<group>"; };
-		57256CE0269F1278001EC3D8 /* AddressViewControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewControllerMock.swift; sourceTree = "<group>"; };
-		57256CE1269F1278001EC3D8 /* AddressViewControllerMockDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewControllerMockDelegate.swift; sourceTree = "<group>"; };
-		57256CE2269F1278001EC3D8 /* CardNumberInputViewMockDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberInputViewMockDelegate.swift; sourceTree = "<group>"; };
-		57256CE3269F1278001EC3D8 /* StubURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubURLSession.swift; sourceTree = "<group>"; };
-		57256CE4269F1278001EC3D8 /* StubCardViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCardViewControllerDelegate.swift; sourceTree = "<group>"; };
-		57256CE5269F1278001EC3D8 /* StubError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubError.swift; sourceTree = "<group>"; };
-		57256CE6269F1278001EC3D8 /* CvvInputViewMockDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvInputViewMockDelegate.swift; sourceTree = "<group>"; };
-		57256CE8269F1278001EC3D8 /* cardToken.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardToken.json; sourceTree = "<group>"; };
-		57256CE9269F1278001EC3D8 /* cardTokenBillingDetails.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardTokenBillingDetails.json; sourceTree = "<group>"; };
-		57256CEA269F1278001EC3D8 /* cardProviders.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardProviders.json; sourceTree = "<group>"; };
-		57256CEB269F1278001EC3D8 /* applePayTokenInvalid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applePayTokenInvalid.json; sourceTree = "<group>"; };
-		57256CEC269F1278001EC3D8 /* cardTokenInvalidNumber.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardTokenInvalidNumber.json; sourceTree = "<group>"; };
-		57256CED269F1278001EC3D8 /* applePayToken.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applePayToken.json; sourceTree = "<group>"; };
-		57256CEF269F1279001EC3D8 /* NetworkError+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkError+Equatable.swift"; sourceTree = "<group>"; };
-		57256CF0269F1279001EC3D8 /* CkoCardTokenResponse+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CkoCardTokenResponse+Extensions.swift"; sourceTree = "<group>"; };
 		57256DEB269FA42E001EC3D8 /* Dictionary+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Additions.swift"; sourceTree = "<group>"; };
-		57256DF0269FA45A001EC3D8 /* Dictionary+AdditionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+AdditionsTests.swift"; sourceTree = "<group>"; };
+		CB00CA0327EB4B27000069BE /* UIColor+PropertyProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+PropertyProviding.swift"; sourceTree = "<group>"; };
+		CB00CA0527EB51B8000069BE /* UIFont+PropertyProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+PropertyProviding.swift"; sourceTree = "<group>"; };
+		CB00CA0727EB5836000069BE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		CB00CA0927EB5842000069BE /* PropertyProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyProviding.swift; sourceTree = "<group>"; };
+		CB00CA0B27ECA7A1000069BE /* UIBarStyle+stringValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarStyle+stringValue.swift"; sourceTree = "<group>"; };
+		CB00CA1327ECBE8B000069BE /* StubJSONDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubJSONDecoder.swift; sourceTree = "<group>"; };
+		CB00CA1427ECBE8B000069BE /* StubRequestParameterProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubRequestParameterProvider.swift; sourceTree = "<group>"; };
+		CB00CA1527ECBE8B000069BE /* StubFramesEventLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubFramesEventLogger.swift; sourceTree = "<group>"; };
+		CB00CA1627ECBE8B000069BE /* StubEnvironmentURLProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubEnvironmentURLProvider.swift; sourceTree = "<group>"; };
+		CB00CA1727ECBE8B000069BE /* StubCorrelationIDGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCorrelationIDGenerator.swift; sourceTree = "<group>"; };
+		CB00CA1827ECBE8B000069BE /* StubNetworkFlowLoggerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubNetworkFlowLoggerFactory.swift; sourceTree = "<group>"; };
+		CB00CA1927ECBE8B000069BE /* NotificationCenterMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterMock.swift; sourceTree = "<group>"; };
+		CB00CA1A27ECBE8B000069BE /* NavigationControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerMock.swift; sourceTree = "<group>"; };
+		CB00CA1B27ECBE8B000069BE /* StubCheckoutAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCheckoutAPIClient.swift; sourceTree = "<group>"; };
+		CB00CA1C27ECBE8B000069BE /* StubUIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubUIDevice.swift; sourceTree = "<group>"; };
+		CB00CA1D27ECBE8B000069BE /* CardViewControllerMockDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewControllerMockDelegate.swift; sourceTree = "<group>"; };
+		CB00CA1E27ECBE8B000069BE /* StubDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubDispatcher.swift; sourceTree = "<group>"; };
+		CB00CA1F27ECBE8B000069BE /* StubRequestExecutor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubRequestExecutor.swift; sourceTree = "<group>"; };
+		CB00CA2027ECBE8B000069BE /* StubURLSessionDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubURLSessionDataTask.swift; sourceTree = "<group>"; };
+		CB00CA2127ECBE8B000069BE /* StubJSONEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubJSONEncoder.swift; sourceTree = "<group>"; };
+		CB00CA2227ECBE8B000069BE /* CardViewControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewControllerMock.swift; sourceTree = "<group>"; };
+		CB00CA2327ECBE8B000069BE /* CvvViewControllerDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvViewControllerDelegateMock.swift; sourceTree = "<group>"; };
+		CB00CA2427ECBE8B000069BE /* StubURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubURLProtocol.swift; sourceTree = "<group>"; };
+		CB00CA2527ECBE8B000069BE /* StubCheckoutEventLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCheckoutEventLogger.swift; sourceTree = "<group>"; };
+		CB00CA2627ECBE8B000069BE /* StubDateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubDateProvider.swift; sourceTree = "<group>"; };
+		CB00CA2727ECBE8B000069BE /* AddressViewControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewControllerMock.swift; sourceTree = "<group>"; };
+		CB00CA2827ECBE8B000069BE /* AddressViewControllerMockDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewControllerMockDelegate.swift; sourceTree = "<group>"; };
+		CB00CA2927ECBE8B000069BE /* CardNumberInputViewMockDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberInputViewMockDelegate.swift; sourceTree = "<group>"; };
+		CB00CA2A27ECBE8B000069BE /* StubURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubURLSession.swift; sourceTree = "<group>"; };
+		CB00CA2B27ECBE8B000069BE /* StubCardViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCardViewControllerDelegate.swift; sourceTree = "<group>"; };
+		CB00CA2C27ECBE8B000069BE /* StubError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubError.swift; sourceTree = "<group>"; };
+		CB00CA2D27ECBE8B000069BE /* CvvInputViewMockDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvInputViewMockDelegate.swift; sourceTree = "<group>"; };
+		CB00CA2F27ECBE8B000069BE /* DetailsInputViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsInputViewTests.swift; sourceTree = "<group>"; };
+		CB00CA3027ECBE8B000069BE /* AddressViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewControllerTests.swift; sourceTree = "<group>"; };
+		CB00CA3127ECBE8B000069BE /* CountrySelectionViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrySelectionViewControllerTests.swift; sourceTree = "<group>"; };
+		CB00CA3227ECBE8B000069BE /* CvvInputViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvInputViewTests.swift; sourceTree = "<group>"; };
+		CB00CA3327ECBE8B000069BE /* CardNumberInputViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberInputViewTests.swift; sourceTree = "<group>"; };
+		CB00CA3427ECBE8B000069BE /* CardListCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListCellTests.swift; sourceTree = "<group>"; };
+		CB00CA3527ECBE8B000069BE /* CvvConfirmationViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvConfirmationViewControllerTests.swift; sourceTree = "<group>"; };
+		CB00CA3627ECBE8B000069BE /* ExpirationDateInputViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationDateInputViewTests.swift; sourceTree = "<group>"; };
+		CB00CA3727ECBE8B000069BE /* CardListCellNameTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListCellNameTests.swift; sourceTree = "<group>"; };
+		CB00CA3827ECBE8B000069BE /* StandardInputViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardInputViewTests.swift; sourceTree = "<group>"; };
+		CB00CA3927ECBE8B000069BE /* ThreedsWebViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreedsWebViewControllerTests.swift; sourceTree = "<group>"; };
+		CB00CA3A27ECBE8B000069BE /* ExpirationDatePickerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationDatePickerTests.swift; sourceTree = "<group>"; };
+		CB00CA3B27ECBE8B000069BE /* SimpleLoadingViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleLoadingViewControllerTests.swift; sourceTree = "<group>"; };
+		CB00CA3D27ECBE8B000069BE /* PhoneNumberInputViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberInputViewTests.swift; sourceTree = "<group>"; };
+		CB00CA3E27ECBE8B000069BE /* AddressViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewTests.swift; sourceTree = "<group>"; };
+		CB00CA3F27ECBE8B000069BE /* CardViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewTests.swift; sourceTree = "<group>"; };
+		CB00CA4027ECBE8B000069BE /* SchemeIconsStackViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemeIconsStackViewTests.swift; sourceTree = "<group>"; };
+		CB00CA4127ECBE8B000069BE /* CardViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewControllerTests.swift; sourceTree = "<group>"; };
+		CB00CA4327ECBE8B000069BE /* NetworkError+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkError+Equatable.swift"; sourceTree = "<group>"; };
+		CB00CA4427ECBE8B000069BE /* CkoCardTokenResponse+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CkoCardTokenResponse+Extensions.swift"; sourceTree = "<group>"; };
+		CB00CA4627ECBE8B000069BE /* CheckoutAPIClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAPIClientTests.swift; sourceTree = "<group>"; };
+		CB00CA4727ECBE8B000069BE /* URLHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLHelperTests.swift; sourceTree = "<group>"; };
+		CB00CA4927ECBE8B000069BE /* RequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
+		CB00CA4A27ECBE8B000069BE /* HTTPMethodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethodTests.swift; sourceTree = "<group>"; };
+		CB00CA4B27ECBE8B000069BE /* RequestExecutorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestExecutorTests.swift; sourceTree = "<group>"; };
+		CB00CA4C27ECBE8B000069BE /* StubNetworkFlowLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubNetworkFlowLogger.swift; sourceTree = "<group>"; };
+		CB00CA4D27ECBE8B000069BE /* EnvironmentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentTests.swift; sourceTree = "<group>"; };
+		CB00CA4F27ECBE8B000069BE /* Dictionary+AdditionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+AdditionsTests.swift"; sourceTree = "<group>"; };
+		CB00CA5027ECBE8B000069BE /* DispatchQueue+DispatchingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+DispatchingTests.swift"; sourceTree = "<group>"; };
+		CB00CA5127ECBE8B000069BE /* ErrorResponse+LoggingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ErrorResponse+LoggingTests.swift"; sourceTree = "<group>"; };
+		CB00CA5227ECBE8B000069BE /* URL+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+ExtensionsTests.swift"; sourceTree = "<group>"; };
+		CB00CA5327ECBE8B000069BE /* CheckoutAPIClientIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAPIClientIntegrationTests.swift; sourceTree = "<group>"; };
+		CB00CA5427ECBE8B000069BE /* CardUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardUtilsTests.swift; sourceTree = "<group>"; };
+		CB00CA5527ECBE8B000069BE /* NetworkErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
+		CB00CA5727ECBE8B000069BE /* NetworkFlowLoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkFlowLoggerTests.swift; sourceTree = "<group>"; };
+		CB00CA5827ECBE8B000069BE /* CorrelationIDGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrelationIDGeneratorTests.swift; sourceTree = "<group>"; };
+		CB00CA5927ECBE8B000069BE /* FramesEventLoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesEventLoggerTests.swift; sourceTree = "<group>"; };
+		CB00CA5A27ECBE8B000069BE /* FramesLogEventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesLogEventTests.swift; sourceTree = "<group>"; };
+		CB00CA5C27ECBE8B000069BE /* ResourcesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesTests.swift; sourceTree = "<group>"; };
+		CB00CA5E27ECBE8B000069BE /* cardToken.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardToken.json; sourceTree = "<group>"; };
+		CB00CA5F27ECBE8B000069BE /* cardTokenBillingDetails.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardTokenBillingDetails.json; sourceTree = "<group>"; };
+		CB00CA6027ECBE8B000069BE /* cardProviders.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardProviders.json; sourceTree = "<group>"; };
+		CB00CA6127ECBE8B000069BE /* applePayTokenInvalid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applePayTokenInvalid.json; sourceTree = "<group>"; };
+		CB00CA6227ECBE8B000069BE /* cardTokenInvalidNumber.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardTokenInvalidNumber.json; sourceTree = "<group>"; };
+		CB00CA6327ECBE8B000069BE /* applePayToken.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applePayToken.json; sourceTree = "<group>"; };
+		CB00CA6427ECBE8B000069BE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB00CAAE27ECBEB3000069BE /* StubTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubTheme.swift; sourceTree = "<group>"; };
+		CB00CAB027ECC557000069BE /* UIColor+PropertyProvidingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+PropertyProvidingTests.swift"; sourceTree = "<group>"; };
+		CB00CAB227EDCD5F000069BE /* UIFont+PropertyProvidingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+PropertyProvidingTests.swift"; sourceTree = "<group>"; };
+		CB03DA0627F5E3F1003DAC97 /* ThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTests.swift; sourceTree = "<group>"; };
+		CB03DA0827F5F685003DAC97 /* UIBarStyle+stringValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarStyle+stringValueTests.swift"; sourceTree = "<group>"; };
 		E6646F8D20CE6C0900D8353A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6646F8F20CE6C0900D8353A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E6646F9220CE6C0900D8353A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -702,7 +728,7 @@
 			children = (
 				57256DEB269FA42E001EC3D8 /* Dictionary+Additions.swift */,
 				57256C69269F0FB0001EC3D8 /* DispatchQueue+Dispatching.swift */,
-				57256C68269F0FB0001EC3D8 /* ErrorResponse+Logging.swift */,
+				57256C68269F0FB0001EC3D8 /* ErrorResponse+PropertyProviding.swift */,
 				57256C6A269F0FB0001EC3D8 /* JSONDecoder+TopLevelDecoder.swift */,
 				57256C67269F0FB0001EC3D8 /* JSONEncoder+ContentTypeProviding.swift */,
 				57256C65269F0FB0001EC3D8 /* JSONEncoder+TopLevelEncoder.swift */,
@@ -712,6 +738,9 @@
 				442277E02616376E009626A0 /* UIViewControllerExtensions.swift */,
 				442277E12616376E009626A0 /* UIViewExtensions.swift */,
 				442277E22616376E009626A0 /* UIResponderExtensions.swift */,
+				CB00CA0327EB4B27000069BE /* UIColor+PropertyProviding.swift */,
+				CB00CA0527EB51B8000069BE /* UIFont+PropertyProviding.swift */,
+				CB00CA0B27ECA7A1000069BE /* UIBarStyle+stringValue.swift */,
 			);
 			name = Extensions;
 			path = ../../Source/Extensions;
@@ -748,6 +777,8 @@
 				57256C4D269F0F90001EC3D8 /* NetworkFlowLoggerFactory.swift */,
 				57256C4A269F0F90001EC3D8 /* TokenType.swift */,
 				44F095162625F7E600CB287F /* FramesLogEvent.swift */,
+				CB00CA0727EB5836000069BE /* Theme.swift */,
+				CB00CA0927EB5842000069BE /* PropertyProviding.swift */,
 			);
 			path = Logging;
 			sourceTree = "<group>";
@@ -762,158 +793,170 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		57256C7A269F1181001EC3D8 /* FramesTests */ = {
+		CB00CA1127ECBE8B000069BE /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				57256CB7269F1278001EC3D8 /* Core */,
-				57256CE7269F1278001EC3D8 /* Fixtures */,
-				57256CB6269F1278001EC3D8 /* Info.plist */,
-				57256CCB269F1278001EC3D8 /* Mocks */,
-				57256CEE269F1279001EC3D8 /* Test Helpers */,
-				57256CA2269F1278001EC3D8 /* UI */,
+				CB00CA1227ECBE8B000069BE /* Mocks */,
+				CB00CA2E27ECBE8B000069BE /* UI */,
+				CB00CA4227ECBE8B000069BE /* Test Helpers */,
+				CB00CA4527ECBE8B000069BE /* Core */,
+				CB00CA5B27ECBE8B000069BE /* Resources */,
+				CB00CA5D27ECBE8B000069BE /* Fixtures */,
+				CB00CA6427ECBE8B000069BE /* Info.plist */,
 			);
-			path = FramesTests;
+			name = Tests;
+			path = ../Tests;
 			sourceTree = "<group>";
 		};
-		57256CA2269F1278001EC3D8 /* UI */ = {
+		CB00CA1227ECBE8B000069BE /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				57256CA3269F1278001EC3D8 /* DetailsInputViewTests.swift */,
-				57256CA4269F1278001EC3D8 /* AddressViewControllerTests.swift */,
-				57256CA5269F1278001EC3D8 /* CountrySelectionViewControllerTests.swift */,
-				57256CA6269F1278001EC3D8 /* CvvInputViewTests.swift */,
-				57256CA7269F1278001EC3D8 /* CardNumberInputViewTests.swift */,
-				57256CA8269F1278001EC3D8 /* CardListCellTests.swift */,
-				57256CA9269F1278001EC3D8 /* CvvConfirmationViewControllerTests.swift */,
-				57256CAA269F1278001EC3D8 /* ExpirationDateInputViewTests.swift */,
-				57256CAB269F1278001EC3D8 /* CardListCellNameTests.swift */,
-				57256CAC269F1278001EC3D8 /* StandardInputViewTests.swift */,
-				57256CAD269F1278001EC3D8 /* ThreedsWebViewControllerTests.swift */,
-				57256CAE269F1278001EC3D8 /* ExpirationDatePickerTests.swift */,
-				57256CAF269F1278001EC3D8 /* SimpleLoadingViewControllerTests.swift */,
-				57256CB0269F1278001EC3D8 /* Views */,
-				57256CB5269F1278001EC3D8 /* CardViewControllerTests.swift */,
+				CB00CA1327ECBE8B000069BE /* StubJSONDecoder.swift */,
+				CB00CA1427ECBE8B000069BE /* StubRequestParameterProvider.swift */,
+				CB00CA1527ECBE8B000069BE /* StubFramesEventLogger.swift */,
+				CB00CA1627ECBE8B000069BE /* StubEnvironmentURLProvider.swift */,
+				CB00CA1727ECBE8B000069BE /* StubCorrelationIDGenerator.swift */,
+				CB00CA1827ECBE8B000069BE /* StubNetworkFlowLoggerFactory.swift */,
+				CB00CA1927ECBE8B000069BE /* NotificationCenterMock.swift */,
+				CB00CA1A27ECBE8B000069BE /* NavigationControllerMock.swift */,
+				CB00CA1B27ECBE8B000069BE /* StubCheckoutAPIClient.swift */,
+				CB00CA1C27ECBE8B000069BE /* StubUIDevice.swift */,
+				CB00CA1D27ECBE8B000069BE /* CardViewControllerMockDelegate.swift */,
+				CB00CA1E27ECBE8B000069BE /* StubDispatcher.swift */,
+				CB00CA1F27ECBE8B000069BE /* StubRequestExecutor.swift */,
+				CB00CA2027ECBE8B000069BE /* StubURLSessionDataTask.swift */,
+				CB00CA2127ECBE8B000069BE /* StubJSONEncoder.swift */,
+				CB00CA2227ECBE8B000069BE /* CardViewControllerMock.swift */,
+				CB00CA2327ECBE8B000069BE /* CvvViewControllerDelegateMock.swift */,
+				CB00CA2427ECBE8B000069BE /* StubURLProtocol.swift */,
+				CB00CA2527ECBE8B000069BE /* StubCheckoutEventLogger.swift */,
+				CB00CA2627ECBE8B000069BE /* StubDateProvider.swift */,
+				CB00CA2727ECBE8B000069BE /* AddressViewControllerMock.swift */,
+				CB00CA2827ECBE8B000069BE /* AddressViewControllerMockDelegate.swift */,
+				CB00CA2927ECBE8B000069BE /* CardNumberInputViewMockDelegate.swift */,
+				CB00CA2A27ECBE8B000069BE /* StubURLSession.swift */,
+				CB00CA2B27ECBE8B000069BE /* StubCardViewControllerDelegate.swift */,
+				CB00CA2C27ECBE8B000069BE /* StubError.swift */,
+				CB00CA2D27ECBE8B000069BE /* CvvInputViewMockDelegate.swift */,
+				CB00CAAE27ECBEB3000069BE /* StubTheme.swift */,
 			);
-			name = UI;
-			path = ../../Tests/UI;
+			path = Mocks;
 			sourceTree = "<group>";
 		};
-		57256CB0269F1278001EC3D8 /* Views */ = {
+		CB00CA2E27ECBE8B000069BE /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				57256CB1269F1278001EC3D8 /* PhoneNumberInputViewTests.swift */,
-				57256CB2269F1278001EC3D8 /* AddressViewTests.swift */,
-				57256CB3269F1278001EC3D8 /* CardViewTests.swift */,
-				57256CB4269F1278001EC3D8 /* SchemeIconsStackViewTests.swift */,
+				CB00CA2F27ECBE8B000069BE /* DetailsInputViewTests.swift */,
+				CB00CA3027ECBE8B000069BE /* AddressViewControllerTests.swift */,
+				CB00CA3127ECBE8B000069BE /* CountrySelectionViewControllerTests.swift */,
+				CB00CA3227ECBE8B000069BE /* CvvInputViewTests.swift */,
+				CB00CA3327ECBE8B000069BE /* CardNumberInputViewTests.swift */,
+				CB00CA3427ECBE8B000069BE /* CardListCellTests.swift */,
+				CB00CA3527ECBE8B000069BE /* CvvConfirmationViewControllerTests.swift */,
+				CB00CA3627ECBE8B000069BE /* ExpirationDateInputViewTests.swift */,
+				CB00CA3727ECBE8B000069BE /* CardListCellNameTests.swift */,
+				CB00CA3827ECBE8B000069BE /* StandardInputViewTests.swift */,
+				CB00CA3927ECBE8B000069BE /* ThreedsWebViewControllerTests.swift */,
+				CB00CA3A27ECBE8B000069BE /* ExpirationDatePickerTests.swift */,
+				CB00CA3B27ECBE8B000069BE /* SimpleLoadingViewControllerTests.swift */,
+				CB00CA3C27ECBE8B000069BE /* Views */,
+				CB00CA4127ECBE8B000069BE /* CardViewControllerTests.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CB00CA3C27ECBE8B000069BE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CB00CA3D27ECBE8B000069BE /* PhoneNumberInputViewTests.swift */,
+				CB00CA3E27ECBE8B000069BE /* AddressViewTests.swift */,
+				CB00CA3F27ECBE8B000069BE /* CardViewTests.swift */,
+				CB00CA4027ECBE8B000069BE /* SchemeIconsStackViewTests.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		57256CB7269F1278001EC3D8 /* Core */ = {
+		CB00CA4227ECBE8B000069BE /* Test Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				57256CB8269F1278001EC3D8 /* CheckoutAPIClientTests.swift */,
-				57256CB9269F1278001EC3D8 /* Networking */,
-				57256CBE269F1278001EC3D8 /* EnvironmentTests.swift */,
-				57256CBF269F1278001EC3D8 /* Extensions */,
-				57256CC3269F1278001EC3D8 /* CheckoutAPIClientIntegrationTests.swift */,
-				57256CC4269F1278001EC3D8 /* CardUtilsTests.swift */,
-				57256CC5269F1278001EC3D8 /* NetworkErrorTests.swift */,
-				57256CC6269F1278001EC3D8 /* Logging */,
+				CB00CA4327ECBE8B000069BE /* NetworkError+Equatable.swift */,
+				CB00CA4427ECBE8B000069BE /* CkoCardTokenResponse+Extensions.swift */,
 			);
-			name = Core;
-			path = ../../Tests/Core;
+			path = "Test Helpers";
 			sourceTree = "<group>";
 		};
-		57256CB9269F1278001EC3D8 /* Networking */ = {
+		CB00CA4527ECBE8B000069BE /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				57256CBA269F1278001EC3D8 /* RequestTests.swift */,
-				57256CBB269F1278001EC3D8 /* HTTPMethodTests.swift */,
-				57256CBC269F1278001EC3D8 /* RequestExecutorTests.swift */,
-				57256CBD269F1278001EC3D8 /* StubNetworkFlowLogger.swift */,
+				CB00CA4627ECBE8B000069BE /* CheckoutAPIClientTests.swift */,
+				CB00CA4727ECBE8B000069BE /* URLHelperTests.swift */,
+				CB00CA4827ECBE8B000069BE /* Networking */,
+				CB00CA4D27ECBE8B000069BE /* EnvironmentTests.swift */,
+				CB00CA4E27ECBE8B000069BE /* Extensions */,
+				CB00CA5327ECBE8B000069BE /* CheckoutAPIClientIntegrationTests.swift */,
+				CB00CA5427ECBE8B000069BE /* CardUtilsTests.swift */,
+				CB00CA5527ECBE8B000069BE /* NetworkErrorTests.swift */,
+				CB00CA5627ECBE8B000069BE /* Logging */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		CB00CA4827ECBE8B000069BE /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				CB00CA4927ECBE8B000069BE /* RequestTests.swift */,
+				CB00CA4A27ECBE8B000069BE /* HTTPMethodTests.swift */,
+				CB00CA4B27ECBE8B000069BE /* RequestExecutorTests.swift */,
+				CB00CA4C27ECBE8B000069BE /* StubNetworkFlowLogger.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		57256CBF269F1278001EC3D8 /* Extensions */ = {
+		CB00CA4E27ECBE8B000069BE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				57256DF0269FA45A001EC3D8 /* Dictionary+AdditionsTests.swift */,
-				57256CC0269F1278001EC3D8 /* DispatchQueue+DispatchingTests.swift */,
-				57256CC1269F1278001EC3D8 /* ErrorResponse+LoggingTests.swift */,
+				CB00CA4F27ECBE8B000069BE /* Dictionary+AdditionsTests.swift */,
+				CB00CA5027ECBE8B000069BE /* DispatchQueue+DispatchingTests.swift */,
+				CB00CA5127ECBE8B000069BE /* ErrorResponse+LoggingTests.swift */,
+				CB00CA5227ECBE8B000069BE /* URL+ExtensionsTests.swift */,
+				CB00CAB027ECC557000069BE /* UIColor+PropertyProvidingTests.swift */,
+				CB00CAB227EDCD5F000069BE /* UIFont+PropertyProvidingTests.swift */,
+				CB03DA0827F5F685003DAC97 /* UIBarStyle+stringValueTests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		57256CC6269F1278001EC3D8 /* Logging */ = {
+		CB00CA5627ECBE8B000069BE /* Logging */ = {
 			isa = PBXGroup;
 			children = (
-				57256CC7269F1278001EC3D8 /* NetworkFlowLoggerTests.swift */,
-				57256CC8269F1278001EC3D8 /* CorrelationIDGeneratorTests.swift */,
-				57256CC9269F1278001EC3D8 /* FramesEventLoggerTests.swift */,
-				57256CCA269F1278001EC3D8 /* FramesLogEventTests.swift */,
+				CB00CA5727ECBE8B000069BE /* NetworkFlowLoggerTests.swift */,
+				CB00CA5827ECBE8B000069BE /* CorrelationIDGeneratorTests.swift */,
+				CB00CA5927ECBE8B000069BE /* FramesEventLoggerTests.swift */,
+				CB00CA5A27ECBE8B000069BE /* FramesLogEventTests.swift */,
+				CB03DA0627F5E3F1003DAC97 /* ThemeTests.swift */,
 			);
 			path = Logging;
 			sourceTree = "<group>";
 		};
-		57256CCB269F1278001EC3D8 /* Mocks */ = {
+		CB00CA5B27ECBE8B000069BE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				57256CCC269F1278001EC3D8 /* StubJSONDecoder.swift */,
-				57256CCD269F1278001EC3D8 /* StubRequestParameterProvider.swift */,
-				57256CCE269F1278001EC3D8 /* StubFramesEventLogger.swift */,
-				57256CCF269F1278001EC3D8 /* StubEnvironmentURLProvider.swift */,
-				57256CD0269F1278001EC3D8 /* StubCorrelationIDGenerator.swift */,
-				57256CD1269F1278001EC3D8 /* StubNetworkFlowLoggerFactory.swift */,
-				57256CD2269F1278001EC3D8 /* NotificationCenterMock.swift */,
-				57256CD3269F1278001EC3D8 /* NavigationControllerMock.swift */,
-				57256CD4269F1278001EC3D8 /* StubCheckoutAPIClient.swift */,
-				57256CD5269F1278001EC3D8 /* StubUIDevice.swift */,
-				57256CD6269F1278001EC3D8 /* CardViewControllerMockDelegate.swift */,
-				57256CD7269F1278001EC3D8 /* StubDispatcher.swift */,
-				57256CD8269F1278001EC3D8 /* StubRequestExecutor.swift */,
-				57256CD9269F1278001EC3D8 /* StubURLSessionDataTask.swift */,
-				57256CDA269F1278001EC3D8 /* StubJSONEncoder.swift */,
-				57256CDB269F1278001EC3D8 /* CardViewControllerMock.swift */,
-				57256CDC269F1278001EC3D8 /* CvvViewControllerDelegateMock.swift */,
-				57256CDD269F1278001EC3D8 /* StubURLProtocol.swift */,
-				57256CDE269F1278001EC3D8 /* StubCheckoutEventLogger.swift */,
-				57256CDF269F1278001EC3D8 /* StubDateProvider.swift */,
-				57256CE0269F1278001EC3D8 /* AddressViewControllerMock.swift */,
-				57256CE1269F1278001EC3D8 /* AddressViewControllerMockDelegate.swift */,
-				57256CE2269F1278001EC3D8 /* CardNumberInputViewMockDelegate.swift */,
-				57256CE3269F1278001EC3D8 /* StubURLSession.swift */,
-				57256CE4269F1278001EC3D8 /* StubCardViewControllerDelegate.swift */,
-				57256CE5269F1278001EC3D8 /* StubError.swift */,
-				57256CE6269F1278001EC3D8 /* CvvInputViewMockDelegate.swift */,
+				CB00CA5C27ECBE8B000069BE /* ResourcesTests.swift */,
 			);
-			name = Mocks;
-			path = ../../Tests/Mocks;
+			path = Resources;
 			sourceTree = "<group>";
 		};
-		57256CE7269F1278001EC3D8 /* Fixtures */ = {
+		CB00CA5D27ECBE8B000069BE /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
-				57256CE8269F1278001EC3D8 /* cardToken.json */,
-				57256CE9269F1278001EC3D8 /* cardTokenBillingDetails.json */,
-				57256CEA269F1278001EC3D8 /* cardProviders.json */,
-				57256CEB269F1278001EC3D8 /* applePayTokenInvalid.json */,
-				57256CEC269F1278001EC3D8 /* cardTokenInvalidNumber.json */,
-				57256CED269F1278001EC3D8 /* applePayToken.json */,
+				CB00CA5E27ECBE8B000069BE /* cardToken.json */,
+				CB00CA5F27ECBE8B000069BE /* cardTokenBillingDetails.json */,
+				CB00CA6027ECBE8B000069BE /* cardProviders.json */,
+				CB00CA6127ECBE8B000069BE /* applePayTokenInvalid.json */,
+				CB00CA6227ECBE8B000069BE /* cardTokenInvalidNumber.json */,
+				CB00CA6327ECBE8B000069BE /* applePayToken.json */,
 			);
-			name = Fixtures;
-			path = ../../Tests/Fixtures;
-			sourceTree = "<group>";
-		};
-		57256CEE269F1279001EC3D8 /* Test Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				57256CEF269F1279001EC3D8 /* NetworkError+Equatable.swift */,
-				57256CF0269F1279001EC3D8 /* CkoCardTokenResponse+Extensions.swift */,
-			);
-			name = "Test Helpers";
-			path = "../../Tests/Test Helpers";
+			path = Fixtures;
 			sourceTree = "<group>";
 		};
 		E6646F8120CE6C0900D8353A = {
@@ -925,7 +968,7 @@
 				E6646F8C20CE6C0900D8353A /* iOS Example Frame */,
 				E6646FA120CE6C0A00D8353A /* iOS Example FrameUITests */,
 				4422775E26163748009626A0 /* Frames */,
-				57256C7A269F1181001EC3D8 /* FramesTests */,
+				CB00CA1127ECBE8B000069BE /* Tests */,
 				443FCD9226137A4C009D6DE6 /* Frameworks */,
 				4422774726163716009626A0 /* iOS Example Frame.app */,
 				4422775D26163748009626A0 /* Frames.framework */,
@@ -1152,12 +1195,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57256D33269F1279001EC3D8 /* cardTokenInvalidNumber.json in Resources */,
-				57256D30269F1279001EC3D8 /* cardTokenBillingDetails.json in Resources */,
-				57256D31269F1279001EC3D8 /* cardProviders.json in Resources */,
-				57256D2F269F1279001EC3D8 /* cardToken.json in Resources */,
-				57256D34269F1279001EC3D8 /* applePayToken.json in Resources */,
-				57256D32269F1279001EC3D8 /* applePayTokenInvalid.json in Resources */,
+				CB00CAA827ECBE8C000069BE /* cardTokenBillingDetails.json in Resources */,
+				CB00CAAA27ECBE8C000069BE /* applePayTokenInvalid.json in Resources */,
+				CB00CAAB27ECBE8C000069BE /* cardTokenInvalidNumber.json in Resources */,
+				CB00CAAC27ECBE8C000069BE /* applePayToken.json in Resources */,
+				CB00CAA927ECBE8C000069BE /* cardProviders.json in Resources */,
+				CB00CAA727ECBE8C000069BE /* cardToken.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1220,6 +1263,7 @@
 				442278252616376E009626A0 /* CkoPhoneNumber.swift in Sources */,
 				4422781E2616376E009626A0 /* SchemeIconsStackView.swift in Sources */,
 				4422781A2616376E009626A0 /* ThreedsWebViewController.swift in Sources */,
+				CB00CA0C27ECA7A1000069BE /* UIBarStyle+stringValue.swift in Sources */,
 				442278212616376E009626A0 /* AddressView.swift in Sources */,
 				57256C51269F0F90001EC3D8 /* TokenType.swift in Sources */,
 				4422780D2616376E009626A0 /* CardListCellName.swift in Sources */,
@@ -1232,6 +1276,7 @@
 				442278352616376E009626A0 /* CustomerCard.swift in Sources */,
 				57256C53269F0F90001EC3D8 /* CorrelationIDGenerator.swift in Sources */,
 				4422781D2616376E009626A0 /* DetailsInputView.swift in Sources */,
+				CB00CA0427EB4B27000069BE /* UIColor+PropertyProviding.swift in Sources */,
 				442278232616376E009626A0 /* CvvInputView.swift in Sources */,
 				57256C62269F0FA0001EC3D8 /* Constants.swift in Sources */,
 				57256C46269F0F81001EC3D8 /* HTTPMethod.swift in Sources */,
@@ -1241,6 +1286,7 @@
 				442278242616376E009626A0 /* ExpirationDateInputView.swift in Sources */,
 				4452A1AD26FB5875006AF798 /* URLHelper.swift in Sources */,
 				57256C55269F0F90001EC3D8 /* FramesEventLogger.swift in Sources */,
+				CB00CA0A27EB5842000069BE /* PropertyProviding.swift in Sources */,
 				442278392616376E009626A0 /* StringExtensions.swift in Sources */,
 				4422781C2616376E009626A0 /* CardView.swift in Sources */,
 				442278302616376E009626A0 /* CkoCardTokenRequest.swift in Sources */,
@@ -1250,15 +1296,17 @@
 				57256C5F269F0FA0001EC3D8 /* Dispatching.swift in Sources */,
 				4422782A2616376E009626A0 /* Customer.swift in Sources */,
 				57256C56269F0F90001EC3D8 /* NetworkFlowLogger.swift in Sources */,
+				CB00CA0627EB51B8000069BE /* UIFont+PropertyProviding.swift in Sources */,
 				442278282616376E009626A0 /* CardProviderResponse.swift in Sources */,
 				4422780C2616376E009626A0 /* ExpirationDatePicker.swift in Sources */,
 				57256C6D269F0FB0001EC3D8 /* URL+Extensions.swift in Sources */,
 				442278122616376E009626A0 /* ExpirationDatePickerDelegate.swift in Sources */,
 				57256C6E269F0FB0001EC3D8 /* JSONEncoder+ContentTypeProviding.swift in Sources */,
 				4422781B2616376E009626A0 /* AddressViewController.swift in Sources */,
+				CB00CA0827EB5836000069BE /* Theme.swift in Sources */,
 				442278202616376E009626A0 /* PhoneNumberInputView.swift in Sources */,
 				4422780B2616376E009626A0 /* CardListCell.swift in Sources */,
-				57256C6F269F0FB0001EC3D8 /* ErrorResponse+Logging.swift in Sources */,
+				57256C6F269F0FB0001EC3D8 /* ErrorResponse+PropertyProviding.swift in Sources */,
 				4422783C2616376E009626A0 /* UIResponderExtensions.swift in Sources */,
 				442278192616376E009626A0 /* SimpleLoadingViewController.swift in Sources */,
 				57256C61269F0FA0001EC3D8 /* ContentTypeProviding.swift in Sources */,
@@ -1288,69 +1336,77 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57256D12269F1279001EC3D8 /* FramesEventLoggerTests.swift in Sources */,
-				57256CF2269F1279001EC3D8 /* AddressViewControllerTests.swift in Sources */,
-				57256CF1269F1279001EC3D8 /* DetailsInputViewTests.swift in Sources */,
-				57256D2E269F1279001EC3D8 /* CvvInputViewMockDelegate.swift in Sources */,
-				57256CF3269F1279001EC3D8 /* CountrySelectionViewControllerTests.swift in Sources */,
-				57256CF5269F1279001EC3D8 /* CardNumberInputViewTests.swift in Sources */,
-				57256CFC269F1279001EC3D8 /* ExpirationDatePickerTests.swift in Sources */,
-				57256D16269F1279001EC3D8 /* StubFramesEventLogger.swift in Sources */,
-				57256D36269F1279001EC3D8 /* CkoCardTokenResponse+Extensions.swift in Sources */,
-				57256D25269F1279001EC3D8 /* StubURLProtocol.swift in Sources */,
-				57256D05269F1279001EC3D8 /* RequestTests.swift in Sources */,
-				57256D26269F1279001EC3D8 /* StubCheckoutEventLogger.swift in Sources */,
-				57256CF8269F1279001EC3D8 /* ExpirationDateInputViewTests.swift in Sources */,
-				57256D00269F1279001EC3D8 /* CardViewTests.swift in Sources */,
-				57256D0D269F1279001EC3D8 /* CheckoutAPIClientIntegrationTests.swift in Sources */,
-				57256D1B269F1279001EC3D8 /* NavigationControllerMock.swift in Sources */,
-				57256D1F269F1279001EC3D8 /* StubDispatcher.swift in Sources */,
-				57256CF7269F1279001EC3D8 /* CvvConfirmationViewControllerTests.swift in Sources */,
-				57256D22269F1279001EC3D8 /* StubJSONEncoder.swift in Sources */,
-				57256D17269F1279001EC3D8 /* StubEnvironmentURLProvider.swift in Sources */,
-				57256D2D269F1279001EC3D8 /* StubError.swift in Sources */,
-				57256D27269F1279001EC3D8 /* StubDateProvider.swift in Sources */,
-				57256CFE269F1279001EC3D8 /* PhoneNumberInputViewTests.swift in Sources */,
-				57256D2A269F1279001EC3D8 /* CardNumberInputViewMockDelegate.swift in Sources */,
-				57256CF4269F1279001EC3D8 /* CvvInputViewTests.swift in Sources */,
-				57256D10269F1279001EC3D8 /* NetworkFlowLoggerTests.swift in Sources */,
-				57256CF9269F1279001EC3D8 /* CardListCellNameTests.swift in Sources */,
-				57256D19269F1279001EC3D8 /* StubNetworkFlowLoggerFactory.swift in Sources */,
-				57256D08269F1279001EC3D8 /* StubNetworkFlowLogger.swift in Sources */,
-				57256D11269F1279001EC3D8 /* CorrelationIDGeneratorTests.swift in Sources */,
-				57256D07269F1279001EC3D8 /* RequestExecutorTests.swift in Sources */,
-				57256D1C269F1279001EC3D8 /* StubCheckoutAPIClient.swift in Sources */,
-				57256D0B269F1279001EC3D8 /* ErrorResponse+LoggingTests.swift in Sources */,
-				57256D04269F1279001EC3D8 /* CheckoutAPIClientTests.swift in Sources */,
-				57256D1A269F1279001EC3D8 /* NotificationCenterMock.swift in Sources */,
-				57256D28269F1279001EC3D8 /* AddressViewControllerMock.swift in Sources */,
-				57256D15269F1279001EC3D8 /* StubRequestParameterProvider.swift in Sources */,
-				57256CFA269F1279001EC3D8 /* StandardInputViewTests.swift in Sources */,
-				57256D02269F1279001EC3D8 /* CardViewControllerTests.swift in Sources */,
-				57256D24269F1279001EC3D8 /* CvvViewControllerDelegateMock.swift in Sources */,
-				57256D0E269F1279001EC3D8 /* CardUtilsTests.swift in Sources */,
-				57256D1E269F1279001EC3D8 /* CardViewControllerMockDelegate.swift in Sources */,
-				57256D09269F1279001EC3D8 /* EnvironmentTests.swift in Sources */,
-				57256D2C269F1279001EC3D8 /* StubCardViewControllerDelegate.swift in Sources */,
-				57256CFD269F1279001EC3D8 /* SimpleLoadingViewControllerTests.swift in Sources */,
-				57256D20269F1279001EC3D8 /* StubRequestExecutor.swift in Sources */,
-				57256D0A269F1279001EC3D8 /* DispatchQueue+DispatchingTests.swift in Sources */,
-				57256D14269F1279001EC3D8 /* StubJSONDecoder.swift in Sources */,
-				57256D0F269F1279001EC3D8 /* NetworkErrorTests.swift in Sources */,
-				57256D01269F1279001EC3D8 /* SchemeIconsStackViewTests.swift in Sources */,
-				57256CFB269F1279001EC3D8 /* ThreedsWebViewControllerTests.swift in Sources */,
-				57256D35269F1279001EC3D8 /* NetworkError+Equatable.swift in Sources */,
-				57256D1D269F1279001EC3D8 /* StubUIDevice.swift in Sources */,
-				57256D21269F1279001EC3D8 /* StubURLSessionDataTask.swift in Sources */,
-				57256D06269F1279001EC3D8 /* HTTPMethodTests.swift in Sources */,
-				57256CFF269F1279001EC3D8 /* AddressViewTests.swift in Sources */,
-				57256D18269F1279001EC3D8 /* StubCorrelationIDGenerator.swift in Sources */,
-				57256D13269F1279001EC3D8 /* FramesLogEventTests.swift in Sources */,
-				57256D29269F1279001EC3D8 /* AddressViewControllerMockDelegate.swift in Sources */,
-				57256D2B269F1279001EC3D8 /* StubURLSession.swift in Sources */,
-				57256D23269F1279001EC3D8 /* CardViewControllerMock.swift in Sources */,
-				57256DF1269FA45A001EC3D8 /* Dictionary+AdditionsTests.swift in Sources */,
-				57256CF6269F1279001EC3D8 /* CardListCellTests.swift in Sources */,
+				CB03DA0927F5F685003DAC97 /* UIBarStyle+stringValueTests.swift in Sources */,
+				CB00CA6D27ECBE8B000069BE /* StubCheckoutAPIClient.swift in Sources */,
+				CB00CA7127ECBE8B000069BE /* StubRequestExecutor.swift in Sources */,
+				CB00CA8327ECBE8B000069BE /* CvvInputViewTests.swift in Sources */,
+				CB00CA9927ECBE8C000069BE /* StubNetworkFlowLogger.swift in Sources */,
+				CB00CA8627ECBE8B000069BE /* CvvConfirmationViewControllerTests.swift in Sources */,
+				CB00CA8027ECBE8B000069BE /* DetailsInputViewTests.swift in Sources */,
+				CB00CAA127ECBE8C000069BE /* NetworkErrorTests.swift in Sources */,
+				CB00CA7B27ECBE8B000069BE /* CardNumberInputViewMockDelegate.swift in Sources */,
+				CB00CA6827ECBE8B000069BE /* StubEnvironmentURLProvider.swift in Sources */,
+				CB00CA7C27ECBE8B000069BE /* StubURLSession.swift in Sources */,
+				CB00CAA427ECBE8C000069BE /* FramesEventLoggerTests.swift in Sources */,
+				CB00CA8F27ECBE8B000069BE /* CardViewTests.swift in Sources */,
+				CB00CA6F27ECBE8B000069BE /* CardViewControllerMockDelegate.swift in Sources */,
+				CB00CAA227ECBE8C000069BE /* NetworkFlowLoggerTests.swift in Sources */,
+				CB00CA6927ECBE8B000069BE /* StubCorrelationIDGenerator.swift in Sources */,
+				CB00CAB327EDCD5F000069BE /* UIFont+PropertyProvidingTests.swift in Sources */,
+				CB00CA7227ECBE8B000069BE /* StubURLSessionDataTask.swift in Sources */,
+				CB00CA6727ECBE8B000069BE /* StubFramesEventLogger.swift in Sources */,
+				CB00CAB127ECC557000069BE /* UIColor+PropertyProvidingTests.swift in Sources */,
+				CB00CA8527ECBE8B000069BE /* CardListCellTests.swift in Sources */,
+				CB00CA8B27ECBE8B000069BE /* ExpirationDatePickerTests.swift in Sources */,
+				CB00CA8127ECBE8B000069BE /* AddressViewControllerTests.swift in Sources */,
+				CB00CA6A27ECBE8B000069BE /* StubNetworkFlowLoggerFactory.swift in Sources */,
+				CB00CA8727ECBE8B000069BE /* ExpirationDateInputViewTests.swift in Sources */,
+				CB00CA8D27ECBE8B000069BE /* PhoneNumberInputViewTests.swift in Sources */,
+				CB03DA0727F5E3F1003DAC97 /* ThemeTests.swift in Sources */,
+				CB00CA9527ECBE8C000069BE /* URLHelperTests.swift in Sources */,
+				CB00CA9E27ECBE8C000069BE /* URL+ExtensionsTests.swift in Sources */,
+				CB00CA9827ECBE8C000069BE /* RequestExecutorTests.swift in Sources */,
+				CB00CA8827ECBE8B000069BE /* CardListCellNameTests.swift in Sources */,
+				CB00CA7827ECBE8B000069BE /* StubDateProvider.swift in Sources */,
+				CB00CA9327ECBE8C000069BE /* CkoCardTokenResponse+Extensions.swift in Sources */,
+				CB00CA7D27ECBE8B000069BE /* StubCardViewControllerDelegate.swift in Sources */,
+				CB00CA8227ECBE8B000069BE /* CountrySelectionViewControllerTests.swift in Sources */,
+				CB00CAA627ECBE8C000069BE /* ResourcesTests.swift in Sources */,
+				CB00CAAF27ECBEB3000069BE /* StubTheme.swift in Sources */,
+				CB00CA6627ECBE8B000069BE /* StubRequestParameterProvider.swift in Sources */,
+				CB00CA6B27ECBE8B000069BE /* NotificationCenterMock.swift in Sources */,
+				CB00CA7427ECBE8B000069BE /* CardViewControllerMock.swift in Sources */,
+				CB00CA7927ECBE8B000069BE /* AddressViewControllerMock.swift in Sources */,
+				CB00CA7627ECBE8B000069BE /* StubURLProtocol.swift in Sources */,
+				CB00CA9227ECBE8C000069BE /* NetworkError+Equatable.swift in Sources */,
+				CB00CA7A27ECBE8B000069BE /* AddressViewControllerMockDelegate.swift in Sources */,
+				CB00CA8C27ECBE8B000069BE /* SimpleLoadingViewControllerTests.swift in Sources */,
+				CB00CA9727ECBE8C000069BE /* HTTPMethodTests.swift in Sources */,
+				CB00CA9F27ECBE8C000069BE /* CheckoutAPIClientIntegrationTests.swift in Sources */,
+				CB00CA7E27ECBE8B000069BE /* StubError.swift in Sources */,
+				CB00CA9027ECBE8C000069BE /* SchemeIconsStackViewTests.swift in Sources */,
+				CB00CA9B27ECBE8C000069BE /* Dictionary+AdditionsTests.swift in Sources */,
+				CB00CA7327ECBE8B000069BE /* StubJSONEncoder.swift in Sources */,
+				CB00CA9C27ECBE8C000069BE /* DispatchQueue+DispatchingTests.swift in Sources */,
+				CB00CA7027ECBE8B000069BE /* StubDispatcher.swift in Sources */,
+				CB00CAA527ECBE8C000069BE /* FramesLogEventTests.swift in Sources */,
+				CB00CA8A27ECBE8B000069BE /* ThreedsWebViewControllerTests.swift in Sources */,
+				CB00CA6E27ECBE8B000069BE /* StubUIDevice.swift in Sources */,
+				CB00CA8427ECBE8B000069BE /* CardNumberInputViewTests.swift in Sources */,
+				CB00CA8927ECBE8B000069BE /* StandardInputViewTests.swift in Sources */,
+				CB00CA7727ECBE8B000069BE /* StubCheckoutEventLogger.swift in Sources */,
+				CB00CAA327ECBE8C000069BE /* CorrelationIDGeneratorTests.swift in Sources */,
+				CB00CA9427ECBE8C000069BE /* CheckoutAPIClientTests.swift in Sources */,
+				CB00CA9127ECBE8C000069BE /* CardViewControllerTests.swift in Sources */,
+				CB00CA9A27ECBE8C000069BE /* EnvironmentTests.swift in Sources */,
+				CB00CA8E27ECBE8B000069BE /* AddressViewTests.swift in Sources */,
+				CB00CAA027ECBE8C000069BE /* CardUtilsTests.swift in Sources */,
+				CB00CA9627ECBE8C000069BE /* RequestTests.swift in Sources */,
+				CB00CA7527ECBE8B000069BE /* CvvViewControllerDelegateMock.swift in Sources */,
+				CB00CA6527ECBE8B000069BE /* StubJSONDecoder.swift in Sources */,
+				CB00CA7F27ECBE8B000069BE /* CvvInputViewMockDelegate.swift in Sources */,
+				CB00CA6C27ECBE8B000069BE /* NavigationControllerMock.swift in Sources */,
+				CB00CA9D27ECBE8C000069BE /* ErrorResponse+LoggingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

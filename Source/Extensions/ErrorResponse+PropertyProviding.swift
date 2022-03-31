@@ -1,6 +1,6 @@
 import CheckoutEventLoggerKit
 
-extension ErrorResponse {
+extension ErrorResponse: PropertyProviding {
     
     var properties: [FramesLogEvent.Property: AnyCodable] {
         return [
