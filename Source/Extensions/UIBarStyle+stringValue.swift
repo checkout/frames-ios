@@ -10,15 +10,19 @@ import UIKit
 
 extension UIBarStyle {
     var stringValue: String {
+        return barStyle.rawValue
+    }
+
+    private var barStyle: Constants.Logging.BarStyle {
         switch self {
         case .default:
-            return "default"
+            return .default
         case .black, .blackOpaque:
-            return "black"
+            return .black
         case .blackTranslucent:
-            return "blackTranslucent"
+            return .blackTranslucent
         @unknown default:
-            return "unknown, code \(rawValue)"
+            return .unknown
         }
     }
 }
