@@ -1,7 +1,7 @@
 import Foundation
 import CheckoutEventLoggerKit
 
-enum FramesLogEvent: Equatable {
+enum FramesLogEvent: Equatable, PropertyProviding {
 
     enum Property: String {
         case environment
@@ -15,10 +15,27 @@ enum FramesLogEvent: Equatable {
         case serverError
         case tokenID
         case tokenType
+        case locale
+        case theme
+        case primaryBackgroundColor
+        case secondaryBackgroundColor
+        case tertiaryBackgroundColor
+        case primaryTextColor
+        case secondaryTextColor
+        case errorTextColor
+        case chevronColor
+        case font
+        case barStyle
+        case red
+        case green
+        case blue
+        case alpha
+        case size
+        case name
     }
 
     case checkoutAPIClientInitialised(environment: Environment)
-    case paymentFormPresented
+    case paymentFormPresented(theme: Theme, locale: Locale)
     case billingFormPresented
     case tokenRequested(tokenType: TokenType, publicKey: String)
     case tokenResponse(tokenType: TokenType,
@@ -65,25 +82,26 @@ enum FramesLogEvent: Equatable {
 
     var properties: [Property: AnyCodable] {
         switch self {
-        case .paymentFormPresented,
-             .billingFormPresented:
+        case .billingFormPresented:
             return [:]
+        case let .paymentFormPresented(theme, locale):
+            return [.theme: theme.rawProperties, .locale: locale.identifier].mapValues(AnyCodable.init(_:))
         case let .checkoutAPIClientInitialised(environment):
             let environmentString = environment.rawValue == "live" ? "production" : environment.rawValue
-            return [.environment: environmentString].mapValues { AnyCodable($0) }
+            return [.environment: environmentString].mapValues(AnyCodable.init(_:))
         case let .tokenRequested(tokenType, publicKey):
             return [.tokenType: tokenType.rawValue, .publicKey: publicKey]
-                .mapValues { AnyCodable($0) }
+                .mapValues(AnyCodable.init(_:))
         case let .tokenResponse(tokenType, publicKey, tokenID, scheme, httpStatusCode, errorResponse):
-            let serverError = errorResponse?.properties.mapKeys(\.rawValue)
+            let serverError = errorResponse?.rawProperties
             return [.tokenType: tokenType.rawValue, .publicKey: publicKey, .httpStatusCode: httpStatusCode]
                 .updating(key: .scheme, value: scheme)
                 .updating(key: .serverError, value: serverError)
                 .updating(key: .tokenID, value: tokenID)
-                .mapValues { AnyCodable($0) }
+                .mapValues(AnyCodable.init(_:))
         case let .exception(message):
             return [.message: message]
-                .mapValues { AnyCodable($0) }
+                .mapValues(AnyCodable.init(_:))
         }
     }
     

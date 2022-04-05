@@ -339,7 +339,7 @@ class CardViewControllerTests: XCTestCase {
         XCTAssertEqual(1, events.count - initialEventCount)
 
         let event = events[initialEventCount]
-        XCTAssertEqual(.paymentFormPresented, event)
+        XCTAssertEqual(.paymentFormPresented(theme: Theme(), locale: Locale.current), event)
 
     }
 
@@ -361,7 +361,7 @@ class CardViewControllerTests: XCTestCase {
         XCTAssertEqual(2, events.count - initialEventCount)
 
         let event = events[initialEventCount]
-        XCTAssertEqual(.paymentFormPresented, event)
+        XCTAssertEqual(.paymentFormPresented(theme: Theme(), locale: Locale.current), event)
     }
 
     func test_onTapAddressView_billingFormPresentedLogCalled() {
