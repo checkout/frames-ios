@@ -24,7 +24,6 @@ final class ResourcesTests: XCTestCase {
         
         #if COCOAPODS
         let framesResourceBundlePath = "Frames"
-        let framesTopLevelBundle = Bundle(for: CheckoutAPIClient.self)
         guard let framesResourceBundleURL = framesTopLevelBundle.url(forResource: framesResourceBundlePath, withExtension: "bundle") else {
             XCTFail("could not find resource bundle url")
             return
