@@ -204,6 +204,7 @@
 		57256D36269F1279001EC3D8 /* CkoCardTokenResponse+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256CF0269F1279001EC3D8 /* CkoCardTokenResponse+Extensions.swift */; };
 		57256DEC269FA42E001EC3D8 /* Dictionary+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256DEB269FA42E001EC3D8 /* Dictionary+Additions.swift */; };
 		57256DF1269FA45A001EC3D8 /* Dictionary+AdditionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256DF0269FA45A001EC3D8 /* Dictionary+AdditionsTests.swift */; };
+		CB8CE5C62805BFE70069ADB0 /* CheckoutAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5C52805BFE70069ADB0 /* CheckoutAPIService.swift */; };
 		E6646FA320CE6C0A00D8353A /* iOS_Example_FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646FA220CE6C0A00D8353A /* iOS_Example_FrameUITests.swift */; };
 		F5981FF82805B685007AB07C /* CheckoutEventLoggerKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5981FF72805B685007AB07C /* CheckoutEventLoggerKit.xcframework */; };
 		F5981FF92805B685007AB07C /* CheckoutEventLoggerKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5981FF72805B685007AB07C /* CheckoutEventLoggerKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -470,6 +471,7 @@
 		57256CF0269F1279001EC3D8 /* CkoCardTokenResponse+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CkoCardTokenResponse+Extensions.swift"; sourceTree = "<group>"; };
 		57256DEB269FA42E001EC3D8 /* Dictionary+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Additions.swift"; sourceTree = "<group>"; };
 		57256DF0269FA45A001EC3D8 /* Dictionary+AdditionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+AdditionsTests.swift"; sourceTree = "<group>"; };
+		CB8CE5C52805BFE70069ADB0 /* CheckoutAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAPIService.swift; sourceTree = "<group>"; };
 		E6646FA220CE6C0A00D8353A /* iOS_Example_FrameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_Example_FrameUITests.swift; sourceTree = "<group>"; };
 		F5981FF228053DB6007AB07C /* Checkout.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Checkout.xcframework; path = ../Carthage/Build/Checkout.xcframework; sourceTree = "<group>"; };
 		F5981FF72805B685007AB07C /* CheckoutEventLoggerKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CheckoutEventLoggerKit.xcframework; path = "../Carthage/Checkouts/checkout-event-logger-ios-framework/CheckoutEventLoggerKit.xcframework"; sourceTree = "<group>"; };
@@ -673,6 +675,7 @@
 		442277C92616376E009626A0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				CB8CE5C52805BFE70069ADB0 /* CheckoutAPIService.swift */,
 				57256C40269F0F6C001EC3D8 /* Networking */,
 				44F095152625F7E600CB287F /* Logging */,
 				442277CA2616376E009626A0 /* CkoPhoneNumber.swift */,
@@ -1273,6 +1276,7 @@
 				4422783C2616376E009626A0 /* UIResponderExtensions.swift in Sources */,
 				442278192616376E009626A0 /* SimpleLoadingViewController.swift in Sources */,
 				57256C61269F0FA0001EC3D8 /* ContentTypeProviding.swift in Sources */,
+				CB8CE5C62805BFE70069ADB0 /* CheckoutAPIService.swift in Sources */,
 				442278372616376E009626A0 /* CheckoutSdkIos.swift in Sources */,
 				442278342616376E009626A0 /* NetworkError.swift in Sources */,
 				57256C45269F0F81001EC3D8 /* RequestExecutor.swift in Sources */,

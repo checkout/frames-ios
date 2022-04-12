@@ -54,7 +54,7 @@ public class CardViewController: UIViewController,
                             cardHolderNameState: InputState,
                             billingDetailsState: InputState,
                             defaultRegionCode: String? = nil) {
-      self.init(checkoutAPIService: checkoutAPIService, cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, defaultRegionCode: defaultRegionCode)
+      self.init(checkoutAPIService: checkoutAPIService as CheckoutAPIProtocol, cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, defaultRegionCode: defaultRegionCode)
     }
 
     init(checkoutAPIService: CheckoutAPIProtocol,
