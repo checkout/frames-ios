@@ -128,7 +128,7 @@ class AddressViewControllerTests: XCTestCase {
         setupAddress()
         // Assert
         addressViewController.textFieldDidEndEditing(UITextField())
-        XCTAssertFalse((addressViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
+        XCTAssertEqual(addressViewController.navigationItem.rightBarButtonItem?.isEnabled, true)
     }
 
     func testCallDelegateMethodOnTapDoneButton() {
