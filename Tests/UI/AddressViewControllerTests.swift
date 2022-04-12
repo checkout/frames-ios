@@ -133,7 +133,7 @@ class AddressViewControllerTests: XCTestCase {
 
     func testCallDelegateMethodOnTapDoneButton() {
         let addressCountry = Country.allAvailable.first { $0.iso3166Alpha2 == "FR" }!
-        let dialingCountry = Country.allAvailable.first { $0.dialingCode == "44" }!
+        let dialingCountry = Country.allAvailable.first { $0.dialingCode == "33" }!
         let delegate = AddressViewControllerMockDelegate()
         addressViewController.viewDidLoad()
         addressViewController.delegate = delegate
