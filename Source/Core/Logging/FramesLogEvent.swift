@@ -32,6 +32,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
         case alpha
         case size
         case name
+        case success
     }
 
     case checkoutAPIClientInitialised(environment: Environment)
@@ -44,6 +45,9 @@ enum FramesLogEvent: Equatable, PropertyProviding {
                        scheme: String?,
                        httpStatusCode: Int,
                        errorResponse: ErrorResponse?)
+    case threeDSWebviewPresented
+    case threeDSChallengeLoaded(success: Bool)
+    case threeDSChallengeComplete(success: Bool, tokenID: String?)
     case exception(message: String)
 
     var typeIdentifier: String {
@@ -62,6 +66,12 @@ enum FramesLogEvent: Equatable, PropertyProviding {
             return "token_requested"
         case .tokenResponse:
             return "token_response"
+        case .threeDSWebviewPresented:
+            return "3ds_webview_presented"
+        case .threeDSChallengeLoaded:
+            return "3ds_challenge_loaded"
+        case .threeDSChallengeComplete:
+            return "3ds_challenge_complete"
         case .exception:
             return "exception"
         }
@@ -73,16 +83,21 @@ enum FramesLogEvent: Equatable, PropertyProviding {
              .paymentFormPresented,
              .billingFormPresented,
              .tokenRequested,
-             .tokenResponse:
+             .tokenResponse,
+             .threeDSWebviewPresented:
             return .info
         case .exception:
             return .error
+        case .threeDSChallengeLoaded(let success),
+             .threeDSChallengeComplete(let success, _):
+            return success ? .info : .error
         }
     }
 
     var properties: [Property: AnyCodable] {
         switch self {
-        case .billingFormPresented:
+        case .billingFormPresented,
+             .threeDSWebviewPresented:
             return [:]
         case let .paymentFormPresented(theme, locale):
             return [.theme: theme.rawProperties, .locale: locale.identifier].mapValues(AnyCodable.init(_:))
@@ -97,6 +112,12 @@ enum FramesLogEvent: Equatable, PropertyProviding {
             return [.tokenType: tokenType.rawValue, .publicKey: publicKey, .httpStatusCode: httpStatusCode]
                 .updating(key: .scheme, value: scheme)
                 .updating(key: .serverError, value: serverError)
+                .updating(key: .tokenID, value: tokenID)
+                .mapValues(AnyCodable.init(_:))
+        case let .threeDSChallengeLoaded(success):
+            return [.success: success].mapValues(AnyCodable.init(_:))
+        case let .threeDSChallengeComplete(success, tokenID):
+            return [.success: success]
                 .updating(key: .tokenID, value: tokenID)
                 .mapValues(AnyCodable.init(_:))
         case let .exception(message):
