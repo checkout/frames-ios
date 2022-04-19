@@ -70,29 +70,6 @@ public class CardUtils {
 
     // MARK: - Methods
 
-    /// Perform the lunh check algorithm to determine the validity of a card number
-    /// Note: the card number must be without spaces
-    ///
-    /// - parameter cardNumber: Card number
-    ///
-    ///
-    /// - returns: true if the card valid the lunh check algorithm, false otherwise
-    public func luhnCheck(cardNumber: String) -> Bool {
-        let digits = Array(cardNumber)
-        var sum = 0
-        var oddDigit = true
-        for index in stride(from: digits.count - 1, through: 0, by: -1) {
-            guard var nDigit = Int(String(digits[index])) else { return false }
-            if !oddDigit {
-                nDigit *= 2
-                if nDigit > 9 { nDigit -= 9 }
-            }
-            sum += nDigit
-            oddDigit = !oddDigit
-        }
-        return sum % 10 == 0
-    }
-
     /// Get the type of the card based on the card number
     /// Note: the card number must be without spaces
     ///
@@ -129,31 +106,6 @@ public class CardUtils {
             }
             return "\($0)\($1)"
         }
-    }
-
-    /// Check if the card number is valid
-    ///
-    /// - parameter cardNumber: Card number
-    ///
-    ///
-    /// - returns: true if the card number is valid, false otherwise
-    public func isValid(cardNumber: String) -> Bool {
-        let cardType = self.getTypeOf(cardNumber: cardNumber)
-        return cardType != nil ? self.isValid(cardNumber: cardNumber, cardType: cardType!) : false
-    }
-
-    /// Check if the card number is valid based on the card type
-    ///
-    /// - parameter cardNumber: Card number
-    /// - parameter cardType: Card type
-    ///
-    ///
-    /// - returns: true if the card number is valid, false otherwise
-    public func isValid(cardNumber: String, cardType: CardType) -> Bool {
-        if cardType.isLuhnChecked {
-            guard luhnCheck(cardNumber: cardNumber) else { return false }
-        }
-        return cardType.validLengths.contains { $0 == cardNumber.count }
     }
 
     /// Check if the cvv is valid based on the card type
