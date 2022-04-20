@@ -377,23 +377,26 @@ public class CardViewController: UIViewController,
 
         if let superView = view as? CardNumberInputView {
             let cardNumber = superView.textField.text!
-            let cardNumberStandardized = cardNumber.standardize()
-            let cardType = cardUtils.getTypeOf(cardNumber: cardNumberStandardized)
-            cardView.cvvInputView.cardType = cardType
+            let cardNumberStandardized = cardUtils.removeNonDigits(from: cardNumber)
+            let scheme = try? checkoutAPIService?.cardValidator.validate(cardNumber: cardNumberStandardized).get()
+            cardView.cvvInputView.scheme = scheme ?? .unknown
         }
     }
 
     // MARK: - CardNumberInputViewDelegate
 
     /// Called when the card number changed.
-    public func onChangeCardNumber(cardType: CardType?) {
+    public func onChangeCardNumber(scheme: Card.Scheme) {
         // reset if the card number is empty
-        if cardType == nil && lastSelected != nil {
+        if scheme == .unknown && lastSelected != nil {
             cardView.schemeIconsStackView.arrangedSubviews.forEach { $0.alpha = 1 }
             lastSelected = nil
         }
-        guard let type = cardType else { return }
-        let index = availableSchemes.firstIndex(of: type.scheme)
+        guard scheme != .unknown else {
+            return
+        }
+
+        let index = availableSchemes.firstIndex(of: scheme)
         guard let indexScheme = index else { return }
         let imageView = cardView.schemeIconsStackView.arrangedSubviews[indexScheme] as? UIImageView
 
