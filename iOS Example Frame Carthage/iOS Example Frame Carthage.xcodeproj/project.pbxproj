@@ -108,7 +108,6 @@
 		4422783C2616376E009626A0 /* UIResponderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277E22616376E009626A0 /* UIResponderExtensions.swift */; };
 		4422783D2616376E009626A0 /* CardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277E32616376E009626A0 /* CardUtils.swift */; };
 		4422783E2616376E009626A0 /* CheckoutSdkIos.h in Headers */ = {isa = PBXBuildFile; fileRef = 442277E52616376E009626A0 /* CheckoutSdkIos.h */; };
-		442278402616376E009626A0 /* CheckoutAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277E72616376E009626A0 /* CheckoutAPIClient.swift */; };
 		4452A1AD26FB5875006AF798 /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4452A1AC26FB5874006AF798 /* URLHelper.swift */; };
 		44A4DFE5261CC59B00E0C349 /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */; settings = {ATTRIBUTES = (Required, ); }; };
 		44F095202625F7E700CB287F /* FramesLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F095162625F7E600CB287F /* FramesLogEvent.swift */; };
@@ -145,7 +144,6 @@
 		CB8CE6232805D00E0069ADB0 /* StubNetworkFlowLoggerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5CF2805D00E0069ADB0 /* StubNetworkFlowLoggerFactory.swift */; };
 		CB8CE6242805D00E0069ADB0 /* NotificationCenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5D02805D00E0069ADB0 /* NotificationCenterMock.swift */; };
 		CB8CE6252805D00E0069ADB0 /* NavigationControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5D12805D00E0069ADB0 /* NavigationControllerMock.swift */; };
-		CB8CE6262805D00E0069ADB0 /* StubCheckoutAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5D22805D00E0069ADB0 /* StubCheckoutAPIClient.swift */; };
 		CB8CE6272805D00E0069ADB0 /* StubUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5D32805D00E0069ADB0 /* StubUIDevice.swift */; };
 		CB8CE6282805D00E0069ADB0 /* CardViewControllerMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5D42805D00E0069ADB0 /* CardViewControllerMockDelegate.swift */; };
 		CB8CE6292805D00E0069ADB0 /* StubDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5D52805D00E0069ADB0 /* StubDispatcher.swift */; };
@@ -185,7 +183,6 @@
 		CB8CE64B2805D00E0069ADB0 /* CardViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5F92805D00E0069ADB0 /* CardViewControllerTests.swift */; };
 		CB8CE64C2805D00E0069ADB0 /* NetworkError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5FB2805D00E0069ADB0 /* NetworkError+Equatable.swift */; };
 		CB8CE64D2805D00E0069ADB0 /* CkoCardTokenResponse+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5FC2805D00E0069ADB0 /* CkoCardTokenResponse+Extensions.swift */; };
-		CB8CE64E2805D00E0069ADB0 /* CheckoutAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5FE2805D00E0069ADB0 /* CheckoutAPIClientTests.swift */; };
 		CB8CE64F2805D00E0069ADB0 /* URLHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5FF2805D00E0069ADB0 /* URLHelperTests.swift */; };
 		CB8CE6502805D00E0069ADB0 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE6012805D00E0069ADB0 /* RequestTests.swift */; };
 		CB8CE6512805D00E0069ADB0 /* HTTPMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE6022805D00E0069ADB0 /* HTTPMethodTests.swift */; };
@@ -196,7 +193,6 @@
 		CB8CE6562805D00E0069ADB0 /* DispatchQueue+DispatchingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE6082805D00E0069ADB0 /* DispatchQueue+DispatchingTests.swift */; };
 		CB8CE6572805D00E0069ADB0 /* ErrorResponse+LoggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE6092805D00E0069ADB0 /* ErrorResponse+LoggingTests.swift */; };
 		CB8CE6582805D00E0069ADB0 /* URL+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE60A2805D00E0069ADB0 /* URL+ExtensionsTests.swift */; };
-		CB8CE6592805D00E0069ADB0 /* CheckoutAPIClientIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE60B2805D00E0069ADB0 /* CheckoutAPIClientIntegrationTests.swift */; };
 		CB8CE65A2805D00E0069ADB0 /* CardUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE60C2805D00E0069ADB0 /* CardUtilsTests.swift */; };
 		CB8CE65B2805D00E0069ADB0 /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE60D2805D00E0069ADB0 /* NetworkErrorTests.swift */; };
 		CB8CE65C2805D00E0069ADB0 /* NetworkFlowLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE60F2805D00E0069ADB0 /* NetworkFlowLoggerTests.swift */; };
@@ -362,7 +358,6 @@
 		442277E32616376E009626A0 /* CardUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardUtils.swift; path = ../../Source/CardUtils.swift; sourceTree = "<group>"; };
 		442277E52616376E009626A0 /* CheckoutSdkIos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckoutSdkIos.h; sourceTree = "<group>"; };
 		442277E62616376E009626A0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		442277E72616376E009626A0 /* CheckoutAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutAPIClient.swift; path = ../../Source/CheckoutAPIClient.swift; sourceTree = "<group>"; };
 		4452A1AC26FB5874006AF798 /* URLHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLHelper.swift; sourceTree = "<group>"; };
 		44A4DF912616477200E0C349 /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = ../Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
@@ -401,7 +396,6 @@
 		CB8CE5CF2805D00E0069ADB0 /* StubNetworkFlowLoggerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubNetworkFlowLoggerFactory.swift; sourceTree = "<group>"; };
 		CB8CE5D02805D00E0069ADB0 /* NotificationCenterMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterMock.swift; sourceTree = "<group>"; };
 		CB8CE5D12805D00E0069ADB0 /* NavigationControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerMock.swift; sourceTree = "<group>"; };
-		CB8CE5D22805D00E0069ADB0 /* StubCheckoutAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCheckoutAPIClient.swift; sourceTree = "<group>"; };
 		CB8CE5D32805D00E0069ADB0 /* StubUIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubUIDevice.swift; sourceTree = "<group>"; };
 		CB8CE5D42805D00E0069ADB0 /* CardViewControllerMockDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewControllerMockDelegate.swift; sourceTree = "<group>"; };
 		CB8CE5D52805D00E0069ADB0 /* StubDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubDispatcher.swift; sourceTree = "<group>"; };
@@ -441,7 +435,6 @@
 		CB8CE5F92805D00E0069ADB0 /* CardViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewControllerTests.swift; sourceTree = "<group>"; };
 		CB8CE5FB2805D00E0069ADB0 /* NetworkError+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkError+Equatable.swift"; sourceTree = "<group>"; };
 		CB8CE5FC2805D00E0069ADB0 /* CkoCardTokenResponse+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CkoCardTokenResponse+Extensions.swift"; sourceTree = "<group>"; };
-		CB8CE5FE2805D00E0069ADB0 /* CheckoutAPIClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAPIClientTests.swift; sourceTree = "<group>"; };
 		CB8CE5FF2805D00E0069ADB0 /* URLHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLHelperTests.swift; sourceTree = "<group>"; };
 		CB8CE6012805D00E0069ADB0 /* RequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
 		CB8CE6022805D00E0069ADB0 /* HTTPMethodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethodTests.swift; sourceTree = "<group>"; };
@@ -452,7 +445,6 @@
 		CB8CE6082805D00E0069ADB0 /* DispatchQueue+DispatchingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+DispatchingTests.swift"; sourceTree = "<group>"; };
 		CB8CE6092805D00E0069ADB0 /* ErrorResponse+LoggingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ErrorResponse+LoggingTests.swift"; sourceTree = "<group>"; };
 		CB8CE60A2805D00E0069ADB0 /* URL+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+ExtensionsTests.swift"; sourceTree = "<group>"; };
-		CB8CE60B2805D00E0069ADB0 /* CheckoutAPIClientIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAPIClientIntegrationTests.swift; sourceTree = "<group>"; };
 		CB8CE60C2805D00E0069ADB0 /* CardUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardUtilsTests.swift; sourceTree = "<group>"; };
 		CB8CE60D2805D00E0069ADB0 /* NetworkErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
 		CB8CE60F2805D00E0069ADB0 /* NetworkFlowLoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkFlowLoggerTests.swift; sourceTree = "<group>"; };
@@ -529,7 +521,6 @@
 			isa = PBXGroup;
 			children = (
 				442277E32616376E009626A0 /* CardUtils.swift */,
-				442277E72616376E009626A0 /* CheckoutAPIClient.swift */,
 				442277DC2616376E009626A0 /* CheckoutSdkIos.swift */,
 				4422777E2616376D009626A0 /* CheckoutTheme.swift */,
 				442277C92616376E009626A0 /* Core */,
@@ -791,7 +782,6 @@
 				CB8CE5CF2805D00E0069ADB0 /* StubNetworkFlowLoggerFactory.swift */,
 				CB8CE5D02805D00E0069ADB0 /* NotificationCenterMock.swift */,
 				CB8CE5D12805D00E0069ADB0 /* NavigationControllerMock.swift */,
-				CB8CE5D22805D00E0069ADB0 /* StubCheckoutAPIClient.swift */,
 				CB8CE5D32805D00E0069ADB0 /* StubUIDevice.swift */,
 				CB8CE5D42805D00E0069ADB0 /* CardViewControllerMockDelegate.swift */,
 				CB8CE5D52805D00E0069ADB0 /* StubDispatcher.swift */,
@@ -860,12 +850,10 @@
 		CB8CE5FD2805D00E0069ADB0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				CB8CE5FE2805D00E0069ADB0 /* CheckoutAPIClientTests.swift */,
 				CB8CE5FF2805D00E0069ADB0 /* URLHelperTests.swift */,
 				CB8CE6002805D00E0069ADB0 /* Networking */,
 				CB8CE6052805D00E0069ADB0 /* EnvironmentTests.swift */,
 				CB8CE6062805D00E0069ADB0 /* Extensions */,
-				CB8CE60B2805D00E0069ADB0 /* CheckoutAPIClientIntegrationTests.swift */,
 				CB8CE60C2805D00E0069ADB0 /* CardUtilsTests.swift */,
 				CB8CE60D2805D00E0069ADB0 /* NetworkErrorTests.swift */,
 				CB8CE60E2805D00E0069ADB0 /* Logging */,
@@ -1234,7 +1222,6 @@
 				442278262616376E009626A0 /* Environment.swift in Sources */,
 				4422783A2616376E009626A0 /* UIViewControllerExtensions.swift in Sources */,
 				4422780F2616376E009626A0 /* CvvConfirmationViewControllerDelegate.swift in Sources */,
-				442278402616376E009626A0 /* CheckoutAPIClient.swift in Sources */,
 				442278252616376E009626A0 /* CkoPhoneNumber.swift in Sources */,
 				4422781E2616376E009626A0 /* SchemeIconsStackView.swift in Sources */,
 				4422781A2616376E009626A0 /* ThreedsWebViewController.swift in Sources */,
@@ -1313,7 +1300,6 @@
 				CB8CE6202805D00E0069ADB0 /* StubFramesEventLogger.swift in Sources */,
 				CB8CE63D2805D00E0069ADB0 /* CvvInputViewTests.swift in Sources */,
 				CB8CE6602805D00E0069ADB0 /* ResourcesTests.swift in Sources */,
-				CB8CE6262805D00E0069ADB0 /* StubCheckoutAPIClient.swift in Sources */,
 				CB8CE6302805D00E0069ADB0 /* StubCheckoutEventLogger.swift in Sources */,
 				CB8CE6512805D00E0069ADB0 /* HTTPMethodTests.swift in Sources */,
 				CB8CE6472805D00E0069ADB0 /* PhoneNumberInputViewTests.swift in Sources */,
@@ -1328,7 +1314,6 @@
 				CB8CE6432805D00E0069ADB0 /* StandardInputViewTests.swift in Sources */,
 				CB8CE61E2805D00E0069ADB0 /* StubRequestParameterProvider.swift in Sources */,
 				CB8CE6442805D00E0069ADB0 /* ThreedsWebViewControllerTests.swift in Sources */,
-				CB8CE64E2805D00E0069ADB0 /* CheckoutAPIClientTests.swift in Sources */,
 				CB8CE6352805D00E0069ADB0 /* CardNumberInputViewMockDelegate.swift in Sources */,
 				CB8CE64B2805D00E0069ADB0 /* CardViewControllerTests.swift in Sources */,
 				CB8CE6272805D00E0069ADB0 /* StubUIDevice.swift in Sources */,
@@ -1358,7 +1343,6 @@
 				CB8CE6212805D00E0069ADB0 /* StubEnvironmentURLProvider.swift in Sources */,
 				CB8CE6542805D00E0069ADB0 /* EnvironmentTests.swift in Sources */,
 				CB8CE6412805D00E0069ADB0 /* ExpirationDateInputViewTests.swift in Sources */,
-				CB8CE6592805D00E0069ADB0 /* CheckoutAPIClientIntegrationTests.swift in Sources */,
 				CB8CE6282805D00E0069ADB0 /* CardViewControllerMockDelegate.swift in Sources */,
 				CB8CE6452805D00E0069ADB0 /* ExpirationDatePickerTests.swift in Sources */,
 				CB8CE62B2805D00E0069ADB0 /* StubURLSessionDataTask.swift in Sources */,
