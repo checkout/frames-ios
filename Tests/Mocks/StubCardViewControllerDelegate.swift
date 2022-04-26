@@ -18,13 +18,11 @@ final class StubCardViewControllerDelegate: CardViewControllerDelegate {
     }
 
     private(set) var onTapDoneCalledWith: (controller: CardViewController,
-                                           cardToken: TokenDetails?,
-                                           status: CheckoutTokenStatus)?
+                                           result: Result<TokenDetails, TokenisationError.TokenRequest>)?
 
     func onTapDone(controller: CardViewController,
-                   cardToken: TokenDetails?,
-                   status: CheckoutTokenStatus) {
+                   result: Result<TokenDetails, TokenisationError.TokenRequest>) {
 
-        onTapDoneCalledWith = (controller, cardToken, status)
+        onTapDoneCalledWith = (controller, result)
     }
 }

@@ -1,4 +1,5 @@
 import UIKit
+import Checkout
 
 /// Table View Cell adapted to display a card.
 public class CardListCell: UITableViewCell {
@@ -76,10 +77,36 @@ public class CardListCell: UITableViewCell {
 
     /// Set the scheme icon of the card cell.
     ///
-    /// - parameter scheme: Scheme (e.g. CardScheme.visa)
-    public func setSchemeIcon(scheme: CardScheme) {
-        let image = "schemes/icon-\(scheme.rawValue)".image(forClass: CardListCell.self)
+    /// - parameter scheme: Scheme (e.g. Card.Scheme.visa)
+    public func setSchemeIcon(scheme: Card.Scheme) {
+        guard let schemeIconSuffix = schemeIconSuffix(scheme: scheme) else {
+            schemeImageView.image = nil
+            return
+        }
+
+        let image = "schemes/icon-\(schemeIconSuffix)".image(forClass: CardListCell.self)
         schemeImageView.image = image
+    }
+
+    func schemeIconSuffix(scheme: Card.Scheme) -> String? {
+        switch scheme {
+        case .amex:
+            return "amex"
+        case .diners:
+            return "dinersclub"
+        case .discover:
+            return "discover"
+        case .jcb:
+            return "jcb"
+        case .maestro:
+            return "maestro"
+        case .mastercard:
+            return "mastercard"
+        case .visa:
+            return "visa"
+        case .unknown, .mada:
+            return nil
+        }
     }
 
 }

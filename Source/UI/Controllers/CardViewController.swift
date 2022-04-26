@@ -265,12 +265,7 @@ public class CardViewController: UIViewController,
                         phone: billingDetailsPhone)
 
         checkoutAPIService.createToken(.card(card)) { result in
-          switch result {
-          case .success(let tokenDetails):
-              self.delegate?.onTapDone(controller: self, cardToken: tokenDetails, status: .success)
-          case .failure(let error):
-            self.delegate?.onTapDone(controller: self, cardToken: nil, status: .failure)
-          }
+            self.delegate?.onTapDone(controller: self, result: result)
         }
     }
 

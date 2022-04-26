@@ -342,8 +342,7 @@ class CardViewControllerTests: XCTestCase {
         stubCheckoutAPIService.createTokenCalledWith?.completion(.failure(.networkError(.connectionLost)))
 
         XCTAssertEqual(stubCardViewControllerDelegate.onTapDoneCalledWith?.controller, cardViewController)
-        XCTAssertEqual(stubCardViewControllerDelegate.onTapDoneCalledWith?.status, .failure)
-        XCTAssertNil(stubCardViewControllerDelegate.onTapDoneCalledWith?.cardToken)
+        XCTAssertEqual(stubCardViewControllerDelegate.onTapDoneCalledWith?.result, .failure(.networkError(.connectionLost)))
     }
 
     // TODO: fix logging

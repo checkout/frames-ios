@@ -90,26 +90,22 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         cardViewController.addressViewController.setCountrySelected(country: "GB", regionCode: "GB")
     }
 
-    func onTapDone(controller: CardViewController, cardToken: TokenDetails?, status: CheckoutTokenStatus) {
+    func onTapDone(controller: CardViewController, result: Result<TokenDetails, TokenisationError.TokenRequest>) {
 
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
 
-        switch status {
-        case .success:
+        switch result {
+        case .success(let cardToken):
 
             // **** For testing only. ****
-            print("addressLine1 : \(cardToken?.billingAddress?.addressLine1 ?? "")")
-            print("addressLine2 : \(cardToken?.billingAddress?.addressLine2 ?? "")")
-            print("countryCode \(cardToken?.phone?.countryCode ?? "")")
-            print("phone number \(cardToken?.phone?.number ?? "")")
+            print("addressLine1 : \(cardToken.billingAddress?.addressLine1 ?? "")")
+            print("addressLine2 : \(cardToken.billingAddress?.addressLine2 ?? "")")
+            print("countryCode \(cardToken.phone?.countryCode ?? "")")
+            print("phone number \(cardToken.phone?.number ?? "")")
             // **** For testing only. ****
 
-            guard let cardToken = cardToken else {
-                self.showAlert(with: "Token object is nil")
-                return
-            }
             self.showAlert(with: cardToken.token)
 
         case .failure:
