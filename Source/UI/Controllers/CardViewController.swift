@@ -160,13 +160,13 @@ public class CardViewController: UIViewController,
     }
 
     @objc func onTapAddressView() {
+        checkoutApiClient?.logger.log(.billingFormPresented)
         guard isNewUI else {
             navigationController?.pushViewController(addressViewController, animated: true)
             return
         }
         let viewController = BillingFormFactory.getBillingFormViewController(delegate: self)
         navigationController?.present(viewController, animated: true)
-        checkoutApiClient?.logger.log(.billingFormPresented)
         loggedForCurrentCorrelationID = true
     }
 
