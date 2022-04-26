@@ -84,18 +84,13 @@
 		442278222616376E009626A0 /* CardNumberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277C62616376E009626A0 /* CardNumberInputView.swift */; };
 		442278232616376E009626A0 /* CvvInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277C72616376E009626A0 /* CvvInputView.swift */; };
 		442278242616376E009626A0 /* ExpirationDateInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277C82616376E009626A0 /* ExpirationDateInputView.swift */; };
-		442278252616376E009626A0 /* CkoPhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277CA2616376E009626A0 /* CkoPhoneNumber.swift */; };
 		442278262616376E009626A0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277CB2616376E009626A0 /* Environment.swift */; };
 		442278272616376E009626A0 /* CardScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277CC2616376E009626A0 /* CardScheme.swift */; };
 		442278282616376E009626A0 /* CardProviderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277CD2616376E009626A0 /* CardProviderResponse.swift */; };
-		442278292616376E009626A0 /* CkoCardTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277CE2616376E009626A0 /* CkoCardTokenResponse.swift */; };
-		4422782A2616376E009626A0 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277CF2616376E009626A0 /* Customer.swift */; };
 		4422782B2616376E009626A0 /* CardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277D02616376E009626A0 /* CardProvider.swift */; };
 		4422782C2616376E009626A0 /* CkoAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277D12616376E009626A0 /* CkoAddress.swift */; };
-		4422782D2616376E009626A0 /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277D22616376E009626A0 /* CardType.swift */; };
 		4422782E2616376E009626A0 /* CustomerCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277D32616376E009626A0 /* CustomerCardList.swift */; };
 		4422782F2616376E009626A0 /* InputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277D42616376E009626A0 /* InputState.swift */; };
-		442278302616376E009626A0 /* CkoCardTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277D52616376E009626A0 /* CkoCardTokenRequest.swift */; };
 		442278312616376E009626A0 /* CheckoutTokenStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277D62616376E009626A0 /* CheckoutTokenStatus.swift */; };
 		442278322616376E009626A0 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277D72616376E009626A0 /* ErrorResponse.swift */; };
 		442278332616376E009626A0 /* ApplePayTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442277D82616376E009626A0 /* ApplePayTokenRequest.swift */; };
@@ -112,15 +107,10 @@
 		44A4DFE5261CC59B00E0C349 /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */; settings = {ATTRIBUTES = (Required, ); }; };
 		44F095202625F7E700CB287F /* FramesLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F095162625F7E600CB287F /* FramesLogEvent.swift */; };
 		44F095A72629DCF200CB287F /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F095A52629DCF100CB287F /* UIDeviceExtensions.swift */; };
-		57256C44269F0F81001EC3D8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C41269F0F81001EC3D8 /* Request.swift */; };
-		57256C45269F0F81001EC3D8 /* RequestExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C42269F0F81001EC3D8 /* RequestExecutor.swift */; };
-		57256C46269F0F81001EC3D8 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C43269F0F81001EC3D8 /* HTTPMethod.swift */; };
 		57256C50269F0F90001EC3D8 /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C49269F0F90001EC3D8 /* DateProvider.swift */; };
 		57256C51269F0F90001EC3D8 /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C4A269F0F90001EC3D8 /* TokenType.swift */; };
 		57256C53269F0F90001EC3D8 /* CorrelationIDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C4C269F0F90001EC3D8 /* CorrelationIDGenerator.swift */; };
-		57256C54269F0F90001EC3D8 /* NetworkFlowLoggerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C4D269F0F90001EC3D8 /* NetworkFlowLoggerFactory.swift */; };
 		57256C55269F0F90001EC3D8 /* FramesEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C4E269F0F90001EC3D8 /* FramesEventLogger.swift */; };
-		57256C56269F0F90001EC3D8 /* NetworkFlowLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C4F269F0F90001EC3D8 /* NetworkFlowLogger.swift */; };
 		57256C5E269F0FA0001EC3D8 /* TopLevelDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C59269F0FA0001EC3D8 /* TopLevelDecoder.swift */; };
 		57256C5F269F0FA0001EC3D8 /* Dispatching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C5A269F0FA0001EC3D8 /* Dispatching.swift */; };
 		57256C60269F0FA0001EC3D8 /* TopLevelEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C5B269F0FA0001EC3D8 /* TopLevelEncoder.swift */; };
@@ -136,18 +126,15 @@
 		57256DEC269FA42E001EC3D8 /* Dictionary+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256DEB269FA42E001EC3D8 /* Dictionary+Additions.swift */; };
 		CB8CE5C62805BFE70069ADB0 /* CheckoutAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5C52805BFE70069ADB0 /* CheckoutAPIService.swift */; };
 		CB8CE61D2805D00E0069ADB0 /* StubJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5C92805D00D0069ADB0 /* StubJSONDecoder.swift */; };
-		CB8CE61E2805D00E0069ADB0 /* StubRequestParameterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5CA2805D00D0069ADB0 /* StubRequestParameterProvider.swift */; };
 		CB8CE61F2805D00E0069ADB0 /* StubCheckoutAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5CB2805D00D0069ADB0 /* StubCheckoutAPIService.swift */; };
 		CB8CE6202805D00E0069ADB0 /* StubFramesEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5CC2805D00D0069ADB0 /* StubFramesEventLogger.swift */; };
 		CB8CE6212805D00E0069ADB0 /* StubEnvironmentURLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5CD2805D00E0069ADB0 /* StubEnvironmentURLProvider.swift */; };
 		CB8CE6222805D00E0069ADB0 /* StubCorrelationIDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5CE2805D00E0069ADB0 /* StubCorrelationIDGenerator.swift */; };
-		CB8CE6232805D00E0069ADB0 /* StubNetworkFlowLoggerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5CF2805D00E0069ADB0 /* StubNetworkFlowLoggerFactory.swift */; };
 		CB8CE6242805D00E0069ADB0 /* NotificationCenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5D02805D00E0069ADB0 /* NotificationCenterMock.swift */; };
 		CB8CE6252805D00E0069ADB0 /* NavigationControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5D12805D00E0069ADB0 /* NavigationControllerMock.swift */; };
 		CB8CE6272805D00E0069ADB0 /* StubUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5D32805D00E0069ADB0 /* StubUIDevice.swift */; };
 		CB8CE6282805D00E0069ADB0 /* CardViewControllerMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5D42805D00E0069ADB0 /* CardViewControllerMockDelegate.swift */; };
 		CB8CE6292805D00E0069ADB0 /* StubDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5D52805D00E0069ADB0 /* StubDispatcher.swift */; };
-		CB8CE62A2805D00E0069ADB0 /* StubRequestExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5D62805D00E0069ADB0 /* StubRequestExecutor.swift */; };
 		CB8CE62B2805D00E0069ADB0 /* StubURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5D72805D00E0069ADB0 /* StubURLSessionDataTask.swift */; };
 		CB8CE62C2805D00E0069ADB0 /* StubJSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5D82805D00E0069ADB0 /* StubJSONEncoder.swift */; };
 		CB8CE62D2805D00E0069ADB0 /* CardViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5D92805D00E0069ADB0 /* CardViewControllerMock.swift */; };
@@ -182,12 +169,7 @@
 		CB8CE64A2805D00E0069ADB0 /* SchemeIconsStackViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5F82805D00E0069ADB0 /* SchemeIconsStackViewTests.swift */; };
 		CB8CE64B2805D00E0069ADB0 /* CardViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5F92805D00E0069ADB0 /* CardViewControllerTests.swift */; };
 		CB8CE64C2805D00E0069ADB0 /* NetworkError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5FB2805D00E0069ADB0 /* NetworkError+Equatable.swift */; };
-		CB8CE64D2805D00E0069ADB0 /* CkoCardTokenResponse+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5FC2805D00E0069ADB0 /* CkoCardTokenResponse+Extensions.swift */; };
 		CB8CE64F2805D00E0069ADB0 /* URLHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5FF2805D00E0069ADB0 /* URLHelperTests.swift */; };
-		CB8CE6502805D00E0069ADB0 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE6012805D00E0069ADB0 /* RequestTests.swift */; };
-		CB8CE6512805D00E0069ADB0 /* HTTPMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE6022805D00E0069ADB0 /* HTTPMethodTests.swift */; };
-		CB8CE6522805D00E0069ADB0 /* RequestExecutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE6032805D00E0069ADB0 /* RequestExecutorTests.swift */; };
-		CB8CE6532805D00E0069ADB0 /* StubNetworkFlowLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE6042805D00E0069ADB0 /* StubNetworkFlowLogger.swift */; };
 		CB8CE6542805D00E0069ADB0 /* EnvironmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE6052805D00E0069ADB0 /* EnvironmentTests.swift */; };
 		CB8CE6552805D00E0069ADB0 /* Dictionary+AdditionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE6072805D00E0069ADB0 /* Dictionary+AdditionsTests.swift */; };
 		CB8CE6562805D00E0069ADB0 /* DispatchQueue+DispatchingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE6082805D00E0069ADB0 /* DispatchQueue+DispatchingTests.swift */; };
@@ -195,7 +177,6 @@
 		CB8CE6582805D00E0069ADB0 /* URL+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE60A2805D00E0069ADB0 /* URL+ExtensionsTests.swift */; };
 		CB8CE65A2805D00E0069ADB0 /* CardUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE60C2805D00E0069ADB0 /* CardUtilsTests.swift */; };
 		CB8CE65B2805D00E0069ADB0 /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE60D2805D00E0069ADB0 /* NetworkErrorTests.swift */; };
-		CB8CE65C2805D00E0069ADB0 /* NetworkFlowLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE60F2805D00E0069ADB0 /* NetworkFlowLoggerTests.swift */; };
 		CB8CE65D2805D00E0069ADB0 /* CorrelationIDGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE6102805D00E0069ADB0 /* CorrelationIDGeneratorTests.swift */; };
 		CB8CE65E2805D00E0069ADB0 /* FramesEventLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE6112805D00E0069ADB0 /* FramesEventLoggerTests.swift */; };
 		CB8CE65F2805D00E0069ADB0 /* FramesLogEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE6122805D00E0069ADB0 /* FramesLogEventTests.swift */; };
@@ -333,18 +314,13 @@
 		442277C62616376E009626A0 /* CardNumberInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberInputView.swift; sourceTree = "<group>"; };
 		442277C72616376E009626A0 /* CvvInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvInputView.swift; sourceTree = "<group>"; };
 		442277C82616376E009626A0 /* ExpirationDateInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationDateInputView.swift; sourceTree = "<group>"; };
-		442277CA2616376E009626A0 /* CkoPhoneNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CkoPhoneNumber.swift; sourceTree = "<group>"; };
 		442277CB2616376E009626A0 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		442277CC2616376E009626A0 /* CardScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardScheme.swift; sourceTree = "<group>"; };
 		442277CD2616376E009626A0 /* CardProviderResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardProviderResponse.swift; sourceTree = "<group>"; };
-		442277CE2616376E009626A0 /* CkoCardTokenResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CkoCardTokenResponse.swift; sourceTree = "<group>"; };
-		442277CF2616376E009626A0 /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		442277D02616376E009626A0 /* CardProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardProvider.swift; sourceTree = "<group>"; };
 		442277D12616376E009626A0 /* CkoAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CkoAddress.swift; sourceTree = "<group>"; };
-		442277D22616376E009626A0 /* CardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
 		442277D32616376E009626A0 /* CustomerCardList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerCardList.swift; sourceTree = "<group>"; };
 		442277D42616376E009626A0 /* InputState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputState.swift; sourceTree = "<group>"; };
-		442277D52616376E009626A0 /* CkoCardTokenRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CkoCardTokenRequest.swift; sourceTree = "<group>"; };
 		442277D62616376E009626A0 /* CheckoutTokenStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutTokenStatus.swift; sourceTree = "<group>"; };
 		442277D72616376E009626A0 /* ErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		442277D82616376E009626A0 /* ApplePayTokenRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplePayTokenRequest.swift; sourceTree = "<group>"; };
@@ -364,15 +340,10 @@
 		44A4DFCF261CC17800E0C349 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 		44F095162625F7E600CB287F /* FramesLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesLogEvent.swift; sourceTree = "<group>"; };
 		44F095A52629DCF100CB287F /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
-		57256C41269F0F81001EC3D8 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		57256C42269F0F81001EC3D8 /* RequestExecutor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestExecutor.swift; sourceTree = "<group>"; };
-		57256C43269F0F81001EC3D8 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		57256C49269F0F90001EC3D8 /* DateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
 		57256C4A269F0F90001EC3D8 /* TokenType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenType.swift; sourceTree = "<group>"; };
 		57256C4C269F0F90001EC3D8 /* CorrelationIDGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrelationIDGenerator.swift; sourceTree = "<group>"; };
-		57256C4D269F0F90001EC3D8 /* NetworkFlowLoggerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkFlowLoggerFactory.swift; sourceTree = "<group>"; };
 		57256C4E269F0F90001EC3D8 /* FramesEventLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesEventLogger.swift; sourceTree = "<group>"; };
-		57256C4F269F0F90001EC3D8 /* NetworkFlowLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkFlowLogger.swift; sourceTree = "<group>"; };
 		57256C59269F0FA0001EC3D8 /* TopLevelDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopLevelDecoder.swift; sourceTree = "<group>"; };
 		57256C5A269F0FA0001EC3D8 /* Dispatching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatching.swift; sourceTree = "<group>"; };
 		57256C5B269F0FA0001EC3D8 /* TopLevelEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopLevelEncoder.swift; sourceTree = "<group>"; };
@@ -388,18 +359,15 @@
 		57256DEB269FA42E001EC3D8 /* Dictionary+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Additions.swift"; sourceTree = "<group>"; };
 		CB8CE5C52805BFE70069ADB0 /* CheckoutAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAPIService.swift; sourceTree = "<group>"; };
 		CB8CE5C92805D00D0069ADB0 /* StubJSONDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubJSONDecoder.swift; sourceTree = "<group>"; };
-		CB8CE5CA2805D00D0069ADB0 /* StubRequestParameterProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubRequestParameterProvider.swift; sourceTree = "<group>"; };
 		CB8CE5CB2805D00D0069ADB0 /* StubCheckoutAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCheckoutAPIService.swift; sourceTree = "<group>"; };
 		CB8CE5CC2805D00D0069ADB0 /* StubFramesEventLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubFramesEventLogger.swift; sourceTree = "<group>"; };
 		CB8CE5CD2805D00E0069ADB0 /* StubEnvironmentURLProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubEnvironmentURLProvider.swift; sourceTree = "<group>"; };
 		CB8CE5CE2805D00E0069ADB0 /* StubCorrelationIDGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCorrelationIDGenerator.swift; sourceTree = "<group>"; };
-		CB8CE5CF2805D00E0069ADB0 /* StubNetworkFlowLoggerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubNetworkFlowLoggerFactory.swift; sourceTree = "<group>"; };
 		CB8CE5D02805D00E0069ADB0 /* NotificationCenterMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterMock.swift; sourceTree = "<group>"; };
 		CB8CE5D12805D00E0069ADB0 /* NavigationControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerMock.swift; sourceTree = "<group>"; };
 		CB8CE5D32805D00E0069ADB0 /* StubUIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubUIDevice.swift; sourceTree = "<group>"; };
 		CB8CE5D42805D00E0069ADB0 /* CardViewControllerMockDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewControllerMockDelegate.swift; sourceTree = "<group>"; };
 		CB8CE5D52805D00E0069ADB0 /* StubDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubDispatcher.swift; sourceTree = "<group>"; };
-		CB8CE5D62805D00E0069ADB0 /* StubRequestExecutor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubRequestExecutor.swift; sourceTree = "<group>"; };
 		CB8CE5D72805D00E0069ADB0 /* StubURLSessionDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubURLSessionDataTask.swift; sourceTree = "<group>"; };
 		CB8CE5D82805D00E0069ADB0 /* StubJSONEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubJSONEncoder.swift; sourceTree = "<group>"; };
 		CB8CE5D92805D00E0069ADB0 /* CardViewControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewControllerMock.swift; sourceTree = "<group>"; };
@@ -434,12 +402,7 @@
 		CB8CE5F82805D00E0069ADB0 /* SchemeIconsStackViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemeIconsStackViewTests.swift; sourceTree = "<group>"; };
 		CB8CE5F92805D00E0069ADB0 /* CardViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewControllerTests.swift; sourceTree = "<group>"; };
 		CB8CE5FB2805D00E0069ADB0 /* NetworkError+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkError+Equatable.swift"; sourceTree = "<group>"; };
-		CB8CE5FC2805D00E0069ADB0 /* CkoCardTokenResponse+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CkoCardTokenResponse+Extensions.swift"; sourceTree = "<group>"; };
 		CB8CE5FF2805D00E0069ADB0 /* URLHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLHelperTests.swift; sourceTree = "<group>"; };
-		CB8CE6012805D00E0069ADB0 /* RequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
-		CB8CE6022805D00E0069ADB0 /* HTTPMethodTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethodTests.swift; sourceTree = "<group>"; };
-		CB8CE6032805D00E0069ADB0 /* RequestExecutorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestExecutorTests.swift; sourceTree = "<group>"; };
-		CB8CE6042805D00E0069ADB0 /* StubNetworkFlowLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubNetworkFlowLogger.swift; sourceTree = "<group>"; };
 		CB8CE6052805D00E0069ADB0 /* EnvironmentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentTests.swift; sourceTree = "<group>"; };
 		CB8CE6072805D00E0069ADB0 /* Dictionary+AdditionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+AdditionsTests.swift"; sourceTree = "<group>"; };
 		CB8CE6082805D00E0069ADB0 /* DispatchQueue+DispatchingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+DispatchingTests.swift"; sourceTree = "<group>"; };
@@ -447,7 +410,6 @@
 		CB8CE60A2805D00E0069ADB0 /* URL+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		CB8CE60C2805D00E0069ADB0 /* CardUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardUtilsTests.swift; sourceTree = "<group>"; };
 		CB8CE60D2805D00E0069ADB0 /* NetworkErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
-		CB8CE60F2805D00E0069ADB0 /* NetworkFlowLoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkFlowLoggerTests.swift; sourceTree = "<group>"; };
 		CB8CE6102805D00E0069ADB0 /* CorrelationIDGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrelationIDGeneratorTests.swift; sourceTree = "<group>"; };
 		CB8CE6112805D00E0069ADB0 /* FramesEventLoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesEventLoggerTests.swift; sourceTree = "<group>"; };
 		CB8CE6122805D00E0069ADB0 /* FramesLogEventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesLogEventTests.swift; sourceTree = "<group>"; };
@@ -661,9 +623,7 @@
 			isa = PBXGroup;
 			children = (
 				CB8CE5C52805BFE70069ADB0 /* CheckoutAPIService.swift */,
-				57256C40269F0F6C001EC3D8 /* Networking */,
 				44F095152625F7E600CB287F /* Logging */,
-				442277CA2616376E009626A0 /* CkoPhoneNumber.swift */,
 				442277CB2616376E009626A0 /* Environment.swift */,
 				442277CC2616376E009626A0 /* CardScheme.swift */,
 				442277CD2616376E009626A0 /* CardProviderResponse.swift */,
@@ -673,14 +633,10 @@
 				57256C5A269F0FA0001EC3D8 /* Dispatching.swift */,
 				57256C59269F0FA0001EC3D8 /* TopLevelDecoder.swift */,
 				57256C5B269F0FA0001EC3D8 /* TopLevelEncoder.swift */,
-				442277CE2616376E009626A0 /* CkoCardTokenResponse.swift */,
-				442277CF2616376E009626A0 /* Customer.swift */,
 				442277D02616376E009626A0 /* CardProvider.swift */,
 				442277D12616376E009626A0 /* CkoAddress.swift */,
-				442277D22616376E009626A0 /* CardType.swift */,
 				442277D32616376E009626A0 /* CustomerCardList.swift */,
 				442277D42616376E009626A0 /* InputState.swift */,
-				442277D52616376E009626A0 /* CkoCardTokenRequest.swift */,
 				442277D62616376E009626A0 /* CheckoutTokenStatus.swift */,
 				442277D72616376E009626A0 /* ErrorResponse.swift */,
 				442277D82616376E009626A0 /* ApplePayTokenRequest.swift */,
@@ -737,22 +693,10 @@
 				57256C4C269F0F90001EC3D8 /* CorrelationIDGenerator.swift */,
 				57256C49269F0F90001EC3D8 /* DateProvider.swift */,
 				57256C4E269F0F90001EC3D8 /* FramesEventLogger.swift */,
-				57256C4F269F0F90001EC3D8 /* NetworkFlowLogger.swift */,
-				57256C4D269F0F90001EC3D8 /* NetworkFlowLoggerFactory.swift */,
 				57256C4A269F0F90001EC3D8 /* TokenType.swift */,
 				44F095162625F7E600CB287F /* FramesLogEvent.swift */,
 			);
 			path = Logging;
-			sourceTree = "<group>";
-		};
-		57256C40269F0F6C001EC3D8 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				57256C43269F0F81001EC3D8 /* HTTPMethod.swift */,
-				57256C41269F0F81001EC3D8 /* Request.swift */,
-				57256C42269F0F81001EC3D8 /* RequestExecutor.swift */,
-			);
-			path = Networking;
 			sourceTree = "<group>";
 		};
 		CB8CE5C72805D00D0069ADB0 /* Tests */ = {
@@ -774,18 +718,15 @@
 			isa = PBXGroup;
 			children = (
 				CB8CE5C92805D00D0069ADB0 /* StubJSONDecoder.swift */,
-				CB8CE5CA2805D00D0069ADB0 /* StubRequestParameterProvider.swift */,
 				CB8CE5CB2805D00D0069ADB0 /* StubCheckoutAPIService.swift */,
 				CB8CE5CC2805D00D0069ADB0 /* StubFramesEventLogger.swift */,
 				CB8CE5CD2805D00E0069ADB0 /* StubEnvironmentURLProvider.swift */,
 				CB8CE5CE2805D00E0069ADB0 /* StubCorrelationIDGenerator.swift */,
-				CB8CE5CF2805D00E0069ADB0 /* StubNetworkFlowLoggerFactory.swift */,
 				CB8CE5D02805D00E0069ADB0 /* NotificationCenterMock.swift */,
 				CB8CE5D12805D00E0069ADB0 /* NavigationControllerMock.swift */,
 				CB8CE5D32805D00E0069ADB0 /* StubUIDevice.swift */,
 				CB8CE5D42805D00E0069ADB0 /* CardViewControllerMockDelegate.swift */,
 				CB8CE5D52805D00E0069ADB0 /* StubDispatcher.swift */,
-				CB8CE5D62805D00E0069ADB0 /* StubRequestExecutor.swift */,
 				CB8CE5D72805D00E0069ADB0 /* StubURLSessionDataTask.swift */,
 				CB8CE5D82805D00E0069ADB0 /* StubJSONEncoder.swift */,
 				CB8CE5D92805D00E0069ADB0 /* CardViewControllerMock.swift */,
@@ -842,7 +783,6 @@
 			isa = PBXGroup;
 			children = (
 				CB8CE5FB2805D00E0069ADB0 /* NetworkError+Equatable.swift */,
-				CB8CE5FC2805D00E0069ADB0 /* CkoCardTokenResponse+Extensions.swift */,
 			);
 			path = "Test Helpers";
 			sourceTree = "<group>";
@@ -851,7 +791,6 @@
 			isa = PBXGroup;
 			children = (
 				CB8CE5FF2805D00E0069ADB0 /* URLHelperTests.swift */,
-				CB8CE6002805D00E0069ADB0 /* Networking */,
 				CB8CE6052805D00E0069ADB0 /* EnvironmentTests.swift */,
 				CB8CE6062805D00E0069ADB0 /* Extensions */,
 				CB8CE60C2805D00E0069ADB0 /* CardUtilsTests.swift */,
@@ -859,17 +798,6 @@
 				CB8CE60E2805D00E0069ADB0 /* Logging */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		CB8CE6002805D00E0069ADB0 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				CB8CE6012805D00E0069ADB0 /* RequestTests.swift */,
-				CB8CE6022805D00E0069ADB0 /* HTTPMethodTests.swift */,
-				CB8CE6032805D00E0069ADB0 /* RequestExecutorTests.swift */,
-				CB8CE6042805D00E0069ADB0 /* StubNetworkFlowLogger.swift */,
-			);
-			path = Networking;
 			sourceTree = "<group>";
 		};
 		CB8CE6062805D00E0069ADB0 /* Extensions */ = {
@@ -886,7 +814,6 @@
 		CB8CE60E2805D00E0069ADB0 /* Logging */ = {
 			isa = PBXGroup;
 			children = (
-				CB8CE60F2805D00E0069ADB0 /* NetworkFlowLoggerTests.swift */,
 				CB8CE6102805D00E0069ADB0 /* CorrelationIDGeneratorTests.swift */,
 				CB8CE6112805D00E0069ADB0 /* FramesEventLoggerTests.swift */,
 				CB8CE6122805D00E0069ADB0 /* FramesLogEventTests.swift */,
@@ -1222,7 +1149,6 @@
 				442278262616376E009626A0 /* Environment.swift in Sources */,
 				4422783A2616376E009626A0 /* UIViewControllerExtensions.swift in Sources */,
 				4422780F2616376E009626A0 /* CvvConfirmationViewControllerDelegate.swift in Sources */,
-				442278252616376E009626A0 /* CkoPhoneNumber.swift in Sources */,
 				4422781E2616376E009626A0 /* SchemeIconsStackView.swift in Sources */,
 				4422781A2616376E009626A0 /* ThreedsWebViewController.swift in Sources */,
 				442278212616376E009626A0 /* AddressView.swift in Sources */,
@@ -1239,22 +1165,16 @@
 				4422781D2616376E009626A0 /* DetailsInputView.swift in Sources */,
 				442278232616376E009626A0 /* CvvInputView.swift in Sources */,
 				57256C62269F0FA0001EC3D8 /* Constants.swift in Sources */,
-				57256C46269F0F81001EC3D8 /* HTTPMethod.swift in Sources */,
 				442278102616376E009626A0 /* ThreedsWebViewControllerDelegate.swift in Sources */,
 				57256C60269F0FA0001EC3D8 /* TopLevelEncoder.swift in Sources */,
-				4422782D2616376E009626A0 /* CardType.swift in Sources */,
 				442278242616376E009626A0 /* ExpirationDateInputView.swift in Sources */,
 				4452A1AD26FB5875006AF798 /* URLHelper.swift in Sources */,
 				57256C55269F0F90001EC3D8 /* FramesEventLogger.swift in Sources */,
 				442278392616376E009626A0 /* StringExtensions.swift in Sources */,
 				4422781C2616376E009626A0 /* CardView.swift in Sources */,
-				442278302616376E009626A0 /* CkoCardTokenRequest.swift in Sources */,
 				44F095A72629DCF200CB287F /* UIDeviceExtensions.swift in Sources */,
-				57256C44269F0F81001EC3D8 /* Request.swift in Sources */,
 				44F095202625F7E700CB287F /* FramesLogEvent.swift in Sources */,
 				57256C5F269F0FA0001EC3D8 /* Dispatching.swift in Sources */,
-				4422782A2616376E009626A0 /* Customer.swift in Sources */,
-				57256C56269F0F90001EC3D8 /* NetworkFlowLogger.swift in Sources */,
 				442278282616376E009626A0 /* CardProviderResponse.swift in Sources */,
 				4422780C2616376E009626A0 /* ExpirationDatePicker.swift in Sources */,
 				57256C6D269F0FB0001EC3D8 /* URL+Extensions.swift in Sources */,
@@ -1270,14 +1190,11 @@
 				CB8CE5C62805BFE70069ADB0 /* CheckoutAPIService.swift in Sources */,
 				442278372616376E009626A0 /* CheckoutSdkIos.swift in Sources */,
 				442278342616376E009626A0 /* NetworkError.swift in Sources */,
-				57256C45269F0F81001EC3D8 /* RequestExecutor.swift in Sources */,
 				57256C50269F0F90001EC3D8 /* DateProvider.swift in Sources */,
-				57256C54269F0F90001EC3D8 /* NetworkFlowLoggerFactory.swift in Sources */,
 				442278172616376E009626A0 /* CvvConfirmationViewController.swift in Sources */,
 				4422783D2616376E009626A0 /* CardUtils.swift in Sources */,
 				442278142616376E009626A0 /* CvvInputViewDelegate.swift in Sources */,
 				442278182616376E009626A0 /* CountrySelectionViewController.swift in Sources */,
-				442278292616376E009626A0 /* CkoCardTokenResponse.swift in Sources */,
 				442278162616376E009626A0 /* CardViewController.swift in Sources */,
 				442278152616376E009626A0 /* AddressViewControllerDelegate.swift in Sources */,
 				4422782B2616376E009626A0 /* CardProvider.swift in Sources */,
@@ -1301,7 +1218,6 @@
 				CB8CE63D2805D00E0069ADB0 /* CvvInputViewTests.swift in Sources */,
 				CB8CE6602805D00E0069ADB0 /* ResourcesTests.swift in Sources */,
 				CB8CE6302805D00E0069ADB0 /* StubCheckoutEventLogger.swift in Sources */,
-				CB8CE6512805D00E0069ADB0 /* HTTPMethodTests.swift in Sources */,
 				CB8CE6472805D00E0069ADB0 /* PhoneNumberInputViewTests.swift in Sources */,
 				CB8CE65B2805D00E0069ADB0 /* NetworkErrorTests.swift in Sources */,
 				CB8CE6242805D00E0069ADB0 /* NotificationCenterMock.swift in Sources */,
@@ -1312,19 +1228,15 @@
 				CB8CE63B2805D00E0069ADB0 /* AddressViewControllerTests.swift in Sources */,
 				CB8CE63A2805D00E0069ADB0 /* DetailsInputViewTests.swift in Sources */,
 				CB8CE6432805D00E0069ADB0 /* StandardInputViewTests.swift in Sources */,
-				CB8CE61E2805D00E0069ADB0 /* StubRequestParameterProvider.swift in Sources */,
 				CB8CE6442805D00E0069ADB0 /* ThreedsWebViewControllerTests.swift in Sources */,
 				CB8CE6352805D00E0069ADB0 /* CardNumberInputViewMockDelegate.swift in Sources */,
 				CB8CE64B2805D00E0069ADB0 /* CardViewControllerTests.swift in Sources */,
 				CB8CE6272805D00E0069ADB0 /* StubUIDevice.swift in Sources */,
-				CB8CE6502805D00E0069ADB0 /* RequestTests.swift in Sources */,
 				CB8CE6422805D00E0069ADB0 /* CardListCellNameTests.swift in Sources */,
 				CB8CE6562805D00E0069ADB0 /* DispatchQueue+DispatchingTests.swift in Sources */,
 				CB8CE6222805D00E0069ADB0 /* StubCorrelationIDGenerator.swift in Sources */,
 				CB8CE64F2805D00E0069ADB0 /* URLHelperTests.swift in Sources */,
 				CB8CE65A2805D00E0069ADB0 /* CardUtilsTests.swift in Sources */,
-				CB8CE64D2805D00E0069ADB0 /* CkoCardTokenResponse+Extensions.swift in Sources */,
-				CB8CE62A2805D00E0069ADB0 /* StubRequestExecutor.swift in Sources */,
 				CB8CE63E2805D00E0069ADB0 /* CardNumberInputViewTests.swift in Sources */,
 				CB8CE62E2805D00E0069ADB0 /* CvvViewControllerDelegateMock.swift in Sources */,
 				CB8CE63C2805D00E0069ADB0 /* CountrySelectionViewControllerTests.swift in Sources */,
@@ -1337,9 +1249,7 @@
 				CB8CE6362805D00E0069ADB0 /* StubURLSession.swift in Sources */,
 				CB8CE62F2805D00E0069ADB0 /* StubURLProtocol.swift in Sources */,
 				CB8CE62C2805D00E0069ADB0 /* StubJSONEncoder.swift in Sources */,
-				CB8CE6232805D00E0069ADB0 /* StubNetworkFlowLoggerFactory.swift in Sources */,
 				CB8CE6462805D00E0069ADB0 /* SimpleLoadingViewControllerTests.swift in Sources */,
-				CB8CE65C2805D00E0069ADB0 /* NetworkFlowLoggerTests.swift in Sources */,
 				CB8CE6212805D00E0069ADB0 /* StubEnvironmentURLProvider.swift in Sources */,
 				CB8CE6542805D00E0069ADB0 /* EnvironmentTests.swift in Sources */,
 				CB8CE6412805D00E0069ADB0 /* ExpirationDateInputViewTests.swift in Sources */,
@@ -1347,13 +1257,11 @@
 				CB8CE6452805D00E0069ADB0 /* ExpirationDatePickerTests.swift in Sources */,
 				CB8CE62B2805D00E0069ADB0 /* StubURLSessionDataTask.swift in Sources */,
 				CB8CE6292805D00E0069ADB0 /* StubDispatcher.swift in Sources */,
-				CB8CE6522805D00E0069ADB0 /* RequestExecutorTests.swift in Sources */,
 				CB8CE64A2805D00E0069ADB0 /* SchemeIconsStackViewTests.swift in Sources */,
 				CB8CE6552805D00E0069ADB0 /* Dictionary+AdditionsTests.swift in Sources */,
 				CB8CE6342805D00E0069ADB0 /* AddressViewControllerMockDelegate.swift in Sources */,
 				CB8CE6582805D00E0069ADB0 /* URL+ExtensionsTests.swift in Sources */,
 				CB8CE61D2805D00E0069ADB0 /* StubJSONDecoder.swift in Sources */,
-				CB8CE6532805D00E0069ADB0 /* StubNetworkFlowLogger.swift in Sources */,
 				CB8CE6322805D00E0069ADB0 /* StubCardValidator.swift in Sources */,
 				CB8CE6402805D00E0069ADB0 /* CvvConfirmationViewControllerTests.swift in Sources */,
 				CB8CE65D2805D00E0069ADB0 /* CorrelationIDGeneratorTests.swift in Sources */,
