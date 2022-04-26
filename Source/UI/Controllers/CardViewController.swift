@@ -43,7 +43,7 @@ public class CardViewController: UIViewController,
     var topConstraint: NSLayoutConstraint?
 
     private var loggedForCurrentCorrelationID = false
-
+    public var isNewUI: Bool = false
     // MARK: - Initialization
 
     /// Returns a newly initialized view controller with the cardholder's name and billing details
@@ -160,7 +160,12 @@ public class CardViewController: UIViewController,
     }
 
     @objc func onTapAddressView() {
-        navigationController?.pushViewController(addressViewController, animated: true)
+        guard isNewUI else {
+            navigationController?.pushViewController(addressViewController, animated: true)
+            return
+        }
+        let viewController = BillingFormFactory.getBillingFormViewController(delegate: self)
+        navigationController?.present(viewController, animated: true)
         checkoutApiClient?.logger.log(.billingFormPresented)
         loggedForCurrentCorrelationID = true
     }
@@ -337,5 +342,18 @@ public class CardViewController: UIViewController,
             checkoutApiClient.logger.log(.paymentFormPresented(theme: Theme(), locale: Locale.current))
             loggedForCurrentCorrelationID = true
         }
+    }
+}
+
+
+extension CardViewController: BillingFormViewModelDelegate {
+    func onTapDoneButton(address: CkoAddress, phone: CkoPhoneNumber) {
+        billingDetailsAddress = address
+        billingDetailsPhone = phone
+        let value = "\(address.addressLine1 ?? ""), \(address.city ?? "")"
+        cardView.billingDetailsInputView.value.text = value
+        validateFieldsValues()
+        // return to CardViewController
+        self.topConstraint?.isActive = false
     }
 }
