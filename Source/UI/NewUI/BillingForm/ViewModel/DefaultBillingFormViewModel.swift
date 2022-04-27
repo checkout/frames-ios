@@ -62,7 +62,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     }
 }
 
-extension DefaultBillingFormViewModel: BillingFormViewControllerDeleagte {
+extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
     func textFieldIsChanged(textField: BillingFormTextField, replacementString: String) {
         if !replacementString.isEmpty {
             textValueOfCellType[textField.type] = replacementString

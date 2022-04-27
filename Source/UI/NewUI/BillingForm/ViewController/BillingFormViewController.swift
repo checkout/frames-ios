@@ -1,6 +1,6 @@
 import UIKit
 
-protocol BillingFormViewControllerDeleagte: AnyObject {
+protocol BillingFormViewControllerdelegate: AnyObject {
     func doneButtonIsPressed(sender: UIViewController)
     func cancelButtonIsPressed(sender: UIViewController)
     func tableView(numberOfRowsInSection section: Int) -> Int
@@ -11,7 +11,7 @@ protocol BillingFormViewControllerDeleagte: AnyObject {
 }
 
 final class BillingFormViewController: UIViewController {
-    weak var delegate: BillingFormViewControllerDeleagte?
+    weak var delegate: BillingFormViewControllerdelegate?
 
     fileprivate var focusedTextField: UITextField?
     private var viewModel: BillingFormViewModel
@@ -49,7 +49,7 @@ final class BillingFormViewController: UIViewController {
     
     init(viewModel: BillingFormViewModel) {
         self.viewModel = viewModel
-        self.delegate = viewModel as? BillingFormViewControllerDeleagte
+        self.delegate = viewModel as? BillingFormViewControllerdelegate
         super.init(nibName: nil, bundle: nil)
         self.setupViewModel()
     }

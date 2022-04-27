@@ -1,7 +1,7 @@
 import UIKit
 @testable import Frames
 
-class BillingFormViewControllerMockDelegate: BillingFormViewControllerDeleagte {
+class BillingFormViewControllerMockDelegate: BillingFormViewControllerdelegate {
     
     var doneButtonIsPressedCalledTimes = 0
     var doneButtonIsPressedLastCalledWithSender: UIViewController?

@@ -7,7 +7,7 @@ protocol BillingFormHeaderCellDelegate: AnyObject {
 
 final class BillingFormHeaderCell: UITableViewCell {
     private var style: BillingFormHeaderCellStyle
-    private weak var deleagte: BillingFormHeaderCellDelegate?
+    private weak var delegate: BillingFormHeaderCellDelegate?
     
     private lazy var cancel: UIButton = {
         let view = UIButton()
@@ -50,7 +50,7 @@ final class BillingFormHeaderCell: UITableViewCell {
     init(style: BillingFormHeaderCellStyle , delegate: BillingFormHeaderCellDelegate?) {
         self.style = style
         super.init(style: .default, reuseIdentifier: nil)
-        self.deleagte = delegate
+        self.delegate = delegate
         setupViews()
     }
     
@@ -59,11 +59,11 @@ final class BillingFormHeaderCell: UITableViewCell {
     }
     
     @objc private func doneAction(){
-        deleagte?.doneButtonIsPressed()
+        delegate?.doneButtonIsPressed()
     }
     
     @objc private func cancelAction(){
-        deleagte?.cancelButtonIsPressed()
+        delegate?.cancelButtonIsPressed()
     }
     
     private func shouldEnableDoneButton(flag: Bool) {
