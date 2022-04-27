@@ -3,7 +3,7 @@ import XCTest
 
 class BillingFormTextFieldViewTests: XCTestCase {
     var view: BillingFormTextFieldView!
-    let style = DefaultFormStyleFullNameCell()
+    let style = DefaultBillingFormFullNameCellStyle()
 
     override func setUp() {
         super.setUp()

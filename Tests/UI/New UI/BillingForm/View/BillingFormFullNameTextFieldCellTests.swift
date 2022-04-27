@@ -6,7 +6,7 @@ class BillingFormTextFieldCellTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        view = BillingFormTextFieldCell(type: .fullName, style: DefaultFormStyleFullNameCell(), delegate: nil)
+        view = BillingFormTextFieldCell(type: .fullName, style: DefaultBillingFormFullNameCellStyle(), delegate: nil)
     }
     
     func testCallDelegateMethodTextFieldShouldBeginEditing() {
