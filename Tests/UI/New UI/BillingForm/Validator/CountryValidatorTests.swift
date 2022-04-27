@@ -7,13 +7,13 @@ class CountryValidatorTests: XCTestCase {
         let expectedType = BillingFormCellType.country
         let text = ""
         let isValid = expectedType.validator.validate(text: text)
-        XCTAssertEqual(isValid, true)
+        XCTAssertTrue(isValid)
     }
     
     func testValidationWhenTextIsNonEmptyThenShouldBeFalse() {
         let expectedType = BillingFormCellType.country
         let text = "Country"
         let isValid = expectedType.validator.validate(text: text)
-        XCTAssertEqual(isValid, false)
+        XCTAssertFalse(isValid)
     }
 }

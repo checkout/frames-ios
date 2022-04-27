@@ -7,13 +7,13 @@ class CityValidatorTests: XCTestCase {
         let expectedType = BillingFormCellType.city
         let text = ""
         let isValid = expectedType.validator.validate(text: text)
-        XCTAssertEqual(isValid, true)
+        XCTAssertTrue(isValid)
     }
     
     func testValidationWhenTextIsNonEmptyThenShouldBeFalse() {
         let expectedType = BillingFormCellType.city
         let text = "City"
         let isValid = expectedType.validator.validate(text: text)
-        XCTAssertEqual(isValid, false)
+        XCTAssertFalse(isValid)
     }
 }

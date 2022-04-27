@@ -7,13 +7,13 @@ class AddressLine1ValidatorTests: XCTestCase {
         let expectedType = BillingFormCellType.addressLine1
         let text = ""
         let isValid = expectedType.validator.validate(text: text)
-        XCTAssertEqual(isValid, true)
+        XCTAssertTrue(isValid)
     }
     
     func testValidationWhenTextIsNonEmptyThenShouldBeFalse() {
         let expectedType = BillingFormCellType.addressLine1
         let text = "addressLine1"
         let isValid = expectedType.validator.validate(text: text)
-        XCTAssertEqual(isValid, false)
+        XCTAssertFalse(isValid)
     }
 }
