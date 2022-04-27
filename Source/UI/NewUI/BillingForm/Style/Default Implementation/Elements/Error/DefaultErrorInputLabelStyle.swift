@@ -12,10 +12,10 @@ struct DefaultErrorInputLabelStyle: ErrorInputLabelStyle {
     
     init(isHidden: Bool = true,
          backgroundColor: UIColor = .white,
-         tintColor: UIColor = .tallPoppy,
+         tintColor: UIColor = .tallPoppyRed,
          text: String = "",
          font: UIFont = UIFont.systemFont(ofSize: 15),
-         textColor: UIColor =  .tallPoppy,
+         textColor: UIColor =  .tallPoppyRed,
          isWarningSympoleOnLeft: Bool = true,
          height: Double = 18.0) {
         self.isHidden = isHidden

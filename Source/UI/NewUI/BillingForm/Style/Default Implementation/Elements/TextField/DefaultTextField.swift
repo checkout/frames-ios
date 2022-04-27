@@ -23,7 +23,7 @@ struct DefaultTextField: TextFieldStyle {
          textColor: UIColor = .codGray,
          normalBorderColor: UIColor = .mediumGray,
          focusBorderColor: UIColor = .brandeisBlue,
-         errorBorderColor: UIColor = .tallPoppy,
+         errorBorderColor: UIColor = .tallPoppyRed,
          backgroundColor: UIColor = .white,
          tintColor: UIColor = .codGray,
          width: Double = 335.0,
