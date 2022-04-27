@@ -1,6 +1,6 @@
 import UIKit
 
-struct DefaultFormStyleCityCell : BillingFormTextFieldCellStyle {
+struct DefaultBillingFormStateCellStyle : BillingFormTextFieldCellStyle {
     var backgroundColor: UIColor
     var title: InputLabelStyle?
     var hint: InputLabelStyle?
@@ -8,10 +8,10 @@ struct DefaultFormStyleCityCell : BillingFormTextFieldCellStyle {
     var error: ErrorInputLabelStyle
     
     init(backgroundColor: UIColor = .white,
-         header: InputLabelStyle = DefaultTitleLabelStyle(text: "City"),
+         header: InputLabelStyle = DefaultTitleLabelStyle(text: "State"),
          hint: InputLabelStyle? = nil,
          textfield: TextFieldStyle = DefaultTextField(),
-         error: ErrorInputLabelStyle = DefaultErrorInputLabelStyle(text: "missing City")) {
+         error: ErrorInputLabelStyle = DefaultErrorInputLabelStyle(text: "missing State")) {
         self.backgroundColor = backgroundColor
         self.title = header
         self.hint = hint

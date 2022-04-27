@@ -3,14 +3,14 @@ import UIKit
 struct BillingFormFactory {
     // in order
     static let styles: [BillingFormTextFieldCellStyle] = [
-        DefaultFormStyleFullNameCell(),
-        DefaultFormStyleAddressLine1Cell(),
-        DefaultFormStyleAddressLine2Cell(),
-        DefaultFormStyleCityCell(),
-        DefaultFormStyleStateCell(),
-        DefaultFormStylePostcodeCell(),
-        DefaultFormStyleCountryCell(),
-        DefaultFormStylePhoneNumberCell()
+        DefaultBillingFormFullNameCellStyle(),
+        DefaultBillingFormAddressLine1CellStyle(),
+        DefaultBillingFormAddressLine2CellStyle(),
+        DefaultBillingFormCityCellStyle(),
+        DefaultBillingFormStateCellStyle(),
+        DefaultBillingFormPostcodeCellStyle(),
+        DefaultBillingFormCountryCellStyle(),
+        DefaultBillingFormPhoneNumberCellStyle()
     ]
     
     static func getBillingFormViewController(delegate: BillingFormViewModelDelegate) -> UIViewController {

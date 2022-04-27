@@ -1,6 +1,6 @@
 import UIKit
 
-struct DefaultFormStylePhoneNumberCell : BillingFormTextFieldCellStyle {
+struct DefaultBillingFormPhoneNumberCellStyle : BillingFormTextFieldCellStyle {
     var backgroundColor: UIColor
     var title: InputLabelStyle?
     var hint: InputLabelStyle?

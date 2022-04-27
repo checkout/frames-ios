@@ -1,6 +1,6 @@
 import UIKit
 
-struct DefaultFormStylePostcodeCell : BillingFormTextFieldCellStyle {
+struct DefaultBillingFormFullNameCellStyle : BillingFormTextFieldCellStyle {
     var backgroundColor: UIColor
     var title: InputLabelStyle?
     var hint: InputLabelStyle?
@@ -8,10 +8,10 @@ struct DefaultFormStylePostcodeCell : BillingFormTextFieldCellStyle {
     var error: ErrorInputLabelStyle
     
     init(backgroundColor: UIColor = .white,
-         header: InputLabelStyle = DefaultTitleLabelStyle(text: "Postcode/Zip"),
+         header: InputLabelStyle = DefaultTitleLabelStyle(text: "Full name"),
          hint: InputLabelStyle? = nil,
          textfield: TextFieldStyle = DefaultTextField(),
-         error: ErrorInputLabelStyle = DefaultErrorInputLabelStyle(text: "missing Postcode/Zip")) {
+         error: ErrorInputLabelStyle = DefaultErrorInputLabelStyle(text: "missing Full name")) {
         self.backgroundColor = backgroundColor
         self.title = header
         self.hint = hint

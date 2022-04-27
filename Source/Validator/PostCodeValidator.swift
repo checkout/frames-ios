@@ -1,6 +1,6 @@
 import Foundation
 
-class PostCodeValidator: Validator {
+class PostcodeValidator: Validator {
     func validate(text: String?) -> Bool {
         return isEmpty(text: text)
     }

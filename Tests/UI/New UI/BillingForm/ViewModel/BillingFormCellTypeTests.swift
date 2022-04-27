@@ -30,7 +30,7 @@ class BillingFormCellTypeTests: XCTestCase {
     }
     
     func testPostcodeValidatorType(){
-        XCTAssertTrue(BillingFormCellType.postcode.validator is PostCodeValidator)
+        XCTAssertTrue(BillingFormCellType.postcode.validator is PostcodeValidator)
     }
     
     func testPhoneNumberValidatorType(){

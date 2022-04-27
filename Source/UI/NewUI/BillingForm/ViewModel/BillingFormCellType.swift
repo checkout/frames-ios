@@ -17,7 +17,7 @@ import Foundation
         case .addressLine2: return AddressLine2Validator()
         case .city: return CityValidator()
         case .state: return StateValidator()
-        case .postcode: return PostCodeValidator()
+        case .postcode: return PostcodeValidator()
         case .country: return CountryValidator()
         case .phoneNumber: return PhoneNumberValidator()
         }

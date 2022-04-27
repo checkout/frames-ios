@@ -1,7 +1,6 @@
 import UIKit
 
-//Address line 1
-struct DefaultFormStyleAddressLine1Cell : BillingFormTextFieldCellStyle {
+struct DefaultBillingFormAddressLine2CellStyle : BillingFormTextFieldCellStyle {
     var backgroundColor: UIColor
     var title: InputLabelStyle?
     var hint: InputLabelStyle?
@@ -9,10 +8,10 @@ struct DefaultFormStyleAddressLine1Cell : BillingFormTextFieldCellStyle {
     var error: ErrorInputLabelStyle
     
     init(backgroundColor: UIColor = .white,
-         header: InputLabelStyle = DefaultTitleLabelStyle(text: "Address line 1"),
+         header: InputLabelStyle = DefaultTitleLabelStyle(text: "Address line 2"),
          hint: InputLabelStyle? = nil,
          textfield: TextFieldStyle = DefaultTextField(),
-         error: ErrorInputLabelStyle = DefaultErrorInputLabelStyle(text: "missing Address line 1")) {
+         error: ErrorInputLabelStyle = DefaultErrorInputLabelStyle(text: "missing Address line 2")) {
         self.backgroundColor = backgroundColor
         self.title = header
         self.hint = hint
