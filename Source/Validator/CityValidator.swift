@@ -6,7 +6,7 @@ class CityValidator: Validator {
     }
     
     private func isEmpty(text: String?) -> Bool {
-        guard let text = text, !text.isEmpty else { return true }
+        guard text?.isEmpty != false else { return true }
         return false
     }
 
