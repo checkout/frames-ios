@@ -12,7 +12,6 @@ import Frames
 class MainViewController: UIViewController, CardViewControllerDelegate {
     
     @IBOutlet weak var goToPaymentPageButton: UIButton!
-    var isNewUI: Bool = false
     
     @IBAction func goToPaymentPage(_ sender: Any) {
         cardViewController.isNewUI = false
