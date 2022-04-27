@@ -1,4 +1,3 @@
-import UIKit
 @testable import Frames
 
 class AddressViewControllerMockDelegate: AddressViewControllerDelegate {
