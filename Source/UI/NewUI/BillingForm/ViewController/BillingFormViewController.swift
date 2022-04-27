@@ -99,11 +99,6 @@ extension BillingFormViewController {
         registerKeyboardHandlers(notificationCenter: notificationCenter,
                                       keyboardWillShow: #selector(keyboardWillShow),
                                       keyboardWillHide: #selector(keyboardWillHide))
-        
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-//        view.addGestureRecognizer(tapGesture)
-//        NotificationCenter.default.addObserver(self, selector: #selector(BillingFormViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(BillingFormViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 
