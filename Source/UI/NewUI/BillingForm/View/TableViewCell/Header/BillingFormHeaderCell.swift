@@ -9,7 +9,7 @@ final class BillingFormHeaderCell: UITableViewCell {
     private var style: BillingFormHeaderCellStyle
     private weak var delegate: BillingFormHeaderCellDelegate?
     
-    private lazy var cancel: UIButton = {
+    private lazy var cancelButton: UIButton = {
         let view = UIButton()
         view.setTitle(style.cancelButton.text, for: .normal)
         view.titleLabel?.font = style.cancelButton.font
@@ -81,17 +81,17 @@ extension BillingFormHeaderCell {
     }
     
     private func setupCancelButton() {
-        contentView.addSubview(cancel)
+        contentView.addSubview(cancelButton)
         NSLayoutConstraint.activate([
-            cancel.topAnchor.constraint(
+            cancelButton.topAnchor.constraint(
                 equalTo: safeTopAnchor,
                 constant: 0),
-            cancel.leadingAnchor.constraint(
+            cancelButton.leadingAnchor.constraint(
                 equalTo: contentView.safeLeadingAnchor,
                 constant: 20),
-            cancel.heightAnchor.constraint(
+            cancelButton.heightAnchor.constraint(
                 equalToConstant: style.cancelButton.height),
-            cancel.widthAnchor.constraint(
+            cancelButton.widthAnchor.constraint(
                 equalToConstant: style.cancelButton.width)
         ])
     }
