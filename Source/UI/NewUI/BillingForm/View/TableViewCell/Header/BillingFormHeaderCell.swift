@@ -90,7 +90,7 @@ extension BillingFormHeaderCell {
                 equalTo: contentView.safeLeadingAnchor,
                 constant: 20),
             cancel.heightAnchor.constraint(
-                equalToConstant: style.cancelButton.hight),
+                equalToConstant: style.cancelButton.height),
             cancel.widthAnchor.constraint(
                 equalToConstant: style.cancelButton.width)
         ])
@@ -106,7 +106,7 @@ extension BillingFormHeaderCell {
                 equalTo: contentView.safeTrailingAnchor,
                 constant: -20),
             done.heightAnchor.constraint(
-                equalToConstant: style.doneButton.hight),
+                equalToConstant: style.doneButton.height),
             done.widthAnchor.constraint(
                 equalToConstant: style.doneButton.width)
         ])

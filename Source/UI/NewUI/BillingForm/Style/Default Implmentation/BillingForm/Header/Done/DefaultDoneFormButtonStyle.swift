@@ -9,7 +9,7 @@ struct DefaultDoneFormButtonStyle: FormButtonStyle {
     var inActiveTintColor: UIColor
     var activeTintColor: UIColor
     var backgroundColor: UIColor
-    var hight: Double
+    var height: Double
     var width: Double
     
     init( isEnabled: Bool = true,
@@ -20,7 +20,7 @@ struct DefaultDoneFormButtonStyle: FormButtonStyle {
           inActiveTintColor: UIColor = .doveGray,
           activeTintColor: UIColor = .brandeisBlue,
           backgroundColor: UIColor = .white,
-          hight: Double = 44,
+          height: Double = 44,
           width: Double = 53) {
         self.isEnabled = isEnabled
         self.text = text
@@ -30,7 +30,7 @@ struct DefaultDoneFormButtonStyle: FormButtonStyle {
         self.inActiveTintColor = inActiveTintColor
         self.activeTintColor = activeTintColor
         self.backgroundColor =  backgroundColor
-        self.hight = hight
+        self.height = height
         self.width = width
     }
 }

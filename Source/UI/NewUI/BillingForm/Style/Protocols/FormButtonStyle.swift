@@ -10,6 +10,6 @@ public protocol FormButtonStyle {
     var inActiveTintColor: UIColor { get }
     var activeTintColor: UIColor { get }
     var backgroundColor: UIColor { get }
-    var hight: Double { get }
+    var height: Double { get }
     var width: Double { get }
 }
