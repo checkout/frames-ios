@@ -8,7 +8,7 @@ struct BillingFormFactory {
         DefaultFormStyleAddressLine2Cell(),
         DefaultFormStyleCityCell(),
         DefaultFormStyleStateCell(),
-        DefaultFormStylePostcodedCell(),
+        DefaultFormStylePostcodeCell(),
         DefaultFormStyleCountryCell(),
         DefaultFormStylePhoneNumberCell()
     ]
