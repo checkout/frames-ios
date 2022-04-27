@@ -20,10 +20,10 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDeleagte {
     var estimatedHeightForRowLastCalledWithIndexPath: IndexPath?
     
     var validateCalledTimes = 0
-    var validateLastCalledWithBillFormTextField: BillFormTextField?
+    var validateLastCalledWithBillingFormTextField: BillingFormTextField?
     
     var textFieldIsChangedCalledTimes = 0
-    var textFieldIsChangedLastCalledWithBillFormTextField: BillFormTextField?
+    var textFieldIsChangedLastCalledWithBillingFormTextField: BillingFormTextField?
     var textFieldIsChangedLastCalledWithReplacementString: String?
     
     func doneButtonIsPressed(sender: UIViewController) {
@@ -55,14 +55,14 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDeleagte {
         return 100
     }
     
-    func validate(textField: BillFormTextField) {
+    func validate(textField: BillingFormTextField) {
         validateCalledTimes += 1
-        validateLastCalledWithBillFormTextField = textField
+        validateLastCalledWithBillingFormTextField = textField
     }
     
-    func textFieldIsChanged(textField: BillFormTextField, replacementString: String) {
+    func textFieldIsChanged(textField: BillingFormTextField, replacementString: String) {
         textFieldIsChangedCalledTimes += 1
-        textFieldIsChangedLastCalledWithBillFormTextField = textField
+        textFieldIsChangedLastCalledWithBillingFormTextField = textField
         textFieldIsChangedLastCalledWithReplacementString = replacementString
     }
     

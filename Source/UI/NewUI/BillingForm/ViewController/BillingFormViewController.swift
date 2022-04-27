@@ -6,8 +6,8 @@ protocol BillingFormViewControllerDeleagte: AnyObject {
     func tableView(numberOfRowsInSection section: Int) -> Int
     func tableView(cellForRowAt indexPath: IndexPath, sender: UIViewController) -> UITableViewCell
     func tableView(estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
-    func validate(textField: BillFormTextField)
-    func textFieldIsChanged(textField: BillFormTextField, replacementString: String)
+    func validate(textField: BillingFormTextField)
+    func textFieldIsChanged(textField: BillingFormTextField, replacementString: String)
 }
 
 final class BillingFormViewController: UIViewController {
@@ -125,12 +125,12 @@ extension BillingFormViewController: UITableViewDataSource {
 //FormCellDelegate
 extension BillingFormViewController: BillingFormTextFieldCellDelegate {
     func textFieldDidChangeCharacters(textField: UITextField, replacementString: String) {
-        guard let textField = textField as? BillFormTextField else { return }
+        guard let textField = textField as? BillingFormTextField else { return }
         delegate?.textFieldIsChanged(textField: textField, replacementString: replacementString)
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        guard let textField = textField as? BillFormTextField else { return }
+        guard let textField = textField as? BillingFormTextField else { return }
         delegate?.validate(textField: textField)
     }
     

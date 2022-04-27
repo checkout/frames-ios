@@ -86,12 +86,12 @@ class BillingFormViewControllerTests: XCTestCase {
         billingFormViewController.viewDidLoad()
         billingFormViewController.delegate = delegate
         
-        let textfield = BillFormTextField(type: .fullName)
+        let textfield = BillingFormTextField(type: .fullName)
         
         billingFormViewController.textFieldDidEndEditing(textField: textfield)
         
         XCTAssertEqual(delegate.validateCalledTimes, 1)
-        XCTAssertEqual(delegate.validateLastCalledWithBillFormTextField, textfield)
+        XCTAssertEqual(delegate.validateLastCalledWithBillingFormTextField, textfield)
     }
     
     func testCallDelegateMethodTextFieldIsChanged() {
@@ -99,12 +99,12 @@ class BillingFormViewControllerTests: XCTestCase {
         billingFormViewController.viewDidLoad()
         billingFormViewController.delegate = delegate
         
-        let textfield = BillFormTextField(type: .fullName)
+        let textfield = BillingFormTextField(type: .fullName)
         let text = "Test"
         billingFormViewController.textFieldDidChangeCharacters(textField: textfield, replacementString: text)
         
         XCTAssertEqual(delegate.textFieldIsChangedCalledTimes, 1)
         XCTAssertEqual(delegate.textFieldIsChangedLastCalledWithReplacementString, text)
-        XCTAssertEqual(delegate.textFieldIsChangedLastCalledWithBillFormTextField, textfield)
+        XCTAssertEqual(delegate.textFieldIsChangedLastCalledWithBillingFormTextField, textfield)
     }
 }
