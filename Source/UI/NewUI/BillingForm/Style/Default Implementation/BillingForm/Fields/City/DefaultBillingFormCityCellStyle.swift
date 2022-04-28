@@ -8,10 +8,10 @@ struct DefaultBillingFormCityCellStyle : BillingFormTextFieldCellStyle {
     var error: ErrorInputLabelStyle
     
     init(backgroundColor: UIColor = .white,
-         header: InputLabelStyle = DefaultTitleLabelStyle(text: "City"),
+         header: InputLabelStyle = DefaultTitleLabelStyle(text: "city".localized(forClass: DefaultBillingFormAddressLine1CellStyle.self)),
          hint: InputLabelStyle? = nil,
          textfield: TextFieldStyle = DefaultTextField(),
-         error: ErrorInputLabelStyle = DefaultErrorInputLabelStyle(text: "missing City")) {
+         error: ErrorInputLabelStyle = DefaultErrorInputLabelStyle(text: "missingBillingFormCity".localized(forClass: DefaultBillingFormAddressLine1CellStyle.self))) {
         self.backgroundColor = backgroundColor
         self.title = header
         self.hint = hint

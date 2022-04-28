@@ -3,7 +3,7 @@ import UIKit
 
 extension String {
 
-    private func getBundle(forClass: AnyClass) -> Foundation.Bundle {
+    private func getBundle(forClass: Any.Type) -> Foundation.Bundle {
         #if SWIFT_PACKAGE
         let baseBundle = Bundle.module
         #else
@@ -13,7 +13,7 @@ extension String {
         return path == nil ? baseBundle : Foundation.Bundle(path: path!)!
     }
 
-    func localized(forClass: AnyClass, comment: String = "") -> String {
+    func localized(forClass: Any.Type, comment: String = "") -> String {
         let bundle = getBundle(forClass: forClass)
         return NSLocalizedString(self, bundle: bundle, comment: "")
     }

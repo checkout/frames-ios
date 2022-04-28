@@ -95,7 +95,6 @@ extension BillingFormViewController {
     }
     
     private func setUpKeyboard() {
-        title = "addressViewControllerTitle".localized(forClass: AddressViewController.self)
         registerKeyboardHandlers(notificationCenter: notificationCenter,
                                       keyboardWillShow: #selector(keyboardWillShow),
                                       keyboardWillHide: #selector(keyboardWillHide))

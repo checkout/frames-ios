@@ -13,7 +13,7 @@ struct DefaultDoneFormButtonStyle: FormButtonStyle {
     var width: Double
     
     init( isEnabled: Bool = true,
-          text: String = "Done",
+          text: String = "done".localized(forClass: DefaultDoneFormButtonStyle.self),
           font: UIFont = UIFont.systemFont(ofSize: 17),
           activeTitleColor: UIColor = .brandeisBlue,
           inActiveTitleColor: UIColor = .doveGray,
