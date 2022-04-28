@@ -49,7 +49,7 @@ final class BillingFormTextFieldView: UIView {
     }()
     
     private(set) lazy var textField: UITextField = {
-        let view: UITextField = self.type == .phoneNumber ? BillingFormPhoneNumberText(type: type) : BillingFormTextField(type: self.type)
+        let view = self.type == .phoneNumber ? BillingFormPhoneNumberText(type: type) : BillingFormTextField(type: self.type)
         view.text = style.textfield.text
         view.font = style.textfield.font
         view.placeholder = style.textfield.placeHolder

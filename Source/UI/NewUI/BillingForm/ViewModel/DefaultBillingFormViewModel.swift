@@ -9,15 +9,18 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         }
     }
     
-    lazy var errorFlagOfCellType = [BillingFormCellType: Bool]()
-    lazy var textValueOfCellType = [BillingFormCellType: String]()
+    var errorFlagOfCellType = [BillingFormCellType: Bool]()
+    var textValueOfCellType = [BillingFormCellType: String]()
     
     private var initialCountry: String
     private var initialRegionCode: String?
     var editDelegate: BillingFormViewModelEditingDelegate?
     var delegate: BillingFormViewModelDelegate?
     
-    init(style: BillingFormStyle, initialCountry: String = "", initialRegionCode: String? = nil, delegate: BillingFormViewModelDelegate? = nil) {
+    init(style: BillingFormStyle,
+         initialCountry: String = "",
+         initialRegionCode: String? = nil,
+         delegate: BillingFormViewModelDelegate? = nil) {
         self.style = style
         self.initialCountry = initialCountry
         self.initialRegionCode = initialRegionCode
@@ -86,8 +89,8 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
     }
     
     func doneButtonIsPressed(sender: UIViewController) {
-        let countryCode = "44" //"\(addressView.phoneInputView.phoneNumber?.countryCode ?? 44)"
-        let phone = CkoPhoneNumber(countryCode: countryCode,
+//        let countryCode = "\(addressView.phoneInputView.phoneNumber?.countryCode ?? 44)"
+        let phone = CkoPhoneNumber(countryCode: "44",
                                    number: textValueOfCellType[.phoneNumber])
         let address = CkoAddress(addressLine1: textValueOfCellType[.addressLine1],
                                  addressLine2: textValueOfCellType[.addressLine2],

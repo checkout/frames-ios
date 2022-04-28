@@ -1,8 +1,7 @@
 import UIKit
 import PhoneNumberKit
 
-final class BillingFormPhoneNumberText: UITextField {
-    var type: BillingFormCellType
+final class BillingFormPhoneNumberText: BillingFormTextField {
     /// Phone Number Kit
     let phoneNumberKit = PhoneNumberKit()
     var partialFormatter: PartialFormatter {
@@ -10,13 +9,13 @@ final class BillingFormPhoneNumberText: UITextField {
     }
 
     /// National Number (e.g. )
-    public var nationalNumber: String {
+    var nationalNumber: String {
         let rawNumber = self.text ?? ""
         return partialFormatter.nationalNumber(from: rawNumber)
     }
 
     /// True if the phone number is valid, false otherwise
-    public var isValidNumber: Bool {
+    var isValidNumber: Bool {
         let rawNumber = self.text ?? ""
         do {
             phoneNumber = try phoneNumberKit.parse(rawNumber.replacingOccurrences(of: " ", with: ""))
@@ -27,14 +26,13 @@ final class BillingFormPhoneNumberText: UITextField {
     }
 
     /// Phone Number
-    public var phoneNumber: PhoneNumber?
+    var phoneNumber: PhoneNumber?
 
     private var previousTextCount = 0
     private var previousFormat = ""
     
-    init(type: BillingFormCellType) {
-        self.type = type
-        super.init(frame: .zero)
+    override init(type: BillingFormCellType) {
+        super.init(type: type)
         setup()
     }
     
