@@ -19,7 +19,7 @@ final class FramesEventLoggerTests: XCTestCase {
         stubCheckoutEventLogger = StubCheckoutEventLogger()
         stubDateProvider = StubDateProvider()
         subject = FramesEventLogger(
-            correlationID: stubcorrelationID,
+            getCorrelationID: { [stubcorrelationID] in stubcorrelationID },
             checkoutEventLogger: stubCheckoutEventLogger,
             dateProvider: stubDateProvider)
     }
