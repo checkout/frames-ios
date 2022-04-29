@@ -31,8 +31,8 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
     private var previousTextCount = 0
     private var previousFormat = ""
     
-    override init(type: BillingFormCellType) {
-        super.init(type: type)
+    override init(type: BillingFormCellType, tag: Int) {
+        super.init(type: type,tag: tag)
         setup()
     }
     

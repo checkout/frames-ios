@@ -1,13 +1,16 @@
 import UIKit
 
 struct DefaultBillingFormStateCellStyle : BillingFormTextFieldCellStyle {
+    
+    var type: BillingFormCellType
     var backgroundColor: UIColor
     var title: InputLabelStyle?
     var hint: InputLabelStyle?
     var textfield: TextFieldStyle
     var error: ErrorInputLabelStyle
     
-    init(backgroundColor: UIColor = .white,
+    init(type: BillingFormCellType = .state,
+         backgroundColor: UIColor = .white,
          header: InputLabelStyle = DefaultTitleLabelStyle(text: "countryRegion".localized(forClass: DefaultBillingFormAddressLine1CellStyle.self)),
          hint: InputLabelStyle? = nil,
          textfield: TextFieldStyle = DefaultTextField(),
@@ -17,6 +20,7 @@ struct DefaultBillingFormStateCellStyle : BillingFormTextFieldCellStyle {
         self.hint = hint
         self.textfield = textfield
         self.error = error
+        self.type = type
     }
     
 }

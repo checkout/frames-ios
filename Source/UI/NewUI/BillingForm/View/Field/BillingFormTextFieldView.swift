@@ -3,8 +3,7 @@ import UIKit
 protocol BillingFormTextFieldViewDelegate: AnyObject {
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
-    func textFieldDidEndEditing(textField: UITextField)
-    func textFieldDidChangeCharacters(textField: UITextField, replacementString: String)
+    func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
 }
 
 final class BillingFormTextFieldView: UIView {
@@ -49,7 +48,7 @@ final class BillingFormTextFieldView: UIView {
     }()
     
     private(set) lazy var textField: UITextField = {
-        let view = self.type == .phoneNumber ? BillingFormPhoneNumberText(type: type) : BillingFormTextField(type: self.type)
+        let view = self.type == .phoneNumber ? BillingFormPhoneNumberText(type: type, tag: tag) : BillingFormTextField(type: self.type, tag: tag)
         view.text = style.textfield.text
         view.font = style.textfield.font
         view.placeholder = style.textfield.placeHolder
@@ -67,11 +66,12 @@ final class BillingFormTextFieldView: UIView {
         return view
     }()
     
-    init(type: BillingFormCellType, style: BillingFormTextFieldCellStyle, delegate: BillingFormTextFieldViewDelegate? = nil) {
+    init(type: BillingFormCellType, tag: Int, style: BillingFormTextFieldCellStyle, delegate: BillingFormTextFieldViewDelegate? = nil) {
         self.style = style
         self.type = type
         super.init(frame: .zero)
         self.delegate = delegate
+        self.tag = tag
         self.setupViews()
     }
     
@@ -154,18 +154,13 @@ extension BillingFormTextFieldView: UITextFieldDelegate {
         delegate?.textFieldShouldBeginEditing(textField: textField)
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textFieldContainer.layer.borderColor = style.textfield.normalBorderColor.cgColor
-        delegate?.textFieldDidEndEditing(textField: textField)
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        delegate?.textFieldShouldEndEditing(textField: textField, replacementString: textField.text ?? "")
+        return true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldReturn()
         return false
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        delegate?.textFieldDidChangeCharacters(textField: textField, replacementString: string)
-        return true
     }
 }

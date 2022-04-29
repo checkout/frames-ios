@@ -4,10 +4,12 @@ protocol BillingFormViewControllerdelegate: AnyObject {
     func doneButtonIsPressed(sender: UIViewController)
     func cancelButtonIsPressed(sender: UIViewController)
     func tableView(numberOfRowsInSection section: Int) -> Int
-    func tableView(cellForRowAt indexPath: IndexPath, sender: UIViewController) -> UITableViewCell
+    func getViewForHeader(sender: UIViewController) -> UIView?
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    func tableView(tableView: UITableView, cellForRowAt indexPath: IndexPath, sender: UIViewController) -> UITableViewCell
     func tableView(estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
     func validate(textField: BillingFormTextField)
-    func textFieldIsChanged(textField: BillingFormTextField, replacementString: String)
+    func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String)
 }
 
 final class BillingFormViewController: UIViewController {
@@ -17,9 +19,16 @@ final class BillingFormViewController: UIViewController {
     private var viewModel: BillingFormViewModel
     private var notificationCenter = NotificationCenter.default
 
+    private lazy var headerView: UIView = {
+        let view = delegate?.getViewForHeader(sender: self)
+        view?.translatesAutoresizingMaskIntoConstraints = false
+        return view ?? UIView()
+    }()
+    
     private lazy var tableView: UITableView = {
         let view = UITableView()
         view.dataSource = self
+        view.delegate = self
         view.rowHeight = UITableView.automaticDimension
         view.estimatedRowHeight = 300
         view.separatorStyle = .none
@@ -27,12 +36,14 @@ final class BillingFormViewController: UIViewController {
         view.showsHorizontalScrollIndicator = false
         view.allowsSelection = false
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.register(BillingFormTextFieldCell.self, forCellReuseIdentifier: "BillingFormTextFieldCellId")
         return view
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor =  viewModel.style.mainBackground
+        setupHeaderView()
         setupTableView()
     }
     
@@ -65,7 +76,7 @@ final class BillingFormViewController: UIViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         scrollViewOnKeyboardWillShow(notification: notification,
                                      scrollView: tableView as UIScrollView,
-                                          activeField: nil)
+                                          activeField: focusedTextField)
     }
     
     @objc func keyboardWillHide(notification: Notification) {
@@ -76,12 +87,30 @@ final class BillingFormViewController: UIViewController {
 
 // setup views
 extension BillingFormViewController {
+    
+    private func setupHeaderView(){
+        view.addSubview(headerView)
+        NSLayoutConstraint.activate([
+            headerView.topAnchor.constraint(
+                equalTo: view.safeTopAnchor,
+                constant: 20),
+            headerView.leadingAnchor.constraint(
+                equalTo: view.safeLeadingAnchor,
+                constant: 20),
+            headerView.trailingAnchor.constraint(
+                equalTo: view.safeTrailingAnchor,
+                constant: -20),
+            headerView.heightAnchor.constraint(
+                equalToConstant: 130)
+        ])
+    }
+    
     private func setupTableView() {
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(
-                equalTo: view.safeTopAnchor,
-                constant: 20),
+                equalTo: headerView.safeBottomAnchor,
+                constant: 0),
             tableView.leadingAnchor.constraint(
                 equalTo: view.safeLeadingAnchor,
                 constant: 20),
@@ -102,13 +131,14 @@ extension BillingFormViewController {
 }
 
 // UITableViewDataSource
-extension BillingFormViewController: UITableViewDataSource {
+extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         delegate?.tableView(numberOfRowsInSection: section) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        delegate?.tableView(cellForRowAt: indexPath, sender: self) ?? UITableViewCell()
+        delegate?.tableView(tableView: tableView, cellForRowAt: indexPath, sender: self) ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -118,16 +148,10 @@ extension BillingFormViewController: UITableViewDataSource {
 
 //FormCellDelegate
 extension BillingFormViewController: BillingFormTextFieldCellDelegate {
-    func textFieldDidChangeCharacters(textField: UITextField, replacementString: String) {
+    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) {
         guard let textField = textField as? BillingFormTextField else { return }
-        delegate?.textFieldIsChanged(textField: textField, replacementString: replacementString)
+        delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString)
     }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        guard let textField = textField as? BillingFormTextField else { return }
-        delegate?.validate(textField: textField)
-    }
-    
     
     func textFieldShouldBeginEditing(textField: UITextField) {
         self.focusedTextField = textField

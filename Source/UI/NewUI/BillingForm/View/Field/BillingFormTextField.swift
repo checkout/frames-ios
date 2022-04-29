@@ -2,9 +2,10 @@ import UIKit
 
 class BillingFormTextField: UITextField {
     var type: BillingFormCellType
-    init(type: BillingFormCellType) {
+    init(type: BillingFormCellType, tag: Int) {
         self.type = type
         super.init(frame: .zero)
+        self.tag = tag
     }
     
     required init?(coder: NSCoder) {

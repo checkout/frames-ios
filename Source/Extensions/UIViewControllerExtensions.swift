@@ -25,6 +25,7 @@ extension UIViewController {
             let activeTextFieldOrigin: CGPoint? = activeTextFieldRect?.origin
             if !aRect.contains(activeTextFieldOrigin!) {
                 scrollView.scrollRectToVisible(activeTextFieldRect!, animated: true)
+                
             }
         }
     }

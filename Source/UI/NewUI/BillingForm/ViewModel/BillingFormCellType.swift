@@ -1,6 +1,6 @@
 import Foundation
 
-@frozen enum BillingFormCellType: Int, CaseIterable {
+@frozen public  enum BillingFormCellType: Int, CaseIterable {
     case fullName = 1
     case addressLine1 = 2
     case addressLine2 = 3
@@ -10,7 +10,7 @@ import Foundation
     case country = 7
     case phoneNumber = 8
     
-    var validator: Validator {
+    internal var validator: Validator {
         switch self {
         case .fullName: return FullNameValidator()
         case .addressLine1: return AddressLine1Validator()

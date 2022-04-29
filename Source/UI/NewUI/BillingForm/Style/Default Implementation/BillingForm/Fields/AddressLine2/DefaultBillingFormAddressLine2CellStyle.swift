@@ -1,13 +1,16 @@
 import UIKit
 
 struct DefaultBillingFormAddressLine2CellStyle : BillingFormTextFieldCellStyle {
+    
+    var type: BillingFormCellType
     var backgroundColor: UIColor
     var title: InputLabelStyle?
     var hint: InputLabelStyle?
     var textfield: TextFieldStyle
     var error: ErrorInputLabelStyle
     
-    init(backgroundColor: UIColor = .white,
+    init(type: BillingFormCellType = .addressLine2,
+        backgroundColor: UIColor = .white,
          header: InputLabelStyle = DefaultTitleLabelStyle(text: "addressLine2".localized(forClass: DefaultBillingFormAddressLine2CellStyle.self)),
          hint: InputLabelStyle? = nil,
          textfield: TextFieldStyle = DefaultTextField(),
@@ -17,6 +20,7 @@ struct DefaultBillingFormAddressLine2CellStyle : BillingFormTextFieldCellStyle {
         self.hint = hint
         self.textfield = textfield
         self.error = error
+        self.type = type
     }
     
 }

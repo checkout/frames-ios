@@ -4,29 +4,33 @@ import PhoneNumberKit
 protocol BillingFormTextFieldCellDelegate: AnyObject {
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
-    func textFieldDidEndEditing(textField: UITextField)
-    func textFieldDidChangeCharacters(textField: UITextField, replacementString: String)
+    func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
 }
 
 final class BillingFormTextFieldCell: UITableViewCell {
     weak var delegate: BillingFormTextFieldCellDelegate?
-    private var style: BillingFormTextFieldCellStyle
-    private var type: BillingFormCellType
+    var style: BillingFormTextFieldCellStyle? = nil
+
     
-    init(type: BillingFormCellType, style: BillingFormTextFieldCellStyle, delegate: BillingFormTextFieldCellDelegate?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    func update(style: BillingFormTextFieldCellStyle, tag: Int) {
         self.style = style
-        self.type = type
-        super.init(style: .default, reuseIdentifier: nil)
-        self.delegate = delegate
+        self.tag = tag
         setupViews()
     }
     
-    required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var paymentInputView: BillingFormTextFieldView = {
-        let view = BillingFormTextFieldView(type: type, style: style,delegate: self) 
+    private lazy var paymentInputView: UIView = {
+        guard let style = style else { return UIView() }
+        let view = BillingFormTextFieldView(type: style.type, tag: tag, style: style ,delegate: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -56,9 +60,6 @@ extension BillingFormTextFieldCell {
 }
 
 extension BillingFormTextFieldCell: BillingFormTextFieldViewDelegate {
-    func textFieldDidEndEditing(textField: UITextField) {
-        delegate?.textFieldDidEndEditing(textField: textField)
-    }
     
     func textFieldShouldBeginEditing(textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
@@ -67,8 +68,8 @@ extension BillingFormTextFieldCell: BillingFormTextFieldViewDelegate {
         delegate?.textFieldShouldReturn()
     }
     
-    func textFieldDidChangeCharacters(textField: UITextField, replacementString: String) {
-        delegate?.textFieldDidChangeCharacters(textField: textField, replacementString: replacementString)
+    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) {
+        delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString)
     }
    
 }

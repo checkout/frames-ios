@@ -5,7 +5,7 @@ protocol BillingFormHeaderCellDelegate: AnyObject {
     func cancelButtonIsPressed()
 }
 
-final class BillingFormHeaderCell: UITableViewCell {
+final class BillingFormHeaderCell: UIView {
     private var style: BillingFormHeaderCellStyle
     private weak var delegate: BillingFormHeaderCellDelegate?
     
@@ -49,7 +49,7 @@ final class BillingFormHeaderCell: UITableViewCell {
     
     init(style: BillingFormHeaderCellStyle , delegate: BillingFormHeaderCellDelegate?) {
         self.style = style
-        super.init(style: .default, reuseIdentifier: nil)
+        super.init(frame: .zero)
         self.delegate = delegate
         setupViews()
     }
@@ -75,19 +75,20 @@ final class BillingFormHeaderCell: UITableViewCell {
 extension BillingFormHeaderCell {
     
     private func setupViews() {
+        backgroundColor = style.backgroundColor
         setupCancelButton()
         setupDoneButton()
         setupHeaderLabel()
     }
     
     private func setupCancelButton() {
-        contentView.addSubview(cancelButton)
+       addSubview(cancelButton)
         NSLayoutConstraint.activate([
             cancelButton.topAnchor.constraint(
                 equalTo: safeTopAnchor,
                 constant: 0),
             cancelButton.leadingAnchor.constraint(
-                equalTo: contentView.safeLeadingAnchor,
+                equalTo: safeLeadingAnchor,
                 constant: 20),
             cancelButton.heightAnchor.constraint(
                 equalToConstant: style.cancelButton.height),
@@ -97,13 +98,13 @@ extension BillingFormHeaderCell {
     }
     
     private func setupDoneButton() {
-        contentView.addSubview(done)
+        addSubview(done)
         NSLayoutConstraint.activate([
             done.topAnchor.constraint(
                 equalTo: safeTopAnchor,
                 constant: 0),
             done.trailingAnchor.constraint(
-                equalTo: contentView.safeTrailingAnchor,
+                equalTo: safeTrailingAnchor,
                 constant: -20),
             done.heightAnchor.constraint(
                 equalToConstant: style.doneButton.height),
@@ -113,19 +114,19 @@ extension BillingFormHeaderCell {
     }
     
     private func setupHeaderLabel() {
-        contentView.addSubview(headerLabel)
+       addSubview(headerLabel)
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(
-                equalTo: contentView.safeTopAnchor,
+                equalTo: safeTopAnchor,
                 constant: 58),
             headerLabel.leadingAnchor.constraint(
-                equalTo: contentView.safeLeadingAnchor,
+                equalTo: safeLeadingAnchor,
                 constant: 20),
             headerLabel.trailingAnchor.constraint(
-                equalTo: contentView.safeTrailingAnchor,
+                equalTo: safeTrailingAnchor,
                 constant: -20),
             headerLabel.bottomAnchor.constraint(
-                equalTo: contentView.safeBottomAnchor,
+                equalTo: safeBottomAnchor,
                 constant: -40)
         ])
     }   
