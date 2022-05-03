@@ -112,6 +112,7 @@
 		57256C71269F0FB0001EC3D8 /* JSONDecoder+TopLevelDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256C6A269F0FB0001EC3D8 /* JSONDecoder+TopLevelDecoder.swift */; };
 		57256C7E269F1181001EC3D8 /* Frames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; platformFilter = ios; };
 		57256DEC269FA42E001EC3D8 /* Dictionary+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57256DEB269FA42E001EC3D8 /* Dictionary+Additions.swift */; };
+		CB77D65C28213E9C00CD0975 /* RemoteProcessorMetadata+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB77D65B28213E9C00CD0975 /* RemoteProcessorMetadata+extensions.swift */; };
 		CB8CE5C62805BFE70069ADB0 /* CheckoutAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5C52805BFE70069ADB0 /* CheckoutAPIService.swift */; };
 		CB8CE61D2805D00E0069ADB0 /* StubJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5C92805D00D0069ADB0 /* StubJSONDecoder.swift */; };
 		CB8CE61F2805D00E0069ADB0 /* StubCheckoutAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CE5CB2805D00D0069ADB0 /* StubCheckoutAPIService.swift */; };
@@ -328,6 +329,7 @@
 		57256C6A269F0FB0001EC3D8 /* JSONDecoder+TopLevelDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+TopLevelDecoder.swift"; sourceTree = "<group>"; };
 		57256C79269F1181001EC3D8 /* FramesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FramesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57256DEB269FA42E001EC3D8 /* Dictionary+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Additions.swift"; sourceTree = "<group>"; };
+		CB77D65B28213E9C00CD0975 /* RemoteProcessorMetadata+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteProcessorMetadata+extensions.swift"; sourceTree = "<group>"; };
 		CB8CE5C52805BFE70069ADB0 /* CheckoutAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAPIService.swift; sourceTree = "<group>"; };
 		CB8CE5C92805D00D0069ADB0 /* StubJSONDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubJSONDecoder.swift; sourceTree = "<group>"; };
 		CB8CE5CB2805D00D0069ADB0 /* StubCheckoutAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCheckoutAPIService.swift; sourceTree = "<group>"; };
@@ -649,6 +651,7 @@
 				57256C49269F0F90001EC3D8 /* DateProvider.swift */,
 				57256C4E269F0F90001EC3D8 /* FramesEventLogger.swift */,
 				44F095162625F7E600CB287F /* FramesLogEvent.swift */,
+				CB77D65B28213E9C00CD0975 /* RemoteProcessorMetadata+extensions.swift */,
 			);
 			path = Logging;
 			sourceTree = "<group>";
@@ -1113,6 +1116,7 @@
 				4422780C2616376E009626A0 /* ExpirationDatePicker.swift in Sources */,
 				57256C6D269F0FB0001EC3D8 /* URL+Extensions.swift in Sources */,
 				442278122616376E009626A0 /* ExpirationDatePickerDelegate.swift in Sources */,
+				CB77D65C28213E9C00CD0975 /* RemoteProcessorMetadata+extensions.swift in Sources */,
 				57256C6E269F0FB0001EC3D8 /* JSONEncoder+ContentTypeProviding.swift in Sources */,
 				4422781B2616376E009626A0 /* AddressViewController.swift in Sources */,
 				442278202616376E009626A0 /* PhoneNumberInputView.swift in Sources */,
