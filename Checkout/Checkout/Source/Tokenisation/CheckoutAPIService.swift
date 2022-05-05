@@ -6,12 +6,20 @@
 //
 
 import Foundation
+import UIKit
+import CheckoutEventLoggerKit
 
-final public class CheckoutAPIService {
+public protocol CheckoutAPIProtocol {
+  func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)
+  var correlationID: String { get }
+}
+
+final public class CheckoutAPIService: CheckoutAPIProtocol {
   private let requestExecutor: RequestExecuting
   private let requestFactory: RequestProviding
   private let tokenRequestFactory: TokenRequestProviding
   private let tokenDetailsFactory: TokenDetailsProviding
+  private let logManager: LogManaging.Type
 
   private let publicKey: String
   private let environment: BaseURLProviding
@@ -23,12 +31,21 @@ final public class CheckoutAPIService {
     snakeCaseJSONEncoder.keyEncodingStrategy = .convertToSnakeCase
     snakeCaseJSONDecoder.keyDecodingStrategy = .convertFromSnakeCase
 
-    let cardValidator = CardValidator()
+    let cardValidator = CardValidator(environment: environment)
 
     let networkManager = NetworkManager(decoder: snakeCaseJSONDecoder, session: .shared)
     let requestFactory = RequestFactory(encoder: snakeCaseJSONEncoder, baseURLProvider: environment)
     let tokenRequestFactory = TokenRequestFactory(cardValidator: cardValidator, decoder: snakeCaseJSONDecoder)
     let tokenDetailsFactory = TokenDetailsFactory()
+    let logManager = LogManager.self
+
+    logManager.setup(
+      environment: environment,
+      logger: CheckoutEventLogger(productName: Constants.Product.name),
+      uiDevice: UIDevice.current,
+      dateProvider: DateProvider(),
+      anyCodable: AnyCodable()
+    )
 
     self.init(
       publicKey: publicKey,
@@ -36,7 +53,8 @@ final public class CheckoutAPIService {
       requestExecutor: networkManager,
       requestFactory: requestFactory,
       tokenRequestFactory: tokenRequestFactory,
-      tokenDetailsFactory: tokenDetailsFactory)
+      tokenDetailsFactory: tokenDetailsFactory,
+      logManager: logManager)
   }
 
   init(
@@ -45,7 +63,8 @@ final public class CheckoutAPIService {
     requestExecutor: RequestExecuting,
     requestFactory: RequestProviding,
     tokenRequestFactory: TokenRequestProviding,
-    tokenDetailsFactory: TokenDetailsProviding
+    tokenDetailsFactory: TokenDetailsProviding,
+    logManager: LogManaging.Type
   ) {
     self.publicKey = publicKey
     self.environment = environment
@@ -53,6 +72,7 @@ final public class CheckoutAPIService {
     self.requestFactory = requestFactory
     self.tokenRequestFactory = tokenRequestFactory
     self.tokenDetailsFactory = tokenDetailsFactory
+    self.logManager = logManager
   }
 
   public func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) {
@@ -66,6 +86,12 @@ final public class CheckoutAPIService {
     }
   }
 
+  public var correlationID: String {
+    return logManager.correlationID
+  }
+
+  // MARK: private
+
   private func createToken(tokenRequest: TokenRequest, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) {
     let requestParameterResult = requestFactory.create(
       request: .token(tokenRequest: tokenRequest, publicKey: publicKey)
@@ -73,6 +99,10 @@ final public class CheckoutAPIService {
 
     switch requestParameterResult {
     case .success(let requestParameters):
+      logManager.queue(event: .tokenRequested(CheckoutLogEvent.TokenRequestData(
+        tokenType: tokenRequest.type,
+        publicKey: publicKey
+      )))
       createToken(requestParameters: requestParameters, completion: completion)
     case .failure(let error):
       switch error {
@@ -87,7 +117,9 @@ final public class CheckoutAPIService {
       requestParameters,
       responseType: TokenResponse.self,
       responseErrorType: TokenisationError.ServerError.self
-    ) { [tokenDetailsFactory] tokenResponseResult, _ in
+    ) { [tokenDetailsFactory, logManager, logTokenResponse] tokenResponseResult, httpURLResponse in
+      logTokenResponse(tokenResponseResult, httpURLResponse)
+
       switch tokenResponseResult {
       case .response(let tokenResponse):
         let tokenDetails = tokenDetailsFactory.create(tokenResponse: tokenResponse)
@@ -97,6 +129,36 @@ final public class CheckoutAPIService {
       case .networkError(let networkError):
         completion(.failure(.networkError(networkError)))
       }
+
+      logManager.resetCorrelationID()
+    }
+  }
+
+  private func logTokenResponse(tokenResponseResult: NetworkRequestResult<TokenResponse, TokenisationError.ServerError>, httpURLResponse: HTTPURLResponse?) {
+    switch tokenResponseResult {
+    case .response(let tokenResponse):
+      let tokenRequestData = CheckoutLogEvent.TokenRequestData(tokenType: tokenResponse.type, publicKey: publicKey)
+      let tokenResponseData = CheckoutLogEvent.TokenResponseData(
+        tokenID: tokenResponse.token,
+        scheme: tokenResponse.scheme,
+        httpStatusCode: httpURLResponse?.statusCode,
+        serverError: nil
+      )
+
+      logManager.queue(event: .tokenResponse(tokenRequestData, tokenResponseData))
+    case .errorResponse(let errorResponse):
+      let tokenRequestData = CheckoutLogEvent.TokenRequestData(tokenType: nil, publicKey: publicKey)
+      let tokenResponseData = CheckoutLogEvent.TokenResponseData(
+        tokenID: nil,
+        scheme: nil,
+        httpStatusCode: httpURLResponse?.statusCode,
+        serverError: errorResponse
+      )
+
+      logManager.queue(event: .tokenResponse(tokenRequestData, tokenResponseData))
+    case .networkError:
+      // we received no response, so nothing to log
+      break
     }
   }
 }

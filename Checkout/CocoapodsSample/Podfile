@@ -1,0 +1,16 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '10.0'
+install! 'cocoapods', :share_schemes_for_development_pods => true
+
+target 'CheckoutCocoapodsSample' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for CheckoutSDKCocoapodsSample
+  pod 'Checkout', path: '../', :testspecs => ['Tests', 'Integration-Tests']
+
+  target 'CheckoutCocoapodsSampleUITests' do
+    # Pods for testing
+  end
+
+end

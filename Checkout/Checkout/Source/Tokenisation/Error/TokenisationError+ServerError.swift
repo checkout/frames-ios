@@ -8,7 +8,7 @@
 import Foundation
 
 extension TokenisationError {
-  public struct ServerError: CheckoutError, Decodable {
+  public struct ServerError: CheckoutError, Codable, Equatable {
     public let requestID: String
     public let errorType: String
     public let errorCodes: [String]

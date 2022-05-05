@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CVVValidating {
+public protocol CVVValidating {
   func validate(
     cvv: String,
     cardScheme: Card.Scheme

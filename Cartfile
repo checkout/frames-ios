@@ -1,3 +1,3 @@
 
 github "marmelroy/PhoneNumberKit" ~> 3.3.0
-github "cko-payment-interfaces/checkout-ios" ~> 0.2.2
+git "./Checkout"

@@ -9,4 +9,7 @@ import Foundation
 
 public struct ApplePay: Equatable {
   public let tokenData: Data
+  public init(tokenData: Data) {
+    self.tokenData = tokenData
+  }
 }
