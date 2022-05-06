@@ -1,3 +1,1 @@
-
 github "marmelroy/PhoneNumberKit" ~> 3.3.0
-git "./Checkout"

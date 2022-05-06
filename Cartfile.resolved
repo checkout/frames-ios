@@ -1,3 +1,1 @@
-git "./Checkout" "0.2.2"
-github "checkout/checkout-event-logger-ios-framework" "1.2.0"
 github "marmelroy/PhoneNumberKit" "3.3.7"
