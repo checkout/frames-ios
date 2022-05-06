@@ -211,6 +211,7 @@
 		CB8CE6652805D00E0069ADB0 /* cardTokenInvalidNumber.json in Resources */ = {isa = PBXBuildFile; fileRef = CB8CE61A2805D00E0069ADB0 /* cardTokenInvalidNumber.json */; };
 		CB8CE6662805D00E0069ADB0 /* applePayToken.json in Resources */ = {isa = PBXBuildFile; fileRef = CB8CE61B2805D00E0069ADB0 /* applePayToken.json */; };
 		CB9412CF2825647600C889E8 /* Checkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9412CE2825647600C889E8 /* Checkout.framework */; };
+		CB9412D528256DF800C889E8 /* CheckoutEventLoggerKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5981FF72805B685007AB07C /* CheckoutEventLoggerKit.xcframework */; };
 		E6646FA320CE6C0A00D8353A /* iOS_Example_FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646FA220CE6C0A00D8353A /* iOS_Example_FrameUITests.swift */; };
 		F59820122805B75F007AB07C /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5981FFD2805B75F007AB07C /* LaunchScreen.strings */; };
 		F59820132805B75F007AB07C /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5981FFF2805B75F007AB07C /* Main.strings */; };
@@ -495,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB9412CF2825647600C889E8 /* Checkout.framework in Frameworks */,
+				CB9412D528256DF800C889E8 /* CheckoutEventLoggerKit.xcframework in Frameworks */,
 				44A4DFE5261CC59B00E0C349 /* PhoneNumberKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

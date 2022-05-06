@@ -101,8 +101,6 @@
 		CB05A9C927748FB50086DDA0 /* CardNumberValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A99E27748FB50086DDA0 /* CardNumberValidatorTests.swift */; };
 		CB05A9CA27748FB50086DDA0 /* AddressValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A99F27748FB50086DDA0 /* AddressValidatorTests.swift */; };
 		CB05A9CB27748FB50086DDA0 /* LuhnCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A9A027748FB50086DDA0 /* LuhnCheckerTests.swift */; };
-		CB05A9CD27749B620086DDA0 /* CheckoutEventLoggerKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB05A9CC27749B620086DDA0 /* CheckoutEventLoggerKit.xcframework */; };
-		CB05A9CE27749B620086DDA0 /* CheckoutEventLoggerKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB05A9CC27749B620086DDA0 /* CheckoutEventLoggerKit.xcframework */; };
 		CB1E636F278D978F00A36A46 /* StubSingleValueEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1E636D278D978C00A36A46 /* StubSingleValueEncodingContainer.swift */; };
 		CB23C13F271DC64F00F68C0E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23C139271DC64F00F68C0E /* SceneDelegate.swift */; };
 		CB23C140271DC64F00F68C0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23C13A271DC64F00F68C0E /* ViewController.swift */; };
@@ -117,6 +115,7 @@
 		CB918B2A2785B2CF00C68EF4 /* CheckoutLogEvent+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB918B292785B2CF00C68EF4 /* CheckoutLogEvent+Types.swift */; };
 		CB918B2C278C8B6800C68EF4 /* AnyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB918B2B278C8B6800C68EF4 /* AnyCodable.swift */; };
 		CB918B2E278C8F3200C68EF4 /* StubAnyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB918B2D278C8F3200C68EF4 /* StubAnyCodable.swift */; };
+		CB9412D228256DDD00C889E8 /* CheckoutEventLoggerKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9412D128256DDD00C889E8 /* CheckoutEventLoggerKit.xcframework */; };
 		CBCE371E271EC61400371FE7 /* CheckoutSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = CBCE371D271EC61400371FE7 /* CheckoutSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CBCE3721271EC61400371FE7 /* Checkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCE371B271EC61400371FE7 /* Checkout.framework */; };
 		CBCE3722271EC61400371FE7 /* Checkout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CBCE371B271EC61400371FE7 /* Checkout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -285,7 +284,6 @@
 		CB05A99E27748FB50086DDA0 /* CardNumberValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberValidatorTests.swift; sourceTree = "<group>"; };
 		CB05A99F27748FB50086DDA0 /* AddressValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressValidatorTests.swift; sourceTree = "<group>"; };
 		CB05A9A027748FB50086DDA0 /* LuhnCheckerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuhnCheckerTests.swift; sourceTree = "<group>"; };
-		CB05A9CC27749B620086DDA0 /* CheckoutEventLoggerKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CheckoutEventLoggerKit.xcframework; path = "../Carthage/Checkouts/checkout-event-logger-ios-framework/CheckoutEventLoggerKit.xcframework"; sourceTree = "<group>"; };
 		CB1E636D278D978C00A36A46 /* StubSingleValueEncodingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubSingleValueEncodingContainer.swift; sourceTree = "<group>"; };
 		CB23C139271DC64F00F68C0E /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = ../Sample/Source/SceneDelegate.swift; sourceTree = "<group>"; };
 		CB23C13A271DC64F00F68C0E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../Sample/Source/ViewController.swift; sourceTree = "<group>"; };
@@ -303,6 +301,7 @@
 		CB918B292785B2CF00C68EF4 /* CheckoutLogEvent+Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckoutLogEvent+Types.swift"; sourceTree = "<group>"; };
 		CB918B2B278C8B6800C68EF4 /* AnyCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCodable.swift; sourceTree = "<group>"; };
 		CB918B2D278C8F3200C68EF4 /* StubAnyCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnyCodable.swift; sourceTree = "<group>"; };
+		CB9412D128256DDD00C889E8 /* CheckoutEventLoggerKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CheckoutEventLoggerKit.xcframework; path = "/Users/harrybrown/dev/frames-ios/FramesCarthageSample/../Carthage/Checkouts/checkout-event-logger-ios-framework/CheckoutEventLoggerKit.xcframework"; sourceTree = "<absolute>"; };
 		CBCE371B271EC61400371FE7 /* Checkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Checkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCE371D271EC61400371FE7 /* CheckoutSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckoutSDK.h; sourceTree = "<group>"; };
 		CBCE3730271EC66200371FE7 /* CheckoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CheckoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -351,7 +350,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB05A9CD27749B620086DDA0 /* CheckoutEventLoggerKit.xcframework in Frameworks */,
+				CB9412D228256DDD00C889E8 /* CheckoutEventLoggerKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +359,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBCE3734271EC66200371FE7 /* Checkout.framework in Frameworks */,
-				CB05A9CE27749B620086DDA0 /* CheckoutEventLoggerKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,11 +684,11 @@
 		CB7E9871271DC52800B1A0F4 = {
 			isa = PBXGroup;
 			children = (
-				CB05A9CC27749B620086DDA0 /* CheckoutEventLoggerKit.xcframework */,
 				CB23C137271DC62600F68C0E /* Source */,
 				CB23C14A271DC7CF00F68C0E /* Test */,
 				CBCE371C271EC61400371FE7 /* Checkout */,
 				CB7E987B271DC52800B1A0F4 /* Products */,
+				CB9412D028256DDD00C889E8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -704,6 +702,14 @@
 				CB44200727981A480099B725 /* CheckoutIntegrationTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CB9412D028256DDD00C889E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB9412D128256DDD00C889E8 /* CheckoutEventLoggerKit.xcframework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CBCE371C271EC61400371FE7 /* Checkout */ = {
