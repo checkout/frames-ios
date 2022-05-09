@@ -1687,7 +1687,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "checkoutEventLoggerKitVersion=\"1.1.1\"\nzipDownload=\"CheckoutEventLoggerKit.zip\"\n\ncurl -L \"https://github.com/checkout/checkout-event-logger-ios-framework/archive/refs/tags/$checkoutEventLoggerKitVersion.zip\" > $zipDownload\nunzip $zipDownload\ncp -r \"checkout-event-logger-ios-framework-$checkoutEventLoggerKitVersion/CheckoutEventLoggerKit.xcframework\" .\nrm -r \"checkout-event-logger-ios-framework-$checkoutEventLoggerKitVersion\"\nrm $zipDownload\n";
+			shellScript = "checkoutEventLoggerKitVersion=\"1.2.0\"\nzipDownload=\"CheckoutEventLoggerKit.zip\"\n\ncurl -L \"https://github.com/checkout/checkout-event-logger-ios-framework/archive/refs/tags/$checkoutEventLoggerKitVersion.zip\" > $zipDownload\nunzip $zipDownload\ncp -r \"checkout-event-logger-ios-framework-$checkoutEventLoggerKitVersion/CheckoutEventLoggerKit.xcframework\" .\nrm -r \"checkout-event-logger-ios-framework-$checkoutEventLoggerKitVersion\"\nrm $zipDownload\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
