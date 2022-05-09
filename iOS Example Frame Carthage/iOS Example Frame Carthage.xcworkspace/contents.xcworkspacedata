@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:FramesCarthageSample.xcodeproj">
+      location = "group:/Users/harrybrown/dev/frames-ios/iOS Example Frame Carthage/iOS Example Frame Carthage.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../Checkout/CarthageSample/CheckoutCarthageSample.xcodeproj">

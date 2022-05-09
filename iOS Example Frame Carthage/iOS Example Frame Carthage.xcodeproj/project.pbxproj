@@ -1092,7 +1092,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E6646F8520CE6C0900D8353A /* Build configuration list for PBXProject "FramesCarthageSample" */;
+			buildConfigurationList = E6646F8520CE6C0900D8353A /* Build configuration list for PBXProject "iOS Example Frame Carthage" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1835,7 +1835,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E6646F8520CE6C0900D8353A /* Build configuration list for PBXProject "FramesCarthageSample" */ = {
+		E6646F8520CE6C0900D8353A /* Build configuration list for PBXProject "iOS Example Frame Carthage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E6646FA520CE6C0A00D8353A /* Debug */,
