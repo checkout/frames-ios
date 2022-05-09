@@ -3,7 +3,7 @@ import PhoneNumberKit
 
 final class BillingFormPhoneNumberText: BillingFormTextField {
     /// Phone Number Kit
-    let phoneNumberKit = PhoneNumberKit()
+    private let phoneNumberKit = PhoneNumberKit()
     var partialFormatter: PartialFormatter {
         return PartialFormatter.init(phoneNumberKit: phoneNumberKit, defaultRegion: "GB", withPrefix: true)
     }
