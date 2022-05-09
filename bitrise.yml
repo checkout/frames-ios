@@ -243,7 +243,7 @@ app:
     BITRISE_PROJECT_PATH_SPM: iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj
   - opts:
       is_expand: false
-    BITRISE_PROJECT_PATH_CARTHAGE: iOS Example Frame Carthage/iOS Example Frame Carthage.xcodeproj
+    BITRISE_PROJECT_PATH_CARTHAGE: iOS Example Frame Carthage/iOS Example Frame Carthage.xcworkspace
   - opts:
       is_expand: false
     BITRISE_SCHEME_SPM: iOS Example Frame
