@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   s.author       = { "Checkout.com Integration" => "integration@checkout.com" }
   s.platform     = :ios, "10.0"
-  s.source       = { :git => "https://github.com/checkout/frames-ios.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/checkout/frames-ios.git", :tag => s.version }
 
   s.source_files = 'Source/**/*.swift'
   s.exclude_files = "Classes/Exclude"
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'PhoneNumberKit', '3.3.3'
   s.dependency 'CheckoutEventLoggerKit', '1.2.0'
-  s.dependency 'Checkout'
+  s.dependency 'Checkout', "#{s.version}"
 
   s.test_spec do |t|
     t.source_files = 'Tests/**/*.swift'
