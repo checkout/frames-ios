@@ -11,11 +11,11 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     
     var errorFlagOfCellType = [BillingFormCellType: Bool]()
     var textValueOfCellType = [BillingFormCellType: String]()
+    var editDelegate: BillingFormViewModelEditingDelegate?
+    weak var delegate: BillingFormViewModelDelegate?
     
     private var initialCountry: String
     private var initialRegionCode: String?
-    var editDelegate: BillingFormViewModelEditingDelegate?
-    var delegate: BillingFormViewModelDelegate?
     
     init(style: BillingFormStyle,
          initialCountry: String = "",
