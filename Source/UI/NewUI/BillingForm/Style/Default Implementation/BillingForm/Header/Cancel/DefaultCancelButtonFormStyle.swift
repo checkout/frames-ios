@@ -5,8 +5,8 @@ struct DefaultCancelButtonFormStyle: FormButtonStyle {
     var text: String
     var font: UIFont
     var activeTitleColor: UIColor
-    var inActiveTitleColor: UIColor
-    var inActiveTintColor: UIColor
+    var disabledTitleColor: UIColor
+    var disabledTintColor: UIColor
     var activeTintColor: UIColor
     var backgroundColor: UIColor
     var height: Double
@@ -16,8 +16,8 @@ struct DefaultCancelButtonFormStyle: FormButtonStyle {
           text: String = "cancel".localized(forClass: DefaultCancelButtonFormStyle.self),
           font: UIFont = UIFont.systemFont(ofSize: 17),
           activeTitleColor: UIColor = .brandeisBlue,
-          inActiveTitleColor: UIColor = .doveGray,
-          inActiveTintColor: UIColor = .doveGray,
+          disabledTitleColor: UIColor = .doveGray,
+          disabledTintColor: UIColor = .doveGray,
           activeTintColor: UIColor = .brandeisBlue,
           backgroundColor: UIColor = .white,
           height: Double = 44,
@@ -26,8 +26,8 @@ struct DefaultCancelButtonFormStyle: FormButtonStyle {
         self.text = text
         self.font = font
         self.activeTitleColor = activeTitleColor
-        self.inActiveTitleColor = inActiveTitleColor
-        self.inActiveTintColor = inActiveTintColor
+        self.disabledTitleColor = disabledTitleColor
+        self.disabledTintColor = disabledTintColor
         self.activeTintColor = activeTintColor
         self.backgroundColor =  backgroundColor
         self.height = height

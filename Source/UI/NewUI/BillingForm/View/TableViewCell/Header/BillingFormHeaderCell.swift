@@ -14,8 +14,8 @@ final class BillingFormHeaderCell: UIView {
         view.setTitle(style.cancelButton.text, for: .normal)
         view.titleLabel?.font = style.cancelButton.font
         view.setTitleColor(style.cancelButton.activeTitleColor, for: .normal)
-        view.setTitleColor(style.cancelButton.inActiveTitleColor, for: .disabled)
-        view.tintColor = view.isEnabled ? style.cancelButton.activeTintColor : style.cancelButton.inActiveTintColor
+        view.setTitleColor(style.cancelButton.disabledTitleColor, for: .disabled)
+        view.tintColor = view.isEnabled ? style.cancelButton.activeTintColor : style.cancelButton.disabledTintColor
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = style.cancelButton.backgroundColor
         view.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
@@ -28,8 +28,8 @@ final class BillingFormHeaderCell: UIView {
         view.setTitle(style.doneButton.text, for: .normal)
         view.titleLabel?.font = style.doneButton.font
         view.setTitleColor(style.doneButton.activeTitleColor, for: .normal)
-        view.setTitleColor(style.doneButton.inActiveTitleColor, for: .disabled)
-        view.tintColor = view.isEnabled ? style.doneButton.activeTintColor : style.doneButton.inActiveTintColor
+        view.setTitleColor(style.doneButton.disabledTitleColor, for: .disabled)
+        view.tintColor = view.isEnabled ? style.doneButton.activeTintColor : style.doneButton.disabledTintColor
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = style.doneButton.backgroundColor
         view.addTarget(self, action: #selector(doneAction), for: .touchUpInside)
