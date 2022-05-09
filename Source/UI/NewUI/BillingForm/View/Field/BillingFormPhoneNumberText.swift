@@ -4,9 +4,8 @@ import PhoneNumberKit
 final class BillingFormPhoneNumberText: BillingFormTextField {
     /// Phone Number Kit
     private let phoneNumberKit = PhoneNumberKit()
-    var partialFormatter: PartialFormatter {
-        return PartialFormatter.init(phoneNumberKit: phoneNumberKit, defaultRegion: "GB", withPrefix: true)
-    }
+    
+    private lazy var partialFormatter = PartialFormatter(phoneNumberKit: phoneNumberKit, defaultRegion: "GB", withPrefix: true)
 
     /// National Number (e.g. )
     var nationalNumber: String {
