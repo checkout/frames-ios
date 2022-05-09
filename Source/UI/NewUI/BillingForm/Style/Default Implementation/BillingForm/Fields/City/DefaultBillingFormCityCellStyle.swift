@@ -11,10 +11,10 @@ struct DefaultBillingFormCityCellStyle : BillingFormTextFieldCellStyle {
     
     init(type: BillingFormCellType = .city,
          backgroundColor: UIColor = .white,
-         header: InputLabelStyle = DefaultTitleLabelStyle(text: "city".localized(forClass: DefaultBillingFormAddressLine1CellStyle.self)),
+         header: InputLabelStyle = DefaultTitleLabelStyle(text: "city".localized(forClass: CheckoutTheme.self)),
          hint: InputLabelStyle? = nil,
          textfield: TextFieldStyle = DefaultTextField(),
-         error: ErrorInputLabelStyle = DefaultErrorInputLabelStyle(text: "missingBillingFormCity".localized(forClass: DefaultBillingFormAddressLine1CellStyle.self))) {
+         error: ErrorInputLabelStyle = DefaultErrorInputLabelStyle(text: "missingBillingFormCity".localized(forClass: CheckoutTheme.self))) {
         self.backgroundColor = backgroundColor
         self.title = header
         self.hint = hint
