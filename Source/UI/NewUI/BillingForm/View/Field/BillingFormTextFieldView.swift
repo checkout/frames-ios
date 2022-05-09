@@ -114,23 +114,19 @@ extension BillingFormTextFieldView {
         textFieldContainer.addSubview(textField)
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: textFieldContainer.topAnchor),
-            textField.leadingAnchor.constraint(equalTo: textFieldContainer.leadingAnchor, constant: 20),
-            textField.trailingAnchor.constraint(equalTo: textFieldContainer.trailingAnchor, constant: -20),
+            textField.leadingAnchor.constraint(equalTo: textFieldContainer.leadingAnchor),
+            textField.trailingAnchor.constraint(equalTo: textFieldContainer.trailingAnchor),
             textField.bottomAnchor.constraint(equalTo: textFieldContainer.bottomAnchor)
         ])
     }
     
     private func setupTextFieldContainer() {
         addSubview(textFieldContainer)
-        
-        let width = textFieldContainer.widthAnchor.constraint(equalToConstant: style.textfield.width)
-        width.priority = UILayoutPriority(rawValue: 750)
-        
+
         NSLayoutConstraint.activate([
             textFieldContainer.topAnchor.constraint(equalTo: hintLabel.bottomAnchor, constant: 6),
             textFieldContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
-            textFieldContainer.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
-            width,
+            textFieldContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
             textFieldContainer.heightAnchor.constraint(equalToConstant: style.textfield.height)
         ])
     }

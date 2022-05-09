@@ -44,14 +44,11 @@ extension BillingFormTextFieldCell {
         contentView.addSubview(paymentInputView)
         NSLayoutConstraint.activate([
             paymentInputView.topAnchor.constraint(
-                equalTo: contentView.safeTopAnchor,
-                constant: 0),
+                equalTo: contentView.safeTopAnchor),
             paymentInputView.leadingAnchor.constraint(
-                equalTo: contentView.safeLeadingAnchor,
-                constant: 20),
+                equalTo: contentView.leadingAnchor),
             paymentInputView.trailingAnchor.constraint(
-                equalTo: contentView.safeTrailingAnchor,
-                constant: -20),
+                equalTo: contentView.trailingAnchor),
             paymentInputView.bottomAnchor.constraint(
                 equalTo: contentView.safeBottomAnchor,
                 constant: -24)

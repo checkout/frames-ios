@@ -109,13 +109,12 @@ extension BillingFormViewController {
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(
-                equalTo: headerView.safeBottomAnchor,
-                constant: 0),
+                equalTo: headerView.safeBottomAnchor),
             tableView.leadingAnchor.constraint(
-                equalTo: view.safeLeadingAnchor,
+                equalTo: view.leadingAnchor,
                 constant: 20),
             tableView.trailingAnchor.constraint(
-                equalTo: view.safeTrailingAnchor,
+                equalTo: view.trailingAnchor,
                 constant: -20),
             tableView.bottomAnchor.constraint(
                 equalTo: view.safeBottomAnchor,
