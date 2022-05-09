@@ -14,7 +14,7 @@ struct DefaultBillingFormFullNameCellStyle : BillingFormTextFieldCellStyle {
          header: InputLabelStyle = DefaultTitleLabelStyle(text: "name".localized(forClass: DefaultBillingFormFullNameCellStyle.self)),
          hint: InputLabelStyle? = nil,
          textfield: TextFieldStyle = DefaultTextField(),
-         error: ErrorInputLabelStyle = DefaultErrorInputLabelStyle(text: "missingBillingFormCityFullName".localized(forClass: DefaultBillingFormFullNameCellStyle.self))) {
+         error: ErrorInputLabelStyle = DefaultErrorInputLabelStyle(text: "missingBillingFormFullName".localized(forClass: DefaultBillingFormFullNameCellStyle.self))) {
         self.backgroundColor = backgroundColor
         self.title = header
         self.hint = hint
