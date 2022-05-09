@@ -1,9 +1,9 @@
 PODS:
   - CheckoutEventLoggerKit (1.2.0)
-  - Frames (3.5.2):
+  - Frames (3.5.3):
     - CheckoutEventLoggerKit (= 1.2.0)
     - PhoneNumberKit (= 3.3.3)
-  - Frames/Tests (3.5.2):
+  - Frames/Tests (3.5.3):
     - CheckoutEventLoggerKit (= 1.2.0)
     - PhoneNumberKit (= 3.3.3)
   - PhoneNumberKit (3.3.3):
@@ -28,9 +28,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CheckoutEventLoggerKit: 03d0076e2aa412df966517a36a3e4e3805b56ecb
-  Frames: 72b4acd332a7df69872508104e8adf6a3cffe0dd
+  Frames: bb22a5b0ff4d2c2b163b468eb7ac43411486c8e3
   PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
 
 PODFILE CHECKSUM: 0935f6adf6dbf24cd1aebd515551bbce53bef8e5
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3
