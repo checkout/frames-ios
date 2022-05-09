@@ -179,9 +179,9 @@ extension BillingFormViewController {
     private func setupViewModel() {
         viewModel.updateRow = {
             DispatchQueue.main.async { [weak self] in
-                guard let self = self, let row = self.viewModel.updatedRow else { return }
+                guard let row = self?.viewModel.updatedRow else { return }
                 let indexPath = IndexPath(row: row, section: 0)
-                self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                self?.tableView.reloadRows(at: [indexPath], with: .automatic)
             }
            
         }
