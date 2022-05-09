@@ -115,7 +115,8 @@
 		CB918B2A2785B2CF00C68EF4 /* CheckoutLogEvent+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB918B292785B2CF00C68EF4 /* CheckoutLogEvent+Types.swift */; };
 		CB918B2C278C8B6800C68EF4 /* AnyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB918B2B278C8B6800C68EF4 /* AnyCodable.swift */; };
 		CB918B2E278C8F3200C68EF4 /* StubAnyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB918B2D278C8F3200C68EF4 /* StubAnyCodable.swift */; };
-		CB9412D228256DDD00C889E8 /* CheckoutEventLoggerKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9412D128256DDD00C889E8 /* CheckoutEventLoggerKit.xcframework */; };
+		CB9412DD282907C000C889E8 /* CheckoutEventLoggerKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9412D128256DDD00C889E8 /* CheckoutEventLoggerKit.xcframework */; };
+		CB9412DE282907C000C889E8 /* CheckoutEventLoggerKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB9412D128256DDD00C889E8 /* CheckoutEventLoggerKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CBCE371E271EC61400371FE7 /* CheckoutSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = CBCE371D271EC61400371FE7 /* CheckoutSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CBCE3721271EC61400371FE7 /* Checkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCE371B271EC61400371FE7 /* Checkout.framework */; };
 		CBCE3722271EC61400371FE7 /* Checkout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CBCE371B271EC61400371FE7 /* Checkout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -176,6 +177,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		CB9412DF282907C000C889E8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CB9412DE282907C000C889E8 /* CheckoutEventLoggerKit.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CBCE3723271EC61400371FE7 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -350,7 +362,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB9412D228256DDD00C889E8 /* CheckoutEventLoggerKit.xcframework in Frameworks */,
+				CB9412DD282907C000C889E8 /* CheckoutEventLoggerKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,6 +867,7 @@
 				CBCE3717271EC61400371FE7 /* Sources */,
 				CBCE3718271EC61400371FE7 /* Frameworks */,
 				CBCE3719271EC61400371FE7 /* Resources */,
+				CB9412DF282907C000C889E8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
