@@ -2,18 +2,12 @@ import UIKit
 import PhoneNumberKit
 
 final class BillingFormPhoneNumberText: BillingFormTextField {
-    /// Phone Number Kit
-    private let phoneNumberKit = PhoneNumberKit()
-    
-    private lazy var partialFormatter = PartialFormatter(phoneNumberKit: phoneNumberKit, defaultRegion: "GB", withPrefix: true)
 
-    /// National Number (e.g. )
+    var phoneNumber: PhoneNumber?
     var nationalNumber: String {
         let rawNumber = self.text ?? ""
         return partialFormatter.nationalNumber(from: rawNumber)
     }
-
-    /// True if the phone number is valid, false otherwise
     var isValidNumber: Bool {
         let rawNumber = self.text ?? ""
         do {
@@ -23,13 +17,12 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
             return false
         }
     }
-
-    /// Phone Number
-    var phoneNumber: PhoneNumber?
-
+    
     private var previousTextCount = 0
     private var previousFormat = ""
-    
+    private let phoneNumberKit = PhoneNumberKit()
+    private lazy var partialFormatter = PartialFormatter(phoneNumberKit: phoneNumberKit, defaultRegion: "GB", withPrefix: true)
+
     override init(type: BillingFormCellType, tag: Int) {
         super.init(type: type,tag: tag)
         setup()
@@ -44,7 +37,7 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
     }
 
     /// Called when the text changed.
-    @objc public func textFieldDidChange(textField: UITextField) {
+    @objc private func textFieldDidChange(textField: UITextField) {
         var targetCursorPosition = 0
         if let startPosition = textField.selectedTextRange?.start {
             targetCursorPosition = textField.offset(from: textField.beginningOfDocument, to: startPosition)
