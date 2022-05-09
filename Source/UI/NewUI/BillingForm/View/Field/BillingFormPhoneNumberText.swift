@@ -33,6 +33,7 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
     }
     
     private func setup() {
+        keyboardType = .phonePad
         addTarget(self, action: #selector(textFieldDidChange), for: UIControl.Event.editingChanged)
     }
 
