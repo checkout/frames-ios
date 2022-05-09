@@ -40,7 +40,7 @@ final class BillingFormTextFieldView: UIView {
         view.layer.borderWidth = 1.0
         textField.autocorrectionType = .no
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.borderColor = style.textfield.normalBorderColor.cgColor
+        view.layer.borderColor = !style.error.isHidden ? style.textfield.errorBorderColor.cgColor : style.textfield.normalBorderColor.cgColor
         view.backgroundColor = style.textfield.backgroundColor
         textField.keyboardType = style.textfield.isSupprtingNumbericKeyboard ? .phonePad : .default
         textField.textContentType = style.textfield.isSupprtingNumbericKeyboard ? .telephoneNumber : .name
@@ -150,8 +150,9 @@ extension BillingFormTextFieldView {
 extension BillingFormTextFieldView: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textFieldContainer.layer.borderColor = style.textfield.focusBorderColor.cgColor
         delegate?.textFieldShouldBeginEditing(textField: textField)
+        textFieldContainer.layer.borderColor = style.textfield.focusBorderColor.cgColor
+
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
