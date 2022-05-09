@@ -11,28 +11,21 @@ class BillingFormViewModelTests: XCTestCase {
     // TableView Cells
     func testGetHeaderCell() {
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle())
-        let cell = viewModel.getCell(for: 0)
-        XCTAssertNotNil(cell)
-        XCTAssertTrue(cell is BillingFormHeaderCell)
-    }
-    
-    func testGetFieldCell() {
-        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle())
-        let cell = viewModel.getCell(for: 1)
-        XCTAssertNotNil(cell)
-        XCTAssertTrue(cell is BillingFormTextFieldCell)
+        let view = viewModel.getViewForHeader(sender: UIViewController())
+        XCTAssertNotNil(view)
     }
   
     func testValidationWhenTextFieldIsEmptyThenShowError() {
         let expectation = expectation(description: #function)
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle())
         let expectedType = BillingFormCellType.fullName
+        let tag = 2
         let text = ""
-        let textField = BillingFormTextField(type: expectedType)
+        let textField = BillingFormTextField(type: expectedType, tag: tag)
         textField.text = text
 
         viewModel.updateRow = {
-            XCTAssertEqual(viewModel.updatedRow, expectedType.rawValue)
+            XCTAssertEqual(viewModel.updatedRow, tag)
             XCTAssertEqual(viewModel.errorFlagOfCellType[expectedType], true)
             XCTAssertEqual(viewModel.textValueOfCellType[expectedType], text)
             expectation.fulfill()
@@ -47,11 +40,12 @@ class BillingFormViewModelTests: XCTestCase {
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle())
         let expectedType = BillingFormCellType.fullName
         let text = "fullName"
-        let textField = BillingFormTextField(type: expectedType)
+        let tag = 2
+        let textField = BillingFormTextField(type: expectedType, tag: tag)
         textField.text = text
         
         viewModel.updateRow = {
-            XCTAssertEqual(viewModel.updatedRow, expectedType.rawValue)
+            XCTAssertEqual(viewModel.updatedRow, tag)
             XCTAssertEqual(viewModel.errorFlagOfCellType[expectedType], false)
             XCTAssertEqual(viewModel.textValueOfCellType[expectedType], text)
             expectation.fulfill()
@@ -106,10 +100,10 @@ class BillingFormViewModelTests: XCTestCase {
         viewModel.textValueOfCellType = textValueOfCellType
         viewModel.editDelegate = delegate
         
-        viewModel.textFieldIsChanged(textField: BillingFormTextField(type: .fullName), replacementString: "text")
+        viewModel.textFieldShouldEndEditing(textField: BillingFormTextField(type: .fullName, tag: 2), replacementString: "text")
         
         XCTAssertEqual(delegate.didFinishEditingBillingFormCalledTimes, 1)
-        XCTAssertEqual(delegate.didFinishEditingBillingFormLastCalledWithSuccessfully, false)
+        XCTAssertEqual(delegate.didFinishEditingBillingFormLastCalledWithSuccessfully, true)
     }
     
 }

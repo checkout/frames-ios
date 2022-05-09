@@ -8,11 +8,8 @@ class BillingFormTextFieldCellMockDelegate: BillingFormTextFieldCellDelegate {
     
     var textFieldShouldReturnCalledTimes = 0
 
-    var textFieldDidEndEditingCalledTimes = 0
-    var textFieldDidEndEditingLastCalledWithTextField: UITextField?
-    
-    var textFieldDidChangeCharactersCalledTimes = 0
-    var textFieldDidChangeCharactersLastCalledWithTextField: UITextField?
+    var textFieldShouldEndEditingCalledTimes = 0
+    var textFieldShouldEndEditingLastCalledWithTextField: UITextField?
     var textFieldDidChangeCharactersLastCalledWithReplacementString: String?
 
     func textFieldShouldBeginEditing(textField: UITextField) {
@@ -24,14 +21,9 @@ class BillingFormTextFieldCellMockDelegate: BillingFormTextFieldCellDelegate {
         textFieldShouldReturnCalledTimes += 1
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
-        textFieldDidEndEditingCalledTimes += 1
-        textFieldDidEndEditingLastCalledWithTextField = textField
-    }
-    
-    func textFieldDidChangeCharacters(textField: UITextField, replacementString: String) {
-        textFieldDidChangeCharactersCalledTimes += 1
-        textFieldDidChangeCharactersLastCalledWithTextField = textField
+    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) {
+        textFieldShouldEndEditingCalledTimes += 1
+        textFieldShouldEndEditingLastCalledWithTextField = textField
         textFieldDidChangeCharactersLastCalledWithReplacementString = replacementString
     }
 }

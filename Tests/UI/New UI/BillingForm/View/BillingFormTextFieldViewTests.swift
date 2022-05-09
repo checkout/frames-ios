@@ -7,7 +7,7 @@ class BillingFormTextFieldViewTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        view = BillingFormTextFieldView(type: .fullName, style: style, delegate: nil)
+        view = BillingFormTextFieldView(type: .fullName, tag: 2, style: style, delegate: nil)
     }
     
     func testHeaderLabelStyle(){

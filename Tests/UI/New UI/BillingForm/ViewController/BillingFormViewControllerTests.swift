@@ -17,8 +17,9 @@ class BillingFormViewControllerTests: XCTestCase {
     func testInitialization() {
         billingFormViewController.viewDidLoad()
         billingFormViewController.viewDidLayoutSubviews()
-        XCTAssertEqual(billingFormViewController.view.subviews.count, 1)
-        XCTAssertTrue(billingFormViewController.view.subviews.first is UITableView)
+        XCTAssertEqual(billingFormViewController.view.subviews.count, 2)
+        XCTAssertTrue(billingFormViewController.view.subviews.first is BillingFormHeaderCell)
+        XCTAssertTrue(billingFormViewController.view.subviews.last is UITableView)
     }
     
     func testCallDelegateMethodOnTapDoneButton() {
@@ -80,31 +81,5 @@ class BillingFormViewControllerTests: XCTestCase {
         XCTAssertEqual(delegate.estimatedHeightForRowCalledTimes, 1)
         XCTAssertEqual(delegate.estimatedHeightForRowLastCalledWithIndexPath, indexthPath)
     }
-    
-    func testCallDelegateMethodValidate() {
-        let delegate = BillingFormViewControllerMockDelegate()
-        billingFormViewController.viewDidLoad()
-        billingFormViewController.delegate = delegate
-        
-        let textfield = BillingFormTextField(type: .fullName)
-        
-        billingFormViewController.textFieldDidEndEditing(textField: textfield)
-        
-        XCTAssertEqual(delegate.validateCalledTimes, 1)
-        XCTAssertEqual(delegate.validateLastCalledWithBillingFormTextField, textfield)
-    }
-    
-    func testCallDelegateMethodTextFieldIsChanged() {
-        let delegate = BillingFormViewControllerMockDelegate()
-        billingFormViewController.viewDidLoad()
-        billingFormViewController.delegate = delegate
-        
-        let textfield = BillingFormTextField(type: .fullName)
-        let text = "Test"
-        billingFormViewController.textFieldDidChangeCharacters(textField: textfield, replacementString: text)
-        
-        XCTAssertEqual(delegate.textFieldIsChangedCalledTimes, 1)
-        XCTAssertEqual(delegate.textFieldIsChangedLastCalledWithReplacementString, text)
-        XCTAssertEqual(delegate.textFieldIsChangedLastCalledWithBillingFormTextField, textfield)
-    }
+
 }

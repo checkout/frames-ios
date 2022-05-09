@@ -1,7 +1,7 @@
 import UIKit
 @testable import Frames
 
-class BillingFormViewControllerMockDelegate: BillingFormViewControllerdelegate {
+class BillingFormViewControllerMockDelegate: BillingFormViewControllerdelegate {    
     
     var doneButtonIsPressedCalledTimes = 0
     var doneButtonIsPressedLastCalledWithSender: UIViewController?
@@ -11,11 +11,7 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerdelegate {
     
     var numberOfRowsInSectionCalledTimes = 0
     var numberOfRowsInSectionLastCalledWithSection: Int?
-    
-    var cellForRowAtCalledTimes = 0
-    var cellForRowAtLastCalledWithIndexPath: IndexPath?
-    var cellForRowAtLastCalledWithSender: UIViewController?
-    
+
     var estimatedHeightForRowCalledTimes = 0
     var estimatedHeightForRowLastCalledWithIndexPath: IndexPath?
     
@@ -25,6 +21,22 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerdelegate {
     var textFieldIsChangedCalledTimes = 0
     var textFieldIsChangedLastCalledWithBillingFormTextField: BillingFormTextField?
     var textFieldIsChangedLastCalledWithReplacementString: String?
+    
+    var getViewForHeaderCalledTimes = 0
+    var getViewForHeaderLastCalledWithSender: UIViewController?
+    
+    var heightForHeaderInSectionCalledTimes = 0
+    var heightForHeaderInSectionLastCalledWithTableView: UITableView?
+    var heightForHeaderInSectionLastCalledWithSection: Int?
+    
+    var cellForRowAtCalledTimes = 0
+    var cellForRowAtLastCalledWithTableView: UITableView?
+    var cellForRowAtLastCalledWithIndexPath: IndexPath?
+    var cellForRowAtLastCalledWithSender: UIViewController?
+
+    var textFieldShouldEndEditingCalledTimes = 0
+    var textFieldShouldEndEditingLastCalledWithBillingFormTextField: BillingFormTextField?
+    var textFieldShouldEndEditingLastCalledWithReplacementString: String?
     
     func doneButtonIsPressed(sender: UIViewController) {
         doneButtonIsPressedCalledTimes += 1
@@ -66,4 +78,30 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerdelegate {
         textFieldIsChangedLastCalledWithReplacementString = replacementString
     }
     
+    func getViewForHeader(sender: UIViewController) -> UIView? {
+        getViewForHeaderCalledTimes += 1
+        getViewForHeaderLastCalledWithSender = sender
+        return UIView()
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        heightForHeaderInSectionCalledTimes += 1
+        heightForHeaderInSectionLastCalledWithTableView = tableView
+        heightForHeaderInSectionLastCalledWithSection = section
+        return 10.0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAt indexPath: IndexPath, sender: UIViewController) -> UITableViewCell {
+        cellForRowAtCalledTimes += 1
+        cellForRowAtLastCalledWithTableView = tableView
+        cellForRowAtLastCalledWithIndexPath = indexPath
+        cellForRowAtLastCalledWithSender = sender
+        return UITableViewCell()
+    }
+    
+    func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String) {
+        textFieldShouldEndEditingCalledTimes += 1
+        textFieldShouldEndEditingLastCalledWithBillingFormTextField = textField
+        textFieldShouldEndEditingLastCalledWithReplacementString = replacementString
+    }
 }
