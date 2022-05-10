@@ -168,7 +168,6 @@ extension BillingFormViewController: BillingFormTextFieldCellDelegate {
     }
 }
 
-//FormHeaderCellDelegate
 extension BillingFormViewController: BillingFormHeaderCellDelegate {
     
     func doneButtonIsPressed() {
@@ -182,8 +181,8 @@ extension BillingFormViewController: BillingFormHeaderCellDelegate {
 
 extension BillingFormViewController {
     private func setupViewModel() {
-        viewModel.updateRow = {
-            DispatchQueue.main.async { [weak self] in
+        viewModel.updateRow = { [weak self] in
+            DispatchQueue.main.async { 
                 guard let row = self?.viewModel.updatedRow else { return }
                 let indexPath = IndexPath(row: row, section: 0)
                 self?.tableView.reloadRows(at: [indexPath], with: .automatic)
