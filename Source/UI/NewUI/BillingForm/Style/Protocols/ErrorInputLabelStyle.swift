@@ -1,6 +1,5 @@
 import UIKit
 
-// Error element
 public protocol ErrorInputLabelStyle {
     var isHidden: Bool { get set }
     var text: String { get }

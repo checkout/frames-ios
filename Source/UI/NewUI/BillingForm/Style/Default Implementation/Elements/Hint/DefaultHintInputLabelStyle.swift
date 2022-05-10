@@ -1,6 +1,5 @@
 import UIKit
 
-// hint element
 struct DefaultHintInputLabelStyle: InputLabelStyle {
     var isHidden: Bool
     var text: String

@@ -85,7 +85,6 @@ final class BillingFormViewController: UIViewController {
     }
 }
 
-// setup views
 extension BillingFormViewController {
     
     private func setupViewsInOrder() {
@@ -134,7 +133,6 @@ extension BillingFormViewController {
     }
 }
 
-// UITableViewDataSource
 extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -182,7 +180,6 @@ extension BillingFormViewController: BillingFormHeaderCellDelegate {
     }
 }
 
-// ViewModel
 extension BillingFormViewController {
     private func setupViewModel() {
         viewModel.updateRow = {

@@ -1,6 +1,5 @@
 import UIKit
 
-// Label element
 public protocol InputLabelStyle {
     var isHidden: Bool { get }
     var text: String { get }

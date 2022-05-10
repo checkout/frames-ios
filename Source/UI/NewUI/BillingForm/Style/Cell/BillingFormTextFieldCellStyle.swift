@@ -1,6 +1,5 @@
 import UIKit
 
-// Field Cell
 public protocol BillingFormTextFieldCellStyle {
     var type: BillingFormCellType { get }
     var backgroundColor: UIColor { get }

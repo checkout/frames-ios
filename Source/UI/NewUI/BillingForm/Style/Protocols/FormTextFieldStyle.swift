@@ -1,6 +1,5 @@
 import UIKit
 
-// TextField element
 public protocol TextFieldStyle {
     var text: String { get set }
     var placeHolder: String { get }

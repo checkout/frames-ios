@@ -71,7 +71,6 @@ final class BillingFormHeaderCell: UIView {
     }
 }
 
-// setup views
 extension BillingFormHeaderCell {
     
     private func setupViewsInOrder() {

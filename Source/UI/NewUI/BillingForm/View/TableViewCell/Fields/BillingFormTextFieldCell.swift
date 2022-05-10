@@ -38,7 +38,6 @@ final class BillingFormTextFieldCell: UITableViewCell {
     
 }
 
-// setup views
 extension BillingFormTextFieldCell {
     
     private func setupViewsInOrder() {
