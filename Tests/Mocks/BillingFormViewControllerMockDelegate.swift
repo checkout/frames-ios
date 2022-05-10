@@ -38,6 +38,10 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerdelegate {
     var textFieldShouldEndEditingLastCalledWithBillingFormTextField: BillingFormTextField?
     var textFieldShouldEndEditingLastCalledWithReplacementString: String?
     
+    var updateCountryCodeCalledTimes = 0
+    var updateCountryCodeLastCalledWithCode: Int?
+    
+    
     func doneButtonIsPressed(sender: UIViewController) {
         doneButtonIsPressedCalledTimes += 1
         doneButtonIsPressedLastCalledWithSender = sender
@@ -103,5 +107,10 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerdelegate {
         textFieldShouldEndEditingCalledTimes += 1
         textFieldShouldEndEditingLastCalledWithBillingFormTextField = textField
         textFieldShouldEndEditingLastCalledWithReplacementString = replacementString
+    }
+    
+    func updateCountryCode(code: Int) {
+        updateCountryCodeCalledTimes += 1
+        updateCountryCodeLastCalledWithCode = code
     }
 }

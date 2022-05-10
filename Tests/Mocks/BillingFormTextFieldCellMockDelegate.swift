@@ -12,6 +12,9 @@ class BillingFormTextFieldCellMockDelegate: BillingFormTextFieldCellDelegate {
     var textFieldShouldEndEditingLastCalledWithTextField: UITextField?
     var textFieldDidChangeCharactersLastCalledWithReplacementString: String?
 
+    var updateCountryCodeCalledTimes = 0
+    var updateCountryCodeLastCalledWithCode: Int?
+    
     func textFieldShouldBeginEditing(textField: UITextField) {
         textFieldShouldBeginEditingCalledTimes += 1
         textFieldShouldBeginEditingLastCalledWithTextField = textField
@@ -25,5 +28,11 @@ class BillingFormTextFieldCellMockDelegate: BillingFormTextFieldCellDelegate {
         textFieldShouldEndEditingCalledTimes += 1
         textFieldShouldEndEditingLastCalledWithTextField = textField
         textFieldDidChangeCharactersLastCalledWithReplacementString = replacementString
+    }
+    
+    
+    func updateCountryCode(code: Int) {
+        updateCountryCodeCalledTimes += 1
+        updateCountryCodeLastCalledWithCode = code
     }
 }

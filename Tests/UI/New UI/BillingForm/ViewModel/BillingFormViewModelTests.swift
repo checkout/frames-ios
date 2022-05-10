@@ -67,7 +67,7 @@ class BillingFormViewModelTests: XCTestCase {
                        BillingFormCellType.addressLine2: "addressLine2" ,
                        BillingFormCellType.state: "state" ]
         
-        let countryCode = "44"
+        let countryCode = "0"
         let phone = CkoPhoneNumber(countryCode: countryCode, number: textValueOfCellType[.phoneNumber])
         let address = CkoAddress(addressLine1: textValueOfCellType[.addressLine1],
                                  addressLine2: textValueOfCellType[.addressLine2],
