@@ -74,7 +74,7 @@ workflows:
     - git-clone@4: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
-    - cocoapods-install@1:
+    - cocoapods-install@2.2:
         inputs:
         - podfile_path: $BITRISE_POD_FILE_PATH
     - xcode-test@2:
