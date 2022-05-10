@@ -28,16 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E6646F9D20CE6C0A00D8353A"
-               BuildableName = "iOS Example FrameUITests.xctest"
-               BlueprintName = "iOS Example FrameUITests"
-               ReferencedContainer = "container:iOS Example Frame Carthage.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
