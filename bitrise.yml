@@ -22,9 +22,6 @@ workflows:
     - cache-push@2:
         inputs:
         - cache_paths: $CARTHAGE_FOLDER
-    meta:
-      bitrise.io:
-        stack: osx-xcode-13.0.x
   build-pods-example:
     steps:
     - cocoapods-install@1:
@@ -70,9 +67,6 @@ workflows:
         - scheme: $BITRISE_SCHEME_TESTS
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
-    meta:
-      bitrise.io:
-        stack: osx-xcode-13.0.x
   build-sdk-pods:
     steps:
     - activate-ssh-key@4:
@@ -109,9 +103,6 @@ workflows:
     - slack@3:
         inputs:
         - webhook_url: $FRAMES_IOS_BUILDS_CHANNEL
-    meta:
-      bitrise.io:
-        stack: osx-xcode-13.0.x
   build-spm-example:
     steps:
     - xcode-test@2:
@@ -120,9 +111,6 @@ workflows:
         - scheme: $BITRISE_SCHEME_APP
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
-    meta:
-      bitrise.io:
-        stack: osx-xcode-13.0.x
   cocoapods-release: {}
   deploy:
     steps:
@@ -156,9 +144,6 @@ workflows:
     - slack@3:
         inputs:
         - webhook_url: $FRAMES_IOS_BUILDS_CHANNEL
-    meta:
-      bitrise.io:
-        stack: osx-xcode-13.0.x
   pr-checks:
     after_run:
     - set-up
@@ -166,9 +151,6 @@ workflows:
     - build-pods-example
     - build-spm-example
     - send-slack-message
-    meta:
-      bitrise.io:
-        stack: osx-xcode-12.4.x
   release-pod-frames:
     steps:
     - script@1:
@@ -222,3 +204,7 @@ app:
   - opts:
       is_expand: false
     BITRISE_SCHEME_COCOAPODS: iOS Example Frame
+meta:
+  bitrise.io:
+    stack: osx-xcode-13.3.x
+    machine_type_id: g2.4core
