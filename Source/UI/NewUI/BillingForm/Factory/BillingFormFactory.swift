@@ -13,8 +13,9 @@ struct BillingFormFactory {
         DefaultBillingFormPhoneNumberCellStyle()
     ]
     
-    static func getBillingFormViewController(delegate: BillingFormViewModelDelegate) -> UIViewController {
+    static func getBillingFormViewController(delegate: BillingFormViewModelDelegate) -> UIViewController? {
         let style = DefaultBillingFormStyle()
+        guard !style.fields.isEmpty else { return nil }
         let viewModel = DefaultBillingFormViewModel(style: style, initialCountry: "", delegate: delegate)
         return BillingFormViewController(viewModel: viewModel)
     }

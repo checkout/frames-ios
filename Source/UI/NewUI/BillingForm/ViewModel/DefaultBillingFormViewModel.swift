@@ -16,6 +16,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     
     private var initialCountry: String
     private var initialRegionCode: String?
+    private var countryCode: Int = 0
     
     init(style: BillingFormStyle,
          initialCountry: String = "",
@@ -57,6 +58,10 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 }
 
 extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
+    func updateCountryCode(code: Int) {
+        countryCode = code
+    }
+    
     func getViewForHeader(sender: UIViewController) -> UIView? {
          return getHeaderView(delegate: sender as? BillingFormHeaderCellDelegate)
     }
@@ -92,8 +97,7 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
     }
     
     func doneButtonIsPressed(sender: UIViewController) {
-//        let countryCode = "\(addressView.phoneInputView.phoneNumber?.countryCode ?? 44)"
-        let phone = CkoPhoneNumber(countryCode: "44",
+        let phone = CkoPhoneNumber(countryCode: "\(countryCode)",
                                    number: textValueOfCellType[.phoneNumber])
         let address = CkoAddress(addressLine1: textValueOfCellType[.addressLine1],
                                  addressLine2: textValueOfCellType[.addressLine2],

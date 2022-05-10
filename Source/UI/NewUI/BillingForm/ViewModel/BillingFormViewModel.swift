@@ -2,6 +2,7 @@ import Foundation
 
 protocol BillingFormViewModelDelegate: AnyObject {
     func onTapDoneButton(address: CkoAddress, phone: CkoPhoneNumber)
+    func updateCountryCode(code: Int)
 }
 
 protocol BillingFormViewModelEditingDelegate {

@@ -2,6 +2,7 @@ import UIKit
 import PhoneNumberKit
 
 protocol BillingFormTextFieldCellDelegate: AnyObject {
+    func updateCountryCode(code: Int)
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
@@ -57,6 +58,10 @@ extension BillingFormTextFieldCell {
 }
 
 extension BillingFormTextFieldCell: BillingFormTextFieldViewDelegate {
+    func updateCountryCode(code: Int) {
+        delegate?.updateCountryCode(code: code)
+    }
+    
     
     func textFieldShouldBeginEditing(textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)

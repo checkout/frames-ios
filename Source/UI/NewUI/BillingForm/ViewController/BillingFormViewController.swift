@@ -3,12 +3,13 @@ import UIKit
 protocol BillingFormViewControllerdelegate: AnyObject {
     func doneButtonIsPressed(sender: UIViewController)
     func cancelButtonIsPressed(sender: UIViewController)
-    func tableView(numberOfRowsInSection section: Int) -> Int
     func getViewForHeader(sender: UIViewController) -> UIView?
+    func validate(textField: BillingFormTextField)
+    func updateCountryCode(code: Int)
+    func tableView(numberOfRowsInSection section: Int) -> Int
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     func tableView(tableView: UITableView, cellForRowAt indexPath: IndexPath, sender: UIViewController) -> UITableViewCell
     func tableView(estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
-    func validate(textField: BillingFormTextField)
     func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String)
 }
 
@@ -158,6 +159,10 @@ extension BillingFormViewController: BillingFormTextFieldCellDelegate {
     
     func textFieldShouldReturn() {
         view.endEditing(true)
+    }
+    
+    func updateCountryCode(code: Int) {
+        delegate?.updateCountryCode(code: code)
     }
 }
 

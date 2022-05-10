@@ -1,12 +1,14 @@
 import UIKit
 
 protocol BillingFormTextFieldViewDelegate: AnyObject {
+    func updateCountryCode(code: Int)
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
 }
 
-final class BillingFormTextFieldView: UIView {
+class BillingFormTextFieldView: UIView {
+   
     
     private var style: BillingFormTextFieldCellStyle
     private var type: BillingFormCellType
@@ -48,7 +50,7 @@ final class BillingFormTextFieldView: UIView {
     }()
     
     private(set) lazy var textField: UITextField = {
-        let view = self.type == .phoneNumber ? BillingFormPhoneNumberText(type: type, tag: tag) : BillingFormTextField(type: self.type, tag: tag)
+        let view = self.type == .phoneNumber ? BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self) : BillingFormTextField(type: self.type, tag: tag)
         view.text = style.textfield.text
         view.font = style.textfield.font
         view.placeholder = style.textfield.placeHolder
@@ -114,8 +116,8 @@ extension BillingFormTextFieldView {
         textFieldContainer.addSubview(textField)
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: textFieldContainer.topAnchor),
-            textField.leadingAnchor.constraint(equalTo: textFieldContainer.leadingAnchor),
-            textField.trailingAnchor.constraint(equalTo: textFieldContainer.trailingAnchor),
+            textField.leadingAnchor.constraint(equalTo: textFieldContainer.leadingAnchor, constant: 20),
+            textField.trailingAnchor.constraint(equalTo: textFieldContainer.trailingAnchor, constant: -20),
             textField.bottomAnchor.constraint(equalTo: textFieldContainer.bottomAnchor)
         ])
     }
@@ -159,5 +161,11 @@ extension BillingFormTextFieldView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldReturn()
         return false
+    }
+}
+
+extension BillingFormTextFieldView: BillingFormPhoneNumberTextDelegate {
+    func updateCountryCode(code: Int) {
+        delegate?.updateCountryCode(code: code)
     }
 }
