@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1230"
+   LastUpgradeVersion = "1320"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -38,16 +38,6 @@
                ReferencedContainer = "container:iOS Example Frame Carthage.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4422776426163748009626A0"
-               BuildableName = "FramesTests.xctest"
-               BlueprintName = "FramesTests"
-               ReferencedContainer = "container:iOS Example Frame Carthage.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -67,18 +57,9 @@
             BlueprintIdentifier = "E6646F8920CE6C0900D8353A"
             BuildableName = "iOS Example Frame.app"
             BlueprintName = "iOS Example Frame"
-            ReferencedContainer = "container:FramesCarthageSample.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E6646F8920CE6C0900D8353A"
-            BuildableName = "iOS Example Frame.app"
-            BlueprintName = "iOS Example Frame"
             ReferencedContainer = "container:iOS Example Frame Carthage.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
