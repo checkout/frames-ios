@@ -74,7 +74,7 @@ class BillingFormTextFieldView: UIView {
         super.init(frame: .zero)
         self.delegate = delegate
         self.tag = tag
-        self.setupViews()
+        self.setupViewsInOrder()
     }
     
     required init?(coder: NSCoder) {
@@ -85,7 +85,7 @@ class BillingFormTextFieldView: UIView {
 
 extension BillingFormTextFieldView {
 
-    private func setupViews(){
+    private func setupViewsInOrder(){
         backgroundColor = style.backgroundColor
         setupHeaderLabel()
         setupHintLabel()

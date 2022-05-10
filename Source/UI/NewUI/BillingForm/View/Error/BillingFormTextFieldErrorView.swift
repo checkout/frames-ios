@@ -28,7 +28,7 @@ final class BillingFormTextFieldErrorView: UIView {
     init(style: ErrorInputLabelStyle) {
         super.init(frame: .zero)
         self.style = style
-        setupViews()
+        setupViewsInOrder()
     }
     
     required init?(coder: NSCoder) {
@@ -38,7 +38,7 @@ final class BillingFormTextFieldErrorView: UIView {
 
 extension BillingFormTextFieldErrorView {
 
-    private func setupViews(){
+    private func setupViewsInOrder(){
         backgroundColor = style.backgroundColor
         setupHeaderLabel()
         setupImageView()

@@ -20,7 +20,7 @@ final class BillingFormTextFieldCell: UITableViewCell {
     func update(style: BillingFormTextFieldCellStyle, tag: Int) {
         self.style = style
         self.tag = tag
-        setupViews()
+        setupViewsInOrder()
     }
     
 
@@ -41,7 +41,7 @@ final class BillingFormTextFieldCell: UITableViewCell {
 // setup views
 extension BillingFormTextFieldCell {
     
-    private func setupViews() {
+    private func setupViewsInOrder() {
         contentView.addSubview(paymentInputView)
         NSLayoutConstraint.activate([
             paymentInputView.topAnchor.constraint(

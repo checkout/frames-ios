@@ -51,7 +51,7 @@ final class BillingFormHeaderCell: UIView {
         self.style = style
         super.init(frame: .zero)
         self.delegate = delegate
-        setupViews()
+        setupViewsInOrder()
     }
     
     required init?(coder: NSCoder) {
@@ -74,7 +74,7 @@ final class BillingFormHeaderCell: UIView {
 // setup views
 extension BillingFormHeaderCell {
     
-    private func setupViews() {
+    private func setupViewsInOrder() {
         backgroundColor = style.backgroundColor
         setupCancelButton()
         setupDoneButton()

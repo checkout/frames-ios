@@ -44,8 +44,7 @@ final class BillingFormViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor =  viewModel.style.mainBackground
-        setupHeaderView()
-        setupTableView()
+        setupViewsInOrder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,6 +87,11 @@ final class BillingFormViewController: UIViewController {
 
 // setup views
 extension BillingFormViewController {
+    
+    private func setupViewsInOrder() {
+        setupHeaderView()
+        setupTableView()
+    }
     
     private func setupHeaderView(){
         view.addSubview(headerView)
