@@ -44,6 +44,7 @@ public class CardViewController: UIViewController,
 
     private var loggedForCurrentCorrelationID = false
     public var isNewUI = false
+    // TODO: [Will updated in the next ticket].
     private var countryCode = 0
     // MARK: - Initialization
 
