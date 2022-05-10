@@ -5,30 +5,26 @@ project_type: ios
 trigger_map:
 - push_branch: '*'
   workflow: build-sdk-pods
-- push_branch: develop
-  workflow: app-store-validate
 - pull_request_source_branch: '*'
   workflow: pr-checks
 workflows:
-  app-store-validate:
-    after_run:
-    - set-up
-    - validate-pods-example
-    - send-slack-message
   build-carthage-example:
     steps:
     - carthage@3:
         inputs:
-        - carthage_options: '$CARTHAGE_XCFRAMEWORK '
+        - carthage_options: $CARTHAGE_XCFRAMEWORK
         - github_access_token: $access_token
-    - xcode-test@2:
+    - xcode-test@4.1:
         inputs:
         - project_path: $BITRISE_PROJECT_PATH_CARTHAGE
-        - scheme: $BITRISE_SCHEME_CARTHAGE
+        - scheme: $BITRISE_SCHEME_APP
     - deploy-to-bitrise-io@1: {}
     - cache-push@2:
         inputs:
         - cache_paths: $CARTHAGE_FOLDER
+    meta:
+      bitrise.io:
+        stack: osx-xcode-13.0.x
   build-pods-example:
     steps:
     - cocoapods-install@1:
@@ -37,7 +33,7 @@ workflows:
     - xcode-test@2:
         inputs:
         - project_path: $BITRISE_PROJECT_PATH
-        - scheme: $BITRISE_SCHEME
+        - scheme: $BITRISE_SCHEME_APP
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     after_run: []
@@ -71,9 +67,12 @@ workflows:
     - xcode-test@2:
         inputs:
         - project_path: $BITRISE_PROJECT_PATH_CARTHAGE
-        - scheme: $BITRISE_SCHEME_CARTHAGE
+        - scheme: $BITRISE_SCHEME_TESTS
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
+    meta:
+      bitrise.io:
+        stack: osx-xcode-13.0.x
   build-sdk-pods:
     steps:
     - activate-ssh-key@4:
@@ -83,11 +82,11 @@ workflows:
     - certificate-and-profile-installer@1: {}
     - cocoapods-install@1:
         inputs:
-        - podfile_path: $BITRISE_POD_FILE_PATH_OLD
+        - podfile_path: $BITRISE_POD_FILE_PATH
     - xcode-test@2:
         inputs:
-        - project_path: $BITRISE_PROJECT_PATH_OLD
-        - scheme: $BITRISE_SCHEME
+        - project_path: $BITRISE_PROJECT_PATH
+        - scheme: $BITRISE_SCHEME_TESTS
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     - slack@3:
@@ -104,20 +103,26 @@ workflows:
     - xcode-test@2:
         inputs:
         - project_path: $BITRISE_PROJECT_PATH_SPM
-        - scheme: $BITRISE_SCHEME_SPM
+        - scheme: $BITRISE_SCHEME_TESTS
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     - slack@3:
         inputs:
         - webhook_url: $FRAMES_IOS_BUILDS_CHANNEL
+    meta:
+      bitrise.io:
+        stack: osx-xcode-13.0.x
   build-spm-example:
     steps:
     - xcode-test@2:
         inputs:
         - project_path: $BITRISE_PROJECT_PATH_SPM
-        - scheme: $BITRISE_SCHEME_SPM
+        - scheme: $BITRISE_SCHEME_APP
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
+    meta:
+      bitrise.io:
+        stack: osx-xcode-13.0.x
   cocoapods-release: {}
   deploy:
     steps:
@@ -132,38 +137,20 @@ workflows:
     - xcode-test@2:
         inputs:
         - project_path: $BITRISE_PROJECT_PATH
-        - scheme: $BITRISE_SCHEME
+        - scheme: $BITRISE_SCHEME_APP
     - xcode-archive@2:
         inputs:
         - project_path: $BITRISE_PROJECT_PATH
-        - scheme: $BITRISE_SCHEME
+        - scheme: $BITRISE_SCHEME_APP
         - export_method: $BITRISE_EXPORT_METHOD
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
-  playgorund_build-sdk-pods:
-    steps:
-    - activate-ssh-key@4:
-        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@4: {}
-    - cache-pull@2: {}
-    - certificate-and-profile-installer@1: {}
-    - cocoapods-install@1:
-        inputs:
-        - podfile_path: $BITRISE_POD_FILE_PATH
-    - xcode-test@2:
-        inputs:
-        - project_path: $BITRISE_PROJECT_PATH
-        - scheme: $BITRISE_SCHEME
-    - deploy-to-bitrise-io@1: {}
-    - cache-push@2: {}
-    after_run:
-    - send-slack-message
   playground:
     steps:
     - xcode-test@2:
         inputs:
         - project_path: $BITRISE_PROJECT_PATH_SPM
-        - scheme: $BITRISE_SCHEME_SPM
+        - scheme: $BITRISE_SCHEME_APP
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     - slack@3:
@@ -175,15 +162,18 @@ workflows:
   pr-checks:
     after_run:
     - set-up
+    - build-carthage-example
     - build-pods-example
     - build-spm-example
-    - build-carthage-example
     - send-slack-message
+    meta:
+      bitrise.io:
+        stack: osx-xcode-12.4.x
   release-pod-frames:
     steps:
     - script@1:
         inputs:
-        - content: pod trunk push --allow-warnings Frames.podspec
+        - content: pod trunk push Frames.podspec
     before_run:
     - set-up
   send-slack-message:
@@ -200,30 +190,6 @@ workflows:
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
     after_run: []
-  validate-pods-example:
-    steps:
-    - cocoapods-install@2:
-        inputs:
-        - podfile_path: $BITRISE_POD_FILE_PATH
-    - script@1:
-        title: Bump app version
-        inputs:
-        - content: >-
-            /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $(date -u
-            +%y.%m.%d.%H.%M.%S)" "${BITRISE_SOURCE_DIR}/iOS Example Frame/iOS
-            Example Frame/Info.plist"
-    - xcode-archive@4:
-        inputs:
-        - configuration: ''
-        - distribution_method: ad-hoc
-        - scheme: $BITRISE_SCHEME_COCOAPODS
-    - script@1:
-        title: Validate IPA
-        inputs:
-        - content: swift $BITRISE_SOURCE_DIR/scripts/appStoreValidate.swift
-    - deploy-to-bitrise-io@1: {}
-    - cache-push@2: {}
-    after_run: []
 app:
   envs:
   - opts:
@@ -231,7 +197,7 @@ app:
     BITRISE_PROJECT_PATH: iOS Example Frame/iOS Example Frame.xcworkspace
   - opts:
       is_expand: false
-    BITRISE_SCHEME: Frames-Unit-Tests
+    BITRISE_SCHEME_TESTS: Frames-Unit-Tests
   - opts:
       is_expand: false
     BITRISE_EXPORT_METHOD: development
@@ -246,10 +212,7 @@ app:
     BITRISE_PROJECT_PATH_CARTHAGE: iOS Example Frame Carthage/iOS Example Frame Carthage.xcworkspace
   - opts:
       is_expand: false
-    BITRISE_SCHEME_SPM: iOS Example Frame
-  - opts:
-      is_expand: false
-    BITRISE_SCHEME_CARTHAGE: iOS Example Frame
+    BITRISE_SCHEME_APP: iOS Example Frame
   - opts:
       is_expand: false
     CARTHAGE_XCFRAMEWORK: '--use-xcframeworks --platform iOS'
@@ -259,13 +222,3 @@ app:
   - opts:
       is_expand: false
     BITRISE_SCHEME_COCOAPODS: iOS Example Frame
-  - opts:
-      is_expand: false
-    BITRISE_POD_FILE_PATH_OLD: iOS Example Frame/Podfile
-  - opts:
-      is_expand: false
-    BITRISE_PROJECT_PATH_OLD: iOS Example Frame/iOS Example Frame.xcworkspace
-meta:
-  bitrise.io:
-    stack: osx-xcode-13.3.x
-    machine_type_id: elite
