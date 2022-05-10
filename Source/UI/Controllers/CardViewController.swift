@@ -166,7 +166,7 @@ public class CardViewController: UIViewController,
             navigationController?.pushViewController(addressViewController, animated: true)
             return
         }
-        guard let viewController = BillingFormFactory.getBillingFormViewController(delegate: self) else {
+        guard let viewController = BillingFormFactory.getBillingFormViewController(delegate: self).1 else {
             navigationController?.pushViewController(addressViewController, animated: true)
             return
         }
