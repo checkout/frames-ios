@@ -31,7 +31,7 @@ workflows:
         - cache_paths: $CARTHAGE_FOLDER
   build-pods-example:
     steps:
-    - cocoapods-install@2:
+    - cocoapods-install@2.2:
         inputs:
         - podfile_path: $PODFILE_PATH
     - xcode-test@2:
@@ -43,7 +43,7 @@ workflows:
     after_run: []
   build-pods-example-release:
     steps:
-    - cocoapods-install@2:
+    - cocoapods-install@2.2:
         inputs:
         - podfile_path: $PODFILE_PATH
     - xcode-build-for-simulator@0:
@@ -81,7 +81,7 @@ workflows:
     - git-clone@4: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
-    - cocoapods-install@2:
+    - cocoapods-install@2.2:
         inputs:
         - podfile_path: $PODFILE_PATH
     - xcode-test@2:
@@ -126,7 +126,7 @@ workflows:
     - git-clone@4: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
-    - cocoapods-install@2:
+    - cocoapods-install@2.2:
         inputs:
         - podfile_path: $PODFILE_PATH
     - xcode-test@2:
@@ -147,7 +147,7 @@ workflows:
     - git-clone@4: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
-    - cocoapods-install@2:
+    - cocoapods-install@2.2:
         inputs:
         - podfile_path: $PODFILE_PATH
     - xcode-test@2:
@@ -202,7 +202,7 @@ workflows:
     after_run: []
   validate-pods-example:
     steps:
-    - cocoapods-install@2:
+    - cocoapods-install@2.2:
         inputs:
         - podfile_path: $PODFILE_PATH
     - script@1:
