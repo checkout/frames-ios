@@ -14,7 +14,7 @@ struct DefaultCancelButtonFormStyle: FormButtonStyle {
     
     init( isEnabled: Bool = true,
           text: String = "cancel".localized(forClass: CheckoutTheme.self),
-          font: UIFont = UIFont.systemFont(ofSize: 17),
+          font: UIFont =  UIFont.systemFont(ofSize: 17),
           activeTitleColor: UIColor = .brandeisBlue,
           disabledTitleColor: UIColor = .doveGray,
           disabledTintColor: UIColor = .doveGray,

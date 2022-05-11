@@ -8,7 +8,7 @@ struct DefaultHintInputLabelStyle: InputLabelStyle {
     
     init(isHidden: Bool = false,
          text: String = "",
-         font: UIFont = UIFont.systemFont(ofSize: 13),
+         font: UIFont = UIFont(graphikStyle: .regular, size: 13),
          textColor: UIColor = .doveGray) {
         self.isHidden = isHidden
         self.text = text

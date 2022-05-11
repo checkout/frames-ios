@@ -14,7 +14,7 @@ struct DefaultErrorInputLabelStyle: ErrorInputLabelStyle {
          backgroundColor: UIColor = .white,
          tintColor: UIColor = .tallPoppyRed,
          text: String = "",
-         font: UIFont = UIFont.systemFont(ofSize: 15),
+         font: UIFont = UIFont(graphikStyle: .medium, size: 13),
          textColor: UIColor =  .tallPoppyRed,
          isWarningSympoleOnLeft: Bool = true,
          height: Double = 18.0) {

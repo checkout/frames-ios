@@ -47,11 +47,13 @@ public class CardViewController: UIViewController,
     // TODO: [Will updated in the next ticket].
     private var countryCode = 0
     // MARK: - Initialization
-
+    
+    
     /// Returns a newly initialized view controller with the cardholder's name and billing details
     /// state specified. You can specified the region using the Iso2 region code ("UK" for "United Kingdom")
     public init(checkoutApiClient: CheckoutAPIClient, cardHolderNameState: InputState,
                 billingDetailsState: InputState, defaultRegionCode: String? = nil) {
+        UIFont.loadAllFonts
         self.checkoutApiClient = checkoutApiClient
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState

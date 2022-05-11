@@ -9,8 +9,11 @@ extension UIColor {
 }
 
 extension UIColor {
-   fileprivate convenience init(hex: String, alpha: CGFloat = 1.0) {
-        var cString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+    convenience init(hex: String, alpha: CGFloat = 1.0) {
+        var cString = hex
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .replacingOccurrences(of: " ", with: "")
+            .uppercased()
 
         if cString.hasPrefix("#") { cString.removeFirst() }
 

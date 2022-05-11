@@ -19,7 +19,7 @@ struct DefaultTextField: TextFieldStyle {
     init(text: String = "",
          placeHolder: String = "",
          isPlaceHolderHidden: Bool  = false,
-         font: UIFont = UIFont.systemFont(ofSize: 16),
+         font: UIFont = UIFont(graphikStyle: .regular, size: 16),
          textColor: UIColor = .codGray,
          normalBorderColor: UIColor = .mediumGray,
          focusBorderColor: UIColor = .brandeisBlue,

@@ -8,7 +8,7 @@ struct DefaultTitleLabelStyle: InputLabelStyle {
     
     init(isHidden: Bool = false,
          text: String = "",
-         font: UIFont = UIFont.systemFont(ofSize: 15),
+         font: UIFont = UIFont(graphikStyle: .regular, size: 15),
          textColor: UIColor = .codGray) {
         self.isHidden = isHidden
         self.text = text
