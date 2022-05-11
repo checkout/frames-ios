@@ -17,6 +17,7 @@ workflows:
     - xcode-test@4.1:
         inputs:
         - project_path: $BITRISE_PROJECT_PATH_CARTHAGE
+        - destination: 'platform=iOS Simulator,name=iPhone 13,OS=latest'
         - scheme: $BITRISE_SCHEME_APP
     - deploy-to-bitrise-io@1: {}
     - cache-push@2:
