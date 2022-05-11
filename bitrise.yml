@@ -207,5 +207,5 @@ app:
     BITRISE_SCHEME_COCOAPODS: iOS Example Frame
 meta:
   bitrise.io:
-    stack: osx-xcode-13.2.x
+    stack: osx-xcode-13.3.x
     machine_type_id: g2.4core
