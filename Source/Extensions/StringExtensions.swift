@@ -23,6 +23,7 @@ extension String {
         return UIImage(named: self, in: bundle, compatibleWith: nil) ?? UIImage()
     }
  
+    //TODO: migrate to assets
     //https://www.hackingwithswift.com/example-code/core-graphics/how-to-render-a-pdf-to-an-image
     func vectorPDFImage(forClass: AnyClass) -> UIImage? {
         let bundle = getBundle(forClass: forClass)
