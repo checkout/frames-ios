@@ -5,13 +5,14 @@ protocol BillingFormTextFieldViewDelegate: AnyObject {
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
+    func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
 
 class BillingFormTextFieldView: UIView {
    
     
     private var style: BillingFormTextFieldCellStyle
-    private var type: BillingFormCellType
+    private var type: BillingFormCell
     private weak var delegate: BillingFormTextFieldViewDelegate?
     
     private(set) lazy var headerLabel: UILabel = {
@@ -50,7 +51,7 @@ class BillingFormTextFieldView: UIView {
     }()
     
     private(set) lazy var textField: UITextField = {
-        let view = self.type == .phoneNumber ? BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self) : BillingFormTextField(type: self.type, tag: tag)
+        let view = self.type.hash == BillingFormCell.phoneNumber(nil).hash ? BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self) : BillingFormTextField(type: self.type, tag: tag)
         view.text = style.textfield.text
         view.font = style.textfield.font
         view.placeholder = style.textfield.placeHolder
@@ -68,7 +69,7 @@ class BillingFormTextFieldView: UIView {
         return view
     }()
     
-    init(type: BillingFormCellType, tag: Int, style: BillingFormTextFieldCellStyle, delegate: BillingFormTextFieldViewDelegate? = nil) {
+    init(type: BillingFormCell, tag: Int, style: BillingFormTextFieldCellStyle, delegate: BillingFormTextFieldViewDelegate? = nil) {
         self.style = style
         self.type = type
         super.init(frame: .zero)
@@ -157,11 +158,17 @@ extension BillingFormTextFieldView: UITextFieldDelegate {
         delegate?.textFieldShouldEndEditing(textField: textField, replacementString: textField.text ?? "")
         return true
     }
-    
+   
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldReturn()
         return false
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
+        return true
+    }
+    
 }
 
 extension BillingFormTextFieldView: BillingFormPhoneNumberTextDelegate {

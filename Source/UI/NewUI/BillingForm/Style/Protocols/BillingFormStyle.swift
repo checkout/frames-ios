@@ -1,7 +1,7 @@
 import UIKit
 
-protocol BillingFormStyle {
+public protocol BillingFormStyle {
     var mainBackground: UIColor { get }
     var header: BillingFormHeaderCellStyle { get set }
-    var fields: [BillingFormTextFieldCellStyle] { get }
+    var cells: [BillingFormCell] { get }
 }

@@ -165,7 +165,9 @@ public class CardViewController: UIViewController,
 
     @objc func onTapAddressView() {
         checkoutApiClient?.logger.log(.billingFormPresented)
-        guard isNewUI, let viewController = BillingFormFactory.getBillingFormViewController(delegate: self).1 else {
+
+        guard isNewUI,
+                let viewController = BillingFormFactory.getBillingFormViewController(delegate: self).1 else {
             navigationController?.pushViewController(addressViewController, animated: true)
             return
         }

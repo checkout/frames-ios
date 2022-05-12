@@ -6,10 +6,12 @@ protocol BillingFormTextFieldCellDelegate: AnyObject {
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
+    func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
 
 final class BillingFormTextFieldCell: UITableViewCell {
     weak var delegate: BillingFormTextFieldCellDelegate?
+    var cellStyle: BillingFormCell? = nil
     var style: BillingFormTextFieldCellStyle? = nil
 
     
@@ -17,7 +19,8 @@ final class BillingFormTextFieldCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    func update(style: BillingFormTextFieldCellStyle, tag: Int) {
+    func update(cellStyle:BillingFormCell, style: BillingFormTextFieldCellStyle, tag: Int) {
+        self.cellStyle = cellStyle
         self.style = style
         self.tag = tag
         setupViewsInOrder()
@@ -30,8 +33,8 @@ final class BillingFormTextFieldCell: UITableViewCell {
     }
     
     private lazy var paymentInputView: UIView = {
-        guard let style = style else { return UIView() }
-        let view = BillingFormTextFieldView(type: style.type, tag: tag, style: style ,delegate: self)
+        guard let cellStyle = cellStyle, let style = style else { return UIView() }
+        let view = BillingFormTextFieldView(type: cellStyle, tag: tag, style: style ,delegate: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -57,6 +60,10 @@ extension BillingFormTextFieldCell {
 }
 
 extension BillingFormTextFieldCell: BillingFormTextFieldViewDelegate {
+    func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
+        delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
+    }
+    
     func updateCountryCode(code: Int) {
         delegate?.updateCountryCode(code: code)
     }

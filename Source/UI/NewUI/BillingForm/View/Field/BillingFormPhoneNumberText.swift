@@ -28,7 +28,7 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
     private lazy var _defaultRegion: String = PhoneNumberKit.defaultRegionCode()
     private lazy var partialFormatter = PartialFormatter(phoneNumberKit: phoneNumberKit, defaultRegion: "GB", withPrefix: true)
 
-    init(type: BillingFormCellType, tag: Int, phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate) {
+    init(type: BillingFormCell, tag: Int, phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate) {
         super.init(type: type,tag: tag)
         self.phoneNumberTextDelegate = phoneNumberTextDelegate
         setup()

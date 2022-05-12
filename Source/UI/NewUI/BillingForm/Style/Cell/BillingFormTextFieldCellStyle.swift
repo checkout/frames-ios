@@ -1,7 +1,7 @@
 import UIKit
 
 public protocol BillingFormTextFieldCellStyle {
-    var type: BillingFormCellType { get }
+    var isOptinal: Bool { get }
     var backgroundColor: UIColor { get }
     var title: InputLabelStyle? { get }
     var hint: InputLabelStyle? { get }

@@ -1,26 +1,26 @@
 import UIKit
 
-struct DefaultBillingFormPostcodeCellStyle : BillingFormTextFieldCellStyle {
+struct DefaultBillingFormAddressLine1CellStyle : BillingFormTextFieldCellStyle {
     
-    var type: BillingFormCellType
+    var isOptinal: Bool
     var backgroundColor: UIColor
     var title: InputLabelStyle?
     var hint: InputLabelStyle?
     var textfield: TextFieldStyle
     var error: ErrorInputLabelStyle
     
-    init(type: BillingFormCellType = .postcode,
+    init(isOptinal: Bool = true,
          backgroundColor: UIColor = .white,
-         header: InputLabelStyle = DefaultTitleLabelStyle(text: "postcode".localized(forClass: CheckoutTheme.self)),
+         header: InputLabelStyle = DefaultTitleLabelStyle(text: "addressLine1".localized(forClass: CheckoutTheme.self)),
          hint: InputLabelStyle? = nil,
          textfield: TextFieldStyle = DefaultTextField(),
-         error: ErrorInputLabelStyle = DefaultErrorInputLabelStyle(text: "missingBillingFormPostcode".localized(forClass: CheckoutTheme.self))) {
+         error: ErrorInputLabelStyle = DefaultErrorInputLabelStyle(text:  "missingBillingFormAddressLine1".localized(forClass: CheckoutTheme.self))) {
         self.backgroundColor = backgroundColor
         self.title = header
         self.hint = hint
         self.textfield = textfield
         self.error = error
-        self.type = type
+        self.isOptinal = isOptinal
     }
     
 }

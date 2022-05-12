@@ -1,7 +1,7 @@
 import UIKit
 @testable import Frames
 
-class BillingFormViewControllerMockDelegate: BillingFormViewControllerdelegate {    
+class BillingFormViewControllerMockDelegate: BillingFormViewControllerdelegate {
     
     var doneButtonIsPressedCalledTimes = 0
     var doneButtonIsPressedLastCalledWithSender: UIViewController?
@@ -14,10 +14,7 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerdelegate {
 
     var estimatedHeightForRowCalledTimes = 0
     var estimatedHeightForRowLastCalledWithIndexPath: IndexPath?
-    
-    var validateCalledTimes = 0
-    var validateLastCalledWithBillingFormTextField: BillingFormTextField?
-    
+
     var textFieldIsChangedCalledTimes = 0
     var textFieldIsChangedLastCalledWithBillingFormTextField: BillingFormTextField?
     var textFieldIsChangedLastCalledWithReplacementString: String?
@@ -41,7 +38,14 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerdelegate {
     var updateCountryCodeCalledTimes = 0
     var updateCountryCodeLastCalledWithCode: Int?
     
+    var validateCalledTimes = 0
+    var validateLastCalledWithText: String?
+    var validateLastCalledWithRow: Int?
     
+    var textFieldShouldChangeCharactersInCalledTimes = 0
+    var textFieldShouldChangeCharactersInLastCalledWithTextField: UITextField?
+    var textFieldShouldChangeCharactersInLastCalledWithString: String?
+
     func doneButtonIsPressed(sender: UIViewController) {
         doneButtonIsPressedCalledTimes += 1
         doneButtonIsPressedLastCalledWithSender = sender
@@ -69,11 +73,6 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerdelegate {
         estimatedHeightForRowCalledTimes += 1
         estimatedHeightForRowLastCalledWithIndexPath = indexPath
         return 100
-    }
-    
-    func validate(textField: BillingFormTextField) {
-        validateCalledTimes += 1
-        validateLastCalledWithBillingFormTextField = textField
     }
     
     func textFieldIsChanged(textField: BillingFormTextField, replacementString: String) {
@@ -112,5 +111,17 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerdelegate {
     func updateCountryCode(code: Int) {
         updateCountryCodeCalledTimes += 1
         updateCountryCodeLastCalledWithCode = code
+    }
+    
+    func validate(text: String?, cellStyle: BillingFormCell, row: Int) {
+        validateCalledTimes += 1
+        validateLastCalledWithText = text
+        validateLastCalledWithRow = row
+    }
+        
+    func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
+        textFieldShouldChangeCharactersInCalledTimes += 1
+        textFieldShouldChangeCharactersInLastCalledWithTextField = textField
+        textFieldShouldChangeCharactersInLastCalledWithString = string
     }
 }

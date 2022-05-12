@@ -1,6 +1,5 @@
 import UIKit
 
-//Button element
 public protocol FormButtonStyle {
     var text: String { get }
     var font: UIFont { get }

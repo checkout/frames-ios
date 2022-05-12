@@ -3,11 +3,13 @@ import XCTest
 
 class BillingFormTextFieldViewTests: XCTestCase {
     var view: BillingFormTextFieldView!
-    let style = DefaultBillingFormFullNameCellStyle()
+    var style: DefaultBillingFormFullNameCellStyle!
 
     override func setUp() {
         super.setUp()
-        view = BillingFormTextFieldView(type: .fullName, tag: 2, style: style, delegate: nil)
+        UIFont.loadAllFonts
+        style = DefaultBillingFormFullNameCellStyle()
+        view = BillingFormTextFieldView(type: .fullName(nil), tag: 2, style: style, delegate: nil)
     }
     
     func testHeaderLabelStyle(){

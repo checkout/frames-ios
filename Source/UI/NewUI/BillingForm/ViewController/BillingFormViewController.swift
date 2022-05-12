@@ -4,13 +4,14 @@ protocol BillingFormViewControllerdelegate: AnyObject {
     func doneButtonIsPressed(sender: UIViewController)
     func cancelButtonIsPressed(sender: UIViewController)
     func getViewForHeader(sender: UIViewController) -> UIView?
-    func validate(textField: BillingFormTextField)
+    func validate(text: String?, cellStyle: BillingFormCell, row: Int)
     func updateCountryCode(code: Int)
     func tableView(numberOfRowsInSection section: Int) -> Int
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     func tableView(tableView: UITableView, cellForRowAt indexPath: IndexPath, sender: UIViewController) -> UITableViewCell
     func tableView(estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
     func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String)
+    func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
 
 final class BillingFormViewController: UIViewController {
@@ -148,8 +149,12 @@ extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate{
     }
 }
 
-//FormCellDelegate
+
 extension BillingFormViewController: BillingFormTextFieldCellDelegate {
+    func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
+        delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
+    }
+    
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String) {
         guard let textField = textField as? BillingFormTextField else { return }
         delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString)

@@ -9,8 +9,9 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         }
     }
     
-    var errorFlagOfCellType = [BillingFormCellType: Bool]()
-    var textValueOfCellType = [BillingFormCellType: String]()
+    var errorFlagOfCellType = [Int: Bool]()
+    var textValueOfCellType = [Int: String]()
+    
     var editDelegate: BillingFormViewModelEditingDelegate?
     weak var delegate: BillingFormViewModelDelegate?
     
@@ -27,43 +28,49 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         self.initialRegionCode = initialRegionCode
         self.delegate = delegate
     }
-     
+    
     func getHeaderView(delegate: BillingFormHeaderCellDelegate?) -> UIView {
         var style = style.header
-        style.doneButton.isEnabled = textValueOfCellType.values.count == self.style.fields.count
+        style.doneButton.isEnabled = textValueOfCellType.values.count == self.style.cells.count
         let view = BillingFormHeaderCell(style: style, delegate: delegate)
         self.editDelegate = view
         return view
     }
     
-    func update(cell: BillingFormTextFieldCell, row: Int,  delegate: BillingFormTextFieldCellDelegate?) -> UITableViewCell {
-        guard style.fields.count > row else { return UITableViewCell() }
-        var style = style.fields[row]
-        updateErrorView(with: &style)
-        updateTextField(with: &style)
+    func getCell( row: Int,  delegate: BillingFormTextFieldCellDelegate?) -> UITableViewCell {
+        guard style.cells.count > row,
+              var cellStyle = style.cells[row].style
+        else { return UITableViewCell() }
+        
+        let hash = style.cells[row].hash
+        updateErrorView(with: &cellStyle, hashValue: hash)
+        updateTextField(with: &cellStyle, hashValue: hash)
+        
+        let cell = BillingFormTextFieldCell()
         cell.delegate = delegate
-        cell.update(style: style, tag: row)
+        cell.update(cellStyle: style.cells[row], style: cellStyle, tag: row)
         return cell
     }
     
-    private func updateErrorView(with style: inout BillingFormTextFieldCellStyle) {
-        guard let hasError = errorFlagOfCellType[style.type] else { return }
+    private func updateErrorView(with style: inout BillingFormTextFieldCellStyle, hashValue: Int) {
+        guard let hasError = errorFlagOfCellType[hashValue] else { return }
         style.error.isHidden = !hasError
     }
     
-    private func updateTextField(with style: inout BillingFormTextFieldCellStyle) {
-        guard let text = textValueOfCellType[style.type] else { return }
+    private func updateTextField(with style: inout BillingFormTextFieldCellStyle, hashValue: Int) {
+        guard let text = textValueOfCellType[hashValue] else { return }
         style.textfield.text = text
     }
 }
 
 extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
+    
     func updateCountryCode(code: Int) {
         countryCode = code
     }
     
     func getViewForHeader(sender: UIViewController) -> UIView? {
-         return getHeaderView(delegate: sender as? BillingFormHeaderCellDelegate)
+        return getHeaderView(delegate: sender as? BillingFormHeaderCellDelegate)
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -71,61 +78,68 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
     }
     
     func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String) {
-        validate(textField: textField)
-
-        if !replacementString.isEmpty {
-            textValueOfCellType[textField.type] = replacementString
+        
+        validate(text: textField.text , cellStyle: textField.type, row: textField.tag)
+        
+        if !(textField.text?.isEmpty ?? true)  {
+            textValueOfCellType[textField.type.hash] = textField.text
+        }else {
+            textValueOfCellType[textField.type.hash] = nil
+            
         }
-
-        if textValueOfCellType.values.count == style.fields.count {
-            let isSuccessful =  (errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.allSatisfy({$0}))
-            editDelegate?.didFinishEditingBillingForm(successfully:  isSuccessful)
-        }
+        updatedRow = textField.tag
     }
+    
+    func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
+        guard let textField = textField as? BillingFormTextField else { return }
+        validate(text: string , cellStyle: textField.type, row: textField.tag)
+        
+        if !(string.isEmpty)  {
+            textValueOfCellType[textField.type.hash] = string
+        }else if textField.text?.count ?? 1 == 1 {
+            textValueOfCellType[textField.type.hash] = nil
+        }
+        
+        let isSuccessful =  textValueOfCellType.values.count == style.cells.count && !(errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.allSatisfy({$0}))
+        editDelegate?.didFinishEditingBillingForm(successfully:  isSuccessful)
+    }
+    
     
     func tableView(estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
     
     func tableView(numberOfRowsInSection section: Int) -> Int {
-        style.fields.count
+        style.cells.count
     }
     
     func tableView(tableView: UITableView, cellForRowAt indexPath: IndexPath, sender: UIViewController) -> UITableViewCell {
-        let cell = BillingFormTextFieldCell()
-        return update(cell: cell, row: indexPath.row, delegate: sender as? BillingFormViewController)
+        getCell(row: indexPath.row, delegate: sender as? BillingFormViewController)
     }
     
     func doneButtonIsPressed(sender: UIViewController) {
+        
         let phone = CkoPhoneNumber(countryCode: "\(countryCode)",
-                                   number: textValueOfCellType[.phoneNumber])
-        let address = CkoAddress(addressLine1: textValueOfCellType[.addressLine1],
-                                 addressLine2: textValueOfCellType[.addressLine2],
-                                 city: textValueOfCellType[.city],
-                                 state: textValueOfCellType[.state],
-                                 zip: textValueOfCellType[.postcode],
-                                 country: textValueOfCellType[.country])
-       delegate?.onTapDoneButton(address: address, phone: phone)
-      sender.dismiss(animated: true)
+                                   number: textValueOfCellType[BillingFormCell.phoneNumber(nil).hash])
+        let address = CkoAddress(addressLine1: textValueOfCellType[BillingFormCell.addressLine1(nil).hash],
+                                 addressLine2: textValueOfCellType[BillingFormCell.addressLine2(nil).hash],
+                                 city: textValueOfCellType[BillingFormCell.city(nil).hash],
+                                 state: textValueOfCellType[BillingFormCell.state(nil).hash],
+                                 zip: textValueOfCellType[BillingFormCell.postcode(nil).hash],
+                                 country: textValueOfCellType[BillingFormCell.country(nil).hash])
+        delegate?.onTapDoneButton(address: address, phone: phone)
+        sender.dismiss(animated: true)
     }
     
     func cancelButtonIsPressed(sender: UIViewController) {
         sender.dismiss(animated: true)
     }
     
-    func validate(textField: BillingFormTextField)  {
-        let type = textField.type
-        let text = textField.text
-
-        defer {
-            textValueOfCellType[type] = text
-            updatedRow = textField.tag
-        }
-        
-        guard !type.validator.validate(text: textField.text) else {
-            errorFlagOfCellType[type] = true
+    internal func validate(text: String?, cellStyle: BillingFormCell, row: Int)  {
+        guard let style = cellStyle.style, !style.isOptinal else {
+            errorFlagOfCellType[cellStyle.hash] = false
             return
         }
-        errorFlagOfCellType[type] = false
+        errorFlagOfCellType[cellStyle.hash] = cellStyle.validator.validate(text: text)
     }
 }

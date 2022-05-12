@@ -4,14 +4,14 @@ import XCTest
 class PhoneNumberValidatorTests: XCTestCase {
 
     func testValidationWhenTextIsEmptyThenShouldBeTrue() {
-        let expectedType = BillingFormCellType.phoneNumber
+        let expectedType = BillingFormCell.phoneNumber(nil)
         let text = ""
         let isValid = expectedType.validator.validate(text: text)
         XCTAssertTrue(isValid)
     }
     
     func testValidationWhenTextIsNonEmptyThenShouldBeFalse() {
-        let expectedType = BillingFormCellType.phoneNumber
+        let expectedType = BillingFormCell.phoneNumber(nil)
         let text = "phoneNumber"
         let isValid = expectedType.validator.validate(text: text)
         XCTAssertFalse(isValid)
