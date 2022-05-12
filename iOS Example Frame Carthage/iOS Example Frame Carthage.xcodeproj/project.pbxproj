@@ -469,7 +469,7 @@
 		CB8CE61C2805D00E0069ADB0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB9412CE2825647600C889E8 /* Checkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Checkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6646FA220CE6C0A00D8353A /* iOS_Example_FrameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_Example_FrameUITests.swift; sourceTree = "<group>"; };
-		F5981FF72805B685007AB07C /* CheckoutEventLoggerKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CheckoutEventLoggerKit.xcframework; path = "../Carthage/Checkouts/checkout-event-logger-ios-framework/CheckoutEventLoggerKit.xcframework"; sourceTree = "<group>"; };
+		F5981FF72805B685007AB07C /* CheckoutEventLoggerKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CheckoutEventLoggerKit.xcframework; path = "../Carthage/Checkouts/checkout-event-logger-ios-framework/CheckoutEventLoggerKit.xcframework"; sourceTree = SOURCE_ROOT; };
 		F5981FFE2805B75F007AB07C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F59820002805B75F007AB07C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		F59820012805B75F007AB07C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
