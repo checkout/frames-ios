@@ -84,11 +84,9 @@ extension BillingFormHeaderCell {
        addSubview(cancelButton)
         NSLayoutConstraint.activate([
             cancelButton.topAnchor.constraint(
-                equalTo: safeTopAnchor,
-                constant: 0),
+                equalTo: safeTopAnchor),
             cancelButton.leadingAnchor.constraint(
-                equalTo: safeLeadingAnchor,
-                constant: 20),
+                equalTo: safeLeadingAnchor),
             cancelButton.heightAnchor.constraint(
                 equalToConstant: style.cancelButton.height),
             cancelButton.widthAnchor.constraint(
@@ -100,11 +98,9 @@ extension BillingFormHeaderCell {
         addSubview(done)
         NSLayoutConstraint.activate([
             done.topAnchor.constraint(
-                equalTo: safeTopAnchor,
-                constant: 0),
+                equalTo: safeTopAnchor),
             done.trailingAnchor.constraint(
-                equalTo: safeTrailingAnchor,
-                constant: -20),
+                equalTo: safeTrailingAnchor),
             done.heightAnchor.constraint(
                 equalToConstant: style.doneButton.height),
             done.widthAnchor.constraint(
@@ -119,11 +115,9 @@ extension BillingFormHeaderCell {
                 equalTo: safeTopAnchor,
                 constant: 58),
             headerLabel.leadingAnchor.constraint(
-                equalTo: safeLeadingAnchor,
-                constant: 20),
+                equalTo: safeLeadingAnchor),
             headerLabel.trailingAnchor.constraint(
-                equalTo: safeTrailingAnchor,
-                constant: -20),
+                equalTo: safeTrailingAnchor),
             headerLabel.bottomAnchor.constraint(
                 equalTo: safeBottomAnchor,
                 constant: -40)
