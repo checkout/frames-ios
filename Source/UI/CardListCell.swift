@@ -79,31 +79,25 @@ public class CardListCell: UITableViewCell {
     ///
     /// - parameter scheme: Scheme (e.g. Card.Scheme.visa)
     public func setSchemeIcon(scheme: Card.Scheme) {
-        guard let schemeIconSuffix = schemeIconSuffix(scheme: scheme) else {
-            schemeImageView.image = nil
-            return
-        }
-
-        let image = "schemes/icon-\(schemeIconSuffix)".image(forClass: CardListCell.self)
-        schemeImageView.image = image
+        schemeImageView.image = schemeIconLocation(scheme: scheme)?.rawValue.image(forClass: CardListCell.self)
     }
 
-    func schemeIconSuffix(scheme: Card.Scheme) -> String? {
+    private func schemeIconLocation(scheme: Card.Scheme) -> Constants.Bundle.SchemeIcons? {
         switch scheme {
         case .amex:
-            return "amex"
+            return .amex
         case .diners:
-            return "dinersclub"
+            return .diners
         case .discover:
-            return "discover"
+            return .discover
         case .jcb:
-            return "jcb"
+            return .jcb
         case .maestro:
-            return "maestro"
+            return .maestro
         case .mastercard:
-            return "mastercard"
+            return .mastercard
         case .visa:
-            return "visa"
+            return .visa
         case .unknown, .mada:
             return nil
         }
