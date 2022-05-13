@@ -30,167 +30,186 @@
 		44FD98EF26302125001B8FD2 /* PhoneNumberKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFF5261CCA7700E0C349 /* PhoneNumberKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44FD9E262636B31D001B8FD2 /* CheckoutEventLoggerKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44796B50262F31A600F28C6E /* CheckoutEventLoggerKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		57256C7E269F1181001EC3D8 /* Frames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; platformFilter = ios; };
-		95FD4D522829533D00A7E295 /* CardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C792829533D00A7E295 /* CardUtils.swift */; };
-		95FD4D532829533D00A7E295 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C7B2829533D00A7E295 /* Constants.swift */; };
-		95FD4D542829533D00A7E295 /* CkoPhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C7C2829533D00A7E295 /* CkoPhoneNumber.swift */; };
-		95FD4D552829533D00A7E295 /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C7D2829533D00A7E295 /* URLHelper.swift */; };
-		95FD4D562829533D00A7E295 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C7E2829533D00A7E295 /* Environment.swift */; };
-		95FD4D572829533D00A7E295 /* TopLevelEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C7F2829533D00A7E295 /* TopLevelEncoder.swift */; };
-		95FD4D582829533D00A7E295 /* CardScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C802829533D00A7E295 /* CardScheme.swift */; };
-		95FD4D592829533D00A7E295 /* CardProviderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C812829533D00A7E295 /* CardProviderResponse.swift */; };
-		95FD4D5A2829533D00A7E295 /* TopLevelDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C822829533D00A7E295 /* TopLevelDecoder.swift */; };
-		95FD4D5B2829533D00A7E295 /* CkoCardTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C832829533D00A7E295 /* CkoCardTokenResponse.swift */; };
-		95FD4D5C2829533D00A7E295 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C852829533D00A7E295 /* HTTPMethod.swift */; };
-		95FD4D5D2829533D00A7E295 /* RequestExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C862829533D00A7E295 /* RequestExecutor.swift */; };
-		95FD4D5E2829533D00A7E295 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C872829533D00A7E295 /* Request.swift */; };
-		95FD4D5F2829533D00A7E295 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C882829533D00A7E295 /* Customer.swift */; };
-		95FD4D602829533D00A7E295 /* CardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C892829533D00A7E295 /* CardProvider.swift */; };
-		95FD4D612829533D00A7E295 /* Dispatching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C8A2829533D00A7E295 /* Dispatching.swift */; };
-		95FD4D622829533D00A7E295 /* CkoAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C8B2829533D00A7E295 /* CkoAddress.swift */; };
-		95FD4D632829533D00A7E295 /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C8C2829533D00A7E295 /* CardType.swift */; };
-		95FD4D642829533D00A7E295 /* CustomerCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C8D2829533D00A7E295 /* CustomerCardList.swift */; };
-		95FD4D652829533D00A7E295 /* InputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C8E2829533D00A7E295 /* InputState.swift */; };
-		95FD4D662829533D00A7E295 /* CkoCardTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C8F2829533D00A7E295 /* CkoCardTokenRequest.swift */; };
-		95FD4D672829533D00A7E295 /* CheckoutTokenStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C902829533D00A7E295 /* CheckoutTokenStatus.swift */; };
-		95FD4D682829533D00A7E295 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C912829533D00A7E295 /* ErrorResponse.swift */; };
-		95FD4D692829533D00A7E295 /* ApplePayTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C922829533D00A7E295 /* ApplePayTokenRequest.swift */; };
-		95FD4D6A2829533D00A7E295 /* ContentTypeProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C932829533D00A7E295 /* ContentTypeProviding.swift */; };
-		95FD4D6B2829533D00A7E295 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C942829533D00A7E295 /* NetworkError.swift */; };
-		95FD4D6C2829533D00A7E295 /* NetworkFlowLoggerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C962829533D00A7E295 /* NetworkFlowLoggerFactory.swift */; };
-		95FD4D6D2829533D00A7E295 /* FramesEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C972829533D00A7E295 /* FramesEventLogger.swift */; };
-		95FD4D6E2829533D00A7E295 /* FramesLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C982829533D00A7E295 /* FramesLogEvent.swift */; };
-		95FD4D6F2829533D00A7E295 /* PropertyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C992829533D00A7E295 /* PropertyProviding.swift */; };
-		95FD4D702829533D00A7E295 /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C9A2829533D00A7E295 /* DateProvider.swift */; };
-		95FD4D712829533D00A7E295 /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C9B2829533D00A7E295 /* TokenType.swift */; };
-		95FD4D722829533D00A7E295 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C9C2829533D00A7E295 /* Theme.swift */; };
-		95FD4D732829533D00A7E295 /* CorrelationIDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C9D2829533D00A7E295 /* CorrelationIDGenerator.swift */; };
-		95FD4D742829533D00A7E295 /* NetworkFlowLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C9E2829533D00A7E295 /* NetworkFlowLogger.swift */; };
-		95FD4D752829533D00A7E295 /* CustomerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4C9F2829533D00A7E295 /* CustomerCard.swift */; };
-		95FD4D762829533D00A7E295 /* UIFont+PropertyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CA12829533D00A7E295 /* UIFont+PropertyProviding.swift */; };
-		95FD4D772829533D00A7E295 /* UIBarStyle+stringValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CA22829533D00A7E295 /* UIBarStyle+stringValue.swift */; };
-		95FD4D782829533D00A7E295 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CA32829533D00A7E295 /* StringExtensions.swift */; };
-		95FD4D792829533D00A7E295 /* ErrorResponse+PropertyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CA42829533D00A7E295 /* ErrorResponse+PropertyProviding.swift */; };
-		95FD4D7A2829533D00A7E295 /* DispatchQueue+Dispatching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CA52829533D00A7E295 /* DispatchQueue+Dispatching.swift */; };
-		95FD4D7B2829533D00A7E295 /* JSONEncoder+ContentTypeProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CA62829533D00A7E295 /* JSONEncoder+ContentTypeProviding.swift */; };
-		95FD4D7C2829533D00A7E295 /* JSONEncoder+TopLevelEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CA72829533D00A7E295 /* JSONEncoder+TopLevelEncoder.swift */; };
-		95FD4D7D2829533D00A7E295 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CA82829533D00A7E295 /* UIViewControllerExtensions.swift */; };
-		95FD4D7E2829533D00A7E295 /* JSONDecoder+TopLevelDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CA92829533D00A7E295 /* JSONDecoder+TopLevelDecoder.swift */; };
-		95FD4D7F2829533D00A7E295 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CAA2829533D00A7E295 /* UIViewExtensions.swift */; };
-		95FD4D802829533D00A7E295 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CAB2829533D00A7E295 /* URL+Extensions.swift */; };
-		95FD4D812829533D00A7E295 /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CAC2829533D00A7E295 /* UIDeviceExtensions.swift */; };
-		95FD4D822829533D00A7E295 /* UIColor+PropertyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CAD2829533D00A7E295 /* UIColor+PropertyProviding.swift */; };
-		95FD4D832829533D00A7E295 /* Dictionary+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CAE2829533D00A7E295 /* Dictionary+Additions.swift */; };
-		95FD4D842829533D00A7E295 /* UIResponderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CAF2829533D00A7E295 /* UIResponderExtensions.swift */; };
-		95FD4D852829533D00A7E295 /* CheckoutAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CB02829533D00A7E295 /* CheckoutAPIClient.swift */; };
-		95FD4D862829533D00A7E295 /* PostCodeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CB22829533D00A7E295 /* PostCodeValidator.swift */; };
-		95FD4D872829533D00A7E295 /* CountryValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CB32829533D00A7E295 /* CountryValidator.swift */; };
-		95FD4D882829533D00A7E295 /* PhoneNumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CB42829533D00A7E295 /* PhoneNumberValidator.swift */; };
-		95FD4D892829533D00A7E295 /* AddressLine1Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CB52829533D00A7E295 /* AddressLine1Validator.swift */; };
-		95FD4D8A2829533D00A7E295 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CB62829533D00A7E295 /* Validator.swift */; };
-		95FD4D8B2829533D00A7E295 /* CityValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CB72829533D00A7E295 /* CityValidator.swift */; };
-		95FD4D8C2829533D00A7E295 /* AddressLine2Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CB82829533D00A7E295 /* AddressLine2Validator.swift */; };
-		95FD4D8D2829533D00A7E295 /* StateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CB92829533D00A7E295 /* StateValidator.swift */; };
-		95FD4D8E2829533D00A7E295 /* FullNameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CBA2829533D00A7E295 /* FullNameValidator.swift */; };
-		95FD4D8F2829533D00A7E295 /* CardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CBC2829533D00A7E295 /* CardListCell.swift */; };
-		95FD4D902829533D00A7E295 /* BillingFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CC02829533D00A7E295 /* BillingFormViewModel.swift */; };
-		95FD4D912829533D00A7E295 /* DefaultBillingFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CC12829533D00A7E295 /* DefaultBillingFormViewModel.swift */; };
-		95FD4D922829533D00A7E295 /* BillingFormCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CC22829533D00A7E295 /* BillingFormCellType.swift */; };
-		95FD4D932829533D00A7E295 /* DefaultHintInputLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CC72829533D00A7E295 /* DefaultHintInputLabelStyle.swift */; };
-		95FD4D942829533D00A7E295 /* DefaultTitleLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CC92829533D00A7E295 /* DefaultTitleLabelStyle.swift */; };
-		95FD4D952829533D00A7E295 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CCB2829533D00A7E295 /* DefaultTextField.swift */; };
-		95FD4D962829533D00A7E295 /* DefaultErrorInputLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CCD2829533D00A7E295 /* DefaultErrorInputLabelStyle.swift */; };
-		95FD4D972829533D00A7E295 /* DefaultBillingFormPostCodeCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CD12829533D00A7E295 /* DefaultBillingFormPostCodeCellStyle.swift */; };
-		95FD4D982829533D00A7E295 /* DefaultBillingFormAddressLine2CellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CD32829533D00A7E295 /* DefaultBillingFormAddressLine2CellStyle.swift */; };
-		95FD4D992829533D00A7E295 /* DefaultBillingFormCityCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CD52829533D00A7E295 /* DefaultBillingFormCityCellStyle.swift */; };
-		95FD4D9A2829533D00A7E295 /* DefaultBillingFormFullNameCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CD72829533D00A7E295 /* DefaultBillingFormFullNameCellStyle.swift */; };
-		95FD4D9B2829533D00A7E295 /* DefaultBillingFormStateCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CD92829533D00A7E295 /* DefaultBillingFormStateCellStyle.swift */; };
-		95FD4D9C2829533D00A7E295 /* DefaultBillingFormPhoneNumberCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CDB2829533D00A7E295 /* DefaultBillingFormPhoneNumberCellStyle.swift */; };
-		95FD4D9D2829533D00A7E295 /* DefaultBillingFormAddressLine1CellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CDD2829533D00A7E295 /* DefaultBillingFormAddressLine1CellStyle.swift */; };
-		95FD4D9E2829533D00A7E295 /* DefaultBillingFormCountryCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CDF2829533D00A7E295 /* DefaultBillingFormCountryCellStyle.swift */; };
-		95FD4D9F2829533D00A7E295 /* DefaultBillingFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CE12829533D00A7E295 /* DefaultBillingFormStyle.swift */; };
-		95FD4DA02829533D00A7E295 /* DefaultCancelButtonFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CE42829533D00A7E295 /* DefaultCancelButtonFormStyle.swift */; };
-		95FD4DA12829533D00A7E295 /* DefaultHeaderLabelFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CE62829533D00A7E295 /* DefaultHeaderLabelFormStyle.swift */; };
-		95FD4DA22829533D00A7E295 /* DefaultDoneFormButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CE82829533D00A7E295 /* DefaultDoneFormButtonStyle.swift */; };
-		95FD4DA32829533D00A7E295 /* DefaultBillingFormHeaderCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CEA2829533D00A7E295 /* DefaultBillingFormHeaderCellStyle.swift */; };
-		95FD4DA42829533D00A7E295 /* BillingFormTextFieldCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CEC2829533D00A7E295 /* BillingFormTextFieldCellStyle.swift */; };
-		95FD4DA52829533D00A7E295 /* BillingFormHeaderCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CED2829533D00A7E295 /* BillingFormHeaderCellStyle.swift */; };
-		95FD4DA62829533D00A7E295 /* BillingFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CEF2829533D00A7E295 /* BillingFormStyle.swift */; };
-		95FD4DA72829533D00A7E295 /* FormButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CF02829533D00A7E295 /* FormButtonStyle.swift */; };
-		95FD4DA82829533D00A7E295 /* InputLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CF12829533D00A7E295 /* InputLabelStyle.swift */; };
-		95FD4DA92829533D00A7E295 /* FormTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CF22829533D00A7E295 /* FormTextFieldStyle.swift */; };
-		95FD4DAA2829533D00A7E295 /* ErrorInputLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CF32829533D00A7E295 /* ErrorInputLabelStyle.swift */; };
-		95FD4DAB2829533D00A7E295 /* BillingFormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CF62829533D00A7E295 /* BillingFormTextField.swift */; };
-		95FD4DAC2829533D00A7E295 /* BillingFormTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CF72829533D00A7E295 /* BillingFormTextFieldView.swift */; };
-		95FD4DAD2829533D00A7E295 /* BillingFormPhoneNumberText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CF82829533D00A7E295 /* BillingFormPhoneNumberText.swift */; };
-		95FD4DAE2829533D00A7E295 /* BillingFormTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CFB2829533D00A7E295 /* BillingFormTextFieldCell.swift */; };
-		95FD4DAF2829533D00A7E295 /* BillingFormHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CFD2829533D00A7E295 /* BillingFormHeaderCell.swift */; };
-		95FD4DB02829533D00A7E295 /* BillingFormTextFieldErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4CFF2829533D00A7E295 /* BillingFormTextFieldErrorView.swift */; };
-		95FD4DB12829533D00A7E295 /* BillingFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D012829533D00A7E295 /* BillingFormViewController.swift */; };
-		95FD4DB22829533D00A7E295 /* BillingFormFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D032829533D00A7E295 /* BillingFormFactory.swift */; };
-		95FD4DB32829533D00A7E295 /* ExpirationDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D042829533D00A7E295 /* ExpirationDatePicker.swift */; };
-		95FD4DB42829533D00A7E295 /* CardListCellName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D052829533D00A7E295 /* CardListCellName.swift */; };
-		95FD4DB52829533D00A7E295 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D062829533D00A7E295 /* UITableView.swift */; };
-		95FD4DB62829533D00A7E295 /* CardNumberInputViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D082829533D00A7E295 /* CardNumberInputViewDelegate.swift */; };
-		95FD4DB72829533D00A7E295 /* CvvConfirmationViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D092829533D00A7E295 /* CvvConfirmationViewControllerDelegate.swift */; };
-		95FD4DB82829533D00A7E295 /* ThreedsWebViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D0A2829533D00A7E295 /* ThreedsWebViewControllerDelegate.swift */; };
-		95FD4DB92829533D00A7E295 /* CountrySelectionViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D0B2829533D00A7E295 /* CountrySelectionViewControllerDelegate.swift */; };
-		95FD4DBA2829533D00A7E295 /* ExpirationDatePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D0C2829533D00A7E295 /* ExpirationDatePickerDelegate.swift */; };
-		95FD4DBB2829533D00A7E295 /* CardViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D0D2829533D00A7E295 /* CardViewControllerDelegate.swift */; };
-		95FD4DBC2829533D00A7E295 /* CvvInputViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D0E2829533D00A7E295 /* CvvInputViewDelegate.swift */; };
-		95FD4DBD2829533D00A7E295 /* AddressViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D0F2829533D00A7E295 /* AddressViewControllerDelegate.swift */; };
-		95FD4DBE2829533D00A7E295 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D112829533D00A7E295 /* CardViewController.swift */; };
-		95FD4DBF2829533D00A7E295 /* CvvConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D122829533D00A7E295 /* CvvConfirmationViewController.swift */; };
-		95FD4DC02829533D00A7E295 /* CountrySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D132829533D00A7E295 /* CountrySelectionViewController.swift */; };
-		95FD4DC12829533D00A7E295 /* SimpleLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D142829533D00A7E295 /* SimpleLoadingViewController.swift */; };
-		95FD4DC22829533D00A7E295 /* ThreedsWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D152829533D00A7E295 /* ThreedsWebViewController.swift */; };
-		95FD4DC32829533D00A7E295 /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D162829533D00A7E295 /* AddressViewController.swift */; };
-		95FD4DC42829533D00A7E295 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D182829533D00A7E295 /* CardView.swift */; };
-		95FD4DC52829533D00A7E295 /* DetailsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D192829533D00A7E295 /* DetailsInputView.swift */; };
-		95FD4DC62829533D00A7E295 /* SchemeIconsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D1A2829533D00A7E295 /* SchemeIconsStackView.swift */; };
-		95FD4DC72829533D00A7E295 /* StandardInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D1B2829533D00A7E295 /* StandardInputView.swift */; };
-		95FD4DC82829533D00A7E295 /* PhoneNumberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D1C2829533D00A7E295 /* PhoneNumberInputView.swift */; };
-		95FD4DC92829533D00A7E295 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D1D2829533D00A7E295 /* AddressView.swift */; };
-		95FD4DCA2829533D00A7E295 /* CardNumberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D1E2829533D00A7E295 /* CardNumberInputView.swift */; };
-		95FD4DCB2829533D00A7E295 /* CvvInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D1F2829533D00A7E295 /* CvvInputView.swift */; };
-		95FD4DCC2829533D00A7E295 /* ExpirationDateInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D202829533D00A7E295 /* ExpirationDateInputView.swift */; };
-		95FD4DCD2829533D00A7E295 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D222829533D00A7E295 /* Localizable.strings */; };
-		95FD4DCE2829533D00A7E295 /* icon-visa.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D252829533D00A7E295 /* icon-visa.png */; };
-		95FD4DCF2829533D00A7E295 /* icon-maestro.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D262829533D00A7E295 /* icon-maestro.png */; };
-		95FD4DD02829533D00A7E295 /* icon-visa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D272829533D00A7E295 /* icon-visa@2x.png */; };
-		95FD4DD12829533D00A7E295 /* icon-mastercard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D282829533D00A7E295 /* icon-mastercard@2x.png */; };
-		95FD4DD22829533D00A7E295 /* icon-mastercard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D292829533D00A7E295 /* icon-mastercard@3x.png */; };
-		95FD4DD32829533D00A7E295 /* icon-visa@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D2A2829533D00A7E295 /* icon-visa@3x.png */; };
-		95FD4DD42829533D00A7E295 /* icon-dinersclub.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D2B2829533D00A7E295 /* icon-dinersclub.png */; };
-		95FD4DD52829533D00A7E295 /* icon-mastercard.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D2C2829533D00A7E295 /* icon-mastercard.png */; };
-		95FD4DD62829533D00A7E295 /* icon-jcb.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D2D2829533D00A7E295 /* icon-jcb.png */; };
-		95FD4DD72829533D00A7E295 /* icon-amex.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D2E2829533D00A7E295 /* icon-amex.png */; };
-		95FD4DD82829533D00A7E295 /* icon-maestro@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D2F2829533D00A7E295 /* icon-maestro@3x.png */; };
-		95FD4DD92829533D00A7E295 /* icon-jcb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D302829533D00A7E295 /* icon-jcb@2x.png */; };
-		95FD4DDA2829533D00A7E295 /* icon-amex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D312829533D00A7E295 /* icon-amex@2x.png */; };
-		95FD4DDB2829533D00A7E295 /* icon-amex@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D322829533D00A7E295 /* icon-amex@3x.png */; };
-		95FD4DDC2829533D00A7E295 /* icon-jcb@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D332829533D00A7E295 /* icon-jcb@3x.png */; };
-		95FD4DDD2829533D00A7E295 /* icon-maestro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D342829533D00A7E295 /* icon-maestro@2x.png */; };
-		95FD4DDE2829533D00A7E295 /* icon-dinersclub@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D352829533D00A7E295 /* icon-dinersclub@3x.png */; };
-		95FD4DDF2829533D00A7E295 /* icon-discover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D362829533D00A7E295 /* icon-discover@2x.png */; };
-		95FD4DE02829533D00A7E295 /* icon-discover@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D372829533D00A7E295 /* icon-discover@3x.png */; };
-		95FD4DE12829533D00A7E295 /* icon-discover.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D382829533D00A7E295 /* icon-discover.png */; };
-		95FD4DE22829533D00A7E295 /* icon-dinersclub@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D392829533D00A7E295 /* icon-dinersclub@2x.png */; };
-		95FD4DE32829533D00A7E295 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D3D2829533D00A7E295 /* checkmark.png */; };
-		95FD4DE42829533D00A7E295 /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D3E2829533D00A7E295 /* checkmark@2x.png */; };
-		95FD4DE52829533D00A7E295 /* checkmark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D3F2829533D00A7E295 /* checkmark@3x.png */; };
-		95FD4DE62829533D00A7E295 /* warning.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D422829533D00A7E295 /* warning.pdf */; };
-		95FD4DE72829533D00A7E295 /* keyboard-previous@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D442829533D00A7E295 /* keyboard-previous@2x.png */; };
-		95FD4DE82829533D00A7E295 /* keyboard-next@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D452829533D00A7E295 /* keyboard-next@3x.png */; };
-		95FD4DE92829533D00A7E295 /* keyboard-next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D462829533D00A7E295 /* keyboard-next@2x.png */; };
-		95FD4DEA2829533D00A7E295 /* keyboard-previous@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D472829533D00A7E295 /* keyboard-previous@3x.png */; };
-		95FD4DEB2829533D00A7E295 /* keyboard-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D482829533D00A7E295 /* keyboard-down.png */; };
-		95FD4DEC2829533D00A7E295 /* keyboard-previous.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D492829533D00A7E295 /* keyboard-previous.png */; };
-		95FD4DED2829533D00A7E295 /* keyboard-next.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D4A2829533D00A7E295 /* keyboard-next.png */; };
-		95FD4DEE2829533D00A7E295 /* keyboard-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D4B2829533D00A7E295 /* keyboard-down@2x.png */; };
-		95FD4DEF2829533D00A7E295 /* keyboard-down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FD4D4C2829533D00A7E295 /* keyboard-down@3x.png */; };
-		95FD4DF02829533D00A7E295 /* CheckoutTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D4F2829533D00A7E295 /* CheckoutTheme.swift */; };
-		95FD4DF12829533D00A7E295 /* CheckoutSdkIos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D502829533D00A7E295 /* CheckoutSdkIos.swift */; };
-		95FD4DF22829533D00A7E295 /* CheckoutColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD4D512829533D00A7E295 /* CheckoutColor.swift */; };
+		952ADFF5282E5ECB008787FB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF08282E5ECB008787FB /* Localizable.strings */; };
+		952ADFF6282E5ECB008787FB /* icon-visa.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF0B282E5ECB008787FB /* icon-visa.png */; };
+		952ADFF7282E5ECB008787FB /* icon-maestro.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF0C282E5ECB008787FB /* icon-maestro.png */; };
+		952ADFF8282E5ECB008787FB /* icon-visa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF0D282E5ECB008787FB /* icon-visa@2x.png */; };
+		952ADFF9282E5ECB008787FB /* icon-mastercard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF0E282E5ECB008787FB /* icon-mastercard@2x.png */; };
+		952ADFFA282E5ECB008787FB /* icon-mastercard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF0F282E5ECB008787FB /* icon-mastercard@3x.png */; };
+		952ADFFB282E5ECB008787FB /* icon-visa@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF10282E5ECB008787FB /* icon-visa@3x.png */; };
+		952ADFFC282E5ECB008787FB /* icon-dinersclub.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF11282E5ECB008787FB /* icon-dinersclub.png */; };
+		952ADFFD282E5ECB008787FB /* icon-mastercard.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF12282E5ECB008787FB /* icon-mastercard.png */; };
+		952ADFFE282E5ECB008787FB /* icon-jcb.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF13282E5ECB008787FB /* icon-jcb.png */; };
+		952ADFFF282E5ECB008787FB /* icon-amex.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF14282E5ECB008787FB /* icon-amex.png */; };
+		952AE000282E5ECB008787FB /* icon-maestro@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF15282E5ECB008787FB /* icon-maestro@3x.png */; };
+		952AE001282E5ECB008787FB /* icon-jcb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF16282E5ECB008787FB /* icon-jcb@2x.png */; };
+		952AE002282E5ECB008787FB /* icon-amex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF17282E5ECB008787FB /* icon-amex@2x.png */; };
+		952AE003282E5ECB008787FB /* icon-amex@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF18282E5ECB008787FB /* icon-amex@3x.png */; };
+		952AE004282E5ECB008787FB /* icon-jcb@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF19282E5ECB008787FB /* icon-jcb@3x.png */; };
+		952AE005282E5ECB008787FB /* icon-maestro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF1A282E5ECB008787FB /* icon-maestro@2x.png */; };
+		952AE006282E5ECB008787FB /* icon-dinersclub@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF1B282E5ECB008787FB /* icon-dinersclub@3x.png */; };
+		952AE007282E5ECB008787FB /* icon-discover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF1C282E5ECB008787FB /* icon-discover@2x.png */; };
+		952AE008282E5ECB008787FB /* icon-discover@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF1D282E5ECB008787FB /* icon-discover@3x.png */; };
+		952AE009282E5ECB008787FB /* icon-discover.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF1E282E5ECB008787FB /* icon-discover.png */; };
+		952AE00A282E5ECB008787FB /* icon-dinersclub@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF1F282E5ECB008787FB /* icon-dinersclub@2x.png */; };
+		952AE00B282E5ECB008787FB /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF23282E5ECB008787FB /* checkmark.png */; };
+		952AE00C282E5ECB008787FB /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF24282E5ECB008787FB /* checkmark@2x.png */; };
+		952AE00D282E5ECB008787FB /* checkmark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF25282E5ECB008787FB /* checkmark@3x.png */; };
+		952AE00E282E5ECB008787FB /* warning.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF28282E5ECB008787FB /* warning.pdf */; };
+		952AE00F282E5ECB008787FB /* keyboard-previous@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF2A282E5ECB008787FB /* keyboard-previous@2x.png */; };
+		952AE010282E5ECB008787FB /* keyboard-next@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF2B282E5ECB008787FB /* keyboard-next@3x.png */; };
+		952AE011282E5ECB008787FB /* keyboard-next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF2C282E5ECB008787FB /* keyboard-next@2x.png */; };
+		952AE012282E5ECB008787FB /* keyboard-previous@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF2D282E5ECB008787FB /* keyboard-previous@3x.png */; };
+		952AE013282E5ECB008787FB /* keyboard-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF2E282E5ECB008787FB /* keyboard-down.png */; };
+		952AE014282E5ECB008787FB /* keyboard-previous.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF2F282E5ECB008787FB /* keyboard-previous.png */; };
+		952AE015282E5ECB008787FB /* keyboard-next.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF30282E5ECB008787FB /* keyboard-next.png */; };
+		952AE016282E5ECB008787FB /* keyboard-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF31282E5ECB008787FB /* keyboard-down@2x.png */; };
+		952AE017282E5ECB008787FB /* keyboard-down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF32282E5ECB008787FB /* keyboard-down@3x.png */; };
+		952AE018282E5ECB008787FB /* GraphikLCG-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF37282E5ECB008787FB /* GraphikLCG-ThinItalic.otf */; };
+		952AE019282E5ECB008787FB /* GraphikLCG-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF38282E5ECB008787FB /* GraphikLCG-BlackItalic.otf */; };
+		952AE01A282E5ECB008787FB /* GraphikLCG-Super.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF39282E5ECB008787FB /* GraphikLCG-Super.otf */; };
+		952AE01B282E5ECB008787FB /* GraphikLCG-Extralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF3A282E5ECB008787FB /* GraphikLCG-Extralight.otf */; };
+		952AE01C282E5ECB008787FB /* GraphikLCG-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF3B282E5ECB008787FB /* GraphikLCG-BoldItalic.otf */; };
+		952AE01D282E5ECB008787FB /* GraphikLCG-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF3C282E5ECB008787FB /* GraphikLCG-Black.otf */; };
+		952AE01E282E5ECB008787FB /* GraphikLCG-SuperItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF3D282E5ECB008787FB /* GraphikLCG-SuperItalic.otf */; };
+		952AE01F282E5ECB008787FB /* GraphikLCG-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF3E282E5ECB008787FB /* GraphikLCG-RegularItalic.otf */; };
+		952AE020282E5ECB008787FB /* GraphikLCG-ExtralightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF3F282E5ECB008787FB /* GraphikLCG-ExtralightItalic.otf */; };
+		952AE021282E5ECB008787FB /* GraphikLCG-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF40282E5ECB008787FB /* GraphikLCG-Regular.otf */; };
+		952AE022282E5ECB008787FB /* GraphikLCG-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF41282E5ECB008787FB /* GraphikLCG-LightItalic.otf */; };
+		952AE023282E5ECB008787FB /* GraphikLCG-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF42282E5ECB008787FB /* GraphikLCG-Medium.otf */; };
+		952AE024282E5ECB008787FB /* GraphikLCG-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF43282E5ECB008787FB /* GraphikLCG-Semibold.otf */; };
+		952AE025282E5ECB008787FB /* GraphikLCG-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF44282E5ECB008787FB /* GraphikLCG-MediumItalic.otf */; };
+		952AE026282E5ECB008787FB /* GraphikLCG-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF45282E5ECB008787FB /* GraphikLCG-SemiboldItalic.otf */; };
+		952AE027282E5ECB008787FB /* GraphikLCG-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF46282E5ECB008787FB /* GraphikLCG-Thin.otf */; };
+		952AE028282E5ECB008787FB /* GraphikLCG-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF47282E5ECB008787FB /* GraphikLCG-Light.otf */; };
+		952AE029282E5ECB008787FB /* GraphikLCG-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 952ADF48282E5ECB008787FB /* GraphikLCG-Bold.otf */; };
+		952AE02A282E5ECB008787FB /* CardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF4A282E5ECB008787FB /* CardListCell.swift */; };
+		952AE02B282E5ECB008787FB /* BillingFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF4E282E5ECB008787FB /* BillingFormViewModel.swift */; };
+		952AE02C282E5ECB008787FB /* DefaultBillingFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF4F282E5ECB008787FB /* DefaultBillingFormViewModel.swift */; };
+		952AE02D282E5ECB008787FB /* DefaultHintInputLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF53282E5ECB008787FB /* DefaultHintInputLabelStyle.swift */; };
+		952AE02E282E5ECB008787FB /* DefaultTitleLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF55282E5ECB008787FB /* DefaultTitleLabelStyle.swift */; };
+		952AE02F282E5ECB008787FB /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF57282E5ECB008787FB /* DefaultTextField.swift */; };
+		952AE030282E5ECB008787FB /* DefaultErrorInputLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF59282E5ECB008787FB /* DefaultErrorInputLabelStyle.swift */; };
+		952AE031282E5ECB008787FB /* DefaultBillingFormPostCodeCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF5D282E5ECB008787FB /* DefaultBillingFormPostCodeCellStyle.swift */; };
+		952AE032282E5ECB008787FB /* DefaultBillingFormAddressLine2CellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF5F282E5ECB008787FB /* DefaultBillingFormAddressLine2CellStyle.swift */; };
+		952AE033282E5ECB008787FB /* DefaultBillingFormCityCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF61282E5ECB008787FB /* DefaultBillingFormCityCellStyle.swift */; };
+		952AE034282E5ECB008787FB /* DefaultBillingFormFullNameCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF63282E5ECB008787FB /* DefaultBillingFormFullNameCellStyle.swift */; };
+		952AE035282E5ECB008787FB /* DefaultBillingFormStateCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF65282E5ECB008787FB /* DefaultBillingFormStateCellStyle.swift */; };
+		952AE036282E5ECB008787FB /* DefaultBillingFormPhoneNumberCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF67282E5ECB008787FB /* DefaultBillingFormPhoneNumberCellStyle.swift */; };
+		952AE037282E5ECB008787FB /* DefaultBillingFormAddressLine1CellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF69282E5ECB008787FB /* DefaultBillingFormAddressLine1CellStyle.swift */; };
+		952AE038282E5ECB008787FB /* DefaultBillingFormCountryCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF6B282E5ECB008787FB /* DefaultBillingFormCountryCellStyle.swift */; };
+		952AE039282E5ECB008787FB /* DefaultBillingFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF6D282E5ECB008787FB /* DefaultBillingFormStyle.swift */; };
+		952AE03A282E5ECB008787FB /* DefaultCancelButtonFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF70282E5ECB008787FB /* DefaultCancelButtonFormStyle.swift */; };
+		952AE03B282E5ECB008787FB /* DefaultHeaderLabelFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF72282E5ECB008787FB /* DefaultHeaderLabelFormStyle.swift */; };
+		952AE03C282E5ECB008787FB /* DefaultDoneFormButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF74282E5ECB008787FB /* DefaultDoneFormButtonStyle.swift */; };
+		952AE03D282E5ECB008787FB /* DefaultBillingFormHeaderCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF76282E5ECB008787FB /* DefaultBillingFormHeaderCellStyle.swift */; };
+		952AE03E282E5ECB008787FB /* BillingFormTextFieldCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF79282E5ECB008787FB /* BillingFormTextFieldCellStyle.swift */; };
+		952AE03F282E5ECB008787FB /* BillingFormHeaderCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF7A282E5ECB008787FB /* BillingFormHeaderCellStyle.swift */; };
+		952AE040282E5ECB008787FB /* BillingFormCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF7B282E5ECB008787FB /* BillingFormCellType.swift */; };
+		952AE041282E5ECB008787FB /* BillingFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF7D282E5ECB008787FB /* BillingFormStyle.swift */; };
+		952AE042282E5ECB008787FB /* FormButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF7E282E5ECB008787FB /* FormButtonStyle.swift */; };
+		952AE043282E5ECB008787FB /* InputLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF7F282E5ECB008787FB /* InputLabelStyle.swift */; };
+		952AE044282E5ECB008787FB /* FormTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF80282E5ECB008787FB /* FormTextFieldStyle.swift */; };
+		952AE045282E5ECB008787FB /* ErrorInputLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF81282E5ECB008787FB /* ErrorInputLabelStyle.swift */; };
+		952AE046282E5ECB008787FB /* BillingFormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF84282E5ECB008787FB /* BillingFormTextField.swift */; };
+		952AE047282E5ECB008787FB /* BillingFormTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF85282E5ECB008787FB /* BillingFormTextFieldView.swift */; };
+		952AE048282E5ECB008787FB /* BillingFormPhoneNumberText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF86282E5ECB008787FB /* BillingFormPhoneNumberText.swift */; };
+		952AE049282E5ECB008787FB /* BillingFormTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF89282E5ECB008787FB /* BillingFormTextFieldCell.swift */; };
+		952AE04A282E5ECB008787FB /* BillingFormHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF8B282E5ECB008787FB /* BillingFormHeaderCell.swift */; };
+		952AE04B282E5ECB008787FB /* BillingFormTextFieldErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF8D282E5ECB008787FB /* BillingFormTextFieldErrorView.swift */; };
+		952AE04C282E5ECB008787FB /* BillingFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF8F282E5ECB008787FB /* BillingFormViewController.swift */; };
+		952AE04D282E5ECB008787FB /* BillingFormFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF91282E5ECB008787FB /* BillingFormFactory.swift */; };
+		952AE04E282E5ECB008787FB /* ExpirationDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF92282E5ECB008787FB /* ExpirationDatePicker.swift */; };
+		952AE04F282E5ECB008787FB /* CardListCellName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF93282E5ECB008787FB /* CardListCellName.swift */; };
+		952AE050282E5ECB008787FB /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF94282E5ECB008787FB /* UITableView.swift */; };
+		952AE051282E5ECB008787FB /* CardNumberInputViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF96282E5ECB008787FB /* CardNumberInputViewDelegate.swift */; };
+		952AE052282E5ECB008787FB /* CvvConfirmationViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF97282E5ECB008787FB /* CvvConfirmationViewControllerDelegate.swift */; };
+		952AE053282E5ECB008787FB /* ThreedsWebViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF98282E5ECB008787FB /* ThreedsWebViewControllerDelegate.swift */; };
+		952AE054282E5ECB008787FB /* CountrySelectionViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF99282E5ECB008787FB /* CountrySelectionViewControllerDelegate.swift */; };
+		952AE055282E5ECB008787FB /* ExpirationDatePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF9A282E5ECB008787FB /* ExpirationDatePickerDelegate.swift */; };
+		952AE056282E5ECB008787FB /* CardViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF9B282E5ECB008787FB /* CardViewControllerDelegate.swift */; };
+		952AE057282E5ECB008787FB /* CvvInputViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF9C282E5ECB008787FB /* CvvInputViewDelegate.swift */; };
+		952AE058282E5ECB008787FB /* AddressViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF9D282E5ECB008787FB /* AddressViewControllerDelegate.swift */; };
+		952AE059282E5ECB008787FB /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADF9F282E5ECB008787FB /* CardViewController.swift */; };
+		952AE05A282E5ECB008787FB /* CvvConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFA0282E5ECB008787FB /* CvvConfirmationViewController.swift */; };
+		952AE05B282E5ECB008787FB /* CountrySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFA1282E5ECB008787FB /* CountrySelectionViewController.swift */; };
+		952AE05C282E5ECB008787FB /* SimpleLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFA2282E5ECB008787FB /* SimpleLoadingViewController.swift */; };
+		952AE05D282E5ECB008787FB /* ThreedsWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFA3282E5ECB008787FB /* ThreedsWebViewController.swift */; };
+		952AE05E282E5ECB008787FB /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFA4282E5ECB008787FB /* AddressViewController.swift */; };
+		952AE05F282E5ECB008787FB /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFA6282E5ECB008787FB /* CardView.swift */; };
+		952AE060282E5ECB008787FB /* DetailsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFA7282E5ECB008787FB /* DetailsInputView.swift */; };
+		952AE061282E5ECB008787FB /* SchemeIconsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFA8282E5ECB008787FB /* SchemeIconsStackView.swift */; };
+		952AE062282E5ECB008787FB /* StandardInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFA9282E5ECB008787FB /* StandardInputView.swift */; };
+		952AE063282E5ECB008787FB /* PhoneNumberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFAA282E5ECB008787FB /* PhoneNumberInputView.swift */; };
+		952AE064282E5ECB008787FB /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFAB282E5ECB008787FB /* AddressView.swift */; };
+		952AE065282E5ECB008787FB /* CardNumberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFAC282E5ECB008787FB /* CardNumberInputView.swift */; };
+		952AE066282E5ECB008787FB /* CvvInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFAD282E5ECB008787FB /* CvvInputView.swift */; };
+		952AE067282E5ECB008787FB /* ExpirationDateInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFAE282E5ECB008787FB /* ExpirationDateInputView.swift */; };
+		952AE068282E5ECB008787FB /* CheckoutTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFAF282E5ECB008787FB /* CheckoutTheme.swift */; };
+		952AE069282E5ECB008787FB /* CardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFB0282E5ECB008787FB /* CardUtils.swift */; };
+		952AE06A282E5ECB008787FB /* CKOFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFB1282E5ECB008787FB /* CKOFont.swift */; };
+		952AE06B282E5ECB008787FB /* CheckoutAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFB2282E5ECB008787FB /* CheckoutAPIClient.swift */; };
+		952AE06C282E5ECB008787FB /* CheckoutSdkIos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFB3282E5ECB008787FB /* CheckoutSdkIos.swift */; };
+		952AE06D282E5ECB008787FB /* PostCodeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFB5282E5ECB008787FB /* PostCodeValidator.swift */; };
+		952AE06E282E5ECB008787FB /* CountryValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFB6282E5ECB008787FB /* CountryValidator.swift */; };
+		952AE06F282E5ECB008787FB /* PhoneNumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFB7282E5ECB008787FB /* PhoneNumberValidator.swift */; };
+		952AE070282E5ECB008787FB /* AddressLine1Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFB8282E5ECB008787FB /* AddressLine1Validator.swift */; };
+		952AE071282E5ECB008787FB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFB9282E5ECB008787FB /* Validator.swift */; };
+		952AE072282E5ECB008787FB /* CityValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFBA282E5ECB008787FB /* CityValidator.swift */; };
+		952AE073282E5ECB008787FB /* AddressLine2Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFBB282E5ECB008787FB /* AddressLine2Validator.swift */; };
+		952AE074282E5ECB008787FB /* StateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFBC282E5ECB008787FB /* StateValidator.swift */; };
+		952AE075282E5ECB008787FB /* FullNameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFBD282E5ECB008787FB /* FullNameValidator.swift */; };
+		952AE076282E5ECB008787FB /* UIFont+PropertyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFBF282E5ECB008787FB /* UIFont+PropertyProviding.swift */; };
+		952AE077282E5ECB008787FB /* UIBarStyle+stringValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFC0282E5ECB008787FB /* UIBarStyle+stringValue.swift */; };
+		952AE078282E5ECB008787FB /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFC1282E5ECB008787FB /* StringExtensions.swift */; };
+		952AE079282E5ECB008787FB /* ErrorResponse+PropertyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFC2282E5ECB008787FB /* ErrorResponse+PropertyProviding.swift */; };
+		952AE07A282E5ECB008787FB /* DispatchQueue+Dispatching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFC3282E5ECB008787FB /* DispatchQueue+Dispatching.swift */; };
+		952AE07B282E5ECB008787FB /* JSONEncoder+ContentTypeProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFC4282E5ECB008787FB /* JSONEncoder+ContentTypeProviding.swift */; };
+		952AE07C282E5ECB008787FB /* JSONEncoder+TopLevelEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFC5282E5ECB008787FB /* JSONEncoder+TopLevelEncoder.swift */; };
+		952AE07D282E5ECB008787FB /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFC6282E5ECB008787FB /* UIViewControllerExtensions.swift */; };
+		952AE07E282E5ECB008787FB /* JSONDecoder+TopLevelDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFC7282E5ECB008787FB /* JSONDecoder+TopLevelDecoder.swift */; };
+		952AE07F282E5ECB008787FB /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFC8282E5ECB008787FB /* UIViewExtensions.swift */; };
+		952AE080282E5ECB008787FB /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFC9282E5ECB008787FB /* URL+Extensions.swift */; };
+		952AE081282E5ECB008787FB /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFCA282E5ECB008787FB /* UIDeviceExtensions.swift */; };
+		952AE082282E5ECB008787FB /* UIColor+PropertyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFCB282E5ECB008787FB /* UIColor+PropertyProviding.swift */; };
+		952AE083282E5ECB008787FB /* Dictionary+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFCC282E5ECB008787FB /* Dictionary+Additions.swift */; };
+		952AE084282E5ECB008787FB /* UIResponderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFCD282E5ECB008787FB /* UIResponderExtensions.swift */; };
+		952AE085282E5ECB008787FB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFCF282E5ECB008787FB /* Constants.swift */; };
+		952AE086282E5ECB008787FB /* CkoPhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFD0282E5ECB008787FB /* CkoPhoneNumber.swift */; };
+		952AE087282E5ECB008787FB /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFD1282E5ECB008787FB /* URLHelper.swift */; };
+		952AE088282E5ECB008787FB /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFD2282E5ECB008787FB /* Environment.swift */; };
+		952AE089282E5ECB008787FB /* TopLevelEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFD3282E5ECB008787FB /* TopLevelEncoder.swift */; };
+		952AE08A282E5ECB008787FB /* CardScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFD4282E5ECB008787FB /* CardScheme.swift */; };
+		952AE08B282E5ECB008787FB /* CardProviderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFD5282E5ECB008787FB /* CardProviderResponse.swift */; };
+		952AE08C282E5ECB008787FB /* TopLevelDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFD6282E5ECB008787FB /* TopLevelDecoder.swift */; };
+		952AE08D282E5ECB008787FB /* CkoCardTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFD7282E5ECB008787FB /* CkoCardTokenResponse.swift */; };
+		952AE08E282E5ECB008787FB /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFD9282E5ECB008787FB /* HTTPMethod.swift */; };
+		952AE08F282E5ECB008787FB /* RequestExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFDA282E5ECB008787FB /* RequestExecutor.swift */; };
+		952AE090282E5ECB008787FB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFDB282E5ECB008787FB /* Request.swift */; };
+		952AE091282E5ECB008787FB /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFDC282E5ECB008787FB /* Customer.swift */; };
+		952AE092282E5ECB008787FB /* CardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFDD282E5ECB008787FB /* CardProvider.swift */; };
+		952AE093282E5ECB008787FB /* Dispatching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFDE282E5ECB008787FB /* Dispatching.swift */; };
+		952AE094282E5ECB008787FB /* CkoAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFDF282E5ECB008787FB /* CkoAddress.swift */; };
+		952AE095282E5ECB008787FB /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFE0282E5ECB008787FB /* CardType.swift */; };
+		952AE096282E5ECB008787FB /* CustomerCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFE1282E5ECB008787FB /* CustomerCardList.swift */; };
+		952AE097282E5ECB008787FB /* InputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFE2282E5ECB008787FB /* InputState.swift */; };
+		952AE098282E5ECB008787FB /* CkoCardTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFE3282E5ECB008787FB /* CkoCardTokenRequest.swift */; };
+		952AE099282E5ECB008787FB /* CheckoutTokenStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFE4282E5ECB008787FB /* CheckoutTokenStatus.swift */; };
+		952AE09A282E5ECB008787FB /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFE5282E5ECB008787FB /* ErrorResponse.swift */; };
+		952AE09B282E5ECB008787FB /* ApplePayTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFE6282E5ECB008787FB /* ApplePayTokenRequest.swift */; };
+		952AE09C282E5ECB008787FB /* ContentTypeProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFE7282E5ECB008787FB /* ContentTypeProviding.swift */; };
+		952AE09D282E5ECB008787FB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFE8282E5ECB008787FB /* NetworkError.swift */; };
+		952AE09E282E5ECB008787FB /* NetworkFlowLoggerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFEA282E5ECB008787FB /* NetworkFlowLoggerFactory.swift */; };
+		952AE09F282E5ECB008787FB /* FramesEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFEB282E5ECB008787FB /* FramesEventLogger.swift */; };
+		952AE0A0282E5ECB008787FB /* FramesLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFEC282E5ECB008787FB /* FramesLogEvent.swift */; };
+		952AE0A1282E5ECB008787FB /* PropertyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFED282E5ECB008787FB /* PropertyProviding.swift */; };
+		952AE0A2282E5ECB008787FB /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFEE282E5ECB008787FB /* DateProvider.swift */; };
+		952AE0A3282E5ECB008787FB /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFEF282E5ECB008787FB /* TokenType.swift */; };
+		952AE0A4282E5ECB008787FB /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFF0282E5ECB008787FB /* Theme.swift */; };
+		952AE0A5282E5ECB008787FB /* CorrelationIDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFF1282E5ECB008787FB /* CorrelationIDGenerator.swift */; };
+		952AE0A6282E5ECB008787FB /* NetworkFlowLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFF2282E5ECB008787FB /* NetworkFlowLogger.swift */; };
+		952AE0A7282E5ECB008787FB /* CustomerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFF3282E5ECB008787FB /* CustomerCard.swift */; };
+		952AE0A8282E5ECB008787FB /* CKOColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ADFF4282E5ECB008787FB /* CKOColor.swift */; };
 		CB00CA6527ECBE8B000069BE /* StubJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA1327ECBE8B000069BE /* StubJSONDecoder.swift */; };
 		CB00CA6627ECBE8B000069BE /* StubRequestParameterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA1427ECBE8B000069BE /* StubRequestParameterProvider.swift */; };
 		CB00CA6727ECBE8B000069BE /* StubFramesEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00CA1527ECBE8B000069BE /* StubFramesEventLogger.swift */; };
@@ -355,172 +374,191 @@
 		44A4DFF5261CCA7700E0C349 /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = ../Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
 		44F095A12629DCB700CB287F /* CheckoutEventLoggerKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CheckoutEventLoggerKit.xcframework; path = ../Carthage/Build/CheckoutEventLoggerKit.xcframework; sourceTree = "<group>"; };
 		57256C79269F1181001EC3D8 /* FramesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FramesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		95FD4C792829533D00A7E295 /* CardUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardUtils.swift; path = ../../Source/CardUtils.swift; sourceTree = "<group>"; };
-		95FD4C7B2829533D00A7E295 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		95FD4C7C2829533D00A7E295 /* CkoPhoneNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CkoPhoneNumber.swift; sourceTree = "<group>"; };
-		95FD4C7D2829533D00A7E295 /* URLHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLHelper.swift; sourceTree = "<group>"; };
-		95FD4C7E2829533D00A7E295 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		95FD4C7F2829533D00A7E295 /* TopLevelEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopLevelEncoder.swift; sourceTree = "<group>"; };
-		95FD4C802829533D00A7E295 /* CardScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardScheme.swift; sourceTree = "<group>"; };
-		95FD4C812829533D00A7E295 /* CardProviderResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardProviderResponse.swift; sourceTree = "<group>"; };
-		95FD4C822829533D00A7E295 /* TopLevelDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopLevelDecoder.swift; sourceTree = "<group>"; };
-		95FD4C832829533D00A7E295 /* CkoCardTokenResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CkoCardTokenResponse.swift; sourceTree = "<group>"; };
-		95FD4C852829533D00A7E295 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		95FD4C862829533D00A7E295 /* RequestExecutor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestExecutor.swift; sourceTree = "<group>"; };
-		95FD4C872829533D00A7E295 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		95FD4C882829533D00A7E295 /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
-		95FD4C892829533D00A7E295 /* CardProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardProvider.swift; sourceTree = "<group>"; };
-		95FD4C8A2829533D00A7E295 /* Dispatching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatching.swift; sourceTree = "<group>"; };
-		95FD4C8B2829533D00A7E295 /* CkoAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CkoAddress.swift; sourceTree = "<group>"; };
-		95FD4C8C2829533D00A7E295 /* CardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
-		95FD4C8D2829533D00A7E295 /* CustomerCardList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerCardList.swift; sourceTree = "<group>"; };
-		95FD4C8E2829533D00A7E295 /* InputState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputState.swift; sourceTree = "<group>"; };
-		95FD4C8F2829533D00A7E295 /* CkoCardTokenRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CkoCardTokenRequest.swift; sourceTree = "<group>"; };
-		95FD4C902829533D00A7E295 /* CheckoutTokenStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutTokenStatus.swift; sourceTree = "<group>"; };
-		95FD4C912829533D00A7E295 /* ErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
-		95FD4C922829533D00A7E295 /* ApplePayTokenRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplePayTokenRequest.swift; sourceTree = "<group>"; };
-		95FD4C932829533D00A7E295 /* ContentTypeProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentTypeProviding.swift; sourceTree = "<group>"; };
-		95FD4C942829533D00A7E295 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		95FD4C962829533D00A7E295 /* NetworkFlowLoggerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkFlowLoggerFactory.swift; sourceTree = "<group>"; };
-		95FD4C972829533D00A7E295 /* FramesEventLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesEventLogger.swift; sourceTree = "<group>"; };
-		95FD4C982829533D00A7E295 /* FramesLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesLogEvent.swift; sourceTree = "<group>"; };
-		95FD4C992829533D00A7E295 /* PropertyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyProviding.swift; sourceTree = "<group>"; };
-		95FD4C9A2829533D00A7E295 /* DateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
-		95FD4C9B2829533D00A7E295 /* TokenType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenType.swift; sourceTree = "<group>"; };
-		95FD4C9C2829533D00A7E295 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		95FD4C9D2829533D00A7E295 /* CorrelationIDGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrelationIDGenerator.swift; sourceTree = "<group>"; };
-		95FD4C9E2829533D00A7E295 /* NetworkFlowLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkFlowLogger.swift; sourceTree = "<group>"; };
-		95FD4C9F2829533D00A7E295 /* CustomerCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerCard.swift; sourceTree = "<group>"; };
-		95FD4CA12829533D00A7E295 /* UIFont+PropertyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+PropertyProviding.swift"; sourceTree = "<group>"; };
-		95FD4CA22829533D00A7E295 /* UIBarStyle+stringValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarStyle+stringValue.swift"; sourceTree = "<group>"; };
-		95FD4CA32829533D00A7E295 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
-		95FD4CA42829533D00A7E295 /* ErrorResponse+PropertyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ErrorResponse+PropertyProviding.swift"; sourceTree = "<group>"; };
-		95FD4CA52829533D00A7E295 /* DispatchQueue+Dispatching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Dispatching.swift"; sourceTree = "<group>"; };
-		95FD4CA62829533D00A7E295 /* JSONEncoder+ContentTypeProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+ContentTypeProviding.swift"; sourceTree = "<group>"; };
-		95FD4CA72829533D00A7E295 /* JSONEncoder+TopLevelEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+TopLevelEncoder.swift"; sourceTree = "<group>"; };
-		95FD4CA82829533D00A7E295 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
-		95FD4CA92829533D00A7E295 /* JSONDecoder+TopLevelDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+TopLevelDecoder.swift"; sourceTree = "<group>"; };
-		95FD4CAA2829533D00A7E295 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
-		95FD4CAB2829533D00A7E295 /* URL+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
-		95FD4CAC2829533D00A7E295 /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
-		95FD4CAD2829533D00A7E295 /* UIColor+PropertyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+PropertyProviding.swift"; sourceTree = "<group>"; };
-		95FD4CAE2829533D00A7E295 /* Dictionary+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Additions.swift"; sourceTree = "<group>"; };
-		95FD4CAF2829533D00A7E295 /* UIResponderExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIResponderExtensions.swift; sourceTree = "<group>"; };
-		95FD4CB02829533D00A7E295 /* CheckoutAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutAPIClient.swift; path = ../../Source/CheckoutAPIClient.swift; sourceTree = "<group>"; };
-		95FD4CB22829533D00A7E295 /* PostCodeValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCodeValidator.swift; sourceTree = "<group>"; };
-		95FD4CB32829533D00A7E295 /* CountryValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryValidator.swift; sourceTree = "<group>"; };
-		95FD4CB42829533D00A7E295 /* PhoneNumberValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberValidator.swift; sourceTree = "<group>"; };
-		95FD4CB52829533D00A7E295 /* AddressLine1Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressLine1Validator.swift; sourceTree = "<group>"; };
-		95FD4CB62829533D00A7E295 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
-		95FD4CB72829533D00A7E295 /* CityValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityValidator.swift; sourceTree = "<group>"; };
-		95FD4CB82829533D00A7E295 /* AddressLine2Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressLine2Validator.swift; sourceTree = "<group>"; };
-		95FD4CB92829533D00A7E295 /* StateValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateValidator.swift; sourceTree = "<group>"; };
-		95FD4CBA2829533D00A7E295 /* FullNameValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullNameValidator.swift; sourceTree = "<group>"; };
-		95FD4CBC2829533D00A7E295 /* CardListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListCell.swift; sourceTree = "<group>"; };
-		95FD4CC02829533D00A7E295 /* BillingFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormViewModel.swift; sourceTree = "<group>"; };
-		95FD4CC12829533D00A7E295 /* DefaultBillingFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormViewModel.swift; sourceTree = "<group>"; };
-		95FD4CC22829533D00A7E295 /* BillingFormCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormCellType.swift; sourceTree = "<group>"; };
-		95FD4CC72829533D00A7E295 /* DefaultHintInputLabelStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultHintInputLabelStyle.swift; sourceTree = "<group>"; };
-		95FD4CC92829533D00A7E295 /* DefaultTitleLabelStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTitleLabelStyle.swift; sourceTree = "<group>"; };
-		95FD4CCB2829533D00A7E295 /* DefaultTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
-		95FD4CCD2829533D00A7E295 /* DefaultErrorInputLabelStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultErrorInputLabelStyle.swift; sourceTree = "<group>"; };
-		95FD4CD12829533D00A7E295 /* DefaultBillingFormPostCodeCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormPostCodeCellStyle.swift; sourceTree = "<group>"; };
-		95FD4CD32829533D00A7E295 /* DefaultBillingFormAddressLine2CellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormAddressLine2CellStyle.swift; sourceTree = "<group>"; };
-		95FD4CD52829533D00A7E295 /* DefaultBillingFormCityCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormCityCellStyle.swift; sourceTree = "<group>"; };
-		95FD4CD72829533D00A7E295 /* DefaultBillingFormFullNameCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormFullNameCellStyle.swift; sourceTree = "<group>"; };
-		95FD4CD92829533D00A7E295 /* DefaultBillingFormStateCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormStateCellStyle.swift; sourceTree = "<group>"; };
-		95FD4CDB2829533D00A7E295 /* DefaultBillingFormPhoneNumberCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormPhoneNumberCellStyle.swift; sourceTree = "<group>"; };
-		95FD4CDD2829533D00A7E295 /* DefaultBillingFormAddressLine1CellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormAddressLine1CellStyle.swift; sourceTree = "<group>"; };
-		95FD4CDF2829533D00A7E295 /* DefaultBillingFormCountryCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormCountryCellStyle.swift; sourceTree = "<group>"; };
-		95FD4CE12829533D00A7E295 /* DefaultBillingFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormStyle.swift; sourceTree = "<group>"; };
-		95FD4CE42829533D00A7E295 /* DefaultCancelButtonFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCancelButtonFormStyle.swift; sourceTree = "<group>"; };
-		95FD4CE62829533D00A7E295 /* DefaultHeaderLabelFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultHeaderLabelFormStyle.swift; sourceTree = "<group>"; };
-		95FD4CE82829533D00A7E295 /* DefaultDoneFormButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultDoneFormButtonStyle.swift; sourceTree = "<group>"; };
-		95FD4CEA2829533D00A7E295 /* DefaultBillingFormHeaderCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormHeaderCellStyle.swift; sourceTree = "<group>"; };
-		95FD4CEC2829533D00A7E295 /* BillingFormTextFieldCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTextFieldCellStyle.swift; sourceTree = "<group>"; };
-		95FD4CED2829533D00A7E295 /* BillingFormHeaderCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormHeaderCellStyle.swift; sourceTree = "<group>"; };
-		95FD4CEF2829533D00A7E295 /* BillingFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormStyle.swift; sourceTree = "<group>"; };
-		95FD4CF02829533D00A7E295 /* FormButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormButtonStyle.swift; sourceTree = "<group>"; };
-		95FD4CF12829533D00A7E295 /* InputLabelStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputLabelStyle.swift; sourceTree = "<group>"; };
-		95FD4CF22829533D00A7E295 /* FormTextFieldStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextFieldStyle.swift; sourceTree = "<group>"; };
-		95FD4CF32829533D00A7E295 /* ErrorInputLabelStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorInputLabelStyle.swift; sourceTree = "<group>"; };
-		95FD4CF62829533D00A7E295 /* BillingFormTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTextField.swift; sourceTree = "<group>"; };
-		95FD4CF72829533D00A7E295 /* BillingFormTextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTextFieldView.swift; sourceTree = "<group>"; };
-		95FD4CF82829533D00A7E295 /* BillingFormPhoneNumberText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormPhoneNumberText.swift; sourceTree = "<group>"; };
-		95FD4CFB2829533D00A7E295 /* BillingFormTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTextFieldCell.swift; sourceTree = "<group>"; };
-		95FD4CFD2829533D00A7E295 /* BillingFormHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormHeaderCell.swift; sourceTree = "<group>"; };
-		95FD4CFF2829533D00A7E295 /* BillingFormTextFieldErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTextFieldErrorView.swift; sourceTree = "<group>"; };
-		95FD4D012829533D00A7E295 /* BillingFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormViewController.swift; sourceTree = "<group>"; };
-		95FD4D032829533D00A7E295 /* BillingFormFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormFactory.swift; sourceTree = "<group>"; };
-		95FD4D042829533D00A7E295 /* ExpirationDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationDatePicker.swift; sourceTree = "<group>"; };
-		95FD4D052829533D00A7E295 /* CardListCellName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListCellName.swift; sourceTree = "<group>"; };
-		95FD4D062829533D00A7E295 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
-		95FD4D082829533D00A7E295 /* CardNumberInputViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberInputViewDelegate.swift; sourceTree = "<group>"; };
-		95FD4D092829533D00A7E295 /* CvvConfirmationViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvConfirmationViewControllerDelegate.swift; sourceTree = "<group>"; };
-		95FD4D0A2829533D00A7E295 /* ThreedsWebViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreedsWebViewControllerDelegate.swift; sourceTree = "<group>"; };
-		95FD4D0B2829533D00A7E295 /* CountrySelectionViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrySelectionViewControllerDelegate.swift; sourceTree = "<group>"; };
-		95FD4D0C2829533D00A7E295 /* ExpirationDatePickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationDatePickerDelegate.swift; sourceTree = "<group>"; };
-		95FD4D0D2829533D00A7E295 /* CardViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewControllerDelegate.swift; sourceTree = "<group>"; };
-		95FD4D0E2829533D00A7E295 /* CvvInputViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvInputViewDelegate.swift; sourceTree = "<group>"; };
-		95FD4D0F2829533D00A7E295 /* AddressViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewControllerDelegate.swift; sourceTree = "<group>"; };
-		95FD4D112829533D00A7E295 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
-		95FD4D122829533D00A7E295 /* CvvConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvConfirmationViewController.swift; sourceTree = "<group>"; };
-		95FD4D132829533D00A7E295 /* CountrySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrySelectionViewController.swift; sourceTree = "<group>"; };
-		95FD4D142829533D00A7E295 /* SimpleLoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleLoadingViewController.swift; sourceTree = "<group>"; };
-		95FD4D152829533D00A7E295 /* ThreedsWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreedsWebViewController.swift; sourceTree = "<group>"; };
-		95FD4D162829533D00A7E295 /* AddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
-		95FD4D182829533D00A7E295 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		95FD4D192829533D00A7E295 /* DetailsInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsInputView.swift; sourceTree = "<group>"; };
-		95FD4D1A2829533D00A7E295 /* SchemeIconsStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemeIconsStackView.swift; sourceTree = "<group>"; };
-		95FD4D1B2829533D00A7E295 /* StandardInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardInputView.swift; sourceTree = "<group>"; };
-		95FD4D1C2829533D00A7E295 /* PhoneNumberInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberInputView.swift; sourceTree = "<group>"; };
-		95FD4D1D2829533D00A7E295 /* AddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
-		95FD4D1E2829533D00A7E295 /* CardNumberInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberInputView.swift; sourceTree = "<group>"; };
-		95FD4D1F2829533D00A7E295 /* CvvInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvInputView.swift; sourceTree = "<group>"; };
-		95FD4D202829533D00A7E295 /* ExpirationDateInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationDateInputView.swift; sourceTree = "<group>"; };
-		95FD4D232829533D00A7E295 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		95FD4D252829533D00A7E295 /* icon-visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-visa.png"; sourceTree = "<group>"; };
-		95FD4D262829533D00A7E295 /* icon-maestro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-maestro.png"; sourceTree = "<group>"; };
-		95FD4D272829533D00A7E295 /* icon-visa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-visa@2x.png"; sourceTree = "<group>"; };
-		95FD4D282829533D00A7E295 /* icon-mastercard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-mastercard@2x.png"; sourceTree = "<group>"; };
-		95FD4D292829533D00A7E295 /* icon-mastercard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-mastercard@3x.png"; sourceTree = "<group>"; };
-		95FD4D2A2829533D00A7E295 /* icon-visa@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-visa@3x.png"; sourceTree = "<group>"; };
-		95FD4D2B2829533D00A7E295 /* icon-dinersclub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-dinersclub.png"; sourceTree = "<group>"; };
-		95FD4D2C2829533D00A7E295 /* icon-mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-mastercard.png"; sourceTree = "<group>"; };
-		95FD4D2D2829533D00A7E295 /* icon-jcb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-jcb.png"; sourceTree = "<group>"; };
-		95FD4D2E2829533D00A7E295 /* icon-amex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-amex.png"; sourceTree = "<group>"; };
-		95FD4D2F2829533D00A7E295 /* icon-maestro@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-maestro@3x.png"; sourceTree = "<group>"; };
-		95FD4D302829533D00A7E295 /* icon-jcb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-jcb@2x.png"; sourceTree = "<group>"; };
-		95FD4D312829533D00A7E295 /* icon-amex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-amex@2x.png"; sourceTree = "<group>"; };
-		95FD4D322829533D00A7E295 /* icon-amex@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-amex@3x.png"; sourceTree = "<group>"; };
-		95FD4D332829533D00A7E295 /* icon-jcb@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-jcb@3x.png"; sourceTree = "<group>"; };
-		95FD4D342829533D00A7E295 /* icon-maestro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-maestro@2x.png"; sourceTree = "<group>"; };
-		95FD4D352829533D00A7E295 /* icon-dinersclub@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-dinersclub@3x.png"; sourceTree = "<group>"; };
-		95FD4D362829533D00A7E295 /* icon-discover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-discover@2x.png"; sourceTree = "<group>"; };
-		95FD4D372829533D00A7E295 /* icon-discover@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-discover@3x.png"; sourceTree = "<group>"; };
-		95FD4D382829533D00A7E295 /* icon-discover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-discover.png"; sourceTree = "<group>"; };
-		95FD4D392829533D00A7E295 /* icon-dinersclub@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-dinersclub@2x.png"; sourceTree = "<group>"; };
-		95FD4D3A2829533D00A7E295 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		95FD4D3B2829533D00A7E295 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		95FD4D3D2829533D00A7E295 /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmark.png; sourceTree = "<group>"; };
-		95FD4D3E2829533D00A7E295 /* checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark@2x.png"; sourceTree = "<group>"; };
-		95FD4D3F2829533D00A7E295 /* checkmark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark@3x.png"; sourceTree = "<group>"; };
-		95FD4D402829533D00A7E295 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
-		95FD4D422829533D00A7E295 /* warning.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = warning.pdf; sourceTree = "<group>"; };
-		95FD4D442829533D00A7E295 /* keyboard-previous@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-previous@2x.png"; sourceTree = "<group>"; };
-		95FD4D452829533D00A7E295 /* keyboard-next@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-next@3x.png"; sourceTree = "<group>"; };
-		95FD4D462829533D00A7E295 /* keyboard-next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-next@2x.png"; sourceTree = "<group>"; };
-		95FD4D472829533D00A7E295 /* keyboard-previous@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-previous@3x.png"; sourceTree = "<group>"; };
-		95FD4D482829533D00A7E295 /* keyboard-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-down.png"; sourceTree = "<group>"; };
-		95FD4D492829533D00A7E295 /* keyboard-previous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-previous.png"; sourceTree = "<group>"; };
-		95FD4D4A2829533D00A7E295 /* keyboard-next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-next.png"; sourceTree = "<group>"; };
-		95FD4D4B2829533D00A7E295 /* keyboard-down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-down@2x.png"; sourceTree = "<group>"; };
-		95FD4D4C2829533D00A7E295 /* keyboard-down@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-down@3x.png"; sourceTree = "<group>"; };
-		95FD4D4D2829533D00A7E295 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		95FD4D4E2829533D00A7E295 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		95FD4D4F2829533D00A7E295 /* CheckoutTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutTheme.swift; path = ../../Source/CheckoutTheme.swift; sourceTree = "<group>"; };
-		95FD4D502829533D00A7E295 /* CheckoutSdkIos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutSdkIos.swift; path = ../../Source/CheckoutSdkIos.swift; sourceTree = "<group>"; };
-		95FD4D512829533D00A7E295 /* CheckoutColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutColor.swift; path = ../../Source/CheckoutColor.swift; sourceTree = "<group>"; };
+		952ADF09282E5ECB008787FB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		952ADF0B282E5ECB008787FB /* icon-visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-visa.png"; sourceTree = "<group>"; };
+		952ADF0C282E5ECB008787FB /* icon-maestro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-maestro.png"; sourceTree = "<group>"; };
+		952ADF0D282E5ECB008787FB /* icon-visa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-visa@2x.png"; sourceTree = "<group>"; };
+		952ADF0E282E5ECB008787FB /* icon-mastercard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-mastercard@2x.png"; sourceTree = "<group>"; };
+		952ADF0F282E5ECB008787FB /* icon-mastercard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-mastercard@3x.png"; sourceTree = "<group>"; };
+		952ADF10282E5ECB008787FB /* icon-visa@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-visa@3x.png"; sourceTree = "<group>"; };
+		952ADF11282E5ECB008787FB /* icon-dinersclub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-dinersclub.png"; sourceTree = "<group>"; };
+		952ADF12282E5ECB008787FB /* icon-mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-mastercard.png"; sourceTree = "<group>"; };
+		952ADF13282E5ECB008787FB /* icon-jcb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-jcb.png"; sourceTree = "<group>"; };
+		952ADF14282E5ECB008787FB /* icon-amex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-amex.png"; sourceTree = "<group>"; };
+		952ADF15282E5ECB008787FB /* icon-maestro@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-maestro@3x.png"; sourceTree = "<group>"; };
+		952ADF16282E5ECB008787FB /* icon-jcb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-jcb@2x.png"; sourceTree = "<group>"; };
+		952ADF17282E5ECB008787FB /* icon-amex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-amex@2x.png"; sourceTree = "<group>"; };
+		952ADF18282E5ECB008787FB /* icon-amex@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-amex@3x.png"; sourceTree = "<group>"; };
+		952ADF19282E5ECB008787FB /* icon-jcb@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-jcb@3x.png"; sourceTree = "<group>"; };
+		952ADF1A282E5ECB008787FB /* icon-maestro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-maestro@2x.png"; sourceTree = "<group>"; };
+		952ADF1B282E5ECB008787FB /* icon-dinersclub@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-dinersclub@3x.png"; sourceTree = "<group>"; };
+		952ADF1C282E5ECB008787FB /* icon-discover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-discover@2x.png"; sourceTree = "<group>"; };
+		952ADF1D282E5ECB008787FB /* icon-discover@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-discover@3x.png"; sourceTree = "<group>"; };
+		952ADF1E282E5ECB008787FB /* icon-discover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-discover.png"; sourceTree = "<group>"; };
+		952ADF1F282E5ECB008787FB /* icon-dinersclub@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-dinersclub@2x.png"; sourceTree = "<group>"; };
+		952ADF20282E5ECB008787FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		952ADF21282E5ECB008787FB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		952ADF23282E5ECB008787FB /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmark.png; sourceTree = "<group>"; };
+		952ADF24282E5ECB008787FB /* checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark@2x.png"; sourceTree = "<group>"; };
+		952ADF25282E5ECB008787FB /* checkmark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark@3x.png"; sourceTree = "<group>"; };
+		952ADF26282E5ECB008787FB /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		952ADF28282E5ECB008787FB /* warning.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = warning.pdf; sourceTree = "<group>"; };
+		952ADF2A282E5ECB008787FB /* keyboard-previous@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-previous@2x.png"; sourceTree = "<group>"; };
+		952ADF2B282E5ECB008787FB /* keyboard-next@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-next@3x.png"; sourceTree = "<group>"; };
+		952ADF2C282E5ECB008787FB /* keyboard-next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-next@2x.png"; sourceTree = "<group>"; };
+		952ADF2D282E5ECB008787FB /* keyboard-previous@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-previous@3x.png"; sourceTree = "<group>"; };
+		952ADF2E282E5ECB008787FB /* keyboard-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-down.png"; sourceTree = "<group>"; };
+		952ADF2F282E5ECB008787FB /* keyboard-previous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-previous.png"; sourceTree = "<group>"; };
+		952ADF30282E5ECB008787FB /* keyboard-next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-next.png"; sourceTree = "<group>"; };
+		952ADF31282E5ECB008787FB /* keyboard-down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-down@2x.png"; sourceTree = "<group>"; };
+		952ADF32282E5ECB008787FB /* keyboard-down@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-down@3x.png"; sourceTree = "<group>"; };
+		952ADF33282E5ECB008787FB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		952ADF34282E5ECB008787FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		952ADF37282E5ECB008787FB /* GraphikLCG-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-ThinItalic.otf"; sourceTree = "<group>"; };
+		952ADF38282E5ECB008787FB /* GraphikLCG-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-BlackItalic.otf"; sourceTree = "<group>"; };
+		952ADF39282E5ECB008787FB /* GraphikLCG-Super.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Super.otf"; sourceTree = "<group>"; };
+		952ADF3A282E5ECB008787FB /* GraphikLCG-Extralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Extralight.otf"; sourceTree = "<group>"; };
+		952ADF3B282E5ECB008787FB /* GraphikLCG-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-BoldItalic.otf"; sourceTree = "<group>"; };
+		952ADF3C282E5ECB008787FB /* GraphikLCG-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Black.otf"; sourceTree = "<group>"; };
+		952ADF3D282E5ECB008787FB /* GraphikLCG-SuperItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-SuperItalic.otf"; sourceTree = "<group>"; };
+		952ADF3E282E5ECB008787FB /* GraphikLCG-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-RegularItalic.otf"; sourceTree = "<group>"; };
+		952ADF3F282E5ECB008787FB /* GraphikLCG-ExtralightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-ExtralightItalic.otf"; sourceTree = "<group>"; };
+		952ADF40282E5ECB008787FB /* GraphikLCG-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Regular.otf"; sourceTree = "<group>"; };
+		952ADF41282E5ECB008787FB /* GraphikLCG-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-LightItalic.otf"; sourceTree = "<group>"; };
+		952ADF42282E5ECB008787FB /* GraphikLCG-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Medium.otf"; sourceTree = "<group>"; };
+		952ADF43282E5ECB008787FB /* GraphikLCG-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Semibold.otf"; sourceTree = "<group>"; };
+		952ADF44282E5ECB008787FB /* GraphikLCG-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-MediumItalic.otf"; sourceTree = "<group>"; };
+		952ADF45282E5ECB008787FB /* GraphikLCG-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		952ADF46282E5ECB008787FB /* GraphikLCG-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Thin.otf"; sourceTree = "<group>"; };
+		952ADF47282E5ECB008787FB /* GraphikLCG-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Light.otf"; sourceTree = "<group>"; };
+		952ADF48282E5ECB008787FB /* GraphikLCG-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Bold.otf"; sourceTree = "<group>"; };
+		952ADF4A282E5ECB008787FB /* CardListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListCell.swift; sourceTree = "<group>"; };
+		952ADF4E282E5ECB008787FB /* BillingFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormViewModel.swift; sourceTree = "<group>"; };
+		952ADF4F282E5ECB008787FB /* DefaultBillingFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormViewModel.swift; sourceTree = "<group>"; };
+		952ADF53282E5ECB008787FB /* DefaultHintInputLabelStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultHintInputLabelStyle.swift; sourceTree = "<group>"; };
+		952ADF55282E5ECB008787FB /* DefaultTitleLabelStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTitleLabelStyle.swift; sourceTree = "<group>"; };
+		952ADF57282E5ECB008787FB /* DefaultTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
+		952ADF59282E5ECB008787FB /* DefaultErrorInputLabelStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultErrorInputLabelStyle.swift; sourceTree = "<group>"; };
+		952ADF5D282E5ECB008787FB /* DefaultBillingFormPostCodeCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormPostCodeCellStyle.swift; sourceTree = "<group>"; };
+		952ADF5F282E5ECB008787FB /* DefaultBillingFormAddressLine2CellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormAddressLine2CellStyle.swift; sourceTree = "<group>"; };
+		952ADF61282E5ECB008787FB /* DefaultBillingFormCityCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormCityCellStyle.swift; sourceTree = "<group>"; };
+		952ADF63282E5ECB008787FB /* DefaultBillingFormFullNameCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormFullNameCellStyle.swift; sourceTree = "<group>"; };
+		952ADF65282E5ECB008787FB /* DefaultBillingFormStateCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormStateCellStyle.swift; sourceTree = "<group>"; };
+		952ADF67282E5ECB008787FB /* DefaultBillingFormPhoneNumberCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormPhoneNumberCellStyle.swift; sourceTree = "<group>"; };
+		952ADF69282E5ECB008787FB /* DefaultBillingFormAddressLine1CellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormAddressLine1CellStyle.swift; sourceTree = "<group>"; };
+		952ADF6B282E5ECB008787FB /* DefaultBillingFormCountryCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormCountryCellStyle.swift; sourceTree = "<group>"; };
+		952ADF6D282E5ECB008787FB /* DefaultBillingFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormStyle.swift; sourceTree = "<group>"; };
+		952ADF70282E5ECB008787FB /* DefaultCancelButtonFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCancelButtonFormStyle.swift; sourceTree = "<group>"; };
+		952ADF72282E5ECB008787FB /* DefaultHeaderLabelFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultHeaderLabelFormStyle.swift; sourceTree = "<group>"; };
+		952ADF74282E5ECB008787FB /* DefaultDoneFormButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultDoneFormButtonStyle.swift; sourceTree = "<group>"; };
+		952ADF76282E5ECB008787FB /* DefaultBillingFormHeaderCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultBillingFormHeaderCellStyle.swift; sourceTree = "<group>"; };
+		952ADF79282E5ECB008787FB /* BillingFormTextFieldCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTextFieldCellStyle.swift; sourceTree = "<group>"; };
+		952ADF7A282E5ECB008787FB /* BillingFormHeaderCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormHeaderCellStyle.swift; sourceTree = "<group>"; };
+		952ADF7B282E5ECB008787FB /* BillingFormCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormCellType.swift; sourceTree = "<group>"; };
+		952ADF7D282E5ECB008787FB /* BillingFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormStyle.swift; sourceTree = "<group>"; };
+		952ADF7E282E5ECB008787FB /* FormButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormButtonStyle.swift; sourceTree = "<group>"; };
+		952ADF7F282E5ECB008787FB /* InputLabelStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputLabelStyle.swift; sourceTree = "<group>"; };
+		952ADF80282E5ECB008787FB /* FormTextFieldStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextFieldStyle.swift; sourceTree = "<group>"; };
+		952ADF81282E5ECB008787FB /* ErrorInputLabelStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorInputLabelStyle.swift; sourceTree = "<group>"; };
+		952ADF84282E5ECB008787FB /* BillingFormTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTextField.swift; sourceTree = "<group>"; };
+		952ADF85282E5ECB008787FB /* BillingFormTextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTextFieldView.swift; sourceTree = "<group>"; };
+		952ADF86282E5ECB008787FB /* BillingFormPhoneNumberText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormPhoneNumberText.swift; sourceTree = "<group>"; };
+		952ADF89282E5ECB008787FB /* BillingFormTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTextFieldCell.swift; sourceTree = "<group>"; };
+		952ADF8B282E5ECB008787FB /* BillingFormHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormHeaderCell.swift; sourceTree = "<group>"; };
+		952ADF8D282E5ECB008787FB /* BillingFormTextFieldErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTextFieldErrorView.swift; sourceTree = "<group>"; };
+		952ADF8F282E5ECB008787FB /* BillingFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormViewController.swift; sourceTree = "<group>"; };
+		952ADF91282E5ECB008787FB /* BillingFormFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormFactory.swift; sourceTree = "<group>"; };
+		952ADF92282E5ECB008787FB /* ExpirationDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationDatePicker.swift; sourceTree = "<group>"; };
+		952ADF93282E5ECB008787FB /* CardListCellName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListCellName.swift; sourceTree = "<group>"; };
+		952ADF94282E5ECB008787FB /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		952ADF96282E5ECB008787FB /* CardNumberInputViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberInputViewDelegate.swift; sourceTree = "<group>"; };
+		952ADF97282E5ECB008787FB /* CvvConfirmationViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvConfirmationViewControllerDelegate.swift; sourceTree = "<group>"; };
+		952ADF98282E5ECB008787FB /* ThreedsWebViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreedsWebViewControllerDelegate.swift; sourceTree = "<group>"; };
+		952ADF99282E5ECB008787FB /* CountrySelectionViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrySelectionViewControllerDelegate.swift; sourceTree = "<group>"; };
+		952ADF9A282E5ECB008787FB /* ExpirationDatePickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationDatePickerDelegate.swift; sourceTree = "<group>"; };
+		952ADF9B282E5ECB008787FB /* CardViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewControllerDelegate.swift; sourceTree = "<group>"; };
+		952ADF9C282E5ECB008787FB /* CvvInputViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvInputViewDelegate.swift; sourceTree = "<group>"; };
+		952ADF9D282E5ECB008787FB /* AddressViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewControllerDelegate.swift; sourceTree = "<group>"; };
+		952ADF9F282E5ECB008787FB /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		952ADFA0282E5ECB008787FB /* CvvConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvConfirmationViewController.swift; sourceTree = "<group>"; };
+		952ADFA1282E5ECB008787FB /* CountrySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrySelectionViewController.swift; sourceTree = "<group>"; };
+		952ADFA2282E5ECB008787FB /* SimpleLoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleLoadingViewController.swift; sourceTree = "<group>"; };
+		952ADFA3282E5ECB008787FB /* ThreedsWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreedsWebViewController.swift; sourceTree = "<group>"; };
+		952ADFA4282E5ECB008787FB /* AddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
+		952ADFA6282E5ECB008787FB /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		952ADFA7282E5ECB008787FB /* DetailsInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsInputView.swift; sourceTree = "<group>"; };
+		952ADFA8282E5ECB008787FB /* SchemeIconsStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemeIconsStackView.swift; sourceTree = "<group>"; };
+		952ADFA9282E5ECB008787FB /* StandardInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardInputView.swift; sourceTree = "<group>"; };
+		952ADFAA282E5ECB008787FB /* PhoneNumberInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberInputView.swift; sourceTree = "<group>"; };
+		952ADFAB282E5ECB008787FB /* AddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
+		952ADFAC282E5ECB008787FB /* CardNumberInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberInputView.swift; sourceTree = "<group>"; };
+		952ADFAD282E5ECB008787FB /* CvvInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvInputView.swift; sourceTree = "<group>"; };
+		952ADFAE282E5ECB008787FB /* ExpirationDateInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationDateInputView.swift; sourceTree = "<group>"; };
+		952ADFAF282E5ECB008787FB /* CheckoutTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutTheme.swift; path = ../../Source/CheckoutTheme.swift; sourceTree = "<group>"; };
+		952ADFB0282E5ECB008787FB /* CardUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardUtils.swift; path = ../../Source/CardUtils.swift; sourceTree = "<group>"; };
+		952ADFB1282E5ECB008787FB /* CKOFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CKOFont.swift; path = ../../Source/CKOFont.swift; sourceTree = "<group>"; };
+		952ADFB2282E5ECB008787FB /* CheckoutAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutAPIClient.swift; path = ../../Source/CheckoutAPIClient.swift; sourceTree = "<group>"; };
+		952ADFB3282E5ECB008787FB /* CheckoutSdkIos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutSdkIos.swift; path = ../../Source/CheckoutSdkIos.swift; sourceTree = "<group>"; };
+		952ADFB5282E5ECB008787FB /* PostCodeValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCodeValidator.swift; sourceTree = "<group>"; };
+		952ADFB6282E5ECB008787FB /* CountryValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryValidator.swift; sourceTree = "<group>"; };
+		952ADFB7282E5ECB008787FB /* PhoneNumberValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberValidator.swift; sourceTree = "<group>"; };
+		952ADFB8282E5ECB008787FB /* AddressLine1Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressLine1Validator.swift; sourceTree = "<group>"; };
+		952ADFB9282E5ECB008787FB /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		952ADFBA282E5ECB008787FB /* CityValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityValidator.swift; sourceTree = "<group>"; };
+		952ADFBB282E5ECB008787FB /* AddressLine2Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressLine2Validator.swift; sourceTree = "<group>"; };
+		952ADFBC282E5ECB008787FB /* StateValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateValidator.swift; sourceTree = "<group>"; };
+		952ADFBD282E5ECB008787FB /* FullNameValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullNameValidator.swift; sourceTree = "<group>"; };
+		952ADFBF282E5ECB008787FB /* UIFont+PropertyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+PropertyProviding.swift"; sourceTree = "<group>"; };
+		952ADFC0282E5ECB008787FB /* UIBarStyle+stringValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarStyle+stringValue.swift"; sourceTree = "<group>"; };
+		952ADFC1282E5ECB008787FB /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		952ADFC2282E5ECB008787FB /* ErrorResponse+PropertyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ErrorResponse+PropertyProviding.swift"; sourceTree = "<group>"; };
+		952ADFC3282E5ECB008787FB /* DispatchQueue+Dispatching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Dispatching.swift"; sourceTree = "<group>"; };
+		952ADFC4282E5ECB008787FB /* JSONEncoder+ContentTypeProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+ContentTypeProviding.swift"; sourceTree = "<group>"; };
+		952ADFC5282E5ECB008787FB /* JSONEncoder+TopLevelEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+TopLevelEncoder.swift"; sourceTree = "<group>"; };
+		952ADFC6282E5ECB008787FB /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		952ADFC7282E5ECB008787FB /* JSONDecoder+TopLevelDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+TopLevelDecoder.swift"; sourceTree = "<group>"; };
+		952ADFC8282E5ECB008787FB /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		952ADFC9282E5ECB008787FB /* URL+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
+		952ADFCA282E5ECB008787FB /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
+		952ADFCB282E5ECB008787FB /* UIColor+PropertyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+PropertyProviding.swift"; sourceTree = "<group>"; };
+		952ADFCC282E5ECB008787FB /* Dictionary+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Additions.swift"; sourceTree = "<group>"; };
+		952ADFCD282E5ECB008787FB /* UIResponderExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIResponderExtensions.swift; sourceTree = "<group>"; };
+		952ADFCF282E5ECB008787FB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		952ADFD0282E5ECB008787FB /* CkoPhoneNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CkoPhoneNumber.swift; sourceTree = "<group>"; };
+		952ADFD1282E5ECB008787FB /* URLHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLHelper.swift; sourceTree = "<group>"; };
+		952ADFD2282E5ECB008787FB /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		952ADFD3282E5ECB008787FB /* TopLevelEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopLevelEncoder.swift; sourceTree = "<group>"; };
+		952ADFD4282E5ECB008787FB /* CardScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardScheme.swift; sourceTree = "<group>"; };
+		952ADFD5282E5ECB008787FB /* CardProviderResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardProviderResponse.swift; sourceTree = "<group>"; };
+		952ADFD6282E5ECB008787FB /* TopLevelDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopLevelDecoder.swift; sourceTree = "<group>"; };
+		952ADFD7282E5ECB008787FB /* CkoCardTokenResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CkoCardTokenResponse.swift; sourceTree = "<group>"; };
+		952ADFD9282E5ECB008787FB /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		952ADFDA282E5ECB008787FB /* RequestExecutor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestExecutor.swift; sourceTree = "<group>"; };
+		952ADFDB282E5ECB008787FB /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		952ADFDC282E5ECB008787FB /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
+		952ADFDD282E5ECB008787FB /* CardProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardProvider.swift; sourceTree = "<group>"; };
+		952ADFDE282E5ECB008787FB /* Dispatching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatching.swift; sourceTree = "<group>"; };
+		952ADFDF282E5ECB008787FB /* CkoAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CkoAddress.swift; sourceTree = "<group>"; };
+		952ADFE0282E5ECB008787FB /* CardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
+		952ADFE1282E5ECB008787FB /* CustomerCardList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerCardList.swift; sourceTree = "<group>"; };
+		952ADFE2282E5ECB008787FB /* InputState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputState.swift; sourceTree = "<group>"; };
+		952ADFE3282E5ECB008787FB /* CkoCardTokenRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CkoCardTokenRequest.swift; sourceTree = "<group>"; };
+		952ADFE4282E5ECB008787FB /* CheckoutTokenStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutTokenStatus.swift; sourceTree = "<group>"; };
+		952ADFE5282E5ECB008787FB /* ErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		952ADFE6282E5ECB008787FB /* ApplePayTokenRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplePayTokenRequest.swift; sourceTree = "<group>"; };
+		952ADFE7282E5ECB008787FB /* ContentTypeProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentTypeProviding.swift; sourceTree = "<group>"; };
+		952ADFE8282E5ECB008787FB /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		952ADFEA282E5ECB008787FB /* NetworkFlowLoggerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkFlowLoggerFactory.swift; sourceTree = "<group>"; };
+		952ADFEB282E5ECB008787FB /* FramesEventLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesEventLogger.swift; sourceTree = "<group>"; };
+		952ADFEC282E5ECB008787FB /* FramesLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesLogEvent.swift; sourceTree = "<group>"; };
+		952ADFED282E5ECB008787FB /* PropertyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyProviding.swift; sourceTree = "<group>"; };
+		952ADFEE282E5ECB008787FB /* DateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
+		952ADFEF282E5ECB008787FB /* TokenType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenType.swift; sourceTree = "<group>"; };
+		952ADFF0282E5ECB008787FB /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		952ADFF1282E5ECB008787FB /* CorrelationIDGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrelationIDGenerator.swift; sourceTree = "<group>"; };
+		952ADFF2282E5ECB008787FB /* NetworkFlowLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkFlowLogger.swift; sourceTree = "<group>"; };
+		952ADFF3282E5ECB008787FB /* CustomerCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerCard.swift; sourceTree = "<group>"; };
+		952ADFF4282E5ECB008787FB /* CKOColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CKOColor.swift; path = ../../Source/CKOColor.swift; sourceTree = "<group>"; };
 		CB00CA1327ECBE8B000069BE /* StubJSONDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubJSONDecoder.swift; sourceTree = "<group>"; };
 		CB00CA1427ECBE8B000069BE /* StubRequestParameterProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubRequestParameterProvider.swift; sourceTree = "<group>"; };
 		CB00CA1527ECBE8B000069BE /* StubFramesEventLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubFramesEventLogger.swift; sourceTree = "<group>"; };
@@ -646,16 +684,17 @@
 		4422775E26163748009626A0 /* Frames */ = {
 			isa = PBXGroup;
 			children = (
-				95FD4C792829533D00A7E295 /* CardUtils.swift */,
-				95FD4CB02829533D00A7E295 /* CheckoutAPIClient.swift */,
-				95FD4D512829533D00A7E295 /* CheckoutColor.swift */,
-				95FD4D502829533D00A7E295 /* CheckoutSdkIos.swift */,
-				95FD4D4F2829533D00A7E295 /* CheckoutTheme.swift */,
-				95FD4C7A2829533D00A7E295 /* Core */,
-				95FD4CA02829533D00A7E295 /* Extensions */,
-				95FD4D212829533D00A7E295 /* Resources */,
-				95FD4CBB2829533D00A7E295 /* UI */,
-				95FD4CB12829533D00A7E295 /* Validator */,
+				952ADFB0282E5ECB008787FB /* CardUtils.swift */,
+				952ADFB2282E5ECB008787FB /* CheckoutAPIClient.swift */,
+				952ADFB3282E5ECB008787FB /* CheckoutSdkIos.swift */,
+				952ADFAF282E5ECB008787FB /* CheckoutTheme.swift */,
+				952ADFF4282E5ECB008787FB /* CKOColor.swift */,
+				952ADFB1282E5ECB008787FB /* CKOFont.swift */,
+				952ADFCE282E5ECB008787FB /* Core */,
+				952ADFBE282E5ECB008787FB /* Extensions */,
+				952ADF07282E5ECB008787FB /* Resources */,
+				952ADF49282E5ECB008787FB /* UI */,
+				952ADFB4282E5ECB008787FB /* Validator */,
 				442277E42616376E009626A0 /* Suppporting Files */,
 				4422775F26163748009626A0 /* Frames.h */,
 			);
@@ -683,560 +722,594 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		95FD4C7A2829533D00A7E295 /* Core */ = {
+		952ADF07282E5ECB008787FB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				95FD4C7B2829533D00A7E295 /* Constants.swift */,
-				95FD4C7C2829533D00A7E295 /* CkoPhoneNumber.swift */,
-				95FD4C7D2829533D00A7E295 /* URLHelper.swift */,
-				95FD4C7E2829533D00A7E295 /* Environment.swift */,
-				95FD4C7F2829533D00A7E295 /* TopLevelEncoder.swift */,
-				95FD4C802829533D00A7E295 /* CardScheme.swift */,
-				95FD4C812829533D00A7E295 /* CardProviderResponse.swift */,
-				95FD4C822829533D00A7E295 /* TopLevelDecoder.swift */,
-				95FD4C832829533D00A7E295 /* CkoCardTokenResponse.swift */,
-				95FD4C842829533D00A7E295 /* Networking */,
-				95FD4C882829533D00A7E295 /* Customer.swift */,
-				95FD4C892829533D00A7E295 /* CardProvider.swift */,
-				95FD4C8A2829533D00A7E295 /* Dispatching.swift */,
-				95FD4C8B2829533D00A7E295 /* CkoAddress.swift */,
-				95FD4C8C2829533D00A7E295 /* CardType.swift */,
-				95FD4C8D2829533D00A7E295 /* CustomerCardList.swift */,
-				95FD4C8E2829533D00A7E295 /* InputState.swift */,
-				95FD4C8F2829533D00A7E295 /* CkoCardTokenRequest.swift */,
-				95FD4C902829533D00A7E295 /* CheckoutTokenStatus.swift */,
-				95FD4C912829533D00A7E295 /* ErrorResponse.swift */,
-				95FD4C922829533D00A7E295 /* ApplePayTokenRequest.swift */,
-				95FD4C932829533D00A7E295 /* ContentTypeProviding.swift */,
-				95FD4C942829533D00A7E295 /* NetworkError.swift */,
-				95FD4C952829533D00A7E295 /* Logging */,
-				95FD4C9F2829533D00A7E295 /* CustomerCard.swift */,
-			);
-			name = Core;
-			path = ../../Source/Core;
-			sourceTree = "<group>";
-		};
-		95FD4C842829533D00A7E295 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4C852829533D00A7E295 /* HTTPMethod.swift */,
-				95FD4C862829533D00A7E295 /* RequestExecutor.swift */,
-				95FD4C872829533D00A7E295 /* Request.swift */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		95FD4C952829533D00A7E295 /* Logging */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4C962829533D00A7E295 /* NetworkFlowLoggerFactory.swift */,
-				95FD4C972829533D00A7E295 /* FramesEventLogger.swift */,
-				95FD4C982829533D00A7E295 /* FramesLogEvent.swift */,
-				95FD4C992829533D00A7E295 /* PropertyProviding.swift */,
-				95FD4C9A2829533D00A7E295 /* DateProvider.swift */,
-				95FD4C9B2829533D00A7E295 /* TokenType.swift */,
-				95FD4C9C2829533D00A7E295 /* Theme.swift */,
-				95FD4C9D2829533D00A7E295 /* CorrelationIDGenerator.swift */,
-				95FD4C9E2829533D00A7E295 /* NetworkFlowLogger.swift */,
-			);
-			path = Logging;
-			sourceTree = "<group>";
-		};
-		95FD4CA02829533D00A7E295 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CA12829533D00A7E295 /* UIFont+PropertyProviding.swift */,
-				95FD4CA22829533D00A7E295 /* UIBarStyle+stringValue.swift */,
-				95FD4CA32829533D00A7E295 /* StringExtensions.swift */,
-				95FD4CA42829533D00A7E295 /* ErrorResponse+PropertyProviding.swift */,
-				95FD4CA52829533D00A7E295 /* DispatchQueue+Dispatching.swift */,
-				95FD4CA62829533D00A7E295 /* JSONEncoder+ContentTypeProviding.swift */,
-				95FD4CA72829533D00A7E295 /* JSONEncoder+TopLevelEncoder.swift */,
-				95FD4CA82829533D00A7E295 /* UIViewControllerExtensions.swift */,
-				95FD4CA92829533D00A7E295 /* JSONDecoder+TopLevelDecoder.swift */,
-				95FD4CAA2829533D00A7E295 /* UIViewExtensions.swift */,
-				95FD4CAB2829533D00A7E295 /* URL+Extensions.swift */,
-				95FD4CAC2829533D00A7E295 /* UIDeviceExtensions.swift */,
-				95FD4CAD2829533D00A7E295 /* UIColor+PropertyProviding.swift */,
-				95FD4CAE2829533D00A7E295 /* Dictionary+Additions.swift */,
-				95FD4CAF2829533D00A7E295 /* UIResponderExtensions.swift */,
-			);
-			name = Extensions;
-			path = ../../Source/Extensions;
-			sourceTree = "<group>";
-		};
-		95FD4CB12829533D00A7E295 /* Validator */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CB22829533D00A7E295 /* PostCodeValidator.swift */,
-				95FD4CB32829533D00A7E295 /* CountryValidator.swift */,
-				95FD4CB42829533D00A7E295 /* PhoneNumberValidator.swift */,
-				95FD4CB52829533D00A7E295 /* AddressLine1Validator.swift */,
-				95FD4CB62829533D00A7E295 /* Validator.swift */,
-				95FD4CB72829533D00A7E295 /* CityValidator.swift */,
-				95FD4CB82829533D00A7E295 /* AddressLine2Validator.swift */,
-				95FD4CB92829533D00A7E295 /* StateValidator.swift */,
-				95FD4CBA2829533D00A7E295 /* FullNameValidator.swift */,
-			);
-			name = Validator;
-			path = ../../Source/Validator;
-			sourceTree = "<group>";
-		};
-		95FD4CBB2829533D00A7E295 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CBC2829533D00A7E295 /* CardListCell.swift */,
-				95FD4CBD2829533D00A7E295 /* NewUI */,
-				95FD4D042829533D00A7E295 /* ExpirationDatePicker.swift */,
-				95FD4D052829533D00A7E295 /* CardListCellName.swift */,
-				95FD4D062829533D00A7E295 /* UITableView.swift */,
-				95FD4D072829533D00A7E295 /* Delegates */,
-				95FD4D102829533D00A7E295 /* Controllers */,
-				95FD4D172829533D00A7E295 /* Views */,
-			);
-			name = UI;
-			path = ../../Source/UI;
-			sourceTree = "<group>";
-		};
-		95FD4CBD2829533D00A7E295 /* NewUI */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CBE2829533D00A7E295 /* BillingForm */,
-			);
-			path = NewUI;
-			sourceTree = "<group>";
-		};
-		95FD4CBE2829533D00A7E295 /* BillingForm */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CBF2829533D00A7E295 /* ViewModel */,
-				95FD4CC32829533D00A7E295 /* Style */,
-				95FD4CF42829533D00A7E295 /* View */,
-				95FD4D002829533D00A7E295 /* ViewController */,
-				95FD4D022829533D00A7E295 /* Factory */,
-			);
-			path = BillingForm;
-			sourceTree = "<group>";
-		};
-		95FD4CBF2829533D00A7E295 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CC02829533D00A7E295 /* BillingFormViewModel.swift */,
-				95FD4CC12829533D00A7E295 /* DefaultBillingFormViewModel.swift */,
-				95FD4CC22829533D00A7E295 /* BillingFormCellType.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		95FD4CC32829533D00A7E295 /* Style */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CC42829533D00A7E295 /* Default Implementation */,
-				95FD4CEB2829533D00A7E295 /* Cell */,
-				95FD4CEE2829533D00A7E295 /* Protocols */,
-			);
-			path = Style;
-			sourceTree = "<group>";
-		};
-		95FD4CC42829533D00A7E295 /* Default Implementation */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CC52829533D00A7E295 /* Elements */,
-				95FD4CCE2829533D00A7E295 /* BillingForm */,
-			);
-			path = "Default Implementation";
-			sourceTree = "<group>";
-		};
-		95FD4CC52829533D00A7E295 /* Elements */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CC62829533D00A7E295 /* Hint */,
-				95FD4CC82829533D00A7E295 /* Title */,
-				95FD4CCA2829533D00A7E295 /* TextField */,
-				95FD4CCC2829533D00A7E295 /* Error */,
-			);
-			path = Elements;
-			sourceTree = "<group>";
-		};
-		95FD4CC62829533D00A7E295 /* Hint */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CC72829533D00A7E295 /* DefaultHintInputLabelStyle.swift */,
-			);
-			path = Hint;
-			sourceTree = "<group>";
-		};
-		95FD4CC82829533D00A7E295 /* Title */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CC92829533D00A7E295 /* DefaultTitleLabelStyle.swift */,
-			);
-			path = Title;
-			sourceTree = "<group>";
-		};
-		95FD4CCA2829533D00A7E295 /* TextField */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CCB2829533D00A7E295 /* DefaultTextField.swift */,
-			);
-			path = TextField;
-			sourceTree = "<group>";
-		};
-		95FD4CCC2829533D00A7E295 /* Error */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CCD2829533D00A7E295 /* DefaultErrorInputLabelStyle.swift */,
-			);
-			path = Error;
-			sourceTree = "<group>";
-		};
-		95FD4CCE2829533D00A7E295 /* BillingForm */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CCF2829533D00A7E295 /* Fields */,
-				95FD4CE02829533D00A7E295 /* Main */,
-				95FD4CE22829533D00A7E295 /* Header */,
-			);
-			path = BillingForm;
-			sourceTree = "<group>";
-		};
-		95FD4CCF2829533D00A7E295 /* Fields */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CD02829533D00A7E295 /* Postcode */,
-				95FD4CD22829533D00A7E295 /* AddressLine2 */,
-				95FD4CD42829533D00A7E295 /* City */,
-				95FD4CD62829533D00A7E295 /* FullName */,
-				95FD4CD82829533D00A7E295 /* State */,
-				95FD4CDA2829533D00A7E295 /* PhoneNumber */,
-				95FD4CDC2829533D00A7E295 /* AddressLine1 */,
-				95FD4CDE2829533D00A7E295 /* Country */,
-			);
-			path = Fields;
-			sourceTree = "<group>";
-		};
-		95FD4CD02829533D00A7E295 /* Postcode */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CD12829533D00A7E295 /* DefaultBillingFormPostCodeCellStyle.swift */,
-			);
-			path = Postcode;
-			sourceTree = "<group>";
-		};
-		95FD4CD22829533D00A7E295 /* AddressLine2 */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CD32829533D00A7E295 /* DefaultBillingFormAddressLine2CellStyle.swift */,
-			);
-			path = AddressLine2;
-			sourceTree = "<group>";
-		};
-		95FD4CD42829533D00A7E295 /* City */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CD52829533D00A7E295 /* DefaultBillingFormCityCellStyle.swift */,
-			);
-			path = City;
-			sourceTree = "<group>";
-		};
-		95FD4CD62829533D00A7E295 /* FullName */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CD72829533D00A7E295 /* DefaultBillingFormFullNameCellStyle.swift */,
-			);
-			path = FullName;
-			sourceTree = "<group>";
-		};
-		95FD4CD82829533D00A7E295 /* State */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CD92829533D00A7E295 /* DefaultBillingFormStateCellStyle.swift */,
-			);
-			path = State;
-			sourceTree = "<group>";
-		};
-		95FD4CDA2829533D00A7E295 /* PhoneNumber */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CDB2829533D00A7E295 /* DefaultBillingFormPhoneNumberCellStyle.swift */,
-			);
-			path = PhoneNumber;
-			sourceTree = "<group>";
-		};
-		95FD4CDC2829533D00A7E295 /* AddressLine1 */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CDD2829533D00A7E295 /* DefaultBillingFormAddressLine1CellStyle.swift */,
-			);
-			path = AddressLine1;
-			sourceTree = "<group>";
-		};
-		95FD4CDE2829533D00A7E295 /* Country */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CDF2829533D00A7E295 /* DefaultBillingFormCountryCellStyle.swift */,
-			);
-			path = Country;
-			sourceTree = "<group>";
-		};
-		95FD4CE02829533D00A7E295 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CE12829533D00A7E295 /* DefaultBillingFormStyle.swift */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		95FD4CE22829533D00A7E295 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CE32829533D00A7E295 /* Cancel */,
-				95FD4CE52829533D00A7E295 /* Title */,
-				95FD4CE72829533D00A7E295 /* Done */,
-				95FD4CE92829533D00A7E295 /* Main */,
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		95FD4CE32829533D00A7E295 /* Cancel */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CE42829533D00A7E295 /* DefaultCancelButtonFormStyle.swift */,
-			);
-			path = Cancel;
-			sourceTree = "<group>";
-		};
-		95FD4CE52829533D00A7E295 /* Title */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CE62829533D00A7E295 /* DefaultHeaderLabelFormStyle.swift */,
-			);
-			path = Title;
-			sourceTree = "<group>";
-		};
-		95FD4CE72829533D00A7E295 /* Done */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CE82829533D00A7E295 /* DefaultDoneFormButtonStyle.swift */,
-			);
-			path = Done;
-			sourceTree = "<group>";
-		};
-		95FD4CE92829533D00A7E295 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CEA2829533D00A7E295 /* DefaultBillingFormHeaderCellStyle.swift */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		95FD4CEB2829533D00A7E295 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CEC2829533D00A7E295 /* BillingFormTextFieldCellStyle.swift */,
-				95FD4CED2829533D00A7E295 /* BillingFormHeaderCellStyle.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		95FD4CEE2829533D00A7E295 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CEF2829533D00A7E295 /* BillingFormStyle.swift */,
-				95FD4CF02829533D00A7E295 /* FormButtonStyle.swift */,
-				95FD4CF12829533D00A7E295 /* InputLabelStyle.swift */,
-				95FD4CF22829533D00A7E295 /* FormTextFieldStyle.swift */,
-				95FD4CF32829533D00A7E295 /* ErrorInputLabelStyle.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		95FD4CF42829533D00A7E295 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CF52829533D00A7E295 /* Field */,
-				95FD4CF92829533D00A7E295 /* TableViewCell */,
-				95FD4CFE2829533D00A7E295 /* Error */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		95FD4CF52829533D00A7E295 /* Field */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CF62829533D00A7E295 /* BillingFormTextField.swift */,
-				95FD4CF72829533D00A7E295 /* BillingFormTextFieldView.swift */,
-				95FD4CF82829533D00A7E295 /* BillingFormPhoneNumberText.swift */,
-			);
-			path = Field;
-			sourceTree = "<group>";
-		};
-		95FD4CF92829533D00A7E295 /* TableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CFA2829533D00A7E295 /* Fields */,
-				95FD4CFC2829533D00A7E295 /* Header */,
-			);
-			path = TableViewCell;
-			sourceTree = "<group>";
-		};
-		95FD4CFA2829533D00A7E295 /* Fields */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CFB2829533D00A7E295 /* BillingFormTextFieldCell.swift */,
-			);
-			path = Fields;
-			sourceTree = "<group>";
-		};
-		95FD4CFC2829533D00A7E295 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CFD2829533D00A7E295 /* BillingFormHeaderCell.swift */,
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		95FD4CFE2829533D00A7E295 /* Error */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4CFF2829533D00A7E295 /* BillingFormTextFieldErrorView.swift */,
-			);
-			path = Error;
-			sourceTree = "<group>";
-		};
-		95FD4D002829533D00A7E295 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4D012829533D00A7E295 /* BillingFormViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		95FD4D022829533D00A7E295 /* Factory */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4D032829533D00A7E295 /* BillingFormFactory.swift */,
-			);
-			path = Factory;
-			sourceTree = "<group>";
-		};
-		95FD4D072829533D00A7E295 /* Delegates */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4D082829533D00A7E295 /* CardNumberInputViewDelegate.swift */,
-				95FD4D092829533D00A7E295 /* CvvConfirmationViewControllerDelegate.swift */,
-				95FD4D0A2829533D00A7E295 /* ThreedsWebViewControllerDelegate.swift */,
-				95FD4D0B2829533D00A7E295 /* CountrySelectionViewControllerDelegate.swift */,
-				95FD4D0C2829533D00A7E295 /* ExpirationDatePickerDelegate.swift */,
-				95FD4D0D2829533D00A7E295 /* CardViewControllerDelegate.swift */,
-				95FD4D0E2829533D00A7E295 /* CvvInputViewDelegate.swift */,
-				95FD4D0F2829533D00A7E295 /* AddressViewControllerDelegate.swift */,
-			);
-			path = Delegates;
-			sourceTree = "<group>";
-		};
-		95FD4D102829533D00A7E295 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4D112829533D00A7E295 /* CardViewController.swift */,
-				95FD4D122829533D00A7E295 /* CvvConfirmationViewController.swift */,
-				95FD4D132829533D00A7E295 /* CountrySelectionViewController.swift */,
-				95FD4D142829533D00A7E295 /* SimpleLoadingViewController.swift */,
-				95FD4D152829533D00A7E295 /* ThreedsWebViewController.swift */,
-				95FD4D162829533D00A7E295 /* AddressViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		95FD4D172829533D00A7E295 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4D182829533D00A7E295 /* CardView.swift */,
-				95FD4D192829533D00A7E295 /* DetailsInputView.swift */,
-				95FD4D1A2829533D00A7E295 /* SchemeIconsStackView.swift */,
-				95FD4D1B2829533D00A7E295 /* StandardInputView.swift */,
-				95FD4D1C2829533D00A7E295 /* PhoneNumberInputView.swift */,
-				95FD4D1D2829533D00A7E295 /* AddressView.swift */,
-				95FD4D1E2829533D00A7E295 /* CardNumberInputView.swift */,
-				95FD4D1F2829533D00A7E295 /* CvvInputView.swift */,
-				95FD4D202829533D00A7E295 /* ExpirationDateInputView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		95FD4D212829533D00A7E295 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				95FD4D222829533D00A7E295 /* Localizable.strings */,
-				95FD4D242829533D00A7E295 /* schemes */,
-				95FD4D3C2829533D00A7E295 /* checkmarks */,
-				95FD4D412829533D00A7E295 /* warning */,
-				95FD4D432829533D00A7E295 /* arrows */,
+				952ADF08282E5ECB008787FB /* Localizable.strings */,
+				952ADF0A282E5ECB008787FB /* schemes */,
+				952ADF22282E5ECB008787FB /* checkmarks */,
+				952ADF27282E5ECB008787FB /* warning */,
+				952ADF29282E5ECB008787FB /* arrows */,
+				952ADF35282E5ECB008787FB /* Font */,
 			);
 			name = Resources;
 			path = ../../Source/Resources;
 			sourceTree = "<group>";
 		};
-		95FD4D242829533D00A7E295 /* schemes */ = {
+		952ADF0A282E5ECB008787FB /* schemes */ = {
 			isa = PBXGroup;
 			children = (
-				95FD4D252829533D00A7E295 /* icon-visa.png */,
-				95FD4D262829533D00A7E295 /* icon-maestro.png */,
-				95FD4D272829533D00A7E295 /* icon-visa@2x.png */,
-				95FD4D282829533D00A7E295 /* icon-mastercard@2x.png */,
-				95FD4D292829533D00A7E295 /* icon-mastercard@3x.png */,
-				95FD4D2A2829533D00A7E295 /* icon-visa@3x.png */,
-				95FD4D2B2829533D00A7E295 /* icon-dinersclub.png */,
-				95FD4D2C2829533D00A7E295 /* icon-mastercard.png */,
-				95FD4D2D2829533D00A7E295 /* icon-jcb.png */,
-				95FD4D2E2829533D00A7E295 /* icon-amex.png */,
-				95FD4D2F2829533D00A7E295 /* icon-maestro@3x.png */,
-				95FD4D302829533D00A7E295 /* icon-jcb@2x.png */,
-				95FD4D312829533D00A7E295 /* icon-amex@2x.png */,
-				95FD4D322829533D00A7E295 /* icon-amex@3x.png */,
-				95FD4D332829533D00A7E295 /* icon-jcb@3x.png */,
-				95FD4D342829533D00A7E295 /* icon-maestro@2x.png */,
-				95FD4D352829533D00A7E295 /* icon-dinersclub@3x.png */,
-				95FD4D362829533D00A7E295 /* icon-discover@2x.png */,
-				95FD4D372829533D00A7E295 /* icon-discover@3x.png */,
-				95FD4D382829533D00A7E295 /* icon-discover.png */,
-				95FD4D392829533D00A7E295 /* icon-dinersclub@2x.png */,
+				952ADF0B282E5ECB008787FB /* icon-visa.png */,
+				952ADF0C282E5ECB008787FB /* icon-maestro.png */,
+				952ADF0D282E5ECB008787FB /* icon-visa@2x.png */,
+				952ADF0E282E5ECB008787FB /* icon-mastercard@2x.png */,
+				952ADF0F282E5ECB008787FB /* icon-mastercard@3x.png */,
+				952ADF10282E5ECB008787FB /* icon-visa@3x.png */,
+				952ADF11282E5ECB008787FB /* icon-dinersclub.png */,
+				952ADF12282E5ECB008787FB /* icon-mastercard.png */,
+				952ADF13282E5ECB008787FB /* icon-jcb.png */,
+				952ADF14282E5ECB008787FB /* icon-amex.png */,
+				952ADF15282E5ECB008787FB /* icon-maestro@3x.png */,
+				952ADF16282E5ECB008787FB /* icon-jcb@2x.png */,
+				952ADF17282E5ECB008787FB /* icon-amex@2x.png */,
+				952ADF18282E5ECB008787FB /* icon-amex@3x.png */,
+				952ADF19282E5ECB008787FB /* icon-jcb@3x.png */,
+				952ADF1A282E5ECB008787FB /* icon-maestro@2x.png */,
+				952ADF1B282E5ECB008787FB /* icon-dinersclub@3x.png */,
+				952ADF1C282E5ECB008787FB /* icon-discover@2x.png */,
+				952ADF1D282E5ECB008787FB /* icon-discover@3x.png */,
+				952ADF1E282E5ECB008787FB /* icon-discover.png */,
+				952ADF1F282E5ECB008787FB /* icon-dinersclub@2x.png */,
 			);
 			path = schemes;
 			sourceTree = "<group>";
 		};
-		95FD4D3C2829533D00A7E295 /* checkmarks */ = {
+		952ADF22282E5ECB008787FB /* checkmarks */ = {
 			isa = PBXGroup;
 			children = (
-				95FD4D3D2829533D00A7E295 /* checkmark.png */,
-				95FD4D3E2829533D00A7E295 /* checkmark@2x.png */,
-				95FD4D3F2829533D00A7E295 /* checkmark@3x.png */,
+				952ADF23282E5ECB008787FB /* checkmark.png */,
+				952ADF24282E5ECB008787FB /* checkmark@2x.png */,
+				952ADF25282E5ECB008787FB /* checkmark@3x.png */,
 			);
 			path = checkmarks;
 			sourceTree = "<group>";
 		};
-		95FD4D412829533D00A7E295 /* warning */ = {
+		952ADF27282E5ECB008787FB /* warning */ = {
 			isa = PBXGroup;
 			children = (
-				95FD4D422829533D00A7E295 /* warning.pdf */,
+				952ADF28282E5ECB008787FB /* warning.pdf */,
 			);
 			path = warning;
 			sourceTree = "<group>";
 		};
-		95FD4D432829533D00A7E295 /* arrows */ = {
+		952ADF29282E5ECB008787FB /* arrows */ = {
 			isa = PBXGroup;
 			children = (
-				95FD4D442829533D00A7E295 /* keyboard-previous@2x.png */,
-				95FD4D452829533D00A7E295 /* keyboard-next@3x.png */,
-				95FD4D462829533D00A7E295 /* keyboard-next@2x.png */,
-				95FD4D472829533D00A7E295 /* keyboard-previous@3x.png */,
-				95FD4D482829533D00A7E295 /* keyboard-down.png */,
-				95FD4D492829533D00A7E295 /* keyboard-previous.png */,
-				95FD4D4A2829533D00A7E295 /* keyboard-next.png */,
-				95FD4D4B2829533D00A7E295 /* keyboard-down@2x.png */,
-				95FD4D4C2829533D00A7E295 /* keyboard-down@3x.png */,
+				952ADF2A282E5ECB008787FB /* keyboard-previous@2x.png */,
+				952ADF2B282E5ECB008787FB /* keyboard-next@3x.png */,
+				952ADF2C282E5ECB008787FB /* keyboard-next@2x.png */,
+				952ADF2D282E5ECB008787FB /* keyboard-previous@3x.png */,
+				952ADF2E282E5ECB008787FB /* keyboard-down.png */,
+				952ADF2F282E5ECB008787FB /* keyboard-previous.png */,
+				952ADF30282E5ECB008787FB /* keyboard-next.png */,
+				952ADF31282E5ECB008787FB /* keyboard-down@2x.png */,
+				952ADF32282E5ECB008787FB /* keyboard-down@3x.png */,
 			);
 			path = arrows;
+			sourceTree = "<group>";
+		};
+		952ADF35282E5ECB008787FB /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF36282E5ECB008787FB /* Graphik */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		952ADF36282E5ECB008787FB /* Graphik */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF37282E5ECB008787FB /* GraphikLCG-ThinItalic.otf */,
+				952ADF38282E5ECB008787FB /* GraphikLCG-BlackItalic.otf */,
+				952ADF39282E5ECB008787FB /* GraphikLCG-Super.otf */,
+				952ADF3A282E5ECB008787FB /* GraphikLCG-Extralight.otf */,
+				952ADF3B282E5ECB008787FB /* GraphikLCG-BoldItalic.otf */,
+				952ADF3C282E5ECB008787FB /* GraphikLCG-Black.otf */,
+				952ADF3D282E5ECB008787FB /* GraphikLCG-SuperItalic.otf */,
+				952ADF3E282E5ECB008787FB /* GraphikLCG-RegularItalic.otf */,
+				952ADF3F282E5ECB008787FB /* GraphikLCG-ExtralightItalic.otf */,
+				952ADF40282E5ECB008787FB /* GraphikLCG-Regular.otf */,
+				952ADF41282E5ECB008787FB /* GraphikLCG-LightItalic.otf */,
+				952ADF42282E5ECB008787FB /* GraphikLCG-Medium.otf */,
+				952ADF43282E5ECB008787FB /* GraphikLCG-Semibold.otf */,
+				952ADF44282E5ECB008787FB /* GraphikLCG-MediumItalic.otf */,
+				952ADF45282E5ECB008787FB /* GraphikLCG-SemiboldItalic.otf */,
+				952ADF46282E5ECB008787FB /* GraphikLCG-Thin.otf */,
+				952ADF47282E5ECB008787FB /* GraphikLCG-Light.otf */,
+				952ADF48282E5ECB008787FB /* GraphikLCG-Bold.otf */,
+			);
+			path = Graphik;
+			sourceTree = "<group>";
+		};
+		952ADF49282E5ECB008787FB /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF4A282E5ECB008787FB /* CardListCell.swift */,
+				952ADF4B282E5ECB008787FB /* NewUI */,
+				952ADF92282E5ECB008787FB /* ExpirationDatePicker.swift */,
+				952ADF93282E5ECB008787FB /* CardListCellName.swift */,
+				952ADF94282E5ECB008787FB /* UITableView.swift */,
+				952ADF95282E5ECB008787FB /* Delegates */,
+				952ADF9E282E5ECB008787FB /* Controllers */,
+				952ADFA5282E5ECB008787FB /* Views */,
+			);
+			name = UI;
+			path = ../../Source/UI;
+			sourceTree = "<group>";
+		};
+		952ADF4B282E5ECB008787FB /* NewUI */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF4C282E5ECB008787FB /* BillingForm */,
+			);
+			path = NewUI;
+			sourceTree = "<group>";
+		};
+		952ADF4C282E5ECB008787FB /* BillingForm */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF4D282E5ECB008787FB /* ViewModel */,
+				952ADF50282E5ECB008787FB /* Default Implementation */,
+				952ADF77282E5ECB008787FB /* Style */,
+				952ADF82282E5ECB008787FB /* View */,
+				952ADF8E282E5ECB008787FB /* ViewController */,
+				952ADF90282E5ECB008787FB /* Factory */,
+			);
+			path = BillingForm;
+			sourceTree = "<group>";
+		};
+		952ADF4D282E5ECB008787FB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF4E282E5ECB008787FB /* BillingFormViewModel.swift */,
+				952ADF4F282E5ECB008787FB /* DefaultBillingFormViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		952ADF50282E5ECB008787FB /* Default Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF51282E5ECB008787FB /* Elements */,
+				952ADF5A282E5ECB008787FB /* BillingForm */,
+			);
+			path = "Default Implementation";
+			sourceTree = "<group>";
+		};
+		952ADF51282E5ECB008787FB /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF52282E5ECB008787FB /* Hint */,
+				952ADF54282E5ECB008787FB /* Title */,
+				952ADF56282E5ECB008787FB /* TextField */,
+				952ADF58282E5ECB008787FB /* Error */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
+		952ADF52282E5ECB008787FB /* Hint */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF53282E5ECB008787FB /* DefaultHintInputLabelStyle.swift */,
+			);
+			path = Hint;
+			sourceTree = "<group>";
+		};
+		952ADF54282E5ECB008787FB /* Title */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF55282E5ECB008787FB /* DefaultTitleLabelStyle.swift */,
+			);
+			path = Title;
+			sourceTree = "<group>";
+		};
+		952ADF56282E5ECB008787FB /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF57282E5ECB008787FB /* DefaultTextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		952ADF58282E5ECB008787FB /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF59282E5ECB008787FB /* DefaultErrorInputLabelStyle.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		952ADF5A282E5ECB008787FB /* BillingForm */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF5B282E5ECB008787FB /* Fields */,
+				952ADF6C282E5ECB008787FB /* Main */,
+				952ADF6E282E5ECB008787FB /* Header */,
+			);
+			path = BillingForm;
+			sourceTree = "<group>";
+		};
+		952ADF5B282E5ECB008787FB /* Fields */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF5C282E5ECB008787FB /* Postcode */,
+				952ADF5E282E5ECB008787FB /* AddressLine2 */,
+				952ADF60282E5ECB008787FB /* City */,
+				952ADF62282E5ECB008787FB /* FullName */,
+				952ADF64282E5ECB008787FB /* State */,
+				952ADF66282E5ECB008787FB /* PhoneNumber */,
+				952ADF68282E5ECB008787FB /* AddressLine1 */,
+				952ADF6A282E5ECB008787FB /* Country */,
+			);
+			path = Fields;
+			sourceTree = "<group>";
+		};
+		952ADF5C282E5ECB008787FB /* Postcode */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF5D282E5ECB008787FB /* DefaultBillingFormPostCodeCellStyle.swift */,
+			);
+			path = Postcode;
+			sourceTree = "<group>";
+		};
+		952ADF5E282E5ECB008787FB /* AddressLine2 */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF5F282E5ECB008787FB /* DefaultBillingFormAddressLine2CellStyle.swift */,
+			);
+			path = AddressLine2;
+			sourceTree = "<group>";
+		};
+		952ADF60282E5ECB008787FB /* City */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF61282E5ECB008787FB /* DefaultBillingFormCityCellStyle.swift */,
+			);
+			path = City;
+			sourceTree = "<group>";
+		};
+		952ADF62282E5ECB008787FB /* FullName */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF63282E5ECB008787FB /* DefaultBillingFormFullNameCellStyle.swift */,
+			);
+			path = FullName;
+			sourceTree = "<group>";
+		};
+		952ADF64282E5ECB008787FB /* State */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF65282E5ECB008787FB /* DefaultBillingFormStateCellStyle.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		952ADF66282E5ECB008787FB /* PhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF67282E5ECB008787FB /* DefaultBillingFormPhoneNumberCellStyle.swift */,
+			);
+			path = PhoneNumber;
+			sourceTree = "<group>";
+		};
+		952ADF68282E5ECB008787FB /* AddressLine1 */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF69282E5ECB008787FB /* DefaultBillingFormAddressLine1CellStyle.swift */,
+			);
+			path = AddressLine1;
+			sourceTree = "<group>";
+		};
+		952ADF6A282E5ECB008787FB /* Country */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF6B282E5ECB008787FB /* DefaultBillingFormCountryCellStyle.swift */,
+			);
+			path = Country;
+			sourceTree = "<group>";
+		};
+		952ADF6C282E5ECB008787FB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF6D282E5ECB008787FB /* DefaultBillingFormStyle.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		952ADF6E282E5ECB008787FB /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF6F282E5ECB008787FB /* Cancel */,
+				952ADF71282E5ECB008787FB /* Title */,
+				952ADF73282E5ECB008787FB /* Done */,
+				952ADF75282E5ECB008787FB /* Main */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		952ADF6F282E5ECB008787FB /* Cancel */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF70282E5ECB008787FB /* DefaultCancelButtonFormStyle.swift */,
+			);
+			path = Cancel;
+			sourceTree = "<group>";
+		};
+		952ADF71282E5ECB008787FB /* Title */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF72282E5ECB008787FB /* DefaultHeaderLabelFormStyle.swift */,
+			);
+			path = Title;
+			sourceTree = "<group>";
+		};
+		952ADF73282E5ECB008787FB /* Done */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF74282E5ECB008787FB /* DefaultDoneFormButtonStyle.swift */,
+			);
+			path = Done;
+			sourceTree = "<group>";
+		};
+		952ADF75282E5ECB008787FB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF76282E5ECB008787FB /* DefaultBillingFormHeaderCellStyle.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		952ADF77282E5ECB008787FB /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF78282E5ECB008787FB /* Cell */,
+				952ADF7B282E5ECB008787FB /* BillingFormCellType.swift */,
+				952ADF7C282E5ECB008787FB /* Protocols */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+		952ADF78282E5ECB008787FB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF79282E5ECB008787FB /* BillingFormTextFieldCellStyle.swift */,
+				952ADF7A282E5ECB008787FB /* BillingFormHeaderCellStyle.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		952ADF7C282E5ECB008787FB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF7D282E5ECB008787FB /* BillingFormStyle.swift */,
+				952ADF7E282E5ECB008787FB /* FormButtonStyle.swift */,
+				952ADF7F282E5ECB008787FB /* InputLabelStyle.swift */,
+				952ADF80282E5ECB008787FB /* FormTextFieldStyle.swift */,
+				952ADF81282E5ECB008787FB /* ErrorInputLabelStyle.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		952ADF82282E5ECB008787FB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF83282E5ECB008787FB /* Field */,
+				952ADF87282E5ECB008787FB /* TableViewCell */,
+				952ADF8C282E5ECB008787FB /* Error */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		952ADF83282E5ECB008787FB /* Field */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF84282E5ECB008787FB /* BillingFormTextField.swift */,
+				952ADF85282E5ECB008787FB /* BillingFormTextFieldView.swift */,
+				952ADF86282E5ECB008787FB /* BillingFormPhoneNumberText.swift */,
+			);
+			path = Field;
+			sourceTree = "<group>";
+		};
+		952ADF87282E5ECB008787FB /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF88282E5ECB008787FB /* Fields */,
+				952ADF8A282E5ECB008787FB /* Header */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		952ADF88282E5ECB008787FB /* Fields */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF89282E5ECB008787FB /* BillingFormTextFieldCell.swift */,
+			);
+			path = Fields;
+			sourceTree = "<group>";
+		};
+		952ADF8A282E5ECB008787FB /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF8B282E5ECB008787FB /* BillingFormHeaderCell.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		952ADF8C282E5ECB008787FB /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF8D282E5ECB008787FB /* BillingFormTextFieldErrorView.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		952ADF8E282E5ECB008787FB /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF8F282E5ECB008787FB /* BillingFormViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		952ADF90282E5ECB008787FB /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF91282E5ECB008787FB /* BillingFormFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		952ADF95282E5ECB008787FB /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF96282E5ECB008787FB /* CardNumberInputViewDelegate.swift */,
+				952ADF97282E5ECB008787FB /* CvvConfirmationViewControllerDelegate.swift */,
+				952ADF98282E5ECB008787FB /* ThreedsWebViewControllerDelegate.swift */,
+				952ADF99282E5ECB008787FB /* CountrySelectionViewControllerDelegate.swift */,
+				952ADF9A282E5ECB008787FB /* ExpirationDatePickerDelegate.swift */,
+				952ADF9B282E5ECB008787FB /* CardViewControllerDelegate.swift */,
+				952ADF9C282E5ECB008787FB /* CvvInputViewDelegate.swift */,
+				952ADF9D282E5ECB008787FB /* AddressViewControllerDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		952ADF9E282E5ECB008787FB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				952ADF9F282E5ECB008787FB /* CardViewController.swift */,
+				952ADFA0282E5ECB008787FB /* CvvConfirmationViewController.swift */,
+				952ADFA1282E5ECB008787FB /* CountrySelectionViewController.swift */,
+				952ADFA2282E5ECB008787FB /* SimpleLoadingViewController.swift */,
+				952ADFA3282E5ECB008787FB /* ThreedsWebViewController.swift */,
+				952ADFA4282E5ECB008787FB /* AddressViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		952ADFA5282E5ECB008787FB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				952ADFA6282E5ECB008787FB /* CardView.swift */,
+				952ADFA7282E5ECB008787FB /* DetailsInputView.swift */,
+				952ADFA8282E5ECB008787FB /* SchemeIconsStackView.swift */,
+				952ADFA9282E5ECB008787FB /* StandardInputView.swift */,
+				952ADFAA282E5ECB008787FB /* PhoneNumberInputView.swift */,
+				952ADFAB282E5ECB008787FB /* AddressView.swift */,
+				952ADFAC282E5ECB008787FB /* CardNumberInputView.swift */,
+				952ADFAD282E5ECB008787FB /* CvvInputView.swift */,
+				952ADFAE282E5ECB008787FB /* ExpirationDateInputView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		952ADFB4282E5ECB008787FB /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				952ADFB5282E5ECB008787FB /* PostCodeValidator.swift */,
+				952ADFB6282E5ECB008787FB /* CountryValidator.swift */,
+				952ADFB7282E5ECB008787FB /* PhoneNumberValidator.swift */,
+				952ADFB8282E5ECB008787FB /* AddressLine1Validator.swift */,
+				952ADFB9282E5ECB008787FB /* Validator.swift */,
+				952ADFBA282E5ECB008787FB /* CityValidator.swift */,
+				952ADFBB282E5ECB008787FB /* AddressLine2Validator.swift */,
+				952ADFBC282E5ECB008787FB /* StateValidator.swift */,
+				952ADFBD282E5ECB008787FB /* FullNameValidator.swift */,
+			);
+			name = Validator;
+			path = ../../Source/Validator;
+			sourceTree = "<group>";
+		};
+		952ADFBE282E5ECB008787FB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				952ADFBF282E5ECB008787FB /* UIFont+PropertyProviding.swift */,
+				952ADFC0282E5ECB008787FB /* UIBarStyle+stringValue.swift */,
+				952ADFC1282E5ECB008787FB /* StringExtensions.swift */,
+				952ADFC2282E5ECB008787FB /* ErrorResponse+PropertyProviding.swift */,
+				952ADFC3282E5ECB008787FB /* DispatchQueue+Dispatching.swift */,
+				952ADFC4282E5ECB008787FB /* JSONEncoder+ContentTypeProviding.swift */,
+				952ADFC5282E5ECB008787FB /* JSONEncoder+TopLevelEncoder.swift */,
+				952ADFC6282E5ECB008787FB /* UIViewControllerExtensions.swift */,
+				952ADFC7282E5ECB008787FB /* JSONDecoder+TopLevelDecoder.swift */,
+				952ADFC8282E5ECB008787FB /* UIViewExtensions.swift */,
+				952ADFC9282E5ECB008787FB /* URL+Extensions.swift */,
+				952ADFCA282E5ECB008787FB /* UIDeviceExtensions.swift */,
+				952ADFCB282E5ECB008787FB /* UIColor+PropertyProviding.swift */,
+				952ADFCC282E5ECB008787FB /* Dictionary+Additions.swift */,
+				952ADFCD282E5ECB008787FB /* UIResponderExtensions.swift */,
+			);
+			name = Extensions;
+			path = ../../Source/Extensions;
+			sourceTree = "<group>";
+		};
+		952ADFCE282E5ECB008787FB /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				952ADFCF282E5ECB008787FB /* Constants.swift */,
+				952ADFD0282E5ECB008787FB /* CkoPhoneNumber.swift */,
+				952ADFD1282E5ECB008787FB /* URLHelper.swift */,
+				952ADFD2282E5ECB008787FB /* Environment.swift */,
+				952ADFD3282E5ECB008787FB /* TopLevelEncoder.swift */,
+				952ADFD4282E5ECB008787FB /* CardScheme.swift */,
+				952ADFD5282E5ECB008787FB /* CardProviderResponse.swift */,
+				952ADFD6282E5ECB008787FB /* TopLevelDecoder.swift */,
+				952ADFD7282E5ECB008787FB /* CkoCardTokenResponse.swift */,
+				952ADFD8282E5ECB008787FB /* Networking */,
+				952ADFDC282E5ECB008787FB /* Customer.swift */,
+				952ADFDD282E5ECB008787FB /* CardProvider.swift */,
+				952ADFDE282E5ECB008787FB /* Dispatching.swift */,
+				952ADFDF282E5ECB008787FB /* CkoAddress.swift */,
+				952ADFE0282E5ECB008787FB /* CardType.swift */,
+				952ADFE1282E5ECB008787FB /* CustomerCardList.swift */,
+				952ADFE2282E5ECB008787FB /* InputState.swift */,
+				952ADFE3282E5ECB008787FB /* CkoCardTokenRequest.swift */,
+				952ADFE4282E5ECB008787FB /* CheckoutTokenStatus.swift */,
+				952ADFE5282E5ECB008787FB /* ErrorResponse.swift */,
+				952ADFE6282E5ECB008787FB /* ApplePayTokenRequest.swift */,
+				952ADFE7282E5ECB008787FB /* ContentTypeProviding.swift */,
+				952ADFE8282E5ECB008787FB /* NetworkError.swift */,
+				952ADFE9282E5ECB008787FB /* Logging */,
+				952ADFF3282E5ECB008787FB /* CustomerCard.swift */,
+			);
+			name = Core;
+			path = ../../Source/Core;
+			sourceTree = "<group>";
+		};
+		952ADFD8282E5ECB008787FB /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				952ADFD9282E5ECB008787FB /* HTTPMethod.swift */,
+				952ADFDA282E5ECB008787FB /* RequestExecutor.swift */,
+				952ADFDB282E5ECB008787FB /* Request.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		952ADFE9282E5ECB008787FB /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				952ADFEA282E5ECB008787FB /* NetworkFlowLoggerFactory.swift */,
+				952ADFEB282E5ECB008787FB /* FramesEventLogger.swift */,
+				952ADFEC282E5ECB008787FB /* FramesLogEvent.swift */,
+				952ADFED282E5ECB008787FB /* PropertyProviding.swift */,
+				952ADFEE282E5ECB008787FB /* DateProvider.swift */,
+				952ADFEF282E5ECB008787FB /* TokenType.swift */,
+				952ADFF0282E5ECB008787FB /* Theme.swift */,
+				952ADFF1282E5ECB008787FB /* CorrelationIDGenerator.swift */,
+				952ADFF2282E5ECB008787FB /* NetworkFlowLogger.swift */,
+			);
+			path = Logging;
 			sourceTree = "<group>";
 		};
 		CB00CA1127ECBE8B000069BE /* Tests */ = {
@@ -1600,41 +1673,59 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95FD4DDB2829533D00A7E295 /* icon-amex@3x.png in Resources */,
-				95FD4DD52829533D00A7E295 /* icon-mastercard.png in Resources */,
-				95FD4DDC2829533D00A7E295 /* icon-jcb@3x.png in Resources */,
-				95FD4DEC2829533D00A7E295 /* keyboard-previous.png in Resources */,
-				95FD4DD12829533D00A7E295 /* icon-mastercard@2x.png in Resources */,
-				95FD4DDA2829533D00A7E295 /* icon-amex@2x.png in Resources */,
-				95FD4DCD2829533D00A7E295 /* Localizable.strings in Resources */,
-				95FD4DD22829533D00A7E295 /* icon-mastercard@3x.png in Resources */,
-				95FD4DE62829533D00A7E295 /* warning.pdf in Resources */,
-				95FD4DEE2829533D00A7E295 /* keyboard-down@2x.png in Resources */,
-				95FD4DE02829533D00A7E295 /* icon-discover@3x.png in Resources */,
-				95FD4DEB2829533D00A7E295 /* keyboard-down.png in Resources */,
-				95FD4DEA2829533D00A7E295 /* keyboard-previous@3x.png in Resources */,
-				95FD4DD62829533D00A7E295 /* icon-jcb.png in Resources */,
-				95FD4DD72829533D00A7E295 /* icon-amex.png in Resources */,
-				95FD4DED2829533D00A7E295 /* keyboard-next.png in Resources */,
-				95FD4DD32829533D00A7E295 /* icon-visa@3x.png in Resources */,
-				95FD4DDD2829533D00A7E295 /* icon-maestro@2x.png in Resources */,
-				95FD4DCE2829533D00A7E295 /* icon-visa.png in Resources */,
-				95FD4DE32829533D00A7E295 /* checkmark.png in Resources */,
-				95FD4DE72829533D00A7E295 /* keyboard-previous@2x.png in Resources */,
-				95FD4DE52829533D00A7E295 /* checkmark@3x.png in Resources */,
-				95FD4DD02829533D00A7E295 /* icon-visa@2x.png in Resources */,
-				95FD4DE22829533D00A7E295 /* icon-dinersclub@2x.png in Resources */,
-				95FD4DE12829533D00A7E295 /* icon-discover.png in Resources */,
-				95FD4DDE2829533D00A7E295 /* icon-dinersclub@3x.png in Resources */,
-				95FD4DCF2829533D00A7E295 /* icon-maestro.png in Resources */,
-				95FD4DD82829533D00A7E295 /* icon-maestro@3x.png in Resources */,
-				95FD4DE82829533D00A7E295 /* keyboard-next@3x.png in Resources */,
-				95FD4DD92829533D00A7E295 /* icon-jcb@2x.png in Resources */,
-				95FD4DEF2829533D00A7E295 /* keyboard-down@3x.png in Resources */,
-				95FD4DDF2829533D00A7E295 /* icon-discover@2x.png in Resources */,
-				95FD4DE42829533D00A7E295 /* checkmark@2x.png in Resources */,
-				95FD4DE92829533D00A7E295 /* keyboard-next@2x.png in Resources */,
-				95FD4DD42829533D00A7E295 /* icon-dinersclub.png in Resources */,
+				952AE003282E5ECB008787FB /* icon-amex@3x.png in Resources */,
+				952ADFFD282E5ECB008787FB /* icon-mastercard.png in Resources */,
+				952AE004282E5ECB008787FB /* icon-jcb@3x.png in Resources */,
+				952AE014282E5ECB008787FB /* keyboard-previous.png in Resources */,
+				952AE027282E5ECB008787FB /* GraphikLCG-Thin.otf in Resources */,
+				952AE021282E5ECB008787FB /* GraphikLCG-Regular.otf in Resources */,
+				952ADFF9282E5ECB008787FB /* icon-mastercard@2x.png in Resources */,
+				952AE002282E5ECB008787FB /* icon-amex@2x.png in Resources */,
+				952ADFF5282E5ECB008787FB /* Localizable.strings in Resources */,
+				952ADFFA282E5ECB008787FB /* icon-mastercard@3x.png in Resources */,
+				952AE01F282E5ECB008787FB /* GraphikLCG-RegularItalic.otf in Resources */,
+				952AE01C282E5ECB008787FB /* GraphikLCG-BoldItalic.otf in Resources */,
+				952AE019282E5ECB008787FB /* GraphikLCG-BlackItalic.otf in Resources */,
+				952AE00E282E5ECB008787FB /* warning.pdf in Resources */,
+				952AE016282E5ECB008787FB /* keyboard-down@2x.png in Resources */,
+				952AE008282E5ECB008787FB /* icon-discover@3x.png in Resources */,
+				952AE013282E5ECB008787FB /* keyboard-down.png in Resources */,
+				952AE01A282E5ECB008787FB /* GraphikLCG-Super.otf in Resources */,
+				952AE012282E5ECB008787FB /* keyboard-previous@3x.png in Resources */,
+				952ADFFE282E5ECB008787FB /* icon-jcb.png in Resources */,
+				952AE018282E5ECB008787FB /* GraphikLCG-ThinItalic.otf in Resources */,
+				952ADFFF282E5ECB008787FB /* icon-amex.png in Resources */,
+				952AE015282E5ECB008787FB /* keyboard-next.png in Resources */,
+				952ADFFB282E5ECB008787FB /* icon-visa@3x.png in Resources */,
+				952AE005282E5ECB008787FB /* icon-maestro@2x.png in Resources */,
+				952AE022282E5ECB008787FB /* GraphikLCG-LightItalic.otf in Resources */,
+				952ADFF6282E5ECB008787FB /* icon-visa.png in Resources */,
+				952AE01E282E5ECB008787FB /* GraphikLCG-SuperItalic.otf in Resources */,
+				952AE00B282E5ECB008787FB /* checkmark.png in Resources */,
+				952AE026282E5ECB008787FB /* GraphikLCG-SemiboldItalic.otf in Resources */,
+				952AE00F282E5ECB008787FB /* keyboard-previous@2x.png in Resources */,
+				952AE00D282E5ECB008787FB /* checkmark@3x.png in Resources */,
+				952AE028282E5ECB008787FB /* GraphikLCG-Light.otf in Resources */,
+				952ADFF8282E5ECB008787FB /* icon-visa@2x.png in Resources */,
+				952AE023282E5ECB008787FB /* GraphikLCG-Medium.otf in Resources */,
+				952AE020282E5ECB008787FB /* GraphikLCG-ExtralightItalic.otf in Resources */,
+				952AE00A282E5ECB008787FB /* icon-dinersclub@2x.png in Resources */,
+				952AE009282E5ECB008787FB /* icon-discover.png in Resources */,
+				952AE006282E5ECB008787FB /* icon-dinersclub@3x.png in Resources */,
+				952ADFF7282E5ECB008787FB /* icon-maestro.png in Resources */,
+				952AE000282E5ECB008787FB /* icon-maestro@3x.png in Resources */,
+				952AE024282E5ECB008787FB /* GraphikLCG-Semibold.otf in Resources */,
+				952AE010282E5ECB008787FB /* keyboard-next@3x.png in Resources */,
+				952AE001282E5ECB008787FB /* icon-jcb@2x.png in Resources */,
+				952AE017282E5ECB008787FB /* keyboard-down@3x.png in Resources */,
+				952AE007282E5ECB008787FB /* icon-discover@2x.png in Resources */,
+				952AE00C282E5ECB008787FB /* checkmark@2x.png in Resources */,
+				952AE025282E5ECB008787FB /* GraphikLCG-MediumItalic.otf in Resources */,
+				952AE029282E5ECB008787FB /* GraphikLCG-Bold.otf in Resources */,
+				952AE01D282E5ECB008787FB /* GraphikLCG-Black.otf in Resources */,
+				952AE011282E5ECB008787FB /* keyboard-next@2x.png in Resources */,
+				952ADFFC282E5ECB008787FB /* icon-dinersclub.png in Resources */,
+				952AE01B282E5ECB008787FB /* GraphikLCG-Extralight.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1696,132 +1787,133 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95FD4DAD2829533D00A7E295 /* BillingFormPhoneNumberText.swift in Sources */,
-				95FD4DB62829533D00A7E295 /* CardNumberInputViewDelegate.swift in Sources */,
-				95FD4D882829533D00A7E295 /* PhoneNumberValidator.swift in Sources */,
-				95FD4D5D2829533D00A7E295 /* RequestExecutor.swift in Sources */,
-				95FD4DCA2829533D00A7E295 /* CardNumberInputView.swift in Sources */,
-				95FD4DA82829533D00A7E295 /* InputLabelStyle.swift in Sources */,
-				95FD4D852829533D00A7E295 /* CheckoutAPIClient.swift in Sources */,
-				95FD4DBE2829533D00A7E295 /* CardViewController.swift in Sources */,
-				95FD4D812829533D00A7E295 /* UIDeviceExtensions.swift in Sources */,
-				95FD4DA52829533D00A7E295 /* BillingFormHeaderCellStyle.swift in Sources */,
-				95FD4D5F2829533D00A7E295 /* Customer.swift in Sources */,
-				95FD4D7A2829533D00A7E295 /* DispatchQueue+Dispatching.swift in Sources */,
-				95FD4D7B2829533D00A7E295 /* JSONEncoder+ContentTypeProviding.swift in Sources */,
-				95FD4DA92829533D00A7E295 /* FormTextFieldStyle.swift in Sources */,
-				95FD4DAC2829533D00A7E295 /* BillingFormTextFieldView.swift in Sources */,
-				95FD4DC52829533D00A7E295 /* DetailsInputView.swift in Sources */,
-				95FD4D7F2829533D00A7E295 /* UIViewExtensions.swift in Sources */,
-				95FD4D972829533D00A7E295 /* DefaultBillingFormPostCodeCellStyle.swift in Sources */,
-				95FD4DB12829533D00A7E295 /* BillingFormViewController.swift in Sources */,
-				95FD4D7C2829533D00A7E295 /* JSONEncoder+TopLevelEncoder.swift in Sources */,
-				95FD4DB32829533D00A7E295 /* ExpirationDatePicker.swift in Sources */,
-				95FD4DB22829533D00A7E295 /* BillingFormFactory.swift in Sources */,
-				95FD4D5E2829533D00A7E295 /* Request.swift in Sources */,
-				95FD4D9B2829533D00A7E295 /* DefaultBillingFormStateCellStyle.swift in Sources */,
-				95FD4D942829533D00A7E295 /* DefaultTitleLabelStyle.swift in Sources */,
-				95FD4DBD2829533D00A7E295 /* AddressViewControllerDelegate.swift in Sources */,
-				95FD4D802829533D00A7E295 /* URL+Extensions.swift in Sources */,
-				95FD4DA72829533D00A7E295 /* FormButtonStyle.swift in Sources */,
-				95FD4D542829533D00A7E295 /* CkoPhoneNumber.swift in Sources */,
-				95FD4DAB2829533D00A7E295 /* BillingFormTextField.swift in Sources */,
-				95FD4DC92829533D00A7E295 /* AddressView.swift in Sources */,
-				95FD4D592829533D00A7E295 /* CardProviderResponse.swift in Sources */,
-				95FD4D582829533D00A7E295 /* CardScheme.swift in Sources */,
-				95FD4D5C2829533D00A7E295 /* HTTPMethod.swift in Sources */,
-				95FD4DB42829533D00A7E295 /* CardListCellName.swift in Sources */,
-				95FD4D642829533D00A7E295 /* CustomerCardList.swift in Sources */,
-				95FD4D6C2829533D00A7E295 /* NetworkFlowLoggerFactory.swift in Sources */,
-				95FD4DC22829533D00A7E295 /* ThreedsWebViewController.swift in Sources */,
-				95FD4D7D2829533D00A7E295 /* UIViewControllerExtensions.swift in Sources */,
-				95FD4D992829533D00A7E295 /* DefaultBillingFormCityCellStyle.swift in Sources */,
-				95FD4DA32829533D00A7E295 /* DefaultBillingFormHeaderCellStyle.swift in Sources */,
-				95FD4D572829533D00A7E295 /* TopLevelEncoder.swift in Sources */,
-				95FD4D892829533D00A7E295 /* AddressLine1Validator.swift in Sources */,
-				95FD4D772829533D00A7E295 /* UIBarStyle+stringValue.swift in Sources */,
-				95FD4DB52829533D00A7E295 /* UITableView.swift in Sources */,
-				95FD4DC02829533D00A7E295 /* CountrySelectionViewController.swift in Sources */,
-				95FD4DB82829533D00A7E295 /* ThreedsWebViewControllerDelegate.swift in Sources */,
-				95FD4D662829533D00A7E295 /* CkoCardTokenRequest.swift in Sources */,
-				95FD4D8C2829533D00A7E295 /* AddressLine2Validator.swift in Sources */,
-				95FD4D552829533D00A7E295 /* URLHelper.swift in Sources */,
-				95FD4DB72829533D00A7E295 /* CvvConfirmationViewControllerDelegate.swift in Sources */,
-				95FD4D742829533D00A7E295 /* NetworkFlowLogger.swift in Sources */,
-				95FD4DA12829533D00A7E295 /* DefaultHeaderLabelFormStyle.swift in Sources */,
-				95FD4D6E2829533D00A7E295 /* FramesLogEvent.swift in Sources */,
-				95FD4D8B2829533D00A7E295 /* CityValidator.swift in Sources */,
-				95FD4D712829533D00A7E295 /* TokenType.swift in Sources */,
-				95FD4D622829533D00A7E295 /* CkoAddress.swift in Sources */,
-				95FD4DBB2829533D00A7E295 /* CardViewControllerDelegate.swift in Sources */,
-				95FD4DBC2829533D00A7E295 /* CvvInputViewDelegate.swift in Sources */,
-				95FD4DA62829533D00A7E295 /* BillingFormStyle.swift in Sources */,
-				95FD4DC72829533D00A7E295 /* StandardInputView.swift in Sources */,
-				95FD4DBF2829533D00A7E295 /* CvvConfirmationViewController.swift in Sources */,
-				95FD4DC12829533D00A7E295 /* SimpleLoadingViewController.swift in Sources */,
-				95FD4D732829533D00A7E295 /* CorrelationIDGenerator.swift in Sources */,
-				95FD4D722829533D00A7E295 /* Theme.swift in Sources */,
-				95FD4D792829533D00A7E295 /* ErrorResponse+PropertyProviding.swift in Sources */,
-				95FD4D522829533D00A7E295 /* CardUtils.swift in Sources */,
-				95FD4DA02829533D00A7E295 /* DefaultCancelButtonFormStyle.swift in Sources */,
-				95FD4DC42829533D00A7E295 /* CardView.swift in Sources */,
-				95FD4D8A2829533D00A7E295 /* Validator.swift in Sources */,
-				95FD4D9D2829533D00A7E295 /* DefaultBillingFormAddressLine1CellStyle.swift in Sources */,
-				95FD4D6A2829533D00A7E295 /* ContentTypeProviding.swift in Sources */,
-				95FD4D9A2829533D00A7E295 /* DefaultBillingFormFullNameCellStyle.swift in Sources */,
-				95FD4D832829533D00A7E295 /* Dictionary+Additions.swift in Sources */,
-				95FD4DC82829533D00A7E295 /* PhoneNumberInputView.swift in Sources */,
-				95FD4D652829533D00A7E295 /* InputState.swift in Sources */,
-				95FD4D612829533D00A7E295 /* Dispatching.swift in Sources */,
-				95FD4DCB2829533D00A7E295 /* CvvInputView.swift in Sources */,
-				95FD4D982829533D00A7E295 /* DefaultBillingFormAddressLine2CellStyle.swift in Sources */,
-				95FD4DF22829533D00A7E295 /* CheckoutColor.swift in Sources */,
-				95FD4D912829533D00A7E295 /* DefaultBillingFormViewModel.swift in Sources */,
-				95FD4D602829533D00A7E295 /* CardProvider.swift in Sources */,
-				95FD4D782829533D00A7E295 /* StringExtensions.swift in Sources */,
-				95FD4D962829533D00A7E295 /* DefaultErrorInputLabelStyle.swift in Sources */,
-				95FD4D7E2829533D00A7E295 /* JSONDecoder+TopLevelDecoder.swift in Sources */,
-				95FD4D842829533D00A7E295 /* UIResponderExtensions.swift in Sources */,
-				95FD4D922829533D00A7E295 /* BillingFormCellType.swift in Sources */,
-				95FD4DAE2829533D00A7E295 /* BillingFormTextFieldCell.swift in Sources */,
-				95FD4D5B2829533D00A7E295 /* CkoCardTokenResponse.swift in Sources */,
-				95FD4D9C2829533D00A7E295 /* DefaultBillingFormPhoneNumberCellStyle.swift in Sources */,
-				95FD4D682829533D00A7E295 /* ErrorResponse.swift in Sources */,
-				95FD4DB92829533D00A7E295 /* CountrySelectionViewControllerDelegate.swift in Sources */,
-				95FD4D762829533D00A7E295 /* UIFont+PropertyProviding.swift in Sources */,
-				95FD4D902829533D00A7E295 /* BillingFormViewModel.swift in Sources */,
-				95FD4D5A2829533D00A7E295 /* TopLevelDecoder.swift in Sources */,
-				95FD4D8D2829533D00A7E295 /* StateValidator.swift in Sources */,
-				95FD4D952829533D00A7E295 /* DefaultTextField.swift in Sources */,
-				95FD4D692829533D00A7E295 /* ApplePayTokenRequest.swift in Sources */,
-				95FD4DCC2829533D00A7E295 /* ExpirationDateInputView.swift in Sources */,
-				95FD4D532829533D00A7E295 /* Constants.swift in Sources */,
-				95FD4DB02829533D00A7E295 /* BillingFormTextFieldErrorView.swift in Sources */,
-				95FD4D672829533D00A7E295 /* CheckoutTokenStatus.swift in Sources */,
-				95FD4DF12829533D00A7E295 /* CheckoutSdkIos.swift in Sources */,
-				95FD4D752829533D00A7E295 /* CustomerCard.swift in Sources */,
-				95FD4DAA2829533D00A7E295 /* ErrorInputLabelStyle.swift in Sources */,
-				95FD4D8F2829533D00A7E295 /* CardListCell.swift in Sources */,
-				95FD4DC62829533D00A7E295 /* SchemeIconsStackView.swift in Sources */,
-				95FD4D822829533D00A7E295 /* UIColor+PropertyProviding.swift in Sources */,
-				95FD4D932829533D00A7E295 /* DefaultHintInputLabelStyle.swift in Sources */,
-				95FD4DA22829533D00A7E295 /* DefaultDoneFormButtonStyle.swift in Sources */,
-				95FD4D6B2829533D00A7E295 /* NetworkError.swift in Sources */,
-				95FD4D562829533D00A7E295 /* Environment.swift in Sources */,
-				95FD4D9E2829533D00A7E295 /* DefaultBillingFormCountryCellStyle.swift in Sources */,
-				95FD4DF02829533D00A7E295 /* CheckoutTheme.swift in Sources */,
-				95FD4D6D2829533D00A7E295 /* FramesEventLogger.swift in Sources */,
-				95FD4D702829533D00A7E295 /* DateProvider.swift in Sources */,
-				95FD4DA42829533D00A7E295 /* BillingFormTextFieldCellStyle.swift in Sources */,
-				95FD4DC32829533D00A7E295 /* AddressViewController.swift in Sources */,
-				95FD4D862829533D00A7E295 /* PostCodeValidator.swift in Sources */,
-				95FD4D872829533D00A7E295 /* CountryValidator.swift in Sources */,
-				95FD4DBA2829533D00A7E295 /* ExpirationDatePickerDelegate.swift in Sources */,
-				95FD4D632829533D00A7E295 /* CardType.swift in Sources */,
-				95FD4DAF2829533D00A7E295 /* BillingFormHeaderCell.swift in Sources */,
-				95FD4D8E2829533D00A7E295 /* FullNameValidator.swift in Sources */,
-				95FD4D6F2829533D00A7E295 /* PropertyProviding.swift in Sources */,
-				95FD4D9F2829533D00A7E295 /* DefaultBillingFormStyle.swift in Sources */,
+				952AE038282E5ECB008787FB /* DefaultBillingFormCountryCellStyle.swift in Sources */,
+				952AE09D282E5ECB008787FB /* NetworkError.swift in Sources */,
+				952AE081282E5ECB008787FB /* UIDeviceExtensions.swift in Sources */,
+				952AE063282E5ECB008787FB /* PhoneNumberInputView.swift in Sources */,
+				952AE09C282E5ECB008787FB /* ContentTypeProviding.swift in Sources */,
+				952AE0A5282E5ECB008787FB /* CorrelationIDGenerator.swift in Sources */,
+				952AE031282E5ECB008787FB /* DefaultBillingFormPostCodeCellStyle.swift in Sources */,
+				952AE03D282E5ECB008787FB /* DefaultBillingFormHeaderCellStyle.swift in Sources */,
+				952AE042282E5ECB008787FB /* FormButtonStyle.swift in Sources */,
+				952AE06A282E5ECB008787FB /* CKOFont.swift in Sources */,
+				952AE035282E5ECB008787FB /* DefaultBillingFormStateCellStyle.swift in Sources */,
+				952AE03C282E5ECB008787FB /* DefaultDoneFormButtonStyle.swift in Sources */,
+				952AE083282E5ECB008787FB /* Dictionary+Additions.swift in Sources */,
+				952AE039282E5ECB008787FB /* DefaultBillingFormStyle.swift in Sources */,
+				952AE0A3282E5ECB008787FB /* TokenType.swift in Sources */,
+				952AE04C282E5ECB008787FB /* BillingFormViewController.swift in Sources */,
+				952AE082282E5ECB008787FB /* UIColor+PropertyProviding.swift in Sources */,
+				952AE030282E5ECB008787FB /* DefaultErrorInputLabelStyle.swift in Sources */,
+				952AE094282E5ECB008787FB /* CkoAddress.swift in Sources */,
+				952AE070282E5ECB008787FB /* AddressLine1Validator.swift in Sources */,
+				952AE05C282E5ECB008787FB /* SimpleLoadingViewController.swift in Sources */,
+				952AE045282E5ECB008787FB /* ErrorInputLabelStyle.swift in Sources */,
+				952AE0A6282E5ECB008787FB /* NetworkFlowLogger.swift in Sources */,
+				952AE077282E5ECB008787FB /* UIBarStyle+stringValue.swift in Sources */,
+				952AE04F282E5ECB008787FB /* CardListCellName.swift in Sources */,
+				952AE036282E5ECB008787FB /* DefaultBillingFormPhoneNumberCellStyle.swift in Sources */,
+				952AE078282E5ECB008787FB /* StringExtensions.swift in Sources */,
+				952AE074282E5ECB008787FB /* StateValidator.swift in Sources */,
+				952AE03E282E5ECB008787FB /* BillingFormTextFieldCellStyle.swift in Sources */,
+				952AE06C282E5ECB008787FB /* CheckoutSdkIos.swift in Sources */,
+				952AE04D282E5ECB008787FB /* BillingFormFactory.swift in Sources */,
+				952AE08A282E5ECB008787FB /* CardScheme.swift in Sources */,
+				952AE066282E5ECB008787FB /* CvvInputView.swift in Sources */,
+				952AE04E282E5ECB008787FB /* ExpirationDatePicker.swift in Sources */,
+				952AE060282E5ECB008787FB /* DetailsInputView.swift in Sources */,
+				952AE065282E5ECB008787FB /* CardNumberInputView.swift in Sources */,
+				952AE087282E5ECB008787FB /* URLHelper.swift in Sources */,
+				952AE056282E5ECB008787FB /* CardViewControllerDelegate.swift in Sources */,
+				952AE0A4282E5ECB008787FB /* Theme.swift in Sources */,
+				952AE09E282E5ECB008787FB /* NetworkFlowLoggerFactory.swift in Sources */,
+				952AE0A2282E5ECB008787FB /* DateProvider.swift in Sources */,
+				952AE05B282E5ECB008787FB /* CountrySelectionViewController.swift in Sources */,
+				952AE033282E5ECB008787FB /* DefaultBillingFormCityCellStyle.swift in Sources */,
+				952AE04A282E5ECB008787FB /* BillingFormHeaderCell.swift in Sources */,
+				952AE0A8282E5ECB008787FB /* CKOColor.swift in Sources */,
+				952AE091282E5ECB008787FB /* Customer.swift in Sources */,
+				952AE088282E5ECB008787FB /* Environment.swift in Sources */,
+				952AE044282E5ECB008787FB /* FormTextFieldStyle.swift in Sources */,
+				952AE0A7282E5ECB008787FB /* CustomerCard.swift in Sources */,
+				952AE040282E5ECB008787FB /* BillingFormCellType.swift in Sources */,
+				952AE072282E5ECB008787FB /* CityValidator.swift in Sources */,
+				952AE061282E5ECB008787FB /* SchemeIconsStackView.swift in Sources */,
+				952AE097282E5ECB008787FB /* InputState.swift in Sources */,
+				952AE075282E5ECB008787FB /* FullNameValidator.swift in Sources */,
+				952AE06D282E5ECB008787FB /* PostCodeValidator.swift in Sources */,
+				952AE048282E5ECB008787FB /* BillingFormPhoneNumberText.swift in Sources */,
+				952AE068282E5ECB008787FB /* CheckoutTheme.swift in Sources */,
+				952AE034282E5ECB008787FB /* DefaultBillingFormFullNameCellStyle.swift in Sources */,
+				952AE093282E5ECB008787FB /* Dispatching.swift in Sources */,
+				952AE02E282E5ECB008787FB /* DefaultTitleLabelStyle.swift in Sources */,
+				952AE07C282E5ECB008787FB /* JSONEncoder+TopLevelEncoder.swift in Sources */,
+				952AE096282E5ECB008787FB /* CustomerCardList.swift in Sources */,
+				952AE062282E5ECB008787FB /* StandardInputView.swift in Sources */,
+				952AE08F282E5ECB008787FB /* RequestExecutor.swift in Sources */,
+				952AE03B282E5ECB008787FB /* DefaultHeaderLabelFormStyle.swift in Sources */,
+				952AE095282E5ECB008787FB /* CardType.swift in Sources */,
+				952AE064282E5ECB008787FB /* AddressView.swift in Sources */,
+				952AE07B282E5ECB008787FB /* JSONEncoder+ContentTypeProviding.swift in Sources */,
+				952AE050282E5ECB008787FB /* UITableView.swift in Sources */,
+				952AE053282E5ECB008787FB /* ThreedsWebViewControllerDelegate.swift in Sources */,
+				952AE05F282E5ECB008787FB /* CardView.swift in Sources */,
+				952AE09B282E5ECB008787FB /* ApplePayTokenRequest.swift in Sources */,
+				952AE04B282E5ECB008787FB /* BillingFormTextFieldErrorView.swift in Sources */,
+				952AE076282E5ECB008787FB /* UIFont+PropertyProviding.swift in Sources */,
+				952AE02F282E5ECB008787FB /* DefaultTextField.swift in Sources */,
+				952AE0A0282E5ECB008787FB /* FramesLogEvent.swift in Sources */,
+				952AE057282E5ECB008787FB /* CvvInputViewDelegate.swift in Sources */,
+				952AE047282E5ECB008787FB /* BillingFormTextFieldView.swift in Sources */,
+				952AE046282E5ECB008787FB /* BillingFormTextField.swift in Sources */,
+				952AE09A282E5ECB008787FB /* ErrorResponse.swift in Sources */,
+				952AE06E282E5ECB008787FB /* CountryValidator.swift in Sources */,
+				952AE037282E5ECB008787FB /* DefaultBillingFormAddressLine1CellStyle.swift in Sources */,
+				952AE05E282E5ECB008787FB /* AddressViewController.swift in Sources */,
+				952AE090282E5ECB008787FB /* Request.swift in Sources */,
+				952AE09F282E5ECB008787FB /* FramesEventLogger.swift in Sources */,
+				952AE043282E5ECB008787FB /* InputLabelStyle.swift in Sources */,
+				952AE049282E5ECB008787FB /* BillingFormTextFieldCell.swift in Sources */,
+				952AE06F282E5ECB008787FB /* PhoneNumberValidator.swift in Sources */,
+				952AE052282E5ECB008787FB /* CvvConfirmationViewControllerDelegate.swift in Sources */,
+				952AE079282E5ECB008787FB /* ErrorResponse+PropertyProviding.swift in Sources */,
+				952AE02D282E5ECB008787FB /* DefaultHintInputLabelStyle.swift in Sources */,
+				952AE058282E5ECB008787FB /* AddressViewControllerDelegate.swift in Sources */,
+				952AE05A282E5ECB008787FB /* CvvConfirmationViewController.swift in Sources */,
+				952AE03F282E5ECB008787FB /* BillingFormHeaderCellStyle.swift in Sources */,
+				952AE07F282E5ECB008787FB /* UIViewExtensions.swift in Sources */,
+				952AE08E282E5ECB008787FB /* HTTPMethod.swift in Sources */,
+				952AE0A1282E5ECB008787FB /* PropertyProviding.swift in Sources */,
+				952AE067282E5ECB008787FB /* ExpirationDateInputView.swift in Sources */,
+				952AE07A282E5ECB008787FB /* DispatchQueue+Dispatching.swift in Sources */,
+				952AE05D282E5ECB008787FB /* ThreedsWebViewController.swift in Sources */,
+				952AE08D282E5ECB008787FB /* CkoCardTokenResponse.swift in Sources */,
+				952AE069282E5ECB008787FB /* CardUtils.swift in Sources */,
+				952AE084282E5ECB008787FB /* UIResponderExtensions.swift in Sources */,
+				952AE085282E5ECB008787FB /* Constants.swift in Sources */,
+				952AE06B282E5ECB008787FB /* CheckoutAPIClient.swift in Sources */,
+				952AE02B282E5ECB008787FB /* BillingFormViewModel.swift in Sources */,
+				952AE02A282E5ECB008787FB /* CardListCell.swift in Sources */,
+				952AE032282E5ECB008787FB /* DefaultBillingFormAddressLine2CellStyle.swift in Sources */,
+				952AE071282E5ECB008787FB /* Validator.swift in Sources */,
+				952AE073282E5ECB008787FB /* AddressLine2Validator.swift in Sources */,
+				952AE099282E5ECB008787FB /* CheckoutTokenStatus.swift in Sources */,
+				952AE07D282E5ECB008787FB /* UIViewControllerExtensions.swift in Sources */,
+				952AE03A282E5ECB008787FB /* DefaultCancelButtonFormStyle.swift in Sources */,
+				952AE080282E5ECB008787FB /* URL+Extensions.swift in Sources */,
+				952AE02C282E5ECB008787FB /* DefaultBillingFormViewModel.swift in Sources */,
+				952AE041282E5ECB008787FB /* BillingFormStyle.swift in Sources */,
+				952AE086282E5ECB008787FB /* CkoPhoneNumber.swift in Sources */,
+				952AE07E282E5ECB008787FB /* JSONDecoder+TopLevelDecoder.swift in Sources */,
+				952AE098282E5ECB008787FB /* CkoCardTokenRequest.swift in Sources */,
+				952AE089282E5ECB008787FB /* TopLevelEncoder.swift in Sources */,
+				952AE059282E5ECB008787FB /* CardViewController.swift in Sources */,
+				952AE051282E5ECB008787FB /* CardNumberInputViewDelegate.swift in Sources */,
+				952AE092282E5ECB008787FB /* CardProvider.swift in Sources */,
+				952AE054282E5ECB008787FB /* CountrySelectionViewControllerDelegate.swift in Sources */,
+				952AE08C282E5ECB008787FB /* TopLevelDecoder.swift in Sources */,
+				952AE055282E5ECB008787FB /* ExpirationDatePickerDelegate.swift in Sources */,
+				952AE08B282E5ECB008787FB /* CardProviderResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1947,15 +2039,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		95FD4D222829533D00A7E295 /* Localizable.strings */ = {
+		952ADF08282E5ECB008787FB /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				95FD4D232829533D00A7E295 /* de */,
-				95FD4D3A2829533D00A7E295 /* en */,
-				95FD4D3B2829533D00A7E295 /* es */,
-				95FD4D402829533D00A7E295 /* it */,
-				95FD4D4D2829533D00A7E295 /* fr */,
-				95FD4D4E2829533D00A7E295 /* nl */,
+				952ADF09282E5ECB008787FB /* de */,
+				952ADF20282E5ECB008787FB /* en */,
+				952ADF21282E5ECB008787FB /* es */,
+				952ADF26282E5ECB008787FB /* it */,
+				952ADF33282E5ECB008787FB /* fr */,
+				952ADF34282E5ECB008787FB /* nl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
