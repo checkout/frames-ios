@@ -38,17 +38,23 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     }
     
     func getCell( row: Int,  delegate: BillingFormTextFieldCellDelegate?) -> UITableViewCell {
+        let currentStyle = style.cells[row]
         guard style.cells.count > row,
-              var cellStyle = style.cells[row].style
+              var cellStyle = currentStyle.style
         else { return UITableViewCell() }
         
-        let hash = style.cells[row].hash
+        if cellStyle.isOptinal {
+            textValueOfCellType[currentStyle.hash, default: ""] += ""
+            errorFlagOfCellType[currentStyle.hash] = false
+        }
+        
+        let hash = currentStyle.hash
         updateErrorView(with: &cellStyle, hashValue: hash)
         updateTextField(with: &cellStyle, hashValue: hash)
         
         let cell = BillingFormTextFieldCell()
         cell.delegate = delegate
-        cell.update(cellStyle: style.cells[row], style: cellStyle, tag: row)
+        cell.update(cellStyle: currentStyle, style: cellStyle, tag: row)
         return cell
     }
     
@@ -78,12 +84,11 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
     }
     
     func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String) {
-        
         validate(text: textField.text , cellStyle: textField.type, row: textField.tag)
         
-        if !(textField.text?.isEmpty ?? true)  {
+        if !(textField.text?.isEmpty ?? true) || textField.type.style?.isOptinal ?? false {
             textValueOfCellType[textField.type.hash] = textField.text
-        }else {
+        } else {
             textValueOfCellType[textField.type.hash] = nil
             
         }
@@ -96,7 +101,7 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
         
         if !(string.isEmpty)  {
             textValueOfCellType[textField.type.hash] = string
-        }else if textField.text?.count ?? 1 == 1 {
+        } else if textField.text?.count ?? 1 == 1, !(textField.type.style?.isOptinal ?? false)  {
             textValueOfCellType[textField.type.hash] = nil
         }
         
@@ -118,7 +123,6 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
     }
     
     func doneButtonIsPressed(sender: UIViewController) {
-        
         let phone = CkoPhoneNumber(countryCode: "\(countryCode)",
                                    number: textValueOfCellType[BillingFormCell.phoneNumber(nil).hash])
         let address = CkoAddress(addressLine1: textValueOfCellType[BillingFormCell.addressLine1(nil).hash],
