@@ -5,7 +5,7 @@
 //  Created by Harry Brown on 07/02/2022.
 //
 
-@testable import Checkout
+import Checkout
 
 final class StubCardValidator: CardValidating {
     var validateCardNumberToReturn: Result<Card.Scheme, ValidationError.CardNumber> = .success(.visa)
@@ -22,14 +22,14 @@ final class StubCardValidator: CardValidating {
         return validateCVVToReturn
     }
 
-    var validateExpiryStringToReturn: Result<ExpiryDate, ValidationError.ExpiryDate> = .success(ExpiryDate(month: 2, year: 2050))
+    var validateExpiryStringToReturn: Result<ExpiryDate, ValidationError.ExpiryDate> = expiryDate(month: 2, year: 2050)
     private(set) var validateExpiryStringCalledWith: (expiryMonth: String, expiryYear: String)?
     func validate(expiryMonth: String, expiryYear: String) -> Result<ExpiryDate, ValidationError.ExpiryDate> {
         validateExpiryStringCalledWith = (expiryMonth, expiryYear)
         return validateExpiryStringToReturn
     }
 
-    var validateExpiryIntToReturn: Result<ExpiryDate, ValidationError.ExpiryDate> = .success(ExpiryDate(month: 2, year: 2050))
+    var validateExpiryIntToReturn: Result<ExpiryDate, ValidationError.ExpiryDate> = expiryDate(month: 2, year: 2050)
     private(set) var validateExpiryIntCalledWith: (expiryMonth: Int, expiryYear: Int)?
     func validate(expiryMonth: Int, expiryYear: Int) -> Result<ExpiryDate, ValidationError.ExpiryDate> {
         validateExpiryIntCalledWith = (expiryMonth, expiryYear)
@@ -41,5 +41,10 @@ final class StubCardValidator: CardValidating {
     func validate(_ card: Card) -> ValidationResult<ValidationError.Card> {
         validateCalledWith = card
         return validateToReturn
+    }
+
+    private static func expiryDate(month: Int, year: Int) -> Result<ExpiryDate, ValidationError.ExpiryDate> {
+        let cardValidator = CardValidator(environment: .sandbox)
+        return cardValidator.validate(expiryMonth: month, expiryYear: year)
     }
 }

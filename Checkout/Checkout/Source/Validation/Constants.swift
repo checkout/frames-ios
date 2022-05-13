@@ -24,8 +24,9 @@ enum Constants {
     static let countryCodeMaxLength = 7
   }
 
-  enum Network {
+  enum Product {
     static let version = "0.1.0"
+    static let name = "checkout-ios-sdk"
     static let userAgent = "checkout-sdk-ios/\(version)"
   }
 }

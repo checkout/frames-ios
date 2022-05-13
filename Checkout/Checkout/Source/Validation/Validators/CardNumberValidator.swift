@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CardNumberValidating {
+public protocol CardNumberValidating {
   func validate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber>
 }
 

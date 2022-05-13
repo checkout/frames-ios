@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		443FCD9426137A4C009D6DE6 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 443FCD9326137A4C009D6DE6 /* Frames */; };
+		CB9412DB2825714C00C889E8 /* iOS_Example_FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9412D92825714C00C889E8 /* iOS_Example_FrameUITests.swift */; };
 		CBA81CC027ABDF21000DF192 /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBA81CAB27ABDF21000DF192 /* LaunchScreen.strings */; };
 		CBA81CC127ABDF21000DF192 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBA81CAD27ABDF21000DF192 /* Main.strings */; };
 		CBA81CC227ABDF21000DF192 /* example_apple_pay_payment_data.json in Resources */ = {isa = PBXBuildFile; fileRef = CBA81CB327ABDF21000DF192 /* example_apple_pay_payment_data.json */; };
@@ -16,7 +17,6 @@
 		CBA81CC527ABDF21000DF192 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA81CB627ABDF21000DF192 /* LaunchScreen.storyboard */; };
 		CBA81CC627ABDF21000DF192 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA81CB827ABDF21000DF192 /* Main.storyboard */; };
 		CBA81CC727ABDF21000DF192 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA81CBE27ABDF21000DF192 /* AppDelegate.swift */; };
-		E6646FA320CE6C0A00D8353A /* iOS_Example_FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646FA220CE6C0A00D8353A /* iOS_Example_FrameUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +33,8 @@
 		443FCD8F261379CB009D6DE6 /* frames-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "frames-ios"; path = ..; sourceTree = "<group>"; };
 		44E647AC260CEAFF00503D6C /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44E647B6260CF03700503D6C /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB9412D92825714C00C889E8 /* iOS_Example_FrameUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS_Example_FrameUITests.swift; sourceTree = "<group>"; };
+		CB9412DA2825714C00C889E8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBA81CAC27ABDF21000DF192 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		CBA81CAE27ABDF21000DF192 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		CBA81CAF27ABDF21000DF192 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -50,8 +52,6 @@
 		CBA81CBD27ABDF21000DF192 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		CBA81CBE27ABDF21000DF192 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBA81CBF27ABDF21000DF192 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E6646FA220CE6C0A00D8353A /* iOS_Example_FrameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_Example_FrameUITests.swift; sourceTree = "<group>"; };
-		E6646FA420CE6C0A00D8353A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +80,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CB9412D82825714C00C889E8 /* iOS Example FrameUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CB9412D92825714C00C889E8 /* iOS_Example_FrameUITests.swift */,
+				CB9412DA2825714C00C889E8 /* Info.plist */,
+			);
+			name = "iOS Example FrameUITests";
+			path = "../iOS Example Frame/iOS Example FrameUITests";
+			sourceTree = "<group>";
+		};
 		CBA81CAA27ABDF21000DF192 /* iOS Example Frame */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,21 +111,12 @@
 			isa = PBXGroup;
 			children = (
 				CBA81CAA27ABDF21000DF192 /* iOS Example Frame */,
-				E6646FA120CE6C0A00D8353A /* iOS Example FrameUITests */,
+				CB9412D82825714C00C889E8 /* iOS Example FrameUITests */,
 				44E647AC260CEAFF00503D6C /* iOS Example Frame.app */,
 				44E647B6260CF03700503D6C /* iOS Example FrameUITests.xctest */,
 				443FCD8F261379CB009D6DE6 /* frames-ios */,
 				443FCD9226137A4C009D6DE6 /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		E6646FA120CE6C0A00D8353A /* iOS Example FrameUITests */ = {
-			isa = PBXGroup;
-			children = (
-				E6646FA220CE6C0A00D8353A /* iOS_Example_FrameUITests.swift */,
-				E6646FA420CE6C0A00D8353A /* Info.plist */,
-			);
-			path = "iOS Example FrameUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,7 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6646FA320CE6C0A00D8353A /* iOS_Example_FrameUITests.swift in Sources */,
+				CB9412DB2825714C00C889E8 /* iOS_Example_FrameUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,7 +464,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 635KC97JGT;
-				INFOPLIST_FILE = "iOS Example FrameUITests/Info.plist";
+				INFOPLIST_FILE = "../iOS Example Frame/iOS Example FrameUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -483,7 +484,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 635KC97JGT;
-				INFOPLIST_FILE = "iOS Example FrameUITests/Info.plist";
+				INFOPLIST_FILE = "../iOS Example Frame/iOS Example FrameUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

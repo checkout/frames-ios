@@ -61,7 +61,7 @@ final class RequestFactory: RequestProviding {
       case let .token(_, publicKey):
         return [
           "Authorization": "Bearer \(publicKey)",
-          "User-Agent": Constants.Network.userAgent
+          "User-Agent": Constants.Product.userAgent
         ]
       }
     }
