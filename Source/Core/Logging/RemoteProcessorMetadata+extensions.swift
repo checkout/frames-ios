@@ -7,8 +7,21 @@
 //
 
 import CheckoutEventLoggerKit
+import UIKit
 
 extension RemoteProcessorMetadata {
+
+    init(environment: Environment) {
+        let appPackageName = Bundle.main.bundleIdentifier
+            ?? Constants.Bundle.FallbackValues.noBundleIdentifier.rawValue
+        let appPackageVersion = Bundle.main.infoDictionary?[Constants.Bundle.version.rawValue] as? String
+            ?? Constants.Bundle.FallbackValues.noVersion.rawValue
+
+        self.init(environment: environment,
+                  appPackageName: appPackageName,
+                  appPackageVersion: appPackageVersion,
+                  uiDevice: UIKit.UIDevice.current)
+    }
 
     init(environment: Environment,
          appPackageName: String,

@@ -1,4 +1,3 @@
-import UIKit
 import CheckoutEventLoggerKit
 
 protocol FramesEventLogging {
@@ -22,16 +21,7 @@ final class FramesEventLogger: FramesEventLogging {
 
     convenience init(environment: Environment, getCorrelationID: @escaping () -> String) {
         let checkoutEventLogger = CheckoutEventLogger(productName: Constants.productName)
-        let appBundle = Foundation.Bundle.main
-        let appPackageName = appBundle.bundleIdentifier ?? "unavailableAppPackageName"
-        let appPackageVersion = appBundle.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unavailableAppPackageVersion"
-
-        let uiDevice = UIKit.UIDevice.current
-
-        let remoteProcessorMetadata = RemoteProcessorMetadata(environment: environment,
-                                                              appPackageName: appPackageName,
-                                                              appPackageVersion: appPackageVersion,
-                                                              uiDevice: uiDevice)
+        let remoteProcessorMetadata = RemoteProcessorMetadata(environment: environment)
 
         checkoutEventLogger.enableRemoteProcessor(environment: environment.eventLoggerEnvironment, remoteProcessorMetadata: remoteProcessorMetadata)
         let dateProvider = DateProvider()

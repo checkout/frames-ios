@@ -4,7 +4,9 @@ enum Constants {
     static let version = "3.5.2"
     static let userAgent = "checkout-sdk-frames-ios/\(version)"
 
-    enum Bundle {
+    enum Bundle: String {
+        case version = "CFBundleShortVersionString"
+
         enum SchemeIcons: String {
             case amex = "schemes/icon-amex"
             case diners = "schemes/icon-dinersclub"
@@ -13,6 +15,11 @@ enum Constants {
             case maestro = "schemes/icon-maestro"
             case mastercard = "schemes/icon-mastercard"
             case visa = "schemes/icon-visa"
+        }
+
+        enum FallbackValues: String {
+            case noBundleIdentifier = "unavailableAppPackageName"
+            case noVersion = "unavailableAppPackageVersion"
         }
     }
 }
