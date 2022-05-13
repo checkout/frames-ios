@@ -92,18 +92,6 @@ import Checkout
         let cardNumberFormatted = cardUtils.format(cardNumber: cardNumber, scheme: scheme)
         textField.text = cardNumberFormatted
 
-    // TODO: I think we should delete this block. Unsure what it does
-//        if var targetPosition = textField.position(from: textField.beginningOfDocument, offset: targetCursorPosition) {
-//            if targetCursorPosition != 0 {
-//                let lastChar = cardNumberFormatted[cardNumberFormatted.index(cardNumberFormatted.startIndex,
-//                                                                             offsetBy: targetCursorPosition - 1)]
-//                if lastChar == " " && previousTextCount < cardNumberFormatted.count {
-//                    targetPosition = textField
-//                        .position(from: textField.beginningOfDocument, offset: targetCursorPosition + 1)!
-//                }
-//            }
-//            textField.selectedTextRange = textField.textRange(from: targetPosition, to: targetPosition)
-//        }
         previousTextCount = cardNumberFormatted.count
     }
 
