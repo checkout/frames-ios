@@ -32,6 +32,7 @@
 "cardNumberInvalid" = "The card number is invalid";
 "cardTypeNotAccepted" = "The card type is not accepted";
 "cvvInvalid" = "The cvv is invalid";
+"expiryDateInvalid" = "The Expiry Date is invalid";
 "phoneNumberInvalid" = "Invalid, use country code (e.g. +44)";
 
 "cardViewControllerTitle" = "Payment";

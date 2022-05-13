@@ -20,6 +20,20 @@
                ReferencedContainer = "container:iOS Example Frame Carthage.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "57256C78269F1181001EC3D8"
+               BuildableName = "FramesTests.xctest"
+               BlueprintName = "FramesTests"
+               ReferencedContainer = "container:iOS Example Frame Carthage.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

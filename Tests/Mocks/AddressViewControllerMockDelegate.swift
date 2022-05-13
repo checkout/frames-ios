@@ -1,12 +1,13 @@
 @testable import Frames
+import Checkout
 
 class AddressViewControllerMockDelegate: AddressViewControllerDelegate {
 
     var onTapDoneButtonCalledTimes = 0
-    var onTapDoneButtonLastCalledWithAddress: CkoAddress?
-    var onTapDoneButtonLastCalledWithPhone: CkoPhoneNumber?
+    var onTapDoneButtonLastCalledWithAddress: Address?
+    var onTapDoneButtonLastCalledWithPhone: Phone?
 
-    func onTapDoneButton(controller: AddressViewController, address: CkoAddress, phone: CkoPhoneNumber) {
+    func onTapDoneButton(controller: AddressViewController, address: Address, phone: Phone) {
         onTapDoneButtonCalledTimes += 1
         onTapDoneButtonLastCalledWithAddress = address
         onTapDoneButtonLastCalledWithPhone = phone

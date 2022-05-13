@@ -41,21 +41,3 @@ extension UIFont {
 
 }
 
-
-extension String {
-    //MARK: - Make custom font bundle register to framework
-    
-    func register(for type: AnyClass, withExtension: String) {
-        let bundle = getBundle(forClass: type)
-        
-        if let pathForResourceString = bundle.url(forResource: self, withExtension: withExtension),
-           let fontData = NSData(contentsOf: pathForResourceString), let dataProvider = CGDataProvider.init(data: fontData) {
-            let fontRef = CGFont.init(dataProvider)
-            var errorRef: Unmanaged<CFError>? = nil
-            if CTFontManagerRegisterGraphicsFont(fontRef!, &errorRef) == false {
-                print("Failed to register font - register graphics font failed - this font may have already been registered in the main bundle.")
-            }
-        }
-    }
-    
-}

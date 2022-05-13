@@ -1,0 +1,29 @@
+PODS:
+  - Checkout (0.1.0):
+    - CheckoutEventLoggerKit (= 1.2.0)
+  - Checkout/Integration-Tests (0.1.0):
+    - CheckoutEventLoggerKit (= 1.2.0)
+  - Checkout/Tests (0.1.0):
+    - CheckoutEventLoggerKit (= 1.2.0)
+  - CheckoutEventLoggerKit (1.2.0)
+
+DEPENDENCIES:
+  - Checkout (from `../`)
+  - Checkout/Integration-Tests (from `../`)
+  - Checkout/Tests (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - CheckoutEventLoggerKit
+
+EXTERNAL SOURCES:
+  Checkout:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Checkout: 5da1b5b5de5026d7667cd6305aa04dd3f0428c64
+  CheckoutEventLoggerKit: 03d0076e2aa412df966517a36a3e4e3805b56ecb
+
+PODFILE CHECKSUM: bacc90edb3b7ee0231a779c07faf6784821c9542
+
+COCOAPODS: 1.11.2

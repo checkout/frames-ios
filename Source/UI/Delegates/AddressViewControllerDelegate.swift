@@ -1,4 +1,5 @@
 import Foundation
+import Checkout
 
 /// Method that you can use to handle when the user press done to save the address.
 public protocol AddressViewControllerDelegate: AnyObject {
@@ -7,5 +8,5 @@ public protocol AddressViewControllerDelegate: AnyObject {
     ///
     /// - parameter controller: `AddressViewController`
     /// - parameter address: Address entered by the user
-    func onTapDoneButton(controller: AddressViewController, address: CkoAddress, phone: CkoPhoneNumber)
+    func onTapDoneButton(controller: AddressViewController, address: Address, phone: Phone)
 }

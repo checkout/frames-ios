@@ -21,7 +21,7 @@ final class ResourcesTests: XCTestCase {
             return
         }
         #endif
-
+        
         #if COCOAPODS
         let framesResourceBundlePath = "Frames"
         guard let framesResourceBundleURL = framesTopLevelBundle.url(forResource: framesResourceBundlePath, withExtension: "bundle") else {
@@ -33,7 +33,7 @@ final class ResourcesTests: XCTestCase {
         #if !SWIFT_PACKAGE && !COCOAPODS
         let framesResourceBundleURL = framesTopLevelBundle.bundleURL
         #endif
-        
+
         guard let framesResourceBundle = Bundle(url: framesResourceBundleURL) else {
             XCTFail("could not find internal bundle")
             return

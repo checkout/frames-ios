@@ -1,4 +1,5 @@
 import UIKit
+import Checkout
 
 /// Card Number Input View containing a label and an input field.
 /// Handles the formatting of the text field.
@@ -7,6 +8,7 @@ import UIKit
     // MARK: - Properties
 
     var cardsUtils: CardUtils!
+    var cardValidator: CardValidating?
     /// Text field delegate
     public weak var delegate: CardNumberInputViewDelegate?
 
@@ -17,18 +19,24 @@ import UIKit
     /// Initializes and returns a newly allocated view object with the specified frame rectangle.
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        setup(cardValidator: nil)
     }
 
     /// Returns an object initialized from data in a given unarchiver.
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
+        setup(cardValidator: nil)
     }
 
-    private func setup() {
+    public init(frame: CGRect = CGRect.zero, cardValidator: CardValidating?) {
+        super.init(frame: frame)
+        setup(cardValidator: cardValidator)
+    }
+
+    private func setup(cardValidator: CardValidating?) {
         #if !TARGET_INTERFACE_BUILDER
         cardsUtils = CardUtils()
+        self.cardValidator = cardValidator
         #endif
         textField.keyboardType = .default
         textField.textContentType = .creditCardNumber
@@ -47,14 +55,20 @@ import UIKit
     /// Asks the delegate if the specified text should be changed.
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
                           replacementString string: String) -> Bool {
-        // Card Number Formatting
-        let cardNumber = cardsUtils!.standardize(cardNumber: "\(textField.text!)\(string)")
-        let cardType = cardsUtils.getTypeOf(cardNumber: cardNumber)
-        guard let cardTypeUnwrap = cardType else { return true }
-        guard cardNumber.count <= cardTypeUnwrap.validLengths.last! else {
+        guard let cardNumber = textField.text else {
             return false
         }
-        return true
+
+        guard let cardValidator = cardValidator else {
+            return false
+        }
+
+        switch cardValidator.validate(cardNumber: "\(cardNumber)\(string)") {
+        case .success(let scheme):
+            return scheme != .unknown
+        case .failure:
+            return false
+        }
     }
 
     /// Called when the text changed.
@@ -64,10 +78,22 @@ import UIKit
             targetCursorPosition = textField.offset(from: textField.beginningOfDocument, to: startPosition)
         }
 
+        //        guard let cardNumber = textField.text else {
+        //            return
+        //        }
+        //        switch cardValidator.validate(cardNumber: cardNumber) {
+        //        case .success(let scheme):
+        //            delegate?.onChangeCardNumber(cardScheme: scheme)
+        //        case .failure(_):
+        //            return
+        //        }
+
         let cardNumber = cardsUtils!.standardize(cardNumber: textField.text!)
         let cardType = cardsUtils.getTypeOf(cardNumber: cardNumber)
         guard let cardTypeUnwrap = cardType else { return }
         delegate?.onChangeCardNumber(cardType: cardType)
+
+        // Potential Task : add CardType and cardTypes to Checkout SDK and also format function.
         let cardNumberFormatted = cardsUtils.format(cardNumber: cardNumber, cardType: cardTypeUnwrap)
         textField.text = cardNumberFormatted
 

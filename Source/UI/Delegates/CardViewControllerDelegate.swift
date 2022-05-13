@@ -1,4 +1,5 @@
 import Foundation
+import Checkout
 
 /// Method that you can use to manage the editing of the expiration date.
 public protocol CardViewControllerDelegate: AnyObject {
@@ -7,7 +8,7 @@ public protocol CardViewControllerDelegate: AnyObject {
     ///
     /// - parameter controller: `CardViewController`
     /// - parameter card: Card entered by the user
-    func onTapDone(controller: CardViewController, cardToken: CkoCardTokenResponse?, status: CheckoutTokenStatus)
+    func onTapDone(controller: CardViewController, cardToken: TokenDetails?, status: CheckoutTokenStatus)
 
 
     /// Called just before a request to make a card token.

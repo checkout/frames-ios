@@ -1,4 +1,5 @@
 import XCTest
+import Checkout
 @testable import Frames
 
 class BillingFormViewModelTests: XCTestCase {
@@ -57,16 +58,14 @@ class BillingFormViewModelTests: XCTestCase {
                        BillingFormCell.addressLine2(nil).hash: "addressLine2" ,
                        BillingFormCell.state(nil).hash: "state" ]
         
-        let countryCode = "0"
-        let phone = CkoPhoneNumber(countryCode: countryCode,
-                                   number: textValueOfCellType[BillingFormCell.phoneNumber(nil).hash])
+        let phone = Phone(number: textValueOfCellType[BillingFormCell.phoneNumber(nil).hash], country: nil)
         
-        let address = CkoAddress(addressLine1: textValueOfCellType[BillingFormCell.addressLine1(nil).hash],
+        let address = Address(addressLine1: textValueOfCellType[BillingFormCell.addressLine1(nil).hash],
                                  addressLine2: textValueOfCellType[BillingFormCell.addressLine2(nil).hash],
                                  city: textValueOfCellType[BillingFormCell.city(nil).hash],
                                  state: textValueOfCellType[BillingFormCell.state(nil).hash],
                                  zip: textValueOfCellType[BillingFormCell.postcode(nil).hash],
-                                 country: textValueOfCellType[BillingFormCell.country(nil).hash])
+                                 country: nil)
         
         viewModel.textValueOfCellType = textValueOfCellType
         viewModel.delegate = delegate

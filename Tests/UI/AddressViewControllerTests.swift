@@ -1,5 +1,6 @@
 import XCTest
 @testable import Frames
+import Checkout
 
 class AddressViewControllerTests: XCTestCase {
 
@@ -127,10 +128,12 @@ class AddressViewControllerTests: XCTestCase {
         setupAddress()
         // Assert
         addressViewController.textFieldDidEndEditing(UITextField())
-        XCTAssertTrue((addressViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
+        XCTAssertEqual(addressViewController.navigationItem.rightBarButtonItem?.isEnabled, true)
     }
 
     func testCallDelegateMethodOnTapDoneButton() {
+        let addressCountry = Country.allAvailable.first { $0.iso3166Alpha2 == "FR" }!
+        let dialingCountry = Country.allAvailable.first { $0.dialingCode == "33" }!
         let delegate = AddressViewControllerMockDelegate()
         addressViewController.viewDidLoad()
         addressViewController.delegate = delegate
@@ -140,9 +143,9 @@ class AddressViewControllerTests: XCTestCase {
         XCTAssertEqual(delegate.onTapDoneButtonCalledTimes, 1)
         XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithAddress?.addressLine1, "12 rue de la boulangerie")
         XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithAddress?.city, "Lyon")
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithAddress?.country, "FR")
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithAddress?.country, addressCountry)
         XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithAddress?.zip, "69002")
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithPhone?.countryCode, "33")
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithPhone?.country?.dialingCode, dialingCountry.dialingCode)
         XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithPhone?.number, "622545688")
     }
 

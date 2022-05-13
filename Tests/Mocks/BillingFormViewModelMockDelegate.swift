@@ -1,15 +1,16 @@
 import UIKit
+import Checkout
 @testable import Frames
 
 class BillingFormViewModelMockDelegate: BillingFormViewModelDelegate {
     var onTapDoneButtonCalledTimes = 0
-    var onTapDoneButtonLastCalledWithAddress: CkoAddress?
-    var onTapDoneButtonLastCalledWithNumber: CkoPhoneNumber?
+    var onTapDoneButtonLastCalledWithAddress: Address?
+    var onTapDoneButtonLastCalledWithNumber: Phone?
     
     var updateCountryCodeCalledTimes = 0
     var updateCountryCodeLastCalledWithCode: Int?
     
-    func onTapDoneButton(address: CkoAddress, phone: CkoPhoneNumber) {
+    func onTapDoneButton(address: Address, phone: Phone) {
         onTapDoneButtonCalledTimes += 1
         onTapDoneButtonLastCalledWithAddress = address
         onTapDoneButtonLastCalledWithNumber = phone

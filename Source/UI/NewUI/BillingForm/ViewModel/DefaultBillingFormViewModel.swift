@@ -1,4 +1,5 @@
 import UIKit
+import Checkout
 
 final class DefaultBillingFormViewModel: BillingFormViewModel {
     var style: BillingFormStyle
@@ -123,14 +124,20 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
     }
     
     func doneButtonIsPressed(sender: UIViewController) {
-        let phone = CkoPhoneNumber(countryCode: "\(countryCode)",
-                                   number: textValueOfCellType[BillingFormCell.phoneNumber(nil).hash])
-        let address = CkoAddress(addressLine1: textValueOfCellType[BillingFormCell.addressLine1(nil).hash],
-                                 addressLine2: textValueOfCellType[BillingFormCell.addressLine2(nil).hash],
-                                 city: textValueOfCellType[BillingFormCell.city(nil).hash],
-                                 state: textValueOfCellType[BillingFormCell.state(nil).hash],
-                                 zip: textValueOfCellType[BillingFormCell.postcode(nil).hash],
-                                 country: textValueOfCellType[BillingFormCell.country(nil).hash])
+        
+        let phone = Phone(
+            number: textValueOfCellType[BillingFormCell.phoneNumber(nil).hash],
+            country: nil)
+        
+        let address = Address(
+            addressLine1: textValueOfCellType[BillingFormCell.addressLine1(nil).hash],
+            addressLine2: textValueOfCellType[BillingFormCell.addressLine2(nil).hash],
+            city: textValueOfCellType[BillingFormCell.city(nil).hash],
+            state: textValueOfCellType[BillingFormCell.state(nil).hash],
+            zip: textValueOfCellType[BillingFormCell.postcode(nil).hash],
+            country: nil)
+                                                       
+                                                      
         delegate?.onTapDoneButton(address: address, phone: phone)
         sender.dismiss(animated: true)
     }
