@@ -38,6 +38,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
     case checkoutAPIClientInitialised(environment: Environment)
     case paymentFormPresented(theme: Theme, locale: Locale)
     case billingFormPresented
+<<<<<<< HEAD
     case tokenRequested(tokenType: TokenType, publicKey: String)
     case tokenResponse(tokenType: TokenType,
                        publicKey: String,
@@ -48,6 +49,8 @@ enum FramesLogEvent: Equatable, PropertyProviding {
     case threeDSWebviewPresented
     case threeDSChallengeLoaded(success: Bool)
     case threeDSChallengeComplete(success: Bool, tokenID: String?)
+=======
+>>>>>>> release/4.0.0_RC
     case exception(message: String)
 
     var typeIdentifier: String {
@@ -62,6 +65,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
             return "payment_form_presented"
         case .billingFormPresented:
             return "billing_form_presented"
+<<<<<<< HEAD
         case .tokenRequested:
             return "token_requested"
         case .tokenResponse:
@@ -72,6 +76,8 @@ enum FramesLogEvent: Equatable, PropertyProviding {
             return "3ds_challenge_loaded"
         case .threeDSChallengeComplete:
             return "3ds_challenge_complete"
+=======
+>>>>>>> release/4.0.0_RC
         case .exception:
             return "exception"
         }
@@ -79,12 +85,17 @@ enum FramesLogEvent: Equatable, PropertyProviding {
 
     var monitoringLevel: MonitoringLevel {
         switch self {
+<<<<<<< HEAD
         case .checkoutAPIClientInitialised,
              .paymentFormPresented,
              .billingFormPresented,
              .tokenRequested,
              .tokenResponse,
              .threeDSWebviewPresented:
+=======
+        case .paymentFormPresented,
+             .billingFormPresented:
+>>>>>>> release/4.0.0_RC
             return .info
         case .exception:
             return .error
@@ -99,6 +110,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
         case .billingFormPresented,
              .threeDSWebviewPresented:
             return [:]
+<<<<<<< HEAD
         case let .paymentFormPresented(theme, locale):
             return [.theme: theme.rawProperties, .locale: locale.identifier].mapValues(AnyCodable.init(_:))
         case let .checkoutAPIClientInitialised(environment):
@@ -120,6 +132,8 @@ enum FramesLogEvent: Equatable, PropertyProviding {
             return [.success: success]
                 .updating(key: .tokenID, value: tokenID)
                 .mapValues(AnyCodable.init(_:))
+=======
+>>>>>>> release/4.0.0_RC
         case let .exception(message):
             return [.message: message]
                 .mapValues(AnyCodable.init(_:))

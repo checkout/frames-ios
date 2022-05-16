@@ -10,7 +10,7 @@ final class CorrelationIDManager: CorrelationIDManaging {
     
     private var correlationID: String?
     
-    // MARK: - CorrelationIDGenerating
+    // MARK: - CorrelationIDManaging
     
     func generateCorrelationID() -> String {
         guard let correlationIDValue = correlationID else {

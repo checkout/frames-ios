@@ -12,7 +12,7 @@ final class ResourcesTests: XCTestCase {
     
     func test_findExpectedResources() {
 
-        let framesTopLevelBundle = Bundle(for: CheckoutAPIClient.self)
+        let framesTopLevelBundle = Bundle(for: CardUtils.self)
 
         #if SWIFT_PACKAGE
         let framesResourceBundlePath = "Frames_Frames"

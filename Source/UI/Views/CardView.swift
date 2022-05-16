@@ -26,7 +26,7 @@ public class CardView: UIView {
     public let expirationDateInputView = ExpirationDateInputView()
 
     /// Cvv input view
-    public let cvvInputView = CvvInputView()
+    public let cvvInputView: CvvInputView
 
     /// Billing details input view
     public let billingDetailsInputView = DetailsInputView()
@@ -44,6 +44,7 @@ public class CardView: UIView {
         cardHolderNameState = .required
         billingDetailsState = .required
         cardNumberInputView = CardNumberInputView(cardValidator: nil)
+        cvvInputView = CvvInputView(cardValidator: nil)
         super.init(frame: frame)
         setup()
     }
@@ -53,6 +54,7 @@ public class CardView: UIView {
         cardHolderNameState = .required
         billingDetailsState = .required
         cardNumberInputView = CardNumberInputView(cardValidator: nil)
+        cvvInputView = CvvInputView(cardValidator: nil)
         super.init(coder: aDecoder)
         setup()
     }
@@ -62,6 +64,7 @@ public class CardView: UIView {
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
         self.cardNumberInputView = CardNumberInputView(cardValidator: cardValidator)
+        cvvInputView = CvvInputView(cardValidator: cardValidator)
         super.init(frame: .zero)
         setup()
     }

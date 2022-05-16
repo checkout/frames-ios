@@ -19,10 +19,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     private static let successURL = URL(string: "https://httpstat.us/200")!
     private static let failureURL = URL(string: "https://httpstat.us/403")!
     
-    // Step1 : create instance of CheckoutAPIClient
-    let checkoutAPIClient = CheckoutAPIClient(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
-                                              environment: .sandbox)
-
+    // Step1 : create instance of CheckoutAPIService
     let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
                                                        environment: .sandbox)
 
@@ -99,26 +96,22 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         cardViewController.addressViewController.setCountrySelected(country: "GB", regionCode: "GB")
     }
 
-    func onTapDone(controller: CardViewController, cardToken: TokenDetails?, status: CheckoutTokenStatus) {
+    func onTapDone(controller: CardViewController, result: Result<TokenDetails, TokenisationError.TokenRequest>) {
 
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
 
-        switch status {
-        case .success:
+        switch result {
+        case .success(let cardToken):
 
             // **** For testing only. ****
-            print("addressLine1 : \(cardToken?.billingAddress?.addressLine1 ?? "")")
-            print("addressLine2 : \(cardToken?.billingAddress?.addressLine2 ?? "")")
-            print("countryCode \(cardToken?.phone?.countryCode ?? "")")
-            print("phone number \(cardToken?.phone?.number ?? "")")
+            print("addressLine1 : \(cardToken.billingAddress?.addressLine1 ?? "")")
+            print("addressLine2 : \(cardToken.billingAddress?.addressLine2 ?? "")")
+            print("countryCode \(cardToken.phone?.countryCode ?? "")")
+            print("phone number \(cardToken.phone?.number ?? "")")
             // **** For testing only. ****
 
-            guard let cardToken = cardToken else {
-                self.showAlert(with: "Token object is nil")
-                return
-            }
             self.showAlert(with: cardToken.token)
 
         case .failure:

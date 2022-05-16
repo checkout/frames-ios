@@ -1,23 +1,17 @@
 import Foundation
 
-protocol EnvironmentURLProviding {
-    
-    var classicURL: URL { get }
-    var unifiedPaymentsURL: URL { get }
-    
-}
-
 /// Checkout API Environment
 ///
 /// - live
 /// - sandbox
-public enum Environment: String, EnvironmentURLProviding {
+@frozen public enum Environment: String {
 
     /// live environment used for production using
     case live
 
     /// sandbox environment used for development
     case sandbox
+<<<<<<< HEAD
 
     var classicURL: URL {
         switch self {
@@ -36,4 +30,6 @@ public enum Environment: String, EnvironmentURLProviding {
             return URL(staticString: "https://api.sandbox.checkout.com/")
         }
     }
+=======
+>>>>>>> release/4.0.0_RC
 }

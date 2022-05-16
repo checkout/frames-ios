@@ -7,7 +7,7 @@ import Checkout
 
     // MARK: - Properties
 
-    var cardsUtils: CardUtils!
+    var cardUtils: CardUtils!
     var cardValidator: CardValidating?
     /// Text field delegate
     public weak var delegate: CardNumberInputViewDelegate?
@@ -35,7 +35,7 @@ import Checkout
 
     private func setup(cardValidator: CardValidating?) {
         #if !TARGET_INTERFACE_BUILDER
-        cardsUtils = CardUtils()
+        cardUtils = CardUtils()
         self.cardValidator = cardValidator
         #endif
         textField.keyboardType = .default
@@ -78,36 +78,20 @@ import Checkout
             targetCursorPosition = textField.offset(from: textField.beginningOfDocument, to: startPosition)
         }
 
-        //        guard let cardNumber = textField.text else {
-        //            return
-        //        }
-        //        switch cardValidator.validate(cardNumber: cardNumber) {
-        //        case .success(let scheme):
-        //            delegate?.onChangeCardNumber(cardScheme: scheme)
-        //        case .failure(_):
-        //            return
-        //        }
+        guard let cardUtils = cardUtils,
+              let rawText = textField.text else {
+            return
+        }
 
-        let cardNumber = cardsUtils!.standardize(cardNumber: textField.text!)
-        let cardType = cardsUtils.getTypeOf(cardNumber: cardNumber)
-        guard let cardTypeUnwrap = cardType else { return }
-        delegate?.onChangeCardNumber(cardType: cardType)
+        let cardNumber = cardUtils.removeNonDigits(from: rawText)
+        let scheme = (try? cardValidator?.validate(cardNumber: cardNumber).get()) ?? .unknown
+
+        delegate?.onChangeCardNumber(scheme: scheme)
 
         // Potential Task : add CardType and cardTypes to Checkout SDK and also format function.
-        let cardNumberFormatted = cardsUtils.format(cardNumber: cardNumber, cardType: cardTypeUnwrap)
+        let cardNumberFormatted = cardUtils.format(cardNumber: cardNumber, scheme: scheme)
         textField.text = cardNumberFormatted
 
-        if var targetPosition = textField.position(from: textField.beginningOfDocument, offset: targetCursorPosition) {
-            if targetCursorPosition != 0 {
-                let lastChar = cardNumberFormatted[cardNumberFormatted.index(cardNumberFormatted.startIndex,
-                                                                             offsetBy: targetCursorPosition - 1)]
-                if lastChar == " " && previousTextCount < cardNumberFormatted.count {
-                    targetPosition = textField
-                        .position(from: textField.beginningOfDocument, offset: targetCursorPosition + 1)!
-                }
-            }
-            textField.selectedTextRange = textField.textRange(from: targetPosition, to: targetPosition)
-        }
         previousTextCount = cardNumberFormatted.count
     }
 
