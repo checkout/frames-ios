@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol FormButtonStyle {
+public protocol CKOButtonStyle {
     var text: String { get }
     var font: UIFont { get }
     var isEnabled: Bool { get set}

@@ -44,7 +44,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
               var cellStyle = currentStyle.style
         else { return UITableViewCell() }
         
-        if cellStyle.isOptinal {
+        if cellStyle.isOptional {
             textValueOfCellType[currentStyle.hash, default: ""] += ""
             errorFlagOfCellType[currentStyle.hash] = false
         }
@@ -53,18 +53,18 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         updateErrorView(with: &cellStyle, hashValue: hash)
         updateTextField(with: &cellStyle, hashValue: hash)
         
-        let cell = BillingFormTextFieldCell()
+        let cell = CKOTextFieldCell()
         cell.delegate = delegate
         cell.update(cellStyle: currentStyle, style: cellStyle, tag: row)
         return cell
     }
     
-    private func updateErrorView(with style: inout BillingFormTextFieldCellStyle, hashValue: Int) {
+    private func updateErrorView(with style: inout CKOTextFieldCellStyle, hashValue: Int) {
         guard let hasError = errorFlagOfCellType[hashValue] else { return }
         style.error.isHidden = !hasError
     }
     
-    private func updateTextField(with style: inout BillingFormTextFieldCellStyle, hashValue: Int) {
+    private func updateTextField(with style: inout CKOTextFieldCellStyle, hashValue: Int) {
         guard let text = textValueOfCellType[hashValue] else { return }
         style.textfield.text = text
     }
@@ -87,7 +87,7 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
     func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String) {
         validate(text: textField.text , cellStyle: textField.type, row: textField.tag)
         
-        if !(textField.text?.isEmpty ?? true) || textField.type.style?.isOptinal ?? false {
+        if !(textField.text?.isEmpty ?? true) || textField.type.style?.isOptional ?? false {
             textValueOfCellType[textField.type.hash] = textField.text
         } else {
             textValueOfCellType[textField.type.hash] = nil
@@ -102,7 +102,7 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
         
         if !(string.isEmpty)  {
             textValueOfCellType[textField.type.hash] = string
-        } else if textField.text?.count ?? 1 == 1, !(textField.type.style?.isOptinal ?? false)  {
+        } else if textField.text?.count ?? 1 == 1, !(textField.type.style?.isOptional ?? false)  {
             textValueOfCellType[textField.type.hash] = nil
         }
         
@@ -147,7 +147,10 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
     }
     
     internal func validate(text: String?, cellStyle: BillingFormCell, row: Int)  {
-        guard let style = cellStyle.style, !style.isOptinal else {
+        guard cellStyle.hash <= errorFlagOfCellType.count,
+              cellStyle.hash >= 0,
+                let style = cellStyle.style,
+                !style.isOptional else {
             errorFlagOfCellType[cellStyle.hash] = false
             return
         }

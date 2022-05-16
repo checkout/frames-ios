@@ -9,17 +9,17 @@ protocol BillingFormTextFieldCellDelegate: AnyObject {
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
 
-final class BillingFormTextFieldCell: UITableViewCell {
+final class CKOTextFieldCell: UITableViewCell {
     weak var delegate: BillingFormTextFieldCellDelegate?
     var cellStyle: BillingFormCell? = nil
-    var style: BillingFormTextFieldCellStyle? = nil
+    var style: CKOTextFieldCellStyle? = nil
 
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    func update(cellStyle:BillingFormCell, style: BillingFormTextFieldCellStyle, tag: Int) {
+    func update(cellStyle:BillingFormCell, style: CKOTextFieldCellStyle, tag: Int) {
         self.cellStyle = cellStyle
         self.style = style
         self.tag = tag
@@ -34,14 +34,14 @@ final class BillingFormTextFieldCell: UITableViewCell {
     
     private lazy var paymentInputView: UIView = {
         guard let cellStyle = cellStyle, let style = style else { return UIView() }
-        let view = BillingFormTextFieldView(type: cellStyle, tag: tag, style: style ,delegate: self)
+        let view = CKOTextFieldView(type: cellStyle, tag: tag, style: style ,delegate: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
 }
 
-extension BillingFormTextFieldCell {
+extension CKOTextFieldCell {
     
     private func setupViewsInOrder() {
         contentView.addSubview(paymentInputView)
@@ -59,7 +59,7 @@ extension BillingFormTextFieldCell {
     }
 }
 
-extension BillingFormTextFieldCell: BillingFormTextFieldViewDelegate {
+extension CKOTextFieldCell: BillingFormTextFieldViewDelegate {
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
     }

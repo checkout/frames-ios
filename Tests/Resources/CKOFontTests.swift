@@ -1,18 +1,10 @@
-//
-//  File.swift
-//  
-//
-//  Created by Ehab Alsharkawy on 11/05/2022.
-//
-
-
 import XCTest
 @testable import Frames
 
 final class CKOFontTests: XCTestCase {
     
     func testGraphikStyleRegular() {
-        UIFont.loadAllFonts
+        UIFont.loadAllCheckoutFonts
 
         let fontName = "GraphikLCG-Regular"
         let expectedFontName = UIFont.GraphikStyle.regular.fontName
@@ -24,7 +16,7 @@ final class CKOFontTests: XCTestCase {
     }
     
     func testGraphikStyleThin() {
-        UIFont.loadAllFonts
+        UIFont.loadAllCheckoutFonts
 
         let fontName = "GraphikLCG-Thin"
         let expectedFontName = UIFont.GraphikStyle.thin.fontName
@@ -36,7 +28,7 @@ final class CKOFontTests: XCTestCase {
     }
     
     func testGraphikStyleLight() {
-        UIFont.loadAllFonts
+        UIFont.loadAllCheckoutFonts
 
         let fontName = "GraphikLCG-Light"
         let expectedFontName = UIFont.GraphikStyle.light.fontName
@@ -48,7 +40,7 @@ final class CKOFontTests: XCTestCase {
     }
     
     func testGraphikStyleMedium() {
-        UIFont.loadAllFonts
+        UIFont.loadAllCheckoutFonts
 
         let fontName = "GraphikLCG-Medium"
         let expectedFontName = UIFont.GraphikStyle.medium.fontName
@@ -60,7 +52,7 @@ final class CKOFontTests: XCTestCase {
     }
     
     func testGraphikStyleSemibold() {
-        UIFont.loadAllFonts
+        UIFont.loadAllCheckoutFonts
 
         let fontName = "GraphikLCG-Semibold"
         let expectedFontName = UIFont.GraphikStyle.semibold.fontName
@@ -72,7 +64,7 @@ final class CKOFontTests: XCTestCase {
     }
     
     func testGraphikStyleBold() {
-        UIFont.loadAllFonts
+        UIFont.loadAllCheckoutFonts
 
         let fontName = "GraphikLCG-Bold"
         let expectedFontName = UIFont.GraphikStyle.bold.fontName
@@ -84,7 +76,7 @@ final class CKOFontTests: XCTestCase {
     }
     
     func testGraphikStyleBlack() {
-        UIFont.loadAllFonts
+        UIFont.loadAllCheckoutFonts
 
         let fontName = "GraphikLCG-Black"
         let expectedFontName = UIFont.GraphikStyle.black.fontName

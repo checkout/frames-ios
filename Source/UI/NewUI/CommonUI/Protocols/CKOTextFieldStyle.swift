@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol TextFieldStyle {
+public protocol CKOTextFieldStyle {
     var text: String { get set }
     var placeHolder: String { get }
     var isPlaceHolderHidden: Bool { get }

@@ -1,6 +1,6 @@
 import UIKit
 
-struct DefaultTitleLabelStyle: InputLabelStyle {
+struct DefaultTitleLabelStyle: CKOLabelStyle {
     var isHidden: Bool
     var text: String
     var font: UIFont

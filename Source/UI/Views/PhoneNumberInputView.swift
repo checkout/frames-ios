@@ -57,7 +57,7 @@ import PhoneNumberKit
         textField.autocorrectionType = .no
     }
 
-    /// Called when the text changed.
+    /// Called when the Billing form Phone number text field is changed.
     @objc public func textFieldDidChange(textField: UITextField) {
         var targetCursorPosition = 0
         if let startPosition = textField.selectedTextRange?.start {

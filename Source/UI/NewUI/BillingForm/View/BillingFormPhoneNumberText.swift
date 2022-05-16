@@ -44,11 +44,12 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
         addTarget(self, action: #selector(textFieldDidChange), for: UIControl.Event.editingChanged)
     }
 
-    /// Called when the text changed.
+    /// Called when the Billing form Phone number text field is changed.
     @objc private func textFieldDidChange(textField: UITextField) {
         updateTextFieldFormat(textField: textField)
     }
     
+    // TODO: Copied from old code. Needs to be refactored
     private func updateTextFieldFormat(textField: UITextField) {
         var targetCursorPosition = 0
         if let startPosition = textField.selectedTextRange?.start {

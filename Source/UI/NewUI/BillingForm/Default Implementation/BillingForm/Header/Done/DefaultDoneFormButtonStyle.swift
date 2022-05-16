@@ -1,6 +1,6 @@
 import UIKit
 
-struct DefaultDoneFormButtonStyle: FormButtonStyle {
+struct DefaultDoneFormButtonStyle: CKOButtonStyle {
     var isEnabled: Bool
     var text: String
     var font: UIFont

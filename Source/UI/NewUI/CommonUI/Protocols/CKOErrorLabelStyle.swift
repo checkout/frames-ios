@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol ErrorInputLabelStyle {
+public protocol CKOErrorLabelStyle {
     var isHidden: Bool { get set }
     var text: String { get }
     var font: UIFont { get }

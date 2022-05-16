@@ -38,7 +38,7 @@ final class BillingFormViewController: UIViewController {
         view.showsHorizontalScrollIndicator = false
         view.allowsSelection = false
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.register(BillingFormTextFieldCell.self, forCellReuseIdentifier: "BillingFormTextFieldCellId")
+        view.register(CKOTextFieldCell.self, forCellReuseIdentifier: "BillingFormTextFieldCellId")
         return view
     }()
     

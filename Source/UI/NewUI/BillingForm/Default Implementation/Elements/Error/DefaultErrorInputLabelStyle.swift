@@ -1,6 +1,6 @@
 import UIKit
 
-struct DefaultErrorInputLabelStyle: ErrorInputLabelStyle {
+struct DefaultErrorInputLabelStyle: CKOErrorLabelStyle {
     var isHidden: Bool
     var backgroundColor: UIColor
     var tintColor: UIColor

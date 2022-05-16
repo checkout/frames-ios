@@ -2,11 +2,11 @@ import XCTest
 @testable import Frames
 
 class BillingFormTextFieldCellTests: XCTestCase {
-    var cell: BillingFormTextFieldCell!
+    var cell: CKOTextFieldCell!
     
     override func setUp() {
         super.setUp()
-        cell = BillingFormTextFieldCell()
+        cell = CKOTextFieldCell()
     }
     
     func testCallDelegateMethodTextFieldShouldBeginEditing() {

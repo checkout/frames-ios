@@ -1,7 +1,7 @@
 import XCTest
 @testable import Frames
 
-struct ErrorInputLabelStyleImp: ErrorInputLabelStyle {
+struct ErrorInputLabelStyleImp: CKOErrorLabelStyle {
     var isHidden: Bool
     var text: String { "Error" }
     var font: UIFont { UIFont.systemFont(ofSize: 17) }
@@ -13,13 +13,13 @@ struct ErrorInputLabelStyleImp: ErrorInputLabelStyle {
 }
 
 class BillingFormTextFieldErrorViewTests: XCTestCase {
-    var errorView: BillingFormTextFieldErrorView!
+    var errorView: CKOTextFieldErrorView!
     let style = ErrorInputLabelStyleImp(isHidden: false)
 
     override func setUp() {
         super.setUp()
-        UIFont.loadAllFonts
-        errorView = BillingFormTextFieldErrorView(style: style)
+        UIFont.loadAllCheckoutFonts
+        errorView = CKOTextFieldErrorView(style: style)
     }
     
     func testStyleIsHidden(){

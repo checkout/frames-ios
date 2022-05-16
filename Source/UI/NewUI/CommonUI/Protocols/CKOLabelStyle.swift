@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol InputLabelStyle {
+public protocol CKOLabelStyle {
     var isHidden: Bool { get }
     var text: String { get }
     var font: UIFont { get }

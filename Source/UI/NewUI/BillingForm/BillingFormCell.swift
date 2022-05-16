@@ -1,14 +1,14 @@
 import Foundation
 
 @frozen public enum BillingFormCell {
-    case fullName(BillingFormTextFieldCellStyle?)
-    case addressLine1(BillingFormTextFieldCellStyle?)
-    case addressLine2(BillingFormTextFieldCellStyle?)
-    case city(BillingFormTextFieldCellStyle?)
-    case state(BillingFormTextFieldCellStyle?)
-    case postcode(BillingFormTextFieldCellStyle?)
-    case country(BillingFormTextFieldCellStyle?)
-    case phoneNumber(BillingFormTextFieldCellStyle?)
+    case fullName(CKOTextFieldCellStyle?)
+    case addressLine1(CKOTextFieldCellStyle?)
+    case addressLine2(CKOTextFieldCellStyle?)
+    case city(CKOTextFieldCellStyle?)
+    case state(CKOTextFieldCellStyle?)
+    case postcode(CKOTextFieldCellStyle?)
+    case country(CKOTextFieldCellStyle?)
+    case phoneNumber(CKOTextFieldCellStyle?)
     
     internal var validator: Validator {
         switch self {
@@ -23,7 +23,7 @@ import Foundation
         }
     }
     
-    internal var style: BillingFormTextFieldCellStyle? {
+    internal var style: CKOTextFieldCellStyle? {
         switch self {
         case .fullName(let style): return style
         case .addressLine1(let style): return style

@@ -1,11 +1,3 @@
-//
-//  File.swift
-//
-//
-//  Created by Ehab Alsharkawy on 11/05/2022.
-//
-
-
 import XCTest
 @testable import Frames
 

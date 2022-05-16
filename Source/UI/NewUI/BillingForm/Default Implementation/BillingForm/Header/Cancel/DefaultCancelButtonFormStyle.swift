@@ -1,6 +1,6 @@
 import UIKit
 
-struct DefaultCancelButtonFormStyle: FormButtonStyle {
+struct DefaultCancelButtonFormStyle: CKOButtonStyle {
     var isEnabled: Bool
     var text: String
     var font: UIFont

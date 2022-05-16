@@ -1,6 +1,6 @@
 import UIKit
 
-struct DefaultHintInputLabelStyle: InputLabelStyle {
+struct DefaultHintInputLabelStyle: CKOLabelStyle {
     var isHidden: Bool
     var text: String
     var font: UIFont

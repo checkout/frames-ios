@@ -3,7 +3,7 @@ import UIKit
 extension UIFont {
     
     // load framework font in application
-    public static let loadAllFonts: () = {
+    public static let loadAllCheckoutFonts: () = {
         for style in GraphikStyle.allCases {
             style.fontName.register(for: CheckoutTheme.self, withExtension: "otf")
         }

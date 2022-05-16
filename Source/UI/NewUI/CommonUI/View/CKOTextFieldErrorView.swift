@@ -1,7 +1,7 @@
 import UIKit
 
-final class BillingFormTextFieldErrorView: UIView {
-    private var style: ErrorInputLabelStyle = DefaultErrorInputLabelStyle()
+final class CKOTextFieldErrorView: UIView {
+    private var style: CKOErrorLabelStyle = DefaultErrorInputLabelStyle()
     
     lazy var headerLabel: UILabel = {
         let view = UILabel()
@@ -17,7 +17,7 @@ final class BillingFormTextFieldErrorView: UIView {
     
     lazy var image: UIImageView = {
         let view = UIImageView()
-        view.image = "warning".vectorPDFImage(forClass: BillingFormTextFieldErrorView.self)
+        view.image = "warning".vectorPDFImage(forClass: CKOTextFieldErrorView.self)
         view.tintColor = style.tintColor
         view.contentMode = .scaleAspectFit
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -25,7 +25,7 @@ final class BillingFormTextFieldErrorView: UIView {
         return view
     }()
     
-    init(style: ErrorInputLabelStyle) {
+    init(style: CKOErrorLabelStyle) {
         super.init(frame: .zero)
         self.style = style
         setupViewsInOrder()
@@ -36,7 +36,7 @@ final class BillingFormTextFieldErrorView: UIView {
     }
 }
 
-extension BillingFormTextFieldErrorView {
+extension CKOTextFieldErrorView {
 
     private func setupViewsInOrder(){
         backgroundColor = style.backgroundColor

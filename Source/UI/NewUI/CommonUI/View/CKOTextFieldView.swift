@@ -8,10 +8,10 @@ protocol BillingFormTextFieldViewDelegate: AnyObject {
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
 
-class BillingFormTextFieldView: UIView {
+class CKOTextFieldView: UIView {
    
     
-    private var style: BillingFormTextFieldCellStyle
+    private var style: CKOTextFieldCellStyle
     private var type: BillingFormCell
     private weak var delegate: BillingFormTextFieldViewDelegate?
     
@@ -51,7 +51,12 @@ class BillingFormTextFieldView: UIView {
     }()
     
     private(set) lazy var textField: UITextField = {
-        let view = self.type.hash == BillingFormCell.phoneNumber(nil).hash ? BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self) : BillingFormTextField(type: self.type, tag: tag)
+        var view = BillingFormTextField(type: self.type, tag: tag)
+        
+        if self.type.hash == BillingFormCell.phoneNumber(nil).hash {
+            view = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self)
+        }
+        
         view.text = style.textfield.text
         view.font = style.textfield.font
         view.placeholder = style.textfield.placeHolder
@@ -63,13 +68,13 @@ class BillingFormTextFieldView: UIView {
         return view
     }()
     
-    private(set) lazy var errorView: BillingFormTextFieldErrorView = {
-        let view = BillingFormTextFieldErrorView(style: style.error)
+    private(set) lazy var errorView: CKOTextFieldErrorView = {
+        let view = CKOTextFieldErrorView(style: style.error)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    init(type: BillingFormCell, tag: Int, style: BillingFormTextFieldCellStyle, delegate: BillingFormTextFieldViewDelegate? = nil) {
+    init(type: BillingFormCell, tag: Int, style: CKOTextFieldCellStyle, delegate: BillingFormTextFieldViewDelegate? = nil) {
         self.style = style
         self.type = type
         super.init(frame: .zero)
@@ -84,7 +89,7 @@ class BillingFormTextFieldView: UIView {
     
 }
 
-extension BillingFormTextFieldView {
+extension CKOTextFieldView {
 
     private func setupViewsInOrder(){
         backgroundColor = style.backgroundColor
@@ -146,7 +151,7 @@ extension BillingFormTextFieldView {
     }
 }
 
-extension BillingFormTextFieldView: UITextFieldDelegate {
+extension CKOTextFieldView: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
@@ -171,7 +176,7 @@ extension BillingFormTextFieldView: UITextFieldDelegate {
     
 }
 
-extension BillingFormTextFieldView: BillingFormPhoneNumberTextDelegate {
+extension CKOTextFieldView: BillingFormPhoneNumberTextDelegate {
     func updateCountryCode(code: Int) {
         delegate?.updateCountryCode(code: code)
     }

@@ -3,13 +3,13 @@ import UIKit
 struct DefaultBillingFormHeaderCellStyle: BillingFormHeaderCellStyle {
     
     var backgroundColor: UIColor
-    var headerLabel: InputLabelStyle
-    var cancelButton: FormButtonStyle
-    var doneButton: FormButtonStyle
+    var headerLabel: CKOLabelStyle
+    var cancelButton: CKOButtonStyle
+    var doneButton: CKOButtonStyle
     init(backgroundColor: UIColor = .white,
-        headerLabel: InputLabelStyle = DefaultHeaderLabelFormStyle(),
-         cancelButton: FormButtonStyle = DefaultCancelButtonFormStyle(),
-         doneButton: FormButtonStyle = DefaultDoneFormButtonStyle()) {
+        headerLabel: CKOLabelStyle = DefaultHeaderLabelFormStyle(),
+         cancelButton: CKOButtonStyle = DefaultCancelButtonFormStyle(),
+         doneButton: CKOButtonStyle = DefaultDoneFormButtonStyle()) {
         self.backgroundColor = backgroundColor
         self.headerLabel = headerLabel
         self.doneButton = doneButton

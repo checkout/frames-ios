@@ -14,7 +14,7 @@ struct BillingFormFactory {
     ]
     
     static func getBillingFormViewController(delegate: BillingFormViewModelDelegate) -> (BillingFormViewModelDelegate?, UIViewController?) {
-        UIFont.loadAllFonts
+        UIFont.loadAllCheckoutFonts
         let style = DefaultBillingFormStyle()
         guard !style.cells.isEmpty else { return (nil, nil) }
         

@@ -1,26 +1,26 @@
 import UIKit
 
-struct DefaultBillingFormPhoneNumberCellStyle : BillingFormTextFieldCellStyle {
+struct DefaultBillingFormPhoneNumberCellStyle : CKOTextFieldCellStyle {
    
-    var isOptinal: Bool
+    var isOptional: Bool
     var backgroundColor: UIColor
-    var title: InputLabelStyle?
-    var hint: InputLabelStyle?
-    var textfield: TextFieldStyle
-    var error: ErrorInputLabelStyle
+    var title: CKOLabelStyle?
+    var hint: CKOLabelStyle?
+    var textfield: CKOTextFieldStyle
+    var error: CKOErrorLabelStyle
     
-    init(isOptinal: Bool = false,
+    init(isOptional: Bool = false,
          backgroundColor: UIColor = .white,
-         header: InputLabelStyle = DefaultTitleLabelStyle(text: "phone".localized(forClass: CheckoutTheme.self)),
-         hint: InputLabelStyle? = DefaultHintInputLabelStyle(isHidden: false,text: "billingFormPhoneNumberHint".localized(forClass: CheckoutTheme.self)),
-         textfield: TextFieldStyle = DefaultTextField(isSupprtingNumbericKeyboard: true),
-         error: ErrorInputLabelStyle = DefaultErrorInputLabelStyle(text: "missingBillingFormCity".localized(forClass: CheckoutTheme.self))) {
+         header: CKOLabelStyle = DefaultTitleLabelStyle(text: "phone".localized(forClass: CheckoutTheme.self)),
+         hint: CKOLabelStyle? = DefaultHintInputLabelStyle(isHidden: false,text: "billingFormPhoneNumberHint".localized(forClass: CheckoutTheme.self)),
+         textfield: CKOTextFieldStyle = DefaultTextField(isSupprtingNumbericKeyboard: true),
+         error: CKOErrorLabelStyle = DefaultErrorInputLabelStyle(text: "missingBillingFormCity".localized(forClass: CheckoutTheme.self))) {
         self.backgroundColor = backgroundColor
         self.title = header
         self.hint = hint
         self.textfield = textfield
         self.error = error
-        self.isOptinal = isOptinal
+        self.isOptional = isOptional
     }
     
 }

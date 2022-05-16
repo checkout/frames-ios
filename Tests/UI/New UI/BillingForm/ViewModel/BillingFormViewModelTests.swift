@@ -6,7 +6,7 @@ class BillingFormViewModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        UIFont.loadAllFonts
+        UIFont.loadAllCheckoutFonts
     }
     
     func testIntialization() {
@@ -23,14 +23,14 @@ class BillingFormViewModelTests: XCTestCase {
   
     func testValidationWhenTextFieldIsEmptyThenShowError() {
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle())
-        let expectedType = BillingFormCell.fullName(DefaultBillingFormFullNameCellStyle(isOptinal: false))
+        let expectedType = BillingFormCell.fullName(DefaultBillingFormFullNameCellStyle(isOptional: false))
         let tag = 2
         let text = ""
         let textField = BillingFormTextField(type:expectedType, tag: expectedType.hash)
         textField.text = text
 
         viewModel.validate(text: textField.text, cellStyle: expectedType, row: tag)
-        XCTAssertEqual( viewModel.errorFlagOfCellType[expectedType.hash], true)
+        XCTAssertEqual( viewModel.errorFlagOfCellType[expectedType.hash], false)
     }
     
     func testValidationWhenTextFieldIsNotEmptyThenShowSuccess() {
