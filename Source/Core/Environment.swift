@@ -1,4 +1,6 @@
 import Foundation
+import Checkout
+import CheckoutEventLoggerKit
 
 /// Checkout API Environment
 ///
@@ -11,4 +13,22 @@ import Foundation
 
     /// sandbox environment used for development
     case sandbox
+
+    var checkoutEnvironment: Checkout.Environment {
+        switch self {
+        case .live:
+            return .production
+        case .sandbox:
+            return .sandbox
+        }
+    }
+
+    var eventLoggerEnvironment: CheckoutEventLoggerKit.Environment {
+        switch self {
+        case .live:
+            return .production
+        case .sandbox:
+            return .sandbox
+        }
+    }
 }

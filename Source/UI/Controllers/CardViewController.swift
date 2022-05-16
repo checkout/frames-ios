@@ -56,7 +56,10 @@ public class CardViewController: UIViewController,
                             cardHolderNameState: InputState,
                             billingDetailsState: InputState,
                             defaultRegionCode: String? = nil) {
-      self.init(checkoutAPIService: checkoutAPIService as CheckoutAPIProtocol, cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, defaultRegionCode: defaultRegionCode)
+      self.init(checkoutAPIService: checkoutAPIService as CheckoutAPIProtocol,
+                cardHolderNameState: cardHolderNameState,
+                billingDetailsState: billingDetailsState,
+                defaultRegionCode: defaultRegionCode)
     }
 
     init(checkoutAPIService: CheckoutAPIProtocol,
@@ -66,7 +69,9 @@ public class CardViewController: UIViewController,
         self.checkoutAPIService = checkoutAPIService
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
-        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: checkoutAPIService.cardValidator)
+        cardView = CardView(cardHolderNameState: cardHolderNameState,
+                            billingDetailsState: billingDetailsState,
+                            cardValidator: checkoutAPIService.cardValidator)
         addressViewController = AddressViewController(initialCountry: "you", initialRegionCode: defaultRegionCode)
         super.init(nibName: nil, bundle: nil)
     }
@@ -126,13 +131,7 @@ public class CardViewController: UIViewController,
         if suppressNextLog {
             suppressNextLog = false
         } else {
-            guard let checkoutAPIService = checkoutAPIService else {
-                return
-            }
-// Potential Task : add correlationID and logger to checkoutAPIService or Frames
-//          checkoutAPIService.logger.add(metadata: checkoutAPIService.correlationID(),
-//                                          forKey: .correlationID)
-//          checkoutAPIService.logger.log(.paymentFormPresented)
+            checkoutAPIService?.logger.log(.paymentFormPresented)
         }
     }
 
@@ -180,15 +179,18 @@ public class CardViewController: UIViewController,
     }
 
     @objc func onTapAddressView() {
-        // add  let logger: FramesEventLogging to checkoutAPIService
-       //checkoutApiClient?.logger.log(.billingFormPresented)
+
+        defer {
+            suppressNextLog = true
+            checkoutAPIService?.logger.log(.billingFormPresented)
+        }
         guard isNewUI,
                 let viewController = BillingFormFactory.getBillingFormViewController(delegate: self).1 else {
             navigationController?.pushViewController(addressViewController, animated: true)
             return
         }
         navigationController?.present(viewController, animated: true)
-        suppressNextLog = true
+        
     }
 
     @objc func onTapDoneCardButton() {

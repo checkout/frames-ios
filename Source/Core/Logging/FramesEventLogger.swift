@@ -1,4 +1,3 @@
-import Foundation
 import CheckoutEventLoggerKit
 
 protocol FramesEventLogging {
@@ -14,16 +13,26 @@ protocol FramesEventLogging {
 
 final class FramesEventLogger: FramesEventLogging {
 
-    private let correlationID: String
+    private let getCorrelationID: () -> String
     private let checkoutEventLogger: CheckoutEventLogging
     private let dateProvider: DateProviding
     
     // MARK: - Init
+
+    convenience init(environment: Environment, getCorrelationID: @escaping () -> String) {
+        let checkoutEventLogger = CheckoutEventLogger(productName: Constants.productName)
+        let remoteProcessorMetadata = RemoteProcessorMetadata(environment: environment)
+
+        checkoutEventLogger.enableRemoteProcessor(environment: environment.eventLoggerEnvironment, remoteProcessorMetadata: remoteProcessorMetadata)
+        let dateProvider = DateProvider()
+
+        self.init(getCorrelationID: getCorrelationID, checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
+    }
     
-    init(correlationID: String,
+    init(getCorrelationID: @escaping () -> String,
          checkoutEventLogger: CheckoutEventLogging,
          dateProvider: DateProviding) {
-      self.correlationID = correlationID
+      self.getCorrelationID = getCorrelationID
       self.checkoutEventLogger = checkoutEventLogger
       self.dateProvider = dateProvider
     }
@@ -31,7 +40,10 @@ final class FramesEventLogger: FramesEventLogging {
     // MARK: - FramesEventLogging
     
     func log(_ framesLogEvent: FramesLogEvent) {
-        
+
+        // by setting correlationID for every log, we always keep in sync with Checkout SDK.
+        add(metadata: getCorrelationID(), forKey: .correlationID)
+
         let event = Event(
             typeIdentifier: framesLogEvent.typeIdentifier,
             time: dateProvider.currentDate,
@@ -45,5 +57,4 @@ final class FramesEventLogger: FramesEventLogging {
         
         checkoutEventLogger.add(metadata: key.rawValue, value: metadata)
     }
-    
 }

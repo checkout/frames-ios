@@ -9,14 +9,12 @@ class CardViewControllerTests: XCTestCase {
     // swiftlint:disable:next weak_delegate
     var cardViewControllerDelegate: CardViewControllerMockDelegate!
     var stubCheckoutAPIService: StubCheckoutAPIService!
-    var stubLogger: StubFramesEventLogger!
 
     override func setUp() {
         super.setUp()
 
         cardViewController = CardViewController()
         cardViewControllerDelegate = CardViewControllerMockDelegate()
-        stubLogger = StubFramesEventLogger()
         stubCheckoutAPIService = StubCheckoutAPIService()
         let navigation = UINavigationController()
         navigation.viewControllers = [cardViewController]
@@ -25,7 +23,6 @@ class CardViewControllerTests: XCTestCase {
     override func tearDown() {
         cardViewController = nil
         cardViewControllerDelegate = nil
-        stubLogger = nil
         stubCheckoutAPIService = nil
         
         super.tearDown()
@@ -345,52 +342,53 @@ class CardViewControllerTests: XCTestCase {
         XCTAssertEqual(stubCardViewControllerDelegate.onTapDoneCalledWith?.result, .failure(.networkError(.connectionLost)))
     }
 
-    // TODO: fix logging
+    func test_viewDidLoad_paymentFormPresentedLogCalled() {
 
-//    func test_viewDidLoad_paymentFormPresentedLogCalled() {
-//        
-//        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
-//                                                    cardHolderNameState: .normal,
-//                                                    billingDetailsState: .normal)
-//
-//        cardViewController.viewWillAppear(true)
-//        
-//        let events = stubLogger.logCalledWithFramesLogEvents
-//        XCTAssertEqual(1, events.count)
-//
-//        XCTAssertEqual(.paymentFormPresented, events.first)
-//    }
-//
-//    func test_viewDidLoad_paymentFormPresentedLogNotCalledAfterAddressView() {
-//
-//        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
-//                                                    cardHolderNameState: .normal,
-//                                                    billingDetailsState: .normal)
-//
-//        cardViewController.viewWillAppear(true)
-//
-//        cardViewController.onTapAddressView()
-//        cardViewController.viewWillAppear(true)
-//
-//        cardViewController.viewWillAppear(true)
-//
-//        let events = stubLogger.logCalledWithFramesLogEvents
-//        XCTAssertEqual(3, events.count)
-//
-//        XCTAssertEqual(.paymentFormPresented, events.first)
-//    }
-//
-//    func test_onTapAddressView_billingFormPresentedLogCalled() {
-//
-//        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
-//                                                    cardHolderNameState: .normal,
-//                                                    billingDetailsState: .normal)
-//
-//        cardViewController.onTapAddressView()
-//
-//        let events = stubLogger.logCalledWithFramesLogEvents
-//        XCTAssertEqual(1, events.count)
-//
-//        XCTAssertEqual(.billingFormPresented, events.first)
-//    }
+        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
+                                                    cardHolderNameState: .normal,
+                                                    billingDetailsState: .normal)
+
+        cardViewController.viewWillAppear(true)
+
+        let events = stubCheckoutAPIService.loggerToReturn.logCalledWithFramesLogEvents
+        XCTAssertEqual(1, events.count)
+
+        XCTAssertEqual(.paymentFormPresented, events.first)
+        XCTAssertTrue(stubCheckoutAPIService.loggerCalled)
+    }
+
+    func test_viewDidLoad_paymentFormPresentedLogNotCalledAfterAddressView() {
+
+        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
+                                                    cardHolderNameState: .normal,
+                                                    billingDetailsState: .normal)
+
+        cardViewController.viewWillAppear(true)
+
+        cardViewController.onTapAddressView()
+        cardViewController.viewWillAppear(true)
+
+        cardViewController.viewWillAppear(true)
+
+        let events = stubCheckoutAPIService.loggerToReturn.logCalledWithFramesLogEvents
+        XCTAssertEqual(3, events.count)
+
+        XCTAssertEqual(.paymentFormPresented, events.first)
+        XCTAssertTrue(stubCheckoutAPIService.loggerCalled)
+    }
+
+    func test_onTapAddressView_billingFormPresentedLogCalled() {
+
+        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
+                                                    cardHolderNameState: .normal,
+                                                    billingDetailsState: .normal)
+
+        cardViewController.onTapAddressView()
+
+        let events = stubCheckoutAPIService.loggerToReturn.logCalledWithFramesLogEvents
+        XCTAssertEqual(1, events.count)
+
+        XCTAssertEqual(.billingFormPresented, events.first)
+        XCTAssertTrue(stubCheckoutAPIService.loggerCalled)
+    }
 }
