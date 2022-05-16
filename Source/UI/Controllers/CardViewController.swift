@@ -45,7 +45,9 @@ public class CardViewController: UIViewController,
     var topConstraint: NSLayoutConstraint?
 
     private var suppressNextLog = false
-
+    public var isNewUI = false
+    // TODO: [Will updated in the next ticket].
+    private var countryCode = 0
     // MARK: - Initialization
 
     /// Returns a newly initialized view controller with the cardholder's name and billing details
@@ -178,9 +180,14 @@ public class CardViewController: UIViewController,
     }
 
     @objc func onTapAddressView() {
-        navigationController?.pushViewController(addressViewController, animated: true)
         // add  let logger: FramesEventLogging to checkoutAPIService
-        //checkoutApiClient?.logger.log(.billingFormPresented)
+       //checkoutApiClient?.logger.log(.billingFormPresented)
+        guard isNewUI,
+                let viewController = BillingFormFactory.getBillingFormViewController(delegate: self).1 else {
+            navigationController?.pushViewController(addressViewController, animated: true)
+            return
+        }
+        navigationController?.present(viewController, animated: true)
         suppressNextLog = true
     }
 
@@ -415,5 +422,20 @@ public class CardViewController: UIViewController,
     public func onChangeCvv() {
         validateFieldsValues()
     }
+}
 
+extension CardViewController: BillingFormViewModelDelegate {
+    func updateCountryCode(code: Int) {
+        countryCode = code
+    }
+    
+    func onTapDoneButton(address: Address, phone: Phone) {
+        billingDetailsAddress = address
+        billingDetailsPhone = phone
+        let value = "\(address.addressLine1 ?? ""), \(address.city ?? "")"
+        cardView.billingDetailsInputView.value.text = value
+        validateFieldsValues()
+        // return to CardViewController
+        self.topConstraint?.isActive = false
+    }
 }
