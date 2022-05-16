@@ -33,7 +33,7 @@ class iOS_Example_FrameUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
         let app = XCUIApplication()
-        app.buttons["OLD"].tap()
+        app.buttons["Go to payment page"].tap()
         let elementsQuery = app.scrollViews.otherElements
         elementsQuery.textFields["4242"].tap()
         elementsQuery.textFields["4242"].typeText("424242424242424242")
