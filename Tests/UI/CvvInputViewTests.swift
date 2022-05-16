@@ -3,14 +3,21 @@ import XCTest
 
 class CvvInputViewTests: XCTestCase {
 
-    var cvvInputView = CvvInputView()
+    var cvvInputView: CvvInputView!
+    var stubCardValidator: StubCardValidator! = StubCardValidator()
 
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        cvvInputView = CvvInputView()
+        cvvInputView = CvvInputView(cardValidator: stubCardValidator)
         let window = UIWindow()
         window.addSubview(cvvInputView)
+    }
+
+    override func tearDown() {
+        stubCardValidator = nil
+
+        super.tearDown()
     }
 
     func testEmptyInitialization() {
@@ -41,8 +48,8 @@ class CvvInputViewTests: XCTestCase {
     }
 
     func testDoNotChangeCvvIfExceedingCardTypeMaxLength() {
-        cvvInputView.textField.text = "100"
-        cvvInputView.cardType = CardUtils().getCardType(scheme: .visa)
+        cvvInputView.textField.text = "1000"
+        cvvInputView.scheme = .amex
         let shouldChange = cvvInputView.textField(cvvInputView.textField,
                                                   shouldChangeCharactersIn: NSRange(),
                                                   replacementString: "9")
@@ -51,7 +58,7 @@ class CvvInputViewTests: XCTestCase {
 
     func testDoChangeCvvIfNotExceedingCardTypeMaxLength() {
         cvvInputView.textField.text = "100"
-        cvvInputView.cardType = CardUtils().getCardType(scheme: .americanExpress)
+        cvvInputView.scheme = .amex
         let shouldChange = cvvInputView.textField(cvvInputView.textField,
                                                   shouldChangeCharactersIn: NSRange(),
                                                   replacementString: "0")

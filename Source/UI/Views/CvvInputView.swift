@@ -1,4 +1,5 @@
 import UIKit
+import Checkout
 
 /// Cvv Input View containing a label and an input field.
 /// Handles the formatting of the text field.
@@ -7,7 +8,8 @@ import UIKit
     // MARK: - Properties
 
     let maxLengthCvv = 4
-    var cardType: CardType?
+    var scheme = Card.Scheme.unknown
+    let cardValidator: CardValidating?
     /// Text field delegate
     public weak var delegate: UITextFieldDelegate?
     public weak var onChangeDelegate: CvvInputViewDelegate?
@@ -16,13 +18,21 @@ import UIKit
 
     /// Initializes and returns a newly allocated view object with the specified frame rectangle.
     public override init(frame: CGRect) {
+        self.cardValidator = nil
         super.init(frame: frame)
         setup()
     }
 
     /// Returns an object initialized from data in a given unarchiver.
     public required init?(coder aDecoder: NSCoder) {
+        self.cardValidator = nil
         super.init(coder: aDecoder)
+        setup()
+    }
+
+    init(cardValidator: CardValidating?) {
+        self.cardValidator = cardValidator
+        super.init(frame: .zero)
         setup()
     }
 
@@ -44,10 +54,23 @@ import UIKit
         guard cvv.count <= maxLengthCvv else {
             return false
         }
-        if let cardType = self.cardType {
-            if cvv.count > cardType.validCvvLengths.last! { return false }
+
+        guard let cardValidator = cardValidator else {
+            return true
         }
-        return true
+
+        switch cardValidator.validate(cvv: cvv, cardScheme: scheme) {
+        case .success:
+            return true
+        case .failure(let error):
+            switch error {
+            case .containsNonDigits:
+                return false
+            // TODO: we should add an error case for incomplete CVV
+            case .invalidLength:
+                return true
+            }
+        }
     }
 
     /// Tells the delegate that editing stopped for the specified text field.

@@ -7,8 +7,8 @@ public protocol CardViewControllerDelegate: AnyObject {
     /// Executed when an user tap on the done button.
     ///
     /// - parameter controller: `CardViewController`
-    /// - parameter card: Card entered by the user
-    func onTapDone(controller: CardViewController, cardToken: TokenDetails?, status: CheckoutTokenStatus)
+    /// - parameter result: result of tokenisation request
+    func onTapDone(controller: CardViewController, result: Result<TokenDetails, TokenisationError.TokenRequest>)
 
 
     /// Called just before a request to make a card token.

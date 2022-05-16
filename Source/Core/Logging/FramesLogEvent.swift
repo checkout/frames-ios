@@ -18,13 +18,6 @@ enum FramesLogEvent: Equatable {
 
     case paymentFormPresented
     case billingFormPresented
-    case tokenRequested(tokenType: TokenType, publicKey: String)
-    case tokenResponse(tokenType: TokenType,
-                       publicKey: String,
-                       tokenID: String?,
-                       scheme: String?,
-                       httpStatusCode: Int,
-                       errorResponse: ErrorResponse?)
     case exception(message: String)
 
     var typeIdentifier: String {
@@ -37,10 +30,6 @@ enum FramesLogEvent: Equatable {
             return "payment_form_presented"
         case .billingFormPresented:
             return "billing_form_presented"
-        case .tokenRequested:
-            return "token_requested"
-        case .tokenResponse:
-            return "token_response"
         case .exception:
             return "exception"
         }
@@ -49,9 +38,7 @@ enum FramesLogEvent: Equatable {
     var monitoringLevel: MonitoringLevel {
         switch self {
         case .paymentFormPresented,
-             .billingFormPresented,
-             .tokenRequested,
-             .tokenResponse:
+             .billingFormPresented:
             return .info
         case .exception:
             return .error
@@ -63,16 +50,6 @@ enum FramesLogEvent: Equatable {
         case .paymentFormPresented,
              .billingFormPresented:
             return [:]
-        case let .tokenRequested(tokenType, publicKey):
-            return [.tokenType: tokenType.rawValue, .publicKey: publicKey]
-                .mapValues { AnyCodable($0) }
-        case let .tokenResponse(tokenType, publicKey, tokenID, scheme, httpStatusCode, errorResponse):
-            let serverError = errorResponse?.properties.mapKeys(\.rawValue)
-            return [.tokenType: tokenType.rawValue, .publicKey: publicKey, .httpStatusCode: httpStatusCode]
-                .updating(key: .scheme, value: scheme)
-                .updating(key: .serverError, value: serverError)
-                .updating(key: .tokenID, value: tokenID)
-                .mapValues { AnyCodable($0) }
         case let .exception(message):
             return [.message: message]
                 .mapValues { AnyCodable($0) }

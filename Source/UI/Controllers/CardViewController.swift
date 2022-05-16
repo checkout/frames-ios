@@ -265,12 +265,7 @@ public class CardViewController: UIViewController,
                         phone: billingDetailsPhone)
 
         checkoutAPIService.createToken(.card(card)) { result in
-          switch result {
-          case .success(let tokenDetails):
-              self.delegate?.onTapDone(controller: self, cardToken: tokenDetails, status: .success)
-          case .failure(let error):
-            self.delegate?.onTapDone(controller: self, cardToken: nil, status: .failure)
-          }
+            self.delegate?.onTapDone(controller: self, result: result)
         }
     }
 
@@ -375,25 +370,32 @@ public class CardViewController: UIViewController,
     public func textFieldDidEndEditing(view: UIView) {
         validateFieldsValues()
 
-        if let superView = view as? CardNumberInputView {
-            let cardNumber = superView.textField.text!
-            let cardNumberStandardized = cardNumber.standardize()
-            let cardType = cardUtils.getTypeOf(cardNumber: cardNumberStandardized)
-            cardView.cvvInputView.cardType = cardType
+        guard
+            let superView = view as? CardNumberInputView,
+            let cardNumber = superView.textField.text
+        else {
+            return
         }
+
+        let cardNumberStandardized = cardUtils.removeNonDigits(from: cardNumber)
+        let scheme = (try? checkoutAPIService?.cardValidator.validate(cardNumber: cardNumberStandardized).get()) ?? .unknown
+        cardView.cvvInputView.scheme = scheme
     }
 
     // MARK: - CardNumberInputViewDelegate
 
     /// Called when the card number changed.
-    public func onChangeCardNumber(cardType: CardType?) {
+    public func onChangeCardNumber(scheme: Card.Scheme) {
         // reset if the card number is empty
-        if cardType == nil && lastSelected != nil {
+        if scheme == .unknown && lastSelected != nil {
             cardView.schemeIconsStackView.arrangedSubviews.forEach { $0.alpha = 1 }
             lastSelected = nil
         }
-        guard let type = cardType else { return }
-        let index = availableSchemes.firstIndex(of: type.scheme)
+        guard scheme != .unknown else {
+            return
+        }
+
+        let index = availableSchemes.firstIndex(of: scheme)
         guard let indexScheme = index else { return }
         let imageView = cardView.schemeIconsStackView.arrangedSubviews[indexScheme] as? UIImageView
 

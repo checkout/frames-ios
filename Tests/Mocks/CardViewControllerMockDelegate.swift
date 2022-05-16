@@ -6,11 +6,11 @@ class CardViewControllerMockDelegate: CardViewControllerDelegate {
     func onSubmit(controller: CardViewController) {}
 
     var calledTimes = 0
-    var lastCalledWith: TokenDetails?
+    var lastCalledWith: Result<TokenDetails, TokenisationError.TokenRequest>?
 
-    func onTapDone(controller: CardViewController, cardToken: TokenDetails?, status: CheckoutTokenStatus) {
+    func onTapDone(controller: CardViewController, result: Result<TokenDetails, TokenisationError.TokenRequest>) {
         calledTimes += 1
-        lastCalledWith = cardToken
+        lastCalledWith = result
     }
 
 }

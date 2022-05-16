@@ -13,7 +13,7 @@ class CardViewControllerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        
+
         cardViewController = CardViewController()
         cardViewControllerDelegate = CardViewControllerMockDelegate()
         stubLogger = StubFramesEventLogger()
@@ -286,16 +286,24 @@ class CardViewControllerTests: XCTestCase {
     }
 
     func testChangeCvvCardTypeOnCardNumberEndEditing() {
+        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
+                                                    cardHolderNameState: .hidden,
+                                                    billingDetailsState: .required)
+
+        let stubCardValidator = StubCardValidator()
+        stubCardValidator.validateCardNumberToReturn = .success(.visa)
+        stubCheckoutAPIService.cardValidatorToReturn = stubCardValidator
+
+
         cardViewController.cardView.cardNumberInputView.textField.text = "4242 4242 4242 4242"
         cardViewController.textFieldDidEndEditing(view: cardViewController.cardView.cardNumberInputView)
-        let visaType = CardUtils().getCardType(scheme: .visa)
-        XCTAssertEqual(cardViewController.cardView.cvvInputView.cardType, visaType)
+        XCTAssertEqual(cardViewController.cardView.cvvInputView.scheme, .visa)
     }
 
     func testSetImageHighlightedOnChangeCardType() {
         cardViewController.availableSchemes = [.visa, .mastercard, .discover, .diners]
         cardViewController.cardView.schemeIconsStackView.setIcons(schemes: cardViewController.availableSchemes)
-        cardViewController.onChangeCardNumber(cardType: CardUtils().getCardType(scheme: .visa))
+        cardViewController.onChangeCardNumber(scheme: .visa)
         let nFadedCard = cardViewController.cardView.schemeIconsStackView.arrangedSubviews
             .filter { $0.alpha == 0.5}.count
         XCTAssertEqual(nFadedCard, 4)
@@ -303,7 +311,7 @@ class CardViewControllerTests: XCTestCase {
 
     func testChangeImageHighlightedOChangeCardType() {
         testSetImageHighlightedOnChangeCardType()
-        cardViewController.onChangeCardNumber(cardType: CardUtils().getCardType(scheme: .mastercard))
+        cardViewController.onChangeCardNumber(scheme: .mastercard)
         let nFadedCard = cardViewController.cardView.schemeIconsStackView.arrangedSubviews
             .filter { $0.alpha == 0.5}.count
         XCTAssertEqual(nFadedCard, 4)
@@ -311,7 +319,7 @@ class CardViewControllerTests: XCTestCase {
 
     func testResetViewOnChangeIfCardNumberUnknownType() {
         testSetImageHighlightedOnChangeCardType()
-        cardViewController.onChangeCardNumber(cardType: nil)
+        cardViewController.onChangeCardNumber(scheme: .unknown)
         let nFadedCard = cardViewController.cardView.schemeIconsStackView.arrangedSubviews
             .filter { $0.alpha == 0.5}.count
         XCTAssertEqual(nFadedCard, 0)
@@ -334,8 +342,7 @@ class CardViewControllerTests: XCTestCase {
         stubCheckoutAPIService.createTokenCalledWith?.completion(.failure(.networkError(.connectionLost)))
 
         XCTAssertEqual(stubCardViewControllerDelegate.onTapDoneCalledWith?.controller, cardViewController)
-        XCTAssertEqual(stubCardViewControllerDelegate.onTapDoneCalledWith?.status, .failure)
-        XCTAssertNil(stubCardViewControllerDelegate.onTapDoneCalledWith?.cardToken)
+        XCTAssertEqual(stubCardViewControllerDelegate.onTapDoneCalledWith?.result, .failure(.networkError(.connectionLost)))
     }
 
     // TODO: fix logging

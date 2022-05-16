@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import Checkout
 
 /// CVV Confirmation View Controller
 public class CvvConfirmationViewController: UIViewController {
@@ -10,7 +11,7 @@ public class CvvConfirmationViewController: UIViewController {
     let label = UILabel()
     let textField = UITextField()
     let underlineView = UIView()
-    var cardtype: CardType?
+    var scheme: Card.Scheme?
 
     /// Delegate
     public weak var delegate: CvvConfirmationViewControllerDelegate?
