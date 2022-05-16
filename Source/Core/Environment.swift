@@ -4,7 +4,7 @@ import Foundation
 ///
 /// - live
 /// - sandbox
-public enum Environment: String {
+@frozen public enum Environment: String {
 
     /// live environment used for production using
     case live

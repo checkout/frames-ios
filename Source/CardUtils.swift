@@ -2,10 +2,12 @@ import Foundation
 import Checkout
 
 /// Payment Form Utilities
-public class CardUtils {
+public final class CardUtils {
 
     // MARK: - Properties
 
+    /// map of card scheme to indexes of spaces in formatted card number string
+    /// eg. a visa card has gaps at 4, 8 and 12. 4242424242424242 becomes 4242 4242 4242 4242
     let cardGaps: [Card.Scheme: [Int]] = [.visa: [4, 8, 12],
                                           .mastercard: [4, 8, 12],
                                           .mada: [4, 8, 12],

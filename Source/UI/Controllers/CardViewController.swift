@@ -370,12 +370,16 @@ public class CardViewController: UIViewController,
     public func textFieldDidEndEditing(view: UIView) {
         validateFieldsValues()
 
-        if let superView = view as? CardNumberInputView {
-            let cardNumber = superView.textField.text!
-            let cardNumberStandardized = cardUtils.removeNonDigits(from: cardNumber)
-            let scheme = try? checkoutAPIService?.cardValidator.validate(cardNumber: cardNumberStandardized).get()
-            cardView.cvvInputView.scheme = scheme ?? .unknown
+        guard
+            let superView = view as? CardNumberInputView,
+            let cardNumber = superView.textField.text
+        else {
+            return
         }
+
+        let cardNumberStandardized = cardUtils.removeNonDigits(from: cardNumber)
+        let scheme = (try? checkoutAPIService?.cardValidator.validate(cardNumber: cardNumberStandardized).get()) ?? .unknown
+        cardView.cvvInputView.scheme = scheme
     }
 
     // MARK: - CardNumberInputViewDelegate
