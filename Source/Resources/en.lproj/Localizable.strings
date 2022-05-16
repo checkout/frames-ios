@@ -1,4 +1,16 @@
-
+"missingBillingFormFullName" = "Missing Name";
+"missingBillingFormAddressLine1" = "Missing Address Line 1";
+"missingBillingFormAddressLine2" = "Missing Address Line 2";
+"missingBillingFormCity" = "Missing City";
+"missingBillingFormState" = "Missing State";
+"missingBillingFormPostcode" = "Missing Postcode";
+"missingBillingFormPhoneNumber" = "Missing Phone Number";
+"missingBillingFormCountry" = "Missing Country";
+"billingFormPhoneNumberHint" = "Phone Number";
+"billingAddressTitle" = "Billing address";
+"city" = "City";
+"cancel" = "Cancel";
+"done" = "Done";
 "cardNumber" = "Card Number*";
 "cardholderName" = "Cardholder's name";
 "cardholderNameRequired" = "Cardholder's name*";
