@@ -31,9 +31,9 @@ extension String {
     //https://www.hackingwithswift.com/example-code/core-graphics/how-to-render-a-pdf-to-an-image
     func vectorPDFImage(forClass: AnyClass) -> UIImage? {
         let bundle = getBundle(forClass: forClass)
-        guard let urlPath = bundle.url(forResource: self, withExtension: "pdf") else { return nil }
-        guard let document = CGPDFDocument(urlPath as CFURL) else { return nil }
-        guard let page = document.page(at: 1) else { return nil }
+        guard let urlPath = bundle.url(forResource: self, withExtension: "pdf"),
+              let document = CGPDFDocument(urlPath as CFURL),
+              let page = document.page(at: 1) else { return nil }
         
         let pageRect = page.getBoxRect(.mediaBox)
         let renderer = UIGraphicsImageRenderer(size: pageRect.size)
