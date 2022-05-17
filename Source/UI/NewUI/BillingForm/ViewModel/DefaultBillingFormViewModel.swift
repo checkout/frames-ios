@@ -45,11 +45,11 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         else { return UITableViewCell() }
         
         if cellStyle.isOptional {
-            textValueOfCellType[currentStyle.hash, default: ""] += ""
-            errorFlagOfCellType[currentStyle.hash] = false
+            textValueOfCellType[currentStyle.index, default: ""] += ""
+            errorFlagOfCellType[currentStyle.index] = false
         }
         
-        let hash = currentStyle.hash
+        let hash = currentStyle.index
         updateErrorView(with: &cellStyle, hashValue: hash)
         updateTextField(with: &cellStyle, hashValue: hash)
         
@@ -88,9 +88,9 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
         validate(text: textField.text , cellStyle: textField.type, row: textField.tag)
         
         if !(textField.text?.isEmpty ?? true) || textField.type.style?.isOptional ?? false {
-            textValueOfCellType[textField.type.hash] = textField.text
+            textValueOfCellType[textField.type.index] = textField.text
         } else {
-            textValueOfCellType[textField.type.hash] = nil
+            textValueOfCellType[textField.type.index] = nil
             
         }
         updatedRow = textField.tag
@@ -101,9 +101,9 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
         validate(text: string , cellStyle: textField.type, row: textField.tag)
         
         if !(string.isEmpty)  {
-            textValueOfCellType[textField.type.hash] = string
+            textValueOfCellType[textField.type.index] = string
         } else if textField.text?.count ?? 1 == 1, !(textField.type.style?.isOptional ?? false)  {
-            textValueOfCellType[textField.type.hash] = nil
+            textValueOfCellType[textField.type.index] = nil
         }
         
         let isSuccessful =  textValueOfCellType.values.count == style.cells.count && !(errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.allSatisfy({$0}))
@@ -126,15 +126,15 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
     func doneButtonIsPressed(sender: UIViewController) {
         
         let phone = Phone(
-            number: textValueOfCellType[BillingFormCell.phoneNumber(nil).hash],
+            number: textValueOfCellType[BillingFormCell.phoneNumber(nil).index],
             country: nil)
         
         let address = Address(
-            addressLine1: textValueOfCellType[BillingFormCell.addressLine1(nil).hash],
-            addressLine2: textValueOfCellType[BillingFormCell.addressLine2(nil).hash],
-            city: textValueOfCellType[BillingFormCell.city(nil).hash],
-            state: textValueOfCellType[BillingFormCell.state(nil).hash],
-            zip: textValueOfCellType[BillingFormCell.postcode(nil).hash],
+            addressLine1: textValueOfCellType[BillingFormCell.addressLine1(nil).index],
+            addressLine2: textValueOfCellType[BillingFormCell.addressLine2(nil).index],
+            city: textValueOfCellType[BillingFormCell.city(nil).index],
+            state: textValueOfCellType[BillingFormCell.state(nil).index],
+            zip: textValueOfCellType[BillingFormCell.postcode(nil).index],
             country: nil)
                                                        
                                                       
@@ -147,13 +147,13 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
     }
     
     internal func validate(text: String?, cellStyle: BillingFormCell, row: Int)  {
-        guard cellStyle.hash <= errorFlagOfCellType.count,
-              cellStyle.hash >= 0,
+        guard cellStyle.index <= errorFlagOfCellType.count,
+              cellStyle.index >= 0,
                 let style = cellStyle.style,
                 !style.isOptional else {
-            errorFlagOfCellType[cellStyle.hash] = false
+            errorFlagOfCellType[cellStyle.index] = false
             return
         }
-        errorFlagOfCellType[cellStyle.hash] = cellStyle.validator.validate(text: text)
+        errorFlagOfCellType[cellStyle.index] = cellStyle.validator.validate(text: text)
     }
 }

@@ -36,7 +36,7 @@ import Foundation
         }
     }
     
-    var hash: Int {
+    var index: Int {
         switch self {
         case .fullName:  return 1
         case .addressLine1:  return 2

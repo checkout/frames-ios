@@ -53,7 +53,7 @@ class CKOTextFieldView: UIView {
     private(set) lazy var textField: UITextField = {
         var view = BillingFormTextField(type: self.type, tag: tag)
         
-        if self.type.hash == BillingFormCell.phoneNumber(nil).hash {
+        if self.type.index == BillingFormCell.phoneNumber(nil).index {
             view = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self)
         }
         
