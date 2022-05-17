@@ -24,6 +24,7 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
   private let publicKey: String
   private let environment: BaseURLProviding
 
+/// Initializes a CheckoutAPIService object.
   public convenience init(publicKey: String, environment: Environment) {
     let snakeCaseJSONEncoder = JSONEncoder()
     let snakeCaseJSONDecoder = JSONDecoder()
@@ -75,6 +76,7 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
     self.logManager = logManager
   }
 
+/// The create token method tokenises the user’s card details.
   public func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) {
     let tokenRequestResult = tokenRequestFactory.create(paymentSource: paymentSource)
 
@@ -86,6 +88,7 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
     }
   }
 
+/// Call the correlationID method to return the correlation ID string ( used for logging events and support purposes ).
   public var correlationID: String {
     return logManager.correlationID
   }

@@ -7,4 +7,5 @@
 
 import Foundation
 
+/// Defines an error that occurs during card tokenisation.
 public enum TokenisationError {}

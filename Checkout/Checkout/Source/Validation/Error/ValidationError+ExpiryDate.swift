@@ -8,6 +8,7 @@
 import Foundation
 
 extension ValidationError {
+/// ValidationError as CheckoutError for ExpiryDates
   public enum ExpiryDate: CheckoutError {
     case invalidMonthString
     case invalidYearString
