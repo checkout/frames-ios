@@ -7,6 +7,7 @@
 
 import Foundation
 // swiftlint:disable type_body_length
+/// Country struct holding country fields.
 public struct Country: Equatable {
   public let iso3166Alpha2: String
   public let dialingCode: String

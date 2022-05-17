@@ -8,6 +8,7 @@
 import Foundation
 
 extension TokenisationError {
+/// ServerError object as CheckoutError when creating card token
   public struct ServerError: CheckoutError, Codable, Equatable {
     public let requestID: String
     public let errorType: String

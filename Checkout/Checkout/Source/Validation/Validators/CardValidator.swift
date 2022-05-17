@@ -27,6 +27,7 @@ public class CardValidator: CardValidating {
   private let calendar: CalendarProtocol
   private let logManager: LogManaging.Type
 
+/// Initializes a CardValidator object.
   public convenience init(environment: Environment) {
     let luhnChecker = LuhnChecker()
     let cardNumberValidator = CardNumberValidator(luhnChecker: luhnChecker)

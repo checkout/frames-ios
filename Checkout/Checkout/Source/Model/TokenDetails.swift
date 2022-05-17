@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// TokenDetails object representing the fields needed in the tokenisation request payload.
 public struct TokenDetails: Equatable {
   public let type: TokenType
   public let token: String
