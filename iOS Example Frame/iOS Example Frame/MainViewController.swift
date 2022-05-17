@@ -24,6 +24,12 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
                                                        environment: .sandbox)
 
     @IBAction func goToPaymentPage(_ sender: Any) {
+        cardViewController.isNewUI = false
+        navigationController?.pushViewController(cardViewController, animated: true)
+    }
+    
+    @IBAction func goToNewPaymentPage(_ sender: Any) {
+        cardViewController.isNewUI = true
         navigationController?.pushViewController(cardViewController, animated: true)
     }
 
