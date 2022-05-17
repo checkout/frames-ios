@@ -11,8 +11,7 @@ extension UIColor {
 extension UIColor {
     convenience init(hex: String, alpha: CGFloat = 1.0) {
         var cString = hex
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-            .replacingOccurrences(of: " ", with: "")
+            .filter { !$0.isWhitespace }
             .uppercased()
 
         if cString.hasPrefix("#") { cString.removeFirst() }
