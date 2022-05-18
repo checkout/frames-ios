@@ -1,6 +1,8 @@
 import UIKit
 
-struct DefaultTextField: CKOTextFieldStyle {
+struct DefaultTextField: CKOElementTextFieldStyle {
+    var isHidden: Bool
+
     var text: String
     var placeHolder: String
     var isPlaceHolderHidden: Bool
@@ -16,7 +18,8 @@ struct DefaultTextField: CKOTextFieldStyle {
     var isSecured: Bool
     var isSupprtingNumbericKeyboard: Bool
     
-    init(text: String = "",
+    init(isHidden: Bool = false,
+         text: String = "",
          placeHolder: String = "",
          isPlaceHolderHidden: Bool  = false,
          font: UIFont = UIFont(graphikStyle: .regular, size: 16),
@@ -30,6 +33,7 @@ struct DefaultTextField: CKOTextFieldStyle {
          height: Double = 56.0,
          isSecured: Bool = false,
          isSupprtingNumbericKeyboard: Bool = false) {
+        self.isHidden = isHidden
         self.text = text
         self.placeHolder = placeHolder
         self.isPlaceHolderHidden = isPlaceHolderHidden

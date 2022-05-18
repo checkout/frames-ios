@@ -3,7 +3,7 @@ import UIKit
 
 public protocol BillingFormHeaderCellStyle {
     var backgroundColor: UIColor { get }
-    var headerLabel: CKOLabelStyle { get }
-    var cancelButton: CKOButtonStyle { get }
-    var doneButton: CKOButtonStyle { get set}
+    var headerLabel: CKOElementStyle { get }
+    var cancelButton: CKOElementButtonStyle { get }
+    var doneButton: CKOElementButtonStyle { get set}
 }

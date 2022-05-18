@@ -1,6 +1,6 @@
 import UIKit
 
-protocol BillingFormTextFieldViewDelegate: AnyObject {
+protocol CKOTextFieldViewDelegate: AnyObject {
     func updateCountryCode(code: Int)
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
@@ -9,12 +9,11 @@ protocol BillingFormTextFieldViewDelegate: AnyObject {
 }
 
 class CKOTextFieldView: UIView {
-   
-    
-    private var style: CKOTextFieldCellStyle
+    weak var delegate: CKOTextFieldViewDelegate?
+
+    private var style: CKOCellTextFieldStyle
     private var type: BillingFormCell
-    private weak var delegate: BillingFormTextFieldViewDelegate?
-    
+
     private(set) lazy var headerLabel: UILabel = {
         let view = UILabel()
         view.text = style.title?.text
@@ -68,17 +67,16 @@ class CKOTextFieldView: UIView {
         return view
     }()
     
-    private(set) lazy var errorView: CKOTextFieldErrorView = {
-        let view = CKOTextFieldErrorView(style: style.error)
+    private(set) lazy var errorView: CKOErrorView = {
+        let view = CKOErrorView(style: style.error)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    init(type: BillingFormCell, tag: Int, style: CKOTextFieldCellStyle, delegate: BillingFormTextFieldViewDelegate? = nil) {
+    init(type: BillingFormCell, tag: Int, style: CKOCellTextFieldStyle) {
         self.style = style
         self.type = type
         super.init(frame: .zero)
-        self.delegate = delegate
         self.tag = tag
         self.setupViewsInOrder()
     }

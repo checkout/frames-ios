@@ -1,25 +1,44 @@
 import XCTest
 @testable import Frames
 
-struct ErrorInputLabelStyleImp: CKOErrorLabelStyle {
+struct ErrorInputLabelStyleImp: CKOElementErrorViewStyle {
     var isHidden: Bool
-    var text: String { "Error" }
-    var font: UIFont { UIFont.systemFont(ofSize: 17) }
-    var textColor: UIColor { .red }
-    var backgroundColor: UIColor { .white }
-    var tintColor: UIColor { .red }
-    var isWarningSympoleOnLeft: Bool { true }
-    var height: Double { 120 }
+    var text: String
+    var font: UIFont
+    var textColor: UIColor
+    var backgroundColor: UIColor
+    var tintColor: UIColor
+    var isWarningImageOnLeft: Bool
+    var height: Double
+
+    init(
+        isHidden: Bool = false,
+        text: String = "Error",
+        font: UIFont = UIFont.systemFont(ofSize: 17),
+        textColor: UIColor = .red,
+        backgroundColor: UIColor = .white,
+        tintColor: UIColor = .red,
+        isWarningImageOnLeft: Bool = true,
+        height: Double = 120 ) {
+            self.isHidden = isHidden
+            self.text = text
+            self.font = font
+            self.textColor = textColor
+            self.backgroundColor = backgroundColor
+            self.tintColor = tintColor
+            self.isWarningImageOnLeft = isWarningImageOnLeft
+            self.height = height
+        }
 }
 
 class BillingFormTextFieldErrorViewTests: XCTestCase {
-    var errorView: CKOTextFieldErrorView!
+    var errorView: CKOErrorView!
     let style = ErrorInputLabelStyleImp(isHidden: false)
 
     override func setUp() {
         super.setUp()
         UIFont.loadAllCheckoutFonts
-        errorView = CKOTextFieldErrorView(style: style)
+        errorView = CKOErrorView(style: style)
     }
     
     func testStyleIsHidden(){

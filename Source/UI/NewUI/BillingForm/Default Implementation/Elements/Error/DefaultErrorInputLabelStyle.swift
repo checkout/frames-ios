@@ -1,13 +1,13 @@
 import UIKit
 
-struct DefaultErrorInputLabelStyle: CKOErrorLabelStyle {
+struct DefaultErrorInputLabelStyle: CKOElementErrorViewStyle {
     var isHidden: Bool
     var backgroundColor: UIColor
     var tintColor: UIColor
     var text: String
     var font: UIFont
     var textColor: UIColor
-    var isWarningSympoleOnLeft: Bool
+    var isWarningImageOnLeft: Bool
     var height: Double
     
     init(isHidden: Bool = true,
@@ -16,7 +16,7 @@ struct DefaultErrorInputLabelStyle: CKOErrorLabelStyle {
          text: String = "",
          font: UIFont = UIFont(graphikStyle: .medium, size: 13),
          textColor: UIColor =  .tallPoppyRed,
-         isWarningSympoleOnLeft: Bool = true,
+         isWarningImageOnLeft: Bool = true,
          height: Double = 18.0) {
         self.isHidden = isHidden
         self.backgroundColor = backgroundColor
@@ -24,7 +24,7 @@ struct DefaultErrorInputLabelStyle: CKOErrorLabelStyle {
         self.text = text
         self.font = font
         self.textColor = textColor
-        self.isWarningSympoleOnLeft = isWarningSympoleOnLeft
+        self.isWarningImageOnLeft = isWarningImageOnLeft
         self.height = height
     }
 }

@@ -5,9 +5,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     var style: BillingFormStyle
     var updateRow: (() -> Void)?
     var updatedRow: Int? {
-        didSet {
-            updateRow?()
-        }
+        didSet { updateRow?() }
     }
     
     var errorFlagOfCellType = [Int: Bool]()
@@ -37,34 +35,44 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         self.editDelegate = view
         return view
     }
-    
-    func getCell( row: Int,  delegate: BillingFormTextFieldCellDelegate?) -> UITableViewCell {
-        let currentStyle = style.cells[row]
-        guard style.cells.count > row,
-              var cellStyle = currentStyle.style
+
+    func getCell(row: Int,  delegate: CKOCellTextFieldDelegate?) -> UITableViewCell {
+        guard style.cells.count > row, var viewStyle = style.cells[row].style
         else { return UITableViewCell() }
-        
-        if cellStyle.isOptional {
-            textValueOfCellType[currentStyle.index, default: ""] += ""
-            errorFlagOfCellType[currentStyle.index] = false
+
+        let cellStyle = style.cells[row]
+        updateStyle(with: &viewStyle, cellStyle: cellStyle, tag: row)
+        return getCell(with: &viewStyle, cellStyle: cellStyle, tag: row)
+    }
+
+    private func updateStyle(with viewStyle: inout CKOCellTextFieldStyle, cellStyle: BillingFormCell, tag: Int) {
+        if viewStyle.isOptional {
+            textValueOfCellType[cellStyle.index, default: ""] += ""
+            errorFlagOfCellType[cellStyle.index] = false
         }
-        
-        let hash = currentStyle.index
-        updateErrorView(with: &cellStyle, hashValue: hash)
-        updateTextField(with: &cellStyle, hashValue: hash)
-        
-        let cell = CKOTextFieldCell()
-        cell.delegate = delegate
-        cell.update(cellStyle: currentStyle, style: cellStyle, tag: row)
+
+        let hash = cellStyle.index
+        updateErrorView(with: &viewStyle, hashValue: hash)
+        updateTextField(with: &viewStyle, hashValue: hash)
+    }
+
+    private func getCell(with viewStyle: inout CKOCellTextFieldStyle, cellStyle: BillingFormCell, tag: Int) -> UITableViewCell{
+        let mainView = getTextFieldMainText(with: viewStyle, cellStyle: cellStyle, tag: tag)
+        let cell = CKOCellTextField(mainView: mainView)
+        mainView.delegate = cell
         return cell
     }
+
+    private func getTextFieldMainText(with style: CKOCellTextFieldStyle, cellStyle: BillingFormCell, tag: Int) -> CKOTextFieldView {
+        CKOTextFieldView(type: cellStyle, tag: tag, style: style)
+    }
     
-    private func updateErrorView(with style: inout CKOTextFieldCellStyle, hashValue: Int) {
+    private func updateErrorView(with style: inout CKOCellTextFieldStyle, hashValue: Int) {
         guard let hasError = errorFlagOfCellType[hashValue] else { return }
         style.error.isHidden = !hasError
     }
     
-    private func updateTextField(with style: inout CKOTextFieldCellStyle, hashValue: Int) {
+    private func updateTextField(with style: inout CKOCellTextFieldStyle, hashValue: Int) {
         guard let text = textValueOfCellType[hashValue] else { return }
         style.textfield.text = text
     }

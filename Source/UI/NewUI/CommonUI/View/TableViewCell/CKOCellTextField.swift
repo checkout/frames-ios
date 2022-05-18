@@ -1,7 +1,6 @@
 import UIKit
-import PhoneNumberKit
 
-protocol BillingFormTextFieldCellDelegate: AnyObject {
+protocol CKOCellTextFieldDelegate: AnyObject {
     func updateCountryCode(code: Int)
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
@@ -9,57 +8,44 @@ protocol BillingFormTextFieldCellDelegate: AnyObject {
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
 
-final class CKOTextFieldCell: UITableViewCell {
-    weak var delegate: BillingFormTextFieldCellDelegate?
+final class CKOCellTextField: UITableViewCell {
+    weak var delegate: CKOCellTextFieldDelegate?
     var cellStyle: BillingFormCell? = nil
-    var style: CKOTextFieldCellStyle? = nil
+    var style: CKOCellTextFieldStyle? = nil
 
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    private var mainView: UIView
+    init(mainView: UIView) {
+        self.mainView = mainView
+        super.init(style: .default, reuseIdentifier: nil)
+        self.setupViewsInOrder()
     }
-    
-    func update(cellStyle:BillingFormCell, style: CKOTextFieldCellStyle, tag: Int) {
-        self.cellStyle = cellStyle
-        self.style = style
-        self.tag = tag
-        setupViewsInOrder()
-    }
-    
 
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private lazy var paymentInputView: UIView = {
-        guard let cellStyle = cellStyle, let style = style else { return UIView() }
-        let view = CKOTextFieldView(type: cellStyle, tag: tag, style: style ,delegate: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
 }
 
-extension CKOTextFieldCell {
+extension CKOCellTextField {
     
     private func setupViewsInOrder() {
-        contentView.addSubview(paymentInputView)
+        mainView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(mainView)
         NSLayoutConstraint.activate([
-            paymentInputView.topAnchor.constraint(
-                equalTo: contentView.safeTopAnchor),
-            paymentInputView.leadingAnchor.constraint(
+            mainView.topAnchor.constraint(
+                equalTo: contentView.topAnchor),
+            mainView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor),
-            paymentInputView.trailingAnchor.constraint(
+            mainView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor),
-            paymentInputView.bottomAnchor.constraint(
-                equalTo: contentView.safeBottomAnchor,
+            mainView.bottomAnchor.constraint(
+                equalTo: contentView.bottomAnchor,
                 constant: -24)
         ])
     }
 }
 
-extension CKOTextFieldCell: BillingFormTextFieldViewDelegate {
+extension CKOCellTextField: CKOTextFieldViewDelegate {
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
     }

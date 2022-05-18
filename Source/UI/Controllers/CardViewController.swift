@@ -39,7 +39,7 @@ public class CardViewController: UIViewController,
 
     /// Right bar button item
     public var rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
-                                                    target: self,
+                                                    target: CardViewController.self,
                                                     action: #selector(onTapDoneCardButton))
 
     var topConstraint: NSLayoutConstraint?
@@ -247,7 +247,7 @@ public class CardViewController: UIViewController,
         switch cardValidator.validate(expiryMonth: expiryMonth, expiryYear: expiryYear) {
         case .success(let date):
             cardExpiryDate = date
-        case .failure(let error):
+        case .failure:
             let message = "expiryDateInvalid".localized(forClass: CardViewController.self)
             cardView.expirationDateInputView.showError(message: message)
         }

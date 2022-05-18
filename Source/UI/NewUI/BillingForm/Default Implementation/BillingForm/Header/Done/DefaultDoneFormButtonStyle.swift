@@ -1,6 +1,8 @@
 import UIKit
 
-struct DefaultDoneFormButtonStyle: CKOButtonStyle {
+struct DefaultDoneFormButtonStyle: CKOElementButtonStyle {
+    var textColor: UIColor
+    var isHidden: Bool
     var isEnabled: Bool
     var text: String
     var font: UIFont
@@ -12,7 +14,9 @@ struct DefaultDoneFormButtonStyle: CKOButtonStyle {
     var height: Double
     var width: Double
     
-    init( isEnabled: Bool = true,
+    init( textColor: UIColor = .clear,
+          isHidden: Bool = false,
+          isEnabled: Bool = true,
           text: String = "done".localized(forClass: CheckoutTheme.self),
           font: UIFont = UIFont.systemFont(ofSize: 17),
           activeTitleColor: UIColor = .brandeisBlue,
@@ -22,6 +26,8 @@ struct DefaultDoneFormButtonStyle: CKOButtonStyle {
           backgroundColor: UIColor = .white,
           height: Double = 44,
           width: Double = 53) {
+        self.textColor = textColor
+        self.isHidden = isHidden
         self.isEnabled = isEnabled
         self.text = text
         self.font = font
