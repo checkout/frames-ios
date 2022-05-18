@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kkr-7E-eaW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kkr-7E-eaW">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <deployment version="4864" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hjr-2q-Z8v">
-                                <rect key="frame" x="20" y="88" width="374" height="80"/>
+                                <rect key="frame" x="20" y="88" width="374" height="119"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use the sample app to see how each of the functions work." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xju-mO-G0Z">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="41"/>
@@ -43,8 +43,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kcj-s8-iHV">
-                                        <rect key="frame" x="0.0" y="49" width="374" height="31"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kcj-s8-iHV">
+                                        <rect key="frame" x="0.0" y="49" width="374" height="70"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZM-A1-hFT">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
@@ -53,6 +53,14 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="Card Tokenisation"/>
                                                 <connections>
                                                     <action selector="cardTokenisationTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MxS-Lf-Dek"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clY-gy-46w">
+                                                <rect key="frame" x="0.0" y="39" width="374" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="3DS"/>
+                                                <connections>
+                                                    <action selector="threeDSTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1iH-P1-GhX"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -72,6 +80,7 @@
                     <navigationItem key="navigationItem" id="bLZ-iv-mJ3"/>
                     <connections>
                         <outlet property="cardTokenisationButton" destination="BZM-A1-hFT" id="cR0-qT-0da"/>
+                        <outlet property="threeDSButton" destination="clY-gy-46w" id="2P8-wh-2YI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

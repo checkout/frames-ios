@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="236" id="KGk-i7-Jjw" customClass="CardDetailsTableViewCell" customModule="CheckoutCocoapodsSample" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="236" id="KGk-i7-Jjw" customClass="CardDetailsTableViewCell" customModule="CheckoutSPMSample" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="236"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -21,18 +21,28 @@
                         <rect key="frame" x="16" y="11" width="288" height="214"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V8t-eC-1nI">
-                                <rect key="frame" x="0.0" y="0.0" width="288" height="66"/>
+                                <rect key="frame" x="0.0" y="0.0" width="288" height="47.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="cardNumberTextFieldEditingChanged:" destination="KGk-i7-Jjw" eventType="editingChanged" id="eQI-jF-FJD"/>
                                 </connections>
                             </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pLN-0h-2zN">
+                                <rect key="frame" x="0.0" y="55.5" width="288" height="48.5"/>
+                                <segments>
+                                    <segment title="Text Expiry"/>
+                                    <segment title="Dropdown Expiry"/>
+                                </segments>
+                                <connections>
+                                    <action selector="expiryTypeChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="ciq-hW-seU"/>
+                                </connections>
+                            </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="e5M-Y0-dv2">
-                                <rect key="frame" x="0.0" y="74" width="288" height="66"/>
+                                <rect key="frame" x="0.0" y="111" width="288" height="47.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Expiry Month" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cQh-4l-K1f">
-                                        <rect key="frame" x="0.0" y="0.0" width="140" height="66"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="47.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -40,7 +50,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Expiry Year" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mrk-S8-ngI">
-                                        <rect key="frame" x="148" y="0.0" width="140" height="66"/>
+                                        <rect key="frame" x="148" y="0.0" width="140" height="47.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -49,8 +59,13 @@
                                     </textField>
                                 </subviews>
                             </stackView>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Expiry" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fhV-1L-3Ac">
+                                <rect key="frame" x="0.0" y="162.5" width="288" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVV" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vkx-ze-cSo">
-                                <rect key="frame" x="0.0" y="148" width="288" height="66"/>
+                                <rect key="frame" x="0.0" y="166.5" width="288" height="47.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -71,7 +86,9 @@
             <connections>
                 <outlet property="cardNumberTextField" destination="V8t-eC-1nI" id="SWb-tf-bdg"/>
                 <outlet property="cvvTextField" destination="vkx-ze-cSo" id="19z-T4-GRC"/>
+                <outlet property="expiryDatePickerField" destination="fhV-1L-3Ac" id="JSY-Lm-vVT"/>
                 <outlet property="expiryMonthTextField" destination="cQh-4l-K1f" id="SnZ-Z4-X20"/>
+                <outlet property="expiryTextFieldStackView" destination="e5M-Y0-dv2" id="unV-RI-XNP"/>
                 <outlet property="expiryYearTextField" destination="Mrk-S8-ngI" id="vqs-Ld-pWe"/>
             </connections>
             <point key="canvasLocation" x="134.78260869565219" y="68.303571428571431"/>

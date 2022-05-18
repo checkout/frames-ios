@@ -21,33 +21,33 @@ extension Card {
   ///   - Visa
   public enum Scheme: String, CaseIterable, CustomStringConvertible {
     case unknown
-    case visa
     case mada
+    case visa
     case mastercard
     case maestro
-    case amex
+    case americanExpress
     case discover
-    case diners
+    case dinersClub
     case jcb
 
     public init?(rawValue: String) {
       switch rawValue.lowercased() {
       case "unknown":
         self = .unknown
+      case "mada", "visa - mada", "mastercard - mada":
+        self = .mada
       case "visa":
         self = .visa
-      case "mada":
-        self = .mada
       case "mastercard":
         self = .mastercard
       case "maestro":
         self = .maestro
-      case "amex":
-        self = .amex
+      case "amex", "american express":
+        self = .americanExpress
       case "discover":
         self = .discover
-      case "diners":
-        self = .diners
+      case "diners", "diners club international":
+        self = .dinersClub
       case "jcb":
         self = .jcb
       default:
@@ -67,12 +67,12 @@ extension Card {
       case .maestro:
         // swiftlint:disable:next line_length
         return NSRegularExpression(staticPattern: "^(?:5[06789]\\d\\d|(?!6011[0234])(?!60117[4789])(?!60118[6789])(?!60119)(?!64[456789])(?!65)6\\d{3})\\d{8,15}$")
-      case .amex:
+      case .americanExpress:
         return NSRegularExpression(staticPattern: "^3[47]\\d{13}$")
       case .discover:
         // swiftlint:disable:next line_length
         return NSRegularExpression(staticPattern: "^6(011(0[0-9]|[2-4]\\d|74|7[7-9]|8[6-9]|9[0-9])|4[4-9]\\d{3}|5\\d{4})\\d{10}$")
-      case .diners:
+      case .dinersClub:
         return NSRegularExpression(staticPattern: "^3(0[0-5]|[68]\\d)\\d{11,16}$")
       case .jcb:
         return NSRegularExpression(staticPattern: "^35\\d{14}$")
@@ -93,11 +93,11 @@ extension Card {
       case .maestro:
         // swiftlint:disable:next line_length
         return NSRegularExpression(staticPattern: "^(5(018|0[23]|[68])|6[37]|60111|60115|60117([56]|7[56])|60118[0-5]|64[0-3]|66)")
-      case .amex:
+      case .americanExpress:
         return NSRegularExpression(staticPattern: "^3[47]")
       case .discover:
         return NSRegularExpression(staticPattern: "^6(011(0[0-9]|[2-4]|74|7[7-9]|8[6-9]|9[0-9])|4[4-9]|5)")
-      case .diners:
+      case .dinersClub:
         return NSRegularExpression(staticPattern: "^3(0|[68])")
       case .jcb:
         return NSRegularExpression(staticPattern: "^35")
@@ -111,16 +111,36 @@ extension Card {
       switch self {
       case .unknown:
         return nil
-      case .amex:
+      case .americanExpress:
         return 4
       case .visa,
         .mada,
         .mastercard,
         .maestro,
         .discover,
-        .diners,
+        .dinersClub,
         .jcb:
         return 3
+      }
+    }
+
+    static let maxCardLengthAllSchemes = 19
+
+    var maxCardLength: Int? {
+      switch self {
+      case .unknown:
+        return nil
+      case .mada,
+        .visa,
+        .mastercard:
+        return 16
+      case .americanExpress:
+        return 15
+      case .maestro,
+        .discover,
+        .dinersClub,
+        .jcb:
+        return 19
       }
     }
 

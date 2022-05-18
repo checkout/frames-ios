@@ -23,9 +23,9 @@ class CardSchemeTests: XCTestCase {
       .mada: "Card.Scheme.mada",
       .mastercard: "Card.Scheme.mastercard",
       .maestro: "Card.Scheme.maestro",
-      .amex: "Card.Scheme.amex",
+      .americanExpress: "Card.Scheme.americanExpress",
       .discover: "Card.Scheme.discover",
-      .diners: "Card.Scheme.diners",
+      .dinersClub: "Card.Scheme.dinersClub",
       .jcb: "Card.Scheme.jcb"
     ]
 
@@ -39,17 +39,45 @@ class CardSchemeTests: XCTestCase {
       switch scheme {
       case .unknown:
         XCTAssertNil(scheme.cvvLength)
-      case .amex:
+      case .americanExpress:
         XCTAssertEqual(scheme.cvvLength, 4)
       case .visa,
         .mada,
         .mastercard,
         .maestro,
         .discover,
-        .diners,
+        .dinersClub,
         .jcb:
         XCTAssertEqual(scheme.cvvLength, 3)
       }
+    }
+  }
+
+  func test_initRawValue() {
+    let testCases: [String: Card.Scheme?] = [
+      // default cases
+      "unknown": .unknown,
+      "mada": .mada,
+      "visa - mada": .mada,
+      "mastercard - mada": .mada,
+      "visa": .visa,
+      "mastercard": .mastercard,
+      "maestro": .maestro,
+      "amex": .americanExpress,
+      "american express": .americanExpress,
+      "discover": .discover,
+      "diners": .dinersClub,
+      "diners club international": .dinersClub,
+      "jcb": .jcb,
+      "asdf": nil,
+
+      // capitalised
+      "AMERICAN EXPRESS": .americanExpress,
+      "MAESTRO": .maestro
+    ]
+
+    testCases.forEach { rawValue, expectedScheme in
+      XCTAssertEqual(Card.Scheme(rawValue: rawValue), expectedScheme)
     }
   }
 }

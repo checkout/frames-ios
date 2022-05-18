@@ -10,12 +10,11 @@ import Checkout
 
 extension CardTokenizationViewController {
   struct ViewModel {
-    var availableSchemes: Set<Card.Scheme> = []
+    var availableSchemes: Set<Card.Scheme> = Set(Card.Scheme.allCases).symmetricDifference([.unknown])
     var cardModel = CardModel(
       cardName: "",
       cardNumber: "",
-      expiryMonth: "",
-      expiryYear: "",
+      expiry: .string(month: "", year: ""),
       cvv: "")
   }
 }

@@ -83,6 +83,15 @@ public class CardValidator: CardValidating {
     return cardNumberValidator.validate(cardNumber: cardNumber)
   }
 
+  /// Checks whether a given card number is at least a partial match for any of the supported schemes.
+  /// - Parameters:
+  ///   - cardNumber: The card number to validate.
+  /// - Returns: The card's scheme if successful, else an error.
+  public func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber> {
+    logManager.queue(event: .validateCardNumber)
+    return cardNumberValidator.eagerValidate(cardNumber: cardNumber)
+  }
+
   /// Checks whether the given expiry month and year are valid,
   /// if valid returns the values wrapped in an `ExpiryDate` object.
   /// The `expiryMonth` can be 1 or 2 digits, and the `expiryYear` can be 2 or 4 digits.
@@ -95,10 +104,20 @@ public class CardValidator: CardValidating {
     expiryYear: String
   ) -> Result<ExpiryDate, ValidationError.ExpiryDate> {
     logManager.queue(event: .validateExpiryString)
-    return validateExpiry(
-      expiryMonth: expiryMonth,
-      expiryYear: expiryYear
-    )
+
+    guard let expiryMonth = Int(expiryMonth) else {
+      return .failure(.invalidMonthString)
+    }
+
+    switch fourDigitYear(from: expiryYear) {
+    case .success(let expiryYear):
+      return validateExpiry(
+        expiryMonth: expiryMonth,
+        expiryYear: expiryYear
+      )
+    case .failure(let error):
+      return .failure(error)
+    }
   }
 
 
@@ -114,10 +133,16 @@ public class CardValidator: CardValidating {
     expiryYear: Int
   ) -> Result<ExpiryDate, ValidationError.ExpiryDate> {
     logManager.queue(event: .validateExpiryInteger)
-    return validateExpiry(
-      expiryMonth: String(expiryMonth),
-      expiryYear: String(expiryYear)
-    )
+
+    switch fourDigitYear(from: expiryYear) {
+    case .success(let expiryYear):
+      return validateExpiry(
+        expiryMonth: expiryMonth,
+        expiryYear: expiryYear
+      )
+    case .failure(let error):
+      return .failure(error)
+    }
   }
 
 
@@ -178,63 +203,69 @@ public class CardValidator: CardValidating {
   // MARK: - Private
 
   private func validateExpiry(
-    expiryMonth: String,
-    expiryYear: String
+    expiryMonth: Int,
+    expiryYear: Int
   ) -> Result<ExpiryDate, ValidationError.ExpiryDate> {
-    guard let month = Int(expiryMonth) else {
-      return .failure(.invalidMonthString)
-    }
-
-    guard let year = Int(expiryYear) else {
-      return .failure(.invalidYearString)
-    }
-
-    guard month >= 1 && month <= 12 else {
+    guard expiryMonth >= 1 && expiryMonth <= 12 else {
       return .failure(.invalidMonth)
     }
 
-    let fourDigitYear: Int
-
-    switch self.fourDigitYear(
-      from: expiryYear,
-      year: year) {
-    case .success(let fourDigitYearResult):
-      fourDigitYear = fourDigitYearResult
-    case .failure(let expiryDateError):
-      return .failure(expiryDateError)
-    }
-
     let currentDate = Date()
+    // using UTC-12 as this is the latest timezone where a card could be valid
+    let cardExpiryComponents = DateComponents(
+      timeZone: .utcMinus12,
+      year: expiryYear,
+      month: expiryMonth
+    )
 
-    guard let providedDate = calendar.date(
-      from: DateComponents(
-        year: fourDigitYear,
-        month: month
-      )
-    ), providedDate >= currentDate else {
+    guard
+      let cardExpiryDate = calendar.date(from: cardExpiryComponents),
+      let nextMonth = calendar.date(byAdding: .month, value: 1, to: cardExpiryDate),
+      nextMonth > currentDate
+    else {
       return .failure(.inThePast)
     }
 
     let expiryDate = ExpiryDate(
-      month: month,
-      year: fourDigitYear)
+      month: expiryMonth,
+      year: expiryYear)
 
     return .success(expiryDate)
   }
 
-  private func fourDigitYear(
-    from expiryYear: String,
-    year: Int
-  ) -> Result<Int, ValidationError.ExpiryDate> {
+  private func fourDigitYear(from expiryYear: String) -> Result<Int, ValidationError.ExpiryDate> {
     switch expiryYear.count {
-    case 0, 1, 3:
-      return .failure(.incompleteYear)
-    case 2:
-      return .success(2000 + year)
-    case 4:
-      return .success(year)
+    case 0...4:
+      guard let year = Int(expiryYear) else {
+        return .failure(.invalidYearString)
+      }
+
+      return fourDigitYear(from: year)
     default:
       return .failure(.invalidYear)
     }
+  }
+
+  private func fourDigitYear(from expiryYear: Int) -> Result<Int, ValidationError.ExpiryDate> {
+    // year must be 2 or 4+ digits, otherwise year is incomplete
+    // 0 digits - no year has been entered yet
+    // 1 or 3 digits - we are waiting on an extra digit
+    guard expiryYear > 1000 || (expiryYear > 9 && expiryYear < 100) else {
+      return .failure(.incompleteYear)
+    }
+
+    // year must be less than 5 digits, otherwise year is invalid
+    // 5+ digits - a typo has been entered after the year
+    guard expiryYear < 10000 else {
+      return .failure(.invalidYear)
+    }
+
+    guard expiryYear < 100 else {
+      // 4 digit year
+      return .success(expiryYear)
+    }
+
+    // 2 digit year
+    return .success(2000 + expiryYear)
   }
 }

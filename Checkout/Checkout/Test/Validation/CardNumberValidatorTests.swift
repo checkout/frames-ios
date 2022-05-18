@@ -20,9 +20,9 @@ final class CardNumberValidatorTests: XCTestCase {
   func test_validateCardNumber_fullCards() {
     let testCases: [String: Result<Card.Scheme, ValidationError.CardNumber>] = [
       // valid cards
-      "378282246310005": .success(.amex),
-      "30569309025904": .success(.diners),
-      "38520000023237": .success(.diners),
+      "378282246310005": .success(.americanExpress),
+      "30569309025904": .success(.dinersClub),
+      "38520000023237": .success(.dinersClub),
       "6011039964691945": .success(.discover),
       "6441111111111117": .success(.discover),
       "6501111111111117": .success(.discover),
@@ -45,8 +45,8 @@ final class CardNumberValidatorTests: XCTestCase {
       "4917610000000000003": .success(.visa),
       "4000056655665": .success(.visa),
       // with whitespace
-      "37828 22463 10005": .success(.amex),
-      "37828\n22463\n10005": .success(.amex)
+      "37828 22463 10005": .success(.americanExpress),
+      "37828\n22463\n10005": .success(.americanExpress)
     ]
 
     testCases.forEach { cardNumber, expectedResult in
@@ -72,8 +72,8 @@ final class CardNumberValidatorTests: XCTestCase {
   func test_validateCardNumber_eagerCards() {
     let testCases: [String: Result<Card.Scheme, ValidationError.CardNumber>] = [
       // eager cards
-      "34": .success(.amex),
-      "30": .success(.diners),
+      "34": .success(.americanExpress),
+      "30": .success(.dinersClub),
       "601103": .success(.discover),
       "35": .success(.jcb),
       "529741": .success(.mada),
@@ -83,7 +83,61 @@ final class CardNumberValidatorTests: XCTestCase {
     ]
 
     testCases.forEach { cardNumber, expectedResult in
-      let actualResult = subject.validate(cardNumber: cardNumber)
+      let actualResult = subject.eagerValidate(cardNumber: cardNumber)
+      XCTAssertEqual(
+        actualResult,
+        expectedResult,
+        "expected \(expectedResult) for card number \(cardNumber), received \(actualResult)"
+      )
+
+      XCTAssertEqual(stubLuhnChecker.luhnCheckCalledWith, nil)
+    }
+  }
+
+  func test_eagerValidateCardNumber_multipleValidLengths() {
+    let testCases: [String: Result<Card.Scheme, ValidationError.CardNumber>] = [
+      // eager cards
+      "42": .success(.visa),
+      "424": .success(.visa),
+      "4242": .success(.visa),
+      "42424": .success(.visa),
+      "424242": .success(.visa),
+      "4242424": .success(.visa),
+      "42424242": .success(.visa),
+      "424242424": .success(.visa),
+      "4242424242": .success(.visa),
+      "42424242424": .success(.visa),
+      "424242424242": .success(.visa),
+      "4242424242424": .success(.visa),
+      "42424242424242": .success(.visa),
+      "424242424242424": .success(.visa),
+      "4242424242424242": .success(.visa)
+    ]
+
+    testCases.forEach { cardNumber, expectedResult in
+      let actualResult = subject.eagerValidate(cardNumber: cardNumber)
+      XCTAssertEqual(
+        actualResult,
+        expectedResult,
+        "expected \(expectedResult) for card number \(cardNumber), received \(actualResult)"
+      )
+
+      XCTAssertEqual(stubLuhnChecker.luhnCheckCalledWith, nil)
+    }
+  }
+
+  func test_eagerValidateCardNumber_tooLong() {
+    let testCases: [String: Result<Card.Scheme, ValidationError.CardNumber>] = [
+      // too long to be a valid visa
+      "42424242424242424": .failure(.tooLong),
+      // too long to be a valid amex
+      "3434343434343434": .failure(.tooLong),
+      // too long to be any card (max length is 19)
+      String(repeating: "1", count: 20): .failure(.tooLong)
+    ]
+
+    testCases.forEach { cardNumber, expectedResult in
+      let actualResult = subject.eagerValidate(cardNumber: cardNumber)
       XCTAssertEqual(
         actualResult,
         expectedResult,

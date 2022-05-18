@@ -9,11 +9,36 @@ import Foundation
 @testable import Checkout
 
 final class StubCalendar: CalendarProtocol {
-  var dateToReturn: Date?
-  private(set) var dateCalledWith: DateComponents?
+  var dateFromComponentsToReturn: Date?
+  private(set) var dateFromComponentsCalledWith: DateComponents?
 
   func date(from components: DateComponents) -> Date? {
-    dateCalledWith = components
-    return dateToReturn
+    dateFromComponentsCalledWith = components
+    return dateFromComponentsToReturn
+  }
+
+  var dateByAddingOverride = true
+  var dateByAddingToReturn: Date?
+  // swiftlint:disable:next large_tuple
+  private(set) var dateByAddingCalledWith: (
+    component: Calendar.Component,
+    value: Int,
+    date: Date,
+    wrappingComponents: Bool
+  )?
+  func date(byAdding component: Calendar.Component, value: Int, to date: Date, wrappingComponents: Bool) -> Date? {
+    dateByAddingCalledWith = (component, value, date, wrappingComponents)
+
+    switch dateByAddingOverride {
+    case true:
+      return Calendar(identifier: .gregorian).date(
+        byAdding: component,
+        value: value,
+        to: date,
+        wrappingComponents: wrappingComponents
+      )
+    case false:
+      return dateByAddingToReturn
+    }
   }
 }

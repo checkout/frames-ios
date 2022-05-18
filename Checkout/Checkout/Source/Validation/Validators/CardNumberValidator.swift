@@ -8,6 +8,7 @@
 import Foundation
 
 public protocol CardNumberValidating {
+  func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber>
   func validate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber>
 }
 
@@ -32,9 +33,22 @@ final class CardNumberValidator: CardNumberValidating {
       return .success(cardScheme)
     case .none:
 
-      let cardScheme = cardTypeMatch(cardNumber, \.eagerCardNumberRegex) ?? .unknown
-      return .success(cardScheme)
+      return .success(.unknown)
     }
+  }
+
+  func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber> {
+    let cardNumber = cardNumber.filter { !$0.isWhitespace }
+
+    guard validateDigitsOnly(in: cardNumber) else {
+      return .failure(.invalidCharacters)
+    }
+
+    let cardScheme = cardTypeMatch(cardNumber, \.eagerCardNumberRegex) ?? .unknown
+
+    let maxCardLength = cardScheme.maxCardLength ?? Card.Scheme.maxCardLengthAllSchemes
+
+    return cardNumber.count <= maxCardLength ? .success(cardScheme) : .failure(.tooLong)
   }
 
   private func cardTypeMatch(
