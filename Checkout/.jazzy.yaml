@@ -1,18 +1,18 @@
-module: Frames
+module: Checkout
 author: Checkout.com
 author_url: https://www.checkout.com/
 source_host: github
 source_host_url: https://github.com/checkout/frames-ios
 source_host_files_url: https://github.com/checkout/frames-ios/tree/master
 output: docs
-theme: .jazzy/.themes/checkout.com
+theme: ../.jazzy/.themes/checkout.com
 clean: true
 documentation: Documentation/**/*.md
 min_acl: public
 xcodebuild_arguments:
   - -workspace
-  - iOS Example Frame/iOS Example Frame.xcworkspace
+  - CocoapodsSample/CheckoutCocoapodsSample.xcworkspace
   - -scheme
-  - Frames
+  - Checkout
   - -destination
   - generic/platform=iOS
