@@ -52,6 +52,7 @@ public class CardViewController: UIViewController,
 
     /// Returns a newly initialized view controller with the cardholder's name and billing details
     /// state specified. You can specified the region using the Iso2 region code ("UK" for "United Kingdom")
+    //TODO: inject BillingFormStyle
     public convenience init(checkoutAPIService: CheckoutAPIService,
                             cardHolderNameState: InputState,
                             billingDetailsState: InputState,

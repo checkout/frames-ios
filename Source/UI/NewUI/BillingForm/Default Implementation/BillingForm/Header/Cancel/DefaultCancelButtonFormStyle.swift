@@ -1,6 +1,6 @@
 import UIKit
 
-struct DefaultCancelButtonFormStyle: CKOElementButtonStyle {
+struct DefaultCancelButtonFormStyle: ElementButtonStyle {
 
     var text: String = "cancel".localized(forClass: CheckoutTheme.self)
     var font: UIFont =  UIFont.systemFont(ofSize: Constants.Style.BillingForm.CancelButton.fontSize.rawValue)

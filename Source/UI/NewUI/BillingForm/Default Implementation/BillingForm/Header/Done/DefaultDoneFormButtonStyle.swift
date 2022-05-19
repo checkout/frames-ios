@@ -1,6 +1,6 @@
 import UIKit
 
-struct DefaultDoneFormButtonStyle: CKOElementButtonStyle {
+struct DefaultDoneFormButtonStyle: ElementButtonStyle {
 
     var text: String = "done".localized(forClass: CheckoutTheme.self)
     var font: UIFont = UIFont.systemFont(ofSize: Constants.Style.BillingForm.DoneButton.fontSize.rawValue)

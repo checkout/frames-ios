@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol CKOElementErrorViewStyle: CKOElementStyle {
+public protocol ElementErrorViewStyle: ElementStyle {
     var textColor: UIColor { get }
     var backgroundColor: UIColor { get }
     var tintColor: UIColor { get }

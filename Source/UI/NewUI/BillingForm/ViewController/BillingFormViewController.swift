@@ -38,7 +38,7 @@ final class BillingFormViewController: UIViewController {
         view.showsHorizontalScrollIndicator = false
         view.allowsSelection = false
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.register(CKOCellTextField.self, forCellReuseIdentifier: "BillingFormTextFieldCellId")
+        view.register(CellTextField.self, forCellReuseIdentifier: "BillingFormTextFieldCellId")
         return view
     }()
     
@@ -64,7 +64,7 @@ final class BillingFormViewController: UIViewController {
         self.delegate = viewModel as? BillingFormViewControllerdelegate
         super.init(nibName: nil, bundle: nil)
         self.setupViewModel()
-        tableView.register(CKOCellTextField.self, forCellReuseIdentifier: "CKOCellTextFieldId")
+        tableView.register(CellTextField.self, forCellReuseIdentifier: "CellTextFieldId")
 
     }
     
@@ -143,7 +143,6 @@ extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         delegate?.tableView(tableView: tableView, cellForRowAt: indexPath, sender: self) ?? UITableViewCell()
     }
     
@@ -153,7 +152,7 @@ extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate{
 }
 
 
-extension BillingFormViewController: CKOCellTextFieldDelegate {
+extension BillingFormViewController: CellTextFieldDelegate {
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
     }

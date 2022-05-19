@@ -1,8 +1,8 @@
 import UIKit
 
 //TODO: Should be completed in another ticket.
-class CKOSelectionButton: UIView {
-    private var style: CKOElementButtonStyle
+class SelectionButton: UIView {
+    private var style: ElementButtonStyle
 
     private(set) lazy var titleLabel: UILabel = {
         let view = UILabel()
@@ -17,7 +17,7 @@ class CKOSelectionButton: UIView {
 
     private(set) lazy var image: UIImageView = {
         let view = UIImageView()
-        view.image = "warning".vectorPDFImage(forClass: CKOSelectionButton.self)
+        view.image = "warning".vectorPDFImage(forClass: SelectionButton.self)
         view.tintColor = style.activeTintColor
         view.contentMode = .scaleAspectFit
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -25,7 +25,7 @@ class CKOSelectionButton: UIView {
         return view
     }()
 
-    init(style: CKOElementButtonStyle) {
+    init(style: ElementButtonStyle) {
         self.style = style
         super.init(frame: .zero)
        setupViewsInOrder()
@@ -37,7 +37,7 @@ class CKOSelectionButton: UIView {
     }
 }
 
-extension CKOSelectionButton {
+extension SelectionButton {
 
     private func setupViewsInOrder(){
         clipsToBounds = true

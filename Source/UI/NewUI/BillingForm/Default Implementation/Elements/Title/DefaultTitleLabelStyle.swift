@@ -1,6 +1,6 @@
 import UIKit
 
-struct DefaultTitleLabelStyle: CKOElementStyle {
+struct DefaultTitleLabelStyle: ElementStyle {
     var backgroundColor: UIColor = .clear
     var isHidden: Bool = false
     var text: String = ""

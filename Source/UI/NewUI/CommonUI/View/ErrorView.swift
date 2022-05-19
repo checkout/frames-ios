@@ -1,7 +1,7 @@
 import UIKit
 
-final class CKOErrorView: UIView {
-    private var style: CKOElementErrorViewStyle = DefaultErrorInputLabelStyle()
+final class ErrorView: UIView {
+    private var style: ElementErrorViewStyle = DefaultErrorInputLabelStyle()
     
     lazy var headerLabel: UILabel = {
         let view = UILabel()
@@ -17,7 +17,7 @@ final class CKOErrorView: UIView {
     
     lazy var image: UIImageView = {
         let view = UIImageView()
-        view.image = "warning".vectorPDFImage(forClass: CKOErrorView.self)
+        view.image = "warning".vectorPDFImage(forClass: ErrorView.self)
         view.tintColor = style.tintColor
         view.contentMode = .scaleAspectFit
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -25,7 +25,7 @@ final class CKOErrorView: UIView {
         return view
     }()
     
-    init(style: CKOElementErrorViewStyle) {
+    init(style: ElementErrorViewStyle) {
         super.init(frame: .zero)
         self.style = style
         setupViewsInOrder()
@@ -36,7 +36,7 @@ final class CKOErrorView: UIView {
     }
 }
 
-extension CKOErrorView {
+extension ErrorView {
 
     private func setupViewsInOrder(){
         backgroundColor = style.backgroundColor

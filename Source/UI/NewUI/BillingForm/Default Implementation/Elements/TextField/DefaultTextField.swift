@@ -1,6 +1,6 @@
 import UIKit
 
-struct DefaultTextField: CKOElementTextFieldStyle {
+struct DefaultTextField: ElementTextFieldStyle {
     var isHidden: Bool = false
     var text: String = ""
     var placeHolder: String = ""

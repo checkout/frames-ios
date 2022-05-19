@@ -12,7 +12,8 @@ struct BillingFormFactory {
         .country(DefaultBillingFormCountryCellStyle()),
         .phoneNumber(DefaultBillingFormPhoneNumberCellStyle())
     ]
-    
+
+    // TODO: inject BillingFormStyle
     static func getBillingFormViewController(delegate: BillingFormViewModelDelegate) -> (BillingFormViewModelDelegate?, UIViewController?) {
         UIFont.loadAllCheckoutFonts
         let style = DefaultBillingFormStyle()

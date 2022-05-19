@@ -1,12 +1,12 @@
 import UIKit
 
-struct DefaultBillingFormStateCellStyle : CKOCellTextFieldStyle {
+struct DefaultBillingFormStateCellStyle : CellTextFieldStyle {
     
     var isOptional: Bool = false
     var backgroundColor: UIColor = .white
-    var title: CKOElementStyle? = DefaultTitleLabelStyle(text:  "countryRegion".localized(forClass: CheckoutTheme.self))
-    var hint: CKOElementStyle? = nil
-    var textfield: CKOElementTextFieldStyle = DefaultTextField()
-    var error: CKOElementErrorViewStyle = DefaultErrorInputLabelStyle(text: "missingBillingFormState".localized(forClass: CheckoutTheme.self))
+    var title: ElementStyle? = DefaultTitleLabelStyle(text:  "countryRegion".localized(forClass: CheckoutTheme.self))
+    var hint: ElementStyle? = nil
+    var textfield: ElementTextFieldStyle = DefaultTextField()
+    var error: ElementErrorViewStyle = DefaultErrorInputLabelStyle(text: "missingBillingFormState".localized(forClass: CheckoutTheme.self))
     
 }

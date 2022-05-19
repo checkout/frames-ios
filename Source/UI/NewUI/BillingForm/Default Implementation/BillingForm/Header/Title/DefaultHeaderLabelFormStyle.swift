@@ -1,6 +1,6 @@
 import UIKit
 
-struct DefaultHeaderLabelFormStyle: CKOElementStyle {
+struct DefaultHeaderLabelFormStyle: ElementStyle {
     var backgroundColor: UIColor = .clear
     var isHidden: Bool = false
     var text: String = "billingAddressTitle".localized(forClass: CheckoutTheme.self)

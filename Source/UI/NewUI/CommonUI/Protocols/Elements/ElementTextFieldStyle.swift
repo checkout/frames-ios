@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol CKOElementTextFieldStyle: CKOElementStyle {
+public protocol ElementTextFieldStyle: ElementStyle {
     var placeHolder: String { get }
     var tintColor: UIColor { get }
     var isPlaceHolderHidden: Bool { get }

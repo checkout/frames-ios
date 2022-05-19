@@ -1,6 +1,6 @@
 import UIKit
 
-protocol CKOTextFieldViewDelegate: AnyObject {
+protocol TextFieldViewDelegate: AnyObject {
     func updateCountryCode(code: Int)
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
@@ -8,10 +8,10 @@ protocol CKOTextFieldViewDelegate: AnyObject {
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
 
-class CKOTextFieldView: UIView {
-    weak var delegate: CKOTextFieldViewDelegate?
+class TextFieldView: UIView {
+    weak var delegate: TextFieldViewDelegate?
 
-    private var style: CKOCellTextFieldStyle
+    private var style: CellTextFieldStyle
     private var type: BillingFormCell
 
     private(set) lazy var headerLabel: UILabel = {
@@ -67,13 +67,13 @@ class CKOTextFieldView: UIView {
         return view
     }()
     
-    private(set) lazy var errorView: CKOErrorView = {
-        let view = CKOErrorView(style: style.error)
+    private(set) lazy var errorView: ErrorView = {
+        let view = ErrorView(style: style.error)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    init(type: BillingFormCell, tag: Int, style: CKOCellTextFieldStyle) {
+    init(type: BillingFormCell, tag: Int, style: CellTextFieldStyle) {
         self.style = style
         self.type = type
         super.init(frame: .zero)
@@ -87,7 +87,7 @@ class CKOTextFieldView: UIView {
     
 }
 
-extension CKOTextFieldView {
+extension TextFieldView {
 
     private func setupViewsInOrder(){
         backgroundColor = style.backgroundColor
@@ -149,7 +149,7 @@ extension CKOTextFieldView {
     }
 }
 
-extension CKOTextFieldView: UITextFieldDelegate {
+extension TextFieldView: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
@@ -174,7 +174,7 @@ extension CKOTextFieldView: UITextFieldDelegate {
     
 }
 
-extension CKOTextFieldView: BillingFormPhoneNumberTextDelegate {
+extension TextFieldView: BillingFormPhoneNumberTextDelegate {
     func updateCountryCode(code: Int) {
         delegate?.updateCountryCode(code: code)
     }

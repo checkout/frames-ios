@@ -1,11 +1,11 @@
 import UIKit
 
-protocol CKOCellButtonDelegate: AnyObject {
+protocol CellButtonDelegate: AnyObject {
     func buttonIsPressed()
 }
 
-final class CKOCellButton: UITableViewCell {
-    weak var delegate: CKOCellButtonDelegate?
+final class CellButton: UITableViewCell {
+    weak var delegate: CellButtonDelegate?
 
     private var mainView: UIView
     
@@ -21,7 +21,7 @@ final class CKOCellButton: UITableViewCell {
     }
 }
 
-extension CKOCellButton {
+extension CellButton {
 
     private func setupViewsInOrder() {
         contentView.addSubview(mainView)

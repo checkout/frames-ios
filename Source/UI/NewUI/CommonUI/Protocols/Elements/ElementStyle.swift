@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol CKOElementStyle {
+public protocol ElementStyle {
     var isHidden: Bool { get set }
     var text: String { get set }
     var font: UIFont { get }

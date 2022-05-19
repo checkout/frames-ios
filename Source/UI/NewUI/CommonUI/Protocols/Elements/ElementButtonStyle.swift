@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol CKOElementButtonStyle: CKOElementStyle {
+public protocol ElementButtonStyle: ElementStyle {
     var isEnabled: Bool { get set}
     var activeTitleColor: UIColor { get }
     var disabledTitleColor: UIColor { get }

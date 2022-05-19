@@ -1,6 +1,6 @@
 import UIKit
 
-protocol CKOCellTextFieldDelegate: AnyObject {
+protocol CellTextFieldDelegate: AnyObject {
     func updateCountryCode(code: Int)
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
@@ -8,10 +8,10 @@ protocol CKOCellTextFieldDelegate: AnyObject {
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
 
-final class CKOCellTextField: UITableViewCell {
-    weak var delegate: CKOCellTextFieldDelegate?
+final class CellTextField: UITableViewCell {
+    weak var delegate: CellTextFieldDelegate?
     var cellStyle: BillingFormCell? = nil
-    var style: CKOCellTextFieldStyle? = nil
+    var style: CellTextFieldStyle? = nil
 
     private var mainView: UIView
     init(mainView: UIView) {
@@ -19,7 +19,7 @@ final class CKOCellTextField: UITableViewCell {
         super.init(style: .default, reuseIdentifier: nil)
         self.setupViewsInOrder()
     }
-    
+
 
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
@@ -27,7 +27,7 @@ final class CKOCellTextField: UITableViewCell {
     }
 }
 
-extension CKOCellTextField {
+extension CellTextField {
     
     private func setupViewsInOrder() {
         mainView.translatesAutoresizingMaskIntoConstraints = false
@@ -46,7 +46,7 @@ extension CKOCellTextField {
     }
 }
 
-extension CKOCellTextField: CKOTextFieldViewDelegate {
+extension CellTextField: TextFieldViewDelegate {
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
     }
