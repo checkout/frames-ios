@@ -64,6 +64,8 @@ final class BillingFormViewController: UIViewController {
         self.delegate = viewModel as? BillingFormViewControllerdelegate
         super.init(nibName: nil, bundle: nil)
         self.setupViewModel()
+        tableView.register(CKOCellTextField.self, forCellReuseIdentifier: "CKOCellTextFieldId")
+
     }
     
     required init?(coder: NSCoder) {
@@ -141,6 +143,7 @@ extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         delegate?.tableView(tableView: tableView, cellForRowAt: indexPath, sender: self) ?? UITableViewCell()
     }
     

@@ -19,6 +19,7 @@ final class CKOCellTextField: UITableViewCell {
         super.init(style: .default, reuseIdentifier: nil)
         self.setupViewsInOrder()
     }
+    
 
     @available(*, unavailable)
     required init?(coder _: NSCoder) {

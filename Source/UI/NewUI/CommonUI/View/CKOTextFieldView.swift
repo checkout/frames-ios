@@ -44,8 +44,8 @@ class CKOTextFieldView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderColor = !style.error.isHidden ? style.textfield.errorBorderColor.cgColor : style.textfield.normalBorderColor.cgColor
         view.backgroundColor = style.textfield.backgroundColor
-        textField.keyboardType = style.textfield.isSupprtingNumbericKeyboard ? .phonePad : .default
-        textField.textContentType = style.textfield.isSupprtingNumbericKeyboard ? .telephoneNumber : .name
+        textField.keyboardType = style.textfield.isSupportingNumericKeyboard ? .phonePad : .default
+        textField.textContentType = style.textfield.isSupportingNumericKeyboard ? .telephoneNumber : .name
         return view
     }()
     

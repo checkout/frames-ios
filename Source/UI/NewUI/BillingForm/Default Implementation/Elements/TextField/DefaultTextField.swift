@@ -1,52 +1,19 @@
 import UIKit
 
 struct DefaultTextField: CKOElementTextFieldStyle {
-    var isHidden: Bool
-
-    var text: String
-    var placeHolder: String
-    var isPlaceHolderHidden: Bool
-    var font: UIFont
-    var textColor: UIColor
-    var normalBorderColor: UIColor
-    var focusBorderColor: UIColor
-    var errorBorderColor: UIColor
-    var backgroundColor: UIColor
-    var tintColor: UIColor
-    var width: Double
-    var height: Double
-    var isSecured: Bool
-    var isSupprtingNumbericKeyboard: Bool
-    
-    init(isHidden: Bool = false,
-         text: String = "",
-         placeHolder: String = "",
-         isPlaceHolderHidden: Bool  = false,
-         font: UIFont = UIFont(graphikStyle: .regular, size: 16),
-         textColor: UIColor = .codGray,
-         normalBorderColor: UIColor = .mediumGray,
-         focusBorderColor: UIColor = .brandeisBlue,
-         errorBorderColor: UIColor = .tallPoppyRed,
-         backgroundColor: UIColor = .white,
-         tintColor: UIColor = .codGray,
-         width: Double = 335.0,
-         height: Double = 56.0,
-         isSecured: Bool = false,
-         isSupprtingNumbericKeyboard: Bool = false) {
-        self.isHidden = isHidden
-        self.text = text
-        self.placeHolder = placeHolder
-        self.isPlaceHolderHidden = isPlaceHolderHidden
-        self.font = font
-        self.textColor = textColor
-        self.normalBorderColor = normalBorderColor
-        self.focusBorderColor = focusBorderColor
-        self.errorBorderColor = errorBorderColor
-        self.backgroundColor = backgroundColor
-        self.tintColor = tintColor
-        self.width = width
-        self.height = height
-        self.isSecured = isSecured
-        self.isSupprtingNumbericKeyboard = isSupprtingNumbericKeyboard
-    }
+    var isHidden: Bool = false
+    var text: String = ""
+    var placeHolder: String = ""
+    var isPlaceHolderHidden: Bool  = false
+    var font: UIFont = UIFont(graphikStyle: .regular, size: Constants.Style.BillingForm.InputTextField.fontSize.rawValue)
+    var textColor: UIColor = .codGray
+    var normalBorderColor: UIColor = .mediumGray
+    var focusBorderColor: UIColor = .brandeisBlue
+    var errorBorderColor: UIColor = .tallPoppyRed
+    var backgroundColor: UIColor = .white
+    var tintColor: UIColor = .codGray
+    var width: Double = Constants.Style.BillingForm.InputTextField.width.rawValue
+    var height: Double = Constants.Style.BillingForm.InputTextField.height.rawValue
+    var isSecured: Bool = false
+    var isSupportingNumericKeyboard: Bool = false
 }

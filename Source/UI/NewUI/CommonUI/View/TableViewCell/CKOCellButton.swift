@@ -8,6 +8,7 @@ final class CKOCellButton: UITableViewCell {
     weak var delegate: CKOCellButtonDelegate?
 
     private var mainView: UIView
+    
     init(mainView: UIView) {
         self.mainView = mainView
         super.init(style: .default, reuseIdentifier: nil)

@@ -38,8 +38,8 @@ public class CardViewController: UIViewController,
     private var lastSelected: UIImageView?
 
     /// Right bar button item
-    public var rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
-                                                    target: CardViewController.self,
+    public lazy var rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
+                                                    target: self,
                                                     action: #selector(onTapDoneCardButton))
 
     var topConstraint: NSLayoutConstraint?
@@ -101,6 +101,7 @@ public class CardViewController: UIViewController,
     /// Called after the controller's view is loaded into memory.
     override public func viewDidLoad() {
         super.viewDidLoad()
+        // TODO: Fix overridden values 
         rightBarButtonItem.target = self
         rightBarButtonItem.action = #selector(onTapDoneCardButton)
         navigationItem.rightBarButtonItem = rightBarButtonItem

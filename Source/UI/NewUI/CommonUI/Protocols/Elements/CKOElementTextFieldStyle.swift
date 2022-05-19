@@ -8,6 +8,6 @@ public protocol CKOElementTextFieldStyle: CKOElementStyle {
     var focusBorderColor: UIColor { get }
     var errorBorderColor: UIColor { get }
     var isSecured: Bool { get }
-    var isSupprtingNumbericKeyboard: Bool { get }
+    var isSupportingNumericKeyboard: Bool { get }
     var height: Double { get }
 }
