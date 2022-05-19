@@ -52,8 +52,8 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         }
 
         let hash = cellStyle.index
-        updateErrorView(with: &viewStyle, hashValue: hash)
-        updateTextField(with: &viewStyle, hashValue: hash)
+        updateErrorViewStyle(with: &viewStyle, hashValue: hash)
+        updateTextFieldStyle(with: &viewStyle, hashValue: hash)
     }
 
     private func getCell(with viewStyle: inout CellTextFieldStyle, cellStyle: BillingFormCell, tag: Int) -> UITableViewCell{
@@ -67,12 +67,12 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         TextFieldView(type: cellStyle, tag: tag, style: style)
     }
     
-    private func updateErrorView(with style: inout CellTextFieldStyle, hashValue: Int) {
+    private func updateErrorViewStyle(with style: inout CellTextFieldStyle, hashValue: Int) {
         guard let hasError = errorFlagOfCellType[hashValue] else { return }
         style.error.isHidden = !hasError
     }
     
-    private func updateTextField(with style: inout CellTextFieldStyle, hashValue: Int) {
+    private func updateTextFieldStyle(with style: inout CellTextFieldStyle, hashValue: Int) {
         guard let text = textValueOfCellType[hashValue] else { return }
         style.textfield.text = text
     }

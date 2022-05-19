@@ -17,7 +17,7 @@ public class CardViewController: UIViewController,
     let cardUtils = CardUtils()
 
     let checkoutAPIService: CheckoutAPIProtocol?
-
+    let billingFormStyle: BillingFormStyle?
     let cardHolderNameState: InputState
     let billingDetailsState: InputState
 
@@ -52,24 +52,28 @@ public class CardViewController: UIViewController,
 
     /// Returns a newly initialized view controller with the cardholder's name and billing details
     /// state specified. You can specified the region using the Iso2 region code ("UK" for "United Kingdom")
-    //TODO: inject BillingFormStyle
+
     public convenience init(checkoutAPIService: CheckoutAPIService,
                             cardHolderNameState: InputState,
                             billingDetailsState: InputState,
+                            billingFormStyle: BillingFormStyle?,
                             defaultRegionCode: String? = nil) {
       self.init(checkoutAPIService: checkoutAPIService as CheckoutAPIProtocol,
                 cardHolderNameState: cardHolderNameState,
                 billingDetailsState: billingDetailsState,
+                billingFormStyle: billingFormStyle,
                 defaultRegionCode: defaultRegionCode)
     }
 
     init(checkoutAPIService: CheckoutAPIProtocol,
          cardHolderNameState: InputState,
          billingDetailsState: InputState,
+         billingFormStyle: BillingFormStyle? = nil,
          defaultRegionCode: String? = nil) {
         self.checkoutAPIService = checkoutAPIService
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
+        self.billingFormStyle = billingFormStyle
         cardView = CardView(cardHolderNameState: cardHolderNameState,
                             billingDetailsState: billingDetailsState,
                             cardValidator: checkoutAPIService.cardValidator)
@@ -84,6 +88,7 @@ public class CardViewController: UIViewController,
         cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: nil)
         addressViewController = AddressViewController()
         checkoutAPIService = nil
+        billingFormStyle = nil
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
@@ -94,6 +99,7 @@ public class CardViewController: UIViewController,
         cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: nil)
         addressViewController = AddressViewController()
         checkoutAPIService = nil
+        billingFormStyle = nil
         super.init(coder: aDecoder)
     }
 
@@ -102,6 +108,8 @@ public class CardViewController: UIViewController,
     /// Called after the controller's view is loaded into memory.
     override public func viewDidLoad() {
         super.viewDidLoad()
+        UIFont.loadAllCheckoutFonts
+
         // TODO: Fix overridden values 
         rightBarButtonItem.target = self
         rightBarButtonItem.action = #selector(onTapDoneCardButton)
@@ -187,7 +195,7 @@ public class CardViewController: UIViewController,
             checkoutAPIService?.logger.log(.billingFormPresented)
         }
         guard isNewUI,
-                let viewController = BillingFormFactory.getBillingFormViewController(delegate: self).1 else {
+              let viewController = BillingFormFactory.getBillingFormViewController(billingFormStyle: billingFormStyle, delegate: self).1 else {
             navigationController?.pushViewController(addressViewController, animated: true)
             return
         }
