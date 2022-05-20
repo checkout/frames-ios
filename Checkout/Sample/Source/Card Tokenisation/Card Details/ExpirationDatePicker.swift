@@ -7,8 +7,8 @@
 
 import UIKit
 
-class ExpirationDatePicker: UIPickerView {
-  private static var secondsInYear: TimeInterval = 31536000
+final class ExpirationDatePicker: UIPickerView {
+  private static let secondsInYear: TimeInterval = 60 * 60 * 24 * 365
 
   struct ViewModel {
     var onDateChanged: ((_ month: Int, _ year: Int) -> Void)?
@@ -16,37 +16,52 @@ class ExpirationDatePicker: UIPickerView {
 
   var viewModel: ViewModel?
 
-  private var months: [String] = []
-  private var years: [Int] = []
+  private let months: [String]
+  private let years: [Int]
 
-  private let calendar = Calendar(identifier: .gregorian)
+  private let calendar: Calendar
   private let timeZone = TimeZone.utc
 
-  private var maximumDate = Date(timeIntervalSinceNow: 20 * ExpirationDatePicker.secondsInYear)
-  private let minimumDate = Date()
+  private let maximumDate: Date
+  private let minimumDate: Date
 
-  override public init(frame: CGRect) {
+  convenience override init(frame: CGRect = .zero) {
+    let calendar = Calendar(identifier: .gregorian)
+
+    let minimumDate = Date()
+    let maximumDate = Date(timeIntervalSinceNow: 20 * ExpirationDatePicker.secondsInYear)
+
+    let months = (1...12).map { String(format: "%02d", $0) }
+    let years = Array(calendar.component(.year, from: minimumDate)...calendar.component(.year, from: maximumDate))
+
+    self.init(
+      frame: frame,
+      calendar: calendar,
+      months: months,
+      years: years,
+      minimumDate: minimumDate,
+      maximumDate: maximumDate
+    )
+  }
+
+  public init(frame: CGRect, calendar: Calendar, months: [String], years: [Int], minimumDate: Date, maximumDate: Date) {
+    self.calendar = calendar
+    self.months = months
+    self.years = years
+    self.minimumDate = minimumDate
+    self.maximumDate = maximumDate
+
     super.init(frame: frame)
     setup()
   }
 
-  required public init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    setup()
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 
   private func setup() {
     delegate = self
     dataSource = self
-
-    for year in calendar.component(.year, from: minimumDate)...calendar.component(.year, from: maximumDate) {
-      years.append(year)
-    }
-
-    for index in DateFormatter().shortStandaloneMonthSymbols.indices {
-      let monthNumber = index < 9 ? "0\(index + 1)" : "\(index + 1)"
-      months.append(monthNumber)
-    }
 
     setDate(minimumDate, animated: false)
   }

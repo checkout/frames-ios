@@ -8,13 +8,13 @@
 import UIKit
 import Checkout
 
-class ThreeDSViewController: UIViewController {
-  @IBOutlet weak var challengeURLTextField: UITextField!
-  @IBOutlet weak var successURLTextField: UITextField!
-  @IBOutlet weak var failureURLTextField: UITextField!
+final class ThreeDSViewController: UIViewController {
+  @IBOutlet private weak var challengeURLTextField: UITextField!
+  @IBOutlet private weak var successURLTextField: UITextField!
+  @IBOutlet private weak var failureURLTextField: UITextField!
 
-  @IBOutlet weak var urlChallengeButton: UIButton!
-  @IBOutlet weak var demoChallengeButton: UIButton!
+  @IBOutlet private weak var urlChallengeButton: UIButton!
+  @IBOutlet private weak var demoChallengeButton: UIButton!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -96,7 +96,10 @@ class ThreeDSViewController: UIViewController {
 
   private func presentWebView(webViewConfig: WebViewController.ViewModel.WebViewConfig) {
     let webViewController = WebViewController()
-    webViewController.viewModel = WebViewController.ViewModel(onDismiss: onWebViewDismiss, webViewConfig: webViewConfig)
+    webViewController.viewModel = WebViewController.ViewModel(
+      onDismiss: { [weak self] in self?.onWebViewDismiss($0) },
+      webViewConfig: webViewConfig
+    )
     navigationController?.pushViewController(
       webViewController,
       animated: true

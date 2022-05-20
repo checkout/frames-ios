@@ -6,14 +6,12 @@
 //
 
 import XCTest
-@testable import Frames
+@testable import Checkout
 
 class URLHelperTests: XCTestCase {
-
   let subject = URLHelper()
 
   func test_extractToken() {
-
     let testCases = [
       "https://www.example.com/test": nil,
       "https://www.example.com/test?cko-payment-token=": "",
@@ -33,7 +31,6 @@ class URLHelperTests: XCTestCase {
   }
 
   func test_urlMatches() {
-
     let testCases = [
       ("test://www.example.com/test?q=Success#hash", "https://www.example.com/test?q=Success#hash", false),
       ("https://www.test.com/test?q=Success#hash", "https://www.example.com/test?q=Success#hash", false),
@@ -46,7 +43,6 @@ class URLHelperTests: XCTestCase {
     ]
 
     testCases.forEach { redirectURLString, matchingURLString, expectedResult in
-
       guard
         let redirectURL = URL(string: redirectURLString),
         let matchingURL = URL(string: matchingURLString)
