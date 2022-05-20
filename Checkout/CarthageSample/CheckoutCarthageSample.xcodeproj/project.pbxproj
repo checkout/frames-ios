@@ -101,8 +101,6 @@
 		CB05A9C927748FB50086DDA0 /* CardNumberValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A99E27748FB50086DDA0 /* CardNumberValidatorTests.swift */; };
 		CB05A9CA27748FB50086DDA0 /* AddressValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A99F27748FB50086DDA0 /* AddressValidatorTests.swift */; };
 		CB05A9CB27748FB50086DDA0 /* LuhnCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A9A027748FB50086DDA0 /* LuhnCheckerTests.swift */; };
-		CB05A9CD27749B620086DDA0 /* CheckoutEventLoggerKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB05A9CC27749B620086DDA0 /* CheckoutEventLoggerKit.xcframework */; };
-		CB05A9CE27749B620086DDA0 /* CheckoutEventLoggerKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB05A9CC27749B620086DDA0 /* CheckoutEventLoggerKit.xcframework */; };
 		CB0CFDBB27C53B49006BF661 /* TimeZone+constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0CFDBA27C53B49006BF661 /* TimeZone+constants.swift */; };
 		CB0CFDBD27C53C16006BF661 /* TimeZone+constantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0CFDBC27C53C16006BF661 /* TimeZone+constantsTests.swift */; };
 		CB0CFDBF27C54A0A006BF661 /* CardValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0CFDBE27C54A0A006BF661 /* CardValidatorTests.swift */; };
@@ -141,6 +139,8 @@
 		CBE83F0527C3D0DA006F5701 /* StubURLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE83F0427C3D0DA006F5701 /* StubURLHelper.swift */; };
 		CBE83F0727C3D960006F5701 /* StubThreeDSWKNavigationHelperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE83F0627C3D960006F5701 /* StubThreeDSWKNavigationHelperDelegate.swift */; };
 		CBE83F0927C3DB2B006F5701 /* StubWKNavigationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE83F0827C3DB2B006F5701 /* StubWKNavigationAction.swift */; };
+		CBFF38652837D76A002B0501 /* CheckoutEventLoggerKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFF38642837D76A002B0501 /* CheckoutEventLoggerKit.xcframework */; };
+		CBFF38662837D76A002B0501 /* CheckoutEventLoggerKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CBFF38642837D76A002B0501 /* CheckoutEventLoggerKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5974E48276CB4480033D29D /* ButtonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5974E37276CB4480033D29D /* ButtonsTableViewCell.swift */; };
 		F5974E49276CB4480033D29D /* ButtonsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5974E38276CB4480033D29D /* ButtonsTableViewCell.xib */; };
 		F5974E4A276CB4480033D29D /* CardTokenizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5974E39276CB4480033D29D /* CardTokenizationViewController.xib */; };
@@ -204,6 +204,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				CBCE3722271EC61400371FE7 /* Checkout.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBFF38672837D76A002B0501 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CBFF38662837D76A002B0501 /* CheckoutEventLoggerKit.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,7 +316,6 @@
 		CB05A99E27748FB50086DDA0 /* CardNumberValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberValidatorTests.swift; sourceTree = "<group>"; };
 		CB05A99F27748FB50086DDA0 /* AddressValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressValidatorTests.swift; sourceTree = "<group>"; };
 		CB05A9A027748FB50086DDA0 /* LuhnCheckerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuhnCheckerTests.swift; sourceTree = "<group>"; };
-		CB05A9CC27749B620086DDA0 /* CheckoutEventLoggerKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CheckoutEventLoggerKit.xcframework; path = "../Carthage/Checkouts/checkout-event-logger-ios-framework/CheckoutEventLoggerKit.xcframework"; sourceTree = "<group>"; };
 		CB0CFDBA27C53B49006BF661 /* TimeZone+constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeZone+constants.swift"; sourceTree = "<group>"; };
 		CB0CFDBC27C53C16006BF661 /* TimeZone+constantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeZone+constantsTests.swift"; sourceTree = "<group>"; };
 		CB0CFDBE27C54A0A006BF661 /* CardValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardValidatorTests.swift; sourceTree = "<group>"; };
@@ -346,6 +356,7 @@
 		CBE83F0427C3D0DA006F5701 /* StubURLHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLHelper.swift; sourceTree = "<group>"; };
 		CBE83F0627C3D960006F5701 /* StubThreeDSWKNavigationHelperDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubThreeDSWKNavigationHelperDelegate.swift; sourceTree = "<group>"; };
 		CBE83F0827C3DB2B006F5701 /* StubWKNavigationAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWKNavigationAction.swift; sourceTree = "<group>"; };
+		CBFF38642837D76A002B0501 /* CheckoutEventLoggerKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CheckoutEventLoggerKit.xcframework; path = "../../Carthage/Checkouts/checkout-event-logger-ios-framework/CheckoutEventLoggerKit.xcframework"; sourceTree = "<group>"; };
 		F5974E37276CB4480033D29D /* ButtonsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsTableViewCell.swift; sourceTree = "<group>"; };
 		F5974E38276CB4480033D29D /* ButtonsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonsTableViewCell.xib; sourceTree = "<group>"; };
 		F5974E39276CB4480033D29D /* CardTokenizationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardTokenizationViewController.xib; sourceTree = "<group>"; };
@@ -391,7 +402,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB05A9CD27749B620086DDA0 /* CheckoutEventLoggerKit.xcframework in Frameworks */,
+				CBFF38652837D76A002B0501 /* CheckoutEventLoggerKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +411,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBCE3734271EC66200371FE7 /* Checkout.framework in Frameworks */,
-				CB05A9CE27749B620086DDA0 /* CheckoutEventLoggerKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -737,11 +747,11 @@
 		CB7E9871271DC52800B1A0F4 = {
 			isa = PBXGroup;
 			children = (
-				CB05A9CC27749B620086DDA0 /* CheckoutEventLoggerKit.xcframework */,
 				CB23C137271DC62600F68C0E /* Source */,
 				CB23C14A271DC7CF00F68C0E /* Test */,
 				CBCE371C271EC61400371FE7 /* Checkout */,
 				CB7E987B271DC52800B1A0F4 /* Products */,
+				CBFF38632837D76A002B0501 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -797,6 +807,14 @@
 				CBE83F0227C3CFF5006F5701 /* ThreeDSWKNavigationHelperTests.swift */,
 			);
 			path = 3DSHandling;
+			sourceTree = "<group>";
+		};
+		CBFF38632837D76A002B0501 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CBFF38642837D76A002B0501 /* CheckoutEventLoggerKit.xcframework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		F5974E35276CB4480033D29D /* Card Tokenisation */ = {
@@ -934,6 +952,7 @@
 				CBCE3717271EC61400371FE7 /* Sources */,
 				CBCE3718271EC61400371FE7 /* Frameworks */,
 				CBCE3719271EC61400371FE7 /* Resources */,
+				CBFF38672837D76A002B0501 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

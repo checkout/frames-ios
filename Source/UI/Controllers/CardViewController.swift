@@ -28,8 +28,14 @@ public class CardViewController: UIViewController,
 
     /// List of available schemes
     /// Potential Task : rename amex , diners in checkout sdk keep it sync with frames scheme names
-    public var availableSchemes: [Card.Scheme] = [.visa, .mastercard, .amex,
-                                                 .diners, .discover, .jcb]
+    public var availableSchemes: [Card.Scheme] = [
+      .visa,
+      .mastercard,
+      .americanExpress,
+      .dinersClub,
+      .discover,
+      .jcb
+    ]
 
     /// Delegate
     public weak var delegate: CardViewControllerDelegate?
@@ -224,7 +230,7 @@ public class CardViewController: UIViewController,
             }
         case .failure(let error):
             switch error {
-            case .invalidCharacters:
+            case .tooLong, .invalidCharacters:
                 let message = "cardNumberInvalid".localized(forClass: CardViewController.self)
                 cardView.cardNumberInputView.showError(message: message)
             }

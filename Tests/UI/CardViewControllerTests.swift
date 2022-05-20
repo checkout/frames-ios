@@ -298,7 +298,7 @@ class CardViewControllerTests: XCTestCase {
     }
 
     func testSetImageHighlightedOnChangeCardType() {
-        cardViewController.availableSchemes = [.visa, .mastercard, .discover, .diners]
+        cardViewController.availableSchemes = [.visa, .mastercard, .discover, .dinersClub]
         cardViewController.cardView.schemeIconsStackView.setIcons(schemes: cardViewController.availableSchemes)
         cardViewController.onChangeCardNumber(scheme: .visa)
         let nFadedCard = cardViewController.cardView.schemeIconsStackView.arrangedSubviews

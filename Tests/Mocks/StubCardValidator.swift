@@ -8,6 +8,13 @@
 import Checkout
 
 final class StubCardValidator: CardValidating {
+    var eagerValidateCardNumberToReturn: Result<Card.Scheme, ValidationError.CardNumber> = .success(.visa)
+    private(set) var eagerValidateCardNumberCalledWith: String?
+    func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber> {
+        validateCardNumberCalledWith = cardNumber
+        return validateCardNumberToReturn
+    }
+
     var validateCardNumberToReturn: Result<Card.Scheme, ValidationError.CardNumber> = .success(.visa)
     private(set) var validateCardNumberCalledWith: String?
     func validate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber> {

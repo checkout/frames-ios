@@ -8,8 +8,8 @@
         case version = "CFBundleShortVersionString"
 
         enum SchemeIcons: String {
-            case amex = "schemes/icon-amex"
-            case diners = "schemes/icon-dinersclub"
+            case americanExpress = "schemes/icon-amex"
+            case dinersClub = "schemes/icon-dinersclub"
             case discover = "schemes/icon-discover"
             case jcb = "schemes/icon-jcb"
             case maestro = "schemes/icon-maestro"

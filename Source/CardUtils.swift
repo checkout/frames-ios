@@ -11,8 +11,8 @@ public final class CardUtils {
     let cardGaps: [Card.Scheme: [Int]] = [.visa: [4, 8, 12],
                                           .mastercard: [4, 8, 12],
                                           .mada: [4, 8, 12],
-                                          .amex: [4, 10],
-                                          .diners: [4, 10],
+                                          .americanExpress: [4, 10],
+                                          .dinersClub: [4, 10],
                                           .discover: [4, 8, 12],
                                           .jcb: [4, 8, 12],
                                           .maestro: [4, 8, 12]]
