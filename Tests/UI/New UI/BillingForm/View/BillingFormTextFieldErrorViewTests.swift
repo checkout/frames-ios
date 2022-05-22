@@ -38,7 +38,8 @@ class BillingFormTextFieldErrorViewTests: XCTestCase {
     override func setUp() {
         super.setUp()
         UIFont.loadAllCheckoutFonts
-        errorView = ErrorView(style: style)
+        errorView = ErrorView()
+        errorView.update(style: style)
     }
     
     func testStyleIsHidden(){
@@ -46,11 +47,11 @@ class BillingFormTextFieldErrorViewTests: XCTestCase {
     }
     
     func testStyleFont(){
-        XCTAssertEqual(errorView.headerLabel.font, style.font)
+        XCTAssertEqual(errorView.headerLabel?.font, style.font)
     }
     
     func testStyleTextColor(){
-        XCTAssertEqual(errorView.headerLabel.textColor, style.textColor)
+        XCTAssertEqual(errorView.headerLabel?.textColor, style.textColor)
     }
     
     func testStyleBackgroundColor(){
@@ -58,7 +59,7 @@ class BillingFormTextFieldErrorViewTests: XCTestCase {
     }
     
     func testStyleTintColor(){
-        XCTAssertEqual(errorView.image.tintColor, style.tintColor)
+        XCTAssertEqual(errorView.image?.tintColor, style.tintColor)
     }
 
 }

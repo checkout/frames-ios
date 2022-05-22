@@ -1,33 +1,49 @@
 import UIKit
 
-protocol BillingFormViewControllerdelegate: AnyObject {
-    func doneButtonIsPressed(sender: UIViewController)
-    func cancelButtonIsPressed(sender: UIViewController)
-    func getViewForHeader(sender: UIViewController) -> UIView?
-    func validate(text: String?, cellStyle: BillingFormCell, row: Int)
-    func updateCountryCode(code: Int)
+protocol BillingFormTableViewDelegate: AnyObject  {
     func tableView(numberOfRowsInSection section: Int) -> Int
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     func tableView(tableView: UITableView, cellForRowAt indexPath: IndexPath, sender: UIViewController) -> UITableViewCell
     func tableView(estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
+}
+
+protocol BillingFormTextFieldDelegate: AnyObject  {
     func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String)
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
 
-final class BillingFormViewController: UIViewController {
-    weak var delegate: BillingFormViewControllerdelegate?
+protocol BillingFormViewControllerDelegate: AnyObject {
+    func doneButtonIsPressed(sender: UIViewController)
+    func cancelButtonIsPressed(sender: UIViewController)
+    func getViewForHeader(sender: UIViewController) -> UIView?
+    func updateCountryCode(code: Int)
+}
 
-    fileprivate var focusedTextField: UITextField?
+/**
+ This class is for billing form list that allow user to fill required fields
+ */
+
+final class BillingFormViewController: UIViewController {
+
+    // MARK: - Properties
+
+    weak var delegate: BillingFormViewControllerDelegate?
+    weak var tableViewDelegate: BillingFormTableViewDelegate?
+    weak var textFieldDelegate: BillingFormTextFieldDelegate?
+
+    private var focusedTextField: UITextField?
     private var viewModel: BillingFormViewModel
     private var notificationCenter = NotificationCenter.default
 
-    private lazy var headerView: UIView = {
+    // MARK: - UI elements
+
+    private lazy var headerView: UIView? = {
         let view = delegate?.getViewForHeader(sender: self)
         view?.translatesAutoresizingMaskIntoConstraints = false
         return view ?? UIView()
     }()
     
-    private lazy var tableView: UITableView = {
+    private(set) lazy var tableView: UITableView? = {
         let view = UITableView()
         view.dataSource = self
         view.delegate = self
@@ -38,13 +54,15 @@ final class BillingFormViewController: UIViewController {
         view.showsHorizontalScrollIndicator = false
         view.allowsSelection = false
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.register(CellTextField.self, forCellReuseIdentifier: "BillingFormTextFieldCellId")
+        view.register(CellTextField.self)
         return view
     }()
-    
+
+    // MARK: - UIViewController
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor =  viewModel.style.mainBackground
+        view.backgroundColor = viewModel.style.mainBackground
         setupViewsInOrder()
     }
     
@@ -58,35 +76,71 @@ final class BillingFormViewController: UIViewController {
         super.viewWillDisappear(animated)
         deregisterKeyboardHandlers(notificationCenter: notificationCenter)
     }
+
+
+    /**
+     Initializes a view controller with view model protocol
+
+     - Parameters:
+        - viewModel: The bill form view model implementation.
+     */
     
     init(viewModel: BillingFormViewModel) {
         self.viewModel = viewModel
-        self.delegate = viewModel as? BillingFormViewControllerdelegate
         super.init(nibName: nil, bundle: nil)
-        self.setupViewModel()
-        tableView.register(CellTextField.self, forCellReuseIdentifier: "CellTextFieldId")
-
+        setupViewModel()
+        tableView?.register(CellTextField.self)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+
+    private func setupViewModel() {
+        delegate = viewModel as? BillingFormViewControllerDelegate
+        tableViewDelegate = viewModel as? BillingFormTableViewDelegate
+        textFieldDelegate = viewModel as? BillingFormTextFieldDelegate
+
+        viewModel.updateRow = { [weak self] in
+            DispatchQueue.main.async {
+                self?.refreshCell(at: self?.viewModel.updatedRow)
+            }
+        }
+    }
+
+    private func refreshCell(at row: Int?){
+        guard let row = row else { return }
+        let indexPath = IndexPath(row: row, section: 0)
+        tableView?.reloadRows(at: [indexPath], with: .automatic)
+    }
+
+    // MARK: - Keyboard
+
     @objc private func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
+
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        guard let scrollView = tableView else { return }
         scrollViewOnKeyboardWillShow(notification: notification,
-                                     scrollView: tableView as UIScrollView,
+                                     scrollView: scrollView,
                                           activeField: focusedTextField)
     }
-    
-    @objc func keyboardWillHide(notification: Notification) {
-        tableView.setBottomInset(to: 0.0)
+
+    @objc private func keyboardWillHide(notification: Notification) {
+        tableView?.setBottomInset(to: 0.0)
         self.focusedTextField = nil
     }
+
+    private func setUpKeyboard() {
+        registerKeyboardHandlers(notificationCenter: notificationCenter,
+                                      keyboardWillShow: #selector(keyboardWillShow),
+                                      keyboardWillHide: #selector(keyboardWillHide))
+    }
 }
+
+// MARK: - Views Layout Constraint
 
 extension BillingFormViewController {
     
@@ -96,6 +150,7 @@ extension BillingFormViewController {
     }
     
     private func setupHeaderView(){
+        guard let headerView = headerView else { return }
         view.addSubview(headerView)
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(
@@ -113,6 +168,8 @@ extension BillingFormViewController {
     }
     
     private func setupTableView() {
+        guard let tableView = tableView else { return }
+        guard let headerView = headerView else { return }
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(
@@ -128,38 +185,36 @@ extension BillingFormViewController {
                 constant: 20)
         ])
     }
-    
-    private func setUpKeyboard() {
-        registerKeyboardHandlers(notificationCenter: notificationCenter,
-                                      keyboardWillShow: #selector(keyboardWillShow),
-                                      keyboardWillHide: #selector(keyboardWillHide))
-    }
+
 }
+
+// MARK: - UITableViewDataSource and UITableViewDelegate
 
 extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        delegate?.tableView(numberOfRowsInSection: section) ?? 0
+        tableViewDelegate?.tableView(numberOfRowsInSection: section) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        delegate?.tableView(tableView: tableView, cellForRowAt: indexPath, sender: self) ?? UITableViewCell()
+        tableViewDelegate?.tableView(tableView: tableView, cellForRowAt: indexPath, sender: self) ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        delegate?.tableView(estimatedHeightForRowAt: indexPath) ?? 0.0
+        tableViewDelegate?.tableView(estimatedHeightForRowAt: indexPath) ?? 0.0
     }
 }
 
+// MARK: - Text Field Delegate
 
 extension BillingFormViewController: CellTextFieldDelegate {
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
-        delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
+        textFieldDelegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
     }
     
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String) {
         guard let textField = textField as? BillingFormTextField else { return }
-        delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString)
+        textFieldDelegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString)
     }
     
     func textFieldShouldBeginEditing(textField: UITextField) {
@@ -175,6 +230,8 @@ extension BillingFormViewController: CellTextFieldDelegate {
     }
 }
 
+// MARK: - Header Cell Delegate
+
 extension BillingFormViewController: BillingFormHeaderCellDelegate {
     
     func doneButtonIsPressed() {
@@ -183,18 +240,5 @@ extension BillingFormViewController: BillingFormHeaderCellDelegate {
     
     func cancelButtonIsPressed() {
         delegate?.cancelButtonIsPressed(sender: self)
-    }
-}
-
-extension BillingFormViewController {
-    private func setupViewModel() {
-        viewModel.updateRow = { [weak self] in
-            DispatchQueue.main.async { 
-                guard let row = self?.viewModel.updatedRow else { return }
-                let indexPath = IndexPath(row: row, section: 0)
-                self?.tableView.reloadRows(at: [indexPath], with: .automatic)
-            }
-           
-        }
     }
 }

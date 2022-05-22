@@ -6,6 +6,7 @@ class BillingFormViewControllerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        UIFont.loadAllCheckoutFonts
         // Put setup code here. This method is called before the invocation of each test method in the class.
         let style = DefaultBillingFormStyle()
         let viewModel = DefaultBillingFormViewModel(style: style)
@@ -43,23 +44,23 @@ class BillingFormViewControllerTests: XCTestCase {
     }
     
     func testCallDelegateMethodTableViewCellForRow() {
-        let delegate = BillingFormViewControllerMockDelegate()
+        let delegate = BillingFormTableViewMockDelegate()
         billingFormViewController.viewDidLoad()
-        billingFormViewController.delegate = delegate
+        billingFormViewController.tableViewDelegate = delegate
         
-        let indexthPath = IndexPath(row: 2, section: 2)
-        let cell = billingFormViewController.tableView(UITableView(), cellForRowAt: indexthPath)
+        let indexPath = IndexPath(row: 2, section: 2)
+        let cell = billingFormViewController.tableView(billingFormViewController.tableView!, cellForRowAt: indexPath)
         
         XCTAssertNotNil(cell)
         XCTAssertEqual(delegate.cellForRowAtCalledTimes, 1)
         XCTAssertEqual(delegate.cellForRowAtLastCalledWithSender, billingFormViewController)
-        XCTAssertEqual(delegate.cellForRowAtLastCalledWithIndexPath, indexthPath)
+        XCTAssertEqual(delegate.cellForRowAtLastCalledWithIndexPath, indexPath)
     }
     
     func testCallDelegateMethodTableViewNumberOfRowsInSection() {
-        let delegate = BillingFormViewControllerMockDelegate()
+        let delegate = BillingFormTableViewMockDelegate()
         billingFormViewController.viewDidLoad()
-        billingFormViewController.delegate = delegate
+        billingFormViewController.tableViewDelegate = delegate
         
         let section = 0
         let cell = billingFormViewController.tableView(UITableView(), numberOfRowsInSection: section)
@@ -70,9 +71,9 @@ class BillingFormViewControllerTests: XCTestCase {
     }
     
     func testCallDelegateMethodTableViewEstimatedHeightForRow() {
-        let delegate = BillingFormViewControllerMockDelegate()
+        let delegate = BillingFormTableViewMockDelegate()
         billingFormViewController.viewDidLoad()
-        billingFormViewController.delegate = delegate
+        billingFormViewController.tableViewDelegate = delegate
         
         let indexthPath = IndexPath(row: 2, section: 2)
         let cell = billingFormViewController.tableView(UITableView(), estimatedHeightForRowAt: indexthPath)

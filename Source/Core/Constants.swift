@@ -45,6 +45,7 @@ extension Constants {
 
             enum InputErrorLabel: Double {
                 case height = 18
+                case fontSize = 13
             }
 
             enum InputHintLabel: Double {

@@ -5,7 +5,7 @@ protocol BillingFormViewModelDelegate: AnyObject {
     func updateCountryCode(code: Int)
 }
 
-protocol BillingFormViewModelEditingDelegate {
+protocol BillingFormViewModelEditingDelegate: AnyObject {
     func didFinishEditingBillingForm(successfully: Bool)
 }
 

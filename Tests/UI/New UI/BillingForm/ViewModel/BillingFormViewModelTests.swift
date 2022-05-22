@@ -30,7 +30,7 @@ class BillingFormViewModelTests: XCTestCase {
         textField.text = text
 
         viewModel.validate(text: textField.text, cellStyle: expectedType, row: tag)
-        XCTAssertEqual( viewModel.errorFlagOfCellType[expectedType.index], false)
+        XCTAssertEqual(viewModel.errorFlagOfCellType[expectedType.index], true)
     }
     
     func testValidationWhenTextFieldIsNotEmptyThenShowSuccess() {

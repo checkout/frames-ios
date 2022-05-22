@@ -13,13 +13,24 @@ final class CellTextField: UITableViewCell {
     var cellStyle: BillingFormCell? = nil
     var style: CellTextFieldStyle? = nil
 
-    private var mainView: UIView
-    init(mainView: UIView) {
-        self.mainView = mainView
-        super.init(style: .default, reuseIdentifier: nil)
-        self.setupViewsInOrder()
+    private lazy var mainView: TextFieldView? = {
+        let view = TextFieldView(style: style, type: cellStyle)
+        view.delegate = self
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViewsInOrder()
     }
 
+    func update(cellStyle:BillingFormCell, style: CellTextFieldStyle, tag: Int) {
+        self.cellStyle = cellStyle
+        self.style = style
+        self.tag = tag
+        mainView?.update(style: style, type: cellStyle)
+    }
 
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
@@ -30,8 +41,10 @@ final class CellTextField: UITableViewCell {
 extension CellTextField {
     
     private func setupViewsInOrder() {
-        mainView.translatesAutoresizingMaskIntoConstraints = false
+        guard let mainView = mainView else { return }
         contentView.addSubview(mainView)
+        mainView.setContentHuggingPriority(.defaultLow, for: .vertical)
+        mainView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(
                 equalTo: contentView.topAnchor),

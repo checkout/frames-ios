@@ -38,14 +38,14 @@ import Foundation
     
     var index: Int {
         switch self {
-        case .fullName:  return 1
-        case .addressLine1:  return 2
-        case .addressLine2:  return 3
-        case .city:  return 4
-        case .state:  return 5
-        case .postcode:  return 6
-        case .country:  return 7
-        case .phoneNumber:  return 8
+        case .fullName: return 0
+        case .addressLine1: return 1
+        case .addressLine2: return 2
+        case .city: return 3
+        case .state: return 4
+        case .postcode: return 5
+        case .country: return 6
+        case .phoneNumber: return 7
         }
     }
 }

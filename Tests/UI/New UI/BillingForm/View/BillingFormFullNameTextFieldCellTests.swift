@@ -7,7 +7,7 @@ class BillingFormTextFieldCellTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        cell = CellTextField(mainView: UIView())
+        cell = CellTextField()
     }
     
     func testCallDelegateMethodTextFieldShouldBeginEditing() {

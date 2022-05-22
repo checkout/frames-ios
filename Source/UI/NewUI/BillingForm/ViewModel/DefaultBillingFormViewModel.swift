@@ -1,7 +1,14 @@
 import UIKit
 import Checkout
 
+/**
+ This class is for billing form list view model logic.
+ */
+
 final class DefaultBillingFormViewModel: BillingFormViewModel {
+
+    // MARK: - Properties
+
     var style: BillingFormStyle
     var updateRow: (() -> Void)?
     var updatedRow: Int? {
@@ -11,12 +18,25 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     var errorFlagOfCellType = [Int: Bool]()
     var textValueOfCellType = [Int: String]()
     
-    var editDelegate: BillingFormViewModelEditingDelegate?
+    weak var editDelegate: BillingFormViewModelEditingDelegate?
+    weak var textFieldDelegate: BillingFormTextFieldDelegate?
     weak var delegate: BillingFormViewModelDelegate?
-    
+
     private var initialCountry: String
     private var initialRegionCode: String?
     private var countryCode: Int = 0
+
+    // MARK: - Public methods
+
+    /**
+     Initializes view model with some required protocols
+
+     - Parameters:
+        - style: The bill form view Style implementation.
+        - initialCountry: //TODO: will be implemented in country ticket
+        - initialRegionCode: //TODO: will be implemented in country next ticket
+        - delegate: Optional billing form view Model delegate
+      */
     
     init(style: BillingFormStyle,
          initialCountry: String = "",
@@ -30,20 +50,29 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     
     func getHeaderView(delegate: BillingFormHeaderCellDelegate?) -> UIView {
         var style = style.header
-        style.doneButton.isEnabled = textValueOfCellType.values.count == self.style.cells.count
+        let isDoneButtonEnabled = textValueOfCellType.values.count == self.style.cells.count
+        style.doneButton.isEnabled = isDoneButtonEnabled
+
         let view = BillingFormHeaderCell(style: style, delegate: delegate)
+        view.update(style: style)
         self.editDelegate = view
         return view
     }
 
-    func getCell(row: Int,  delegate: CellTextFieldDelegate?) -> UITableViewCell {
-        guard style.cells.count > row, var viewStyle = style.cells[row].style
+    func getCell(tableView: UITableView, indexPath: IndexPath,  delegate: CellTextFieldDelegate?) -> UITableViewCell {
+        guard style.cells.count > indexPath.row, var viewStyle = style.cells[indexPath.row].style
         else { return UITableViewCell() }
 
-        let cellStyle = style.cells[row]
-        updateStyle(with: &viewStyle, cellStyle: cellStyle, tag: row)
-        return getCell(with: &viewStyle, cellStyle: cellStyle, tag: row)
+        updateStyle(with: &viewStyle, cellStyle: style.cells[indexPath.row], tag: indexPath.row)
+
+        return getCell(tableView: tableView,
+                       viewStyle: &viewStyle,
+                       cellStyle: style.cells[indexPath.row],
+                       indexPath: indexPath,
+                       delegate: delegate)
     }
+
+    // MARK: - Private methods
 
     private func updateStyle(with viewStyle: inout CellTextFieldStyle, cellStyle: BillingFormCell, tag: Int) {
         if viewStyle.isOptional {
@@ -56,17 +85,16 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         updateTextFieldStyle(with: &viewStyle, hashValue: hash)
     }
 
-    private func getCell(with viewStyle: inout CellTextFieldStyle, cellStyle: BillingFormCell, tag: Int) -> UITableViewCell{
-        let mainView = getTextFieldMainText(with: viewStyle, cellStyle: cellStyle, tag: tag)
-        let cell = CellTextField(mainView: mainView)
-        mainView.delegate = cell
+    private func getCell(tableView: UITableView, viewStyle: inout CellTextFieldStyle, cellStyle: BillingFormCell, indexPath: IndexPath, delegate: CellTextFieldDelegate?) -> UITableViewCell {
+
+        let cell: CellTextField = tableView.dequeueReusable(for: indexPath)
+        cell.delegate = delegate
+        cell.update(cellStyle: cellStyle, style: viewStyle, tag: indexPath.row)
+
         return cell
     }
 
-    private func getTextFieldMainText(with style: CellTextFieldStyle, cellStyle: BillingFormCell, tag: Int) -> TextFieldView {
-        TextFieldView(type: cellStyle, tag: tag, style: style)
-    }
-    
+
     private func updateErrorViewStyle(with style: inout CellTextFieldStyle, hashValue: Int) {
         guard let hasError = errorFlagOfCellType[hashValue] else { return }
         style.error.isHidden = !hasError
@@ -76,9 +104,88 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         guard let text = textValueOfCellType[hashValue] else { return }
         style.textfield.text = text
     }
+
+    // MARK: - Text Field logic
+
+    func validate(text: String?, cellStyle: BillingFormCell, row: Int)  {
+        guard cellStyle.index <= errorFlagOfCellType.count,
+              cellStyle.index >= 0,
+              let style = cellStyle.style,
+              !style.isOptional else {
+            errorFlagOfCellType[cellStyle.index] = false
+            return
+        }
+        errorFlagOfCellType[cellStyle.index] = cellStyle.validator.validate(text: text)
+    }
+
+    func validateTextFieldByCharacter(textField: UITextField, replacementString string: String) {
+        guard let type = (textField as? BillingFormTextField)?.type else { return }
+
+        validate(text: string , cellStyle: type, row: textField.tag)
+
+        let shouldRemoveText = (textField.text?.count ?? 1 == 1) && !(type.style?.isOptional ?? false)
+
+        if !string.isEmpty {
+            textValueOfCellType[type.index] = string
+        } else if shouldRemoveText {
+            textValueOfCellType[type.index] = nil
+        }
+
+        let hasErrorValue = errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.allSatisfy({$0})
+
+        let areAllFieldsAreFulfilled = textValueOfCellType.values.count == style.cells.count && !hasErrorValue
+
+        editDelegate?.didFinishEditingBillingForm(successfully:  areAllFieldsAreFulfilled)
+    }
+
+    private func validateTextOnEndEditing(textField: BillingFormTextField) {
+        guard let type = textField.type else { return }
+
+        validate(text: textField.text , cellStyle: type, row: textField.tag)
+
+        let shouldSaveText = !(textField.text?.isEmpty ?? true) || (type.style?.isOptional ?? false)
+
+        textValueOfCellType[type.index] =  shouldSaveText ? textField.text : nil
+
+        updatedRow = textField.type?.index
+    }
 }
 
-extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
+// MARK: - Table View Delegate
+
+extension DefaultBillingFormViewModel: BillingFormTableViewDelegate {
+    func tableView(estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
+    }
+
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        UITableView.automaticDimension
+    }
+
+    func tableView(numberOfRowsInSection section: Int) -> Int {
+        style.cells.count
+    }
+
+    func tableView(tableView: UITableView, cellForRowAt indexPath: IndexPath, sender: UIViewController) -> UITableViewCell {
+        getCell(tableView: tableView, indexPath: indexPath, delegate: sender as? BillingFormViewController)
+    }
+}
+
+// MARK: - Text View Delegate
+
+extension DefaultBillingFormViewModel: BillingFormTextFieldDelegate {
+    func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String) {
+        validateTextOnEndEditing(textField: textField)
+    }
+
+    func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
+        validateTextFieldByCharacter(textField: textField, replacementString: string)
+    }
+}
+
+// MARK: - Billing form view controller Delegate
+
+extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
     
     func updateCountryCode(code: Int) {
         countryCode = code
@@ -87,50 +194,7 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
     func getViewForHeader(sender: UIViewController) -> UIView? {
         return getHeaderView(delegate: sender as? BillingFormHeaderCellDelegate)
     }
-    
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        UITableView.automaticDimension
-    }
-    
-    func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String) {
-        validate(text: textField.text , cellStyle: textField.type, row: textField.tag)
-        
-        if !(textField.text?.isEmpty ?? true) || textField.type.style?.isOptional ?? false {
-            textValueOfCellType[textField.type.index] = textField.text
-        } else {
-            textValueOfCellType[textField.type.index] = nil
-            
-        }
-        updatedRow = textField.tag
-    }
-    
-    func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
-        guard let textField = textField as? BillingFormTextField else { return }
-        validate(text: string , cellStyle: textField.type, row: textField.tag)
-        
-        if !(string.isEmpty)  {
-            textValueOfCellType[textField.type.index] = string
-        } else if textField.text?.count ?? 1 == 1, !(textField.type.style?.isOptional ?? false)  {
-            textValueOfCellType[textField.type.index] = nil
-        }
-        
-        let isSuccessful =  textValueOfCellType.values.count == style.cells.count && !(errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.allSatisfy({$0}))
-        editDelegate?.didFinishEditingBillingForm(successfully:  isSuccessful)
-    }
-    
-    
-    func tableView(estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        UITableView.automaticDimension
-    }
-    
-    func tableView(numberOfRowsInSection section: Int) -> Int {
-        style.cells.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAt indexPath: IndexPath, sender: UIViewController) -> UITableViewCell {
-        getCell(row: indexPath.row, delegate: sender as? BillingFormViewController)
-    }
-    
+
     func doneButtonIsPressed(sender: UIViewController) {
         
         let phone = Phone(
@@ -144,24 +208,12 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerdelegate {
             state: textValueOfCellType[BillingFormCell.state(nil).index],
             zip: textValueOfCellType[BillingFormCell.postcode(nil).index],
             country: nil)
-                                                       
-                                                      
+
         delegate?.onTapDoneButton(address: address, phone: phone)
         sender.dismiss(animated: true)
     }
     
     func cancelButtonIsPressed(sender: UIViewController) {
         sender.dismiss(animated: true)
-    }
-    
-    internal func validate(text: String?, cellStyle: BillingFormCell, row: Int)  {
-        guard cellStyle.index <= errorFlagOfCellType.count,
-              cellStyle.index >= 0,
-                let style = cellStyle.style,
-                !style.isOptional else {
-            errorFlagOfCellType[cellStyle.index] = false
-            return
-        }
-        errorFlagOfCellType[cellStyle.index] = cellStyle.validator.validate(text: text)
     }
 }
