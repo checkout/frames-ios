@@ -109,6 +109,7 @@ public class CardViewController: UIViewController,
     override public func viewDidLoad() {
         super.viewDidLoad()
         UIFont.loadAllCheckoutFonts
+        UITextField.disableHardwareLayout()
 
         // TODO: Fix overridden values 
         rightBarButtonItem.target = self
