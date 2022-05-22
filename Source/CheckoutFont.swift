@@ -14,24 +14,36 @@ extension UIFont {
 extension UIFont {
 
     enum GraphikStyle: String, CaseIterable {
-        case regularIt
-        case thin
-        case thinIt
-        case extrabldIt
-        case lightIt
-        case black
-        case medium
-        case extrabld
-        case boldIt
-        case regular
-        case blackIt
-        case mediumIt
-        case bold
-        case light
-        case semiboldIt
-        case semibold
+        case black = "Black"
+        case blackItalic = "BlackItalic"
+
+        case bold = "Bold"
+        case boldItalic = "BoldItalic"
+
+        case extraLight = "Extralight"
+        case extraLightItalic = "ExtralightItalic"
+
+        case light = "Light"
+        case lightItalic = "LightItalic"
+
+        case medium = "Medium"
+        case mediumItalic = "MediumItalic"
+
+        case regular = "Regular"
+        case regularItalic = "RegularItalic"
+
+        case semibold = "Semibold"
+        case semiboldItalic = "SemiboldItalic"
+
+        case `super` = "Super"
+        case `superItalic` = "SuperItalic"
+
+        case thin = "Thin"
+        case thinItalic = "ThinItalic"
+
+
         var fontName: String {
-            return "GraphikLCG-\(self.rawValue.capitalized)"
+            return "GraphikLCG-\(self.rawValue)"
         }
     }
     

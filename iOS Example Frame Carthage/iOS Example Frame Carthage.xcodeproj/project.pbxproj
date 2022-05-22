@@ -258,8 +258,11 @@
 		950AA5F62836A8DD007DE5E9 /* cardTokenInvalidNumber.json in Resources */ = {isa = PBXBuildFile; fileRef = 950AA5AC2836A8DD007DE5E9 /* cardTokenInvalidNumber.json */; };
 		950AA5F72836A8DD007DE5E9 /* applePayToken.json in Resources */ = {isa = PBXBuildFile; fileRef = 950AA5AD2836A8DD007DE5E9 /* applePayToken.json */; };
 		959C7806283534B000C2A140 /* ResourcesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C77AC283534B000C2A140 /* ResourcesTests.swift */; };
-		959C7807283534B000C2A140 /* CKOColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C77AD283534B000C2A140 /* CKOColorTests.swift */; };
-		959C7808283534B000C2A140 /* CKOFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C77AE283534B000C2A140 /* CKOFontTests.swift */; };
+		95B1F439283AC34D00A78BFA /* GraphikFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1F436283AC34D00A78BFA /* GraphikFontTests.swift */; };
+		95B1F43A283AC34D00A78BFA /* FontRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1F437283AC34D00A78BFA /* FontRegistrationTests.swift */; };
+		95B1F43B283AC34D00A78BFA /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1F438283AC34D00A78BFA /* ColorTests.swift */; };
+		95B1F43D283AC38B00A78BFA /* BillingFormTableViewMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1F43C283AC38B00A78BFA /* BillingFormTableViewMockDelegate.swift */; };
+		95B1F43F283AC39F00A78BFA /* BillingFormTableViewMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1F43E283AC39F00A78BFA /* BillingFormTableViewMockDelegate.swift */; };
 		95F381762832AED6004C35FD /* DetailsInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F3811C2832AED6004C35FD /* DetailsInputViewTests.swift */; };
 		95F381772832AED6004C35FD /* AddressViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F3811D2832AED6004C35FD /* AddressViewControllerTests.swift */; };
 		95F381782832AED6004C35FD /* CountrySelectionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F3811E2832AED6004C35FD /* CountrySelectionViewControllerTests.swift */; };
@@ -335,8 +338,6 @@
 		95F381BE2832AED6004C35FD /* FramesEventLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F381702832AED6004C35FD /* FramesEventLoggerTests.swift */; };
 		95F381BF2832AED6004C35FD /* FramesLogEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F381712832AED6004C35FD /* FramesLogEventTests.swift */; };
 		95F381C02832AED6004C35FD /* ResourcesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F381732832AED6004C35FD /* ResourcesTests.swift */; };
-		95F381C12832AED6004C35FD /* CKOColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F381742832AED6004C35FD /* CKOColorTests.swift */; };
-		95F381C22832AED6004C35FD /* CKOFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F381752832AED6004C35FD /* CKOFontTests.swift */; };
 		CB9412CF2825647600C889E8 /* Checkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9412CE2825647600C889E8 /* Checkout.framework */; };
 		E6646FA320CE6C0A00D8353A /* iOS_Example_FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646FA220CE6C0A00D8353A /* iOS_Example_FrameUITests.swift */; };
 		F59820122805B75F007AB07C /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5981FFD2805B75F007AB07C /* LaunchScreen.strings */; };
@@ -641,8 +642,14 @@
 		950AA5AC2836A8DD007DE5E9 /* cardTokenInvalidNumber.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardTokenInvalidNumber.json; sourceTree = "<group>"; };
 		950AA5AD2836A8DD007DE5E9 /* applePayToken.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applePayToken.json; sourceTree = "<group>"; };
 		959C77AC283534B000C2A140 /* ResourcesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesTests.swift; sourceTree = "<group>"; };
-		959C77AD283534B000C2A140 /* CKOColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKOColorTests.swift; sourceTree = "<group>"; };
-		959C77AE283534B000C2A140 /* CKOFontTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKOFontTests.swift; sourceTree = "<group>"; };
+		95B1F430283AC32A00A78BFA /* GraphikFontTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphikFontTests.swift; sourceTree = "<group>"; };
+		95B1F431283AC32A00A78BFA /* FontRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontRegistrationTests.swift; sourceTree = "<group>"; };
+		95B1F432283AC32A00A78BFA /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
+		95B1F436283AC34D00A78BFA /* GraphikFontTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphikFontTests.swift; sourceTree = "<group>"; };
+		95B1F437283AC34D00A78BFA /* FontRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontRegistrationTests.swift; sourceTree = "<group>"; };
+		95B1F438283AC34D00A78BFA /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
+		95B1F43C283AC38B00A78BFA /* BillingFormTableViewMockDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTableViewMockDelegate.swift; sourceTree = "<group>"; };
+		95B1F43E283AC39F00A78BFA /* BillingFormTableViewMockDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTableViewMockDelegate.swift; sourceTree = "<group>"; };
 		95F3811C2832AED6004C35FD /* DetailsInputViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsInputViewTests.swift; sourceTree = "<group>"; };
 		95F3811D2832AED6004C35FD /* AddressViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewControllerTests.swift; sourceTree = "<group>"; };
 		95F3811E2832AED6004C35FD /* CountrySelectionViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrySelectionViewControllerTests.swift; sourceTree = "<group>"; };
@@ -718,8 +725,6 @@
 		95F381702832AED6004C35FD /* FramesEventLoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesEventLoggerTests.swift; sourceTree = "<group>"; };
 		95F381712832AED6004C35FD /* FramesLogEventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesLogEventTests.swift; sourceTree = "<group>"; };
 		95F381732832AED6004C35FD /* ResourcesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesTests.swift; sourceTree = "<group>"; };
-		95F381742832AED6004C35FD /* CKOColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKOColorTests.swift; sourceTree = "<group>"; };
-		95F381752832AED6004C35FD /* CKOFontTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKOFontTests.swift; sourceTree = "<group>"; };
 		CB8CE61C2805D00E0069ADB0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB9412CE2825647600C889E8 /* Checkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Checkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6646FA220CE6C0A00D8353A /* iOS_Example_FrameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_Example_FrameUITests.swift; sourceTree = "<group>"; };
@@ -1381,6 +1386,7 @@
 				950AA5592836A8DD007DE5E9 /* StubCheckoutAPIService.swift */,
 				950AA55A2836A8DD007DE5E9 /* StubFramesEventLogger.swift */,
 				950AA55B2836A8DD007DE5E9 /* BillingFormTextFieldCellMockDelegate.swift */,
+				95B1F43E283AC39F00A78BFA /* BillingFormTableViewMockDelegate.swift */,
 				950AA55C2836A8DD007DE5E9 /* StubCorrelationIDGenerator.swift */,
 				950AA55D2836A8DD007DE5E9 /* NotificationCenterMock.swift */,
 				950AA55E2836A8DD007DE5E9 /* NavigationControllerMock.swift */,
@@ -1551,9 +1557,10 @@
 		959C77AB283534B000C2A140 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				95B1F438283AC34D00A78BFA /* ColorTests.swift */,
+				95B1F437283AC34D00A78BFA /* FontRegistrationTests.swift */,
+				95B1F436283AC34D00A78BFA /* GraphikFontTests.swift */,
 				959C77AC283534B000C2A140 /* ResourcesTests.swift */,
-				959C77AD283534B000C2A140 /* CKOColorTests.swift */,
-				959C77AE283534B000C2A140 /* CKOFontTests.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1675,6 +1682,7 @@
 				95F3814C2832AED6004C35FD /* StubCheckoutAPIService.swift */,
 				95F3814D2832AED6004C35FD /* StubFramesEventLogger.swift */,
 				95F3814E2832AED6004C35FD /* BillingFormTextFieldCellMockDelegate.swift */,
+				95B1F43C283AC38B00A78BFA /* BillingFormTableViewMockDelegate.swift */,
 				95F3814F2832AED6004C35FD /* StubCorrelationIDGenerator.swift */,
 				95F381502832AED6004C35FD /* NotificationCenterMock.swift */,
 				95F381512832AED6004C35FD /* NavigationControllerMock.swift */,
@@ -1739,9 +1747,10 @@
 		95F381722832AED6004C35FD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				95B1F432283AC32A00A78BFA /* ColorTests.swift */,
+				95B1F431283AC32A00A78BFA /* FontRegistrationTests.swift */,
+				95B1F430283AC32A00A78BFA /* GraphikFontTests.swift */,
 				95F381732832AED6004C35FD /* ResourcesTests.swift */,
-				95F381742832AED6004C35FD /* CKOColorTests.swift */,
-				95F381752832AED6004C35FD /* CKOFontTests.swift */,
 			);
 			name = Resources;
 			path = ../../Tests/Resources;
@@ -2218,7 +2227,6 @@
 				95F381872832AED6004C35FD /* PhoneNumberValidatorTests.swift in Sources */,
 				950AA5E02836A8DD007DE5E9 /* CountryValidatorTests.swift in Sources */,
 				950AA5C12836A8DD007DE5E9 /* StubCardValidator.swift in Sources */,
-				959C7808283534B000C2A140 /* CKOFontTests.swift in Sources */,
 				950AA5EA2836A8DD007DE5E9 /* ThreedsWebViewControllerTests.swift in Sources */,
 				95F381782832AED6004C35FD /* CountrySelectionViewControllerTests.swift in Sources */,
 				950AA5EF2836A8DD007DE5E9 /* CardViewTests.swift in Sources */,
@@ -2242,7 +2250,6 @@
 				95F381BE2832AED6004C35FD /* FramesEventLoggerTests.swift in Sources */,
 				950AA5D82836A8DD007DE5E9 /* CvvConfirmationViewControllerTests.swift in Sources */,
 				950AA5BB2836A8DD007DE5E9 /* CardViewControllerMock.swift in Sources */,
-				95F381C12832AED6004C35FD /* CKOColorTests.swift in Sources */,
 				950AA5B02836A8DD007DE5E9 /* StubFramesEventLogger.swift in Sources */,
 				950AA5EC2836A8DD007DE5E9 /* SimpleLoadingViewControllerTests.swift in Sources */,
 				95F381AA2832AED6004C35FD /* CvvViewControllerDelegateMock.swift in Sources */,
@@ -2251,6 +2258,7 @@
 				950AA5C32836A8DD007DE5E9 /* BillingFormViewControllerMockDelegate.swift in Sources */,
 				950AA5E92836A8DD007DE5E9 /* BillingFormViewControllerTests.swift in Sources */,
 				950AA5B82836A8DD007DE5E9 /* BillingFormViewModelEditingMockDelegate.swift in Sources */,
+				95B1F43B283AC34D00A78BFA /* ColorTests.swift in Sources */,
 				95F381BD2832AED6004C35FD /* CorrelationIDGeneratorTests.swift in Sources */,
 				95F381BB2832AED6004C35FD /* URL+ExtensionsTests.swift in Sources */,
 				950AA5BE2836A8DD007DE5E9 /* StubURLProtocol.swift in Sources */,
@@ -2265,6 +2273,7 @@
 				95F381852832AED6004C35FD /* CityValidatorTests.swift in Sources */,
 				950AA5CD2836A8DD007DE5E9 /* URL+ExtensionsTests.swift in Sources */,
 				95F3817D2832AED6004C35FD /* ExpirationDateInputViewTests.swift in Sources */,
+				95B1F439283AC34D00A78BFA /* GraphikFontTests.swift in Sources */,
 				950AA5DA2836A8DD007DE5E9 /* CardListCellNameTests.swift in Sources */,
 				950AA5C52836A8DD007DE5E9 /* CardNumberInputViewMockDelegate.swift in Sources */,
 				950AA5D52836A8DD007DE5E9 /* CvvInputViewTests.swift in Sources */,
@@ -2274,13 +2283,14 @@
 				950AA5D42836A8DD007DE5E9 /* CountrySelectionViewControllerTests.swift in Sources */,
 				950AA5C82836A8DD007DE5E9 /* StubError.swift in Sources */,
 				950AA5E42836A8DD007DE5E9 /* AddressLine1ValidatorTests.swift in Sources */,
-				959C7807283534B000C2A140 /* CKOColorTests.swift in Sources */,
+				95B1F43A283AC34D00A78BFA /* FontRegistrationTests.swift in Sources */,
 				95F3819F2832AED6004C35FD /* BillingFormTextFieldCellMockDelegate.swift in Sources */,
 				95F381C02832AED6004C35FD /* ResourcesTests.swift in Sources */,
 				950AA5E72836A8DD007DE5E9 /* BillingFormTextFieldViewTests.swift in Sources */,
 				950AA5DE2836A8DD007DE5E9 /* StateValidatorTests.swift in Sources */,
 				950AA5BD2836A8DD007DE5E9 /* BillingFormViewModelMockDelegate.swift in Sources */,
 				95F3819E2832AED6004C35FD /* StubFramesEventLogger.swift in Sources */,
+				95B1F43F283AC39F00A78BFA /* BillingFormTableViewMockDelegate.swift in Sources */,
 				959C7806283534B000C2A140 /* ResourcesTests.swift in Sources */,
 				95F381B62832AED6004C35FD /* StubError.swift in Sources */,
 				950AA5D22836A8DD007DE5E9 /* DetailsInputViewTests.swift in Sources */,
@@ -2290,6 +2300,7 @@
 				95F381AC2832AED6004C35FD /* StubURLProtocol.swift in Sources */,
 				95F381A82832AED6004C35FD /* StubJSONEncoder.swift in Sources */,
 				95F381862832AED6004C35FD /* AddressLine2ValidatorTests.swift in Sources */,
+				95B1F43D283AC38B00A78BFA /* BillingFormTableViewMockDelegate.swift in Sources */,
 				950AA5C22836A8DD007DE5E9 /* AddressViewControllerMock.swift in Sources */,
 				950AA5C72836A8DD007DE5E9 /* StubCardViewControllerDelegate.swift in Sources */,
 				95F381AE2832AED6004C35FD /* StubDateProvider.swift in Sources */,
@@ -2319,7 +2330,6 @@
 				95F3817E2832AED6004C35FD /* CardListCellNameTests.swift in Sources */,
 				950AA5B12836A8DD007DE5E9 /* BillingFormTextFieldCellMockDelegate.swift in Sources */,
 				950AA5CC2836A8DD007DE5E9 /* DispatchQueue+DispatchingTests.swift in Sources */,
-				95F381C22832AED6004C35FD /* CKOFontTests.swift in Sources */,
 				95F381AB2832AED6004C35FD /* BillingFormViewModelMockDelegate.swift in Sources */,
 				95F381892832AED6004C35FD /* FullNameValidatorTests.swift in Sources */,
 				95F381B22832AED6004C35FD /* AddressViewControllerMockDelegate.swift in Sources */,
