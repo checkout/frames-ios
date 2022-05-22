@@ -98,6 +98,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIFont.loadAllCheckoutFonts
         // Do any additional setup after loading the view, typically from a nib.
         cardViewController.delegate = self
         cardViewController.rightBarButtonItem = UIBarButtonItem(title: "Pay", style: .done, target: nil, action: nil)
