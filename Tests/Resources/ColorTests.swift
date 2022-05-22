@@ -1,7 +1,7 @@
 import XCTest
 @testable import Frames
 
-final class CKOColorTests: XCTestCase {
+final class ColorTests: XCTestCase {
 
     func testColorWithHexStartingWithHashSign(){
         
