@@ -8,6 +8,7 @@
 "missingBillingFormCountry" = "Missing Country";
 "billingFormPhoneNumberHint" = "Phone Number";
 "billingAddressTitle" = "Billing address";
+"BillingFormCountryButtonTitle" = "Please select a country";
 "city" = "City";
 "cancel" = "Cancel";
 "done" = "Done";
@@ -19,13 +20,13 @@
 "billingDetails" = "Billing Details";
 "billingDetailsRequired" = "Billing Details*";
 "name" = "Name";
-"countryRegion" = "Country*";
-"addressLine1" = "Address line 1*";
+"countryRegion" = "Country";
+"addressLine1" = "Address line 1";
 "addressLine2" = "Address line 2";
-"state" = "County";
-"postalTown" = "Town*";
-"postcode" = "Postcode*";
-"phone" = "Phone*";
+"state" = "State";
+"postalTown" = "Town";
+"postcode" = "Postcode";
+"phone" = "Phone";
 
 "acceptedCards" = "Accepted Cards";
 
