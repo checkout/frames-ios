@@ -2,6 +2,8 @@ import XCTest
 @testable import Frames
 
 struct ErrorInputLabelStyleImp: ElementErrorViewStyle {
+    var image: UIImage
+    
     var isHidden: Bool
     var text: String
     var font: UIFont
@@ -10,31 +12,32 @@ struct ErrorInputLabelStyleImp: ElementErrorViewStyle {
     var tintColor: UIColor
     var isWarningImageOnLeft: Bool
     var height: Double
-
-    init(
-        isHidden: Bool = false,
-        text: String = "Error",
-        font: UIFont = UIFont.systemFont(ofSize: 17),
-        textColor: UIColor = .red,
-        backgroundColor: UIColor = .white,
-        tintColor: UIColor = .red,
-        isWarningImageOnLeft: Bool = true,
-        height: Double = 120 ) {
-            self.isHidden = isHidden
-            self.text = text
-            self.font = font
-            self.textColor = textColor
-            self.backgroundColor = backgroundColor
-            self.tintColor = tintColor
-            self.isWarningImageOnLeft = isWarningImageOnLeft
-            self.height = height
-        }
+    
+    init(image: UIImage = UIImage(),
+         isHidden: Bool = false,
+         text: String = "Error",
+         font: UIFont = UIFont.systemFont(ofSize: 17),
+         textColor: UIColor = .red,
+         backgroundColor: UIColor = .white,
+         tintColor: UIColor = .red,
+         isWarningImageOnLeft: Bool = true,
+         height: Double = 120 ) {
+        self.image = image
+        self.isHidden = isHidden
+        self.text = text
+        self.font = font
+        self.textColor = textColor
+        self.backgroundColor = backgroundColor
+        self.tintColor = tintColor
+        self.isWarningImageOnLeft = isWarningImageOnLeft
+        self.height = height
+    }
 }
 
 class BillingFormTextFieldErrorViewTests: XCTestCase {
     var errorView: ErrorView!
     let style = ErrorInputLabelStyleImp(isHidden: false)
-
+    
     override func setUp() {
         super.setUp()
         UIFont.loadAllCheckoutFonts
@@ -61,5 +64,5 @@ class BillingFormTextFieldErrorViewTests: XCTestCase {
     func testStyleTintColor(){
         XCTAssertEqual(errorView.image?.tintColor, style.tintColor)
     }
-
+    
 }
