@@ -110,8 +110,7 @@ public class CardViewController: UIViewController,
         super.viewDidLoad()
         UIFont.loadAllCheckoutFonts
         UITextField.disableHardwareLayout()
-
-        // TODO: Fix overridden values 
+        // TODO: Fix overridden values
         rightBarButtonItem.target = self
         rightBarButtonItem.action = #selector(onTapDoneCardButton)
         navigationItem.rightBarButtonItem = rightBarButtonItem
@@ -129,6 +128,7 @@ public class CardViewController: UIViewController,
         setInitialDate()
 
         self.automaticallyAdjustsScrollViewInsets = false
+        customizeNavigationBarAppearance()
     }
 
     /// Notifies the view controller that its view is about to be added to a view hierarchy.
@@ -144,6 +144,8 @@ public class CardViewController: UIViewController,
         } else {
             checkoutAPIService?.logger.log(.paymentFormPresented)
         }
+        navigationController?.isNavigationBarHidden = false
+
     }
 
     /// Notifies the view controller that its view is about to be removed from a view hierarchy.
@@ -438,6 +440,7 @@ public class CardViewController: UIViewController,
 }
 
 extension CardViewController: BillingFormViewModelDelegate {
+
     func updateCountryCode(code: Int) {
         countryCode = code
     }

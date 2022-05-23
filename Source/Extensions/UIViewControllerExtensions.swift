@@ -53,3 +53,20 @@ extension UIViewController {
         notificationCenter.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
+
+public extension UIViewController {
+    func customizeNavigationBarAppearance() {
+        if #available(iOS 15.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithDefaultBackground()
+            appearance.backgroundColor = .white
+            appearance.shadowColor = .white
+            appearance.shadowImage = UIImage()
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().compactAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }
+
+        navigationController?.setNeedsStatusBarAppearanceUpdate()
+    }
+}
