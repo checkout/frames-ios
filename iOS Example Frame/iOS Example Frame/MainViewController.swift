@@ -22,6 +22,11 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     // Step1 : create instance of CheckoutAPIService
     let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
                                                        environment: .sandbox)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        customizeNavigationBarAppearance()
+        navigationController?.isNavigationBarHidden = true
+    }
 
     @IBAction func goToPaymentPage(_ sender: Any) {
         cardViewController.isNewUI = false

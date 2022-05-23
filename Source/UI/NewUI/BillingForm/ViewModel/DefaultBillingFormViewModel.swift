@@ -59,51 +59,78 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         return view
     }
 
-    func getCell(tableView: UITableView, indexPath: IndexPath,  delegate: CellTextFieldDelegate?) -> UITableViewCell {
-        guard style.cells.count > indexPath.row, var viewStyle = style.cells[indexPath.row].style
-        else { return UITableViewCell() }
+    func getCell(tableView: UITableView, indexPath: IndexPath, sender: UIViewController?) -> UITableViewCell {
+        guard style.cells.count > indexPath.row else { return UITableViewCell() }
 
-        updateStyle(with: &viewStyle, cellStyle: style.cells[indexPath.row], tag: indexPath.row)
-
-        return getCell(tableView: tableView,
-                       viewStyle: &viewStyle,
-                       cellStyle: style.cells[indexPath.row],
-                       indexPath: indexPath,
-                       delegate: delegate)
+        if style.cells[indexPath.row].index == BillingFormCell.country(nil).index {
+            return getCountryCell(tableView: tableView, indexPath: indexPath, sender: sender)
+        }
+        return getTextFieldCell(tableView: tableView, indexPath: indexPath, sender: sender)
     }
 
     // MARK: - Private methods
 
-    private func updateStyle(with viewStyle: inout CellTextFieldStyle, cellStyle: BillingFormCell, tag: Int) {
-        if viewStyle.isOptional {
-            textValueOfCellType[cellStyle.index, default: ""] += ""
-            errorFlagOfCellType[cellStyle.index] = false
-        }
+    /// Text field cell
+    private func getTextFieldCell(tableView: UITableView, indexPath: IndexPath, sender: UIViewController?) -> UITableViewCell {
 
-        let hash = cellStyle.index
-        updateErrorViewStyle(with: &viewStyle, hashValue: hash)
-        updateTextFieldStyle(with: &viewStyle, hashValue: hash)
-    }
+        /// update style
+        updateFilledFields(for: indexPath.row)
+        let cellStyle = updateTextFieldStyle(for: indexPath.row)
 
-    private func getCell(tableView: UITableView, viewStyle: inout CellTextFieldStyle, cellStyle: BillingFormCell, indexPath: IndexPath, delegate: CellTextFieldDelegate?) -> UITableViewCell {
-
+        // cell
         let cell: CellTextField = tableView.dequeueReusable(for: indexPath)
-        cell.delegate = delegate
-        cell.update(cellStyle: cellStyle, style: viewStyle, tag: indexPath.row)
-
+        cell.delegate = sender as? CellTextFieldDelegate
+        cell.update(type: style.cells[indexPath.row],
+                    style: cellStyle,
+                    tag: indexPath.row)
         return cell
     }
 
+    /// country selection button
+    private func getCountryCell(tableView: UITableView, indexPath: IndexPath, sender: UIViewController?) -> UITableViewCell {
 
-    private func updateErrorViewStyle(with style: inout CellTextFieldStyle, hashValue: Int) {
-        guard let hasError = errorFlagOfCellType[hashValue] else { return }
-        style.error.isHidden = !hasError
+        /// update style
+        updateFilledFields(for: indexPath.row)
+        let cellStyle = updateCountrySelectionStyle(for: indexPath.row)
+
+        /// table view cell
+        let cell: CellButton = tableView.dequeueReusable(for: indexPath)
+        cell.delegate = sender as? CellButtonDelegate
+        cell.update(type: style.cells[indexPath.row],
+                    style: cellStyle,
+                    tag: indexPath.row)
+        return cell
     }
-    
-    private func updateTextFieldStyle(with style: inout CellTextFieldStyle, hashValue: Int) {
-        guard let text = textValueOfCellType[hashValue] else { return }
-        style.textfield.text = text
+
+    /// update filled fields with error
+    private func updateFilledFields(for row: Int) {
+        if style.cells[row].style?.isOptional ?? false {
+            let index = style.cells[row].index
+            textValueOfCellType[index, default: ""] += ""
+            errorFlagOfCellType[index] = false
+        }
     }
+
+    /// update text fields with pre-filled text
+    private func updateTextFieldStyle(for row: Int) -> CellTextFieldStyle? {
+        var viewStyle = style.cells[row].style as? CellTextFieldStyle
+        if let text = textValueOfCellType[row] {
+            viewStyle?.textfield.text = text
+        }
+        viewStyle?.error.isHidden = !(errorFlagOfCellType[row] ?? false)
+        return viewStyle
+    }
+
+    /// update country selection with pre-filled text
+    private func updateCountrySelectionStyle(for row: Int) -> CellButtonStyle? {
+        var viewStyle = style.cells[row].style as? CellButtonStyle
+        if let text = textValueOfCellType[row] {
+            viewStyle?.button.text = text
+        }
+        viewStyle?.error.isHidden = !(errorFlagOfCellType[row] ?? false)
+        return viewStyle
+    }
+
 
     // MARK: - Text Field logic
 
@@ -167,7 +194,7 @@ extension DefaultBillingFormViewModel: BillingFormTableViewDelegate {
     }
 
     func tableView(tableView: UITableView, cellForRowAt indexPath: IndexPath, sender: UIViewController) -> UITableViewCell {
-        getCell(tableView: tableView, indexPath: indexPath, delegate: sender as? BillingFormViewController)
+        getCell(tableView: tableView, indexPath: indexPath, sender: sender)
     }
 }
 
@@ -186,11 +213,12 @@ extension DefaultBillingFormViewModel: BillingFormTextFieldDelegate {
 // MARK: - Billing form view controller Delegate
 
 extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
-    
-    func updateCountryCode(code: Int) {
-        countryCode = code
+    func update(country: String, regionCode: String) {
+        let index = BillingFormCell.country(nil).index
+        textValueOfCellType[index] = country
+        updatedRow = index
     }
-    
+
     func getViewForHeader(sender: UIViewController) -> UIView? {
         return getHeaderView(delegate: sender as? BillingFormHeaderCellDelegate)
     }

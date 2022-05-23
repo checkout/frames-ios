@@ -6,13 +6,26 @@ protocol CellButtonDelegate: AnyObject {
 
 final class CellButton: UITableViewCell {
     weak var delegate: CellButtonDelegate?
-
-    private var mainView: UIView
+    var type: BillingFormCell? = nil
+    var style: CellButtonStyle? = nil
     
-    init(mainView: UIView) {
-        self.mainView = mainView
-        super.init(style: .default, reuseIdentifier: nil)
+    private lazy var mainView: SelectionButtonView? = {
+        let view = SelectionButtonView(style: style, type: type)
+        view.delegate = self
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setupViewsInOrder()
+    }
+
+    func update(type: BillingFormCell?, style: CellButtonStyle?, tag: Int) {
+        self.type = type
+        self.style = style
+        self.tag = tag
+        mainView?.update(style: style, type: type)
     }
 
     @available(*, unavailable)
@@ -24,6 +37,7 @@ final class CellButton: UITableViewCell {
 extension CellButton {
 
     private func setupViewsInOrder() {
+        guard let mainView = mainView else { return }
         contentView.addSubview(mainView)
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(
@@ -39,5 +53,8 @@ extension CellButton {
     }
 }
 
-
-
+extension CellButton: SelectionButtonViewDelegate {
+    func buttonIsPressed() {
+        delegate?.buttonIsPressed()
+    }
+}
