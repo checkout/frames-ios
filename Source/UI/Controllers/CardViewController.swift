@@ -230,7 +230,7 @@ public class CardViewController: UIViewController,
             }
         case .failure(let error):
             switch error {
-            case .tooLong, .invalidCharacters:
+            case .invalidCharacters:
                 let message = "cardNumberInvalid".localized(forClass: CardViewController.self)
                 cardView.cardNumberInputView.showError(message: message)
             }
@@ -253,7 +253,7 @@ public class CardViewController: UIViewController,
         switch cardValidator.validate(expiryMonth: expiryMonth, expiryYear: expiryYear) {
         case .success(let date):
             cardExpiryDate = date
-        case .failure(let error):
+        case .failure:
             let message = "expiryDateInvalid".localized(forClass: CardViewController.self)
             cardView.expirationDateInputView.showError(message: message)
         }

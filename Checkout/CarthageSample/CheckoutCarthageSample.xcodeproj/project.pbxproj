@@ -114,6 +114,7 @@
 		CB23C148271DC77B00F68C0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB23C146271DC77B00F68C0E /* LaunchScreen.storyboard */; };
 		CB23C149271DC77B00F68C0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB23C147271DC77B00F68C0E /* Main.storyboard */; };
 		CB23C14D271DC86200F68C0E /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23C14B271DC7DF00F68C0E /* Test.swift */; };
+		CB2644F5283BE68F0061EF34 /* ValidationError+EagerCardNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2644F4283BE68F0061EF34 /* ValidationError+EagerCardNumber.swift */; };
 		CB44200B27981A480099B725 /* Checkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCE371B271EC61400371FE7 /* Checkout.framework */; platformFilter = ios; };
 		CB442018279821CD0099B725 /* CheckoutAPIServiceIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB442016279821CD0099B725 /* CheckoutAPIServiceIntegrationTests.swift */; };
 		CB442019279821CD0099B725 /* StubProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB442017279821CD0099B725 /* StubProvider.swift */; };
@@ -330,6 +331,7 @@
 		CB23C146271DC77B00F68C0E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../Sample/Source/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB23C147271DC77B00F68C0E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Sample/Source/Main.storyboard; sourceTree = "<group>"; };
 		CB23C14B271DC7DF00F68C0E /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Test.swift; path = ../Sample/Test/Test.swift; sourceTree = "<group>"; };
+		CB2644F4283BE68F0061EF34 /* ValidationError+EagerCardNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ValidationError+EagerCardNumber.swift"; sourceTree = "<group>"; };
 		CB44200727981A480099B725 /* CheckoutIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CheckoutIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB442016279821CD0099B725 /* CheckoutAPIServiceIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAPIServiceIntegrationTests.swift; sourceTree = "<group>"; };
 		CB442017279821CD0099B725 /* StubProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubProvider.swift; sourceTree = "<group>"; };
@@ -576,6 +578,7 @@
 			children = (
 				CB05A93127748FA10086DDA0 /* ValidationError+ExpiryDate.swift */,
 				CB05A93227748FA10086DDA0 /* ValidationError+Phone.swift */,
+				CB2644F4283BE68F0061EF34 /* ValidationError+EagerCardNumber.swift */,
 				CB05A93327748FA10086DDA0 /* ValidationError+CardNumber.swift */,
 				CB05A93427748FA10086DDA0 /* ValidationError+Card.swift */,
 				CB05A93527748FA10086DDA0 /* ValidationError.swift */,
@@ -1207,6 +1210,7 @@
 				CB05A96427748FA10086DDA0 /* PhoneValidator.swift in Sources */,
 				CB05A94027748FA10086DDA0 /* TokenRequest.swift in Sources */,
 				CBACFCB327BFDFC800EA02CC /* ThreeDSWKNavigationHelper.swift in Sources */,
+				CB2644F5283BE68F0061EF34 /* ValidationError+EagerCardNumber.swift in Sources */,
 				CB05A94F27748FA10086DDA0 /* ExpiryDate.swift in Sources */,
 				CB05A95927748FA10086DDA0 /* Decoding.swift in Sources */,
 				CB05A94927748FA10086DDA0 /* Environment.swift in Sources */,

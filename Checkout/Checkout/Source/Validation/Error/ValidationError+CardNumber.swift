@@ -10,14 +10,11 @@ import Foundation
 extension ValidationError {
   public enum CardNumber: CheckoutError, CaseIterable {
     case invalidCharacters
-    case tooLong
 
     public var code: Int {
       switch self {
       case .invalidCharacters:
         return 1001
-      case .tooLong:
-        return 1020
       }
     }
   }

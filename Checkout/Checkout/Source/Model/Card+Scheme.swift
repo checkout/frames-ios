@@ -82,6 +82,10 @@ extension Card {
       }
     }
 
+    /// Minimum card length for eager check to pick up on scheme.
+    /// Current longest is Maestro eg. 6011775
+    static let minCardLengthToGuaranteeScheme = 7
+
     var eagerCardNumberRegex: NSRegularExpression? {
       switch self {
       case .unknown:
@@ -124,6 +128,7 @@ extension Card {
       }
     }
 
+    /// maximum card length for any scheme
     static let maxCardLengthAllSchemes = 19
 
     var maxCardLength: Int? {

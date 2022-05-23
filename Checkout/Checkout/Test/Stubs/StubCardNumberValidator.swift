@@ -16,10 +16,10 @@ final class StubCardNumberValidator: CardNumberValidating {
     return validateCardNumberToReturn
   }
 
-  var eagerValidateCardNumberToReturn: Result<Card.Scheme, ValidationError.CardNumber> = .success(.americanExpress)
+  var eagerValidateCardNumberToReturn: Result<Card.Scheme, ValidationError.EagerCardNumber> = .success(.americanExpress)
   private(set) var eagerValidateCardNumberCalledWith: String?
 
-  func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber> {
+  func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.EagerCardNumber> {
     eagerValidateCardNumberCalledWith = cardNumber
     return eagerValidateCardNumberToReturn
   }

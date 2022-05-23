@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol CardNumberValidating {
-  func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber>
+  func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.EagerCardNumber>
   func validate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber>
 }
 
@@ -37,18 +37,28 @@ final class CardNumberValidator: CardNumberValidating {
     }
   }
 
-  func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber> {
+  func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.EagerCardNumber> {
     let cardNumber = cardNumber.filter { !$0.isWhitespace }
 
     guard validateDigitsOnly(in: cardNumber) else {
-      return .failure(.invalidCharacters)
+      return .failure(.cardNumber(.invalidCharacters))
     }
 
-    let cardScheme = cardTypeMatch(cardNumber, \.eagerCardNumberRegex) ?? .unknown
+    switch cardTypeMatch(cardNumber, \.eagerCardNumberRegex) {
+    case .some(let cardScheme):
+      return withinCardLengthLimit(cardNumber, for: cardScheme) ? .success(cardScheme) : .failure(.tooLong)
+    case .none:
+      return shouldHaveFoundScheme(cardNumber) ? .failure(.invalidScheme) : .success(.unknown)
+    }
+  }
 
-    let maxCardLength = cardScheme.maxCardLength ?? Card.Scheme.maxCardLengthAllSchemes
+  private func withinCardLengthLimit(_ cardNumber: String, for scheme: Card.Scheme) -> Bool {
+    let maxCardLength = scheme.maxCardLength ?? Card.Scheme.maxCardLengthAllSchemes
+    return cardNumber.count <= maxCardLength
+  }
 
-    return cardNumber.count <= maxCardLength ? .success(cardScheme) : .failure(.tooLong)
+  private func shouldHaveFoundScheme(_ cardNumber: String) -> Bool {
+    return cardNumber.count >= Card.Scheme.minCardLengthToGuaranteeScheme
   }
 
   private func cardTypeMatch(

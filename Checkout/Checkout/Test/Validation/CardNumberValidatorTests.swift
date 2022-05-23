@@ -70,7 +70,7 @@ final class CardNumberValidatorTests: XCTestCase {
   }
 
   func test_validateCardNumber_eagerCards() {
-    let testCases: [String: Result<Card.Scheme, ValidationError.CardNumber>] = [
+    let testCases: [String: Result<Card.Scheme, ValidationError.EagerCardNumber>] = [
       // eager cards
       "34": .success(.americanExpress),
       "30": .success(.dinersClub),
@@ -95,7 +95,7 @@ final class CardNumberValidatorTests: XCTestCase {
   }
 
   func test_eagerValidateCardNumber_multipleValidLengths() {
-    let testCases: [String: Result<Card.Scheme, ValidationError.CardNumber>] = [
+    let testCases: [String: Result<Card.Scheme, ValidationError.EagerCardNumber>] = [
       // eager cards
       "42": .success(.visa),
       "424": .success(.visa),
@@ -127,13 +127,37 @@ final class CardNumberValidatorTests: XCTestCase {
   }
 
   func test_eagerValidateCardNumber_tooLong() {
-    let testCases: [String: Result<Card.Scheme, ValidationError.CardNumber>] = [
+    let testCases: [String: Result<Card.Scheme, ValidationError.EagerCardNumber>] = [
       // too long to be a valid visa
       "42424242424242424": .failure(.tooLong),
       // too long to be a valid amex
       "3434343434343434": .failure(.tooLong),
       // too long to be any card (max length is 19)
-      String(repeating: "1", count: 20): .failure(.tooLong)
+      String(repeating: "4", count: 20): .failure(.tooLong)
+    ]
+
+    testCases.forEach { cardNumber, expectedResult in
+      let actualResult = subject.eagerValidate(cardNumber: cardNumber)
+      XCTAssertEqual(
+        actualResult,
+        expectedResult,
+        "expected \(expectedResult) for card number \(cardNumber), received \(actualResult)"
+      )
+
+      XCTAssertEqual(stubLuhnChecker.luhnCheckCalledWith, nil)
+    }
+  }
+
+  func test_eagerValidateCardNumber_invalidScheme() {
+    let testCases: [String: Result<Card.Scheme, ValidationError.EagerCardNumber>] = [
+      "": .success(.unknown),
+      "1": .success(.unknown),
+      "12": .success(.unknown),
+      "123": .success(.unknown),
+      "1234": .success(.unknown),
+      "12345": .success(.unknown),
+      "123456": .success(.unknown),
+      "1234567": .failure(.invalidScheme)
     ]
 
     testCases.forEach { cardNumber, expectedResult in
