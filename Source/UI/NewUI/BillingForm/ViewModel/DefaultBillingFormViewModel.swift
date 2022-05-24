@@ -46,16 +46,17 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         self.initialCountry = initialCountry
         self.initialRegionCode = initialRegionCode
         self.delegate = delegate
+        style.cells.forEach { type in
+            errorFlagOfCellType[type.index] = false
+        }
     }
     
     func getHeaderView(delegate: BillingFormHeaderCellDelegate?) -> UIView {
-        var style = style.header
         let isDoneButtonEnabled = textValueOfCellType.values.count == self.style.cells.count
-        style.doneButton.isEnabled = isDoneButtonEnabled
-
-        let view = BillingFormHeaderCell(style: style, delegate: delegate)
-        view.update(style: style)
-        self.editDelegate = view
+        style.header.doneButton.isEnabled = isDoneButtonEnabled
+        let view = BillingFormHeaderCell(style: style.header, delegate: delegate)
+        view.update(style: style.header)
+        editDelegate = view
         return view
     }
 
@@ -87,11 +88,12 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
     private func getCell(tableView: UITableView, viewStyle: inout CellTextFieldStyle, cellStyle: BillingFormCell, indexPath: IndexPath, delegate: CellTextFieldDelegate?) -> UITableViewCell {
 
-        let cell: CellTextField = tableView.dequeueReusable(for: indexPath)
-        cell.delegate = delegate
-        cell.update(cellStyle: cellStyle, style: viewStyle, tag: indexPath.row)
-
-        return cell
+        if let cell: CellTextField = tableView.dequeueReusable(for: indexPath) {
+            cell.delegate = delegate
+            cell.update(cellStyle: cellStyle, style: viewStyle, tag: indexPath.row)
+            return cell
+        }
+        return UITableViewCell()
     }
 
 
@@ -108,7 +110,8 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     // MARK: - Text Field logic
 
     func validate(text: String?, cellStyle: BillingFormCell, row: Int)  {
-        guard cellStyle.index <= errorFlagOfCellType.count,
+
+        guard cellStyle.index < errorFlagOfCellType.count,
               cellStyle.index >= 0,
               let style = cellStyle.style,
               !style.isOptional else {

@@ -16,6 +16,7 @@ class TextFieldView: UIView {
 
     private var style: CellTextFieldStyle?
     private var type: BillingFormCell?
+    private lazy var textFieldContainerBottomAnchor = textFieldContainer?.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
 
     // MARK: - UI elements
 
@@ -123,7 +124,7 @@ class TextFieldView: UIView {
     private func updateErrorView(style: CellTextFieldStyle) {
         errorView?.update(style: style.error)
         errorView?.isHidden = style.error.isHidden
-        constraint(withIdentifier:"textFieldContainerBottomAnchor")?.constant = -(style.error.isHidden ? 0 : style.error.height)
+        textFieldContainerBottomAnchor?.constant = -(style.error.isHidden ? 0 : style.error.height)
     }
 }
 
@@ -164,14 +165,14 @@ extension TextFieldView {
     private func setupTextFieldContainer() {
         guard let textFieldContainer = textFieldContainer else { return }
         guard let hintLabel = hintLabel else { return }
+
         textFieldContainer.setContentHuggingPriority(.required, for: .vertical)
         addSubview(textFieldContainer)
-
         NSLayoutConstraint.activate([
             textFieldContainer.topAnchor.constraint(equalTo: hintLabel.bottomAnchor, constant: 6),
             textFieldContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
             textFieldContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
-            textFieldContainer.bottomAnchor.constraintEqualToAnchor(anchor: bottomAnchor, constant:0, identifier:"textFieldContainerBottomAnchor")
+            textFieldContainerBottomAnchor ?? textFieldContainer.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 
