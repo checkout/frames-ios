@@ -126,7 +126,7 @@ extension CardValidatorTests {
     test_validate(
       expiryMonth: "11",
       expiryYear: "22abc",
-      expectedResult: .failure(.invalidYear))
+      expectedResult: .failure(.invalidYearString))
   }
 
   func test_validate_expiryMonthYearString_incompleteYear_returnsError() {

@@ -129,23 +129,22 @@ extension Card {
     }
 
     /// maximum card length for any scheme
-    static let maxCardLengthAllSchemes = 19
+    private static let maxCardLengthAllSchemes = 19
 
-    var maxCardLength: Int? {
+    var maxCardLength: Int {
       switch self {
-      case .unknown:
-        return nil
       case .mada,
         .visa,
         .mastercard:
         return 16
       case .americanExpress:
         return 15
-      case .maestro,
+      case .unknown,
+        .maestro,
         .discover,
         .dinersClub,
         .jcb:
-        return 19
+        return Self.maxCardLengthAllSchemes
       }
     }
 

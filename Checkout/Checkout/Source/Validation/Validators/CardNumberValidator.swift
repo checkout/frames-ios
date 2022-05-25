@@ -53,8 +53,7 @@ final class CardNumberValidator: CardNumberValidating {
   }
 
   private func withinCardLengthLimit(_ cardNumber: String, for scheme: Card.Scheme) -> Bool {
-    let maxCardLength = scheme.maxCardLength ?? Card.Scheme.maxCardLengthAllSchemes
-    return cardNumber.count <= maxCardLength
+    return cardNumber.count <= scheme.maxCardLength
   }
 
   private func shouldHaveFoundScheme(_ cardNumber: String) -> Bool {

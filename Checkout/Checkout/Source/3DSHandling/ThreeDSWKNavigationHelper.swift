@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-public class ThreeDSWKNavigationHelper: NSObject {
+public final class ThreeDSWKNavigationHelper: NSObject {
   weak public var delegate: ThreeDSWKNavigationHelperDelegate?
 
   private let urlHelper: URLHelping

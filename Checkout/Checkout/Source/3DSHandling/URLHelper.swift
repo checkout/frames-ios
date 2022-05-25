@@ -39,9 +39,12 @@ final class URLHelper: URLHelping {
       }
     }
 
-    return redirectURLComponents.scheme == matchingURLComponents.scheme
-    && redirectURLComponents.host == matchingURLComponents.host
-    && redirectURLComponents.path == matchingURLComponents.path
-    && redirectURLComponents.fragment == matchingURLComponents.fragment
+    var redirectURLComponentsWithoutQuery = redirectURLComponents
+    redirectURLComponentsWithoutQuery.query = nil
+
+    var matchingURLComponentsWithoutQuery = redirectURLComponents
+    matchingURLComponentsWithoutQuery.query = nil
+
+    return redirectURLComponentsWithoutQuery == matchingURLComponentsWithoutQuery
   }
 }
