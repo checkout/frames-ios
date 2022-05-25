@@ -48,7 +48,7 @@ extension Constants {
             struct Header {
                 static let cancel = "cancel".localized
                 static let done = "done".localized
-                static let title = "billingAddressTitle"
+                static let title = "billingAddressTitle".localized
             }
 
         }

@@ -128,12 +128,13 @@ public class CardViewController: UIViewController,
         setInitialDate()
 
         self.automaticallyAdjustsScrollViewInsets = false
-        customizeNavigationBarAppearance()
+
     }
 
     /// Notifies the view controller that its view is about to be added to a view hierarchy.
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        customizeNavigationBarAppearance()
         title = "cardViewControllerTitle".localized(forClass: CardViewController.self)
         registerKeyboardHandlers(notificationCenter: notificationCenter,
                                  keyboardWillShow: #selector(keyboardWillShow),

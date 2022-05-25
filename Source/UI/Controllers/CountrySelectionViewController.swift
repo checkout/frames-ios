@@ -32,6 +32,8 @@ public class CountrySelectionViewController: UIViewController,
     /// Called after the controller's view is loaded into memory.
     override public func viewDidLoad() {
         super.viewDidLoad()
+        customizeNavigationBarAppearance()
+        navigationController?.isNavigationBarHidden = false
         setup()
         view.backgroundColor = CheckoutTheme.primaryBackgroundColor
         navigationItem.title = "countryRegion".localized(forClass: CountrySelectionViewController.self)

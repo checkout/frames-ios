@@ -62,9 +62,9 @@ public extension UIViewController {
             appearance.backgroundColor = .white
             appearance.shadowColor = .white
             appearance.shadowImage = UIImage()
-            UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().compactAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.compactAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
         }
 
         navigationController?.setNeedsStatusBarAppearanceUpdate()
