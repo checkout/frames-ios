@@ -84,7 +84,9 @@ final class WebViewController: UIViewController {
 
 extension WebViewController: ThreeDSWKNavigationHelperDelegate {
   func threeDSWKNavigationHelperDelegate(didReceiveResult result: Result<String, ThreeDSError>) {
-    navigationController?.popViewController(animated: true)
-    viewModel?.onDismiss?(result)
+    DispatchQueue.main.async { [weak self] in
+      self?.navigationController?.popViewController(animated: true)
+      self?.viewModel?.onDismiss?(result)
+    }
   }
 }

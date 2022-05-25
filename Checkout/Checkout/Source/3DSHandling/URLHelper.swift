@@ -42,7 +42,7 @@ final class URLHelper: URLHelping {
     var redirectURLComponentsWithoutQuery = redirectURLComponents
     redirectURLComponentsWithoutQuery.query = nil
 
-    var matchingURLComponentsWithoutQuery = redirectURLComponents
+    var matchingURLComponentsWithoutQuery = matchingURLComponents
     matchingURLComponentsWithoutQuery.query = nil
 
     return redirectURLComponentsWithoutQuery == matchingURLComponentsWithoutQuery
