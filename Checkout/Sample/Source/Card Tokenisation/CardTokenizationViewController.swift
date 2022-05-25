@@ -259,10 +259,12 @@ extension CardTokenizationViewController: UITableViewDataSource {
         fatalError("`CardDetailsTableViewCell` not registered.")
       }
 
-      cell.cardNumberTextField.text = viewModel.cardModel.cardNumber
-      cell.expiryMonthTextField.text = viewModel.cardModel.expiry.month
-      cell.expiryYearTextField.text = viewModel.cardModel.expiry.year
-      cell.cvvTextField.text = viewModel.cardModel.cvv
+      cell.updateTextFieldValues(
+        cardNumber: viewModel.cardModel.cardNumber,
+        month: viewModel.cardModel.expiry.month,
+        year: viewModel.cardModel.expiry.year,
+        cvv: viewModel.cardModel.cvv
+      )
 
       cell.viewModel = CardDetailsTableViewCell.ViewModel(
         onCardNumberChange: { cardNumber in

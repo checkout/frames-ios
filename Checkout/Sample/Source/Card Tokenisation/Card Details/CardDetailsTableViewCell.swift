@@ -11,13 +11,18 @@ protocol CardDetailsTableViewCellDelegate: AnyObject {
   var cardNumberDelegate: UITextFieldDelegate { get }
 }
 
-class CardDetailsTableViewCell: UITableViewCell {
-  @IBOutlet weak var cardNumberTextField: UITextField!
-  @IBOutlet weak var expiryMonthTextField: UITextField!
-  @IBOutlet weak var expiryYearTextField: UITextField!
-  @IBOutlet weak var cvvTextField: UITextField!
-  @IBOutlet weak var expiryTextFieldStackView: UIStackView!
-  @IBOutlet weak var expiryDatePickerField: UITextField!
+final class CardDetailsTableViewCell: UITableViewCell {
+  @IBOutlet private weak var cardNumberTextField: UITextField!
+  @IBOutlet private weak var expiryMonthTextField: UITextField!
+  @IBOutlet private weak var expiryYearTextField: UITextField!
+  @IBOutlet private weak var cvvTextField: UITextField!
+  @IBOutlet private weak var expiryTextFieldStackView: UIStackView!
+  @IBOutlet private weak var expiryDatePickerField: UITextField!
+
+  private enum ExpiryDateSegment: Int {
+    case text = 0
+    case dropdown = 1
+  }
 
   struct ViewModel {
     var onCardNumberChange: ((String?) -> Void)?
@@ -61,6 +66,13 @@ class CardDetailsTableViewCell: UITableViewCell {
     dateFormatter.dateFormat = "MM/YYYY"
   }
 
+  func updateTextFieldValues(cardNumber: String, month: String, year: String, cvv: String) {
+    cardNumberTextField.text = cardNumber
+    expiryMonthTextField.text = month
+    expiryYearTextField.text = year
+    cvvTextField.text = cvv
+  }
+
   private func onDateChanged(_ month: Int, _ year: Int) {
     guard let date = date(month: month, year: year) else {
       return
@@ -91,28 +103,23 @@ class CardDetailsTableViewCell: UITableViewCell {
     }
   }
 
-  @IBAction func cardNumberTextFieldEditingChanged(_ sender: Any) {
+  @IBAction private func cardNumberTextFieldEditingChanged(_ sender: Any) {
     viewModel?.onCardNumberChange?(cardNumberTextField.text)
   }
 
-  @IBAction func expiryMonthTextFieldEditingChanged(_ sender: Any) {
+  @IBAction private func expiryMonthTextFieldEditingChanged(_ sender: Any) {
     viewModel?.onExpiryMonthStringChange?(expiryMonthTextField.text)
   }
 
-  @IBAction func expiryYearTextFieldEditingChanged(_ sender: Any) {
+  @IBAction private func expiryYearTextFieldEditingChanged(_ sender: Any) {
     viewModel?.onExpiryYearStringChange?(expiryYearTextField.text)
   }
 
-  @IBAction func cvvTextFieldEditingChanged(_ sender: Any) {
+  @IBAction private func cvvTextFieldEditingChanged(_ sender: Any) {
     viewModel?.onCVVChange?(cvvTextField.text)
   }
 
-  private enum ExpiryDateSegment: Int {
-    case text = 0
-    case dropdown = 1
-  }
-
-  @IBAction func expiryTypeChanged(_ sender: UISegmentedControl) {
+  @IBAction private func expiryTypeChanged(_ sender: UISegmentedControl) {
     guard let segment = ExpiryDateSegment(rawValue: sender.selectedSegmentIndex) else {
       return
     }
@@ -129,7 +136,7 @@ class CardDetailsTableViewCell: UITableViewCell {
     endEditing(true)
   }
 
-  @objc func dateEditingDone() {
+  @objc private func dateEditingDone() {
     endEditing(true)
   }
 }
