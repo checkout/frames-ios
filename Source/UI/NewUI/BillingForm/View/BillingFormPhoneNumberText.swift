@@ -8,10 +8,12 @@ protocol BillingFormPhoneNumberTextDelegate {
 final class BillingFormPhoneNumberText: BillingFormTextField {
     var phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate?
     var phoneNumber: PhoneNumber?
+
     var nationalNumber: String {
         let rawNumber = self.text ?? ""
         return partialFormatter.nationalNumber(from: rawNumber)
     }
+
     var isValidNumber: Bool {
         let rawNumber = self.text ?? ""
         do {
@@ -28,7 +30,7 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
     private lazy var _defaultRegion: String = PhoneNumberKit.defaultRegionCode()
     private lazy var partialFormatter = PartialFormatter(phoneNumberKit: phoneNumberKit, defaultRegion: "GB", withPrefix: true)
 
-    init(type: BillingFormCell, tag: Int, phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate) {
+    init(type: BillingFormCell?, tag: Int, phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate) {
         super.init(type: type,tag: tag)
         self.phoneNumberTextDelegate = phoneNumberTextDelegate
         setup()

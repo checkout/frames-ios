@@ -1,7 +1,6 @@
 import UIKit
-import PhoneNumberKit
 
-protocol BillingFormTextFieldCellDelegate: AnyObject {
+protocol CellTextFieldDelegate: AnyObject {
     func updateCountryCode(code: Int)
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
@@ -9,57 +8,58 @@ protocol BillingFormTextFieldCellDelegate: AnyObject {
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
 
-final class CKOTextFieldCell: UITableViewCell {
-    weak var delegate: BillingFormTextFieldCellDelegate?
+final class CellTextField: UITableViewCell {
+    weak var delegate: CellTextFieldDelegate?
     var cellStyle: BillingFormCell? = nil
-    var style: CKOTextFieldCellStyle? = nil
+    var style: CellTextFieldStyle? = nil
 
-    
+    private lazy var mainView: TextFieldView? = {
+        let view = TextFieldView(style: style, type: cellStyle)
+        view.delegate = self
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViewsInOrder()
     }
-    
-    func update(cellStyle:BillingFormCell, style: CKOTextFieldCellStyle, tag: Int) {
+
+    func update(cellStyle:BillingFormCell, style: CellTextFieldStyle, tag: Int) {
         self.cellStyle = cellStyle
         self.style = style
         self.tag = tag
-        setupViewsInOrder()
+        mainView?.update(style: style, type: cellStyle)
     }
-    
 
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private lazy var paymentInputView: UIView = {
-        guard let cellStyle = cellStyle, let style = style else { return UIView() }
-        let view = CKOTextFieldView(type: cellStyle, tag: tag, style: style ,delegate: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
 }
 
-extension CKOTextFieldCell {
+extension CellTextField {
     
     private func setupViewsInOrder() {
-        contentView.addSubview(paymentInputView)
+        guard let mainView = mainView else { return }
+        contentView.addSubview(mainView)
+        mainView.setContentHuggingPriority(.defaultLow, for: .vertical)
+        mainView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         NSLayoutConstraint.activate([
-            paymentInputView.topAnchor.constraint(
-                equalTo: contentView.safeTopAnchor),
-            paymentInputView.leadingAnchor.constraint(
+            mainView.topAnchor.constraint(
+                equalTo: contentView.topAnchor),
+            mainView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor),
-            paymentInputView.trailingAnchor.constraint(
+            mainView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor),
-            paymentInputView.bottomAnchor.constraint(
-                equalTo: contentView.safeBottomAnchor,
+            mainView.bottomAnchor.constraint(
+                equalTo: contentView.bottomAnchor,
                 constant: -24)
         ])
     }
 }
 
-extension CKOTextFieldCell: BillingFormTextFieldViewDelegate {
+extension CellTextField: TextFieldViewDelegate {
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
     }

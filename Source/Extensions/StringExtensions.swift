@@ -3,7 +3,7 @@ import UIKit
 
 extension String {
     
-    private func getBundle(forClass: AnyClass) -> Foundation.Bundle {
+    func getBundle(forClass: AnyClass) -> Foundation.Bundle {
 #if SWIFT_PACKAGE
         let baseBundle = Bundle.module
 #else

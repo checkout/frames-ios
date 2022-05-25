@@ -1,18 +1,9 @@
 import UIKit
 
-struct DefaultTitleLabelStyle: CKOLabelStyle {
-    var isHidden: Bool
-    var text: String
-    var font: UIFont
-    var textColor: UIColor
-    
-    init(isHidden: Bool = false,
-         text: String = "",
-         font: UIFont = UIFont(graphikStyle: .regular, size: 15),
-         textColor: UIColor = .codGray) {
-        self.isHidden = isHidden
-        self.text = text
-        self.font = font
-        self.textColor = textColor
-    }
+struct DefaultTitleLabelStyle: ElementStyle {
+    var backgroundColor: UIColor = .clear
+    var isHidden: Bool = false
+    var text: String = ""
+    var font: UIFont = UIFont(graphikStyle: .regular, size: Constants.Style.BillingForm.InputTitleLabel.fontSize.rawValue)
+    var textColor: UIColor = .codGray
 }

@@ -1,7 +1,7 @@
 import UIKit
 @testable import Frames
 
-class BillingFormTextFieldCellMockDelegate: BillingFormTextFieldCellDelegate {
+class BillingFormTextFieldCellMockDelegate: CellTextFieldDelegate {
     
     var textFieldShouldBeginEditingCalledTimes = 0
     var textFieldShouldBeginEditingLastCalledWithTextField: UITextField?

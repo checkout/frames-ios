@@ -39,12 +39,25 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     }
 
     lazy var cardViewController: CardViewController = {
-        let b = CardViewController(checkoutAPIService: checkoutAPIService, cardHolderNameState: .normal, billingDetailsState: .required, defaultRegionCode: "GB")
-        b.billingDetailsAddress = Address(addressLine1: "Test line1", addressLine2: "Test line2", city: "London", state: "London", zip: "N12345", country: Country.allAvailable.first { $0.iso3166Alpha2 == "GB" })
+        let billingFormStyle = BillingFormFactory.defaultBillingFormStyle
+        
+        let b = CardViewController(checkoutAPIService: checkoutAPIService,
+                                   cardHolderNameState: .normal,
+                                   billingDetailsState: .required,
+                                   billingFormStyle: billingFormStyle,
+                                   defaultRegionCode: "GB")
+
+        b.billingDetailsAddress = Address(addressLine1: "Test line1",
+                                          addressLine2: "Test line2",
+                                          city: "London",
+                                          state: "London",
+                                          zip: "N12345",
+                                          country: Country.allAvailable.first { $0.iso3166Alpha2 == "GB" })
         b.billingDetailsPhone = Phone(number: "77 1234 1234",
                                       country: Country.allAvailable.first { $0.iso3166Alpha2 == "GB" })
         b.delegate = self
-        b.addressViewController.setFields(address: b.billingDetailsAddress!, phone: b.billingDetailsPhone!)
+        b.addressViewController.setFields(address: b.billingDetailsAddress!,
+                                          phone: b.billingDetailsPhone!)
         return b
     }()
 
@@ -85,6 +98,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIFont.loadAllCheckoutFonts
         // Do any additional setup after loading the view, typically from a nib.
         cardViewController.delegate = self
         cardViewController.rightBarButtonItem = UIBarButtonItem(title: "Pay", style: .done, target: nil, action: nil)

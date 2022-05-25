@@ -44,11 +44,11 @@ public class CountrySelectionViewController: UIViewController,
 
         tableView.backgroundColor = CheckoutTheme.primaryBackgroundColor
         searchBar.barStyle = CheckoutTheme.barStyle
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "countryCell")
     }
 
     private func setup() {
         // add views
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "countryCell")
         view.addSubview(searchBar)
         view.addSubview(tableView)
         addConstraints()

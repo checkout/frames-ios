@@ -1,14 +1,14 @@
 import Foundation
 
 @frozen public enum BillingFormCell {
-    case fullName(CKOTextFieldCellStyle?)
-    case addressLine1(CKOTextFieldCellStyle?)
-    case addressLine2(CKOTextFieldCellStyle?)
-    case city(CKOTextFieldCellStyle?)
-    case state(CKOTextFieldCellStyle?)
-    case postcode(CKOTextFieldCellStyle?)
-    case country(CKOTextFieldCellStyle?)
-    case phoneNumber(CKOTextFieldCellStyle?)
+    case fullName(CellTextFieldStyle?)
+    case addressLine1(CellTextFieldStyle?)
+    case addressLine2(CellTextFieldStyle?)
+    case city(CellTextFieldStyle?)
+    case state(CellTextFieldStyle?)
+    case postcode(CellTextFieldStyle?)
+    case country(CellTextFieldStyle?)
+    case phoneNumber(CellTextFieldStyle?)
     
     internal var validator: Validator {
         switch self {
@@ -23,7 +23,7 @@ import Foundation
         }
     }
     
-    internal var style: CKOTextFieldCellStyle? {
+    internal var style: CellTextFieldStyle? {
         switch self {
         case .fullName(let style): return style
         case .addressLine1(let style): return style
@@ -38,14 +38,14 @@ import Foundation
     
     var index: Int {
         switch self {
-        case .fullName:  return 1
-        case .addressLine1:  return 2
-        case .addressLine2:  return 3
-        case .city:  return 4
-        case .state:  return 5
-        case .postcode:  return 6
-        case .country:  return 7
-        case .phoneNumber:  return 8
+        case .fullName: return 0
+        case .addressLine1: return 1
+        case .addressLine2: return 2
+        case .city: return 3
+        case .state: return 4
+        case .postcode: return 5
+        case .country: return 6
+        case .phoneNumber: return 7
         }
     }
 }

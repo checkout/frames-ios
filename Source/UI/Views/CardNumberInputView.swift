@@ -73,11 +73,6 @@ import Checkout
 
     /// Called when the text changed.
     @objc public func textFieldDidChange(textField: UITextField) {
-        var targetCursorPosition = 0
-        if let startPosition = textField.selectedTextRange?.start {
-            targetCursorPosition = textField.offset(from: textField.beginningOfDocument, to: startPosition)
-        }
-
         guard let cardUtils = cardUtils,
               let rawText = textField.text else {
             return

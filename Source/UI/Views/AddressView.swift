@@ -23,8 +23,7 @@ public class AddressView: UIView {
     let countrySelectionViewController = CountrySelectionViewController()
     let countryRegionTapGesture = UITapGestureRecognizer()
 
-    let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done,
-                                     target: self, action: nil)
+    let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action: nil)
     var scrollViewBottomConstraint: NSLayoutConstraint!
     var notificationCenter: NotificationCenter = NotificationCenter.default
     var regionCodeSelected: String?
