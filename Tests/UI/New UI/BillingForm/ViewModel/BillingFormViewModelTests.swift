@@ -21,7 +21,7 @@ class BillingFormViewModelTests: XCTestCase {
         XCTAssertNotNil(view)
     }
   
-    func testValidationWhenTextFieldIsEmptyThenShowError() {
+    func testValidationWhenTextFieldIsEmptyThenShowError() throws {
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle())
         let expectedType = BillingFormCell.fullName(DefaultBillingFormFullNameCellStyle(isOptional: false))
         let tag = 2
@@ -30,7 +30,8 @@ class BillingFormViewModelTests: XCTestCase {
         textField.text = text
 
         viewModel.validate(text: textField.text, cellStyle: expectedType, row: tag)
-        XCTAssertEqual(viewModel.errorFlagOfCellType[expectedType.index], true)
+        let value = try XCTUnwrap(viewModel.errorFlagOfCellType[expectedType.index])
+        XCTAssertTrue(value)
     }
     
     func testValidationWhenTextFieldIsNotEmptyThenShowSuccess() {

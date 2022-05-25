@@ -76,17 +76,3 @@ extension UIView {
     }
 
 }
-
-extension UIView {
-    func constraint(withIdentifier:String) -> NSLayoutConstraint? {
-        return self.constraints.filter{ $0.identifier == withIdentifier }.first
-    }
-}
-
-extension NSLayoutAnchor {
-    @objc func constraintEqualToAnchor(anchor: NSLayoutAnchor!, constant:CGFloat, identifier:String) -> NSLayoutConstraint {
-        let constraint = self.constraint(equalTo: anchor, constant:constant)
-        constraint.identifier = identifier
-        return constraint
-    }
-}
