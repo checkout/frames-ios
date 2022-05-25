@@ -172,6 +172,31 @@ final class CardNumberValidatorTests: XCTestCase {
     }
   }
 
+  func test_eagerValidateCardNumber_invalidCharacters() {
+    let testCases: [String: Result<Card.Scheme, ValidationError.CardNumber>] = [
+      ">>>378282246310005": .failure(.invalidCharacters),
+      "30569309025904<<<": .failure(.invalidCharacters),
+      "385200?00023237": .failure(.invalidCharacters),
+      "6011039\\`964691945": .failure(.invalidCharacters),
+      "64411111111ABC11117": .failure(.invalidCharacters),
+      "6501111111abc111117": .failure(.invalidCharacters),
+      "-42": .failure(.invalidCharacters),
+      "$%424": .failure(.invalidCharacters),
+      "werewr4242": .failure(.invalidCharacters),
+      "42424-": .failure(.invalidCharacters),
+      "424242asdf": .failure(.invalidCharacters)
+    ]
+
+    testCases.forEach { cardNumber, expectedResult in
+      let actualResult = subject.validate(cardNumber: cardNumber)
+      XCTAssertEqual(
+        actualResult,
+        expectedResult,
+        "expected \(expectedResult) for card number \(cardNumber), received \(actualResult)"
+      )
+    }
+  }
+
   func test_validateCardNumber_noSchemeMatch() {
     let testCases: [String: Result<Card.Scheme, ValidationError.CardNumber>] = [
       "12345674": .success(.unknown)
