@@ -10,8 +10,35 @@ import Checkout
 
 class CardTokenizationViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
-  var viewModel = ViewModel()
-  let cardValidator = CardValidator(environment: .sandbox)
+  var viewModel: ViewModel
+  let cardValidator: CardValidator
+  let cardNumberDelegateHelper: CardNumberTextFieldDelegateHelper
+
+  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    let viewModel = ViewModel()
+    let cardValidator = CardValidator(environment: .sandbox)
+
+    self.viewModel = viewModel
+    self.cardValidator = cardValidator
+    self.cardNumberDelegateHelper = CardNumberTextFieldDelegateHelper(cardValidator: cardValidator) {
+      viewModel.availableSchemes
+    }
+
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+  }
+
+  required init?(coder: NSCoder) {
+    let viewModel = ViewModel()
+    let cardValidator = CardValidator(environment: .sandbox)
+
+    self.viewModel = viewModel
+    self.cardValidator = cardValidator
+    self.cardNumberDelegateHelper = CardNumberTextFieldDelegateHelper(cardValidator: cardValidator) {
+      viewModel.availableSchemes
+    }
+
+    super.init(coder: coder)
+  }
 
   func validateCardDetails() {
     var errors: [Error] = []
@@ -40,10 +67,7 @@ class CardTokenizationViewController: UIViewController {
       }
     }
 
-    let expiryValidationResult = cardValidator.validate(
-      expiryMonth: viewModel.cardModel.expiryMonth,
-      expiryYear: viewModel.cardModel.expiryYear
-    )
+    let expiryValidationResult = validateExpiry()
 
     if case .failure(let error) = expiryValidationResult {
       errors.append(error)
@@ -58,17 +82,14 @@ class CardTokenizationViewController: UIViewController {
     // Get Card Expiry Date entered.
     var cardExpiryDate: ExpiryDate?
 
-    let date = cardValidator.validate(
-      expiryMonth: viewModel.cardModel.expiryMonth,
-      expiryYear: viewModel.cardModel.expiryYear
-    )
-
-    switch date {
+    switch validateExpiry() {
     case .success(let expiryDate):
       cardExpiryDate = expiryDate
     case .failure(let error):
       displayAlert(title: "Error:", message: "\(error.localizedDescription)")
     }
+
+    let gbCountry = Country.allAvailable.first { $0.iso3166Alpha2 == "GB" }
 
     // Create a test Address Object
     let address = Address(
@@ -77,13 +98,13 @@ class CardTokenizationViewController: UIViewController {
       city: "London",
       state: "London",
       zip: "N1 7LH",
-      country: Country.allAvailable.first { $0.iso3166Alpha2 == "GB" }
+      country: gbCountry
     )
 
     // Create a test Phone Object
     let phone = Phone(
       number: "+44 765678576",
-      country: Country.allAvailable.first { $0.iso3166Alpha2 == "GB" }
+      country: gbCountry
     )
 
     guard let cardExpiryDate = cardExpiryDate else {
@@ -114,6 +135,15 @@ class CardTokenizationViewController: UIViewController {
           self.displayAlert(title: "Error:", message: "Code : \(error.code) \n \(error.localizedDescription)")
         }
       }
+    }
+  }
+
+  private func validateExpiry() -> Result<ExpiryDate, ValidationError.ExpiryDate> {
+    switch viewModel.cardModel.expiry {
+    case let .string(month, year):
+      return cardValidator.validate(expiryMonth: month, expiryYear: year)
+    case let .int(month, year):
+      return cardValidator.validate(expiryMonth: month, expiryYear: year)
     }
   }
 
@@ -229,26 +259,38 @@ extension CardTokenizationViewController: UITableViewDataSource {
         fatalError("`CardDetailsTableViewCell` not registered.")
       }
 
-      cell.cardNumberTextField.text = viewModel.cardModel.cardNumber
-      cell.expiryMonthTextField.text = viewModel.cardModel.expiryMonth
-      cell.expiryYearTextField.text = viewModel.cardModel.expiryYear
-      cell.cvvTextField.text = viewModel.cardModel.cvv
+      cell.updateTextFieldValues(
+        cardNumber: viewModel.cardModel.cardNumber,
+        month: viewModel.cardModel.expiry.month,
+        year: viewModel.cardModel.expiry.year,
+        cvv: viewModel.cardModel.cvv
+      )
 
-      cell.onCardNumberChange = { cardNumber in
-        self.viewModel.cardModel.cardNumber = cardNumber ?? ""
-      }
+      cell.viewModel = CardDetailsTableViewCell.ViewModel(
+        onCardNumberChange: { cardNumber in
+          self.viewModel.cardModel.cardNumber = cardNumber ?? ""
+        },
+        onCVVChange: { cvv in
+          self.viewModel.cardModel.cvv = cvv ?? ""
+        },
+        onExpiryMonthStringChange: { expiryMonth in
+          self.viewModel.cardModel.expiry = .string(
+            month: expiryMonth ?? "",
+            year: self.viewModel.cardModel.expiry.year
+          )
+        },
+        onExpiryYearStringChange: { expiryYear in
+          self.viewModel.cardModel.expiry = .string(
+            month: self.viewModel.cardModel.expiry.month,
+            year: expiryYear ?? ""
+          )
+        },
+        onExpiryIntChange: { expiryMonth, expiryYear in
+          self.viewModel.cardModel.expiry = CardModel.Expiry.int(month: expiryMonth, year: expiryYear)
+        }
+      )
 
-      cell.onExpiryMonthChange = { expiryMonth in
-        self.viewModel.cardModel.expiryMonth = expiryMonth ?? ""
-      }
-
-      cell.onExpiryYearChange = { expiryYear in
-        self.viewModel.cardModel.expiryYear = expiryYear ?? ""
-      }
-
-      cell.onCVVChange = { cvv in
-        self.viewModel.cardModel.cvv = cvv ?? ""
-      }
+      cell.delegate = self
 
       return cell
 
@@ -331,5 +373,11 @@ extension CardTokenizationViewController: UITableViewDelegate {
     default:
       break
     }
+  }
+}
+
+extension CardTokenizationViewController: CardDetailsTableViewCellDelegate {
+  var cardNumberDelegate: UITextFieldDelegate {
+    cardNumberDelegateHelper
   }
 }

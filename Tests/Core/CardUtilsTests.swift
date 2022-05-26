@@ -37,14 +37,14 @@ class CardUtilsTests: XCTestCase {
             ["341347759839189", "3413 477598 39189"],
             ["346379996281789", "3463 799962 81789"]
             ].forEach {
-                XCTAssertEqual(cards.format(cardNumber: $0[0], scheme: .amex), $0[1])
+                XCTAssertEqual(cards.format(cardNumber: $0[0], scheme: .americanExpress), $0[1])
         }
         // Diners Club
         [
             ["30569309025904", "3056 930902 5904"],
             ["38520000023237", "3852 000002 3237"]
             ].forEach {
-                XCTAssertEqual(cards.format(cardNumber: $0[0], scheme: .diners), $0[1])
+                XCTAssertEqual(cards.format(cardNumber: $0[0], scheme: .dinersClub), $0[1])
         }
         // Discover
         [

@@ -55,17 +55,23 @@ import Checkout
     /// Asks the delegate if the specified text should be changed.
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
                           replacementString string: String) -> Bool {
-        guard let cardNumber = textField.text else {
+        guard
+            let cardNumber = textField.text,
+            let cardValidator = cardValidator,
+            let textRange = Range(range, in: cardNumber)
+        else {
             return false
         }
 
-        guard let cardValidator = cardValidator else {
-            return false
+        let newValue = cardNumber.replacingCharacters(in: textRange, with: string)
+
+        if newValue.isEmpty {
+            return true
         }
 
-        switch cardValidator.validate(cardNumber: "\(cardNumber)\(string)") {
-        case .success(let scheme):
-            return scheme != .unknown
+        switch cardValidator.eagerValidate(cardNumber: newValue) {
+        case .success:
+            return true
         case .failure:
             return false
         }
@@ -79,7 +85,7 @@ import Checkout
         }
 
         let cardNumber = cardUtils.removeNonDigits(from: rawText)
-        let scheme = (try? cardValidator?.validate(cardNumber: cardNumber).get()) ?? .unknown
+        let scheme = (try? cardValidator?.eagerValidate(cardNumber: cardNumber).get()) ?? .unknown
 
         delegate?.onChangeCardNumber(scheme: scheme)
 
@@ -93,5 +99,24 @@ import Checkout
     /// Tells the delegate that editing stopped for the specified text field.
     public func textFieldDidEndEditing(_ textField: UITextField) {
         delegate?.textFieldDidEndEditing(view: self)
+
+        guard let cardUtils = cardUtils,
+              let rawText = textField.text,
+              let cardValidator = cardValidator else {
+            return
+        }
+
+        let cardNumber = cardUtils.removeNonDigits(from: rawText)
+
+        switch cardValidator.validate(cardNumber: cardNumber) {
+        case .success(let scheme):
+            guard scheme == .unknown else {
+                break
+            }
+
+            fallthrough
+        case .failure:
+            showError(message: "cardNumberInvalid".localized(forClass: Self.self))
+        }
     }
 }

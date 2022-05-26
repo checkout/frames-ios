@@ -8,6 +8,7 @@
 import Foundation
 
 public protocol CardNumberValidating {
+  func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.EagerCardNumber>
   func validate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber>
 }
 
@@ -32,9 +33,31 @@ final class CardNumberValidator: CardNumberValidating {
       return .success(cardScheme)
     case .none:
 
-      let cardScheme = cardTypeMatch(cardNumber, \.eagerCardNumberRegex) ?? .unknown
-      return .success(cardScheme)
+      return .success(.unknown)
     }
+  }
+
+  func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.EagerCardNumber> {
+    let cardNumber = cardNumber.filter { !$0.isWhitespace }
+
+    guard validateDigitsOnly(in: cardNumber) else {
+      return .failure(.cardNumber(.invalidCharacters))
+    }
+
+    switch cardTypeMatch(cardNumber, \.eagerCardNumberRegex) {
+    case .some(let cardScheme):
+      return withinCardLengthLimit(cardNumber, for: cardScheme) ? .success(cardScheme) : .failure(.tooLong)
+    case .none:
+      return shouldHaveFoundScheme(cardNumber) ? .failure(.invalidScheme) : .success(.unknown)
+    }
+  }
+
+  private func withinCardLengthLimit(_ cardNumber: String, for scheme: Card.Scheme) -> Bool {
+    return cardNumber.count <= scheme.maxCardLength
+  }
+
+  private func shouldHaveFoundScheme(_ cardNumber: String) -> Bool {
+    return cardNumber.count >= Card.Scheme.minCardLengthToGuaranteeScheme
   }
 
   private func cardTypeMatch(

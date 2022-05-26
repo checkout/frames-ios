@@ -3,7 +3,7 @@ parent_config: https://raw.githubusercontent.com/raywenderlich/swift-style-guide
 nesting:
   type_level:
     warning: 2
-  statement_level:
+  function_level:
     warning: 3
 cyclomatic_complexity:
   warning: 12

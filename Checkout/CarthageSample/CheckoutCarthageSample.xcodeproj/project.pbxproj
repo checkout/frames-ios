@@ -101,7 +101,12 @@
 		CB05A9C927748FB50086DDA0 /* CardNumberValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A99E27748FB50086DDA0 /* CardNumberValidatorTests.swift */; };
 		CB05A9CA27748FB50086DDA0 /* AddressValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A99F27748FB50086DDA0 /* AddressValidatorTests.swift */; };
 		CB05A9CB27748FB50086DDA0 /* LuhnCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A9A027748FB50086DDA0 /* LuhnCheckerTests.swift */; };
+		CB0CFDBB27C53B49006BF661 /* TimeZone+constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0CFDBA27C53B49006BF661 /* TimeZone+constants.swift */; };
+		CB0CFDBD27C53C16006BF661 /* TimeZone+constantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0CFDBC27C53C16006BF661 /* TimeZone+constantsTests.swift */; };
+		CB0CFDBF27C54A0A006BF661 /* CardValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0CFDBE27C54A0A006BF661 /* CardValidatorTests.swift */; };
+		CB0D976827BEA7720032A351 /* NoTextEntryUITextFieldHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0D976727BEA7720032A351 /* NoTextEntryUITextFieldHelper.swift */; };
 		CB1E636F278D978F00A36A46 /* StubSingleValueEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1E636D278D978C00A36A46 /* StubSingleValueEncodingContainer.swift */; };
+		CB1FD5D0282A9A2A001EE440 /* CardNumberTextFieldDelegateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1FD5CF282A9A2A001EE440 /* CardNumberTextFieldDelegateHelper.swift */; };
 		CB23C13F271DC64F00F68C0E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23C139271DC64F00F68C0E /* SceneDelegate.swift */; };
 		CB23C140271DC64F00F68C0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23C13A271DC64F00F68C0E /* ViewController.swift */; };
 		CB23C141271DC64F00F68C0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB23C13B271DC64F00F68C0E /* Assets.xcassets */; };
@@ -109,18 +114,34 @@
 		CB23C148271DC77B00F68C0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB23C146271DC77B00F68C0E /* LaunchScreen.storyboard */; };
 		CB23C149271DC77B00F68C0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB23C147271DC77B00F68C0E /* Main.storyboard */; };
 		CB23C14D271DC86200F68C0E /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23C14B271DC7DF00F68C0E /* Test.swift */; };
+		CB2644F5283BE68F0061EF34 /* ValidationError+EagerCardNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2644F4283BE68F0061EF34 /* ValidationError+EagerCardNumber.swift */; };
 		CB44200B27981A480099B725 /* Checkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCE371B271EC61400371FE7 /* Checkout.framework */; platformFilter = ios; };
 		CB442018279821CD0099B725 /* CheckoutAPIServiceIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB442016279821CD0099B725 /* CheckoutAPIServiceIntegrationTests.swift */; };
 		CB442019279821CD0099B725 /* StubProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB442017279821CD0099B725 /* StubProvider.swift */; };
+		CB44CFE727BBF6A50008EC96 /* ExpirationDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44CFE627BBF6A50008EC96 /* ExpirationDatePicker.swift */; };
+		CB44CFE927BBF6B10008EC96 /* Timezone+utc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44CFE827BBF6B10008EC96 /* Timezone+utc.swift */; };
 		CB918B2A2785B2CF00C68EF4 /* CheckoutLogEvent+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB918B292785B2CF00C68EF4 /* CheckoutLogEvent+Types.swift */; };
 		CB918B2C278C8B6800C68EF4 /* AnyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB918B2B278C8B6800C68EF4 /* AnyCodable.swift */; };
 		CB918B2E278C8F3200C68EF4 /* StubAnyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB918B2D278C8F3200C68EF4 /* StubAnyCodable.swift */; };
-		CB9412DD282907C000C889E8 /* CheckoutEventLoggerKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9412D128256DDD00C889E8 /* CheckoutEventLoggerKit.xcframework */; };
-		CB9412DE282907C000C889E8 /* CheckoutEventLoggerKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB9412D128256DDD00C889E8 /* CheckoutEventLoggerKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CBACFCB127BFDFC800EA02CC /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBACFCAD27BFDFC800EA02CC /* URLHelper.swift */; };
+		CBACFCB227BFDFC800EA02CC /* ThreeDSWKNavigationHelperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBACFCAE27BFDFC800EA02CC /* ThreeDSWKNavigationHelperDelegate.swift */; };
+		CBACFCB327BFDFC800EA02CC /* ThreeDSWKNavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBACFCAF27BFDFC800EA02CC /* ThreeDSWKNavigationHelper.swift */; };
+		CBACFCB427BFDFC800EA02CC /* ThreeDSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBACFCB027BFDFC800EA02CC /* ThreeDSError.swift */; };
+		CBCA395C27CFD84900577460 /* ThreeDSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA395827CFD84900577460 /* ThreeDSViewController.swift */; };
+		CBCA395D27CFD84900577460 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA395927CFD84900577460 /* WebViewController.swift */; };
+		CBCA395E27CFD84900577460 /* ThreeDSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCA395A27CFD84900577460 /* ThreeDSViewController.xib */; };
+		CBCA395F27CFD84900577460 /* UIColor+CKO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA395B27CFD84900577460 /* UIColor+CKO.swift */; };
 		CBCE371E271EC61400371FE7 /* CheckoutSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = CBCE371D271EC61400371FE7 /* CheckoutSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CBCE3721271EC61400371FE7 /* Checkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCE371B271EC61400371FE7 /* Checkout.framework */; };
 		CBCE3722271EC61400371FE7 /* Checkout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CBCE371B271EC61400371FE7 /* Checkout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CBCE3734271EC66200371FE7 /* Checkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCE371B271EC61400371FE7 /* Checkout.framework */; };
+		CBE83F0127C3CF41006F5701 /* ThreeDSErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE83F0027C3CF41006F5701 /* ThreeDSErrorTests.swift */; };
+		CBE83F0327C3CFF5006F5701 /* ThreeDSWKNavigationHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE83F0227C3CFF5006F5701 /* ThreeDSWKNavigationHelperTests.swift */; };
+		CBE83F0527C3D0DA006F5701 /* StubURLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE83F0427C3D0DA006F5701 /* StubURLHelper.swift */; };
+		CBE83F0727C3D960006F5701 /* StubThreeDSWKNavigationHelperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE83F0627C3D960006F5701 /* StubThreeDSWKNavigationHelperDelegate.swift */; };
+		CBE83F0927C3DB2B006F5701 /* StubWKNavigationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE83F0827C3DB2B006F5701 /* StubWKNavigationAction.swift */; };
+		CBFF38652837D76A002B0501 /* CheckoutEventLoggerKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFF38642837D76A002B0501 /* CheckoutEventLoggerKit.xcframework */; };
+		CBFF38662837D76A002B0501 /* CheckoutEventLoggerKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CBFF38642837D76A002B0501 /* CheckoutEventLoggerKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5974E48276CB4480033D29D /* ButtonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5974E37276CB4480033D29D /* ButtonsTableViewCell.swift */; };
 		F5974E49276CB4480033D29D /* ButtonsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5974E38276CB4480033D29D /* ButtonsTableViewCell.xib */; };
 		F5974E4A276CB4480033D29D /* CardTokenizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5974E39276CB4480033D29D /* CardTokenizationViewController.xib */; };
@@ -177,17 +198,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CB9412DF282907C000C889E8 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				CB9412DE282907C000C889E8 /* CheckoutEventLoggerKit.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CBCE3723271EC61400371FE7 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -195,6 +205,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				CBCE3722271EC61400371FE7 /* Checkout.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBFF38672837D76A002B0501 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CBFF38662837D76A002B0501 /* CheckoutEventLoggerKit.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,7 +317,12 @@
 		CB05A99E27748FB50086DDA0 /* CardNumberValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberValidatorTests.swift; sourceTree = "<group>"; };
 		CB05A99F27748FB50086DDA0 /* AddressValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressValidatorTests.swift; sourceTree = "<group>"; };
 		CB05A9A027748FB50086DDA0 /* LuhnCheckerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuhnCheckerTests.swift; sourceTree = "<group>"; };
+		CB0CFDBA27C53B49006BF661 /* TimeZone+constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeZone+constants.swift"; sourceTree = "<group>"; };
+		CB0CFDBC27C53C16006BF661 /* TimeZone+constantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeZone+constantsTests.swift"; sourceTree = "<group>"; };
+		CB0CFDBE27C54A0A006BF661 /* CardValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardValidatorTests.swift; sourceTree = "<group>"; };
+		CB0D976727BEA7720032A351 /* NoTextEntryUITextFieldHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTextEntryUITextFieldHelper.swift; sourceTree = "<group>"; };
 		CB1E636D278D978C00A36A46 /* StubSingleValueEncodingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubSingleValueEncodingContainer.swift; sourceTree = "<group>"; };
+		CB1FD5CF282A9A2A001EE440 /* CardNumberTextFieldDelegateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberTextFieldDelegateHelper.swift; sourceTree = "<group>"; };
 		CB23C139271DC64F00F68C0E /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = ../Sample/Source/SceneDelegate.swift; sourceTree = "<group>"; };
 		CB23C13A271DC64F00F68C0E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../Sample/Source/ViewController.swift; sourceTree = "<group>"; };
 		CB23C13B271DC64F00F68C0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Sample/Source/Assets.xcassets; sourceTree = "<group>"; };
@@ -305,18 +331,34 @@
 		CB23C146271DC77B00F68C0E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../Sample/Source/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB23C147271DC77B00F68C0E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Sample/Source/Main.storyboard; sourceTree = "<group>"; };
 		CB23C14B271DC7DF00F68C0E /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Test.swift; path = ../Sample/Test/Test.swift; sourceTree = "<group>"; };
+		CB2644F4283BE68F0061EF34 /* ValidationError+EagerCardNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ValidationError+EagerCardNumber.swift"; sourceTree = "<group>"; };
 		CB44200727981A480099B725 /* CheckoutIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CheckoutIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB442016279821CD0099B725 /* CheckoutAPIServiceIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAPIServiceIntegrationTests.swift; sourceTree = "<group>"; };
 		CB442017279821CD0099B725 /* StubProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubProvider.swift; sourceTree = "<group>"; };
+		CB44CFE627BBF6A50008EC96 /* ExpirationDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationDatePicker.swift; sourceTree = "<group>"; };
+		CB44CFE827BBF6B10008EC96 /* Timezone+utc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Timezone+utc.swift"; path = "../Sample/Source/Timezone+utc.swift"; sourceTree = "<group>"; };
 		CB7E987A271DC52800B1A0F4 /* CheckoutCarthageSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckoutCarthageSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7E989A271DC52C00B1A0F4 /* CheckoutCarthageSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CheckoutCarthageSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB918B292785B2CF00C68EF4 /* CheckoutLogEvent+Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckoutLogEvent+Types.swift"; sourceTree = "<group>"; };
 		CB918B2B278C8B6800C68EF4 /* AnyCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCodable.swift; sourceTree = "<group>"; };
 		CB918B2D278C8F3200C68EF4 /* StubAnyCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnyCodable.swift; sourceTree = "<group>"; };
-		CB9412D128256DDD00C889E8 /* CheckoutEventLoggerKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CheckoutEventLoggerKit.xcframework; path = "../../Carthage/Checkouts/checkout-event-logger-ios-framework/CheckoutEventLoggerKit.xcframework"; sourceTree = SOURCE_ROOT; };
+		CBACFCAD27BFDFC800EA02CC /* URLHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLHelper.swift; sourceTree = "<group>"; };
+		CBACFCAE27BFDFC800EA02CC /* ThreeDSWKNavigationHelperDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeDSWKNavigationHelperDelegate.swift; sourceTree = "<group>"; };
+		CBACFCAF27BFDFC800EA02CC /* ThreeDSWKNavigationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeDSWKNavigationHelper.swift; sourceTree = "<group>"; };
+		CBACFCB027BFDFC800EA02CC /* ThreeDSError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeDSError.swift; sourceTree = "<group>"; };
+		CBCA395827CFD84900577460 /* ThreeDSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeDSViewController.swift; sourceTree = "<group>"; };
+		CBCA395927CFD84900577460 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		CBCA395A27CFD84900577460 /* ThreeDSViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThreeDSViewController.xib; sourceTree = "<group>"; };
+		CBCA395B27CFD84900577460 /* UIColor+CKO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+CKO.swift"; path = "../Sample/Source/UIColor+CKO.swift"; sourceTree = "<group>"; };
 		CBCE371B271EC61400371FE7 /* Checkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Checkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCE371D271EC61400371FE7 /* CheckoutSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckoutSDK.h; sourceTree = "<group>"; };
 		CBCE3730271EC66200371FE7 /* CheckoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CheckoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBE83F0027C3CF41006F5701 /* ThreeDSErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSErrorTests.swift; sourceTree = "<group>"; };
+		CBE83F0227C3CFF5006F5701 /* ThreeDSWKNavigationHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSWKNavigationHelperTests.swift; sourceTree = "<group>"; };
+		CBE83F0427C3D0DA006F5701 /* StubURLHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLHelper.swift; sourceTree = "<group>"; };
+		CBE83F0627C3D960006F5701 /* StubThreeDSWKNavigationHelperDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubThreeDSWKNavigationHelperDelegate.swift; sourceTree = "<group>"; };
+		CBE83F0827C3DB2B006F5701 /* StubWKNavigationAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWKNavigationAction.swift; sourceTree = "<group>"; };
+		CBFF38642837D76A002B0501 /* CheckoutEventLoggerKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CheckoutEventLoggerKit.xcframework; path = "../../Carthage/Checkouts/checkout-event-logger-ios-framework/CheckoutEventLoggerKit.xcframework"; sourceTree = "<group>"; };
 		F5974E37276CB4480033D29D /* ButtonsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsTableViewCell.swift; sourceTree = "<group>"; };
 		F5974E38276CB4480033D29D /* ButtonsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonsTableViewCell.xib; sourceTree = "<group>"; };
 		F5974E39276CB4480033D29D /* CardTokenizationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardTokenizationViewController.xib; sourceTree = "<group>"; };
@@ -362,7 +404,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB9412DD282907C000C889E8 /* CheckoutEventLoggerKit.xcframework in Frameworks */,
+				CBFF38652837D76A002B0501 /* CheckoutEventLoggerKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +422,7 @@
 		CB05A8F727748FA10086DDA0 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				CBACFCAC27BFDFC800EA02CC /* 3DSHandling */,
 				CB05A8F827748FA10086DDA0 /* Extension */,
 				CB05A8FE27748FA10086DDA0 /* CardUtilities.swift */,
 				CB05A8FF27748FA10086DDA0 /* Network */,
@@ -403,6 +446,7 @@
 				CB05A8FB27748FA10086DDA0 /* Foundation+Extensions.swift */,
 				CB05A8FC27748FA10086DDA0 /* UIDevice+modelName.swift */,
 				CB05A8FD27748FA10086DDA0 /* Dictionary+Additions.swift */,
+				CB0CFDBA27C53B49006BF661 /* TimeZone+constants.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -534,6 +578,7 @@
 			children = (
 				CB05A93127748FA10086DDA0 /* ValidationError+ExpiryDate.swift */,
 				CB05A93227748FA10086DDA0 /* ValidationError+Phone.swift */,
+				CB2644F4283BE68F0061EF34 /* ValidationError+EagerCardNumber.swift */,
 				CB05A93327748FA10086DDA0 /* ValidationError+CardNumber.swift */,
 				CB05A93427748FA10086DDA0 /* ValidationError+Card.swift */,
 				CB05A93527748FA10086DDA0 /* ValidationError.swift */,
@@ -546,6 +591,7 @@
 		CB05A96D27748FB50086DDA0 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				CBE83EFF27C3CEE9006F5701 /* 3DSHandling */,
 				CB05A96E27748FB50086DDA0 /* Stubs */,
 				CB05A98527748FB50086DDA0 /* Extension */,
 				CB05A98727748FB50086DDA0 /* CheckoutErrorTests.swift */,
@@ -586,6 +632,9 @@
 				CB05A98427748FB50086DDA0 /* StubError.swift */,
 				CB918B2D278C8F3200C68EF4 /* StubAnyCodable.swift */,
 				CB1E636D278D978C00A36A46 /* StubSingleValueEncodingContainer.swift */,
+				CBE83F0427C3D0DA006F5701 /* StubURLHelper.swift */,
+				CBE83F0627C3D960006F5701 /* StubThreeDSWKNavigationHelperDelegate.swift */,
+				CBE83F0827C3DB2B006F5701 /* StubWKNavigationAction.swift */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -594,6 +643,7 @@
 			isa = PBXGroup;
 			children = (
 				CB05A98627748FB50086DDA0 /* Dictionary+AdditionsTests.swift */,
+				CB0CFDBC27C53C16006BF661 /* TimeZone+constantsTests.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -662,6 +712,8 @@
 		CB23C137271DC62600F68C0E /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				CBCA395727CFD84900577460 /* 3DS */,
+				CBCA395B27CFD84900577460 /* UIColor+CKO.swift */,
 				F5974E56276CB5420033D29D /* SampleAppError.swift */,
 				F5974E35276CB4480033D29D /* Card Tokenisation */,
 				CB23C13D271DC64F00F68C0E /* AppDelegate.swift */,
@@ -671,6 +723,7 @@
 				CB23C13C271DC64F00F68C0E /* Info.plist */,
 				CB23C139271DC64F00F68C0E /* SceneDelegate.swift */,
 				CB23C13A271DC64F00F68C0E /* ViewController.swift */,
+				CB44CFE827BBF6B10008EC96 /* Timezone+utc.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -688,6 +741,7 @@
 			children = (
 				CB442016279821CD0099B725 /* CheckoutAPIServiceIntegrationTests.swift */,
 				CB442017279821CD0099B725 /* StubProvider.swift */,
+				CB0CFDBE27C54A0A006BF661 /* CardValidatorTests.swift */,
 			);
 			name = Integration;
 			path = ../../Checkout/Integration;
@@ -700,7 +754,7 @@
 				CB23C14A271DC7CF00F68C0E /* Test */,
 				CBCE371C271EC61400371FE7 /* Checkout */,
 				CB7E987B271DC52800B1A0F4 /* Products */,
-				CB9412D028256DDD00C889E8 /* Frameworks */,
+				CBFF38632837D76A002B0501 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -716,12 +770,26 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CB9412D028256DDD00C889E8 /* Frameworks */ = {
+		CBACFCAC27BFDFC800EA02CC /* 3DSHandling */ = {
 			isa = PBXGroup;
 			children = (
-				CB9412D128256DDD00C889E8 /* CheckoutEventLoggerKit.xcframework */,
+				CBACFCAD27BFDFC800EA02CC /* URLHelper.swift */,
+				CBACFCAE27BFDFC800EA02CC /* ThreeDSWKNavigationHelperDelegate.swift */,
+				CBACFCAF27BFDFC800EA02CC /* ThreeDSWKNavigationHelper.swift */,
+				CBACFCB027BFDFC800EA02CC /* ThreeDSError.swift */,
 			);
-			name = Frameworks;
+			path = 3DSHandling;
+			sourceTree = "<group>";
+		};
+		CBCA395727CFD84900577460 /* 3DS */ = {
+			isa = PBXGroup;
+			children = (
+				CBCA395827CFD84900577460 /* ThreeDSViewController.swift */,
+				CBCA395927CFD84900577460 /* WebViewController.swift */,
+				CBCA395A27CFD84900577460 /* ThreeDSViewController.xib */,
+			);
+			name = 3DS;
+			path = ../Sample/Source/3DS;
 			sourceTree = "<group>";
 		};
 		CBCE371C271EC61400371FE7 /* Checkout */ = {
@@ -735,9 +803,27 @@
 			path = Checkout;
 			sourceTree = "<group>";
 		};
+		CBE83EFF27C3CEE9006F5701 /* 3DSHandling */ = {
+			isa = PBXGroup;
+			children = (
+				CBE83F0027C3CF41006F5701 /* ThreeDSErrorTests.swift */,
+				CBE83F0227C3CFF5006F5701 /* ThreeDSWKNavigationHelperTests.swift */,
+			);
+			path = 3DSHandling;
+			sourceTree = "<group>";
+		};
+		CBFF38632837D76A002B0501 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CBFF38642837D76A002B0501 /* CheckoutEventLoggerKit.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F5974E35276CB4480033D29D /* Card Tokenisation */ = {
 			isa = PBXGroup;
 			children = (
+				CB1FD5CF282A9A2A001EE440 /* CardNumberTextFieldDelegateHelper.swift */,
 				F5974E36276CB4480033D29D /* Buttons Table View Cell */,
 				F5974E39276CB4480033D29D /* CardTokenizationViewController.xib */,
 				F5974E3A276CB4480033D29D /* CardModel.swift */,
@@ -763,8 +849,10 @@
 		F5974E3C276CB4480033D29D /* Card Details */ = {
 			isa = PBXGroup;
 			children = (
+				CB0D976727BEA7720032A351 /* NoTextEntryUITextFieldHelper.swift */,
 				F5974E3D276CB4480033D29D /* CardDetailsTableViewCell.swift */,
 				F5974E3E276CB4480033D29D /* CardDetailsTableViewCell.xib */,
+				CB44CFE627BBF6A50008EC96 /* ExpirationDatePicker.swift */,
 			);
 			path = "Card Details";
 			sourceTree = "<group>";
@@ -867,7 +955,7 @@
 				CBCE3717271EC61400371FE7 /* Sources */,
 				CBCE3718271EC61400371FE7 /* Frameworks */,
 				CBCE3719271EC61400371FE7 /* Resources */,
-				CB9412DF282907C000C889E8 /* Embed Frameworks */,
+				CBFF38672837D76A002B0501 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -968,6 +1056,7 @@
 				CB23C141271DC64F00F68C0E /* Assets.xcassets in Resources */,
 				F5974E51276CB4480033D29D /* SavedCardTableViewCell.xib in Resources */,
 				CB23C148271DC77B00F68C0E /* LaunchScreen.storyboard in Resources */,
+				CBCA395E27CFD84900577460 /* ThreeDSViewController.xib in Resources */,
 				F5974E4E276CB4480033D29D /* CardDetailsTableViewCell.xib in Resources */,
 				F5974E49276CB4480033D29D /* ButtonsTableViewCell.xib in Resources */,
 				F5974E4F276CB4480033D29D /* SelectSchemeViewController.xib in Resources */,
@@ -1023,6 +1112,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB442019279821CD0099B725 /* StubProvider.swift in Sources */,
+				CB0CFDBF27C54A0A006BF661 /* CardValidatorTests.swift in Sources */,
 				CB442018279821CD0099B725 /* CheckoutAPIServiceIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1032,16 +1122,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB23C143271DC64F00F68C0E /* AppDelegate.swift in Sources */,
+				CBCA395F27CFD84900577460 /* UIColor+CKO.swift in Sources */,
+				CB44CFE927BBF6B10008EC96 /* Timezone+utc.swift in Sources */,
 				F5974E54276CB4480033D29D /* SavedCardTableViewCell.swift in Sources */,
 				F5974E4C276CB4480033D29D /* CardTokenizationViewController.swift in Sources */,
+				CBCA395C27CFD84900577460 /* ThreeDSViewController.swift in Sources */,
 				CB23C140271DC64F00F68C0E /* ViewController.swift in Sources */,
+				CB1FD5D0282A9A2A001EE440 /* CardNumberTextFieldDelegateHelper.swift in Sources */,
 				F5974E57276CB5420033D29D /* SampleAppError.swift in Sources */,
+				CB44CFE727BBF6A50008EC96 /* ExpirationDatePicker.swift in Sources */,
 				CB23C13F271DC64F00F68C0E /* SceneDelegate.swift in Sources */,
 				F5974E48276CB4480033D29D /* ButtonsTableViewCell.swift in Sources */,
 				F5974E55276CB4480033D29D /* CardTokenisationViewController+ViewModel.swift in Sources */,
 				F5974E4D276CB4480033D29D /* CardDetailsTableViewCell.swift in Sources */,
+				CBCA395D27CFD84900577460 /* WebViewController.swift in Sources */,
 				F5974E50276CB4480033D29D /* SelectSchemeViewController.swift in Sources */,
 				F5974E4B276CB4480033D29D /* CardModel.swift in Sources */,
+				CB0D976827BEA7720032A351 /* NoTextEntryUITextFieldHelper.swift in Sources */,
 				F5974E52276CB4480033D29D /* SavedCardsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1063,10 +1160,13 @@
 				CB05A96927748FA10086DDA0 /* ValidationError.swift in Sources */,
 				CB05A95E27748FA10086DDA0 /* Constants.swift in Sources */,
 				CB05A96227748FA10086DDA0 /* CVVValidator.swift in Sources */,
+				CBACFCB127BFDFC800EA02CC /* URLHelper.swift in Sources */,
 				CB918B2C278C8B6800C68EF4 /* AnyCodable.swift in Sources */,
 				CB05A94A27748FA10086DDA0 /* Card+Scheme.swift in Sources */,
+				CBACFCB227BFDFC800EA02CC /* ThreeDSWKNavigationHelperDelegate.swift in Sources */,
 				CB05A94427748FA10086DDA0 /* RequestFactory.swift in Sources */,
 				CB05A95C27748FA10086DDA0 /* CheckoutLogEvent.swift in Sources */,
+				CB0CFDBB27C53B49006BF661 /* TimeZone+constants.swift in Sources */,
 				CB05A94B27748FA10086DDA0 /* Card.swift in Sources */,
 				CB05A94527748FA10086DDA0 /* CheckoutError.swift in Sources */,
 				CB05A94D27748FA10086DDA0 /* Phone.swift in Sources */,
@@ -1078,6 +1178,7 @@
 				CB05A95327748FA10086DDA0 /* TokenisationError+ServerError.swift in Sources */,
 				CB05A96A27748FA10086DDA0 /* ValidationError+CVV.swift in Sources */,
 				CB05A96627748FA10086DDA0 /* ValidationError+Phone.swift in Sources */,
+				CBACFCB427BFDFC800EA02CC /* ThreeDSError.swift in Sources */,
 				CB05A93A27748FA10086DDA0 /* URL+initStaticString.swift in Sources */,
 				CB05A96027748FA10086DDA0 /* CardValidator.swift in Sources */,
 				CB05A93927748FA10086DDA0 /* NSRegularExpression+initStaticPattern.swift in Sources */,
@@ -1108,6 +1209,8 @@
 				CB05A95027748FA10086DDA0 /* CheckoutAPIService.swift in Sources */,
 				CB05A96427748FA10086DDA0 /* PhoneValidator.swift in Sources */,
 				CB05A94027748FA10086DDA0 /* TokenRequest.swift in Sources */,
+				CBACFCB327BFDFC800EA02CC /* ThreeDSWKNavigationHelper.swift in Sources */,
+				CB2644F5283BE68F0061EF34 /* ValidationError+EagerCardNumber.swift in Sources */,
 				CB05A94F27748FA10086DDA0 /* ExpiryDate.swift in Sources */,
 				CB05A95927748FA10086DDA0 /* Decoding.swift in Sources */,
 				CB05A94927748FA10086DDA0 /* Environment.swift in Sources */,
@@ -1132,6 +1235,7 @@
 				CB05A9BD27748FB50086DDA0 /* EnvironmentTests.swift in Sources */,
 				CB05A9AA27748FB50086DDA0 /* StubCVVValidator.swift in Sources */,
 				CB05A9BB27748FB50086DDA0 /* RequestFactoryTests.swift in Sources */,
+				CBE83F0927C3DB2B006F5701 /* StubWKNavigationAction.swift in Sources */,
 				CB05A9A527748FB50086DDA0 /* StubLuhnChecker.swift in Sources */,
 				CB05A9BC27748FB50086DDA0 /* CardSchemeTests.swift in Sources */,
 				CB05A9C227748FB50086DDA0 /* TokenRequestFactoryTests.swift in Sources */,
@@ -1139,6 +1243,8 @@
 				CB05A9BF27748FB50086DDA0 /* CheckoutAPIServiceTests.swift in Sources */,
 				CB05A9B727748FB50086DDA0 /* Dictionary+AdditionsTests.swift in Sources */,
 				CB05A9AB27748FB50086DDA0 /* StubProvider.swift in Sources */,
+				CB0CFDBD27C53C16006BF661 /* TimeZone+constantsTests.swift in Sources */,
+				CBE83F0527C3D0DA006F5701 /* StubURLHelper.swift in Sources */,
 				CB05A9C327748FB50086DDA0 /* DateProviderTests.swift in Sources */,
 				CB05A9C927748FB50086DDA0 /* CardNumberValidatorTests.swift in Sources */,
 				CB05A9BA27748FB50086DDA0 /* NetworkErrorTests.swift in Sources */,
@@ -1150,7 +1256,10 @@
 				CB05A9B927748FB50086DDA0 /* NetworkManagerTests.swift in Sources */,
 				CB05A9CB27748FB50086DDA0 /* LuhnCheckerTests.swift in Sources */,
 				CB05A9A627748FB50086DDA0 /* StubEncoder.swift in Sources */,
+				CBE83F0727C3D960006F5701 /* StubThreeDSWKNavigationHelperDelegate.swift in Sources */,
+				CBE83F0327C3CFF5006F5701 /* ThreeDSWKNavigationHelperTests.swift in Sources */,
 				CB05A9C627748FB50086DDA0 /* CardValidatorTests.swift in Sources */,
+				CBE83F0127C3CF41006F5701 /* ThreeDSErrorTests.swift in Sources */,
 				CB05A9A327748FB50086DDA0 /* StubDecoder.swift in Sources */,
 				CB05A9AD27748FB50086DDA0 /* StubCheckoutEventLogger.swift in Sources */,
 				CB05A9CA27748FB50086DDA0 /* AddressValidatorTests.swift in Sources */,

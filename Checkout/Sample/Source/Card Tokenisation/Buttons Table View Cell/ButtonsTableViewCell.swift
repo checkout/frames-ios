@@ -27,32 +27,16 @@ class ButtonsTableViewCell: UITableViewCell {
     didTapTokeniseButton?()
   }
 
-  func setUpContent() {
-    let ckoDarkBlue = UIColor(
-      red: 12 / 255,
-      green: 17 / 255,
-      blue: 66 / 255,
-      alpha: 1)
-    let ckoLightBlue = UIColor(
-      red: 41 / 255,
-      green: 212 / 255,
-      blue: 219 / 255,
-      alpha: 1)
-    let ckoLightYellow = UIColor(
-      red: 255 / 255,
-      green: 255 / 255,
-      blue: 200 / 255,
-      alpha: 1)
-
-    validateButton.titleLabel?.textColor = ckoDarkBlue
-    validateButton.backgroundColor = ckoLightBlue
+  private func setUpContent() {
+    validateButton.titleLabel?.textColor = .ckoDarkBlue
+    validateButton.backgroundColor = .ckoLightBlue
     validateButton.layer.cornerRadius = 8
 
-    tokeniseButton.backgroundColor = ckoDarkBlue
+    tokeniseButton.backgroundColor = .ckoDarkBlue
     tokeniseButton.layer.cornerRadius = 8
-    tokeniseButton.titleLabel?.textColor = ckoLightYellow
+    tokeniseButton.titleLabel?.textColor = .ckoLightYellow
 
-    validateButton.setTitleColor(ckoDarkBlue, for: [.normal])
-    tokeniseButton.setTitleColor(ckoLightYellow, for: [.normal])
+    validateButton.setTitleColor(.ckoDarkBlue, for: [.normal])
+    tokeniseButton.setTitleColor(.ckoLightYellow, for: [.normal])
   }
 }

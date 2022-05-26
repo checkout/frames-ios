@@ -9,4 +9,11 @@ import Foundation
 
 protocol CalendarProtocol {
   func date(from components: DateComponents) -> Date?
+  func date(byAdding component: Calendar.Component, value: Int, to date: Date, wrappingComponents: Bool) -> Date?
+}
+
+extension CalendarProtocol {
+  func date(byAdding component: Calendar.Component, value: Int, to date: Date) -> Date? {
+    return self.date(byAdding: component, value: value, to: date, wrappingComponents: false)
+  }
 }

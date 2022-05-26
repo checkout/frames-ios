@@ -84,10 +84,10 @@ public class CardListCell: UITableViewCell {
 
     private func schemeIconLocation(scheme: Card.Scheme) -> Constants.Bundle.SchemeIcons? {
         switch scheme {
-        case .amex:
-            return .amex
-        case .diners:
-            return .diners
+        case .americanExpress:
+            return .americanExpress
+        case .dinersClub:
+            return .dinersClub
         case .discover:
             return .discover
         case .jcb:

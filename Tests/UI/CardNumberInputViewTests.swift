@@ -47,7 +47,7 @@ class CardNumberInputViewTests: XCTestCase {
         cardNumberInputView.textField.text = "4242424242424242"
 
         // add a characters above the max length of a visa card
-        cardValidator.validateCardNumberToReturn = .success(.unknown)
+        cardValidator.eagerValidateCardNumberToReturn = .failure(.tooLong)
         shouldChanged = cardNumberInputView.textField(cardNumberInputView.textField,
                                                       shouldChangeCharactersIn: NSRange(),
                                                       replacementString: "4")
