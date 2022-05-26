@@ -63,15 +63,18 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     func getCell(tableView: UITableView, indexPath: IndexPath, sender: UIViewController?) -> UITableViewCell {
         guard style.cells.count > indexPath.row else { return UITableViewCell() }
         
-        if style.cells[indexPath.row].index == BillingFormCell.country(nil).index {
+        if isCountryType(for: indexPath.row) {
             return getCountryCell(tableView: tableView, indexPath: indexPath, sender: sender)
         }
         return getTextFieldCell(tableView: tableView, indexPath: indexPath, sender: sender)
     }
+
+    private func isCountryType(for row: Int) -> Bool {
+        style.cells[row].index == BillingFormCell.country(.none).index
+    }
     
     // MARK: - Private methods
     
-    /// Text field cell
     private func getTextFieldCell(tableView: UITableView, indexPath: IndexPath, sender: UIViewController?) -> UITableViewCell {
         
         /// update style

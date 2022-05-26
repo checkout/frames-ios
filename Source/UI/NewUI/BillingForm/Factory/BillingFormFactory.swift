@@ -24,7 +24,7 @@ public struct BillingFormFactory {
         else { return (nil, nil) }
         let viewModel = DefaultBillingFormViewModel(style: billingFormStyle, initialCountry: "", delegate: delegate)
         let navigationController = UINavigationController(rootViewController: BillingFormViewController(viewModel: viewModel))
-        return (viewModel.delegate,navigationController )
+        return (viewModel.delegate, navigationController)
     }
     
 }

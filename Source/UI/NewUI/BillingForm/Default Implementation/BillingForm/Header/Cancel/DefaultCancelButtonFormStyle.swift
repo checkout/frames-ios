@@ -1,7 +1,7 @@
 import UIKit
 
 struct DefaultCancelButtonFormStyle: ElementButtonStyle {
-    var image: UIImage? = nil
+    var image: UIImage?
     var text: String = Constants.LocalizationKeys.BillingForm.Header.cancel
     var font: UIFont =  UIFont.systemFont(ofSize: Constants.Style.BillingForm.CancelButton.fontSize.rawValue)
     var activeTitleColor: UIColor = .brandeisBlue
