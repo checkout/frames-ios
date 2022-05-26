@@ -37,7 +37,7 @@ struct ErrorInputLabelStyleImp: ElementErrorViewStyle {
 class BillingFormTextFieldErrorViewTests: XCTestCase {
     var errorView: ErrorView!
     let style = ErrorInputLabelStyleImp(isHidden: false)
-    
+
     override func setUp() {
         super.setUp()
         UIFont.loadAllCheckoutFonts
@@ -64,5 +64,4 @@ class BillingFormTextFieldErrorViewTests: XCTestCase {
     func testStyleTintColor(){
         XCTAssertEqual(errorView.image?.tintColor, style.tintColor)
     }
-    
 }

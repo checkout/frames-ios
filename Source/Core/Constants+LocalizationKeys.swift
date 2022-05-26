@@ -22,7 +22,7 @@ extension Constants {
             struct PhoneNumber {
                 static let text = "phone".localized
                 static let hint = "billingFormPhoneNumberHint".localized
-                static let error = "missingBillingFormCity".localized
+                static let error = "missingBillingFormPhoneNumber".localized
             }
 
             struct City {

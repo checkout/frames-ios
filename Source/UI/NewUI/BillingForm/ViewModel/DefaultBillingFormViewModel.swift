@@ -81,7 +81,6 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         updateFilledFields(for: indexPath.row)
         let cellStyle = updateTextFieldStyle(for: indexPath.row)
         
-        // cell
         if let cell: CellTextField = tableView.dequeueReusable(for: indexPath) {
             cell.delegate = sender as? CellTextFieldDelegate
             cell.update(type: style.cells[indexPath.row],
