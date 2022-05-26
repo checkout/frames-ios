@@ -10,8 +10,8 @@ trigger_map:
 workflows:
   pr-checks:
     after_run:
-    - frames-pr-checks
     - checkout-pr-checks
+    - frames-pr-checks
 
   # frames pr workflows
   frames-pr-checks:
@@ -48,7 +48,7 @@ workflows:
     steps:
     - cocoapods-install@1:
         inputs:
-        - podfile_path: $BITRISE_POD_FILE_PATH
+        - podfile_path: $FRAMES_PODFILE
     - xcode-test@2:
         inputs:
         - project_path: $FRAMES_COCOAPODS_PROJECT
@@ -81,7 +81,7 @@ workflows:
     - certificate-and-profile-installer@1: {}
     - cocoapods-install@2.2:
         inputs:
-        - podfile_path: $BITRISE_POD_FILE_PATH
+        - podfile_path: $FRAMES_PODFILE
     - xcode-test@2:
         inputs:
         - project_path: $FRAMES_COCOAPODS_PROJECT
@@ -138,7 +138,7 @@ workflows:
     - certificate-and-profile-installer@1: {}
     - cocoapods-install@1:
         inputs:
-        - podfile_path: $BITRISE_POD_FILE_PATH
+        - podfile_path: $FRAMES_PODFILE
     - xcode-test@2:
         inputs:
         - project_path: $FRAMES_COCOAPODS_PROJECT
@@ -172,7 +172,7 @@ workflows:
     steps:
     - cocoapods-install@1:
         inputs:
-        - podfile_path: $BITRISE_POD_FILE_PATH
+        - podfile_path: $FRAMES_PODFILE
     - xcode-build-for-simulator@0:
         inputs:
         - scheme: $FRAMES_APP_SCHEME
@@ -223,7 +223,9 @@ workflows:
     after_run: []
   _checkout-build-pods:
     steps:
-    - cocoapods-install@2: {}
+    - cocoapods-install@2:
+        inputs:
+        - podfile_path: $CHECKOUT_PODFILE
     - swiftlint-extended@1:
         inputs:
         - linting_path: "$BITRISE_SOURCE_DIR"
@@ -277,7 +279,9 @@ workflows:
     - recreate-user-schemes@1:
         inputs:
         - project_path: "$CHECKOUT_COCOAPODS_PROJECT"
-    - cocoapods-install@2: {}
+    - cocoapods-install@2:
+        inputs:
+        - podfile_path: $CHECKOUT_PODFILE
     - swiftlint-extended@1:
         inputs:
         - linting_path: "$BITRISE_SOURCE_DIR"
@@ -318,7 +322,7 @@ app:
     BITRISE_EXPORT_METHOD: development
   - opts:
       is_expand: false
-    BITRISE_POD_FILE_PATH: iOS Example Frame/Podfile
+    FRAMES_PODFILE: iOS Example Frame/Podfile
   - opts:
       is_expand: false
     FRAMES_SPM_PROJECT: iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj
@@ -349,6 +353,9 @@ app:
   - opts:
       is_expand: false
     CHECKOUT_SPM_PROJECT: Checkout/SPMSample/CheckoutSPMSample.xcodeproj
+  - opts:
+      is_expand: false
+    CHECKOUT_PODFILE: Checkout/CocoapodsSample/Podfile
 meta:
   bitrise.io:
     stack: osx-xcode-13.3.x
