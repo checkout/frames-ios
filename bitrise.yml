@@ -251,7 +251,7 @@ workflows:
         inputs:
         - channel: 'channel: #ios-builds'
         - text: Checkout-iOS Build Success
-        - webhook_url: "$IOSBUILDSCHANNEL"
+        - webhook_url: "$SLACK_CHANNEL_CHECKOUT"
   
   # checkout test invidividual package manager
   checkout-test-carthage:
