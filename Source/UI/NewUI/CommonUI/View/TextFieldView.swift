@@ -221,7 +221,7 @@ extension TextFieldView: UITextFieldDelegate {
 
 extension TextFieldView: BillingFormPhoneNumberTextDelegate {
     //TODO: implement phone number validation logic
-    func isInValidNumber() {
+    func isValidNumber() {
 
     }
 

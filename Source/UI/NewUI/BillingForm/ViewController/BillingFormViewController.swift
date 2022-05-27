@@ -64,9 +64,6 @@ final class BillingFormViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOS 13.0, *) {
-            isModalInPresentation = true // available in IOS13
-        }
         view.backgroundColor = viewModel.style.mainBackground
         setupViewsInOrder()
     }

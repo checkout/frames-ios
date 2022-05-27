@@ -3,7 +3,7 @@ import PhoneNumberKit
 
 protocol BillingFormPhoneNumberTextDelegate {
     func updateCountryCode(code:Int)
-    func isInValidNumber()
+    func isValidNumber()
 }
 
 final class BillingFormPhoneNumberText: BillingFormTextField {
