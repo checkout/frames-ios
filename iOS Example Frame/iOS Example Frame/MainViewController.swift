@@ -22,6 +22,11 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     // Step1 : create instance of CheckoutAPIService
     let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
                                                        environment: .sandbox)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        customizeNavigationBarAppearance()
+        navigationController?.isNavigationBarHidden = true
+    }
 
     @IBAction func goToPaymentPage(_ sender: Any) {
         cardViewController.isNewUI = false
@@ -166,5 +171,22 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
 
     func threeDSWebViewControllerAuthenticationDidFail(_ threeDSWebViewController: ThreedsWebViewController) {
         showAlert(with: "3DS Fail")
+    }
+}
+
+extension UIViewController {
+    func customizeNavigationBarAppearance() {
+        if #available(iOS 15.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithDefaultBackground()
+            appearance.backgroundColor = .white
+            appearance.shadowColor = .white
+            appearance.shadowImage = UIImage()
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.compactAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
+
+        navigationController?.setNeedsStatusBarAppearanceUpdate()
     }
 }

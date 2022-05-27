@@ -36,7 +36,7 @@ class StandardInputViewTests: XCTestCase {
 
     func testSetTextAndBackgroundColor() {
         standardInputView.set(label: "addressLine1", backgroundColor: .white)
-        XCTAssertEqual(standardInputView.label.text, "Address line 1*")
+        XCTAssertEqual(standardInputView.label.text, "Address line 1")
         XCTAssertEqual(standardInputView.backgroundColor, UIColor.white)
     }
 

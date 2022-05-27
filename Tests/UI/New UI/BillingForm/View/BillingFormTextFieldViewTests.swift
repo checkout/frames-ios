@@ -9,7 +9,8 @@ class BillingFormTextFieldViewTests: XCTestCase {
         super.setUp()
         UIFont.loadAllCheckoutFonts
         style = DefaultBillingFormFullNameCellStyle()
-        view = TextFieldView(style: style, type: .fullName(nil))
+        view = TextFieldView()
+        view.update(style: style, type: .fullName(nil))
     }
     
     func testHeaderLabelStyle(){

@@ -1,8 +1,8 @@
 import UIKit
 
 struct DefaultCancelButtonFormStyle: ElementButtonStyle {
-
-    var text: String = "cancel".localized(forClass: CheckoutTheme.self)
+    var image: UIImage?
+    var text: String = Constants.LocalizationKeys.BillingForm.Header.cancel
     var font: UIFont =  UIFont.systemFont(ofSize: Constants.Style.BillingForm.CancelButton.fontSize.rawValue)
     var activeTitleColor: UIColor = .brandeisBlue
     var disabledTitleColor: UIColor = .doveGray
@@ -10,6 +10,9 @@ struct DefaultCancelButtonFormStyle: ElementButtonStyle {
     var activeTintColor: UIColor = .brandeisBlue
     var backgroundColor: UIColor = .white
     var textColor: UIColor = .clear
+    var normalBorderColor: UIColor = .clear
+    var focusBorderColor: UIColor = .clear
+    var errorBorderColor: UIColor = .clear
     var isHidden: Bool = false
     var isEnabled: Bool = true
     var height: Double = Constants.Style.BillingForm.CancelButton.height.rawValue

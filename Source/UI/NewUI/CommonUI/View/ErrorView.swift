@@ -35,7 +35,7 @@ final class ErrorView: UIView {
         headerLabel?.font = style?.font
         headerLabel?.textColor = style?.textColor
 
-        image?.image = "warning".vectorPDFImage(forClass: ErrorView.self)
+        image?.image = style?.image
         image?.tintColor = style?.tintColor
     }
 }
