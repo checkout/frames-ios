@@ -12,7 +12,7 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
 
     var phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate?
     var phoneNumber: PhoneNumber?
-    let phoneNumberKit = PhoneNumberKit()
+    private let phoneNumberKit = PhoneNumberKit()
 
     var partialFormatter: PartialFormatter {
        PartialFormatter(phoneNumberKit: phoneNumberKit, defaultRegion: "GB", withPrefix: true)
@@ -24,7 +24,6 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
         return partialFormatter.nationalNumber(from: rawNumber)
     }
 
-    /// True if the phone number is valid, false otherwise
     var isValidNumber: Bool {
         let rawNumber = text ?? ""
         do {
@@ -62,7 +61,7 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
     
     // TODO: Copied from old code. Needs to be refactored
     /// Called when the Billing form Phone number text field is changed.
-    @objc func updateTextFieldFormat(textField: UITextField) {
+    private func updateTextFieldFormat(textField: UITextField) {
         var targetCursorPosition = 0
         if let startPosition = textField.selectedTextRange?.start {
             targetCursorPosition = textField.offset(from: textField.beginningOfDocument, to: startPosition)

@@ -71,10 +71,7 @@ class SelectionButtonView: UIView {
         button?.isEnabled = style.button.isEnabled
         button?.tintColor = .clear
         button?.backgroundColor = .clear
-        errorView?.isHidden = false
         updateErrorView(style: style)
-        button?.backgroundColor = .clear
-        errorView?.isHidden = false
     }
 
     required init?(coder: NSCoder) {

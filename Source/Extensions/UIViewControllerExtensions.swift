@@ -54,7 +54,7 @@ extension UIViewController {
     }
 }
 
-public extension UIViewController {
+extension UIViewController {
     func customizeNavigationBarAppearance() {
         if #available(iOS 15.0, *) {
             let appearance = UINavigationBarAppearance()
