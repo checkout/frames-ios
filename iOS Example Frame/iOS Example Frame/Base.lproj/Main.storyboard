@@ -77,9 +77,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="3uh-A2-Fa1"/>
                                 </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="New UI"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Start">
                                     <fontDescription key="titleFontDescription" name="GraphikLCG-Medium" family="Graphik LCG" pointSize="12"/>
+                                    <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="baseBackgroundColor" red="0.043137254899999998" green="0.37254901959999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -106,9 +109,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="cRv-gl-Qqz"/>
                                 </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="New UI"/>
                                 <buttonConfiguration key="configuration" style="filled" title="New">
                                     <fontDescription key="titleFontDescription" name="GraphikLCG-Medium" family="Graphik LCG" pointSize="12"/>
+                                    <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="baseBackgroundColor" red="0.043137254899999998" green="0.37254901959999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -125,9 +131,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="VPx-J8-h56"/>
                                 </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="New UI"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Old">
                                     <fontDescription key="titleFontDescription" name="GraphikLCG-Medium" family="Graphik LCG" pointSize="12"/>
+                                    <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="baseBackgroundColor" red="0.043137254899999998" green="0.37254901959999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -153,9 +162,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="DMS-Op-SP3"/>
                                 </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="New UI"/>
                                 <buttonConfiguration key="configuration" style="filled" title="ApplePay payment data">
                                     <fontDescription key="titleFontDescription" name="GraphikLCG-Medium" family="Graphik LCG" pointSize="12"/>
+                                    <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="baseBackgroundColor" red="0.043137254899999998" green="0.37254901959999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
