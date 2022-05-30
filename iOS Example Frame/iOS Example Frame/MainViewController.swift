@@ -46,24 +46,33 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     lazy var cardViewController: CardViewController = {
         let billingFormStyle = BillingFormFactory.defaultBillingFormStyle
         
-        let b = CardViewController(checkoutAPIService: checkoutAPIService,
-                                   cardHolderNameState: .normal,
-                                   billingDetailsState: .required,
-                                   billingFormStyle: billingFormStyle,
-                                   defaultRegionCode: "GB")
+        let viewController = CardViewController(checkoutAPIService: checkoutAPIService,
+                                                cardHolderNameState: .normal,
+                                                billingDetailsState: .required,
+                                                billingFormStyle: billingFormStyle,
+                                                defaultRegionCode: "GB")
 
-        b.billingDetailsAddress = Address(addressLine1: "Test line1",
-                                          addressLine2: "Test line2",
-                                          city: "London",
-                                          state: "London",
-                                          zip: "N12345",
-                                          country: Country.allAvailable.first { $0.iso3166Alpha2 == "GB" })
-        b.billingDetailsPhone = Phone(number: "77 1234 1234",
-                                      country: Country.allAvailable.first { $0.iso3166Alpha2 == "GB" })
-        b.delegate = self
-        b.addressViewController.setFields(address: b.billingDetailsAddress!,
-                                          phone: b.billingDetailsPhone!)
-        return b
+        let address = Address(addressLine1: "Test line1",
+                              addressLine2: "Test line2",
+                              city: "London",
+                              state: "London",
+                              zip: "N12345",
+                              country: Country.allAvailable.first { $0.iso3166Alpha2 == "GB" })
+
+        let phone = Phone(number: "77 1234 1234",
+                          country: Country.allAvailable.first { $0.iso3166Alpha2 == "GB" })
+
+        let billingFormData = BillingFormData(address: address, phone: phone)
+
+        viewController.billingFormData = billingFormData
+        viewController.delegate = self
+
+        if let billingFormAddress = viewController.billingFormData?.address,
+           let billingFormPhone = viewController.billingFormData?.phone {
+            viewController.addressViewController.setFields(address: billingFormAddress, phone: billingFormPhone)
+        }
+
+        return viewController
     }()
 
     @IBAction func onClickGoToPaymentPage(_ sender: Any) {
