@@ -18,16 +18,19 @@ public struct BillingFormFactory {
          .phoneNumber(DefaultBillingFormPhoneNumberCellStyle())]
     }
 
+    static func getBillingFormViewController(style: BillingFormStyle?, data: BillingFormData?, delegate: BillingFormViewModelDelegate) -> (BillingFormViewModelDelegate?, UINavigationController?) {
 
-    static func getBillingFormViewController(billingFormStyle: BillingFormStyle?, delegate: BillingFormViewModelDelegate) -> (BillingFormViewModelDelegate?, UINavigationController?) {
-        guard let billingFormStyle = billingFormStyle, !billingFormStyle.cells.isEmpty
-        else { return (nil, nil) }
-        let viewModel = DefaultBillingFormViewModel(style: billingFormStyle, initialCountry: "", delegate: delegate)
+        guard let style = style, !style.cells.isEmpty else { return (nil, nil) }
+
+        let viewModel = DefaultBillingFormViewModel(style: style, data: data, initialCountry: "", delegate: delegate)
+
         let viewController = BillingFormViewController(viewModel: viewModel)
+
         if #available(iOS 13.0, *) {
             viewController.isModalInPresentation  = true
         }
         let navigationController = UINavigationController(rootViewController: BillingFormViewController(viewModel: viewModel))
+
         return (viewModel.delegate, navigationController)
     }
     

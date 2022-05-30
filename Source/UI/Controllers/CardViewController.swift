@@ -21,8 +21,7 @@ public class CardViewController: UIViewController,
     let cardHolderNameState: InputState
     let billingDetailsState: InputState
 
-    public var billingDetailsAddress: Address?
-    public var billingDetailsPhone: Phone?
+    public var billingFormData: BillingFormData?
     var notificationCenter = NotificationCenter.default
     public let addressViewController: AddressViewController
 
@@ -205,7 +204,7 @@ public class CardViewController: UIViewController,
             checkoutAPIService?.logger.log(.billingFormPresented)
         }
         guard isNewUI,
-              let viewController = BillingFormFactory.getBillingFormViewController(billingFormStyle: billingFormStyle, delegate: self).1 else {
+              let viewController = BillingFormFactory.getBillingFormViewController(style: billingFormStyle, data: billingFormData, delegate: self).1 else {
             navigationController?.pushViewController(addressViewController, animated: true)
             return
         }
@@ -290,8 +289,8 @@ public class CardViewController: UIViewController,
         let card = Card(number: cardNumberStandardized,
                         expiryDate: cardExpiryDate,
                         name: cardView.cardHolderNameInputView.textField.text,
-                        cvv: cvv, billingAddress: billingDetailsAddress,
-                        phone: billingDetailsPhone)
+                        cvv: cvv, billingAddress: billingFormData?.address,
+                        phone: billingFormData?.phone)
 
         checkoutAPIService.createToken(.card(card)) { result in
             self.delegate?.onTapDone(controller: self, result: result)
@@ -302,9 +301,9 @@ public class CardViewController: UIViewController,
 
     /// Executed when an user tap on the done button.
     public func onTapDoneButton(controller: AddressViewController, address: Address, phone: Phone) {
-        billingDetailsAddress = address
-        billingDetailsPhone = phone
-        let value = "\(address.addressLine1 ?? ""), \(address.city ?? "")"
+        billingFormData = BillingFormData(address: address, phone: phone)
+
+        let value = "\(billingFormData?.address.addressLine1 ?? ""), \(billingFormData?.address.city ?? "")"
         cardView.billingDetailsInputView.value.text = value
         validateFieldsValues()
         // return to CardViewController
@@ -367,7 +366,7 @@ public class CardViewController: UIViewController,
             return
         }
         // check billing details
-        if billingDetailsState == .required && billingDetailsAddress == nil {
+        if billingDetailsState == .required && billingFormData?.address == nil {
             navigationItem.rightBarButtonItem?.isEnabled = false
             return
         }
@@ -452,10 +451,10 @@ extension CardViewController: BillingFormViewModelDelegate {
         countryCode = code
     }
     
-    func onTapDoneButton(address: Address, phone: Phone) {
-        billingDetailsAddress = address
-        billingDetailsPhone = phone
-        let value = "\(address.addressLine1 ?? ""), \(address.city ?? "")"
+    func onTapDoneButton(data: BillingFormData) {
+
+        billingFormData = data
+        let value = "\(data.address.addressLine1 ?? ""), \(data.address.city ?? "")"
         cardView.billingDetailsInputView.value.text = value
         validateFieldsValues()
         // return to CardViewController
