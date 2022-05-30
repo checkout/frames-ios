@@ -269,6 +269,7 @@
 		952F337F283C305F00F616FF /* applePayTokenInvalid.json in Resources */ = {isa = PBXBuildFile; fileRef = 952F3330283C305F00F616FF /* applePayTokenInvalid.json */; };
 		952F3380283C305F00F616FF /* cardTokenInvalidNumber.json in Resources */ = {isa = PBXBuildFile; fileRef = 952F3331283C305F00F616FF /* cardTokenInvalidNumber.json */; };
 		952F3381283C305F00F616FF /* applePayToken.json in Resources */ = {isa = PBXBuildFile; fileRef = 952F3332283C305F00F616FF /* applePayToken.json */; };
+		9571F9612844E5C6001C1B77 /* BillingFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571F9602844E5C6001C1B77 /* BillingFormData.swift */; };
 		95B1F43D283AC38B00A78BFA /* BillingFormTableViewMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1F43C283AC38B00A78BFA /* BillingFormTableViewMockDelegate.swift */; };
 		95F381762832AED6004C35FD /* DetailsInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F3811C2832AED6004C35FD /* DetailsInputViewTests.swift */; };
 		95F381772832AED6004C35FD /* AddressViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F3811D2832AED6004C35FD /* AddressViewControllerTests.swift */; };
@@ -660,6 +661,7 @@
 		952F3330283C305F00F616FF /* applePayTokenInvalid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applePayTokenInvalid.json; sourceTree = "<group>"; };
 		952F3331283C305F00F616FF /* cardTokenInvalidNumber.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardTokenInvalidNumber.json; sourceTree = "<group>"; };
 		952F3332283C305F00F616FF /* applePayToken.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applePayToken.json; sourceTree = "<group>"; };
+		9571F9602844E5C6001C1B77 /* BillingFormData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormData.swift; sourceTree = "<group>"; };
 		95B1F430283AC32A00A78BFA /* GraphikFontTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphikFontTests.swift; sourceTree = "<group>"; };
 		95B1F431283AC32A00A78BFA /* FontRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontRegistrationTests.swift; sourceTree = "<group>"; };
 		95B1F432283AC32A00A78BFA /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
@@ -965,6 +967,7 @@
 		952F3186283C303E00F616FF /* BillingForm */ = {
 			isa = PBXGroup;
 			children = (
+				9571F95F2844E5C6001C1B77 /* Model */,
 				952F3187283C303E00F616FF /* ViewModel */,
 				952F318A283C303E00F616FF /* Default Implementation */,
 				952F31B3283C303E00F616FF /* BillingFormCell.swift */,
@@ -1594,6 +1597,14 @@
 			path = Fixtures;
 			sourceTree = "<group>";
 		};
+		9571F95F2844E5C6001C1B77 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9571F9602844E5C6001C1B77 /* BillingFormData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		95F3811B2832AED6004C35FD /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -2213,6 +2224,7 @@
 				952F329D283C303E00F616FF /* RemoteProcessorMetadata+extensions.swift in Sources */,
 				952F327E283C303E00F616FF /* CardViewController.swift in Sources */,
 				952F3287283C303E00F616FF /* StandardInputView.swift in Sources */,
+				9571F9612844E5C6001C1B77 /* BillingFormData.swift in Sources */,
 				952F3284283C303E00F616FF /* CardView.swift in Sources */,
 				952F3262283C303E00F616FF /* DefaultBillingFormFullNameCellStyle.swift in Sources */,
 				952F323E283C303E00F616FF /* Dictionary+Additions.swift in Sources */,
