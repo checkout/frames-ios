@@ -1,19 +1,19 @@
 import UIKit
 
-struct DefaultTextField: ElementTextFieldStyle {
-    var isHidden: Bool = false
-    var text: String = ""
-    var placeHolder: String = ""
-    var isPlaceHolderHidden: Bool  = false
-    var font: UIFont = UIFont(graphikStyle: .regular, size: Constants.Style.BillingForm.InputTextField.fontSize.rawValue)
-    var textColor: UIColor = .codGray
-    var normalBorderColor: UIColor = .mediumGray
-    var focusBorderColor: UIColor = .brandeisBlue
-    var errorBorderColor: UIColor = .tallPoppyRed
-    var backgroundColor: UIColor = .white
-    var tintColor: UIColor = .codGray
-    var width: Double = Constants.Style.BillingForm.InputTextField.width.rawValue
-    var height: Double = Constants.Style.BillingForm.InputTextField.height.rawValue
-    var isSecured: Bool = false
-    var isSupportingNumericKeyboard: Bool = false
+public struct DefaultTextField: ElementTextFieldStyle {
+    public var isHidden: Bool = false
+    public var text: String = ""
+    public var placeHolder: String = ""
+    public var isPlaceHolderHidden: Bool  = false
+    public var font: UIFont = UIFont(graphikStyle: .regular, size:  Constants.Style.BillingForm.InputTextField.fontSize.rawValue)
+    public var textColor: UIColor = .codGray
+    public var normalBorderColor: UIColor = .mediumGray
+    public var focusBorderColor: UIColor = .brandeisBlue
+    public var errorBorderColor: UIColor = .tallPoppyRed
+    public var backgroundColor: UIColor = .white
+    public var tintColor: UIColor = .codGray
+    public var width: Double = Constants.Style.BillingForm.InputTextField.width.rawValue
+    public var height: Double = Constants.Style.BillingForm.InputTextField.height.rawValue
+    public var isSecured: Bool = false
+    public var isSupportingNumericKeyboard: Bool = false
 }

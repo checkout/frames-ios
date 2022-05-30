@@ -1,20 +1,20 @@
 import UIKit
 
-class DefaultCountryFormButtonStyle: ElementButtonStyle {
-    var image: UIImage? = "arrow_blue_right".vectorPDFImage(forClass: CheckoutTheme.self)
-    var text: String = "countryRegion".localized(forClass: CheckoutTheme.self)
-    var font: UIFont = UIFont(graphikStyle: .regular, size: Constants.Style.BillingForm.InputCountryButton.fontSize.rawValue)
-    var activeTitleColor: UIColor = .brandeisBlue
-    var disabledTitleColor: UIColor = .mediumGray
-    var disabledTintColor: UIColor = .mediumGray
-    var activeTintColor: UIColor = .brandeisBlue
-    var backgroundColor: UIColor = .white
-    var textColor: UIColor = .clear
-    var normalBorderColor: UIColor = .mediumGray
-    var focusBorderColor: UIColor = .brandeisBlue
-    var errorBorderColor: UIColor = .tallPoppyRed
-    var isHidden: Bool = false
-    var isEnabled: Bool = true
-    var height: Double = Constants.Style.BillingForm.InputCountryButton.height.rawValue
-    var width: Double = Constants.Style.BillingForm.InputCountryButton.width.rawValue
+public class DefaultCountryFormButtonStyle: ElementButtonStyle {
+    public var image: UIImage? = "arrow_blue_right".vectorPDFImage(forClass: CheckoutTheme.self)
+    public var text: String = "countryRegion".localized(forClass: CheckoutTheme.self)
+    public var font: UIFont = UIFont(graphikStyle: .regular, size: Constants.Style.BillingForm.InputCountryButton.fontSize.rawValue)
+    public var activeTitleColor: UIColor = .brandeisBlue
+    public var disabledTitleColor: UIColor = .mediumGray
+    public var disabledTintColor: UIColor = .mediumGray
+    public var activeTintColor: UIColor = .brandeisBlue
+    public var backgroundColor: UIColor = .white
+    public var textColor: UIColor = .clear
+    public var normalBorderColor: UIColor = .mediumGray
+    public var focusBorderColor: UIColor = .brandeisBlue
+    public var errorBorderColor: UIColor = .tallPoppyRed
+    public var isHidden: Bool = false
+    public var isEnabled: Bool = true
+    public var height: Double = Constants.Style.BillingForm.InputCountryButton.height.rawValue
+    public var width: Double = Constants.Style.BillingForm.InputCountryButton.width.rawValue
 }
