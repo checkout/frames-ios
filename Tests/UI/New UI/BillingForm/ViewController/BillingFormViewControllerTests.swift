@@ -9,7 +9,7 @@ class BillingFormViewControllerTests: XCTestCase {
         UIFont.loadAllCheckoutFonts
         // Put setup code here. This method is called before the invocation of each test method in the class.
         let style = DefaultBillingFormStyle()
-        let viewModel = DefaultBillingFormViewModel(style: style)
+        let viewModel = DefaultBillingFormViewModel(style: style, data: nil)
         billingFormViewController = BillingFormViewController(viewModel: viewModel)
         let navigation = UINavigationController()
         navigation.viewControllers = [billingFormViewController]

@@ -10,19 +10,19 @@ class BillingFormViewModelTests: XCTestCase {
     }
     
     func testIntialization() {
-        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle())
+        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
         XCTAssertNotNil(viewModel)
     }
     
     // TableView Cells
     func testGetHeaderCell() {
-        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle())
+        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
         let view = viewModel.getViewForHeader(sender: UIViewController())
         XCTAssertNotNil(view)
     }
   
     func testValidationWhenTextFieldIsEmptyThenShowError() throws {
-        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle())
+        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
         let expectedType = BillingFormCell.fullName(DefaultBillingFormFullNameCellStyle(isOptional: false))
         let tag = 2
         let text = ""
@@ -35,7 +35,7 @@ class BillingFormViewModelTests: XCTestCase {
     }
     
     func testValidationWhenTextFieldIsNotEmptyThenShowSuccess() {
-        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle())
+        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
         let expectedType = BillingFormCell.fullName(nil)
         let text = "fullName"
         let tag = 2
@@ -48,8 +48,8 @@ class BillingFormViewModelTests: XCTestCase {
     
     func testCallDelegateMethodTextFieldIsChanged() {
         let delegate = BillingFormViewModelMockDelegate()
-        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle())
-        let textValueOfCellType =  [
+        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
+        let textValueOfCellType = [
                        BillingFormCell.fullName(nil).index: "fullName" ,
                        BillingFormCell.postcode(nil).index: "postcode" ,
                        BillingFormCell.phoneNumber(nil).index: "phoneNumber" ,
@@ -67,20 +67,19 @@ class BillingFormViewModelTests: XCTestCase {
                                  state: textValueOfCellType[BillingFormCell.state(nil).index],
                                  zip: textValueOfCellType[BillingFormCell.postcode(nil).index],
                                  country: nil)
-        
+        let data = BillingFormData(address: address, phone: phone)
         viewModel.textValueOfCellType = textValueOfCellType
         viewModel.delegate = delegate
         
         viewModel.doneButtonIsPressed(sender: UIViewController())
         
         XCTAssertEqual(delegate.onTapDoneButtonCalledTimes, 1)
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithNumber, phone)
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithAddress, address)
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData, data)
     }
     
     func testCallDelegateMethodDidFinishEditingBillingForm() {
         let delegate = BillingFormViewModelEditingMockDelegate()
-        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle())
+        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
         let textValueOfCellType =  [BillingFormCell.fullName(nil).index: "fullName" ,
                        BillingFormCell.postcode(nil).index: "postcode" ,
                        BillingFormCell.phoneNumber(nil).index: "phoneNumber" ,
