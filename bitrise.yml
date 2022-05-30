@@ -18,7 +18,7 @@ workflows:
         - abort_on_fail: "yes"
         - verbose: "yes"
         - wait_for_builds: "true"
-        - access_token: $access_token
+        - access_token: $CONCURRENT_BUILDS_ACCESS_TOKEN
 
   # frames pr workflows
   frames-pr-checks:
