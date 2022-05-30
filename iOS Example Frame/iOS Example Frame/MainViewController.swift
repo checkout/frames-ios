@@ -62,7 +62,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         let phone = Phone(number: "77 1234 1234",
                           country: Country.allAvailable.first { $0.iso3166Alpha2 == "GB" })
 
-        let billingFormData = BillingFormData(address: address, phone: phone)
+        let billingFormData = BillingForm(address: address, phone: phone)
 
         viewController.billingFormData = billingFormData
         viewController.delegate = self

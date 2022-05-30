@@ -67,7 +67,7 @@ class BillingFormViewModelTests: XCTestCase {
                                  state: textValueOfCellType[BillingFormCell.state(nil).index],
                                  zip: textValueOfCellType[BillingFormCell.postcode(nil).index],
                                  country: nil)
-        let data = BillingFormData(address: address, phone: phone)
+        let data = BillingForm(address: address, phone: phone)
         viewModel.textValueOfCellType = textValueOfCellType
         viewModel.delegate = delegate
         

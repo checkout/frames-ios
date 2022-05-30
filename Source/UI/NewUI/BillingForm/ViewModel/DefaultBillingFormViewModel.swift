@@ -25,7 +25,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     private var initialCountry: String
     private var initialRegionCode: String?
     private var countryCode: Int = 0
-    private var data: BillingFormData?
+    private var data: BillingForm?
     
     // MARK: - Public methods
     
@@ -40,7 +40,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
      */
     
     init(style: BillingFormStyle,
-         data: BillingFormData?,
+         data: BillingForm?,
          initialCountry: String = "",
          initialRegionCode: String? = nil,
          delegate: BillingFormViewModelDelegate? = nil) {
@@ -249,7 +249,7 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
             state: textValueOfCellType[BillingFormCell.state(nil).index],
             zip: textValueOfCellType[BillingFormCell.postcode(nil).index],
             country: nil)
-        let data: BillingFormData =  BillingFormData(address: address, phone: phone)
+        let data: BillingForm =  BillingForm(address: address, phone: phone)
 
         delegate?.onTapDoneButton(data: data)
         

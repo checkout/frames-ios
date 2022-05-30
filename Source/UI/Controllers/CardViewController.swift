@@ -21,7 +21,7 @@ public class CardViewController: UIViewController,
     let cardHolderNameState: InputState
     let billingDetailsState: InputState
 
-    public var billingFormData: BillingFormData?
+    public var billingFormData: BillingForm?
     var notificationCenter = NotificationCenter.default
     public let addressViewController: AddressViewController
 
@@ -301,7 +301,7 @@ public class CardViewController: UIViewController,
 
     /// Executed when an user tap on the done button.
     public func onTapDoneButton(controller: AddressViewController, address: Address, phone: Phone) {
-        billingFormData = BillingFormData(address: address, phone: phone)
+        billingFormData = BillingForm(address: address, phone: phone)
 
         let value = "\(billingFormData?.address.addressLine1 ?? ""), \(billingFormData?.address.city ?? "")"
         cardView.billingDetailsInputView.value.text = value
@@ -451,7 +451,7 @@ extension CardViewController: BillingFormViewModelDelegate {
         countryCode = code
     }
     
-    func onTapDoneButton(data: BillingFormData) {
+    func onTapDoneButton(data: BillingForm) {
 
         billingFormData = data
         let value = "\(data.address.addressLine1 ?? ""), \(data.address.city ?? "")"
