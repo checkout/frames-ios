@@ -24,11 +24,11 @@ final class CellTextField: UITableViewCell {
         setupViewsInOrder()
     }
 
-    func update(type:BillingFormCell?, style: CellTextFieldStyle?, tag: Int) {
+    func update(type:BillingFormCell?, style: CellTextFieldStyle?, tag: Int, textFieldValue: String?) {
         self.type = type
         self.style = style
         self.tag = tag
-        mainView?.update(style: style, type: type)
+        mainView?.update(style: style, type: type, textFieldValue: textFieldValue)
     }
 
     @available(*, unavailable)

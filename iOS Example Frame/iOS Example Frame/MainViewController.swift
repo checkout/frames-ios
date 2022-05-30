@@ -45,26 +45,26 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
 
     lazy var cardViewController: CardViewController = {
         let billingFormStyle = BillingFormFactory.defaultBillingFormStyle
-        
+        let address = Address(addressLine1: "Test line1",
+                              addressLine2: nil,
+                              city: "London",
+                              state: "London",
+                              zip: "N12345",
+                              country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
+
+        let phone = Phone(number: "77 1234 1234",
+                          country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
+        let name = "User 1"
+
+        let billingFormData = BillingFormData(name: name, address: address, phone: phone)
+
         let viewController = CardViewController(checkoutAPIService: checkoutAPIService,
+                                                billingFormData: billingFormData,
                                                 cardHolderNameState: .normal,
                                                 billingDetailsState: .required,
                                                 billingFormStyle: billingFormStyle,
                                                 defaultRegionCode: "GB")
 
-        let address = Address(addressLine1: "Test line1",
-                              addressLine2: "Test line2",
-                              city: "London",
-                              state: "London",
-                              zip: "N12345",
-                              country: Country.allAvailable.first { $0.iso3166Alpha2 == "GB" })
-
-        let phone = Phone(number: "77 1234 1234",
-                          country: Country.allAvailable.first { $0.iso3166Alpha2 == "GB" })
-
-        let billingFormData = BillingFormData(address: address, phone: phone)
-
-        viewController.billingFormData = billingFormData
         viewController.delegate = self
 
         if let billingFormAddress = viewController.billingFormData?.address,

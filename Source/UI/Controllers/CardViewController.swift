@@ -59,11 +59,13 @@ public class CardViewController: UIViewController,
     /// state specified. You can specified the region using the Iso2 region code ("UK" for "United Kingdom")
 
     public convenience init(checkoutAPIService: CheckoutAPIService,
+                            billingFormData: BillingFormData?,
                             cardHolderNameState: InputState,
                             billingDetailsState: InputState,
                             billingFormStyle: BillingFormStyle?,
                             defaultRegionCode: String? = nil) {
-      self.init(checkoutAPIService: checkoutAPIService as CheckoutAPIProtocol,
+        self.init(checkoutAPIService: checkoutAPIService as CheckoutAPIProtocol,
+                  billingFormData: billingFormData,
                 cardHolderNameState: cardHolderNameState,
                 billingDetailsState: billingDetailsState,
                 billingFormStyle: billingFormStyle,
@@ -71,11 +73,13 @@ public class CardViewController: UIViewController,
     }
 
     init(checkoutAPIService: CheckoutAPIProtocol,
+         billingFormData: BillingFormData?,
          cardHolderNameState: InputState,
          billingDetailsState: InputState,
          billingFormStyle: BillingFormStyle? = nil,
          defaultRegionCode: String? = nil) {
         self.checkoutAPIService = checkoutAPIService
+        self.billingFormData = billingFormData
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
         self.billingFormStyle = billingFormStyle
@@ -94,6 +98,7 @@ public class CardViewController: UIViewController,
         addressViewController = AddressViewController()
         checkoutAPIService = nil
         billingFormStyle = nil
+        billingFormData = nil
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
@@ -105,6 +110,7 @@ public class CardViewController: UIViewController,
         addressViewController = AddressViewController()
         checkoutAPIService = nil
         billingFormStyle = nil
+        billingFormData = nil
         super.init(coder: aDecoder)
     }
 
@@ -301,7 +307,7 @@ public class CardViewController: UIViewController,
 
     /// Executed when an user tap on the done button.
     public func onTapDoneButton(controller: AddressViewController, address: Address, phone: Phone) {
-        billingFormData = BillingFormData(address: address, phone: phone)
+        billingFormData = BillingFormData(name: "", address: address, phone: phone)
 
         let value = "\(billingFormData?.address.addressLine1 ?? ""), \(billingFormData?.address.city ?? "")"
         cardView.billingDetailsInputView.value.text = value
