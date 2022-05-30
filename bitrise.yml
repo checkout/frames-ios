@@ -207,13 +207,10 @@ workflows:
     after_run: []
   _checkout-build-carthage:
     steps:
-    - script@1:
-        title: Carthage install
+    - carthage@3:
         inputs:
-        - content: |-
-            #!/usr/bin/env bash
-
-            carthage update --use-xcframeworks --platform iOS --verbose
+        - carthage_options: $CARTHAGE_XCFRAMEWORK
+        - github_access_token: $access_token
     - xcode-test@4:
         inputs:
         - project_path: "$CHECKOUT_CARTHAGE_PROJECT"
@@ -334,7 +331,7 @@ app:
     FRAMES_APP_SCHEME: iOS Example Frame
   - opts:
       is_expand: false
-    CARTHAGE_XCFRAMEWORK: '--use-xcframeworks --platform iOS'
+    CARTHAGE_XCFRAMEWORK: '--use-xcframeworks --platform iOS --cache-builds'
   - opts:
       is_expand: false
     CARTHAGE_FOLDER: Carthage
