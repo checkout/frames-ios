@@ -121,7 +121,8 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        cardViewController.addressViewController.setCountrySelected(country: "GB", regionCode: "GB")
+        let country = Country(iso3166Alpha2: "GB", dialingCode: nil)
+        cardViewController.addressViewController.setCountrySelected(country: country)
     }
 
     func onTapDone(controller: CardViewController, result: Result<TokenDetails, TokenisationError.TokenRequest>) {

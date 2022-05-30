@@ -226,9 +226,10 @@ extension DefaultBillingFormViewModel: BillingFormTextFieldDelegate {
 // MARK: - Billing form view controller Delegate
 
 extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
-    func update(country: String, regionCode: String) {
+
+    func update(country: Country) {
         let index = BillingFormCell.country(nil).index
-        textValueOfCellType[index] = country
+        textValueOfCellType[index] = country.name
         updatedRow = index
     }
     
