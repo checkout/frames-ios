@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CardValidator – Frames iOS SDK reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/CardValidator" class="dashAnchor"></a>
+
+    <a title="CardValidator Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          Frames 3.5.2 Docs
+        </a>
+         (58% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/checkout/frames-ios">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">Frames</a>
+      <img class="carat" src="../img/carat.png" />
+      CardValidator
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Guides.html">Guides</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../customizing-the-card-view.html">Customizing the Card View</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../frames-ios-example.html">Frames iOS Example</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../usage.html">Usage</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../ios-example.html">iOS Example</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/AddressView.html">AddressView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/AddressViewController.html">AddressViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CardListCell.html">CardListCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CardListCellName.html">CardListCellName</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CardNumberInputView.html">CardNumberInputView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CardUtils.html">CardUtils</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CardValidator.html">CardValidator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CardView.html">CardView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CardViewController.html">CardViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CheckoutAPIService.html">CheckoutAPIService</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CheckoutTheme.html">CheckoutTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CountrySelectionViewController.html">CountrySelectionViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CvvConfirmationViewController.html">CvvConfirmationViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CvvInputView.html">CvvInputView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/DetailsInputView.html">DetailsInputView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ExpirationDateInputView.html">ExpirationDateInputView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ExpirationDatePicker.html">ExpirationDatePicker</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PhoneNumberInputView.html">PhoneNumberInputView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SimpleLoadingViewController.html">SimpleLoadingViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/StandardInputView.html">StandardInputView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ThreeDSWKNavigationHelper.html">ThreeDSWKNavigationHelper</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ThreedsWebViewController.html">ThreedsWebViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums.html#/s:8Checkout13CardUtilitiesO">CardUtilities</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Environment.html">Environment</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Environment.html">Environment</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/InputState.html">InputState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/NetworkError.html">NetworkError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/PaymentSource.html">PaymentSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ThreeDSError.html">ThreeDSError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TokenisationError.html">TokenisationError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TokenisationError/ServerError.html">– ServerError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TokenisationError/TokenRequest.html">– TokenRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationError.html">ValidationError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationError/Address.html">– Address</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationError/CVV.html">– CVV</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationError/Card.html">– Card</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationError/CardNumber.html">– CardNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationError/EagerCardNumber.html">– EagerCardNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationError/ExpiryDate.html">– ExpiryDate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationError/Phone.html">– Phone</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationResult.html">ValidationResult</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AddressViewControllerDelegate.html">AddressViewControllerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CVVValidating.html">CVVValidating</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CardNumberInputViewDelegate.html">CardNumberInputViewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CardNumberValidating.html">CardNumberValidating</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CardValidating.html">CardValidating</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CardViewControllerDelegate.html">CardViewControllerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CheckoutAPIProtocol.html">CheckoutAPIProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CheckoutError.html">CheckoutError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CountrySelectionViewControllerDelegate.html">CountrySelectionViewControllerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CvvConfirmationViewControllerDelegate.html">CvvConfirmationViewControllerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CvvInputViewDelegate.html">CvvInputViewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ExpirationDatePickerDelegate.html">ExpirationDatePickerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ExpiryDateValidating.html">ExpiryDateValidating</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ThreeDSWKNavigationHelperDelegate.html">ThreeDSWKNavigationHelperDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ThreedsWebViewControllerDelegate.html">ThreedsWebViewControllerDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Address.html">Address</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ApplePay.html">ApplePay</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Card.html">Card</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Card/Scheme.html">– Scheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Country.html">Country</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ExpiryDate.html">ExpiryDate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Phone.html">Phone</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/TokenDetails.html">TokenDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/TokenDetails/TokenType.html">– TokenType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/TokenDetails/Phone.html">– Phone</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>CardValidator</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CardValidator</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/CardValidating.html">CardValidating</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Provides utility functions to validate cards</p>
+
+              <div class="slightly-smaller">
+                <a href="https://github.com/checkout/frames-ios/tree/master/Checkout/Checkout/Source/Validation/Validators/CardValidator.swift#L22-L252">Show on GitHub</a>
+              </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Checkout13CardValidatorC11environmentAcA11EnvironmentO_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(environment:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Checkout13CardValidatorC11environmentAcA11EnvironmentO_tcfc">init(environment:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a CardValidator object.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">environment</span><span class="p">:</span> <span class="kt"><a href="../Enums/Environment.html">Environment</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/master/Checkout/Checkout/Source/Validation/Validators/CardValidator.swift#L31-L56">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public"></a>
+                <a name="//apple_ref/swift/Section/Public" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Public"></a>
+                  <h3 class="section-name"><span>Public</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Checkout13CardValidatorC8validate10cardNumbers6ResultOyAA0B0V6SchemeOAA15ValidationErrorO0bF0OGSS_tF"></a>
+                    <a name="//apple_ref/swift/Method/validate(cardNumber:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Checkout13CardValidatorC8validate10cardNumbers6ResultOyAA0B0V6SchemeOAA15ValidationErrorO0bF0OGSS_tF">validate(cardNumber:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Checks whether a given card number is valid and matches any of the supported schemes.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="nv">cardNumber</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Card.html">Card</a></span><span class="o">.</span><span class="kt">Scheme</span><span class="p">,</span> <span class="kt"><a href="../Enums/ValidationError.html">ValidationError</a></span><span class="o">.</span><span class="kt">CardNumber</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cardNumber</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The card number to validate.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The card&rsquo;s scheme if successful, else an error.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/master/Checkout/Checkout/Source/Validation/Validators/CardValidator.swift#L82-L85">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Checkout13CardValidatorC13eagerValidate10cardNumbers6ResultOyAA0B0V6SchemeOAA15ValidationErrorO05EagerbG0OGSS_tF"></a>
+                    <a name="//apple_ref/swift/Method/eagerValidate(cardNumber:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Checkout13CardValidatorC13eagerValidate10cardNumbers6ResultOyAA0B0V6SchemeOAA15ValidationErrorO05EagerbG0OGSS_tF">eagerValidate(cardNumber:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Checks whether a given card number is at least a partial match for any of the supported schemes.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">eagerValidate</span><span class="p">(</span><span class="nv">cardNumber</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Card.html">Card</a></span><span class="o">.</span><span class="kt">Scheme</span><span class="p">,</span> <span class="kt"><a href="../Enums/ValidationError.html">ValidationError</a></span><span class="o">.</span><span class="kt">EagerCardNumber</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cardNumber</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The card number to validate.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The card&rsquo;s scheme if successful, else an error.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/master/Checkout/Checkout/Source/Validation/Validators/CardValidator.swift#L91-L94">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Checkout13CardValidatorC8validate11expiryMonth0E4Years6ResultOyAA10ExpiryDateVAA15ValidationErrorOAIOGSS_SStF"></a>
+                    <a name="//apple_ref/swift/Method/validate(expiryMonth:expiryYear:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Checkout13CardValidatorC8validate11expiryMonth0E4Years6ResultOyAA10ExpiryDateVAA15ValidationErrorOAIOGSS_SStF">validate(expiryMonth:<wbr>expiryYear:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Checks whether the given expiry month and year are valid,
+if valid returns the values wrapped in an <code><a href="../Structs/ExpiryDate.html">ExpiryDate</a></code> object.
+The <code>expiryMonth</code> can be 1 or 2 digits, and the <code>expiryYear</code> can be 2 or 4 digits.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span>
+  <span class="nv">expiryMonth</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+  <span class="nv">expiryYear</span><span class="p">:</span> <span class="kt">String</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/ExpiryDate.html">ExpiryDate</a></span><span class="p">,</span> <span class="kt"><a href="../Enums/ValidationError.html">ValidationError</a></span><span class="o">.</span><span class="kt"><a href="../Structs/ExpiryDate.html">ExpiryDate</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>expiryMonth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The expiry month of the card.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>expiryYear</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The expiry year of the card.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The card&rsquo;s expiry date as an <code><a href="../Structs/ExpiryDate.html">ExpiryDate</a></code> object, else an error.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/master/Checkout/Checkout/Source/Validation/Validators/CardValidator.swift#L103-L116">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Checkout13CardValidatorC8validate11expiryMonth0E4Years6ResultOyAA10ExpiryDateVAA15ValidationErrorOAIOGSi_SitF"></a>
+                    <a name="//apple_ref/swift/Method/validate(expiryMonth:expiryYear:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Checkout13CardValidatorC8validate11expiryMonth0E4Years6ResultOyAA10ExpiryDateVAA15ValidationErrorOAIOGSi_SitF">validate(expiryMonth:<wbr>expiryYear:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Checks whether the given expiry month and year are valid,
+if valid returns the values wrapped in an <code><a href="../Structs/ExpiryDate.html">ExpiryDate</a></code> object.
+The <code>expiryMonth</code> can be 1 or 2 digits, and the <code>expiryYear</code> can be 2 or 4 digits.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span>
+  <span class="nv">expiryMonth</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span>
+  <span class="nv">expiryYear</span><span class="p">:</span> <span class="kt">Int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/ExpiryDate.html">ExpiryDate</a></span><span class="p">,</span> <span class="kt"><a href="../Enums/ValidationError.html">ValidationError</a></span><span class="o">.</span><span class="kt"><a href="../Structs/ExpiryDate.html">ExpiryDate</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>expiryMonth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The expiry month of the card.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>expiryYear</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The expiry year of the card.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The card&rsquo;s expiry date as an <code><a href="../Structs/ExpiryDate.html">ExpiryDate</a></code> object, else an error.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/master/Checkout/Checkout/Source/Validation/Validators/CardValidator.swift#L126-L135">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Checkout13CardValidatorC8validate3cvv10cardSchemeAA16ValidationResultOyAA0H5ErrorO3CVVOGSS_AA0B0V0G0OtF"></a>
+                    <a name="//apple_ref/swift/Method/validate(cvv:cardScheme:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Checkout13CardValidatorC8validate3cvv10cardSchemeAA16ValidationResultOyAA0H5ErrorO3CVVOGSS_AA0B0V0G0OtF">validate(cvv:<wbr>cardScheme:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Checks whether a CVV is valid for a given card scheme.
+If the cardScheme is <code>unknown</code>, this validates that the cvv is 3 or 4 digits.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span>
+  <span class="nv">cvv</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+  <span class="nv">cardScheme</span><span class="p">:</span> <span class="kt"><a href="../Structs/Card.html">Card</a></span><span class="o">.</span><span class="kt">Scheme</span> <span class="o">=</span> <span class="o">.</span><span class="n">unknown</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Enums/ValidationResult.html">ValidationResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Enums/ValidationError.html">ValidationError</a></span><span class="o">.</span><span class="kt">CVV</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cvv</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The CVV of the card.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cardScheme</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The scheme of the card.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Whether the CVV is valid, else an error.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/master/Checkout/Checkout/Source/Validation/Validators/CardValidator.swift#L144-L150">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Checkout13CardValidatorC8validateyAA16ValidationResultOyAA0E5ErrorO0B0OGAaIVF"></a>
+                    <a name="//apple_ref/swift/Method/validate(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Checkout13CardValidatorC8validateyAA16ValidationResultOyAA0E5ErrorO0B0OGAaIVF">validate(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="n">_</span> <span class="nv">card</span><span class="p">:</span> <span class="kt"><a href="../Structs/Card.html">Card</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Enums/ValidationResult.html">ValidationResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Enums/ValidationError.html">ValidationError</a></span><span class="o">.</span><span class="kt"><a href="../Structs/Card.html">Card</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/master/Checkout/Checkout/Source/Validation/Validators/CardValidator.swift#L152-L190">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2022 <a class="link" href="https://www.checkout.com/" target="_blank" rel="external noopener">Checkout.com</a>. All rights reserved. (Last updated: 2022-05-30)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="noopener" rel="external">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="noopener" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

@@ -1,6 +1,1042 @@
 {
   "warnings": [
     {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/3DSHandling/ThreeDSError.swift",
+      "line": 11,
+      "symbol": "ThreeDSError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/3DSHandling/ThreeDSError.swift",
+      "line": 12,
+      "symbol": "ThreeDSError.couldNotExtractToken",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/3DSHandling/ThreeDSError.swift",
+      "line": 13,
+      "symbol": "ThreeDSError.receivedFailureURL",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/3DSHandling/ThreeDSError.swift",
+      "line": 15,
+      "symbol": "ThreeDSError.code",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/3DSHandling/ThreeDSWKNavigationHelper.swift",
+      "line": 11,
+      "symbol": "ThreeDSWKNavigationHelper",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/3DSHandling/ThreeDSWKNavigationHelper.swift",
+      "line": 12,
+      "symbol": "ThreeDSWKNavigationHelper.delegate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/3DSHandling/ThreeDSWKNavigationHelper.swift",
+      "line": 28,
+      "symbol": "ThreeDSWKNavigationHelper.init(successURL:failureURL:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/3DSHandling/ThreeDSWKNavigationHelper.swift",
+      "line": 34,
+      "symbol": "ThreeDSWKNavigationHelper",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/3DSHandling/ThreeDSWKNavigationHelper.swift",
+      "line": 35,
+      "symbol": "ThreeDSWKNavigationHelper.webView(_:decidePolicyFor:decisionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/3DSHandling/ThreeDSWKNavigationHelperDelegate.swift",
+      "line": 10,
+      "symbol": "ThreeDSWKNavigationHelperDelegate",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/3DSHandling/ThreeDSWKNavigationHelperDelegate.swift",
+      "line": 11,
+      "symbol": "ThreeDSWKNavigationHelperDelegate.threeDSWKNavigationHelperDelegate(didReceiveResult:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/CheckoutError.swift",
+      "line": 10,
+      "symbol": "CheckoutError",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/CheckoutError.swift",
+      "line": 11,
+      "symbol": "CheckoutError.code",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Address.swift",
+      "line": 12,
+      "symbol": "Address.addressLine1",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Address.swift",
+      "line": 13,
+      "symbol": "Address.addressLine2",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Address.swift",
+      "line": 14,
+      "symbol": "Address.city",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Address.swift",
+      "line": 15,
+      "symbol": "Address.state",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Address.swift",
+      "line": 16,
+      "symbol": "Address.zip",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Address.swift",
+      "line": 17,
+      "symbol": "Address.country",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Address.swift",
+      "line": 19,
+      "symbol": "Address.init(addressLine1:addressLine2:city:state:zip:country:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card+Scheme.swift",
+      "line": 23,
+      "symbol": "Card.Scheme.unknown",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card+Scheme.swift",
+      "line": 24,
+      "symbol": "Card.Scheme.mada",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card+Scheme.swift",
+      "line": 25,
+      "symbol": "Card.Scheme.visa",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card+Scheme.swift",
+      "line": 26,
+      "symbol": "Card.Scheme.mastercard",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card+Scheme.swift",
+      "line": 27,
+      "symbol": "Card.Scheme.maestro",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card+Scheme.swift",
+      "line": 28,
+      "symbol": "Card.Scheme.americanExpress",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card+Scheme.swift",
+      "line": 29,
+      "symbol": "Card.Scheme.discover",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card+Scheme.swift",
+      "line": 30,
+      "symbol": "Card.Scheme.dinersClub",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card+Scheme.swift",
+      "line": 31,
+      "symbol": "Card.Scheme.jcb",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card.swift",
+      "line": 10,
+      "symbol": "Card",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card.swift",
+      "line": 10,
+      "symbol": "Card",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card.swift",
+      "line": 11,
+      "symbol": "Card.number",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card.swift",
+      "line": 12,
+      "symbol": "Card.expiryDate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card.swift",
+      "line": 13,
+      "symbol": "Card.name",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card.swift",
+      "line": 14,
+      "symbol": "Card.cvv",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card.swift",
+      "line": 15,
+      "symbol": "Card.billingAddress",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card.swift",
+      "line": 16,
+      "symbol": "Card.phone",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Card.swift",
+      "line": 18,
+      "symbol": "Card.init(number:expiryDate:name:cvv:billingAddress:phone:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Country.swift",
+      "line": 12,
+      "symbol": "Country.iso3166Alpha2",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Country.swift",
+      "line": 13,
+      "symbol": "Country.dialingCode",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Country.swift",
+      "line": 15,
+      "symbol": "Country.allAvailable",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Environment.swift",
+      "line": 16,
+      "symbol": "Environment.production",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Environment.swift",
+      "line": 17,
+      "symbol": "Environment.sandbox",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/ExpiryDate.swift",
+      "line": 12,
+      "symbol": "ExpiryDate.month",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/ExpiryDate.swift",
+      "line": 13,
+      "symbol": "ExpiryDate.year",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/PaymentSource.swift",
+      "line": 12,
+      "symbol": "PaymentSource.card(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/PaymentSource.swift",
+      "line": 13,
+      "symbol": "PaymentSource.applePay(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Phone.swift",
+      "line": 12,
+      "symbol": "Phone.number",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Phone.swift",
+      "line": 13,
+      "symbol": "Phone.country",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/Phone.swift",
+      "line": 15,
+      "symbol": "Phone.init(number:country:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 12,
+      "symbol": "TokenDetails.type",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 13,
+      "symbol": "TokenDetails.token",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 14,
+      "symbol": "TokenDetails.expiresOn",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 15,
+      "symbol": "TokenDetails.expiryDate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 16,
+      "symbol": "TokenDetails.scheme",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 17,
+      "symbol": "TokenDetails.last4",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 18,
+      "symbol": "TokenDetails.bin",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 19,
+      "symbol": "TokenDetails.cardType",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 20,
+      "symbol": "TokenDetails.cardCategory",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 21,
+      "symbol": "TokenDetails.issuer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 22,
+      "symbol": "TokenDetails.issuerCountry",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 23,
+      "symbol": "TokenDetails.productId",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 24,
+      "symbol": "TokenDetails.productType",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 25,
+      "symbol": "TokenDetails.billingAddress",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 26,
+      "symbol": "TokenDetails.phone",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 27,
+      "symbol": "TokenDetails.name",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 29,
+      "symbol": "TokenDetails.TokenType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 30,
+      "symbol": "TokenDetails.TokenType.card",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 31,
+      "symbol": "TokenDetails.TokenType.applePay",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 34,
+      "symbol": "TokenDetails.Phone",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 35,
+      "symbol": "TokenDetails.Phone.number",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Model/TokenDetails.swift",
+      "line": 36,
+      "symbol": "TokenDetails.Phone.countryCode",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Models/ApplePay.swift",
+      "line": 12,
+      "symbol": "ApplePay.tokenData",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Models/ApplePay.swift",
+      "line": 13,
+      "symbol": "ApplePay.init(tokenData:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Network/Error/NetworkError.swift",
+      "line": 12,
+      "symbol": "NetworkError.noInternetConnectivity",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Network/Error/NetworkError.swift",
+      "line": 13,
+      "symbol": "NetworkError.connectionFailed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Network/Error/NetworkError.swift",
+      "line": 14,
+      "symbol": "NetworkError.connectionTimeout",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Network/Error/NetworkError.swift",
+      "line": 15,
+      "symbol": "NetworkError.connectionLost",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Network/Error/NetworkError.swift",
+      "line": 16,
+      "symbol": "NetworkError.internationalRoamingOff",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Network/Error/NetworkError.swift",
+      "line": 17,
+      "symbol": "NetworkError.unknown(additionalInfo:error:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Network/Error/NetworkError.swift",
+      "line": 18,
+      "symbol": "NetworkError.certificateTransparencyChecksFailed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Network/Error/NetworkError.swift",
+      "line": 19,
+      "symbol": "NetworkError.couldNotDecodeValues",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Network/Error/NetworkError.swift",
+      "line": 20,
+      "symbol": "NetworkError.emptyResponse",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Network/Error/NetworkError.swift",
+      "line": 22,
+      "symbol": "NetworkError.code",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Tokenisation/CheckoutAPIService.swift",
+      "line": 12,
+      "symbol": "CheckoutAPIProtocol",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Tokenisation/CheckoutAPIService.swift",
+      "line": 13,
+      "symbol": "CheckoutAPIProtocol.createToken(_:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Tokenisation/CheckoutAPIService.swift",
+      "line": 14,
+      "symbol": "CheckoutAPIProtocol.correlationID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Tokenisation/CheckoutAPIService.swift",
+      "line": 17,
+      "symbol": "CheckoutAPIService",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Tokenisation/Error/TokenisationError+ServerError.swift",
+      "line": 13,
+      "symbol": "TokenisationError.ServerError.requestID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Tokenisation/Error/TokenisationError+ServerError.swift",
+      "line": 14,
+      "symbol": "TokenisationError.ServerError.errorType",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Tokenisation/Error/TokenisationError+ServerError.swift",
+      "line": 15,
+      "symbol": "TokenisationError.ServerError.errorCodes",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Tokenisation/Error/TokenisationError+ServerError.swift",
+      "line": 23,
+      "symbol": "TokenisationError.ServerError.code",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Tokenisation/Error/TokenisationError+TokenRequest.swift",
+      "line": 11,
+      "symbol": "TokenisationError.TokenRequest",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Tokenisation/Error/TokenisationError+TokenRequest.swift",
+      "line": 12,
+      "symbol": "TokenisationError.TokenRequest.couldNotBuildURLForRequest",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Tokenisation/Error/TokenisationError+TokenRequest.swift",
+      "line": 13,
+      "symbol": "TokenisationError.TokenRequest.applePayTokenInvalid",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Tokenisation/Error/TokenisationError+TokenRequest.swift",
+      "line": 14,
+      "symbol": "TokenisationError.TokenRequest.cardValidationError(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Tokenisation/Error/TokenisationError+TokenRequest.swift",
+      "line": 15,
+      "symbol": "TokenisationError.TokenRequest.networkError(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Tokenisation/Error/TokenisationError+TokenRequest.swift",
+      "line": 16,
+      "symbol": "TokenisationError.TokenRequest.serverError(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Tokenisation/Error/TokenisationError+TokenRequest.swift",
+      "line": 18,
+      "symbol": "TokenisationError.TokenRequest.code",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+Address.swift",
+      "line": 11,
+      "symbol": "ValidationError.Address",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+Address.swift",
+      "line": 12,
+      "symbol": "ValidationError.Address.addressLine1IncorrectLength",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+Address.swift",
+      "line": 13,
+      "symbol": "ValidationError.Address.addressLine2IncorrectLength",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+Address.swift",
+      "line": 14,
+      "symbol": "ValidationError.Address.invalidCityLength",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+Address.swift",
+      "line": 15,
+      "symbol": "ValidationError.Address.invalidCountry",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+Address.swift",
+      "line": 16,
+      "symbol": "ValidationError.Address.invalidStateLength",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+Address.swift",
+      "line": 17,
+      "symbol": "ValidationError.Address.invalidZipLength",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+Address.swift",
+      "line": 19,
+      "symbol": "ValidationError.Address.code",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+CVV.swift",
+      "line": 11,
+      "symbol": "ValidationError.CVV",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+CVV.swift",
+      "line": 12,
+      "symbol": "ValidationError.CVV.containsNonDigits",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+CVV.swift",
+      "line": 13,
+      "symbol": "ValidationError.CVV.invalidLength",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+CVV.swift",
+      "line": 15,
+      "symbol": "ValidationError.CVV.code",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+Card.swift",
+      "line": 13,
+      "symbol": "ValidationError.Card.cardNumber(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+Card.swift",
+      "line": 14,
+      "symbol": "ValidationError.Card.cvv(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+Card.swift",
+      "line": 15,
+      "symbol": "ValidationError.Card.billingAddress(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+Card.swift",
+      "line": 16,
+      "symbol": "ValidationError.Card.phone(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+Card.swift",
+      "line": 18,
+      "symbol": "ValidationError.Card.code",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+CardNumber.swift",
+      "line": 11,
+      "symbol": "ValidationError.CardNumber",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+CardNumber.swift",
+      "line": 12,
+      "symbol": "ValidationError.CardNumber.invalidCharacters",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+CardNumber.swift",
+      "line": 14,
+      "symbol": "ValidationError.CardNumber.code",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+EagerCardNumber.swift",
+      "line": 11,
+      "symbol": "ValidationError.EagerCardNumber",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+EagerCardNumber.swift",
+      "line": 12,
+      "symbol": "ValidationError.EagerCardNumber.cardNumber(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+EagerCardNumber.swift",
+      "line": 13,
+      "symbol": "ValidationError.EagerCardNumber.invalidScheme",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+EagerCardNumber.swift",
+      "line": 14,
+      "symbol": "ValidationError.EagerCardNumber.tooLong",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+EagerCardNumber.swift",
+      "line": 16,
+      "symbol": "ValidationError.EagerCardNumber.code",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+ExpiryDate.swift",
+      "line": 13,
+      "symbol": "ValidationError.ExpiryDate.invalidMonthString",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+ExpiryDate.swift",
+      "line": 14,
+      "symbol": "ValidationError.ExpiryDate.invalidYearString",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+ExpiryDate.swift",
+      "line": 15,
+      "symbol": "ValidationError.ExpiryDate.invalidMonth",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+ExpiryDate.swift",
+      "line": 16,
+      "symbol": "ValidationError.ExpiryDate.invalidYear",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+ExpiryDate.swift",
+      "line": 17,
+      "symbol": "ValidationError.ExpiryDate.incompleteMonth",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+ExpiryDate.swift",
+      "line": 18,
+      "symbol": "ValidationError.ExpiryDate.incompleteYear",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+ExpiryDate.swift",
+      "line": 19,
+      "symbol": "ValidationError.ExpiryDate.inThePast",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+ExpiryDate.swift",
+      "line": 21,
+      "symbol": "ValidationError.ExpiryDate.code",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+Phone.swift",
+      "line": 13,
+      "symbol": "ValidationError.Phone.numberIncorrectLength",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+Phone.swift",
+      "line": 14,
+      "symbol": "ValidationError.Phone.countryCodeIncorrectLength",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Error/ValidationError+Phone.swift",
+      "line": 16,
+      "symbol": "ValidationError.Phone.code",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/ValidationResult.swift",
+      "line": 12,
+      "symbol": "ValidationResult.success",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/ValidationResult.swift",
+      "line": 13,
+      "symbol": "ValidationResult.failure(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Validators/CVVValidator.swift",
+      "line": 10,
+      "symbol": "CVVValidating",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Validators/CVVValidator.swift",
+      "line": 11,
+      "symbol": "CVVValidating.validate(cvv:cardScheme:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Validators/CardNumberValidator.swift",
+      "line": 10,
+      "symbol": "CardNumberValidating",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Validators/CardNumberValidator.swift",
+      "line": 11,
+      "symbol": "CardNumberValidating.eagerValidate(cardNumber:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Validators/CardNumberValidator.swift",
+      "line": 12,
+      "symbol": "CardNumberValidating.validate(cardNumber:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Validators/CardValidator.swift",
+      "line": 12,
+      "symbol": "ExpiryDateValidating",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Validators/CardValidator.swift",
+      "line": 13,
+      "symbol": "ExpiryDateValidating.validate(expiryMonth:expiryYear:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Validators/CardValidator.swift",
+      "line": 14,
+      "symbol": "ExpiryDateValidating.validate(expiryMonth:expiryYear:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Validators/CardValidator.swift",
+      "line": 17,
+      "symbol": "CardValidating",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Validators/CardValidator.swift",
+      "line": 18,
+      "symbol": "CardValidating.validate(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Checkout/Checkout/Source/Validation/Validators/CardValidator.swift",
+      "line": 152,
+      "symbol": "CardValidator.validate(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/harrybrown/dev/frames-ios/Source/CheckoutTheme.swift",
       "line": 8,
       "symbol": "CheckoutTheme.secondaryBackgroundColor",
@@ -8,163 +1044,44 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/Core/ApplePayTokenRequest.swift",
-      "line": 24,
-      "symbol": "ApplePayTokenRequest.token_data",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/Core/ApplePayTokenRequest.swift",
-      "line": 28,
-      "symbol": "ApplePayTokenRequest.init(token_data:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/Core/ApplePayTokenRequest.swift",
-      "line": 35,
-      "symbol": "ApplePayTokenData",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/Core/ApplePayTokenRequest.swift",
-      "line": 42,
-      "symbol": "ApplePayTokenData.init(version:data:signature:header:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/Core/ApplePayTokenRequest.swift",
-      "line": 52,
-      "symbol": "ApplePayTokenDataHeader",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/Core/ApplePayTokenRequest.swift",
-      "line": 64,
-      "symbol": "ApplePayTokenDataHeader.init(ephemeralPublicKey:publicKeyHash:transactionId:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/Core/CkoAddress.swift",
-      "line": 33,
-      "symbol": "CkoAddress.init(addressLine1:addressLine2:city:state:zip:country:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/Core/CkoCardTokenRequest.swift",
-      "line": 64,
-      "symbol": "CkoCardTokenRequest.createWith(shippingDetails:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/Core/CkoCardTokenResponse.swift",
-      "line": 82,
-      "symbol": "CkoCardTokenResponse.productId",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/Core/ErrorResponse.swift",
-      "line": 6,
-      "symbol": "ErrorResponse",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/Core/NetworkError.swift",
-      "line": 3,
-      "symbol": "NetworkError",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/Core/NetworkError.swift",
-      "line": 5,
-      "symbol": "NetworkError.checkout(requestId:errorType:errorCodes:)",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/Core/NetworkError.swift",
-      "line": 6,
-      "symbol": "NetworkError.other(error:)",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/Core/NetworkError.swift",
-      "line": 7,
-      "symbol": "NetworkError.unknown",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/Core/NetworkError.swift",
-      "line": 10,
-      "symbol": "NetworkError.invalidData",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/Core/NetworkError.swift",
-      "line": 10,
-      "symbol": "NetworkError.invalidURL",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/Core/NetworkError.swift",
-      "line": 10,
-      "symbol": "NetworkError.objectDeallocatedUnexpectedly",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/harrybrown/dev/frames-ios/Source/UI/Controllers/AddressViewController.swift",
-      "line": 175,
+      "line": 178,
       "symbol": "AddressViewController.setCountrySelected(country:regionCode:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harrybrown/dev/frames-ios/Source/UI/Controllers/AddressViewController.swift",
-      "line": 195,
+      "line": 198,
       "symbol": "AddressViewController.setFields(address:phone:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harrybrown/dev/frames-ios/Source/UI/Controllers/CardViewController.swift",
-      "line": 17,
-      "symbol": "CardViewController.checkoutApiClient",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/harrybrown/dev/frames-ios/Source/UI/Controllers/CardViewController.swift",
-      "line": 22,
+      "line": 24,
       "symbol": "CardViewController.billingDetailsAddress",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harrybrown/dev/frames-ios/Source/UI/Controllers/CardViewController.swift",
-      "line": 23,
+      "line": 25,
       "symbol": "CardViewController.billingDetailsPhone",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/harrybrown/dev/frames-ios/Source/UI/Controllers/CardViewController.swift",
-      "line": 25,
+      "line": 27,
       "symbol": "CardViewController.addressViewController",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/harrybrown/dev/frames-ios/Source/UI/Controllers/CardViewController.swift",
+      "line": 54,
+      "symbol": "CardViewController.isNewUI",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -177,14 +1094,21 @@
     },
     {
       "file": "/Users/harrybrown/dev/frames-ios/Source/UI/Controllers/ThreedsWebViewController.swift",
-      "line": 96,
+      "line": 97,
       "symbol": "ThreedsWebViewController.webView(_:decidePolicyFor:decisionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
+      "file": "/Users/harrybrown/dev/frames-ios/Source/UI/Views/CardNumberInputView.swift",
+      "line": 31,
+      "symbol": "CardNumberInputView.init(frame:cardValidator:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/harrybrown/dev/frames-ios/Source/UI/Views/CvvInputView.swift",
-      "line": 13,
+      "line": 15,
       "symbol": "CvvInputView.onChangeDelegate",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
