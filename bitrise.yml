@@ -9,9 +9,16 @@ trigger_map:
   workflow: pr-checks
 workflows:
   pr-checks:
-    after_run:
-    - checkout-pr-checks
-    - frames-pr-checks
+    steps:
+    - build-router-start@0:
+        inputs:
+        - workflows: |-
+            frames-pr-checks
+            checkout-pr-checks
+        - abort_on_fail: "yes"
+        - verbose: "yes"
+        - wait_for_builds: "true"
+        - access_token: $access_token
 
   # frames pr workflows
   frames-pr-checks:
