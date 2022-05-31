@@ -21,7 +21,7 @@ public class CardViewController: UIViewController,
     let cardHolderNameState: InputState
     let billingDetailsState: InputState
 
-    public var billingFormData: BillingFormData?
+    public var billingFormData: BillingForm?
     var notificationCenter = NotificationCenter.default
     public let addressViewController: AddressViewController
 
@@ -59,7 +59,7 @@ public class CardViewController: UIViewController,
     /// state specified. You can specified the region using the Iso2 region code ("UK" for "United Kingdom")
 
     public convenience init(checkoutAPIService: CheckoutAPIService,
-                            billingFormData: BillingFormData?,
+                            billingFormData: BillingForm?,
                             cardHolderNameState: InputState,
                             billingDetailsState: InputState,
                             billingFormStyle: BillingFormStyle?,
@@ -73,7 +73,7 @@ public class CardViewController: UIViewController,
     }
 
     init(checkoutAPIService: CheckoutAPIProtocol,
-         billingFormData: BillingFormData?,
+         billingFormData: BillingForm?,
          cardHolderNameState: InputState,
          billingDetailsState: InputState,
          billingFormStyle: BillingFormStyle? = nil,
@@ -307,7 +307,7 @@ public class CardViewController: UIViewController,
 
     /// Executed when an user tap on the done button.
     public func onTapDoneButton(controller: AddressViewController, address: Address, phone: Phone) {
-        billingFormData = BillingFormData(name: "", address: address, phone: phone)
+        billingFormData = BillingForm(name: "", address: address, phone: phone)
 
         let value = "\(billingFormData?.address.addressLine1 ?? ""), \(billingFormData?.address.city ?? "")"
         cardView.billingDetailsInputView.value.text = value
@@ -457,7 +457,7 @@ extension CardViewController: BillingFormViewModelDelegate {
         countryCode = code
     }
     
-    func onTapDoneButton(data: BillingFormData) {
+    func onTapDoneButton(data: BillingForm) {
 
         billingFormData = data
         let value = "\(data.address.addressLine1 ?? ""), \(data.address.city ?? "")"

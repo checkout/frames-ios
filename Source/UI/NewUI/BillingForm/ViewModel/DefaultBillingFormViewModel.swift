@@ -20,7 +20,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
     private var country : Country?
     private(set) var style: BillingFormStyle
-    private(set) var data: BillingFormData?
+    private(set) var data: BillingForm?
     private(set) var updatedRow: Int? {
         didSet { updateRow?() }
     }
@@ -37,7 +37,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
      - delegate: Optional billing form view Model delegate
      */
     
-    init(style: BillingFormStyle, data: BillingFormData? = nil, delegate: BillingFormViewModelDelegate? = nil) {
+    init(style: BillingFormStyle, data: BillingForm? = nil, delegate: BillingFormViewModelDelegate? = nil) {
         self.style = style
         self.data = data
         self.delegate = delegate
@@ -242,7 +242,7 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
 
         let name = textValueOfCellType[BillingFormCell.fullName(nil).index] ?? ""
 
-        let data: BillingFormData =  BillingFormData(name: name,
+        let data: BillingForm = BillingForm(name: name,
                                                      address: address,
                                                      phone: phone)
 

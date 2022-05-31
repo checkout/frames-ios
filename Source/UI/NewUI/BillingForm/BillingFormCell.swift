@@ -50,7 +50,7 @@ import Foundation
         }
     }
 
-    func getText(from billingFormData: BillingFormData?) -> String? {
+    func getText(from billingFormData: BillingForm?) -> String? {
         switch self{
             case .fullName: return billingFormData?.name
             case .addressLine1: return billingFormData?.address.addressLine1

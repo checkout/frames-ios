@@ -56,10 +56,10 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
                           country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
         let name = "User 1"
 
-        let billingFormData = BillingFormData(name: name, address: address, phone: phone)
+        let billingForm = BillingForm(name: name, address: address, phone: phone)
 
         let viewController = CardViewController(checkoutAPIService: checkoutAPIService,
-                                                billingFormData: billingFormData,
+                                                billingFormData: billingForm,
                                                 cardHolderNameState: .normal,
                                                 billingDetailsState: .required,
                                                 billingFormStyle: billingFormStyle,

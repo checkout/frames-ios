@@ -1,6 +1,6 @@
 import Checkout
 
-public struct BillingFormData {
+public struct BillingForm {
     public let name: String
     public let address: Address
     public let phone: Phone
@@ -12,4 +12,4 @@ public struct BillingFormData {
     }
 }
 
-extension BillingFormData: Equatable {}
+extension BillingForm: Equatable {}

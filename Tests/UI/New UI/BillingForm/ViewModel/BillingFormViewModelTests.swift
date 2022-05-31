@@ -71,7 +71,7 @@ class BillingFormViewModelTests: XCTestCase {
                               zip: textValueOfCellType[BillingFormCell.postcode(nil).index],
                               country: country)
 
-        let data = BillingFormData(name: name, address: address, phone: phone)
+        let data = BillingForm(name: name, address: address, phone: phone)
         viewModel.textValueOfCellType = textValueOfCellType
         viewModel.delegate = delegate
         viewModel.update(country: country)
