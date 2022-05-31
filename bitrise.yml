@@ -17,7 +17,7 @@ workflows:
             checkout-pr-checks
         - abort_on_fail: "yes"
         - verbose: "yes"
-        - wait_for_builds: "false"
+        - wait_for_builds: "no"
         - access_token: $CONCURRENT_BUILDS_ACCESS_TOKEN
 
   # frames pr workflows
