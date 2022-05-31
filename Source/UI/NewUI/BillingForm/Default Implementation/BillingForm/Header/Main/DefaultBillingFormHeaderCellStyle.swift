@@ -1,9 +1,9 @@
 import UIKit
 
-struct DefaultBillingFormHeaderCellStyle: BillingFormHeaderCellStyle {
+public struct DefaultBillingFormHeaderCellStyle: BillingFormHeaderCellStyle {
     
-    var backgroundColor: UIColor = .white
-    var headerLabel: ElementStyle = DefaultHeaderLabelFormStyle()
-    var cancelButton: ElementButtonStyle = DefaultCancelButtonFormStyle()
-    var doneButton: ElementButtonStyle = DefaultDoneFormButtonStyle()
+    public var backgroundColor: UIColor = .white
+    public var headerLabel: ElementStyle = DefaultHeaderLabelFormStyle()
+    public var cancelButton: ElementButtonStyle = DefaultCancelButtonFormStyle()
+    public var doneButton: ElementButtonStyle = DefaultDoneFormButtonStyle()
 }

@@ -1,7 +1,7 @@
 import UIKit
 
-struct DefaultBillingFormStyle: BillingFormStyle {
-    var mainBackground: UIColor = .white
-    var header: BillingFormHeaderCellStyle = DefaultBillingFormHeaderCellStyle()
-    var cells: [BillingFormCell] = BillingFormFactory.cellsStyleInOrder
+public struct DefaultBillingFormStyle: BillingFormStyle {
+    public var mainBackground: UIColor = .white
+    public var header: BillingFormHeaderCellStyle = DefaultBillingFormHeaderCellStyle()
+    public var cells: [BillingFormCell] = BillingFormFactory.cellsStyleInOrder
 }
