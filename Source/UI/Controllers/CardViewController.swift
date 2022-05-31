@@ -210,7 +210,7 @@ public class CardViewController: UIViewController,
             checkoutAPIService?.logger.log(.billingFormPresented)
         }
         guard isNewUI,
-              let viewController = BillingFormFactory.getBillingFormViewController(style: billingFormStyle, data: billingFormData, delegate: self).1 else {
+              let viewController = BillingFormFactory.getBillingFormViewController(style: billingFormStyle, data: billingFormData, delegate: self)?.1 else {
             navigationController?.pushViewController(addressViewController, animated: true)
             return
         }
