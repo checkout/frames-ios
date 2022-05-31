@@ -1,9 +1,9 @@
 import UIKit
 
-struct DefaultHintInputLabelStyle: ElementStyle {
-    var backgroundColor: UIColor = .clear
-    var isHidden: Bool = false
-    var text: String = ""
-    var font: UIFont = UIFont(graphikStyle: .regular, size: Constants.Style.BillingForm.InputHintLabel.fontSize.rawValue)
-    var textColor: UIColor = .doveGray
+public struct DefaultHintInputLabelStyle: ElementStyle {
+    public var backgroundColor: UIColor = .clear
+    public var isHidden: Bool = false
+    public var text: String = ""
+    public var font: UIFont = UIFont(graphikStyle: .regular, size:  Constants.Style.BillingForm.InputHintLabel.fontSize.rawValue)
+    public var textColor: UIColor = .doveGray
 }

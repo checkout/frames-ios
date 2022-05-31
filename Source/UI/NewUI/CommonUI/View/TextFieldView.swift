@@ -63,7 +63,7 @@ class TextFieldView: UIView {
 
     // MARK: - Update subviews style
 
-    func update(style: CellStyle?, type: BillingFormCell?) {
+    func update(style: CellStyle?, type: BillingFormCell?, textFieldValue: String? = nil) {
         guard let type = type, let style = style as? CellTextFieldStyle else { return }
         self.type = type
         self.style = style
@@ -71,7 +71,7 @@ class TextFieldView: UIView {
         updateHeaderLabel(style: style)
         updateHintLabel(style: style)
         updateTextFieldContainer(style: style)
-        updateTextField(style: style)
+        updateTextField(style: style, textFieldValue: textFieldValue)
         updateErrorView(style: style)
     }
 
@@ -97,7 +97,10 @@ class TextFieldView: UIView {
         textFieldContainer?.backgroundColor = style.textfield.backgroundColor
     }
 
-    private func updateTextField(style: CellTextFieldStyle){
+    private func updateTextField(style: CellTextFieldStyle, textFieldValue: String?){
+        if let textFieldValue = textFieldValue {
+            textField?.text = textFieldValue
+        }
         textField?.type = type
         textField?.keyboardType = style.textfield.isSupportingNumericKeyboard ? .phonePad : .default
         textField?.textContentType = style.textfield.isSupportingNumericKeyboard ? .telephoneNumber : .name

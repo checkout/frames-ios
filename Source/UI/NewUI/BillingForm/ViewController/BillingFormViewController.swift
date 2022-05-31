@@ -1,3 +1,4 @@
+import Checkout
 import UIKit
 
 protocol BillingFormTableViewDelegate: AnyObject  {
@@ -16,7 +17,7 @@ protocol BillingFormViewControllerDelegate: AnyObject {
     func doneButtonIsPressed(sender: UIViewController)
     func cancelButtonIsPressed(sender: UIViewController)
     func getViewForHeader(sender: UIViewController) -> UIView?
-    func update(country: String, regionCode: String)
+    func update(country: Country)
 }
 
 /**
@@ -251,7 +252,7 @@ extension BillingFormViewController: CellButtonDelegate {
 }
 
 extension BillingFormViewController: CountrySelectionViewControllerDelegate {
-    func onCountrySelected(country: String, regionCode: String) {
-        delegate?.update(country: country, regionCode: regionCode)
+    func onCountrySelected(country: Country) {
+        delegate?.update(country: country)
     }
 }

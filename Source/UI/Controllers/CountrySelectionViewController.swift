@@ -1,4 +1,5 @@
 import UIKit
+import Checkout
 
 /// A view controller that allows the user to select a country.
 public class CountrySelectionViewController: UIViewController,
@@ -96,8 +97,8 @@ public class CountrySelectionViewController: UIViewController,
 
     /// Tells the delegate that the specified row is now selected.
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.onCountrySelected(country: filteredCountries[indexPath.row].0,
-                                    regionCode: filteredCountries[indexPath.row].1)
+        let country = Country(iso3166Alpha2: filteredCountries[indexPath.row].1, dialingCode: nil)
+        delegate?.onCountrySelected(country: country)
         navigationController?.popViewController(animated: true)
     }
 

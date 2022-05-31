@@ -22,7 +22,7 @@ public struct BillingFormFactory {
 
         guard let style = style, !style.cells.isEmpty else { return (nil, nil) }
 
-        let viewModel = DefaultBillingFormViewModel(style: style, data: data, initialCountry: "", delegate: delegate)
+        let viewModel = DefaultBillingFormViewModel(style: style, data: data, delegate: delegate)
 
         let viewController = BillingFormViewController(viewModel: viewModel)
 
