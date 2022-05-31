@@ -24,7 +24,8 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
   private let publicKey: String
   private let environment: BaseURLProviding
 
-/// Initializes a CheckoutAPIService object.
+/// Initializes a CheckoutAPIService object with public key and Environment.
+/// CheckoutAPIService holds the core tokenisation logic methods to tokenise a user’s card details
   public convenience init(publicKey: String, environment: Environment) {
     let snakeCaseJSONEncoder = JSONEncoder()
     let snakeCaseJSONDecoder = JSONDecoder()
