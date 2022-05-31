@@ -1,20 +1,20 @@
 import UIKit
 
-struct DefaultCancelButtonFormStyle: ElementButtonStyle {
-    var image: UIImage?
-    var text: String = Constants.LocalizationKeys.BillingForm.Header.cancel
-    var font: UIFont =  UIFont.systemFont(ofSize: Constants.Style.BillingForm.CancelButton.fontSize.rawValue)
-    var activeTitleColor: UIColor = .brandeisBlue
-    var disabledTitleColor: UIColor = .doveGray
-    var disabledTintColor: UIColor = .doveGray
-    var activeTintColor: UIColor = .brandeisBlue
-    var backgroundColor: UIColor = .white
-    var textColor: UIColor = .clear
-    var normalBorderColor: UIColor = .clear
-    var focusBorderColor: UIColor = .clear
-    var errorBorderColor: UIColor = .clear
-    var isHidden: Bool = false
-    var isEnabled: Bool = true
-    var height: Double = Constants.Style.BillingForm.CancelButton.height.rawValue
-    var width: Double = Constants.Style.BillingForm.CancelButton.width.rawValue
+public struct DefaultCancelButtonFormStyle: ElementButtonStyle {
+    public var image: UIImage?
+    public var text: String = Constants.LocalizationKeys.BillingForm.Header.cancel
+    public var font: UIFont =  UIFont.systemFont(ofSize: Constants.Style.BillingForm.CancelButton.fontSize.rawValue)
+    public var activeTitleColor: UIColor = .brandeisBlue
+    public var disabledTitleColor: UIColor = .doveGray
+    public var disabledTintColor: UIColor = .doveGray
+    public var activeTintColor: UIColor = .brandeisBlue
+    public var backgroundColor: UIColor = .white
+    public var textColor: UIColor = .clear
+    public var normalBorderColor: UIColor = .clear
+    public var focusBorderColor: UIColor = .clear
+    public var errorBorderColor: UIColor = .clear
+    public var isHidden: Bool = false
+    public var isEnabled: Bool = true
+    public var height: Double = Constants.Style.BillingForm.CancelButton.height.rawValue
+    public var width: Double = Constants.Style.BillingForm.CancelButton.width.rawValue
 }

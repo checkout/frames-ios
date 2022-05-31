@@ -1,12 +1,11 @@
 import UIKit
 
-struct DefaultBillingFormStateCellStyle : CellTextFieldStyle {
-    
-    var isOptional: Bool = false
-    var backgroundColor: UIColor = .white
-    var title: ElementStyle? = DefaultTitleLabelStyle(text:  Constants.LocalizationKeys.BillingForm.State.text)
-    var hint: ElementStyle? = nil
-    var textfield: ElementTextFieldStyle = DefaultTextField()
-    var error: ElementErrorViewStyle = DefaultErrorInputLabelStyle(text: Constants.LocalizationKeys.BillingForm.State.error)
+public struct DefaultBillingFormStateCellStyle : CellTextFieldStyle {
+    public var isOptional: Bool = false
+    public var backgroundColor: UIColor = .white
+    public var title: ElementStyle? = DefaultTitleLabelStyle(text:  Constants.LocalizationKeys.BillingForm.State.text)
+    public var hint: ElementStyle? = nil
+    public var textfield: ElementTextFieldStyle = DefaultTextField()
+    public var error: ElementErrorViewStyle = DefaultErrorInputLabelStyle(text: Constants.LocalizationKeys.BillingForm.State.error)
     
 }

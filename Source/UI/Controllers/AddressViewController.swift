@@ -56,10 +56,8 @@ public class AddressViewController: UIViewController,
         addTextFieldsDelegate()
 
         if let regionCodeSelectedUnwrap = regionCodeSelected {
-            let countryName = Locale.current.localizedString(forRegionCode: regionCodeSelectedUnwrap)
-            if let countryNameUnwrap = countryName {
-                setCountrySelected(country: countryNameUnwrap, regionCode: regionCodeSelectedUnwrap)
-            }
+            let country = Country(iso3166Alpha2: regionCodeSelectedUnwrap, dialingCode: nil)
+            setCountrySelected(country: country)
         }
         self.navigationController?.navigationBar.isTranslucent = false
         
@@ -175,17 +173,17 @@ public class AddressViewController: UIViewController,
         navigationItem.rightBarButtonItem?.isEnabled = true
     }
 
-    public func setCountrySelected(country: String, regionCode: String) {
+    public func setCountrySelected(country: Country) {
         validateFieldsValues()
-        regionCodeSelected = regionCode
-        addressView.countryRegionInputView.value.text = country
+        regionCodeSelected = country.iso3166Alpha2
+        addressView.countryRegionInputView.value.text = country.name
     }
 
     // MARK: - CountrySelectionViewControllerDelegate
 
     /// Executed when an user select a country.
-    public func onCountrySelected(country: String, regionCode: String) {
-        setCountrySelected(country: country, regionCode: regionCode)
+    public func onCountrySelected(country: Country) {
+        setCountrySelected(country: country)
     }
 
     // MARK: - UITextFieldDelegate

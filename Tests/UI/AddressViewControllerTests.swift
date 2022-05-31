@@ -150,9 +150,10 @@ class AddressViewControllerTests: XCTestCase {
     }
 
     func testSetCountryOnCountrySelected() {
-        addressViewController.onCountrySelected(country: "France", regionCode: "FR")
-        XCTAssertEqual(addressViewController.regionCodeSelected, "FR")
-        XCTAssertEqual(addressViewController.addressView.countryRegionInputView.value.text, "France")
+        let country = Country(iso3166Alpha2: "FR", dialingCode: "")
+        addressViewController.onCountrySelected(country: country)
+        XCTAssertEqual(addressViewController.regionCodeSelected, country.iso3166Alpha2)
+        XCTAssertEqual(addressViewController.addressView.countryRegionInputView.value.text, country.name)
     }
 
     func testPushCountrySelectionViewControllerOnTapCountryRegion() {
