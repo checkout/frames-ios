@@ -26,7 +26,15 @@ class TextFieldView: UIView {
         view.backgroundColor = .white
         return view
     }()
-    
+
+    private(set) lazy var isOptionalLabel: UILabel? = {
+        let view = UILabel()
+        view.numberOfLines = 1
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        return view
+    }()
+
     private(set) lazy var hintLabel: UILabel? = {
         let view = UILabel()
         view.numberOfLines = 0
@@ -69,6 +77,7 @@ class TextFieldView: UIView {
         self.style = style
         setupViewsInOrder()
         updateHeaderLabel(style: style)
+        updateIsOptionalLabel(style: style)
         updateHintLabel(style: style)
         updateTextFieldContainer(style: style)
         updateTextField(style: style, textFieldValue: textFieldValue)
@@ -79,6 +88,13 @@ class TextFieldView: UIView {
         headerLabel?.text = style.title?.text
         headerLabel?.font = style.title?.font
         headerLabel?.textColor = style.title?.textColor
+    }
+
+    private func updateIsOptionalLabel(style: CellTextFieldStyle) {
+        isOptionalLabel?.isHidden = !style.isOptional
+        isOptionalLabel?.text = Constants.LocalizationKeys.BillingForm.Cell.isOptional
+        isOptionalLabel?.font = UIFont(graphikStyle: .regular, size:  Constants.Style.BillingForm.InputISOptionalLabel.fontSize.rawValue)
+        isOptionalLabel?.textColor = .doveGray
     }
 
     private func updateHintLabel(style: CellTextFieldStyle) {
@@ -125,6 +141,7 @@ extension TextFieldView {
     private func setupViewsInOrder(){
         backgroundColor = style?.backgroundColor
         setupHeaderLabel()
+        setupIsOptionalLabel()
         setupHintLabel()
         setupTextFieldContainer()
         setupTextField()
@@ -137,7 +154,17 @@ extension TextFieldView {
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: topAnchor),
             headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+
+    private func setupIsOptionalLabel() {
+        guard let isOptionalLabel = isOptionalLabel else { return }
+        guard let headerLabel = headerLabel else { return }
+        addSubview(isOptionalLabel)
+        NSLayoutConstraint.activate([
+            isOptionalLabel.topAnchor.constraint(equalTo: topAnchor),
+            isOptionalLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            isOptionalLabel.leadingAnchor.constraint(greaterThanOrEqualTo: headerLabel.trailingAnchor)
         ])
     }
     

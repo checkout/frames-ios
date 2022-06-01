@@ -40,6 +40,10 @@ extension Constants {
                 case fontSize = 15
             }
 
+            enum InputISOptionalLabel: Double {
+                case fontSize = 13
+            }
+
             enum InputCountryButton: Double {
                 case height = 56
                 case width = 0
