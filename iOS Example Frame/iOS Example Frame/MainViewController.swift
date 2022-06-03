@@ -22,28 +22,26 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     // Step1 : create instance of CheckoutAPIService
     let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
                                                        environment: .sandbox)
+    var cardViewController: CardViewController?
+
+    // MARK: View Methods.
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         customizeNavigationBarAppearance()
         navigationController?.isNavigationBarHidden = true
     }
 
-    @IBAction func goToPaymentPage(_ sender: Any) {
-        cardViewController.isNewUI = false
-        navigationController?.pushViewController(cardViewController, animated: true)
-    }
-    
-    @IBAction func goToNewPaymentPage(_ sender: Any) {
-        cardViewController.isNewUI = true
-        navigationController?.pushViewController(cardViewController, animated: true)
+    override func viewDidAppear(_ animated: Bool) {
+        let country = Country(iso3166Alpha2: "GB", dialingCode: nil)
+        cardViewController?.addressViewController.setCountrySelected(country: country)
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        UIFont.loadAllCheckoutFonts
+        // Do any additional setup after loading the view, typically from a nib.
 
-    func onSubmit(controller: CardViewController) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    }
-
-    lazy var cardViewController: CardViewController = {
         let billingFormStyle = BillingFormFactory.defaultBillingFormStyle
         let address = Address(addressLine1: "Test line1",
                               addressLine2: nil,
@@ -71,16 +69,95 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
            let billingFormPhone = viewController.billingFormData?.phone {
             viewController.addressViewController.setFields(address: billingFormAddress, phone: billingFormPhone)
         }
+        cardViewController = viewController
+        cardViewController?.delegate = self
+        cardViewController?.rightBarButtonItem = UIBarButtonItem(title: "Pay", style: .done, target: nil, action: nil)
+        cardViewController?.setDefault(regionCode: "GB")
+    }
 
-        return viewController
-    }()
+    // MARK: IBAction Methods.
 
-    @IBAction func onClickGoToPaymentPage(_ sender: Any) {
-        navigationController?.pushViewController(cardViewController, animated: true)
+    @IBAction func goToDefaultUIPaymentPage(_ sender: Any) {
+        cardViewController?.isNewUI = true
+        cardViewController?.availableSchemes = [.visa, .mastercard, .maestro]
+        pushCardViewController()
+    }
+
+    @IBAction func goToCustom1PaymentPage(_ sender: Any) {
+        let billingFormStyle = BillingFormFactory.defaultBillingFormStyle
+        let address = Address(addressLine1: "Test line Custom 1",
+                              addressLine2: nil,
+                              city: "London Custom 1",
+                              state: "London Custom 1",
+                              zip: "N12345",
+                              country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
+
+        let phone = Phone(number: "77 1234 1234",
+                          country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
+        let name = "User Custom 1"
+
+        let billingForm = BillingForm(name: name, address: address, phone: phone)
+
+        let viewController = CardViewController(checkoutAPIService: checkoutAPIService,
+                                                billingFormData: billingForm,
+                                                cardHolderNameState: .normal,
+                                                billingDetailsState: .required,
+                                                billingFormStyle: billingFormStyle,
+                                                defaultRegionCode: "GB")
+
+        viewController.delegate = self
+
+        if let billingFormAddress = viewController.billingFormData?.address,
+           let billingFormPhone = viewController.billingFormData?.phone {
+            viewController.addressViewController.setFields(address: billingFormAddress, phone: billingFormPhone)
+        }
+        cardViewController = viewController
+        cardViewController?.isNewUI = true
+        cardViewController?.availableSchemes = [.visa, .mastercard, .maestro]
+        pushCardViewController()
+    }
+
+    @IBAction func goToCustom2PaymentPage(_ sender: Any) {
+        let billingFormStyle = BillingFormFactory.defaultBillingFormStyle
+        let address = Address(addressLine1: "Test line Custom 2",
+                              addressLine2: nil,
+                              city: "London Custom 2",
+                              state: "London Custom 2",
+                              zip: "N12345",
+                              country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
+
+        let phone = Phone(number: "77 1234 1234",
+                          country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
+        let name = "User Custom 2"
+
+        let billingForm = BillingForm(name: name, address: address, phone: phone)
+
+        let viewController = CardViewController(checkoutAPIService: checkoutAPIService,
+                                                billingFormData: billingForm,
+                                                cardHolderNameState: .normal,
+                                                billingDetailsState: .required,
+                                                billingFormStyle: billingFormStyle,
+                                                defaultRegionCode: "GB")
+
+        viewController.delegate = self
+
+        if let billingFormAddress = viewController.billingFormData?.address,
+           let billingFormPhone = viewController.billingFormData?.phone {
+            viewController.addressViewController.setFields(address: billingFormAddress, phone: billingFormPhone)
+        }
+        cardViewController = viewController
+        cardViewController?.isNewUI = true
+        cardViewController?.availableSchemes = [.visa, .mastercard, .maestro]
+        pushCardViewController()
+    }
+
+    @IBAction func goToPaymentPage(_ sender: Any) {
+        cardViewController?.isNewUI = false
+        pushCardViewController()
     }
 
     @IBAction func onClickGoTokenWithApplePay(_ sender: Any) {
-        
+
         // Use example Apple Pay payment data.
         guard let paymentDataURL = Bundle.main.url(
                 forResource: "example_apple_pay_payment_data",
@@ -110,19 +187,44 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         }
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        UIFont.loadAllCheckoutFonts
-        // Do any additional setup after loading the view, typically from a nib.
-        cardViewController.delegate = self
-        cardViewController.rightBarButtonItem = UIBarButtonItem(title: "Pay", style: .done, target: nil, action: nil)
-        cardViewController.availableSchemes = [.visa, .mastercard, .maestro]
-        cardViewController.setDefault(regionCode: "GB")
+    @IBAction func onStart3DS(_ sender: Any) {
+        guard let threeDSURLString = threeDSURLTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+              let threeDSURL = URL(string: threeDSURLString) else {
+            showAlert(with: "3DS URL could not be parsed")
+            return
+        }
+
+        let threedsWebViewController = ThreedsWebViewController(successUrl: Self.successURL, failUrl: Self.failureURL)
+        threedsWebViewController.delegate = self
+        threedsWebViewController.url = threeDSURL.absoluteString
+
+        present(threedsWebViewController, animated: true, completion: nil)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        let country = Country(iso3166Alpha2: "GB", dialingCode: nil)
-        cardViewController.addressViewController.setCountrySelected(country: country)
+    // MARK: Private Methods.
+
+    private func pushCardViewController() {
+        if let cardViewController = cardViewController {
+            navigationController?.pushViewController(cardViewController, animated: true)
+        }
+    }
+
+    private func showAlert(with cardToken: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Payment",
+                                          message: cardToken, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default) { _ in
+                alert.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    // MARK: CardViewControllerDelegate Methods.
+
+    func onSubmit(controller: CardViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
 
     func onTapDone(controller: CardViewController, result: Result<TokenDetails, TokenisationError.TokenRequest>) {
@@ -148,32 +250,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         }
     }
 
-    private func showAlert(with cardToken: String) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Payment",
-                                          message: cardToken, preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default) { _ in
-                alert.dismiss(animated: true, completion: nil)
-            }
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-
-
-    @IBAction func onStart3DS(_ sender: Any) {
-        guard let threeDSURLString = threeDSURLTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-              let threeDSURL = URL(string: threeDSURLString) else {
-            showAlert(with: "3DS URL could not be parsed")
-            return
-        }
-
-        let threedsWebViewController = ThreedsWebViewController(successUrl: Self.successURL, failUrl: Self.failureURL)
-        threedsWebViewController.delegate = self
-        threedsWebViewController.url = threeDSURL.absoluteString
-
-        present(threedsWebViewController, animated: true, completion: nil)
-    }
+    // MARK: ThreedsWebViewControllerDelegate Methods.
 
     func threeDSWebViewControllerAuthenticationDidSucceed(_ threeDSWebViewController: ThreedsWebViewController, token: String?) {
         showAlert(with: "3DS success, token: \(token ?? "nil")")
