@@ -10,7 +10,7 @@ import Foundation
 import Frames
 
 struct BillingFormCustom1Style: BillingFormStyle {
-    public var mainBackground: UIColor = UIColor(red: 241/255.0, green: 244/255.0, blue: 248/255.0, alpha: 1.0)
+    public var mainBackground: UIColor = .blue
     public var header: BillingFormHeaderCellStyle = BillingFormCustom1HeaderCellStyle()
     public var cells: [BillingFormCell] = [.addressLine1(BillingFormAddressLine1Custom1CellStyle()),
                                            .addressLine2(BillingFormAddressLine2Custom1CellStyle()),
@@ -32,7 +32,8 @@ struct BillingFormFullNameCustom1CellStyle : CellTextFieldStyle {
 
 struct BillingFormAddressLine1Custom1CellStyle : CellTextFieldStyle {
     public var isOptional: Bool = true
-    public var backgroundColor: UIColor = UIColor(red: 241/255.0, green: 244/255.0, blue: 248/255.0, alpha: 1.0)
+    //public var backgroundColor: UIColor = UIColor(red: 241/255.0, green: 244/255.0, blue: 248/255.0, alpha: 1.0)
+    public var backgroundColor: UIColor = .yellow
     public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Address Line 1*")
     public var hint: ElementStyle? = nil
     public var textfield: ElementTextFieldStyle = TextFieldCustom1()
@@ -95,7 +96,7 @@ struct BillingFormPhoneNumberCustom1CellStyle : CellTextFieldStyle {
 
 struct BillingFormCustom1HeaderCellStyle: BillingFormHeaderCellStyle {
 
-    public var backgroundColor: UIColor = .red
+    public var backgroundColor: UIColor = .orange
     public var headerLabel: ElementStyle = HeaderCustom1LabelFormStyle()
     public var cancelButton: ElementButtonStyle = CancelCustom1ButtonFormStyle()
     public var doneButton: ElementButtonStyle = DoneCustom1FormButtonStyle()
@@ -148,11 +149,11 @@ public struct DoneCustom1FormButtonStyle: ElementButtonStyle {
 }
 
 public struct TitleLabelCustom1Style: ElementStyle {
-    public var backgroundColor: UIColor = .clear // not working. 
+    public var backgroundColor: UIColor = .purple // not working.
     public var isHidden: Bool = false
     public var text: String = ""
     public var font: UIFont = UIFont(name: "Helvetica Neue", size: 14)!
-    public var textColor: UIColor = .codGray
+    public var textColor: UIColor = .systemPink
 }
 
 public struct TextFieldCustom1: ElementTextFieldStyle {
