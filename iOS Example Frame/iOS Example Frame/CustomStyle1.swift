@@ -10,7 +10,7 @@ import Foundation
 import Frames
 
 struct BillingFormCustom1Style: BillingFormStyle {
-    public var mainBackground: UIColor = .white
+    public var mainBackground: UIColor = UIColor(red: 241/255.0, green: 244/255.0, blue: 248/255.0, alpha: 1.0)
     public var header: BillingFormHeaderCellStyle = BillingFormCustom1HeaderCellStyle()
     public var cells: [BillingFormCell] = [.addressLine1(BillingFormAddressLine1Custom1CellStyle()),
                                            .addressLine2(BillingFormAddressLine2Custom1CellStyle()),
@@ -148,7 +148,7 @@ public struct DoneCustom1FormButtonStyle: ElementButtonStyle {
 }
 
 public struct TitleLabelCustom1Style: ElementStyle {
-    public var backgroundColor: UIColor = .clear
+    public var backgroundColor: UIColor = .clear // not working. 
     public var isHidden: Bool = false
     public var text: String = ""
     public var font: UIFont = UIFont(name: "Helvetica Neue", size: 14)!
