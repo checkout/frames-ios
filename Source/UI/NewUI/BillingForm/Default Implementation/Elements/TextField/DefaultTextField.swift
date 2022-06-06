@@ -5,7 +5,7 @@ public struct DefaultTextField: ElementTextFieldStyle {
     public var text: String = ""
     public var placeHolder: String = ""
     public var isPlaceHolderHidden: Bool  = false
-    public var font: UIFont = UIFont(graphikStyle: .regular, size:  Constants.Style.BillingForm.InputTextField.fontSize.rawValue)
+    public var font: UIFont = UIFont(graphikStyle: .regular, size: Constants.Style.BillingForm.InputTextField.fontSize.rawValue)
     public var textColor: UIColor = .codGray
     public var normalBorderColor: UIColor = .mediumGray
     public var focusBorderColor: UIColor = .brandeisBlue

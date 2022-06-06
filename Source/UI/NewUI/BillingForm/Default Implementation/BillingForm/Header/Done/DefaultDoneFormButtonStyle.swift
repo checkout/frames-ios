@@ -1,7 +1,7 @@
 import UIKit
 
 public struct DefaultDoneFormButtonStyle: ElementButtonStyle {
-    public var image: UIImage? = nil
+    public var image: UIImage?
     public var text: String = Constants.LocalizationKeys.BillingForm.Header.done
     public var font: UIFont = UIFont.systemFont(ofSize: Constants.Style.BillingForm.DoneButton.fontSize.rawValue)
     public var activeTitleColor: UIColor = .brandeisBlue

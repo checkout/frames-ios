@@ -7,7 +7,7 @@ target 'CheckoutCocoapodsSample' do
   # use_frameworks!
 
   # Pods for CheckoutSDKCocoapodsSample
-  pod 'Checkout', path: '../', :testspecs => ['Tests', 'Integration-Tests']
+  pod 'Checkout', path: '../../', :testspecs => ['Tests', 'Integration-Tests']
 
   target 'CheckoutCocoapodsSampleUITests' do
     # Pods for testing

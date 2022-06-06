@@ -7,4 +7,5 @@
 
 import Foundation
 
+/// Defines the validation error enum on each of the possible input fields.
 public enum ValidationError {}

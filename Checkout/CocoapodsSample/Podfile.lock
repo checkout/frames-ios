@@ -1,16 +1,16 @@
 PODS:
-  - Checkout (0.1.0):
+  - Checkout (3.5.2):
     - CheckoutEventLoggerKit (= 1.2.0)
-  - Checkout/Integration-Tests (0.1.0):
+  - Checkout/Integration-Tests (3.5.2):
     - CheckoutEventLoggerKit (= 1.2.0)
-  - Checkout/Tests (0.1.0):
+  - Checkout/Tests (3.5.2):
     - CheckoutEventLoggerKit (= 1.2.0)
   - CheckoutEventLoggerKit (1.2.0)
 
 DEPENDENCIES:
-  - Checkout (from `../`)
-  - Checkout/Integration-Tests (from `../`)
-  - Checkout/Tests (from `../`)
+  - Checkout (from `../../`)
+  - Checkout/Integration-Tests (from `../../`)
+  - Checkout/Tests (from `../../`)
 
 SPEC REPOS:
   trunk:
@@ -18,12 +18,12 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   Checkout:
-    :path: "../"
+    :path: "../../"
 
 SPEC CHECKSUMS:
-  Checkout: 5da1b5b5de5026d7667cd6305aa04dd3f0428c64
+  Checkout: c63bfe8bbc522b7bef5c64f9a39ff519e90ef564
   CheckoutEventLoggerKit: 03d0076e2aa412df966517a36a3e4e3805b56ecb
 
-PODFILE CHECKSUM: bacc90edb3b7ee0231a779c07faf6784821c9542
+PODFILE CHECKSUM: b9ae931222884ca7e4b71ce05bc3f45054bc1c20
 
 COCOAPODS: 1.11.3

@@ -8,6 +8,7 @@
 import Foundation
 
 extension ValidationError {
+/// Enums representing the ValidationError for Phone field.
   public enum Phone: CheckoutError, CaseIterable {
     case numberIncorrectLength
     case countryCodeIncorrectLength
