@@ -2,7 +2,7 @@ import UIKit
 import PhoneNumberKit
 
 protocol BillingFormPhoneNumberTextDelegate {
-    func updateCountryCode(code:Int)
+    func updateCountryCode(code: Int)
     func validateNumber()
 }
 
@@ -10,7 +10,7 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
 
     // MARK: - Properties
 
-    var phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate?
+    weak var phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate?
     var phoneNumber: PhoneNumber?
     private let phoneNumberKit = PhoneNumberKit()
 
@@ -39,15 +39,15 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
     private lazy var _defaultRegion: String = PhoneNumberKit.defaultRegionCode()
 
     init(type: BillingFormCell?, tag: Int, phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate) {
-        super.init(type: type,tag: tag)
+        super.init(type: type, tag: tag)
         self.phoneNumberTextDelegate = phoneNumberTextDelegate
         setup()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setup() {
         keyboardType = .phonePad
         updateTextFieldFormat(textField: self)
@@ -58,7 +58,7 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
     @objc private func textFieldDidChange(textField: UITextField) {
         updateTextFieldFormat(textField: textField)
     }
-    
+
     // TODO: Copied from old code. Needs to be refactored
     /// Called when the Billing form Phone number text field is changed.
     private func updateTextFieldFormat(textField: UITextField) {
@@ -96,6 +96,5 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
         previousTextCount = formatted.count
         previousFormat = formatted
     }
-
 
 }
