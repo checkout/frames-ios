@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Defines the payment source - either card or Apple Pay.
 public enum PaymentSource: Equatable {
   case card(Card)
   case applePay(ApplePay)

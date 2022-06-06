@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Defines the network error - list below.
 public enum NetworkError: CheckoutError {
   case noInternetConnectivity
   case connectionFailed

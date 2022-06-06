@@ -8,6 +8,7 @@
 import Foundation
 
 extension ValidationError {
+/// Enums representing the CheckoutError for different card field input data.
   public enum Card: CheckoutError {
     case cardNumber(_ cardNumber: ValidationError.CardNumber)
     case cvv(_ cvv: ValidationError.CVV)

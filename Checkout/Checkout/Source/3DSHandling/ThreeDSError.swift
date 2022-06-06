@@ -8,6 +8,7 @@
 import Foundation
 
 @frozen
+/// Defines the 3DS challenge error.
 public enum ThreeDSError: CheckoutError {
   case couldNotExtractToken
   case receivedFailureURL

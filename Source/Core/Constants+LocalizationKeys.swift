@@ -3,7 +3,7 @@ extension Constants {
     struct LocalizationKeys {
 
         struct BillingForm {
-            
+
             struct AddressLine1 {
                 static let title = "addressLine1".localized
                 static let error = "missingBillingFormAddressLine1".localized
