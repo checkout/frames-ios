@@ -26,4 +26,3 @@ final class URL_ExtensionsTests: XCTestCase {
         XCTAssertEqual(actualResult, expectedResult)
     }
 }
-
