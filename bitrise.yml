@@ -225,7 +225,8 @@ workflows:
         - podfile_path: $CHECKOUT_PODFILE
     - swiftlint-extended@1:
         inputs:
-        - linting_path: "$CHECKOUT_SOURCE_DIR"
+        - lint_config_file: $CHECKOUT_SOURCE_DIR/.swiftlint.yml
+        - linting_path: $CHECKOUT_SOURCE_DIR
     - xcode-test@4:
         inputs:
         - project_path: "$CHECKOUT_COCOAPODS_PROJECT"
@@ -281,7 +282,8 @@ workflows:
         - podfile_path: $CHECKOUT_PODFILE
     - swiftlint-extended@1:
         inputs:
-        - linting_path: "$CHECKOUT_SOURCE_DIR"
+        - lint_config_file: $CHECKOUT_SOURCE_DIR/.swiftlint.yml
+        - linting_path: $CHECKOUT_SOURCE_DIR
     - xcode-test@4:
         inputs:
         - project_path: "$CHECKOUT_COCOAPODS_PROJECT"
