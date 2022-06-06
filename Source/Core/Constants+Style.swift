@@ -1,5 +1,6 @@
-extension Constants {
 
+extension Constants {
+    
     enum Style {
 
         enum BillingForm {

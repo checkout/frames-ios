@@ -6,16 +6,16 @@ protocol CellButtonDelegate: AnyObject {
 // TODO: This is unfinished work. it will be finished in the Country selection ticket.
 final class CellButton: UITableViewCell {
     weak var delegate: CellButtonDelegate?
-    var type: BillingFormCell?
-    var style: CellButtonStyle?
-
+    var type: BillingFormCell? = nil
+    var style: CellButtonStyle? = nil
+    
     private lazy var mainView: SelectionButtonView? = {
         let view = SelectionButtonView(style: style, type: type)
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setupViewsInOrder()

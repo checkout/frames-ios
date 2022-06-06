@@ -9,7 +9,7 @@ import XCTest
 @testable import Frames
 
 final class ResourcesTests: XCTestCase {
-
+    
     func test_findExpectedResources() {
 
         let framesTopLevelBundle = Bundle(for: CardUtils.self)
@@ -21,7 +21,7 @@ final class ResourcesTests: XCTestCase {
             return
         }
         #endif
-
+        
         #if COCOAPODS
         let framesResourceBundlePath = "Frames"
         guard let framesResourceBundleURL = framesTopLevelBundle.url(forResource: framesResourceBundlePath, withExtension: "bundle") else {
@@ -38,8 +38,9 @@ final class ResourcesTests: XCTestCase {
             XCTFail("could not find internal bundle")
             return
         }
-
+        
         XCTAssertEqual(framesResourceBundle.localizations.count, 6)
         XCTAssertNotNil(framesResourceBundle.url(forResource: "icon-amex", withExtension: "png"))
     }
 }
+

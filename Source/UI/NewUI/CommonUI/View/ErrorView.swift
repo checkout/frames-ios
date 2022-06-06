@@ -10,7 +10,7 @@ final class ErrorView: UIView {
         view.backgroundColor = .white
         return view
     }()
-
+    
     lazy var image: UIImageView? = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
@@ -18,17 +18,17 @@ final class ErrorView: UIView {
         view.backgroundColor = .white
         return view
     }()
-
+    
     init() {
         super.init(frame: .zero)
         setupViewsInOrder()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func update(style: ElementErrorViewStyle?) {
+    func update(style: ElementErrorViewStyle?){
         backgroundColor = style?.backgroundColor
 
         headerLabel?.text = style?.text
@@ -42,11 +42,11 @@ final class ErrorView: UIView {
 
 extension ErrorView {
 
-    private func setupViewsInOrder() {
+    private func setupViewsInOrder(){
         setupHeaderLabel()
         setupImageView()
     }
-
+    
     private func setupHeaderLabel() {
         guard let headerLabel = headerLabel else { return }
         addSubview(headerLabel)
@@ -56,7 +56,7 @@ extension ErrorView {
             headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
-
+    
     private func setupImageView() {
         guard let headerLabel = headerLabel, let image = image else { return }
         addSubview(image)
