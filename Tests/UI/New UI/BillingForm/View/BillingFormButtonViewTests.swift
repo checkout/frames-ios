@@ -19,8 +19,9 @@ class BillingFormButtonViewTests: XCTestCase {
         XCTAssertEqual(view.countryLabel?.textColor, style.title?.textColor)
     }
 
-    func testViewStyle() {
+    func testButtonStyle() {
         XCTAssertEqual(view.button?.layer.borderColor, style.button.normalBorderColor.cgColor)
+        XCTAssertEqual(view.button?.isEnabled, style.button.isEnabled)
     }
 
     func testImageStyle() {
