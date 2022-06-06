@@ -8,7 +8,7 @@ final class CellButton: UITableViewCell {
     weak var delegate: CellButtonDelegate?
 
     private var mainView: UIView
-
+    
     init(mainView: UIView) {
         self.mainView = mainView
         super.init(style: .default, reuseIdentifier: nil)
@@ -38,3 +38,6 @@ extension CellButton {
         ])
     }
 }
+
+
+

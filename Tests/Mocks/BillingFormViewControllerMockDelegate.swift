@@ -2,31 +2,31 @@ import UIKit
 @testable import Frames
 
 class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
-
+    
     var doneButtonIsPressedCalledTimes = 0
     var doneButtonIsPressedLastCalledWithSender: UIViewController?
-
+    
     var cancelButtonIsPressedCalledTimes = 0
     var cancelButtonIsPressedLastCalledWithSender: UIViewController?
-
+    
     var textFieldIsChangedCalledTimes = 0
     var textFieldIsChangedLastCalledWithBillingFormTextField: BillingFormTextField?
     var textFieldIsChangedLastCalledWithReplacementString: String?
-
+    
     var getViewForHeaderCalledTimes = 0
     var getViewForHeaderLastCalledWithSender: UIViewController?
 
     var textFieldShouldEndEditingCalledTimes = 0
     var textFieldShouldEndEditingLastCalledWithBillingFormTextField: BillingFormTextField?
     var textFieldShouldEndEditingLastCalledWithReplacementString: String?
-
+    
     var updateCountryCodeCalledTimes = 0
     var updateCountryCodeLastCalledWithCode: Int?
-
+    
     var validateCalledTimes = 0
     var validateLastCalledWithText: String?
     var validateLastCalledWithRow: Int?
-
+    
     var textFieldShouldChangeCharactersInCalledTimes = 0
     var textFieldShouldChangeCharactersInLastCalledWithTextField: UITextField?
     var textFieldShouldChangeCharactersInLastCalledWithString: String?
@@ -35,7 +35,7 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
         doneButtonIsPressedCalledTimes += 1
         doneButtonIsPressedLastCalledWithSender = sender
     }
-
+    
     func cancelButtonIsPressed(sender: UIViewController) {
         cancelButtonIsPressedCalledTimes += 1
         cancelButtonIsPressedLastCalledWithSender = sender
@@ -46,7 +46,7 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
         textFieldIsChangedLastCalledWithBillingFormTextField = textField
         textFieldIsChangedLastCalledWithReplacementString = replacementString
     }
-
+    
     func getViewForHeader(sender: UIViewController) -> UIView? {
         getViewForHeaderCalledTimes += 1
         getViewForHeaderLastCalledWithSender = sender
@@ -58,18 +58,18 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
         textFieldShouldEndEditingLastCalledWithBillingFormTextField = textField
         textFieldShouldEndEditingLastCalledWithReplacementString = replacementString
     }
-
+    
     func updateCountryCode(code: Int) {
         updateCountryCodeCalledTimes += 1
         updateCountryCodeLastCalledWithCode = code
     }
-
+    
     func validate(text: String?, cellStyle: BillingFormCell, row: Int) {
         validateCalledTimes += 1
         validateLastCalledWithText = text
         validateLastCalledWithRow = row
     }
-
+        
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         textFieldShouldChangeCharactersInCalledTimes += 1
         textFieldShouldChangeCharactersInLastCalledWithTextField = textField

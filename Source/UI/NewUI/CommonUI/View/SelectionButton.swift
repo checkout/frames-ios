@@ -1,6 +1,6 @@
 import UIKit
 
-// TODO: Should be completed in another ticket.
+//TODO: Should be completed in another ticket.
 class SelectionButton: UIView {
     private var style: ElementButtonStyle
 
@@ -31,6 +31,7 @@ class SelectionButton: UIView {
        setupViewsInOrder()
     }
 
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -38,7 +39,7 @@ class SelectionButton: UIView {
 
 extension SelectionButton {
 
-    private func setupViewsInOrder() {
+    private func setupViewsInOrder(){
         clipsToBounds = true
         layer.cornerRadius = 2.0
         layer.borderColor = style.textColor.cgColor

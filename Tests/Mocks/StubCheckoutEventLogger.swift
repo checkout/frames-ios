@@ -12,9 +12,9 @@ class StubCheckoutEventLogger: CheckoutEventLogging {
     }
 
     var addMetadataCalledWithPairs: [(metadata: String, value: String)] = []
-
+    
     func add(metadata: String, value: String) {
-
+        
         addMetadataCalledWithPairs.append((metadata, value))
     }
 
@@ -23,6 +23,7 @@ class StubCheckoutEventLogger: CheckoutEventLogging {
 
     func clearMetadata() {
     }
+
 
     private(set) var enableLocalProcessorCalledWith: MonitoringLevel?
 

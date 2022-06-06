@@ -10,8 +10,8 @@ protocol CellTextFieldDelegate: AnyObject {
 
 final class CellTextField: UITableViewCell {
     weak var delegate: CellTextFieldDelegate?
-    var cellStyle: BillingFormCell?
-    var style: CellTextFieldStyle?
+    var cellStyle: BillingFormCell? = nil
+    var style: CellTextFieldStyle? = nil
 
     private lazy var mainView: TextFieldView? = {
         let view = TextFieldView(style: style, type: cellStyle)
@@ -25,7 +25,7 @@ final class CellTextField: UITableViewCell {
         setupViewsInOrder()
     }
 
-    func update(cellStyle: BillingFormCell, style: CellTextFieldStyle, tag: Int) {
+    func update(cellStyle:BillingFormCell, style: CellTextFieldStyle, tag: Int) {
         self.cellStyle = cellStyle
         self.style = style
         self.tag = tag
@@ -39,7 +39,7 @@ final class CellTextField: UITableViewCell {
 }
 
 extension CellTextField {
-
+    
     private func setupViewsInOrder() {
         guard let mainView = mainView else { return }
         contentView.addSubview(mainView)
@@ -63,20 +63,21 @@ extension CellTextField: TextFieldViewDelegate {
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
     }
-
+    
     func updateCountryCode(code: Int) {
         delegate?.updateCountryCode(code: code)
     }
-
+    
+    
     func textFieldShouldBeginEditing(textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
     }
     func textFieldShouldReturn() {
         delegate?.textFieldShouldReturn()
     }
-
+    
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String) {
         delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString)
     }
-
+   
 }

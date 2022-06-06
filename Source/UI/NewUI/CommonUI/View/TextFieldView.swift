@@ -27,7 +27,7 @@ class TextFieldView: UIView {
         view.backgroundColor = .white
         return view
     }()
-
+    
     private(set) lazy var hintLabel: UILabel? = {
         let view = UILabel()
         view.numberOfLines = 0
@@ -35,7 +35,7 @@ class TextFieldView: UIView {
         view.backgroundColor = .white
         return view
     }()
-
+    
     private(set) lazy var textFieldContainer: UIView? = {
         let view = UIView()
         view.layer.cornerRadius = 10.0
@@ -43,7 +43,7 @@ class TextFieldView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
     private(set) lazy var textField: BillingFormTextField? = {
         var view = BillingFormTextField(type: type, tag: tag)
         if self.type?.index == BillingFormCell.phoneNumber(nil).index {
@@ -55,13 +55,13 @@ class TextFieldView: UIView {
         view.backgroundColor = .clear
         return view
     }()
-
+    
     private(set) lazy var errorView: ErrorView? = {
         let view = ErrorView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
     init(style: CellTextFieldStyle?, type: BillingFormCell?) {
         self.style = style
         self.type = type
@@ -69,14 +69,15 @@ class TextFieldView: UIView {
         setupViewsInOrder()
         update(style: style, type: type)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - Update subviews style
 
-    func update(style: CellTextFieldStyle?, type: BillingFormCell?) {
+    func update(style: CellTextFieldStyle?, type:
+                BillingFormCell?) {
         guard let type = type, let style = style else { return }
         self.type = type
         self.style = style
@@ -109,7 +110,7 @@ class TextFieldView: UIView {
         textFieldContainer?.backgroundColor = style.textfield.backgroundColor
     }
 
-    private func updateTextField(style: CellTextFieldStyle) {
+    private func updateTextField(style: CellTextFieldStyle){
         textField?.type = type
         textField?.keyboardType = style.textfield.isSupportingNumericKeyboard ? .phonePad : .default
         textField?.textContentType = style.textfield.isSupportingNumericKeyboard ? .telephoneNumber : .name
@@ -131,7 +132,7 @@ class TextFieldView: UIView {
 
 extension TextFieldView {
 
-    private func setupViewsInOrder() {
+    private func setupViewsInOrder(){
         backgroundColor = style?.backgroundColor
         setupHeaderLabel()
         setupHintLabel()
@@ -139,7 +140,7 @@ extension TextFieldView {
         setupTextField()
         setupErrorView()
     }
-
+    
     private func setupHeaderLabel() {
         guard let headerLabel = headerLabel else { return }
         addSubview(headerLabel)
@@ -149,7 +150,7 @@ extension TextFieldView {
             headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
-
+    
     private func setupHintLabel() {
         guard let hintLabel = hintLabel else { return }
         guard let headerLabel = headerLabel else { return }
@@ -198,7 +199,7 @@ extension TextFieldView {
         NSLayoutConstraint.activate([
             errorView.topAnchor.constraint(equalTo: textFieldContainer.bottomAnchor, constant: 10),
             errorView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            errorView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            errorView.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
 }
@@ -206,27 +207,27 @@ extension TextFieldView {
 // MARK: - Text Field Delegate
 
 extension TextFieldView: UITextFieldDelegate {
-
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
         textFieldContainer?.layer.borderColor = style?.textfield.focusBorderColor.cgColor
     }
-
+    
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldEndEditing(textField: textField, replacementString: textField.text ?? "")
         return true
     }
-
+   
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldReturn()
         return false
     }
-
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
         return true
     }
-
+    
 }
 
 // MARK: - Phone Number Text Delegate

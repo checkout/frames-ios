@@ -17,6 +17,7 @@ class BillingFormTableViewMockDelegate: BillingFormTableViewDelegate {
     var cellForRowAtLastCalledWithIndexPath: IndexPath?
     var cellForRowAtLastCalledWithSender: UIViewController?
 
+
     func tableView(numberOfRowsInSection section: Int) -> Int {
         numberOfRowsInSectionCalledTimes += 1
         numberOfRowsInSectionLastCalledWithSection = section
@@ -35,6 +36,7 @@ class BillingFormTableViewMockDelegate: BillingFormTableViewDelegate {
         estimatedHeightForRowLastCalledWithIndexPath = indexPath
         return 100
     }
+
 
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         heightForHeaderInSectionCalledTimes += 1

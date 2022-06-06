@@ -19,12 +19,12 @@ class CardViewControllerTests: XCTestCase {
         let navigation = UINavigationController()
         navigation.viewControllers = [cardViewController]
     }
-
+    
     override func tearDown() {
         cardViewController = nil
         cardViewControllerDelegate = nil
         stubCheckoutAPIService = nil
-
+        
         super.tearDown()
     }
 
@@ -290,6 +290,7 @@ class CardViewControllerTests: XCTestCase {
         let stubCardValidator = StubCardValidator()
         stubCardValidator.validateCardNumberToReturn = .success(.visa)
         stubCheckoutAPIService.cardValidatorToReturn = stubCardValidator
+
 
         cardViewController.cardView.cardNumberInputView.textField.text = "4242 4242 4242 4242"
         cardViewController.textFieldDidEndEditing(view: cardViewController.cardView.cardNumberInputView)

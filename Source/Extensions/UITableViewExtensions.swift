@@ -8,11 +8,11 @@ extension UIView {
 
 extension UITableView {
 
-    func register<T: UITableViewCell>(_: T.Type) {
+    func register<T: UITableViewCell>(_: T.Type)  {
         register(T.self, forCellReuseIdentifier: T.reuseIdentifier)
     }
 
-    func dequeueReusable<T: UITableViewCell>(for indexPath: IndexPath) -> T? {
+    func dequeueReusable<T: UITableViewCell>(for indexPath: IndexPath) -> T?  {
         guard let cell = dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             assertionFailure("Could not dequeue cell with identifier: \(T.reuseIdentifier)")
             return nil

@@ -55,5 +55,5 @@ enum FramesLogEvent: Equatable {
                 .mapValues { AnyCodable($0) }
         }
     }
-
+    
 }
