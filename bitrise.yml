@@ -225,7 +225,7 @@ workflows:
         - podfile_path: $CHECKOUT_PODFILE
     - swiftlint-extended@1:
         inputs:
-        - linting_path: "$BITRISE_SOURCE_DIR"
+        - linting_path: "$CHECKOUT_SOURCE_DIR"
     - xcode-test@4:
         inputs:
         - project_path: "$CHECKOUT_COCOAPODS_PROJECT"
@@ -281,7 +281,7 @@ workflows:
         - podfile_path: $CHECKOUT_PODFILE
     - swiftlint-extended@1:
         inputs:
-        - linting_path: "$BITRISE_SOURCE_DIR"
+        - linting_path: "$CHECKOUT_SOURCE_DIR"
     - xcode-test@4:
         inputs:
         - project_path: "$CHECKOUT_COCOAPODS_PROJECT"
@@ -353,6 +353,9 @@ app:
   - opts:
       is_expand: false
     CHECKOUT_PODFILE: Checkout/CocoapodsSample/Podfile
+  - opts:
+      is_expand: false
+    CHECKOUT_SOURCE_DIR: Checkout
 meta:
   bitrise.io:
     stack: osx-xcode-13.3.x
