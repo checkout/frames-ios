@@ -89,7 +89,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     }
 
     @IBAction func goToCustom2PaymentPage(_ sender: Any) {
-        let billingFormStyle = BillingFormFactory.defaultBillingFormStyle
+        let billingFormStyle = BillingFormCustom2Style()
         let address = Address(addressLine1: "Test line Custom 2",
                               addressLine2: nil,
                               city: "London Custom 2",
