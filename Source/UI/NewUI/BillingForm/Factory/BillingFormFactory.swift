@@ -18,13 +18,12 @@ public struct BillingFormFactory {
          .phoneNumber(DefaultBillingFormPhoneNumberCellStyle())]
     }
 
-
     static func getBillingFormViewController(billingFormStyle: BillingFormStyle?, delegate: BillingFormViewModelDelegate) -> (BillingFormViewModelDelegate?, UIViewController?) {
         guard let billingFormStyle = billingFormStyle, !billingFormStyle.cells.isEmpty
         else { return (nil, nil) }
-        
+
         let viewModel = DefaultBillingFormViewModel(style: billingFormStyle, initialCountry: "", delegate: delegate)
         return (viewModel.delegate, BillingFormViewController(viewModel: viewModel))
     }
-    
+
 }

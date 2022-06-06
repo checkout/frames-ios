@@ -1,13 +1,13 @@
 import UIKit
 
-protocol BillingFormTableViewDelegate: AnyObject  {
+protocol BillingFormTableViewDelegate: AnyObject {
     func tableView(numberOfRowsInSection section: Int) -> Int
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     func tableView(tableView: UITableView, cellForRowAt indexPath: IndexPath, sender: UIViewController) -> UITableViewCell
     func tableView(estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
 }
 
-protocol BillingFormTextFieldDelegate: AnyObject  {
+protocol BillingFormTextFieldDelegate: AnyObject {
     func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String)
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
@@ -42,7 +42,7 @@ final class BillingFormViewController: UIViewController {
         view?.translatesAutoresizingMaskIntoConstraints = false
         return view ?? UIView()
     }()
-    
+
     private(set) lazy var tableView: UITableView? = {
         let view = UITableView()
         view.dataSource = self
@@ -65,18 +65,17 @@ final class BillingFormViewController: UIViewController {
         view.backgroundColor = viewModel.style.mainBackground
         setupViewsInOrder()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
         setUpKeyboard()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         deregisterKeyboardHandlers(notificationCenter: notificationCenter)
     }
-
 
     /**
      Initializes a view controller with view model protocol
@@ -84,18 +83,17 @@ final class BillingFormViewController: UIViewController {
      - Parameters:
         - viewModel: The bill form view model implementation.
      */
-    
+
     init(viewModel: BillingFormViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         setupViewModel()
         tableView?.register(CellTextField.self)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 
     private func setupViewModel() {
         delegate = viewModel as? BillingFormViewControllerDelegate
@@ -109,7 +107,7 @@ final class BillingFormViewController: UIViewController {
         }
     }
 
-    private func refreshCell(at row: Int?){
+    private func refreshCell(at row: Int?) {
         guard let row = row else { return }
         let indexPath = IndexPath(row: row, section: 0)
         tableView?.reloadRows(at: [indexPath], with: .automatic)
@@ -143,13 +141,13 @@ final class BillingFormViewController: UIViewController {
 // MARK: - Views Layout Constraint
 
 extension BillingFormViewController {
-    
+
     private func setupViewsInOrder() {
         setupHeaderView()
         setupTableView()
     }
-    
-    private func setupHeaderView(){
+
+    private func setupHeaderView() {
         guard let headerView = headerView else { return }
         view.addSubview(headerView)
         NSLayoutConstraint.activate([
@@ -166,7 +164,7 @@ extension BillingFormViewController {
                 equalToConstant: 130)
         ])
     }
-    
+
     private func setupTableView() {
         guard let tableView = tableView else { return }
         guard let headerView = headerView else { return }
@@ -190,16 +188,16 @@ extension BillingFormViewController {
 
 // MARK: - UITableViewDataSource and UITableViewDelegate
 
-extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate{
-    
+extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableViewDelegate?.tableView(numberOfRowsInSection: section) ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableViewDelegate?.tableView(tableView: tableView, cellForRowAt: indexPath, sender: self) ?? UITableViewCell()
     }
-    
+
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         tableViewDelegate?.tableView(estimatedHeightForRowAt: indexPath) ?? 0.0
     }
@@ -211,20 +209,20 @@ extension BillingFormViewController: CellTextFieldDelegate {
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         textFieldDelegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
     }
-    
+
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String) {
         guard let textField = textField as? BillingFormTextField else { return }
         textFieldDelegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString)
     }
-    
+
     func textFieldShouldBeginEditing(textField: UITextField) {
         self.focusedTextField = textField
     }
-    
+
     func textFieldShouldReturn() {
         view.endEditing(true)
     }
-    
+
     func updateCountryCode(code: Int) {
         delegate?.updateCountryCode(code: code)
     }
@@ -233,11 +231,11 @@ extension BillingFormViewController: CellTextFieldDelegate {
 // MARK: - Header Cell Delegate
 
 extension BillingFormViewController: BillingFormHeaderCellDelegate {
-    
+
     func doneButtonIsPressed() {
         delegate?.doneButtonIsPressed(sender: self)
     }
-    
+
     func cancelButtonIsPressed() {
         delegate?.cancelButtonIsPressed(sender: self)
     }

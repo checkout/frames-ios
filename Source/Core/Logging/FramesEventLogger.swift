@@ -1,14 +1,14 @@
 import CheckoutEventLoggerKit
 
 protocol FramesEventLogging {
-    
+
     /// Logs the specified event.
     /// - Parameter framesLogEvent: The event to log.
     func log(_ framesLogEvent: FramesLogEvent)
-    
+
     /// Adds a metadata value for the associated key to all subsequent log events.
     func add(metadata: String, forKey key: CheckoutEventLogger.MetadataKey)
-    
+
 }
 
 final class FramesEventLogger: FramesEventLogging {
@@ -16,7 +16,7 @@ final class FramesEventLogger: FramesEventLogging {
     private let getCorrelationID: () -> String
     private let checkoutEventLogger: CheckoutEventLogging
     private let dateProvider: DateProviding
-    
+
     // MARK: - Init
 
     convenience init(environment: Environment, getCorrelationID: @escaping () -> String) {
@@ -28,7 +28,7 @@ final class FramesEventLogger: FramesEventLogging {
 
         self.init(getCorrelationID: getCorrelationID, checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
     }
-    
+
     init(getCorrelationID: @escaping () -> String,
          checkoutEventLogger: CheckoutEventLogging,
          dateProvider: DateProviding) {
@@ -38,7 +38,7 @@ final class FramesEventLogger: FramesEventLogging {
     }
 
     // MARK: - FramesEventLogging
-    
+
     func log(_ framesLogEvent: FramesLogEvent) {
 
         // by setting correlationID for every log, we always keep in sync with Checkout SDK.
@@ -52,9 +52,9 @@ final class FramesEventLogger: FramesEventLogging {
 
         checkoutEventLogger.log(event: event)
     }
-    
+
     func add(metadata: String, forKey key: CheckoutEventLogger.MetadataKey) {
-        
+
         checkoutEventLogger.add(metadata: key.rawValue, value: metadata)
     }
 }

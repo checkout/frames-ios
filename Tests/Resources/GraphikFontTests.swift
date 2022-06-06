@@ -345,7 +345,7 @@ final class GraphikFontTests: XCTestCase {
 
         XCTAssertNotNil(font)
     }
-    
+
     // MARK: - Super
 
     func testTypeForSuper() {
@@ -393,7 +393,6 @@ final class GraphikFontTests: XCTestCase {
 
         XCTAssertNotNil(font)
     }
-
 
     // MARK: - Thin
 

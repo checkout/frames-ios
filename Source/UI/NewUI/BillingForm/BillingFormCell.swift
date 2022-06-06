@@ -9,7 +9,7 @@ import Foundation
     case postcode(CellTextFieldStyle?)
     case country(CellTextFieldStyle?)
     case phoneNumber(CellTextFieldStyle?)
-    
+
     internal var validator: Validator {
         switch self {
         case .fullName: return FullNameValidator()
@@ -22,7 +22,7 @@ import Foundation
         case .phoneNumber: return PhoneNumberValidator()
         }
     }
-    
+
     internal var style: CellTextFieldStyle? {
         switch self {
         case .fullName(let style): return style
@@ -35,7 +35,7 @@ import Foundation
         case .phoneNumber(let style): return style
         }
     }
-    
+
     var index: Int {
         switch self {
         case .fullName: return 0

@@ -9,7 +9,7 @@ class StateValidatorTests: XCTestCase {
         let isValid = expectedType.validator.validate(text: text)
         XCTAssertTrue(isValid)
     }
-    
+
     func testValidationWhenTextIsNonEmptyThenShouldBeFalse() {
         let expectedType = BillingFormCell.state(nil)
         let text = "postcode"
