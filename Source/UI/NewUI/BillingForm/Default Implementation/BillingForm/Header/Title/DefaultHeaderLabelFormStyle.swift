@@ -1,9 +1,9 @@
 import UIKit
 
-struct DefaultHeaderLabelFormStyle: ElementStyle {
-    var backgroundColor: UIColor = .clear
-    var isHidden: Bool = false
-    var text: String = "billingAddressTitle".localized(forClass: CheckoutTheme.self)
-    var font: UIFont = UIFont(graphikStyle: .medium, size: Constants.Style.BillingForm.HeaderTitle.fontSize.rawValue)
-    var textColor: UIColor  = .codGray
+public struct DefaultHeaderLabelFormStyle: ElementStyle {
+    public var backgroundColor: UIColor = .clear
+    public var isHidden: Bool = false
+    public var text: String = Constants.LocalizationKeys.BillingForm.Header.title
+    public var font: UIFont = UIFont(graphikStyle: .medium, size: Constants.Style.BillingForm.HeaderTitle.fontSize.rawValue)
+    public var textColor: UIColor  = .codGray
 }

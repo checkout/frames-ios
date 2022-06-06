@@ -1,7 +1,6 @@
 import UIKit
 
 protocol CellTextFieldDelegate: AnyObject {
-    func updateCountryCode(code: Int)
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
@@ -10,11 +9,11 @@ protocol CellTextFieldDelegate: AnyObject {
 
 final class CellTextField: UITableViewCell {
     weak var delegate: CellTextFieldDelegate?
-    var cellStyle: BillingFormCell? = nil
+    var type: BillingFormCell? = nil
     var style: CellTextFieldStyle? = nil
 
     private lazy var mainView: TextFieldView? = {
-        let view = TextFieldView(style: style, type: cellStyle)
+        let view = TextFieldView()
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -25,11 +24,11 @@ final class CellTextField: UITableViewCell {
         setupViewsInOrder()
     }
 
-    func update(cellStyle:BillingFormCell, style: CellTextFieldStyle, tag: Int) {
-        self.cellStyle = cellStyle
+    func update(type:BillingFormCell?, style: CellTextFieldStyle?, tag: Int, textFieldValue: String?) {
+        self.type = type
         self.style = style
         self.tag = tag
-        mainView?.update(style: style, type: cellStyle)
+        mainView?.update(style: style, type: type, textFieldValue: textFieldValue)
     }
 
     @available(*, unavailable)
@@ -63,11 +62,6 @@ extension CellTextField: TextFieldViewDelegate {
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
     }
-    
-    func updateCountryCode(code: Int) {
-        delegate?.updateCountryCode(code: code)
-    }
-    
     
     func textFieldShouldBeginEditing(textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)

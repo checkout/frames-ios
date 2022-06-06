@@ -1,3 +1,4 @@
+import Checkout
 import UIKit
 
 protocol BillingFormTableViewDelegate: AnyObject  {
@@ -16,7 +17,7 @@ protocol BillingFormViewControllerDelegate: AnyObject {
     func doneButtonIsPressed(sender: UIViewController)
     func cancelButtonIsPressed(sender: UIViewController)
     func getViewForHeader(sender: UIViewController) -> UIView?
-    func updateCountryCode(code: Int)
+    func update(country: Country)
 }
 
 /**
@@ -55,6 +56,8 @@ final class BillingFormViewController: UIViewController {
         view.allowsSelection = false
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(CellTextField.self)
+        view.register(CellButton.self)
+
         return view
     }()
 
@@ -224,10 +227,7 @@ extension BillingFormViewController: CellTextFieldDelegate {
     func textFieldShouldReturn() {
         view.endEditing(true)
     }
-    
-    func updateCountryCode(code: Int) {
-        delegate?.updateCountryCode(code: code)
-    }
+
 }
 
 // MARK: - Header Cell Delegate
@@ -240,5 +240,19 @@ extension BillingFormViewController: BillingFormHeaderCellDelegate {
     
     func cancelButtonIsPressed() {
         delegate?.cancelButtonIsPressed(sender: self)
+    }
+}
+
+extension BillingFormViewController: CellButtonDelegate {
+    func buttonIsPressed() {
+        let countryViewController = CountrySelectionViewController()
+        countryViewController.delegate = self
+        navigationController?.pushViewController(countryViewController, animated: true)
+    }
+}
+
+extension BillingFormViewController: CountrySelectionViewControllerDelegate {
+    func onCountrySelected(country: Country) {
+        delegate?.update(country: country)
     }
 }

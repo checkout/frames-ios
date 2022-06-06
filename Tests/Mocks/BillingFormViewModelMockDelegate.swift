@@ -4,16 +4,14 @@ import Checkout
 
 class BillingFormViewModelMockDelegate: BillingFormViewModelDelegate {
     var onTapDoneButtonCalledTimes = 0
-    var onTapDoneButtonLastCalledWithAddress: Address?
-    var onTapDoneButtonLastCalledWithNumber: Phone?
-    
+    var onTapDoneButtonLastCalledWithData: BillingForm?
+
     var updateCountryCodeCalledTimes = 0
     var updateCountryCodeLastCalledWithCode: Int?
     
-    func onTapDoneButton(address: Address, phone: Phone) {
+    func onTapDoneButton(data: BillingForm) {
         onTapDoneButtonCalledTimes += 1
-        onTapDoneButtonLastCalledWithAddress = address
-        onTapDoneButtonLastCalledWithNumber = phone
+        onTapDoneButtonLastCalledWithData = data
     }
     
     func updateCountryCode(code: Int) {

@@ -1,17 +1,20 @@
 import UIKit
 
-struct DefaultDoneFormButtonStyle: ElementButtonStyle {
-
-    var text: String = "done".localized(forClass: CheckoutTheme.self)
-    var font: UIFont = UIFont.systemFont(ofSize: Constants.Style.BillingForm.DoneButton.fontSize.rawValue)
-    var activeTitleColor: UIColor = .brandeisBlue
-    var disabledTitleColor: UIColor = .doveGray
-    var disabledTintColor: UIColor = .doveGray
-    var activeTintColor: UIColor = .brandeisBlue
-    var backgroundColor: UIColor = .white
-    var textColor: UIColor = .clear
-    var isHidden: Bool = false
-    var isEnabled: Bool = true
-    var height: Double = Constants.Style.BillingForm.DoneButton.height.rawValue
-    var width: Double = Constants.Style.BillingForm.DoneButton.width.rawValue
+public struct DefaultDoneFormButtonStyle: ElementButtonStyle {
+    public var image: UIImage? = nil
+    public var text: String = Constants.LocalizationKeys.BillingForm.Header.done
+    public var font: UIFont = UIFont.systemFont(ofSize: Constants.Style.BillingForm.DoneButton.fontSize.rawValue)
+    public var activeTitleColor: UIColor = .brandeisBlue
+    public var disabledTitleColor: UIColor = .doveGray
+    public var disabledTintColor: UIColor = .doveGray
+    public var activeTintColor: UIColor = .brandeisBlue
+    public var backgroundColor: UIColor = .white
+    public var normalBorderColor: UIColor = .clear
+    public var focusBorderColor: UIColor = .clear
+    public var errorBorderColor: UIColor = .clear
+    public var textColor: UIColor = .clear
+    public var isHidden: Bool = false
+    public var isEnabled: Bool = true
+    public var height: Double = Constants.Style.BillingForm.DoneButton.height.rawValue
+    public var width: Double = Constants.Style.BillingForm.DoneButton.width.rawValue
 }

@@ -21,8 +21,7 @@ public class CardViewController: UIViewController,
     let cardHolderNameState: InputState
     let billingDetailsState: InputState
 
-    public var billingDetailsAddress: Address?
-    public var billingDetailsPhone: Phone?
+    public var billingFormData: BillingForm?
     var notificationCenter = NotificationCenter.default
     public let addressViewController: AddressViewController
 
@@ -60,11 +59,13 @@ public class CardViewController: UIViewController,
     /// state specified. You can specified the region using the Iso2 region code ("UK" for "United Kingdom")
 
     public convenience init(checkoutAPIService: CheckoutAPIService,
+                            billingFormData: BillingForm?,
                             cardHolderNameState: InputState,
                             billingDetailsState: InputState,
                             billingFormStyle: BillingFormStyle?,
                             defaultRegionCode: String? = nil) {
-      self.init(checkoutAPIService: checkoutAPIService as CheckoutAPIProtocol,
+        self.init(checkoutAPIService: checkoutAPIService as CheckoutAPIProtocol,
+                  billingFormData: billingFormData,
                 cardHolderNameState: cardHolderNameState,
                 billingDetailsState: billingDetailsState,
                 billingFormStyle: billingFormStyle,
@@ -72,11 +73,13 @@ public class CardViewController: UIViewController,
     }
 
     init(checkoutAPIService: CheckoutAPIProtocol,
+         billingFormData: BillingForm?,
          cardHolderNameState: InputState,
          billingDetailsState: InputState,
          billingFormStyle: BillingFormStyle? = nil,
          defaultRegionCode: String? = nil) {
         self.checkoutAPIService = checkoutAPIService
+        self.billingFormData = billingFormData
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
         self.billingFormStyle = billingFormStyle
@@ -95,6 +98,7 @@ public class CardViewController: UIViewController,
         addressViewController = AddressViewController()
         checkoutAPIService = nil
         billingFormStyle = nil
+        billingFormData = nil
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
@@ -106,6 +110,7 @@ public class CardViewController: UIViewController,
         addressViewController = AddressViewController()
         checkoutAPIService = nil
         billingFormStyle = nil
+        billingFormData = nil
         super.init(coder: aDecoder)
     }
 
@@ -116,8 +121,7 @@ public class CardViewController: UIViewController,
         super.viewDidLoad()
         UIFont.loadAllCheckoutFonts
         UITextField.disableHardwareLayout()
-
-        // TODO: Fix overridden values 
+        // TODO: Fix overridden values
         rightBarButtonItem.target = self
         rightBarButtonItem.action = #selector(onTapDoneCardButton)
         navigationItem.rightBarButtonItem = rightBarButtonItem
@@ -135,11 +139,13 @@ public class CardViewController: UIViewController,
         setInitialDate()
 
         self.automaticallyAdjustsScrollViewInsets = false
+
     }
 
     /// Notifies the view controller that its view is about to be added to a view hierarchy.
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        customizeNavigationBarAppearance()
         title = "cardViewControllerTitle".localized(forClass: CardViewController.self)
         registerKeyboardHandlers(notificationCenter: notificationCenter,
                                  keyboardWillShow: #selector(keyboardWillShow),
@@ -150,6 +156,8 @@ public class CardViewController: UIViewController,
         } else {
             checkoutAPIService?.logger.log(.paymentFormPresented)
         }
+        navigationController?.isNavigationBarHidden = false
+
     }
 
     /// Notifies the view controller that its view is about to be removed from a view hierarchy.
@@ -202,7 +210,7 @@ public class CardViewController: UIViewController,
             checkoutAPIService?.logger.log(.billingFormPresented)
         }
         guard isNewUI,
-              let viewController = BillingFormFactory.getBillingFormViewController(billingFormStyle: billingFormStyle, delegate: self).1 else {
+              let viewController = BillingFormFactory.getBillingFormViewController(style: billingFormStyle, data: billingFormData, delegate: self)?.1 else {
             navigationController?.pushViewController(addressViewController, animated: true)
             return
         }
@@ -287,8 +295,8 @@ public class CardViewController: UIViewController,
         let card = Card(number: cardNumberStandardized,
                         expiryDate: cardExpiryDate,
                         name: cardView.cardHolderNameInputView.textField.text,
-                        cvv: cvv, billingAddress: billingDetailsAddress,
-                        phone: billingDetailsPhone)
+                        cvv: cvv, billingAddress: billingFormData?.address,
+                        phone: billingFormData?.phone)
 
         checkoutAPIService.createToken(.card(card)) { result in
             self.delegate?.onTapDone(controller: self, result: result)
@@ -299,9 +307,9 @@ public class CardViewController: UIViewController,
 
     /// Executed when an user tap on the done button.
     public func onTapDoneButton(controller: AddressViewController, address: Address, phone: Phone) {
-        billingDetailsAddress = address
-        billingDetailsPhone = phone
-        let value = "\(address.addressLine1 ?? ""), \(address.city ?? "")"
+        billingFormData = BillingForm(name: "", address: address, phone: phone)
+
+        let value = "\(billingFormData?.address.addressLine1 ?? ""), \(billingFormData?.address.city ?? "")"
         cardView.billingDetailsInputView.value.text = value
         validateFieldsValues()
         // return to CardViewController
@@ -364,7 +372,7 @@ public class CardViewController: UIViewController,
             return
         }
         // check billing details
-        if billingDetailsState == .required && billingDetailsAddress == nil {
+        if billingDetailsState == .required && billingFormData?.address == nil {
             navigationItem.rightBarButtonItem?.isEnabled = false
             return
         }
@@ -444,14 +452,15 @@ public class CardViewController: UIViewController,
 }
 
 extension CardViewController: BillingFormViewModelDelegate {
+
     func updateCountryCode(code: Int) {
         countryCode = code
     }
     
-    func onTapDoneButton(address: Address, phone: Phone) {
-        billingDetailsAddress = address
-        billingDetailsPhone = phone
-        let value = "\(address.addressLine1 ?? ""), \(address.city ?? "")"
+    func onTapDoneButton(data: BillingForm) {
+
+        billingFormData = data
+        let value = "\(data.address.addressLine1 ?? ""), \(data.address.city ?? "")"
         cardView.billingDetailsInputView.value.text = value
         validateFieldsValues()
         // return to CardViewController

@@ -1,12 +1,13 @@
 import UIKit
 
-struct DefaultErrorInputLabelStyle: ElementErrorViewStyle {
-    var isHidden: Bool = true
-    var backgroundColor: UIColor = .white
-    var tintColor: UIColor = .tallPoppyRed
-    var text: String = ""
-    var font: UIFont = UIFont(graphikStyle: .medium, size: Constants.Style.BillingForm.InputErrorLabel.fontSize.rawValue)
-    var textColor: UIColor =  .tallPoppyRed
-    var isWarningImageOnLeft: Bool = true
-    var height: Double = Constants.Style.BillingForm.InputErrorLabel.height.rawValue
+public struct DefaultErrorInputLabelStyle: ElementErrorViewStyle {
+    public var isHidden: Bool = true
+    public var isWarningImageOnLeft: Bool = true
+    public var backgroundColor: UIColor = .white
+    public var tintColor: UIColor = .tallPoppyRed
+    public var text: String = ""
+    public var font: UIFont = UIFont(graphikStyle: .medium, size:  Constants.Style.BillingForm.InputErrorLabel.fontSize.rawValue)
+    public var textColor: UIColor =  .tallPoppyRed
+    public var image: UIImage =  "warning".vectorPDFImage(forClass: CheckoutTheme.self) ?? UIImage()
+    public var height: Double = Constants.Style.BillingForm.InputErrorLabel.height.rawValue
 }

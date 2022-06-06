@@ -1,7 +1,6 @@
 import UIKit
 
 protocol TextFieldViewDelegate: AnyObject {
-    func updateCountryCode(code: Int)
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
@@ -61,30 +60,18 @@ class TextFieldView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    init(style: CellTextFieldStyle?, type: BillingFormCell?) {
-        self.style = style
-        self.type = type
-        super.init(frame: .zero)
-        setupViewsInOrder()
-        update(style: style, type: type)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     // MARK: - Update subviews style
 
-    func update(style: CellTextFieldStyle?, type:
-                BillingFormCell?) {
-        guard let type = type, let style = style else { return }
+    func update(style: CellStyle?, type: BillingFormCell?, textFieldValue: String? = nil) {
+        guard let type = type, let style = style as? CellTextFieldStyle else { return }
         self.type = type
         self.style = style
+        setupViewsInOrder()
         updateHeaderLabel(style: style)
         updateHintLabel(style: style)
         updateTextFieldContainer(style: style)
-        updateTextField(style: style)
+        updateTextField(style: style, textFieldValue: textFieldValue)
         updateErrorView(style: style)
     }
 
@@ -110,7 +97,10 @@ class TextFieldView: UIView {
         textFieldContainer?.backgroundColor = style.textfield.backgroundColor
     }
 
-    private func updateTextField(style: CellTextFieldStyle){
+    private func updateTextField(style: CellTextFieldStyle, textFieldValue: String?){
+        if let textFieldValue = textFieldValue {
+            textField?.text = textFieldValue
+        }
         textField?.type = type
         textField?.keyboardType = style.textfield.isSupportingNumericKeyboard ? .phonePad : .default
         textField?.textContentType = style.textfield.isSupportingNumericKeyboard ? .telephoneNumber : .name
@@ -233,7 +223,11 @@ extension TextFieldView: UITextFieldDelegate {
 // MARK: - Phone Number Text Delegate
 
 extension TextFieldView: BillingFormPhoneNumberTextDelegate {
+    //TODO: implement phone number validation logic
+    func validateNumber() {
+
+    }
+
     func updateCountryCode(code: Int) {
-        delegate?.updateCountryCode(code: code)
     }
 }

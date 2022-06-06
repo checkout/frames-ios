@@ -1,8 +1,8 @@
 import UIKit
+import Checkout
 @testable import Frames
 
 class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
-    
     var doneButtonIsPressedCalledTimes = 0
     var doneButtonIsPressedLastCalledWithSender: UIViewController?
     
@@ -30,6 +30,9 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
     var textFieldShouldChangeCharactersInCalledTimes = 0
     var textFieldShouldChangeCharactersInLastCalledWithTextField: UITextField?
     var textFieldShouldChangeCharactersInLastCalledWithString: String?
+
+    var updateCalledTimes = 0
+    var updateLastCalledWithCountry: Country?
 
     func doneButtonIsPressed(sender: UIViewController) {
         doneButtonIsPressedCalledTimes += 1
@@ -74,5 +77,10 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
         textFieldShouldChangeCharactersInCalledTimes += 1
         textFieldShouldChangeCharactersInLastCalledWithTextField = textField
         textFieldShouldChangeCharactersInLastCalledWithString = string
+    }
+
+    func update(country: Country) {
+        updateCalledTimes += 1
+        updateLastCalledWithCountry = country
     }
 }
