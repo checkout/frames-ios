@@ -23,8 +23,9 @@ class TextFieldView: UIView {
         let view = UILabel()
         view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
-        //TODO: backgroundColor should be injected and allowed by merchants to be customized.
-        view.backgroundColor = .green
+        //TODO: 1240 backgroundColor should be injected and allowed by merchants to be customized.
+        //view.backgroundColor = .green
+        view.backgroundColor = .white
         return view
     }()
     
@@ -32,14 +33,14 @@ class TextFieldView: UIView {
         let view = UILabel()
         view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
-        //TODO: backgroundColor should be injected and allowed by merchants to be customized.
+        //TODO: 1240 backgroundColor should be injected and allowed by merchants to be customized.
         view.backgroundColor = .white
         return view
     }()
     
     private(set) lazy var textFieldContainer: UIView? = {
         let view = UIView()
-        //TODO: cornerRadius and borderWidth properties should be injected and allowed by merchants to be customized.
+        //TODO: 1240 cornerRadius and borderWidth properties should be injected and allowed by merchants to be customized.
         view.layer.cornerRadius = 10.0
         view.layer.borderWidth = 1.0
         view.translatesAutoresizingMaskIntoConstraints = false

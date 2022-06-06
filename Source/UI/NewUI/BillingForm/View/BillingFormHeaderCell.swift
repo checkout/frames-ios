@@ -27,7 +27,9 @@ final class BillingFormHeaderCell: UIView {
         let view = UILabel()
         view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        //TODO: 1240 backgroundColor should be injected and allowed by merchants to be customized.
+        //view.backgroundColor = .white
+        view.backgroundColor = UIColor(red: 226/255.0, green: 27/255.0, blue: 46/255.0, alpha: 1.0)
         return view
     }()
     

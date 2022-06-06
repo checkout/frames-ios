@@ -9,10 +9,19 @@
 import Foundation
 import Frames
 
+enum Constants {
+    static let fontColorLabel = UIColor(red: 40/255.0, green: 46/255.0, blue: 54/255.0, alpha: 1.0)
+    static let grayBackGroundColor = UIColor(red: 240/255.0, green: 245/255.0, blue: 249/255.0, alpha: 1.0)
+    static let whitelBackGroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
+    static let errorLabelBackgroudColor = UIColor(red: 226/255.0, green: 27/255.0, blue: 46/255.0, alpha: 1.0)
+    static let redBackGroundColor = UIColor(red: 226/255.0, green: 27/255.0, blue: 46/255.0, alpha: 1.0)
+}
+
 struct BillingFormCustom1Style: BillingFormStyle {
-    public var mainBackground: UIColor = .blue
+    public var mainBackground: UIColor = .white
     public var header: BillingFormHeaderCellStyle = BillingFormCustom1HeaderCellStyle()
-    public var cells: [BillingFormCell] = [.addressLine1(BillingFormAddressLine1Custom1CellStyle()),
+    public var cells: [BillingFormCell] = [.fullName(BillingFormFullNameCustom1CellStyle()),
+                                           .addressLine1(BillingFormAddressLine1Custom1CellStyle()),
                                            .addressLine2(BillingFormAddressLine2Custom1CellStyle()),
                                            .city(BillingFormCityCustom1CellStyle()),
                                            .state(BillingFormStateCustom1CellStyle()),
@@ -23,102 +32,102 @@ struct BillingFormCustom1Style: BillingFormStyle {
 
 struct BillingFormFullNameCustom1CellStyle : CellTextFieldStyle {
     public var isOptional: Bool = false
-    public var backgroundColor: UIColor = UIColor(red: 241/255.0, green: 244/255.0, blue: 248/255.0, alpha: 1.0)
-    public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Full Name")
+    public var backgroundColor: UIColor = Constants.whitelBackGroundColor
+    public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Full Name", textColor: Constants.fontColorLabel)
     public var hint: ElementStyle? = nil
     public var textfield: ElementTextFieldStyle = TextFieldCustom1()
-    public var error: ElementErrorViewStyle = ErrorInputCustom1LabelStyle(text: "Enter Name")
+    public var error: ElementErrorViewStyle = ErrorInputCustom1LabelStyle(text: "Enter Name", textColor: Constants.errorLabelBackgroudColor)
 }
 
 struct BillingFormAddressLine1Custom1CellStyle : CellTextFieldStyle {
     public var isOptional: Bool = true
-    //public var backgroundColor: UIColor = UIColor(red: 241/255.0, green: 244/255.0, blue: 248/255.0, alpha: 1.0)
-    public var backgroundColor: UIColor = .yellow
-    public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Address Line 1*")
+    public var backgroundColor: UIColor = Constants.whitelBackGroundColor
+    public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Address Line 1*", textColor: Constants.fontColorLabel)
     public var hint: ElementStyle? = nil
     public var textfield: ElementTextFieldStyle = TextFieldCustom1()
-    public var error: ElementErrorViewStyle = ErrorInputCustom1LabelStyle(text:  "Enter Address Line 1")
+    public var error: ElementErrorViewStyle = ErrorInputCustom1LabelStyle(text:  "Enter Address Line 1", textColor: Constants.errorLabelBackgroudColor)
 }
 
 struct BillingFormAddressLine2Custom1CellStyle : CellTextFieldStyle {
     public var isOptional: Bool = true
-    public var backgroundColor: UIColor = UIColor(red: 241/255.0, green: 244/255.0, blue: 248/255.0, alpha: 1.0)
-    public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Address Line 2")
+    public var backgroundColor: UIColor = Constants.whitelBackGroundColor
+    public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Address Line 2", textColor: Constants.fontColorLabel)
     public var hint: ElementStyle? = nil
     public var textfield: ElementTextFieldStyle = TextFieldCustom1()
-    public var error: ElementErrorViewStyle = ErrorInputCustom1LabelStyle(text: "Enter Address Line 2")
+    public var error: ElementErrorViewStyle = ErrorInputCustom1LabelStyle(text: "Enter Address Line 2", textColor: Constants.errorLabelBackgroudColor)
 }
 
 struct BillingFormCityCustom1CellStyle : CellTextFieldStyle {
     public var isOptional: Bool = false
-    public var backgroundColor: UIColor = UIColor(red: 241/255.0, green: 244/255.0, blue: 248/255.0, alpha: 1.0)
-    public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Town*")
+    public var backgroundColor: UIColor = Constants.whitelBackGroundColor
+    public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Town*", textColor: Constants.fontColorLabel)
     public var hint: ElementStyle? = nil
     public var textfield: ElementTextFieldStyle = TextFieldCustom1()
-    public var error: ElementErrorViewStyle = ErrorInputCustom1LabelStyle(text: "Enter Town")
+    public var error: ElementErrorViewStyle = ErrorInputCustom1LabelStyle(text: "Enter Town", textColor: Constants.errorLabelBackgroudColor)
 }
 
 struct BillingFormStateCustom1CellStyle : CellTextFieldStyle {
     public var isOptional: Bool = false
-    public var backgroundColor: UIColor = UIColor(red: 241/255.0, green: 244/255.0, blue: 248/255.0, alpha: 1.0)
-    public var title: ElementStyle? = TitleLabelCustom1Style(text: "County")
+    public var backgroundColor: UIColor = Constants.whitelBackGroundColor
+    public var title: ElementStyle? = TitleLabelCustom1Style(text: "County", textColor: Constants.fontColorLabel)
     public var hint: ElementStyle? = nil
     public var textfield: ElementTextFieldStyle = TextFieldCustom1()
-    public var error: ElementErrorViewStyle = ErrorInputCustom1LabelStyle(text: "Enter County")
+    public var error: ElementErrorViewStyle = ErrorInputCustom1LabelStyle(text: "Enter County", textColor: Constants.errorLabelBackgroudColor)
 }
 
 struct BillingFormPostcodeCustom1CellStyle : CellTextFieldStyle {
     public var isOptional: Bool = false
-    public var backgroundColor: UIColor = UIColor(red: 241/255.0, green: 244/255.0, blue: 248/255.0, alpha: 1.0)
-    public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Postcode*")
+    public var backgroundColor: UIColor = Constants.whitelBackGroundColor
+    public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Postcode*", textColor: Constants.fontColorLabel)
     public var hint: ElementStyle? = nil
     public var textfield: ElementTextFieldStyle = TextFieldCustom1()
-    public var error: ElementErrorViewStyle = ErrorInputCustom1LabelStyle(text: "Enter Postcode")
+    public var error: ElementErrorViewStyle = ErrorInputCustom1LabelStyle(text: "Enter Postcode", textColor: Constants.errorLabelBackgroudColor)
 }
 
 struct BillingFormCountryCustom1CellStyle: CellButtonStyle {
-    public var backgroundColor: UIColor = UIColor(red: 241/255.0, green: 244/255.0, blue: 248/255.0, alpha: 1.0)
+    public var backgroundColor: UIColor = Constants.whitelBackGroundColor
     public var button: ElementButtonStyle = CountryCustom1FormButtonStyle()
     public var isOptional: Bool = false
-    public var title: ElementStyle? = TitleLabelCustom1Style(text: "Country*", textColor: .doveGray)
+    public var title: ElementStyle? = TitleLabelCustom1Style(text: "Country*", textColor: Constants.fontColorLabel)
     public var hint: ElementStyle? = nil
-    public var error: ElementErrorViewStyle = ErrorInputCustom1LabelStyle(text: "Enter Country")
+    public var error: ElementErrorViewStyle = ErrorInputCustom1LabelStyle(text: "Enter Country", textColor: Constants.errorLabelBackgroudColor)
 }
 
 struct BillingFormPhoneNumberCustom1CellStyle : CellTextFieldStyle {
     public var isOptional: Bool = false
-    public var backgroundColor: UIColor = UIColor(red: 241/255.0, green: 244/255.0, blue: 248/255.0, alpha: 1.0)
-    public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Phone*")
+    public var backgroundColor: UIColor = Constants.whitelBackGroundColor
+    public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Phone*", textColor: Constants.fontColorLabel)
     public var hint: ElementStyle? = HintInputCustom1LabelStyle(isHidden: true, text:  "")
     public var textfield: ElementTextFieldStyle = TextFieldCustom1(isSupportingNumericKeyboard: true)
-    public var error: ElementErrorViewStyle = ErrorInputCustom1LabelStyle(text:  "Enter Phone Number")
+    public var error: ElementErrorViewStyle = ErrorInputCustom1LabelStyle(text:  "Enter Phone Number", textColor: Constants.errorLabelBackgroudColor)
 }
 
 struct BillingFormCustom1HeaderCellStyle: BillingFormHeaderCellStyle {
-
-    public var backgroundColor: UIColor = .orange
+    //public var backgroundColor: UIColor = .orange
+    public var backgroundColor = Constants.redBackGroundColor
     public var headerLabel: ElementStyle = HeaderCustom1LabelFormStyle()
     public var cancelButton: ElementButtonStyle = CancelCustom1ButtonFormStyle()
     public var doneButton: ElementButtonStyle = DoneCustom1FormButtonStyle()
 }
 
 struct HeaderCustom1LabelFormStyle: ElementStyle {
-    public var backgroundColor: UIColor = UIColor(red: 241/255.0, green: 244/255.0, blue: 248/255.0, alpha: 1.0)
+    //TODO: 1240 backgroundColor should be injected and allowed by merchants to be customized.
+    public var backgroundColor: UIColor = .yellow // does not work
     public var isHidden: Bool = false
-    public var text: String = "Billing"
-    public var font: UIFont = UIFont(name: "Helvetica Neue", size: 14)!
-    public var textColor: UIColor  = .codGray
+    public var text: String = "Billing Details"
+    public var font: UIFont = UIFont.systemFont(ofSize: 24.0)
+    public var textColor: UIColor  = .white
 }
 
 struct CancelCustom1ButtonFormStyle: ElementButtonStyle {
     public var image: UIImage?
     public var text: String = "Cancel"
-    public var font: UIFont =  UIFont(name: "Helvetica Neue", size: 14)!
+    public var font: UIFont =  UIFont.systemFont(ofSize: UIFont.systemFontSize)
     public var activeTitleColor: UIColor = .white
     public var disabledTitleColor: UIColor = .doveGray
     public var disabledTintColor: UIColor = .doveGray
     public var activeTintColor: UIColor = .brandeisBlue
-    public var backgroundColor: UIColor = .red
+    public var backgroundColor: UIColor = Constants.redBackGroundColor
     public var textColor: UIColor = .clear
     public var normalBorderColor: UIColor = .clear
     public var focusBorderColor: UIColor = .clear
@@ -132,12 +141,13 @@ struct CancelCustom1ButtonFormStyle: ElementButtonStyle {
 public struct DoneCustom1FormButtonStyle: ElementButtonStyle {
     public var image: UIImage? = nil
     public var text: String = "Done"
-    public var font: UIFont = UIFont(name: "Helvetica Neue", size: 14)!
+    public var font: UIFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
     public var activeTitleColor: UIColor = .white
     public var disabledTitleColor: UIColor = .doveGray
     public var disabledTintColor: UIColor = .doveGray
     public var activeTintColor: UIColor = .brandeisBlue
-    public var backgroundColor: UIColor = .red
+    //public var backgroundColor: UIColor = .red
+    public var backgroundColor: UIColor = Constants.redBackGroundColor
     public var normalBorderColor: UIColor = .clear
     public var focusBorderColor: UIColor = .clear
     public var errorBorderColor: UIColor = .clear
@@ -149,7 +159,8 @@ public struct DoneCustom1FormButtonStyle: ElementButtonStyle {
 }
 
 public struct TitleLabelCustom1Style: ElementStyle {
-    public var backgroundColor: UIColor = .purple // not working.
+    //TODO: 1240 backgroundColor should be injected and allowed by merchants to be customized. currently Not working.
+    public var backgroundColor: UIColor = .purple
     public var isHidden: Bool = false
     public var text: String = ""
     public var font: UIFont = UIFont(name: "Helvetica Neue", size: 14)!
@@ -162,11 +173,11 @@ public struct TextFieldCustom1: ElementTextFieldStyle {
     public var placeHolder: String = ""
     public var isPlaceHolderHidden: Bool  = false
     public var font: UIFont = UIFont(name: "Helvetica Neue", size: 14)!
-    public var textColor: UIColor = .codGray
+    public var textColor: UIColor = UIColor(red: 40/255.0, green: 46/255.0, blue: 54/255.0, alpha: 1.0)
     public var normalBorderColor: UIColor = .mediumGray
     public var focusBorderColor: UIColor = .brandeisBlue
     public var errorBorderColor: UIColor = .tallPoppyRed
-    public var backgroundColor: UIColor = .white
+    public var backgroundColor: UIColor = UIColor(red: 240/255.0, green: 245/255.0, blue: 249/255.0, alpha: 1.0)
     public var tintColor: UIColor = .codGray
     public var width: Double = 335.0
     public var height: Double = 56.0
@@ -177,7 +188,7 @@ public struct TextFieldCustom1: ElementTextFieldStyle {
 public struct ErrorInputCustom1LabelStyle: ElementErrorViewStyle {
     public var isHidden: Bool = true
     public var isWarningImageOnLeft: Bool = true
-    public var backgroundColor: UIColor = .white
+    public var backgroundColor: UIColor = UIColor(red: 240/255.0, green: 245/255.0, blue: 249/255.0, alpha: 1.0)
     public var tintColor: UIColor = .tallPoppyRed
     public var text: String = ""
     public var font: UIFont = UIFont(name: "Helvetica Neue", size: 14)!
@@ -194,7 +205,8 @@ public class CountryCustom1FormButtonStyle: ElementButtonStyle {
     public var disabledTitleColor: UIColor = .mediumGray
     public var disabledTintColor: UIColor = .mediumGray
     public var activeTintColor: UIColor = .brandeisBlue
-    public var backgroundColor: UIColor = .white
+    //TODO: 1240 backgroundColor not working for entire field
+    public var backgroundColor: UIColor = Constants.grayBackGroundColor
     public var textColor: UIColor = .clear
     public var normalBorderColor: UIColor = .mediumGray
     public var focusBorderColor: UIColor = .brandeisBlue
