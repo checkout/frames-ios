@@ -14,7 +14,7 @@ public struct Country: Equatable {
     public var name: String? {
         Locale.current.localizedString(forRegionCode: iso3166Alpha2)
     }
-    
+
     public init(iso3166Alpha2: String, dialingCode: String?) {
         self.iso3166Alpha2 = iso3166Alpha2
         self.dialingCode = dialingCode
