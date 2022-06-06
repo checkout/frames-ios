@@ -21,24 +21,24 @@ class BillingFormTextFieldErrorViewTests: XCTestCase {
         UIFont.loadAllCheckoutFonts
         errorView = CKOTextFieldErrorView(style: style)
     }
-    
-    func testStyleIsHidden(){
+
+    func testStyleIsHidden() {
         XCTAssertEqual(errorView.isHidden, style.isHidden)
     }
-    
-    func testStyleFont(){
+
+    func testStyleFont() {
         XCTAssertEqual(errorView.headerLabel.font, style.font)
     }
-    
-    func testStyleTextColor(){
+
+    func testStyleTextColor() {
         XCTAssertEqual(errorView.headerLabel.textColor, style.textColor)
     }
-    
-    func testStyleBackgroundColor(){
+
+    func testStyleBackgroundColor() {
         XCTAssertEqual(errorView.backgroundColor, style.backgroundColor)
     }
-    
-    func testStyleTintColor(){
+
+    func testStyleTintColor() {
         XCTAssertEqual(errorView.image.tintColor, style.tintColor)
     }
 

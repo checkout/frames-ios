@@ -2,11 +2,11 @@ import UIKit
 import PhoneNumberKit
 
 protocol BillingFormPhoneNumberTextDelegate {
-    func updateCountryCode(code:Int)
+    func updateCountryCode(code: Int)
 }
 
 final class BillingFormPhoneNumberText: BillingFormTextField {
-    var phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate?
+    weak var phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate?
     var phoneNumber: PhoneNumber?
     var nationalNumber: String {
         let rawNumber = self.text ?? ""
@@ -21,7 +21,7 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
             return false
         }
     }
-    
+
     private var previousTextCount = 0
     private var previousFormat = ""
     private let phoneNumberKit = PhoneNumberKit()
@@ -29,15 +29,15 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
     private lazy var partialFormatter = PartialFormatter(phoneNumberKit: phoneNumberKit, defaultRegion: "GB", withPrefix: true)
 
     init(type: BillingFormCell, tag: Int, phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate) {
-        super.init(type: type,tag: tag)
+        super.init(type: type, tag: tag)
         self.phoneNumberTextDelegate = phoneNumberTextDelegate
         setup()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setup() {
         keyboardType = .phonePad
         updateTextFieldFormat(textField: self)
@@ -48,7 +48,7 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
     @objc private func textFieldDidChange(textField: UITextField) {
         updateTextFieldFormat(textField: textField)
     }
-    
+
     // TODO: Copied from old code. Needs to be refactored
     private func updateTextFieldFormat(textField: UITextField) {
         var targetCursorPosition = 0

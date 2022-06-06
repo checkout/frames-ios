@@ -9,12 +9,11 @@ protocol BillingFormTextFieldViewDelegate: AnyObject {
 }
 
 class CKOTextFieldView: UIView {
-   
-    
+
     private var style: CKOTextFieldCellStyle
     private var type: BillingFormCell
     private weak var delegate: BillingFormTextFieldViewDelegate?
-    
+
     private(set) lazy var headerLabel: UILabel = {
         let view = UILabel()
         view.text = style.title?.text
@@ -25,7 +24,7 @@ class CKOTextFieldView: UIView {
         view.backgroundColor = .white
         return view
     }()
-    
+
     private(set) lazy var hintLabel: UILabel = {
         let view = UILabel()
         view.text = style.hint?.text
@@ -36,7 +35,7 @@ class CKOTextFieldView: UIView {
         view.backgroundColor = .white
         return view
     }()
-    
+
     private(set) lazy var textFieldContainer: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10.0
@@ -49,14 +48,14 @@ class CKOTextFieldView: UIView {
         textField.textContentType = style.textfield.isSupprtingNumbericKeyboard ? .telephoneNumber : .name
         return view
     }()
-    
+
     private(set) lazy var textField: UITextField = {
         var view = BillingFormTextField(type: self.type, tag: tag)
-        
+
         if self.type.index == BillingFormCell.phoneNumber(nil).index {
             view = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self)
         }
-        
+
         view.text = style.textfield.text
         view.font = style.textfield.font
         view.placeholder = style.textfield.placeHolder
@@ -67,13 +66,13 @@ class CKOTextFieldView: UIView {
         view.backgroundColor = .clear
         return view
     }()
-    
+
     private(set) lazy var errorView: CKOTextFieldErrorView = {
         let view = CKOTextFieldErrorView(style: style.error)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     init(type: BillingFormCell, tag: Int, style: CKOTextFieldCellStyle, delegate: BillingFormTextFieldViewDelegate? = nil) {
         self.style = style
         self.type = type
@@ -82,16 +81,16 @@ class CKOTextFieldView: UIView {
         self.tag = tag
         self.setupViewsInOrder()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
 }
 
 extension CKOTextFieldView {
 
-    private func setupViewsInOrder(){
+    private func setupViewsInOrder() {
         backgroundColor = style.backgroundColor
         setupHeaderLabel()
         setupHintLabel()
@@ -99,7 +98,7 @@ extension CKOTextFieldView {
         setupTextField()
         setupErrorView()
     }
-    
+
     private func setupHeaderLabel() {
         addSubview(headerLabel)
         NSLayoutConstraint.activate([
@@ -108,7 +107,7 @@ extension CKOTextFieldView {
             headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
-    
+
     private func setupHintLabel() {
         addSubview(hintLabel)
         NSLayoutConstraint.activate([
@@ -117,7 +116,7 @@ extension CKOTextFieldView {
             hintLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
-    
+
     private func setupTextField() {
         textFieldContainer.addSubview(textField)
         NSLayoutConstraint.activate([
@@ -127,7 +126,7 @@ extension CKOTextFieldView {
             textField.bottomAnchor.constraint(equalTo: textFieldContainer.bottomAnchor)
         ])
     }
-    
+
     private func setupTextFieldContainer() {
         addSubview(textFieldContainer)
 
@@ -138,7 +137,7 @@ extension CKOTextFieldView {
             textFieldContainer.heightAnchor.constraint(equalToConstant: style.textfield.height)
         ])
     }
-    
+
     private func setupErrorView() {
         addSubview(errorView)
         NSLayoutConstraint.activate([
@@ -152,28 +151,28 @@ extension CKOTextFieldView {
 }
 
 extension CKOTextFieldView: UITextFieldDelegate {
-    
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
         textFieldContainer.layer.borderColor = style.textfield.focusBorderColor.cgColor
 
     }
-    
+
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldEndEditing(textField: textField, replacementString: textField.text ?? "")
         return true
     }
-   
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldReturn()
         return false
     }
-    
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
         return true
     }
-    
+
 }
 
 extension CKOTextFieldView: BillingFormPhoneNumberTextDelegate {

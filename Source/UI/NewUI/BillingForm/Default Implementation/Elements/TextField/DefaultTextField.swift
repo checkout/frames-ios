@@ -15,7 +15,7 @@ struct DefaultTextField: CKOTextFieldStyle {
     var height: Double
     var isSecured: Bool
     var isSupprtingNumbericKeyboard: Bool
-    
+
     init(text: String = "",
          placeHolder: String = "",
          isPlaceHolderHidden: Bool  = false,

@@ -5,7 +5,7 @@ struct DefaultHintInputLabelStyle: CKOLabelStyle {
     var text: String
     var font: UIFont
     var textColor: UIColor
-    
+
     init(isHidden: Bool = false,
          text: String = "",
          font: UIFont = UIFont(graphikStyle: .regular, size: 13),

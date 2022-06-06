@@ -3,7 +3,7 @@ import XCTest
 
 class BillingFormViewControllerTests: XCTestCase {
     var billingFormViewController: BillingFormViewController!
-    
+
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -13,7 +13,7 @@ class BillingFormViewControllerTests: XCTestCase {
         let navigation = UINavigationController()
         navigation.viewControllers = [billingFormViewController]
     }
-    
+
     func testInitialization() {
         billingFormViewController.viewDidLoad()
         billingFormViewController.viewDidLayoutSubviews()
@@ -21,7 +21,7 @@ class BillingFormViewControllerTests: XCTestCase {
         XCTAssertTrue(billingFormViewController.view.subviews.first is BillingFormHeaderCell)
         XCTAssertTrue(billingFormViewController.view.subviews.last is UITableView)
     }
-    
+
     func testCallDelegateMethodOnTapDoneButton() {
         let delegate = BillingFormViewControllerMockDelegate()
         billingFormViewController.viewDidLoad()
@@ -31,7 +31,7 @@ class BillingFormViewControllerTests: XCTestCase {
         XCTAssertEqual(delegate.doneButtonIsPressedCalledTimes, 1)
         XCTAssertEqual(delegate.doneButtonIsPressedLastCalledWithSender, billingFormViewController)
     }
-    
+
     func testCallDelegateMethodOnTapCancelButton() {
         let delegate = BillingFormViewControllerMockDelegate()
         billingFormViewController.viewDidLoad()
@@ -41,42 +41,42 @@ class BillingFormViewControllerTests: XCTestCase {
         XCTAssertEqual(delegate.cancelButtonIsPressedCalledTimes, 1)
         XCTAssertEqual(delegate.cancelButtonIsPressedLastCalledWithSender, billingFormViewController)
     }
-    
+
     func testCallDelegateMethodTableViewCellForRow() {
         let delegate = BillingFormViewControllerMockDelegate()
         billingFormViewController.viewDidLoad()
         billingFormViewController.delegate = delegate
-        
+
         let indexthPath = IndexPath(row: 2, section: 2)
         let cell = billingFormViewController.tableView(UITableView(), cellForRowAt: indexthPath)
-        
+
         XCTAssertNotNil(cell)
         XCTAssertEqual(delegate.cellForRowAtCalledTimes, 1)
         XCTAssertEqual(delegate.cellForRowAtLastCalledWithSender, billingFormViewController)
         XCTAssertEqual(delegate.cellForRowAtLastCalledWithIndexPath, indexthPath)
     }
-    
+
     func testCallDelegateMethodTableViewNumberOfRowsInSection() {
         let delegate = BillingFormViewControllerMockDelegate()
         billingFormViewController.viewDidLoad()
         billingFormViewController.delegate = delegate
-        
+
         let section = 0
         let cell = billingFormViewController.tableView(UITableView(), numberOfRowsInSection: section)
-        
+
         XCTAssertNotNil(cell)
         XCTAssertEqual(delegate.numberOfRowsInSectionCalledTimes, 1)
         XCTAssertEqual(delegate.numberOfRowsInSectionLastCalledWithSection, section)
     }
-    
+
     func testCallDelegateMethodTableViewEstimatedHeightForRow() {
         let delegate = BillingFormViewControllerMockDelegate()
         billingFormViewController.viewDidLoad()
         billingFormViewController.delegate = delegate
-        
+
         let indexthPath = IndexPath(row: 2, section: 2)
         let cell = billingFormViewController.tableView(UITableView(), estimatedHeightForRowAt: indexthPath)
-        
+
         XCTAssertNotNil(cell)
         XCTAssertEqual(delegate.estimatedHeightForRowCalledTimes, 1)
         XCTAssertEqual(delegate.estimatedHeightForRowLastCalledWithIndexPath, indexthPath)

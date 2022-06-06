@@ -11,7 +11,7 @@ struct DefaultCancelButtonFormStyle: CKOButtonStyle {
     var backgroundColor: UIColor
     var height: Double
     var width: Double
-    
+
     init( isEnabled: Bool = true,
           text: String = "cancel".localized(forClass: CheckoutTheme.self),
           font: UIFont =  UIFont.systemFont(ofSize: 17),

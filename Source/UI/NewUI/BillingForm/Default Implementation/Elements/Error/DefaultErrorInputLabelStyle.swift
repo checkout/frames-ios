@@ -9,7 +9,7 @@ struct DefaultErrorInputLabelStyle: CKOErrorLabelStyle {
     var textColor: UIColor
     var isWarningSympoleOnLeft: Bool
     var height: Double
-    
+
     init(isHidden: Bool = true,
          backgroundColor: UIColor = .white,
          tintColor: UIColor = .tallPoppyRed,

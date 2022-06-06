@@ -8,7 +8,7 @@ protocol BillingFormHeaderCellDelegate: AnyObject {
 final class BillingFormHeaderCell: UIView {
     private var style: BillingFormHeaderCellStyle
     private weak var delegate: BillingFormHeaderCellDelegate?
-    
+
     private lazy var cancelButton: UIButton = {
         let view = UIButton()
         view.setTitle(style.cancelButton.text, for: .normal)
@@ -21,7 +21,7 @@ final class BillingFormHeaderCell: UIView {
         view.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
         return view
     }()
-    
+
     private lazy var done: UIButton = {
         let view = UIButton()
         view.isEnabled = style.doneButton.isEnabled
@@ -35,7 +35,7 @@ final class BillingFormHeaderCell: UIView {
         view.addTarget(self, action: #selector(doneAction), for: .touchUpInside)
         return view
     }()
-    
+
     private lazy var headerLabel: UILabel = {
         let view = UILabel()
         view.text = style.headerLabel.text
@@ -46,40 +46,40 @@ final class BillingFormHeaderCell: UIView {
         view.backgroundColor = .white
         return view
     }()
-    
-    init(style: BillingFormHeaderCellStyle , delegate: BillingFormHeaderCellDelegate?) {
+
+    init(style: BillingFormHeaderCellStyle, delegate: BillingFormHeaderCellDelegate?) {
         self.style = style
         super.init(frame: .zero)
         self.delegate = delegate
         setupViewsInOrder()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    @objc private func doneAction(){
+
+    @objc private func doneAction() {
         delegate?.doneButtonIsPressed()
     }
-    
-    @objc private func cancelAction(){
+
+    @objc private func cancelAction() {
         delegate?.cancelButtonIsPressed()
     }
-    
+
     private func shouldEnableDoneButton(flag: Bool) {
         done.isEnabled = flag
     }
 }
 
 extension BillingFormHeaderCell {
-    
+
     private func setupViewsInOrder() {
         backgroundColor = style.backgroundColor
         setupCancelButton()
         setupDoneButton()
         setupHeaderLabel()
     }
-    
+
     private func setupCancelButton() {
        addSubview(cancelButton)
         NSLayoutConstraint.activate([
@@ -93,7 +93,7 @@ extension BillingFormHeaderCell {
                 equalToConstant: style.cancelButton.width)
         ])
     }
-    
+
     private func setupDoneButton() {
         addSubview(done)
         NSLayoutConstraint.activate([
@@ -107,7 +107,7 @@ extension BillingFormHeaderCell {
                 equalToConstant: style.doneButton.width)
         ])
     }
-    
+
     private func setupHeaderLabel() {
        addSubview(headerLabel)
         NSLayoutConstraint.activate([
@@ -122,7 +122,7 @@ extension BillingFormHeaderCell {
                 equalTo: safeBottomAnchor,
                 constant: -40)
         ])
-    }   
+    }
 }
 
 extension BillingFormHeaderCell: BillingFormViewModelEditingDelegate {

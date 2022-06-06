@@ -2,7 +2,7 @@ import UIKit
 
 final class CKOTextFieldErrorView: UIView {
     private var style: CKOErrorLabelStyle = DefaultErrorInputLabelStyle()
-    
+
     lazy var headerLabel: UILabel = {
         let view = UILabel()
         view.text = style.text
@@ -14,7 +14,7 @@ final class CKOTextFieldErrorView: UIView {
         view.backgroundColor = .white
         return view
     }()
-    
+
     lazy var image: UIImageView = {
         let view = UIImageView()
         view.image = "warning".vectorPDFImage(forClass: CKOTextFieldErrorView.self)
@@ -24,13 +24,13 @@ final class CKOTextFieldErrorView: UIView {
         view.backgroundColor = .white
         return view
     }()
-    
+
     init(style: CKOErrorLabelStyle) {
         super.init(frame: .zero)
         self.style = style
         setupViewsInOrder()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -38,12 +38,12 @@ final class CKOTextFieldErrorView: UIView {
 
 extension CKOTextFieldErrorView {
 
-    private func setupViewsInOrder(){
+    private func setupViewsInOrder() {
         backgroundColor = style.backgroundColor
         setupHeaderLabel()
         setupImageView()
     }
-    
+
     private func setupHeaderLabel() {
         addSubview(headerLabel)
         NSLayoutConstraint.activate([
@@ -52,7 +52,7 @@ extension CKOTextFieldErrorView {
             headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
-    
+
     private func setupImageView() {
         addSubview(image)
         NSLayoutConstraint.activate([
@@ -61,8 +61,8 @@ extension CKOTextFieldErrorView {
             image.leadingAnchor.constraint(equalTo: leadingAnchor),
             image.trailingAnchor.constraint(equalTo: headerLabel.leadingAnchor, constant: -10),
             image.widthAnchor.constraint(equalToConstant: 15)
-            
+
         ])
     }
-    
+
 }

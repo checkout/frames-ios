@@ -1,14 +1,14 @@
 import UIKit
 
-struct DefaultBillingFormAddressLine2CellStyle : CKOTextFieldCellStyle {
-    
+struct DefaultBillingFormAddressLine2CellStyle: CKOTextFieldCellStyle {
+
     var isOptional: Bool
     var backgroundColor: UIColor
     var title: CKOLabelStyle?
     var hint: CKOLabelStyle?
     var textfield: CKOTextFieldStyle
     var error: CKOErrorLabelStyle
-    
+
     init(isOptional: Bool = true,
          backgroundColor: UIColor = .white,
          header: CKOLabelStyle = DefaultTitleLabelStyle(text: "addressLine2".localized(forClass: CheckoutTheme.self)),
@@ -22,5 +22,5 @@ struct DefaultBillingFormAddressLine2CellStyle : CKOTextFieldCellStyle {
         self.error = error
         self.isOptional = isOptional
     }
-    
+
 }

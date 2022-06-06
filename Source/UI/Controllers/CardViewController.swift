@@ -127,7 +127,7 @@ public class CardViewController: UIViewController,
         registerKeyboardHandlers(notificationCenter: notificationCenter,
                                  keyboardWillShow: #selector(keyboardWillShow),
                                  keyboardWillHide: #selector(keyboardWillHide))
-        
+
         if suppressNextLog {
             suppressNextLog = false
         } else {
@@ -162,7 +162,7 @@ public class CardViewController: UIViewController,
 
     }
 
-    /// MARK: Methods
+    // MARK: Methods
     public func setDefault(regionCode: String) {
         addressViewController.regionCodeSelected = regionCode
     }
@@ -190,7 +190,7 @@ public class CardViewController: UIViewController,
             return
         }
         navigationController?.present(viewController, animated: true)
-        
+
     }
 
     @objc func onTapDoneCardButton() {
@@ -234,7 +234,7 @@ public class CardViewController: UIViewController,
         switch cardValidator.validate(cvv: cvv, cardScheme: cardScheme) {
         case .success:
             print("success cvv validation")
-        case .failure(_):
+        case .failure:
             let message = "cvvInvalid".localized(forClass: CardViewController.self)
             cardView.cvvInputView.showError(message: message)
         }
@@ -321,7 +321,7 @@ public class CardViewController: UIViewController,
             return nil
         }
         switch cardValidator.validate(expiryMonth: expiryMonth, expiryYear: expiryYear) {
-        case .success( _):
+        case .success:
             return nil
         case .failure(let error):
             return error
@@ -430,7 +430,7 @@ extension CardViewController: BillingFormViewModelDelegate {
     func updateCountryCode(code: Int) {
         countryCode = code
     }
-    
+
     func onTapDoneButton(address: Address, phone: Phone) {
         billingDetailsAddress = address
         billingDetailsPhone = phone

@@ -2,7 +2,7 @@ import XCTest
 @testable import Frames
 
 final class CKOFontTests: XCTestCase {
-    
+
     func testGraphikStyleRegular() {
         UIFont.loadAllCheckoutFonts
 
@@ -11,10 +11,10 @@ final class CKOFontTests: XCTestCase {
         XCTAssertEqual(fontName, expectedFontName)
 
         let font = UIFont(graphikStyle: .regular, size: 20)
-        
+
         XCTAssertNotNil(font)
     }
-    
+
     func testGraphikStyleThin() {
         UIFont.loadAllCheckoutFonts
 
@@ -23,10 +23,10 @@ final class CKOFontTests: XCTestCase {
         XCTAssertEqual(fontName, expectedFontName)
 
         let font = UIFont(graphikStyle: .thin, size: 20)
-        
+
         XCTAssertNotNil(font)
     }
-    
+
     func testGraphikStyleLight() {
         UIFont.loadAllCheckoutFonts
 
@@ -35,10 +35,10 @@ final class CKOFontTests: XCTestCase {
         XCTAssertEqual(fontName, expectedFontName)
 
         let font = UIFont(graphikStyle: .light, size: 20)
-        
+
         XCTAssertNotNil(font)
     }
-    
+
     func testGraphikStyleMedium() {
         UIFont.loadAllCheckoutFonts
 
@@ -47,10 +47,10 @@ final class CKOFontTests: XCTestCase {
         XCTAssertEqual(fontName, expectedFontName)
 
         let font = UIFont(graphikStyle: .medium, size: 20)
-        
+
         XCTAssertNotNil(font)
     }
-    
+
     func testGraphikStyleSemibold() {
         UIFont.loadAllCheckoutFonts
 
@@ -59,10 +59,10 @@ final class CKOFontTests: XCTestCase {
         XCTAssertEqual(fontName, expectedFontName)
 
         let font = UIFont(graphikStyle: .semibold, size: 20)
-        
+
         XCTAssertNotNil(font)
     }
-    
+
     func testGraphikStyleBold() {
         UIFont.loadAllCheckoutFonts
 
@@ -71,10 +71,10 @@ final class CKOFontTests: XCTestCase {
         XCTAssertEqual(fontName, expectedFontName)
 
         let font = UIFont(graphikStyle: .bold, size: 20)
-        
+
         XCTAssertNotNil(font)
     }
-    
+
     func testGraphikStyleBlack() {
         UIFont.loadAllCheckoutFonts
 
@@ -83,7 +83,7 @@ final class CKOFontTests: XCTestCase {
         XCTAssertEqual(fontName, expectedFontName)
 
         let font = UIFont(graphikStyle: .black, size: 20)
-        
+
         XCTAssertNotNil(font)
     }
 }

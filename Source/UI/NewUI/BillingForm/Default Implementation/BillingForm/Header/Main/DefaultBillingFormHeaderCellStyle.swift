@@ -1,7 +1,7 @@
 import UIKit
 
 struct DefaultBillingFormHeaderCellStyle: BillingFormHeaderCellStyle {
-    
+
     var backgroundColor: UIColor
     var headerLabel: CKOLabelStyle
     var cancelButton: CKOButtonStyle

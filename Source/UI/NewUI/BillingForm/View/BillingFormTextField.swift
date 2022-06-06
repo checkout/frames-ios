@@ -7,7 +7,7 @@ class BillingFormTextField: UITextField {
         super.init(frame: .zero)
         self.tag = tag
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

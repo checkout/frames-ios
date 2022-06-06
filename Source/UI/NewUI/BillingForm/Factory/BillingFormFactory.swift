@@ -12,14 +12,14 @@ struct BillingFormFactory {
         .country(DefaultBillingFormCountryCellStyle()),
         .phoneNumber(DefaultBillingFormPhoneNumberCellStyle())
     ]
-    
+
     static func getBillingFormViewController(delegate: BillingFormViewModelDelegate) -> (BillingFormViewModelDelegate?, UIViewController?) {
         UIFont.loadAllCheckoutFonts
         let style = DefaultBillingFormStyle()
         guard !style.cells.isEmpty else { return (nil, nil) }
-        
+
         let viewModel = DefaultBillingFormViewModel(style: style, initialCountry: "", delegate: delegate)
         return (viewModel.delegate, BillingFormViewController(viewModel: viewModel))
     }
-    
+
 }
