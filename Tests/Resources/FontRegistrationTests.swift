@@ -1,21 +1,21 @@
 import XCTest
 @testable import Frames
 
-final class FontRegistrationTests: XCTestCase{
+final class FontRegistrationTests: XCTestCase {
     let fileName = "GraphikLCG-Bold"
     let ext = "otf"
-    var bundle:Foundation.Bundle!
+    var bundle: Foundation.Bundle!
 
     override func setUp() {
         super.setUp()
         bundle = fileName.getBundle(forClass: CheckoutTheme.self)
     }
 
-    func testFrameSDKBundleExistence(){
+    func testFrameSDKBundleExistence() {
         XCTAssertNotNil(bundle)
     }
 
-    func testPathForResourceString(){
+    func testPathForResourceString() {
         let pathForResourceString = bundle.url(forResource: fileName, withExtension: ext)
 
         XCTAssertNotNil(pathForResourceString)

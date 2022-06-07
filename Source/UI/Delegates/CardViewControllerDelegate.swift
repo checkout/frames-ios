@@ -10,7 +10,6 @@ public protocol CardViewControllerDelegate: AnyObject {
     /// - parameter result: result of tokenisation request
     func onTapDone(controller: CardViewController, result: Result<TokenDetails, TokenisationError.TokenRequest>)
 
-
     /// Called just before a request to make a card token.
     /// - Parameter controller: `CardViewController`
     func onSubmit(controller: CardViewController)

@@ -1,7 +1,7 @@
 import Foundation
 
 @frozen public enum BillingFormCell {
-    
+
     case fullName(CellTextFieldStyle?)
     case addressLine1(CellTextFieldStyle?)
     case addressLine2(CellTextFieldStyle?)
@@ -10,7 +10,7 @@ import Foundation
     case postcode(CellTextFieldStyle?)
     case country(CellButtonStyle?)
     case phoneNumber(CellTextFieldStyle?)
-    
+
     internal var validator: Validator {
         switch self {
         case .fullName: return FullNameValidator()
@@ -23,7 +23,7 @@ import Foundation
         case .phoneNumber: return PhoneNumberValidator()
         }
     }
-    
+
     internal var style: CellStyle? {
         switch self {
         case .fullName(let style): return style
@@ -36,7 +36,7 @@ import Foundation
         case .phoneNumber(let style): return style
         }
     }
-    
+
     var index: Int {
         switch self {
         case .fullName: return 0
@@ -51,7 +51,7 @@ import Foundation
     }
 
     func getText(from billingFormData: BillingForm?) -> String? {
-        switch self{
+        switch self {
             case .fullName: return billingFormData?.name
             case .addressLine1: return billingFormData?.address.addressLine1
             case .addressLine2: return billingFormData?.address.addressLine2

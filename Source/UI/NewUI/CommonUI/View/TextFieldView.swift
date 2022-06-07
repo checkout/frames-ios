@@ -28,7 +28,7 @@ class TextFieldView: UIView {
         view.backgroundColor = .white
         return view
     }()
-    
+
     private(set) lazy var hintLabel: UILabel? = {
         let view = UILabel()
         view.numberOfLines = 0
@@ -37,7 +37,7 @@ class TextFieldView: UIView {
         view.backgroundColor = .white
         return view
     }()
-    
+
     private(set) lazy var textFieldContainer: UIView? = {
         let view = UIView()
         //TODO: 1240 cornerRadius and borderWidth properties should be injected and allowed by merchants to be customized.
@@ -46,7 +46,7 @@ class TextFieldView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     private(set) lazy var textField: BillingFormTextField? = {
         var view = BillingFormTextField(type: type, tag: tag)
         if self.type?.index == BillingFormCell.phoneNumber(nil).index {
@@ -58,7 +58,7 @@ class TextFieldView: UIView {
         view.backgroundColor = .clear
         return view
     }()
-    
+
     private(set) lazy var errorView: ErrorView? = {
         let view = ErrorView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -101,7 +101,7 @@ class TextFieldView: UIView {
         textFieldContainer?.backgroundColor = style.textfield.backgroundColor
     }
 
-    private func updateTextField(style: CellTextFieldStyle, textFieldValue: String?){
+    private func updateTextField(style: CellTextFieldStyle, textFieldValue: String?) {
         if let textFieldValue = textFieldValue {
             textField?.text = textFieldValue
         }
@@ -126,7 +126,7 @@ class TextFieldView: UIView {
 
 extension TextFieldView {
 
-    private func setupViewsInOrder(){
+    private func setupViewsInOrder() {
         backgroundColor = style?.backgroundColor
         setupHeaderLabel()
         setupHintLabel()
@@ -134,7 +134,7 @@ extension TextFieldView {
         setupTextField()
         setupErrorView()
     }
-    
+
     private func setupHeaderLabel() {
         guard let headerLabel = headerLabel else { return }
         addSubview(headerLabel)
@@ -144,7 +144,7 @@ extension TextFieldView {
             headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
-    
+
     private func setupHintLabel() {
         guard let hintLabel = hintLabel else { return }
         guard let headerLabel = headerLabel else { return }
@@ -193,7 +193,7 @@ extension TextFieldView {
         NSLayoutConstraint.activate([
             errorView.topAnchor.constraint(equalTo: textFieldContainer.bottomAnchor, constant: 10),
             errorView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            errorView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            errorView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 }
@@ -201,33 +201,33 @@ extension TextFieldView {
 // MARK: - Text Field Delegate
 
 extension TextFieldView: UITextFieldDelegate {
-    
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
         textFieldContainer?.layer.borderColor = style?.textfield.focusBorderColor.cgColor
     }
-    
+
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldEndEditing(textField: textField, replacementString: textField.text ?? "")
         return true
     }
-   
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldReturn()
         return false
     }
-    
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
         return true
     }
-    
+
 }
 
 // MARK: - Phone Number Text Delegate
 
 extension TextFieldView: BillingFormPhoneNumberTextDelegate {
-    //TODO: implement phone number validation logic
+    // TODO: implement phone number validation logic
     func validateNumber() {
 
     }

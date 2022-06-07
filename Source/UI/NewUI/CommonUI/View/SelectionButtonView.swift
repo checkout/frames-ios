@@ -78,7 +78,7 @@ class SelectionButtonView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    @objc private func buttonIsPressed(){
+    @objc private func buttonIsPressed() {
         delegate?.buttonIsPressed()
     }
 
@@ -90,7 +90,7 @@ class SelectionButtonView: UIView {
 
 extension SelectionButtonView {
 
-    private func setupViewsInOrder(){
+    private func setupViewsInOrder() {
         setupTitleLabel()
         setupImageView()
         setupButton()
@@ -131,7 +131,7 @@ extension SelectionButtonView {
             button.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             button.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             button.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            button.trailingAnchor.constraint(equalTo: trailingAnchor),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor)
 
         ])
     }

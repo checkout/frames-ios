@@ -60,7 +60,7 @@ public class AddressViewController: UIViewController,
             setCountrySelected(country: country)
         }
         self.navigationController?.navigationBar.isTranslucent = false
-        
+
         validateFieldsValues()
     }
 
@@ -112,13 +112,13 @@ public class AddressViewController: UIViewController,
     @objc func onTapDoneButton() {
         let countryCode = "\(addressView.phoneInputView.phoneNumber?.countryCode ?? 44)"
         let phone = Phone(
-            number:  addressView.phoneInputView.nationalNumber,
+            number: addressView.phoneInputView.nationalNumber,
             country: Country.allAvailable.first { $0.dialingCode == countryCode }
           )
 
         let address = Address(addressLine1: addressView.addressLine1InputView.textField.text,
                                addressLine2: addressView.addressLine2InputView.textField.text,
-                               city:  addressView.cityInputView.textField.text,
+                               city: addressView.cityInputView.textField.text,
                                state: addressView.stateInputView.textField.text,
                                zip: addressView.zipInputView.textField.text,
                                country: Country.allAvailable.first { $0.iso3166Alpha2 == regionCodeSelected })

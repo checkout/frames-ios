@@ -8,6 +8,7 @@
 import UIKit
 import WebKit
 
+/// This class helps handle the 3DS challenge for a user using a webview.
 public final class ThreeDSWKNavigationHelper: NSObject {
   weak public var delegate: ThreeDSWKNavigationHelperDelegate?
 
@@ -32,6 +33,7 @@ public final class ThreeDSWKNavigationHelper: NSObject {
 
 // MARK: - WKNavigationDelegate
 extension ThreeDSWKNavigationHelper: WKNavigationDelegate {
+/// Initialise the 3DS redirect URL from the challenge, either for a success or failure.
   public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
     let navigationDecision = navigationAction.request.url.map { decision(from: $0) } ?? .allow
 
