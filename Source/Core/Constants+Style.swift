@@ -39,7 +39,7 @@ extension Constants {
                 case fontSize = 15
             }
 
-            enum InputISOptionalLabel: Double {
+            enum InputOptionalLabel: Double {
                 case fontSize = 13
             }
 

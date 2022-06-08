@@ -5,7 +5,7 @@ extension Constants {
         struct BillingForm {
             
             struct Cell {
-                static let isOptional = "isOptional".localized
+                static let optionalInput = "BillingFormOptional".localized
             }
 
             struct AddressLine1 {
