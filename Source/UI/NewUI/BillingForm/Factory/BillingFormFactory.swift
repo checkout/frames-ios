@@ -18,7 +18,7 @@ public struct BillingFormFactory {
          .phoneNumber(DefaultBillingFormPhoneNumberCellStyle())]
     }
 
-    static func getBillingFormViewController(style: BillingFormStyle?, data: BillingForm?, delegate: BillingFormViewModelDelegate) -> (BillingFormViewModelDelegate?, UINavigationController)? {
+    static func getBillingFormViewController(style: BillingFormStyle?, data: BillingForm?, delegate: BillingFormViewModelDelegate) -> (deleagte: BillingFormViewModelDelegate?, navigationController: UINavigationController)? {
 
         guard let style = style, !style.cells.isEmpty else { return nil }
 
