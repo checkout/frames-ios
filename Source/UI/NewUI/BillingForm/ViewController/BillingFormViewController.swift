@@ -55,6 +55,7 @@ final class BillingFormViewController: UIViewController {
         view.showsHorizontalScrollIndicator = false
         view.allowsSelection = false
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
         view.register(CellTextField.self)
         view.register(CellButton.self)
 

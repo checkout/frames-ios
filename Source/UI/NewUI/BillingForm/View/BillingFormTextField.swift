@@ -6,6 +6,7 @@ class BillingFormTextField: UITextField {
     init(type: BillingFormCell?, tag: Int) {
         self.type = type
         super.init(frame: .zero)
+        backgroundColor = .clear
         self.tag = tag
     }
 

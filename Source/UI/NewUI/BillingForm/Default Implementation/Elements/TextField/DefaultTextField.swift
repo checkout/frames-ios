@@ -10,7 +10,7 @@ public struct DefaultTextField: ElementTextFieldStyle {
     public var normalBorderColor: UIColor = .mediumGray
     public var focusBorderColor: UIColor = .brandeisBlue
     public var errorBorderColor: UIColor = .tallPoppyRed
-    public var backgroundColor: UIColor = .white
+    public var backgroundColor: UIColor = .clear
     public var tintColor: UIColor = .codGray
     public var width: Double = Constants.Style.BillingForm.InputTextField.width.rawValue
     public var height: Double = Constants.Style.BillingForm.InputTextField.height.rawValue

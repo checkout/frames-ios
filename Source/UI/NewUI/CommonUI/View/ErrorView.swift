@@ -7,7 +7,7 @@ final class ErrorView: UIView {
         view.textAlignment = .justified
         view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         return view
     }()
 
@@ -15,7 +15,7 @@ final class ErrorView: UIView {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         return view
     }()
 

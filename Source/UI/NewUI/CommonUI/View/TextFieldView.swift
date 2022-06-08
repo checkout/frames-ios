@@ -23,7 +23,7 @@ class TextFieldView: UIView {
         let view = UILabel()
         view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         return view
     }()
 
@@ -31,7 +31,7 @@ class TextFieldView: UIView {
         let view = UILabel()
         view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         return view
     }()
 
@@ -39,6 +39,7 @@ class TextFieldView: UIView {
         let view = UIView()
         view.layer.cornerRadius = 10.0
         view.layer.borderWidth = 1.0
+        view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -68,6 +69,7 @@ class TextFieldView: UIView {
         self.type = type
         self.style = style
         setupViewsInOrder()
+        backgroundColor = style.backgroundColor
         updateHeaderLabel(style: style)
         updateHintLabel(style: style)
         updateTextFieldContainer(style: style)
