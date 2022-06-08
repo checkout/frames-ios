@@ -1,6 +1,5 @@
-
 extension Constants {
-    
+
     enum Style {
 
         enum BillingForm {

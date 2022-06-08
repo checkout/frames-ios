@@ -11,6 +11,7 @@ protocol BaseURLProviding {
   var baseURL: URL { get }
 }
 
+/// Environment Enum for Production and Sandbox end points.
 public enum Environment: String, BaseURLProviding {
   case production
   case sandbox

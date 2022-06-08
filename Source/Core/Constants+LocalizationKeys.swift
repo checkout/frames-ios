@@ -35,7 +35,7 @@ extension Constants {
             }
 
             struct Country {
-                static let text = "BillingFormCountryButtonTitle".localized
+                static let text = "countryRegion".localized
                 static let error = "missingBillingFormCountry".localized
             }
 

@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Initializes a Address object.
 public struct Address: Equatable {
   public let addressLine1: String?
   public let addressLine2: String?
