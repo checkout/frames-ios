@@ -37,8 +37,6 @@ class TextFieldView: UIView {
 
     private(set) lazy var textFieldContainer: UIView? = {
         let view = UIView()
-        view.layer.cornerRadius = 10.0
-        view.layer.borderWidth = 1.0
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -85,7 +83,6 @@ class TextFieldView: UIView {
         hintLabel?.text = style.hint?.text
         hintLabel?.font = style.hint?.font
         hintLabel?.textColor = style.hint?.textColor
-
     }
 
     private func updateTextFieldContainer(style: CellTextFieldStyle) {
@@ -94,6 +91,8 @@ class TextFieldView: UIView {
         style.textfield.normalBorderColor.cgColor
 
         textFieldContainer?.layer.borderColor = borderColor
+        textFieldContainer?.layer.cornerRadius = style.textfield.cornerRadius
+        textFieldContainer?.layer.borderWidth = style.textfield.borderWidth
         textFieldContainer?.backgroundColor = style.textfield.backgroundColor
     }
 

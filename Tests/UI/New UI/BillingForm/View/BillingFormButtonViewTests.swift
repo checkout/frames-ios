@@ -29,12 +29,6 @@ class BillingFormButtonViewTests: XCTestCase {
         XCTAssertEqual(view.image?.tintColor, style.button.disabledTintColor)
     }
 
-    func testButtonStyle() {
-        XCTAssertEqual(view.button?.isEnabled, style.button.isEnabled)
-        XCTAssertEqual(view.button?.tintColor, .clear)
-        XCTAssertEqual(view.button?.backgroundColor, .clear)
-    }
-
     func testErrorStyle() {
         XCTAssertEqual(view.errorView?.isHidden, style.error.isHidden)
     }
