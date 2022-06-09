@@ -35,7 +35,7 @@ class BillingFormTextFieldCellMockDelegate: CellTextFieldDelegate {
     }
     
 
-    func phoneNumberIsUpdated(number: String?) {
+    func phoneNumberIsUpdated(number: String) {
         phoneNumberIsUpdatedCalledTimes += 1
         phoneNumberIsUpdatedLastCalledWithNumber = number
     }

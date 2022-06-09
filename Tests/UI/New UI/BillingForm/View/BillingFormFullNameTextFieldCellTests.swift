@@ -12,7 +12,7 @@ class BillingFormTextFieldCellTests: XCTestCase {
 
     func testCallDelegateMethodTextFieldShouldBeginEditing() {
         let delegate = BillingFormTextFieldCellMockDelegate()
-        let textField = MainBillingFormTextField(type: .fullName(nil), tag: 2)
+        let textField = DefaultBillingFormTextField(type: .fullName(nil), tag: 2)
         cell.delegate = delegate
 
         cell.textFieldShouldBeginEditing(textField: textField)
@@ -31,7 +31,7 @@ class BillingFormTextFieldCellTests: XCTestCase {
 
     func testCallDelegateMethodTextFieldDidEndEditing() {
         let delegate = BillingFormTextFieldCellMockDelegate()
-        let textField = MainBillingFormTextField(type: .fullName(nil), tag: 2)
+        let textField = DefaultBillingFormTextField(type: .fullName(nil), tag: 2)
         cell.delegate = delegate
 
         cell.textFieldShouldEndEditing(textField: textField, replacementString: "test")

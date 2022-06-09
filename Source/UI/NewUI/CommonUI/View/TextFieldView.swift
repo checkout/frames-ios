@@ -2,7 +2,7 @@ import UIKit
 import Checkout
 
 protocol TextFieldViewDelegate: AnyObject {
-    func phoneNumberIsUpdated(number: String?)
+    func phoneNumberIsUpdated(number: String)
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
@@ -53,15 +53,15 @@ class TextFieldView: UIView {
     }()
     
     private(set) lazy var textField: UITextField? = {
-        var view: BillingFormTextField  = MainBillingFormTextField(type: type, tag: tag)
+        var view: BillingFormTextField  = DefaultBillingFormTextField(type: type, tag: tag)
         if self.type?.index == BillingFormCell.phoneNumber(nil).index {
             view = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self)
         }
-        (view as? UITextField)?.autocorrectionType = .no
-        (view as? UITextField)?.delegate = self
-        (view as? UITextField)?.translatesAutoresizingMaskIntoConstraints = false
-        (view as? UITextField)?.backgroundColor = .clear
-        return  (view as? UITextField)
+        view.autocorrectionType = .no
+        view.delegate = self
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        return  view
     }()
     
     private(set) lazy var errorView: ErrorView? = {
@@ -253,7 +253,7 @@ extension TextFieldView: UITextFieldDelegate {
 // MARK: - Phone Number Text Delegate
 
 extension TextFieldView: BillingFormPhoneNumberTextDelegate {
-    func phoneNumberIsUpdated(number: String?) {
+    func phoneNumberIsUpdated(number: String) {
         delegate?.phoneNumberIsUpdated(number: number)
     }
 }

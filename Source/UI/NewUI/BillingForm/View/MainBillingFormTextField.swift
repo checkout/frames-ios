@@ -1,6 +1,6 @@
 import UIKit
 
-final class MainBillingFormTextField: UITextField, BillingFormTextField {
+final class DefaultBillingFormTextField: UITextField, BillingFormTextField {
     var type: BillingFormCell?
     
     init(type: BillingFormCell?, tag: Int) {

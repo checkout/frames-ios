@@ -32,8 +32,6 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
      
      - Parameters:
      - style: The bill form view Style implementation.
-     - initialCountry: //TODO: will be implemented in country ticket
-     - initialRegionCode: //TODO: will be implemented in country next ticket
      - delegate: Optional billing form view Model delegate
      */
     
@@ -168,8 +166,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     
     private func validateTextOnEndEditing(textField: BillingFormTextField) {
         guard let type = textField.type else { return }
-        guard let textField = textField as? UITextField else { return }
-        
+
         validate(text: textField.text , cellStyle: type, row: textField.tag)
         
         let shouldSaveText = !(textField.text?.isEmpty ?? true) || (type.style?.isMandatory ?? true)
@@ -215,18 +212,17 @@ extension DefaultBillingFormViewModel: BillingFormTextFieldDelegate {
 // MARK: - Billing form view controller Delegate
 
 extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
-    func phoneNumberIsUpdated(number: String?) {
-        guard let number = number else { return }
+    func phoneNumberIsUpdated(number: String) {
         let index = BillingFormCell.phoneNumber(nil).index
         textValueOfCellType[index] = number
         updatedRow = index
     }
 
-    func update(country: Country?) {
+    func update(country: Country) {
         self.country = country
         let index = BillingFormCell.country(nil).index
-        textValueOfCellType[index] = country?.name
         updatedRow = index
+        textValueOfCellType[index] = country.name
     }
     
     func getViewForHeader(sender: UIViewController) -> UIView? {

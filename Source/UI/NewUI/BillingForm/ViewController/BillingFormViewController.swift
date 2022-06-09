@@ -17,8 +17,8 @@ protocol BillingFormViewControllerDelegate: AnyObject {
     func doneButtonIsPressed(sender: UIViewController)
     func cancelButtonIsPressed(sender: UIViewController)
     func getViewForHeader(sender: UIViewController) -> UIView?
-    func update(country: Country?)
-    func phoneNumberIsUpdated(number: String?)
+    func update(country: Country)
+    func phoneNumberIsUpdated(number: String)
 }
 
 /**
@@ -211,7 +211,7 @@ extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate 
 // MARK: - Text Field Delegate
 
 extension BillingFormViewController: CellTextFieldDelegate {
-    func phoneNumberIsUpdated(number: String?) {
+    func phoneNumberIsUpdated(number: String) {
         delegate?.phoneNumberIsUpdated(number: number)
     }
 

@@ -26,7 +26,7 @@ class BillingFormViewModelTests: XCTestCase {
         let expectedType = BillingFormCell.fullName(DefaultBillingFormFullNameCellStyle(isMandatory: true))
         let tag = 2
         let text = ""
-        let textField = MainBillingFormTextField(type:expectedType, tag: expectedType.index)
+        let textField = DefaultBillingFormTextField(type:expectedType, tag: expectedType.index)
         textField.text = text
 
         viewModel.validate(text: textField.text, cellStyle: expectedType, row: tag)
@@ -39,7 +39,7 @@ class BillingFormViewModelTests: XCTestCase {
         let expectedType = BillingFormCell.fullName(nil)
         let text = "fullName"
         let tag = 2
-        let textField = MainBillingFormTextField(type: expectedType, tag: tag)
+        let textField = DefaultBillingFormTextField(type: expectedType, tag: tag)
         textField.text = text
         
         viewModel.validate(text: textField.text, cellStyle: expectedType, row: tag)
@@ -105,7 +105,7 @@ class BillingFormViewModelTests: XCTestCase {
         viewModel.textValueOfCellType = textValueOfCellType
         viewModel.editDelegate = delegate
         
-        viewModel.textFieldShouldEndEditing(textField: MainBillingFormTextField(type: .fullName(nil), tag: 2), replacementString: "text")
+        viewModel.textFieldShouldEndEditing(textField: DefaultBillingFormTextField(type: .fullName(nil), tag: 2), replacementString: "text")
         
         XCTAssertEqual(delegate.didFinishEditingBillingFormCalledTimes, 0)
         XCTAssertNil(delegate.didFinishEditingBillingFormLastCalledWithSuccessfully)

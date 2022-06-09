@@ -83,12 +83,12 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
         textFieldShouldChangeCharactersInLastCalledWithString = string
     }
 
-    func update(country: Country?) {
+    func update(country: Country) {
         updateCalledTimes += 1
         updateLastCalledWithCountry = country
     }
 
-    func phoneNumberIsUpdated(number: String?) {
+    func phoneNumberIsUpdated(number: String) {
         phoneNumberIsUpdatedCalledTimes += 1
         phoneNumberIsUpdatedLastCalledWithNumber = number
     }

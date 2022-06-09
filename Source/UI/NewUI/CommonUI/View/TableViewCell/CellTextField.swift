@@ -2,7 +2,7 @@ import UIKit
 import Checkout
 
 protocol CellTextFieldDelegate: AnyObject {
-    func phoneNumberIsUpdated(number: String?)
+    func phoneNumberIsUpdated(number: String)
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
@@ -62,7 +62,7 @@ extension CellTextField {
 }
 
 extension CellTextField: TextFieldViewDelegate {
-    func phoneNumberIsUpdated(number: String?) {
+    func phoneNumberIsUpdated(number: String) {
         delegate?.phoneNumberIsUpdated(number: number)
     }
     
