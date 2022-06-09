@@ -27,6 +27,7 @@
 		44A4DFE5261CC59B00E0C349 /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */; settings = {ATTRIBUTES = (Required, ); }; };
 		57256C7E269F1181001EC3D8 /* Frames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; platformFilter = ios; };
 		95037D9A2840C97700F2CBAD /* BillingFormButtonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95037D992840C97700F2CBAD /* BillingFormButtonViewTests.swift */; };
+		952C3B1A2847C69F00865840 /* MainBillingFormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C3B192847C69F00865840 /* MainBillingFormTextField.swift */; };
 		952F3233283C303E00F616FF /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F3158283C303E00F616FF /* UITableViewExtensions.swift */; };
 		952F3234283C303E00F616FF /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F3159283C303E00F616FF /* UITextFieldExtension.swift */; };
 		952F3235283C303E00F616FF /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F315A283C303E00F616FF /* StringExtensions.swift */; };
@@ -414,6 +415,7 @@
 		44A4DFCF261CC17800E0C349 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 		57256C79269F1181001EC3D8 /* FramesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FramesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95037D992840C97700F2CBAD /* BillingFormButtonViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormButtonViewTests.swift; sourceTree = "<group>"; };
+		952C3B192847C69F00865840 /* MainBillingFormTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainBillingFormTextField.swift; sourceTree = "<group>"; };
 		952F3158283C303E00F616FF /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		952F3159283C303E00F616FF /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		952F315A283C303E00F616FF /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -1193,6 +1195,7 @@
 			isa = PBXGroup;
 			children = (
 				952F31B5283C303E00F616FF /* BillingFormTextField.swift */,
+				952C3B192847C69F00865840 /* MainBillingFormTextField.swift */,
 				952F31B6283C303E00F616FF /* BillingFormHeaderCell.swift */,
 				952F31B7283C303E00F616FF /* BillingFormPhoneNumberText.swift */,
 			);
@@ -2207,6 +2210,7 @@
 				952F3296283C303E00F616FF /* Constants+LocalizationKeys.swift in Sources */,
 				952F3254283C303E00F616FF /* ElementTextFieldStyle.swift in Sources */,
 				952F326F283C303E00F616FF /* BillingFormPhoneNumberText.swift in Sources */,
+				952C3B1A2847C69F00865840 /* MainBillingFormTextField.swift in Sources */,
 				952F326B283C303E00F616FF /* DefaultBillingFormHeaderCellStyle.swift in Sources */,
 				952F3246283C303E00F616FF /* Validator.swift in Sources */,
 				952F328D283C303E00F616FF /* CheckoutFont.swift in Sources */,
