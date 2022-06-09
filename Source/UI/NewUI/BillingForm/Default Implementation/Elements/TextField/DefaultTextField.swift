@@ -11,7 +11,7 @@ public struct DefaultTextField: ElementTextFieldStyle {
     public var normalBorderColor: UIColor = .mediumGray
     public var focusBorderColor: UIColor = .brandeisBlue
     public var errorBorderColor: UIColor = .tallPoppyRed
-    public var backgroundColor: UIColor = .white
+    public var backgroundColor: UIColor = .clear
     public var tintColor: UIColor = .codGray
     public var borderWidth: CGFloat = 1.0
     public var cornerRadius: CGFloat = 10.0

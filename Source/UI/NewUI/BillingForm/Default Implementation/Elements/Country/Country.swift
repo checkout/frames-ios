@@ -8,7 +8,7 @@ public class DefaultCountryFormButtonStyle: ElementButtonStyle {
     public var disabledTitleColor: UIColor = .mediumGray
     public var disabledTintColor: UIColor = .mediumGray
     public var activeTintColor: UIColor = .brandeisBlue
-    public var backgroundColor: UIColor = .white
+    public var backgroundColor: UIColor = .clear
     public var textColor: UIColor = .clear
     public var normalBorderColor: UIColor = .mediumGray
     public var focusBorderColor: UIColor = .brandeisBlue

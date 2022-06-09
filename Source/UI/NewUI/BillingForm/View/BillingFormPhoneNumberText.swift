@@ -41,6 +41,7 @@ final class BillingFormPhoneNumberText: BillingFormTextField {
     init(type: BillingFormCell?, tag: Int, phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate) {
         super.init(type: type, tag: tag)
         self.phoneNumberTextDelegate = phoneNumberTextDelegate
+        backgroundColor = .clear
         setup()
     }
 

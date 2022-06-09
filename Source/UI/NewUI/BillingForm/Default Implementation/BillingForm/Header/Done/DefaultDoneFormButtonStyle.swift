@@ -8,7 +8,7 @@ public struct DefaultDoneFormButtonStyle: ElementButtonStyle {
     public var disabledTitleColor: UIColor = .doveGray
     public var disabledTintColor: UIColor = .doveGray
     public var activeTintColor: UIColor = .brandeisBlue
-    public var backgroundColor: UIColor = .white
+    public var backgroundColor: UIColor = .clear
     public var normalBorderColor: UIColor = .clear
     public var focusBorderColor: UIColor = .clear
     public var errorBorderColor: UIColor = .clear
