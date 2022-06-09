@@ -32,6 +32,7 @@ struct BillingFormCustom1Style: BillingFormStyle {
 }
 
 struct BillingFormFullNameCustom1CellStyle : CellTextFieldStyle {
+    public var isMandatory: Bool = true
     public var isOptional: Bool = false
     public var backgroundColor: UIColor = Constants.whitelBackGroundColor
     public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Full Name", textColor: Constants.fontColorLabel)
@@ -41,6 +42,7 @@ struct BillingFormFullNameCustom1CellStyle : CellTextFieldStyle {
 }
 
 struct BillingFormAddressLine1Custom1CellStyle : CellTextFieldStyle {
+    var isMandatory: Bool = true
     public var isOptional: Bool = true
     public var backgroundColor: UIColor = Constants.whitelBackGroundColor
     public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Address Line 1*", textColor: Constants.fontColorLabel)
@@ -50,6 +52,7 @@ struct BillingFormAddressLine1Custom1CellStyle : CellTextFieldStyle {
 }
 
 struct BillingFormAddressLine2Custom1CellStyle : CellTextFieldStyle {
+    public var isMandatory: Bool = true
     public var isOptional: Bool = true
     public var backgroundColor: UIColor = Constants.whitelBackGroundColor
     public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Address Line 2", textColor: Constants.fontColorLabel)
@@ -59,6 +62,7 @@ struct BillingFormAddressLine2Custom1CellStyle : CellTextFieldStyle {
 }
 
 struct BillingFormCityCustom1CellStyle : CellTextFieldStyle {
+    public var isMandatory: Bool = true
     public var isOptional: Bool = false
     public var backgroundColor: UIColor = Constants.whitelBackGroundColor
     public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Town*", textColor: Constants.fontColorLabel)
@@ -68,6 +72,7 @@ struct BillingFormCityCustom1CellStyle : CellTextFieldStyle {
 }
 
 struct BillingFormStateCustom1CellStyle : CellTextFieldStyle {
+    public var isMandatory: Bool = true
     public var isOptional: Bool = false
     public var backgroundColor: UIColor = Constants.whitelBackGroundColor
     public var title: ElementStyle? = TitleLabelCustom1Style(text: "County", textColor: Constants.fontColorLabel)
@@ -77,6 +82,7 @@ struct BillingFormStateCustom1CellStyle : CellTextFieldStyle {
 }
 
 struct BillingFormPostcodeCustom1CellStyle : CellTextFieldStyle {
+    public var isMandatory: Bool = true
     public var isOptional: Bool = false
     public var backgroundColor: UIColor = Constants.whitelBackGroundColor
     public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Postcode*", textColor: Constants.fontColorLabel)
@@ -86,6 +92,7 @@ struct BillingFormPostcodeCustom1CellStyle : CellTextFieldStyle {
 }
 
 struct BillingFormCountryCustom1CellStyle: CellButtonStyle {
+    public var isMandatory: Bool = true
     public var backgroundColor: UIColor = Constants.whitelBackGroundColor
     public var button: ElementButtonStyle = CountryCustom1FormButtonStyle()
     public var isOptional: Bool = false
@@ -95,6 +102,7 @@ struct BillingFormCountryCustom1CellStyle: CellButtonStyle {
 }
 
 struct BillingFormPhoneNumberCustom1CellStyle : CellTextFieldStyle {
+    public var isMandatory: Bool = true
     public var isOptional: Bool = false
     public var backgroundColor: UIColor = Constants.whitelBackGroundColor
     public var title: ElementStyle? = TitleLabelCustom1Style(text:  "Phone*", textColor: Constants.fontColorLabel)
@@ -169,6 +177,8 @@ public struct TitleLabelCustom1Style: ElementStyle {
 }
 
 public struct TextFieldCustom1: ElementTextFieldStyle {
+    public var cornerRadius: CGFloat = 10
+    public var borderWidth: CGFloat = 10
     public var isHidden: Bool = false
     public var text: String = ""
     public var placeHolder: String = ""
