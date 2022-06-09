@@ -35,6 +35,10 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
     var updateLastCalledWithCountry: Country?
     var updateLastCalledWithTag: Int?
 
+
+    var phoneNumberIsUpdatedCalledTimes = 0
+    var phoneNumberIsUpdatedLastCalledWithNumber: String?
+    
     func doneButtonIsPressed(sender: UIViewController) {
         doneButtonIsPressedCalledTimes += 1
         doneButtonIsPressedLastCalledWithSender = sender
@@ -84,5 +88,10 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
         updateCalledTimes += 1
         updateLastCalledWithCountry = country
         updateLastCalledWithTag = tag
+    }
+
+    func phoneNumberIsUpdated(number: String) {
+        phoneNumberIsUpdatedCalledTimes += 1
+        phoneNumberIsUpdatedLastCalledWithNumber = number
     }
 }

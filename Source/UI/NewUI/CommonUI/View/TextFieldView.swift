@@ -1,6 +1,8 @@
 import UIKit
+import Checkout
 
 protocol TextFieldViewDelegate: AnyObject {
+    func phoneNumberIsUpdated(number: String)
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
@@ -34,7 +36,7 @@ class TextFieldView: UIView {
         view.backgroundColor = .white
         return view
     }()
-
+    
     private(set) lazy var hintLabel: UILabel? = {
         let view = UILabel()
         view.numberOfLines = 0
@@ -42,16 +44,16 @@ class TextFieldView: UIView {
         view.backgroundColor = .clear
         return view
     }()
-
+    
     private(set) lazy var textFieldContainer: UIView? = {
         let view = UIView()
         view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
-    private(set) lazy var textField: BillingFormTextField? = {
-        var view = BillingFormTextField(type: type, tag: tag)
+    
+    private(set) lazy var textField: UITextField? = {
+        var view: BillingFormTextField  = DefaultBillingFormTextField(type: type, tag: tag)
         if self.type?.index == BillingFormCell.phoneNumber(nil).index {
             view = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self)
         }
@@ -59,9 +61,9 @@ class TextFieldView: UIView {
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
-        return view
+        return  view
     }()
-
+    
     private(set) lazy var errorView: ErrorView? = {
         let view = ErrorView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -142,7 +144,7 @@ class TextFieldView: UIView {
 
 extension TextFieldView {
 
-    private func setupViewsInOrder() {
+    private func setupViewsInOrder(){
         backgroundColor = style?.backgroundColor
         setupHeaderLabel()
         setupMandatoryLabel()
@@ -151,7 +153,7 @@ extension TextFieldView {
         setupTextField()
         setupErrorView()
     }
-
+    
     private func setupHeaderLabel() {
         guard let headerLabel = headerLabel else { return }
         addSubview(headerLabel)
@@ -171,7 +173,7 @@ extension TextFieldView {
             mandatoryLabel.leadingAnchor.constraint(greaterThanOrEqualTo: headerLabel.trailingAnchor)
         ])
     }
-
+    
     private func setupHintLabel() {
         guard let hintLabel = hintLabel else { return }
         guard let headerLabel = headerLabel else { return }
@@ -228,37 +230,33 @@ extension TextFieldView {
 // MARK: - Text Field Delegate
 
 extension TextFieldView: UITextFieldDelegate {
-
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
         textFieldContainer?.layer.borderColor = style?.textfield.focusBorderColor.cgColor
     }
-
+    
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldEndEditing(textField: textField, replacementString: textField.text ?? "")
         return true
     }
-
+   
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldReturn()
         return false
     }
-
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
         return true
     }
-
+    
 }
 
 // MARK: - Phone Number Text Delegate
 
 extension TextFieldView: BillingFormPhoneNumberTextDelegate {
-    // TODO: implement phone number validation logic
-    func validateNumber() {
-
-    }
-
-    func updateCountryCode(code: Int) {
+    func phoneNumberIsUpdated(number: String) {
+        delegate?.phoneNumberIsUpdated(number: number)
     }
 }
