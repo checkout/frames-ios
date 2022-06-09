@@ -5,12 +5,10 @@ import Checkout
 class MockDelegate: CountrySelectionViewControllerDelegate {
     public var methodCalledTimes = 0
     public var methodLastCalledWithCountry: Country?
-    public var methodLastCalledWithTag: Int?
 
-    func onCountrySelected(country: Country, tag: Int) {
+    func onCountrySelected(country: Country) {
         methodCalledTimes += 1
         methodLastCalledWithCountry = country
-        methodLastCalledWithTag = tag
     }
 }
 

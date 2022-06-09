@@ -17,8 +17,8 @@ protocol BillingFormViewControllerDelegate: AnyObject {
     func doneButtonIsPressed(sender: UIViewController)
     func cancelButtonIsPressed(sender: UIViewController)
     func getViewForHeader(sender: UIViewController) -> UIView?
-    func update(country: Country, tag: Int)
-    func phoneNumberIsUpdated(number: String)
+    func update(country: Country)
+    func phoneNumberIsUpdated(number: String, tag: Int)
 }
 
 /**
@@ -211,8 +211,8 @@ extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate 
 // MARK: - Text Field Delegate
 
 extension BillingFormViewController: CellTextFieldDelegate {
-    func phoneNumberIsUpdated(number: String) {
-        delegate?.phoneNumberIsUpdated(number: number)
+    func phoneNumberIsUpdated(number: String, tag: Int) {
+        delegate?.phoneNumberIsUpdated(number: number, tag: tag)
     }
 
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
@@ -257,7 +257,7 @@ extension BillingFormViewController: CellButtonDelegate {
 }
 
 extension BillingFormViewController: CountrySelectionViewControllerDelegate {
-    func onCountrySelected(country: Country, tag: Int) {
-        delegate?.update(country: country, tag: tag)
+    func onCountrySelected(country: Country) {
+        delegate?.update(country: country)
     }
 }

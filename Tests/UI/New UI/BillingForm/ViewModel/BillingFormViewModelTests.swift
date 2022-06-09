@@ -39,7 +39,7 @@ class BillingFormViewModelTests: XCTestCase {
         let expectedType = BillingFormCell.fullName(nil)
         let text = "fullName"
         let tag = 0
-        let textField = BillingFormTextField(type: expectedType, tag: tag)
+        let textField = DefaultBillingFormTextField(type: expectedType, tag: tag)
         textField.text = text
         
         viewModel.validate(text: textField.text, cellStyle: expectedType, row: tag)
@@ -74,7 +74,7 @@ class BillingFormViewModelTests: XCTestCase {
         let data = BillingForm(name: name, address: address, phone: phone)
         viewModel.textValueOfCellType = textValueOfCellType
         viewModel.delegate = delegate
-        viewModel.update(country: country, tag: 0)
+        viewModel.update(country: country)
         viewModel.doneButtonIsPressed(sender: UIViewController())
         
         XCTAssertEqual(delegate.onTapDoneButtonCalledTimes, 1)

@@ -59,8 +59,6 @@ class SelectionButtonView: UIView {
         self.type = type
         self.style = style
 
-
-
         /// title label style
         titleLabel?.text = style.title?.text
         titleLabel?.font = style.title?.font

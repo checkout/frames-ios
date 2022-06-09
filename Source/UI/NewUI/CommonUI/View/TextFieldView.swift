@@ -2,7 +2,7 @@ import UIKit
 import Checkout
 
 protocol TextFieldViewDelegate: AnyObject {
-    func phoneNumberIsUpdated(number: String)
+    func phoneNumberIsUpdated(number: String, tag: Int)
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
@@ -52,18 +52,23 @@ class TextFieldView: UIView {
         return view
     }()
     
-    private(set) lazy var textField: UITextField? = {
+    private(set) lazy var textField: BillingFormTextField? = {
         var view: BillingFormTextField  = DefaultBillingFormTextField(type: type, tag: tag)
         if self.type?.index == BillingFormCell.phoneNumber(nil).index {
             view = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self)
         }
+        view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         view.autocorrectionType = .no
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         return  view
     }()
-    
+
+    @objc private func textFieldEditingChanged(textField: UITextField) {
+        delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: "")
+    }
+
     private(set) lazy var errorView: ErrorView? = {
         let view = ErrorView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -246,17 +251,12 @@ extension TextFieldView: UITextFieldDelegate {
         return false
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
-        return true
-    }
-    
 }
 
 // MARK: - Phone Number Text Delegate
 
 extension TextFieldView: BillingFormPhoneNumberTextDelegate {
-    func phoneNumberIsUpdated(number: String) {
-        delegate?.phoneNumberIsUpdated(number: number)
+    func phoneNumberIsUpdated(number: String, tag: Int) {
+        delegate?.phoneNumberIsUpdated(number: number, tag: tag)
     }
 }
