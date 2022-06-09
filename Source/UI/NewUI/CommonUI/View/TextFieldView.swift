@@ -27,6 +27,14 @@ class TextFieldView: UIView {
         return view
     }()
 
+    private(set) lazy var mandatoryLabel: UILabel? = {
+        let view = UILabel()
+        view.numberOfLines = 0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        return view
+    }()
+
     private(set) lazy var hintLabel: UILabel? = {
         let view = UILabel()
         view.numberOfLines = 0
@@ -37,8 +45,6 @@ class TextFieldView: UIView {
 
     private(set) lazy var textFieldContainer: UIView? = {
         let view = UIView()
-        view.layer.cornerRadius = 10.0
-        view.layer.borderWidth = 1.0
         view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -71,6 +77,7 @@ class TextFieldView: UIView {
         setupViewsInOrder()
         backgroundColor = style.backgroundColor
         updateHeaderLabel(style: style)
+        setupMandatoryLabel(style: style)
         updateHintLabel(style: style)
         updateTextFieldContainer(style: style)
         updateTextField(style: style, textFieldValue: textFieldValue)
@@ -83,11 +90,17 @@ class TextFieldView: UIView {
         headerLabel?.textColor = style.title?.textColor
     }
 
+    private func setupMandatoryLabel(style: CellTextFieldStyle) {
+        mandatoryLabel?.isHidden = style.isMandatory
+        mandatoryLabel?.text = Constants.LocalizationKeys.BillingForm.Cell.optionalInput
+        mandatoryLabel?.font = UIFont(graphikStyle: .regular, size:  Constants.Style.BillingForm.InputOptionalLabel.fontSize.rawValue)
+        mandatoryLabel?.textColor = .doveGray
+    }
+
     private func updateHintLabel(style: CellTextFieldStyle) {
         hintLabel?.text = style.hint?.text
         hintLabel?.font = style.hint?.font
         hintLabel?.textColor = style.hint?.textColor
-
     }
 
     private func updateTextFieldContainer(style: CellTextFieldStyle) {
@@ -96,6 +109,8 @@ class TextFieldView: UIView {
         style.textfield.normalBorderColor.cgColor
 
         textFieldContainer?.layer.borderColor = borderColor
+        textFieldContainer?.layer.cornerRadius = style.textfield.cornerRadius
+        textFieldContainer?.layer.borderWidth = style.textfield.borderWidth
         textFieldContainer?.backgroundColor = style.textfield.backgroundColor
     }
 
@@ -127,6 +142,7 @@ extension TextFieldView {
     private func setupViewsInOrder() {
         backgroundColor = style?.backgroundColor
         setupHeaderLabel()
+        setupMandatoryLabel()
         setupHintLabel()
         setupTextFieldContainer()
         setupTextField()
@@ -139,7 +155,17 @@ extension TextFieldView {
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: topAnchor),
             headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+
+    private func setupMandatoryLabel() {
+        guard let mandatoryLabel = mandatoryLabel else { return }
+        guard let headerLabel = headerLabel else { return }
+        addSubview(mandatoryLabel)
+        NSLayoutConstraint.activate([
+            mandatoryLabel.topAnchor.constraint(equalTo: topAnchor),
+            mandatoryLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            mandatoryLabel.leadingAnchor.constraint(greaterThanOrEqualTo: headerLabel.trailingAnchor)
         ])
     }
 

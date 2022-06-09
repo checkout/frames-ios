@@ -9,6 +9,7 @@
 "billingFormPhoneNumberHint" = "Phone Number";
 "billingAddressTitle" = "Billing address";
 "BillingFormCountryButtonTitle" = "Please select a country";
+"BillingFormOptional" = "Optional";
 "city" = "City";
 "cancel" = "Cancel";
 "done" = "Done";
