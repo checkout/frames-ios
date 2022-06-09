@@ -67,12 +67,12 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     /// update cell text values and error values dictionaries after updating billing form data object
     private func updateCellsValues() {
         style.cells.forEach { type in
-            let isOptional = type.style?.isOptional ?? false
+            let isMandatory = type.style?.isMandatory ?? true
             let value = type.getText(from: data)
             let hasValue = value != nil
 
-            textValueOfCellType[type.index] = hasValue ? value : (isOptional ? "" : nil)
-            errorFlagOfCellType[type.index] = hasValue ? false : !isOptional
+            textValueOfCellType[type.index] = hasValue ? value : (!isMandatory ? "" : nil)
+            errorFlagOfCellType[type.index] = hasValue ? false : isMandatory
         }
     }
 
@@ -138,7 +138,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         guard cellStyle.index < errorFlagOfCellType.count,
               cellStyle.index >= 0,
               let style = cellStyle.style,
-              !style.isOptional else {
+              style.isMandatory else {
             errorFlagOfCellType[cellStyle.index] = false
             return
         }
@@ -147,11 +147,11 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
     func validateTextFieldByCharacter(textField: UITextField, replacementString string: String) {
         guard let type = (textField as? BillingFormTextField)?.type else { return }
-
+        
         validate(text: string, cellStyle: type, row: textField.tag)
-
-        let shouldRemoveText = (textField.text?.count ?? 1 == 1) && !(type.style?.isOptional ?? false)
-
+        
+        let shouldRemoveText = (textField.text?.count ?? 1 == 1) && (type.style?.isMandatory ?? false)
+        
         if !string.isEmpty {
             textValueOfCellType[type.index] = string
         } else if shouldRemoveText {
@@ -167,11 +167,11 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
     private func validateTextOnEndEditing(textField: BillingFormTextField) {
         guard let type = textField.type else { return }
-
-        validate(text: textField.text, cellStyle: type, row: textField.tag)
-
-        let shouldSaveText = !(textField.text?.isEmpty ?? true) || (type.style?.isOptional ?? false)
-
+        
+        validate(text: textField.text , cellStyle: type, row: textField.tag)
+        
+        let shouldSaveText = !(textField.text?.isEmpty ?? true) || (type.style?.isMandatory ?? false)
+        
         textValueOfCellType[type.index] =  shouldSaveText ? textField.text : nil
 
         updatedRow = textField.type?.index

@@ -27,6 +27,14 @@ class TextFieldView: UIView {
         return view
     }()
 
+    private(set) lazy var mandatoryLabel: UILabel? = {
+        let view = UILabel()
+        view.numberOfLines = 0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        return view
+    }()
+
     private(set) lazy var hintLabel: UILabel? = {
         let view = UILabel()
         view.numberOfLines = 0
@@ -67,6 +75,7 @@ class TextFieldView: UIView {
         self.style = style
         setupViewsInOrder()
         updateHeaderLabel(style: style)
+        setupMandatoryLabel(style: style)
         updateHintLabel(style: style)
         updateTextFieldContainer(style: style)
         updateTextField(style: style, textFieldValue: textFieldValue)
@@ -77,6 +86,13 @@ class TextFieldView: UIView {
         headerLabel?.text = style.title?.text
         headerLabel?.font = style.title?.font
         headerLabel?.textColor = style.title?.textColor
+    }
+
+    private func setupMandatoryLabel(style: CellTextFieldStyle) {
+        mandatoryLabel?.isHidden = style.isMandatory
+        mandatoryLabel?.text = Constants.LocalizationKeys.BillingForm.Cell.optionalInput
+        mandatoryLabel?.font = UIFont(graphikStyle: .regular, size:  Constants.Style.BillingForm.InputOptionalLabel.fontSize.rawValue)
+        mandatoryLabel?.textColor = .doveGray
     }
 
     private func updateHintLabel(style: CellTextFieldStyle) {
@@ -124,6 +140,7 @@ extension TextFieldView {
     private func setupViewsInOrder() {
         backgroundColor = style?.backgroundColor
         setupHeaderLabel()
+        setupMandatoryLabel()
         setupHintLabel()
         setupTextFieldContainer()
         setupTextField()
@@ -136,7 +153,17 @@ extension TextFieldView {
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: topAnchor),
             headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+
+    private func setupMandatoryLabel() {
+        guard let mandatoryLabel = mandatoryLabel else { return }
+        guard let headerLabel = headerLabel else { return }
+        addSubview(mandatoryLabel)
+        NSLayoutConstraint.activate([
+            mandatoryLabel.topAnchor.constraint(equalTo: topAnchor),
+            mandatoryLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            mandatoryLabel.leadingAnchor.constraint(greaterThanOrEqualTo: headerLabel.trailingAnchor)
         ])
     }
 

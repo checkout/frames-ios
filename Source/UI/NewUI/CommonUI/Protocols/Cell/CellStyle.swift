@@ -1,7 +1,7 @@
 import UIKit
 
 public protocol CellStyle {
-    var isOptional: Bool { get }
+    var isMandatory: Bool { get }
     var backgroundColor: UIColor { get }
     var title: ElementStyle? { get }
     var hint: ElementStyle? { get }
