@@ -17,7 +17,7 @@ protocol BillingFormViewControllerDelegate: AnyObject {
     func doneButtonIsPressed(sender: UIViewController)
     func cancelButtonIsPressed(sender: UIViewController)
     func getViewForHeader(sender: UIViewController) -> UIView?
-    func update(country: Country)
+    func update(country: Country, tag: Int)
 }
 
 /**
@@ -243,15 +243,16 @@ extension BillingFormViewController: BillingFormHeaderCellDelegate {
 }
 
 extension BillingFormViewController: CellButtonDelegate {
-    func buttonIsPressed() {
+    func buttonIsPressed(tag: Int) {
         let countryViewController = CountrySelectionViewController()
         countryViewController.delegate = self
+        countryViewController.view.tag = tag
         navigationController?.pushViewController(countryViewController, animated: true)
     }
 }
 
 extension BillingFormViewController: CountrySelectionViewControllerDelegate {
-    func onCountrySelected(country: Country) {
-        delegate?.update(country: country)
+    func onCountrySelected(country: Country, tag: Int) {
+        delegate?.update(country: country, tag: tag)
     }
 }

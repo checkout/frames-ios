@@ -77,7 +77,9 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     }
 
     private func isCountryType(for row: Int) -> Bool {
-        style.cells[row].index == BillingFormCell.country(.none).index
+        let currentCellType = style.cells[row]
+        let countryType = BillingFormCell.country(nil)
+        return currentCellType.index == countryType.index
     }
 
     private func getTextFieldCell(tableView: UITableView, indexPath: IndexPath, sender: UIViewController?) -> UITableViewCell {
@@ -114,35 +116,35 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     /// update text fields with pre-filled text
     private func updateTextFieldStyle(for row: Int) -> CellTextFieldStyle? {
         var viewStyle = style.cells[row].style as? CellTextFieldStyle
-        if let text = textValueOfCellType[row] {
+        let currentCellTypeIndex = style.cells[row].index
+        if let text = textValueOfCellType[currentCellTypeIndex] {
             viewStyle?.textfield.text = text
         }
-        viewStyle?.error.isHidden = !(errorFlagOfCellType[row] ?? false)
+        viewStyle?.error?.isHidden = !(errorFlagOfCellType[currentCellTypeIndex] ?? false)
         return viewStyle
     }
 
     /// update country selection with pre-filled text
     private func updateCountrySelectionStyle(for row: Int) -> CellButtonStyle? {
         var viewStyle = style.cells[row].style as? CellButtonStyle
-        if let text = textValueOfCellType[row] {
+        let currentCellTypeIndex = style.cells[row].index
+        if let text = textValueOfCellType[currentCellTypeIndex] {
             viewStyle?.button.text = text
         }
-        viewStyle?.error.isHidden = !(errorFlagOfCellType[row] ?? false)
+        viewStyle?.error?.isHidden = !(errorFlagOfCellType[currentCellTypeIndex] ?? false)
         return viewStyle
     }
 
     // MARK: - Text Field logic
 
     func validate(text: String?, cellStyle: BillingFormCell, row: Int) {
-
-        guard cellStyle.index < errorFlagOfCellType.count,
-              cellStyle.index >= 0,
-              let style = cellStyle.style,
+        let currentCellTypeIndex = style.cells[row].index
+        guard let style = cellStyle.style,
               style.isMandatory else {
-            errorFlagOfCellType[cellStyle.index] = false
+            errorFlagOfCellType[currentCellTypeIndex] = false
             return
         }
-        errorFlagOfCellType[cellStyle.index] = cellStyle.validator.validate(text: text)
+        errorFlagOfCellType[currentCellTypeIndex] = cellStyle.validator.validate(text: text)
     }
 
     func validateTextFieldByCharacter(textField: UITextField, replacementString string: String) {
@@ -174,7 +176,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         
         textValueOfCellType[type.index] =  shouldSaveText ? textField.text : nil
 
-        updatedRow = textField.type?.index
+        updatedRow = textField.tag
     }
 }
 
@@ -214,11 +216,11 @@ extension DefaultBillingFormViewModel: BillingFormTextFieldDelegate {
 
 extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
 
-    func update(country: Country) {
+    func update(country: Country, tag: Int) {
         self.country = country
         let index = BillingFormCell.country(nil).index
         textValueOfCellType[index] = country.name
-        updatedRow = index
+        updatedRow = tag
     }
 
     func getViewForHeader(sender: UIViewController) -> UIView? {

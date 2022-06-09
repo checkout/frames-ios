@@ -38,12 +38,12 @@ class BillingFormViewModelTests: XCTestCase {
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
         let expectedType = BillingFormCell.fullName(nil)
         let text = "fullName"
-        let tag = 2
+        let tag = 0
         let textField = BillingFormTextField(type: expectedType, tag: tag)
         textField.text = text
 
         viewModel.validate(text: textField.text, cellStyle: expectedType, row: tag)
-        XCTAssertEqual( viewModel.errorFlagOfCellType[expectedType.index], false)
+        XCTAssertEqual(viewModel.errorFlagOfCellType[expectedType.index], false)
     }
 
     func testCallDelegateMethodTextFieldIsChanged() {
@@ -74,7 +74,7 @@ class BillingFormViewModelTests: XCTestCase {
         let data = BillingForm(name: name, address: address, phone: phone)
         viewModel.textValueOfCellType = textValueOfCellType
         viewModel.delegate = delegate
-        viewModel.update(country: country)
+        viewModel.update(country: country, tag: 0)
         viewModel.doneButtonIsPressed(sender: UIViewController())
 
         XCTAssertEqual(delegate.onTapDoneButtonCalledTimes, 1)

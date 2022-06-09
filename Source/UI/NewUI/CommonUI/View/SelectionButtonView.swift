@@ -97,7 +97,7 @@ class SelectionButtonView: UIView {
 
     private func updateErrorView(style: CellButtonStyle) {
         errorView?.update(style: style.error)
-        errorView?.isHidden = style.error.isHidden
+        errorView?.isHidden = style.error?.isHidden ?? true
     }
 }
 

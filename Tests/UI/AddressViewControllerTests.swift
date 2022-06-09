@@ -151,7 +151,7 @@ class AddressViewControllerTests: XCTestCase {
 
     func testSetCountryOnCountrySelected() {
         let country = Country(iso3166Alpha2: "FR", dialingCode: "")
-        addressViewController.onCountrySelected(country: country)
+        addressViewController.onCountrySelected(country: country, tag: 0)
         XCTAssertEqual(addressViewController.regionCodeSelected, country.iso3166Alpha2)
         XCTAssertEqual(addressViewController.addressView.countryRegionInputView.value.text, country.name)
     }

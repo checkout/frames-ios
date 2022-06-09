@@ -5,5 +5,5 @@ public protocol CellStyle {
     var backgroundColor: UIColor { get }
     var title: ElementStyle? { get }
     var hint: ElementStyle? { get }
-    var error: ElementErrorViewStyle { get set }
+    var error: ElementErrorViewStyle? { get set }
 }

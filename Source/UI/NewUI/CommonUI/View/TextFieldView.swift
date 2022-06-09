@@ -70,7 +70,7 @@ class TextFieldView: UIView {
 
     // MARK: - Update subviews style
 
-    func update(style: CellStyle?, type: BillingFormCell?, textFieldValue: String? = nil) {
+    func update(style: CellStyle?, type: BillingFormCell?, textFieldValue: String? = nil, tag: Int) {
         guard let type = type, let style = style as? CellTextFieldStyle else { return }
         self.type = type
         self.style = style
@@ -80,7 +80,7 @@ class TextFieldView: UIView {
         setupMandatoryLabel(style: style)
         updateHintLabel(style: style)
         updateTextFieldContainer(style: style)
-        updateTextField(style: style, textFieldValue: textFieldValue)
+        updateTextField(style: style, textFieldValue: textFieldValue, tag: tag)
         updateErrorView(style: style)
     }
 
@@ -104,7 +104,7 @@ class TextFieldView: UIView {
     }
 
     private func updateTextFieldContainer(style: CellTextFieldStyle) {
-        let borderColor = !style.error.isHidden ?
+        let borderColor = !(style.error?.isHidden ?? true) ?
         style.textfield.errorBorderColor.cgColor :
         style.textfield.normalBorderColor.cgColor
 
@@ -114,11 +114,12 @@ class TextFieldView: UIView {
         textFieldContainer?.backgroundColor = style.textfield.backgroundColor
     }
 
-    private func updateTextField(style: CellTextFieldStyle, textFieldValue: String?) {
+    private func updateTextField(style: CellTextFieldStyle, textFieldValue: String?, tag: Int) {
         if let textFieldValue = textFieldValue {
             textField?.text = textFieldValue
         }
         textField?.type = type
+        textField?.tag = tag
         textField?.keyboardType = style.textfield.isSupportingNumericKeyboard ? .phonePad : .default
         textField?.textContentType = style.textfield.isSupportingNumericKeyboard ? .telephoneNumber : .name
         textField?.text = style.textfield.text
@@ -130,8 +131,10 @@ class TextFieldView: UIView {
 
     private func updateErrorView(style: CellTextFieldStyle) {
         errorView?.update(style: style.error)
-        errorView?.isHidden = style.error.isHidden
-        textFieldContainerBottomAnchor?.constant = -(style.error.isHidden ? 0 : style.error.height)
+        let shouldHideErrorView = style.error?.isHidden ?? false
+        let expectedErrorViewHeight = style.error?.height ?? 0
+        errorView?.isHidden = shouldHideErrorView
+        textFieldContainerBottomAnchor?.constant = -(shouldHideErrorView ? 0 : expectedErrorViewHeight)
     }
 }
 

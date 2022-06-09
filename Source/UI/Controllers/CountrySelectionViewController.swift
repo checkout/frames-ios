@@ -98,7 +98,7 @@ public class CountrySelectionViewController: UIViewController,
     /// Tells the delegate that the specified row is now selected.
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let country = Country(iso3166Alpha2: filteredCountries[indexPath.row].1, dialingCode: nil)
-        delegate?.onCountrySelected(country: country)
+        delegate?.onCountrySelected(country: country, tag: view.tag)
         navigationController?.popViewController(animated: true)
     }
 

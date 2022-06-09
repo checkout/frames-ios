@@ -29,7 +29,7 @@ final class CellTextField: UITableViewCell {
         self.type = type
         self.style = style
         self.tag = tag
-        mainView?.update(style: style, type: type, textFieldValue: textFieldValue)
+        mainView?.update(style: style, type: type, textFieldValue: textFieldValue, tag: tag)
     }
 
     @available(*, unavailable)
