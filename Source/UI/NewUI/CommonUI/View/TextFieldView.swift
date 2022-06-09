@@ -219,7 +219,7 @@ extension TextFieldView {
         NSLayoutConstraint.activate([
             errorView.topAnchor.constraint(equalTo: textFieldContainer.bottomAnchor, constant: 10),
             errorView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            errorView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            errorView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 }
