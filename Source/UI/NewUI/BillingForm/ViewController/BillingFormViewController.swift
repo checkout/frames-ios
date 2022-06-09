@@ -18,6 +18,7 @@ protocol BillingFormViewControllerDelegate: AnyObject {
     func cancelButtonIsPressed(sender: UIViewController)
     func getViewForHeader(sender: UIViewController) -> UIView?
     func update(country: Country)
+    func phoneNumberIsUpdated(number: String)
 }
 
 /**
@@ -55,6 +56,7 @@ final class BillingFormViewController: UIViewController {
         view.showsHorizontalScrollIndicator = false
         view.allowsSelection = false
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
         view.register(CellTextField.self)
         view.register(CellButton.self)
         //TODO: 1240 backgroundColor should be injected and allowed by merchants to be customized.
@@ -213,6 +215,10 @@ extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate 
 // MARK: - Text Field Delegate
 
 extension BillingFormViewController: CellTextFieldDelegate {
+    func phoneNumberIsUpdated(number: String) {
+        delegate?.phoneNumberIsUpdated(number: number)
+    }
+
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         textFieldDelegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
     }

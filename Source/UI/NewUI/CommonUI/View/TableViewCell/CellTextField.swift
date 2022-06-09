@@ -1,6 +1,8 @@
 import UIKit
+import Checkout
 
 protocol CellTextFieldDelegate: AnyObject {
+    func phoneNumberIsUpdated(number: String)
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
@@ -22,6 +24,7 @@ final class CellTextField: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViewsInOrder()
+        backgroundColor = .clear
     }
 
     func update(type: BillingFormCell?, style: CellTextFieldStyle?, tag: Int, textFieldValue: String?) {
@@ -59,6 +62,10 @@ extension CellTextField {
 }
 
 extension CellTextField: TextFieldViewDelegate {
+    func phoneNumberIsUpdated(number: String) {
+        delegate?.phoneNumberIsUpdated(number: number)
+    }
+    
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
     }

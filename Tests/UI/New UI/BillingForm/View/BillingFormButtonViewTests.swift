@@ -14,25 +14,19 @@ class BillingFormButtonViewTests: XCTestCase {
     }
 
     func testHeaderLabelStyle() {
-        XCTAssertEqual(view.titleLabel?.text, style.button.text)
-        XCTAssertEqual(view.titleLabel?.font, style.button.font)
-        XCTAssertEqual(view.titleLabel?.textColor, style.title?.textColor)
+        XCTAssertEqual(view.countryLabel?.text, style.button.text)
+        XCTAssertEqual(view.countryLabel?.font, style.button.font)
+        XCTAssertEqual(view.countryLabel?.textColor, style.title?.textColor)
     }
 
-    func testViewStyle() {
-        XCTAssertEqual(view.layer.borderColor, style.button.normalBorderColor.cgColor)
-        XCTAssertEqual(view.backgroundColor, style.button.backgroundColor)
+    func testButtonStyle() {
+        XCTAssertEqual(view.button?.layer.borderColor, style.button.normalBorderColor.cgColor)
+        XCTAssertEqual(view.button?.isEnabled, style.button.isEnabled)
     }
 
     func testImageStyle() {
         XCTAssertEqual(view.image?.image, style.button.image)
         XCTAssertEqual(view.image?.tintColor, style.button.disabledTintColor)
-    }
-
-    func testButtonStyle() {
-        XCTAssertEqual(view.button?.isEnabled, style.button.isEnabled)
-        XCTAssertEqual(view.button?.tintColor, .clear)
-        XCTAssertEqual(view.button?.backgroundColor, .clear)
     }
 
     func testErrorStyle() {
