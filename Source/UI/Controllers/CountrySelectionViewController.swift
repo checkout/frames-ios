@@ -34,7 +34,6 @@ public class CountrySelectionViewController: UIViewController,
     override public func viewDidLoad() {
         super.viewDidLoad()
         customizeNavigationBarAppearance()
-        navigationController?.isNavigationBarHidden = false
         setup()
         view.backgroundColor = CheckoutTheme.primaryBackgroundColor
         navigationItem.title = "countryRegion".localized(forClass: CountrySelectionViewController.self)
@@ -48,6 +47,11 @@ public class CountrySelectionViewController: UIViewController,
         tableView.backgroundColor = CheckoutTheme.primaryBackgroundColor
         searchBar.barStyle = CheckoutTheme.barStyle
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "countryCell")
+    }
+
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
     }
 
     private func setup() {

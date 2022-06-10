@@ -120,8 +120,7 @@ struct BillingFormCustom2HeaderCellStyle: BillingFormHeaderCellStyle {
 }
 
 struct HeaderCustom2LabelFormStyle: ElementStyle {
-    //TODO: 1240 backgroundColor should be injected and allowed by merchants to be customized.
-    public var backgroundColor: UIColor = .yellow // does not work
+    public var backgroundColor: UIColor = .yellow
     public var isHidden: Bool = false
     public var text: String = "Billing Details"
     public var font: UIFont = UIFont.systemFont(ofSize: 24.0)
@@ -168,7 +167,6 @@ public struct DoneCustom2FormButtonStyle: ElementButtonStyle {
 }
 
 public struct TitleLabelCustom2Style: ElementStyle {
-    //TODO: 1240 backgroundColor should be injected and allowed by merchants to be customized. currently Not working.
     public var backgroundColor: UIColor = .purple
     public var isHidden: Bool = false
     public var text: String = ""
@@ -216,7 +214,6 @@ public class CountryCustom2FormButtonStyle: ElementButtonStyle {
     public var disabledTitleColor: UIColor = .mediumGray
     public var disabledTintColor: UIColor = .mediumGray
     public var activeTintColor: UIColor = .brandeisBlue
-    //TODO: 1240 backgroundColor not working for entire field
     public var backgroundColor: UIColor = Constants.grayBackGroundColor
     public var textColor: UIColor = .clear
     public var normalBorderColor: UIColor = .mediumGray

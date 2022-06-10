@@ -53,10 +53,7 @@ class TextFieldView: UIView {
     }()
     
     private(set) lazy var textField: BillingFormTextField? = {
-        var view: BillingFormTextField  = DefaultBillingFormTextField(type: type, tag: tag)
-        if self.type?.index == BillingFormCell.phoneNumber(nil).index {
-            view = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self)
-        }
+        let view = DefaultBillingFormTextField(type: type, tag: tag)
         view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         view.autocorrectionType = .no
         view.delegate = self
@@ -65,7 +62,17 @@ class TextFieldView: UIView {
         return  view
     }()
 
-    @objc private func textFieldEditingChanged(textField: UITextField) {
+    private(set) lazy var phoneNumberTextField: BillingFormTextField? = {
+        let view: BillingFormTextField  = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self)
+        view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        view.autocorrectionType = .no
+        view.delegate = self
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        return  view
+    }()
+
+    @objc func textFieldEditingChanged(textField: UITextField) {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: "")
     }
 
@@ -81,7 +88,6 @@ class TextFieldView: UIView {
         guard let type = type, let style = style as? CellTextFieldStyle else { return }
         self.type = type
         self.style = style
-        setupViewsInOrder()
         backgroundColor = style.backgroundColor
         updateHeaderLabel(style: style)
         setupMandatoryLabel(style: style)
@@ -89,6 +95,7 @@ class TextFieldView: UIView {
         updateTextFieldContainer(style: style)
         updateTextField(style: style, textFieldValue: textFieldValue, tag: tag)
         updateErrorView(style: style)
+        setupViewsInOrder()
     }
 
     private func updateHeaderLabel(style: CellTextFieldStyle) {
@@ -121,7 +128,7 @@ class TextFieldView: UIView {
         textFieldContainer?.backgroundColor = style.textfield.backgroundColor
     }
 
-    private func updateTextField(style: CellTextFieldStyle, textFieldValue: String?, tag: Int) {
+    private func update(textField: BillingFormTextField?, style: CellTextFieldStyle, textFieldValue: String?, tag: Int) {
         if let textFieldValue = textFieldValue {
             textField?.text = textFieldValue
         }
@@ -134,6 +141,20 @@ class TextFieldView: UIView {
         textField?.placeholder = style.textfield.placeHolder
         textField?.textColor = style.textfield.textColor
         textField?.tintColor = style.textfield.tintColor
+    }
+
+    func updateTextField(style: CellTextFieldStyle, textFieldValue: String?, tag: Int) {
+        phoneNumberTextField?.isHidden = !isPhoneNumberType()
+        textField?.isHidden = isPhoneNumberType()
+        if isPhoneNumberType() {
+            update(textField: phoneNumberTextField, style: style, textFieldValue: textFieldValue, tag: tag)
+            return
+        }
+        update(textField: textField, style: style, textFieldValue: textFieldValue, tag: tag)
+    }
+
+    private func isPhoneNumberType() -> Bool {
+        self.type?.index == BillingFormCell.phoneNumber(nil).index
     }
 
     private func updateErrorView(style: CellTextFieldStyle) {
@@ -193,7 +214,6 @@ extension TextFieldView {
     private func setupTextFieldContainer() {
         guard let textFieldContainer = textFieldContainer else { return }
         guard let hintLabel = hintLabel else { return }
-
         textFieldContainer.setContentHuggingPriority(.required, for: .vertical)
         addSubview(textFieldContainer)
         NSLayoutConstraint.activate([
@@ -205,17 +225,22 @@ extension TextFieldView {
     }
 
     private func setupTextField() {
-        guard let textFieldContainer = textFieldContainer else { return }
-        guard let textField = textField else { return }
-        let heightStyle = style?.textfield.height ?? Constants.Style.BillingForm.InputTextField.height.rawValue
-        textFieldContainer.addSubview(textField)
-        NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: textFieldContainer.topAnchor),
-            textField.leadingAnchor.constraint(equalTo: textFieldContainer.leadingAnchor, constant: 20),
-            textField.trailingAnchor.constraint(equalTo: textFieldContainer.trailingAnchor, constant: -20),
-            textField.bottomAnchor.constraint(equalTo: textFieldContainer.bottomAnchor),
-            textField.heightAnchor.constraint(equalToConstant: heightStyle)
-        ])
+        setup(textField: textField)
+        setup(textField: phoneNumberTextField)
+
+        func setup(textField: BillingFormTextField?){
+            guard let textFieldContainer = textFieldContainer else { return }
+            guard let textField = textField else { return }
+            let heightStyle = style?.textfield.height ?? Constants.Style.BillingForm.InputTextField.height.rawValue
+            textFieldContainer.addSubview(textField)
+            NSLayoutConstraint.activate([
+                textField.topAnchor.constraint(equalTo: textFieldContainer.topAnchor),
+                textField.leadingAnchor.constraint(equalTo: textFieldContainer.leadingAnchor, constant: 20),
+                textField.trailingAnchor.constraint(equalTo: textFieldContainer.trailingAnchor, constant: -20),
+                textField.bottomAnchor.constraint(equalTo: textFieldContainer.bottomAnchor),
+                textField.heightAnchor.constraint(equalToConstant: heightStyle)
+            ])
+        }
     }
 
     private func setupErrorView() {

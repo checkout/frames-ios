@@ -65,6 +65,7 @@ final class BillingFormHeaderCell: UIView {
         headerLabel?.text = style?.headerLabel.text
         headerLabel?.font = style?.headerLabel.font
         headerLabel?.textColor = style?.headerLabel.textColor
+        headerLabel?.backgroundColor = style?.headerLabel.backgroundColor
     }
 
     @objc private func doneAction() {
