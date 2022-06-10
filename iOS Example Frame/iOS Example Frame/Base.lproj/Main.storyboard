@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NL5-0J-36O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NL5-0J-36O">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="5376" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="GraphikLCG-Medium.otf">
+            <string>GraphikLCG-Medium</string>
+        </array>
         <array key="GraphikLCG-Regular.otf">
             <string>GraphikLCG-Regular</string>
         </array>
@@ -78,13 +81,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="3uh-A2-Fa1"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="GraphikLCG-Medium" family="Graphik LCG" pointSize="12"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="New UI"/>
-                                <buttonConfiguration key="configuration" style="filled" title="3DS Flow">
-                                    <fontDescription key="titleFontDescription" name="GraphikLCG-Medium" family="Graphik LCG" pointSize="12"/>
-                                    <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="baseBackgroundColor" red="0.043137254899999998" green="0.37254901959999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </buttonConfiguration>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="3DS Flow">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="5"/>
@@ -113,13 +115,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="cRv-gl-Qqz"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="GraphikLCG-Regular" family="Graphik LCG" pointSize="12"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="New UI"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Default UI">
-                                            <fontDescription key="titleFontDescription" name="GraphikLCG-Regular" family="Graphik LCG" pointSize="12"/>
-                                            <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="baseBackgroundColor" red="0.043137254899999998" green="0.37254901959999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        </buttonConfiguration>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Default UI">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="5"/>
@@ -135,13 +136,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="8QJ-EQ-SuR"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="GraphikLCG-Regular" family="Graphik LCG" pointSize="12"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="New UI"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Custom 1">
-                                            <fontDescription key="titleFontDescription" name="GraphikLCG-Regular" family="Graphik LCG" pointSize="12"/>
-                                            <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="baseBackgroundColor" red="0.043137254899999998" green="0.37254901959999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        </buttonConfiguration>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Custom 1">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="5"/>
@@ -157,13 +157,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Qky-qA-PgF"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="GraphikLCG-Regular" family="Graphik LCG" pointSize="12"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="New UI"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Custom 2">
-                                            <fontDescription key="titleFontDescription" name="GraphikLCG-Regular" family="Graphik LCG" pointSize="12"/>
-                                            <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="baseBackgroundColor" red="0.043137254899999998" green="0.37254901959999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        </buttonConfiguration>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Custom 2">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="5"/>
@@ -181,13 +180,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="VPx-J8-h56"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="GraphikLCG-Medium" family="Graphik LCG" pointSize="12"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="New UI"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Old">
-                                    <fontDescription key="titleFontDescription" name="GraphikLCG-Medium" family="Graphik LCG" pointSize="12"/>
-                                    <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="baseBackgroundColor" red="0.043137254899999998" green="0.37254901959999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </buttonConfiguration>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Old">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="5"/>
@@ -212,13 +210,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="DMS-Op-SP3"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="GraphikLCG-Medium" family="Graphik LCG" pointSize="12"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="New UI"/>
-                                <buttonConfiguration key="configuration" style="filled" title="ApplePay payment data">
-                                    <fontDescription key="titleFontDescription" name="GraphikLCG-Medium" family="Graphik LCG" pointSize="12"/>
-                                    <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="baseBackgroundColor" red="0.043137254899999998" green="0.37254901959999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </buttonConfiguration>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="ApplePay payment data">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="5"/>
