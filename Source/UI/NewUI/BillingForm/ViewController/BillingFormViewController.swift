@@ -161,7 +161,7 @@ extension BillingFormViewController {
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(
                 equalTo: view.safeTopAnchor,
-                constant: 20),
+                constant: 0),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             headerView.heightAnchor.constraint(
