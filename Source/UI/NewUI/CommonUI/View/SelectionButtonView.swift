@@ -59,8 +59,6 @@ class SelectionButtonView: UIView {
         self.type = type
         self.style = style
 
-
-
         /// title label style
         titleLabel?.text = style.title?.text
         titleLabel?.font = style.title?.font
@@ -97,7 +95,7 @@ class SelectionButtonView: UIView {
 
     private func updateErrorView(style: CellButtonStyle) {
         errorView?.update(style: style.error)
-        errorView?.isHidden = style.error.isHidden
+        errorView?.isHidden = style.error?.isHidden ?? true
     }
 }
 

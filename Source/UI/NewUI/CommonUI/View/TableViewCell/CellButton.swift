@@ -1,7 +1,7 @@
 import UIKit
 
 protocol CellButtonDelegate: AnyObject {
-    func buttonIsPressed()
+    func buttonIsPressed(tag: Int)
 }
 // TODO: This is unfinished work. it will be finished in the Country selection ticket.
 final class CellButton: UITableViewCell {
@@ -56,6 +56,6 @@ extension CellButton {
 
 extension CellButton: SelectionButtonViewDelegate {
     func buttonIsPressed() {
-        delegate?.buttonIsPressed()
+        delegate?.buttonIsPressed(tag: tag)
     }
 }

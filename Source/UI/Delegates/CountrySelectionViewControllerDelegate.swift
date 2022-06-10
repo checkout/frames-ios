@@ -6,6 +6,5 @@ public protocol CountrySelectionViewControllerDelegate: AnyObject {
     /// Executed when an user select a country
     ///
     /// - parameter country: Country selected
-    /// - parameter regionCode: Region code of the selected country
     func onCountrySelected(country: Country)
 }
