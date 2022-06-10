@@ -2,7 +2,6 @@ import Checkout
 
 protocol BillingFormViewModelDelegate: AnyObject {
     func onTapDoneButton(data: BillingForm)
-    func updateCountryCode(code: Int)
 }
 
 protocol BillingFormViewModelEditingDelegate: AnyObject {
