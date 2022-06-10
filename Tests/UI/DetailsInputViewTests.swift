@@ -35,9 +35,11 @@ class DetailsInputViewTests: XCTestCase {
     }
 
     func testDefaultChevronColor() {
+        let previousChevronColor = CheckoutTheme.chevronColor
         CheckoutTheme.chevronColor = .cyan
         let detailsInputView = DetailsInputView()
         XCTAssertEqual(detailsInputView.button.tintColor, .cyan)
+        CheckoutTheme.chevronColor = previousChevronColor
     }
 
     func testCustomizedChevronColor() {

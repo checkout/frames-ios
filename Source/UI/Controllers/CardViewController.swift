@@ -49,7 +49,8 @@ public class CardViewController: UIViewController,
 
     var topConstraint: NSLayoutConstraint?
 
-    private var suppressNextLog = false
+    private var loggedForCurrentCorrelationID = false
+
     public var isNewUI = false
     // TODO: [Will updated in the next ticket].
     private var countryCode = 0
@@ -150,14 +151,14 @@ public class CardViewController: UIViewController,
         registerKeyboardHandlers(notificationCenter: notificationCenter,
                                  keyboardWillShow: #selector(keyboardWillShow),
                                  keyboardWillHide: #selector(keyboardWillHide))
-
-        if suppressNextLog {
-            suppressNextLog = false
-        } else {
-            checkoutAPIService?.logger.log(.paymentFormPresented)
-        }
         navigationController?.isNavigationBarHidden = false
+        
+        guard let checkoutAPIService = checkoutAPIService else {
+            return
+        }
 
+        logPaymentFormPresented(isNextLogSuppressed: loggedForCurrentCorrelationID,
+                                checkoutAPIService: checkoutAPIService)
     }
 
     /// Notifies the view controller that its view is about to be removed from a view hierarchy.
@@ -448,6 +449,15 @@ public class CardViewController: UIViewController,
 
     public func onChangeCvv() {
         validateFieldsValues()
+    }
+
+    // MARK: Utility Methods
+    private func logPaymentFormPresented(isNextLogSuppressed: Bool,
+                                         checkoutAPIService: CheckoutAPIProtocol) {
+        if !isNextLogSuppressed {
+            checkoutAPIService.logger.log(.paymentFormPresented(theme: Theme(), locale: Locale.current))
+            loggedForCurrentCorrelationID = true
+        }
     }
 }
 

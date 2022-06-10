@@ -48,7 +48,7 @@ final class FramesEventLogger: FramesEventLogging {
             typeIdentifier: framesLogEvent.typeIdentifier,
             time: dateProvider.currentDate,
             monitoringLevel: framesLogEvent.monitoringLevel,
-            properties: framesLogEvent.properties.mapKeys(\.rawValue))
+            properties: framesLogEvent.rawProperties)
 
         checkoutEventLogger.log(event: event)
     }
