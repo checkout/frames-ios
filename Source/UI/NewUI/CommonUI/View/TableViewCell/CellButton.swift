@@ -3,7 +3,7 @@ import UIKit
 protocol CellButtonDelegate: AnyObject {
     func buttonIsPressed()
 }
-// TODO: This is unfinished work. it will be finished in the Country selection ticket.
+
 final class CellButton: UITableViewCell {
     weak var delegate: CellButtonDelegate?
     var type: BillingFormCell?
