@@ -159,12 +159,8 @@ extension BillingFormViewController {
             headerView.topAnchor.constraint(
                 equalTo: view.safeTopAnchor,
                 constant: 20),
-            headerView.leadingAnchor.constraint(
-                equalTo: view.safeLeadingAnchor,
-                constant: 20),
-            headerView.trailingAnchor.constraint(
-                equalTo: view.safeTrailingAnchor,
-                constant: -20),
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             headerView.heightAnchor.constraint(
                 equalToConstant: 130)
         ])
