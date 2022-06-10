@@ -207,7 +207,7 @@ public class CardViewController: UIViewController,
     @objc func onTapAddressView() {
 
         defer {
-            suppressNextLog = true
+            loggedForCurrentCorrelationID = true
             checkoutAPIService?.logger.log(.billingFormPresented)
         }
         guard isNewUI,

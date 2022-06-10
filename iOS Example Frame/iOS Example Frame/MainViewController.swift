@@ -168,9 +168,9 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
             return
         }
 
-        let threedsWebViewController = ThreedsWebViewController(successUrl: Self.successURL, failUrl: Self.failureURL)
+        let threedsWebViewController = ThreedsWebViewController(checkoutAPIService: checkoutAPIService, successUrl: Self.successURL, failUrl: Self.failureURL)
         threedsWebViewController.delegate = self
-        threedsWebViewController.url = threeDSURL.absoluteString
+        threedsWebViewController.authURL = threeDSURL
 
         present(threedsWebViewController, animated: true, completion: nil)
     }

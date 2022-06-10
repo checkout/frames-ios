@@ -37,6 +37,21 @@ final class FramesEventLogger: FramesEventLogging {
       self.dateProvider = dateProvider
     }
 
+    static func buildRemoteProcessorMetadata(environment: Environment,
+                                             appPackageName: String,
+                                             appPackageVersion: String,
+                                             uiDevice: UIDevice) -> RemoteProcessorMetadata {
+
+            return RemoteProcessorMetadata(productIdentifier: Constants.productName,
+                                           productVersion: Constants.version,
+                                           environment: environment.rawValue,
+                                           appPackageName: appPackageName,
+                                           appPackageVersion: appPackageVersion,
+                                           deviceName: uiDevice.modelName,
+                                           platform: "iOS",
+                                           osVersion: uiDevice.systemVersion)
+        }
+
     // MARK: - FramesEventLogging
 
     func log(_ framesLogEvent: FramesLogEvent) {
