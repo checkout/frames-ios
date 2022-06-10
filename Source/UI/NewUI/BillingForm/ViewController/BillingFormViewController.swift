@@ -59,6 +59,8 @@ final class BillingFormViewController: UIViewController {
         view.backgroundColor = .clear
         view.register(CellTextField.self)
         view.register(CellButton.self)
+        //TODO: backgroundColor should be injected and allowed by merchants to be customized.
+        view.backgroundColor = .brown
 
         return view
     }()
@@ -196,6 +198,7 @@ extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //TODO: backgroundColor should be injected and allowed by merchants to be customized for each cell background.
         tableViewDelegate?.tableView(tableView: tableView, cellForRowAt: indexPath, sender: self) ?? UITableViewCell()
     }
 
