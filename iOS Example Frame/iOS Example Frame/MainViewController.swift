@@ -84,7 +84,8 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     }
 
     @IBAction func goToCustom1PaymentPage(_ sender: Any) {
-        let billingFormStyle = BillingFormFactory.defaultBillingFormStyle
+
+        let billingFormCustom1Style = BillingFormCustom1Style()
         let address = Address(addressLine1: "Test line Custom 1",
                               addressLine2: nil,
                               city: "London Custom 1",
@@ -102,13 +103,16 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
                                                 billingFormData: billingForm,
                                                 cardHolderNameState: .normal,
                                                 billingDetailsState: .required,
-                                                billingFormStyle: billingFormStyle,
+                                                billingFormStyle: billingFormCustom1Style,
                                                 defaultRegionCode: "GB")
 
         viewController.delegate = self
 
         if let billingFormAddress = viewController.billingFormData?.address,
            let billingFormPhone = viewController.billingFormData?.phone {
+            // should be able to set the title of address view controller.
+            //viewController.addressViewController.title = "Billing"
+            viewController.addressViewController.navigationController?.toolbar.tintColor = .red
             viewController.addressViewController.setFields(address: billingFormAddress, phone: billingFormPhone)
         }
         cardViewController = viewController
