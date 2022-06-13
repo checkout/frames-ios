@@ -59,10 +59,6 @@ final class BillingFormViewController: UIViewController {
         view.backgroundColor = .clear
         view.register(CellTextField.self)
         view.register(CellButton.self)
-        //TODO: 1240 backgroundColor should be injected and allowed by merchants to be customized.
-        //view.backgroundColor = .brown
-        view.backgroundColor = UIColor(red: 240/255.0, green: 245/255.0, blue: 249/255.0, alpha: 1.0)
-
         return view
     }()
 
