@@ -78,8 +78,8 @@ class SelectionButtonView: UIView {
         button?.backgroundColor = style.button.backgroundColor
         button?.clipsToBounds = true
         button?.layer.borderColor = style.button.normalBorderColor.cgColor
-        button?.layer.cornerRadius = 10.0
-        button?.layer.borderWidth = 1.0
+        button?.layer.cornerRadius = style.button.cornerRadius
+        button?.layer.borderWidth = style.button.borderWidth
 
         updateErrorView(style: style)
     }

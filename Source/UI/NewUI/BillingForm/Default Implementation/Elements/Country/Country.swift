@@ -17,4 +17,6 @@ public class DefaultCountryFormButtonStyle: ElementButtonStyle {
     public var isEnabled: Bool = true
     public var height: Double = Constants.Style.BillingForm.InputCountryButton.height.rawValue
     public var width: Double = Constants.Style.BillingForm.InputCountryButton.width.rawValue
+    public var cornerRadius: CGFloat = Constants.Style.BillingForm.InputCountryButton.cornerRadius.rawValue
+    public var borderWidth: CGFloat = Constants.Style.BillingForm.InputCountryButton.borderWidth.rawValue
 }

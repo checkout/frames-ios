@@ -143,6 +143,8 @@ struct CancelCustom1ButtonFormStyle: ElementButtonStyle {
     public var isEnabled: Bool = true
     public var height: Double = 44
     public var width: Double = 53
+    public var cornerRadius: CGFloat = 10
+    public var borderWidth: CGFloat = 5
 }
 
 public struct DoneCustom1FormButtonStyle: ElementButtonStyle {
@@ -163,6 +165,8 @@ public struct DoneCustom1FormButtonStyle: ElementButtonStyle {
     public var isEnabled: Bool = true
     public var height: Double = 44
     public var width: Double = 53
+    public var cornerRadius: CGFloat = 10
+    public var borderWidth: CGFloat = 3
 }
 
 public struct TitleLabelCustom1Style: ElementStyle {
@@ -222,6 +226,8 @@ public class CountryCustom1FormButtonStyle: ElementButtonStyle {
     public var isEnabled: Bool = true
     public var height: Double = 56
     public var width: Double = 0
+    public var cornerRadius: CGFloat = 10
+    public var borderWidth: CGFloat = 3
 }
 
 public struct HintInputCustom1LabelStyle: ElementStyle {

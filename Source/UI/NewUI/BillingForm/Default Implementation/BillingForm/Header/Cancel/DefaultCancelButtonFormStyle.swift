@@ -17,4 +17,6 @@ public struct DefaultCancelButtonFormStyle: ElementButtonStyle {
     public var isEnabled: Bool = true
     public var height: Double = Constants.Style.BillingForm.CancelButton.height.rawValue
     public var width: Double = Constants.Style.BillingForm.CancelButton.width.rawValue
+    public var cornerRadius: CGFloat = 0
+    public var borderWidth: CGFloat = 0
 }

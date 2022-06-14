@@ -17,4 +17,6 @@ public struct DefaultDoneFormButtonStyle: ElementButtonStyle {
     public var isEnabled: Bool = true
     public var height: Double = Constants.Style.BillingForm.DoneButton.height.rawValue
     public var width: Double = Constants.Style.BillingForm.DoneButton.width.rawValue
+    public var cornerRadius: CGFloat = 0
+    public var borderWidth: CGFloat = 0
 }

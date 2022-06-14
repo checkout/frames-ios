@@ -47,6 +47,8 @@ extension Constants {
                 case height = 56
                 case width = 0
                 case fontSize = 15
+                case cornerRadius = 10
+                case borderWidth = 1
             }
 
         }
