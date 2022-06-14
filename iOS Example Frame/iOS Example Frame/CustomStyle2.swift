@@ -13,7 +13,7 @@ private enum Constants {
     static let fontColorLabel = UIColor(red: 35/255.0, green: 38/255.0, blue: 39/255.0, alpha: 1.0)
     static let grayBackGroundColor = UIColor(red: 249/255.0, green: 249/255.0, blue: 249/255.0, alpha: 1.0)
     static let whiteBackGroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
-    static let errorLabelBackgroundColor = UIColor(red: 79/255.0, green: 191/255.0, blue: 174/255.0, alpha: 1.0)
+    static let errorLabelBackgroundColor =  UIColor(red: 173/255.0, green: 40/255.0, blue: 62/255.0, alpha: 1.0)
     static let greenBackGroundColor = UIColor(red: 79/255.0, green: 191/255.0, blue: 174/255.0, alpha: 1.0)
     static let textFieldBackGroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
 }
@@ -178,7 +178,7 @@ public struct TitleLabelCustom2Style: ElementStyle {
 
 public struct TextFieldCustom2: ElementTextFieldStyle {
     public var cornerRadius: CGFloat = 0
-    public var borderWidth: CGFloat = 0
+    public var borderWidth: CGFloat = 1.0
     public var isHidden: Bool = false
     public var text: String = ""
     public var placeHolder: String = ""
