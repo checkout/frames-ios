@@ -47,8 +47,6 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
                                                       billingFormData: cardFormData.billingForm,
                                                       billingFormStyle: cardFormData.billingFormStyle)
         cardViewController?.delegate = self
-        cardViewController?.rightBarButtonItem = UIBarButtonItem(title: "Pay", style: .done, target: nil, action: nil)
-        cardViewController?.setDefault(regionCode: "GB")
     }
 
     // MARK: IBAction Methods.
@@ -67,7 +65,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     @IBAction func goToCustom1PaymentPage(_ sender: Any) {
 
         let billingFormCustom1Style = BillingFormCustom1Style()
-        let address = Address(addressLine1: "Test line Custom 1",
+        let address = Address(addressLine1: "Test line1 Custom 1",
                               addressLine2: nil,
                               city: "London Custom 1",
                               state: "London Custom 1",
@@ -201,6 +199,8 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
            let billingFormPhone = viewController.billingFormData?.phone {
             viewController.addressViewController.setFields(address: billingFormAddress, phone: billingFormPhone)
         }
+        viewController.rightBarButtonItem = UIBarButtonItem(title: "Pay", style: .done, target: nil, action: nil)
+        viewController.setDefault(regionCode: "GB")
         return viewController
     }
 

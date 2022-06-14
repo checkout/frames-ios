@@ -13,7 +13,7 @@ private enum Constants {
     static let fontColorLabel = UIColor(red: 35/255.0, green: 38/255.0, blue: 39/255.0, alpha: 1.0)
     static let grayBackGroundColor = UIColor(red: 249/255.0, green: 249/255.0, blue: 249/255.0, alpha: 1.0)
     static let whiteBackGroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
-    static let errorLabelBackgroundColor = UIColor(red: 79/255.0, green: 191/255.0, blue: 74/255.0, alpha: 1.0)
+    static let errorLabelBackgroundColor = UIColor(red: 226/255.0, green: 27/255.0, blue: 46/255.0, alpha: 1.0)
     static let greenBackGroundColor = UIColor(red: 79/255.0, green: 191/255.0, blue: 174/255.0, alpha: 1.0)
     static let textFieldBackGroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
 }
@@ -55,7 +55,7 @@ struct BillingFormAddressLine2Custom2CellStyle : CellTextFieldStyle {
     public var isMandatory: Bool = true
     public var isOptional: Bool = true
     public var backgroundColor: UIColor = Constants.grayBackGroundColor
-    public var title: ElementStyle? = TitleLabelCustom2Style(text:  "Address Line 2", textColor: Constants.fontColorLabel)
+    public var title: ElementStyle? = TitleLabelCustom2Style(text:  "Address Line 2*", textColor: Constants.fontColorLabel)
     public var hint: ElementStyle? = nil
     public var textfield: ElementTextFieldStyle = TextFieldCustom2()
     public var error: ElementErrorViewStyle? = ErrorInputCustom2LabelStyle(text: "Enter Address Line 2", textColor: Constants.errorLabelBackgroundColor)
@@ -120,7 +120,7 @@ struct BillingFormCustom2HeaderCellStyle: BillingFormHeaderCellStyle {
 }
 
 struct HeaderCustom2LabelFormStyle: ElementStyle {
-    public var backgroundColor: UIColor = .yellow
+    public var backgroundColor: UIColor = .clear
     public var isHidden: Bool = false
     public var text: String = "Billing Details"
     public var font: UIFont = UIFont.systemFont(ofSize: 24.0)
@@ -171,7 +171,7 @@ public struct DoneCustom2FormButtonStyle: ElementButtonStyle {
 }
 
 public struct TitleLabelCustom2Style: ElementStyle {
-    public var backgroundColor: UIColor = .purple
+    public var backgroundColor: UIColor = .clear
     public var isHidden: Bool = false
     public var text: String = ""
     public var font: UIFont = UIFont(name: "Helvetica Neue", size: 14)!
@@ -180,7 +180,7 @@ public struct TitleLabelCustom2Style: ElementStyle {
 
 public struct TextFieldCustom2: ElementTextFieldStyle {
     public var cornerRadius: CGFloat = 10
-    public var borderWidth: CGFloat = 10
+    public var borderWidth: CGFloat = 1.0
     public var isHidden: Bool = false
     public var text: String = ""
     public var placeHolder: String = ""
@@ -201,7 +201,7 @@ public struct TextFieldCustom2: ElementTextFieldStyle {
 public struct ErrorInputCustom2LabelStyle: ElementErrorViewStyle {
     public var isHidden: Bool = true
     public var isWarningImageOnLeft: Bool = true
-    public var backgroundColor: UIColor = UIColor(red: 240/255.0, green: 245/255.0, blue: 249/255.0, alpha: 1.0)
+    public var backgroundColor: UIColor = .clear
     public var tintColor: UIColor = .tallPoppyRed
     public var text: String = ""
     public var font: UIFont = UIFont(name: "Helvetica Neue", size: 14)!
@@ -228,7 +228,7 @@ public class CountryCustom2FormButtonStyle: ElementButtonStyle {
     public var height: Double = 56
     public var width: Double = 0
     public var cornerRadius: CGFloat = 10
-    public var borderWidth: CGFloat = 3
+    public var borderWidth: CGFloat = 1s
 }
 
 public struct HintInputCustom2LabelStyle: ElementStyle {

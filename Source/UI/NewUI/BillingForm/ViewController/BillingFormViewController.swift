@@ -59,8 +59,6 @@ final class BillingFormViewController: UIViewController {
         view.backgroundColor = .clear
         view.register(CellTextField.self)
         view.register(CellButton.self)
-        view.backgroundColor = UIColor(red: 240/255.0, green: 245/255.0, blue: 249/255.0, alpha: 1.0)
-
         return view
     }()
 
