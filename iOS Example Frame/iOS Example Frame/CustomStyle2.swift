@@ -113,7 +113,6 @@ struct BillingFormPhoneNumberCustom2CellStyle : CellTextFieldStyle {
 
 struct BillingFormCustom2HeaderCellStyle: BillingFormHeaderCellStyle {
     public var backgroundColor: UIColor = .clear
-    public var backgroundColor = Constants.greenBackGroundColor
     public var headerLabel: ElementStyle = HeaderCustom2LabelFormStyle()
     public var cancelButton: ElementButtonStyle = CancelCustom2ButtonFormStyle()
     public var doneButton: ElementButtonStyle = DoneCustom2FormButtonStyle()
@@ -228,7 +227,7 @@ public class CountryCustom2FormButtonStyle: ElementButtonStyle {
     public var height: Double = 56
     public var width: Double = 0
     public var cornerRadius: CGFloat = 10
-    public var borderWidth: CGFloat = 1s
+    public var borderWidth: CGFloat = 1
 }
 
 public struct HintInputCustom2LabelStyle: ElementStyle {
