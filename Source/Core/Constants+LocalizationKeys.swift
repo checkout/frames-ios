@@ -3,7 +3,7 @@ extension Constants {
     struct LocalizationKeys {
 
         struct BillingForm {
-            
+
             struct Cell {
                 static let optionalInput = "BillingFormOptional".localized
             }

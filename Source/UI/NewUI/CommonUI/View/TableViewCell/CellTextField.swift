@@ -65,7 +65,7 @@ extension CellTextField: TextFieldViewDelegate {
     func phoneNumberIsUpdated(number: String, tag: Int) {
         delegate?.phoneNumberIsUpdated(number: number, tag: tag)
     }
-    
+
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
     }
