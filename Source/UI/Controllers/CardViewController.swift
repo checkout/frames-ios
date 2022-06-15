@@ -50,7 +50,11 @@ public class CardViewController: UIViewController,
     var topConstraint: NSLayoutConstraint?
 
     private var suppressNextLog = false
-    public var isNewUI = false
+    public var isNewUI = false {
+        didSet {
+            cardView.isNewUI = isNewUI
+        }
+    }
     // MARK: - Initialization
 
     /// Returns a newly initialized view controller with the cardholder's name and billing details
@@ -127,6 +131,7 @@ public class CardViewController: UIViewController,
         // add gesture recognizer
         cardView.addressTapGesture.addTarget(self, action: #selector(onTapAddressView))
         cardView.billingDetailsInputView.addGestureRecognizer(cardView.addressTapGesture)
+        cardView.delegate = self
 
         addressViewController.delegate = self
         addTextFieldsDelegate()
@@ -459,5 +464,12 @@ extension CardViewController: BillingFormViewModelDelegate {
         validateFieldsValues()
         // return to CardViewController
         self.topConstraint?.isActive = false
+    }
+}
+
+
+extension CardViewController: CardViewDelegate {
+    func buttonIsPressed() {
+        onTapAddressView()
     }
 }

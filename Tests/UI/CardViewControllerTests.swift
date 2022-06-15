@@ -12,7 +12,7 @@ class CardViewControllerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-
+        UIFont.loadAllCheckoutFonts
         cardViewController = CardViewController()
         cardViewControllerDelegate = CardViewControllerMockDelegate()
         stubCheckoutAPIService = StubCheckoutAPIService()
@@ -33,6 +33,7 @@ class CardViewControllerTests: XCTestCase {
         let cardViewController = CardViewController()
         XCTAssertEqual(cardViewController.cardHolderNameState, .required)
         XCTAssertEqual(cardViewController.billingDetailsState, .required)
+        cardViewController.isNewUI = false
         cardViewController.viewDidLoad()
         XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 5)
         cardViewController.viewDidLayoutSubviews()
@@ -54,6 +55,7 @@ class CardViewControllerTests: XCTestCase {
         let cardViewController = CardViewController(nibName: nil, bundle: nil)
         XCTAssertEqual(cardViewController.cardHolderNameState, .required)
         XCTAssertEqual(cardViewController.billingDetailsState, .required)
+        cardViewController.isNewUI = false
         cardViewController.viewDidLoad()
         XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 5)
     }
@@ -63,6 +65,7 @@ class CardViewControllerTests: XCTestCase {
         let cardViewController = CardViewController(coder: coder)
         XCTAssertEqual(cardViewController?.cardHolderNameState, .required)
         XCTAssertEqual(cardViewController?.billingDetailsState, .required)
+        cardViewController?.isNewUI = false
         cardViewController?.viewDidLoad()
         XCTAssertEqual(cardViewController?.cardView.stackView.subviews.count, 5)
     }

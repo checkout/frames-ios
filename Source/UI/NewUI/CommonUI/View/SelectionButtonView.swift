@@ -1,6 +1,6 @@
 import UIKit
 
-protocol SelectionButtonViewDelegate: AnyObject {
+public protocol SelectionButtonViewDelegate: AnyObject {
     func buttonIsPressed()
 }
 
@@ -12,6 +12,14 @@ class SelectionButtonView: UIView {
         let view = UILabel()
         view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private(set) lazy var hintLabel: UILabel? = {
+        let view = UILabel()
+        view.numberOfLines = 0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
         return view
     }()
 
@@ -57,6 +65,11 @@ class SelectionButtonView: UIView {
         titleLabel?.textColor = style.title?.textColor
         titleLabel?.backgroundColor = style.title?.backgroundColor
 
+        /// hint label style
+        hintLabel?.text = style.hint?.text
+        hintLabel?.font = style.hint?.font
+        hintLabel?.textColor = style.hint?.textColor
+
         /// title label style
         countryLabel?.text = style.button.text
         countryLabel?.font = style.button.font
@@ -96,6 +109,7 @@ extension SelectionButtonView {
 
     private func setupViewsInOrder(){
         setupTitleLabel()
+        setupHintLabel()
         setupButton()
         setupCountryLabel()
         setupImageView()
@@ -112,14 +126,25 @@ extension SelectionButtonView {
         ])
     }
 
+    private func setupHintLabel() {
+        guard let hintLabel = hintLabel else { return }
+        guard let titleLabel = titleLabel else { return }
+        addSubview(hintLabel)
+        NSLayoutConstraint.activate([
+            hintLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2),
+            hintLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            hintLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+
     private func setupCountryLabel() {
         guard let countryLabel = countryLabel else { return }
-        guard let titleLabel = titleLabel else { return }
+        guard let hintLabel = hintLabel else { return }
         addSubview(countryLabel)
         let heightStyle = style?.button.height ?? Constants.Style.BillingForm.InputCountryButton.height.rawValue
 
         NSLayoutConstraint.activate([
-            countryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            countryLabel.topAnchor.constraint(equalTo: hintLabel.bottomAnchor, constant: 10),
             countryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             countryLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             countryLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -141,10 +166,10 @@ extension SelectionButtonView {
 
     private func setupButton() {
         guard let button = button else { return }
-        guard let titleLabel = titleLabel else { return }
+        guard let hintLabel = hintLabel else { return }
         addSubview(button)
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            button.topAnchor.constraint(equalTo: hintLabel.bottomAnchor, constant: 10),
             button.bottomAnchor.constraint(equalTo: bottomAnchor),
             button.leadingAnchor.constraint(equalTo: leadingAnchor),
             button.trailingAnchor.constraint(equalTo: trailingAnchor),
