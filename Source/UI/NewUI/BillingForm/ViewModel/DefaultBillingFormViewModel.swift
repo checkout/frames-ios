@@ -100,12 +100,12 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     /// country selection button
     private func getCountryCell(tableView: UITableView, indexPath: IndexPath, sender: UIViewController?) -> UITableViewCell {
 
-        if let cell: CellButton = tableView.dequeueReusable(for: indexPath) {
+        if let cell: SelectionButtonTableViewCell = tableView.dequeueReusable(for: indexPath) {
             let cellStyle = updateCountrySelectionStyle(for: indexPath.row)
-            cell.delegate = sender as? CellButtonDelegate
-            cell.update(type: style.cells[indexPath.row],
-                        style: cellStyle,
-                        tag: indexPath.row)
+            cell.delegate = sender as? SelectionButtonTableViewCellDelegate
+            if let cellStyle = cellStyle {
+                cell.update(style: cellStyle, tag: indexPath.row)
+            }
             return cell
         }
         return UITableViewCell()

@@ -1,16 +1,14 @@
 import UIKit
 
-protocol CellButtonDelegate: AnyObject {
+protocol SelectionButtonTableViewCellDelegate: AnyObject {
     func buttonIsPressed(tag: Int)
 }
 
-final class CellButton: UITableViewCell {
-    weak var delegate: CellButtonDelegate?
-    var type: BillingFormCell?
-    var style: CellButtonStyle?
+final class SelectionButtonTableViewCell: UITableViewCell {
+    weak var delegate: SelectionButtonTableViewCellDelegate?
 
     private lazy var mainView: SelectionButtonView? = {
-        let view = SelectionButtonView(style: style, type: type)
+        let view = SelectionButtonView()
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -22,11 +20,9 @@ final class CellButton: UITableViewCell {
         self.setupViewsInOrder()
     }
 
-    func update(type: BillingFormCell?, style: CellButtonStyle?, tag: Int) {
-        self.type = type
-        self.style = style
+    func update(style: CellButtonStyle, tag: Int) {
         self.tag = tag
-        mainView?.update(style: style, type: type)
+        mainView?.update(style: style)
     }
 
     @available(*, unavailable)
@@ -35,7 +31,7 @@ final class CellButton: UITableViewCell {
     }
 }
 
-extension CellButton {
+extension SelectionButtonTableViewCell {
 
     private func setupViewsInOrder() {
         guard let mainView = mainView else { return }
@@ -54,7 +50,7 @@ extension CellButton {
     }
 }
 
-extension CellButton: SelectionButtonViewDelegate {
+extension SelectionButtonTableViewCell: SelectionButtonViewDelegate {
     func buttonIsPressed() {
         delegate?.buttonIsPressed(tag: tag)
     }
