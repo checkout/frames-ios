@@ -59,7 +59,6 @@ final class BillingFormViewController: UIViewController {
         view.backgroundColor = .clear
         view.register(CellTextField.self)
         view.register(CellButton.self)
-
         return view
     }()
 
@@ -157,10 +156,11 @@ extension BillingFormViewController {
         view.addSubview(headerView)
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(
-                equalTo: view.safeTopAnchor,
-                constant: 20),
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                equalTo: view.safeTopAnchor),
+            headerView.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor),
+            headerView.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor),
             headerView.heightAnchor.constraint(
                 equalToConstant: 130)
         ])

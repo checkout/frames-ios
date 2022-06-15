@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		443FCD9426137A4C009D6DE6 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 443FCD9326137A4C009D6DE6 /* Frames */; };
+		95B343DA2853582D001AAA44 /* CustomStyle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B343D92853582D001AAA44 /* CustomStyle2.swift */; };
+		95B343DB2853582D001AAA44 /* CustomStyle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B343D82853582D001AAA44 /* CustomStyle1.swift */; };
 		CB9412DB2825714C00C889E8 /* iOS_Example_FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9412D92825714C00C889E8 /* iOS_Example_FrameUITests.swift */; };
 		CBA81CC027ABDF21000DF192 /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBA81CAB27ABDF21000DF192 /* LaunchScreen.strings */; };
 		CBA81CC127ABDF21000DF192 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBA81CAD27ABDF21000DF192 /* Main.strings */; };
@@ -33,6 +35,8 @@
 		443FCD8F261379CB009D6DE6 /* frames-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "frames-ios"; path = ..; sourceTree = "<group>"; };
 		44E647AC260CEAFF00503D6C /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44E647B6260CF03700503D6C /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95B343D82853582D001AAA44 /* CustomStyle1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyle1.swift; sourceTree = "<group>"; };
+		95B343D92853582D001AAA44 /* CustomStyle2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyle2.swift; sourceTree = "<group>"; };
 		CB9412D92825714C00C889E8 /* iOS_Example_FrameUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS_Example_FrameUITests.swift; sourceTree = "<group>"; };
 		CB9412DA2825714C00C889E8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBA81CAC27ABDF21000DF192 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 				CBA81CAB27ABDF21000DF192 /* LaunchScreen.strings */,
 				CBA81CB327ABDF21000DF192 /* example_apple_pay_payment_data.json */,
 				CBA81CB427ABDF21000DF192 /* MainViewController.swift */,
+				95B343D82853582D001AAA44 /* CustomStyle1.swift */,
+				95B343D92853582D001AAA44 /* CustomStyle2.swift */,
 				CBA81CB527ABDF21000DF192 /* Assets.xcassets */,
 				CBA81CB627ABDF21000DF192 /* LaunchScreen.storyboard */,
 				CBA81CB827ABDF21000DF192 /* Main.storyboard */,
@@ -235,7 +241,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95B343DA2853582D001AAA44 /* CustomStyle2.swift in Sources */,
 				CBA81CC727ABDF21000DF192 /* AppDelegate.swift in Sources */,
+				95B343DB2853582D001AAA44 /* CustomStyle1.swift in Sources */,
 				CBA81CC327ABDF21000DF192 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

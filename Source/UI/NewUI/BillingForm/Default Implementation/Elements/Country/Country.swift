@@ -1,6 +1,6 @@
 import UIKit
 
-public class DefaultCountryFormButtonStyle: ElementButtonStyle {
+public struct DefaultCountryFormButtonStyle: ElementButtonStyle {
     public var image: UIImage? = "arrow_blue_right".vectorPDFImage(forClass: CheckoutTheme.self)
     public var text: String = "countryRegion".localized(forClass: CheckoutTheme.self)
     public var font: UIFont = UIFont(graphikStyle: .regular, size: Constants.Style.BillingForm.InputCountryButton.fontSize.rawValue)
@@ -17,4 +17,6 @@ public class DefaultCountryFormButtonStyle: ElementButtonStyle {
     public var isEnabled: Bool = true
     public var height: Double = Constants.Style.BillingForm.InputCountryButton.height.rawValue
     public var width: Double = Constants.Style.BillingForm.InputCountryButton.width.rawValue
+    public var cornerRadius: CGFloat = Constants.Style.BillingForm.InputCountryButton.cornerRadius.rawValue
+    public var borderWidth: CGFloat = Constants.Style.BillingForm.InputCountryButton.borderWidth.rawValue
 }

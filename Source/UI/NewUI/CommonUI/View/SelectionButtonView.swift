@@ -14,7 +14,6 @@ class SelectionButtonView: UIView {
         let view = UILabel()
         view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
         return view
     }()
 
@@ -22,7 +21,6 @@ class SelectionButtonView: UIView {
         let view = UILabel()
         view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
         return view
     }()
 
@@ -63,6 +61,7 @@ class SelectionButtonView: UIView {
         titleLabel?.text = style.title?.text
         titleLabel?.font = style.title?.font
         titleLabel?.textColor = style.title?.textColor
+        titleLabel?.backgroundColor = style.title?.backgroundColor
 
         /// title label style
         countryLabel?.text = style.button.text
@@ -76,11 +75,11 @@ class SelectionButtonView: UIView {
         /// select Button style
         button?.isEnabled = style.button.isEnabled
         button?.tintColor = .clear
-        button?.backgroundColor = .clear
+        button?.backgroundColor = style.button.backgroundColor
         button?.clipsToBounds = true
         button?.layer.borderColor = style.button.normalBorderColor.cgColor
-        button?.layer.cornerRadius = 10.0
-        button?.layer.borderWidth = 1.0
+        button?.layer.cornerRadius = style.button.cornerRadius
+        button?.layer.borderWidth = style.button.borderWidth
 
         updateErrorView(style: style)
     }
@@ -103,9 +102,9 @@ extension SelectionButtonView {
 
     private func setupViewsInOrder(){
         setupTitleLabel()
+        setupButton()
         setupCountryLabel()
         setupImageView()
-        setupButton()
         setupErrorView()
     }
 
@@ -148,11 +147,11 @@ extension SelectionButtonView {
 
     private func setupButton() {
         guard let button = button else { return }
-        guard let countryLabel = countryLabel else { return }
+        guard let titleLabel = titleLabel else { return }
         addSubview(button)
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: countryLabel.topAnchor),
-            button.bottomAnchor.constraint(equalTo: countryLabel.bottomAnchor),
+            button.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            button.bottomAnchor.constraint(equalTo: bottomAnchor),
             button.leadingAnchor.constraint(equalTo: leadingAnchor),
             button.trailingAnchor.constraint(equalTo: trailingAnchor),
 

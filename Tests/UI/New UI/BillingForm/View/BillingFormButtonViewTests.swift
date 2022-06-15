@@ -22,6 +22,8 @@ class BillingFormButtonViewTests: XCTestCase {
     func testButtonStyle() {
         XCTAssertEqual(view.button?.layer.borderColor, style.button.normalBorderColor.cgColor)
         XCTAssertEqual(view.button?.isEnabled, style.button.isEnabled)
+        XCTAssertEqual(view.button?.layer.cornerRadius, style.button.cornerRadius)
+        XCTAssertEqual(view.button?.layer.borderWidth, style.button.borderWidth)
     }
 
     func testImageStyle() {
