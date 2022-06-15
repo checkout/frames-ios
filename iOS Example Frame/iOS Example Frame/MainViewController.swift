@@ -33,6 +33,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         let country = Country(iso3166Alpha2: "GB", dialingCode: nil)
         cardViewController?.addressViewController.setCountrySelected(country: country)
     }
@@ -40,8 +41,10 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     override func viewDidLoad() {
         super.viewDidLoad()
         UIFont.loadAllCheckoutFonts
-        // Do any additional setup after loading the view, typically from a nib.
+        setupCardViewController()
+    }
 
+    private func setupCardViewController(){
         let cardFormData = defaultCardFormData()
         cardViewController = createCardViewController(checkoutAPIService: checkoutAPIService,
                                                       billingFormData: cardFormData.billingForm,
@@ -51,7 +54,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
 
     // MARK: IBAction Methods.
 
-    @IBAction func goToDefaultUIPaymentPage(_ sender: Any) {
+    @IBAction private func goToDefaultUIPaymentPage(_ sender: Any) {
 
         let cardFormData = defaultCardFormData()
         cardViewController = createCardViewController(checkoutAPIService: checkoutAPIService,
@@ -62,7 +65,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         pushCardViewController(cardViewController: cardViewController)
     }
 
-    @IBAction func goToCustom1PaymentPage(_ sender: Any) {
+    @IBAction private func goToCustom1PaymentPage(_ sender: Any) {
 
         let billingFormCustom1Style = BillingFormCustom1Style()
         let address = Address(addressLine1: "Test line1 Custom 1",
@@ -86,7 +89,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         pushCardViewController(cardViewController: cardViewController)
     }
 
-    @IBAction func goToCustom2PaymentPage(_ sender: Any) {
+    @IBAction private func goToCustom2PaymentPage(_ sender: Any) {
         let billingFormStyle = BillingFormCustom2Style()
         let address = Address(addressLine1: "Test line Custom 2",
                               addressLine2: nil,
@@ -109,12 +112,12 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         pushCardViewController(cardViewController: cardViewController)
     }
 
-    @IBAction func goToPaymentPage(_ sender: Any) {
+    @IBAction private func goToPaymentPage(_ sender: Any) {
         cardViewController?.isNewUI = false
         pushCardViewController(cardViewController: cardViewController)
     }
 
-    @IBAction func onClickGoTokenWithApplePay(_ sender: Any) {
+    @IBAction private func onClickGoTokenWithApplePay(_ sender: Any) {
 
         // Use example Apple Pay payment data.
         guard let paymentDataURL = Bundle.main.url(
@@ -145,7 +148,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         }
     }
 
-    @IBAction func onStart3DS(_ sender: Any) {
+    @IBAction private func onStart3DS(_ sender: Any) {
         guard let threeDSURLString = threeDSURLTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
               let threeDSURL = URL(string: threeDSURLString) else {
             showAlert(with: "3DS URL could not be parsed")
@@ -200,7 +203,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
             viewController.addressViewController.setFields(address: billingFormAddress, phone: billingFormPhone)
         }
         viewController.rightBarButtonItem = UIBarButtonItem(title: "Pay", style: .done, target: nil, action: nil)
-        viewController.setDefault(regionCode: "GB")
+        viewController.setDefault(regionCode: defaultRegionCode)
         return viewController
     }
 

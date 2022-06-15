@@ -1,67 +1,30 @@
 import XCTest
 @testable import Frames
 
-struct ErrorInputLabelStyleImp: ElementErrorViewStyle {
-    var image: UIImage
-
-    var isHidden: Bool
-    var text: String
-    var font: UIFont
-    var textColor: UIColor
-    var backgroundColor: UIColor
-    var tintColor: UIColor
-    var isWarningImageOnLeft: Bool
-    var height: Double
-
-    init(image: UIImage = UIImage(),
-         isHidden: Bool = false,
-         text: String = "Error",
-         font: UIFont = UIFont.systemFont(ofSize: 17),
-         textColor: UIColor = .red,
-         backgroundColor: UIColor = .white,
-         tintColor: UIColor = .red,
-         isWarningImageOnLeft: Bool = true,
-         height: Double = 120 ) {
-        self.image = image
-        self.isHidden = isHidden
-        self.text = text
-        self.font = font
-        self.textColor = textColor
-        self.backgroundColor = backgroundColor
-        self.tintColor = tintColor
-        self.isWarningImageOnLeft = isWarningImageOnLeft
-        self.height = height
-    }
-}
-
 class BillingFormTextFieldErrorViewTests: XCTestCase {
     var errorView: ErrorView!
-    let style = ErrorInputLabelStyleImp(isHidden: false)
+    var style: DefaultErrorInputLabelStyle!
 
     override func setUp() {
         super.setUp()
         UIFont.loadAllCheckoutFonts
+        style = DefaultErrorInputLabelStyle()
         errorView = ErrorView()
         errorView.update(style: style)
     }
 
-    func testStyleIsHidden() {
-        XCTAssertEqual(errorView.isHidden, style.isHidden)
-    }
-
-    func testStyleFont() {
-        XCTAssertEqual(errorView.headerLabel?.font, style.font)
-    }
-
-    func testStyleTextColor() {
-        XCTAssertEqual(errorView.headerLabel?.textColor, style.textColor)
-    }
-
-    func testStyleBackgroundColor() {
+    func testStyleCurrentView() {
         XCTAssertEqual(errorView.backgroundColor, style.backgroundColor)
     }
 
-    func testStyleTintColor() {
+    func testHeaderLabelStyle() {
+        XCTAssertEqual(errorView.headerLabel?.text, style.text)
+        XCTAssertEqual(errorView.headerLabel?.font, style.font)
+        XCTAssertEqual(errorView.headerLabel?.textColor, style.textColor)
+    }
+
+    func testImageStyle() {
+        XCTAssertEqual(errorView.image?.image, style.image)
         XCTAssertEqual(errorView.image?.tintColor, style.tintColor)
     }
 }

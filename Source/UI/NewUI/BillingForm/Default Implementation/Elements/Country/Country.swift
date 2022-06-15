@@ -1,6 +1,6 @@
 import UIKit
 
-public class DefaultCountryFormButtonStyle: ElementButtonStyle {
+public struct DefaultCountryFormButtonStyle: ElementButtonStyle {
     public var image: UIImage? = "arrow_blue_right".vectorPDFImage(forClass: CheckoutTheme.self)
     public var text: String = "countryRegion".localized(forClass: CheckoutTheme.self)
     public var font: UIFont = UIFont(graphikStyle: .regular, size: Constants.Style.BillingForm.InputCountryButton.fontSize.rawValue)

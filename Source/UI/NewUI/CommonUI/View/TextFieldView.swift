@@ -72,6 +72,15 @@ class TextFieldView: UIView {
         return  view
     }()
 
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViewsInOrder() 
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     @objc func textFieldEditingChanged(textField: UITextField) {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: "")
     }
@@ -95,7 +104,6 @@ class TextFieldView: UIView {
         updateTextFieldContainer(style: style)
         updateTextField(style: style, textFieldValue: textFieldValue, tag: tag)
         updateErrorView(style: style)
-        setupViewsInOrder()
     }
 
     private func updateHeaderLabel(style: CellTextFieldStyle) {
