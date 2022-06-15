@@ -58,7 +58,7 @@ final class BillingFormViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         view.register(CellTextField.self)
-        view.register(CellButton.self)
+        view.register(SelectionButtonTableViewCell.self)
         return view
     }()
 
@@ -243,7 +243,7 @@ extension BillingFormViewController: BillingFormHeaderCellDelegate {
     }
 }
 
-extension BillingFormViewController: CellButtonDelegate {
+extension BillingFormViewController: SelectionButtonTableViewCellDelegate {
     func buttonIsPressed(tag: Int) {
         let countryViewController = CountrySelectionViewController()
         countryViewController.delegate = self

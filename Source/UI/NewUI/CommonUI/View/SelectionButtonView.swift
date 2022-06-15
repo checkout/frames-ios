@@ -6,9 +6,7 @@ protocol SelectionButtonViewDelegate: AnyObject {
 
 class SelectionButtonView: UIView {
     weak var delegate: SelectionButtonViewDelegate?
-
     private var style: CellButtonStyle?
-    private var type: BillingFormCell?
 
     private(set) lazy var titleLabel: UILabel? = {
         let view = UILabel()
@@ -45,16 +43,12 @@ class SelectionButtonView: UIView {
         return view
     }()
 
-    init(style: CellButtonStyle?, type: BillingFormCell?) {
-        self.style = style
-        self.type = type
-        super.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupViewsInOrder()
     }
 
-    func update(style: CellButtonStyle?, type: BillingFormCell?) {
-        guard let type = type, let style = style else { return }
-        self.type = type
+    func update(style: CellButtonStyle) {
         self.style = style
 
         /// title label style

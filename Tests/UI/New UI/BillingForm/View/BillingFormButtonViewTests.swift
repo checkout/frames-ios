@@ -9,8 +9,8 @@ class BillingFormButtonViewTests: XCTestCase {
         super.setUp()
         UIFont.loadAllCheckoutFonts
         style = DefaultBillingFormCountryCellStyle()
-        view = SelectionButtonView(style: style, type: .country(style))
-        view.update(style: style, type: .country(style))
+        view = SelectionButtonView()
+        view.update(style: style)
     }
 
     func testHeaderLabelStyle() {
