@@ -18,8 +18,8 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     var errorFlagOfCellType = [Int: Bool]()
     var textValueOfCellType = [Int: String]()
 
-    private var country : Country?
     private var countryRow: Int?
+    private(set) var country : Country?
     private(set) var style: BillingFormStyle
     private(set) var data: BillingForm?
     private(set) var updatedRow: Int? {
@@ -73,6 +73,9 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             country = data?.address.country
             textValueOfCellType[type.index] = hasValue ? value : (!isMandatory ? "" : nil)
             errorFlagOfCellType[type.index] = hasValue ? false : isMandatory
+        }
+        if let country = country, country.iso3166Alpha2.isEmpty {
+            self.country = Country(iso3166Alpha2: Locale.current.regionCode ?? "", dialingCode: nil)
         }
     }
 
