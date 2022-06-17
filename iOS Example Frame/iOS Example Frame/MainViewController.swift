@@ -176,10 +176,12 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     }
 
     func threeDSWebViewControllerAuthenticationDidSucceed(_ threeDSWebViewController: ThreedsWebViewController, token: String?) {
+        threeDSWebViewController.dismiss(animated: true, completion: nil)
         showAlert(with: "3DS success, token: \(token ?? "nil")")
     }
 
     func threeDSWebViewControllerAuthenticationDidFail(_ threeDSWebViewController: ThreedsWebViewController) {
+        threeDSWebViewController.dismiss(animated: true, completion: nil)
         showAlert(with: "3DS Fail")
     }
 }

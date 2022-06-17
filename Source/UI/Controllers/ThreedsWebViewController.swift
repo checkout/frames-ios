@@ -88,16 +88,17 @@ extension ThreedsWebViewController: ThreeDSWKNavigationHelperDelegate {
     public func threeDSWKNavigationHelperDelegate(didReceiveResult result: Result<String, ThreeDSError>) {
         switch result {
         case .success(let token):
+            logger?.log(.threeDSChallengeComplete(success: true, tokenID: token))
             delegate?.threeDSWebViewControllerAuthenticationDidSucceed(self, token: token)
         case .failure(let error):
             switch error {
             case .couldNotExtractToken:
+                logger?.log(.threeDSChallengeComplete(success: false, tokenID: nil))
                 delegate?.threeDSWebViewControllerAuthenticationDidSucceed(self, token: nil)
             default:
+                logger?.log(.threeDSChallengeComplete(success: false, tokenID: nil))
                 delegate?.threeDSWebViewControllerAuthenticationDidFail(self)
             }
         }
     }
-
-
 }
