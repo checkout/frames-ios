@@ -120,7 +120,7 @@ struct BillingFormPhoneNumberCustom2CellStyle : CellTextFieldStyle {
 }
 
 struct BillingFormCustom2HeaderCellStyle: BillingFormHeaderCellStyle {
-    var backgroundColor: UIColor = .clear
+    var backgroundColor: UIColor = Constants.greenBackgroundColor
     var headerLabel: ElementStyle = HeaderCustom2LabelFormStyle()
     var cancelButton: ElementButtonStyle = CancelCustom2ButtonFormStyle()
     var doneButton: ElementButtonStyle = DoneCustom2FormButtonStyle()
@@ -138,12 +138,11 @@ struct CancelCustom2ButtonFormStyle: ElementButtonStyle {
     var image: UIImage?
     var text: String = "Cancel"
     var font: UIFont =  UIFont.systemFont(ofSize: UIFont.systemFontSize)
-    var activeTitleColor: UIColor = .white
     var disabledTextColor: UIColor = .doveGray
     var disabledTintColor: UIColor = .doveGray
     var activeTintColor: UIColor = .brandeisBlue
     var backgroundColor: UIColor = Constants.greenBackgroundColor
-    var textColor: UIColor = .clear
+    var textColor: UIColor = .white
     var normalBorderColor: UIColor = .clear
     var focusBorderColor: UIColor = .clear
     var errorBorderColor: UIColor = .clear
@@ -161,7 +160,6 @@ struct DoneCustom2FormButtonStyle: ElementButtonStyle {
     var image: UIImage? = nil
     var text: String = "Done"
     var font: UIFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
-    var activeTitleColor: UIColor = .white
     var disabledTextColor: UIColor = .doveGray
     var disabledTintColor: UIColor = .doveGray
     var activeTintColor: UIColor = .brandeisBlue
@@ -170,7 +168,7 @@ struct DoneCustom2FormButtonStyle: ElementButtonStyle {
     var focusBorderColor: UIColor = .clear
     var errorBorderColor: UIColor = .clear
     var imageTintColor: UIColor = .clear
-    var textColor: UIColor = .clear
+    var textColor: UIColor = .white
     var isHidden: Bool = false
     var isEnabled: Bool = true
     var height: Double = 44
@@ -224,12 +222,11 @@ struct CountryCustom2FormButtonStyle: ElementButtonStyle {
     var image: UIImage? =  UIImage(named: "arrow_blue_right")
     var text: String = "Country"
     var font: UIFont = UIFont(name: "Helvetica Neue", size: 14)!
-    var activeTitleColor: UIColor = .brandeisBlue
     var disabledTextColor: UIColor = .mediumGray
     var disabledTintColor: UIColor = .mediumGray
     var activeTintColor: UIColor = .brandeisBlue
     var backgroundColor: UIColor = Constants.grayBackgroundColor
-    var textColor: UIColor = .clear
+    var textColor: UIColor = .brandeisBlue
     var normalBorderColor: UIColor = .mediumGray
     var focusBorderColor: UIColor = .brandeisBlue
     var errorBorderColor: UIColor = .tallPoppyRed
