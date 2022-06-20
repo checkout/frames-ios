@@ -35,6 +35,8 @@
 		443FCD8F261379CB009D6DE6 /* frames-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "frames-ios"; path = ..; sourceTree = "<group>"; };
 		44E647AC260CEAFF00503D6C /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44E647B6260CF03700503D6C /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		953C08B42860B5ED001602F5 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		953C08B52860B5ED001602F5 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		95B343D82853582D001AAA44 /* CustomStyle1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyle1.swift; sourceTree = "<group>"; };
 		95B343D92853582D001AAA44 /* CustomStyle2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyle2.swift; sourceTree = "<group>"; };
 		CB9412D92825714C00C889E8 /* iOS_Example_FrameUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS_Example_FrameUITests.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				de,
 				it,
 				nl,
+				ar,
 			);
 			mainGroup = E6646F8120CE6C0900D8353A;
 			packageReferences = (
@@ -295,6 +298,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				CBA81CB727ABDF21000DF192 /* Base */,
+				953C08B42860B5ED001602F5 /* ar */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -303,6 +307,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				CBA81CB927ABDF21000DF192 /* Base */,
+				953C08B52860B5ED001602F5 /* ar */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
