@@ -69,10 +69,21 @@ extension UIView {
         scrollView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         scrollView.topAnchor.constraint(equalTo: safeTopAnchor).isActive = true
 
-        let scrollViewBottomConstraint = scrollView.bottomAnchor.constraint(equalTo: safeBottomAnchor)
+        let scrollViewBottomConstraint = scrollView.bottomAnchor.constraint(equalTo: safeBottomAnchor, constant: 20)
         scrollViewBottomConstraint.isActive = true
         // return scrollView bottom anchor constraint, used to manage the keyboard
         return scrollViewBottomConstraint
     }
 
+}
+
+extension UIView {
+    func setupConstraintEqualTo(view: UIView) {
+        NSLayoutConstraint.activate([
+            topAnchor.constraint(equalTo: view.topAnchor),
+            leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+    }
 }

@@ -70,7 +70,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             let isMandatory = type.style?.isMandatory ?? true
             let value = type.getText(from: data)
             let hasValue = value != nil
-            country = data?.address.country
+            country = data?.address?.country
             textValueOfCellType[type.index] = hasValue ? value : (!isMandatory ? "" : nil)
             errorFlagOfCellType[type.index] = hasValue ? false : isMandatory
         }
