@@ -1,0 +1,30 @@
+
+/* Class = "UIButton"; normalTitle = "Custom 1"; ObjectID = "1ce-tx-WHe"; */
+"1ce-tx-WHe.normalTitle" = "Custom 1";
+
+/* Class = "UIButton"; normalTitle = "ApplePay payment data"; ObjectID = "6RY-IE-aaO"; */
+"6RY-IE-aaO.normalTitle" = "ApplePay payment data";
+
+/* Class = "UITextField"; placeholder = "3DS URL"; ObjectID = "9AO-cw-NK1"; */
+"9AO-cw-NK1.placeholder" = "3DS URL";
+
+/* Class = "UIButton"; normalTitle = "Default UI"; ObjectID = "Q3p-g7-SWn"; */
+"Q3p-g7-SWn.normalTitle" = "Default UI";
+
+/* Class = "UILabel"; text = "3DS"; ObjectID = "Rih-T9-I3S"; */
+"Rih-T9-I3S.text" = "3DS";
+
+/* Class = "UIButton"; normalTitle = "Old"; ObjectID = "bNI-vz-cou"; */
+"bNI-vz-cou.normalTitle" = "Old";
+
+/* Class = "UIButton"; normalTitle = "Custom 2"; ObjectID = "c8I-Qh-6cp"; */
+"c8I-Qh-6cp.normalTitle" = "Custom 2";
+
+/* Class = "UILabel"; text = "Try Payment Experince"; ObjectID = "k2B-CM-vAG"; */
+"k2B-CM-vAG.text" = "Try Payment Experince";
+
+/* Class = "UIButton"; normalTitle = "3DS Flow"; ObjectID = "oXX-Jz-jJz"; */
+"oXX-Jz-jJz.normalTitle" = "3DS Flow";
+
+/* Class = "UILabel"; text = "Generate Token"; ObjectID = "tFW-LL-RsT"; */
+"tFW-LL-RsT.text" = "Generate Token";
