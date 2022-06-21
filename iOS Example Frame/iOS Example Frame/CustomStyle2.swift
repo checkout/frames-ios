@@ -247,3 +247,41 @@ struct HintInputCustom2LabelStyle: ElementStyle {
     var font: UIFont = UIFont(name: "Helvetica Neue", size: 14)!
     var textColor: UIColor = .doveGray
 }
+
+
+public struct Custom2SummaryCellButtonStyle: SummaryCellButtonStyle {
+    public var isMandatory: Bool = true
+    public var cornerRadius: CGFloat = 10
+    public var borderWidth: CGFloat = 1.0
+    public var separatorLineColor: UIColor = Constants.greenBackgroundColor
+    public var backgroundColor: UIColor = .clear
+    public var borderColor: UIColor = Constants.greenBackgroundColor
+    public var button: ElementButtonStyle = Custom2PaymentSummaryButtonStyle()
+    public var title: ElementStyle? = TitleLabelCustom2Style(text: "Billing address", textColor: Constants.fontColorLabel)
+    public var hint: ElementStyle? = HintInputCustom2LabelStyle(text: "We need this information as an additional security measure to verify this card.", textColor: Constants.fontColorLabel)
+    public var summary: ElementStyle = TitleLabelCustom2Style(textColor: Constants.fontColorLabel)
+    public var mandatory: ElementStyle?
+    public var error: ElementErrorViewStyle?
+}
+
+public class Custom2PaymentSummaryButtonStyle: ElementButtonStyle {
+    public var image: UIImage? =  UIImage(named: "arrow_blue_right")
+    public var text: String = "Edit billing address"
+    public var font: UIFont = UIFont.systemFont(ofSize: 15)
+    public var textColor: UIColor = Constants.greenBackgroundColor
+    public var disabledTextColor: UIColor = .clear
+    public var disabledTintColor: UIColor = .clear
+    public var activeTintColor: UIColor = Constants.greenBackgroundColor
+    public var imageTintColor: UIColor = Constants.greenBackgroundColor
+    public var backgroundColor: UIColor = .clear
+    public var normalBorderColor: UIColor = .clear
+    public var focusBorderColor: UIColor = .clear
+    public var errorBorderColor: UIColor = .clear
+    public var isHidden: Bool = false
+    public var isEnabled: Bool = true
+    public var height: Double = 56
+    public var width: Double = 0
+    public var cornerRadius: CGFloat = 10
+    public var borderWidth: CGFloat = 1
+    public var textLeading: CGFloat = 20
+}

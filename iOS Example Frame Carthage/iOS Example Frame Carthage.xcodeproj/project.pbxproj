@@ -176,7 +176,6 @@
 		956B9F8B2861CA80005884D8 /* JSONDecoder+TopLevelDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956B9EF22861CA7F005884D8 /* JSONDecoder+TopLevelDecoder.swift */; };
 		956B9F8C2861CA80005884D8 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956B9EF32861CA7F005884D8 /* UIViewExtensions.swift */; };
 		956B9F8D2861CA80005884D8 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956B9EF42861CA7F005884D8 /* URL+Extensions.swift */; };
-		956B9F8E2861CA80005884D8 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956B9EF52861CA7F005884D8 /* UILabelExtensions.swift */; };
 		956B9F8F2861CA80005884D8 /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956B9EF62861CA7F005884D8 /* UIDeviceExtensions.swift */; };
 		956B9F902861CA80005884D8 /* Dictionary+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956B9EF72861CA7F005884D8 /* Dictionary+Additions.swift */; };
 		956B9F912861CA80005884D8 /* UIResponderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956B9EF82861CA7F005884D8 /* UIResponderExtensions.swift */; };
@@ -582,7 +581,6 @@
 		956B9EF22861CA7F005884D8 /* JSONDecoder+TopLevelDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+TopLevelDecoder.swift"; sourceTree = "<group>"; };
 		956B9EF32861CA7F005884D8 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		956B9EF42861CA7F005884D8 /* URL+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
-		956B9EF52861CA7F005884D8 /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		956B9EF62861CA7F005884D8 /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
 		956B9EF72861CA7F005884D8 /* Dictionary+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Additions.swift"; sourceTree = "<group>"; };
 		956B9EF82861CA7F005884D8 /* UIResponderExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIResponderExtensions.swift; sourceTree = "<group>"; };
@@ -1151,7 +1149,6 @@
 				956B9EF22861CA7F005884D8 /* JSONDecoder+TopLevelDecoder.swift */,
 				956B9EF32861CA7F005884D8 /* UIViewExtensions.swift */,
 				956B9EF42861CA7F005884D8 /* URL+Extensions.swift */,
-				956B9EF52861CA7F005884D8 /* UILabelExtensions.swift */,
 				956B9EF62861CA7F005884D8 /* UIDeviceExtensions.swift */,
 				956B9EF72861CA7F005884D8 /* Dictionary+Additions.swift */,
 				956B9EF82861CA7F005884D8 /* UIResponderExtensions.swift */,
@@ -2256,7 +2253,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				956B9FCC2861CA80005884D8 /* BillingFormViewController.swift in Sources */,
-				956B9F8E2861CA80005884D8 /* UILabelExtensions.swift in Sources */,
 				956B9FE72861CA80005884D8 /* CvvInputView.swift in Sources */,
 				956B9FAC2861CA80005884D8 /* CellButtonStyle.swift in Sources */,
 				956B9F8F2861CA80005884D8 /* UIDeviceExtensions.swift in Sources */,
