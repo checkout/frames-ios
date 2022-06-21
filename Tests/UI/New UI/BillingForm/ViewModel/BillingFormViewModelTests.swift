@@ -79,15 +79,15 @@ class BillingFormViewModelTests: XCTestCase {
         
         XCTAssertEqual(delegate.onTapDoneButtonCalledTimes, 1)
         XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.name, data.name)
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address.addressLine1, data.address.addressLine1)
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address.addressLine2, data.address.addressLine2)
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address.zip, data.address.zip)
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address.city, data.address.city)
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address.state, data.address.state)
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address.country?.iso3166Alpha2, data.address.country?.iso3166Alpha2)
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address.country?.dialingCode, data.address.country?.dialingCode)
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address.country?.name, data.address.country?.name)
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.phone.number, data.phone.number)
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address?.addressLine1, data.address?.addressLine1)
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address?.addressLine2, data.address?.addressLine2)
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address?.zip, data.address?.zip)
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address?.city, data.address?.city)
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address?.state, data.address?.state)
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address?.country?.iso3166Alpha2, data.address?.country?.iso3166Alpha2)
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address?.country?.dialingCode, data.address?.country?.dialingCode)
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address?.country?.name, data.address?.country?.name)
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.phone?.number, data.phone?.number)
 
     }
     

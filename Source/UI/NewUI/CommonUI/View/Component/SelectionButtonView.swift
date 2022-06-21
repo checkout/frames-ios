@@ -20,7 +20,7 @@ class SelectionButtonView: UIView {
         ImageContainerView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var button: ButtonView? = {
+    private(set) lazy var buttonView: ButtonView? = {
         let view = ButtonView()
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +41,7 @@ class SelectionButtonView: UIView {
 
         titleLabel?.update(with: style.title)
         hintLabel?.update(with: style.hint)
-        button?.update(with: style.button)
+        buttonView?.update(with: style.button)
         errorView?.update(style: style.error)
         image?.update(with: style.button.image, tintColor: style.button.imageTintColor)
         errorView?.isHidden = style.error?.isHidden ?? true
@@ -85,7 +85,7 @@ extension SelectionButtonView {
     }
 
     private func setupButton() {
-        guard let button = button else { return }
+        guard let button = buttonView else { return }
         guard let hintLabel = hintLabel else { return }
         addSubview(button)
         let heightStyle = style?.button.height ?? Constants.Style.BillingForm.InputCountryButton.height.rawValue
@@ -100,7 +100,7 @@ extension SelectionButtonView {
     }
     private func setupImageView() {
         guard let image = image else { return }
-        guard let button = button else { return }
+        guard let button = buttonView else { return }
         addSubview(image)
         NSLayoutConstraint.activate([
             image.centerYAnchor.constraint(equalTo: button.centerYAnchor),

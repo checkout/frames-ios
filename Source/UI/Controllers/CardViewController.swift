@@ -50,23 +50,21 @@ public class CardViewController: UIViewController,
     var topConstraint: NSLayoutConstraint?
 
     private var suppressNextLog = false
-    public var isNewUI = false {
-        didSet {
-            cardView.isNewUI = isNewUI
-        }
-    }
+    private var isNewUI = false
     // MARK: - Initialization
 
     /// Returns a newly initialized view controller with the cardholder's name and billing details
     /// state specified. You can specified the region using the Iso2 region code ("UK" for "United Kingdom")
 
-    public convenience init(checkoutAPIService: CheckoutAPIService,
+    public convenience init(isNewUI: Bool,
+                            checkoutAPIService: CheckoutAPIService,
                             billingFormData: BillingForm?,
                             cardHolderNameState: InputState,
                             billingDetailsState: InputState,
                             billingFormStyle: BillingFormStyle?,
                             defaultRegionCode: String? = nil) {
-        self.init(checkoutAPIService: checkoutAPIService as CheckoutAPIProtocol,
+        self.init(isNewUI: isNewUI,
+                  checkoutAPIService: checkoutAPIService as CheckoutAPIProtocol,
                   billingFormData: billingFormData,
                 cardHolderNameState: cardHolderNameState,
                 billingDetailsState: billingDetailsState,
@@ -74,32 +72,34 @@ public class CardViewController: UIViewController,
                 defaultRegionCode: defaultRegionCode)
     }
 
-    init(checkoutAPIService: CheckoutAPIProtocol,
+    init(isNewUI: Bool,
+         checkoutAPIService: CheckoutAPIProtocol,
          billingFormData: BillingForm?,
          cardHolderNameState: InputState,
          billingDetailsState: InputState,
          billingFormStyle: BillingFormStyle? = nil,
          defaultRegionCode: String? = nil) {
+        self.isNewUI = isNewUI
         self.checkoutAPIService = checkoutAPIService
         self.billingFormData = billingFormData
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
         self.billingFormStyle = billingFormStyle
-        cardView = CardView(cardHolderNameState: cardHolderNameState,
+        cardView = CardView(isNewUI: isNewUI,
+                            billingFormData: billingFormData,
+                            cardHolderNameState: cardHolderNameState,
                             billingDetailsState: billingDetailsState,
                             cardValidator: checkoutAPIService.cardValidator)
         addressViewController = AddressViewController(initialCountry: "you", initialRegionCode: defaultRegionCode)
         super.init(nibName: nil, bundle: nil)
-        if let billingFormData = self.billingFormData {
-            self.updateBillingFormDetailsInputView(data: billingFormData)
-        }
+        updateBillingFormDetailsInputView(data: billingFormData)
     }
 
     /// Returns a newly initialized view controller with the nib file in the specified bundle.
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Foundation.Bundle?) {
         cardHolderNameState = .required
         billingDetailsState = .required
-        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: nil)
+        cardView = CardView(isNewUI: isNewUI, billingFormData: billingFormData, cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: nil)
         addressViewController = AddressViewController()
         checkoutAPIService = nil
         billingFormStyle = nil
@@ -111,7 +111,7 @@ public class CardViewController: UIViewController,
     required public init?(coder aDecoder: NSCoder) {
         cardHolderNameState = .required
         billingDetailsState = .required
-        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: nil)
+        cardView = CardView(isNewUI: isNewUI, billingFormData: billingFormData, cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: nil)
         addressViewController = AddressViewController()
         checkoutAPIService = nil
         billingFormStyle = nil
@@ -458,51 +458,45 @@ public class CardViewController: UIViewController,
 }
 
 extension CardViewController: BillingFormViewModelDelegate {
-     private func updateBillingFormDetailsInputView(data: BillingForm) {
 
+    private func updateBillingFormDetailsInputView(data: BillingForm?) {
+        var summaryValue = ""
+
+        func updateSummaryValue(billingFormValue: String?) {
+            guard let billingFormValue = billingFormValue else { return }
+            let value = billingFormValue.trimmingCharacters(in: .whitespaces)
+            if !summaryValue.isEmpty {
+                summaryValue.append("\(value)\n\n")
+            }
+        }
+
+        guard let data = data else { return }
         guard let address = data.address, let phone = data.phone else {
             let style = DefaultPaymentSummaryEmptyDetailsCellStyle()
             cardView.updateBillingFormEmptyDetailsInputView(style: style)
             return
         }
-        var value = ""
-         if let name = data.name?.trimmingCharacters(in: .whitespaces), !name.isEmpty {
-            value.append("\(name)\n\n")
-        }
-         if let addressLine1 = address.addressLine1?.trimmingCharacters(in: .whitespaces), !addressLine1.isEmpty {
-            value.append("\(addressLine1)\n\n")
-        }
-        if let addressLine2 = address.addressLine2, !addressLine2.isEmpty {
-            value.append("\(addressLine2)\n\n")
-        }
-        if let city = address.city, !city.isEmpty {
-            value.append("\(city)\n\n")
-        }
-        if let state = address.state, !state.isEmpty {
-            value.append("\(state)\n\n")
-        }
-        if let zip = address.zip, !zip.isEmpty {
-            value.append("\(zip)\n\n")
-        }
-        if let name = address.country?.name, !name.isEmpty {
-            value.append("\(name)\n\n")
-        }
-        if let number = phone.number, !number.isEmpty {
-            value.append("\(number)")
-        }
+        
+        updateSummaryValue(billingFormValue: data.name)
+        updateSummaryValue(billingFormValue: address.addressLine1)
+        updateSummaryValue(billingFormValue: address.addressLine2)
+        updateSummaryValue(billingFormValue: address.city)
+        updateSummaryValue(billingFormValue: address.state)
+        updateSummaryValue(billingFormValue: address.zip)
+        updateSummaryValue(billingFormValue: address.country?.name)
+        updateSummaryValue(billingFormValue: phone.number)
 
-        let summaryCellButtonStyle = DefaultSummaryCellButtonStyle(summary:  DefaultTitleLabelStyle(text:value))
+        let summaryCellButtonStyle = DefaultSummaryCellButtonStyle(summary:  DefaultTitleLabelStyle(text:summaryValue))
         cardView.updateBillingFormSummaryView(style: summaryCellButtonStyle)
     }
 
     func onTapDoneButton(data: BillingForm) {
         billingFormData = data
 
-        var value = ""
         if isNewUI {
             updateBillingFormDetailsInputView(data: data)
         } else {
-            value = "\(data.address?.addressLine1 ?? ""), \(data.address?.city ?? "")"
+            let value = "\(data.address?.addressLine1 ?? ""), \(data.address?.city ?? "")"
             cardView.billingDetailsInputView.value.text = value
         }
         validateFieldsValues()

@@ -33,7 +33,6 @@ class CardViewControllerTests: XCTestCase {
         let cardViewController = CardViewController()
         XCTAssertEqual(cardViewController.cardHolderNameState, .required)
         XCTAssertEqual(cardViewController.billingDetailsState, .required)
-        cardViewController.isNewUI = false
         cardViewController.viewDidLoad()
         XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 5)
         cardViewController.viewDidLayoutSubviews()
@@ -41,7 +40,8 @@ class CardViewControllerTests: XCTestCase {
     }
 
     func testInitializationHiddenFields() {
-        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
+        let cardViewController = CardViewController(isNewUI: false,
+                                                    checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .hidden,
                                                     billingDetailsState: .hidden)
@@ -55,7 +55,6 @@ class CardViewControllerTests: XCTestCase {
         let cardViewController = CardViewController(nibName: nil, bundle: nil)
         XCTAssertEqual(cardViewController.cardHolderNameState, .required)
         XCTAssertEqual(cardViewController.billingDetailsState, .required)
-        cardViewController.isNewUI = false
         cardViewController.viewDidLoad()
         XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 5)
     }
@@ -65,7 +64,6 @@ class CardViewControllerTests: XCTestCase {
         let cardViewController = CardViewController(coder: coder)
         XCTAssertEqual(cardViewController?.cardHolderNameState, .required)
         XCTAssertEqual(cardViewController?.billingDetailsState, .required)
-        cardViewController?.isNewUI = false
         cardViewController?.viewDidLoad()
         XCTAssertEqual(cardViewController?.cardView.stackView.subviews.count, 5)
     }
@@ -125,7 +123,8 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFieldsWithRequiredBillingDetailsMissing() {
         // Setup
-        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
+        let cardViewController = CardViewController(isNewUI: false,
+                                                    checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .hidden,
                                                     billingDetailsState: .required)
@@ -139,7 +138,8 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFieldsWithRequiredNameMissing() {
         // Setup
-        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
+        let cardViewController = CardViewController(isNewUI: false,
+                                                    checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .required,
                                                     billingDetailsState: .hidden)
@@ -153,7 +153,8 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFields() {
         // Setup
-        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
+        let cardViewController = CardViewController(isNewUI: false,
+                                                    checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .hidden,
                                                     billingDetailsState: .hidden)
@@ -170,7 +171,8 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFieldsWithEmptyValues() {
         // Setup
-        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
+        let cardViewController = CardViewController(isNewUI: false,
+                                                    checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .hidden,
                                                     billingDetailsState: .hidden)
@@ -291,7 +293,8 @@ class CardViewControllerTests: XCTestCase {
     }
 
     func testChangeCvvCardTypeOnCardNumberEndEditing() {
-        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
+        let cardViewController = CardViewController(isNewUI: false,
+                                                    checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .hidden,
                                                     billingDetailsState: .required)
@@ -333,7 +336,8 @@ class CardViewControllerTests: XCTestCase {
     func test_onTapDoneCardButton_checkoutAPIClientReturnsError_delegateCalledWithFailure() {
 
         let stubCardViewControllerDelegate = StubCardViewControllerDelegate()
-        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
+        let cardViewController = CardViewController(isNewUI: false,
+                                                    checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
@@ -353,7 +357,8 @@ class CardViewControllerTests: XCTestCase {
 
     func test_viewDidLoad_paymentFormPresentedLogCalled() {
 
-        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
+        let cardViewController = CardViewController(isNewUI: false,
+                                                    checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
@@ -369,7 +374,8 @@ class CardViewControllerTests: XCTestCase {
 
     func test_viewDidLoad_paymentFormPresentedLogNotCalledAfterAddressView() {
 
-        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
+        let cardViewController = CardViewController(isNewUI: false,
+                                                    checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
@@ -390,7 +396,8 @@ class CardViewControllerTests: XCTestCase {
 
     func test_onTapAddressView_billingFormPresentedLogCalled() {
 
-        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
+        let cardViewController = CardViewController(isNewUI: false,
+                                                    checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
