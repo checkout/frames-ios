@@ -1,6 +1,6 @@
 import UIKit
 
-public class DefaultPaymentSummaryButtonStyle: ElementButtonStyle {
+public class DefaultSummaryButtonStyle: ElementButtonStyle {
     public var image: UIImage? = "arrow_blue_right".vectorPDFImage(forClass: CheckoutTheme.self)
     public var text: String = "Edit billing address".localized(forClass: CheckoutTheme.self)
     public var font: UIFont = UIFont(graphikStyle: .regular, size: Constants.Style.BillingForm.InputCountryButton.fontSize.rawValue)

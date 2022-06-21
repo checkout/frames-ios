@@ -3,11 +3,11 @@ import XCTest
 
 class BillingFormSummaryViewTests: XCTestCase {
     var view: BillingFormSummaryView!
-    var style: DefaultSummaryCellButtonStyle!
+    var style: DefaultSummaryViewStyle!
     override func setUp() {
         super.setUp()
         UIFont.loadAllCheckoutFonts
-        style = DefaultSummaryCellButtonStyle()
+        style = DefaultSummaryViewStyle()
         view = BillingFormSummaryView()
         view.update(style: style)
     }

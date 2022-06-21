@@ -164,6 +164,10 @@ public class CardView: UIView {
         }
         stackView.addArrangedSubview(expirationDateInputView)
         stackView.addArrangedSubview(cvvInputView)
+        setupBillingForm()
+    }
+
+    private func setupBillingForm() {
         billingFormEmptyDetailsInputView.removeFromSuperview()
         billingFormSummaryView.removeFromSuperview()
         billingDetailsInputView.removeFromSuperview()
@@ -174,7 +178,6 @@ public class CardView: UIView {
                 } else {
                     stackView.addArrangedSubview(billingFormSummaryView)
                 }
-
             } else {
                 stackView.addArrangedSubview(billingDetailsInputView)
             }
@@ -212,7 +215,7 @@ public class CardView: UIView {
         billingFormEmptyDetailsInputView.update(style: style)
     }
 
-    func updateBillingFormSummaryView(style: SummaryCellButtonStyle) {
+    func updateBillingFormSummaryView(style: SummaryViewStyle) {
         billingFormSummaryView.update(style: style)
     }
 }

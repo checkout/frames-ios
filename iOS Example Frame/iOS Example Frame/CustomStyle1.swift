@@ -18,6 +18,8 @@ private enum Constants {
     static let textFieldBackgroundColor = UIColor(red: 240/255.0, green: 245/255.0, blue: 249/255.0, alpha: 1.0)
 }
 
+//MARK: Billing Form
+
 struct BillingFormCustom1Style: BillingFormStyle {
     var mainBackground: UIColor = Constants.grayBackgroundColor
     var header: BillingFormHeaderCellStyle = BillingFormCustom1HeaderCellStyle()
@@ -247,14 +249,16 @@ struct HintInputCustom1LabelStyle: ElementStyle {
     var textColor: UIColor = .doveGray
 }
 
-public struct Custom1SummaryCellButtonStyle: SummaryCellButtonStyle {
+//MARK: Payment Form
+
+public struct Custom1SummaryViewStyle: SummaryViewStyle {
     public var isMandatory: Bool = true
     public var cornerRadius: CGFloat = 10
     public var borderWidth: CGFloat = 1.0
     public var separatorLineColor: UIColor = Constants.redBackgroundColor
     public var backgroundColor: UIColor = .clear
     public var borderColor: UIColor = Constants.redBackgroundColor
-    public var button: ElementButtonStyle = Custom1PaymentSummaryButtonStyle()
+    public var button: ElementButtonStyle = Custom1SummaryButtonStyle()
     public var title: ElementStyle? = TitleLabelCustom1Style(text: "Billing address", textColor: Constants.fontColorLabel)
     public var hint: ElementStyle? = HintInputCustom1LabelStyle(text: "We need this information as an additional security measure to verify this card.", textColor: Constants.fontColorLabel)
     public var summary: ElementStyle = TitleLabelCustom1Style(textColor: Constants.fontColorLabel)
@@ -262,8 +266,7 @@ public struct Custom1SummaryCellButtonStyle: SummaryCellButtonStyle {
     public var error: ElementErrorViewStyle?
 }
 
-
-public class Custom1PaymentSummaryButtonStyle: ElementButtonStyle {
+public class Custom1SummaryButtonStyle: ElementButtonStyle {
     public var image: UIImage? =  UIImage(named: "arrow_blue_right")
     public var text: String = "Edit billing address"
     public var font: UIFont = UIFont.systemFont(ofSize: 15)

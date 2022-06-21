@@ -432,7 +432,7 @@ class CardViewControllerTests: XCTestCase {
                               country: country)
         let phone = Phone(number: "+44123456789", country: country)
         let billingForm = BillingForm(name: "John smith", address: address, phone: phone)
-        let summaryStyle = DefaultSummaryCellButtonStyle()
+        let summaryStyle = DefaultSummaryViewStyle()
         let summaryValue = "John smith\n\n12 rue de la boulangerie\n\nLyon\n\n69002\n\nFrance\n\n+44123456789"
         let cardViewController = CardViewController(isNewUI: true,
                                                     summaryCellButtonStyle: summaryStyle,
