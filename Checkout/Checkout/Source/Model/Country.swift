@@ -9,16 +9,11 @@ import Foundation
 // swiftlint:disable type_body_length
 /// Country struct holding country fields.
 public struct Country: Equatable {
-    public let iso3166Alpha2: String
-    public let dialingCode: String?
-    public var name: String? {
-        Locale.current.localizedString(forRegionCode: iso3166Alpha2)
-    }
-
-    public init(iso3166Alpha2: String, dialingCode: String?) {
-        self.iso3166Alpha2 = iso3166Alpha2
-        self.dialingCode = dialingCode
-    }
+  public let iso3166Alpha2: String
+  public let dialingCode: String
+  public var name: String? {
+    Locale.current.localizedString(forRegionCode: iso3166Alpha2)
+  }
 
   public static var allAvailable: [Country] {
     [
@@ -256,7 +251,7 @@ public struct Country: Equatable {
       Country(iso3166Alpha2: "AE", dialingCode: "971"),
       Country(iso3166Alpha2: "GB", dialingCode: "44"),
       Country(iso3166Alpha2: "US", dialingCode: "1"),
-      Country(iso3166Alpha2: "UMI", dialingCode: "246"),
+      Country(iso3166Alpha2: "UM", dialingCode: "246"),
       Country(iso3166Alpha2: "UY", dialingCode: "598"),
       Country(iso3166Alpha2: "UZ", dialingCode: "998"),
       Country(iso3166Alpha2: "VU", dialingCode: "678"),
@@ -269,5 +264,13 @@ public struct Country: Equatable {
       Country(iso3166Alpha2: "ZM", dialingCode: "260"),
       Country(iso3166Alpha2: "ZW", dialingCode: "263")
     ]
+  }
+
+  public static func from(iso3166Alpha2: String) -> Country? {
+    return Self.allAvailable.first { $0.iso3166Alpha2 == iso3166Alpha2 }
+  }
+
+  public static func from(dialingCode: String) -> [Country] {
+    return Self.allAvailable.filter { $0.dialingCode == dialingCode }
   }
 }

@@ -18,6 +18,8 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
 
     private static let successURL = URL(string: "https://httpstat.us/200")!
     private static let failureURL = URL(string: "https://httpstat.us/403")!
+
+    private static let countryGB = Country.from(iso3166Alpha2: "GB")!
     
     // Step1 : create instance of CheckoutAPIService
     let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
@@ -34,8 +36,8 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let country = Country(iso3166Alpha2: "GB", dialingCode: nil)
-        cardViewController?.addressViewController.setCountrySelected(country: country)
+
+        cardViewController?.addressViewController.setCountrySelected(country: Self.countryGB)
     }
 
     override func viewDidLoad() {
@@ -73,10 +75,10 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
                               city: "London Custom 1",
                               state: "London Custom 1",
                               zip: "N12345",
-                              country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
+                              country: Self.countryGB)
 
         let phone = Phone(number: "77 1234 1234",
-                          country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
+                          country: Self.countryGB)
         let name = "User Custom 1"
 
         let billingForm = BillingForm(name: name, address: address, phone: phone)
@@ -96,10 +98,10 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
                               city: "London Custom 2",
                               state: "London Custom 2",
                               zip: "N12345",
-                              country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
+                              country: Self.countryGB)
 
         let phone = Phone(number: "77 1234 1234",
-                          country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
+                          country: Self.countryGB)
         let name = "User Custom 2"
 
         let billingForm = BillingForm(name: name, address: address, phone: phone)
@@ -215,10 +217,10 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
                               city: "London",
                               state: "London",
                               zip: "N12345",
-                              country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
+                              country: Self.countryGB)
 
         let phone = Phone(number: "77 1234 1234",
-                          country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
+                          country: Self.countryGB)
         let name = "User 1"
 
         let billingForm = BillingForm(name: name, address: address, phone: phone)

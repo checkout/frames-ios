@@ -55,10 +55,10 @@ public class AddressViewController: UIViewController,
         countrySelectionViewController.delegate = self
         addTextFieldsDelegate()
 
-        if let regionCodeSelectedUnwrap = regionCodeSelected {
-            let country = Country(iso3166Alpha2: regionCodeSelectedUnwrap, dialingCode: nil)
+        if let country = regionCodeSelected.flatMap({ Country.from(iso3166Alpha2: $0) }) {
             setCountrySelected(country: country)
         }
+
         self.navigationController?.navigationBar.isTranslucent = false
 
         validateFieldsValues()
