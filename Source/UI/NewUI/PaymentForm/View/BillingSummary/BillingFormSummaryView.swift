@@ -28,11 +28,11 @@ class BillingFormSummaryView: UIView {
         UIView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var image: ImageContainerView? = {
+    private(set) lazy var imageContainerView: ImageContainerView? = {
         ImageContainerView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var button: ButtonView? = {
+    private(set) lazy var buttonView: ButtonView? = {
         let view = ButtonView()
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -61,8 +61,8 @@ class BillingFormSummaryView: UIView {
         titleLabel?.update(with: style.title)
         hintLabel?.update(with: style.hint)
         summaryLabel?.update(with: style.hint)
-        button?.update(with: style.button)
-        image?.update(with: style.button.image, tintColor: style.button.imageTintColor)
+        buttonView?.update(with: style.button)
+        imageContainerView?.update(with: style.button.image, tintColor: style.button.imageTintColor)
         errorView?.update(style: style.error)
         summaryLabel?.update(with: style.summary)
         errorView?.isHidden = style.error?.isHidden ?? true
@@ -134,7 +134,7 @@ extension BillingFormSummaryView {
     }
 
     private func setupButton() {
-        guard let button = button else { return }
+        guard let button = buttonView else { return }
         guard let summarySeparatorLineView = summarySeparatorLineView else { return }
         addSubview(button)
         NSLayoutConstraint.activate([
@@ -148,7 +148,7 @@ extension BillingFormSummaryView {
     private func setupSummaryContainerView(){
         guard let summaryContainerView = summaryContainerView else { return }
         guard let hintLabel = hintLabel else { return }
-        guard let button = button else { return }
+        guard let button = buttonView else { return }
 
         addSubview(summaryContainerView)
         NSLayoutConstraint.activate([
@@ -161,8 +161,8 @@ extension BillingFormSummaryView {
     }
 
     private func setupImageView() {
-        guard let image = image else { return }
-        guard let button = button else { return }
+        guard let image = imageContainerView else { return }
+        guard let button = buttonView else { return }
         addSubview(image)
         NSLayoutConstraint.activate([
             image.centerYAnchor.constraint(equalTo: button.centerYAnchor),

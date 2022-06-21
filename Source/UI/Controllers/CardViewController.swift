@@ -50,7 +50,7 @@ public class CardViewController: UIViewController,
     var topConstraint: NSLayoutConstraint?
 
     private var suppressNextLog = false
-    private var isNewUI = false
+    private(set) var isNewUI = false
     // MARK: - Initialization
 
     /// Returns a newly initialized view controller with the cardholder's name and billing details
