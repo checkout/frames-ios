@@ -6,7 +6,7 @@ final class SimpleErrorView: UIView {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    lazy var image: ImageContainerView? = {
+    lazy var imageContainerView: ImageContainerView? = {
         ImageContainerView().disabledAutoresizingIntoConstraints()
     }()
 
@@ -28,7 +28,7 @@ final class SimpleErrorView: UIView {
                                                       font: style.font,
                                                       textColor: style.textColor)
         headerLabel?.update(with: headerLabelStyle)
-        image?.update(with: style.image, tintColor: style.tintColor)
+        imageContainerView?.update(with: style.image, tintColor: style.tintColor)
     }
 }
 
@@ -50,7 +50,7 @@ extension SimpleErrorView {
     }
 
     private func setupImageView() {
-        guard let headerLabel = headerLabel, let image = image else { return }
+        guard let headerLabel = headerLabel, let image = imageContainerView else { return }
         addSubview(image)
         NSLayoutConstraint.activate([
             image.topAnchor.constraint(equalTo: topAnchor),

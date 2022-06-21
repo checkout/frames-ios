@@ -33,6 +33,7 @@ class CardViewControllerTests: XCTestCase {
         let cardViewController = CardViewController()
         XCTAssertEqual(cardViewController.cardHolderNameState, .required)
         XCTAssertEqual(cardViewController.billingDetailsState, .required)
+        XCTAssertEqual(cardViewController.isNewUI, false)
         cardViewController.viewDidLoad()
         XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 5)
         cardViewController.viewDidLayoutSubviews()
@@ -47,6 +48,8 @@ class CardViewControllerTests: XCTestCase {
                                                     billingDetailsState: .hidden)
         XCTAssertEqual(cardViewController.cardHolderNameState, .hidden)
         XCTAssertEqual(cardViewController.billingDetailsState, .hidden)
+        XCTAssertEqual(cardViewController.isNewUI, false)
+
         cardViewController.viewDidLoad()
         XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 3)
     }
@@ -55,6 +58,7 @@ class CardViewControllerTests: XCTestCase {
         let cardViewController = CardViewController(nibName: nil, bundle: nil)
         XCTAssertEqual(cardViewController.cardHolderNameState, .required)
         XCTAssertEqual(cardViewController.billingDetailsState, .required)
+        XCTAssertEqual(cardViewController.isNewUI, false)
         cardViewController.viewDidLoad()
         XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 5)
     }
@@ -64,6 +68,7 @@ class CardViewControllerTests: XCTestCase {
         let cardViewController = CardViewController(coder: coder)
         XCTAssertEqual(cardViewController?.cardHolderNameState, .required)
         XCTAssertEqual(cardViewController?.billingDetailsState, .required)
+        XCTAssertEqual(cardViewController?.isNewUI, false)
         cardViewController?.viewDidLoad()
         XCTAssertEqual(cardViewController?.cardView.stackView.subviews.count, 5)
     }
@@ -128,6 +133,7 @@ class CardViewControllerTests: XCTestCase {
                                                     billingFormData: nil,
                                                     cardHolderNameState: .hidden,
                                                     billingDetailsState: .required)
+        XCTAssertEqual(cardViewController.isNewUI, false)
         cardViewController.viewDidLoad()
         XCTAssertFalse((cardViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
         // Simulate the end of a text field editing
@@ -143,6 +149,7 @@ class CardViewControllerTests: XCTestCase {
                                                     billingFormData: nil,
                                                     cardHolderNameState: .required,
                                                     billingDetailsState: .hidden)
+        XCTAssertEqual(cardViewController.isNewUI, false)
         cardViewController.viewDidLoad()
         XCTAssertFalse((cardViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
         // Simulate the end of a text field editing
@@ -158,6 +165,7 @@ class CardViewControllerTests: XCTestCase {
                                                     billingFormData: nil,
                                                     cardHolderNameState: .hidden,
                                                     billingDetailsState: .hidden)
+        XCTAssertEqual(cardViewController.isNewUI, false)
         cardViewController.viewDidLoad()
         XCTAssertFalse((cardViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
         cardViewController.cardView.cardNumberInputView.textField.text = "4242 4242 4242 4242"
@@ -176,6 +184,7 @@ class CardViewControllerTests: XCTestCase {
                                                     billingFormData: nil,
                                                     cardHolderNameState: .hidden,
                                                     billingDetailsState: .hidden)
+        XCTAssertEqual(cardViewController.isNewUI, false)
         cardViewController.viewDidLoad()
         XCTAssertFalse((cardViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
         // Simulate the end of a text field editing
@@ -298,6 +307,7 @@ class CardViewControllerTests: XCTestCase {
                                                     billingFormData: nil,
                                                     cardHolderNameState: .hidden,
                                                     billingDetailsState: .required)
+        XCTAssertEqual(cardViewController.isNewUI, false)
 
         let stubCardValidator = StubCardValidator()
         stubCardValidator.validateCardNumberToReturn = .success(.visa)
@@ -341,6 +351,7 @@ class CardViewControllerTests: XCTestCase {
                                                     billingFormData: nil,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
+        XCTAssertEqual(cardViewController.isNewUI, false)
 
         cardViewController.delegate = stubCardViewControllerDelegate
         cardViewController.cardView.cardNumberInputView.textField.text = "4242 4242 4242 4242"
@@ -362,7 +373,7 @@ class CardViewControllerTests: XCTestCase {
                                                     billingFormData: nil,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
-
+        XCTAssertEqual(cardViewController.isNewUI, false)
         cardViewController.viewWillAppear(true)
 
         let events = stubCheckoutAPIService.loggerToReturn.logCalledWithFramesLogEvents
@@ -379,7 +390,7 @@ class CardViewControllerTests: XCTestCase {
                                                     billingFormData: nil,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
-
+        XCTAssertEqual(cardViewController.isNewUI, false)
         cardViewController.viewWillAppear(true)
 
         cardViewController.onTapAddressView()
@@ -401,7 +412,7 @@ class CardViewControllerTests: XCTestCase {
                                                     billingFormData: nil,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
-
+        XCTAssertEqual(cardViewController.isNewUI, false)
         cardViewController.onTapAddressView()
 
         let events = stubCheckoutAPIService.loggerToReturn.logCalledWithFramesLogEvents
