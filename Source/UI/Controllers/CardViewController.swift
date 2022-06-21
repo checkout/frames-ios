@@ -469,7 +469,7 @@ extension CardViewController: BillingFormViewModelDelegate {
 
 
 extension CardViewController: CardViewDelegate {
-    func buttonIsPressed() {
+    func selectionButtonIsPressed() {
         onTapAddressView()
     }
 }

@@ -3,7 +3,7 @@ import UIKit
 import Checkout
 
 protocol CardViewDelegate: AnyObject {
-    func buttonIsPressed()
+    func selectionButtonIsPressed()
 }
 
 /// A view that displays card information inputs
@@ -18,8 +18,10 @@ public class CardView: UIView {
     let addressTapGesture = UITapGestureRecognizer()
     var isNewUI: Bool = true {
         didSet{
-            billingFormDetailsInputView.removeFromSuperview()
-            billingDetailsInputView.removeFromSuperview()
+            let showBillingFormDetailsInputView = billingDetailsState != .hidden && isNewUI
+            billingFormDetailsInputView.isHidden = !showBillingFormDetailsInputView
+            let showBillingDetailsInputView = billingDetailsState != .hidden && !isNewUI
+            billingDetailsInputView.isHidden = !showBillingDetailsInputView
             if billingDetailsState != .hidden {
                 if isNewUI {
                     stackView.addArrangedSubview(billingFormDetailsInputView)
@@ -50,7 +52,7 @@ public class CardView: UIView {
 
     private lazy var billingFormDetailsInputView: UIView = {
         let style = DefaultPaymentBillingFormButtonCellStyle()
-        var view = PaymentFormFactory.getBillingFormButtonView(style: style, delegate: self).view
+        var view = PaymentFormFactory.getBillingFormButtonView(style: style, delegate: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -184,8 +186,8 @@ public class CardView: UIView {
 }
 
 extension CardView: SelectionButtonViewDelegate {
-    public func buttonIsPressed() {
-        delegate?.buttonIsPressed()
+    public func selectionButtonIsPressed() {
+        delegate?.selectionButtonIsPressed()
     }
 }
 

@@ -1,7 +1,7 @@
 import UIKit
 
 public protocol SelectionButtonViewDelegate: AnyObject {
-    func buttonIsPressed()
+    func selectionButtonIsPressed()
 }
 
 class SelectionButtonView: UIView {
@@ -41,7 +41,7 @@ class SelectionButtonView: UIView {
     private(set) lazy var button: UIButton? = {
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(buttonIsPressed), for: .touchUpInside)
+        view.addTarget(self, action: #selector(selectionButtonIsPressed), for: .touchUpInside)
         return view
     }()
 
@@ -95,8 +95,8 @@ class SelectionButtonView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    @objc private func buttonIsPressed(){
-        delegate?.buttonIsPressed()
+    @objc private func selectionButtonIsPressed(){
+        delegate?.selectionButtonIsPressed()
     }
 
     private func updateErrorView(style: CellButtonStyle) {

@@ -244,7 +244,7 @@ extension BillingFormViewController: BillingFormHeaderCellDelegate {
 }
 
 extension BillingFormViewController: SelectionButtonTableViewCellDelegate {
-    func buttonIsPressed(tag: Int) {
+    func selectionButtonIsPressed(tag: Int) {
         let countryViewController = CountrySelectionViewController()
         countryViewController.delegate = self
         countryViewController.view.tag = tag
