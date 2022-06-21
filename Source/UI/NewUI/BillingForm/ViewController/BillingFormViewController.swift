@@ -18,7 +18,7 @@ protocol BillingFormViewControllerDelegate: AnyObject {
     func cancelButtonIsPressed(sender: UIViewController)
     func getViewForHeader(sender: UIViewController) -> UIView?
     func update(country: Country)
-    func phoneNumberIsUpdated(number: String)
+    func phoneNumberIsUpdated(number: String, tag: Int)
 }
 
 /**
@@ -58,8 +58,7 @@ final class BillingFormViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         view.register(CellTextField.self)
-        view.register(CellButton.self)
-
+        view.register(SelectionButtonTableViewCell.self)
         return view
     }()
 
@@ -157,14 +156,11 @@ extension BillingFormViewController {
         view.addSubview(headerView)
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(
-                equalTo: view.safeTopAnchor,
-                constant: 20),
+                equalTo: view.safeTopAnchor),
             headerView.leadingAnchor.constraint(
-                equalTo: view.safeLeadingAnchor,
-                constant: 20),
+                equalTo: view.leadingAnchor),
             headerView.trailingAnchor.constraint(
-                equalTo: view.safeTrailingAnchor,
-                constant: -20),
+                equalTo: view.trailingAnchor),
             headerView.heightAnchor.constraint(
                 equalToConstant: 130)
         ])
@@ -211,8 +207,8 @@ extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate 
 // MARK: - Text Field Delegate
 
 extension BillingFormViewController: CellTextFieldDelegate {
-    func phoneNumberIsUpdated(number: String) {
-        delegate?.phoneNumberIsUpdated(number: number)
+    func phoneNumberIsUpdated(number: String, tag: Int) {
+        delegate?.phoneNumberIsUpdated(number: number, tag: tag)
     }
 
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
@@ -247,10 +243,11 @@ extension BillingFormViewController: BillingFormHeaderCellDelegate {
     }
 }
 
-extension BillingFormViewController: CellButtonDelegate {
-    func buttonIsPressed() {
+extension BillingFormViewController: SelectionButtonTableViewCellDelegate {
+    func buttonIsPressed(tag: Int) {
         let countryViewController = CountrySelectionViewController()
         countryViewController.delegate = self
+        countryViewController.view.tag = tag
         navigationController?.pushViewController(countryViewController, animated: true)
     }
 }

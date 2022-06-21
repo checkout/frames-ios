@@ -181,7 +181,7 @@ public class AddressViewController: UIViewController,
 
     // MARK: - CountrySelectionViewControllerDelegate
 
-    /// Executed when an user select a country.
+    /// Executed when a user select a country.
     public func onCountrySelected(country: Country) {
         setCountrySelected(country: country)
     }

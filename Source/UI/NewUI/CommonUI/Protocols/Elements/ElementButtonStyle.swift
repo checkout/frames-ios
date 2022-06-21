@@ -10,6 +10,8 @@ public protocol ElementButtonStyle: ElementStyle {
     var focusBorderColor: UIColor { get }
     var errorBorderColor: UIColor { get }
     var image: UIImage? { get }
+    var cornerRadius: CGFloat { get }
+    var borderWidth: CGFloat { get }
     var height: Double { get }
     var width: Double { get }
 }

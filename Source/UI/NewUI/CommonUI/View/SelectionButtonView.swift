@@ -6,15 +6,12 @@ protocol SelectionButtonViewDelegate: AnyObject {
 
 class SelectionButtonView: UIView {
     weak var delegate: SelectionButtonViewDelegate?
-
     private var style: CellButtonStyle?
-    private var type: BillingFormCell?
 
     private(set) lazy var titleLabel: UILabel? = {
         let view = UILabel()
         view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
         return view
     }()
 
@@ -22,7 +19,6 @@ class SelectionButtonView: UIView {
         let view = UILabel()
         view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
         return view
     }()
 
@@ -47,24 +43,19 @@ class SelectionButtonView: UIView {
         return view
     }()
 
-    init(style: CellButtonStyle?, type: BillingFormCell?) {
-        self.style = style
-        self.type = type
-        super.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupViewsInOrder()
     }
 
-    func update(style: CellButtonStyle?, type: BillingFormCell?) {
-        guard let type = type, let style = style else { return }
-        self.type = type
+    func update(style: CellButtonStyle) {
         self.style = style
-
-
 
         /// title label style
         titleLabel?.text = style.title?.text
         titleLabel?.font = style.title?.font
         titleLabel?.textColor = style.title?.textColor
+        titleLabel?.backgroundColor = style.title?.backgroundColor
 
         /// title label style
         countryLabel?.text = style.button.text
@@ -78,11 +69,11 @@ class SelectionButtonView: UIView {
         /// select Button style
         button?.isEnabled = style.button.isEnabled
         button?.tintColor = .clear
-        button?.backgroundColor = .clear
+        button?.backgroundColor = style.button.backgroundColor
         button?.clipsToBounds = true
         button?.layer.borderColor = style.button.normalBorderColor.cgColor
-        button?.layer.cornerRadius = 10.0
-        button?.layer.borderWidth = 1.0
+        button?.layer.cornerRadius = style.button.cornerRadius
+        button?.layer.borderWidth = style.button.borderWidth
 
         updateErrorView(style: style)
     }
@@ -97,7 +88,7 @@ class SelectionButtonView: UIView {
 
     private func updateErrorView(style: CellButtonStyle) {
         errorView?.update(style: style.error)
-        errorView?.isHidden = style.error.isHidden
+        errorView?.isHidden = style.error?.isHidden ?? true
     }
 }
 
@@ -105,9 +96,9 @@ extension SelectionButtonView {
 
     private func setupViewsInOrder(){
         setupTitleLabel()
+        setupButton()
         setupCountryLabel()
         setupImageView()
-        setupButton()
         setupErrorView()
     }
 
@@ -150,11 +141,11 @@ extension SelectionButtonView {
 
     private func setupButton() {
         guard let button = button else { return }
-        guard let countryLabel = countryLabel else { return }
+        guard let titleLabel = titleLabel else { return }
         addSubview(button)
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: countryLabel.topAnchor),
-            button.bottomAnchor.constraint(equalTo: countryLabel.bottomAnchor),
+            button.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            button.bottomAnchor.constraint(equalTo: bottomAnchor),
             button.leadingAnchor.constraint(equalTo: leadingAnchor),
             button.trailingAnchor.constraint(equalTo: trailingAnchor),
 

@@ -43,28 +43,37 @@ final class BillingFormHeaderCell: UIView {
     }
 
     func update(style: BillingFormHeaderCellStyle?) {
+        guard let style = style else { return }
         self.style = style
 
-        /// Cancel Button style?
-        cancelButton?.setTitle(style?.cancelButton.text, for: .normal)
-        cancelButton?.titleLabel?.font = style?.cancelButton.font
-        cancelButton?.setTitleColor(style?.cancelButton.activeTitleColor, for: .normal)
-        cancelButton?.setTitleColor(style?.cancelButton.disabledTitleColor, for: .disabled)
-        cancelButton?.tintColor = (cancelButton?.isEnabled ?? false) ? style?.cancelButton.activeTintColor : style?.cancelButton.disabledTintColor
-        cancelButton?.backgroundColor = style?.cancelButton.backgroundColor
+        /// Cancel Button style
+        cancelButton?.setTitle(style.cancelButton.text, for: .normal)
+        cancelButton?.titleLabel?.font = style.cancelButton.font
+        cancelButton?.setTitleColor(style.cancelButton.activeTitleColor, for: .normal)
+        cancelButton?.setTitleColor(style.cancelButton.disabledTitleColor, for: .disabled)
+        cancelButton?.tintColor = (cancelButton?.isEnabled ?? false) ? style.cancelButton.activeTintColor : style.cancelButton.disabledTintColor
+        cancelButton?.backgroundColor = style.cancelButton.backgroundColor
+        cancelButton?.layer.cornerRadius = style.cancelButton.cornerRadius
+        cancelButton?.layer.borderWidth = style.cancelButton.borderWidth
+        cancelButton?.layer.borderColor = style.cancelButton.normalBorderColor.cgColor
 
-        /// Done Button style?
-        doneButton?.isEnabled = style?.doneButton.isEnabled ?? true
-        doneButton?.setTitle(style?.doneButton.text, for: .normal)
-        doneButton?.titleLabel?.font = style?.doneButton.font
-        doneButton?.setTitleColor(style?.doneButton.activeTitleColor, for: .normal)
-        doneButton?.setTitleColor(style?.doneButton.disabledTitleColor, for: .disabled)
-        doneButton?.tintColor = (doneButton?.isEnabled ?? false ) ? style?.doneButton.activeTintColor : style?.doneButton.disabledTintColor
-        doneButton?.backgroundColor = style?.doneButton.backgroundColor
+        /// Done Button style
+        doneButton?.isEnabled = style.doneButton.isEnabled
+        doneButton?.setTitle(style.doneButton.text, for: .normal)
+        doneButton?.titleLabel?.font = style.doneButton.font
+        doneButton?.setTitleColor(style.doneButton.activeTitleColor, for: .normal)
+        doneButton?.setTitleColor(style.doneButton.disabledTitleColor, for: .disabled)
+        doneButton?.tintColor = (doneButton?.isEnabled ?? false ) ? style.doneButton.activeTintColor : style.doneButton.disabledTintColor
+        doneButton?.backgroundColor = style.doneButton.backgroundColor
+        doneButton?.layer.cornerRadius = style.doneButton.cornerRadius
+        doneButton?.layer.borderWidth = style.doneButton.borderWidth
+        doneButton?.layer.borderColor = style.doneButton.normalBorderColor.cgColor
 
-        headerLabel?.text = style?.headerLabel.text
-        headerLabel?.font = style?.headerLabel.font
-        headerLabel?.textColor = style?.headerLabel.textColor
+        /// header label style
+        headerLabel?.text = style.headerLabel.text
+        headerLabel?.font = style.headerLabel.font
+        headerLabel?.textColor = style.headerLabel.textColor
+        headerLabel?.backgroundColor = style.headerLabel.backgroundColor
     }
 
     @objc private func doneAction() {
@@ -96,7 +105,7 @@ extension BillingFormHeaderCell {
             cancelButton.topAnchor.constraint(
                 equalTo: safeTopAnchor),
             cancelButton.leadingAnchor.constraint(
-                equalTo: safeLeadingAnchor),
+                equalTo: leadingAnchor, constant: 20),
             cancelButton.heightAnchor.constraint(
                 equalToConstant: style?.cancelButton.height ?? Constants.Style.BillingForm.CancelButton.height.rawValue),
             cancelButton.widthAnchor.constraint(
@@ -111,7 +120,7 @@ extension BillingFormHeaderCell {
             doneButton.topAnchor.constraint(
                 equalTo: safeTopAnchor),
             doneButton.trailingAnchor.constraint(
-                equalTo: safeTrailingAnchor),
+                equalTo: trailingAnchor, constant: -20),
             doneButton.heightAnchor.constraint(
                 equalToConstant: style?.doneButton.height ?? Constants.Style.BillingForm.DoneButton.height.rawValue),
             doneButton.widthAnchor.constraint(
@@ -127,9 +136,9 @@ extension BillingFormHeaderCell {
                 equalTo: safeTopAnchor,
                 constant: 58),
             headerLabel.leadingAnchor.constraint(
-                equalTo: safeLeadingAnchor),
+                equalTo: leadingAnchor, constant: 20),
             headerLabel.trailingAnchor.constraint(
-                equalTo: safeTrailingAnchor),
+                equalTo: trailingAnchor, constant: -20),
             headerLabel.bottomAnchor.constraint(
                 equalTo: safeBottomAnchor,
                 constant: -40)

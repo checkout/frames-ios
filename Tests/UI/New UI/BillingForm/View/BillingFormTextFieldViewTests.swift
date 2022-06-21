@@ -10,7 +10,7 @@ class BillingFormTextFieldViewTests: XCTestCase {
         UIFont.loadAllCheckoutFonts
         style = DefaultBillingFormFullNameCellStyle()
         view = TextFieldView()
-        view.update(style: style, type: .fullName(nil))
+        view.update(style: style, type: .fullName(nil), tag: 0)
     }
 
     func testHeaderLabelStyle() {
@@ -26,6 +26,8 @@ class BillingFormTextFieldViewTests: XCTestCase {
     func testTextFieldContainerStyle() {
         XCTAssertEqual(view.textFieldContainer?.backgroundColor, style.textfield.backgroundColor)
         XCTAssertEqual(view.textFieldContainer?.layer.borderColor, style.textfield.normalBorderColor.cgColor)
+        XCTAssertEqual(view.textFieldContainer?.layer.cornerRadius, style.textfield.cornerRadius)
+        XCTAssertEqual(view.textFieldContainer?.layer.borderWidth, style.textfield.borderWidth)
         XCTAssertEqual(view.textFieldContainer?.layer.cornerRadius, style.textfield.cornerRadius)
         XCTAssertEqual(view.textFieldContainer?.layer.borderWidth, style.textfield.borderWidth)
         XCTAssertEqual(view.textField?.keyboardType, .default)

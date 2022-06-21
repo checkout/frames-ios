@@ -13,8 +13,22 @@ class BillingFormViewModelTests: XCTestCase {
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
         XCTAssertNotNil(viewModel)
     }
-    
-    // TableView Cells
+
+    func testCountryCodeIsNotEmpty() {
+        let address = Address(addressLine1: "Test line1",
+                              addressLine2: nil,
+                              city: "London",
+                              state: "London",
+                              zip: "N12345",
+                              country: Country(iso3166Alpha2: "", dialingCode: "44"))
+        let phone = Phone(number: "77 1234 1234",
+                          country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
+        let name = "User 1"
+        let billingForm = BillingForm(name: name, address: address, phone: phone)
+        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: billingForm)
+        XCTAssertEqual(viewModel.country?.iso3166Alpha2.uppercased(), Locale.current.regionCode)
+    }
+
     func testGetHeaderCell() {
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
         let view = viewModel.getViewForHeader(sender: UIViewController())
@@ -38,12 +52,12 @@ class BillingFormViewModelTests: XCTestCase {
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
         let expectedType = BillingFormCell.fullName(nil)
         let text = "fullName"
-        let tag = 2
+        let tag = 0
         let textField = DefaultBillingFormTextField(type: expectedType, tag: tag)
         textField.text = text
         
         viewModel.validate(text: textField.text, cellStyle: expectedType, row: tag)
-        XCTAssertEqual( viewModel.errorFlagOfCellType[expectedType.index], false)
+        XCTAssertEqual(viewModel.errorFlagOfCellType[expectedType.index], false)
     }
     
     func testCallDelegateMethodTextFieldIsChanged() {

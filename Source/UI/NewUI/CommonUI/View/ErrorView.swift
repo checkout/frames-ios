@@ -34,7 +34,6 @@ final class ErrorView: UIView {
         headerLabel?.text = style?.text
         headerLabel?.font = style?.font
         headerLabel?.textColor = style?.textColor
-
         image?.image = style?.image
         image?.tintColor = style?.tintColor
     }

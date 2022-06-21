@@ -52,8 +52,6 @@ public class CardViewController: UIViewController,
     private var loggedForCurrentCorrelationID = false
 
     public var isNewUI = false
-    // TODO: [Will updated in the next ticket].
-    private var countryCode = 0
     // MARK: - Initialization
 
     /// Returns a newly initialized view controller with the cardholder's name and billing details
@@ -462,10 +460,6 @@ public class CardViewController: UIViewController,
 }
 
 extension CardViewController: BillingFormViewModelDelegate {
-
-    func updateCountryCode(code: Int) {
-        countryCode = code
-    }
 
     func onTapDoneButton(data: BillingForm) {
 

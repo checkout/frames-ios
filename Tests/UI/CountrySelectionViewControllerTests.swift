@@ -3,7 +3,6 @@ import Checkout
 @testable import Frames
 
 class MockDelegate: CountrySelectionViewControllerDelegate {
-
     public var methodCalledTimes = 0
     public var methodLastCalledWithCountry: Country?
 

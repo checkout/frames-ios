@@ -9,8 +9,8 @@ class BillingFormButtonViewTests: XCTestCase {
         super.setUp()
         UIFont.loadAllCheckoutFonts
         style = DefaultBillingFormCountryCellStyle()
-        view = SelectionButtonView(style: style, type: .country(style))
-        view.update(style: style, type: .country(style))
+        view = SelectionButtonView()
+        view.update(style: style)
     }
 
     func testHeaderLabelStyle() {
@@ -22,6 +22,8 @@ class BillingFormButtonViewTests: XCTestCase {
     func testButtonStyle() {
         XCTAssertEqual(view.button?.layer.borderColor, style.button.normalBorderColor.cgColor)
         XCTAssertEqual(view.button?.isEnabled, style.button.isEnabled)
+        XCTAssertEqual(view.button?.layer.cornerRadius, style.button.cornerRadius)
+        XCTAssertEqual(view.button?.layer.borderWidth, style.button.borderWidth)
     }
 
     func testImageStyle() {
@@ -29,8 +31,9 @@ class BillingFormButtonViewTests: XCTestCase {
         XCTAssertEqual(view.image?.tintColor, style.button.disabledTintColor)
     }
 
-    func testErrorStyle() {
-        XCTAssertEqual(view.errorView?.isHidden, style.error.isHidden)
+    func testErrorStyle() throws {
+        let isHidden = try XCTUnwrap(view.errorView?.isHidden)
+        XCTAssertTrue(isHidden)
     }
 
 }
