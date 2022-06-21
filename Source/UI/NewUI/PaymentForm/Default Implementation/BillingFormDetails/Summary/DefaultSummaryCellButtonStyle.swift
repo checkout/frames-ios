@@ -10,7 +10,7 @@ public struct DefaultSummaryCellButtonStyle: SummaryCellButtonStyle {
     public var button: ElementButtonStyle = DefaultPaymentSummaryButtonStyle()
     public var title: ElementStyle? = DefaultTitleLabelStyle(text: "billingAddressTitle".localized(forClass: CheckoutTheme.self))
     public var hint: ElementStyle? = DefaultHintInputLabelStyle(text: "We need this information as an additional security measure to verify this card.")
-    public var summary: ElementStyle = DefaultTitleLabelStyle(text: "Full name\n\nAddress line 1\n\nAddress line 2\n\nCity\n\nState\n\nPostcode\n\nCountry\n\nPhone number")
+    public var summary: ElementStyle = DefaultTitleLabelStyle()
     public var mandatory: ElementStyle?
     public var error: ElementErrorViewStyle?
 }

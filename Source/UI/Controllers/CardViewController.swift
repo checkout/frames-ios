@@ -465,12 +465,9 @@ public class CardViewController: UIViewController,
     public func onChangeCvv() {
         validateFieldsValues()
     }
-}
-
-extension CardViewController: BillingFormViewModelDelegate {
 
     private func updateBillingFormDetailsInputView(data: BillingForm?) {
-        guard var summaryCellButtonStyle = summaryCellButtonStyle else { return }
+        guard let summaryCellButtonStyle = summaryCellButtonStyle else { return }
         guard let data = data else { return }
         guard let address = data.address, let phone = data.phone else {
             let style = DefaultPaymentSummaryEmptyDetailsCellStyle()
@@ -478,27 +475,29 @@ extension CardViewController: BillingFormViewModelDelegate {
             return
         }
         var summaryValue = ""
-        updateSummaryValue(with: data.name)
-        updateSummaryValue(with: address.addressLine1)
-        updateSummaryValue(with: address.addressLine2)
-        updateSummaryValue(with: address.city)
-        updateSummaryValue(with: address.state)
-        updateSummaryValue(with: address.zip)
-        updateSummaryValue(with: address.country?.name)
-        updateSummaryValue(with: phone.number, withNewLine: false)
-        summaryCellButtonStyle.summary.text = summaryValue
+        updateSummaryValue(with: data.name, summaryValue: &summaryValue)
+        updateSummaryValue(with: address.addressLine1, summaryValue: &summaryValue)
+        updateSummaryValue(with: address.addressLine2, summaryValue: &summaryValue)
+        updateSummaryValue(with: address.city, summaryValue: &summaryValue)
+        updateSummaryValue(with: address.state, summaryValue: &summaryValue)
+        updateSummaryValue(with: address.zip, summaryValue: &summaryValue)
+        updateSummaryValue(with: address.country?.name, summaryValue: &summaryValue)
+        updateSummaryValue(with: phone.number, summaryValue: &summaryValue, withNewLine: false)
+        self.summaryCellButtonStyle?.summary.text = summaryValue
         cardView.updateBillingFormSummaryView(style: summaryCellButtonStyle)
-
-        func updateSummaryValue(with value: String?, withNewLine: Bool = true) {
-            guard let value = value else { return }
-            let billingFormValue = value.trimmingCharacters(in: .whitespaces)
-            if !billingFormValue.isEmpty {
-                let newLine = withNewLine ? "\n\n" : ""
-                summaryValue.append("\(billingFormValue)\(newLine)")
-            }
-        }
-
     }
+
+    private func updateSummaryValue(with value: String?, summaryValue: inout String,  withNewLine: Bool = true) {
+        guard let value = value else { return }
+        let billingFormValue = value.trimmingCharacters(in: .whitespaces)
+        if !billingFormValue.isEmpty {
+            let newLine = withNewLine ? "\n\n" : ""
+            summaryValue.append("\(billingFormValue)\(newLine)")
+        }
+    }
+}
+
+extension CardViewController: BillingFormViewModelDelegate {
 
     func onTapDoneButton(data: BillingForm) {
         billingFormData = data

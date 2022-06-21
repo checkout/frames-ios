@@ -421,4 +421,26 @@ class CardViewControllerTests: XCTestCase {
         XCTAssertEqual(.billingFormPresented, events.first)
         XCTAssertTrue(stubCheckoutAPIService.loggerCalled)
     }
+
+    func testUpdateBillingFormDetailsInputView(){
+        let country = Country.allAvailable.first { $0.iso3166Alpha2 == "FR" }!
+        let address = Address(addressLine1: "12 rue de la boulangerie",
+                              addressLine2: nil,
+                              city: "Lyon",
+                              state: nil,
+                              zip: "69002",
+                              country: country)
+        let phone = Phone(number: "+44123456789", country: country)
+        let billingForm = BillingForm(name: "John smith", address: address, phone: phone)
+        let summaryStyle = DefaultSummaryCellButtonStyle()
+        let summaryValue = "John smith\n\n12 rue de la boulangerie\n\nLyon\n\n69002\n\nFrance\n\n+44123456789"
+        let cardViewController = CardViewController(isNewUI: true,
+                                                    summaryCellButtonStyle: summaryStyle,
+                                                    checkoutAPIService: stubCheckoutAPIService,
+                                                    billingFormData: billingForm,
+                                                    cardHolderNameState: .normal,
+                                                    billingDetailsState: .normal)
+        XCTAssertEqual(cardViewController.isNewUI, true)
+        XCTAssertEqual(cardViewController.summaryCellButtonStyle?.summary.text, summaryValue)
+    }
 }
