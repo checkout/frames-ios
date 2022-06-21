@@ -20,7 +20,7 @@ public class CardViewController: UIViewController,
     let billingFormStyle: BillingFormStyle?
     let cardHolderNameState: InputState
     let billingDetailsState: InputState
-
+    var summaryCellButtonStyle: SummaryCellButtonStyle?
     public var billingFormData: BillingForm?
     var notificationCenter = NotificationCenter.default
     public let addressViewController: AddressViewController
@@ -57,6 +57,7 @@ public class CardViewController: UIViewController,
     /// state specified. You can specified the region using the Iso2 region code ("UK" for "United Kingdom")
 
     public convenience init(isNewUI: Bool,
+                            summaryCellButtonStyle: SummaryCellButtonStyle? = nil,
                             checkoutAPIService: CheckoutAPIService,
                             billingFormData: BillingForm?,
                             cardHolderNameState: InputState,
@@ -64,6 +65,7 @@ public class CardViewController: UIViewController,
                             billingFormStyle: BillingFormStyle?,
                             defaultRegionCode: String? = nil) {
         self.init(isNewUI: isNewUI,
+                  summaryCellButtonStyle: summaryCellButtonStyle,
                   checkoutAPIService: checkoutAPIService as CheckoutAPIProtocol,
                   billingFormData: billingFormData,
                 cardHolderNameState: cardHolderNameState,
@@ -73,6 +75,7 @@ public class CardViewController: UIViewController,
     }
 
     init(isNewUI: Bool,
+         summaryCellButtonStyle: SummaryCellButtonStyle? = nil,
          checkoutAPIService: CheckoutAPIProtocol,
          billingFormData: BillingForm?,
          cardHolderNameState: InputState,
@@ -80,6 +83,11 @@ public class CardViewController: UIViewController,
          billingFormStyle: BillingFormStyle? = nil,
          defaultRegionCode: String? = nil) {
         self.isNewUI = isNewUI
+        if summaryCellButtonStyle == nil {
+            self.summaryCellButtonStyle = DefaultSummaryCellButtonStyle()
+        } else {
+            self.summaryCellButtonStyle = summaryCellButtonStyle
+        }
         self.checkoutAPIService = checkoutAPIService
         self.billingFormData = billingFormData
         self.cardHolderNameState = cardHolderNameState
@@ -104,6 +112,7 @@ public class CardViewController: UIViewController,
         checkoutAPIService = nil
         billingFormStyle = nil
         billingFormData = nil
+        summaryCellButtonStyle = nil
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
@@ -116,6 +125,7 @@ public class CardViewController: UIViewController,
         checkoutAPIService = nil
         billingFormStyle = nil
         billingFormData = nil
+        summaryCellButtonStyle = nil
         super.init(coder: aDecoder)
     }
 
@@ -460,34 +470,34 @@ public class CardViewController: UIViewController,
 extension CardViewController: BillingFormViewModelDelegate {
 
     private func updateBillingFormDetailsInputView(data: BillingForm?) {
-        var summaryValue = ""
-
-        func updateSummaryValue(billingFormValue: String?) {
-            guard let billingFormValue = billingFormValue else { return }
-            let value = billingFormValue.trimmingCharacters(in: .whitespaces)
-            if !summaryValue.isEmpty {
-                summaryValue.append("\(value)\n\n")
-            }
-        }
-
+        guard var summaryCellButtonStyle = summaryCellButtonStyle else { return }
         guard let data = data else { return }
         guard let address = data.address, let phone = data.phone else {
             let style = DefaultPaymentSummaryEmptyDetailsCellStyle()
             cardView.updateBillingFormEmptyDetailsInputView(style: style)
             return
         }
-        
-        updateSummaryValue(billingFormValue: data.name)
-        updateSummaryValue(billingFormValue: address.addressLine1)
-        updateSummaryValue(billingFormValue: address.addressLine2)
-        updateSummaryValue(billingFormValue: address.city)
-        updateSummaryValue(billingFormValue: address.state)
-        updateSummaryValue(billingFormValue: address.zip)
-        updateSummaryValue(billingFormValue: address.country?.name)
-        updateSummaryValue(billingFormValue: phone.number)
-
-        let summaryCellButtonStyle = DefaultSummaryCellButtonStyle(summary:  DefaultTitleLabelStyle(text:summaryValue))
+        var summaryValue = ""
+        updateSummaryValue(with: data.name)
+        updateSummaryValue(with: address.addressLine1)
+        updateSummaryValue(with: address.addressLine2)
+        updateSummaryValue(with: address.city)
+        updateSummaryValue(with: address.state)
+        updateSummaryValue(with: address.zip)
+        updateSummaryValue(with: address.country?.name)
+        updateSummaryValue(with: phone.number, withNewLine: false)
+        summaryCellButtonStyle.summary.text = summaryValue
         cardView.updateBillingFormSummaryView(style: summaryCellButtonStyle)
+
+        func updateSummaryValue(with value: String?, withNewLine: Bool = true) {
+            guard let value = value else { return }
+            let billingFormValue = value.trimmingCharacters(in: .whitespaces)
+            if !billingFormValue.isEmpty {
+                let newLine = withNewLine ? "\n\n" : ""
+                summaryValue.append("\(billingFormValue)\(newLine)")
+            }
+        }
+
     }
 
     func onTapDoneButton(data: BillingForm) {

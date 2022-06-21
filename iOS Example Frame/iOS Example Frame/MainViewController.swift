@@ -47,6 +47,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     private func setupCardViewController(){
         let cardFormData = defaultCardFormData()
         cardViewController = createCardViewController(isNewUI: false,
+                                                      summaryCellButtonStyle: nil,
                                                       checkoutAPIService: checkoutAPIService,
                                                       billingFormData: cardFormData.billingForm,
                                                       billingFormStyle: cardFormData.billingFormStyle)
@@ -83,6 +84,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         let billingForm = BillingForm(name: name, address: address, phone: phone)
 
         cardViewController = createCardViewController(isNewUI: true,
+                                                      summaryCellButtonStyle: Custom1SummaryCellButtonStyle(),
                                                       checkoutAPIService: checkoutAPIService,
                                                       billingFormData: billingForm,
                                                       billingFormStyle: billingFormCustom1Style)
@@ -106,6 +108,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         let billingForm = BillingForm(name: name, address: address, phone: phone)
 
         cardViewController = createCardViewController(isNewUI: true,
+                                                      summaryCellButtonStyle: Custom2SummaryCellButtonStyle(),
                                                       checkoutAPIService: checkoutAPIService,
                                                       billingFormData: billingForm,
                                                       billingFormStyle: billingFormStyle)
@@ -183,6 +186,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     }
 
     private func createCardViewController(isNewUI: Bool,
+                                          summaryCellButtonStyle: SummaryCellButtonStyle? = nil,
                                           checkoutAPIService: Frames.CheckoutAPIService,
                                           billingFormData: BillingForm,
                                           cardHolderNameState: InputState = .normal,
@@ -190,7 +194,8 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
                                           billingFormStyle: BillingFormStyle,
                                           defaultRegionCode: String = "GB") -> CardViewController {
 
-        let viewController = CardViewController(isNewUI: isNewUI, checkoutAPIService: checkoutAPIService,
+        let viewController = CardViewController(isNewUI: isNewUI,
+                                                summaryCellButtonStyle: summaryCellButtonStyle, checkoutAPIService: checkoutAPIService,
                                                 billingFormData: billingFormData,
                                                 cardHolderNameState: .normal,
                                                 billingDetailsState: .required,

@@ -246,3 +246,41 @@ struct HintInputCustom1LabelStyle: ElementStyle {
     var font: UIFont = UIFont(name: "Helvetica Neue", size: 14)!
     var textColor: UIColor = .doveGray
 }
+
+public struct Custom1SummaryCellButtonStyle: SummaryCellButtonStyle {
+    public var isMandatory: Bool = true
+    public var cornerRadius: CGFloat = 10
+    public var borderWidth: CGFloat = 1.0
+    public var separatorLineColor: UIColor = Constants.redBackgroundColor
+    public var backgroundColor: UIColor = .clear
+    public var borderColor: UIColor = Constants.redBackgroundColor
+    public var button: ElementButtonStyle = Custom1PaymentSummaryButtonStyle()
+    public var title: ElementStyle? = TitleLabelCustom1Style(text: "Billing address", textColor: Constants.fontColorLabel)
+    public var hint: ElementStyle? = HintInputCustom1LabelStyle(text: "We need this information as an additional security measure to verify this card.", textColor: Constants.fontColorLabel)
+    public var summary: ElementStyle = TitleLabelCustom1Style(textColor: Constants.fontColorLabel)
+    public var mandatory: ElementStyle?
+    public var error: ElementErrorViewStyle?
+}
+
+
+public class Custom1PaymentSummaryButtonStyle: ElementButtonStyle {
+    public var image: UIImage? =  UIImage(named: "arrow_blue_right")
+    public var text: String = "Edit billing address"
+    public var font: UIFont = UIFont.systemFont(ofSize: 15)
+    public var textColor: UIColor = Constants.redBackgroundColor
+    public var disabledTextColor: UIColor = .clear
+    public var disabledTintColor: UIColor = .clear
+    public var activeTintColor: UIColor = Constants.redBackgroundColor
+    public var imageTintColor: UIColor = Constants.redBackgroundColor
+    public var backgroundColor: UIColor = .clear
+    public var normalBorderColor: UIColor = .clear
+    public var focusBorderColor: UIColor = .clear
+    public var errorBorderColor: UIColor = .clear
+    public var isHidden: Bool = false
+    public var isEnabled: Bool = true
+    public var height: Double = 56
+    public var width: Double = 0
+    public var cornerRadius: CGFloat = 10
+    public var borderWidth: CGFloat = 1
+    public var textLeading: CGFloat = 20
+}
