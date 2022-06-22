@@ -9,7 +9,18 @@ import Foundation
 // swiftlint:disable type_body_length
 /// Country struct holding country fields.
 public struct Country: Equatable {
+  /// ISO 1336-1 Alpha-2 country code
+  ///
+  /// [As defined by ISO](https://www.iso.org/obp/ui/#search/code/)
+  ///
+  /// [Full list of supported codes](https://www.checkout.com/docs/resources/codes/country-codes)
   public let iso3166Alpha2: String
+
+  /// ITU-T E.164 country dialing code
+  ///
+  /// [As defined by ITU-T](https://www.itu.int/dms_pub/itu-t/opb/sp/T-SP-E.164D-11-2011-PDF-E.pdf)
+  ///
+  /// [Full list of supported codes](https://www.checkout.com/docs/resources/codes/country-codes)
   public let dialingCode: String
   public var name: String? {
     Locale.current.localizedString(forRegionCode: iso3166Alpha2)
