@@ -1,7 +1,7 @@
 import UIKit
 
 protocol SelectionButtonTableViewCellDelegate: AnyObject {
-    func buttonIsPressed(tag: Int)
+    func selectionButtonIsPressed(tag: Int)
 }
 
 final class SelectionButtonTableViewCell: UITableViewCell {
@@ -51,7 +51,7 @@ extension SelectionButtonTableViewCell {
 }
 
 extension SelectionButtonTableViewCell: SelectionButtonViewDelegate {
-    func buttonIsPressed() {
-        delegate?.buttonIsPressed(tag: tag)
+    func selectionButtonIsPressed() {
+        delegate?.selectionButtonIsPressed(tag: tag)
     }
 }

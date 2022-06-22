@@ -2,6 +2,16 @@ extension Constants {
 
     enum Style {
 
+        enum PaymentForm {
+            enum InputBillingFormButton: Double {
+                case height = 56
+                case width = 0
+                case fontSize = 15
+                case cornerRadius = 10
+                case borderWidth = 1
+            }
+        }
+
         enum BillingForm {
 
             enum CancelButton: Double {

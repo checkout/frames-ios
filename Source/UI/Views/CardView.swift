@@ -2,16 +2,35 @@ import Foundation
 import UIKit
 import Checkout
 
+protocol CardViewDelegate: AnyObject {
+    func selectionButtonIsPressed()
+}
+
 /// A view that displays card information inputs
 public class CardView: UIView {
 
     // MARK: - Properties
-
+    weak var delegate: CardViewDelegate?
     let scrollView = UIScrollView()
     let contentView = UIView()
     let stackView = UIStackView()
     let schemeIconsStackView = SchemeIconsStackView()
     let addressTapGesture = UITapGestureRecognizer()
+    var isNewUI: Bool = true {
+        didSet{
+            let showBillingFormDetailsInputView = billingDetailsState != .hidden && isNewUI
+            billingFormDetailsInputView.isHidden = !showBillingFormDetailsInputView
+            let showBillingDetailsInputView = billingDetailsState != .hidden && !isNewUI
+            billingDetailsInputView.isHidden = !showBillingDetailsInputView
+            if billingDetailsState != .hidden {
+                if isNewUI {
+                    stackView.addArrangedSubview(billingFormDetailsInputView)
+                } else {
+                    stackView.addArrangedSubview(billingDetailsInputView)
+                }
+            }
+        }
+    }
 
     /// Accepted Card Label
     public let acceptedCardLabel = UILabel()
@@ -30,6 +49,13 @@ public class CardView: UIView {
 
     /// Billing details input view
     public let billingDetailsInputView = DetailsInputView()
+
+    private lazy var billingFormDetailsInputView: UIView = {
+        let style = DefaultPaymentBillingFormButtonCellStyle()
+        var view = PaymentFormFactory.getBillingFormButtonView(style: style, delegate: self)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     // Input options
     let cardHolderNameState: InputState
@@ -128,9 +154,7 @@ public class CardView: UIView {
         }
         stackView.addArrangedSubview(expirationDateInputView)
         stackView.addArrangedSubview(cvvInputView)
-        if billingDetailsState != .hidden {
-            stackView.addArrangedSubview(billingDetailsInputView)
-        }
+
     }
 
     private func addInitialConstraints() {
@@ -160,3 +184,10 @@ public class CardView: UIView {
         stackView.bottomAnchor.constraint(equalTo: contentView.safeBottomAnchor).isActive = true
     }
 }
+
+extension CardView: SelectionButtonViewDelegate {
+    public func selectionButtonIsPressed() {
+        delegate?.selectionButtonIsPressed()
+    }
+}
+
