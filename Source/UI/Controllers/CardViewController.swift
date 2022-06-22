@@ -90,6 +90,9 @@ public class CardViewController: UIViewController,
                             cardValidator: checkoutAPIService.cardValidator)
         addressViewController = AddressViewController(initialCountry: "you", initialRegionCode: defaultRegionCode)
         super.init(nibName: nil, bundle: nil)
+        if let billingFormData = self.billingFormData {
+            self.updateBillingFormDetailsInputView(data: billingFormData)
+        }
     }
 
     /// Returns a newly initialized view controller with the nib file in the specified bundle.
@@ -312,7 +315,7 @@ public class CardViewController: UIViewController,
     public func onTapDoneButton(controller: AddressViewController, address: Address, phone: Phone) {
         billingFormData = BillingForm(name: "", address: address, phone: phone)
 
-        let value = "\(billingFormData?.address.addressLine1 ?? ""), \(billingFormData?.address.city ?? "")"
+        let value = "\(billingFormData?.address?.addressLine1 ?? ""), \(billingFormData?.address?.city ?? "")"
         cardView.billingDetailsInputView.value.text = value
         validateFieldsValues()
         // return to CardViewController
@@ -455,12 +458,53 @@ public class CardViewController: UIViewController,
 }
 
 extension CardViewController: BillingFormViewModelDelegate {
+     private func updateBillingFormDetailsInputView(data: BillingForm) {
+
+        guard let address = data.address, let phone = data.phone else {
+            let style = DefaultPaymentSummaryEmptyDetailsCellStyle()
+            cardView.updateBillingFormEmptyDetailsInputView(style: style)
+            return
+        }
+        var value = ""
+         if let name = data.name?.trimmingCharacters(in: .whitespaces), !name.isEmpty {
+            value.append("\(name)\n\n")
+        }
+         if let addressLine1 = address.addressLine1?.trimmingCharacters(in: .whitespaces), !addressLine1.isEmpty {
+            value.append("\(addressLine1)\n\n")
+        }
+        if let addressLine2 = address.addressLine2, !addressLine2.isEmpty {
+            value.append("\(addressLine2)\n\n")
+        }
+        if let city = address.city, !city.isEmpty {
+            value.append("\(city)\n\n")
+        }
+        if let state = address.state, !state.isEmpty {
+            value.append("\(state)\n\n")
+        }
+        if let zip = address.zip, !zip.isEmpty {
+            value.append("\(zip)\n\n")
+        }
+        if let name = address.country?.name, !name.isEmpty {
+            value.append("\(name)\n\n")
+        }
+        if let number = phone.number, !number.isEmpty {
+            value.append("\(number)")
+        }
+
+        let summaryCellButtonStyle = DefaultSummaryCellButtonStyle(summary:  DefaultTitleLabelStyle(text:value))
+        cardView.updateBillingFormSummaryView(style: summaryCellButtonStyle)
+    }
 
     func onTapDoneButton(data: BillingForm) {
-
         billingFormData = data
-        let value = "\(data.address.addressLine1 ?? ""), \(data.address.city ?? "")"
-        cardView.billingDetailsInputView.value.text = value
+
+        var value = ""
+        if isNewUI {
+            updateBillingFormDetailsInputView(data: data)
+        } else {
+            value = "\(data.address?.addressLine1 ?? ""), \(data.address?.city ?? "")"
+            cardView.billingDetailsInputView.value.text = value
+        }
         validateFieldsValues()
         // return to CardViewController
         self.topConstraint?.isActive = false

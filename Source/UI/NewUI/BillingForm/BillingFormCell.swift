@@ -53,13 +53,13 @@ import Foundation
     func getText(from billingFormData: BillingForm?) -> String? {
         switch self {
             case .fullName: return billingFormData?.name
-            case .addressLine1: return billingFormData?.address.addressLine1
-            case .addressLine2: return billingFormData?.address.addressLine2
-            case .city: return billingFormData?.address.city
-            case .state: return billingFormData?.address.state
-            case .postcode: return billingFormData?.address.zip
-            case .country: return billingFormData?.address.country?.name
-            case .phoneNumber: return billingFormData?.phone.number
+            case .addressLine1: return billingFormData?.address?.addressLine1
+            case .addressLine2: return billingFormData?.address?.addressLine2
+            case .city: return billingFormData?.address?.city
+            case .state: return billingFormData?.address?.state
+            case .postcode: return billingFormData?.address?.zip
+            case .country: return billingFormData?.address?.country?.name
+            case .phoneNumber: return billingFormData?.phone?.number
         }
     }
 }

@@ -2,14 +2,14 @@ import XCTest
 @testable import Frames
 
 class BillingFormTextFieldErrorViewTests: XCTestCase {
-    var errorView: ErrorView!
+    var errorView: SimpleErrorView!
     var style: DefaultErrorInputLabelStyle!
 
     override func setUp() {
         super.setUp()
         UIFont.loadAllCheckoutFonts
         style = DefaultErrorInputLabelStyle()
-        errorView = ErrorView()
+        errorView = SimpleErrorView()
         errorView.update(style: style)
     }
 

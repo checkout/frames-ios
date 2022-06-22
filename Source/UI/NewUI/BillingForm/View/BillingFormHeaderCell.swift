@@ -9,26 +9,22 @@ final class BillingFormHeaderCell: UIView {
     weak var delegate: BillingFormHeaderCellDelegate?
     private var style: BillingFormHeaderCellStyle?
 
-    private lazy var cancelButton: UIButton? = {
-        let view = UIButton()
+    private lazy var cancelButton: ButtonView? = {
+        let view = ButtonView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
+        view.delegate = self
         return view
     }()
 
-    private lazy var doneButton: UIButton? = {
-        let view = UIButton()
+    private lazy var doneButton: ButtonView? = {
+        let view = ButtonView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(doneAction), for: .touchUpInside)
+        view.delegate = self
         return view
     }()
 
-    private lazy var headerLabel: UILabel? = {
-        let view = UILabel()
-        view.numberOfLines = 0
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
-        return view
+    private lazy var headerLabel: LabelView? = {
+        LabelView().disabledAutoresizingIntoConstraints()
     }()
 
     init(style: BillingFormHeaderCellStyle, delegate: BillingFormHeaderCellDelegate?) {
@@ -46,34 +42,9 @@ final class BillingFormHeaderCell: UIView {
         guard let style = style else { return }
         self.style = style
 
-        /// Cancel Button style
-        cancelButton?.setTitle(style.cancelButton.text, for: .normal)
-        cancelButton?.titleLabel?.font = style.cancelButton.font
-        cancelButton?.setTitleColor(style.cancelButton.activeTitleColor, for: .normal)
-        cancelButton?.setTitleColor(style.cancelButton.disabledTitleColor, for: .disabled)
-        cancelButton?.tintColor = (cancelButton?.isEnabled ?? false) ? style.cancelButton.activeTintColor : style.cancelButton.disabledTintColor
-        cancelButton?.backgroundColor = style.cancelButton.backgroundColor
-        cancelButton?.layer.cornerRadius = style.cancelButton.cornerRadius
-        cancelButton?.layer.borderWidth = style.cancelButton.borderWidth
-        cancelButton?.layer.borderColor = style.cancelButton.normalBorderColor.cgColor
-
-        /// Done Button style
-        doneButton?.isEnabled = style.doneButton.isEnabled
-        doneButton?.setTitle(style.doneButton.text, for: .normal)
-        doneButton?.titleLabel?.font = style.doneButton.font
-        doneButton?.setTitleColor(style.doneButton.activeTitleColor, for: .normal)
-        doneButton?.setTitleColor(style.doneButton.disabledTitleColor, for: .disabled)
-        doneButton?.tintColor = (doneButton?.isEnabled ?? false ) ? style.doneButton.activeTintColor : style.doneButton.disabledTintColor
-        doneButton?.backgroundColor = style.doneButton.backgroundColor
-        doneButton?.layer.cornerRadius = style.doneButton.cornerRadius
-        doneButton?.layer.borderWidth = style.doneButton.borderWidth
-        doneButton?.layer.borderColor = style.doneButton.normalBorderColor.cgColor
-
-        /// header label style
-        headerLabel?.text = style.headerLabel.text
-        headerLabel?.font = style.headerLabel.font
-        headerLabel?.textColor = style.headerLabel.textColor
-        headerLabel?.backgroundColor = style.headerLabel.backgroundColor
+        doneButton?.update(with: style.doneButton)
+        cancelButton?.update(with: style.cancelButton)
+        headerLabel?.update(with: style.headerLabel)
     }
 
     @objc private func doneAction() {
@@ -120,7 +91,7 @@ extension BillingFormHeaderCell {
             doneButton.topAnchor.constraint(
                 equalTo: safeTopAnchor),
             doneButton.trailingAnchor.constraint(
-                equalTo: trailingAnchor, constant: -20),
+                equalTo: trailingAnchor, constant: 0),
             doneButton.heightAnchor.constraint(
                 equalToConstant: style?.doneButton.height ?? Constants.Style.BillingForm.DoneButton.height.rawValue),
             doneButton.widthAnchor.constraint(
@@ -149,5 +120,19 @@ extension BillingFormHeaderCell {
 extension BillingFormHeaderCell: BillingFormViewModelEditingDelegate {
     func didFinishEditingBillingForm(successfully: Bool) {
         shouldEnableDoneButton(flag: successfully)
+    }
+}
+
+extension BillingFormHeaderCell: ButtonViewDelegate {
+    func buttonIsPressed(sender: UIView) {
+        switch sender {
+            case doneButton:
+                delegate?.doneButtonIsPressed()
+                break
+            case cancelButton:
+                delegate?.cancelButtonIsPressed()
+                break
+            default: break
+        }
     }
 }

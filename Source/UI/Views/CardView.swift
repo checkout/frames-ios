@@ -24,7 +24,8 @@ public class CardView: UIView {
             billingDetailsInputView.isHidden = !showBillingDetailsInputView
             if billingDetailsState != .hidden {
                 if isNewUI {
-                    stackView.addArrangedSubview(billingFormDetailsInputView)
+                    stackView.addArrangedSubview(billingFormEmptyDetailsInputView)
+                    stackView.addArrangedSubview(billingFormSummaryView)
                 } else {
                     stackView.addArrangedSubview(billingDetailsInputView)
                 }
@@ -50,10 +51,15 @@ public class CardView: UIView {
     /// Billing details input view
     public let billingDetailsInputView = DetailsInputView()
 
-    private lazy var billingFormDetailsInputView: UIView = {
-        let style = DefaultPaymentBillingFormButtonCellStyle()
-        var view = PaymentFormFactory.getBillingFormButtonView(style: style, delegate: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var billingFormSummaryView: BillingFormSummaryView = {
+        let view = BillingFormSummaryView()
+        view.delegate = self
+        return view
+    }()
+
+    private lazy var billingFormEmptyDetailsInputView: SelectionButtonView = {
+        let view = SelectionButtonView()
+        view.delegate = self
         return view
     }()
 
@@ -154,7 +160,6 @@ public class CardView: UIView {
         }
         stackView.addArrangedSubview(expirationDateInputView)
         stackView.addArrangedSubview(cvvInputView)
-
     }
 
     private func addInitialConstraints() {
@@ -182,6 +187,18 @@ public class CardView: UIView {
         stackView.topAnchor.constraint(equalTo: schemeIconsStackView.safeBottomAnchor, constant: 16).isActive = true
         stackView.leadingAnchor.constraint(equalTo: contentView.safeLeadingAnchor, constant: 8).isActive = true
         stackView.bottomAnchor.constraint(equalTo: contentView.safeBottomAnchor).isActive = true
+    }
+
+    func updateBillingFormEmptyDetailsInputView(style: CellButtonStyle) {
+        billingDetailsInputView.removeFromSuperview()
+        billingFormSummaryView.removeFromSuperview()
+        billingFormEmptyDetailsInputView.update(style: style)
+    }
+
+    func updateBillingFormSummaryView(style: SummaryCellButtonStyle) {
+        billingDetailsInputView.removeFromSuperview()
+        billingFormEmptyDetailsInputView.removeFromSuperview()
+        billingFormSummaryView.update(style: style)
     }
 }
 

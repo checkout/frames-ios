@@ -1,22 +1,13 @@
 import UIKit
 
-final class ErrorView: UIView {
+final class SimpleErrorView: UIView {
 
-    lazy var headerLabel: UILabel? = {
-        let view = UILabel()
-        view.textAlignment = .justified
-        view.numberOfLines = 0
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
-        return view
+    lazy var headerLabel: LabelView? = {
+        LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    lazy var image: UIImageView? = {
-        let view = UIImageView()
-        view.contentMode = .scaleAspectFit
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
-        return view
+    lazy var image: ImageContainerView? = {
+        ImageContainerView().disabledAutoresizingIntoConstraints()
     }()
 
     init() {
@@ -29,17 +20,15 @@ final class ErrorView: UIView {
     }
 
     func update(style: ElementErrorViewStyle?) {
-        backgroundColor = style?.backgroundColor
-
-        headerLabel?.text = style?.text
-        headerLabel?.font = style?.font
-        headerLabel?.textColor = style?.textColor
-        image?.image = style?.image
-        image?.tintColor = style?.tintColor
+        guard let style = style else { return }
+        backgroundColor = style.backgroundColor
+        let headerLabelStyle = DefaultHintInputLabelStyle(backgroundColor: .clear, isHidden: false, text: style.text, font: style.font, textColor: style.textColor)
+        headerLabel?.update(with: headerLabelStyle)
+        image?.update(with: style.image, tintColor: style.tintColor)
     }
 }
 
-extension ErrorView {
+extension SimpleErrorView {
 
     private func setupViewsInOrder() {
         setupHeaderLabel()
