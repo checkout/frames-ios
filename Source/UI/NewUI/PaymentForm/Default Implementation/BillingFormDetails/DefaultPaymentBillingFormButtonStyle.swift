@@ -2,7 +2,7 @@ import UIKit
 
 public class DefaultPaymentBillingFormButtonStyle: ElementButtonStyle {
     public var image: UIImage? = "arrow_blue_right".vectorPDFImage(forClass: CheckoutTheme.self)
-    public var text: String = "Add billing address".localized(forClass: CheckoutTheme.self)
+    public var text: String = "AddBillingAddress".localized(forClass: CheckoutTheme.self)
     public var font: UIFont = UIFont(graphikStyle: .regular, size: Constants.Style.BillingForm.InputCountryButton.fontSize.rawValue)
     public var activeTitleColor: UIColor = .brandeisBlue
     public var disabledTitleColor: UIColor = .mediumGray
