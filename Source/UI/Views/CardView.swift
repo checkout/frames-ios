@@ -63,6 +63,8 @@ public class CardView: UIView {
         return view
     }()
 
+    private var billingFormData: BillingForm?
+
     // Input options
     let cardHolderNameState: InputState
     let billingDetailsState: InputState
@@ -92,7 +94,9 @@ public class CardView: UIView {
     }
 
     /// Initializes and returns a newly  allocated card view with the specified input states.
-    init(cardHolderNameState: InputState, billingDetailsState: InputState, cardValidator: CardValidating?) {
+    init(isNewUI: Bool, billingFormData: BillingForm?, cardHolderNameState: InputState, billingDetailsState: InputState, cardValidator: CardValidating?) {
+        self.isNewUI = isNewUI
+        self.billingFormData = billingFormData
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
         self.cardNumberInputView = CardNumberInputView(cardValidator: cardValidator)
@@ -160,6 +164,21 @@ public class CardView: UIView {
         }
         stackView.addArrangedSubview(expirationDateInputView)
         stackView.addArrangedSubview(cvvInputView)
+        billingFormEmptyDetailsInputView.removeFromSuperview()
+        billingFormSummaryView.removeFromSuperview()
+        billingDetailsInputView.removeFromSuperview()
+        if billingDetailsState != .hidden {
+            if isNewUI ?? false {
+                if billingFormData?.address == nil && billingFormData?.phone == nil {
+                    stackView.addArrangedSubview(billingFormEmptyDetailsInputView)
+                } else {
+                    stackView.addArrangedSubview(billingFormSummaryView)
+                }
+
+            } else {
+                stackView.addArrangedSubview(billingDetailsInputView)
+            }
+        }
     }
 
     private func addInitialConstraints() {
@@ -190,14 +209,10 @@ public class CardView: UIView {
     }
 
     func updateBillingFormEmptyDetailsInputView(style: CellButtonStyle) {
-        billingDetailsInputView.removeFromSuperview()
-        billingFormSummaryView.removeFromSuperview()
         billingFormEmptyDetailsInputView.update(style: style)
     }
 
     func updateBillingFormSummaryView(style: SummaryCellButtonStyle) {
-        billingDetailsInputView.removeFromSuperview()
-        billingFormEmptyDetailsInputView.removeFromSuperview()
         billingFormSummaryView.update(style: style)
     }
 }

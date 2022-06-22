@@ -22,7 +22,11 @@ final class SimpleErrorView: UIView {
     func update(style: ElementErrorViewStyle?) {
         guard let style = style else { return }
         backgroundColor = style.backgroundColor
-        let headerLabelStyle = DefaultHintInputLabelStyle(backgroundColor: .clear, isHidden: false, text: style.text, font: style.font, textColor: style.textColor)
+        let headerLabelStyle = DefaultTitleLabelStyle(backgroundColor: .clear,
+                                                      isHidden: false,
+                                                      text: style.text,
+                                                      font: style.font,
+                                                      textColor: style.textColor)
         headerLabel?.update(with: headerLabelStyle)
         image?.update(with: style.image, tintColor: style.tintColor)
     }
