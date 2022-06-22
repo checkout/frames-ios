@@ -1,7 +1,7 @@
 import UIKit
 
 public protocol SelectionButtonViewDelegate: AnyObject {
-    func buttonIsPressed()
+    func selectionButtonIsPressed()
 }
 
 class SelectionButtonView: UIView {
@@ -124,7 +124,7 @@ extension SelectionButtonView {
 }
 
 extension SelectionButtonView: ButtonViewDelegate {
-    func buttonIsPressed(sender: UIView) {
-        delegate?.buttonIsPressed()
+    func selectionButtonIsPressed(sender: UIView) {
+        delegate?.selectionButtonIsPressed()
     }
 }

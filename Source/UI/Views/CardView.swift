@@ -19,13 +19,12 @@ public class CardView: UIView {
     var isNewUI: Bool = true {
         didSet{
             let showBillingFormDetailsInputView = billingDetailsState != .hidden && isNewUI
-            billingFormDetailsInputView.isHidden = !showBillingFormDetailsInputView
+            billingFormSummaryView.isHidden = !showBillingFormDetailsInputView
             let showBillingDetailsInputView = billingDetailsState != .hidden && !isNewUI
             billingDetailsInputView.isHidden = !showBillingDetailsInputView
             if billingDetailsState != .hidden {
                 if isNewUI {
                     stackView.addArrangedSubview(billingFormEmptyDetailsInputView)
-                    stackView.addArrangedSubview(billingFormSummaryView)
                 } else {
                     stackView.addArrangedSubview(billingDetailsInputView)
                 }

@@ -187,7 +187,7 @@ extension BillingFormSummaryView {
 }
 
 extension BillingFormSummaryView: ButtonViewDelegate {
-    func buttonIsPressed(sender: UIView) {
-        delegate?.buttonIsPressed()
+    func selectionButtonIsPressed(sender: UIView) {
+        delegate?.selectionButtonIsPressed()
     }
 }

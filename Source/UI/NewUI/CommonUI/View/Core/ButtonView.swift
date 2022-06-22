@@ -1,7 +1,7 @@
 import UIKit
 
 protocol ButtonViewDelegate: AnyObject {
-    func buttonIsPressed(sender: UIView)
+    func selectionButtonIsPressed(sender: UIView)
 }
 
 class ButtonView: UIView {
@@ -19,7 +19,7 @@ class ButtonView: UIView {
     lazy var button: UIButton? = {
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(buttonIsPressed), for: .touchUpInside)
+        view.addTarget(self, action: #selector(selectionButtonIsPressed), for: .touchUpInside)
         return view
     }()
 
@@ -46,8 +46,8 @@ class ButtonView: UIView {
         updateLabelStyle(with: style)
     }
 
-    @objc private func buttonIsPressed(){
-        delegate?.buttonIsPressed(sender: self)
+    @objc private func selectionButtonIsPressed(){
+        delegate?.selectionButtonIsPressed(sender: self)
     }
 
     private func updateButtonStyle(with style: ElementButtonStyle){

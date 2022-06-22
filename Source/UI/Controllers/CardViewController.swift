@@ -472,7 +472,7 @@ public class CardViewController: UIViewController,
     private func updateBillingFormDetailsInputView(data: BillingForm?) {
         guard let data = data else { return }
         guard let address = data.address, let phone = data.phone else {
-            let style = DefaultPaymentSummaryEmptyDetailsCellStyle()
+            let style = DefaultAddBillingDetailsViewStyle()
             cardView.updateBillingFormEmptyDetailsInputView(style: style)
             return
         }

@@ -124,7 +124,7 @@ extension BillingFormHeaderCell: BillingFormViewModelEditingDelegate {
 }
 
 extension BillingFormHeaderCell: ButtonViewDelegate {
-    func buttonIsPressed(sender: UIView) {
+    func selectionButtonIsPressed(sender: UIView) {
         switch sender {
             case doneButton:
                 delegate?.doneButtonIsPressed()

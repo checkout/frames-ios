@@ -166,12 +166,11 @@
 		952F337F283C305F00F616FF /* applePayTokenInvalid.json in Resources */ = {isa = PBXBuildFile; fileRef = 952F3330283C305F00F616FF /* applePayTokenInvalid.json */; };
 		952F3380283C305F00F616FF /* cardTokenInvalidNumber.json in Resources */ = {isa = PBXBuildFile; fileRef = 952F3331283C305F00F616FF /* cardTokenInvalidNumber.json */; };
 		952F3381283C305F00F616FF /* applePayToken.json in Resources */ = {isa = PBXBuildFile; fileRef = 952F3332283C305F00F616FF /* applePayToken.json */; };
-		9567E28128635C63009F2C69 /* DefaultPaymentSummaryEmptyDetailsCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9567E22128635C63009F2C69 /* DefaultPaymentSummaryEmptyDetailsCellStyle.swift */; };
-		9567E28228635C63009F2C69 /* DefaultPaymentSummaryEmptyDetailsButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9567E22228635C63009F2C69 /* DefaultPaymentSummaryEmptyDetailsButtonStyle.swift */; };
+		9567E28128635C63009F2C69 /* DefaultAddBillingDetailsViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9567E22128635C63009F2C69 /* DefaultAddBillingDetailsViewStyle.swift */; };
+		9567E28228635C63009F2C69 /* DefaultAddBillingDetailsButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9567E22228635C63009F2C69 /* DefaultAddBillingDetailsButtonStyle.swift */; };
 		9567E28328635C63009F2C69 /* SummaryViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9567E22428635C63009F2C69 /* SummaryViewStyle.swift */; };
 		9567E28428635C63009F2C69 /* DefaultSummaryViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9567E22628635C63009F2C69 /* DefaultSummaryViewStyle.swift */; };
 		9567E28528635C63009F2C69 /* DefaultSummaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9567E22728635C63009F2C69 /* DefaultSummaryButtonStyle.swift */; };
-		9567E28628635C63009F2C69 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9567E22828635C63009F2C69 /* PaymentViewController.swift */; };
 		9567E28728635C63009F2C69 /* BillingFormSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9567E22B28635C63009F2C69 /* BillingFormSummaryView.swift */; };
 		9567E28828635C63009F2C69 /* PaymentFormFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9567E22D28635C63009F2C69 /* PaymentFormFactory.swift */; };
 		9567E28928635C63009F2C69 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9567E23128635C63009F2C69 /* ButtonView.swift */; };
@@ -572,12 +571,11 @@
 		952F3330283C305F00F616FF /* applePayTokenInvalid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applePayTokenInvalid.json; sourceTree = "<group>"; };
 		952F3331283C305F00F616FF /* cardTokenInvalidNumber.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardTokenInvalidNumber.json; sourceTree = "<group>"; };
 		952F3332283C305F00F616FF /* applePayToken.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applePayToken.json; sourceTree = "<group>"; };
-		9567E22128635C63009F2C69 /* DefaultPaymentSummaryEmptyDetailsCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultPaymentSummaryEmptyDetailsCellStyle.swift; sourceTree = "<group>"; };
-		9567E22228635C63009F2C69 /* DefaultPaymentSummaryEmptyDetailsButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultPaymentSummaryEmptyDetailsButtonStyle.swift; sourceTree = "<group>"; };
+		9567E22128635C63009F2C69 /* DefaultAddBillingDetailsViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAddBillingDetailsViewStyle.swift; sourceTree = "<group>"; };
+		9567E22228635C63009F2C69 /* DefaultAddBillingDetailsButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAddBillingDetailsButtonStyle.swift; sourceTree = "<group>"; };
 		9567E22428635C63009F2C69 /* SummaryViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewStyle.swift; sourceTree = "<group>"; };
 		9567E22628635C63009F2C69 /* DefaultSummaryViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSummaryViewStyle.swift; sourceTree = "<group>"; };
 		9567E22728635C63009F2C69 /* DefaultSummaryButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSummaryButtonStyle.swift; sourceTree = "<group>"; };
-		9567E22828635C63009F2C69 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		9567E22B28635C63009F2C69 /* BillingFormSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormSummaryView.swift; sourceTree = "<group>"; };
 		9567E22D28635C63009F2C69 /* PaymentFormFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentFormFactory.swift; sourceTree = "<group>"; };
 		9567E23128635C63009F2C69 /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
@@ -1152,7 +1150,6 @@
 			isa = PBXGroup;
 			children = (
 				9567E21E28635C63009F2C69 /* Default Implementation */,
-				9567E22828635C63009F2C69 /* PaymentViewController.swift */,
 				9567E22928635C63009F2C69 /* View */,
 				9567E22C28635C63009F2C69 /* Factory */,
 			);
@@ -1180,8 +1177,8 @@
 		9567E22028635C63009F2C69 /* Empty Summary */ = {
 			isa = PBXGroup;
 			children = (
-				9567E22128635C63009F2C69 /* DefaultPaymentSummaryEmptyDetailsCellStyle.swift */,
-				9567E22228635C63009F2C69 /* DefaultPaymentSummaryEmptyDetailsButtonStyle.swift */,
+				9567E22128635C63009F2C69 /* DefaultAddBillingDetailsViewStyle.swift */,
+				9567E22228635C63009F2C69 /* DefaultAddBillingDetailsButtonStyle.swift */,
 			);
 			path = "Empty Summary";
 			sourceTree = "<group>";
@@ -2275,7 +2272,7 @@
 				956B9FDB2861CA80005884D8 /* CvvConfirmationViewController.swift in Sources */,
 				9567E28528635C63009F2C69 /* DefaultSummaryButtonStyle.swift in Sources */,
 				9567E2A028635C63009F2C69 /* DefaultBillingFormAddressLine2CellStyle.swift in Sources */,
-				9567E28128635C63009F2C69 /* DefaultPaymentSummaryEmptyDetailsCellStyle.swift in Sources */,
+				9567E28128635C63009F2C69 /* DefaultAddBillingDetailsViewStyle.swift in Sources */,
 				952F329C283C303E00F616FF /* DateProvider.swift in Sources */,
 				956B9F912861CA80005884D8 /* UIResponderExtensions.swift in Sources */,
 				952F329B283C303E00F616FF /* FramesLogEvent.swift in Sources */,
@@ -2293,7 +2290,7 @@
 				9567E28A28635C63009F2C69 /* LabelView.swift in Sources */,
 				956B9FD72861CA80005884D8 /* CardViewControllerDelegate.swift in Sources */,
 				9567E29328635C63009F2C69 /* CellTextFieldStyle.swift in Sources */,
-				9567E28228635C63009F2C69 /* DefaultPaymentSummaryEmptyDetailsButtonStyle.swift in Sources */,
+				9567E28228635C63009F2C69 /* DefaultAddBillingDetailsButtonStyle.swift in Sources */,
 				9567E2A128635C63009F2C69 /* DefaultBillingFormCityCellStyle.swift in Sources */,
 				956B9F992861CA80005884D8 /* StateValidator.swift in Sources */,
 				9567E28C28635C63009F2C69 /* SimpleErrorView.swift in Sources */,
@@ -2370,7 +2367,6 @@
 				9567E28728635C63009F2C69 /* BillingFormSummaryView.swift in Sources */,
 				956B9FDC2861CA80005884D8 /* CountrySelectionViewController.swift in Sources */,
 				952F329D283C303E00F616FF /* RemoteProcessorMetadata+extensions.swift in Sources */,
-				9567E28628635C63009F2C69 /* PaymentViewController.swift in Sources */,
 				9567E2B228635C63009F2C69 /* BillingFormViewController.swift in Sources */,
 				9567E2AA28635C63009F2C69 /* DefaultDoneFormButtonStyle.swift in Sources */,
 				956B9F982861CA80005884D8 /* AddressLine2Validator.swift in Sources */,
