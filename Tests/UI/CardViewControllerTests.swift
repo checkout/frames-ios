@@ -349,6 +349,10 @@ class CardViewControllerTests: XCTestCase {
     }
 
     func test_viewDidLoad_paymentFormPresentedLogCalled() {
+        guard let stubLogger = stubCheckoutAPIService.logger as? StubFramesEventLogger else {
+            XCTFail("logger was not stubbed")
+            return
+        }
 
         let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
@@ -366,6 +370,10 @@ class CardViewControllerTests: XCTestCase {
     }
 
     func test_viewDidLoad_paymentFormPresentedLogNotCalledAfterAddressView() {
+        guard let stubLogger = stubCheckoutAPIService.logger as? StubFramesEventLogger else {
+            XCTFail("logger was not stubbed")
+            return
+        }
 
         let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
@@ -388,6 +396,10 @@ class CardViewControllerTests: XCTestCase {
     }
 
     func test_onTapAddressView_billingFormPresentedLogCalled() {
+        guard let stubLogger = stubCheckoutAPIService.logger as? StubFramesEventLogger else {
+            XCTFail("logger was not stubbed")
+            return
+        }
 
         let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,

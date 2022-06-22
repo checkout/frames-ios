@@ -16,7 +16,7 @@ public class ThreedsWebViewController: UIViewController {
     /// Authentication URL
     public var authURL: URL?
 
-    private let threeDSWKNavigationHelper: ThreeDSWKNavigationHelper?
+    private let threeDSWKNavigationHelper: ThreeDSWKNavigationHelping?
     private let logger: FramesEventLogging?
 
     private var webViewPresented = false
@@ -26,16 +26,26 @@ public class ThreedsWebViewController: UIViewController {
 
     /// Initializes a web view controller adapted to handle 3dsecure.
     public convenience init(checkoutAPIService: CheckoutAPIService, successUrl: URL, failUrl: URL) {
-        self.init(checkoutAPIProtocol: checkoutAPIService, successUrl: successUrl, failUrl: failUrl)
+        self.init(
+            checkoutAPIProtocol: checkoutAPIService,
+            successUrl: successUrl,
+            failUrl: failUrl,
+            threeDSWKNavigationHelperFactory: ThreeDSWKNavigationHelperFactory()
+        )
     }
 
     /// Initializes a web view controller adapted to handle 3dsecure.
-    convenience init(checkoutAPIProtocol checkoutAPIService: CheckoutAPIProtocol, successUrl: URL, failUrl: URL) {
-        let threeDSWKNavigationHelper = ThreeDSWKNavigationHelper(successURL: successUrl, failureURL: failUrl)
+    convenience init(
+        checkoutAPIProtocol checkoutAPIService: CheckoutAPIProtocol,
+        successUrl: URL,
+        failUrl: URL,
+        threeDSWKNavigationHelperFactory: ThreeDSWKNavigationHelperFactoryProtocol
+    ) {
+        let threeDSWKNavigationHelper = threeDSWKNavigationHelperFactory.build(successURL: successUrl, failureURL: failUrl)
         self.init(threeDSWKNavigationHelper: threeDSWKNavigationHelper, logger: checkoutAPIService.logger)
     }
 
-    init(threeDSWKNavigationHelper: ThreeDSWKNavigationHelper, logger: FramesEventLogging) {
+    init(threeDSWKNavigationHelper: ThreeDSWKNavigationHelping, logger: FramesEventLogging) {
         self.threeDSWKNavigationHelper = threeDSWKNavigationHelper
         self.logger = logger
         super.init(nibName: nil, bundle: nil)
@@ -85,6 +95,14 @@ public class ThreedsWebViewController: UIViewController {
 
 // MARK: - WKNavigationDelegate
 extension ThreedsWebViewController: ThreeDSWKNavigationHelperDelegate {
+    public func loaded(navigation: WKNavigation, success: Bool) {
+        guard navigation == authUrlNavigation else {
+            return
+        }
+
+        logger?.log(.threeDSChallengeLoaded(success: success))
+    }
+
     public func threeDSWKNavigationHelperDelegate(didReceiveResult result: Result<String, ThreeDSError>) {
         switch result {
         case .success(let token):

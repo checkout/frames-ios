@@ -128,4 +128,28 @@ final class ThreeDSWKNavigationHelperTests: XCTestCase {
 
     XCTAssertEqual(stubURLHelper.extractTokenCalledWith.count, 0)
   }
+
+  func testDelegateCalledOnLoadingSuccess() {
+    let delegate = StubThreeDSWKNavigationHelperDelegate()
+    subject.delegate = delegate
+    let navigation = WKNavigation()
+
+    subject.webView(WKWebView(), didFinish: navigation)
+    XCTAssertEqual(delegate.loadedCalledWith?.navigation, navigation)
+    XCTAssertEqual(delegate.loadedCalledWith?.success, true)
+  }
+
+  func testDelegateCalledOnLoadingFailure() {
+    let delegate = StubThreeDSWKNavigationHelperDelegate()
+    subject.delegate = delegate
+    let navigation = WKNavigation()
+
+    subject.webView(WKWebView(), didFail: navigation, withError: TestError.one)
+    XCTAssertEqual(delegate.loadedCalledWith?.navigation, navigation)
+    XCTAssertEqual(delegate.loadedCalledWith?.success, false)
+  }
+
+  enum TestError: Error {
+    case one
+  }
 }

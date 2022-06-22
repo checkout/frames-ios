@@ -83,6 +83,8 @@ final class WebViewController: UIViewController {
 }
 
 extension WebViewController: ThreeDSWKNavigationHelperDelegate {
+  func loaded(navigation: WKNavigation, success: Bool) { }
+
   func threeDSWKNavigationHelperDelegate(didReceiveResult result: Result<String, ThreeDSError>) {
     DispatchQueue.main.async { [weak self] in
       self?.navigationController?.popViewController(animated: true)
