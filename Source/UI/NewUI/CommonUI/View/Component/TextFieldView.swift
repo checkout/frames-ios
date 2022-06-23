@@ -1,8 +1,11 @@
 import UIKit
 import Checkout
 
-protocol TextFieldViewDelegate: AnyObject {
+protocol PhoneNumberTextFieldDelegate: AnyObject {
     func phoneNumberIsUpdated(number: String, tag: Int)
+}
+
+protocol TextFieldViewDelegate: AnyObject {
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn()
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
@@ -14,6 +17,7 @@ class TextFieldView: UIView {
     // MARK: - Properties
 
     weak var delegate: TextFieldViewDelegate?
+    weak var phoneNumberDelegate: PhoneNumberTextFieldDelegate?
 
     private var style: CellTextFieldStyle?
     private var type: BillingFormCell?
@@ -257,6 +261,6 @@ extension TextFieldView: UITextFieldDelegate {
 
 extension TextFieldView: BillingFormPhoneNumberTextDelegate {
     func phoneNumberIsUpdated(number: String, tag: Int) {
-        delegate?.phoneNumberIsUpdated(number: number, tag: tag)
+        phoneNumberDelegate?.phoneNumberIsUpdated(number: number, tag: tag)
     }
 }

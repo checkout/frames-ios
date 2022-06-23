@@ -41,7 +41,7 @@ class CardViewControllerTests: XCTestCase {
     }
 
     func testInitializationHiddenFields() {
-        let cardViewController = CardViewController(isNewUI: false,
+        let cardViewController = CardViewController(isNewUI: false, paymentFormStyle: DefaultPaymentFormStyle(),
                                                     checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .hidden,
@@ -128,7 +128,7 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFieldsWithRequiredBillingDetailsMissing() {
         // Setup
-        let cardViewController = CardViewController(isNewUI: false,
+        let cardViewController = CardViewController(isNewUI: false, paymentFormStyle: DefaultPaymentFormStyle(),
                                                     checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .hidden,
@@ -144,7 +144,7 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFieldsWithRequiredNameMissing() {
         // Setup
-        let cardViewController = CardViewController(isNewUI: false,
+        let cardViewController = CardViewController(isNewUI: false, paymentFormStyle: DefaultPaymentFormStyle(),
                                                     checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .required,
@@ -160,7 +160,7 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFields() {
         // Setup
-        let cardViewController = CardViewController(isNewUI: false,
+        let cardViewController = CardViewController(isNewUI: false, paymentFormStyle: DefaultPaymentFormStyle(),
                                                     checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .hidden,
@@ -180,6 +180,7 @@ class CardViewControllerTests: XCTestCase {
     func testValidateFieldsWithEmptyValues() {
         // Setup
         let cardViewController = CardViewController(isNewUI: false,
+                                                    paymentFormStyle: DefaultPaymentFormStyle(),
                                                     checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .hidden,
@@ -303,6 +304,7 @@ class CardViewControllerTests: XCTestCase {
 
     func testChangeCvvCardTypeOnCardNumberEndEditing() {
         let cardViewController = CardViewController(isNewUI: false,
+                                                    paymentFormStyle: DefaultPaymentFormStyle(),
                                                     checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .hidden,
@@ -347,6 +349,7 @@ class CardViewControllerTests: XCTestCase {
 
         let stubCardViewControllerDelegate = StubCardViewControllerDelegate()
         let cardViewController = CardViewController(isNewUI: false,
+                                                    paymentFormStyle: DefaultPaymentFormStyle(),
                                                     checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .normal,
@@ -369,6 +372,7 @@ class CardViewControllerTests: XCTestCase {
     func test_viewDidLoad_paymentFormPresentedLogCalled() {
 
         let cardViewController = CardViewController(isNewUI: false,
+                                                    paymentFormStyle: DefaultPaymentFormStyle(),
                                                     checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .normal,
@@ -386,6 +390,7 @@ class CardViewControllerTests: XCTestCase {
     func test_viewDidLoad_paymentFormPresentedLogNotCalledAfterAddressView() {
 
         let cardViewController = CardViewController(isNewUI: false,
+                                                    paymentFormStyle: DefaultPaymentFormStyle(),
                                                     checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .normal,
@@ -408,6 +413,7 @@ class CardViewControllerTests: XCTestCase {
     func test_onTapAddressView_billingFormPresentedLogCalled() {
 
         let cardViewController = CardViewController(isNewUI: false,
+                                                    paymentFormStyle: DefaultPaymentFormStyle(),
                                                     checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .normal,
@@ -432,15 +438,12 @@ class CardViewControllerTests: XCTestCase {
                               country: country)
         let phone = Phone(number: "+44123456789", country: country)
         let billingForm = BillingForm(name: "John smith", address: address, phone: phone)
-        let summaryStyle = DefaultSummaryViewStyle()
-        let summaryValue = "John smith\n\n12 rue de la boulangerie\n\nLyon\n\n69002\n\nFrance\n\n+44123456789"
         let cardViewController = CardViewController(isNewUI: true,
-                                                    summaryCellButtonStyle: summaryStyle,
+                                                    paymentFormStyle: DefaultPaymentFormStyle(),
                                                     checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: billingForm,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
         XCTAssertEqual(cardViewController.isNewUI, true)
-        XCTAssertEqual(cardViewController.summaryCellButtonStyle?.summary.text, summaryValue)
     }
 }

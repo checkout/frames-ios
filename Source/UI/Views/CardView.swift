@@ -7,48 +7,42 @@ protocol CardViewDelegate: AnyObject {
 }
 
 /// A view that displays card information inputs
-public class CardView: UIView {
+class CardView: UIView {
 
     // MARK: - Properties
     weak var delegate: CardViewDelegate?
-    let scrollView = UIScrollView()
-    let contentView = UIView()
-    let stackView = UIStackView()
-    let schemeIconsStackView = SchemeIconsStackView()
-    let addressTapGesture = UITapGestureRecognizer()
-    var isNewUI: Bool = true {
-        didSet{
-            let showBillingFormDetailsInputView = billingDetailsState != .hidden && isNewUI
-            billingFormSummaryView.isHidden = !showBillingFormDetailsInputView
-            let showBillingDetailsInputView = billingDetailsState != .hidden && !isNewUI
-            billingDetailsInputView.isHidden = !showBillingDetailsInputView
-            if billingDetailsState != .hidden {
-                if isNewUI {
-                    stackView.addArrangedSubview(billingFormEmptyDetailsInputView)
-                } else {
-                    stackView.addArrangedSubview(billingDetailsInputView)
-                }
-            }
-        }
-    }
 
+    let schemeIconsStackView = SchemeIconsStackView()
+    // Input options
+    let cardHolderNameState: InputState
+    let billingDetailsState: InputState
     /// Accepted Card Label
-    public let acceptedCardLabel = UILabel()
+    let acceptedCardLabel = UILabel()
 
     /// Card number input view
-    public let cardNumberInputView: CardNumberInputView
+    let cardNumberInputView: CardNumberInputView
 
     /// Card holder's name input view
-    public let cardHolderNameInputView = StandardInputView()
+    let cardHolderNameInputView = StandardInputView()
 
     /// Expiration date input view
-    public let expirationDateInputView = ExpirationDateInputView()
+    let expirationDateInputView = ExpirationDateInputView()
 
     /// Cvv input view
-    public let cvvInputView: CvvInputView
+    let cvvInputView: CvvInputView
 
     /// Billing details input view
-    public let billingDetailsInputView = DetailsInputView()
+    let billingDetailsInputView = DetailsInputView()
+    let addressTapGesture = UITapGestureRecognizer()
+    let scrollView = UIScrollView()
+    let stackView = UIStackView()
+    
+    private let contentView = UIView()
+    private var scrollViewBottomConstraint: NSLayoutConstraint!
+
+    //MARK: NEW UI
+    private(set) var isNewUI: Bool = false
+    private var billingFormData: BillingForm?
 
     private lazy var billingFormSummaryView: BillingFormSummaryView = {
         let view = BillingFormSummaryView()
@@ -56,24 +50,16 @@ public class CardView: UIView {
         return view
     }()
 
-    private lazy var billingFormEmptyDetailsInputView: SelectionButtonView = {
+    private lazy var addBillingFormButtonView: SelectionButtonView = {
         let view = SelectionButtonView()
         view.delegate = self
         return view
     }()
 
-    private var billingFormData: BillingForm?
-
-    // Input options
-    let cardHolderNameState: InputState
-    let billingDetailsState: InputState
-
-    var scrollViewBottomConstraint: NSLayoutConstraint!
-
     // MARK: - Initialization
 
     /// Initializes and returns a newly allocated view object with the specified frame rectangle.
-    override public init(frame: CGRect) {
+    override init(frame: CGRect) {
         cardHolderNameState = .required
         billingDetailsState = .required
         cardNumberInputView = CardNumberInputView(cardValidator: nil)
@@ -83,7 +69,7 @@ public class CardView: UIView {
     }
 
     /// Returns an object initialized from data in a given unarchiver.
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         cardHolderNameState = .required
         billingDetailsState = .required
         cardNumberInputView = CardNumberInputView(cardValidator: nil)
@@ -167,13 +153,14 @@ public class CardView: UIView {
     }
 
     private func setupBillingForm() {
-        billingFormEmptyDetailsInputView.removeFromSuperview()
-        billingFormSummaryView.removeFromSuperview()
-        billingDetailsInputView.removeFromSuperview()
+        let showBillingFormDetailsInputView = billingDetailsState != .hidden && isNewUI
+        billingFormSummaryView.isHidden = !showBillingFormDetailsInputView
+        let showBillingDetailsInputView = billingDetailsState != .hidden && !isNewUI
+        billingDetailsInputView.isHidden = !showBillingDetailsInputView
         if billingDetailsState != .hidden {
-            if isNewUI ?? false {
+            if isNewUI {
                 if billingFormData?.address == nil && billingFormData?.phone == nil {
-                    stackView.addArrangedSubview(billingFormEmptyDetailsInputView)
+                    stackView.addArrangedSubview(addBillingFormButtonView)
                 } else {
                     stackView.addArrangedSubview(billingFormSummaryView)
                 }
@@ -210,18 +197,41 @@ public class CardView: UIView {
         stackView.bottomAnchor.constraint(equalTo: contentView.safeBottomAnchor).isActive = true
     }
 
-    func updateBillingFormEmptyDetailsInputView(style: CellButtonStyle) {
-        billingFormEmptyDetailsInputView.update(style: style)
+    func updateAddBillingFormButtonView(style: CellButtonStyle?) {
+        guard let style = style else { return }
+        addBillingFormButtonView.update(style: style)
     }
 
-    func updateBillingFormSummaryView(style: SummaryViewStyle) {
+    func updateBillingFormSummaryView(style: BillingSummaryViewStyle) {
         billingFormSummaryView.update(style: style)
     }
 }
 
 extension CardView: SelectionButtonViewDelegate {
-    public func selectionButtonIsPressed() {
+    func selectionButtonIsPressed() {
         delegate?.selectionButtonIsPressed()
+    }
+}
+
+extension CardView: TextFieldViewDelegate {
+    func phoneNumberIsUpdated(number: String, tag: Int) {
+
+    }
+
+    func textFieldShouldBeginEditing(textField: UITextField) {
+
+    }
+
+    func textFieldShouldReturn() {
+
+    }
+
+    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) {
+
+    }
+
+    func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
+
     }
 }
 

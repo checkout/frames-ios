@@ -6,7 +6,7 @@ protocol BillingFormSummaryViewDelegate: AnyObject {
 
 class BillingFormSummaryView: UIView {
     weak var delegate: SelectionButtonViewDelegate?
-    private var style: SummaryViewStyle?
+    private var style: BillingSummaryViewStyle?
     
     private(set) lazy var titleLabel: LabelView? = {
         LabelView().disabledAutoresizingIntoConstraints()
@@ -47,7 +47,7 @@ class BillingFormSummaryView: UIView {
         setupViewsInOrder()
     }
 
-    func update(style: SummaryViewStyle) {
+    func update(style: BillingSummaryViewStyle) {
         self.style = style
         summaryContainerView?.clipsToBounds = true
         summaryContainerView?.layer.borderWidth = style.borderWidth

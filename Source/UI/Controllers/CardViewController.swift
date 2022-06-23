@@ -13,14 +13,16 @@ public class CardViewController: UIViewController,
     // MARK: - Properties
 
     /// Card View
-    public let cardView: CardView
+    let cardView: CardView
     let cardUtils = CardUtils()
 
     let checkoutAPIService: CheckoutAPIProtocol?
     let billingFormStyle: BillingFormStyle?
+    var paymentFormStyle: PaymentFormStyle
     let cardHolderNameState: InputState
     let billingDetailsState: InputState
-    var summaryCellButtonStyle: SummaryViewStyle?
+    var addBillingDetailsViewStyle: CellButtonStyle?
+
     public var billingFormData: BillingForm?
     var notificationCenter = NotificationCenter.default
     public let addressViewController: AddressViewController
@@ -57,7 +59,7 @@ public class CardViewController: UIViewController,
     /// state specified. You can specified the region using the Iso2 region code ("UK" for "United Kingdom")
 
     public convenience init(isNewUI: Bool,
-                            summaryCellButtonStyle: SummaryViewStyle? = nil,
+                            paymentFormStyle: PaymentFormStyle,
                             checkoutAPIService: CheckoutAPIService,
                             billingFormData: BillingForm?,
                             cardHolderNameState: InputState,
@@ -65,7 +67,7 @@ public class CardViewController: UIViewController,
                             billingFormStyle: BillingFormStyle?,
                             defaultRegionCode: String? = nil) {
         self.init(isNewUI: isNewUI,
-                  summaryCellButtonStyle: summaryCellButtonStyle,
+                  paymentFormStyle: paymentFormStyle,
                   checkoutAPIService: checkoutAPIService as CheckoutAPIProtocol,
                   billingFormData: billingFormData,
                 cardHolderNameState: cardHolderNameState,
@@ -75,7 +77,7 @@ public class CardViewController: UIViewController,
     }
 
     init(isNewUI: Bool,
-         summaryCellButtonStyle: SummaryViewStyle? = nil,
+         paymentFormStyle: PaymentFormStyle,
          checkoutAPIService: CheckoutAPIProtocol,
          billingFormData: BillingForm?,
          cardHolderNameState: InputState,
@@ -83,7 +85,7 @@ public class CardViewController: UIViewController,
          billingFormStyle: BillingFormStyle? = nil,
          defaultRegionCode: String? = nil) {
         self.isNewUI = isNewUI
-
+        self.paymentFormStyle = paymentFormStyle
         self.checkoutAPIService = checkoutAPIService
         self.billingFormData = billingFormData
         self.cardHolderNameState = cardHolderNameState
@@ -96,14 +98,8 @@ public class CardViewController: UIViewController,
                             cardValidator: checkoutAPIService.cardValidator)
         addressViewController = AddressViewController(initialCountry: "you", initialRegionCode: defaultRegionCode)
         super.init(nibName: nil, bundle: nil)
-        if self.isNewUI {
-            if summaryCellButtonStyle == nil {
-                self.summaryCellButtonStyle = DefaultSummaryViewStyle()
-            } else {
-                self.summaryCellButtonStyle = summaryCellButtonStyle
-            }
-            updateBillingFormDetailsInputView(data: billingFormData)
-        }
+        updateBillingFormDetailsInputView(data: billingFormData)
+
     }
 
     /// Returns a newly initialized view controller with the nib file in the specified bundle.
@@ -115,7 +111,7 @@ public class CardViewController: UIViewController,
         checkoutAPIService = nil
         billingFormStyle = nil
         billingFormData = nil
-        summaryCellButtonStyle = nil
+        paymentFormStyle = DefaultPaymentFormStyle()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
@@ -128,7 +124,7 @@ public class CardViewController: UIViewController,
         checkoutAPIService = nil
         billingFormStyle = nil
         billingFormData = nil
-        summaryCellButtonStyle = nil
+        paymentFormStyle = DefaultPaymentFormStyle()
         super.init(coder: aDecoder)
     }
 
@@ -471,11 +467,16 @@ public class CardViewController: UIViewController,
 
     private func updateBillingFormDetailsInputView(data: BillingForm?) {
         guard let data = data else { return }
-        guard let address = data.address, let phone = data.phone else {
-            let style = DefaultAddBillingDetailsViewStyle()
-            cardView.updateBillingFormEmptyDetailsInputView(style: style)
+        guard paymentFormStyle.editBillingSummary != nil,
+                let address = data.address,
+                let phone = data.phone else {
+            if addBillingDetailsViewStyle == nil {
+                addBillingDetailsViewStyle = DefaultAddBillingDetailsViewStyle()
+            }
+            cardView.updateAddBillingFormButtonView(style: addBillingDetailsViewStyle)
             return
         }
+
         var summaryValue = ""
         updateSummaryValue(with: data.name, summaryValue: &summaryValue)
         updateSummaryValue(with: address.addressLine1, summaryValue: &summaryValue)
@@ -485,9 +486,9 @@ public class CardViewController: UIViewController,
         updateSummaryValue(with: address.zip, summaryValue: &summaryValue)
         updateSummaryValue(with: address.country?.name, summaryValue: &summaryValue)
         updateSummaryValue(with: phone.number, summaryValue: &summaryValue, withNewLine: false)
-        self.summaryCellButtonStyle?.summary.text = summaryValue
-        guard let summaryCellButtonStyle = summaryCellButtonStyle else { return }
-        cardView.updateBillingFormSummaryView(style: summaryCellButtonStyle)
+        paymentFormStyle.editBillingSummary?.summary?.text = summaryValue
+        guard let editBillingSummary = self.paymentFormStyle.editBillingSummary else { return }
+        cardView.updateBillingFormSummaryView(style: editBillingSummary)
     }
 
     private func updateSummaryValue(with value: String?, summaryValue: inout String,  withNewLine: Bool = true) {

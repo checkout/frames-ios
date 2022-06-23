@@ -2,6 +2,10 @@ import UIKit
 
 public struct BillingFormFactory {
 
+    public static var defaultPaymentFormStyle: PaymentFormStyle {
+        DefaultPaymentFormStyle()
+    }
+
     public static var defaultBillingFormStyle: BillingFormStyle {
         DefaultBillingFormStyle()
     }

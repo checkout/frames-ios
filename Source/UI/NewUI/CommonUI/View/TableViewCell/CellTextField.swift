@@ -14,9 +14,10 @@ final class CellTextField: UITableViewCell {
     var type: BillingFormCell?
     var style: CellTextFieldStyle?
 
-    private lazy var mainView: TextFieldView? = {
+    private lazy var textFieldView: TextFieldView? = {
         let view = TextFieldView().disabledAutoresizingIntoConstraints()
         view.delegate = self
+        view.phoneNumberDelegate = self
         return view
     }()
 
@@ -30,7 +31,7 @@ final class CellTextField: UITableViewCell {
         self.type = type
         self.style = style
         self.tag = tag
-        mainView?.update(style: style, type: type, textFieldValue: textFieldValue, tag: tag)
+        textFieldView?.update(style: style, type: type, textFieldValue: textFieldValue, tag: tag)
     }
 
     @available(*, unavailable)
@@ -42,18 +43,18 @@ final class CellTextField: UITableViewCell {
 extension CellTextField {
 
     private func setupViewsInOrder() {
-        guard let mainView = mainView else { return }
-        contentView.addSubview(mainView)
-        mainView.setContentHuggingPriority(.defaultLow, for: .vertical)
-        mainView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        guard let textFieldView = textFieldView else { return }
+        contentView.addSubview(textFieldView)
+        textFieldView.setContentHuggingPriority(.defaultLow, for: .vertical)
+        textFieldView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         NSLayoutConstraint.activate([
-            mainView.topAnchor.constraint(
+            textFieldView.topAnchor.constraint(
                 equalTo: contentView.topAnchor),
-            mainView.leadingAnchor.constraint(
+            textFieldView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor),
-            mainView.trailingAnchor.constraint(
+            textFieldView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor),
-            mainView.bottomAnchor.constraint(
+            textFieldView.bottomAnchor.constraint(
                 equalTo: contentView.bottomAnchor,
                 constant: -24)
         ])
@@ -61,9 +62,6 @@ extension CellTextField {
 }
 
 extension CellTextField: TextFieldViewDelegate {
-    func phoneNumberIsUpdated(number: String, tag: Int) {
-        delegate?.phoneNumberIsUpdated(number: number, tag: tag)
-    }
     
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
@@ -80,4 +78,10 @@ extension CellTextField: TextFieldViewDelegate {
         delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString)
     }
 
+}
+
+extension CellTextField: PhoneNumberTextFieldDelegate {
+    func phoneNumberIsUpdated(number: String, tag: Int) {
+        delegate?.phoneNumberIsUpdated(number: number, tag: tag)
+    }
 }

@@ -45,9 +45,9 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     }
 
     private func setupCardViewController(){
-        let cardFormData = defaultCardFormData()
+        let cardFormData = Self.defaultCardFormData()
         cardViewController = createCardViewController(isNewUI: false,
-                                                      summaryCellButtonStyle: nil,
+                                                      paymentFormStyle: cardFormData.paymentFormStyle,
                                                       checkoutAPIService: checkoutAPIService,
                                                       billingFormData: cardFormData.billingForm,
                                                       billingFormStyle: cardFormData.billingFormStyle)
@@ -58,7 +58,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
 
     @IBAction private func goToDefaultUIPaymentPage(_ sender: Any) {
 
-        let cardFormData = defaultCardFormData()
+        let cardFormData = Self.defaultCardFormData()
         cardViewController = createCardViewController(isNewUI: true,
                                                       checkoutAPIService: checkoutAPIService,
                                                       billingFormData: cardFormData.billingForm,
@@ -69,7 +69,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
 
     @IBAction private func goToCustom1PaymentPage(_ sender: Any) {
 
-        let billingFormCustom1Style = BillingFormCustom1Style()
+
         let address = Address(addressLine1: "Test line1 Custom 1",
                               addressLine2: nil,
                               city: "London Custom 1",
@@ -82,18 +82,17 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         let name = "User Custom 1"
 
         let billingForm = BillingForm(name: name, address: address, phone: phone)
-
         cardViewController = createCardViewController(isNewUI: true,
-                                                      summaryCellButtonStyle: Custom1SummaryViewStyle(),
+                                                      paymentFormStyle: Style.Custom1.paymentForm,
                                                       checkoutAPIService: checkoutAPIService,
                                                       billingFormData: billingForm,
-                                                      billingFormStyle: billingFormCustom1Style)
+                                                      billingFormStyle: Style.Custom1.billingForm)
         cardViewController?.availableSchemes = [.visa, .mastercard, .maestro]
         pushCardViewController(cardViewController: cardViewController)
     }
 
     @IBAction private func goToCustom2PaymentPage(_ sender: Any) {
-        let billingFormStyle = BillingFormCustom2Style()
+        /* 
         let address = Address(addressLine1: "Test line Custom 2  Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2",
                               addressLine2: nil,
                               city: "London Custom 2",
@@ -103,15 +102,16 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
 
         let phone = Phone(number: "77 1234 1234",
                           country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
+         */
         let name = "User Custom 2"
 
-        let billingForm = BillingForm(name: name, address: address, phone: phone)
+        let billingForm = BillingForm(name: name, address: nil, phone: nil)
 
         cardViewController = createCardViewController(isNewUI: true,
-                                                      summaryCellButtonStyle: Custom2SummaryViewStyle(),
+                                                      paymentFormStyle: Style.Custom2.paymentForm,
                                                       checkoutAPIService: checkoutAPIService,
                                                       billingFormData: billingForm,
-                                                      billingFormStyle: billingFormStyle)
+                                                      billingFormStyle: Style.Custom2.billingForm)
         cardViewController?.availableSchemes = [.visa, .mastercard, .maestro]
         pushCardViewController(cardViewController: cardViewController)
     }
@@ -131,10 +131,10 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         let billingForm = BillingForm(name: name, address: address, phone: phone)
 
         cardViewController = createCardViewController(isNewUI: false,
-                                                     summaryCellButtonStyle: Custom2SummaryViewStyle(),
+                                                     paymentFormStyle: Style.Custom2.paymentForm,
                                                      checkoutAPIService: checkoutAPIService,
                                                      billingFormData: billingForm,
-                                                     billingFormStyle: BillingFormCustom2Style())
+                                                     billingFormStyle: Style.Custom2.billingForm)
         cardViewController?.availableSchemes = [.visa, .mastercard, .maestro]
         pushCardViewController(cardViewController: cardViewController)
     }
@@ -205,7 +205,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     }
 
     private func createCardViewController(isNewUI: Bool,
-                                          summaryCellButtonStyle: SummaryViewStyle? = nil,
+                                          paymentFormStyle: PaymentFormStyle = MainViewController.defaultCardFormData().paymentFormStyle,
                                           checkoutAPIService: Frames.CheckoutAPIService,
                                           billingFormData: BillingForm,
                                           cardHolderNameState: InputState = .normal,
@@ -214,7 +214,8 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
                                           defaultRegionCode: String = "GB") -> CardViewController {
 
         let viewController = CardViewController(isNewUI: isNewUI,
-                                                summaryCellButtonStyle: summaryCellButtonStyle, checkoutAPIService: checkoutAPIService,
+                                                paymentFormStyle: paymentFormStyle,
+                                                checkoutAPIService: checkoutAPIService,
                                                 billingFormData: billingFormData,
                                                 cardHolderNameState: .normal,
                                                 billingDetailsState: .required,
@@ -232,9 +233,10 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         return viewController
     }
 
-    private func defaultCardFormData() -> (billingFormStyle: BillingFormStyle, billingForm : BillingForm) {
+    private static func defaultCardFormData() -> (paymentFormStyle: PaymentFormStyle, billingFormStyle: BillingFormStyle, billingForm : BillingForm) {
 
         let billingFormStyle = BillingFormFactory.defaultBillingFormStyle
+        let paymentFormStyle = BillingFormFactory.defaultPaymentFormStyle
         let address = Address(addressLine1: "Test line1",
                               addressLine2: nil,
                               city: "London",
@@ -248,7 +250,7 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
 
         let billingForm = BillingForm(name: name, address: address, phone: phone)
 
-        return (billingFormStyle, billingForm)
+        return (paymentFormStyle, billingFormStyle, billingForm)
     }
 
     // MARK: CardViewControllerDelegate Methods.
