@@ -15,9 +15,8 @@ final class CellTextField: UITableViewCell {
     var style: CellTextFieldStyle?
 
     private lazy var mainView: TextFieldView? = {
-        let view = TextFieldView()
+        let view = TextFieldView().disabledAutoresizingIntoConstraints()
         view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 

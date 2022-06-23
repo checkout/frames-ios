@@ -14,13 +14,13 @@ class BillingFormTextFieldViewTests: XCTestCase {
     }
 
     func testHeaderLabelStyle() {
-        XCTAssertEqual(view.headerLabel?.text, style.title?.text)
-        XCTAssertEqual(view.headerLabel?.font, style.title?.font)
-        XCTAssertEqual(view.headerLabel?.textColor, style.title?.textColor)
+        XCTAssertEqual(view.headerLabel?.label?.text, style.title?.text)
+        XCTAssertEqual(view.headerLabel?.label?.font, style.title?.font)
+        XCTAssertEqual(view.headerLabel?.label?.textColor, style.title?.textColor)
     }
 
     func testHintLabelStyle() {
-        XCTAssertEqual(view.hintLabel?.text, style.hint?.text)
+        XCTAssertEqual(view.hintLabel?.label?.text, style.hint?.text)
     }
 
     func testTextFieldContainerStyle() {

@@ -9,6 +9,7 @@ extension Constants {
                 case fontSize = 15
                 case cornerRadius = 10
                 case borderWidth = 1
+                case textLeading = 20
             }
         }
 
@@ -16,13 +17,13 @@ extension Constants {
 
             enum CancelButton: Double {
                 case height = 44
-                case width = 53
+                case width = 80
                 case fontSize = 17
             }
 
             enum DoneButton: Double {
                 case height = 44
-                case width = 53
+                case width = 70
                 case fontSize = 17
             }
 
@@ -59,6 +60,7 @@ extension Constants {
                 case fontSize = 15
                 case cornerRadius = 10
                 case borderWidth = 1
+                case textLeading = 20
             }
 
         }

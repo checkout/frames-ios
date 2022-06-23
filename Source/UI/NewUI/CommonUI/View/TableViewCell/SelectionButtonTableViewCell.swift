@@ -8,9 +8,8 @@ final class SelectionButtonTableViewCell: UITableViewCell {
     weak var delegate: SelectionButtonTableViewCellDelegate?
 
     private lazy var mainView: SelectionButtonView? = {
-        let view = SelectionButtonView()
+        let view = SelectionButtonView().disabledAutoresizingIntoConstraints()
         view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 

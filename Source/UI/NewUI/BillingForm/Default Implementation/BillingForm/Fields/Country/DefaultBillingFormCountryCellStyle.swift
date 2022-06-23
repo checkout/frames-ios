@@ -6,5 +6,6 @@ public struct DefaultBillingFormCountryCellStyle: CellButtonStyle {
     public var isMandatory: Bool = true
     public var title: ElementStyle? = DefaultTitleLabelStyle(text: Constants.LocalizationKeys.BillingForm.Country.text, textColor: .doveGray)
     public var hint: ElementStyle?
+    public var mandatory: ElementStyle?
     public var error: ElementErrorViewStyle?
 }
