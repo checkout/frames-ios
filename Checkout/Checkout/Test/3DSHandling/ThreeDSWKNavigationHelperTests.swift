@@ -14,6 +14,8 @@ final class ThreeDSWKNavigationHelperTests: XCTestCase {
   private let successURL = URL(string: "https://success.com" as StaticString)
   private let failureURL = URL(string: "https://failure.com" as StaticString)
 
+  private let navigation = WKNavigation()
+
   private var subject: ThreeDSWKNavigationHelper!
   private var stubNavigationAction: StubWKNavigationAction! = StubWKNavigationAction()
   private var stubURLHelper: StubURLHelper! = StubURLHelper()
@@ -132,7 +134,6 @@ final class ThreeDSWKNavigationHelperTests: XCTestCase {
   func testDelegateCalledOnLoadingSuccess() {
     let delegate = StubThreeDSWKNavigationHelperDelegate()
     subject.delegate = delegate
-    let navigation = WKNavigation()
 
     subject.webView(WKWebView(), didFinish: navigation)
     XCTAssertEqual(delegate.loadedCalledWith?.navigation, navigation)
@@ -142,7 +143,6 @@ final class ThreeDSWKNavigationHelperTests: XCTestCase {
   func testDelegateCalledOnLoadingFailure() {
     let delegate = StubThreeDSWKNavigationHelperDelegate()
     subject.delegate = delegate
-    let navigation = WKNavigation()
 
     subject.webView(WKWebView(), didFail: navigation, withError: TestError.one)
     XCTAssertEqual(delegate.loadedCalledWith?.navigation, navigation)
