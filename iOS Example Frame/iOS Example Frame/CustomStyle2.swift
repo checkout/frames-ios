@@ -81,10 +81,10 @@ struct SummaryButtonStyleCustom2: ElementButtonStyle {
 struct AddBillingDetailsViewStyleCustom2: CellButtonStyle {
     var mandatory: ElementStyle?
     var backgroundColor: UIColor = .clear
-    var button: ElementButtonStyle = AddBillingDetailsButtonStyleCustom1()
+    var button: ElementButtonStyle = AddBillingDetailsButtonStyleCustom2()
     var isMandatory: Bool = true
-    var title: ElementStyle? = TitleLabelStyleCustom1(text: "Billing address", textColor: Constants.fontColorLabel)
-    var hint: ElementStyle? = HintInputLabelStyleCustom1(text: "We need this information as an additional security measure to verify this card.", textColor: Constants.fontColorLabel)
+    var title: ElementStyle? = TitleLabelStyleCustom2(text: "Billing address", textColor: Constants.fontColorLabel)
+    var hint: ElementStyle? = HintInputLabelStyleCustom2(text: "We need this information as an additional security measure to verify this card.", textColor: Constants.fontColorLabel)
     var error: ElementErrorViewStyle?
 }
 
@@ -95,15 +95,15 @@ struct AddBillingDetailsButtonStyleCustom2: ElementButtonStyle {
     var image: UIImage? =  UIImage(named: "arrow_blue_right")
     var text: String = "Add billing address"
     var font: UIFont = UIFont.systemFont(ofSize: 15)
-    var textColor: UIColor = .brandeisBlue
-    var disabledTextColor: UIColor = .mediumGray
-    var disabledTintColor: UIColor = .mediumGray
-    var activeTintColor: UIColor = .brandeisBlue
+    var textColor: UIColor = Constants.greenBackgroundColor
+    var disabledTextColor: UIColor = Constants.greenBackgroundColor
+    var disabledTintColor: UIColor = Constants.greenBackgroundColor
+    var activeTintColor: UIColor = Constants.greenBackgroundColor
     var backgroundColor: UIColor = .clear
-    var normalBorderColor: UIColor = .brandeisBlue
-    var focusBorderColor: UIColor = .mediumGray
+    var normalBorderColor: UIColor = Constants.greenBackgroundColor
+    var focusBorderColor: UIColor = Constants.greenBackgroundColor
     var errorBorderColor: UIColor = .tallPoppyRed
-    var imageTintColor: UIColor = .brandeisBlue
+    var imageTintColor: UIColor = Constants.greenBackgroundColor
     var isHidden: Bool = false
     var isEnabled: Bool = true
     var height: Double = 56

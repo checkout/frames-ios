@@ -212,26 +212,3 @@ extension CardView: SelectionButtonViewDelegate {
         delegate?.selectionButtonIsPressed()
     }
 }
-
-extension CardView: TextFieldViewDelegate {
-    func phoneNumberIsUpdated(number: String, tag: Int) {
-
-    }
-
-    func textFieldShouldBeginEditing(textField: UITextField) {
-
-    }
-
-    func textFieldShouldReturn() {
-
-    }
-
-    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) {
-
-    }
-
-    func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
-
-    }
-}
-

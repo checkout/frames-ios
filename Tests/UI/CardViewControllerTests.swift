@@ -41,7 +41,8 @@ class CardViewControllerTests: XCTestCase {
     }
 
     func testInitializationHiddenFields() {
-        let cardViewController = CardViewController(isNewUI: false, paymentFormStyle: DefaultPaymentFormStyle(),
+        let cardViewController = CardViewController(isNewUI: false,
+                                                    paymentFormStyle: DefaultPaymentFormStyle(),
                                                     checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .hidden,
@@ -128,7 +129,8 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFieldsWithRequiredBillingDetailsMissing() {
         // Setup
-        let cardViewController = CardViewController(isNewUI: false, paymentFormStyle: DefaultPaymentFormStyle(),
+        let cardViewController = CardViewController(isNewUI: false,
+                                                    paymentFormStyle: DefaultPaymentFormStyle(),
                                                     checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .hidden,
@@ -144,7 +146,8 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFieldsWithRequiredNameMissing() {
         // Setup
-        let cardViewController = CardViewController(isNewUI: false, paymentFormStyle: DefaultPaymentFormStyle(),
+        let cardViewController = CardViewController(isNewUI: false,
+                                                    paymentFormStyle: DefaultPaymentFormStyle(),
                                                     checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .required,
@@ -160,7 +163,8 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFields() {
         // Setup
-        let cardViewController = CardViewController(isNewUI: false, paymentFormStyle: DefaultPaymentFormStyle(),
+        let cardViewController = CardViewController(isNewUI: false,
+                                                    paymentFormStyle: DefaultPaymentFormStyle(),
                                                     checkoutAPIService: stubCheckoutAPIService,
                                                     billingFormData: nil,
                                                     cardHolderNameState: .hidden,

@@ -11,21 +11,18 @@ public class CardViewController: UIViewController,
     UITextFieldDelegate {
 
     // MARK: - Properties
+    public let addressViewController: AddressViewController
+    public var billingFormData: BillingForm?
 
     /// Card View
     let cardView: CardView
     let cardUtils = CardUtils()
-
+    var paymentFormStyle: PaymentFormStyle
     let checkoutAPIService: CheckoutAPIProtocol?
     let billingFormStyle: BillingFormStyle?
-    var paymentFormStyle: PaymentFormStyle
     let cardHolderNameState: InputState
     let billingDetailsState: InputState
-    var addBillingDetailsViewStyle: CellButtonStyle?
-
-    public var billingFormData: BillingForm?
     var notificationCenter = NotificationCenter.default
-    public let addressViewController: AddressViewController
 
     /// List of available schemes
     /// Potential Task : rename amex , diners in checkout sdk keep it sync with frames scheme names
@@ -470,10 +467,10 @@ public class CardViewController: UIViewController,
         guard paymentFormStyle.editBillingSummary != nil,
                 let address = data.address,
                 let phone = data.phone else {
-            if addBillingDetailsViewStyle == nil {
-                addBillingDetailsViewStyle = DefaultAddBillingDetailsViewStyle()
+            if paymentFormStyle.addBillingSummary == nil {
+                paymentFormStyle.addBillingSummary = DefaultAddBillingDetailsViewStyle()
             }
-            cardView.updateAddBillingFormButtonView(style: addBillingDetailsViewStyle)
+            cardView.updateAddBillingFormButtonView(style:  paymentFormStyle.addBillingSummary)
             return
         }
 

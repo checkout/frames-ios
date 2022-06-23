@@ -74,8 +74,10 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             textValueOfCellType[type.index] = hasValue ? value : (!isMandatory ? "" : nil)
             errorFlagOfCellType[type.index] = hasValue ? false : isMandatory
         }
-        if let country = country, country.iso3166Alpha2.isEmpty {
-            self.country = Country(iso3166Alpha2: Locale.current.regionCode ?? "", dialingCode: nil)
+        if country == nil,
+           let regionCode = Locale.current.regionCode,
+           let deviceCountry = Country(iso3166Alpha2: regionCode) {
+            self.country = deviceCountry
         }
     }
 
