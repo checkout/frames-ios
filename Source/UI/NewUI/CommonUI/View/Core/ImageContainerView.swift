@@ -3,9 +3,8 @@ import UIKit
 class ImageContainerView: UIView {
 
     private(set) lazy var imageView: UIImageView? = {
-        let view = UIImageView()
+        let view = UIImageView().disabledAutoresizingIntoConstraints()
         view.contentMode = .scaleAspectFit
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         return view
     }()

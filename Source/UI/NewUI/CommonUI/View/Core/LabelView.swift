@@ -3,10 +3,9 @@ import UIKit
 class LabelView: UIView {
 
     private(set) lazy var label: UILabel? = {
-        let view = UILabel()
+        let view = UILabel().disabledAutoresizingIntoConstraints()
         view.backgroundColor = .clear
         view.numberOfLines = 0
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 

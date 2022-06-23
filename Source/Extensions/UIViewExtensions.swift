@@ -89,8 +89,8 @@ extension UIView {
 }
 
 extension UIView {
-    func disabledAutoresizingIntoConstraints<V: UIView>() -> V? {
-        translatesAutoresizingMaskIntoConstraints = false
-        return self as? V
-    }
+    func disabledAutoresizingIntoConstraints() -> Self {
+          translatesAutoresizingMaskIntoConstraints = false
+          return self
+      }
 }

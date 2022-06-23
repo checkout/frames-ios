@@ -10,15 +10,13 @@ final class BillingFormHeaderCell: UIView {
     private var style: BillingFormHeaderCellStyle?
 
     private lazy var cancelButton: ButtonView? = {
-        let view = ButtonView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = ButtonView().disabledAutoresizingIntoConstraints()
         view.delegate = self
         return view
     }()
 
     private lazy var doneButton: ButtonView? = {
-        let view = ButtonView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = ButtonView().disabledAutoresizingIntoConstraints()
         view.delegate = self
         return view
     }()

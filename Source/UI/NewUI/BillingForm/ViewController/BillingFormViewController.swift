@@ -40,13 +40,11 @@ final class BillingFormViewController: UIViewController {
     // MARK: - UI elements
 
     private lazy var headerView: UIView? = {
-        let view = delegate?.getViewForHeader(sender: self)
-        view?.translatesAutoresizingMaskIntoConstraints = false
-        return view ?? UIView()
+        delegate?.getViewForHeader(sender: self)?.disabledAutoresizingIntoConstraints() ?? UIView()
     }()
 
     private(set) lazy var tableView: UITableView? = {
-        let view = UITableView()
+        let view = UITableView().disabledAutoresizingIntoConstraints()
         view.dataSource = self
         view.delegate = self
         view.rowHeight = UITableView.automaticDimension
@@ -55,7 +53,6 @@ final class BillingFormViewController: UIViewController {
         view.showsVerticalScrollIndicator = false
         view.showsHorizontalScrollIndicator = false
         view.allowsSelection = false
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         view.register(CellTextField.self)
         view.register(SelectionButtonTableViewCell.self)

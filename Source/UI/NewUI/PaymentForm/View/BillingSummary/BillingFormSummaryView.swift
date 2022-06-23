@@ -33,9 +33,8 @@ class BillingFormSummaryView: UIView {
     }()
 
     private(set) lazy var buttonView: ButtonView? = {
-        let view = ButtonView()
+        let view = ButtonView().disabledAutoresizingIntoConstraints()
         view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 

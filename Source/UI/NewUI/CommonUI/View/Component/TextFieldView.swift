@@ -35,26 +35,24 @@ class TextFieldView: UIView {
     
     private(set) lazy var textFieldContainer: UIView? = {
         let view = UIView().disabledAutoresizingIntoConstraints()
-        view?.backgroundColor = .clear
+        view.backgroundColor = .clear
         return view
     }()
     
     private(set) lazy var textField: BillingFormTextField? = {
-        let view = DefaultBillingFormTextField(type: type, tag: tag)
+        let view = DefaultBillingFormTextField(type: type, tag: tag).disabledAutoresizingIntoConstraints()
         view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         view.autocorrectionType = .no
         view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         return  view
     }()
 
     private(set) lazy var phoneNumberTextField: BillingFormTextField? = {
-        let view: BillingFormTextField  = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self)
+        let view: BillingFormTextField  = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self).disabledAutoresizingIntoConstraints()
         view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         view.autocorrectionType = .no
         view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         return  view
     }()
@@ -73,9 +71,7 @@ class TextFieldView: UIView {
     }
 
     private(set) lazy var errorView: SimpleErrorView? = {
-        let view = SimpleErrorView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        SimpleErrorView().disabledAutoresizingIntoConstraints()
     }()
 
     // MARK: - Update subviews style
