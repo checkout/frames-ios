@@ -21,53 +21,38 @@ class TextFieldView: UIView {
 
     // MARK: - UI elements
 
-    private(set) lazy var headerLabel: UILabel? = {
-        let view = UILabel()
-        view.numberOfLines = 0
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
-        return view
+    private(set) lazy var headerLabel: LabelView? = {
+        LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var mandatoryLabel: UILabel? = {
-        let view = UILabel()
-        view.numberOfLines = 0
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
-        return view
+    private(set) lazy var mandatoryLabel: LabelView? = {
+        LabelView().disabledAutoresizingIntoConstraints()
     }()
     
-    private(set) lazy var hintLabel: UILabel? = {
-        let view = UILabel()
-        view.numberOfLines = 0
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
-        return view
+    private(set) lazy var hintLabel: LabelView? = {
+        LabelView().disabledAutoresizingIntoConstraints()
     }()
     
     private(set) lazy var textFieldContainer: UIView? = {
-        let view = UIView()
+        let view = UIView().disabledAutoresizingIntoConstraints()
         view.backgroundColor = .clear
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private(set) lazy var textField: BillingFormTextField? = {
-        let view = DefaultBillingFormTextField(type: type, tag: tag)
+        let view = DefaultBillingFormTextField(type: type, tag: tag).disabledAutoresizingIntoConstraints()
         view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         view.autocorrectionType = .no
         view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         return  view
     }()
 
     private(set) lazy var phoneNumberTextField: BillingFormTextField? = {
-        let view: BillingFormTextField  = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self)
+        let view: BillingFormTextField  = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self).disabledAutoresizingIntoConstraints()
         view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         view.autocorrectionType = .no
         view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         return  view
     }()
@@ -85,10 +70,8 @@ class TextFieldView: UIView {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: "")
     }
 
-    private(set) lazy var errorView: ErrorView? = {
-        let view = ErrorView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    private(set) lazy var errorView: SimpleErrorView? = {
+        SimpleErrorView().disabledAutoresizingIntoConstraints()
     }()
 
     // MARK: - Update subviews style
@@ -98,31 +81,15 @@ class TextFieldView: UIView {
         self.type = type
         self.style = style
         backgroundColor = style.backgroundColor
-        updateHeaderLabel(style: style)
-        setupMandatoryLabel(style: style)
-        updateHintLabel(style: style)
+        mandatoryLabel?.isHidden = style.isMandatory
+
+        headerLabel?.update(with: style.title)
+        mandatoryLabel?.update(with: style.mandatory)
+        hintLabel?.update(with: style.hint)
+
         updateTextFieldContainer(style: style)
         updateTextField(style: style, textFieldValue: textFieldValue, tag: tag)
         updateErrorView(style: style)
-    }
-
-    private func updateHeaderLabel(style: CellTextFieldStyle) {
-        headerLabel?.text = style.title?.text
-        headerLabel?.font = style.title?.font
-        headerLabel?.textColor = style.title?.textColor
-    }
-
-    private func setupMandatoryLabel(style: CellTextFieldStyle) {
-        mandatoryLabel?.isHidden = style.isMandatory
-        mandatoryLabel?.text = Constants.LocalizationKeys.BillingForm.Cell.optionalInput
-        mandatoryLabel?.font = UIFont(graphikStyle: .regular, size:  Constants.Style.BillingForm.InputOptionalLabel.fontSize.rawValue)
-        mandatoryLabel?.textColor = .doveGray
-    }
-
-    private func updateHintLabel(style: CellTextFieldStyle) {
-        hintLabel?.text = style.hint?.text
-        hintLabel?.font = style.hint?.font
-        hintLabel?.textColor = style.hint?.textColor
     }
 
     private func updateTextFieldContainer(style: CellTextFieldStyle) {
