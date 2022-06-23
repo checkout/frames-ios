@@ -76,7 +76,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         }
         if country == nil,
            let regionCode = Locale.current.regionCode,
-           let deviceCountry = Country.from(iso3166Alpha2: regionCode) {
+           let deviceCountry = Country(iso3166Alpha2: regionCode) {
             self.country = deviceCountry
         }
     }

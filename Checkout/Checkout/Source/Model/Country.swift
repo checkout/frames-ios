@@ -277,11 +277,16 @@ public struct Country: Equatable {
     ]
   }
 
-  public static func from(iso3166Alpha2: String) -> Country? {
-    return allAvailable.first { $0.iso3166Alpha2 == iso3166Alpha2 }
+  public init?(iso3166Alpha2: String) {
+    if let country = Self.allAvailable.first(where: { $0.iso3166Alpha2 == iso3166Alpha2 }) {
+      self = country
+    } else {
+      return nil
+    }
   }
 
-  public static func from(dialingCode: String) -> [Country] {
-    return allAvailable.filter { $0.dialingCode == dialingCode }
+  init(iso3166Alpha2: String, dialingCode: String) {
+    self.iso3166Alpha2 = iso3166Alpha2
+    self.dialingCode = dialingCode
   }
 }

@@ -22,7 +22,7 @@ class BillingFormViewModelTests: XCTestCase {
                               zip: "N12345",
                               country: nil)
         let phone = Phone(number: "77 1234 1234",
-                          country: Country.from(iso3166Alpha2: "GB"))
+                          country: Country(iso3166Alpha2: "GB"))
         let name = "User 1"
         let billingForm = BillingForm(name: name, address: address, phone: phone)
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: billingForm)
@@ -65,7 +65,7 @@ class BillingFormViewModelTests: XCTestCase {
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
 
         let name = "User 1"
-        guard let country = Country.from(iso3166Alpha2: "GB") else {
+        guard let country = Country(iso3166Alpha2: "GB") else {
             XCTFail("could not find country for GB")
             return
         }

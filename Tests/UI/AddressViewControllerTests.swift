@@ -150,7 +150,7 @@ class AddressViewControllerTests: XCTestCase {
     }
 
     func testSetCountryOnCountrySelected() {
-        guard let country = Country.from(iso3166Alpha2: "FR") else {
+        guard let country = Country(iso3166Alpha2: "FR") else {
             XCTFail("could not find country for FR")
             return
         }

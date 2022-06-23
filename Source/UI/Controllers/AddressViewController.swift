@@ -56,7 +56,7 @@ public class AddressViewController: UIViewController,
         addTextFieldsDelegate()
 
         if let regionCodeSelected = regionCodeSelected,
-           let country = Country.from(iso3166Alpha2: regionCodeSelected) {
+           let country = Country(iso3166Alpha2: regionCodeSelected) {
             setCountrySelected(country: country)
         }
 
