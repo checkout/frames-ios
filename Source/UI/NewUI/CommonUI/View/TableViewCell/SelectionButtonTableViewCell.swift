@@ -1,16 +1,15 @@
 import UIKit
 
 protocol SelectionButtonTableViewCellDelegate: AnyObject {
-    func buttonIsPressed(tag: Int)
+    func selectionButtonIsPressed(tag: Int)
 }
 
 final class SelectionButtonTableViewCell: UITableViewCell {
     weak var delegate: SelectionButtonTableViewCellDelegate?
 
     private lazy var mainView: SelectionButtonView? = {
-        let view = SelectionButtonView()
+        let view = SelectionButtonView().disabledAutoresizingIntoConstraints()
         view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
@@ -51,7 +50,7 @@ extension SelectionButtonTableViewCell {
 }
 
 extension SelectionButtonTableViewCell: SelectionButtonViewDelegate {
-    func buttonIsPressed() {
-        delegate?.buttonIsPressed(tag: tag)
+    func selectionButtonIsPressed() {
+        delegate?.selectionButtonIsPressed(tag: tag)
     }
 }

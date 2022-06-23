@@ -10,6 +10,8 @@
 "billingAddressTitle" = "Billing address";
 "BillingFormCountryButtonTitle" = "Please select a country";
 "BillingFormOptional" = "Optional";
+"PaymentFormSummaryViewHintText" = "We need this information as an additional security measure to verify this card.";
+"AddBillingAddress" = "Add billing address";
 "city" = "City";
 "cancel" = "Cancel";
 "done" = "Done";

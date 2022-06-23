@@ -1,9 +1,9 @@
 import Checkout
 
 public struct BillingForm {
-    public let name: String
-    public let address: Address
-    public let phone: Phone
+    public let name: String?
+    public let address: Address?
+    public let phone: Phone?
 
     public init(name: String, address: Address, phone: Phone) {
         self.name = name
