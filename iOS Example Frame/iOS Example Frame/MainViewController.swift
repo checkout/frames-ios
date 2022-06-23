@@ -124,10 +124,10 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
                               city: "London Custom 2",
                               state: "London Custom 2",
                               zip: "N12345",
-                              country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
+                              country: Self.countryGB)
 
         let phone = Phone(number: "77 1234 1234",
-                          country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
+                          country: Self.countryGB)
         let name = "User Custom 2"
 
         let billingForm = BillingForm(name: name, address: address, phone: phone)
