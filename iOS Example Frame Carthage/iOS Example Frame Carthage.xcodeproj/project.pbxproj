@@ -223,6 +223,7 @@
 		9565D81C28676E1800AB60F1 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9565D81B28676E1800AB60F1 /* TextFieldView.swift */; };
 		9565D81F28676E5E00AB60F1 /* BillingFormCellTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9565D81D28676E5E00AB60F1 /* BillingFormCellTextField.swift */; };
 		9565D82028676E5E00AB60F1 /* BillingFormTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9565D81E28676E5E00AB60F1 /* BillingFormTextFieldView.swift */; };
+		9565D82328676FBA00AB60F1 /* DefaultExpiryDateFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9565D82228676FBA00AB60F1 /* DefaultExpiryDateFormStyle.swift */; };
 		956B9F842861CA80005884D8 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956B9EEB2861CA7F005884D8 /* UITableViewExtensions.swift */; };
 		956B9F852861CA80005884D8 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956B9EEC2861CA7F005884D8 /* UITextFieldExtension.swift */; };
 		956B9F862861CA80005884D8 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956B9EED2861CA7F005884D8 /* StringExtensions.swift */; };
@@ -633,6 +634,7 @@
 		9565D81B28676E1800AB60F1 /* TextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		9565D81D28676E5E00AB60F1 /* BillingFormCellTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormCellTextField.swift; sourceTree = "<group>"; };
 		9565D81E28676E5E00AB60F1 /* BillingFormTextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTextFieldView.swift; sourceTree = "<group>"; };
+		9565D82228676FBA00AB60F1 /* DefaultExpiryDateFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultExpiryDateFormStyle.swift; sourceTree = "<group>"; };
 		956B9EEB2861CA7F005884D8 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		956B9EEC2861CA7F005884D8 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		956B9EED2861CA7F005884D8 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -1179,6 +1181,7 @@
 		9562CFE9286512B000C94D6B /* Default Implementation */ = {
 			isa = PBXGroup;
 			children = (
+				9565D82128676FBA00AB60F1 /* ExpiryDate */,
 				9562CFEA286512B000C94D6B /* BillingFormSummary */,
 				9562CFF2286512B000C94D6B /* DefaultPaymentFormStyle.swift */,
 			);
@@ -1591,6 +1594,14 @@
 				9562D04A286512B000C94D6B /* BillingFormFactory.swift */,
 			);
 			path = Factory;
+			sourceTree = "<group>";
+		};
+		9565D82128676FBA00AB60F1 /* ExpiryDate */ = {
+			isa = PBXGroup;
+			children = (
+				9565D82228676FBA00AB60F1 /* DefaultExpiryDateFormStyle.swift */,
+			);
+			path = ExpiryDate;
 			sourceTree = "<group>";
 		};
 		956B9EEA2861CA7F005884D8 /* Extensions */ = {
@@ -2367,6 +2378,7 @@
 				952F3298283C303E00F616FF /* Constants+Style.swift in Sources */,
 				9562D05D286512B000C94D6B /* CellButtonStyle.swift in Sources */,
 				9562D063286512B000C94D6B /* BillingFormViewModel.swift in Sources */,
+				9565D82328676FBA00AB60F1 /* DefaultExpiryDateFormStyle.swift in Sources */,
 				956B9FDD2861CA80005884D8 /* SimpleLoadingViewController.swift in Sources */,
 				9562D07C286512B000C94D6B /* BillingFormPhoneNumberText.swift in Sources */,
 				956B9F842861CA80005884D8 /* UITableViewExtensions.swift in Sources */,

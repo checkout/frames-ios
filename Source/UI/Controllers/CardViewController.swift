@@ -95,8 +95,7 @@ public class CardViewController: UIViewController,
                             cardValidator: checkoutAPIService.cardValidator)
         addressViewController = AddressViewController(initialCountry: "you", initialRegionCode: defaultRegionCode)
         super.init(nibName: nil, bundle: nil)
-        updateBillingFormDetailsInputView(data: billingFormData)
-
+        updateNewPaymentForm()
     }
 
     /// Returns a newly initialized view controller with the nib file in the specified bundle.
@@ -462,15 +461,18 @@ public class CardViewController: UIViewController,
         validateFieldsValues()
     }
 
-    private func updateBillingFormDetailsInputView(data: BillingForm?) {
-        guard let data = data else { return }
+    private func updateNewPaymentForm(){
+        let expiryDateStyle = paymentFormStyle.expiryDate ?? DefaultExpiryDateFormStyle()
+        cardView.updateExpiryDateView(style: expiryDateStyle)
+        updateBillingFormDetailsInputView()
+    }
+    private func updateBillingFormDetailsInputView() {
+        guard let data = billingFormData else { return }
         guard paymentFormStyle.editBillingSummary != nil,
                 let address = data.address,
                 let phone = data.phone else {
-            if paymentFormStyle.addBillingSummary == nil {
-                paymentFormStyle.addBillingSummary = DefaultAddBillingDetailsViewStyle()
-            }
-            cardView.updateAddBillingFormButtonView(style:  paymentFormStyle.addBillingSummary)
+            let addBillingSummary =  paymentFormStyle.addBillingSummary ?? DefaultAddBillingDetailsViewStyle()
+            cardView.updateAddBillingFormButtonView(style: addBillingSummary)
             return
         }
 
@@ -504,7 +506,7 @@ extension CardViewController: BillingFormViewModelDelegate {
         billingFormData = data
 
         if isNewUI {
-            updateBillingFormDetailsInputView(data: data)
+            updateBillingFormDetailsInputView()
         } else {
             let value = "\(data.address?.addressLine1 ?? ""), \(data.address?.city ?? "")"
             cardView.billingDetailsInputView.value.text = value

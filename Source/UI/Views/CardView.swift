@@ -56,6 +56,11 @@ class CardView: UIView {
         return view
     }()
 
+    private lazy var expiryDateView: InputView = {
+        let view = InputView()
+        return view
+    }()
+
     // MARK: - Initialization
 
     /// Initializes and returns a newly allocated view object with the specified frame rectangle.
@@ -149,6 +154,7 @@ class CardView: UIView {
         }
         stackView.addArrangedSubview(expirationDateInputView)
         stackView.addArrangedSubview(cvvInputView)
+        stackView.addArrangedSubview(expiryDateView)
         setupBillingForm()
     }
 
@@ -191,10 +197,14 @@ class CardView: UIView {
         schemeIconsStackView.topAnchor.constraint(equalTo: acceptedCardLabel.bottomAnchor, constant: 16).isActive = true
         schemeIconsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
 
-        stackView.trailingAnchor.constraint(equalTo: contentView.safeTrailingAnchor, constant: -8).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: contentView.safeTrailingAnchor, constant: -20).isActive = true
         stackView.topAnchor.constraint(equalTo: schemeIconsStackView.safeBottomAnchor, constant: 16).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: contentView.safeLeadingAnchor, constant: 8).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: contentView.safeLeadingAnchor, constant: 20).isActive = true
         stackView.bottomAnchor.constraint(equalTo: contentView.safeBottomAnchor).isActive = true
+    }
+
+    func updateExpiryDateView(style: CellTextFieldStyle) {
+        expiryDateView.update(style: style)
     }
 
     func updateAddBillingFormButtonView(style: CellButtonStyle?) {

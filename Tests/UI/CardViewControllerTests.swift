@@ -35,7 +35,7 @@ class CardViewControllerTests: XCTestCase {
         XCTAssertEqual(cardViewController.billingDetailsState, .required)
         XCTAssertEqual(cardViewController.isNewUI, false)
         cardViewController.viewDidLoad()
-        XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 5)
+        XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 6)
         cardViewController.viewDidLayoutSubviews()
         XCTAssertEqual(cardViewController.view.subviews.count, 1)
     }
@@ -52,7 +52,7 @@ class CardViewControllerTests: XCTestCase {
         XCTAssertEqual(cardViewController.isNewUI, false)
 
         cardViewController.viewDidLoad()
-        XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 3)
+        XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 4)
     }
 
     func testInitializationNibBundle() {
@@ -61,7 +61,7 @@ class CardViewControllerTests: XCTestCase {
         XCTAssertEqual(cardViewController.billingDetailsState, .required)
         XCTAssertEqual(cardViewController.isNewUI, false)
         cardViewController.viewDidLoad()
-        XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 5)
+        XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 6)
     }
 
     func testInitializationCoder() {
@@ -71,7 +71,7 @@ class CardViewControllerTests: XCTestCase {
         XCTAssertEqual(cardViewController?.billingDetailsState, .required)
         XCTAssertEqual(cardViewController?.isNewUI, false)
         cardViewController?.viewDidLoad()
-        XCTAssertEqual(cardViewController?.cardView.stackView.subviews.count, 5)
+        XCTAssertEqual(cardViewController?.cardView.stackView.subviews.count, 6)
     }
 
     func testAddHandlersInViewWillAppear() {

@@ -91,8 +91,8 @@ extension BillingFormSummaryView {
         addSubview(titleLabel)
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 
@@ -102,8 +102,8 @@ extension BillingFormSummaryView {
         addSubview(hintLabel)
         NSLayoutConstraint.activate([
             hintLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
-            hintLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            hintLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+            hintLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            hintLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 
@@ -114,8 +114,8 @@ extension BillingFormSummaryView {
 
         NSLayoutConstraint.activate([
             summaryLabel.topAnchor.constraint(equalTo: hintLabel.bottomAnchor, constant: 40),
-            summaryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            summaryLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+            summaryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            summaryLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 
@@ -126,8 +126,8 @@ extension BillingFormSummaryView {
 
         NSLayoutConstraint.activate([
             summarySeparatorLineView.topAnchor.constraint(equalTo: summaryLabel.bottomAnchor, constant: 16),
-            summarySeparatorLineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            summarySeparatorLineView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            summarySeparatorLineView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            summarySeparatorLineView.trailingAnchor.constraint(equalTo: trailingAnchor),
             summarySeparatorLineView.heightAnchor.constraint(equalToConstant: 1)
         ])
     }
@@ -139,8 +139,8 @@ extension BillingFormSummaryView {
         NSLayoutConstraint.activate([
             button.topAnchor.constraint(equalTo: summarySeparatorLineView.bottomAnchor, constant: 10),
             button.bottomAnchor.constraint(equalTo: bottomAnchor),
-            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            button.leadingAnchor.constraint(equalTo: leadingAnchor),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
 
@@ -152,8 +152,8 @@ extension BillingFormSummaryView {
         addSubview(summaryContainerView)
         NSLayoutConstraint.activate([
             summaryContainerView.topAnchor.constraint(equalTo: hintLabel.bottomAnchor, constant: 20),
-            summaryContainerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            summaryContainerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            summaryContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            summaryContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             summaryContainerView.bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: 10)
         ])
         bringSubviewToFront(button)

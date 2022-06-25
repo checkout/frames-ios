@@ -3,11 +3,11 @@ import XCTest
 
 class BillingFormSummaryViewTests: XCTestCase {
     var view: BillingFormSummaryView!
-    var style: DefaultSummaryViewStyle!
+    var style: DefaultBillingSummaryViewStyle!
     override func setUp() {
         super.setUp()
         UIFont.loadAllCheckoutFonts
-        style = DefaultSummaryViewStyle()
+        style = DefaultBillingSummaryViewStyle()
         view = BillingFormSummaryView()
         view.update(style: style)
     }
@@ -27,10 +27,10 @@ class BillingFormSummaryViewTests: XCTestCase {
     }
 
     func testStyleSummaryView() {
-        XCTAssertEqual(view.summaryLabel?.label?.text, style.summary.text)
-        XCTAssertEqual(view.summaryLabel?.label?.font, style.summary.font)
-        XCTAssertEqual(view.summaryLabel?.label?.textColor, style.summary.textColor)
-        XCTAssertEqual(view.summaryLabel?.label?.backgroundColor, style.summary.backgroundColor)
+        XCTAssertEqual(view.summaryLabel?.label?.text, style.summary?.text)
+        XCTAssertEqual(view.summaryLabel?.label?.font, style.summary?.font)
+        XCTAssertEqual(view.summaryLabel?.label?.textColor, style.summary?.textColor)
+        XCTAssertEqual(view.summaryLabel?.label?.backgroundColor, style.summary?.backgroundColor)
     }
 
     func testStyleSummarySeparatorLineView() {
