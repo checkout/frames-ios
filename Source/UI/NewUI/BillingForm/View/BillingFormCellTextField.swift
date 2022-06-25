@@ -9,13 +9,13 @@ protocol CellTextFieldDelegate: AnyObject {
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
 
-final class CellTextField: UITableViewCell {
+final class BillingFormCellTextField: UITableViewCell {
     weak var delegate: CellTextFieldDelegate?
     var type: BillingFormCell?
     var style: CellTextFieldStyle?
 
-    private lazy var textFieldView: TextFieldView? = {
-        let view = TextFieldView().disabledAutoresizingIntoConstraints()
+    private lazy var textFieldView: BillingFormTextFieldView? = {
+        let view = BillingFormTextFieldView().disabledAutoresizingIntoConstraints()
         view.delegate = self
         view.phoneNumberDelegate = self
         return view
@@ -40,7 +40,7 @@ final class CellTextField: UITableViewCell {
     }
 }
 
-extension CellTextField {
+extension BillingFormCellTextField {
 
     private func setupViewsInOrder() {
         guard let textFieldView = textFieldView else { return }
@@ -61,7 +61,7 @@ extension CellTextField {
     }
 }
 
-extension CellTextField: TextFieldViewDelegate {
+extension BillingFormCellTextField: TextFieldViewDelegate {
     
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
@@ -80,7 +80,7 @@ extension CellTextField: TextFieldViewDelegate {
 
 }
 
-extension CellTextField: PhoneNumberTextFieldDelegate {
+extension BillingFormCellTextField: PhoneNumberTextFieldDelegate {
     func phoneNumberIsUpdated(number: String, tag: Int) {
         delegate?.phoneNumberIsUpdated(number: number, tag: tag)
     }

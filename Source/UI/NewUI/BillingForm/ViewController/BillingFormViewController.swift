@@ -54,7 +54,7 @@ final class BillingFormViewController: UIViewController {
         view.showsHorizontalScrollIndicator = false
         view.allowsSelection = false
         view.backgroundColor = .clear
-        view.register(CellTextField.self)
+        view.register(BillingFormCellTextField.self)
         view.register(SelectionButtonTableViewCell.self)
         return view
     }()
@@ -89,7 +89,7 @@ final class BillingFormViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         setupViewModel()
-        tableView?.register(CellTextField.self)
+        tableView?.register(BillingFormCellTextField.self)
     }
 
     required init?(coder: NSCoder) {

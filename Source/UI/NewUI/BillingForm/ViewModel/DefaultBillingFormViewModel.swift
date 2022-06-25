@@ -89,7 +89,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
     private func getTextFieldCell(tableView: UITableView, indexPath: IndexPath, sender: UIViewController?) -> UITableViewCell {
 
-        if let cell: CellTextField = tableView.dequeueReusable(for: indexPath) {
+        if let cell: BillingFormCellTextField = tableView.dequeueReusable(for: indexPath) {
             let cellStyle = updateTextFieldStyle(for: indexPath.row)
             cell.delegate = sender as? CellTextFieldDelegate
             cell.update(type: style.cells[indexPath.row],

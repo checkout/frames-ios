@@ -5,14 +5,7 @@ protocol PhoneNumberTextFieldDelegate: AnyObject {
     func phoneNumberIsUpdated(number: String, tag: Int)
 }
 
-protocol TextFieldViewDelegate: AnyObject {
-    func textFieldShouldBeginEditing(textField: UITextField)
-    func textFieldShouldReturn()
-    func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
-    func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
-}
-
-class TextFieldView: UIView {
+class BillingFormTextFieldView: UIView {
 
     // MARK: - Properties
 
@@ -147,7 +140,7 @@ class TextFieldView: UIView {
 
 // MARK: - Views Layout Constraint
 
-extension TextFieldView {
+extension BillingFormTextFieldView {
 
     private func setupViewsInOrder(){
         backgroundColor = style?.backgroundColor
@@ -238,7 +231,7 @@ extension TextFieldView {
 
 // MARK: - Text Field Delegate
 
-extension TextFieldView: UITextFieldDelegate {
+extension BillingFormTextFieldView: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
@@ -259,7 +252,7 @@ extension TextFieldView: UITextFieldDelegate {
 
 // MARK: - Phone Number Text Delegate
 
-extension TextFieldView: BillingFormPhoneNumberTextDelegate {
+extension BillingFormTextFieldView: BillingFormPhoneNumberTextDelegate {
     func phoneNumberIsUpdated(number: String, tag: Int) {
         phoneNumberDelegate?.phoneNumberIsUpdated(number: number, tag: tag)
     }
