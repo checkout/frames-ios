@@ -61,12 +61,8 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     @IBAction private func goToDefaultUIPaymentPage(_ sender: Any) {
 
         let cardFormData = Self.defaultCardFormData()
-        cardViewController = createCardViewController(isNewUI: true,
-                                                      checkoutAPIService: checkoutAPIService,
-                                                      billingFormData: cardFormData.billingForm,
-                                                      billingFormStyle: cardFormData.billingFormStyle)
-        cardViewController?.availableSchemes = [.visa, .mastercard, .maestro]
-        pushCardViewController(cardViewController: cardViewController)
+        let paymentFormViewController = PaymentFormFactory.getPaymentFormViewController(billingFormData: cardFormData.billingForm, paymentFormStyle: cardFormData.paymentFormStyle, billingFormStyle: cardFormData.billingFormStyle)
+        navigationController?.pushViewController(paymentFormViewController, animated: true)
     }
 
     @IBAction private func goToCustom1PaymentPage(_ sender: Any) {
@@ -78,19 +74,15 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
                               state: "London Custom 1",
                               zip: "N12345",
                               country: Self.countryGB)
-
         let phone = Phone(number: "77 1234 1234",
                           country: Self.countryGB)
         let name = "User Custom 1"
-
         let billingForm = BillingForm(name: name, address: address, phone: phone)
-        cardViewController = createCardViewController(isNewUI: true,
-                                                      paymentFormStyle: Style.Custom1.paymentForm,
-                                                      checkoutAPIService: checkoutAPIService,
-                                                      billingFormData: billingForm,
-                                                      billingFormStyle: Style.Custom1.billingForm)
-        cardViewController?.availableSchemes = [.visa, .mastercard, .maestro]
-        pushCardViewController(cardViewController: cardViewController)
+        let paymentFormViewController = PaymentFormFactory.getPaymentFormViewController(
+            billingFormData: billingForm,
+            paymentFormStyle: Style.Custom1.paymentForm,
+            billingFormStyle: Style.Custom1.billingForm)
+        navigationController?.pushViewController(paymentFormViewController, animated: true)
     }
 
     @IBAction private func goToCustom2PaymentPage(_ sender: Any) {
@@ -108,13 +100,11 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         let name = "User Custom 2"
         let billingForm = BillingForm(name: name, address: nil, phone: nil)
 
-        cardViewController = createCardViewController(isNewUI: true,
-                                                      paymentFormStyle: Style.Custom2.paymentForm,
-                                                      checkoutAPIService: checkoutAPIService,
-                                                      billingFormData: billingForm,
-                                                      billingFormStyle: Style.Custom2.billingForm)
-        cardViewController?.availableSchemes = [.visa, .mastercard, .maestro]
-        pushCardViewController(cardViewController: cardViewController)
+        let paymentFormViewController = PaymentFormFactory.getPaymentFormViewController(
+            billingFormData: billingForm,
+            paymentFormStyle: Style.Custom2.paymentForm,
+            billingFormStyle: Style.Custom2.billingForm)
+        navigationController?.pushViewController(paymentFormViewController, animated: true)
     }
 
     @IBAction private func goToPaymentPage(_ sender: Any) {
