@@ -43,18 +43,8 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
     override func viewDidLoad() {
         super.viewDidLoad()
         UIFont.loadAllCheckoutFonts
-        setupCardViewController()
     }
 
-    private func setupCardViewController(){
-        let cardFormData = Self.defaultCardFormData()
-        cardViewController = createCardViewController(isNewUI: false,
-                                                      paymentFormStyle: cardFormData.paymentFormStyle,
-                                                      checkoutAPIService: checkoutAPIService,
-                                                      billingFormData: cardFormData.billingForm,
-                                                      billingFormStyle: cardFormData.billingFormStyle)
-        cardViewController?.delegate = self
-    }
 
     // MARK: IBAction Methods.
 
@@ -117,15 +107,10 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
 
         let phone = Phone(number: "77 1234 1234",
                           country: Self.countryGB)
-        let name = "User Custom 2"
 
-        let billingForm = BillingForm(name: name, address: address, phone: phone)
-
-        cardViewController = createCardViewController(isNewUI: false,
-                                                     paymentFormStyle: Style.Custom2.paymentForm,
-                                                     checkoutAPIService: checkoutAPIService,
-                                                     billingFormData: billingForm,
-                                                     billingFormStyle: Style.Custom2.billingForm)
+        cardViewController = createCardViewController(address: address,
+                                                      phone: phone,
+                                                      checkoutAPIService: checkoutAPIService)
         cardViewController?.availableSchemes = [.visa, .mastercard, .maestro]
         pushCardViewController(cardViewController: cardViewController)
     }
@@ -195,30 +180,20 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         }
     }
 
-    private func createCardViewController(isNewUI: Bool,
-                                          paymentFormStyle: PaymentFormStyle = MainViewController.defaultCardFormData().paymentFormStyle,
+    private func createCardViewController(address: Address,
+                                          phone: Phone,
                                           checkoutAPIService: Frames.CheckoutAPIService,
-                                          billingFormData: BillingForm,
                                           cardHolderNameState: InputState = .normal,
                                           billingDetailsState: InputState = .required,
-                                          billingFormStyle: BillingFormStyle,
                                           defaultRegionCode: String = "GB") -> CardViewController {
 
-        let viewController = CardViewController(isNewUI: isNewUI,
-                                                paymentFormStyle: paymentFormStyle,
-                                                checkoutAPIService: checkoutAPIService,
-                                                billingFormData: billingFormData,
+        let viewController = CardViewController(checkoutAPIService: checkoutAPIService,
                                                 cardHolderNameState: .normal,
                                                 billingDetailsState: .required,
-                                                billingFormStyle: billingFormStyle,
                                                 defaultRegionCode: defaultRegionCode)
-
         viewController.delegate = self
 
-        if let billingFormAddress = viewController.billingFormData?.address,
-           let billingFormPhone = viewController.billingFormData?.phone {
-            viewController.addressViewController.setFields(address: billingFormAddress, phone: billingFormPhone)
-        }
+        viewController.addressViewController.setFields(address: address, phone: phone)
         viewController.rightBarButtonItem = UIBarButtonItem(title: "Pay", style: .done, target: nil, action: nil)
         viewController.setDefault(regionCode: defaultRegionCode)
         return viewController
