@@ -1,11 +1,11 @@
 import UIKit
 
 protocol BillingFormSummaryViewDelegate: AnyObject {
-    func buttonIsPressed()
+    func summaryButtonIsPressed()
 }
 
 class BillingFormSummaryView: UIView {
-    weak var delegate: SelectionButtonViewDelegate?
+    weak var delegate: BillingFormSummaryViewDelegate?
     private var style: BillingSummaryViewStyle?
     
     private(set) lazy var titleLabel: LabelView? = {
@@ -187,6 +187,6 @@ extension BillingFormSummaryView {
 
 extension BillingFormSummaryView: ButtonViewDelegate {
     func selectionButtonIsPressed(sender: UIView) {
-        delegate?.selectionButtonIsPressed()
+        delegate?.summaryButtonIsPressed()
     }
 }

@@ -466,6 +466,7 @@ public class CardViewController: UIViewController,
         cardView.updateExpiryDateView(style: expiryDateStyle)
         updateBillingFormDetailsInputView()
     }
+    
     private func updateBillingFormDetailsInputView() {
         guard let data = billingFormData else { return }
         guard paymentFormStyle.editBillingSummary != nil,

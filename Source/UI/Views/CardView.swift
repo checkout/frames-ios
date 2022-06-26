@@ -46,13 +46,11 @@ class CardView: UIView {
 
     private lazy var billingFormSummaryView: BillingFormSummaryView = {
         let view = BillingFormSummaryView()
-        view.delegate = self
         return view
     }()
 
     private lazy var addBillingFormButtonView: SelectionButtonView = {
         let view = SelectionButtonView()
-        view.delegate = self
         return view
     }()
 
@@ -214,11 +212,5 @@ class CardView: UIView {
 
     func updateBillingFormSummaryView(style: BillingSummaryViewStyle) {
         billingFormSummaryView.update(style: style)
-    }
-}
-
-extension CardView: SelectionButtonViewDelegate {
-    func selectionButtonIsPressed() {
-        delegate?.selectionButtonIsPressed()
     }
 }
