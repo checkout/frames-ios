@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Style {
+@frozen enum Style {
 
     enum Custom1 {
         static let paymentForm = PaymentFormStyleCustom1()

@@ -2,7 +2,7 @@ import UIKit
 import Checkout
 
 /**
- This class is for billing form list view model logic.
+ This final class is for billing form list view model logic.
  */
 
 final class DefaultBillingFormViewModel: BillingFormViewModel {

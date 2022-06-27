@@ -15,7 +15,7 @@ protocol CheckoutAPIProtocol {
     func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)
 }
 
-public class CheckoutAPIService: CheckoutAPIProtocol {
+public final class CheckoutAPIService: CheckoutAPIProtocol {
 
     let cardValidator: CardValidating
     let logger: FramesEventLogging

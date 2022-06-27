@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 /// Class used to customize the views.
-public class CheckoutTheme {
+public final class CheckoutTheme {
     /// Background color of the views
     public static var primaryBackgroundColor: UIColor = UIColor.groupTableViewBackground
     public static var secondaryBackgroundColor: UIColor = .white

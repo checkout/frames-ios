@@ -2,7 +2,7 @@ import XCTest
 
 @testable import Frames
 
-final class DispatchQueue_DispatchingTests: XCTestCase {
+ final class DispatchQueue_DispatchingTests: XCTestCase {
 
     func test_async_blockCalled() {
 

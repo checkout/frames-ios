@@ -12,7 +12,7 @@ import Frames
 //MARK: - Color Constants -
 
 /// Predefined custom 1 theme colors
-private enum Constants {
+@frozen private enum Constants {
     static let fontColorLabel = UIColor(red: 40/255.0, green: 46/255.0, blue: 54/255.0, alpha: 1.0)
     static let grayBackgroundColor = UIColor(red: 240/255.0, green: 245/255.0, blue: 249/255.0, alpha: 1.0)
     static let whiteBackgroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)

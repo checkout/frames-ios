@@ -11,7 +11,7 @@ import Frames
 
 //MARK: - Color Constants -
 
-private enum Constants {
+@frozen private enum Constants {
     static let fontColorLabel = UIColor(red: 35/255.0, green: 38/255.0, blue: 39/255.0, alpha: 1.0)
     static let grayBackgroundColor = UIColor(red: 249/255.0, green: 249/255.0, blue: 249/255.0, alpha: 1.0)
     static let whiteBackgroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)

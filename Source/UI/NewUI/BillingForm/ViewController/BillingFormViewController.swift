@@ -22,7 +22,7 @@ protocol BillingFormViewControllerDelegate: AnyObject {
 }
 
 /**
- This class is for billing form list that allow user to fill required fields
+ This final class is for billing form list that allow user to fill required fields
  */
 
 final class BillingFormViewController: UIViewController {

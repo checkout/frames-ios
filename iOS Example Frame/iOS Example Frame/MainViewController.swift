@@ -10,7 +10,7 @@ import UIKit
 import Frames
 import Checkout
 
-class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsWebViewControllerDelegate {
+final class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsWebViewControllerDelegate {
 
     @IBOutlet weak var goToPaymentPageButton: UIButton!
     @IBOutlet weak var createTokenWithApplePay: UIButton!

@@ -3,7 +3,7 @@ import UIKit
 import Checkout
 
 /// A view that displays card information inputs
-public class CardView: UIView {
+public final class CardView: UIView {
 
     // MARK: - Properties
 
