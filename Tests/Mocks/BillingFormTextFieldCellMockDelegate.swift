@@ -25,14 +25,16 @@ class BillingFormTextFieldCellMockDelegate: CellTextFieldDelegate {
         textFieldShouldBeginEditingLastCalledWithTextField = textField
     }
     
-    func textFieldShouldReturn() {
+    func textFieldShouldReturn() -> Bool {
         textFieldShouldReturnCalledTimes += 1
+        return true
     }
     
-    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) {
+    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
         textFieldShouldEndEditingCalledTimes += 1
         textFieldShouldEndEditingLastCalledWithTextField = textField
         textFieldDidChangeCharactersLastCalledWithReplacementString = replacementString
+        return true
     }
     
 

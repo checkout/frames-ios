@@ -28,8 +28,9 @@ private enum Constants {
 //MARK: - Main Payment Form
 
 struct PaymentFormStyleCustom1: PaymentFormStyle {
+    var addBillingSummary: CellButtonStyle?
     var editBillingSummary: BillingSummaryViewStyle? = EditBillingSummaryStyleCustom1()
-    var addBillingSummary: CellButtonStyle? = nil
+    var expiryDate: CellTextFieldStyle? = ExpiryDateFormStyleCustom1()
 }
 
 //MARK: - Billing Form WITH Summary ( Edit details )
@@ -112,6 +113,18 @@ struct AddBillingDetailsButtonStyleCustom1: ElementButtonStyle {
     var cornerRadius: CGFloat = 10
     var borderWidth: CGFloat = 1
     var textLeading: CGFloat = 20
+}
+
+//MARK: - Expiry Date
+
+public struct ExpiryDateFormStyleCustom1 : CellTextFieldStyle {
+    public var isMandatory: Bool = true
+    public var backgroundColor: UIColor = .clear
+    public var title: ElementStyle? = TitleLabelStyleCustom1(text: "Expiry date")
+    public var hint: ElementStyle? = HintInputLabelStyleCustom1(text: "Format is MM/YY")
+    public var mandatory: ElementStyle?
+    public var textfield: ElementTextFieldStyle = TextFieldCustom1(placeHolder: "MM/YY")
+    public var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom1(text: "please fill expiry date")
 }
 
 //**********************
