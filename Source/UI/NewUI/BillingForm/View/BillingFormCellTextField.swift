@@ -4,8 +4,8 @@ import Checkout
 protocol CellTextFieldDelegate: AnyObject {
     func phoneNumberIsUpdated(number: String, tag: Int)
     func textFieldShouldBeginEditing(textField: UITextField)
-    func textFieldShouldReturn()
-    func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
+    func textFieldShouldReturn() -> Bool
+    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
 
@@ -70,12 +70,12 @@ extension BillingFormCellTextField: TextFieldViewDelegate {
     func textFieldShouldBeginEditing(textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
     }
-    func textFieldShouldReturn() {
-        delegate?.textFieldShouldReturn()
+    func textFieldShouldReturn()-> Bool {
+        delegate?.textFieldShouldReturn() ?? false
     }
 
-    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) {
-        delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString)
+    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
+        delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString) ?? true
     }
 
 }

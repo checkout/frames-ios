@@ -2,8 +2,8 @@ import UIKit
 
 protocol TextFieldViewDelegate: AnyObject {
     func textFieldShouldBeginEditing(textField: UITextField)
-    func textFieldShouldReturn()
-    func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
+    func textFieldShouldReturn() -> Bool
+    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
 
@@ -61,8 +61,8 @@ extension TextFieldView: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        delegate?.textFieldShouldReturn()
-        return false
+        return delegate?.textFieldShouldReturn() ?? false
+
     }
 
 }

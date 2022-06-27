@@ -9,7 +9,7 @@ protocol BillingFormTableViewDelegate: AnyObject {
 }
 
 protocol BillingFormTextFieldDelegate: AnyObject {
-    func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String)
+    func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String) -> Bool
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
 
@@ -212,17 +212,18 @@ extension BillingFormViewController: CellTextFieldDelegate {
         textFieldDelegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
     }
 
-    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) {
-        guard let textField = textField as? BillingFormTextField else { return }
-        textFieldDelegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString)
+    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
+        guard let textField = textField as? BillingFormTextField else { return true }
+        return textFieldDelegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString) ?? true
     }
 
     func textFieldShouldBeginEditing(textField: UITextField) {
         self.focusedTextField = textField
     }
 
-    func textFieldShouldReturn() {
+    func textFieldShouldReturn() -> Bool {
         view.endEditing(true)
+        return false
     }
 
 }

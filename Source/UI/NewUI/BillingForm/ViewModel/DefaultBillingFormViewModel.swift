@@ -210,8 +210,9 @@ extension DefaultBillingFormViewModel: BillingFormTableViewDelegate {
 // MARK: - Text View Delegate
 
 extension DefaultBillingFormViewModel: BillingFormTextFieldDelegate {
-    func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String) {
+    func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String)-> Bool  {
         validateTextOnEndEditing(textField: textField)
+        return true
     }
     
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
