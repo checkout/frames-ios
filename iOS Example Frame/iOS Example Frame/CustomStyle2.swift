@@ -28,7 +28,7 @@ private enum Constants {
 
 struct PaymentFormStyleCustom2: PaymentFormStyle {
     var addBillingSummary: CellButtonStyle? = AddBillingDetailsViewStyleCustom2()
-    var editBillingSummary: BillingSummaryViewStyle?
+    var editBillingSummary: BillingSummaryViewStyle? = EditBillingSummaryStyleCustom1()
     var expiryDate: CellTextFieldStyle? = ExpiryDateFormStyleCustom2()
 }
 
@@ -97,8 +97,8 @@ struct AddBillingDetailsButtonStyleCustom2: ElementButtonStyle {
     var text: String = "Add billing address"
     var font: UIFont = UIFont.systemFont(ofSize: 15)
     var textColor: UIColor = Constants.greenBackgroundColor
-    var disabledTextColor: UIColor = Constants.greenBackgroundColor
-    var disabledTintColor: UIColor = Constants.greenBackgroundColor
+    var disabledTextColor: UIColor = Constants.grayBackgroundColor
+    var disabledTintColor: UIColor = Constants.grayBackgroundColor
     var activeTintColor: UIColor = Constants.greenBackgroundColor
     var backgroundColor: UIColor = .clear
     var normalBorderColor: UIColor = Constants.greenBackgroundColor
@@ -119,11 +119,11 @@ struct AddBillingDetailsButtonStyleCustom2: ElementButtonStyle {
 public struct ExpiryDateFormStyleCustom2 : CellTextFieldStyle {
     public var isMandatory: Bool = true
     public var backgroundColor: UIColor = .clear
-    public var title: ElementStyle? = TitleLabelStyleCustom1(text: "Expiry date")
-    public var hint: ElementStyle? = HintInputLabelStyleCustom1(text: "Format is MM/YY")
+    public var title: ElementStyle? = TitleLabelStyleCustom2(text: "Expiry date", textColor: Constants.fontColorLabel)
+    public var hint: ElementStyle? = HintInputLabelStyleCustom2(text: "Format is MM/YY", textColor: Constants.fontColorLabel)
     public var mandatory: ElementStyle?
-    public var textfield: ElementTextFieldStyle = TextFieldCustom1(placeHolder: "MM/YY")
-    public var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom1(text: "please fill expiry date")
+    public var textfield: ElementTextFieldStyle = TextFieldCustom2(placeHolder: "MM/YY")
+    public var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom2(text: "please fill expiry date")
 }
 
 //**********************
@@ -274,9 +274,9 @@ struct CancelButtonFormStyleCustom2: ElementButtonStyle {
     var image: UIImage?
     var text: String = "Cancel"
     var font: UIFont =  UIFont.systemFont(ofSize: UIFont.systemFontSize)
-    var disabledTextColor: UIColor = .doveGray
-    var disabledTintColor: UIColor = .doveGray
-    var activeTintColor: UIColor = .brandeisBlue
+    var disabledTextColor: UIColor = Constants.grayBackgroundColor
+    var disabledTintColor: UIColor = Constants.grayBackgroundColor
+    var activeTintColor: UIColor = Constants.greenBackgroundColor
     var backgroundColor: UIColor = Constants.greenBackgroundColor
     var textColor: UIColor = .white
     var normalBorderColor: UIColor = .clear
@@ -298,7 +298,7 @@ struct DoneFormButtonStyleCustom2: ElementButtonStyle {
     var image: UIImage? = nil
     var text: String = "Done"
     var font: UIFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
-    var disabledTextColor: UIColor = .doveGray
+    var disabledTextColor: UIColor = Constants.grayBackgroundColor
     var disabledTintColor: UIColor = .doveGray
     var activeTintColor: UIColor = .brandeisBlue
     var backgroundColor: UIColor = Constants.greenBackgroundColor

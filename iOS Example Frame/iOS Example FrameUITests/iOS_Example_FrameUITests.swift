@@ -31,9 +31,9 @@ class iOS_Example_FrameUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
+
         let app = XCUIApplication()
-        app.buttons["Default UI"].tap()
+        app.buttons["Old"].tap()
         let elementsQuery = app.scrollViews.otherElements
         elementsQuery.textFields["4242"].tap()
         elementsQuery.textFields["4242"].typeText("424242424242424242")
@@ -43,11 +43,11 @@ class iOS_Example_FrameUITests: XCTestCase {
 
         elementsQuery.textFields["100"].tap()
         elementsQuery.textFields["100"].typeText("100")
+        elementsQuery.staticTexts["Billing Details*"].tap()
+        app.navigationBars["Billing"].buttons["Done"].tap()
         app.toolbars["Toolbar"].buttons["Done"].tap()
         app.navigationBars["Payment"].buttons["Pay"].tap()
         app.alerts["Payment"].buttons["OK"].tap()
-        
-        
     }
     
 }

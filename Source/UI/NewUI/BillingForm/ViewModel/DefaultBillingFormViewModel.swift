@@ -72,7 +72,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             let hasValue = value != nil
             country = data?.address?.country
             textValueOfCellType[type.index] = hasValue ? value : (!isMandatory ? "" : nil)
-            errorFlagOfCellType[type.index] = hasValue ? false : isMandatory
+            errorFlagOfCellType[type.index] = hasValue ? false : (value != nil ? isMandatory : nil)
         }
         if country == nil,
            let regionCode = Locale.current.regionCode,

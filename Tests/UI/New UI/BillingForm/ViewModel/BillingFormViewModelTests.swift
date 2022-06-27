@@ -38,7 +38,7 @@ class BillingFormViewModelTests: XCTestCase {
     func testValidationWhenTextFieldIsEmptyThenShowError() throws {
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
         let expectedType = BillingFormCell.fullName(DefaultBillingFormFullNameCellStyle(isMandatory: true))
-        let tag = 2
+        let tag = 0
         let text = ""
         let textField = DefaultBillingFormTextField(type:expectedType, tag: expectedType.index)
         textField.text = text

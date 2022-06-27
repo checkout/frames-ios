@@ -12,7 +12,7 @@ class CardViewControllerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        UIFont.loadAllCheckoutFonts
+
         cardViewController = CardViewController()
         cardViewControllerDelegate = CardViewControllerMockDelegate()
         stubCheckoutAPIService = StubCheckoutAPIService()
@@ -33,35 +33,28 @@ class CardViewControllerTests: XCTestCase {
         let cardViewController = CardViewController()
         XCTAssertEqual(cardViewController.cardHolderNameState, .required)
         XCTAssertEqual(cardViewController.billingDetailsState, .required)
-        XCTAssertEqual(cardViewController.isNewUI, false)
         cardViewController.viewDidLoad()
-        XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 6)
+        XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 5)
         cardViewController.viewDidLayoutSubviews()
         XCTAssertEqual(cardViewController.view.subviews.count, 1)
     }
 
     func testInitializationHiddenFields() {
-        let cardViewController = CardViewController(isNewUI: false,
-                                                    paymentFormStyle: DefaultPaymentFormStyle(),
-                                                    checkoutAPIService: stubCheckoutAPIService,
-                                                    billingFormData: nil,
+        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
                                                     cardHolderNameState: .hidden,
                                                     billingDetailsState: .hidden)
         XCTAssertEqual(cardViewController.cardHolderNameState, .hidden)
         XCTAssertEqual(cardViewController.billingDetailsState, .hidden)
-        XCTAssertEqual(cardViewController.isNewUI, false)
-
         cardViewController.viewDidLoad()
-        XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 4)
+        XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 3)
     }
 
     func testInitializationNibBundle() {
         let cardViewController = CardViewController(nibName: nil, bundle: nil)
         XCTAssertEqual(cardViewController.cardHolderNameState, .required)
         XCTAssertEqual(cardViewController.billingDetailsState, .required)
-        XCTAssertEqual(cardViewController.isNewUI, false)
         cardViewController.viewDidLoad()
-        XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 6)
+        XCTAssertEqual(cardViewController.cardView.stackView.subviews.count, 5)
     }
 
     func testInitializationCoder() {
@@ -69,9 +62,8 @@ class CardViewControllerTests: XCTestCase {
         let cardViewController = CardViewController(coder: coder)
         XCTAssertEqual(cardViewController?.cardHolderNameState, .required)
         XCTAssertEqual(cardViewController?.billingDetailsState, .required)
-        XCTAssertEqual(cardViewController?.isNewUI, false)
         cardViewController?.viewDidLoad()
-        XCTAssertEqual(cardViewController?.cardView.stackView.subviews.count, 6)
+        XCTAssertEqual(cardViewController?.cardView.stackView.subviews.count, 5)
     }
 
     func testAddHandlersInViewWillAppear() {
@@ -129,13 +121,9 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFieldsWithRequiredBillingDetailsMissing() {
         // Setup
-        let cardViewController = CardViewController(isNewUI: false,
-                                                    paymentFormStyle: DefaultPaymentFormStyle(),
-                                                    checkoutAPIService: stubCheckoutAPIService,
-                                                    billingFormData: nil,
+        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
                                                     cardHolderNameState: .hidden,
                                                     billingDetailsState: .required)
-        XCTAssertEqual(cardViewController.isNewUI, false)
         cardViewController.viewDidLoad()
         XCTAssertFalse((cardViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
         // Simulate the end of a text field editing
@@ -146,13 +134,9 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFieldsWithRequiredNameMissing() {
         // Setup
-        let cardViewController = CardViewController(isNewUI: false,
-                                                    paymentFormStyle: DefaultPaymentFormStyle(),
-                                                    checkoutAPIService: stubCheckoutAPIService,
-                                                    billingFormData: nil,
+        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
                                                     cardHolderNameState: .required,
                                                     billingDetailsState: .hidden)
-        XCTAssertEqual(cardViewController.isNewUI, false)
         cardViewController.viewDidLoad()
         XCTAssertFalse((cardViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
         // Simulate the end of a text field editing
@@ -163,13 +147,9 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFields() {
         // Setup
-        let cardViewController = CardViewController(isNewUI: false,
-                                                    paymentFormStyle: DefaultPaymentFormStyle(),
-                                                    checkoutAPIService: stubCheckoutAPIService,
-                                                    billingFormData: nil,
+        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
                                                     cardHolderNameState: .hidden,
                                                     billingDetailsState: .hidden)
-        XCTAssertEqual(cardViewController.isNewUI, false)
         cardViewController.viewDidLoad()
         XCTAssertFalse((cardViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
         cardViewController.cardView.cardNumberInputView.textField.text = "4242 4242 4242 4242"
@@ -183,13 +163,9 @@ class CardViewControllerTests: XCTestCase {
 
     func testValidateFieldsWithEmptyValues() {
         // Setup
-        let cardViewController = CardViewController(isNewUI: false,
-                                                    paymentFormStyle: DefaultPaymentFormStyle(),
-                                                    checkoutAPIService: stubCheckoutAPIService,
-                                                    billingFormData: nil,
+        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
                                                     cardHolderNameState: .hidden,
                                                     billingDetailsState: .hidden)
-        XCTAssertEqual(cardViewController.isNewUI, false)
         cardViewController.viewDidLoad()
         XCTAssertFalse((cardViewController.navigationItem.rightBarButtonItem?.isEnabled)!)
         // Simulate the end of a text field editing
@@ -307,17 +283,14 @@ class CardViewControllerTests: XCTestCase {
     }
 
     func testChangeCvvCardTypeOnCardNumberEndEditing() {
-        let cardViewController = CardViewController(isNewUI: false,
-                                                    paymentFormStyle: DefaultPaymentFormStyle(),
-                                                    checkoutAPIService: stubCheckoutAPIService,
-                                                    billingFormData: nil,
+        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
                                                     cardHolderNameState: .hidden,
                                                     billingDetailsState: .required)
-        XCTAssertEqual(cardViewController.isNewUI, false)
 
         let stubCardValidator = StubCardValidator()
         stubCardValidator.validateCardNumberToReturn = .success(.visa)
         stubCheckoutAPIService.cardValidatorToReturn = stubCardValidator
+
 
         cardViewController.cardView.cardNumberInputView.textField.text = "4242 4242 4242 4242"
         cardViewController.textFieldDidEndEditing(view: cardViewController.cardView.cardNumberInputView)
@@ -352,13 +325,9 @@ class CardViewControllerTests: XCTestCase {
     func test_onTapDoneCardButton_checkoutAPIClientReturnsError_delegateCalledWithFailure() {
 
         let stubCardViewControllerDelegate = StubCardViewControllerDelegate()
-        let cardViewController = CardViewController(isNewUI: false,
-                                                    paymentFormStyle: DefaultPaymentFormStyle(),
-                                                    checkoutAPIService: stubCheckoutAPIService,
-                                                    billingFormData: nil,
+        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
-        XCTAssertEqual(cardViewController.isNewUI, false)
 
         cardViewController.delegate = stubCardViewControllerDelegate
         cardViewController.cardView.cardNumberInputView.textField.text = "4242 4242 4242 4242"
@@ -375,13 +344,10 @@ class CardViewControllerTests: XCTestCase {
 
     func test_viewDidLoad_paymentFormPresentedLogCalled() {
 
-        let cardViewController = CardViewController(isNewUI: false,
-                                                    paymentFormStyle: DefaultPaymentFormStyle(),
-                                                    checkoutAPIService: stubCheckoutAPIService,
-                                                    billingFormData: nil,
+        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
-        XCTAssertEqual(cardViewController.isNewUI, false)
+
         cardViewController.viewWillAppear(true)
 
         let events = stubCheckoutAPIService.loggerToReturn.logCalledWithFramesLogEvents
@@ -393,13 +359,10 @@ class CardViewControllerTests: XCTestCase {
 
     func test_viewDidLoad_paymentFormPresentedLogNotCalledAfterAddressView() {
 
-        let cardViewController = CardViewController(isNewUI: false,
-                                                    paymentFormStyle: DefaultPaymentFormStyle(),
-                                                    checkoutAPIService: stubCheckoutAPIService,
-                                                    billingFormData: nil,
+        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
-        XCTAssertEqual(cardViewController.isNewUI, false)
+
         cardViewController.viewWillAppear(true)
 
         cardViewController.onTapAddressView()
@@ -416,13 +379,10 @@ class CardViewControllerTests: XCTestCase {
 
     func test_onTapAddressView_billingFormPresentedLogCalled() {
 
-        let cardViewController = CardViewController(isNewUI: false,
-                                                    paymentFormStyle: DefaultPaymentFormStyle(),
-                                                    checkoutAPIService: stubCheckoutAPIService,
-                                                    billingFormData: nil,
+        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
-        XCTAssertEqual(cardViewController.isNewUI, false)
+
         cardViewController.onTapAddressView()
 
         let events = stubCheckoutAPIService.loggerToReturn.logCalledWithFramesLogEvents
@@ -430,24 +390,5 @@ class CardViewControllerTests: XCTestCase {
 
         XCTAssertEqual(.billingFormPresented, events.first)
         XCTAssertTrue(stubCheckoutAPIService.loggerCalled)
-    }
-
-    func testUpdateBillingFormDetailsInputView(){
-        let country = Country.allAvailable.first { $0.iso3166Alpha2 == "FR" }!
-        let address = Address(addressLine1: "12 rue de la boulangerie",
-                              addressLine2: nil,
-                              city: "Lyon",
-                              state: nil,
-                              zip: "69002",
-                              country: country)
-        let phone = Phone(number: "+44123456789", country: country)
-        let billingForm = BillingForm(name: "John smith", address: address, phone: phone)
-        let cardViewController = CardViewController(isNewUI: true,
-                                                    paymentFormStyle: DefaultPaymentFormStyle(),
-                                                    checkoutAPIService: stubCheckoutAPIService,
-                                                    billingFormData: billingForm,
-                                                    cardHolderNameState: .normal,
-                                                    billingDetailsState: .normal)
-        XCTAssertEqual(cardViewController.isNewUI, true)
     }
 }

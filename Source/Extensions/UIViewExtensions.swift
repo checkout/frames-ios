@@ -78,12 +78,12 @@ extension UIView {
 }
 
 extension UIView {
-    func setupConstraintEqualTo(view: UIView) {
+    func setupConstraintEqualTo(view: UIView, constant: CGFloat = 0) {
         NSLayoutConstraint.activate([
-            topAnchor.constraint(equalTo: view.topAnchor),
-            leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            topAnchor.constraint(equalTo: view.topAnchor, constant: constant),
+            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constant),
+            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constant),
+            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -constant),
         ])
     }
 }
