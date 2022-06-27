@@ -13,7 +13,7 @@ extension UIFont {
 
 extension UIFont {
 
-    @frozen enum GraphikStyle: String, CaseIterable {
+    enum GraphikStyle: String, CaseIterable {
         case black = "Black"
         case blackItalic = "BlackItalic"
 

@@ -1,6 +1,6 @@
 import Foundation
 
-@frozen enum StubError: CustomNSError {
+enum StubError: CustomNSError {
 
     static let errorDomain = String(describing: Self.self)
 

@@ -1,13 +1,13 @@
-@frozen enum Constants {
+enum Constants {
 
     static let productName = "frames-ios-sdk"
     static let version = "3.5.2"
     static let userAgent = "checkout-sdk-frames-ios/\(version)"
 
-    @frozen enum Bundle: String {
+    enum Bundle: String {
         case version = "CFBundleShortVersionString"
 
-        @frozen enum SchemeIcons: String {
+        enum SchemeIcons: String {
             case americanExpress = "schemes/icon-amex"
             case dinersClub = "schemes/icon-dinersclub"
             case discover = "schemes/icon-discover"
@@ -17,7 +17,7 @@
             case visa = "schemes/icon-visa"
         }
 
-        @frozen enum FallbackValues: String {
+        enum FallbackValues: String {
             case noBundleIdentifier = "unavailableAppPackageName"
             case noVersion = "unavailableAppPackageVersion"
         }

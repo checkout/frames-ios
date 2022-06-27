@@ -1,9 +1,9 @@
 extension Constants {
 
-    @frozen enum Style {
+    enum Style {
 
-        @frozen enum PaymentForm {
-            @frozen enum InputBillingFormButton: Double {
+        enum PaymentForm {
+            enum InputBillingFormButton: Double {
                 case height = 56
                 case width = 0
                 case fontSize = 15
@@ -13,48 +13,48 @@ extension Constants {
             }
         }
 
-        @frozen enum BillingForm {
+        enum BillingForm {
 
-            @frozen enum CancelButton: Double {
+            enum CancelButton: Double {
                 case height = 44
                 case width = 80
                 case fontSize = 17
             }
 
-            @frozen enum DoneButton: Double {
+            enum DoneButton: Double {
                 case height = 44
                 case width = 70
                 case fontSize = 17
             }
 
-            @frozen enum HeaderTitle: Double {
+            enum HeaderTitle: Double {
                 case fontSize = 24
             }
 
-            @frozen enum InputErrorLabel: Double {
+            enum InputErrorLabel: Double {
                 case height = 18
                 case fontSize = 13
             }
 
-            @frozen enum InputHintLabel: Double {
+            enum InputHintLabel: Double {
                 case fontSize = 13
             }
 
-            @frozen enum InputTextField: Double {
+            enum InputTextField: Double {
                 case height = 56
                 case width = 335.0
                 case fontSize = 16
             }
 
-            @frozen enum InputTitleLabel: Double {
+            enum InputTitleLabel: Double {
                 case fontSize = 15
             }
 
-            @frozen enum InputOptionalLabel: Double {
+            enum InputOptionalLabel: Double {
                 case fontSize = 13
             }
 
-            @frozen enum InputCountryButton: Double {
+            enum InputCountryButton: Double {
                 case height = 56
                 case width = 0
                 case fontSize = 15

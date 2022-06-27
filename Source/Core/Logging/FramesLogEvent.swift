@@ -1,9 +1,9 @@
 import Foundation
 import CheckoutEventLoggerKit
 
-@frozen enum FramesLogEvent: Equatable {
+enum FramesLogEvent: Equatable {
 
-    @frozen enum Property: String {
+    enum Property: String {
         case errorCodes
         case errorType
         case httpStatusCode
