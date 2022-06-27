@@ -83,7 +83,7 @@ extension UIView {
             topAnchor.constraint(equalTo: view.topAnchor, constant: constant),
             leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constant),
             trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constant),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: constant),
+            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -constant),
         ])
     }
 }
