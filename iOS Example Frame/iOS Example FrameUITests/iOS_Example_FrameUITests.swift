@@ -43,7 +43,7 @@ class iOS_Example_FrameUITests: XCTestCase {
 
         elementsQuery.textFields["100"].tap()
         elementsQuery.textFields["100"].typeText("100")
-        app.scrollViews.otherElements.staticTexts["Billing Details*"].tap()
+        elementsQuery.staticTexts["Billing Details*"].tap()
         app.navigationBars["Billing"].buttons["Done"].tap()
         app.toolbars["Toolbar"].buttons["Done"].tap()
         app.navigationBars["Payment"].buttons["Pay"].tap()
