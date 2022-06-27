@@ -26,7 +26,7 @@ class iOS_Example_FrameUITests: XCTestCase {
         
         // Potential Task to fix the expiry date in past issue
         app.pickerWheels.element(boundBy: 1).swipeUp()
-
+        sleep(2)
         elementsQuery.textFields["100"].tap()
         elementsQuery.textFields["100"].typeText("100")
         elementsQuery.staticTexts["Billing Details*"].tap()
