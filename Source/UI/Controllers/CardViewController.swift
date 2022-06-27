@@ -127,7 +127,6 @@ public class CardViewController: UIViewController,
         registerKeyboardHandlers(notificationCenter: notificationCenter,
                                  keyboardWillShow: #selector(keyboardWillShow),
                                  keyboardWillHide: #selector(keyboardWillHide))
-        
         if suppressNextLog {
             suppressNextLog = false
         } else {
