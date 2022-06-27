@@ -2,64 +2,45 @@ import Foundation
 import UIKit
 import Checkout
 
-protocol CardViewDelegate: AnyObject {
-    func selectionButtonIsPressed()
-}
-
 /// A view that displays card information inputs
-class CardView: UIView {
+public class CardView: UIView {
 
     // MARK: - Properties
-    weak var delegate: CardViewDelegate?
 
+    let scrollView = UIScrollView()
+    let contentView = UIView()
+    let stackView = UIStackView()
     let schemeIconsStackView = SchemeIconsStackView()
+    let addressTapGesture = UITapGestureRecognizer()
+
+    /// Accepted Card Label
+    public let acceptedCardLabel = UILabel()
+
+    /// Card number input view
+    public let cardNumberInputView: CardNumberInputView
+
+    /// Card holder's name input view
+    public let cardHolderNameInputView = StandardInputView()
+
+    /// Expiration date input view
+    public let expirationDateInputView = ExpirationDateInputView()
+
+    /// Cvv input view
+    public let cvvInputView: CvvInputView
+
+    /// Billing details input view
+    public let billingDetailsInputView = DetailsInputView()
+
     // Input options
     let cardHolderNameState: InputState
     let billingDetailsState: InputState
-    /// Accepted Card Label
-    let acceptedCardLabel = UILabel()
 
-    /// Card number input view
-    let cardNumberInputView: CardNumberInputView
-
-    /// Card holder's name input view
-    let cardHolderNameInputView = StandardInputView()
-
-    /// Expiration date input view
-    let expirationDateInputView = ExpirationDateInputView()
-
-    /// Cvv input view
-    let cvvInputView: CvvInputView
-
-    /// Billing details input view
-    let billingDetailsInputView = DetailsInputView()
-    let addressTapGesture = UITapGestureRecognizer()
-    let scrollView = UIScrollView()
-    let stackView = UIStackView()
-    
-    private let contentView = UIView()
-    private var scrollViewBottomConstraint: NSLayoutConstraint!
-
-    //MARK: NEW UI
-    private(set) var isNewUI: Bool = false
-    private var billingFormData: BillingForm?
-
-    private lazy var billingFormSummaryView: BillingFormSummaryView = {
-        let view = BillingFormSummaryView()
-        view.delegate = self
-        return view
-    }()
-
-    private lazy var addBillingFormButtonView: SelectionButtonView = {
-        let view = SelectionButtonView()
-        view.delegate = self
-        return view
-    }()
+    var scrollViewBottomConstraint: NSLayoutConstraint!
 
     // MARK: - Initialization
 
     /// Initializes and returns a newly allocated view object with the specified frame rectangle.
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         cardHolderNameState = .required
         billingDetailsState = .required
         cardNumberInputView = CardNumberInputView(cardValidator: nil)
@@ -69,7 +50,7 @@ class CardView: UIView {
     }
 
     /// Returns an object initialized from data in a given unarchiver.
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         cardHolderNameState = .required
         billingDetailsState = .required
         cardNumberInputView = CardNumberInputView(cardValidator: nil)
@@ -79,9 +60,7 @@ class CardView: UIView {
     }
 
     /// Initializes and returns a newly  allocated card view with the specified input states.
-    init(isNewUI: Bool, billingFormData: BillingForm?, cardHolderNameState: InputState, billingDetailsState: InputState, cardValidator: CardValidating?) {
-        self.isNewUI = isNewUI
-        self.billingFormData = billingFormData
+    init(cardHolderNameState: InputState, billingDetailsState: InputState, cardValidator: CardValidating?) {
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
         self.cardNumberInputView = CardNumberInputView(cardValidator: cardValidator)
@@ -149,24 +128,8 @@ class CardView: UIView {
         }
         stackView.addArrangedSubview(expirationDateInputView)
         stackView.addArrangedSubview(cvvInputView)
-        setupBillingForm()
-    }
-
-    private func setupBillingForm() {
-        let showBillingFormDetailsInputView = billingDetailsState != .hidden && isNewUI
-        billingFormSummaryView.isHidden = !showBillingFormDetailsInputView
-        let showBillingDetailsInputView = billingDetailsState != .hidden && !isNewUI
-        billingDetailsInputView.isHidden = !showBillingDetailsInputView
         if billingDetailsState != .hidden {
-            if isNewUI {
-                if billingFormData?.address == nil && billingFormData?.phone == nil {
-                    stackView.addArrangedSubview(addBillingFormButtonView)
-                } else {
-                    stackView.addArrangedSubview(billingFormSummaryView)
-                }
-            } else {
-                stackView.addArrangedSubview(billingDetailsInputView)
-            }
+            stackView.addArrangedSubview(billingDetailsInputView)
         }
     }
 
@@ -195,20 +158,5 @@ class CardView: UIView {
         stackView.topAnchor.constraint(equalTo: schemeIconsStackView.safeBottomAnchor, constant: 16).isActive = true
         stackView.leadingAnchor.constraint(equalTo: contentView.safeLeadingAnchor, constant: 8).isActive = true
         stackView.bottomAnchor.constraint(equalTo: contentView.safeBottomAnchor).isActive = true
-    }
-
-    func updateAddBillingFormButtonView(style: CellButtonStyle?) {
-        guard let style = style else { return }
-        addBillingFormButtonView.update(style: style)
-    }
-
-    func updateBillingFormSummaryView(style: BillingSummaryViewStyle) {
-        billingFormSummaryView.update(style: style)
-    }
-}
-
-extension CardView: SelectionButtonViewDelegate {
-    func selectionButtonIsPressed() {
-        delegate?.selectionButtonIsPressed()
     }
 }

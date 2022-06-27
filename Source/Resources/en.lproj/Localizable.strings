@@ -12,6 +12,10 @@
 "BillingFormOptional" = "Optional";
 "PaymentFormSummaryViewHintText" = "We need this information as an additional security measure to verify this card.";
 "AddBillingAddress" = "Add billing address";
+"ExpiryDate" = "ExpiryDate";
+"ExpiryDateFormat" = "Format is MM/YY";
+"ExpiryDatePlaceholder" = "MM/YY";
+"ExpiryDateErrorMessage" = "Missing Expiry Date";
 "city" = "City";
 "cancel" = "Cancel";
 "done" = "Done";
