@@ -24,47 +24,106 @@ private enum Constants {
 //MARK: - Payment Form
 //**********************
 
-//MARK: - Billing Form WITH Summary
+//MARK: - Main Payment Form
 
-/// This style for summary view with pre-filled with Address or Phone
-public struct Custom2SummaryViewStyle: SummaryViewStyle {
-    public var isMandatory: Bool = true
-    public var cornerRadius: CGFloat = 10
-    public var borderWidth: CGFloat = 1.0
-    public var separatorLineColor: UIColor = Constants.greenBackgroundColor
-    public var backgroundColor: UIColor = .clear
-    public var borderColor: UIColor = Constants.greenBackgroundColor
-    public var button: ElementButtonStyle = Custom2SummaryButtonStyle()
-    public var title: ElementStyle? = TitleLabelCustom2Style(text: "Billing address", textColor: Constants.fontColorLabel)
-    public var hint: ElementStyle? = HintInputCustom2LabelStyle(text: "We need this information as an additional security measure to verify this card.", textColor: Constants.fontColorLabel)
-    public var summary: ElementStyle = TitleLabelCustom2Style(textColor: Constants.fontColorLabel)
-    public var mandatory: ElementStyle?
-    public var error: ElementErrorViewStyle?
+struct PaymentFormStyleCustom2: PaymentFormStyle {
+    var addBillingSummary: CellButtonStyle? = AddBillingDetailsViewStyleCustom2()
+    var editBillingSummary: BillingSummaryViewStyle? = EditBillingSummaryStyleCustom1()
+    var expiryDate: CellTextFieldStyle? = ExpiryDateFormStyleCustom2()
 }
 
-//MARK: - Billing Form WITH Summary Button
+//MARK: - Billing Form WITH Summary ( Edit details )
+
+/// This style for summary view with pre-filled with Address or Phone
+struct EditBillingSummaryStyleCustom2: BillingSummaryViewStyle {
+    var isMandatory: Bool = true
+    var cornerRadius: CGFloat = 10
+    var borderWidth: CGFloat = 1.0
+    var separatorLineColor: UIColor = Constants.greenBackgroundColor
+    var backgroundColor: UIColor = .clear
+    var borderColor: UIColor = Constants.greenBackgroundColor
+    var button: ElementButtonStyle = SummaryButtonStyleCustom2()
+    var title: ElementStyle? = TitleLabelStyleCustom2(text: "Billing address", textColor: Constants.fontColorLabel)
+    var hint: ElementStyle? = HintInputLabelStyleCustom2(text: "We need this information as an additional security measure to verify this card.", textColor: Constants.fontColorLabel)
+    var summary: ElementStyle? = TitleLabelStyleCustom2(textColor: Constants.fontColorLabel)
+    var mandatory: ElementStyle?
+    var error: ElementErrorViewStyle?
+}
+
+//MARK: - Billing Form WITH Summary Button ( Edit details )
 
 /// This style for summary button with pre-filled summary view style
-public class Custom2SummaryButtonStyle: ElementButtonStyle {
-    public var image: UIImage? =  UIImage(named: "arrow_blue_right")
-    public var text: String = "Edit billing address"
-    public var font: UIFont = UIFont.systemFont(ofSize: 15)
-    public var textColor: UIColor = Constants.greenBackgroundColor
-    public var disabledTextColor: UIColor = .clear
-    public var disabledTintColor: UIColor = .clear
-    public var activeTintColor: UIColor = Constants.greenBackgroundColor
-    public var imageTintColor: UIColor = Constants.greenBackgroundColor
+struct SummaryButtonStyleCustom2: ElementButtonStyle {
+    var image: UIImage? =  UIImage(named: "arrow_blue_right")
+    var text: String = "Edit billing address"
+    var font: UIFont = UIFont.systemFont(ofSize: 15)
+    var textColor: UIColor = Constants.greenBackgroundColor
+    var disabledTextColor: UIColor = .clear
+    var disabledTintColor: UIColor = .clear
+    var activeTintColor: UIColor = Constants.greenBackgroundColor
+    var imageTintColor: UIColor = Constants.greenBackgroundColor
+    var backgroundColor: UIColor = .clear
+    var normalBorderColor: UIColor = .clear
+    var focusBorderColor: UIColor = .clear
+    var errorBorderColor: UIColor = .clear
+    var isHidden: Bool = false
+    var isEnabled: Bool = true
+    var height: Double = 56
+    var width: Double = 0
+    var cornerRadius: CGFloat = 10
+    var borderWidth: CGFloat = 1
+    var textLeading: CGFloat = 20
+}
+
+
+//MARK: - Billing Form WITHOUT Summary  ( Add details )
+
+/// This style for `add billing details View` when summary is not provided
+struct AddBillingDetailsViewStyleCustom2: CellButtonStyle {
+    var mandatory: ElementStyle?
+    var backgroundColor: UIColor = .clear
+    var button: ElementButtonStyle = AddBillingDetailsButtonStyleCustom2()
+    var isMandatory: Bool = true
+    var title: ElementStyle? = TitleLabelStyleCustom2(text: "Billing address", textColor: Constants.fontColorLabel)
+    var hint: ElementStyle? = HintInputLabelStyleCustom2(text: "We need this information as an additional security measure to verify this card.", textColor: Constants.fontColorLabel)
+    var error: ElementErrorViewStyle?
+}
+
+//MARK: - Billing Form WITHOUT Summary Button ( Add details )
+
+/// This style for `add billing details Button` when summary is not provided
+struct AddBillingDetailsButtonStyleCustom2: ElementButtonStyle {
+    var image: UIImage? =  UIImage(named: "arrow_blue_right")
+    var text: String = "Add billing address"
+    var font: UIFont = UIFont.systemFont(ofSize: 15)
+    var textColor: UIColor = Constants.greenBackgroundColor
+    var disabledTextColor: UIColor = Constants.grayBackgroundColor
+    var disabledTintColor: UIColor = Constants.grayBackgroundColor
+    var activeTintColor: UIColor = Constants.greenBackgroundColor
+    var backgroundColor: UIColor = .clear
+    var normalBorderColor: UIColor = Constants.greenBackgroundColor
+    var focusBorderColor: UIColor = Constants.greenBackgroundColor
+    var errorBorderColor: UIColor = .tallPoppyRed
+    var imageTintColor: UIColor = Constants.greenBackgroundColor
+    var isHidden: Bool = false
+    var isEnabled: Bool = true
+    var height: Double = 56
+    var width: Double = 0
+    var cornerRadius: CGFloat = 10
+    var borderWidth: CGFloat = 1
+    var textLeading: CGFloat = 20
+}
+
+//MARK: - Expiry Date
+
+public struct ExpiryDateFormStyleCustom2 : CellTextFieldStyle {
+    public var isMandatory: Bool = true
     public var backgroundColor: UIColor = .clear
-    public var normalBorderColor: UIColor = .clear
-    public var focusBorderColor: UIColor = .clear
-    public var errorBorderColor: UIColor = .clear
-    public var isHidden: Bool = false
-    public var isEnabled: Bool = true
-    public var height: Double = 56
-    public var width: Double = 0
-    public var cornerRadius: CGFloat = 10
-    public var borderWidth: CGFloat = 1
-    public var textLeading: CGFloat = 20
+    public var title: ElementStyle? = TitleLabelStyleCustom2(text: "Expiry date", textColor: Constants.fontColorLabel)
+    public var hint: ElementStyle? = HintInputLabelStyleCustom2(text: "Format is MM/YY", textColor: Constants.fontColorLabel)
+    public var mandatory: ElementStyle?
+    public var textfield: ElementTextFieldStyle = TextFieldCustom2(placeHolder: "MM/YY")
+    public var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom2(text: "please fill expiry date")
 }
 
 //**********************
@@ -73,135 +132,135 @@ public class Custom2SummaryButtonStyle: ElementButtonStyle {
 
 //MARK: - Main Billing Form
 
-struct BillingFormCustom2Style: BillingFormStyle {
+struct BillingFormStyleCustom2: BillingFormStyle {
     var mainBackground: UIColor = Constants.grayBackgroundColor
-    var header: BillingFormHeaderCellStyle = BillingFormCustom2HeaderCellStyle()
-    var cells: [BillingFormCell] = [.fullName(BillingFormFullNameCustom2CellStyle()),
-                                           .addressLine1(BillingFormAddressLine1Custom2CellStyle()),
-                                           .addressLine2(BillingFormAddressLine2Custom2CellStyle()),
-                                           .city(BillingFormCityCustom2CellStyle()),
-                                           .state(BillingFormStateCustom2CellStyle()),
-                                           .postcode(BillingFormPostcodeCustom2CellStyle()),
-                                           .country(BillingFormCountryCustom2CellStyle()),
-                                           .phoneNumber(BillingFormPhoneNumberCustom2CellStyle())]
+    var header: BillingFormHeaderCellStyle = BillingFormHeaderCellStyleCustom2()
+    var cells: [BillingFormCell] = [.fullName(BillingFormFullNameCellStyleCustom2()),
+                                           .addressLine1(BillingFormAddressLine1CellStyleCustom2()),
+                                           .addressLine2(BillingFormAddressLine2CellStyleCustom2()),
+                                           .city(BillingFormCityCellStyleCustom2()),
+                                           .state(BillingFormStateCellStyleCustom2()),
+                                           .postcode(BillingFormPostcodeCellStyleCustom2()),
+                                           .country(BillingFormCountryCellStyleCustom2()),
+                                           .phoneNumber(BillingFormPhoneNumberCellStyleCustom2())]
 }
 
 //MARK: - Full Name
 
-struct BillingFormFullNameCustom2CellStyle : CellTextFieldStyle {
+struct BillingFormFullNameCellStyleCustom2: CellTextFieldStyle {
     var isMandatory: Bool = true
     var isOptional: Bool = false
     var backgroundColor: UIColor = Constants.grayBackgroundColor
-    var title: ElementStyle? = TitleLabelCustom2Style(text:  "Full Name", textColor: Constants.fontColorLabel)
+    var title: ElementStyle? = TitleLabelStyleCustom2(text:  "Full Name", textColor: Constants.fontColorLabel)
     var hint: ElementStyle? = nil
     var mandatory: ElementStyle? = nil
     var textfield: ElementTextFieldStyle = TextFieldCustom2()
-    var error: ElementErrorViewStyle? = ErrorInputCustom2LabelStyle(text: "Enter Name", textColor: Constants.errorLabelBackgroundColor)
+    var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom2(text: "Enter Name", textColor: Constants.errorLabelBackgroundColor)
 }
 
 //MARK: - Address Line 1
 
-struct BillingFormAddressLine1Custom2CellStyle : CellTextFieldStyle {
+struct BillingFormAddressLine1CellStyleCustom2: CellTextFieldStyle {
     var isMandatory: Bool = true
     var isOptional: Bool = true
     var backgroundColor: UIColor = Constants.grayBackgroundColor
-    var title: ElementStyle? = TitleLabelCustom2Style(text:  "Address Line 1*", textColor: Constants.fontColorLabel)
+    var title: ElementStyle? = TitleLabelStyleCustom2(text:  "Address Line 1*", textColor: Constants.fontColorLabel)
     var hint: ElementStyle? = nil
     var mandatory: ElementStyle? = nil
     var textfield: ElementTextFieldStyle = TextFieldCustom2()
-    var error: ElementErrorViewStyle? = ErrorInputCustom2LabelStyle(text:  "Enter Address Line 1", textColor: Constants.errorLabelBackgroundColor)
+    var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom2(text:  "Enter Address Line 1", textColor: Constants.errorLabelBackgroundColor)
 }
 
 //MARK: - Address Line 2
 
-struct BillingFormAddressLine2Custom2CellStyle : CellTextFieldStyle {
+struct BillingFormAddressLine2CellStyleCustom2: CellTextFieldStyle {
     var isMandatory: Bool = true
     var isOptional: Bool = true
     var backgroundColor: UIColor = Constants.grayBackgroundColor
-    var title: ElementStyle? = TitleLabelCustom2Style(text:  "Address Line 2", textColor: Constants.fontColorLabel)
+    var title: ElementStyle? = TitleLabelStyleCustom2(text:  "Address Line 2", textColor: Constants.fontColorLabel)
     var hint: ElementStyle? = nil
     var mandatory: ElementStyle? = nil
     var textfield: ElementTextFieldStyle = TextFieldCustom2()
-    var error: ElementErrorViewStyle? = ErrorInputCustom2LabelStyle(text: "Enter Address Line 2", textColor: Constants.errorLabelBackgroundColor)
+    var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom2(text: "Enter Address Line 2", textColor: Constants.errorLabelBackgroundColor)
 }
 
 //MARK: - City
 
-struct BillingFormCityCustom2CellStyle : CellTextFieldStyle {
+struct BillingFormCityCellStyleCustom2: CellTextFieldStyle {
     var isMandatory: Bool = true
     var isOptional: Bool = false
     var backgroundColor: UIColor = Constants.grayBackgroundColor
-    var title: ElementStyle? = TitleLabelCustom2Style(text:  "Town*", textColor: Constants.fontColorLabel)
+    var title: ElementStyle? = TitleLabelStyleCustom2(text:  "Town*", textColor: Constants.fontColorLabel)
     var hint: ElementStyle? = nil
     var mandatory: ElementStyle? = nil
     var textfield: ElementTextFieldStyle = TextFieldCustom2()
-    var error: ElementErrorViewStyle? = ErrorInputCustom2LabelStyle(text: "Enter Town", textColor: Constants.errorLabelBackgroundColor)
+    var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom2(text: "Enter Town", textColor: Constants.errorLabelBackgroundColor)
 }
 
 //MARK: - State - County
 
-struct BillingFormStateCustom2CellStyle : CellTextFieldStyle {
+struct BillingFormStateCellStyleCustom2: CellTextFieldStyle {
     var isMandatory: Bool = true
     var isOptional: Bool = false
     var backgroundColor: UIColor = Constants.grayBackgroundColor
-    var title: ElementStyle? = TitleLabelCustom2Style(text: "County", textColor: Constants.fontColorLabel)
+    var title: ElementStyle? = TitleLabelStyleCustom2(text: "County", textColor: Constants.fontColorLabel)
     var hint: ElementStyle? = nil
     var mandatory: ElementStyle? = nil
     var textfield: ElementTextFieldStyle = TextFieldCustom2()
-    var error: ElementErrorViewStyle? = ErrorInputCustom2LabelStyle(text: "Enter County", textColor: Constants.errorLabelBackgroundColor)
+    var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom2(text: "Enter County", textColor: Constants.errorLabelBackgroundColor)
 }
 
 //MARK: - Postcode - zip
 
-struct BillingFormPostcodeCustom2CellStyle : CellTextFieldStyle {
+struct BillingFormPostcodeCellStyleCustom2: CellTextFieldStyle {
     var isMandatory: Bool = true
     var isOptional: Bool = false
     var backgroundColor: UIColor = Constants.grayBackgroundColor
-    var title: ElementStyle? = TitleLabelCustom2Style(text:  "Postcode*", textColor: Constants.fontColorLabel)
+    var title: ElementStyle? = TitleLabelStyleCustom2(text:  "Postcode*", textColor: Constants.fontColorLabel)
     var hint: ElementStyle? = nil
     var mandatory: ElementStyle? = nil
     var textfield: ElementTextFieldStyle = TextFieldCustom2()
-    var error: ElementErrorViewStyle? = ErrorInputCustom2LabelStyle(text: "Enter Postcode", textColor: Constants.errorLabelBackgroundColor)
+    var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom2(text: "Enter Postcode", textColor: Constants.errorLabelBackgroundColor)
 }
 
 //MARK: Country
 
-struct BillingFormCountryCustom2CellStyle: CellButtonStyle {
+struct BillingFormCountryCellStyleCustom2: CellButtonStyle {
     var isMandatory: Bool = true
     var backgroundColor: UIColor = Constants.grayBackgroundColor
-    var button: ElementButtonStyle = CountryCustom2FormButtonStyle()
+    var button: ElementButtonStyle = CountryFormButtonStyleCustom2()
     var isOptional: Bool = false
-    var title: ElementStyle? = TitleLabelCustom2Style(text: "Country*", textColor: Constants.fontColorLabel)
+    var title: ElementStyle? = TitleLabelStyleCustom2(text: "Country*", textColor: Constants.fontColorLabel)
     var hint: ElementStyle? = nil
     var mandatory: ElementStyle? = nil
-    var error: ElementErrorViewStyle? = ErrorInputCustom2LabelStyle(text: "Enter Country", textColor: Constants.errorLabelBackgroundColor)
+    var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom2(text: "Enter Country", textColor: Constants.errorLabelBackgroundColor)
 }
 
 //MARK: - Phone Number
 
-struct BillingFormPhoneNumberCustom2CellStyle : CellTextFieldStyle {
+struct BillingFormPhoneNumberCellStyleCustom2: CellTextFieldStyle {
     var isMandatory: Bool = true
     var isOptional: Bool = false
     var mandatory: ElementStyle? = nil
     var backgroundColor: UIColor = Constants.grayBackgroundColor
-    var title: ElementStyle? = TitleLabelCustom2Style(text:  "Phone*", textColor: Constants.fontColorLabel)
-    var hint: ElementStyle? = HintInputCustom2LabelStyle(isHidden: true, text:  "")
+    var title: ElementStyle? = TitleLabelStyleCustom2(text:  "Phone*", textColor: Constants.fontColorLabel)
+    var hint: ElementStyle? = HintInputLabelStyleCustom2(isHidden: true, text:  "")
     var textfield: ElementTextFieldStyle = TextFieldCustom2(isSupportingNumericKeyboard: true)
-    var error: ElementErrorViewStyle? = ErrorInputCustom2LabelStyle(text:  "Enter Phone Number", textColor: Constants.errorLabelBackgroundColor)
+    var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom2(text:  "Enter Phone Number", textColor: Constants.errorLabelBackgroundColor)
 }
 
 //MARK: - Main Header
 
-struct BillingFormCustom2HeaderCellStyle: BillingFormHeaderCellStyle {
+struct BillingFormHeaderCellStyleCustom2: BillingFormHeaderCellStyle {
     var backgroundColor: UIColor = Constants.greenBackgroundColor
-    var headerLabel: ElementStyle = HeaderCustom2LabelFormStyle()
-    var cancelButton: ElementButtonStyle = CancelCustom2ButtonFormStyle()
-    var doneButton: ElementButtonStyle = DoneCustom2FormButtonStyle()
+    var headerLabel: ElementStyle = HeaderLabelFormStyleCustom2()
+    var cancelButton: ElementButtonStyle = CancelButtonFormStyleCustom2()
+    var doneButton: ElementButtonStyle = DoneFormButtonStyleCustom2()
 }
 
 //MARK: - Header title
 
-struct HeaderCustom2LabelFormStyle: ElementStyle {
+struct HeaderLabelFormStyleCustom2: ElementStyle {
     var backgroundColor: UIColor = .clear
     var isHidden: Bool = false
     var text: String = "Billing Details"
@@ -211,13 +270,13 @@ struct HeaderCustom2LabelFormStyle: ElementStyle {
 
 //MARK: - Header Cancel
 
-struct CancelCustom2ButtonFormStyle: ElementButtonStyle {
+struct CancelButtonFormStyleCustom2: ElementButtonStyle {
     var image: UIImage?
     var text: String = "Cancel"
     var font: UIFont =  UIFont.systemFont(ofSize: UIFont.systemFontSize)
-    var disabledTextColor: UIColor = .doveGray
-    var disabledTintColor: UIColor = .doveGray
-    var activeTintColor: UIColor = .brandeisBlue
+    var disabledTextColor: UIColor = Constants.grayBackgroundColor
+    var disabledTintColor: UIColor = Constants.grayBackgroundColor
+    var activeTintColor: UIColor = Constants.greenBackgroundColor
     var backgroundColor: UIColor = Constants.greenBackgroundColor
     var textColor: UIColor = .white
     var normalBorderColor: UIColor = .clear
@@ -235,11 +294,11 @@ struct CancelCustom2ButtonFormStyle: ElementButtonStyle {
 
 //MARK: - Header Done
 
-struct DoneCustom2FormButtonStyle: ElementButtonStyle {
+struct DoneFormButtonStyleCustom2: ElementButtonStyle {
     var image: UIImage? = nil
     var text: String = "Done"
     var font: UIFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
-    var disabledTextColor: UIColor = .doveGray
+    var disabledTextColor: UIColor = Constants.grayBackgroundColor
     var disabledTintColor: UIColor = .doveGray
     var activeTintColor: UIColor = .brandeisBlue
     var backgroundColor: UIColor = Constants.greenBackgroundColor
@@ -259,7 +318,7 @@ struct DoneCustom2FormButtonStyle: ElementButtonStyle {
 
 //MARK: - Common Title Label
 
-struct TitleLabelCustom2Style: ElementStyle {
+struct TitleLabelStyleCustom2: ElementStyle {
     var backgroundColor: UIColor = .clear
     var isHidden: Bool = false
     var text: String = ""
@@ -291,7 +350,7 @@ struct TextFieldCustom2: ElementTextFieldStyle {
 
 //MARK: - Common Error View
 
-struct ErrorInputCustom2LabelStyle: ElementErrorViewStyle {
+struct ErrorInputLabelStyleCustom2: ElementErrorViewStyle {
     var isHidden: Bool = true
     var isWarningImageOnLeft: Bool = true
     var backgroundColor: UIColor = .clear
@@ -305,7 +364,7 @@ struct ErrorInputCustom2LabelStyle: ElementErrorViewStyle {
 
 //MARK: - Country
 
-struct CountryCustom2FormButtonStyle: ElementButtonStyle {
+struct CountryFormButtonStyleCustom2: ElementButtonStyle {
     var image: UIImage? =  UIImage(named: "arrow_blue_right")
     var text: String = "Country"
     var font: UIFont = UIFont(name: "Helvetica Neue", size: 14)!
@@ -329,7 +388,7 @@ struct CountryCustom2FormButtonStyle: ElementButtonStyle {
 
 //MARK: - Common Hint
 
-struct HintInputCustom2LabelStyle: ElementStyle {
+struct HintInputLabelStyleCustom2: ElementStyle {
     var backgroundColor: UIColor = .clear
     var isHidden: Bool = false
     var text: String = ""

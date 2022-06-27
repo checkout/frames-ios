@@ -4,19 +4,20 @@ import Checkout
 protocol CellTextFieldDelegate: AnyObject {
     func phoneNumberIsUpdated(number: String, tag: Int)
     func textFieldShouldBeginEditing(textField: UITextField)
-    func textFieldShouldReturn()
-    func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
+    func textFieldShouldReturn() -> Bool
+    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
 
-final class CellTextField: UITableViewCell {
+final class BillingFormCellTextField: UITableViewCell {
     weak var delegate: CellTextFieldDelegate?
     var type: BillingFormCell?
     var style: CellTextFieldStyle?
 
-    private lazy var mainView: TextFieldView? = {
-        let view = TextFieldView().disabledAutoresizingIntoConstraints()
+    private lazy var textFieldView: BillingFormTextFieldView? = {
+        let view = BillingFormTextFieldView().disabledAutoresizingIntoConstraints()
         view.delegate = self
+        view.phoneNumberDelegate = self
         return view
     }()
 
@@ -30,7 +31,7 @@ final class CellTextField: UITableViewCell {
         self.type = type
         self.style = style
         self.tag = tag
-        mainView?.update(style: style, type: type, textFieldValue: textFieldValue, tag: tag)
+        textFieldView?.update(style: style, type: type, textFieldValue: textFieldValue, tag: tag)
     }
 
     @available(*, unavailable)
@@ -39,31 +40,28 @@ final class CellTextField: UITableViewCell {
     }
 }
 
-extension CellTextField {
+extension BillingFormCellTextField {
 
     private func setupViewsInOrder() {
-        guard let mainView = mainView else { return }
-        contentView.addSubview(mainView)
-        mainView.setContentHuggingPriority(.defaultLow, for: .vertical)
-        mainView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        guard let textFieldView = textFieldView else { return }
+        contentView.addSubview(textFieldView)
+        textFieldView.setContentHuggingPriority(.defaultLow, for: .vertical)
+        textFieldView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         NSLayoutConstraint.activate([
-            mainView.topAnchor.constraint(
+            textFieldView.topAnchor.constraint(
                 equalTo: contentView.topAnchor),
-            mainView.leadingAnchor.constraint(
+            textFieldView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor),
-            mainView.trailingAnchor.constraint(
+            textFieldView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor),
-            mainView.bottomAnchor.constraint(
+            textFieldView.bottomAnchor.constraint(
                 equalTo: contentView.bottomAnchor,
                 constant: -24)
         ])
     }
 }
 
-extension CellTextField: TextFieldViewDelegate {
-    func phoneNumberIsUpdated(number: String, tag: Int) {
-        delegate?.phoneNumberIsUpdated(number: number, tag: tag)
-    }
+extension BillingFormCellTextField: TextFieldViewDelegate {
     
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
@@ -72,12 +70,18 @@ extension CellTextField: TextFieldViewDelegate {
     func textFieldShouldBeginEditing(textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
     }
-    func textFieldShouldReturn() {
-        delegate?.textFieldShouldReturn()
+    func textFieldShouldReturn()-> Bool {
+        delegate?.textFieldShouldReturn() ?? false
     }
 
-    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) {
-        delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString)
+    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
+        delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString) ?? true
     }
 
+}
+
+extension BillingFormCellTextField: PhoneNumberTextFieldDelegate {
+    func phoneNumberIsUpdated(number: String, tag: Int) {
+        delegate?.phoneNumberIsUpdated(number: number, tag: tag)
+    }
 }
