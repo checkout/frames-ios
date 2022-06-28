@@ -287,6 +287,9 @@
 		956BA00A2861CB30005884D8 /* BillingFormTextFieldViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956B9FFA2861CB30005884D8 /* BillingFormTextFieldViewTests.swift */; };
 		956BA00B2861CB30005884D8 /* BillingFormTextFieldErrorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956B9FFB2861CB30005884D8 /* BillingFormTextFieldErrorViewTests.swift */; };
 		956BA00C2861CB30005884D8 /* BillingFormViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956B9FFD2861CB30005884D8 /* BillingFormViewControllerTests.swift */; };
+		957569BD286A35DE00BD83FC /* ExpiryDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957569BC286A35DE00BD83FC /* ExpiryDateView.swift */; };
+		957569BF286B3C1A00BD83FC /* ExpiryDateViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957569BE286B3C1A00BD83FC /* ExpiryDateViewTests.swift */; };
+		957569C1286B43AC00BD83FC /* PaymentViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957569C0286B43AC00BD83FC /* PaymentViewModelTests.swift */; };
 		95B1F43D283AC38B00A78BFA /* BillingFormTableViewMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1F43C283AC38B00A78BFA /* BillingFormTableViewMockDelegate.swift */; };
 		95C6C11F2868F88600C8C676 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C6C11B2868F88600C8C676 /* PaymentViewController.swift */; };
 		95C6C1202868F88700C8C676 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C6C11D2868F88600C8C676 /* PaymentViewModel.swift */; };
@@ -701,6 +704,9 @@
 		956B9FFA2861CB30005884D8 /* BillingFormTextFieldViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTextFieldViewTests.swift; sourceTree = "<group>"; };
 		956B9FFB2861CB30005884D8 /* BillingFormTextFieldErrorViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTextFieldErrorViewTests.swift; sourceTree = "<group>"; };
 		956B9FFD2861CB30005884D8 /* BillingFormViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormViewControllerTests.swift; sourceTree = "<group>"; };
+		957569BC286A35DE00BD83FC /* ExpiryDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiryDateView.swift; sourceTree = "<group>"; };
+		957569BE286B3C1A00BD83FC /* ExpiryDateViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiryDateViewTests.swift; sourceTree = "<group>"; };
+		957569C0286B43AC00BD83FC /* PaymentViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModelTests.swift; sourceTree = "<group>"; };
 		95B1F430283AC32A00A78BFA /* GraphikFontTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphikFontTests.swift; sourceTree = "<group>"; };
 		95B1F431283AC32A00A78BFA /* FontRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontRegistrationTests.swift; sourceTree = "<group>"; };
 		95B1F432283AC32A00A78BFA /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
@@ -1235,6 +1241,7 @@
 			isa = PBXGroup;
 			children = (
 				9562CFF4286512B000C94D6B /* BillingSummary */,
+				957569BC286A35DE00BD83FC /* ExpiryDateView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1733,6 +1740,7 @@
 			children = (
 				956B9FEC2861CB30005884D8 /* BillingFormCellTypeTests.swift */,
 				956B9FED2861CB30005884D8 /* BillingFormViewModelTests.swift */,
+				957569C0286B43AC00BD83FC /* PaymentViewModelTests.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1759,6 +1767,7 @@
 				956B9FF92861CB30005884D8 /* BillingFormButtonViewTests.swift */,
 				956B9FFA2861CB30005884D8 /* BillingFormTextFieldViewTests.swift */,
 				956B9FFB2861CB30005884D8 /* BillingFormTextFieldErrorViewTests.swift */,
+				957569BE286B3C1A00BD83FC /* ExpiryDateViewTests.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2385,6 +2394,7 @@
 				952F328E283C303E00F616FF /* CheckoutSdkIos.swift in Sources */,
 				9562D053286512B000C94D6B /* PaymentFormFactory.swift in Sources */,
 				9562D07D286512B000C94D6B /* BillingFormViewController.swift in Sources */,
+				957569BD286A35DE00BD83FC /* ExpiryDateView.swift in Sources */,
 				956B9FD42861CA80005884D8 /* ThreedsWebViewControllerDelegate.swift in Sources */,
 				952F329A283C303E00F616FF /* FramesEventLogger.swift in Sources */,
 				952F32D5283C303E00F616FF /* CheckoutTheme.swift in Sources */,
@@ -2455,6 +2465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				957569BF286B3C1A00BD83FC /* ExpiryDateViewTests.swift in Sources */,
 				952F3368283C305F00F616FF /* StubDispatcher.swift in Sources */,
 				952F3346283C305F00F616FF /* ExpirationDateInputViewTests.swift in Sources */,
 				952F335A283C305F00F616FF /* PhoneNumberInputViewTests.swift in Sources */,
@@ -2463,6 +2474,7 @@
 				952F3359283C305F00F616FF /* SimpleLoadingViewControllerTests.swift in Sources */,
 				952F337B283C305F00F616FF /* CvvInputViewMockDelegate.swift in Sources */,
 				952F3339283C305F00F616FF /* FramesEventLoggerTests.swift in Sources */,
+				957569C1286B43AC00BD83FC /* PaymentViewModelTests.swift in Sources */,
 				956BA0042861CB30005884D8 /* AddressLine2ValidatorTests.swift in Sources */,
 				952F3373283C305F00F616FF /* StubCardValidator.swift in Sources */,
 				952F3366283C305F00F616FF /* StubUIDevice.swift in Sources */,

@@ -5,6 +5,7 @@ protocol TextFieldViewDelegate: AnyObject {
     func textFieldShouldReturn() -> Bool
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
 }
 
 class TextFieldView: UIView {
@@ -36,6 +37,7 @@ class TextFieldView: UIView {
         textField?.placeholder = style.placeHolder
         textField?.textColor = style.textColor
         textField?.tintColor = style.tintColor
+        textField?.keyboardType = style.isSupportingNumericKeyboard ? .numberPad : .default
     }
 
     @objc func textFieldEditingChanged(textField: UITextField) {
@@ -56,13 +58,14 @@ extension TextFieldView: UITextFieldDelegate {
     }
 
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        delegate?.textFieldShouldEndEditing(textField: textField, replacementString: textField.text ?? "")
-        return true
+        return delegate?.textFieldShouldEndEditing(textField: textField, replacementString: textField.text ?? "") ?? true
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return delegate?.textFieldShouldReturn() ?? false
 
     }
-
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return delegate?.textField(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true
+    }
 }
