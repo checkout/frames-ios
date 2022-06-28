@@ -72,10 +72,12 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             let hasValue = value != nil
             country = data?.address?.country
             textValueOfCellType[type.index] = hasValue ? value : (!isMandatory ? "" : nil)
-            errorFlagOfCellType[type.index] = hasValue ? false : isMandatory
+            errorFlagOfCellType[type.index] = hasValue ? false : (value != nil ? isMandatory : nil)
         }
-        if let country = country, country.iso3166Alpha2.isEmpty {
-            self.country = Country(iso3166Alpha2: Locale.current.regionCode ?? "", dialingCode: nil)
+        if country == nil,
+           let regionCode = Locale.current.regionCode,
+           let deviceCountry = Country(iso3166Alpha2: regionCode) {
+            self.country = deviceCountry
         }
     }
 
@@ -87,7 +89,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
     private func getTextFieldCell(tableView: UITableView, indexPath: IndexPath, sender: UIViewController?) -> UITableViewCell {
 
-        if let cell: CellTextField = tableView.dequeueReusable(for: indexPath) {
+        if let cell: BillingFormCellTextField = tableView.dequeueReusable(for: indexPath) {
             let cellStyle = updateTextFieldStyle(for: indexPath.row)
             cell.delegate = sender as? CellTextFieldDelegate
             cell.update(type: style.cells[indexPath.row],
@@ -208,8 +210,9 @@ extension DefaultBillingFormViewModel: BillingFormTableViewDelegate {
 // MARK: - Text View Delegate
 
 extension DefaultBillingFormViewModel: BillingFormTextFieldDelegate {
-    func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String) {
+    func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String)-> Bool  {
         validateTextOnEndEditing(textField: textField)
+        return true
     }
     
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {

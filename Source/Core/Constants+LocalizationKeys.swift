@@ -1,7 +1,15 @@
 extension Constants {
 
     struct LocalizationKeys {
+        struct PaymentForm {
 
+            struct ExpiryDate {
+                static let title = "ExpiryDate".localized
+                static let hint = "ExpiryDateFormat".localized
+                static let placeholder = "ExpiryDatePlaceholder".localized
+                static let error = "ExpiryDateErrorMessage".localized
+            }
+        }
         struct BillingForm {
             
             struct Cell {

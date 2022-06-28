@@ -245,7 +245,7 @@ final class CountryTests: XCTestCase {
       Country(iso3166Alpha2: "AE", dialingCode: "971"),
       Country(iso3166Alpha2: "GB", dialingCode: "44"),
       Country(iso3166Alpha2: "US", dialingCode: "1"),
-      Country(iso3166Alpha2: "UMI", dialingCode: "246"),
+      Country(iso3166Alpha2: "UM", dialingCode: "246"),
       Country(iso3166Alpha2: "UY", dialingCode: "598"),
       Country(iso3166Alpha2: "UZ", dialingCode: "998"),
       Country(iso3166Alpha2: "VU", dialingCode: "678"),
@@ -260,5 +260,12 @@ final class CountryTests: XCTestCase {
     ]
 
     XCTAssertEqual(Country.allAvailable, expectedCountries)
+  }
+
+  func test_Country_init() {
+    XCTAssertEqual(Country(iso3166Alpha2: "GB"), Country(iso3166Alpha2: "GB", dialingCode: "44"))
+    XCTAssertEqual(Country(iso3166Alpha2: "AE"), Country(iso3166Alpha2: "AE", dialingCode: "971"))
+    XCTAssertEqual(Country(iso3166Alpha2: "UZ"), Country(iso3166Alpha2: "UZ", dialingCode: "998"))
+    XCTAssertEqual(Country(iso3166Alpha2: "WF"), Country(iso3166Alpha2: "WF", dialingCode: "681"))
   }
 }

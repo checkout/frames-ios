@@ -13,15 +13,16 @@ public class CardViewController: UIViewController,
     // MARK: - Properties
 
     /// Card View
-    public let cardView: CardView
+    let cardView: CardView
     let cardUtils = CardUtils()
 
     let checkoutAPIService: CheckoutAPIProtocol?
-    let billingFormStyle: BillingFormStyle?
+
     let cardHolderNameState: InputState
     let billingDetailsState: InputState
-    var summaryCellButtonStyle: SummaryViewStyle?
-    public var billingFormData: BillingForm?
+
+    public var billingDetailsAddress: Address?
+    public var billingDetailsPhone: Phone?
     var notificationCenter = NotificationCenter.default
     public let addressViewController: AddressViewController
 
@@ -56,67 +57,32 @@ public class CardViewController: UIViewController,
 
     /// Returns a newly initialized view controller with the cardholder's name and billing details
     /// state specified. You can specified the region using the Iso2 region code ("UK" for "United Kingdom")
-
-    public convenience init(isNewUI: Bool,
-                            summaryCellButtonStyle: SummaryViewStyle? = nil,
-                            checkoutAPIService: CheckoutAPIService,
-                            billingFormData: BillingForm?,
+    public convenience init(checkoutAPIService: CheckoutAPIService,
                             cardHolderNameState: InputState,
                             billingDetailsState: InputState,
-                            billingFormStyle: BillingFormStyle?,
                             defaultRegionCode: String? = nil) {
-        self.init(isNewUI: isNewUI,
-                  summaryCellButtonStyle: summaryCellButtonStyle,
-                  checkoutAPIService: checkoutAPIService as CheckoutAPIProtocol,
-                  billingFormData: billingFormData,
-                cardHolderNameState: cardHolderNameState,
-                billingDetailsState: billingDetailsState,
-                billingFormStyle: billingFormStyle,
-                defaultRegionCode: defaultRegionCode)
+      self.init(checkoutAPIService: checkoutAPIService as CheckoutAPIProtocol, cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, defaultRegionCode: defaultRegionCode)
     }
 
-    init(isNewUI: Bool,
-         summaryCellButtonStyle: SummaryViewStyle? = nil,
-         checkoutAPIService: CheckoutAPIProtocol,
-         billingFormData: BillingForm?,
+    init(checkoutAPIService: CheckoutAPIProtocol,
          cardHolderNameState: InputState,
          billingDetailsState: InputState,
-         billingFormStyle: BillingFormStyle? = nil,
          defaultRegionCode: String? = nil) {
-        self.isNewUI = isNewUI
-
         self.checkoutAPIService = checkoutAPIService
-        self.billingFormData = billingFormData
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
-        self.billingFormStyle = billingFormStyle
-        cardView = CardView(isNewUI: isNewUI,
-                            billingFormData: billingFormData,
-                            cardHolderNameState: cardHolderNameState,
-                            billingDetailsState: billingDetailsState,
-                            cardValidator: checkoutAPIService.cardValidator)
+        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: checkoutAPIService.cardValidator)
         addressViewController = AddressViewController(initialCountry: "you", initialRegionCode: defaultRegionCode)
         super.init(nibName: nil, bundle: nil)
-        if self.isNewUI {
-            if summaryCellButtonStyle == nil {
-                self.summaryCellButtonStyle = DefaultSummaryViewStyle()
-            } else {
-                self.summaryCellButtonStyle = summaryCellButtonStyle
-            }
-            updateBillingFormDetailsInputView(data: billingFormData)
-        }
     }
 
     /// Returns a newly initialized view controller with the nib file in the specified bundle.
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Foundation.Bundle?) {
         cardHolderNameState = .required
         billingDetailsState = .required
-        cardView = CardView(isNewUI: isNewUI, billingFormData: billingFormData, cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: nil)
+        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: nil)
         addressViewController = AddressViewController()
         checkoutAPIService = nil
-        billingFormStyle = nil
-        billingFormData = nil
-        summaryCellButtonStyle = nil
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
@@ -124,12 +90,9 @@ public class CardViewController: UIViewController,
     required public init?(coder aDecoder: NSCoder) {
         cardHolderNameState = .required
         billingDetailsState = .required
-        cardView = CardView(isNewUI: isNewUI, billingFormData: billingFormData, cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: nil)
+        cardView = CardView(cardHolderNameState: cardHolderNameState, billingDetailsState: billingDetailsState, cardValidator: nil)
         addressViewController = AddressViewController()
         checkoutAPIService = nil
-        billingFormStyle = nil
-        billingFormData = nil
-        summaryCellButtonStyle = nil
         super.init(coder: aDecoder)
     }
 
@@ -138,9 +101,6 @@ public class CardViewController: UIViewController,
     /// Called after the controller's view is loaded into memory.
     override public func viewDidLoad() {
         super.viewDidLoad()
-        UIFont.loadAllCheckoutFonts
-        UITextField.disableHardwareLayout()
-        // TODO: Fix overridden values
         rightBarButtonItem.target = self
         rightBarButtonItem.action = #selector(onTapDoneCardButton)
         navigationItem.rightBarButtonItem = rightBarButtonItem
@@ -148,7 +108,6 @@ public class CardViewController: UIViewController,
         // add gesture recognizer
         cardView.addressTapGesture.addTarget(self, action: #selector(onTapAddressView))
         cardView.billingDetailsInputView.addGestureRecognizer(cardView.addressTapGesture)
-        cardView.delegate = self
 
         addressViewController.delegate = self
         addTextFieldsDelegate()
@@ -159,7 +118,6 @@ public class CardViewController: UIViewController,
         setInitialDate()
 
         self.automaticallyAdjustsScrollViewInsets = false
-
     }
 
     /// Notifies the view controller that its view is about to be added to a view hierarchy.
@@ -225,17 +183,9 @@ public class CardViewController: UIViewController,
 
     @objc func onTapAddressView() {
 
-        defer {
-            loggedForCurrentCorrelationID = true
-            checkoutAPIService?.logger.log(.billingFormPresented)
-        }
-        guard isNewUI,
-              let billingFormController = BillingFormFactory.getBillingFormViewController(style: billingFormStyle, data: billingFormData, delegate: self)?.navigationController else {
-            navigationController?.pushViewController(addressViewController, animated: true)
-            return
-        }
-        navigationController?.present(billingFormController, animated: true)
-
+        suppressNextLog = true
+        checkoutAPIService?.logger.log(.billingFormPresented)
+        navigationController?.pushViewController(addressViewController, animated: true)
     }
 
     @objc func onTapDoneCardButton() {
@@ -315,8 +265,8 @@ public class CardViewController: UIViewController,
         let card = Card(number: cardNumberStandardized,
                         expiryDate: cardExpiryDate,
                         name: cardView.cardHolderNameInputView.textField.text,
-                        cvv: cvv, billingAddress: billingFormData?.address,
-                        phone: billingFormData?.phone)
+                        cvv: cvv, billingAddress: billingDetailsAddress,
+                        phone: billingDetailsPhone)
 
         checkoutAPIService.createToken(.card(card)) { result in
             self.delegate?.onTapDone(controller: self, result: result)
@@ -327,9 +277,9 @@ public class CardViewController: UIViewController,
 
     /// Executed when an user tap on the done button.
     public func onTapDoneButton(controller: AddressViewController, address: Address, phone: Phone) {
-        billingFormData = BillingForm(name: "", address: address, phone: phone)
-
-        let value = "\(billingFormData?.address?.addressLine1 ?? ""), \(billingFormData?.address?.city ?? "")"
+        billingDetailsAddress = address
+        billingDetailsPhone = phone
+        let value = "\(address.addressLine1 ?? ""), \(address.city ?? "")"
         cardView.billingDetailsInputView.value.text = value
         validateFieldsValues()
         // return to CardViewController
@@ -392,7 +342,7 @@ public class CardViewController: UIViewController,
             return
         }
         // check billing details
-        if billingDetailsState == .required && billingFormData?.address == nil {
+        if billingDetailsState == .required && billingDetailsAddress == nil {
             navigationItem.rightBarButtonItem?.isEnabled = false
             return
         }
@@ -470,66 +420,4 @@ public class CardViewController: UIViewController,
         validateFieldsValues()
     }
 
-    private func updateBillingFormDetailsInputView(data: BillingForm?) {
-        guard let data = data else { return }
-        guard let address = data.address, let phone = data.phone else {
-            let style = DefaultAddBillingDetailsViewStyle()
-            cardView.updateBillingFormEmptyDetailsInputView(style: style)
-            return
-        }
-        var summaryValue = ""
-        updateSummaryValue(with: data.name, summaryValue: &summaryValue)
-        updateSummaryValue(with: address.addressLine1, summaryValue: &summaryValue)
-        updateSummaryValue(with: address.addressLine2, summaryValue: &summaryValue)
-        updateSummaryValue(with: address.city, summaryValue: &summaryValue)
-        updateSummaryValue(with: address.state, summaryValue: &summaryValue)
-        updateSummaryValue(with: address.zip, summaryValue: &summaryValue)
-        updateSummaryValue(with: address.country?.name, summaryValue: &summaryValue)
-        updateSummaryValue(with: phone.number, summaryValue: &summaryValue, withNewLine: false)
-        self.summaryCellButtonStyle?.summary.text = summaryValue
-        guard let summaryCellButtonStyle = summaryCellButtonStyle else { return }
-        cardView.updateBillingFormSummaryView(style: summaryCellButtonStyle)
-    }
-
-    private func updateSummaryValue(with value: String?, summaryValue: inout String,  withNewLine: Bool = true) {
-        guard let value = value else { return }
-        let billingFormValue = value.trimmingCharacters(in: .whitespaces)
-        if !billingFormValue.isEmpty {
-            let newLine = withNewLine ? "\n\n" : ""
-            summaryValue.append("\(billingFormValue)\(newLine)")
-        }
-    }
-
-    // MARK: Utility Methods
-    private func logPaymentFormPresented(isNextLogSuppressed: Bool,
-                                         checkoutAPIService: CheckoutAPIProtocol) {
-        if !isNextLogSuppressed {
-            checkoutAPIService.logger.log(.paymentFormPresented(theme: Theme(), locale: Locale.current))
-            loggedForCurrentCorrelationID = true
-        }
-    }
-}
-
-extension CardViewController: BillingFormViewModelDelegate {
-
-    func onTapDoneButton(data: BillingForm) {
-        billingFormData = data
-
-        if isNewUI {
-            updateBillingFormDetailsInputView(data: data)
-        } else {
-            let value = "\(data.address?.addressLine1 ?? ""), \(data.address?.city ?? "")"
-            cardView.billingDetailsInputView.value.text = value
-        }
-        validateFieldsValues()
-        // return to CardViewController
-        self.topConstraint?.isActive = false
-    }
-}
-
-
-extension CardViewController: CardViewDelegate {
-    func selectionButtonIsPressed() {
-        onTapAddressView()
-    }
 }

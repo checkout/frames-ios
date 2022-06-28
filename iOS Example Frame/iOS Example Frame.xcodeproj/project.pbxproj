@@ -10,6 +10,7 @@
 		3A51FA6F531B59F9E514DE33 /* Pods_iOS_Example_Frame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FB254FE28DE0FCDB94BAC6 /* Pods_iOS_Example_Frame.framework */; };
 		44E647B3260CEDC900503D6C /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 44E647B2260CEDC800503D6C /* .travis.yml */; };
 		577A98AC26A4F16D00CF21C1 /* example_apple_pay_payment_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 577A98AB26A4F16D00CF21C1 /* example_apple_pay_payment_data.json */; };
+		9591877828652519004C3216 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591877728652519004C3216 /* Style.swift */; };
 		AF6DEF0D9CB8D11E00E1B867 /* Pods_iOS_Example_Frame_iOS_Example_FrameUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1083E6EC0F0AFED5ED8C3EA1 /* Pods_iOS_Example_Frame_iOS_Example_FrameUITests.framework */; };
 		E6646F8E20CE6C0900D8353A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646F8D20CE6C0900D8353A /* AppDelegate.swift */; };
 		E6646F9020CE6C0900D8353A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646F8F20CE6C0900D8353A /* MainViewController.swift */; };
@@ -49,6 +50,7 @@
 		44E647B2260CEDC800503D6C /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		577A98AB26A4F16D00CF21C1 /* example_apple_pay_payment_data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = example_apple_pay_payment_data.json; sourceTree = "<group>"; };
 		660E9B956CB2CE293607C63C /* Pods-iOS Example Frame-iOS Example FrameUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example Frame-iOS Example FrameUITests.release.xcconfig"; path = "Target Support Files/Pods-iOS Example Frame-iOS Example FrameUITests/Pods-iOS Example Frame-iOS Example FrameUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9591877728652519004C3216 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		A5FB254FE28DE0FCDB94BAC6 /* Pods_iOS_Example_Frame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_Frame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C143A35EF2223A62DF5C70D7 /* Pods-iOS Example Frame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example Frame.release.xcconfig"; path = "Target Support Files/Pods-iOS Example Frame/Pods-iOS Example Frame.release.xcconfig"; sourceTree = "<group>"; };
 		E620C49520EA2A7A00045DC6 /* FramesIos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FramesIos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +115,7 @@
 			children = (
 				E6646F8D20CE6C0900D8353A /* AppDelegate.swift */,
 				E6646F8F20CE6C0900D8353A /* MainViewController.swift */,
+				9591877728652519004C3216 /* Style.swift */,
 				F59CDCD5284ABE05003D9EDC /* CustomStyle1.swift */,
 				F52A9416284EAA8F0093E1A8 /* CustomStyle2.swift */,
 				E6646F9120CE6C0900D8353A /* Main.storyboard */,
@@ -353,6 +356,7 @@
 				E6646F9020CE6C0900D8353A /* MainViewController.swift in Sources */,
 				E6646F8E20CE6C0900D8353A /* AppDelegate.swift in Sources */,
 				F52A9417284EAA8F0093E1A8 /* CustomStyle2.swift in Sources */,
+				9591877828652519004C3216 /* Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,7 @@ protocol BillingFormTableViewDelegate: AnyObject {
 }
 
 protocol BillingFormTextFieldDelegate: AnyObject {
-    func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String)
+    func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String) -> Bool
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
 
@@ -54,7 +54,7 @@ final class BillingFormViewController: UIViewController {
         view.showsHorizontalScrollIndicator = false
         view.allowsSelection = false
         view.backgroundColor = .clear
-        view.register(CellTextField.self)
+        view.register(BillingFormCellTextField.self)
         view.register(SelectionButtonTableViewCell.self)
         return view
     }()
@@ -89,7 +89,7 @@ final class BillingFormViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         setupViewModel()
-        tableView?.register(CellTextField.self)
+        tableView?.register(BillingFormCellTextField.self)
     }
 
     required init?(coder: NSCoder) {
@@ -212,17 +212,18 @@ extension BillingFormViewController: CellTextFieldDelegate {
         textFieldDelegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
     }
 
-    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) {
-        guard let textField = textField as? BillingFormTextField else { return }
-        textFieldDelegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString)
+    func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
+        guard let textField = textField as? BillingFormTextField else { return true }
+        return textFieldDelegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString) ?? true
     }
 
     func textFieldShouldBeginEditing(textField: UITextField) {
         self.focusedTextField = textField
     }
 
-    func textFieldShouldReturn() {
+    func textFieldShouldReturn() -> Bool {
         view.endEditing(true)
+        return false
     }
 
 }

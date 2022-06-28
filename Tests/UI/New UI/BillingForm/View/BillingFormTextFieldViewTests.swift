@@ -2,14 +2,14 @@ import XCTest
 @testable import Frames
 
 class BillingFormTextFieldViewTests: XCTestCase {
-    var view: TextFieldView!
+    var view: BillingFormTextFieldView!
     var style: DefaultBillingFormFullNameCellStyle!
 
     override func setUp() {
         super.setUp()
         UIFont.loadAllCheckoutFonts
         style = DefaultBillingFormFullNameCellStyle()
-        view = TextFieldView()
+        view = BillingFormTextFieldView()
         view.update(style: style, type: .fullName(nil), tag: 0)
     }
 

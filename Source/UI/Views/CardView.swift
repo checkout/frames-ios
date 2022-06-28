@@ -2,35 +2,16 @@ import Foundation
 import UIKit
 import Checkout
 
-protocol CardViewDelegate: AnyObject {
-    func selectionButtonIsPressed()
-}
-
 /// A view that displays card information inputs
 public class CardView: UIView {
 
     // MARK: - Properties
-    weak var delegate: CardViewDelegate?
+
     let scrollView = UIScrollView()
     let contentView = UIView()
     let stackView = UIStackView()
     let schemeIconsStackView = SchemeIconsStackView()
     let addressTapGesture = UITapGestureRecognizer()
-    var isNewUI: Bool = true {
-        didSet{
-            let showBillingFormDetailsInputView = billingDetailsState != .hidden && isNewUI
-            billingFormSummaryView.isHidden = !showBillingFormDetailsInputView
-            let showBillingDetailsInputView = billingDetailsState != .hidden && !isNewUI
-            billingDetailsInputView.isHidden = !showBillingDetailsInputView
-            if billingDetailsState != .hidden {
-                if isNewUI {
-                    stackView.addArrangedSubview(billingFormEmptyDetailsInputView)
-                } else {
-                    stackView.addArrangedSubview(billingDetailsInputView)
-                }
-            }
-        }
-    }
 
     /// Accepted Card Label
     public let acceptedCardLabel = UILabel()
@@ -49,20 +30,6 @@ public class CardView: UIView {
 
     /// Billing details input view
     public let billingDetailsInputView = DetailsInputView()
-
-    private lazy var billingFormSummaryView: BillingFormSummaryView = {
-        let view = BillingFormSummaryView()
-        view.delegate = self
-        return view
-    }()
-
-    private lazy var billingFormEmptyDetailsInputView: SelectionButtonView = {
-        let view = SelectionButtonView()
-        view.delegate = self
-        return view
-    }()
-
-    private var billingFormData: BillingForm?
 
     // Input options
     let cardHolderNameState: InputState
@@ -93,9 +60,7 @@ public class CardView: UIView {
     }
 
     /// Initializes and returns a newly  allocated card view with the specified input states.
-    init(isNewUI: Bool, billingFormData: BillingForm?, cardHolderNameState: InputState, billingDetailsState: InputState, cardValidator: CardValidating?) {
-        self.isNewUI = isNewUI
-        self.billingFormData = billingFormData
+    init(cardHolderNameState: InputState, billingDetailsState: InputState, cardValidator: CardValidating?) {
         self.cardHolderNameState = cardHolderNameState
         self.billingDetailsState = billingDetailsState
         self.cardNumberInputView = CardNumberInputView(cardValidator: cardValidator)
@@ -163,23 +128,8 @@ public class CardView: UIView {
         }
         stackView.addArrangedSubview(expirationDateInputView)
         stackView.addArrangedSubview(cvvInputView)
-        setupBillingForm()
-    }
-
-    private func setupBillingForm() {
-        billingFormEmptyDetailsInputView.removeFromSuperview()
-        billingFormSummaryView.removeFromSuperview()
-        billingDetailsInputView.removeFromSuperview()
         if billingDetailsState != .hidden {
-            if isNewUI ?? false {
-                if billingFormData?.address == nil && billingFormData?.phone == nil {
-                    stackView.addArrangedSubview(billingFormEmptyDetailsInputView)
-                } else {
-                    stackView.addArrangedSubview(billingFormSummaryView)
-                }
-            } else {
-                stackView.addArrangedSubview(billingDetailsInputView)
-            }
+            stackView.addArrangedSubview(billingDetailsInputView)
         }
     }
 
@@ -209,19 +159,4 @@ public class CardView: UIView {
         stackView.leadingAnchor.constraint(equalTo: contentView.safeLeadingAnchor, constant: 8).isActive = true
         stackView.bottomAnchor.constraint(equalTo: contentView.safeBottomAnchor).isActive = true
     }
-
-    func updateBillingFormEmptyDetailsInputView(style: CellButtonStyle) {
-        billingFormEmptyDetailsInputView.update(style: style)
-    }
-
-    func updateBillingFormSummaryView(style: SummaryViewStyle) {
-        billingFormSummaryView.update(style: style)
-    }
 }
-
-extension CardView: SelectionButtonViewDelegate {
-    public func selectionButtonIsPressed() {
-        delegate?.selectionButtonIsPressed()
-    }
-}
-

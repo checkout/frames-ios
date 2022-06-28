@@ -20,9 +20,9 @@ class BillingFormViewModelTests: XCTestCase {
                               city: "London",
                               state: "London",
                               zip: "N12345",
-                              country: Country(iso3166Alpha2: "", dialingCode: "44"))
+                              country: nil)
         let phone = Phone(number: "77 1234 1234",
-                          country: Country(iso3166Alpha2: "GB", dialingCode: "44"))
+                          country: Country(iso3166Alpha2: "GB"))
         let name = "User 1"
         let billingForm = BillingForm(name: name, address: address, phone: phone)
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: billingForm)
@@ -38,7 +38,7 @@ class BillingFormViewModelTests: XCTestCase {
     func testValidationWhenTextFieldIsEmptyThenShowError() throws {
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
         let expectedType = BillingFormCell.fullName(DefaultBillingFormFullNameCellStyle(isMandatory: true))
-        let tag = 2
+        let tag = 0
         let text = ""
         let textField = DefaultBillingFormTextField(type:expectedType, tag: expectedType.index)
         textField.text = text
@@ -65,7 +65,10 @@ class BillingFormViewModelTests: XCTestCase {
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
 
         let name = "User 1"
-        let country = Country(iso3166Alpha2: "GB", dialingCode: nil)
+        guard let country = Country(iso3166Alpha2: "GB") else {
+            XCTFail("could not find country for GB")
+            return
+        }
 
         let textValueOfCellType = [
             BillingFormCell.fullName(nil).index: name ,

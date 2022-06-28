@@ -1,19 +1,16 @@
 import UIKit
 import Checkout
 
-protocol TextFieldViewDelegate: AnyObject {
+protocol PhoneNumberTextFieldDelegate: AnyObject {
     func phoneNumberIsUpdated(number: String, tag: Int)
-    func textFieldShouldBeginEditing(textField: UITextField)
-    func textFieldShouldReturn()
-    func textFieldShouldEndEditing(textField: UITextField, replacementString: String)
-    func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
 }
 
-class TextFieldView: UIView {
+class BillingFormTextFieldView: UIView {
 
     // MARK: - Properties
 
     weak var delegate: TextFieldViewDelegate?
+    weak var phoneNumberDelegate: PhoneNumberTextFieldDelegate?
 
     private var style: CellTextFieldStyle?
     private var type: BillingFormCell?
@@ -143,7 +140,7 @@ class TextFieldView: UIView {
 
 // MARK: - Views Layout Constraint
 
-extension TextFieldView {
+extension BillingFormTextFieldView {
 
     private func setupViewsInOrder(){
         backgroundColor = style?.backgroundColor
@@ -234,7 +231,7 @@ extension TextFieldView {
 
 // MARK: - Text Field Delegate
 
-extension TextFieldView: UITextFieldDelegate {
+extension BillingFormTextFieldView: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
@@ -255,8 +252,8 @@ extension TextFieldView: UITextFieldDelegate {
 
 // MARK: - Phone Number Text Delegate
 
-extension TextFieldView: BillingFormPhoneNumberTextDelegate {
+extension BillingFormTextFieldView: BillingFormPhoneNumberTextDelegate {
     func phoneNumberIsUpdated(number: String, tag: Int) {
-        delegate?.phoneNumberIsUpdated(number: number, tag: tag)
+        phoneNumberDelegate?.phoneNumberIsUpdated(number: number, tag: tag)
     }
 }
