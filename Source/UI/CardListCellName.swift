@@ -1,7 +1,7 @@
 import UIKit
 
 /// Table View Cell adapted to display a card.
-public class CardListCellName: CardListCell {
+public final class CardListCellName: CardListCell {
 
     // MARK: - Properties
 

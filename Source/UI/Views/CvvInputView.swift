@@ -3,7 +3,7 @@ import Checkout
 
 /// Cvv Input View containing a label and an input field.
 /// Handles the formatting of the text field.
-@IBDesignable public class CvvInputView: StandardInputView, UITextFieldDelegate {
+@IBDesignable public final class CvvInputView: StandardInputView, UITextFieldDelegate {
 
     // MARK: - Properties
 

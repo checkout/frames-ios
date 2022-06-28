@@ -2,7 +2,7 @@ import UIKit
 
 /// Expiration Date Input View containing a label and an input field.
 /// Uses the `ExpirationDatePicker` as the input keyboard.
-@IBDesignable public class ExpirationDateInputView: StandardInputView, ExpirationDatePickerDelegate {
+@IBDesignable public final class ExpirationDateInputView: StandardInputView, ExpirationDatePickerDelegate {
 
     // MARK: - Initialization
 

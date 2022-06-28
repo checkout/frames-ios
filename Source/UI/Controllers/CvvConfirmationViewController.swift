@@ -3,7 +3,7 @@ import UIKit
 import Checkout
 
 /// CVV Confirmation View Controller
-public class CvvConfirmationViewController: UIViewController {
+public final class CvvConfirmationViewController: UIViewController {
 
     // MARK: - Properties
 

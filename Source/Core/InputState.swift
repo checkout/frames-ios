@@ -5,7 +5,7 @@ import Foundation
 /// - normal
 /// - required
 /// - hidden
-public enum InputState {
+@frozen public  enum InputState {
 
     /// input should be displayed and is not a required field
     case normal

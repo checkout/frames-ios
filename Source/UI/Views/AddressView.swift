@@ -3,7 +3,7 @@ import UIKit
 import PhoneNumberKit
 
 /// Address View displaying a form to enter address information.
-public class AddressView: UIView {
+public final class AddressView: UIView {
 
     // MARK: - Properties
     let phoneNumberKit = PhoneNumberKit()

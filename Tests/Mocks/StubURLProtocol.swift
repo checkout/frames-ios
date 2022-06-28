@@ -6,12 +6,12 @@ final class StubURLProtocol: URLProtocol {
 
     // MARK: - URLProtocol
 
-    override class func canInit(with request: URLRequest) -> Bool {
+    override final class func canInit(with request: URLRequest) -> Bool {
 
         return true
     }
 
-    override class func canonicalRequest(for request: URLRequest) -> URLRequest {
+    override final class func canonicalRequest(for request: URLRequest) -> URLRequest {
 
         return request
     }
