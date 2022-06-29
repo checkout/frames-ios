@@ -17,6 +17,8 @@ final class FramesEventLogger: FramesEventLogging {
     private let checkoutEventLogger: CheckoutEventLogging
     private let dateProvider: DateProviding
 
+    private var logged = [String: Set<String>]()
+
     // MARK: - Init
 
     convenience init(environment: Environment, getCorrelationID: @escaping () -> String) {
@@ -55,9 +57,21 @@ final class FramesEventLogger: FramesEventLogging {
     // MARK: - FramesEventLogging
 
     func log(_ framesLogEvent: FramesLogEvent) {
+        let correlationID = getCorrelationID()
+
+        if framesLogEvent.loggedOncePerCorrelationID {
+            var loggedForCorrelationID = logged[correlationID] ?? Set()
+
+            if loggedForCorrelationID.contains(framesLogEvent.typeIdentifier) {
+                return
+            } else {
+                loggedForCorrelationID.insert(framesLogEvent.typeIdentifier)
+                logged[correlationID] = loggedForCorrelationID
+            }
+        }
 
         // by setting correlationID for every log, we always keep in sync with Checkout SDK.
-        add(metadata: getCorrelationID(), forKey: .correlationID)
+        add(metadata: correlationID, forKey: .correlationID)
 
         let event = Event(
             typeIdentifier: framesLogEvent.typeIdentifier,

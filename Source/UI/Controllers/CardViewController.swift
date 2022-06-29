@@ -134,8 +134,7 @@ public class CardViewController: UIViewController,
             return
         }
 
-        logPaymentFormPresented(isNextLogSuppressed: loggedForCurrentCorrelationID,
-                                checkoutAPIService: checkoutAPIService)
+        checkoutAPIService.logger.log(.paymentFormPresented(theme: Theme(), locale: .current))
     }
 
     /// Notifies the view controller that its view is about to be removed from a view hierarchy.
@@ -182,8 +181,6 @@ public class CardViewController: UIViewController,
     }
 
     @objc func onTapAddressView() {
-
-        suppressNextLog = true
         checkoutAPIService?.logger.log(.billingFormPresented)
         navigationController?.pushViewController(addressViewController, animated: true)
     }

@@ -103,4 +103,17 @@ enum FramesLogEvent: Equatable, PropertyProviding {
         }
     }
 
+    var loggedOncePerCorrelationID: Bool {
+        switch self {
+        case .checkoutAPIClientInitialised,
+             .paymentFormPresented,
+             .billingFormPresented,
+             .threeDSWebviewPresented:
+            return true
+        case .threeDSChallengeLoaded,
+             .threeDSChallengeComplete,
+             .exception:
+            return false
+        }
+    }
 }
