@@ -294,6 +294,7 @@
 		95C6C11F2868F88600C8C676 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C6C11B2868F88600C8C676 /* PaymentViewController.swift */; };
 		95C6C1202868F88700C8C676 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C6C11D2868F88600C8C676 /* PaymentViewModel.swift */; };
 		95C6C1212868F88700C8C676 /* DefaultPaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C6C11E2868F88600C8C676 /* DefaultPaymentViewModel.swift */; };
+		95E51EC6286CB48200DC867E /* SecureDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E51EC5286CB48200DC867E /* SecureDisplayView.swift */; };
 		95ED57A0285A13D70010B493 /* CustomStyle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ED579E285A13D70010B493 /* CustomStyle2.swift */; };
 		95ED57A1285A13D70010B493 /* CustomStyle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ED579F285A13D70010B493 /* CustomStyle1.swift */; };
 		95F381762832AED6004C35FD /* DetailsInputViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F3811C2832AED6004C35FD /* DetailsInputViewTests.swift */; };
@@ -714,6 +715,7 @@
 		95C6C11B2868F88600C8C676 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		95C6C11D2868F88600C8C676 /* PaymentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		95C6C11E2868F88600C8C676 /* DefaultPaymentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultPaymentViewModel.swift; sourceTree = "<group>"; };
+		95E51EC5286CB48200DC867E /* SecureDisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureDisplayView.swift; sourceTree = "<group>"; };
 		95ED579E285A13D70010B493 /* CustomStyle2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle2.swift; sourceTree = "<group>"; };
 		95ED579F285A13D70010B493 /* CustomStyle1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle1.swift; sourceTree = "<group>"; };
 		95F3811C2832AED6004C35FD /* DetailsInputViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsInputViewTests.swift; sourceTree = "<group>"; };
@@ -1284,6 +1286,7 @@
 		9562CFFA286512B000C94D6B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				95E51EC5286CB48200DC867E /* SecureDisplayView.swift */,
 				9562CFFB286512B000C94D6B /* ButtonView.swift */,
 				9562CFFC286512B000C94D6B /* LabelView.swift */,
 				9562CFFD286512B000C94D6B /* ImageContainerView.swift */,
@@ -2343,6 +2346,7 @@
 				9562D04D286512B000C94D6B /* DefaultAddBillingDetailsButtonStyle.swift in Sources */,
 				9562D075286512B000C94D6B /* DefaultDoneFormButtonStyle.swift in Sources */,
 				952F329C283C303E00F616FF /* DateProvider.swift in Sources */,
+				95E51EC6286CB48200DC867E /* SecureDisplayView.swift in Sources */,
 				9562D050286512B000C94D6B /* DefaultAddBillingDetailsViewStyle.swift in Sources */,
 				9562D06E286512B000C94D6B /* DefaultBillingFormStateCellStyle.swift in Sources */,
 				9562D07B286512B000C94D6B /* BillingFormHeaderCell.swift in Sources */,
