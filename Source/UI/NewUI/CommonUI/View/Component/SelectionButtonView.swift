@@ -77,7 +77,8 @@ extension SelectionButtonView {
         guard let titleLabel = titleLabel else { return }
         addSubview(hintLabel)
         NSLayoutConstraint.activate([
-            hintLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2),
+            hintLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
+                                           constant: CheckoutTheme.Padding.xxs.rawValue),
             hintLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             hintLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
@@ -90,7 +91,8 @@ extension SelectionButtonView {
         let heightStyle = style?.button.height ?? Constants.Style.BillingForm.InputCountryButton.height.rawValue
 
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: hintLabel.bottomAnchor, constant: 10),
+            button.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
+                                        constant: CheckoutTheme.Padding.s.rawValue),
             button.bottomAnchor.constraint(equalTo: bottomAnchor),
             button.leadingAnchor.constraint(equalTo: leadingAnchor),
             button.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -103,7 +105,8 @@ extension SelectionButtonView {
         addSubview(image)
         NSLayoutConstraint.activate([
             image.centerYAnchor.constraint(equalTo: button.centerYAnchor),
-            image.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            image.trailingAnchor.constraint(equalTo: trailingAnchor,
+                                            constant: -CheckoutTheme.Padding.l.rawValue),
             image.widthAnchor.constraint(equalToConstant: 15),
             image.heightAnchor.constraint(equalToConstant: 15)
         ])

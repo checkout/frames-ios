@@ -172,13 +172,13 @@ extension BillingFormViewController {
                 equalTo: headerView.safeBottomAnchor),
             tableView.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
-                constant: 20),
+                constant: CheckoutTheme.Padding.l.rawValue),
             tableView.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor,
-                constant: -20),
+                constant: -CheckoutTheme.Padding.l.rawValue),
             tableView.bottomAnchor.constraint(
                 equalTo: view.safeBottomAnchor,
-                constant: 20)
+                constant: CheckoutTheme.Padding.l.rawValue)
         ])
     }
 

@@ -89,7 +89,7 @@ extension BillingFormHeaderCell {
             doneButton.topAnchor.constraint(
                 equalTo: safeTopAnchor),
             doneButton.trailingAnchor.constraint(
-                equalTo: trailingAnchor, constant: 0),
+                equalTo: trailingAnchor),
             doneButton.heightAnchor.constraint(
                 equalToConstant: style?.doneButton.height ?? Constants.Style.BillingForm.DoneButton.height.rawValue),
             doneButton.widthAnchor.constraint(
@@ -105,12 +105,14 @@ extension BillingFormHeaderCell {
                 equalTo: safeTopAnchor,
                 constant: 58),
             headerLabel.leadingAnchor.constraint(
-                equalTo: leadingAnchor, constant: 20),
+                equalTo: leadingAnchor,
+                constant: CheckoutTheme.Padding.l.rawValue),
             headerLabel.trailingAnchor.constraint(
-                equalTo: trailingAnchor, constant: -20),
+                equalTo: trailingAnchor,
+                constant: -CheckoutTheme.Padding.l.rawValue),
             headerLabel.bottomAnchor.constraint(
                 equalTo: safeBottomAnchor,
-                constant: -40)
+                constant: -CheckoutTheme.Padding.xxxl.rawValue)
         ])
     }
 }

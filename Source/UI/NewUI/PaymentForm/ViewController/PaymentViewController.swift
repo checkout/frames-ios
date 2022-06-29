@@ -154,9 +154,12 @@ extension PaymentViewController {
     func setupHeaderView() {
         view.addSubview(emptyHeader)
         NSLayoutConstraint.activate([
-            emptyHeader.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            emptyHeader.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            emptyHeader.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            emptyHeader.topAnchor.constraint(equalTo: view.topAnchor,
+                                             constant: CheckoutTheme.Padding.l.rawValue),
+            emptyHeader.leadingAnchor.constraint(equalTo: view.leadingAnchor,
+                                                 constant: CheckoutTheme.Padding.l.rawValue),
+            emptyHeader.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+                                                  constant: -CheckoutTheme.Padding.l.rawValue),
             emptyHeader.heightAnchor.constraint(equalToConstant: 160)
         ])
     }
@@ -164,10 +167,14 @@ extension PaymentViewController {
     func setupScrollView() {
         view.addSubview(scrollView)
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: emptyHeader.bottomAnchor, constant: 20),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 20),
+            scrollView.topAnchor.constraint(equalTo: emptyHeader.bottomAnchor,
+                                            constant: CheckoutTheme.Padding.l.rawValue),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor,
+                                                constant: CheckoutTheme.Padding.l.rawValue),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+                                                 constant: -CheckoutTheme.Padding.l.rawValue),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor,
+                                               constant: CheckoutTheme.Padding.l.rawValue),
         ])
     }
 

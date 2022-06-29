@@ -49,14 +49,15 @@ extension BillingFormCellTextField {
         textFieldView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         NSLayoutConstraint.activate([
             textFieldView.topAnchor.constraint(
-                equalTo: contentView.topAnchor),
+                equalTo: contentView.topAnchor,
+                constant: CheckoutTheme.Padding.l.rawValue),
             textFieldView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor),
             textFieldView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor),
             textFieldView.bottomAnchor.constraint(
                 equalTo: contentView.bottomAnchor,
-                constant: -24)
+                constant: -CheckoutTheme.Padding.xl.rawValue)
         ])
     }
 }

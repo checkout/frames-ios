@@ -101,7 +101,8 @@ extension BillingFormSummaryView {
         guard let titleLabel = titleLabel else { return }
         addSubview(hintLabel)
         NSLayoutConstraint.activate([
-            hintLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            hintLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
+                                           constant: CheckoutTheme.Padding.s.rawValue),
             hintLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             hintLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
@@ -113,8 +114,10 @@ extension BillingFormSummaryView {
         addSubview(summaryLabel)
 
         NSLayoutConstraint.activate([
-            summaryLabel.topAnchor.constraint(equalTo: hintLabel.bottomAnchor, constant: 40),
-            summaryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            summaryLabel.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
+                                              constant: CheckoutTheme.Padding.xxxl.rawValue),
+            summaryLabel.leadingAnchor.constraint(equalTo: leadingAnchor,
+                                                  constant: CheckoutTheme.Padding.l.rawValue),
             summaryLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
@@ -125,7 +128,8 @@ extension BillingFormSummaryView {
         addSubview(summarySeparatorLineView)
 
         NSLayoutConstraint.activate([
-            summarySeparatorLineView.topAnchor.constraint(equalTo: summaryLabel.bottomAnchor, constant: 16),
+            summarySeparatorLineView.topAnchor.constraint(equalTo: summaryLabel.bottomAnchor,
+                                                          constant: CheckoutTheme.Padding.m.rawValue),
             summarySeparatorLineView.leadingAnchor.constraint(equalTo: leadingAnchor),
             summarySeparatorLineView.trailingAnchor.constraint(equalTo: trailingAnchor),
             summarySeparatorLineView.heightAnchor.constraint(equalToConstant: 1)
@@ -151,10 +155,12 @@ extension BillingFormSummaryView {
 
         addSubview(summaryContainerView)
         NSLayoutConstraint.activate([
-            summaryContainerView.topAnchor.constraint(equalTo: hintLabel.bottomAnchor, constant: 20),
+            summaryContainerView.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
+                                                      constant: CheckoutTheme.Padding.l.rawValue),
             summaryContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             summaryContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            summaryContainerView.bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: 10)
+            summaryContainerView.bottomAnchor.constraint(equalTo: button.bottomAnchor,
+                                                         constant: CheckoutTheme.Padding.s.rawValue)
         ])
         bringSubviewToFront(button)
     }
@@ -165,7 +171,8 @@ extension BillingFormSummaryView {
         addSubview(image)
         NSLayoutConstraint.activate([
             image.centerYAnchor.constraint(equalTo: button.centerYAnchor),
-            image.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            image.trailingAnchor.constraint(equalTo: trailingAnchor,
+                                            constant: -CheckoutTheme.Padding.xxxl.rawValue),
             image.widthAnchor.constraint(equalToConstant: 11),
             image.heightAnchor.constraint(equalToConstant: 13)
         ])
