@@ -50,7 +50,6 @@ class ButtonView: UIView {
     }
 
     private func updateButtonStyle(with style: ElementButtonStyle){
-        button?.isEnabled = style.isEnabled
         button?.tintColor = .clear
         button?.clipsToBounds = true
         button?.layer.borderColor = style.normalBorderColor.cgColor
@@ -61,6 +60,7 @@ class ButtonView: UIView {
     }
 
     private func updateLabelStyle(with style: ElementButtonStyle) {
+        button?.isEnabled = isEnabled
         let buttonTextLabelStyle = DefaultHeaderLabelFormStyle(text: style.text,
                                                                font: style.font,
                                                                textColor: isEnabled ? style.textColor : style.disabledTextColor)
