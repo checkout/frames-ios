@@ -17,6 +17,8 @@ final class FramesEventLogger: FramesEventLogging {
     private let checkoutEventLogger: CheckoutEventLogging
     private let dateProvider: DateProviding
 
+    private var logged = [String: Set<String>]()
+
     // MARK: - Init
 
     convenience init(environment: Environment, getCorrelationID: @escaping () -> String) {
@@ -37,18 +39,45 @@ final class FramesEventLogger: FramesEventLogging {
       self.dateProvider = dateProvider
     }
 
+    static func buildRemoteProcessorMetadata(environment: Environment,
+                                             appPackageName: String,
+                                             appPackageVersion: String,
+                                             uiDevice: UIDevice) -> RemoteProcessorMetadata {
+
+            return RemoteProcessorMetadata(productIdentifier: Constants.productName,
+                                           productVersion: Constants.version,
+                                           environment: environment.rawValue,
+                                           appPackageName: appPackageName,
+                                           appPackageVersion: appPackageVersion,
+                                           deviceName: uiDevice.modelName,
+                                           platform: "iOS",
+                                           osVersion: uiDevice.systemVersion)
+        }
+
     // MARK: - FramesEventLogging
 
     func log(_ framesLogEvent: FramesLogEvent) {
+        let correlationID = getCorrelationID()
+
+        if framesLogEvent.loggedOncePerCorrelationID {
+            var loggedForCorrelationID = logged[correlationID] ?? Set()
+
+            if loggedForCorrelationID.contains(framesLogEvent.typeIdentifier) {
+                return
+            } else {
+                loggedForCorrelationID.insert(framesLogEvent.typeIdentifier)
+                logged[correlationID] = loggedForCorrelationID
+            }
+        }
 
         // by setting correlationID for every log, we always keep in sync with Checkout SDK.
-        add(metadata: getCorrelationID(), forKey: .correlationID)
+        add(metadata: correlationID, forKey: .correlationID)
 
         let event = Event(
             typeIdentifier: framesLogEvent.typeIdentifier,
             time: dateProvider.currentDate,
             monitoringLevel: framesLogEvent.monitoringLevel,
-            properties: framesLogEvent.properties.mapKeys(\.rawValue))
+            properties: framesLogEvent.rawProperties)
 
         checkoutEventLogger.log(event: event)
     }

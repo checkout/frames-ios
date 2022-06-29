@@ -8,8 +8,12 @@
 import UIKit
 import WebKit
 
+public protocol ThreeDSWKNavigationHelping: WKNavigationDelegate {
+  var delegate: ThreeDSWKNavigationHelperDelegate? { get set }
+}
+
 /// This class helps handle the 3DS challenge for a user using a webview.
-public final class ThreeDSWKNavigationHelper: NSObject {
+public final class ThreeDSWKNavigationHelper: NSObject, ThreeDSWKNavigationHelping {
   weak public var delegate: ThreeDSWKNavigationHelperDelegate?
 
   private let urlHelper: URLHelping
@@ -33,9 +37,9 @@ public final class ThreeDSWKNavigationHelper: NSObject {
 
 // MARK: - WKNavigationDelegate
 extension ThreeDSWKNavigationHelper: WKNavigationDelegate {
-/// Initialise the 3DS redirect URL from the challenge, either for a success or failure.
+  /// Initialise the 3DS redirect URL from the challenge, either for a success or failure.
   public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-    let navigationDecision = navigationAction.request.url.map { decision(from: $0) } ?? .allow
+    let navigationDecision = navigationAction.request.url.map(decision) ?? .allow
 
     decisionHandler(navigationDecision)
   }
@@ -67,5 +71,17 @@ extension ThreeDSWKNavigationHelper: WKNavigationDelegate {
     }
 
     return .allow
+  }
+
+  // ! is only used because it is part of the Apple API
+  // swiftlint_disable_next implicitly_unwrapped_optional
+  public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    delegate?.didFinishLoading(navigation: navigation, success: true)
+  }
+
+  // ! is only used because it is part of the Apple API
+  // swiftlint_disable_next implicitly_unwrapped_optional
+  public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+    delegate?.didFinishLoading(navigation: navigation, success: false)
   }
 }

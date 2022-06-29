@@ -153,9 +153,9 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
             return
         }
 
-        let threedsWebViewController = ThreedsWebViewController(successUrl: Self.successURL, failUrl: Self.failureURL)
+        let threedsWebViewController = ThreedsWebViewController(checkoutAPIService: checkoutAPIService, successUrl: Self.successURL, failUrl: Self.failureURL)
         threedsWebViewController.delegate = self
-        threedsWebViewController.url = threeDSURL.absoluteString
+        threedsWebViewController.authURL = threeDSURL
 
         present(threedsWebViewController, animated: true, completion: nil)
     }
@@ -248,13 +248,13 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
         }
     }
 
-    // MARK: ThreedsWebViewControllerDelegate Methods.
-
     func threeDSWebViewControllerAuthenticationDidSucceed(_ threeDSWebViewController: ThreedsWebViewController, token: String?) {
+        threeDSWebViewController.dismiss(animated: true, completion: nil)
         showAlert(with: "3DS success, token: \(token ?? "nil")")
     }
 
     func threeDSWebViewControllerAuthenticationDidFail(_ threeDSWebViewController: ThreedsWebViewController) {
+        threeDSWebViewController.dismiss(animated: true, completion: nil)
         showAlert(with: "3DS Fail")
     }
 }
