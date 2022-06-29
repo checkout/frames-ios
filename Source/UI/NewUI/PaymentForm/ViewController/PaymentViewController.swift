@@ -130,9 +130,7 @@ extension PaymentViewController {
 
     private func updateCardNumber(){
         guard let style = viewModel.paymentFormStyle?.cardNumber else { return }
-        cardNumberView.iconView.update(with: "icon-visa".image(forClass: CardListCell.self))
-        cardNumberView.iconView.isHidden = false
-        cardNumberView.update(style: style)
+        cardNumberView.update(style: style, image: "icon-visa".image(forClass: CardListCell.self))
     }
 
     private func updateExpiryDate(){

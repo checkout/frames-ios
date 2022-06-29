@@ -24,6 +24,7 @@ class InputView: UIView {
 
     private(set) lazy var textFieldContainer: UIStackView = {
         let view = UIStackView().disabledAutoresizingIntoConstraints()
+        view.axis = .horizontal
         view.isLayoutMarginsRelativeArrangement = true
         view.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         view.spacing = 16
@@ -37,7 +38,7 @@ class InputView: UIView {
         return view
     }()
 
-    private(set) lazy var iconView: ImageContainerView = {
+    private lazy var iconView: ImageContainerView = {
         let view = ImageContainerView().disabledAutoresizingIntoConstraints()
         view.isHidden = true
         return view
@@ -62,7 +63,7 @@ class InputView: UIView {
 
     // MARK: - Update subviews style
 
-    func update(style: CellTextFieldStyle?, textFieldValue: String? = nil) {
+    func update(style: CellTextFieldStyle?, textFieldValue: String? = nil, image: UIImage? = nil) {
         guard let style = style else { return }
         self.style = style
         backgroundColor = style.backgroundColor
@@ -71,12 +72,12 @@ class InputView: UIView {
         headerLabel.update(with: style.title)
         mandatoryLabel.update(with: style.mandatory)
         hintLabel.update(with: style.hint)
-        updateTextFieldContainer(style: style)
+        updateTextFieldContainer(style: style, image: image)
         textFieldView.update(with: style.textfield)
         updateErrorView(style: style)
     }
 
-    private func updateTextFieldContainer(style: CellTextFieldStyle) {
+    private func updateTextFieldContainer(style: CellTextFieldStyle, image: UIImage?) {
         let borderColor = !(style.error?.isHidden ?? true) ?
         style.textfield.errorBorderColor.cgColor :
         style.textfield.normalBorderColor.cgColor
@@ -85,6 +86,9 @@ class InputView: UIView {
         textFieldContainer.layer.cornerRadius = style.textfield.cornerRadius
         textFieldContainer.layer.borderWidth = style.textfield.borderWidth
         textFieldContainer.backgroundColor = style.textfield.backgroundColor
+
+        iconView.isHidden = image == nil
+        iconView.update(with: image, tintColor: nil)
     }
 
     private func updateErrorView(style: CellTextFieldStyle) {
