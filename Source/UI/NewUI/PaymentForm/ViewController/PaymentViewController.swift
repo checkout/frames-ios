@@ -88,10 +88,12 @@ final class PaymentViewController: UIViewController{
 
 
     @objc private func keyboardWillShow(notification: NSNotification) {
-        guard let userInfo = notification.userInfo else { return }
-        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        guard let userInfo = notification.userInfo,
+              var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+        else { return }
+
         keyboardFrame = view.convert(keyboardFrame, from: nil)
-        var contentInset:UIEdgeInsets = scrollView.contentInset
+        var contentInset: UIEdgeInsets = scrollView.contentInset
         contentInset.bottom = keyboardFrame.size.height + 20
         scrollView.contentInset = contentInset
     }

@@ -54,9 +54,9 @@ class DefaultPaymentViewModel: PaymentViewModel {
         // phone
         if let phone = billingFormData?.phone {
             updateSummaryValue(with: phone.number, summaryValue: &summaryValue, withNewLine: false)
-            paymentFormStyle?.editBillingSummary?.summary?.text = summaryValue
         }
-
+        
+        paymentFormStyle?.editBillingSummary?.summary?.text = summaryValue
         updateEditBillingSummaryView?()
     }
 
@@ -94,6 +94,7 @@ extension DefaultPaymentViewModel: BillingFormViewModelDelegate {
 }
 
 extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
+    //TODO: Will fixed in payment ticket
     func expiryDateIsUpdated(value: ExpiryDate) {
 
     }

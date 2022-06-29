@@ -177,7 +177,7 @@ extension InputView {
 
 extension InputView: TextFieldViewDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return delegate?.textField(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true
+        delegate?.textField(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true
     }
 
     func textFieldShouldBeginEditing(textField: UITextField) {

@@ -8,6 +8,9 @@ protocol ExpiryDateViewDelegate: AnyObject {
 final class ExpiryDateView: UIView {
     weak var delegate: ExpiryDateViewDelegate?
 
+    /// 5 is the expected text count, for example "11/35".
+    private let dateFormatTextCount = 5
+
     private(set) var style: CellTextFieldStyle?
 
     private lazy var cardValidator: CardValidator = {
@@ -43,27 +46,30 @@ final class ExpiryDateView: UIView {
         expiryDateView.update(style: style)
     }
 
-    @discardableResult
-    func isValidExpiryDate(text: String?) -> Bool {
-        let subString = text?.split(separator: "/")
+    func updateExpiryDate(to newDate: String?){
+        guard newDate?.count == dateFormatTextCount else {
+            updateErrorView(isHidden: false, text: newDate)
+            return
+        }
+        let subString = newDate?.split(separator: "/")
         guard let month = subString?.first,
+              month.count == 2,
               let monthDigit = Int(month),
               let year = subString?.last,
+              year.count == 2,
               let yearDigit = Int(year) else {
-            updateErrorView(isHidden: false, text: text)
-            return false
+            updateErrorView(isHidden: false, text: newDate)
+            return
         }
 
         switch cardValidator.validate(expiryMonth: monthDigit, expiryYear: yearDigit) {
             case .success:
                 let expiryDate = ExpiryDate(month: monthDigit, year: yearDigit)
                 delegate?.update(expiryDate: expiryDate)
-                updateErrorView(isHidden: true, text: text)
-                return true
+                updateErrorView(isHidden: true, text: newDate)
             case .failure(let error):
                 print(error)
-                updateErrorView(isHidden: false, text: text)
-                return false
+                updateErrorView(isHidden: false, text: newDate)
         }
     }
 }
@@ -72,16 +78,20 @@ extension ExpiryDateView: TextFieldViewDelegate {
     func textFieldShouldBeginEditing(textField: UITextField) {}
     func textFieldShouldReturn() -> Bool {  return true }
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool { return true }
+
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         expiryDateView.textFieldContainer?.layer.borderColor = style?.textfield.focusBorderColor.cgColor
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard range.location < 5 else {
+
+        /// Expiry date text format is "MM/yy"
+        /// 5 is the expected text count, for example "11/35".
+        guard range.location < dateFormatTextCount else {
             return false
         }
 
-        // Hide error view on remove
+        // Hide error view on remove 
         if range.location == 4 {
             updateErrorView(isHidden: true, text: textField.text)
         }
@@ -111,7 +121,7 @@ extension ExpiryDateView: TextFieldViewDelegate {
         }
 
         if range.location == 4 {
-            isValidExpiryDate(text: (originalText ?? "") + replacementText)
+            updateExpiryDate(to: (originalText ?? "") + replacementText)
             return false
         }
         return true
