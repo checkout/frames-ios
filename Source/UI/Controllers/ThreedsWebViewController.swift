@@ -95,7 +95,7 @@ public class ThreedsWebViewController: UIViewController {
 
 // MARK: - WKNavigationDelegate
 extension ThreedsWebViewController: ThreeDSWKNavigationHelperDelegate {
-    public func loaded(navigation: WKNavigation, success: Bool) {
+    public func didFinishLoading(navigation: WKNavigation, success: Bool) {
         guard navigation == authUrlNavigation else {
             return
         }

@@ -10,7 +10,7 @@ import XCTest
 @testable import Frames
 import CheckoutEventLoggerKit
 
-final class UIColor_PropertyProvidingTests: XCTestCase {
+final class UIColorPropertyProvidingTests: XCTestCase {
 
     func test_equality() {
         XCTAssertEqual(UIColor.black.properties, UIColor.black.properties)

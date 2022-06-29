@@ -8,6 +8,6 @@
 import WebKit
 
 public protocol ThreeDSWKNavigationHelperDelegate: AnyObject {
-  func loaded(navigation: WKNavigation, success: Bool)
+  func didFinishLoading(navigation: WKNavigation, success: Bool)
   func threeDSWKNavigationHelperDelegate(didReceiveResult: Result<String, ThreeDSError>)
 }

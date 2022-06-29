@@ -136,8 +136,8 @@ final class ThreeDSWKNavigationHelperTests: XCTestCase {
     subject.delegate = delegate
 
     subject.webView(WKWebView(), didFinish: navigation)
-    XCTAssertEqual(delegate.loadedCalledWith?.navigation, navigation)
-    XCTAssertEqual(delegate.loadedCalledWith?.success, true)
+    XCTAssertEqual(delegate.didFinishLoadingCalledWith?.navigation, navigation)
+    XCTAssertEqual(delegate.didFinishLoadingCalledWith?.success, true)
   }
 
   func testDelegateCalledOnLoadingFailure() {
@@ -145,8 +145,8 @@ final class ThreeDSWKNavigationHelperTests: XCTestCase {
     subject.delegate = delegate
 
     subject.webView(WKWebView(), didFail: navigation, withError: TestError.one)
-    XCTAssertEqual(delegate.loadedCalledWith?.navigation, navigation)
-    XCTAssertEqual(delegate.loadedCalledWith?.success, false)
+    XCTAssertEqual(delegate.didFinishLoadingCalledWith?.navigation, navigation)
+    XCTAssertEqual(delegate.didFinishLoadingCalledWith?.success, false)
   }
 
   enum TestError: Error {

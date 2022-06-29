@@ -9,7 +9,7 @@
 import XCTest
 @testable import Frames
 
-final class UIFont_PropertyProvidingTests: XCTestCase {
+final class UIFontPropertyProvidingTests: XCTestCase {
     let font = UIFont.systemFont(ofSize: 12)
 
     func test_equality() {

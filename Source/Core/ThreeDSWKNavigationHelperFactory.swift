@@ -13,7 +13,7 @@ protocol ThreeDSWKNavigationHelperFactoryProtocol {
     func build(successURL: URL?, failureURL: URL?) -> ThreeDSWKNavigationHelping
 }
 
-class ThreeDSWKNavigationHelperFactory: ThreeDSWKNavigationHelperFactoryProtocol {
+final class ThreeDSWKNavigationHelperFactory: ThreeDSWKNavigationHelperFactoryProtocol {
 
     func build(successURL: URL?, failureURL: URL?) -> ThreeDSWKNavigationHelping {
         return ThreeDSWKNavigationHelper(successURL: successURL, failureURL: failureURL)

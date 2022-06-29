@@ -73,11 +73,15 @@ extension ThreeDSWKNavigationHelper: WKNavigationDelegate {
     return .allow
   }
 
+  // ! is only used because it is part of the Apple API
+  // swiftlint_disable_next implicitly_unwrapped_optional
   public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-    delegate?.loaded(navigation: navigation, success: true)
+    delegate?.didFinishLoading(navigation: navigation, success: true)
   }
 
+  // ! is only used because it is part of the Apple API
+  // swiftlint_disable_next implicitly_unwrapped_optional
   public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-    delegate?.loaded(navigation: navigation, success: false)
+    delegate?.didFinishLoading(navigation: navigation, success: false)
   }
 }

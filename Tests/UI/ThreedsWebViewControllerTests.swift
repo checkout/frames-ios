@@ -168,7 +168,7 @@ class ThreedsWebViewControllerTests: XCTestCase {
         let navigation = WKNavigation()
         threedsWebViewController.authUrlNavigation = navigation
 
-        mockThreeDSWKNavigationHelperFactory.buildToReturn.delegate?.loaded(navigation: navigation, success: true)
+        mockThreeDSWKNavigationHelperFactory.buildToReturn.delegate?.didFinishLoading(navigation: navigation, success: true)
         XCTAssertEqual(logger.logCalledWithFramesLogEvents, [.threeDSWebviewPresented, .threeDSChallengeLoaded(success: true)])
     }
 
@@ -185,7 +185,7 @@ class ThreedsWebViewControllerTests: XCTestCase {
         XCTAssertEqual(logger.logCalledWithFramesLogEvents, [.threeDSWebviewPresented])
         let navigation = WKNavigation()
         threedsWebViewController.authUrlNavigation = navigation
-        mockThreeDSWKNavigationHelperFactory.buildToReturn.delegate?.loaded(navigation: navigation, success: false)
+        mockThreeDSWKNavigationHelperFactory.buildToReturn.delegate?.didFinishLoading(navigation: navigation, success: false)
         XCTAssertEqual(logger.logCalledWithFramesLogEvents, [.threeDSWebviewPresented, .threeDSChallengeLoaded(success: false)])
     }
 }

@@ -9,6 +9,6 @@
 import Foundation
 @testable import Checkout
 
-class MockThreeDSWKNavigationHelper: NSObject, ThreeDSWKNavigationHelping {
+final class MockThreeDSWKNavigationHelper: NSObject, ThreeDSWKNavigationHelping {
     var delegate: ThreeDSWKNavigationHelperDelegate?
 }

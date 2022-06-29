@@ -1,5 +1,5 @@
 //
-//  UIBarStyle+stringValueTests.swift
+//  UIBarStyleTests.swift
 //  FramesTests
 //
 //  Created by Harry Brown on 31/03/2022.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import Frames
 
-final class UIBarStyle_stringValueTests: XCTestCase {
+final class UIBarStyleTests: XCTestCase {
 
     func test_stringValue() {
         let testCases: [(UIBarStyle, String)] = [(.default, "default"),

@@ -83,7 +83,8 @@ final class WebViewController: UIViewController {
 }
 
 extension WebViewController: ThreeDSWKNavigationHelperDelegate {
-  func loaded(navigation: WKNavigation, success: Bool) { }
+  // we are ignoring this event as it is only used for logging
+  func didFinishLoading(navigation: WKNavigation, success: Bool) { }
 
   func threeDSWKNavigationHelperDelegate(didReceiveResult result: Result<String, ThreeDSError>) {
     DispatchQueue.main.async { [weak self] in

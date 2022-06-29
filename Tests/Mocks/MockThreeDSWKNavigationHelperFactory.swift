@@ -10,7 +10,7 @@ import Foundation
 @testable import Frames
 import Checkout
 
-class MockThreeDSWKNavigationHelperFactory: ThreeDSWKNavigationHelperFactoryProtocol {
+final class MockThreeDSWKNavigationHelperFactory: ThreeDSWKNavigationHelperFactoryProtocol {
 
     private(set) var buildCalledWith: (successURL: URL?, failureURL: URL?)?
     var buildToReturn: ThreeDSWKNavigationHelping = MockThreeDSWKNavigationHelper()

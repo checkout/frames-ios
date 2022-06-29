@@ -10,7 +10,7 @@ import Foundation
 import CheckoutEventLoggerKit
 @testable import Frames
 
-class StubTheme: Theme {
+final class StubTheme: Theme {
     private(set) var propertiesCalled = false
     var propertiesToReturn: [FramesLogEvent.Property: AnyCodable] = [:]
 
