@@ -31,13 +31,60 @@ class DefaultPaymentViewModel: PaymentViewModel {
         }
     }
 
+    func updateBillingSummaryView() {
+        guard paymentFormStyle?.editBillingSummary != nil else { return }
+        var summaryValue = ""
+
+        billingFormStyle?.cells.forEach {
+            switch $0.index {
+
+                    // name
+                case BillingFormCell.fullName(nil).index:
+                    updateSummaryValue(with: billingFormData?.name, summaryValue: &summaryValue)
+
+                    // addressLine1
+                case BillingFormCell.addressLine1(nil).index:
+                    updateSummaryValue(with: billingFormData?.address?.addressLine1, summaryValue: &summaryValue)
+
+                    // addressLine2
+                case BillingFormCell.addressLine2(nil).index:
+                    updateSummaryValue(with: billingFormData?.address?.addressLine2, summaryValue: &summaryValue)
+
+                    // state
+                case BillingFormCell.state(nil).index:
+                    updateSummaryValue(with: billingFormData?.address?.state, summaryValue: &summaryValue)
+
+                    //country
+                case BillingFormCell.country(nil).index:
+                    updateSummaryValue(with: billingFormData?.address?.country?.name, summaryValue: &summaryValue)
+
+                    // city
+                case BillingFormCell.city(nil).index:
+                    updateSummaryValue(with: billingFormData?.address?.city, summaryValue: &summaryValue)
+
+                    //postcode
+                case BillingFormCell.postcode(nil).index:
+                    updateSummaryValue(with: billingFormData?.address?.zip, summaryValue: &summaryValue)
+
+                    // phone number
+                case BillingFormCell.phoneNumber(nil).index:
+                    updateSummaryValue(with: billingFormData?.phone?.number, summaryValue: &summaryValue, withNewLine: false)
+                default:
+                    return
+
+            }
+        }
+
+        paymentFormStyle?.editBillingSummary?.summary?.text = summaryValue
+        updateEditBillingSummaryView?()
+    }
+
     private func updateExpiryDate(){
         updateExpiryDateView?()
     }
 
     private func isAddBillingSummaryNotUpdated() -> Bool{
-        guard paymentFormStyle?.editBillingSummary != nil,
-              billingFormData?.address != nil,
+        guard billingFormData?.address != nil ||
               billingFormData?.phone != nil else {
             let addBillingSummary = paymentFormStyle?.addBillingSummary ?? DefaultAddBillingDetailsViewStyle()
             paymentFormStyle?.addBillingSummary = addBillingSummary
@@ -45,26 +92,6 @@ class DefaultPaymentViewModel: PaymentViewModel {
             return false
         }
         return true
-    }
-
-    private func updateBillingSummaryView() {
-        guard let data = billingFormData else { return }
-        guard paymentFormStyle?.editBillingSummary != nil,
-              let address = billingFormData?.address,
-              let phone = billingFormData?.phone else {
-            return
-        }
-        var summaryValue = ""
-        updateSummaryValue(with: data.name, summaryValue: &summaryValue)
-        updateSummaryValue(with: address.addressLine1, summaryValue: &summaryValue)
-        updateSummaryValue(with: address.addressLine2, summaryValue: &summaryValue)
-        updateSummaryValue(with: address.city, summaryValue: &summaryValue)
-        updateSummaryValue(with: address.state, summaryValue: &summaryValue)
-        updateSummaryValue(with: address.zip, summaryValue: &summaryValue)
-        updateSummaryValue(with: address.country?.name, summaryValue: &summaryValue)
-        updateSummaryValue(with: phone.number, summaryValue: &summaryValue, withNewLine: false)
-        paymentFormStyle?.editBillingSummary?.summary?.text = summaryValue
-        updateEditBillingSummaryView?()
     }
 
     private func updateSummaryValue(with value: String?, summaryValue: inout String,  withNewLine: Bool = true) {
