@@ -138,9 +138,6 @@ struct BillingFormStyleCustom1: BillingFormStyle {
     var header: BillingFormHeaderCellStyle = BillingFormHeaderCellStyleCustom1()
     var cells: [BillingFormCell] = [.fullName(BillingFormFullNameCellStyleCustom1()),
                                     .addressLine1(BillingFormAddressLine1CellStyleCustom1()),
-                                    .addressLine2(BillingFormAddressLine2CellStyleCustom1()),
-                                    .city(BillingFormCityCellStyleCustom1()),
-                                    .postcode(BillingFormPostcodeCellStyleCustom1()),
                                     .country(BillingFormCountryCellStyleCustom1()),
                                     .phoneNumber(BillingFormPhoneNumberCellStyleCustom1())]
 }
