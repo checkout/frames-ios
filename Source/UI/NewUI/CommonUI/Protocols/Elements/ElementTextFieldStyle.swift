@@ -1,7 +1,6 @@
 import UIKit
 
 public protocol ElementTextFieldStyle: ElementStyle {
-    var isSecured: Bool { get }
     var isSupportingNumericKeyboard: Bool { get }
     var height: Double { get }
     var cornerRadius: CGFloat { get }
