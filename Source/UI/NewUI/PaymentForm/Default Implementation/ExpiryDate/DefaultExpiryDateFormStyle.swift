@@ -6,6 +6,8 @@ public struct DefaultExpiryDateFormStyle : CellTextFieldStyle {
     public var title: ElementStyle? = DefaultTitleLabelStyle(text:  Constants.LocalizationKeys.PaymentForm.ExpiryDate.title)
     public var hint: ElementStyle? = DefaultHintInputLabelStyle(text: Constants.LocalizationKeys.PaymentForm.ExpiryDate.hint)
     public var mandatory: ElementStyle?
-    public var textfield: ElementTextFieldStyle = DefaultTextField(placeHolder: Constants.LocalizationKeys.PaymentForm.ExpiryDate.placeholder)
+    public var textfield: ElementTextFieldStyle = DefaultTextField(
+        isSupportingNumericKeyboard: true,
+        placeHolder: Constants.LocalizationKeys.PaymentForm.ExpiryDate.placeholder)
     public var error: ElementErrorViewStyle? = DefaultErrorInputLabelStyle(text: Constants.LocalizationKeys.PaymentForm.ExpiryDate.error)
 }
