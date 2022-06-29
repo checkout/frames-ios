@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 /// A simple loading view controller
-public class SimpleLoadingViewController: UIViewController {
+public final class SimpleLoadingViewController: UIViewController {
 
     // MARK: - Properties
 

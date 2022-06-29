@@ -3,7 +3,7 @@ import Checkout
 
 /// Card Number Input View containing a label and an input field.
 /// Handles the formatting of the text field.
-@IBDesignable public class CardNumberInputView: StandardInputView, UITextFieldDelegate {
+@IBDesignable public final class CardNumberInputView: StandardInputView, UITextFieldDelegate {
 
     // MARK: - Properties
 

@@ -2,7 +2,7 @@ import UIKit
 
 /// A details input view. Use this when you want to link to another view controller.
 /// Add a gesture recognizer and an handler on tap, or a segue.
-@IBDesignable public class DetailsInputView: UIView, UIGestureRecognizerDelegate {
+@IBDesignable public final class DetailsInputView: UIView, UIGestureRecognizerDelegate {
 
     // MARK: - Properties
 

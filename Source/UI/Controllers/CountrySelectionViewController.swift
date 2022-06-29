@@ -2,7 +2,7 @@ import UIKit
 import Checkout
 
 /// A view controller that allows the user to select a country.
-public class CountrySelectionViewController: UIViewController,
+public final class CountrySelectionViewController: UIViewController,
     UITableViewDelegate,
     UITableViewDataSource,
     UISearchBarDelegate {

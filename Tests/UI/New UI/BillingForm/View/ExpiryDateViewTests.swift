@@ -21,9 +21,9 @@ class ExpiryDateViewTests: XCTestCase {
         }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/yy"
-        let text = dateFormatter.string(from: nextMonthDate)
-        let isValid = view.isValidExpiryDate(text: text)
-        XCTAssertTrue(isValid)
+        let updateExpiryDate = dateFormatter.string(from: nextMonthDate)
+        view.updateExpiryDate(to: updateExpiryDate)
+
         XCTAssertTrue(view.style?.error?.isHidden ?? false)
     }
 
@@ -34,24 +34,59 @@ class ExpiryDateViewTests: XCTestCase {
         }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/yy"
-        let text = dateFormatter.string(from: previousYearDate)
-        let isValid = view.isValidExpiryDate(text: text)
-        XCTAssertFalse(isValid)
+        let updateExpiryDate = dateFormatter.string(from: previousYearDate)
+        view.updateExpiryDate(to: updateExpiryDate)
+
         XCTAssertFalse(view.style?.error?.isHidden ?? true)
     }
 
     func testValidTodayExpiryDate(){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/yy"
-        let text = dateFormatter.string(from: Date())
-        let isValid = view.isValidExpiryDate(text: text)
-        XCTAssertTrue(isValid)
+        let updateExpiryDate = dateFormatter.string(from: Date())
+        view.updateExpiryDate(to: updateExpiryDate)
+
         XCTAssertTrue(view.style?.error?.isHidden ?? false)
     }
 
     func testEmptyExpiryDate(){
-        let isValid = view.isValidExpiryDate(text: "")
-        XCTAssertFalse(isValid)
+        view.updateExpiryDate(to: "")
+        XCTAssertFalse(view.style?.error?.isHidden ?? true)
+    }
+
+    func testExpiryDateWithWrongYearFormat(){
+        view.updateExpiryDate(to: "01/2035")
+        XCTAssertFalse(view.style?.error?.isHidden ?? true)
+    }
+
+    func testExpiryDateWithWrongMonthFormat(){
+        view.updateExpiryDate(to: "Jan/35")
+        XCTAssertFalse(view.style?.error?.isHidden ?? true)
+    }
+
+
+    func testExpiryDateWithWrongFormat(){
+        view.updateExpiryDate(to: "01.35")
+        XCTAssertFalse(view.style?.error?.isHidden ?? true)
+    }
+
+    func testExpiryDateWithMoreThan5Characters(){
+        view.updateExpiryDate(to: "01/01/01/01")
+        XCTAssertFalse(view.style?.error?.isHidden ?? true)
+    }
+
+    func testExpiryDateWithOutBackSlash(){
+        view.updateExpiryDate(to: "01350")
+        XCTAssertFalse(view.style?.error?.isHidden ?? true)
+    }
+
+    func testExpiryDateWithmoreLess5Characters(){
+        view.updateExpiryDate(to: "01/0")
+        XCTAssertFalse(view.style?.error?.isHidden ?? true)
+    }
+
+    func testExpiryDateWithNonDigits(){
+        view.updateExpiryDate(to: "Test")
         XCTAssertFalse(view.style?.error?.isHidden ?? true)
     }
 }

@@ -46,7 +46,7 @@ workflows:
         - cache_paths: $CARTHAGE_FOLDER
   _frames-build-pods:
     steps:
-    - cocoapods-install@1:
+    - cocoapods-install@2.2:
         inputs:
         - podfile_path: $FRAMES_PODFILE
     - xcode-test@2:
@@ -136,7 +136,7 @@ workflows:
     - git-clone@4: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
-    - cocoapods-install@1:
+    - cocoapods-install@2.2:
         inputs:
         - podfile_path: $FRAMES_PODFILE
     - xcode-test@2:
@@ -165,7 +165,7 @@ workflows:
     steps:
     - script@1:
         inputs:
-        - content: pod trunk push Frames.podspec
+        - content: pod trunk push --allow-warnings Frames.podspec
     before_run:
     - _frames-set-up
   frames-build-pods-release:

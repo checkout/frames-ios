@@ -86,24 +86,34 @@ final class PaymentViewController: UIViewController{
         fatalError("init(coder:) has not been implemented")
     }
 
-
-    @objc private func keyboardWillShow(notification: NSNotification) {
+    @objc private func keyboardWillShow(notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
-        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = view.convert(keyboardFrame, from: nil)
-        var contentInset:UIEdgeInsets = scrollView.contentInset
+        var contentInset: UIEdgeInsets = scrollView.contentInset
         contentInset.bottom = keyboardFrame.size.height + 20
-        scrollView.contentInset = contentInset
+        updateScrollViewInset(to: contentInset, from: notification)
     }
 
     @objc private func keyboardWillHide(notification: Notification) {
-        scrollView.contentInset = .zero
+        updateScrollViewInset(to: .zero, from: notification)
     }
 
     private func setUpKeyboard() {
         registerKeyboardHandlers(notificationCenter: notificationCenter,
                                       keyboardWillShow: #selector(keyboardWillShow),
                                       keyboardWillHide: #selector(keyboardWillHide))
+    }
+
+    private func updateScrollViewInset(to contentInset: UIEdgeInsets, from notification: Notification) {
+        var animationDuration: Double = 0
+        if let userInfo = notification.userInfo,
+            let notificationAnimationDuration: Double = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+            animationDuration = notificationAnimationDuration
+        }
+        UIView.animate(withDuration: animationDuration) {
+            self.scrollView.contentInset = contentInset
+        }
     }
 }
 

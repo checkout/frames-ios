@@ -1,5 +1,7 @@
 import UIKit
 import WebKit
+import Checkout
+import CheckoutEventLoggerKit
 
 /// A view controller to manage 3ds
 public class ThreedsWebViewController: UIViewController {
@@ -7,63 +9,61 @@ public class ThreedsWebViewController: UIViewController {
     // MARK: - Properties
 
     var webView: WKWebView!
-    let successUrl: URL?
-    let failUrl: URL?
 
     /// Delegate
     public weak var delegate: ThreedsWebViewControllerDelegate?
 
-    /// Url
-    @available(*, deprecated, renamed: "authUrl")
-    public var url: String? {
-        didSet {
-            if let url = url {
-                authUrl = URL(string: url)
-            }
-        }
-    }
+    /// Authentication URL
+    public var authURL: URL?
 
-    /// Authentication Url
-    public var authUrl: URL?
+    private let threeDSWKNavigationHelper: ThreeDSWKNavigationHelping?
+    private let logger: FramesEventLogging?
 
-    private let urlHelper: URLHelping
+    private var webViewPresented = false
+    var authUrlNavigation: WKNavigation?
 
     // MARK: - Initialization
 
     /// Initializes a web view controller adapted to handle 3dsecure.
-    @available(*, deprecated, renamed: "init(successUrl:failUrl:)")
-    public convenience init(successUrl successUrlString: String, failUrl failUrlString: String) {
-        let successUrl = URL(string: successUrlString)
-        let failUrl = URL(string: failUrlString)
-
-        self.init(successUrl: successUrl, failUrl: failUrl, urlHelper: URLHelper())
+    public convenience init(checkoutAPIService: CheckoutAPIService, successUrl: URL, failUrl: URL) {
+        self.init(
+            checkoutAPIProtocol: checkoutAPIService,
+            successUrl: successUrl,
+            failUrl: failUrl,
+            threeDSWKNavigationHelperFactory: ThreeDSWKNavigationHelperFactory()
+        )
     }
 
     /// Initializes a web view controller adapted to handle 3dsecure.
-    public convenience init(successUrl: URL, failUrl: URL) {
-        self.init(successUrl: successUrl, failUrl: failUrl, urlHelper: URLHelper())
+    convenience init(
+        checkoutAPIProtocol checkoutAPIService: CheckoutAPIProtocol,
+        successUrl: URL,
+        failUrl: URL,
+        threeDSWKNavigationHelperFactory: ThreeDSWKNavigationHelperFactoryProtocol
+    ) {
+        let threeDSWKNavigationHelper = threeDSWKNavigationHelperFactory.build(successURL: successUrl, failureURL: failUrl)
+        self.init(threeDSWKNavigationHelper: threeDSWKNavigationHelper, logger: checkoutAPIService.logger)
     }
 
-    init(successUrl: URL?, failUrl: URL?, urlHelper: URLHelping) {
-        self.successUrl = successUrl
-        self.failUrl = failUrl
-        self.urlHelper = urlHelper
+    init(threeDSWKNavigationHelper: ThreeDSWKNavigationHelping, logger: FramesEventLogging) {
+        self.threeDSWKNavigationHelper = threeDSWKNavigationHelper
+        self.logger = logger
         super.init(nibName: nil, bundle: nil)
+
+        threeDSWKNavigationHelper.delegate = self
     }
 
     /// Returns a newly initialized view controller with the nib file in the specified bundle.
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Foundation.Bundle?) {
-        successUrl = nil
-        failUrl = nil
-        urlHelper = URLHelper()
+        threeDSWKNavigationHelper = nil
+        logger = nil
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
     /// Returns an object initialized from data in a given unarchiver.
     required public init?(coder aDecoder: NSCoder) {
-        successUrl = nil
-        failUrl = nil
-        urlHelper = URLHelper()
+        threeDSWKNavigationHelper = nil
+        logger = nil
         super.init(coder: aDecoder)
     }
 
@@ -81,49 +81,42 @@ public class ThreedsWebViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let authUrl = authUrl else {
+        guard let authURL = authURL else {
             return
         }
 
-        let authRequest = URLRequest(url: authUrl)
-        webView.navigationDelegate = self
-        webView.load(authRequest)
+        logger?.log(.threeDSWebviewPresented)
+
+        let authRequest = URLRequest(url: authURL)
+        webView.navigationDelegate = threeDSWKNavigationHelper
+        authUrlNavigation = webView.load(authRequest)
     }
 }
 
 // MARK: - WKNavigationDelegate
-extension ThreedsWebViewController: WKNavigationDelegate {
-
-    public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        let dismissed = navigationAction.request.url.map { handleDismiss(redirectUrl: $0) } ?? false
-
-        decisionHandler(dismissed ? .cancel : .allow)
-    }
-
-    private func handleDismiss(redirectUrl: URL) -> Bool {
-
-        if let successUrl = successUrl,
-           urlHelper.urlsMatch(redirectUrl: redirectUrl, matchingUrl: successUrl) {
-            // success url, dismissing the page with the payment token
-
-            self.dismiss(animated: true) { [urlHelper, delegate] in
-                let token = urlHelper.extractToken(from: redirectUrl)
-                delegate?.threeDSWebViewControllerAuthenticationDidSucceed(self, token: token)
-                delegate?.onSuccess3D()
-            }
-
-            return true
-        } else if let failUrl = failUrl,
-                  urlHelper.urlsMatch(redirectUrl: redirectUrl, matchingUrl: failUrl) {
-            // fail url, dismissing the page
-            self.dismiss(animated: true) { [delegate] in
-                delegate?.threeDSWebViewControllerAuthenticationDidFail(self)
-                delegate?.onFailure3D()
-            }
-
-            return true
+extension ThreedsWebViewController: ThreeDSWKNavigationHelperDelegate {
+    public func didFinishLoading(navigation: WKNavigation, success: Bool) {
+        guard navigation == authUrlNavigation else {
+            return
         }
 
-        return false
+        logger?.log(.threeDSChallengeLoaded(success: success))
+    }
+
+    public func threeDSWKNavigationHelperDelegate(didReceiveResult result: Result<String, ThreeDSError>) {
+        switch result {
+        case .success(let token):
+            logger?.log(.threeDSChallengeComplete(success: true, tokenID: token))
+            delegate?.threeDSWebViewControllerAuthenticationDidSucceed(self, token: token)
+        case .failure(let error):
+            switch error {
+            case .couldNotExtractToken:
+                logger?.log(.threeDSChallengeComplete(success: false, tokenID: nil))
+                delegate?.threeDSWebViewControllerAuthenticationDidSucceed(self, token: nil)
+            default:
+                logger?.log(.threeDSChallengeComplete(success: false, tokenID: nil))
+                delegate?.threeDSWebViewControllerAuthenticationDidFail(self)
+            }
+        }
     }
 }

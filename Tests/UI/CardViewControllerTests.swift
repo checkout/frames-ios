@@ -343,52 +343,41 @@ class CardViewControllerTests: XCTestCase {
     }
 
     func test_viewDidLoad_paymentFormPresentedLogCalled() {
+        guard let stubLogger = stubCheckoutAPIService.logger as? StubFramesEventLogger else {
+            XCTFail("logger was not stubbed")
+            return
+        }
 
         let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
-
+        let initialEventCount = stubLogger.logCalledWithFramesLogEvents.count
         cardViewController.viewWillAppear(true)
+        
+        let events = stubLogger.logCalledWithFramesLogEvents
+        XCTAssertEqual(1, events.count - initialEventCount)
 
-        let events = stubCheckoutAPIService.loggerToReturn.logCalledWithFramesLogEvents
-        XCTAssertEqual(1, events.count)
+        let event = events[initialEventCount]
+        XCTAssertEqual(.paymentFormPresented(theme: Theme(), locale: Locale.current), event)
 
-        XCTAssertEqual(.paymentFormPresented, events.first)
-        XCTAssertTrue(stubCheckoutAPIService.loggerCalled)
-    }
-
-    func test_viewDidLoad_paymentFormPresentedLogNotCalledAfterAddressView() {
-
-        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
-                                                    cardHolderNameState: .normal,
-                                                    billingDetailsState: .normal)
-
-        cardViewController.viewWillAppear(true)
-
-        cardViewController.onTapAddressView()
-        cardViewController.viewWillAppear(true)
-
-        cardViewController.viewWillAppear(true)
-
-        let events = stubCheckoutAPIService.loggerToReturn.logCalledWithFramesLogEvents
-        XCTAssertEqual(3, events.count)
-
-        XCTAssertEqual(.paymentFormPresented, events.first)
-        XCTAssertTrue(stubCheckoutAPIService.loggerCalled)
     }
 
     func test_onTapAddressView_billingFormPresentedLogCalled() {
+        guard let stubLogger = stubCheckoutAPIService.logger as? StubFramesEventLogger else {
+            XCTFail("logger was not stubbed")
+            return
+        }
 
         let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
-
+        let initialEventCount = stubLogger.logCalledWithFramesLogEvents.count
         cardViewController.onTapAddressView()
 
-        let events = stubCheckoutAPIService.loggerToReturn.logCalledWithFramesLogEvents
-        XCTAssertEqual(1, events.count)
+        let events = stubLogger.logCalledWithFramesLogEvents
+        XCTAssertEqual(1, events.count - initialEventCount)
 
-        XCTAssertEqual(.billingFormPresented, events.first)
-        XCTAssertTrue(stubCheckoutAPIService.loggerCalled)
+        let event = events[initialEventCount]
+        XCTAssertEqual(.billingFormPresented, event)
     }
 }

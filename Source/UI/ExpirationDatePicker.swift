@@ -1,7 +1,7 @@
 import UIKit
 
 /// Expiration Date Picker is a control used for the inputting of expiration date.
-@IBDesignable public class ExpirationDatePicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
+@IBDesignable public final class ExpirationDatePicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
 
     // MARK: - Properties
 

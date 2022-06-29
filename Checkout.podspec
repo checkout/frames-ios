@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'Checkout'
-  s.version = '3.5.2'
+  s.version = '3.5.3'
   s.summary = 'Checkout SDK for iOS'
 
   s.description = <<-DESC

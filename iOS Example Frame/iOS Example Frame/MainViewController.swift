@@ -10,7 +10,7 @@ import UIKit
 import Frames
 import Checkout
 
-class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsWebViewControllerDelegate {
+final class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsWebViewControllerDelegate {
 
     @IBOutlet weak var goToPaymentPageButton: UIButton!
     @IBOutlet weak var createTokenWithApplePay: UIButton!
@@ -153,9 +153,9 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
             return
         }
 
-        let threedsWebViewController = ThreedsWebViewController(successUrl: Self.successURL, failUrl: Self.failureURL)
+        let threedsWebViewController = ThreedsWebViewController(checkoutAPIService: checkoutAPIService, successUrl: Self.successURL, failUrl: Self.failureURL)
         threedsWebViewController.delegate = self
-        threedsWebViewController.url = threeDSURL.absoluteString
+        threedsWebViewController.authURL = threeDSURL
 
         present(threedsWebViewController, animated: true, completion: nil)
     }
@@ -248,13 +248,13 @@ class MainViewController: UIViewController, CardViewControllerDelegate, ThreedsW
         }
     }
 
-    // MARK: ThreedsWebViewControllerDelegate Methods.
-
     func threeDSWebViewControllerAuthenticationDidSucceed(_ threeDSWebViewController: ThreedsWebViewController, token: String?) {
+        threeDSWebViewController.dismiss(animated: true, completion: nil)
         showAlert(with: "3DS success, token: \(token ?? "nil")")
     }
 
     func threeDSWebViewControllerAuthenticationDidFail(_ threeDSWebViewController: ThreedsWebViewController) {
+        threeDSWebViewController.dismiss(animated: true, completion: nil)
         showAlert(with: "3DS Fail")
     }
 }

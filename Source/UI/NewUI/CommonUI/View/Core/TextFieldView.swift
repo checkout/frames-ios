@@ -31,7 +31,6 @@ class TextFieldView: UIView {
     }
 
     func update(with style: ElementTextFieldStyle) {
-        textField.textContentType = style.isSupportingNumericKeyboard ? .telephoneNumber : .name
         textField.text = style.text
         textField.font = style.font
         textField.placeholder = style.placeHolder
@@ -58,14 +57,14 @@ extension TextFieldView: UITextFieldDelegate {
     }
 
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        return delegate?.textFieldShouldEndEditing(textField: textField, replacementString: textField.text ?? "") ?? true
+        delegate?.textFieldShouldEndEditing(textField: textField, replacementString: textField.text ?? "") ?? true
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return delegate?.textFieldShouldReturn() ?? false
+        delegate?.textFieldShouldReturn() ?? false
 
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return delegate?.textField(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true
+        delegate?.textField(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true
     }
 }

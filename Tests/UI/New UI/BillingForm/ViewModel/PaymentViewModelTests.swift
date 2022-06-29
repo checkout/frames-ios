@@ -18,7 +18,6 @@ class PaymentViewModelTests: XCTestCase {
 
         let expectation = expectation(description: #function)
         viewModel?.updateExpiryDateView = {
-            XCTAssertTrue(true)
             expectation.fulfill()
         }
 
@@ -34,7 +33,6 @@ class PaymentViewModelTests: XCTestCase {
 
         let expectation = expectation(description: #function)
         viewModel?.updateAddBillingDetailsView = {
-            XCTAssertTrue(true)
             expectation.fulfill()
         }
 
@@ -62,7 +60,6 @@ class PaymentViewModelTests: XCTestCase {
 
         let expectation = expectation(description: #function)
         viewModel.updateEditBillingSummaryView = {
-            XCTAssertTrue(true)
             expectation.fulfill()
         }
 
