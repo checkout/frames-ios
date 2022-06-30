@@ -19,7 +19,7 @@ class ImageContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func update(with image: UIImage?, tintColor: UIColor) {
+    func update(with image: UIImage?, tintColor: UIColor? = nil) {
         imageView?.image = image
         imageView?.tintColor = tintColor
     }

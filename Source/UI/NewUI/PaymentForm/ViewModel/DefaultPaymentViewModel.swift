@@ -6,6 +6,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
     var updateEditBillingSummaryView: (() -> Void)?
     var updateAddBillingDetailsView: (() -> Void)?
     var updateExpiryDateView: (() -> Void)?
+    var updateCardNumberView: (() -> Void)?
 
     var paymentFormStyle: PaymentFormStyle?
     var billingFormStyle: BillingFormStyle?
@@ -26,10 +27,15 @@ class DefaultPaymentViewModel: PaymentViewModel {
     }
 
     func updateAll() {
+        updateCardNumber()
         updateExpiryDate()
         if isAddBillingSummaryNotUpdated() {
             updateBillingSummaryView()
         }
+    }
+
+    private func updateCardNumber(){
+        updateCardNumberView?()
     }
 
     func updateBillingSummaryView() {

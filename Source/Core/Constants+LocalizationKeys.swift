@@ -3,6 +3,11 @@ extension Constants {
     struct LocalizationKeys {
         struct PaymentForm {
 
+            struct CardNumber {
+                static let title = "CardNumber".localized
+                static let error = "CardNumberErrorMessage".localized
+            }
+
             struct ExpiryDate {
                 static let title = "ExpiryDate".localized
                 static let hint = "ExpiryDateFormat".localized
