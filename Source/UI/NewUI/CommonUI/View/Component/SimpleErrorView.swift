@@ -57,7 +57,7 @@ extension SimpleErrorView {
             image.bottomAnchor.constraint(equalTo: bottomAnchor),
             image.leadingAnchor.constraint(equalTo: leadingAnchor),
             image.trailingAnchor.constraint(equalTo: headerLabel.leadingAnchor,
-                                            constant: -CheckoutTheme.Padding.s.rawValue),
+                                            constant: -Constants.Padding.s.rawValue),
             image.widthAnchor.constraint(equalToConstant: 15)
         ])
     }

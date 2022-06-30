@@ -78,7 +78,7 @@ extension SelectionButtonView {
         addSubview(hintLabel)
         NSLayoutConstraint.activate([
             hintLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
-                                           constant: CheckoutTheme.Padding.xxs.rawValue),
+                                           constant: Constants.Padding.xxs.rawValue),
             hintLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             hintLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
@@ -92,7 +92,7 @@ extension SelectionButtonView {
 
         NSLayoutConstraint.activate([
             button.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
-                                        constant: CheckoutTheme.Padding.s.rawValue),
+                                        constant: Constants.Padding.s.rawValue),
             button.bottomAnchor.constraint(equalTo: bottomAnchor),
             button.leadingAnchor.constraint(equalTo: leadingAnchor),
             button.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -106,7 +106,7 @@ extension SelectionButtonView {
         NSLayoutConstraint.activate([
             image.centerYAnchor.constraint(equalTo: button.centerYAnchor),
             image.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                            constant: -CheckoutTheme.Padding.l.rawValue),
+                                            constant: -Constants.Padding.l.rawValue),
             image.widthAnchor.constraint(equalToConstant: 15),
             image.heightAnchor.constraint(equalToConstant: 15)
         ])

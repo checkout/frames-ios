@@ -155,11 +155,11 @@ extension PaymentViewController {
         view.addSubview(emptyHeader)
         NSLayoutConstraint.activate([
             emptyHeader.topAnchor.constraint(equalTo: view.topAnchor,
-                                             constant: CheckoutTheme.Padding.l.rawValue),
+                                             constant: Constants.Padding.l.rawValue),
             emptyHeader.leadingAnchor.constraint(equalTo: view.leadingAnchor,
-                                                 constant: CheckoutTheme.Padding.l.rawValue),
+                                                 constant: Constants.Padding.l.rawValue),
             emptyHeader.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-                                                  constant: -CheckoutTheme.Padding.l.rawValue),
+                                                  constant: -Constants.Padding.l.rawValue),
             emptyHeader.heightAnchor.constraint(equalToConstant: 160)
         ])
     }
@@ -168,13 +168,13 @@ extension PaymentViewController {
         view.addSubview(scrollView)
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: emptyHeader.bottomAnchor,
-                                            constant: CheckoutTheme.Padding.l.rawValue),
+                                            constant: Constants.Padding.l.rawValue),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor,
-                                                constant: CheckoutTheme.Padding.l.rawValue),
+                                                constant: Constants.Padding.l.rawValue),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-                                                 constant: -CheckoutTheme.Padding.l.rawValue),
+                                                 constant: -Constants.Padding.l.rawValue),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor,
-                                               constant: CheckoutTheme.Padding.l.rawValue),
+                                               constant: Constants.Padding.l.rawValue),
         ])
     }
 

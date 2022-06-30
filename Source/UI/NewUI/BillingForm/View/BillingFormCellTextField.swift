@@ -50,14 +50,14 @@ extension BillingFormCellTextField {
         NSLayoutConstraint.activate([
             textFieldView.topAnchor.constraint(
                 equalTo: contentView.topAnchor,
-                constant: CheckoutTheme.Padding.l.rawValue),
+                constant: Constants.Padding.l.rawValue),
             textFieldView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor),
             textFieldView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor),
             textFieldView.bottomAnchor.constraint(
                 equalTo: contentView.bottomAnchor,
-                constant: -CheckoutTheme.Padding.xl.rawValue)
+                constant: -Constants.Padding.xl.rawValue)
         ])
     }
 }

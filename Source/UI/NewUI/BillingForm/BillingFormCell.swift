@@ -63,3 +63,9 @@ import Foundation
         }
     }
 }
+
+extension BillingFormCell: Equatable {
+    public static func == (lhs: BillingFormCell, rhs: BillingFormCell) -> Bool {
+        lhs.index == rhs.index
+    }
+}

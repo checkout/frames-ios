@@ -127,7 +127,7 @@ extension InputView {
         addSubview(hintLabel)
         NSLayoutConstraint.activate([
             hintLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor,
-                                           constant: CheckoutTheme.Padding.s.rawValue),
+                                           constant: Constants.Padding.s.rawValue),
             hintLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             hintLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
@@ -140,7 +140,7 @@ extension InputView {
         addSubview(textFieldContainer)
         NSLayoutConstraint.activate([
             textFieldContainer.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
-                                                    constant: CheckoutTheme.Padding.m.rawValue),
+                                                    constant: Constants.Padding.m.rawValue),
             textFieldContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
             textFieldContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
             textFieldContainerBottomAnchor ?? textFieldContainer.bottomAnchor.constraint(equalTo: bottomAnchor)
@@ -155,9 +155,9 @@ extension InputView {
         NSLayoutConstraint.activate([
             textFieldView.topAnchor.constraint(equalTo: textFieldContainer.topAnchor),
             textFieldView.leadingAnchor.constraint(equalTo: textFieldContainer.leadingAnchor,
-                                                   constant: CheckoutTheme.Padding.l.rawValue),
+                                                   constant: Constants.Padding.l.rawValue),
             textFieldView.trailingAnchor.constraint(equalTo: textFieldContainer.trailingAnchor,
-                                                    constant: -CheckoutTheme.Padding.l.rawValue),
+                                                    constant: -Constants.Padding.l.rawValue),
             textFieldView.bottomAnchor.constraint(equalTo: textFieldContainer.bottomAnchor),
             textFieldView.heightAnchor.constraint(equalToConstant: heightStyle)
         ])
@@ -171,7 +171,7 @@ extension InputView {
 
         NSLayoutConstraint.activate([
             errorView.topAnchor.constraint(equalTo: textFieldContainer.bottomAnchor,
-                                           constant: CheckoutTheme.Padding.m.rawValue),
+                                           constant: Constants.Padding.m.rawValue),
             errorView.leadingAnchor.constraint(equalTo: leadingAnchor),
             errorView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])

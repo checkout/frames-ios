@@ -1,3 +1,10 @@
+//
+//  Constants.swift
+//  Frames
+//
+//  Copyright © 2022 Checkout. All rights reserved.
+//
+
 enum Constants {
 
     static let productName = "frames-ios-sdk"

@@ -287,6 +287,7 @@
 		956BA00A2861CB30005884D8 /* BillingFormTextFieldViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956B9FFA2861CB30005884D8 /* BillingFormTextFieldViewTests.swift */; };
 		956BA00B2861CB30005884D8 /* BillingFormTextFieldErrorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956B9FFB2861CB30005884D8 /* BillingFormTextFieldErrorViewTests.swift */; };
 		956BA00C2861CB30005884D8 /* BillingFormViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956B9FFD2861CB30005884D8 /* BillingFormViewControllerTests.swift */; };
+		95725AA1286DCFD90080E2C8 /* Constants+Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95725AA0286DCFD90080E2C8 /* Constants+Padding.swift */; };
 		95B1F43D283AC38B00A78BFA /* BillingFormTableViewMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1F43C283AC38B00A78BFA /* BillingFormTableViewMockDelegate.swift */; };
 		95C6C11F2868F88600C8C676 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C6C11B2868F88600C8C676 /* PaymentViewController.swift */; };
 		95C6C1202868F88700C8C676 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C6C11D2868F88600C8C676 /* PaymentViewModel.swift */; };
@@ -701,6 +702,7 @@
 		956B9FFA2861CB30005884D8 /* BillingFormTextFieldViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTextFieldViewTests.swift; sourceTree = "<group>"; };
 		956B9FFB2861CB30005884D8 /* BillingFormTextFieldErrorViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTextFieldErrorViewTests.swift; sourceTree = "<group>"; };
 		956B9FFD2861CB30005884D8 /* BillingFormViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormViewControllerTests.swift; sourceTree = "<group>"; };
+		95725AA0286DCFD90080E2C8 /* Constants+Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Padding.swift"; sourceTree = "<group>"; };
 		95B1F430283AC32A00A78BFA /* GraphikFontTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphikFontTests.swift; sourceTree = "<group>"; };
 		95B1F431283AC32A00A78BFA /* FontRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontRegistrationTests.swift; sourceTree = "<group>"; };
 		95B1F432283AC32A00A78BFA /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
@@ -891,6 +893,8 @@
 			isa = PBXGroup;
 			children = (
 				952F31DE283C303E00F616FF /* Constants.swift */,
+				952F31E7283C303E00F616FF /* Constants+Style.swift */,
+				95725AA0286DCFD90080E2C8 /* Constants+Padding.swift */,
 				952F31DF283C303E00F616FF /* URLHelper.swift */,
 				952F31E0283C303E00F616FF /* Environment.swift */,
 				952F31E1283C303E00F616FF /* CheckoutAPIService.swift */,
@@ -899,7 +903,6 @@
 				952F31E4283C303E00F616FF /* Dispatching.swift */,
 				952F31E5283C303E00F616FF /* Constants+LocalizationKeys.swift */,
 				952F31E6283C303E00F616FF /* InputState.swift */,
-				952F31E7283C303E00F616FF /* Constants+Style.swift */,
 				952F31E8283C303E00F616FF /* ContentTypeProviding.swift */,
 				952F31E9283C303E00F616FF /* Logging */,
 			);
@@ -2376,6 +2379,7 @@
 				952F3290283C303E00F616FF /* URLHelper.swift in Sources */,
 				952F3297283C303E00F616FF /* InputState.swift in Sources */,
 				952F3291283C303E00F616FF /* Environment.swift in Sources */,
+				95725AA1286DCFD90080E2C8 /* Constants+Padding.swift in Sources */,
 				9562D059286512B000C94D6B /* SelectionButtonView.swift in Sources */,
 				956B9FD12861CA80005884D8 /* CardListCellName.swift in Sources */,
 				956B9FDA2861CA80005884D8 /* CardViewController.swift in Sources */,

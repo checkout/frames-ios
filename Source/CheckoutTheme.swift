@@ -1,38 +1,7 @@
-import Foundation
 import UIKit
-
 
 /// Class used to customize the views.
 public final class CheckoutTheme {
-
-    /// Common UI padding
-    public enum Padding: CGFloat {
-
-        /// parameter size: 2
-        case xxs = 2
-
-        /// parameter size: 8
-        case xs = 8
-
-        /// parameter size: 10
-        case s = 10
-
-        /// parameter size: 16
-        case m = 16
-
-        /// parameter size: 20
-        case l = 20
-
-        /// parameter size: 24
-        case xl = 24
-
-        /// parameter size: 28
-        case xxl = 28
-
-        /// parameter size: 40
-        case xxxl = 40
-    }
-
     /// Background color of the views
     public static var primaryBackgroundColor: UIColor = UIColor.groupTableViewBackground
     public static var secondaryBackgroundColor: UIColor = .white

@@ -106,13 +106,13 @@ extension BillingFormHeaderCell {
                 constant: 58),
             headerLabel.leadingAnchor.constraint(
                 equalTo: leadingAnchor,
-                constant: CheckoutTheme.Padding.l.rawValue),
+                constant: Constants.Padding.l.rawValue),
             headerLabel.trailingAnchor.constraint(
                 equalTo: trailingAnchor,
-                constant: -CheckoutTheme.Padding.l.rawValue),
+                constant: -Constants.Padding.l.rawValue),
             headerLabel.bottomAnchor.constraint(
                 equalTo: safeBottomAnchor,
-                constant: -CheckoutTheme.Padding.xxxl.rawValue)
+                constant: -Constants.Padding.xxxl.rawValue)
         ])
     }
 }

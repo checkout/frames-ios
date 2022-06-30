@@ -36,42 +36,23 @@ class DefaultPaymentViewModel: PaymentViewModel {
         var summaryValue = ""
 
         billingFormStyle?.cells.forEach {
-            switch $0.index {
-
-                    // name
-                case BillingFormCell.fullName(nil).index:
+            switch $0 {
+                case .fullName:
                     updateSummaryValue(with: billingFormData?.name, summaryValue: &summaryValue)
-
-                    // addressLine1
-                case BillingFormCell.addressLine1(nil).index:
+                case .addressLine1:
                     updateSummaryValue(with: billingFormData?.address?.addressLine1, summaryValue: &summaryValue)
-
-                    // addressLine2
-                case BillingFormCell.addressLine2(nil).index:
+                case .addressLine2:
                     updateSummaryValue(with: billingFormData?.address?.addressLine2, summaryValue: &summaryValue)
-
-                    // state
-                case BillingFormCell.state(nil).index:
+                case .state:
                     updateSummaryValue(with: billingFormData?.address?.state, summaryValue: &summaryValue)
-
-                    //country
-                case BillingFormCell.country(nil).index:
+                case .country:
                     updateSummaryValue(with: billingFormData?.address?.country?.name, summaryValue: &summaryValue)
-
-                    // city
-                case BillingFormCell.city(nil).index:
+                case .city:
                     updateSummaryValue(with: billingFormData?.address?.city, summaryValue: &summaryValue)
-
-                    //postcode
-                case BillingFormCell.postcode(nil).index:
+                case .postcode:
                     updateSummaryValue(with: billingFormData?.address?.zip, summaryValue: &summaryValue)
-
-                    // phone number
-                case BillingFormCell.phoneNumber(nil).index:
+                case .phoneNumber:
                     updateSummaryValue(with: billingFormData?.phone?.number, summaryValue: &summaryValue, withNewLine: false)
-                default:
-                    return
-
             }
         }
 
