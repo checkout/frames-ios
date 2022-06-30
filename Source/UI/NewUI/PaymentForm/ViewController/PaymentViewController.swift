@@ -42,6 +42,10 @@ final class PaymentViewController: UIViewController {
         return view
     }()
 
+    private lazy var cardNumberView: InputView = {
+        InputView()
+    }()
+
     private lazy var expiryDateView: InputView = {
         InputView()
     }()
@@ -85,9 +89,10 @@ extension PaymentViewController {
         setupAddBillingDetailsViewClosure()
         setupEditBillingSummaryViewClosure()
         setupExpiryDateViewClosure()
+        setupCardNumberViewClosure()
     }
 
-    private func setupAddBillingDetailsViewClosure(){
+    private func setupAddBillingDetailsViewClosure() {
         viewModel.updateAddBillingDetailsView = { [weak self] in
             DispatchQueue.main.async {
                 guard let self = self else { return }
@@ -96,7 +101,7 @@ extension PaymentViewController {
         }
     }
 
-    private func setupEditBillingSummaryViewClosure(){
+    private func setupEditBillingSummaryViewClosure() {
         viewModel.updateEditBillingSummaryView = { [weak self] in
             DispatchQueue.main.async {
                 guard let self = self else { return }
@@ -105,13 +110,27 @@ extension PaymentViewController {
         }
     }
 
-    private func setupExpiryDateViewClosure(){
+    private func setupExpiryDateViewClosure() {
         viewModel.updateExpiryDateView = { [weak self] in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 self.updateExpiryDate()
             }
         }
+    }
+
+    private func setupCardNumberViewClosure() {
+        viewModel.updateCardNumberView = { [weak self] in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.updateCardNumber()
+            }
+        }
+    }
+
+    private func updateCardNumber(){
+        guard let style = viewModel.paymentFormStyle?.cardNumber else { return }
+        cardNumberView.update(style: style, image: "icon-visa".image(forClass: CardListCell.self))
     }
 
     private func updateExpiryDate(){
@@ -146,6 +165,7 @@ extension PaymentViewController {
     }
 
     private func addArrangedSubviewForStackView(){
+        stackView.addArrangedSubview(cardNumberView)
         stackView.addArrangedSubview(expiryDateView)
         stackView.addArrangedSubview(addBillingFormButtonView)
         stackView.addArrangedSubview(billingFormSummaryView)

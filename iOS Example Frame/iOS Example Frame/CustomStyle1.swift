@@ -30,6 +30,7 @@ private enum Constants {
 struct PaymentFormStyleCustom1: PaymentFormStyle {
     var addBillingSummary: CellButtonStyle?
     var editBillingSummary: BillingSummaryViewStyle? = EditBillingSummaryStyleCustom1()
+    var cardNumber: CellTextFieldStyle?
     var expiryDate: CellTextFieldStyle? = ExpiryDateFormStyleCustom1()
 }
 

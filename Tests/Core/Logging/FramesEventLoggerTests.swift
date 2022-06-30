@@ -19,7 +19,7 @@ final class FramesEventLoggerTests: XCTestCase {
         stubCheckoutEventLogger = StubCheckoutEventLogger()
         stubDateProvider = StubDateProvider()
         subject = FramesEventLogger(
-            getCorrelationID: { [stubcorrelationID] in stubcorrelationID },
+            getCorrelationID: { [weak self] in self?.stubcorrelationID ?? "" },
             checkoutEventLogger: stubCheckoutEventLogger,
             dateProvider: stubDateProvider)
     }
@@ -52,6 +52,49 @@ final class FramesEventLoggerTests: XCTestCase {
             properties: [:])
         let actualEvent = stubCheckoutEventLogger.logCallArgs.first
         XCTAssertEqual(expectedEvent, actualEvent)
+    }
+
+    func test_log_twiceForTwoCorrelationID() {
+
+        let expectedDate = Date()
+        stubDateProvider.currentDateReturnValue = expectedDate
+
+        let event = FramesLogEvent.billingFormPresented
+
+        // log twice, but change correlation id between logs
+        subject.log(event)
+        stubcorrelationID = "new-value"
+        subject.log(event)
+
+        let expectedEvent = Event(
+            typeIdentifier: "com.checkout.frames-mobile-sdk.billing_form_presented",
+            time: expectedDate,
+            monitoringLevel: .info,
+            properties: [:])
+
+        // expect only one log
+        XCTAssertEqual([expectedEvent, expectedEvent], stubCheckoutEventLogger.logCallArgs)
+    }
+
+    func test_log_onlyOnceForCorrelationID() {
+
+        let expectedDate = Date()
+        stubDateProvider.currentDateReturnValue = expectedDate
+
+        let event = FramesLogEvent.billingFormPresented
+
+        // log twice
+        subject.log(event)
+        subject.log(event)
+
+        let expectedEvent = Event(
+            typeIdentifier: "com.checkout.frames-mobile-sdk.billing_form_presented",
+            time: expectedDate,
+            monitoringLevel: .info,
+            properties: [:])
+
+        // expect only one log
+        XCTAssertEqual([expectedEvent], stubCheckoutEventLogger.logCallArgs)
     }
 
     // MARK: - add

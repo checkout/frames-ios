@@ -6,31 +6,41 @@ class InputView: UIView {
 
     weak var delegate: TextFieldViewDelegate?
     private(set) var style: CellTextFieldStyle?
-    private(set) lazy var textFieldContainerBottomAnchor = textFieldContainer?.bottomAnchor.constraint(equalTo: bottomAnchor)
+    private(set) lazy var textFieldContainerBottomAnchor = textFieldContainer.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
 
     // MARK: - UI elements
 
-    private(set) lazy var headerLabel: LabelView? = {
+    private(set) lazy var headerLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var mandatoryLabel: LabelView? = {
+    private(set) lazy var mandatoryLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var hintLabel: LabelView? = {
+    private(set) lazy var hintLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var textFieldContainer: UIView? = {
-        let view = UIView().disabledAutoresizingIntoConstraints()
+    private(set) lazy var textFieldContainer: UIStackView = {
+        let view = UIStackView().disabledAutoresizingIntoConstraints()
+        view.axis = .horizontal
+        view.isLayoutMarginsRelativeArrangement = true
+        view.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        view.spacing = 16
         view.backgroundColor = .clear
         return view
     }()
 
-    private(set) lazy var textFieldView: TextFieldView? = {
+    private(set) lazy var textFieldView: TextFieldView = {
         let view = TextFieldView().disabledAutoresizingIntoConstraints()
         view.delegate = self
+        return view
+    }()
+
+    private lazy var iconView: ImageContainerView = {
+        let view = ImageContainerView().disabledAutoresizingIntoConstraints()
+        view.isHidden = true
         return view
     }()
 
@@ -47,43 +57,46 @@ class InputView: UIView {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: "")
     }
 
-    private(set) lazy var errorView: SimpleErrorView? = {
+    private(set) lazy var errorView: SimpleErrorView = {
         SimpleErrorView().disabledAutoresizingIntoConstraints()
     }()
 
     // MARK: - Update subviews style
 
-    func update(style: CellTextFieldStyle?, textFieldValue: String? = nil) {
+    func update(style: CellTextFieldStyle?, textFieldValue: String? = nil, image: UIImage? = nil) {
         guard let style = style else { return }
         self.style = style
         backgroundColor = style.backgroundColor
-        mandatoryLabel?.isHidden = style.isMandatory
+        mandatoryLabel.isHidden = style.isMandatory
 
-        headerLabel?.update(with: style.title)
-        mandatoryLabel?.update(with: style.mandatory)
-        hintLabel?.update(with: style.hint)
-        updateTextFieldContainer(style: style)
-        textFieldView?.update(with: style.textfield)
+        headerLabel.update(with: style.title)
+        mandatoryLabel.update(with: style.mandatory)
+        hintLabel.update(with: style.hint)
+        updateTextFieldContainer(style: style, image: image)
+        textFieldView.update(with: style.textfield)
         updateErrorView(style: style)
     }
 
-    private func updateTextFieldContainer(style: CellTextFieldStyle) {
+    private func updateTextFieldContainer(style: CellTextFieldStyle, image: UIImage?) {
         let borderColor = !(style.error?.isHidden ?? true) ?
         style.textfield.errorBorderColor.cgColor :
         style.textfield.normalBorderColor.cgColor
 
-        textFieldContainer?.layer.borderColor = borderColor
-        textFieldContainer?.layer.cornerRadius = style.textfield.cornerRadius
-        textFieldContainer?.layer.borderWidth = style.textfield.borderWidth
-        textFieldContainer?.backgroundColor = style.textfield.backgroundColor
+        textFieldContainer.layer.borderColor = borderColor
+        textFieldContainer.layer.cornerRadius = style.textfield.cornerRadius
+        textFieldContainer.layer.borderWidth = style.textfield.borderWidth
+        textFieldContainer.backgroundColor = style.textfield.backgroundColor
+
+        iconView.isHidden = image == nil
+        iconView.update(with: image, tintColor: nil)
     }
 
     private func updateErrorView(style: CellTextFieldStyle) {
-        errorView?.update(style: style.error)
+        errorView.update(style: style.error)
         let shouldHideErrorView = style.error?.isHidden ?? false
         let expectedErrorViewHeight = style.error?.height ?? 0
-        errorView?.isHidden = shouldHideErrorView
-        textFieldContainerBottomAnchor?.constant = -(shouldHideErrorView ? 0 : expectedErrorViewHeight)
+        errorView.isHidden = shouldHideErrorView
+        textFieldContainerBottomAnchor.constant = -(shouldHideErrorView ? 0 : expectedErrorViewHeight)
     }
 }
 
@@ -97,12 +110,12 @@ extension InputView {
         setupMandatoryLabel()
         setupHintLabel()
         setupTextFieldContainer()
+        setupIcon()
         setupTextField()
         setupErrorView()
     }
 
     private func setupHeaderLabel() {
-        guard let headerLabel = headerLabel else { return }
         addSubview(headerLabel)
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: topAnchor),
@@ -111,8 +124,6 @@ extension InputView {
     }
 
     private func setupMandatoryLabel() {
-        guard let mandatoryLabel = mandatoryLabel else { return }
-        guard let headerLabel = headerLabel else { return }
         addSubview(mandatoryLabel)
         NSLayoutConstraint.activate([
             mandatoryLabel.topAnchor.constraint(equalTo: topAnchor),
@@ -122,8 +133,6 @@ extension InputView {
     }
 
     private func setupHintLabel() {
-        guard let hintLabel = hintLabel else { return }
-        guard let headerLabel = headerLabel else { return }
         addSubview(hintLabel)
         NSLayoutConstraint.activate([
             hintLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor,
@@ -134,8 +143,6 @@ extension InputView {
     }
 
     private func setupTextFieldContainer() {
-        guard let textFieldContainer = textFieldContainer else { return }
-        guard let hintLabel = hintLabel else { return }
         textFieldContainer.setContentHuggingPriority(.required, for: .vertical)
         addSubview(textFieldContainer)
         NSLayoutConstraint.activate([
@@ -143,30 +150,23 @@ extension InputView {
                                                     constant: Constants.Padding.m.rawValue),
             textFieldContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
             textFieldContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
-            textFieldContainerBottomAnchor ?? textFieldContainer.bottomAnchor.constraint(equalTo: bottomAnchor)
+            textFieldContainerBottomAnchor
         ])
     }
 
+    private func setupIcon() {
+        textFieldContainer.addArrangedSubview(iconView)
+    }
+
     private func setupTextField() {
-        guard let textFieldContainer = textFieldContainer else { return }
-        guard let textFieldView = textFieldView else { return }
         let heightStyle = style?.textfield.height ?? Constants.Style.BillingForm.InputTextField.height.rawValue
-        textFieldContainer.addSubview(textFieldView)
+        textFieldContainer.addArrangedSubview(textFieldView)
         NSLayoutConstraint.activate([
-            textFieldView.topAnchor.constraint(equalTo: textFieldContainer.topAnchor),
-            textFieldView.leadingAnchor.constraint(equalTo: textFieldContainer.leadingAnchor,
-                                                   constant: Constants.Padding.l.rawValue),
-            textFieldView.trailingAnchor.constraint(equalTo: textFieldContainer.trailingAnchor,
-                                                    constant: -Constants.Padding.l.rawValue),
-            textFieldView.bottomAnchor.constraint(equalTo: textFieldContainer.bottomAnchor),
             textFieldView.heightAnchor.constraint(equalToConstant: heightStyle)
         ])
     }
 
     private func setupErrorView() {
-        guard let errorView = errorView else { return }
-        guard let textFieldContainer = textFieldContainer else { return }
-
         addSubview(errorView)
 
         NSLayoutConstraint.activate([
@@ -183,7 +183,7 @@ extension InputView {
 extension InputView: TextFieldViewDelegate {
     func textFieldShouldBeginEditing(textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
-            textFieldContainer?.layer.borderColor = style?.textfield.focusBorderColor.cgColor
+        textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
     }
 
     func textFieldShouldReturn() -> Bool {
