@@ -46,7 +46,7 @@ final class PaymentViewController: UIViewController{
     }()
 
     private lazy var expiryDateView: ExpiryDateView = {
-        let view = ExpiryDateView()
+      let view = ExpiryDateView(environment: viewModel.environment)
         view.delegate = self
         return view
     }()

@@ -8,6 +8,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
     var updateExpiryDateView: (() -> Void)?
     var updateCardNumberView: (() -> Void)?
 
+    var environment: Environment
     var paymentFormStyle: PaymentFormStyle?
     var billingFormStyle: BillingFormStyle?
     var billingFormData: BillingForm? {
@@ -18,9 +19,11 @@ class DefaultPaymentViewModel: PaymentViewModel {
         }
     }
 
-    init(billingFormData: BillingForm?,
+  init(environment: Environment,
+       billingFormData: BillingForm?,
          paymentFormStyle: PaymentFormStyle?,
          billingFormStyle: BillingFormStyle?) {
+        self.environment = environment
         self.billingFormData = billingFormData
         self.paymentFormStyle = paymentFormStyle
         self.billingFormStyle = billingFormStyle

@@ -12,9 +12,10 @@ public final class ExpiryDateView: UIView {
   private let dateFormatTextCount = 5
   
   private(set) var style: CellTextFieldStyle?
-  
+  private let environment: Environment
+
   private lazy var cardValidator: CardValidator = {
-    CardValidator(environment: .production)
+    CardValidator(environment: environment.checkoutEnvironment)
   }()
   
   private lazy var expiryDateView: InputView = {
@@ -23,9 +24,9 @@ public final class ExpiryDateView: UIView {
     return view
   }()
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    
+  init(environment: Environment) {
+    self.environment = environment
+    super.init(frame: .zero)
     // setup expiry DateView
     addSubview(expiryDateView)
     expiryDateView.setupConstraintEqualTo(view: self)

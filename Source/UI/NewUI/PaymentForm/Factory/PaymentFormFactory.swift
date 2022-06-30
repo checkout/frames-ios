@@ -6,7 +6,8 @@ public struct PaymentFormFactory {
                                                     paymentFormStyle: PaymentFormStyle?,
                                                     billingFormStyle: BillingFormStyle?) -> UIViewController {
         
-        let viewModel = DefaultPaymentViewModel(billingFormData: billingFormData,
+      let viewModel = DefaultPaymentViewModel(environment: .live ,
+                                              billingFormData: billingFormData,
                                                 paymentFormStyle: paymentFormStyle,
                                                 billingFormStyle: billingFormStyle)
         let viewController =  PaymentViewController(viewModel: viewModel)
