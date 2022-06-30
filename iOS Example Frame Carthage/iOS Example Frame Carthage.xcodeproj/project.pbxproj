@@ -213,6 +213,8 @@
 		95725E37286DE79B0080E2C8 /* RemoteProcessorMetadata+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95725D7D286DE79B0080E2C8 /* RemoteProcessorMetadata+extensions.swift */; };
 		95725E38286DE79B0080E2C8 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95725D7E286DE79B0080E2C8 /* Theme.swift */; };
 		95725E39286DE79B0080E2C8 /* CorrelationIDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95725D7F286DE79B0080E2C8 /* CorrelationIDGenerator.swift */; };
+		9572616F286DEF5F0080E2C8 /* TextFieldViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572616E286DEF5F0080E2C8 /* TextFieldViewTests.swift */; };
+		95726171286DFCDB0080E2C8 /* MirrorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95726170286DFCDB0080E2C8 /* MirrorObject.swift */; };
 		95B1F43D283AC38B00A78BFA /* BillingFormTableViewMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1F43C283AC38B00A78BFA /* BillingFormTableViewMockDelegate.swift */; };
 		95C1EE35286CB94F00882C77 /* URLHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C1EE31286CB91E00882C77 /* URLHelperTests.swift */; };
 		95C1EF3C286CB9DB00882C77 /* CheckoutTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C1EE36286CB9DB00882C77 /* CheckoutTheme.swift */; };
@@ -644,6 +646,8 @@
 		95725D7D286DE79B0080E2C8 /* RemoteProcessorMetadata+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RemoteProcessorMetadata+extensions.swift"; sourceTree = "<group>"; };
 		95725D7E286DE79B0080E2C8 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		95725D7F286DE79B0080E2C8 /* CorrelationIDGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrelationIDGenerator.swift; sourceTree = "<group>"; };
+		9572616E286DEF5F0080E2C8 /* TextFieldViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewTests.swift; sourceTree = "<group>"; };
+		95726170286DFCDB0080E2C8 /* MirrorObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorObject.swift; sourceTree = "<group>"; };
 		95B1F430283AC32A00A78BFA /* GraphikFontTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphikFontTests.swift; sourceTree = "<group>"; };
 		95B1F431283AC32A00A78BFA /* FontRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontRegistrationTests.swift; sourceTree = "<group>"; };
 		95B1F432283AC32A00A78BFA /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
@@ -1811,6 +1815,8 @@
 				95C1F04B286CBA1A00882C77 /* BillingFormTextFieldViewTests.swift */,
 				95C1F04C286CBA1A00882C77 /* BillingFormTextFieldErrorViewTests.swift */,
 				95C1F04D286CBA1A00882C77 /* ExpiryDateViewTests.swift */,
+				9572616E286DEF5F0080E2C8 /* TextFieldViewTests.swift */,
+				95726170286DFCDB0080E2C8 /* MirrorObject.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2560,6 +2566,7 @@
 				95C1F07C286CBA1A00882C77 /* StubURLSessionDataTask.swift in Sources */,
 				95F381912832AED6004C35FD /* PhoneNumberInputViewTests.swift in Sources */,
 				95F381BE2832AED6004C35FD /* FramesEventLoggerTests.swift in Sources */,
+				95726171286DFCDB0080E2C8 /* MirrorObject.swift in Sources */,
 				95C1F0A6286CBA1A00882C77 /* BillingFormButtonViewTests.swift in Sources */,
 				95C1F096286CBA1A00882C77 /* ExpirationDateInputViewTests.swift in Sources */,
 				95F381AA2832AED6004C35FD /* CvvViewControllerDelegateMock.swift in Sources */,
@@ -2648,6 +2655,7 @@
 				95F381A12832AED6004C35FD /* NotificationCenterMock.swift in Sources */,
 				95F381792832AED6004C35FD /* CvvInputViewTests.swift in Sources */,
 				95C1F080286CBA1A00882C77 /* CvvViewControllerDelegateMock.swift in Sources */,
+				9572616F286DEF5F0080E2C8 /* TextFieldViewTests.swift in Sources */,
 				95F381A42832AED6004C35FD /* CardViewControllerMockDelegate.swift in Sources */,
 				95F381A92832AED6004C35FD /* CardViewControllerMock.swift in Sources */,
 				95F3817E2832AED6004C35FD /* CardListCellNameTests.swift in Sources */,
