@@ -2,7 +2,7 @@
 //  SecureDisplayView.swift
 //  Frames
 //
-//  Created by Alex Ioja-Yang on 
+//  Created by Alex Ioja-Yang 
 //  Copyright © 2022 Checkout. All rights reserved.
 //
 

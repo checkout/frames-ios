@@ -215,6 +215,7 @@
 		95725E39286DE79B0080E2C8 /* CorrelationIDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95725D7F286DE79B0080E2C8 /* CorrelationIDGenerator.swift */; };
 		9572616F286DEF5F0080E2C8 /* TextFieldViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572616E286DEF5F0080E2C8 /* TextFieldViewTests.swift */; };
 		95726171286DFCDB0080E2C8 /* MirrorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95726170286DFCDB0080E2C8 /* MirrorObject.swift */; };
+		95726173286DFE030080E2C8 /* SecureDisplayViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95726172286DFE030080E2C8 /* SecureDisplayViewTests.swift */; };
 		95B1F43D283AC38B00A78BFA /* BillingFormTableViewMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1F43C283AC38B00A78BFA /* BillingFormTableViewMockDelegate.swift */; };
 		95C1EE35286CB94F00882C77 /* URLHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C1EE31286CB91E00882C77 /* URLHelperTests.swift */; };
 		95C1EF3C286CB9DB00882C77 /* CheckoutTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C1EE36286CB9DB00882C77 /* CheckoutTheme.swift */; };
@@ -648,6 +649,7 @@
 		95725D7F286DE79B0080E2C8 /* CorrelationIDGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrelationIDGenerator.swift; sourceTree = "<group>"; };
 		9572616E286DEF5F0080E2C8 /* TextFieldViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewTests.swift; sourceTree = "<group>"; };
 		95726170286DFCDB0080E2C8 /* MirrorObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorObject.swift; sourceTree = "<group>"; };
+		95726172286DFE030080E2C8 /* SecureDisplayViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureDisplayViewTests.swift; sourceTree = "<group>"; };
 		95B1F430283AC32A00A78BFA /* GraphikFontTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphikFontTests.swift; sourceTree = "<group>"; };
 		95B1F431283AC32A00A78BFA /* FontRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontRegistrationTests.swift; sourceTree = "<group>"; };
 		95B1F432283AC32A00A78BFA /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
@@ -1816,6 +1818,7 @@
 				95C1F04C286CBA1A00882C77 /* BillingFormTextFieldErrorViewTests.swift */,
 				95C1F04D286CBA1A00882C77 /* ExpiryDateViewTests.swift */,
 				9572616E286DEF5F0080E2C8 /* TextFieldViewTests.swift */,
+				95726172286DFE030080E2C8 /* SecureDisplayViewTests.swift */,
 				95726170286DFCDB0080E2C8 /* MirrorObject.swift */,
 			);
 			path = View;
@@ -2530,6 +2533,7 @@
 			files = (
 				95C1F0A2286CBA1A00882C77 /* AddressLine1ValidatorTests.swift in Sources */,
 				95C1F07D286CBA1A00882C77 /* StubJSONEncoder.swift in Sources */,
+				95726173286DFE030080E2C8 /* SecureDisplayViewTests.swift in Sources */,
 				95C1F0B0286CBA1A00882C77 /* CardViewTests.swift in Sources */,
 				95F3818F2832AED6004C35FD /* ExpirationDatePickerTests.swift in Sources */,
 				95F381A72832AED6004C35FD /* StubURLSessionDataTask.swift in Sources */,
