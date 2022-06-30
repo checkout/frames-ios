@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 /// Class used to customize the views.

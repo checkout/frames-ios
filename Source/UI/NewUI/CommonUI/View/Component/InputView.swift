@@ -135,7 +135,8 @@ extension InputView {
     private func setupHintLabel() {
         addSubview(hintLabel)
         NSLayoutConstraint.activate([
-            hintLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 10),
+            hintLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor,
+                                           constant: Constants.Padding.s.rawValue),
             hintLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             hintLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
@@ -145,7 +146,8 @@ extension InputView {
         textFieldContainer.setContentHuggingPriority(.required, for: .vertical)
         addSubview(textFieldContainer)
         NSLayoutConstraint.activate([
-            textFieldContainer.topAnchor.constraint(equalTo: hintLabel.bottomAnchor, constant: 16),
+            textFieldContainer.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
+                                                    constant: Constants.Padding.m.rawValue),
             textFieldContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
             textFieldContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
             textFieldContainerBottomAnchor
@@ -168,7 +170,8 @@ extension InputView {
         addSubview(errorView)
 
         NSLayoutConstraint.activate([
-            errorView.topAnchor.constraint(equalTo: textFieldContainer.bottomAnchor, constant: 10),
+            errorView.topAnchor.constraint(equalTo: textFieldContainer.bottomAnchor,
+                                           constant: Constants.Padding.m.rawValue),
             errorView.leadingAnchor.constraint(equalTo: leadingAnchor),
             errorView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])

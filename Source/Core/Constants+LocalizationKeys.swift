@@ -1,3 +1,10 @@
+//
+//  Constants+LocalizationKeys.swift
+//  Frames
+//
+//  Copyright © 2022 Checkout. All rights reserved.
+//
+
 extension Constants {
 
     struct LocalizationKeys {
