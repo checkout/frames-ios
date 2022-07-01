@@ -36,6 +36,7 @@ class ExpiryDateViewTests: XCTestCase {
         dateFormatter.dateFormat = "MM/yy"
         let updateExpiryDate = dateFormatter.string(from: previousYearDate)
         view.updateExpiryDate(to: updateExpiryDate)
+
         XCTAssertFalse(view.style?.error?.isHidden ?? true)
     }
 
@@ -44,6 +45,7 @@ class ExpiryDateViewTests: XCTestCase {
         dateFormatter.dateFormat = "MM/yy"
         let updateExpiryDate = dateFormatter.string(from: Date())
         view.updateExpiryDate(to: updateExpiryDate)
+
         XCTAssertTrue(view.style?.error?.isHidden ?? false)
     }
 
@@ -87,5 +89,4 @@ class ExpiryDateViewTests: XCTestCase {
         view.updateExpiryDate(to: "Test")
         XCTAssertFalse(view.style?.error?.isHidden ?? true)
     }
-
 }

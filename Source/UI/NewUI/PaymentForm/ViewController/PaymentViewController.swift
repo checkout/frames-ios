@@ -103,8 +103,6 @@ final class PaymentViewController: UIViewController{
         updateScrollViewInset(to: .zero, from: notification)
     }
 
-
-
     private func setUpKeyboard() {
         registerKeyboardHandlers(notificationCenter: notificationCenter,
                                       keyboardWillShow: #selector(keyboardWillShow),

@@ -11,8 +11,8 @@ protocol TextFieldViewDelegate: AnyObject {
 class TextFieldView: UIView {
     weak var delegate: TextFieldViewDelegate?
 
-    private(set) lazy var textField: UITextField? = {
-        let view = UITextField().disabledAutoresizingIntoConstraints()
+    private lazy var textField: UITextField = {
+        let view = UITextField()
         view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         view.autocorrectionType = .no
         view.delegate = self
@@ -31,13 +31,12 @@ class TextFieldView: UIView {
     }
 
     func update(with style: ElementTextFieldStyle) {
-        textField?.textContentType = style.isSupportingNumericKeyboard ? .telephoneNumber : .name
-        textField?.text = style.text
-        textField?.font = style.font
-        textField?.placeholder = style.placeHolder
-        textField?.textColor = style.textColor
-        textField?.tintColor = style.tintColor
-        textField?.keyboardType = style.isSupportingNumericKeyboard ? .numberPad : .default
+        textField.text = style.text
+        textField.font = style.font
+        textField.placeholder = style.placeHolder
+        textField.textColor = style.textColor
+        textField.tintColor = style.tintColor
+        textField.keyboardType = style.isSupportingNumericKeyboard ? .numberPad : .default
     }
 
     @objc func textFieldEditingChanged(textField: UITextField) {
@@ -45,9 +44,9 @@ class TextFieldView: UIView {
     }
     
     private func setupConstraintsInOrder() {
-        guard let textField = textField else { return }
-        addSubview(textField)
-        textField.setupConstraintEqualTo(view: self)
+        let securedTextField = SecureDisplayView(secure: textField).disabledAutoresizingIntoConstraints()
+        addSubview(securedTextField)
+        securedTextField.setupConstraintEqualTo(view: self)
     }
 }
 
