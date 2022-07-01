@@ -139,9 +139,6 @@ struct BillingFormStyleCustom1: BillingFormStyle {
     var header: BillingFormHeaderCellStyle = BillingFormHeaderCellStyleCustom1()
     var cells: [BillingFormCell] = [.fullName(BillingFormFullNameCellStyleCustom1()),
                                     .addressLine1(BillingFormAddressLine1CellStyleCustom1()),
-                                    .addressLine2(BillingFormAddressLine2CellStyleCustom1()),
-                                    .city(BillingFormCityCellStyleCustom1()),
-                                    .postcode(BillingFormPostcodeCellStyleCustom1()),
                                     .country(BillingFormCountryCellStyleCustom1()),
                                     .phoneNumber(BillingFormPhoneNumberCellStyleCustom1())]
 }
@@ -276,7 +273,7 @@ struct CancelButtonFormStyleCustom1: ElementButtonStyle {
     var borderWidth: CGFloat = 1.0
     var image: UIImage?
     var text: String = "Cancel"
-    var font: UIFont =  UIFont.systemFont(ofSize: 20)
+    var font: UIFont =  UIFont.systemFont(ofSize: 15)
     var disabledTextColor: UIColor = .doveGray
     var disabledTintColor: UIColor = .doveGray
     var activeTintColor: UIColor = .brandeisBlue
@@ -289,7 +286,7 @@ struct CancelButtonFormStyleCustom1: ElementButtonStyle {
     var isHidden: Bool = false
     var isEnabled: Bool = true
     var height: Double = 44
-    var width: Double = 90
+    var width: Double = 53
     var textLeading: CGFloat = 0
 }
 
@@ -300,7 +297,7 @@ struct DoneFormButtonStyleCustom1: ElementButtonStyle {
     var borderWidth: CGFloat = 1.0
     var image: UIImage? = nil
     var text: String = "Done"
-    var font: UIFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+    var font: UIFont = UIFont.systemFont(ofSize: 15)
     var disabledTextColor: UIColor = .doveGray
     var disabledTintColor: UIColor = .doveGray
     var activeTintColor: UIColor = .brandeisBlue

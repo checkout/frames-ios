@@ -11,10 +11,11 @@ class PaymentViewModelTests: XCTestCase {
         UIFont.loadAllCheckoutFonts
     }
 
-    func testUpdateExpiryDateView() {
-        viewModel = DefaultPaymentViewModel(billingFormData: nil,
-                                            paymentFormStyle: DefaultPaymentFormStyle(),
-                                            billingFormStyle: DefaultBillingFormStyle())
+  func testUpdateExpiryDateView() {
+    viewModel = DefaultPaymentViewModel(environment: .sandbox,
+                                        billingFormData: nil,
+                                        paymentFormStyle: DefaultPaymentFormStyle(),
+                                        billingFormStyle: DefaultBillingFormStyle())
 
         let expectation = expectation(description: #function)
         viewModel?.updateExpiryDateView = {
@@ -27,9 +28,10 @@ class PaymentViewModelTests: XCTestCase {
     }
 
     func testUpdateAddBillingSummaryView() {
-        viewModel = DefaultPaymentViewModel(billingFormData: nil,
-                                            paymentFormStyle: DefaultPaymentFormStyle(),
-                                            billingFormStyle: DefaultBillingFormStyle())
+      viewModel = DefaultPaymentViewModel(environment: .sandbox,
+                                          billingFormData: nil,
+                                          paymentFormStyle: DefaultPaymentFormStyle(),
+                                          billingFormStyle: DefaultBillingFormStyle())
 
         let expectation = expectation(description: #function)
         viewModel?.updateAddBillingDetailsView = {
@@ -54,9 +56,10 @@ class PaymentViewModelTests: XCTestCase {
         let billingFormData = BillingForm(name: userName,
                                           address: address,
                                           phone: phone)
-        viewModel = DefaultPaymentViewModel(billingFormData: billingFormData,
-                                            paymentFormStyle: DefaultPaymentFormStyle(),
-                                            billingFormStyle: DefaultBillingFormStyle())
+      viewModel = DefaultPaymentViewModel(environment: .sandbox,
+                                          billingFormData: billingFormData,
+                                          paymentFormStyle: DefaultPaymentFormStyle(),
+                                          billingFormStyle: DefaultBillingFormStyle())
 
         let expectation = expectation(description: #function)
         viewModel.updateEditBillingSummaryView = {
@@ -74,7 +77,8 @@ class PaymentViewModelTests: XCTestCase {
         let billingFormData = BillingForm(name: userName,
                                           address: nil,
                                           phone: phone)
-        viewModel = DefaultPaymentViewModel(billingFormData: billingFormData,
+        viewModel = DefaultPaymentViewModel(environment: .sandbox,
+                                            billingFormData: billingFormData,
                                             paymentFormStyle: DefaultPaymentFormStyle(),
                                             billingFormStyle: DefaultBillingFormStyle())
 

@@ -10,7 +10,7 @@ class ExpiryDateViewTests: XCTestCase {
         super.setUp()
         UIFont.loadAllCheckoutFonts
         style = DefaultExpiryDateFormStyle()
-        view = ExpiryDateView()
+        view = ExpiryDateView(environment: .sandbox)
         view.update(style: style)
     }
 

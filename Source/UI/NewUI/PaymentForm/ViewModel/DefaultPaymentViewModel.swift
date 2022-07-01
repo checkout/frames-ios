@@ -42,29 +42,30 @@ class DefaultPaymentViewModel: PaymentViewModel {
     }
 
     func updateBillingSummaryView() {
-        guard let data = billingFormData, paymentFormStyle?.editBillingSummary != nil
-        else { return }
-
+        guard paymentFormStyle?.editBillingSummary != nil else { return }
         var summaryValue = ""
 
-        // user name
-        updateSummaryValue(with: data.name, summaryValue: &summaryValue)
-
-        // address
-        if let address = billingFormData?.address {
-            updateSummaryValue(with: address.addressLine1, summaryValue: &summaryValue)
-            updateSummaryValue(with: address.addressLine2, summaryValue: &summaryValue)
-            updateSummaryValue(with: address.city, summaryValue: &summaryValue)
-            updateSummaryValue(with: address.state, summaryValue: &summaryValue)
-            updateSummaryValue(with: address.zip, summaryValue: &summaryValue)
-            updateSummaryValue(with: address.country?.name, summaryValue: &summaryValue)
+        billingFormStyle?.cells.forEach {
+            switch $0 {
+                case .fullName:
+                    updateSummaryValue(with: billingFormData?.name, summaryValue: &summaryValue)
+                case .addressLine1:
+                    updateSummaryValue(with: billingFormData?.address?.addressLine1, summaryValue: &summaryValue)
+                case .addressLine2:
+                    updateSummaryValue(with: billingFormData?.address?.addressLine2, summaryValue: &summaryValue)
+                case .state:
+                    updateSummaryValue(with: billingFormData?.address?.state, summaryValue: &summaryValue)
+                case .country:
+                    updateSummaryValue(with: billingFormData?.address?.country?.name, summaryValue: &summaryValue)
+                case .city:
+                    updateSummaryValue(with: billingFormData?.address?.city, summaryValue: &summaryValue)
+                case .postcode:
+                    updateSummaryValue(with: billingFormData?.address?.zip, summaryValue: &summaryValue)
+                case .phoneNumber:
+                    updateSummaryValue(with: billingFormData?.phone?.number, summaryValue: &summaryValue, withNewLine: false)
+            }
         }
 
-        // phone
-        if let phone = billingFormData?.phone {
-            updateSummaryValue(with: phone.number, summaryValue: &summaryValue, withNewLine: false)
-        }
-        
         paymentFormStyle?.editBillingSummary?.summary?.text = summaryValue
         updateEditBillingSummaryView?()
     }
@@ -104,9 +105,7 @@ extension DefaultPaymentViewModel: BillingFormViewModelDelegate {
 
 extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
     //TODO: Will fixed in payment ticket
-    func expiryDateIsUpdated(value: ExpiryDate) {
-
-    }
+    func expiryDateIsUpdated(value: ExpiryDate) {}
 
     func addBillingButtonIsPressed(sender: UINavigationController?) {
         onTapAddressView(sender: sender)

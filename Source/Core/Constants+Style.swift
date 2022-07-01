@@ -1,3 +1,10 @@
+//
+//  Constants+Style.swift
+//  Frames
+//
+//  Copyright © 2022 Checkout. All rights reserved.
+//
+
 extension Constants {
 
     enum Style {
