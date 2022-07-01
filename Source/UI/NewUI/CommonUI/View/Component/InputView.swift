@@ -63,7 +63,7 @@ class InputView: UIView {
 
     // MARK: - Update subviews style
 
-    func update(style: CellTextFieldStyle?, textFieldValue: String? = nil, image: UIImage? = nil) {
+    func update(style: CellTextFieldStyle?, textFieldValue: String? = nil, image: UIImage? = nil){
         guard let style = style else { return }
         self.style = style
         backgroundColor = style.backgroundColor
@@ -181,6 +181,10 @@ extension InputView {
 // MARK: - Text Field Delegate
 
 extension InputView: TextFieldViewDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        delegate?.textField(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true
+    }
+
     func textFieldShouldBeginEditing(textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
         textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor

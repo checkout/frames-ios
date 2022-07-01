@@ -1,17 +1,20 @@
 import UIKit
+import Checkout
 
 protocol PaymentViewControllerDelegate: AnyObject {
     func addBillingButtonIsPressed(sender: UINavigationController?)
     func editBillingButtonIsPressed(sender: UINavigationController?)
+    func expiryDateIsUpdated(value: ExpiryDate)
 }
 
-final class PaymentViewController: UIViewController {
+final class PaymentViewController: UIViewController{
 
     //MARK: - Variables
 
     weak var delegate: PaymentViewControllerDelegate?
+    
     private(set) var viewModel: PaymentViewModel
-
+    private var notificationCenter = NotificationCenter.default
     //MARK: - UI properties
 
     //TODO: Replace it with new header
@@ -42,11 +45,13 @@ final class PaymentViewController: UIViewController {
         return view
     }()
 
-    private lazy var cardNumberView: InputView = {
-        InputView()
+    private lazy var expiryDateView: ExpiryDateView = {
+      let view = ExpiryDateView(environment: viewModel.environment)
+        view.delegate = self
+        return view
     }()
 
-    private lazy var expiryDateView: InputView = {
+    private lazy var cardNumberView: InputView = {
         InputView()
     }()
 
@@ -67,17 +72,53 @@ final class PaymentViewController: UIViewController {
         viewModel.updateAll()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        deregisterKeyboardHandlers(notificationCenter: notificationCenter)
+    }
+
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         //TODO: Remove when the new header view is added
         navigationController?.isNavigationBarHidden = false
+        setUpKeyboard()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    @objc private func keyboardWillShow(notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+        var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = view.convert(keyboardFrame, from: nil)
+        var contentInset: UIEdgeInsets = scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height + 20
+        updateScrollViewInset(to: contentInset, from: notification)
+    }
+
+    @objc private func keyboardWillHide(notification: Notification) {
+        updateScrollViewInset(to: .zero, from: notification)
+    }
+
+    private func setUpKeyboard() {
+        registerKeyboardHandlers(notificationCenter: notificationCenter,
+                                      keyboardWillShow: #selector(keyboardWillShow),
+                                      keyboardWillHide: #selector(keyboardWillHide))
+    }
+
+    private func updateScrollViewInset(to contentInset: UIEdgeInsets, from notification: Notification) {
+        var animationDuration: Double = 0
+        if let userInfo = notification.userInfo,
+            let notificationAnimationDuration: Double = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+            animationDuration = notificationAnimationDuration
+        }
+        UIView.animate(withDuration: animationDuration) {
+            self.scrollView.contentInset = contentInset
+        }
+    }
 }
 
 //Mark: View Model Integration
@@ -217,3 +258,8 @@ extension PaymentViewController: BillingFormSummaryViewDelegate {
     }
 }
 
+extension PaymentViewController: ExpiryDateViewDelegate {
+    func update(expiryDate: ExpiryDate) {
+        delegate?.expiryDateIsUpdated(value: expiryDate)
+    }
+}

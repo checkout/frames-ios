@@ -33,6 +33,7 @@ class iOS_Example_FrameUITests: XCTestCase {
         app.navigationBars["Billing"].buttons["Done"].tap()
         app.toolbars["Toolbar"].buttons["Done"].tap()
         app.navigationBars["Payment"].buttons["Pay"].tap()
+        sleep(2)
         app.alerts["Payment"].buttons["OK"].tap()
     }
 

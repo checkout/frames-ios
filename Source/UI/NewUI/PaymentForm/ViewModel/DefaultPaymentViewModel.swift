@@ -1,4 +1,5 @@
 import UIKit
+import Checkout
 
 class DefaultPaymentViewModel: PaymentViewModel {
 
@@ -7,6 +8,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
     var updateExpiryDateView: (() -> Void)?
     var updateCardNumberView: (() -> Void)?
 
+    var environment: Environment
     var paymentFormStyle: PaymentFormStyle?
     var billingFormStyle: BillingFormStyle?
     var billingFormData: BillingForm? {
@@ -17,9 +19,11 @@ class DefaultPaymentViewModel: PaymentViewModel {
         }
     }
 
-    init(billingFormData: BillingForm?,
+  init(environment: Environment,
+       billingFormData: BillingForm?,
          paymentFormStyle: PaymentFormStyle?,
          billingFormStyle: BillingFormStyle?) {
+        self.environment = environment
         self.billingFormData = billingFormData
         self.paymentFormStyle = paymentFormStyle
         self.billingFormStyle = billingFormStyle
@@ -100,6 +104,9 @@ extension DefaultPaymentViewModel: BillingFormViewModelDelegate {
 }
 
 extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
+    //TODO: Will fixed in payment ticket
+    func expiryDateIsUpdated(value: ExpiryDate) {}
+
     func addBillingButtonIsPressed(sender: UINavigationController?) {
         onTapAddressView(sender: sender)
     }

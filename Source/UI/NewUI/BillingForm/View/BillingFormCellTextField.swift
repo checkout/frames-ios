@@ -63,6 +63,7 @@ extension BillingFormCellTextField {
 }
 
 extension BillingFormCellTextField: TextFieldViewDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool { return true }
     
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)

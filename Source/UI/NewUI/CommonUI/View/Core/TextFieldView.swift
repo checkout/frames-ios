@@ -5,13 +5,14 @@ protocol TextFieldViewDelegate: AnyObject {
     func textFieldShouldReturn() -> Bool
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String)
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
 }
 
 class TextFieldView: UIView {
     weak var delegate: TextFieldViewDelegate?
 
-    private(set) lazy var textField: UITextField? = {
-        let view = UITextField().disabledAutoresizingIntoConstraints()
+    private lazy var textField: UITextField = {
+        let view = UITextField()
         view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         view.autocorrectionType = .no
         view.delegate = self
@@ -30,12 +31,12 @@ class TextFieldView: UIView {
     }
 
     func update(with style: ElementTextFieldStyle) {
-        textField?.textContentType = style.isSupportingNumericKeyboard ? .telephoneNumber : .name
-        textField?.text = style.text
-        textField?.font = style.font
-        textField?.placeholder = style.placeHolder
-        textField?.textColor = style.textColor
-        textField?.tintColor = style.tintColor
+        textField.text = style.text
+        textField.font = style.font
+        textField.placeholder = style.placeHolder
+        textField.textColor = style.textColor
+        textField.tintColor = style.tintColor
+        textField.keyboardType = style.isSupportingNumericKeyboard ? .numberPad : .default
     }
 
     @objc func textFieldEditingChanged(textField: UITextField) {
@@ -43,9 +44,9 @@ class TextFieldView: UIView {
     }
     
     private func setupConstraintsInOrder() {
-        guard let textField = textField else { return }
-        addSubview(textField)
-        textField.setupConstraintEqualTo(view: self)
+        let securedTextField = SecureDisplayView(secure: textField).disabledAutoresizingIntoConstraints()
+        addSubview(securedTextField)
+        securedTextField.setupConstraintEqualTo(view: self)
     }
 }
 
@@ -56,13 +57,14 @@ extension TextFieldView: UITextFieldDelegate {
     }
 
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        delegate?.textFieldShouldEndEditing(textField: textField, replacementString: textField.text ?? "")
-        return true
+        delegate?.textFieldShouldEndEditing(textField: textField, replacementString: textField.text ?? "") ?? true
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return delegate?.textFieldShouldReturn() ?? false
+        delegate?.textFieldShouldReturn() ?? false
 
     }
-
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        delegate?.textField(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true
+    }
 }
