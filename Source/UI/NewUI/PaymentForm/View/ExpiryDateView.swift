@@ -41,15 +41,33 @@ public final class ExpiryDateView: UIView {
     expiryDateView.update(style: style)
   }
   
-  private func updateErrorView(isHidden: Bool, text: String?){
-    style?.error?.isHidden = isHidden
-    style?.textfield.text = text ?? ""
-    expiryDateView.update(style: style)
+  private func updateErrorView(isHidden: Bool, text: String?, error: ValidationError.ExpiryDate? = nil){
+    defer {
+      style?.error?.isHidden = isHidden
+      style?.textfield.text = text ?? ""
+      expiryDateView.update(style: style)
+    }
+
+    guard let error = error else { return }
+    var errorText = ""
+    switch error {
+      case .invalidMonthString,
+          .invalidYearString,
+          .invalidMonth,
+          .invalidYear:
+        errorText = Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid
+      case .incompleteMonth,
+          .incompleteYear:
+        errorText = Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.missing
+      case .inThePast:
+        errorText = Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.past
+    }
+    style?.error?.text = errorText
   }
   
   func updateExpiryDate(to newDate: String?){
     guard newDate?.count == dateFormatTextCount else {
-      updateErrorView(isHidden: false, text: newDate)
+      updateErrorView(isHidden: false, text: newDate, error: .invalidYear)
       return
     }
     let subString = newDate?.split(separator: "/")
@@ -59,7 +77,7 @@ public final class ExpiryDateView: UIView {
           let year = subString?.last,
           year.count == 2,
           let yearDigit = Int(year) else {
-      updateErrorView(isHidden: false, text: newDate)
+      updateErrorView(isHidden: false, text: newDate, error: .invalidYear)
       return
     }
     
@@ -70,7 +88,7 @@ public final class ExpiryDateView: UIView {
         updateErrorView(isHidden: true, text: newDate)
       case .failure(let error):
         print(error)
-        updateErrorView(isHidden: false, text: newDate)
+        updateErrorView(isHidden: false, text: newDate, error: error)
     }
   }
 
@@ -105,20 +123,31 @@ public final class ExpiryDateView: UIView {
         textField.text = "0"
 
       case 1:
-        guard let originalText = textField.text, let previousDigit = Int(originalText) else { return false }
+        guard let originalText = textField.text, let previousDigit = Int(originalText) else {
+          updateErrorView(isHidden: false, text: textField.text, error: .invalidMonth)
+          return false
+        }
 
         switch previousDigit {
           case  0 where 1...9 ~= currentDigit,
                 1 where 0...2 ~= currentDigit: break
-          default: return false
+          default:
+            updateErrorView(isHidden: false, text: textField.text, error: .invalidMonth)
+            return false
         }
 
       case 2:
         textField.text?.append("/")
-        guard 2...9 ~= currentDigit else { return false }
+        guard 2...9 ~= currentDigit else {
+          updateErrorView(isHidden: false, text: textField.text, error: .invalidYear)
+          return false
+        }
 
       case 3:
-        guard 2...9 ~= currentDigit else { return false }
+        guard 2...9 ~= currentDigit else {
+          updateErrorView(isHidden: false, text: textField.text, error: .invalidYear)
+          return false
+        }
 
       case 4:
         updateExpiryDate(to: (textField.text ?? "") + replacementText)
@@ -141,13 +170,16 @@ extension ExpiryDateView: TextFieldViewDelegate {
   }
   
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    
+    updateErrorView(isHidden: true, text: textField.text)
     /*
      Expiry date text format is "MM/yy"
      5 is the expected text count, for example "11/35".
      location starts from 0 to dateFormatTextCount - 1
      */
-    guard range.location < dateFormatTextCount else { return false }
+    guard range.location < dateFormatTextCount else {
+      updateErrorView(isHidden: false, text: textField.text, error: .invalidMonth)
+      return false
+    }
     
     // Hide error view on remove from last location
     if range.location == dateFormatTextCount - 1 {

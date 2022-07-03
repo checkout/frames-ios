@@ -9,5 +9,5 @@ public struct DefaultExpiryDateFormStyle : CellTextFieldStyle {
     public var textfield: ElementTextFieldStyle = DefaultTextField(
         isSupportingNumericKeyboard: true,
         placeHolder: Constants.LocalizationKeys.PaymentForm.ExpiryDate.placeholder)
-    public var error: ElementErrorViewStyle? = DefaultErrorInputLabelStyle(text: Constants.LocalizationKeys.PaymentForm.ExpiryDate.error)
+    public var error: ElementErrorViewStyle? = DefaultErrorInputLabelStyle(text: Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.missing)
 }

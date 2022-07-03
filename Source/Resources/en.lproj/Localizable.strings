@@ -15,7 +15,9 @@
 "ExpiryDate" = "ExpiryDate";
 "ExpiryDateFormat" = "Format is MM/YY";
 "ExpiryDatePlaceholder" = "MM/YY";
-"ExpiryDateErrorMessage" = "Missing Expiry Date";
+"ExpiryDateErrorMessageInvalid" = "Invalid Expiry Date";
+"ExpiryDateErrorMessageMissing" = "Please enter a valid Expiry Date";
+"ExpiryDateErrorMessageInvalidInPast" = "Expiry Date is in the past";
 "CardNumber" = "Card Number";
 "CardNumberErrorMessage" = "Missing Card Number";
 "city" = "City";
