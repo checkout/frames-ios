@@ -73,6 +73,62 @@ public final class ExpiryDateView: UIView {
         updateErrorView(isHidden: false, text: newDate)
     }
   }
+
+  /*
+   Input validation from location 0 to 4 (MM/yy):
+   ===============
+
+   if location 0 (first month digit)
+      if user enters a number between 2-9,
+          then move to the year selector and append a 0 before the digit
+
+   if location 1 (2nd month digit)
+      if user enters a 0,
+          then enter any digit between 1-9
+      if user enters a 1,
+          then enter any digit between 0-2
+
+   if location 3 (backslash '/')
+      then user must enter a number between 2-9 to start with
+
+   if location 4 (first year digit)
+      then user must enter a number between 2-9 to start with
+
+   if location 5 (2nd year digit)
+      then validate full Expiry Date
+   */
+
+  private func validateInput(_ textField: UITextField, currentDigit: Int, location: Int, replacementText: String) -> Bool {
+    switch location {
+
+      case 0 where 2...9 ~= currentDigit:
+        textField.text = "0"
+
+      case 1:
+        guard let originalText = textField.text, let previousDigit = Int(originalText) else { return false }
+
+        switch previousDigit {
+          case  0 where 1...9 ~= currentDigit,
+                1 where 0...2 ~= currentDigit: break
+          default: return false
+        }
+
+      case 2:
+        textField.text?.append("/")
+        guard 2...9 ~= currentDigit else { return false }
+
+      case 3:
+        guard 2...9 ~= currentDigit else { return false }
+
+      case 4:
+        updateExpiryDate(to: (textField.text ?? "") + replacementText)
+        return false
+
+      default: break
+    }
+
+    return true
+  }
 }
 
 extension ExpiryDateView: TextFieldViewDelegate {
@@ -116,58 +172,6 @@ extension ExpiryDateView: TextFieldViewDelegate {
     guard CharacterSet(charactersIn: replacementText).isSubset(of: .decimalDigits) else { return false }
     guard let currentDigit = Int(replacementText) else { return false }
 
-    /*
-     Input validation from location 0 to 4 (MM/yy):
-     ===============
-
-     if location 0 (first month digit)
-        if user enters a number between 2-9,
-            then move to the year selector and append a 0 before the digit
-
-     if location 1 (2nd month digit)
-        if user enters a 0,
-            then enter any digit between 1-9
-        if user enters a 1,
-            then enter any digit between 0-2
-
-     if location 3 (backslash '/')
-        then user must enter a number between 2-9 to start with
-
-     if location 4 (first year digit)
-        then user must enter a number between 2-9 to start with
-
-     if location 5 (2nd year digit)
-        then validate full Expiry Date
-     */
-
-    switch range.location {
-
-      case 0 where 2...9 ~= currentDigit:
-        textField.text = "0"
-
-      case 1:
-        guard let originalText = textField.text, let previousDigit = Int(originalText) else { return false }
-
-        switch previousDigit {
-          case  0 where 1...9 ~= currentDigit,
-                1 where 0...2 ~= currentDigit: break
-          default: return false
-        }
-
-      case 2:
-        textField.text?.append("/")
-        guard 2...9 ~= currentDigit else { return false }
-
-      case 3:
-        guard 2...9 ~= currentDigit else { return false }
-
-      case 4:
-        updateExpiryDate(to: (textField.text ?? "") + replacementText)
-        return false
-
-      default: break
-    }
-
-    return true
+    return validateInput(textField, currentDigit: currentDigit, location: range.location, replacementText: replacementText)
   }
 }
