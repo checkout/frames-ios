@@ -56,8 +56,7 @@ extension BillingFormCellTextField {
             textFieldView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor),
             textFieldView.bottomAnchor.constraint(
-                equalTo: contentView.bottomAnchor,
-                constant: -Constants.Padding.xl.rawValue)
+                equalTo: contentView.bottomAnchor)
         ])
     }
 }

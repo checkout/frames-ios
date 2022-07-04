@@ -21,10 +21,8 @@ extension Constants {
                 static let placeholder = "ExpiryDatePlaceholder".localized
 
               struct Error {
-                static let missing = "ExpiryDateErrorMessageMissing".localized
                 static let invalid = "ExpiryDateErrorMessageInvalid".localized
                 static let past = "ExpiryDateErrorMessageInvalidInPast".localized
-
               }
 
             }
