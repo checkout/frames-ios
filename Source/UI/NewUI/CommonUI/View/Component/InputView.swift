@@ -6,7 +6,7 @@ class InputView: UIView {
 
     weak var delegate: TextFieldViewDelegate?
     private(set) var style: CellTextFieldStyle?
-    private(set) lazy var textFieldContainerBottomAnchor = textFieldContainer.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
+    private(set) lazy var textFieldContainerBottomAnchor = textFieldContainer.bottomAnchor.constraint(equalTo: bottomAnchor)
 
     // MARK: - UI elements
 
@@ -147,7 +147,7 @@ extension InputView {
         addSubview(textFieldContainer)
         NSLayoutConstraint.activate([
             textFieldContainer.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
-                                                    constant: Constants.Padding.m.rawValue),
+                                                    constant: Constants.Padding.s.rawValue),
             textFieldContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
             textFieldContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
             textFieldContainerBottomAnchor

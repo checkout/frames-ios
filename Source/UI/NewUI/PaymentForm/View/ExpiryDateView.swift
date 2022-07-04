@@ -47,21 +47,10 @@ public final class ExpiryDateView: UIView {
       style?.textfield.text = text ?? ""
       expiryDateView.update(style: style)
     }
-
     guard let error = error else { return }
-    var errorText = ""
-    switch error {
-      case .invalidMonthString,
-          .invalidYearString,
-          .invalidMonth,
-          .invalidYear:
-        errorText = Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid
-      case .incompleteMonth,
-          .incompleteYear:
-        errorText = Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.missing
-      case .inThePast:
-        errorText = Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.past
-    }
+    let errorText = error == .inThePast ?
+    Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.past :
+    Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid
     style?.error?.text = errorText
   }
   
@@ -151,6 +140,7 @@ public final class ExpiryDateView: UIView {
 
       case 4:
         updateExpiryDate(to: (textField.text ?? "") + replacementText)
+        expiryDateView.textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
         return false
 
       default: break
@@ -162,8 +152,13 @@ public final class ExpiryDateView: UIView {
 
 extension ExpiryDateView: TextFieldViewDelegate {
   func textFieldShouldBeginEditing(textField: UITextField) {}
-  func textFieldShouldReturn() -> Bool {  return true }
-  func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool { return true }
+  func textFieldShouldReturn() -> Bool {  return false }
+  func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
+    if textField.text?.count ?? 0 < dateFormatTextCount  {
+      updateErrorView(isHidden: false, text: textField.text, error: .invalidMonth)
+    }
+    return true
+  }
   
   func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
     expiryDateView.textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
@@ -176,10 +171,7 @@ extension ExpiryDateView: TextFieldViewDelegate {
      5 is the expected text count, for example "11/35".
      location starts from 0 to dateFormatTextCount - 1
      */
-    guard range.location < dateFormatTextCount else {
-      updateErrorView(isHidden: false, text: textField.text, error: .invalidMonth)
-      return false
-    }
+    guard range.location < dateFormatTextCount else { return false }
     
     // Hide error view on remove from last location
     if range.location == dateFormatTextCount - 1 {
@@ -197,7 +189,6 @@ extension ExpiryDateView: TextFieldViewDelegate {
     
     //check for max length including added spacers which all equal to 5
     guard !string.isEmpty else { return false }
-    
     let replacementText = string.replacingOccurrences(of: " ", with: "")
     
     //verify entered text is a numeric value

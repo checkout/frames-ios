@@ -62,8 +62,8 @@ extension TextFieldView: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldReturn() ?? false
-
     }
+  
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         delegate?.textField(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true
     }
