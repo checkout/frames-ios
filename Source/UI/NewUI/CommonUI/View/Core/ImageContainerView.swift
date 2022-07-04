@@ -20,7 +20,7 @@ class ImageContainerView: UIView {
     }
 
     func update(with image: UIImage?, tintColor: UIColor? = nil) {
-        imageView?.image = image
+        imageView?.image = image?.withRenderingMode(.alwaysTemplate)
         imageView?.tintColor = tintColor
     }
 
