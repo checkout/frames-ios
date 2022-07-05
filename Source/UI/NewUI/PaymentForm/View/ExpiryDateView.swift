@@ -110,9 +110,7 @@ public final class ExpiryDateView: UIView {
 
       case 0 where 2...9 ~= currentDigit:
         textField.text = "0"
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-          textField.text?.append("/")
-        }
+
       case 1:
         guard let originalText = textField.text, let previousDigit = Int(originalText) else {
           updateErrorView(isHidden: false, text: textField.text, error: .invalidMonth)
@@ -121,16 +119,14 @@ public final class ExpiryDateView: UIView {
 
         switch previousDigit {
           case  0 where 1...9 ~= currentDigit,
-            1 where 0...2 ~= currentDigit: break
+                1 where 0...2 ~= currentDigit: break
           default:
             updateErrorView(isHidden: false, text: textField.text, error: .invalidMonth)
             return false
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-          textField.text?.append("/")
-        }
       case 2:
+        textField.text?.append("/")
         guard 2...9 ~= currentDigit else {
           updateErrorView(isHidden: false, text: textField.text, error: .invalidYear)
           return false
@@ -193,7 +189,6 @@ extension ExpiryDateView: TextFieldViewDelegate {
     
     //check for max length including added spacers which all equal to 5
     guard !string.isEmpty else { return false }
-
     let replacementText = string.replacingOccurrences(of: " ", with: "")
     
     //verify entered text is a numeric value
