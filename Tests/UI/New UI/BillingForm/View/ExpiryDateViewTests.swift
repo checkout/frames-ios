@@ -93,8 +93,32 @@ class ExpiryDateViewTests: XCTestCase {
     XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
   }
 
-  func testExpiryDateWithNonDigits(){
+  func testExpiryDateWithString(){
     view.updateExpiryDate(to: "Test")
+    XCTAssertFalse(view.style?.error?.isHidden ?? true)
+    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+  }
+
+  func testExpiryDateWithInvalidMaxDate(){
+    view.updateExpiryDate(to: "99/99")
+    XCTAssertFalse(view.style?.error?.isHidden ?? true)
+    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+  }
+
+  func testExpiryDateWithInvalidMinDate(){
+    view.updateExpiryDate(to: "00/00")
+    XCTAssertFalse(view.style?.error?.isHidden ?? true)
+    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+  }
+
+  func testExpiryDateWithInvalidLongNumbers(){
+    view.updateExpiryDate(to: "999999999/999999999")
+    XCTAssertFalse(view.style?.error?.isHidden ?? true)
+    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+  }
+
+  func testExpiryDateWithInvalidLongSpecialCharacter(){
+    view.updateExpiryDate(to: "-*/@@")
     XCTAssertFalse(view.style?.error?.isHidden ?? true)
     XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
   }
@@ -237,5 +261,6 @@ class ExpiryDateViewTests: XCTestCase {
     XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
     XCTAssertEqual(textField.text, "02/2")
   }
-  
+
 }
+
