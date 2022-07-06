@@ -76,7 +76,7 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
     }
 
     @IBAction private func goToCustom2PaymentPage(_ sender: Any) {
-        /* 
+
         let address = Address(addressLine1: "Test line Custom 2  Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2",
                               addressLine2: nil,
                               city: "London Custom 2",
@@ -84,11 +84,8 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
                               zip: "N12345",
                               country: Self.countryGB)
 
-        let phone = Phone(number: "77 1234 1234",
-                          country: Self.countryGB)
-         */
         let name = "User Custom 2"
-        let billingForm = BillingForm(name: name, address: nil, phone: nil)
+        let billingForm = BillingForm(name: name, address: address, phone: nil)
 
         let paymentFormViewController = PaymentFormFactory.getPaymentFormViewController(
             billingFormData: billingForm,
