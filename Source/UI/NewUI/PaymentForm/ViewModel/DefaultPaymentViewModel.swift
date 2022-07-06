@@ -85,18 +85,9 @@ class DefaultPaymentViewModel: PaymentViewModel {
   }
 
   private func updateSummaryValue(with summaryValues: [String?]) -> String {
-    let summaryValues =  summaryValues.compactMap { $0 }
-    var count = summaryValues.count
-    var result = ""
-    for value in summaryValues {
-      count -= 1
-      let billingFormValue = value.trimmingCharacters(in: .whitespaces)
-      if !billingFormValue.isEmpty {
-        let newLine = count !=  0 ? "\n\n" : ""
-        result.append("\(billingFormValue)\(newLine)")
-      }
-    }
-    return result
+    summaryValues
+      .compactMap { $0?.trimmingCharacters(in: .whitespaces) }
+      .joined(separator: "\n\n")
   }
 
 }
