@@ -44,7 +44,7 @@ public final class ExpiryDateView: UIView {
     defer {
       style?.error?.isHidden = isHidden
       style?.textfield.text = text ?? ""
-      expiryDateView.update(style: style)
+      dateInputView.update(style: style)
     }
     guard let error = error else { return }
     let errorText = error == .inThePast ?
