@@ -14,7 +14,7 @@
 "AddBillingAddress" = "Add billing address";
 "ExpiryDate" = "ExpiryDate";
 "ExpiryDateFormat" = "Format is MM/YY";
-"ExpiryDatePlaceholder" = "MM/YY";
+"ExpiryDatePlaceholder" = "_ _ /_ _";
 "ExpiryDateErrorMessageInvalid" = "Please enter a valid Expiry Date";
 "ExpiryDateErrorMessageInvalidInPast" = "Expiry Date is in the past";
 "CardNumber" = "Card Number";
