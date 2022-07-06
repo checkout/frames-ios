@@ -89,4 +89,120 @@ class ExpiryDateViewTests: XCTestCase {
         view.updateExpiryDate(to: "Test")
         XCTAssertFalse(view.style?.error?.isHidden ?? true)
     }
+
+  func testValidFirstDigitInputWith0() {
+    let textField = UITextField()
+    textField.text = ""
+    let input = "0"
+
+    let shouldContinueAdding = view.textField(textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: input)
+    XCTAssertTrue(shouldContinueAdding)
+
+    textField.text?.append(input)
+    XCTAssertEqual(textField.text, "0")
+  }
+
+  func testInvalidSecondDigitInputWith0() {
+    let textField = UITextField()
+    textField.text = "0"
+    let input = "0"
+
+    let shouldContinueAdding = view.textField(textField, shouldChangeCharactersIn: NSRange(location: 1, length: 0), replacementString: input)
+
+    XCTAssertFalse(shouldContinueAdding)
+    XCTAssertEqual(textField.text, "0")
+  }
+
+  func testValidSecondDigitInputWith3() {
+    let textField = UITextField()
+    textField.text = ""
+    let input = "3"
+
+    let shouldContinueAdding = view.textField(textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: input)
+    XCTAssertTrue(shouldContinueAdding)
+
+    textField.text?.append(input)
+    XCTAssertEqual(textField.text, "03")
+  }
+
+  func testValidSecondDigitInputWith2() {
+    let textField = UITextField()
+    textField.text = "1"
+    let input = "2"
+
+    let shouldContinueAdding = view.textField(textField, shouldChangeCharactersIn: NSRange(location: 1, length: 0), replacementString: input)
+    XCTAssertTrue(shouldContinueAdding)
+
+    textField.text?.append(input)
+    XCTAssertEqual(textField.text, "12")
+  }
+
+  func testInvalidSecondDigitInputWith9() {
+    let textField = UITextField()
+    textField.text = "1"
+    let input = "9"
+
+    let shouldContinueAdding = view.textField(textField, shouldChangeCharactersIn: NSRange(location: 1, length: 0), replacementString: input)
+
+    XCTAssertFalse(shouldContinueAdding)
+    XCTAssertEqual(textField.text, "1")
+  }
+
+  func testInvalidthirdDigitInputWith0() {
+    let textField = UITextField()
+    textField.text = "01"
+    let input = "0"
+
+    let shouldContinueAdding = view.textField(textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString: input)
+
+    XCTAssertFalse(shouldContinueAdding)
+    XCTAssertEqual(textField.text, "01/")
+  }
+
+  func testInvalidthirdDigitInputWith1() {
+    let textField = UITextField()
+    textField.text = "02"
+    let input = "1"
+
+    let shouldContinueAdding = view.textField(textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString: input)
+
+    XCTAssertFalse(shouldContinueAdding)
+    XCTAssertEqual(textField.text, "02/")
+  }
+
+  func testValidthirdDigitInputWith2() {
+    let textField = UITextField()
+    textField.text = "02"
+    let input = "2"
+
+    let shouldContinueAdding = view.textField(textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString: input)
+    XCTAssertTrue(shouldContinueAdding)
+
+    textField.text?.append(input)
+    XCTAssertEqual(textField.text, "02/2")
+  }
+
+  func testValidFourthDigitInputWith2() {
+    let textField = UITextField()
+    textField.text = "02/3"
+    let input = "2"
+
+    let shouldContinueAdding = view.textField(textField, shouldChangeCharactersIn: NSRange(location: 3, length: 0), replacementString: input)
+    XCTAssertTrue(shouldContinueAdding)
+
+    textField.text?.append(input)
+    XCTAssertEqual(textField.text, "02/32")
+  }
+
+  func testInvalidFourthDigitInputWith() {
+    let textField = UITextField()
+    textField.text = "02/2"
+    let input = "0"
+
+    let shouldContinueAdding = view.textField(textField, shouldChangeCharactersIn: NSRange(location: 3, length: 0), replacementString: input)
+
+    XCTAssertFalse(shouldContinueAdding)
+    XCTAssertEqual(textField.text, "02/2")
+  }
+  
 }
