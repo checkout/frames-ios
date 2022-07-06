@@ -7,7 +7,7 @@ protocol ExpiryDateViewDelegate: AnyObject {
 
 public final class ExpiryDateView: UIView {
   weak var delegate: ExpiryDateViewDelegate?
-  
+
   /// 5 is the expected text count, for example "11/35".
   private let dateFormatTextCount = 5
   private let environment: Environment
@@ -16,13 +16,13 @@ public final class ExpiryDateView: UIView {
   private lazy var cardValidator: CardValidator = {
     CardValidator(environment: environment.checkoutEnvironment)
   }()
-  
+
   private lazy var dateInputView: InputView = {
     let view = InputView().disabledAutoresizingIntoConstraints()
     view.delegate = self
     return view
   }()
-  
+
   init(environment: Environment) {
     self.environment = environment
     super.init(frame: .zero)
@@ -30,14 +30,27 @@ public final class ExpiryDateView: UIView {
     addSubview(dateInputView)
     dateInputView.setupConstraintEqualTo(view: self)
   }
-  
+
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
+
   func update(style: CellTextFieldStyle?) {
     self.style = style
     dateInputView.update(style: style)
+  }
+
+  private func updateErrorView(isHidden: Bool, text: String?, error: ValidationError.ExpiryDate? = nil){
+    defer {
+      style?.error?.isHidden = isHidden
+      style?.textfield.text = text ?? ""
+      dateInputView.update(style: style)
+    }
+    guard let error = error else { return }
+    let errorText = error == .inThePast ?
+    Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.past :
+    Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid
+    style?.error?.text = errorText
   }
 
   func updateExpiryDate(to newDate: String?){
@@ -156,11 +169,11 @@ extension ExpiryDateView: TextFieldViewDelegate {
     }
     return true
   }
-  
+
   func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
     dateInputView.textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
   }
-  
+
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     updateErrorViewStyle(isHidden: true, textfieldText: textField.text)
     /*
@@ -169,12 +182,12 @@ extension ExpiryDateView: TextFieldViewDelegate {
      location starts from 0 to dateFormatTextCount - 1
      */
     guard range.location < dateFormatTextCount else { return false }
-    
+
     // Hide error view on remove from last location
     if range.location == dateFormatTextCount - 1 {
       updateErrorViewStyle(isHidden: true, textfieldText: textField.text)
     }
-    
+
     if range.length > 0 {
       if range.location == dateFormatTextCount - 2 {
         var originalText = textField.text
@@ -183,11 +196,11 @@ extension ExpiryDateView: TextFieldViewDelegate {
       }
       return true
     }
-    
+
     //check for max length including added spacers which all equal to 5
     guard !string.isEmpty else { return false }
     let replacementText = string.replacingOccurrences(of: " ", with: "")
-    
+
     //verify entered text is a numeric value
     guard CharacterSet(charactersIn: replacementText).isSubset(of: .decimalDigits) else { return false }
     guard let currentDigit = Int(replacementText) else { return false }
@@ -195,3 +208,4 @@ extension ExpiryDateView: TextFieldViewDelegate {
     return validateInput(textField, currentDigit: currentDigit, location: range.location, replacementText: replacementText)
   }
 }
+
