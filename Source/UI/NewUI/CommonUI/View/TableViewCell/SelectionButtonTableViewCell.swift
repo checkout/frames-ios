@@ -37,14 +37,14 @@ extension SelectionButtonTableViewCell {
         contentView.addSubview(mainView)
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(
-                equalTo: contentView.topAnchor),
+                equalTo: contentView.topAnchor,
+                constant: Constants.Padding.l.rawValue),
             mainView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor),
             mainView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor),
             mainView.bottomAnchor.constraint(
-                equalTo: contentView.bottomAnchor,
-                constant: -24)
+                equalTo: contentView.bottomAnchor)
         ])
     }
 }
