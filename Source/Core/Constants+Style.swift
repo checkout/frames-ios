@@ -39,7 +39,7 @@ extension Constants {
             }
 
             enum InputErrorLabel: Double {
-                case height = 18
+                case height = 30
                 case fontSize = 13
             }
 

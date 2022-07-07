@@ -118,7 +118,8 @@ extension BillingFormSummaryView {
                                               constant: Constants.Padding.xxxl.rawValue),
             summaryLabel.leadingAnchor.constraint(equalTo: leadingAnchor,
                                                   constant: Constants.Padding.l.rawValue),
-            summaryLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+            summaryLabel.trailingAnchor.constraint(equalTo: trailingAnchor,
+                                                   constant: -Constants.Padding.l.rawValue)
         ])
     }
 

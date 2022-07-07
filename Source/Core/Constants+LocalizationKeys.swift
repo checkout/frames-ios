@@ -19,7 +19,12 @@ extension Constants {
                 static let title = "ExpiryDate".localized
                 static let hint = "ExpiryDateFormat".localized
                 static let placeholder = "ExpiryDatePlaceholder".localized
-                static let error = "ExpiryDateErrorMessage".localized
+
+              struct Error {
+                static let invalid = "ExpiryDateErrorMessageInvalid".localized
+                static let past = "ExpiryDateErrorMessageInvalidInPast".localized
+              }
+
             }
         }
         struct BillingForm {

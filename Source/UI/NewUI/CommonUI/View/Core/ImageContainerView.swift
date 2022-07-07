@@ -31,8 +31,8 @@ class ImageContainerView: UIView {
     }
 
     func update(with image: UIImage?, tintColor: UIColor? = nil) {
-        imageView.image = image
-        imageView.tintColor = tintColor
+      imageView.image = image?.withRenderingMode(tintColor == nil ? .alwaysOriginal : .alwaysTemplate)
+      imageView.tintColor = tintColor
     }
 
     private func setupConstraintsInOrder() {
