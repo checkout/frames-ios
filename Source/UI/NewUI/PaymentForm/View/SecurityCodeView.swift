@@ -35,7 +35,8 @@ public final class SecurityCodeView: UIView {
 
   func update(style: CellTextFieldStyle?) {
     self.style = style
-    codeInputView.update(style: style)
+    self.style?.textfield.isSupportingNumericKeyboard = true
+    codeInputView.update(style: self.style)
   }
 
   private func updateErrorViewStyle(isHidden: Bool, textfieldText: String?){
