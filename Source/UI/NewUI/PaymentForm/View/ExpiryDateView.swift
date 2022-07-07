@@ -40,19 +40,6 @@ public final class ExpiryDateView: UIView {
     dateInputView.update(style: style)
   }
 
-  private func updateErrorView(isHidden: Bool, text: String?, error: ValidationError.ExpiryDate? = nil){
-    defer {
-      style?.error?.isHidden = isHidden
-      style?.textfield.text = text ?? ""
-      dateInputView.update(style: style)
-    }
-    guard let error = error else { return }
-    let errorText = error == .inThePast ?
-    Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.past :
-    Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid
-    style?.error?.text = errorText
-  }
-
   func updateExpiryDate(to newDate: String?){
     guard newDate?.count == dateFormatTextCount else {
       updateErrorViewStyle(isHidden: false, textfieldText: newDate, error: .invalidYear)
@@ -120,7 +107,8 @@ public final class ExpiryDateView: UIView {
 
         switch previousDigit {
           case  0 where 1...9 ~= currentDigit,
-            1 where 0...2 ~= currentDigit: break
+                1 where 0...2 ~= currentDigit:
+            break
           default:
             updateErrorViewStyle(isHidden: false, textfieldText: textField.text, error: .invalidMonth)
             return false
@@ -152,8 +140,8 @@ public final class ExpiryDateView: UIView {
 
   private func updateErrorViewStyle(isHidden: Bool, textfieldText: String?, error: ValidationError.ExpiryDate? = nil){
     style?.error?.text = error == .inThePast ?
-    Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.past :
-    Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid
+      Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.past :
+      Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid
     style?.error?.isHidden = isHidden
     style?.textfield.text = textfieldText ?? ""
     dateInputView.update(style: style)
