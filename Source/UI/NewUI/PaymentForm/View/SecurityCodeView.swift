@@ -11,28 +11,22 @@ import Checkout
 public final class SecurityCodeView: UIView {
 
   private let securityCodeCount = 4
-
-  private let environment: Environment
+  private var cardValidator: CardValidator
   private(set) var style: CellTextFieldStyle?
 
-  private lazy var cardValidator: CardValidator = {
-    CardValidator(environment: environment.checkoutEnvironment)
-  }()
-
-  private lazy var dateInputView: InputView = {
+  private lazy var codeInputView: InputView = {
     let view = InputView().disabledAutoresizingIntoConstraints()
     view.delegate = self
     return view
   }()
 
-
-  init(environment: Environment) {
-    self.environment = environment
+  init(cardValidator: CardValidator) {
+    self.cardValidator = cardValidator
     super.init(frame: .zero)
 
     //setup security code view
-    addSubview(dateInputView)
-    dateInputView.setupConstraintEqualTo(view: self)
+    addSubview(codeInputView)
+    codeInputView.setupConstraintEqualTo(view: self)
   }
 
   required init?(coder: NSCoder) {
@@ -41,13 +35,13 @@ public final class SecurityCodeView: UIView {
 
   func update(style: CellTextFieldStyle?) {
     self.style = style
-    dateInputView.update(style: style)
+    codeInputView.update(style: style)
   }
 
   private func updateErrorViewStyle(isHidden: Bool, textfieldText: String?){
     style?.error?.isHidden = isHidden
     style?.textfield.text = textfieldText ?? ""
-    dateInputView.update(style: style)
+    codeInputView.update(style: style)
   }
 }
 
@@ -62,7 +56,7 @@ extension SecurityCodeView: TextFieldViewDelegate {
   }
 
   func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
-    dateInputView.textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
+    codeInputView.textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
   }
 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

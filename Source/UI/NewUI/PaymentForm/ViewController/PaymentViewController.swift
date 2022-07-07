@@ -58,9 +58,8 @@ final class PaymentViewController: UIViewController{
   }()
 
   private lazy var securityCodeView: SecurityCodeView = {
-    SecurityCodeView(environment: viewModel.environment)
+    SecurityCodeView(cardValidator: CardValidator(environment: viewModel.environment.checkoutEnvironment))
   }()
-
 
   //MARK: - functions
 
