@@ -32,6 +32,7 @@ struct PaymentFormStyleCustom1: PaymentFormStyle {
     var editBillingSummary: BillingSummaryViewStyle? = EditBillingSummaryStyleCustom1()
     var cardNumber: CellTextFieldStyle?
     var expiryDate: CellTextFieldStyle? = ExpiryDateFormStyleCustom1()
+    var securityCode: CellTextFieldStyle? = SecurityCodeFormStyleCustom1()
 }
 
 //MARK: - Billing Form WITH Summary ( Edit details )
@@ -126,6 +127,18 @@ public struct ExpiryDateFormStyleCustom1 : CellTextFieldStyle {
     public var mandatory: ElementStyle?
     public var textfield: ElementTextFieldStyle = TextFieldCustom1(placeHolder: "MM/YY")
     public var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom1(text: "please fill expiry date")
+}
+
+//MARK: - Security Code
+
+public struct SecurityCodeFormStyleCustom1 : CellTextFieldStyle {
+    public var isMandatory: Bool = true
+    public var backgroundColor: UIColor = .clear
+    public var title: ElementStyle? = TitleLabelStyleCustom1(text: "Security code")
+    public var hint: ElementStyle? = HintInputLabelStyleCustom1(text: "3 - 4 digit code on your card")
+    public var mandatory: ElementStyle?
+    public var textfield: ElementTextFieldStyle = TextFieldCustom1()
+    public var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom1(text: "please fill Security code")
 }
 
 //**********************
