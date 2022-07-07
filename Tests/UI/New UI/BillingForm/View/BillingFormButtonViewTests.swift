@@ -27,8 +27,8 @@ class BillingFormButtonViewTests: XCTestCase {
     }
 
     func testImageStyle() {
-        XCTAssertEqual(view.image?.imageView?.image, style.button.image?.imageFlippedForRightToLeftLayoutDirection())
-        XCTAssertEqual(view.image?.imageView?.tintColor, style.button.disabledTintColor)
+        XCTAssertEqual(view.imageContainerView?.imageView?.image, view.style?.button.image)
+        XCTAssertEqual(view.imageContainerView?.imageView?.tintColor, style.button.disabledTintColor)
     }
 
     func testErrorStyle() throws {

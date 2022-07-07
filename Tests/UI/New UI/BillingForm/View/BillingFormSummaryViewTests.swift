@@ -46,7 +46,7 @@ class BillingFormSummaryViewTests: XCTestCase {
     }
 
     func testStyleIconImageView() {
-        XCTAssertEqual(view.imageContainerView?.imageView?.image, style.button.image?.imageFlippedForRightToLeftLayoutDirection())
+        XCTAssertEqual(view.imageContainerView?.imageView?.image, style.button.image)
         XCTAssertEqual(view.imageContainerView?.imageView?.tintColor, style.button.imageTintColor)
     }
 

@@ -6,7 +6,7 @@ protocol SelectionButtonViewDelegate: AnyObject {
 
 class SelectionButtonView: UIView {
     weak var delegate: SelectionButtonViewDelegate?
-    private var style: CellButtonStyle?
+    private(set) var style: CellButtonStyle?
 
     private(set) lazy var titleLabel: LabelView? = {
         LabelView().disabledAutoresizingIntoConstraints()
@@ -16,7 +16,7 @@ class SelectionButtonView: UIView {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var image: ImageContainerView? = {
+    private(set) lazy var imageContainerView: ImageContainerView? = {
         ImageContainerView().disabledAutoresizingIntoConstraints()
     }()
 
@@ -42,7 +42,8 @@ class SelectionButtonView: UIView {
         hintLabel?.update(with: style.hint)
         buttonView?.update(with: style.button)
         errorView?.update(style: style.error)
-        image?.update(with: style.button.image, tintColor: style.button.imageTintColor)
+        self.style?.button.image = style.button.image?.imageFlippedForRightToLeftLayoutDirection()
+        imageContainerView?.update(with: self.style?.button.image, tintColor: style.button.imageTintColor)
         errorView?.isHidden = style.error?.isHidden ?? true
     }
 
@@ -100,7 +101,7 @@ extension SelectionButtonView {
         ])
     }
     private func setupImageView() {
-        guard let image = image else { return }
+        guard let image = imageContainerView else { return }
         guard let button = buttonView else { return }
         addSubview(image)
         NSLayoutConstraint.activate([
