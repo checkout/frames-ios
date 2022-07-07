@@ -28,7 +28,7 @@ private enum Constants {
 
 struct PaymentFormStyleCustom2: PaymentFormStyle {
     var addBillingSummary: CellButtonStyle? = AddBillingDetailsViewStyleCustom2()
-    var editBillingSummary: BillingSummaryViewStyle? = EditBillingSummaryStyleCustom1()
+    var editBillingSummary: BillingSummaryViewStyle? = EditBillingSummaryStyleCustom2()
     var cardNumber: CellTextFieldStyle?
     var expiryDate: CellTextFieldStyle? = ExpiryDateFormStyleCustom2()
 }
@@ -283,7 +283,7 @@ struct CancelButtonFormStyleCustom2: ElementButtonStyle {
     var normalBorderColor: UIColor = .clear
     var focusBorderColor: UIColor = .clear
     var errorBorderColor: UIColor = .clear
-    var imageTintColor: UIColor = .clear
+    var imageTintColor: UIColor = Constants.greenBackgroundColor
     var isHidden: Bool = false
     var isEnabled: Bool = true
     var height: Double = 44
@@ -306,7 +306,7 @@ struct DoneFormButtonStyleCustom2: ElementButtonStyle {
     var normalBorderColor: UIColor = .clear
     var focusBorderColor: UIColor = .clear
     var errorBorderColor: UIColor = .clear
-    var imageTintColor: UIColor = .clear
+    var imageTintColor: UIColor = Constants.greenBackgroundColor
     var textColor: UIColor = .white
     var isHidden: Bool = false
     var isEnabled: Bool = true
@@ -338,7 +338,7 @@ struct TextFieldCustom2: ElementTextFieldStyle {
     var isPlaceHolderHidden: Bool  = false
     var font: UIFont = UIFont(name: "Helvetica Neue", size: 14)!
     var textColor: UIColor = UIColor(red: 40/255.0, green: 46/255.0, blue: 54/255.0, alpha: 1.0)
-    var normalBorderColor: UIColor = .mediumGray
+    var normalBorderColor: UIColor = Constants.greenBackgroundColor
     var focusBorderColor: UIColor = .brandeisBlue
     var errorBorderColor: UIColor = .tallPoppyRed
     var backgroundColor: UIColor = Constants.textFieldBackgroundColor
@@ -367,7 +367,7 @@ struct ErrorInputLabelStyleCustom2: ElementErrorViewStyle {
 
 struct CountryFormButtonStyleCustom2: ElementButtonStyle {
     var image: UIImage? =  UIImage(named: "arrow_blue_right")
-    var text: String = "Country"
+    var text: String = Locale.current.regionCode ?? "Country"
     var font: UIFont = UIFont(name: "Helvetica Neue", size: 14)!
     var disabledTextColor: UIColor = .mediumGray
     var disabledTintColor: UIColor = .mediumGray
@@ -377,7 +377,7 @@ struct CountryFormButtonStyleCustom2: ElementButtonStyle {
     var normalBorderColor: UIColor = .mediumGray
     var focusBorderColor: UIColor = .brandeisBlue
     var errorBorderColor: UIColor = .tallPoppyRed
-    var imageTintColor: UIColor = .mediumGray
+    var imageTintColor: UIColor = Constants.greenBackgroundColor
     var isHidden: Bool = false
     var isEnabled: Bool = true
     var height: Double = 56

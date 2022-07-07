@@ -57,7 +57,7 @@ struct EditBillingSummaryStyleCustom1: BillingSummaryViewStyle {
 
 /// This style for summary button with pre-filled summary view style
 struct SummaryButtonStyleCustom1: ElementButtonStyle {
-    var image: UIImage? =  UIImage(named: "arrow_blue_right")
+  var image: UIImage? =  UIImage(named: "arrow_blue_right")
     var text: String = "Edit billing address"
     var font: UIFont = UIFont.systemFont(ofSize: 15)
     var textColor: UIColor = Constants.redBackgroundColor
@@ -106,7 +106,7 @@ struct AddBillingDetailsButtonStyleCustom1: ElementButtonStyle {
     var normalBorderColor: UIColor = .brandeisBlue
     var focusBorderColor: UIColor = .mediumGray
     var errorBorderColor: UIColor = .tallPoppyRed
-    var imageTintColor: UIColor = .brandeisBlue
+    var imageTintColor: UIColor = Constants.redBackgroundColor
     var isHidden: Bool = false
     var isEnabled: Bool = true
     var height: Double = 56
@@ -282,7 +282,7 @@ struct CancelButtonFormStyleCustom1: ElementButtonStyle {
     var normalBorderColor: UIColor = .clear
     var focusBorderColor: UIColor = .clear
     var errorBorderColor: UIColor = .clear
-    var imageTintColor: UIColor = .clear
+  var imageTintColor: UIColor = Constants.redBackgroundColor
     var isHidden: Bool = false
     var isEnabled: Bool = true
     var height: Double = 44
@@ -305,7 +305,7 @@ struct DoneFormButtonStyleCustom1: ElementButtonStyle {
     var normalBorderColor: UIColor = .clear
     var focusBorderColor: UIColor = .clear
     var errorBorderColor: UIColor = .clear
-    var imageTintColor: UIColor = .clear
+    var imageTintColor: UIColor = Constants.redBackgroundColor
     var textColor: UIColor = .white
     var isHidden: Bool = false
     var isEnabled: Bool = true
@@ -376,7 +376,7 @@ struct CountryFormButtonStyleCustom1: ElementButtonStyle {
     var normalBorderColor: UIColor = .mediumGray
     var focusBorderColor: UIColor = .brandeisBlue
     var errorBorderColor: UIColor = .tallPoppyRed
-    var imageTintColor: UIColor = .mediumGray
+    var imageTintColor: UIColor = Constants.redBackgroundColor
     var isHidden: Bool = false
     var isEnabled: Bool = true
     var height: Double = 56

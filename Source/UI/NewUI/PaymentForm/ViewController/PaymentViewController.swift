@@ -23,7 +23,9 @@ final class PaymentViewController: UIViewController{
     }()
 
     private lazy var scrollView: UIScrollView = {
-        UIScrollView().disabledAutoresizingIntoConstraints()
+      let scrollView = UIScrollView().disabledAutoresizingIntoConstraints()
+      scrollView.keyboardDismissMode = .onDrag
+      return scrollView
     }()
 
     private(set) lazy var stackView: UIStackView = {
@@ -119,6 +121,7 @@ final class PaymentViewController: UIViewController{
             self.scrollView.contentInset = contentInset
         }
     }
+  
 }
 
 //Mark: View Model Integration
@@ -136,8 +139,7 @@ extension PaymentViewController {
     private func setupAddBillingDetailsViewClosure() {
         viewModel.updateAddBillingDetailsView = { [weak self] in
             DispatchQueue.main.async {
-                guard let self = self else { return }
-                self.updateAddBillingFormButtonView()
+                self?.updateAddBillingFormButtonView()
             }
         }
     }
@@ -145,8 +147,7 @@ extension PaymentViewController {
     private func setupEditBillingSummaryViewClosure() {
         viewModel.updateEditBillingSummaryView = { [weak self] in
             DispatchQueue.main.async {
-                guard let self = self else { return }
-                self.updateEditBillingSummaryView()
+                self?.updateEditBillingSummaryView()
             }
         }
     }
@@ -154,8 +155,7 @@ extension PaymentViewController {
     private func setupExpiryDateViewClosure() {
         viewModel.updateExpiryDateView = { [weak self] in
             DispatchQueue.main.async {
-                guard let self = self else { return }
-                self.updateExpiryDate()
+                self?.updateExpiryDate()
             }
         }
     }
@@ -163,8 +163,7 @@ extension PaymentViewController {
     private func setupCardNumberViewClosure() {
         viewModel.updateCardNumberView = { [weak self] in
             DispatchQueue.main.async {
-                guard let self = self else { return }
-                self.updateCardNumber()
+                self?.updateCardNumber()
             }
         }
     }
@@ -221,7 +220,7 @@ extension PaymentViewController {
                                                  constant: Constants.Padding.l.rawValue),
             emptyHeader.trailingAnchor.constraint(equalTo: view.trailingAnchor,
                                                   constant: -Constants.Padding.l.rawValue),
-            emptyHeader.heightAnchor.constraint(equalToConstant: 160)
+            emptyHeader.heightAnchor.constraint(equalToConstant: 80)
         ])
     }
 
@@ -230,19 +229,16 @@ extension PaymentViewController {
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: emptyHeader.bottomAnchor,
                                             constant: Constants.Padding.l.rawValue),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor,
-                                                constant: Constants.Padding.l.rawValue),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-                                                 constant: -Constants.Padding.l.rawValue),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor,
-                                               constant: Constants.Padding.l.rawValue),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeLeadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeTrailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeBottomAnchor)
         ])
     }
 
     func setupStackView(){
         scrollView.addSubview(stackView)
-        stackView.setupConstraintEqualTo(view: scrollView)
-        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        stackView.setupConstraintEqualTo(view: scrollView, constant: Constants.Padding.l.rawValue)
+      stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -Constants.Padding.xxxl.rawValue).isActive = true
     }
 }
 
