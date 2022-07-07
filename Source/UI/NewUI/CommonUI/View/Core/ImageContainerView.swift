@@ -1,8 +1,9 @@
 import UIKit
 
 class ImageContainerView: UIView {
+    private static let animationLength: TimeInterval = 0.25
 
-    private(set) lazy var imageView: UIImageView? = {
+    private(set) lazy var imageView: UIImageView = {
         let view = UIImageView().disabledAutoresizingIntoConstraints()
         view.contentMode = .scaleAspectFit
         view.backgroundColor = .clear
@@ -19,13 +20,22 @@ class ImageContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func updateWithAnimation(with image: UIImage?, tintColor: UIColor? = nil) {
+        UIView.transition(
+            with: imageView,
+            duration: Self.animationLength,
+            options: .transitionCrossDissolve
+        ) { [weak self] in
+            self?.update(with: image, tintColor: tintColor)
+        }
+    }
+
     func update(with image: UIImage?, tintColor: UIColor? = nil) {
-        imageView?.image = image
-        imageView?.tintColor = tintColor
+        imageView.image = image
+        imageView.tintColor = tintColor
     }
 
     private func setupConstraintsInOrder() {
-        guard let imageView = imageView else { return }
         addSubview(imageView)
         imageView.setupConstraintEqualTo(view: self)
     }

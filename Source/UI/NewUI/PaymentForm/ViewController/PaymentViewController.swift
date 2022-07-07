@@ -51,8 +51,9 @@ final class PaymentViewController: UIViewController{
         return view
     }()
 
-    private lazy var cardNumberView: InputView = {
-        InputView()
+    private lazy var cardNumberView: CardNumberView = {
+      let view = CardNumberView(environment: viewModel.environment)
+      return view
     }()
 
     //MARK: - functions
@@ -171,7 +172,7 @@ extension PaymentViewController {
 
     private func updateCardNumber(){
         guard let style = viewModel.paymentFormStyle?.cardNumber else { return }
-        cardNumberView.update(style: style, image: "icon-visa".image(forClass: CardListCell.self))
+        cardNumberView.update(style: style)
     }
 
     private func updateExpiryDate(){
