@@ -20,7 +20,11 @@ class ImageContainerView: UIView {
     }
 
     func update(with image: UIImage?, tintColor: UIColor? = nil) {
-      imageView?.image = image?.withRenderingMode(tintColor == nil ? .alwaysOriginal : .alwaysTemplate)
+      imageView?.image = image?
+                        .withRenderingMode(tintColor == nil ?
+                                            .alwaysOriginal :
+                                            .alwaysTemplate)
+                        .imageFlippedForRightToLeftLayoutDirection()
       imageView?.tintColor = tintColor
     }
 
