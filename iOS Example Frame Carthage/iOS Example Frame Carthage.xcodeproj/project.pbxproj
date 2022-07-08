@@ -754,7 +754,7 @@
 			isa = PBXGroup;
 			children = (
 				95732168286EF4E80068C115 /* Localizable.strings */,
-				9573216A286EF4E80068C115 /* schemes */,
+				CB10618F2877195B007322FE /* schemes.xcassets */,
 				95732182286EF4E80068C115 /* checkmarks */,
 				95732187286EF4E80068C115 /* warning */,
 				9573218A286EF4E80068C115 /* arrows */,
@@ -762,14 +762,6 @@
 			);
 			name = Resources;
 			path = ../../Source/Resources;
-			sourceTree = "<group>";
-		};
-		9573216A286EF4E80068C115 /* schemes */ = {
-			isa = PBXGroup;
-			children = (
-				CB10618F2877195B007322FE /* schemes.xcassets */,
-			);
-			path = schemes;
 			sourceTree = "<group>";
 		};
 		95732182286EF4E80068C115 /* checkmarks */ = {

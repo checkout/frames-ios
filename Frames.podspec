@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   s.source_files = 'Source/**/*.swift'
   s.exclude_files = "Classes/Exclude"
   s.resource_bundles = {
-		'Frames' => ['Source/Resources/**/*']
-	}
+    'Frames' => ['Source/Resources/**/*']
+  }
 
   s.dependency 'PhoneNumberKit', '3.3.3'
   s.dependency 'CheckoutEventLoggerKit', '1.2.0'
