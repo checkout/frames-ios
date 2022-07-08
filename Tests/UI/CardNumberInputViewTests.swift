@@ -4,7 +4,7 @@ import XCTest
 class CardNumberInputViewTests: XCTestCase {
 
     func testEmptyInitialization() {
-        let cardNumberInputView = CardNumberInputView(cardValidator: StubCardValidator())
+        let cardNumberInputView = CardNumberInputView(cardValidator: MockCardValidator())
         XCTAssertEqual(cardNumberInputView.textField.textContentType, .creditCardNumber)
     }
 
@@ -23,14 +23,14 @@ class CardNumberInputViewTests: XCTestCase {
     func testTextFormatCardNumberPasting() {
         let cardNumber = "4242424242424242"
         let expectedText = "4242 4242 4242 4242"
-        let cardNumberInputView = CardNumberInputView(cardValidator: StubCardValidator())
+        let cardNumberInputView = CardNumberInputView(cardValidator: MockCardValidator())
         cardNumberInputView.textField.text = cardNumber
         cardNumberInputView.textFieldDidChange(textField: cardNumberInputView.textField)
         XCTAssertEqual(cardNumberInputView.textField.text, expectedText)
     }
 
     func testTextNotChangingAboveMaxLength() {
-        let cardValidator = StubCardValidator()
+        let cardValidator = MockCardValidator()
         let cardNumberInputView = CardNumberInputView(cardValidator: cardValidator)
 
         var shouldChanged = cardNumberInputView.textField(cardNumberInputView.textField,
@@ -55,7 +55,7 @@ class CardNumberInputViewTests: XCTestCase {
     }
 
     func testReturnTrueIfStringEmpty() {
-        let cardNumberInputView = CardNumberInputView(cardValidator: StubCardValidator())
+        let cardNumberInputView = CardNumberInputView(cardValidator: MockCardValidator())
         cardNumberInputView.textField.text = "4242 4242 4242 4242"
         let value = cardNumberInputView.textField(cardNumberInputView.textField,
                                                   shouldChangeCharactersIn: NSRange(),
@@ -64,7 +64,7 @@ class CardNumberInputViewTests: XCTestCase {
     }
 
     func testCallDelegateMethodEndEditing() {
-        let cardNumberInputView = CardNumberInputView(cardValidator: StubCardValidator())
+        let cardNumberInputView = CardNumberInputView(cardValidator: MockCardValidator())
         let cardNumberDelegate = CardNumberInputViewMockDelegate()
         cardNumberInputView.delegate = cardNumberDelegate
         cardNumberInputView.textFieldDidEndEditing(cardNumberInputView.textField)
@@ -73,7 +73,7 @@ class CardNumberInputViewTests: XCTestCase {
     }
 
     func testHideErrorWhenTextfieldBeginEditing() {
-        let cardNumberInputView = CardNumberInputView(cardValidator: StubCardValidator())
+        let cardNumberInputView = CardNumberInputView(cardValidator: MockCardValidator())
         cardNumberInputView.showError(message: "This is an error")
         XCTAssertEqual(cardNumberInputView.errorView.isHidden, false)
         cardNumberInputView.textFieldDidBeginEditing(cardNumberInputView.textField)

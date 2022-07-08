@@ -4,7 +4,7 @@ import XCTest
 class CvvInputViewTests: XCTestCase {
 
     var cvvInputView: CvvInputView!
-    var stubCardValidator: StubCardValidator! = StubCardValidator()
+    var stubCardValidator: MockCardValidator! = MockCardValidator()
 
     override func setUp() {
         super.setUp()

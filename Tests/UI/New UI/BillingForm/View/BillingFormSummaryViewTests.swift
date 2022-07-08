@@ -46,8 +46,8 @@ class BillingFormSummaryViewTests: XCTestCase {
     }
 
     func testStyleIconImageView() {
-        XCTAssertEqual(view.imageContainerView?.imageView?.image, style.button.image)
-        XCTAssertEqual(view.imageContainerView?.imageView?.tintColor, style.button.imageTintColor)
+        XCTAssertEqual(view.imageContainerView?.imageView.image, style.button.image)
+        XCTAssertEqual(view.imageContainerView?.imageView.tintColor, style.button.imageTintColor)
     }
 
     func testStyleButtonView() {
@@ -74,7 +74,7 @@ class BillingFormSummaryViewTests: XCTestCase {
         XCTAssertEqual(view.errorView?.headerLabel?.label?.textColor, headerLabelStyle.textColor)
         XCTAssertEqual(view.errorView?.headerLabel?.label?.backgroundColor, headerLabelStyle.backgroundColor)
 
-        XCTAssertEqual(view.errorView?.imageContainerView?.imageView?.image, style.error?.image)
-        XCTAssertEqual(view.errorView?.imageContainerView?.imageView?.tintColor, style.error?.tintColor)
+        XCTAssertEqual(view.errorView?.imageContainerView?.imageView.image, style.error?.image)
+        XCTAssertEqual(view.errorView?.imageContainerView?.imageView.tintColor, style.error?.tintColor)
     }
 }

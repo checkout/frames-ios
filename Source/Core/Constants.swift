@@ -23,7 +23,7 @@ enum Constants {
     enum Bundle: String {
         case version = "CFBundleShortVersionString"
 
-        enum SchemeIcons: String {
+        enum SchemeIcon: String {
             case blank = "icon-blank"
             case americanExpress = "icon-amex"
             case dinersClub = "icon-diners"

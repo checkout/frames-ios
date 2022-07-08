@@ -82,7 +82,7 @@ public class CardListCell: UITableViewCell {
         schemeImageView.image = schemeIconLocation(scheme: scheme)?.rawValue.image(forClass: CardListCell.self)
     }
 
-    private func schemeIconLocation(scheme: Card.Scheme) -> Constants.Bundle.SchemeIcons? {
+    private func schemeIconLocation(scheme: Card.Scheme) -> Constants.Bundle.SchemeIcon? {
         switch scheme {
         case .americanExpress:
             return .americanExpress

@@ -24,7 +24,7 @@ class BillingFormTextFieldErrorViewTests: XCTestCase {
     }
 
     func testImageStyle() {
-        XCTAssertEqual(errorView.imageContainerView?.imageView?.image, style.image)
-        XCTAssertEqual(errorView.imageContainerView?.imageView?.tintColor, style.tintColor)
+        XCTAssertEqual(errorView.imageContainerView?.imageView.image, style.image)
+        XCTAssertEqual(errorView.imageContainerView?.imageView.tintColor, style.tintColor)
     }
 }

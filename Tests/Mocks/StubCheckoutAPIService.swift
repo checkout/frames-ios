@@ -14,7 +14,7 @@ final class StubCheckoutAPIService: Frames.CheckoutAPIProtocol {
         createTokenCalledWith = (paymentSource, completion)
     }
 
-    var cardValidatorToReturn = StubCardValidator()
+    var cardValidatorToReturn = MockCardValidator()
     private(set) var cardValidatorCalled = false
     var cardValidator: CardValidating {
         cardValidatorCalled = true

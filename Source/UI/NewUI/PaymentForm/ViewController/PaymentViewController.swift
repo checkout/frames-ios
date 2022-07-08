@@ -15,6 +15,8 @@ final class PaymentViewController: UIViewController{
     
     private(set) var viewModel: PaymentViewModel
     private var notificationCenter = NotificationCenter.default
+    private let cardValidator: CardValidating
+
     //MARK: - UI properties
 
     //TODO: Replace it with new header
@@ -54,14 +56,15 @@ final class PaymentViewController: UIViewController{
     }()
 
     private lazy var cardNumberView: CardNumberView = {
-      let view = CardNumberView(environment: viewModel.environment)
-      return view
+      let cardNumberViewModel = CardNumberViewModel(cardValidator: cardValidator)
+      return cardNumberViewModel.buildView()
     }()
 
     //MARK: - functions
 
     init(viewModel: PaymentViewModel) {
         self.viewModel = viewModel
+        self.cardValidator = CardValidator(environment: viewModel.environment.checkoutEnvironment)
         super.init(nibName: nil, bundle: nil)
     }
 

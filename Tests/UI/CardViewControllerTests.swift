@@ -287,7 +287,7 @@ class CardViewControllerTests: XCTestCase {
                                                     cardHolderNameState: .hidden,
                                                     billingDetailsState: .required)
 
-        let stubCardValidator = StubCardValidator()
+        let stubCardValidator = MockCardValidator()
         stubCardValidator.validateCardNumberToReturn = .success(.visa)
         stubCheckoutAPIService.cardValidatorToReturn = stubCardValidator
 
