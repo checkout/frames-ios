@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Checkout
 
 protocol CardNumberViewProtocol: AnyObject {
   var schemeIcon: Constants.Bundle.SchemeIcon { get set }
