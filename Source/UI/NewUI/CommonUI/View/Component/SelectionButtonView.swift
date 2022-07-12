@@ -6,27 +6,27 @@ protocol SelectionButtonViewDelegate: AnyObject {
 
 class SelectionButtonView: UIView {
     weak var delegate: SelectionButtonViewDelegate?
-    private var style: CellButtonStyle?
+    private(set) var style: CellButtonStyle?
 
-    private(set) lazy var titleLabel: LabelView? = {
+    private(set) lazy var titleLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var hintLabel: LabelView? = {
+    private(set) lazy var hintLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var image: ImageContainerView? = {
+    private(set) lazy var imageContainerView: ImageContainerView = {
         ImageContainerView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var buttonView: ButtonView? = {
+    private(set) lazy var buttonView: ButtonView = {
         let view = ButtonView().disabledAutoresizingIntoConstraints()
         view.delegate = self
         return view
     }()
 
-    private(set) lazy var errorView: SimpleErrorView? = {
+    private(set) lazy var errorView: SimpleErrorView = {
         SimpleErrorView().disabledAutoresizingIntoConstraints()
     }()
 
@@ -38,12 +38,13 @@ class SelectionButtonView: UIView {
     func update(style: CellButtonStyle) {
         self.style = style
 
-        titleLabel?.update(with: style.title)
-        hintLabel?.update(with: style.hint)
-        buttonView?.update(with: style.button)
-        errorView?.update(style: style.error)
-        image?.update(with: style.button.image, tintColor: style.button.imageTintColor)
-        errorView?.isHidden = style.error?.isHidden ?? true
+        titleLabel.update(with: style.title)
+        hintLabel.update(with: style.hint)
+        buttonView.update(with: style.button)
+        errorView.update(style: style.error)
+        self.style?.button.image = style.button.image?.imageFlippedForRightToLeftLayoutDirection()
+        imageContainerView.update(with: self.style?.button.image, tintColor: style.button.imageTintColor)
+        errorView.isHidden = style.error?.isHidden ?? true
     }
 
     required init?(coder: NSCoder) {
@@ -63,7 +64,6 @@ extension SelectionButtonView {
     }
 
     private func setupTitleLabel() {
-        guard let titleLabel = titleLabel else { return }
         addSubview(titleLabel)
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
@@ -73,8 +73,6 @@ extension SelectionButtonView {
     }
 
     private func setupHintLabel() {
-        guard let hintLabel = hintLabel else { return }
-        guard let titleLabel = titleLabel else { return }
         addSubview(hintLabel)
         NSLayoutConstraint.activate([
             hintLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
@@ -85,35 +83,30 @@ extension SelectionButtonView {
     }
 
     private func setupButton() {
-        guard let button = buttonView else { return }
-        guard let hintLabel = hintLabel else { return }
-        addSubview(button)
+        addSubview(buttonView)
         let heightStyle = style?.button.height ?? Constants.Style.BillingForm.InputCountryButton.height.rawValue
 
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
+          buttonView.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
                                         constant: Constants.Padding.s.rawValue),
-            button.bottomAnchor.constraint(equalTo: bottomAnchor),
-            button.leadingAnchor.constraint(equalTo: leadingAnchor),
-            button.trailingAnchor.constraint(equalTo: trailingAnchor),
-            button.heightAnchor.constraint(equalToConstant: heightStyle)
+          buttonView.bottomAnchor.constraint(equalTo: bottomAnchor),
+          buttonView.leadingAnchor.constraint(equalTo: leadingAnchor),
+          buttonView.trailingAnchor.constraint(equalTo: trailingAnchor),
+          buttonView.heightAnchor.constraint(equalToConstant: heightStyle)
         ])
     }
     private func setupImageView() {
-        guard let image = image else { return }
-        guard let button = buttonView else { return }
-        addSubview(image)
+        addSubview(imageContainerView)
         NSLayoutConstraint.activate([
-            image.centerYAnchor.constraint(equalTo: button.centerYAnchor),
-            image.trailingAnchor.constraint(equalTo: trailingAnchor,
+          imageContainerView.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
+          imageContainerView.trailingAnchor.constraint(equalTo: trailingAnchor,
                                             constant: -Constants.Padding.l.rawValue),
-            image.widthAnchor.constraint(equalToConstant: 15),
-            image.heightAnchor.constraint(equalToConstant: 15)
+          imageContainerView.widthAnchor.constraint(equalToConstant: 15),
+          imageContainerView.heightAnchor.constraint(equalToConstant: 15)
         ])
     }
 
     private func setupErrorView() {
-        guard let errorView = errorView else { return }
         addSubview(errorView)
         NSLayoutConstraint.activate([
             errorView.topAnchor.constraint(equalTo: bottomAnchor),

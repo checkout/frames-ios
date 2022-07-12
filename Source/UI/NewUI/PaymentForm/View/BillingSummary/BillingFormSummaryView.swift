@@ -61,7 +61,8 @@ class BillingFormSummaryView: UIView {
         hintLabel?.update(with: style.hint)
         summaryLabel?.update(with: style.hint)
         buttonView?.update(with: style.button)
-        imageContainerView?.update(with: style.button.image, tintColor: style.button.imageTintColor)
+        self.style?.button.image = style.button.image?.imageFlippedForRightToLeftLayoutDirection()
+        imageContainerView?.update(with: self.style?.button.image, tintColor: style.button.imageTintColor)
         errorView?.update(style: style.error)
         summaryLabel?.update(with: style.summary)
         errorView?.isHidden = style.error?.isHidden ?? true
