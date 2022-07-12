@@ -8,7 +8,7 @@ final class FramesLogEventTests: XCTestCase {
     // MARK: - typeIdentifier
 
     func test_typeIdentifier_paymentFormPresented_returnsCorrectValue() {
-        
+
         let subject = FramesLogEvent.paymentFormPresented(theme: Theme(), locale: Locale.current)
         XCTAssertEqual("com.checkout.frames-mobile-sdk.payment_form_presented", subject.typeIdentifier)
     }
@@ -22,7 +22,7 @@ final class FramesLogEventTests: XCTestCase {
     // MARK: - monitoringLevel
 
     func test_monitoringLevel_paymentFormPresented_returnsCorrectValue() {
-        
+
         let subject = FramesLogEvent.paymentFormPresented(theme: Theme(), locale: Locale.current)
         XCTAssertEqual(.info, subject.monitoringLevel)
     }
@@ -40,8 +40,7 @@ final class FramesLogEventTests: XCTestCase {
         let stubTheme = StubTheme()
         let stubProperties: [FramesLogEvent.Property: AnyCodable] = [.red: true, .blue: false]
         stubTheme.propertiesToReturn = stubProperties
-        
-        
+
         let subject = FramesLogEvent.paymentFormPresented(theme: stubTheme, locale: locale)
         XCTAssertEqual([.theme: stubProperties.mapKeys(\.rawValue), .locale: locale.identifier].mapValues(AnyCodable.init(_:)), subject.properties)
     }

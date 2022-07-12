@@ -1,7 +1,9 @@
 included: # paths to include during linting. `--path` is ignored if present.
   - Source
-  - Tests
   - iOS Example
+  - iOS Example Frame
+  - iOS Example Frame Carthage
+  - iOS Example Frame SPM
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Carthage
   - Pods

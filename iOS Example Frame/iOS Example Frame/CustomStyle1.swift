@@ -9,7 +9,7 @@
 import UIKit
 import Frames
 
-//MARK: - Color Constants -
+// MARK: - Color Constants -
 
 /// Predefined custom 1 theme colors
 private enum Constants {
@@ -21,11 +21,11 @@ private enum Constants {
     static let textFieldBackgroundColor = UIColor(red: 240/255.0, green: 245/255.0, blue: 249/255.0, alpha: 1.0)
 }
 
-//**********************
-//MARK: - Payment Form
-//**********************
+// **********************
+// MARK: - Payment Form
+// **********************
 
-//MARK: - Main Payment Form
+// MARK: - Main Payment Form
 
 struct PaymentFormStyleCustom1: PaymentFormStyle {
     var addBillingSummary: CellButtonStyle?
@@ -34,7 +34,7 @@ struct PaymentFormStyleCustom1: PaymentFormStyle {
     var expiryDate: CellTextFieldStyle? = ExpiryDateFormStyleCustom1()
 }
 
-//MARK: - Billing Form WITH Summary ( Edit details )
+// MARK: - Billing Form WITH Summary ( Edit details )
 
 /// This style for summary view with pre-filled with Address or Phone
 struct EditBillingSummaryStyleCustom1: BillingSummaryViewStyle {
@@ -53,7 +53,7 @@ struct EditBillingSummaryStyleCustom1: BillingSummaryViewStyle {
     var error: ElementErrorViewStyle?
 }
 
-//MARK: - Billing Form WITH Summary Button ( Edit details )
+// MARK: - Billing Form WITH Summary Button ( Edit details )
 
 /// This style for summary button with pre-filled summary view style
 struct SummaryButtonStyleCustom1: ElementButtonStyle {
@@ -78,7 +78,7 @@ struct SummaryButtonStyleCustom1: ElementButtonStyle {
     var textLeading: CGFloat = 20
 }
 
-//MARK: - Billing Form WITHOUT Summary  ( Add details )
+// MARK: - Billing Form WITHOUT Summary  ( Add details )
 
 /// This style for `add billing details View` when summary is not provided
 struct AddBillingDetailsViewStyleCustom1: CellButtonStyle {
@@ -91,7 +91,7 @@ struct AddBillingDetailsViewStyleCustom1: CellButtonStyle {
     var error: ElementErrorViewStyle?
 }
 
-//MARK: - Billing Form WITHOUT Summary Button ( Add details )
+// MARK: - Billing Form WITHOUT Summary Button ( Add details )
 
 /// This style for `add billing details Button` when summary is not provided
 struct AddBillingDetailsButtonStyleCustom1: ElementButtonStyle {
@@ -116,9 +116,9 @@ struct AddBillingDetailsButtonStyleCustom1: ElementButtonStyle {
     var textLeading: CGFloat = 20
 }
 
-//MARK: - Expiry Date
+// MARK: - Expiry Date
 
-public struct ExpiryDateFormStyleCustom1 : CellTextFieldStyle {
+public struct ExpiryDateFormStyleCustom1: CellTextFieldStyle {
     public var isMandatory: Bool = true
     public var backgroundColor: UIColor = .clear
     public var title: ElementStyle? = TitleLabelStyleCustom1(text: "Expiry date")
@@ -128,11 +128,11 @@ public struct ExpiryDateFormStyleCustom1 : CellTextFieldStyle {
     public var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom1(text: "please fill expiry date")
 }
 
-//**********************
-//MARK: - Billing Form
-//**********************
+// **********************
+// MARK: - Billing Form
+// **********************
 
-//MARK: - Main Billing Form
+// MARK: - Main Billing Form
 
 struct BillingFormStyleCustom1: BillingFormStyle {
     var mainBackground: UIColor = Constants.grayBackgroundColor
@@ -143,85 +143,85 @@ struct BillingFormStyleCustom1: BillingFormStyle {
                                     .phoneNumber(BillingFormPhoneNumberCellStyleCustom1())]
 }
 
-//MARK: - Full Name
+// MARK: - Full Name
 
-struct BillingFormFullNameCellStyleCustom1 : CellTextFieldStyle {
+struct BillingFormFullNameCellStyleCustom1: CellTextFieldStyle {
     var isMandatory: Bool = true
     var isOptional: Bool = false
     var backgroundColor: UIColor = Constants.grayBackgroundColor
     var title: ElementStyle? = TitleLabelStyleCustom1(text: "Full Name", textColor: Constants.fontColorLabel)
-    var hint: ElementStyle? = nil
-    var mandatory: ElementStyle? = nil
+    var hint: ElementStyle?
+    var mandatory: ElementStyle?
     var textfield: ElementTextFieldStyle = TextFieldCustom1()
     var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom1(text: "Enter Name", textColor: Constants.errorLabelBackgroundColor)
 }
 
-//MARK: - Address Line 1
+// MARK: - Address Line 1
 
-struct BillingFormAddressLine1CellStyleCustom1 : CellTextFieldStyle {
+struct BillingFormAddressLine1CellStyleCustom1: CellTextFieldStyle {
     var isMandatory: Bool = true
     var isOptional: Bool = true
     var backgroundColor: UIColor = Constants.grayBackgroundColor
-    var title: ElementStyle? = TitleLabelStyleCustom1(text:  "Address Line 1*", textColor: Constants.fontColorLabel)
-    var hint: ElementStyle? = nil
-    var mandatory: ElementStyle? = nil
+    var title: ElementStyle? = TitleLabelStyleCustom1(text: "Address Line 1*", textColor: Constants.fontColorLabel)
+    var hint: ElementStyle?
+    var mandatory: ElementStyle?
     var textfield: ElementTextFieldStyle = TextFieldCustom1()
-    var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom1(text:  "Enter Address Line 1", textColor: Constants.errorLabelBackgroundColor)
+    var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom1(text: "Enter Address Line 1", textColor: Constants.errorLabelBackgroundColor)
 }
 
-//MARK: - Address Line 2
+// MARK: - Address Line 2
 
-struct BillingFormAddressLine2CellStyleCustom1 : CellTextFieldStyle {
+struct BillingFormAddressLine2CellStyleCustom1: CellTextFieldStyle {
     var isMandatory: Bool = true
     var isOptional: Bool = true
     var backgroundColor: UIColor = Constants.grayBackgroundColor
-    var title: ElementStyle? = TitleLabelStyleCustom1(text:  "Address Line 2", textColor: Constants.fontColorLabel)
-    var hint: ElementStyle? = nil
-    var mandatory: ElementStyle? = nil
+    var title: ElementStyle? = TitleLabelStyleCustom1(text: "Address Line 2", textColor: Constants.fontColorLabel)
+    var hint: ElementStyle?
+    var mandatory: ElementStyle?
     var textfield: ElementTextFieldStyle = TextFieldCustom1()
     var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom1(text: "Enter Address Line 2", textColor: Constants.errorLabelBackgroundColor)
 }
 
-//MARK: - City
+// MARK: - City
 
-struct BillingFormCityCellStyleCustom1 : CellTextFieldStyle {
+struct BillingFormCityCellStyleCustom1: CellTextFieldStyle {
     var isMandatory: Bool = true
     var isOptional: Bool = false
     var backgroundColor: UIColor = Constants.grayBackgroundColor
-    var title: ElementStyle? = TitleLabelStyleCustom1(text:  "Town*", textColor: Constants.fontColorLabel)
-    var hint: ElementStyle? = nil
-    var mandatory: ElementStyle? = nil
+    var title: ElementStyle? = TitleLabelStyleCustom1(text: "Town*", textColor: Constants.fontColorLabel)
+    var hint: ElementStyle?
+    var mandatory: ElementStyle?
     var textfield: ElementTextFieldStyle = TextFieldCustom1()
     var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom1(text: "Enter Town", textColor: Constants.errorLabelBackgroundColor)
 }
 
-//MARK: - State - County
+// MARK: - State - County
 
-struct BillingFormStateCellStyleCustom1 : CellTextFieldStyle {
+struct BillingFormStateCellStyleCustom1: CellTextFieldStyle {
     var isMandatory: Bool = true
     var isOptional: Bool = false
     var backgroundColor: UIColor = Constants.grayBackgroundColor
     var title: ElementStyle? = TitleLabelStyleCustom1(text: "County", textColor: Constants.fontColorLabel)
-    var hint: ElementStyle? = nil
-    var mandatory: ElementStyle? = nil
+    var hint: ElementStyle?
+    var mandatory: ElementStyle?
     var textfield: ElementTextFieldStyle = TextFieldCustom1()
     var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom1(text: "Enter County", textColor: Constants.errorLabelBackgroundColor)
 }
 
-//MARK: - Postcode - zip
+// MARK: - Postcode - zip
 
-struct BillingFormPostcodeCellStyleCustom1 : CellTextFieldStyle {
+struct BillingFormPostcodeCellStyleCustom1: CellTextFieldStyle {
     var isMandatory: Bool = true
     var isOptional: Bool = false
     var backgroundColor: UIColor = Constants.grayBackgroundColor
-    var title: ElementStyle? = TitleLabelStyleCustom1(text:  "Postcode*", textColor: Constants.fontColorLabel)
-    var hint: ElementStyle? = nil
-    var mandatory: ElementStyle? = nil
+    var title: ElementStyle? = TitleLabelStyleCustom1(text: "Postcode*", textColor: Constants.fontColorLabel)
+    var hint: ElementStyle?
+    var mandatory: ElementStyle?
     var textfield: ElementTextFieldStyle = TextFieldCustom1()
     var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom1(text: "Enter Postcode", textColor: Constants.errorLabelBackgroundColor)
 }
 
-//MARK: Country
+// MARK: Country
 
 struct BillingFormCountryCellStyleCustom1: CellButtonStyle {
     var isMandatory: Bool = true
@@ -229,25 +229,25 @@ struct BillingFormCountryCellStyleCustom1: CellButtonStyle {
     var button: ElementButtonStyle = CountryFormButtonStyleCustom1()
     var isOptional: Bool = false
     var title: ElementStyle? = TitleLabelStyleCustom1(text: "Country*", textColor: Constants.fontColorLabel)
-    var hint: ElementStyle? = nil
-    var mandatory: ElementStyle? = nil
+    var hint: ElementStyle?
+    var mandatory: ElementStyle?
     var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom1(text: "Enter Country", textColor: Constants.errorLabelBackgroundColor)
 }
 
-//MARK: - Phone Number
+// MARK: - Phone Number
 
-struct BillingFormPhoneNumberCellStyleCustom1 : CellTextFieldStyle {
+struct BillingFormPhoneNumberCellStyleCustom1: CellTextFieldStyle {
     var isMandatory: Bool = true
     var isOptional: Bool = false
     var backgroundColor: UIColor = Constants.grayBackgroundColor
-    var title: ElementStyle? = TitleLabelStyleCustom1(text:  "Phone*", textColor: Constants.fontColorLabel)
-    var hint: ElementStyle? = HintInputLabelStyleCustom1(isHidden: true, text:  "")
+    var title: ElementStyle? = TitleLabelStyleCustom1(text: "Phone*", textColor: Constants.fontColorLabel)
+    var hint: ElementStyle? = HintInputLabelStyleCustom1(isHidden: true, text: "")
     var textfield: ElementTextFieldStyle = TextFieldCustom1(isSupportingNumericKeyboard: true)
-    var mandatory: ElementStyle? = nil
-    var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom1(text:  "Enter Phone Number", textColor: Constants.errorLabelBackgroundColor)
+    var mandatory: ElementStyle?
+    var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom1(text: "Enter Phone Number", textColor: Constants.errorLabelBackgroundColor)
 }
 
-//MARK: - Main Header
+// MARK: - Main Header
 
 struct BillingFormHeaderCellStyleCustom1: BillingFormHeaderCellStyle {
     var backgroundColor = Constants.redBackgroundColor
@@ -256,7 +256,7 @@ struct BillingFormHeaderCellStyleCustom1: BillingFormHeaderCellStyle {
     var doneButton: ElementButtonStyle = DoneFormButtonStyleCustom1()
 }
 
-//MARK: - Header title
+// MARK: - Header title
 
 struct HeaderLabelFormStyleCustom1: ElementStyle {
     var backgroundColor: UIColor = Constants.redBackgroundColor
@@ -266,7 +266,7 @@ struct HeaderLabelFormStyleCustom1: ElementStyle {
     var textColor: UIColor  = .white
 }
 
-//MARK: - Header Cancel
+// MARK: - Header Cancel
 
 struct CancelButtonFormStyleCustom1: ElementButtonStyle {
     var cornerRadius: CGFloat = 1.0
@@ -290,12 +290,12 @@ struct CancelButtonFormStyleCustom1: ElementButtonStyle {
     var textLeading: CGFloat = 0
 }
 
-//MARK: - Header Done
+// MARK: - Header Done
 
 struct DoneFormButtonStyleCustom1: ElementButtonStyle {
     var cornerRadius: CGFloat = 1.0
     var borderWidth: CGFloat = 1.0
-    var image: UIImage? = nil
+    var image: UIImage?
     var text: String = "Done"
     var font: UIFont = UIFont.systemFont(ofSize: 15)
     var disabledTextColor: UIColor = .doveGray
@@ -314,7 +314,7 @@ struct DoneFormButtonStyleCustom1: ElementButtonStyle {
     var textLeading: CGFloat = 0
 }
 
-//MARK: - Common Title Label
+// MARK: - Common Title Label
 
 struct TitleLabelStyleCustom1: ElementStyle {
     var backgroundColor: UIColor = .clear
@@ -324,7 +324,7 @@ struct TitleLabelStyleCustom1: ElementStyle {
     var textColor: UIColor = .systemPink
 }
 
-//MARK: - Common TextField
+// MARK: - Common TextField
 
 struct TextFieldCustom1: ElementTextFieldStyle {
     var cornerRadius: CGFloat = 0
@@ -346,7 +346,7 @@ struct TextFieldCustom1: ElementTextFieldStyle {
     var isSupportingNumericKeyboard: Bool = false
 }
 
-//MARK: - Common Error View
+// MARK: - Common Error View
 
 struct ErrorInputLabelStyleCustom1: ElementErrorViewStyle {
     var isHidden: Bool = true
@@ -360,7 +360,7 @@ struct ErrorInputLabelStyleCustom1: ElementErrorViewStyle {
     var height: Double = 18
 }
 
-//MARK: - Country
+// MARK: - Country
 
 struct CountryFormButtonStyleCustom1: ElementButtonStyle {
     var cornerRadius: CGFloat = 1.0
@@ -384,7 +384,7 @@ struct CountryFormButtonStyleCustom1: ElementButtonStyle {
     var textLeading: CGFloat = 20
 }
 
-//MARK: - Common Hint
+// MARK: - Common Hint
 
 struct HintInputLabelStyleCustom1: ElementStyle {
     var backgroundColor: UIColor = .clear

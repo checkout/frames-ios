@@ -42,7 +42,7 @@ class TextFieldView: UIView {
     @objc func textFieldEditingChanged(textField: UITextField) {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: "")
     }
-    
+
     private func setupConstraintsInOrder() {
         let securedTextField = SecureDisplayView(secure: textField).disabledAutoresizingIntoConstraints()
         addSubview(securedTextField)
@@ -63,7 +63,7 @@ extension TextFieldView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldReturn() ?? false
     }
-  
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         delegate?.textField(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true
     }

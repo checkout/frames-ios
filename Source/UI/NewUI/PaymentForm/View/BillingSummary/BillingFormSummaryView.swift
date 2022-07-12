@@ -7,7 +7,7 @@ protocol BillingFormSummaryViewDelegate: AnyObject {
 class BillingFormSummaryView: UIView {
     weak var delegate: BillingFormSummaryViewDelegate?
     private var style: BillingSummaryViewStyle?
-    
+
     private(set) lazy var titleLabel: LabelView? = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
@@ -76,7 +76,7 @@ class BillingFormSummaryView: UIView {
 
 extension BillingFormSummaryView {
 
-     func setupViewsInOrder(){
+     func setupViewsInOrder() {
         setupTitleLabel()
         setupHintLabel()
         setupSummaryLabel()
@@ -146,11 +146,11 @@ extension BillingFormSummaryView {
             button.topAnchor.constraint(equalTo: summarySeparatorLineView.bottomAnchor, constant: 10),
             button.bottomAnchor.constraint(equalTo: bottomAnchor),
             button.leadingAnchor.constraint(equalTo: leadingAnchor),
-            button.trailingAnchor.constraint(equalTo: trailingAnchor),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 
-    private func setupSummaryContainerView(){
+    private func setupSummaryContainerView() {
         guard let summaryContainerView = summaryContainerView else { return }
         guard let hintLabel = hintLabel else { return }
         guard let button = buttonView else { return }

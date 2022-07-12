@@ -7,17 +7,17 @@ protocol PaymentViewControllerDelegate: AnyObject {
     func expiryDateIsUpdated(value: ExpiryDate)
 }
 
-final class PaymentViewController: UIViewController{
+final class PaymentViewController: UIViewController {
 
-    //MARK: - Variables
+    // MARK: - Variables
 
     weak var delegate: PaymentViewControllerDelegate?
-    
+
     private(set) var viewModel: PaymentViewModel
     private var notificationCenter = NotificationCenter.default
-    //MARK: - UI properties
+    // MARK: - UI properties
 
-    //TODO: Replace it with new header
+    // TODO: Replace it with new header
     private lazy var emptyHeader: UIView = {
         UIView().disabledAutoresizingIntoConstraints()
     }()
@@ -57,7 +57,7 @@ final class PaymentViewController: UIViewController{
         InputView()
     }()
 
-    //MARK: - functions
+    // MARK: - functions
 
     init(viewModel: PaymentViewModel) {
         self.viewModel = viewModel
@@ -79,11 +79,10 @@ final class PaymentViewController: UIViewController{
         deregisterKeyboardHandlers(notificationCenter: notificationCenter)
     }
 
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        //TODO: Remove when the new header view is added
+        // TODO: Remove when the new header view is added
         navigationController?.isNavigationBarHidden = false
         setUpKeyboard()
     }
@@ -121,10 +120,10 @@ final class PaymentViewController: UIViewController{
             self.scrollView.contentInset = contentInset
         }
     }
-  
+
 }
 
-//Mark: View Model Integration
+// MARK: View Model Integration
 
 extension PaymentViewController {
 
@@ -168,24 +167,24 @@ extension PaymentViewController {
         }
     }
 
-    private func updateCardNumber(){
+    private func updateCardNumber() {
         guard let style = viewModel.paymentFormStyle?.cardNumber else { return }
         cardNumberView.update(style: style, image: "icon-visa".image(forClass: CardListCell.self))
     }
 
-    private func updateExpiryDate(){
+    private func updateExpiryDate() {
         guard let style = viewModel.paymentFormStyle?.expiryDate else { return }
         expiryDateView.update(style: style)
     }
 
-    private func updateAddBillingFormButtonView(){
+    private func updateAddBillingFormButtonView() {
         guard let style = viewModel.paymentFormStyle?.addBillingSummary else { return }
         addBillingFormButtonView.isHidden = false
         billingFormSummaryView.isHidden = true
         addBillingFormButtonView.update(style: style)
     }
 
-    private func updateEditBillingSummaryView(){
+    private func updateEditBillingSummaryView() {
         guard let style = viewModel.paymentFormStyle?.editBillingSummary else { return }
         addBillingFormButtonView.isHidden = true
         billingFormSummaryView.isHidden = false
@@ -193,7 +192,7 @@ extension PaymentViewController {
     }
 }
 
-//MARK: Setup Views
+// MARK: Setup Views
 
 extension PaymentViewController {
 
@@ -204,7 +203,7 @@ extension PaymentViewController {
         addArrangedSubviewForStackView()
     }
 
-    private func addArrangedSubviewForStackView(){
+    private func addArrangedSubviewForStackView() {
         stackView.addArrangedSubview(cardNumberView)
         stackView.addArrangedSubview(expiryDateView)
         stackView.addArrangedSubview(addBillingFormButtonView)
@@ -235,7 +234,7 @@ extension PaymentViewController {
         ])
     }
 
-    func setupStackView(){
+    func setupStackView() {
         scrollView.addSubview(stackView)
         stackView.setupConstraintEqualTo(view: scrollView, constant: Constants.Padding.l.rawValue)
       stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -Constants.Padding.xxxl.rawValue).isActive = true

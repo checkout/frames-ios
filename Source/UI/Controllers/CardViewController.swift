@@ -129,7 +129,7 @@ public class CardViewController: UIViewController,
                                  keyboardWillShow: #selector(keyboardWillShow),
                                  keyboardWillHide: #selector(keyboardWillHide))
         navigationController?.isNavigationBarHidden = false
-        
+
         guard let checkoutAPIService = checkoutAPIService else {
             return
         }
