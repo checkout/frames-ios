@@ -63,7 +63,7 @@ class InputView: UIView {
 
     // MARK: - Update subviews style
 
-    func update(style: CellTextFieldStyle?, textFieldValue: String? = nil, image: UIImage? = nil){
+    func update(style: CellTextFieldStyle?, textFieldValue: String? = nil, image: UIImage? = nil) {
         guard let style = style else { return }
         self.style = style
         backgroundColor = style.backgroundColor
@@ -104,7 +104,7 @@ class InputView: UIView {
 
 extension InputView {
 
-    private func setupViewsInOrder(){
+    private func setupViewsInOrder() {
         backgroundColor = style?.backgroundColor
         setupHeaderLabel()
         setupMandatoryLabel()

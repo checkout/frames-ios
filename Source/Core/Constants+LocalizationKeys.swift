@@ -34,7 +34,7 @@ extension Constants {
         }
 
         struct BillingForm {
-            
+
             struct Cell {
                 static let optionalInput = "BillingFormOptional".localized
             }

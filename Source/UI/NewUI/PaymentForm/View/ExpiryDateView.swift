@@ -41,7 +41,7 @@ public final class ExpiryDateView: UIView {
     dateInputView.update(style: self.style)
   }
 
-  func updateExpiryDate(to newDate: String?){
+  func updateExpiryDate(to newDate: String?) {
     guard newDate?.count == dateFormatTextCount else {
       updateErrorViewStyle(isHidden: false, textfieldText: newDate, error: .invalidYear)
       return
@@ -139,7 +139,7 @@ public final class ExpiryDateView: UIView {
     return true
   }
 
-  private func updateErrorViewStyle(isHidden: Bool, textfieldText: String?, error: ValidationError.ExpiryDate? = nil){
+  private func updateErrorViewStyle(isHidden: Bool, textfieldText: String?, error: ValidationError.ExpiryDate? = nil) {
     style?.error?.text = error == .inThePast ?
       Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.past :
       Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid
@@ -153,7 +153,7 @@ extension ExpiryDateView: TextFieldViewDelegate {
   func textFieldShouldBeginEditing(textField: UITextField) {}
   func textFieldShouldReturn() -> Bool {  return false }
   func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
-    if textField.text?.count ?? 0 < dateFormatTextCount  {
+    if textField.text?.count ?? 0 < dateFormatTextCount {
       updateErrorViewStyle(isHidden: false, textfieldText: textField.text, error: .invalidMonth)
     }
     return true
@@ -186,15 +186,14 @@ extension ExpiryDateView: TextFieldViewDelegate {
       return true
     }
 
-    //check for max length including added spacers which all equal to 5
+    // check for max length including added spacers which all equal to 5
     guard !string.isEmpty else { return false }
     let replacementText = string.replacingOccurrences(of: " ", with: "")
 
-    //verify entered text is a numeric value
+    // verify entered text is a numeric value
     guard CharacterSet(charactersIn: replacementText).isSubset(of: .decimalDigits) else { return false }
     guard let currentDigit = Int(replacementText) else { return false }
 
     return validateInput(textField, currentDigit: currentDigit, location: range.location, replacementText: replacementText)
   }
 }
-

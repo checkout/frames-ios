@@ -39,7 +39,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
     }
   }
 
-  private func updateCardNumber(){
+  private func updateCardNumber() {
     updateCardNumberView?()
   }
 
@@ -71,15 +71,15 @@ class DefaultPaymentViewModel: PaymentViewModel {
     updateEditBillingSummaryView?()
   }
 
-  private func updateExpiryDate(){
+  private func updateExpiryDate() {
     updateExpiryDateView?()
   }
 
-  private func updateSecurityCode(){
+  private func updateSecurityCode() {
     updateSecurityCodeView?()
   }
 
-  private func isAddBillingSummaryNotUpdated() -> Bool{
+  private func isAddBillingSummaryNotUpdated() -> Bool {
     guard billingFormData?.address != nil ||
             billingFormData?.phone != nil else {
       let addBillingSummary = paymentFormStyle?.addBillingSummary ?? DefaultAddBillingDetailsViewStyle()
@@ -106,7 +106,7 @@ extension DefaultPaymentViewModel: BillingFormViewModelDelegate {
 }
 
 extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
-  //TODO: Will fixed in payment ticket
+  // TODO: Will fixed in payment ticket
   func expiryDateIsUpdated(value: ExpiryDate) {}
 
   func addBillingButtonIsPressed(sender: UINavigationController?) {

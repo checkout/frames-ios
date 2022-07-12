@@ -21,4 +21,3 @@ public final class DefaultEditBillingDetailsButtonStyle: ElementButtonStyle {
     public var borderWidth: CGFloat = Constants.Style.PaymentForm.InputBillingFormButton.borderWidth.rawValue
     public var textLeading: CGFloat = Constants.Style.PaymentForm.InputBillingFormButton.textLeading.rawValue
 }
-

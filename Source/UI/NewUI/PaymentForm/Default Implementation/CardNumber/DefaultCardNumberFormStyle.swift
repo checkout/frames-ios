@@ -8,10 +8,10 @@
 
 import UIKit
 
-public struct DefaultCardNumberFormStyle : CellTextFieldStyle {
+public struct DefaultCardNumberFormStyle: CellTextFieldStyle {
     public var isMandatory: Bool = true
     public var backgroundColor: UIColor = .clear
-    public var title: ElementStyle? = DefaultTitleLabelStyle(text:  Constants.LocalizationKeys.PaymentForm.CardNumber.title)
+    public var title: ElementStyle? = DefaultTitleLabelStyle(text: Constants.LocalizationKeys.PaymentForm.CardNumber.title)
     public var hint: ElementStyle?
     public var mandatory: ElementStyle?
     public var textfield: ElementTextFieldStyle = DefaultTextField(placeHolder: "")

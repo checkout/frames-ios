@@ -24,7 +24,7 @@ public final class SecurityCodeView: UIView {
     self.cardValidator = cardValidator
     super.init(frame: .zero)
 
-    //setup security code view
+    // setup security code view
     addSubview(codeInputView)
     codeInputView.setupConstraintEqualTo(view: self)
   }
@@ -39,7 +39,7 @@ public final class SecurityCodeView: UIView {
     codeInputView.update(style: self.style)
   }
 
-  private func updateErrorViewStyle(isHidden: Bool, textfieldText: String?){
+  private func updateErrorViewStyle(isHidden: Bool, textfieldText: String?) {
     style?.error?.isHidden = isHidden
     style?.textfield.text = textfieldText ?? ""
     codeInputView.update(style: style)
@@ -50,7 +50,7 @@ extension SecurityCodeView: TextFieldViewDelegate {
   func textFieldShouldBeginEditing(textField: UITextField) {}
   func textFieldShouldReturn() -> Bool {  return false }
   func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
-    if textField.text?.count ?? 0 < maxSecurityCodeCount  {
+    if textField.text?.count ?? 0 < maxSecurityCodeCount {
       updateErrorViewStyle(isHidden: false, textfieldText: textField.text)
     }
     return true
