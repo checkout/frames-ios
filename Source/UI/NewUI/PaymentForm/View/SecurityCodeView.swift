@@ -10,7 +10,7 @@ import Checkout
 
 public final class SecurityCodeView: UIView {
 
-  private let securityCodeCount = 4
+  private let maxSecurityCodeCount = 4
   private var cardValidator: CardValidator
   private(set) var style: CellTextFieldStyle?
 
@@ -50,7 +50,7 @@ extension SecurityCodeView: TextFieldViewDelegate {
   func textFieldShouldBeginEditing(textField: UITextField) {}
   func textFieldShouldReturn() -> Bool {  return false }
   func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
-    if textField.text?.count ?? 0 < securityCodeCount  {
+    if textField.text?.count ?? 0 < maxSecurityCodeCount  {
       updateErrorViewStyle(isHidden: false, textfieldText: textField.text)
     }
     return true
@@ -62,14 +62,10 @@ extension SecurityCodeView: TextFieldViewDelegate {
 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     updateErrorViewStyle(isHidden: true, textfieldText: textField.text)
-    guard range.location < securityCodeCount else { return false }
-    guard range.length == 0 else { return true }
-    //check for max length including added spacers which all equal to 5
-    guard !string.isEmpty else { return false }
-    let replacementText = string.replacingOccurrences(of: " ", with: "")
-
-    //verify entered text is a numeric value
-    guard CharacterSet(charactersIn: replacementText).isSubset(of: .decimalDigits) else { return false }
-    return true
+    guard range.location < maxSecurityCodeCount else { return false }
+    // Enable deleting of text
+    if string.isEmpty { return true }
+    // Prevent non numeric input from being inserted
+    return Int(string) != nil
   }
 }

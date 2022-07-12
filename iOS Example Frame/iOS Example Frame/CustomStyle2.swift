@@ -137,7 +137,7 @@ public struct SecurityCodeFormStyleCustom2 : CellTextFieldStyle {
     public var hint: ElementStyle? = HintInputLabelStyleCustom2(text: "3 - 4 digit code on your card")
     public var mandatory: ElementStyle?
     public var textfield: ElementTextFieldStyle = TextFieldCustom2()
-    public var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom2(text: "please fill Security code")
+    public var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom2(text: "please fill security code")
 }
 
 //**********************
