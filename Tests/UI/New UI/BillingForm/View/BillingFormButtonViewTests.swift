@@ -14,26 +14,25 @@ class BillingFormButtonViewTests: XCTestCase {
     }
 
     func testHeaderLabelStyle() {
-        XCTAssertEqual(view.titleLabel?.label?.text, style.button.text)
-        XCTAssertEqual(view.titleLabel?.label?.font, style.button.font)
-        XCTAssertEqual(view.titleLabel?.label?.textColor, style.title?.textColor)
+        XCTAssertEqual(view.titleLabel.label?.text, style.button.text)
+        XCTAssertEqual(view.titleLabel.label?.font, style.button.font)
+        XCTAssertEqual(view.titleLabel.label?.textColor, style.title?.textColor)
     }
 
     func testButtonStyle() {
-        XCTAssertEqual(view.buttonView?.button?.layer.borderColor, style.button.normalBorderColor.cgColor)
-        XCTAssertEqual(view.buttonView?.button?.isEnabled, style.button.isEnabled)
-        XCTAssertEqual(view.buttonView?.button?.layer.cornerRadius, style.button.cornerRadius)
-        XCTAssertEqual(view.buttonView?.button?.layer.borderWidth, style.button.borderWidth)
+        XCTAssertEqual(view.buttonView.button?.layer.borderColor, style.button.normalBorderColor.cgColor)
+        XCTAssertEqual(view.buttonView.button?.isEnabled, style.button.isEnabled)
+        XCTAssertEqual(view.buttonView.button?.layer.cornerRadius, style.button.cornerRadius)
+        XCTAssertEqual(view.buttonView.button?.layer.borderWidth, style.button.borderWidth)
     }
 
     func testImageStyle() {
-        XCTAssertEqual(view.image?.imageView.image, style.button.image)
-        XCTAssertEqual(view.image?.imageView.tintColor, style.button.disabledTintColor)
+        XCTAssertEqual(view.imageContainerView.imageView?.image, view.style?.button.image)
+        XCTAssertEqual(view.imageContainerView.imageView?.tintColor, style.button.disabledTintColor)
     }
 
-    func testErrorStyle() throws {
-        let isHidden = try XCTUnwrap(view.errorView?.isHidden)
-        XCTAssertTrue(isHidden)
+    func testErrorStyle()  {
+          XCTAssertTrue(view.errorView.isHidden)
     }
 
 }
