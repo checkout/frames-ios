@@ -33,62 +33,41 @@ class CardNumberViewModelTests: XCTestCase {
     super.tearDown()
   }
 
-  func test_textFieldShouldReturn_returnTrue() {
-    XCTAssertTrue(subject.textFieldShouldReturn())
-  }
-
-  func test_textFieldShouldEndEditing_returnTrue() {
-    XCTAssertTrue(subject.textFieldShouldEndEditing(textField: UITextField(), replacementString: ""))
-  }
-
-  func test_textField_rangeIsInvalid_returnTrue() {
-    //given
-    let textField = UITextField()
-    textField.text = ""
-    let range = NSRange(3...4)
-
-    // then
-    XCTAssertTrue(subject.textField(textField, shouldChangeCharactersIn: range, replacementString: ""))
-  }
-
   func test_textField_tooLong_noChange() {
     // given
-    let textField = UITextField()
     mockCardValidator.eagerValidateCardNumberToReturn = .failure(.tooLong)
 
     // when
-    XCTAssertFalse(subject.textField(textField, shouldChangeCharactersIn: NSRange(), replacementString: "12345"))
+    let result = subject.textFieldUpdate(from: "12345")
 
     // then
-    XCTAssertEqual(textField.text, "")
+    XCTAssertNil(result)
     XCTAssertEqual(mockCardValidator.eagerValidateCardNumberCalledWith, "12345")
     XCTAssertEqual(mockCardNumberView.schemeIcon, .blank)
   }
 
   func test_textField_invalidScheme_changeTextAndIcon() {
     // given
-    let textField = UITextField()
     mockCardValidator.eagerValidateCardNumberToReturn = .failure(.invalidScheme)
 
     // when
-    XCTAssertFalse(subject.textField(textField, shouldChangeCharactersIn: NSRange(), replacementString: "12345"))
+    let result = subject.textFieldUpdate(from: "12345")
 
     // then
-    XCTAssertEqual(textField.text, "12345")
+    XCTAssertEqual(result, "12345")
     XCTAssertEqual(mockCardValidator.eagerValidateCardNumberCalledWith, "12345")
     XCTAssertEqual(mockCardNumberView.schemeIcon, .blank)
   }
 
   func test_textField_invalidCharacters_noChange() {
     // given
-    let textField = UITextField()
     mockCardValidator.eagerValidateCardNumberToReturn = .failure(.cardNumber(.invalidCharacters))
 
     // when
-    XCTAssertFalse(subject.textField(textField, shouldChangeCharactersIn: NSRange(), replacementString: "12345"))
+    let result = subject.textFieldUpdate(from: "12345")
 
     // then
-    XCTAssertEqual(textField.text, "")
+    XCTAssertNil(result)
     XCTAssertEqual(mockCardValidator.eagerValidateCardNumberCalledWith, "12345")
     XCTAssertEqual(mockCardNumberView.schemeIcon, .blank)
   }
@@ -108,14 +87,13 @@ class CardNumberViewModelTests: XCTestCase {
 
     testCases.forEach { (scheme, icon) in
       // given
-      let textField = UITextField()
       mockCardValidator.eagerValidateCardNumberToReturn = .success(scheme)
 
       // when
-      XCTAssertFalse(subject.textField(textField, shouldChangeCharactersIn: NSRange(), replacementString: "1234"))
+      let result = subject.textFieldUpdate(from: "1234")
 
       // then
-      XCTAssertEqual(textField.text, "1234")
+      XCTAssertEqual(result, "1234")
       XCTAssertEqual(mockCardValidator.eagerValidateCardNumberCalledWith, "1234")
       XCTAssertEqual(mockCardNumberView.schemeIcon, icon)
       XCTAssertEqual(mockCardNumberViewModelDelegate.updateCalledWith?.scheme, scheme)
@@ -145,14 +123,13 @@ class CardNumberViewModelTests: XCTestCase {
 
     testCases.forEach { (scheme, cardNumber, formattedCardNumber) in
       // given
-      let textField = UITextField()
       mockCardValidator.eagerValidateCardNumberToReturn = .success(scheme)
 
       // when
-      XCTAssertFalse(subject.textField(textField, shouldChangeCharactersIn: NSRange(), replacementString: cardNumber))
+      let result = subject.textFieldUpdate(from: cardNumber)
 
       // then
-      XCTAssertEqual(textField.text, formattedCardNumber)
+      XCTAssertEqual(result, formattedCardNumber)
       XCTAssertEqual(mockCardValidator.eagerValidateCardNumberCalledWith, cardNumber)
       XCTAssertEqual(mockCardNumberViewModelDelegate.updateCalledWith?.scheme, scheme)
       XCTAssertEqual(mockCardNumberViewModelDelegate.updateCalledWith?.cardNumber, cardNumber)

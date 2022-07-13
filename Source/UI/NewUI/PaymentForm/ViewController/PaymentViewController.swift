@@ -57,7 +57,10 @@ final class PaymentViewController: UIViewController{
 
     private lazy var cardNumberView: CardNumberView = {
       let cardNumberViewModel = CardNumberViewModel(cardValidator: cardValidator)
-      return cardNumberViewModel.buildView()
+      let cardNumberView = CardNumberView(viewModel: cardNumberViewModel)
+      cardNumberViewModel.cardNumberView = cardNumberView
+
+      return cardNumberView
     }()
 
     //MARK: - functions

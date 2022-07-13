@@ -299,6 +299,8 @@
 		CB10619828784821007322FE /* CardNumberViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB10619728784821007322FE /* CardNumberViewModelTests.swift */; };
 		CB10619A287861DC007322FE /* MockCardNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB106199287861DC007322FE /* MockCardNumberView.swift */; };
 		CB10619C28786650007322FE /* MockCardNumberViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB10619B28786650007322FE /* MockCardNumberViewModelDelegate.swift */; };
+		CBB6F521287EC11F00A1379D /* CardNumberViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB6F520287EC11F00A1379D /* CardNumberViewTests.swift */; };
+		CBB6F523287EC18100A1379D /* MockCardNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB6F522287EC18100A1379D /* MockCardNumberViewModel.swift */; };
 		E6646FA320CE6C0A00D8353A /* iOS_Example_FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646FA220CE6C0A00D8353A /* iOS_Example_FrameUITests.swift */; };
 		F59820122805B75F007AB07C /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5981FFD2805B75F007AB07C /* LaunchScreen.strings */; };
 		F59820132805B75F007AB07C /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5981FFF2805B75F007AB07C /* Main.strings */; };
@@ -644,6 +646,8 @@
 		CB10619B28786650007322FE /* MockCardNumberViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCardNumberViewModelDelegate.swift; sourceTree = "<group>"; };
 		CB8CE61C2805D00E0069ADB0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB9412CE2825647600C889E8 /* Checkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Checkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBB6F520287EC11F00A1379D /* CardNumberViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberViewTests.swift; sourceTree = "<group>"; };
+		CBB6F522287EC18100A1379D /* MockCardNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCardNumberViewModel.swift; sourceTree = "<group>"; };
 		E6646FA220CE6C0A00D8353A /* iOS_Example_FrameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_Example_FrameUITests.swift; sourceTree = "<group>"; };
 		F5981FF72805B685007AB07C /* CheckoutEventLoggerKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CheckoutEventLoggerKit.xcframework; path = "../Carthage/Checkouts/checkout-event-logger-ios-framework/CheckoutEventLoggerKit.xcframework"; sourceTree = SOURCE_ROOT; };
 		F5981FFE2805B75F007AB07C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -1525,6 +1529,7 @@
 				9573235F286EF50F0068C115 /* CvvInputViewMockDelegate.swift */,
 				CB106199287861DC007322FE /* MockCardNumberView.swift */,
 				CB10619B28786650007322FE /* MockCardNumberViewModelDelegate.swift */,
+				CBB6F522287EC18100A1379D /* MockCardNumberViewModel.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -1657,7 +1662,7 @@
 		CB1061962878480B007322FE /* PaymentForm */ = {
 			isa = PBXGroup;
 			children = (
-				CB10619728784821007322FE /* CardNumberViewModelTests.swift */,
+				CBB6F51F287EC10700A1379D /* CardNumber */,
 			);
 			path = PaymentForm;
 			sourceTree = "<group>";
@@ -1674,6 +1679,15 @@
 			);
 			name = Tests;
 			path = ../Tests;
+			sourceTree = "<group>";
+		};
+		CBB6F51F287EC10700A1379D /* CardNumber */ = {
+			isa = PBXGroup;
+			children = (
+				CB10619728784821007322FE /* CardNumberViewModelTests.swift */,
+				CBB6F520287EC11F00A1379D /* CardNumberViewTests.swift */,
+			);
+			path = CardNumber;
 			sourceTree = "<group>";
 		};
 		E6646F8120CE6C0900D8353A = {
@@ -2124,6 +2138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				957323D5286EF50F0068C115 /* FullNameValidatorTests.swift in Sources */,
+				CBB6F521287EC11F00A1379D /* CardNumberViewTests.swift in Sources */,
 				957323DE286EF50F0068C115 /* ExpiryDateViewTests.swift in Sources */,
 				957323B6286EF50F0068C115 /* StubCheckoutEventLogger.swift in Sources */,
 				957323C6286EF50F0068C115 /* CardListCellTests.swift in Sources */,
@@ -2172,6 +2187,7 @@
 				957323AD286EF50F0068C115 /* BillingFormViewModelEditingMockDelegate.swift in Sources */,
 				957323E2286EF50F0068C115 /* SimpleLoadingViewControllerTests.swift in Sources */,
 				957323B2286EF50F0068C115 /* CvvViewControllerDelegateMock.swift in Sources */,
+				CBB6F523287EC18100A1379D /* MockCardNumberViewModel.swift in Sources */,
 				9573239C286EF50F0068C115 /* CardUtilsTests.swift in Sources */,
 				957323DA286EF50F0068C115 /* MirrorObject.swift in Sources */,
 				957323DD286EF50F0068C115 /* BillingFormTextFieldErrorViewTests.swift in Sources */,

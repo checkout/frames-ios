@@ -64,8 +64,8 @@ class InputView: UIView {
 
     // MARK: - Update subviews style
 
-    func update(style: CellTextFieldStyle? = nil, textFieldValue: String? = nil, image: UIImage? = nil, withAnimation: Bool = false){
-        updateTextFieldContainer(image: image, withAnimation: withAnimation)
+    func update(style: CellTextFieldStyle? = nil, textFieldValue: String? = nil, image: UIImage? = nil, animated: Bool = false){
+        updateTextFieldContainer(image: image, animated: animated)
 
         guard let style = style else { return }
         self.style = style
@@ -91,14 +91,9 @@ class InputView: UIView {
         textFieldContainer.backgroundColor = style.textfield.backgroundColor
     }
 
-    private func updateTextFieldContainer(image: UIImage?, withAnimation: Bool) {
+    private func updateTextFieldContainer(image: UIImage?, animated: Bool) {
         iconView.isHidden = image == nil
-
-        if withAnimation {
-            iconView.updateWithAnimation(with: image)
-        } else {
-            iconView.update(with: image)
-        }
+        iconView.update(with: image, animated: animated)
     }
 
     private func updateErrorView(style: CellTextFieldStyle) {

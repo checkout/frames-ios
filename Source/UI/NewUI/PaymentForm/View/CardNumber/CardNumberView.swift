@@ -25,7 +25,7 @@ final class CardNumberView: UIView, CardNumberViewProtocol {
 
   private lazy var cardNumberInputView: InputView = {
     let view = InputView().disabledAutoresizingIntoConstraints()
-    view.delegate = viewModel
+    view.delegate = self
     return view
   }()
 
@@ -40,7 +40,7 @@ final class CardNumberView: UIView, CardNumberViewProtocol {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func update(style: CellTextFieldStyle?) {
+  func update(style: CellTextFieldStyle) {
     cardNumberInputView.update(style: style, image: image(for: schemeIcon))
   }
 
@@ -50,10 +50,34 @@ final class CardNumberView: UIView, CardNumberViewProtocol {
   }
 
   private func updateIcon() {
-    cardNumberInputView.update(image: image(for: schemeIcon), withAnimation: true)
+    cardNumberInputView.update(image: image(for: schemeIcon), animated: true)
   }
 
   private func image(for schemeIcon: Constants.Bundle.SchemeIcon) -> UIImage? {
     return schemeIcon.rawValue.image(forClass: Self.self)
+  }
+}
+
+extension CardNumberView: TextFieldViewDelegate {
+  func textFieldShouldBeginEditing(textField: UITextField) { }
+  func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) { }
+  func textFieldShouldReturn() -> Bool { true }
+  func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool { true }
+
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    guard
+      let oldValue = textField.text,
+      let textRange = Range(range, in: oldValue)
+    else {
+      return true
+    }
+
+    let text = oldValue.replacingCharacters(in: textRange, with: string)
+
+    if let newTextFieldValue = viewModel.textFieldUpdate(from: text) {
+      textField.text = newTextFieldValue
+    }
+
+    return false
   }
 }

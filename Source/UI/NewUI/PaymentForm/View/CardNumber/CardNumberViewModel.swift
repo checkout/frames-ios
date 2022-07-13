@@ -6,16 +6,17 @@
 //  Copyright © 2022 Checkout. All rights reserved.
 //
 
-import UIKit
 import Checkout
 
 protocol CardNumberViewModelDelegate: AnyObject {
   func update(cardNumber: String, scheme: Card.Scheme)
 }
 
-protocol CardNumberViewModelProtocol: TextFieldViewDelegate { }
+protocol CardNumberViewModelProtocol {
+  func textFieldUpdate(from: String) -> String?
+}
 
-class CardNumberViewModel: CardNumberViewModelProtocol {
+class CardNumberViewModel {
   weak var delegate: CardNumberViewModelDelegate?
   weak var cardNumberView: CardNumberViewProtocol?
 
@@ -24,12 +25,6 @@ class CardNumberViewModel: CardNumberViewModelProtocol {
 
   init(cardValidator: CardValidating) {
     self.cardValidator = cardValidator
-  }
-
-  func buildView() -> CardNumberView {
-    let cardNumberView = CardNumberView(viewModel: self)
-    self.cardNumberView = cardNumberView
-    return cardNumberView
   }
 
   private func schemeIconLocation(scheme: Card.Scheme) -> Constants.Bundle.SchemeIcon {
@@ -56,29 +51,16 @@ class CardNumberViewModel: CardNumberViewModelProtocol {
   }
 }
 
-extension CardNumberViewModel: TextFieldViewDelegate {
-  func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {}
-  func textFieldShouldBeginEditing(textField: UITextField) {}
-  func textFieldShouldReturn() -> Bool { return true }
-  func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool { return true }
-
-  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    guard
-      let text = textField.text,
-      let textRange = Range(range, in: text)
-    else {
-      return true
-    }
-
-    // using CardUtils until we add this functionality into Checkout SDK
-    let cardNumber = cardUtils.removeNonDigits(from: text.replacingCharacters(in: textRange, with: string))
+extension CardNumberViewModel: CardNumberViewModelProtocol {
+  func textFieldUpdate(from text: String) -> String? {
+    let cardNumber = cardUtils.removeNonDigits(from: text)
 
     if let scheme = shouldAllowChange(cardNumber: cardNumber) {
       // using CardUtils until we add this functionality into Checkout SDK
-      textField.text = cardUtils.format(cardNumber: cardNumber, scheme: scheme)
+      return cardUtils.format(cardNumber: cardNumber, scheme: scheme)
     }
 
-    return false
+    return nil
   }
 
   private func shouldAllowChange(cardNumber: String) -> Card.Scheme? {
