@@ -28,7 +28,6 @@ class ButtonView: UIView {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstraintsInOrder()
@@ -45,11 +44,11 @@ class ButtonView: UIView {
         updateLabelStyle(with: style)
     }
 
-    @objc private func selectionButtonIsPressed(){
+    @objc private func selectionButtonIsPressed() {
         delegate?.selectionButtonIsPressed(sender: self)
     }
 
-    private func updateButtonStyle(with style: ElementButtonStyle){
+    private func updateButtonStyle(with style: ElementButtonStyle) {
         button?.tintColor = .clear
         button?.clipsToBounds = true
         button?.layer.borderColor = style.normalBorderColor.cgColor
@@ -91,4 +90,3 @@ class ButtonView: UIView {
         ])
     }
 }
-

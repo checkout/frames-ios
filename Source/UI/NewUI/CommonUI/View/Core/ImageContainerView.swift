@@ -40,4 +40,3 @@ class ImageContainerView: UIView {
         imageView.setupConstraintEqualTo(view: self)
     }
 }
-
