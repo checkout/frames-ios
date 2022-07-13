@@ -135,6 +135,7 @@ final class SecureDisplayViewUIKitTests: XCTestCase {
         XCTAssertTrue(securedView.isUserInteractionEnabled)
     }
 
+
   @available(iOS 11.0, *)
   func testSecureView() {
         let secureText = "Hide ME NoW"

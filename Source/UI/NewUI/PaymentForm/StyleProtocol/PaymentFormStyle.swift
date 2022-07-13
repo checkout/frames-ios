@@ -5,4 +5,5 @@ public protocol PaymentFormStyle {
     var addBillingSummary: CellButtonStyle? { get set }
     var cardNumber: CellTextFieldStyle? { get set }
     var expiryDate: CellTextFieldStyle? { get set }
+    var securityCode: CellTextFieldStyle? { get set }
 }

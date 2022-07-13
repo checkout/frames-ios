@@ -7,7 +7,7 @@ protocol SelectionButtonTableViewCellDelegate: AnyObject {
 final class SelectionButtonTableViewCell: UITableViewCell {
     weak var delegate: SelectionButtonTableViewCellDelegate?
 
-    private lazy var mainView: SelectionButtonView? = {
+    private lazy var mainView: SelectionButtonView = {
         let view = SelectionButtonView().disabledAutoresizingIntoConstraints()
         view.delegate = self
         return view
@@ -21,7 +21,7 @@ final class SelectionButtonTableViewCell: UITableViewCell {
 
     func update(style: CellButtonStyle, tag: Int) {
         self.tag = tag
-        mainView?.update(style: style)
+        mainView.update(style: style)
     }
 
     @available(*, unavailable)
@@ -33,7 +33,6 @@ final class SelectionButtonTableViewCell: UITableViewCell {
 extension SelectionButtonTableViewCell {
 
     private func setupViewsInOrder() {
-        guard let mainView = mainView else { return }
         contentView.addSubview(mainView)
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(

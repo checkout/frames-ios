@@ -24,9 +24,15 @@ extension Constants {
                 static let invalid = "ExpiryDateErrorMessageInvalid".localized
                 static let past = "ExpiryDateErrorMessageInvalidInPast".localized
               }
-
             }
+
+          struct SecurityCode {
+              static let title = "SecurityCode".localized
+              static let hint = "SecurityCodeHint".localized
+              static let error = "SecurityCodeErrorMessage".localized
+          }
         }
+
         struct BillingForm {
 
             struct Cell {
