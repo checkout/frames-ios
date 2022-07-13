@@ -25,17 +25,17 @@ class BillingFormTextFieldView: UIView {
     private(set) lazy var mandatoryLabel: LabelView? = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
-    
+
     private(set) lazy var hintLabel: LabelView? = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
-    
+
     private(set) lazy var textFieldContainer: UIView? = {
         let view = UIView().disabledAutoresizingIntoConstraints()
         view.backgroundColor = .clear
         return view
     }()
-    
+
     private(set) lazy var textField: BillingFormTextField? = {
         let view = DefaultBillingFormTextField(type: type, tag: tag).disabledAutoresizingIntoConstraints()
         view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
@@ -56,7 +56,7 @@ class BillingFormTextFieldView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViewsInOrder() 
+        setupViewsInOrder()
     }
 
     required init?(coder: NSCoder) {
@@ -142,7 +142,7 @@ class BillingFormTextFieldView: UIView {
 
 extension BillingFormTextFieldView {
 
-    private func setupViewsInOrder(){
+    private func setupViewsInOrder() {
         backgroundColor = style?.backgroundColor
         setupHeaderLabel()
         setupMandatoryLabel()
@@ -151,13 +151,13 @@ extension BillingFormTextFieldView {
         setupTextField()
         setupErrorView()
     }
-    
+
     private func setupHeaderLabel() {
         guard let headerLabel = headerLabel else { return }
         addSubview(headerLabel)
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: topAnchor),
-            headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor)
         ])
     }
 
@@ -171,7 +171,7 @@ extension BillingFormTextFieldView {
             mandatoryLabel.leadingAnchor.constraint(greaterThanOrEqualTo: headerLabel.trailingAnchor)
         ])
     }
-    
+
     private func setupHintLabel() {
         guard let hintLabel = hintLabel else { return }
         guard let headerLabel = headerLabel else { return }
@@ -202,7 +202,7 @@ extension BillingFormTextFieldView {
         setup(textField: textField)
         setup(textField: phoneNumberTextField)
 
-        func setup(textField: BillingFormTextField?){
+        func setup(textField: BillingFormTextField?) {
             guard let textFieldContainer = textFieldContainer else { return }
             guard let textField = textField else { return }
             let heightStyle = style?.textfield.height ?? Constants.Style.BillingForm.InputTextField.height.rawValue
@@ -236,22 +236,22 @@ extension BillingFormTextFieldView {
 // MARK: - Text Field Delegate
 
 extension BillingFormTextFieldView: UITextFieldDelegate {
-    
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
         textFieldContainer?.layer.borderColor = style?.textfield.focusBorderColor.cgColor
     }
-    
+
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldEndEditing(textField: textField, replacementString: textField.text ?? "")
         return true
     }
-   
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldReturn()
         return false
     }
-    
+
 }
 
 // MARK: - Phone Number Text Delegate

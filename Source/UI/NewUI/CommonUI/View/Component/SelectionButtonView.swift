@@ -55,7 +55,7 @@ class SelectionButtonView: UIView {
 
 extension SelectionButtonView {
 
-    private func setupViewsInOrder(){
+    private func setupViewsInOrder() {
         setupTitleLabel()
         setupHintLabel()
         setupErrorView()

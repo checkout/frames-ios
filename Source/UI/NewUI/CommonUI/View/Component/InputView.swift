@@ -109,7 +109,7 @@ class InputView: UIView {
 
 extension InputView {
 
-    private func setupViewsInOrder(){
+    private func setupViewsInOrder() {
         backgroundColor = style?.backgroundColor
         setupHeaderLabel()
         setupMandatoryLabel()

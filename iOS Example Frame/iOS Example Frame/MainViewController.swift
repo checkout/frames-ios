@@ -20,7 +20,7 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
     private static let failureURL = URL(string: "https://httpstat.us/403")!
 
     private static let countryGB = Country(iso3166Alpha2: "GB")!
-    
+
     // Step1 : create instance of CheckoutAPIService
     let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
                                                        environment: .sandbox)
@@ -45,7 +45,6 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
         UIFont.loadAllCheckoutFonts
     }
 
-
     // MARK: IBAction Methods.
 
     @IBAction private func goToDefaultUIPaymentPage(_ sender: Any) {
@@ -56,7 +55,6 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
     }
 
     @IBAction private func goToCustom1PaymentPage(_ sender: Any) {
-
 
         let address = Address(addressLine1: "Test line1 Custom 1",
                               addressLine2: nil,
@@ -196,7 +194,7 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
         return viewController
     }
 
-    private static func defaultCardFormData() -> (paymentFormStyle: PaymentFormStyle, billingFormStyle: BillingFormStyle, billingForm : BillingForm) {
+    private static func defaultCardFormData() -> (paymentFormStyle: PaymentFormStyle, billingFormStyle: BillingFormStyle, billingForm: BillingForm) {
 
         let billingFormStyle = BillingFormFactory.defaultBillingFormStyle
         let paymentFormStyle = BillingFormFactory.defaultPaymentFormStyle
