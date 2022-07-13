@@ -18,13 +18,13 @@ class BillingFormTextFieldErrorViewTests: XCTestCase {
     }
 
     func testHeaderLabelStyle() {
-        XCTAssertEqual(errorView.headerLabel?.label?.text, style.text)
-        XCTAssertEqual(errorView.headerLabel?.label?.font, style.font)
-        XCTAssertEqual(errorView.headerLabel?.label?.textColor, style.textColor)
+        XCTAssertEqual(errorView.headerLabel.label.text, style.text)
+        XCTAssertEqual(errorView.headerLabel.label.font, style.font)
+        XCTAssertEqual(errorView.headerLabel.label.textColor, style.textColor)
     }
 
     func testImageStyle() {
-        XCTAssertEqual(errorView.imageContainerView?.imageView?.image, style.image)
-        XCTAssertEqual(errorView.imageContainerView?.imageView?.tintColor, style.tintColor)
+        XCTAssertEqual(errorView.imageContainerView.imageView.image, style.image)
+        XCTAssertEqual(errorView.imageContainerView.imageView.tintColor, style.tintColor)
     }
 }

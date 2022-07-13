@@ -2,11 +2,11 @@ import UIKit
 
 final class SimpleErrorView: UIView {
 
-    lazy var headerLabel: LabelView? = {
+    lazy var headerLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    lazy var imageContainerView: ImageContainerView? = {
+    lazy var imageContainerView: ImageContainerView = {
         ImageContainerView().disabledAutoresizingIntoConstraints()
     }()
 
@@ -27,8 +27,8 @@ final class SimpleErrorView: UIView {
                                                       text: style.text,
                                                       font: style.font,
                                                       textColor: style.textColor)
-        headerLabel?.update(with: headerLabelStyle)
-        imageContainerView?.update(with: style.image, tintColor: style.tintColor)
+        headerLabel.update(with: headerLabelStyle)
+        imageContainerView.update(with: style.image, tintColor: style.tintColor)
     }
 }
 
@@ -40,7 +40,6 @@ extension SimpleErrorView {
     }
 
     private func setupHeaderLabel() {
-        guard let headerLabel = headerLabel else { return }
         addSubview(headerLabel)
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: topAnchor),
@@ -50,15 +49,14 @@ extension SimpleErrorView {
     }
 
     private func setupImageView() {
-        guard let headerLabel = headerLabel, let image = imageContainerView else { return }
-        addSubview(image)
+        addSubview(imageContainerView)
         NSLayoutConstraint.activate([
-            image.topAnchor.constraint(equalTo: topAnchor),
-            image.bottomAnchor.constraint(equalTo: bottomAnchor),
-            image.leadingAnchor.constraint(equalTo: leadingAnchor),
-            image.trailingAnchor.constraint(equalTo: headerLabel.leadingAnchor,
+          imageContainerView.topAnchor.constraint(equalTo: topAnchor),
+            imageContainerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+          imageContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+          imageContainerView.trailingAnchor.constraint(equalTo: headerLabel.leadingAnchor,
                                             constant: -Constants.Padding.s.rawValue),
-            image.widthAnchor.constraint(equalToConstant: 15)
+          imageContainerView.widthAnchor.constraint(equalToConstant: 15)
         ])
     }
 }

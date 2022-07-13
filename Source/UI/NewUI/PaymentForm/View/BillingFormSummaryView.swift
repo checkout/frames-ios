@@ -8,37 +8,37 @@ class BillingFormSummaryView: UIView {
     weak var delegate: BillingFormSummaryViewDelegate?
     private var style: BillingSummaryViewStyle?
 
-    private(set) lazy var titleLabel: LabelView? = {
+    private(set) lazy var titleLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var hintLabel: LabelView? = {
+    private(set) lazy var hintLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var summaryLabel: LabelView? = {
+    private(set) lazy var summaryLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var summarySeparatorLineView: UIView? = {
+    private(set) lazy var summarySeparatorLineView: UIView = {
         UIView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var summaryContainerView: UIView? = {
+    private(set) lazy var summaryContainerView: UIView = {
         UIView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var imageContainerView: ImageContainerView? = {
+    private(set) lazy var imageContainerView: ImageContainerView = {
         ImageContainerView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var buttonView: ButtonView? = {
+    private(set) lazy var buttonView: ButtonView = {
         let view = ButtonView().disabledAutoresizingIntoConstraints()
         view.delegate = self
         return view
     }()
 
-    private(set) lazy var errorView: SimpleErrorView? = {
+    private(set) lazy var errorView: SimpleErrorView = {
         SimpleErrorView().disabledAutoresizingIntoConstraints()
     }()
 
@@ -49,22 +49,22 @@ class BillingFormSummaryView: UIView {
 
     func update(style: BillingSummaryViewStyle) {
         self.style = style
-        summaryContainerView?.clipsToBounds = true
-        summaryContainerView?.layer.borderWidth = style.borderWidth
-        summaryContainerView?.layer.cornerRadius = style.cornerRadius
-        summaryContainerView?.layer.borderColor = style.borderColor.cgColor
-        summaryContainerView?.backgroundColor = .clear
+        summaryContainerView.clipsToBounds = true
+        summaryContainerView.layer.borderWidth = style.borderWidth
+        summaryContainerView.layer.cornerRadius = style.cornerRadius
+        summaryContainerView.layer.borderColor = style.borderColor.cgColor
+        summaryContainerView.backgroundColor = .clear
 
-        summarySeparatorLineView?.backgroundColor = style.separatorLineColor
+        summarySeparatorLineView.backgroundColor = style.separatorLineColor
 
-        titleLabel?.update(with: style.title)
-        hintLabel?.update(with: style.hint)
-        summaryLabel?.update(with: style.hint)
-        buttonView?.update(with: style.button)
-        imageContainerView?.update(with: style.button.image, tintColor: style.button.imageTintColor)
-        errorView?.update(style: style.error)
-        summaryLabel?.update(with: style.summary)
-        errorView?.isHidden = style.error?.isHidden ?? true
+        titleLabel.update(with: style.title)
+        hintLabel.update(with: style.hint)
+        summaryLabel.update(with: style.hint)
+        buttonView.update(with: style.button)
+        imageContainerView.update(with: style.button.image, tintColor: style.button.imageTintColor)
+        errorView.update(style: style.error)
+        summaryLabel.update(with: style.summary)
+        errorView.isHidden = style.error?.isHidden ?? true
     }
 
     required init?(coder: NSCoder) {
@@ -87,7 +87,6 @@ extension BillingFormSummaryView {
     }
 
     private func setupTitleLabel() {
-        guard let titleLabel = titleLabel else { return }
         addSubview(titleLabel)
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
@@ -97,8 +96,6 @@ extension BillingFormSummaryView {
     }
 
     private func setupHintLabel() {
-        guard let hintLabel = hintLabel else { return }
-        guard let titleLabel = titleLabel else { return }
         addSubview(hintLabel)
         NSLayoutConstraint.activate([
             hintLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
@@ -109,8 +106,6 @@ extension BillingFormSummaryView {
     }
 
     private func setupSummaryLabel() {
-        guard let summaryLabel = summaryLabel else { return }
-        guard let hintLabel = hintLabel else { return }
         addSubview(summaryLabel)
 
         NSLayoutConstraint.activate([
@@ -124,8 +119,6 @@ extension BillingFormSummaryView {
     }
 
     private func setupSummarySeparatorLineView() {
-        guard let summarySeparatorLineView = summarySeparatorLineView else { return }
-        guard let summaryLabel = summaryLabel else { return }
         addSubview(summarySeparatorLineView)
 
         NSLayoutConstraint.activate([
@@ -138,50 +131,40 @@ extension BillingFormSummaryView {
     }
 
     private func setupButton() {
-        guard let button = buttonView else { return }
-        guard let summarySeparatorLineView = summarySeparatorLineView else { return }
-        addSubview(button)
+        addSubview(buttonView)
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: summarySeparatorLineView.bottomAnchor, constant: 10),
-            button.bottomAnchor.constraint(equalTo: bottomAnchor),
-            button.leadingAnchor.constraint(equalTo: leadingAnchor),
-            button.trailingAnchor.constraint(equalTo: trailingAnchor)
+          buttonView.topAnchor.constraint(equalTo: summarySeparatorLineView.bottomAnchor, constant: 10),
+          buttonView.bottomAnchor.constraint(equalTo: bottomAnchor),
+          buttonView.leadingAnchor.constraint(equalTo: leadingAnchor),
+          buttonView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 
     private func setupSummaryContainerView() {
-        guard let summaryContainerView = summaryContainerView else { return }
-        guard let hintLabel = hintLabel else { return }
-        guard let button = buttonView else { return }
-
         addSubview(summaryContainerView)
         NSLayoutConstraint.activate([
             summaryContainerView.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
                                                       constant: Constants.Padding.l.rawValue),
             summaryContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             summaryContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            summaryContainerView.bottomAnchor.constraint(equalTo: button.bottomAnchor,
+            summaryContainerView.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor,
                                                          constant: Constants.Padding.s.rawValue)
         ])
-        bringSubviewToFront(button)
+        bringSubviewToFront(buttonView)
     }
 
     private func setupImageView() {
-        guard let image = imageContainerView else { return }
-        guard let button = buttonView else { return }
-        addSubview(image)
+        addSubview(imageContainerView)
         NSLayoutConstraint.activate([
-            image.centerYAnchor.constraint(equalTo: button.centerYAnchor),
-            image.trailingAnchor.constraint(equalTo: trailingAnchor,
+          imageContainerView.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
+          imageContainerView.trailingAnchor.constraint(equalTo: trailingAnchor,
                                             constant: -Constants.Padding.xxxl.rawValue),
-            image.widthAnchor.constraint(equalToConstant: 11),
-            image.heightAnchor.constraint(equalToConstant: 13)
+          imageContainerView.widthAnchor.constraint(equalToConstant: 11),
+          imageContainerView.heightAnchor.constraint(equalToConstant: 13)
         ])
     }
 
     private func setupErrorView() {
-        guard let errorView = errorView else { return }
-        guard let summaryContainerView = summaryContainerView else { return }
         addSubview(errorView)
         NSLayoutConstraint.activate([
             errorView.topAnchor.constraint(equalTo: summaryContainerView.bottomAnchor),
