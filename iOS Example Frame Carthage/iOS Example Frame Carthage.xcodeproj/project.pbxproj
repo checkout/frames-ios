@@ -301,6 +301,8 @@
 		CB10619C28786650007322FE /* MockCardNumberViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB10619B28786650007322FE /* MockCardNumberViewModelDelegate.swift */; };
 		CBB6F521287EC11F00A1379D /* CardNumberViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB6F520287EC11F00A1379D /* CardNumberViewTests.swift */; };
 		CBB6F523287EC18100A1379D /* MockCardNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB6F522287EC18100A1379D /* MockCardNumberViewModel.swift */; };
+		CBB6F525287ED04E00A1379D /* Constants+SchemeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB6F524287ED04E00A1379D /* Constants+SchemeIcon.swift */; };
+		CBB6F527287ED39900A1379D /* ConstantsSchemeIconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB6F526287ED39900A1379D /* ConstantsSchemeIconTests.swift */; };
 		E6646FA320CE6C0A00D8353A /* iOS_Example_FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646FA220CE6C0A00D8353A /* iOS_Example_FrameUITests.swift */; };
 		F59820122805B75F007AB07C /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5981FFD2805B75F007AB07C /* LaunchScreen.strings */; };
 		F59820132805B75F007AB07C /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5981FFF2805B75F007AB07C /* Main.strings */; };
@@ -648,6 +650,8 @@
 		CB9412CE2825647600C889E8 /* Checkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Checkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB6F520287EC11F00A1379D /* CardNumberViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberViewTests.swift; sourceTree = "<group>"; };
 		CBB6F522287EC18100A1379D /* MockCardNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCardNumberViewModel.swift; sourceTree = "<group>"; };
+		CBB6F524287ED04E00A1379D /* Constants+SchemeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+SchemeIcon.swift"; sourceTree = "<group>"; };
+		CBB6F526287ED39900A1379D /* ConstantsSchemeIconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsSchemeIconTests.swift; sourceTree = "<group>"; };
 		E6646FA220CE6C0A00D8353A /* iOS_Example_FrameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_Example_FrameUITests.swift; sourceTree = "<group>"; };
 		F5981FF72805B685007AB07C /* CheckoutEventLoggerKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CheckoutEventLoggerKit.xcframework; path = "../Carthage/Checkouts/checkout-event-logger-ios-framework/CheckoutEventLoggerKit.xcframework"; sourceTree = SOURCE_ROOT; };
 		F5981FFE2805B75F007AB07C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -1438,6 +1442,7 @@
 				95732266286EF4E80068C115 /* InputState.swift */,
 				95732267286EF4E80068C115 /* Constants+Style.swift */,
 				95732268286EF4E80068C115 /* ContentTypeProviding.swift */,
+				CBB6F524287ED04E00A1379D /* Constants+SchemeIcon.swift */,
 				95732269286EF4E80068C115 /* Logging */,
 			);
 			name = Core;
@@ -1477,6 +1482,7 @@
 				95732336286EF50F0068C115 /* UIColor+PropertyProvidingTests.swift */,
 				95732337286EF50F0068C115 /* URL+ExtensionsTests.swift */,
 				95732338286EF50F0068C115 /* UIFont+PropertyProvidingTests.swift */,
+				CBB6F526287ED39900A1379D /* ConstantsSchemeIconTests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2036,6 +2042,7 @@
 				957322E9286EF4E80068C115 /* BillingFormCell.swift in Sources */,
 				957322D5286EF4E80068C115 /* BillingFormViewModel.swift in Sources */,
 				95732303286EF4E80068C115 /* ThreedsWebViewController.swift in Sources */,
+				CBB6F525287ED04E00A1379D /* Constants+SchemeIcon.swift in Sources */,
 				95732318286EF4E80068C115 /* UIViewExtensions.swift in Sources */,
 				957322CC286EF4E80068C115 /* InputView.swift in Sources */,
 				9573230E286EF4E80068C115 /* UITableViewExtensions.swift in Sources */,
@@ -2168,6 +2175,7 @@
 				957323B7286EF50F0068C115 /* StubDateProvider.swift in Sources */,
 				CB10619828784821007322FE /* CardNumberViewModelTests.swift in Sources */,
 				957323E5286EF50F0068C115 /* CardViewTests.swift in Sources */,
+				CBB6F527287ED39900A1379D /* ConstantsSchemeIconTests.swift in Sources */,
 				9572608E286DE8A00080E2C8 /* ResourcesTests.swift in Sources */,
 				9573239D286EF50F0068C115 /* CorrelationIDGeneratorTests.swift in Sources */,
 				957323CA286EF50F0068C115 /* StandardInputViewTests.swift in Sources */,

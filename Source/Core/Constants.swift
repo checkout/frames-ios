@@ -23,18 +23,6 @@ enum Constants {
     enum Bundle: String {
         case version = "CFBundleShortVersionString"
 
-        enum SchemeIcon: String {
-            case blank = "icon-blank"
-            case americanExpress = "icon-amex"
-            case dinersClub = "icon-diners"
-            case discover = "icon-discover"
-            case jcb = "icon-jcb"
-            case maestro = "icon-maestro"
-            case mastercard = "icon-mastercard"
-            case mada = "icon-mada"
-            case visa = "icon-visa"
-        }
-
         enum FallbackValues: String {
             case noBundleIdentifier = "unavailableAppPackageName"
             case noVersion = "unavailableAppPackageVersion"

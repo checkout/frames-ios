@@ -26,29 +26,6 @@ class CardNumberViewModel {
   init(cardValidator: CardValidating) {
     self.cardValidator = cardValidator
   }
-
-  private func schemeIconLocation(scheme: Card.Scheme) -> Constants.Bundle.SchemeIcon {
-    switch scheme {
-    case .americanExpress:
-      return .americanExpress
-    case .dinersClub:
-      return .dinersClub
-    case .discover:
-      return .discover
-    case .jcb:
-      return .jcb
-    case .maestro:
-      return .maestro
-    case .mastercard:
-      return .mastercard
-    case .visa:
-      return .visa
-    case .mada:
-      return .mada
-    case .unknown:
-      return .blank
-    }
-  }
 }
 
 extension CardNumberViewModel: CardNumberViewModelProtocol {
@@ -73,7 +50,7 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
   }
 
   private func handleValidationSuccess(cardNumber: String, scheme: Card.Scheme) -> Card.Scheme? {
-    cardNumberView?.schemeIcon = schemeIconLocation(scheme: scheme)
+    cardNumberView?.schemeIcon = .init(scheme: scheme)
     delegate?.update(cardNumber: cardNumber, scheme: scheme)
 
     return scheme
@@ -84,7 +61,7 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
     case .tooLong:
       return nil
     case .invalidScheme:
-      cardNumberView?.schemeIcon = schemeIconLocation(scheme: .unknown)
+      cardNumberView?.schemeIcon = .init(scheme: .unknown)
 
       return .unknown
     case .cardNumber(let cardNumberError):
