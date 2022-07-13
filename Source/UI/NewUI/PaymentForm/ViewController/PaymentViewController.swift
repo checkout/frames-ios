@@ -8,7 +8,6 @@ protocol PaymentViewControllerDelegate: AnyObject {
 }
 
 final class PaymentViewController: UIViewController {
-
   // MARK: - Variables
 
   weak var delegate: PaymentViewControllerDelegate?
@@ -48,7 +47,7 @@ final class PaymentViewController: UIViewController {
   }()
 
   private lazy var expiryDateView: ExpiryDateView = {
-    let view = ExpiryDateView(environment: viewModel.environment)
+    let view = ExpiryDateView(cardValidator: viewModel.cardValidator)
     view.delegate = self
     return view
   }()
@@ -58,7 +57,7 @@ final class PaymentViewController: UIViewController {
   }()
 
   private lazy var securityCodeView: SecurityCodeView = {
-    SecurityCodeView(cardValidator: CardValidator(environment: viewModel.environment.checkoutEnvironment))
+    SecurityCodeView(cardValidator: viewModel.cardValidator)
   }()
 
   // MARK: - functions
@@ -124,13 +123,11 @@ final class PaymentViewController: UIViewController {
       self.scrollView.contentInset = contentInset
     }
   }
-
 }
 
 // MARK: View Model Integration
 
 extension PaymentViewController {
-
   private func setupViewModel() {
     delegate = self.viewModel as? PaymentViewControllerDelegate
     setupAddBillingDetailsViewClosure()
@@ -213,7 +210,6 @@ extension PaymentViewController {
 // MARK: Setup Views
 
 extension PaymentViewController {
-
   private func setupViewsInOrder() {
     setupHeaderView()
     setupScrollView()
