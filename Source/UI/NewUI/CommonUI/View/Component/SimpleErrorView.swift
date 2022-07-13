@@ -28,7 +28,9 @@ final class SimpleErrorView: UIView {
                                                       font: style.font,
                                                       textColor: style.textColor)
         headerLabel.update(with: headerLabelStyle)
-        imageContainerView.update(with: style.image, tintColor: style.tintColor)
+        let image = style.shouldImageFlippedForRightToLeftLayoutDirection ?
+        style.image.imageFlippedForRightToLeftLayoutDirection() : style.image
+        imageContainerView.update(with: image, tintColor: style.tintColor)
     }
 }
 

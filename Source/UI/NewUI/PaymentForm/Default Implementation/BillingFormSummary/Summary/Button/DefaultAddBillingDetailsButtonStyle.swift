@@ -13,8 +13,9 @@ public final class DefaultAddBillingDetailsButtonStyle: ElementButtonStyle {
     public var focusBorderColor: UIColor = .mediumGray
     public var errorBorderColor: UIColor = .tallPoppyRed
     public var imageTintColor: UIColor = .brandeisBlue
-    public var isHidden: Bool = false
-    public var isEnabled: Bool = true
+    public var isHidden = false
+    public var isEnabled = true
+    public var shouldImageFlippedForRightToLeftLayoutDirection = true
     public var height: Double = Constants.Style.PaymentForm.InputBillingFormButton.height.rawValue
     public var width: Double = Constants.Style.PaymentForm.InputBillingFormButton.width.rawValue
     public var cornerRadius: CGFloat = Constants.Style.PaymentForm.InputBillingFormButton.cornerRadius.rawValue

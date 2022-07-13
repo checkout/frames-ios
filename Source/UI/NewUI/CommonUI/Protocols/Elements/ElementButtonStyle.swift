@@ -1,7 +1,8 @@
 import UIKit
 
 public protocol ElementButtonStyle: ElementStyle {
-    var isEnabled: Bool { get set}
+    var isEnabled: Bool { get set }
+    var shouldImageFlippedForRightToLeftLayoutDirection: Bool { get set }
     var disabledTextColor: UIColor { get }
     var disabledTintColor: UIColor { get }
     var activeTintColor: UIColor { get }

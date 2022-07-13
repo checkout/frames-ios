@@ -42,7 +42,9 @@ class SelectionButtonView: UIView {
         hintLabel.update(with: style.hint)
         buttonView.update(with: style.button)
         errorView.update(style: style.error)
-        imageContainerView.update(with: style.button.image, tintColor: style.button.imageTintColor)
+        let image = style.button.shouldImageFlippedForRightToLeftLayoutDirection ?
+        style.button.image?.imageFlippedForRightToLeftLayoutDirection() : style.button.image
+        imageContainerView.update(with: image, tintColor: style.button.imageTintColor)
         errorView.isHidden = style.error?.isHidden ?? true
     }
 
