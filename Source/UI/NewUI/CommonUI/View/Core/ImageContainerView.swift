@@ -1,6 +1,8 @@
 import UIKit
 
 class ImageContainerView: UIView {
+    private var state = State(image: nil, tintColor: nil)
+
     private(set) lazy var imageView: UIImageView = {
         let view = UIImageView().disabledAutoresizingIntoConstraints()
         view.contentMode = .scaleAspectFit
@@ -18,7 +20,7 @@ class ImageContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func update(with image: UIImage?, tintColor: UIColor? = nil, animated: Bool = false) {
+    private func update(with image: UIImage?, tintColor: UIColor?, animated: Bool) {
       let updateBlock = { [weak self] in
         self?.imageView.image = image?.withRenderingMode(tintColor == nil ? .alwaysOriginal : .alwaysTemplate)
         self?.imageView.tintColor = tintColor
@@ -39,5 +41,30 @@ class ImageContainerView: UIView {
     private func setupConstraintsInOrder() {
         addSubview(imageView)
         imageView.setupConstraintEqualTo(view: self)
+    }
+}
+
+extension ImageContainerView: Stateful {
+    struct State {
+        var image: UIImage?
+        var tintColor: UIColor?
+    }
+
+    struct StateUpdate {
+        let image: UIImage??
+        let tintColor: UIColor??
+        let isHidden: Bool?
+        let animated: Bool
+    }
+
+    func update(state stateUpdate: StateUpdate) {
+        let image = stateUpdate.image ?? state.image
+        let tintColor = stateUpdate.tintColor ?? state.tintColor
+
+        update(with: image, tintColor: tintColor, animated: stateUpdate.animated)
+
+        if let isHidden = stateUpdate.isHidden {
+            self.isHidden = isHidden
+        }
     }
 }

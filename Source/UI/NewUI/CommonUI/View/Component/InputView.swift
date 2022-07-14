@@ -6,7 +6,7 @@ class InputView: UIView {
 
     weak var delegate: TextFieldViewDelegate?
     private(set) var style: CellTextFieldStyle?
-    private(set) lazy var textFieldContainerBottomAnchor = textFieldContainer.bottomAnchor.constraint(equalTo: bottomAnchor)
+    private(set) lazy var textFieldContainerBottomAnchor = textFieldContainer.bottomAnchor.constraint(equalTo: errorView.topAnchor)
     private(set) lazy var iconViewWidthAnchor = iconView.widthAnchor.constraint(equalToConstant: 32)
 
     // MARK: - UI elements
@@ -64,10 +64,7 @@ class InputView: UIView {
 
     // MARK: - Update subviews style
 
-    func update(style: CellTextFieldStyle? = nil, textFieldValue: String? = nil, image: UIImage? = nil, animated: Bool = false){
-        updateTextFieldContainer(image: image, animated: animated)
-
-        guard let style = style else { return }
+    func update(style: CellTextFieldStyle){
         self.style = style
         backgroundColor = style.backgroundColor
         mandatoryLabel.isHidden = style.isMandatory
@@ -77,31 +74,25 @@ class InputView: UIView {
         hintLabel.update(with: style.hint)
         updateTextFieldContainer(style: style)
         textFieldView.update(with: style.textfield)
-        updateErrorView(style: style)
+
+        if let errorStyle = style.error {
+            updateErrorView(style: errorStyle)
+        }
     }
 
     private func updateTextFieldContainer(style: CellTextFieldStyle) {
-        let borderColor = !(style.error?.isHidden ?? true) ?
-        style.textfield.errorBorderColor.cgColor :
-        style.textfield.normalBorderColor.cgColor
-
-        textFieldContainer.layer.borderColor = borderColor
         textFieldContainer.layer.cornerRadius = style.textfield.cornerRadius
         textFieldContainer.layer.borderWidth = style.textfield.borderWidth
         textFieldContainer.backgroundColor = style.textfield.backgroundColor
+
+        let stateUpdate = StateUpdate(errorUpdate: SimpleErrorView.StateUpdate(isHidden: true, labelText: nil), iconUpdate: nil)
+        update(state: stateUpdate)
     }
 
-    private func updateTextFieldContainer(image: UIImage?, animated: Bool) {
-        iconView.isHidden = image == nil
-        iconView.update(with: image, animated: animated)
-    }
-
-    private func updateErrorView(style: CellTextFieldStyle) {
-        errorView.update(style: style.error)
-        let shouldHideErrorView = style.error?.isHidden ?? false
-        let expectedErrorViewHeight = style.error?.height ?? 0
-        errorView.isHidden = shouldHideErrorView
-        textFieldContainerBottomAnchor.constant = -(shouldHideErrorView ? 0 : expectedErrorViewHeight)
+    private func updateErrorView(style: ElementErrorViewStyle) {
+        errorView.update(style: style)
+        let expectedErrorViewHeight = style.height
+//        textFieldContainerBottomAnchor.constant = -(shouldHideErrorView ? 0 : expectedErrorViewHeight)
     }
 }
 
@@ -185,6 +176,11 @@ extension InputView {
             errorView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
+
+    private func setBorder(isValid: Bool) {
+        guard let style = style else { return }
+        textFieldContainer.layer.borderColor = (isValid ? style.textfield.normalBorderColor : style.textfield.errorBorderColor).cgColor
+    }
 }
 
 // MARK: - Text Field Delegate
@@ -209,5 +205,26 @@ extension InputView: TextFieldViewDelegate {
 
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         delegate?.textFieldShouldChangeCharactersIn(textField: textField, replacementString: string)
+    }
+}
+
+extension InputView: Stateful {
+    struct StateUpdate {
+        let errorUpdate: SimpleErrorView.StateUpdate?
+      let iconUpdate: ImageContainerView.StateUpdate?
+    }
+
+    func update(state update: StateUpdate) {
+        if let errorUpdate = update.errorUpdate {
+            errorView.update(state: errorUpdate)
+
+            if let isHidden = errorUpdate.isHidden {
+              setBorder(isValid: isHidden)
+            }
+        }
+
+      if let iconUpdate = update.iconUpdate {
+          imageContainerView.update(state: iconUpdate)
+      }
     }
 }

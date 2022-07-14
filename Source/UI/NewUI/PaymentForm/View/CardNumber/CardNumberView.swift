@@ -10,6 +10,11 @@ import UIKit
 
 protocol CardNumberViewProtocol: AnyObject {
   var schemeIcon: Constants.Bundle.SchemeIcon { get set }
+  var cardNumberError: CardNumberError? { get set }
+}
+
+enum CardNumberError: Error {
+  case invalid
 }
 
 final class CardNumberView: UIView, CardNumberViewProtocol {
@@ -19,6 +24,14 @@ final class CardNumberView: UIView, CardNumberViewProtocol {
     didSet {
       if schemeIcon != oldValue {
         updateIcon()
+      }
+    }
+  }
+
+  var cardNumberError: CardNumberError? {
+    didSet {
+      if cardNumberError != oldValue {
+        updateError()
       }
     }
   }
@@ -41,6 +54,7 @@ final class CardNumberView: UIView, CardNumberViewProtocol {
   }
 
   func update(style: CellTextFieldStyle) {
+    self.style = style
     cardNumberInputView.update(style: style, image: image(for: schemeIcon))
   }
 
@@ -51,6 +65,17 @@ final class CardNumberView: UIView, CardNumberViewProtocol {
 
   private func updateIcon() {
     cardNumberInputView.update(image: image(for: schemeIcon), animated: true)
+  }
+
+  private func updateError() {
+    guard var errorStyle = style?.error else {
+      return
+    }
+
+    errorStyle.text = Constants.LocalizationKeys.PaymentForm.CardNumber.error.localized(forClass: Self.self)
+    errorStyle.isHidden = cardNumberError == nil
+
+    cardNumberInputView.updateError(style: errorStyle)
   }
 
   private func image(for schemeIcon: Constants.Bundle.SchemeIcon) -> UIImage? {

@@ -1,8 +1,8 @@
 import UIKit
 
-class LabelView: UIView {
+final class LabelView: UIView {
 
-    private(set) lazy var label: UILabel? = {
+    private(set) lazy var label: UILabel = {
         let view = UILabel().disabledAutoresizingIntoConstraints()
         view.backgroundColor = .clear
         view.numberOfLines = 0
@@ -20,15 +20,35 @@ class LabelView: UIView {
     }
 
     func update(with style: ElementStyle?) {
-        label?.text = style?.text
-        label?.font = style?.font
-        label?.textColor = style?.textColor
-        label?.backgroundColor = style?.backgroundColor
+        label.font = style?.font
+        label.textColor = style?.textColor
+        label.backgroundColor = style?.backgroundColor
     }
 
     private func setupConstraintsInOrder() {
-        guard let label = label else { return }
         addSubview(label)
         label.setupConstraintEqualTo(view: self)
+    }
+}
+
+extension LabelView: Stateful {
+    struct StateUpdate {
+        let labelText: String?
+        let isHidden: Bool?
+        let textColor: UIColor?
+    }
+
+    func update(state update: StateUpdate) {
+        if let labelText = update.labelText {
+            label.text = labelText
+        }
+
+        if let isHidden = update.isHidden {
+            self.isHidden = isHidden
+        }
+
+        if let textColor = update.textColor {
+            label.textColor = textColor
+        }
     }
 }

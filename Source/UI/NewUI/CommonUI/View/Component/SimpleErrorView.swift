@@ -2,11 +2,11 @@ import UIKit
 
 final class SimpleErrorView: UIView {
 
-    lazy var headerLabel: LabelView? = {
+    lazy var headerLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    lazy var imageContainerView: ImageContainerView? = {
+    lazy var imageContainerView: ImageContainerView = {
         ImageContainerView().disabledAutoresizingIntoConstraints()
     }()
 
@@ -19,16 +19,23 @@ final class SimpleErrorView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func update(style: ElementErrorViewStyle?) {
-        guard let style = style else { return }
+    func update(style: ElementErrorViewStyle) {
         backgroundColor = style.backgroundColor
         let headerLabelStyle = DefaultTitleLabelStyle(backgroundColor: .clear,
                                                       isHidden: false,
-                                                      text: style.text,
+                                                      text: "",
                                                       font: style.font,
                                                       textColor: style.textColor)
-        headerLabel?.update(with: headerLabelStyle)
-        imageContainerView?.update(with: style.image, tintColor: style.tintColor)
+        headerLabel.update(with: headerLabelStyle)
+
+        let imageContainerViewUpdate = ImageContainerView.StateUpdate(
+          image: style.image,
+          tintColor: tintColor,
+          isHidden: false,
+          animated: false
+        )
+
+        imageContainerView.update(state: imageContainerViewUpdate)
     }
 }
 
@@ -40,7 +47,6 @@ extension SimpleErrorView {
     }
 
     private func setupHeaderLabel() {
-        guard let headerLabel = headerLabel else { return }
         addSubview(headerLabel)
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: topAnchor),
@@ -50,15 +56,32 @@ extension SimpleErrorView {
     }
 
     private func setupImageView() {
-        guard let headerLabel = headerLabel, let image = imageContainerView else { return }
-        addSubview(image)
+        addSubview(imageContainerView)
         NSLayoutConstraint.activate([
-            image.topAnchor.constraint(equalTo: topAnchor),
-            image.bottomAnchor.constraint(equalTo: bottomAnchor),
-            image.leadingAnchor.constraint(equalTo: leadingAnchor),
-            image.trailingAnchor.constraint(equalTo: headerLabel.leadingAnchor,
-                                            constant: -Constants.Padding.s.rawValue),
-            image.widthAnchor.constraint(equalToConstant: 15)
+            imageContainerView.topAnchor.constraint(equalTo: topAnchor),
+            imageContainerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            imageContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageContainerView.trailingAnchor.constraint(equalTo: headerLabel.leadingAnchor,
+                                                         constant: -Constants.Padding.s.rawValue),
+            imageContainerView.widthAnchor.constraint(equalToConstant: 15)
         ])
+    }
+}
+
+extension SimpleErrorView: Stateful {
+    struct StateUpdate {
+        let isHidden: Bool?
+        let labelText: String?
+    }
+
+    func update(state update: StateUpdate) {
+        if let isHidden = update.isHidden {
+            self.isHidden = isHidden
+        }
+
+        if let labelText = update.labelText {
+            let labelUpdate = LabelView.StateUpdate(labelText: labelText, isHidden: nil, textColor: nil)
+            headerLabel.update(state: labelUpdate)
+        }
     }
 }

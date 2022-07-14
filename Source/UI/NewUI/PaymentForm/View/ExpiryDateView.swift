@@ -11,7 +11,8 @@ public final class ExpiryDateView: UIView {
   /// 5 is the expected text count, for example "11/35".
   private let dateFormatTextCount = 5
   private let environment: Environment
-  private(set) var style: CellTextFieldStyle?
+  private(set) var style:
+  CellTextFieldStyle?
 
   private lazy var cardValidator: CardValidator = {
     CardValidator(environment: environment.checkoutEnvironment)
@@ -139,12 +140,14 @@ public final class ExpiryDateView: UIView {
   }
 
   private func updateErrorViewStyle(isHidden: Bool, textfieldText: String?, error: ValidationError.ExpiryDate? = nil) {
-    style?.error?.text = error == .inThePast ?
+    let labelText = error == .inThePast ?
       Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.past :
       Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid
-    style?.error?.isHidden = isHidden
-    style?.textfield.text = textfieldText ?? ""
-    dateInputView.update(style: style)
+
+    let errorUpdate = SimpleErrorView.StateUpdate(isHidden: isHidden, labelText: labelText)
+    let dateInputViewUpdate = InputView.StateUpdate(errorUpdate: errorUpdate)
+
+    dateInputView.update(state: dateInputViewUpdate)
   }
 }
 

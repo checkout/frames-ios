@@ -31,7 +31,6 @@ class TextFieldView: UIView {
     }
 
     func update(with style: ElementTextFieldStyle) {
-        textField.text = style.text
         textField.font = style.font
         textField.placeholder = style.placeHolder
         textField.textColor = style.textColor
@@ -67,4 +66,16 @@ extension TextFieldView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         delegate?.textField(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true
     }
+}
+
+extension TextFieldView: Stateful {
+    struct StateUpdate {
+        let text: String?
+    }
+
+  func update(state update: StateUpdate) {
+      if let text = update.text {
+          textField.text = text
+      }
+  }
 }

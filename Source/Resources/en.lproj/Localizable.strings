@@ -18,7 +18,7 @@
 "ExpiryDateErrorMessageInvalid" = "Please enter a valid Expiry Date";
 "ExpiryDateErrorMessageInvalidInPast" = "Expiry Date is in the past";
 "CardNumber" = "Card Number";
-"CardNumberErrorMessage" = "Missing Card Number";
+"CardNumberErrorMessage" = "Please enter a valid card Number";
 "city" = "City";
 "cancel" = "Cancel";
 "done" = "Done";

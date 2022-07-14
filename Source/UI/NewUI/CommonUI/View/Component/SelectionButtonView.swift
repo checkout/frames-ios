@@ -41,10 +41,16 @@ class SelectionButtonView: UIView {
         titleLabel.update(with: style.title)
         hintLabel.update(with: style.hint)
         buttonView.update(with: style.button)
-        errorView.update(style: style.error)
+
+        if let errorStyle = style.error {
+            errorView.update(style: errorStyle)
+        }
+
         self.style?.button.image = style.button.image?.imageFlippedForRightToLeftLayoutDirection()
-        imageContainerView.update(with: self.style?.button.image, tintColor: style.button.imageTintColor)
-        errorView.isHidden = style.error?.isHidden ?? true
+
+        imageContainerView.update(state: ImageContainerView.StateUpdate(image: self.style?.button.image, tintColor: style.button.imageTintColor, isHidden: nil, animated: false))
+
+        errorView.update(state: SimpleErrorView.StateUpdate(isHidden: true, labelText: nil))
     }
 
     required init?(coder: NSCoder) {
