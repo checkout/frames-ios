@@ -10,7 +10,7 @@ import Checkout
 import UIKit
 
 extension Constants.Bundle {
-  enum SchemeIcon: String {
+  enum SchemeIcon: String, CaseIterable {
     case blank = "icon-blank"
     case americanExpress = "icon-amex"
     case dinersClub = "icon-diners"

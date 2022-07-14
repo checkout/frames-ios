@@ -31,16 +31,7 @@ final class ConstantsSchemeIconTests: XCTestCase {
   }
 
   func test_allIconsHaveImage() {
-    let testCases: [Constants.Bundle.SchemeIcon] = [
-      .blank,
-      .americanExpress,
-      .discover,
-      .jcb,
-      .maestro,
-      .mastercard,
-      .mada,
-      .visa
-    ]
+    let testCases = Constants.Bundle.SchemeIcon.allCases
 
     testCases.forEach { schemeIconLocation in
       XCTAssertNotNil(schemeIconLocation.image, "no image found for \(schemeIconLocation)")
