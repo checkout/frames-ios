@@ -291,6 +291,7 @@ class CardViewControllerTests: XCTestCase {
         stubCardValidator.validateCardNumberToReturn = .success(.visa)
         stubCheckoutAPIService.cardValidatorToReturn = stubCardValidator
 
+
         cardViewController.cardView.cardNumberInputView.textField.text = "4242 4242 4242 4242"
         cardViewController.textFieldDidEndEditing(view: cardViewController.cardView.cardNumberInputView)
         XCTAssertEqual(cardViewController.cardView.cvvInputView.scheme, .visa)
@@ -352,7 +353,7 @@ class CardViewControllerTests: XCTestCase {
                                                     billingDetailsState: .normal)
         let initialEventCount = stubLogger.logCalledWithFramesLogEvents.count
         cardViewController.viewWillAppear(true)
-
+        
         let events = stubLogger.logCalledWithFramesLogEvents
         XCTAssertEqual(1, events.count - initialEventCount)
 

@@ -9,5 +9,6 @@ protocol PaymentViewModel {
     var updateAddBillingDetailsView: (() -> Void)? { get set }
     var updateExpiryDateView: (() -> Void)? { get set }
     var updateCardNumberView: (() -> Void)? { get set }
+    var updateSecurityCodeView: (() -> Void)? { get set }
     func updateAll()
 }

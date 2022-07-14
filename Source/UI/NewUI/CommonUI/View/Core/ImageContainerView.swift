@@ -2,16 +2,16 @@ import UIKit
 
 class ImageContainerView: UIView {
     private(set) lazy var imageView: UIImageView = {
-        let view = UIImageView().disabledAutoresizingIntoConstraints()
-        view.contentMode = .scaleAspectFit
-        view.backgroundColor = .clear
-        return view
+      let view = UIImageView().disabledAutoresizingIntoConstraints()
+      view.contentMode = .scaleAspectFit
+      view.backgroundColor = .clear
+      return view
     }()
 
     override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = .clear
-        setupConstraintsInOrder()
+      super.init(frame: frame)
+      backgroundColor = .clear
+      setupConstraintsInOrder()
     }
 
     required init?(coder: NSCoder) {

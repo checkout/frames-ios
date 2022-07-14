@@ -12,7 +12,7 @@ import XCTest
 class TextFieldViewTests: XCTestCase {
   var view: TextFieldView!
   var style: ElementTextFieldStyle!
-
+  
   override func setUp() {
     super.setUp()
     UIFont.loadAllCheckoutFonts
@@ -20,30 +20,31 @@ class TextFieldViewTests: XCTestCase {
     view = TextFieldView()
     view.update(with: style)
   }
-
-  func testSecuredTextFieldViewIsNotSubView() {
+  
+  func testSecuredTextFieldViewIsNotSubView(){
     let subviews = view.subviews
-
-    let isTextFieldExposed = subviews.contains {
+    
+    let isTextFieldExposed = subviews.contains{
       $0 is UITextField
     }
     XCTAssertFalse(isTextFieldExposed)
   }
-
+  
   func testSecuredTextFieldMirror() {
     let mirror = Mirror(reflecting: view as Any)
-
+    
     mirror.children.forEach {
       XCTAssertFalse($0.value is UITextField)
     }
   }
-
-  func testSecuredTextFieldWithMirrorObject() {
+  
+  func testSecuredTextFieldWithMirrorObject(){
     let viewMirror = TextFieldViewToTestMirror(view: view)
     XCTAssertNil(viewMirror.textField)
   }
-
+  
 }
+
 
 private final class TextFieldViewToTestMirror: MirrorObject {
   var textField: UITextField? { extract() }

@@ -9,19 +9,19 @@ final class BillingFormHeaderCell: UIView {
     weak var delegate: BillingFormHeaderCellDelegate?
     private var style: BillingFormHeaderCellStyle?
 
-    private lazy var cancelButton: ButtonView? = {
+    private lazy var cancelButton: ButtonView = {
         let view = ButtonView().disabledAutoresizingIntoConstraints()
         view.delegate = self
         return view
     }()
 
-    private lazy var doneButton: ButtonView? = {
+    private lazy var doneButton: ButtonView = {
         let view = ButtonView().disabledAutoresizingIntoConstraints()
         view.delegate = self
         return view
     }()
 
-    private lazy var headerLabel: LabelView? = {
+    private lazy var headerLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
@@ -40,9 +40,9 @@ final class BillingFormHeaderCell: UIView {
         guard let style = style else { return }
         self.style = style
 
-        doneButton?.update(with: style.doneButton)
-        cancelButton?.update(with: style.cancelButton)
-        headerLabel?.update(with: style.headerLabel)
+        doneButton.update(with: style.doneButton)
+        cancelButton.update(with: style.cancelButton)
+        headerLabel.update(with: style.headerLabel)
     }
 
     @objc private func doneAction() {
@@ -54,7 +54,7 @@ final class BillingFormHeaderCell: UIView {
     }
 
     private func shouldEnableDoneButton(flag: Bool) {
-        doneButton?.isEnabled = flag
+        doneButton.isEnabled = flag
     }
 }
 
@@ -68,7 +68,6 @@ extension BillingFormHeaderCell {
     }
 
     private func setupCancelButton() {
-        guard let cancelButton = cancelButton else { return }
         addSubview(cancelButton)
         NSLayoutConstraint.activate([
             cancelButton.topAnchor.constraint(
@@ -83,7 +82,6 @@ extension BillingFormHeaderCell {
     }
 
     private func setupDoneButton() {
-        guard let doneButton = doneButton else { return }
         addSubview(doneButton)
         NSLayoutConstraint.activate([
             doneButton.topAnchor.constraint(
@@ -98,7 +96,6 @@ extension BillingFormHeaderCell {
     }
 
     private func setupHeaderLabel() {
-        guard let headerLabel = headerLabel else { return }
         addSubview(headerLabel)
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(

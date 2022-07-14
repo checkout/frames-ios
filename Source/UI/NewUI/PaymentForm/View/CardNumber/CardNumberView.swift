@@ -41,7 +41,7 @@ final class CardNumberView: UIView, CardNumberViewProtocol {
   }
 
   func update(style: CellTextFieldStyle) {
-    cardNumberInputView.update(style: style, image: image(for: schemeIcon))
+    cardNumberInputView.update(style: style, image: schemeIcon.image)
   }
 
   private func setupView() {
@@ -50,11 +50,7 @@ final class CardNumberView: UIView, CardNumberViewProtocol {
   }
 
   private func updateIcon() {
-    cardNumberInputView.update(image: image(for: schemeIcon), animated: true)
-  }
-
-  private func image(for schemeIcon: Constants.Bundle.SchemeIcon) -> UIImage? {
-    return schemeIcon.rawValue.image(forClass: Self.self)
+    cardNumberInputView.update(image: schemeIcon.image, animated: true)
   }
 }
 
