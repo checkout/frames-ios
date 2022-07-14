@@ -7,6 +7,7 @@ class InputView: UIView {
     weak var delegate: TextFieldViewDelegate?
     private(set) var style: CellTextFieldStyle?
     private(set) lazy var textFieldContainerBottomAnchor = textFieldContainer.bottomAnchor.constraint(equalTo: bottomAnchor)
+    private(set) lazy var iconViewWidthAnchor = iconView.widthAnchor.constraint(equalToConstant: 32)
 
     // MARK: - UI elements
 
@@ -63,7 +64,9 @@ class InputView: UIView {
 
     // MARK: - Update subviews style
 
-    func update(style: CellTextFieldStyle?, textFieldValue: String? = nil, image: UIImage? = nil) {
+    func update(style: CellTextFieldStyle? = nil, textFieldValue: String? = nil, image: UIImage? = nil, animated: Bool = false){
+        updateTextFieldContainer(image: image, animated: animated)
+
         guard let style = style else { return }
         self.style = style
         backgroundColor = style.backgroundColor
@@ -72,12 +75,12 @@ class InputView: UIView {
         headerLabel.update(with: style.title)
         mandatoryLabel.update(with: style.mandatory)
         hintLabel.update(with: style.hint)
-        updateTextFieldContainer(style: style, image: image)
+        updateTextFieldContainer(style: style)
         textFieldView.update(with: style.textfield)
         updateErrorView(style: style)
     }
 
-    private func updateTextFieldContainer(style: CellTextFieldStyle, image: UIImage?) {
+    private func updateTextFieldContainer(style: CellTextFieldStyle) {
         let borderColor = !(style.error?.isHidden ?? true) ?
         style.textfield.errorBorderColor.cgColor :
         style.textfield.normalBorderColor.cgColor
@@ -86,9 +89,11 @@ class InputView: UIView {
         textFieldContainer.layer.cornerRadius = style.textfield.cornerRadius
         textFieldContainer.layer.borderWidth = style.textfield.borderWidth
         textFieldContainer.backgroundColor = style.textfield.backgroundColor
+    }
 
+    private func updateTextFieldContainer(image: UIImage?, animated: Bool) {
         iconView.isHidden = image == nil
-        iconView.update(with: image, tintColor: nil)
+        iconView.update(with: image, animated: animated)
     }
 
     private func updateErrorView(style: CellTextFieldStyle) {
@@ -156,6 +161,10 @@ extension InputView {
 
     private func setupIcon() {
         textFieldContainer.addArrangedSubview(iconView)
+
+        NSLayoutConstraint.activate([
+            iconViewWidthAnchor
+        ])
     }
 
     private func setupTextField() {

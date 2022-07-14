@@ -5,9 +5,13 @@
 //  Copyright © 2022 Checkout. All rights reserved.
 //
 
+import Foundation
+
 extension Constants {
 
     enum Style {
+
+      static let animationLength: TimeInterval = 0.25
 
         enum PaymentForm {
             enum InputBillingFormButton: Double {

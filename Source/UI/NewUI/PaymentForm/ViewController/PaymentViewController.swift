@@ -15,6 +15,8 @@ final class PaymentViewController: UIViewController {
 
   private(set) var viewModel: PaymentViewModel
   private var notificationCenter = NotificationCenter.default
+    private let cardValidator: CardValidating
+
   // MARK: - UI properties
 
   // TODO: Replace it with new header
@@ -53,18 +55,22 @@ final class PaymentViewController: UIViewController {
     return view
   }()
 
-  private lazy var cardNumberView: InputView = {
-    InputView()
+  private lazy var cardNumberView: CardNumberView = {
+    let cardNumberViewModel = CardNumberViewModel(cardValidator: cardValidator)
+    let cardNumberView = CardNumberView(viewModel: cardNumberViewModel)
+    cardNumberViewModel.cardNumberView = cardNumberView
+
+    return cardNumberView
   }()
 
   private lazy var securityCodeView: SecurityCodeView = {
     SecurityCodeView(cardValidator: CardValidator(environment: viewModel.environment.checkoutEnvironment))
   }()
 
-  // MARK: - functions
-
+ 
   init(viewModel: PaymentViewModel) {
     self.viewModel = viewModel
+    self.cardValidator = CardValidator(environment: viewModel.environment.checkoutEnvironment)
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -182,7 +188,7 @@ extension PaymentViewController {
 
   private func updateCardNumber() {
     guard let style = viewModel.paymentFormStyle?.cardNumber else { return }
-    cardNumberView.update(style: style, image: "icon-visa".image(forClass: CardListCell.self))
+    cardNumberView.update(style: style)
   }
 
   private func updateExpiryDate() {

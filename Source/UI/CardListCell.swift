@@ -79,28 +79,6 @@ public class CardListCell: UITableViewCell {
     ///
     /// - parameter scheme: Scheme (e.g. Card.Scheme.visa)
     public func setSchemeIcon(scheme: Card.Scheme) {
-        schemeImageView.image = schemeIconLocation(scheme: scheme)?.rawValue.image(forClass: CardListCell.self)
+        schemeImageView.image = Constants.Bundle.SchemeIcon(scheme: scheme).image
     }
-
-    private func schemeIconLocation(scheme: Card.Scheme) -> Constants.Bundle.SchemeIcons? {
-        switch scheme {
-        case .americanExpress:
-            return .americanExpress
-        case .dinersClub:
-            return .dinersClub
-        case .discover:
-            return .discover
-        case .jcb:
-            return .jcb
-        case .maestro:
-            return .maestro
-        case .mastercard:
-            return .mastercard
-        case .visa:
-            return .visa
-        case .unknown, .mada:
-            return nil
-        }
-    }
-
 }

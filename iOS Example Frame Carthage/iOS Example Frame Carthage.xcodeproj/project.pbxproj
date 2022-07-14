@@ -37,27 +37,6 @@
 		9572608E286DE8A00080E2C8 /* ResourcesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572602F286DE8A00080E2C8 /* ResourcesTests.swift */; };
 		9572608F286DE8A00080E2C8 /* FontRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95726030286DE8A00080E2C8 /* FontRegistrationTests.swift */; };
 		95732271286EF4E80068C115 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95732168286EF4E80068C115 /* Localizable.strings */; };
-		95732272286EF4E80068C115 /* icon-visa.png in Resources */ = {isa = PBXBuildFile; fileRef = 9573216B286EF4E80068C115 /* icon-visa.png */; };
-		95732273286EF4E80068C115 /* icon-maestro.png in Resources */ = {isa = PBXBuildFile; fileRef = 9573216C286EF4E80068C115 /* icon-maestro.png */; };
-		95732274286EF4E80068C115 /* icon-visa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9573216D286EF4E80068C115 /* icon-visa@2x.png */; };
-		95732275286EF4E80068C115 /* icon-mastercard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9573216E286EF4E80068C115 /* icon-mastercard@2x.png */; };
-		95732276286EF4E80068C115 /* icon-mastercard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9573216F286EF4E80068C115 /* icon-mastercard@3x.png */; };
-		95732277286EF4E80068C115 /* icon-visa@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732170286EF4E80068C115 /* icon-visa@3x.png */; };
-		95732278286EF4E80068C115 /* icon-dinersclub.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732171286EF4E80068C115 /* icon-dinersclub.png */; };
-		95732279286EF4E80068C115 /* icon-mastercard.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732172286EF4E80068C115 /* icon-mastercard.png */; };
-		9573227A286EF4E80068C115 /* icon-jcb.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732173286EF4E80068C115 /* icon-jcb.png */; };
-		9573227B286EF4E80068C115 /* icon-amex.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732174286EF4E80068C115 /* icon-amex.png */; };
-		9573227C286EF4E80068C115 /* icon-maestro@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732175286EF4E80068C115 /* icon-maestro@3x.png */; };
-		9573227D286EF4E80068C115 /* icon-jcb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732176286EF4E80068C115 /* icon-jcb@2x.png */; };
-		9573227E286EF4E80068C115 /* icon-amex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732177286EF4E80068C115 /* icon-amex@2x.png */; };
-		9573227F286EF4E80068C115 /* icon-amex@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732178286EF4E80068C115 /* icon-amex@3x.png */; };
-		95732280286EF4E80068C115 /* icon-jcb@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732179286EF4E80068C115 /* icon-jcb@3x.png */; };
-		95732281286EF4E80068C115 /* icon-maestro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9573217A286EF4E80068C115 /* icon-maestro@2x.png */; };
-		95732282286EF4E80068C115 /* icon-dinersclub@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9573217B286EF4E80068C115 /* icon-dinersclub@3x.png */; };
-		95732283286EF4E80068C115 /* icon-discover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9573217C286EF4E80068C115 /* icon-discover@2x.png */; };
-		95732284286EF4E80068C115 /* icon-discover@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9573217D286EF4E80068C115 /* icon-discover@3x.png */; };
-		95732285286EF4E80068C115 /* icon-discover.png in Resources */ = {isa = PBXBuildFile; fileRef = 9573217E286EF4E80068C115 /* icon-discover.png */; };
-		95732286286EF4E80068C115 /* icon-dinersclub@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9573217F286EF4E80068C115 /* icon-dinersclub@2x.png */; };
 		95732287286EF4E80068C115 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732183286EF4E80068C115 /* checkmark.png */; };
 		95732288286EF4E80068C115 /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732184286EF4E80068C115 /* checkmark@2x.png */; };
 		95732289286EF4E80068C115 /* checkmark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732185286EF4E80068C115 /* checkmark@3x.png */; };
@@ -257,7 +236,7 @@
 		957323B5286EF50F0068C115 /* StubURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732354286EF50F0068C115 /* StubURLProtocol.swift */; };
 		957323B6286EF50F0068C115 /* StubCheckoutEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732355286EF50F0068C115 /* StubCheckoutEventLogger.swift */; };
 		957323B7286EF50F0068C115 /* StubDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732356286EF50F0068C115 /* StubDateProvider.swift */; };
-		957323B8286EF50F0068C115 /* StubCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732357286EF50F0068C115 /* StubCardValidator.swift */; };
+		957323B8286EF50F0068C115 /* MockCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732357286EF50F0068C115 /* MockCardValidator.swift */; };
 		957323B9286EF50F0068C115 /* AddressViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732358286EF50F0068C115 /* AddressViewControllerMock.swift */; };
 		957323BA286EF50F0068C115 /* BillingFormViewControllerMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732359286EF50F0068C115 /* BillingFormViewControllerMockDelegate.swift */; };
 		957323BB286EF50F0068C115 /* AddressViewControllerMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573235A286EF50F0068C115 /* AddressViewControllerMockDelegate.swift */; };
@@ -311,11 +290,21 @@
 		957323EB286EF50F0068C115 /* applePayTokenInvalid.json in Resources */ = {isa = PBXBuildFile; fileRef = 95732393286EF50F0068C115 /* applePayTokenInvalid.json */; };
 		957323EC286EF50F0068C115 /* cardTokenInvalidNumber.json in Resources */ = {isa = PBXBuildFile; fileRef = 95732394286EF50F0068C115 /* cardTokenInvalidNumber.json */; };
 		957323ED286EF50F0068C115 /* applePayToken.json in Resources */ = {isa = PBXBuildFile; fileRef = 95732395286EF50F0068C115 /* applePayToken.json */; };
-		95B32CBB2877174F001D1205 /* SecurityCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B32CBA2877174F001D1205 /* SecurityCodeView.swift */; };
 		95B32CC0287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B32CBF287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift */; };
 		95ED57A0285A13D70010B493 /* CustomStyle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ED579E285A13D70010B493 /* CustomStyle2.swift */; };
 		95ED57A1285A13D70010B493 /* CustomStyle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ED579F285A13D70010B493 /* CustomStyle1.swift */; };
-		CB9412CF2825647600C889E8 /* Checkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9412CE2825647600C889E8 /* Checkout.framework */; };
+		CB10618C2875E5ED007322FE /* Checkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9412CE2825647600C889E8 /* Checkout.framework */; };
+		CB1061902877195B007322FE /* schemes.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB10618F2877195B007322FE /* schemes.xcassets */; };
+		CB106193287726EE007322FE /* CardNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB106192287726EE007322FE /* CardNumberView.swift */; };
+		CB106195287726FF007322FE /* CardNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB106194287726FF007322FE /* CardNumberViewModel.swift */; };
+		CB10619828784821007322FE /* CardNumberViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB10619728784821007322FE /* CardNumberViewModelTests.swift */; };
+		CB10619A287861DC007322FE /* MockCardNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB106199287861DC007322FE /* MockCardNumberView.swift */; };
+		CB10619C28786650007322FE /* MockCardNumberViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB10619B28786650007322FE /* MockCardNumberViewModelDelegate.swift */; };
+		CBAA859528802C92000F6578 /* SecurityCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAA859428802C92000F6578 /* SecurityCodeView.swift */; };
+		CBB6F521287EC11F00A1379D /* CardNumberViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB6F520287EC11F00A1379D /* CardNumberViewTests.swift */; };
+		CBB6F523287EC18100A1379D /* MockCardNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB6F522287EC18100A1379D /* MockCardNumberViewModel.swift */; };
+		CBB6F525287ED04E00A1379D /* Constants+SchemeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB6F524287ED04E00A1379D /* Constants+SchemeIcon.swift */; };
+		CBB6F527287ED39900A1379D /* ConstantsSchemeIconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB6F526287ED39900A1379D /* ConstantsSchemeIconTests.swift */; };
 		E6646FA320CE6C0A00D8353A /* iOS_Example_FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646FA220CE6C0A00D8353A /* iOS_Example_FrameUITests.swift */; };
 		F59820122805B75F007AB07C /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5981FFD2805B75F007AB07C /* LaunchScreen.strings */; };
 		F59820132805B75F007AB07C /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5981FFF2805B75F007AB07C /* Main.strings */; };
@@ -393,27 +382,6 @@
 		9572602F286DE8A00080E2C8 /* ResourcesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesTests.swift; sourceTree = "<group>"; };
 		95726030286DE8A00080E2C8 /* FontRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontRegistrationTests.swift; sourceTree = "<group>"; };
 		95732169286EF4E80068C115 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9573216B286EF4E80068C115 /* icon-visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-visa.png"; sourceTree = "<group>"; };
-		9573216C286EF4E80068C115 /* icon-maestro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-maestro.png"; sourceTree = "<group>"; };
-		9573216D286EF4E80068C115 /* icon-visa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-visa@2x.png"; sourceTree = "<group>"; };
-		9573216E286EF4E80068C115 /* icon-mastercard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-mastercard@2x.png"; sourceTree = "<group>"; };
-		9573216F286EF4E80068C115 /* icon-mastercard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-mastercard@3x.png"; sourceTree = "<group>"; };
-		95732170286EF4E80068C115 /* icon-visa@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-visa@3x.png"; sourceTree = "<group>"; };
-		95732171286EF4E80068C115 /* icon-dinersclub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-dinersclub.png"; sourceTree = "<group>"; };
-		95732172286EF4E80068C115 /* icon-mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-mastercard.png"; sourceTree = "<group>"; };
-		95732173286EF4E80068C115 /* icon-jcb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-jcb.png"; sourceTree = "<group>"; };
-		95732174286EF4E80068C115 /* icon-amex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-amex.png"; sourceTree = "<group>"; };
-		95732175286EF4E80068C115 /* icon-maestro@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-maestro@3x.png"; sourceTree = "<group>"; };
-		95732176286EF4E80068C115 /* icon-jcb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-jcb@2x.png"; sourceTree = "<group>"; };
-		95732177286EF4E80068C115 /* icon-amex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-amex@2x.png"; sourceTree = "<group>"; };
-		95732178286EF4E80068C115 /* icon-amex@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-amex@3x.png"; sourceTree = "<group>"; };
-		95732179286EF4E80068C115 /* icon-jcb@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-jcb@3x.png"; sourceTree = "<group>"; };
-		9573217A286EF4E80068C115 /* icon-maestro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-maestro@2x.png"; sourceTree = "<group>"; };
-		9573217B286EF4E80068C115 /* icon-dinersclub@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-dinersclub@3x.png"; sourceTree = "<group>"; };
-		9573217C286EF4E80068C115 /* icon-discover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-discover@2x.png"; sourceTree = "<group>"; };
-		9573217D286EF4E80068C115 /* icon-discover@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-discover@3x.png"; sourceTree = "<group>"; };
-		9573217E286EF4E80068C115 /* icon-discover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-discover.png"; sourceTree = "<group>"; };
-		9573217F286EF4E80068C115 /* icon-dinersclub@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-dinersclub@2x.png"; sourceTree = "<group>"; };
 		95732180286EF4E80068C115 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		95732181286EF4E80068C115 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		95732183286EF4E80068C115 /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmark.png; sourceTree = "<group>"; };
@@ -618,7 +586,7 @@
 		95732354286EF50F0068C115 /* StubURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubURLProtocol.swift; sourceTree = "<group>"; };
 		95732355286EF50F0068C115 /* StubCheckoutEventLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCheckoutEventLogger.swift; sourceTree = "<group>"; };
 		95732356286EF50F0068C115 /* StubDateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubDateProvider.swift; sourceTree = "<group>"; };
-		95732357286EF50F0068C115 /* StubCardValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCardValidator.swift; sourceTree = "<group>"; };
+		95732357286EF50F0068C115 /* MockCardValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCardValidator.swift; sourceTree = "<group>"; };
 		95732358286EF50F0068C115 /* AddressViewControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewControllerMock.swift; sourceTree = "<group>"; };
 		95732359286EF50F0068C115 /* BillingFormViewControllerMockDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormViewControllerMockDelegate.swift; sourceTree = "<group>"; };
 		9573235A286EF50F0068C115 /* AddressViewControllerMockDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewControllerMockDelegate.swift; sourceTree = "<group>"; };
@@ -672,12 +640,22 @@
 		95732393286EF50F0068C115 /* applePayTokenInvalid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applePayTokenInvalid.json; sourceTree = "<group>"; };
 		95732394286EF50F0068C115 /* cardTokenInvalidNumber.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardTokenInvalidNumber.json; sourceTree = "<group>"; };
 		95732395286EF50F0068C115 /* applePayToken.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applePayToken.json; sourceTree = "<group>"; };
-		95B32CBA2877174F001D1205 /* SecurityCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityCodeView.swift; sourceTree = "<group>"; };
 		95B32CBF287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSecurityCodeFormStyle.swift; sourceTree = "<group>"; };
 		95ED579E285A13D70010B493 /* CustomStyle2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle2.swift; sourceTree = "<group>"; };
 		95ED579F285A13D70010B493 /* CustomStyle1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle1.swift; sourceTree = "<group>"; };
+		CB10618F2877195B007322FE /* schemes.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = schemes.xcassets; sourceTree = "<group>"; };
+		CB106192287726EE007322FE /* CardNumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberView.swift; sourceTree = "<group>"; };
+		CB106194287726FF007322FE /* CardNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberViewModel.swift; sourceTree = "<group>"; };
+		CB10619728784821007322FE /* CardNumberViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberViewModelTests.swift; sourceTree = "<group>"; };
+		CB106199287861DC007322FE /* MockCardNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCardNumberView.swift; sourceTree = "<group>"; };
+		CB10619B28786650007322FE /* MockCardNumberViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCardNumberViewModelDelegate.swift; sourceTree = "<group>"; };
 		CB8CE61C2805D00E0069ADB0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB9412CE2825647600C889E8 /* Checkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Checkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBAA859428802C92000F6578 /* SecurityCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityCodeView.swift; sourceTree = "<group>"; };
+		CBB6F520287EC11F00A1379D /* CardNumberViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberViewTests.swift; sourceTree = "<group>"; };
+		CBB6F522287EC18100A1379D /* MockCardNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCardNumberViewModel.swift; sourceTree = "<group>"; };
+		CBB6F524287ED04E00A1379D /* Constants+SchemeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+SchemeIcon.swift"; sourceTree = "<group>"; };
+		CBB6F526287ED39900A1379D /* ConstantsSchemeIconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsSchemeIconTests.swift; sourceTree = "<group>"; };
 		E6646FA220CE6C0A00D8353A /* iOS_Example_FrameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_Example_FrameUITests.swift; sourceTree = "<group>"; };
 		F5981FF72805B685007AB07C /* CheckoutEventLoggerKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CheckoutEventLoggerKit.xcframework; path = "../Carthage/Checkouts/checkout-event-logger-ios-framework/CheckoutEventLoggerKit.xcframework"; sourceTree = SOURCE_ROOT; };
 		F5981FFE2805B75F007AB07C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -704,7 +682,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB9412CF2825647600C889E8 /* Checkout.framework in Frameworks */,
+				CB10618C2875E5ED007322FE /* Checkout.framework in Frameworks */,
 				44A4DFE5261CC59B00E0C349 /* PhoneNumberKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -788,7 +766,7 @@
 			isa = PBXGroup;
 			children = (
 				95732168286EF4E80068C115 /* Localizable.strings */,
-				9573216A286EF4E80068C115 /* schemes */,
+				CB10618F2877195B007322FE /* schemes.xcassets */,
 				95732182286EF4E80068C115 /* checkmarks */,
 				95732187286EF4E80068C115 /* warning */,
 				9573218A286EF4E80068C115 /* arrows */,
@@ -796,34 +774,6 @@
 			);
 			name = Resources;
 			path = ../../Source/Resources;
-			sourceTree = "<group>";
-		};
-		9573216A286EF4E80068C115 /* schemes */ = {
-			isa = PBXGroup;
-			children = (
-				9573216B286EF4E80068C115 /* icon-visa.png */,
-				9573216C286EF4E80068C115 /* icon-maestro.png */,
-				9573216D286EF4E80068C115 /* icon-visa@2x.png */,
-				9573216E286EF4E80068C115 /* icon-mastercard@2x.png */,
-				9573216F286EF4E80068C115 /* icon-mastercard@3x.png */,
-				95732170286EF4E80068C115 /* icon-visa@3x.png */,
-				95732171286EF4E80068C115 /* icon-dinersclub.png */,
-				95732172286EF4E80068C115 /* icon-mastercard.png */,
-				95732173286EF4E80068C115 /* icon-jcb.png */,
-				95732174286EF4E80068C115 /* icon-amex.png */,
-				95732175286EF4E80068C115 /* icon-maestro@3x.png */,
-				95732176286EF4E80068C115 /* icon-jcb@2x.png */,
-				95732177286EF4E80068C115 /* icon-amex@2x.png */,
-				95732178286EF4E80068C115 /* icon-amex@3x.png */,
-				95732179286EF4E80068C115 /* icon-jcb@3x.png */,
-				9573217A286EF4E80068C115 /* icon-maestro@2x.png */,
-				9573217B286EF4E80068C115 /* icon-dinersclub@3x.png */,
-				9573217C286EF4E80068C115 /* icon-discover@2x.png */,
-				9573217D286EF4E80068C115 /* icon-discover@3x.png */,
-				9573217E286EF4E80068C115 /* icon-discover.png */,
-				9573217F286EF4E80068C115 /* icon-dinersclub@2x.png */,
-			);
-			path = schemes;
 			sourceTree = "<group>";
 		};
 		95732182286EF4E80068C115 /* checkmarks */ = {
@@ -1033,7 +983,8 @@
 		957321D1286EF4E80068C115 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				95B32CBA2877174F001D1205 /* SecurityCodeView.swift */,
+				CBAA859428802C92000F6578 /* SecurityCodeView.swift */,
+				CB106191287726EE007322FE /* CardNumber */,
 				957321D3286EF4E80068C115 /* BillingFormSummaryView.swift */,
 				957321D4286EF4E80068C115 /* ExpiryDateView.swift */,
 			);
@@ -1489,6 +1440,7 @@
 				95732266286EF4E80068C115 /* InputState.swift */,
 				95732267286EF4E80068C115 /* Constants+Style.swift */,
 				95732268286EF4E80068C115 /* ContentTypeProviding.swift */,
+				CBB6F524287ED04E00A1379D /* Constants+SchemeIcon.swift */,
 				95732269286EF4E80068C115 /* Logging */,
 			);
 			name = Core;
@@ -1528,6 +1480,7 @@
 				95732336286EF50F0068C115 /* UIColor+PropertyProvidingTests.swift */,
 				95732337286EF50F0068C115 /* URL+ExtensionsTests.swift */,
 				95732338286EF50F0068C115 /* UIFont+PropertyProvidingTests.swift */,
+				CBB6F526287ED39900A1379D /* ConstantsSchemeIconTests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1569,7 +1522,7 @@
 				95732354286EF50F0068C115 /* StubURLProtocol.swift */,
 				95732355286EF50F0068C115 /* StubCheckoutEventLogger.swift */,
 				95732356286EF50F0068C115 /* StubDateProvider.swift */,
-				95732357286EF50F0068C115 /* StubCardValidator.swift */,
+				95732357286EF50F0068C115 /* MockCardValidator.swift */,
 				95732358286EF50F0068C115 /* AddressViewControllerMock.swift */,
 				95732359286EF50F0068C115 /* BillingFormViewControllerMockDelegate.swift */,
 				9573235A286EF50F0068C115 /* AddressViewControllerMockDelegate.swift */,
@@ -1578,6 +1531,9 @@
 				9573235D286EF50F0068C115 /* StubCardViewControllerDelegate.swift */,
 				9573235E286EF50F0068C115 /* StubError.swift */,
 				9573235F286EF50F0068C115 /* CvvInputViewMockDelegate.swift */,
+				CB106199287861DC007322FE /* MockCardNumberView.swift */,
+				CB10619B28786650007322FE /* MockCardNumberViewModelDelegate.swift */,
+				CBB6F522287EC18100A1379D /* MockCardNumberViewModel.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -1608,6 +1564,7 @@
 		9573236B286EF50F0068C115 /* New UI */ = {
 			isa = PBXGroup;
 			children = (
+				CB1061962878480B007322FE /* PaymentForm */,
 				9573236C286EF50F0068C115 /* BillingForm */,
 			);
 			path = "New UI";
@@ -1705,6 +1662,23 @@
 			path = SecurityCode;
 			sourceTree = "<group>";
 		};
+		CB106191287726EE007322FE /* CardNumber */ = {
+			isa = PBXGroup;
+			children = (
+				CB106192287726EE007322FE /* CardNumberView.swift */,
+				CB106194287726FF007322FE /* CardNumberViewModel.swift */,
+			);
+			path = CardNumber;
+			sourceTree = "<group>";
+		};
+		CB1061962878480B007322FE /* PaymentForm */ = {
+			isa = PBXGroup;
+			children = (
+				CBB6F51F287EC10700A1379D /* CardNumber */,
+			);
+			path = PaymentForm;
+			sourceTree = "<group>";
+		};
 		CB8CE5C72805D00D0069ADB0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1717,6 +1691,15 @@
 			);
 			name = Tests;
 			path = ../Tests;
+			sourceTree = "<group>";
+		};
+		CBB6F51F287EC10700A1379D /* CardNumber */ = {
+			isa = PBXGroup;
+			children = (
+				CB10619728784821007322FE /* CardNumberViewModelTests.swift */,
+				CBB6F520287EC11F00A1379D /* CardNumberViewTests.swift */,
+			);
+			path = CardNumber;
 			sourceTree = "<group>";
 		};
 		E6646F8120CE6C0900D8353A = {
@@ -1923,58 +1906,38 @@
 			files = (
 				9573228F286EF4E80068C115 /* keyboard-previous@3x.png in Resources */,
 				95732296286EF4E80068C115 /* GraphikLCG-BlackItalic.otf in Resources */,
-				9573227F286EF4E80068C115 /* icon-amex@3x.png in Resources */,
-				95732279286EF4E80068C115 /* icon-mastercard.png in Resources */,
-				95732280286EF4E80068C115 /* icon-jcb@3x.png in Resources */,
-				95732275286EF4E80068C115 /* icon-mastercard@2x.png in Resources */,
 				957322A2286EF4E80068C115 /* GraphikLCG-MediumItalic.otf in Resources */,
 				957322A1286EF4E80068C115 /* GraphikLCG-Semibold.otf in Resources */,
 				957322A6286EF4E80068C115 /* GraphikLCG-Bold.otf in Resources */,
-				9573227E286EF4E80068C115 /* icon-amex@2x.png in Resources */,
 				95732271286EF4E80068C115 /* Localizable.strings in Resources */,
 				95732295286EF4E80068C115 /* GraphikLCG-ThinItalic.otf in Resources */,
-				95732276286EF4E80068C115 /* icon-mastercard@3x.png in Resources */,
 				9573229E286EF4E80068C115 /* GraphikLCG-Regular.otf in Resources */,
 				9573228A286EF4E80068C115 /* warning.pdf in Resources */,
 				957322A4286EF4E80068C115 /* GraphikLCG-Thin.otf in Resources */,
-				95732284286EF4E80068C115 /* icon-discover@3x.png in Resources */,
 				95732293286EF4E80068C115 /* keyboard-down@2x.png in Resources */,
-				9573227A286EF4E80068C115 /* icon-jcb.png in Resources */,
-				9573227B286EF4E80068C115 /* icon-amex.png in Resources */,
-				95732277286EF4E80068C115 /* icon-visa@3x.png in Resources */,
 				9573229F286EF4E80068C115 /* GraphikLCG-LightItalic.otf in Resources */,
+				CB1061902877195B007322FE /* schemes.xcassets in Resources */,
 				95732291286EF4E80068C115 /* keyboard-previous.png in Resources */,
-				95732281286EF4E80068C115 /* icon-maestro@2x.png in Resources */,
 				9573228D286EF4E80068C115 /* keyboard-next@3x.png in Resources */,
-				95732272286EF4E80068C115 /* icon-visa.png in Resources */,
 				957322A0286EF4E80068C115 /* GraphikLCG-Medium.otf in Resources */,
 				95732287286EF4E80068C115 /* checkmark.png in Resources */,
 				95732289286EF4E80068C115 /* checkmark@3x.png in Resources */,
 				9573228B286EF4E80068C115 /* arrow_blue_right.pdf in Resources */,
 				95732299286EF4E80068C115 /* GraphikLCG-BoldItalic.otf in Resources */,
-				95732274286EF4E80068C115 /* icon-visa@2x.png in Resources */,
-				95732286286EF4E80068C115 /* icon-dinersclub@2x.png in Resources */,
 				9573228E286EF4E80068C115 /* keyboard-next@2x.png in Resources */,
 				95732292286EF4E80068C115 /* keyboard-next.png in Resources */,
-				95732285286EF4E80068C115 /* icon-discover.png in Resources */,
-				95732282286EF4E80068C115 /* icon-dinersclub@3x.png in Resources */,
 				95732298286EF4E80068C115 /* GraphikLCG-Extralight.otf in Resources */,
 				95732297286EF4E80068C115 /* GraphikLCG-Super.otf in Resources */,
-				95732273286EF4E80068C115 /* icon-maestro.png in Resources */,
 				9573229D286EF4E80068C115 /* GraphikLCG-ExtralightItalic.otf in Resources */,
-				9573227C286EF4E80068C115 /* icon-maestro@3x.png in Resources */,
 				95732290286EF4E80068C115 /* keyboard-down.png in Resources */,
 				9573229B286EF4E80068C115 /* GraphikLCG-SuperItalic.otf in Resources */,
-				9573227D286EF4E80068C115 /* icon-jcb@2x.png in Resources */,
 				9573228C286EF4E80068C115 /* keyboard-previous@2x.png in Resources */,
 				95732294286EF4E80068C115 /* keyboard-down@3x.png in Resources */,
-				95732283286EF4E80068C115 /* icon-discover@2x.png in Resources */,
 				957322A5286EF4E80068C115 /* GraphikLCG-Light.otf in Resources */,
 				9573229C286EF4E80068C115 /* GraphikLCG-RegularItalic.otf in Resources */,
 				9573229A286EF4E80068C115 /* GraphikLCG-Black.otf in Resources */,
 				95732288286EF4E80068C115 /* checkmark@2x.png in Resources */,
 				957322A3286EF4E80068C115 /* GraphikLCG-SemiboldItalic.otf in Resources */,
-				95732278286EF4E80068C115 /* icon-dinersclub.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2086,6 +2049,7 @@
 				957322E9286EF4E80068C115 /* BillingFormCell.swift in Sources */,
 				957322D5286EF4E80068C115 /* BillingFormViewModel.swift in Sources */,
 				95732303286EF4E80068C115 /* ThreedsWebViewController.swift in Sources */,
+				CBB6F525287ED04E00A1379D /* Constants+SchemeIcon.swift in Sources */,
 				95732318286EF4E80068C115 /* UIViewExtensions.swift in Sources */,
 				957322CC286EF4E80068C115 /* InputView.swift in Sources */,
 				9573230E286EF4E80068C115 /* UITableViewExtensions.swift in Sources */,
@@ -2117,6 +2081,7 @@
 				95732317286EF4E80068C115 /* JSONDecoder+TopLevelDecoder.swift in Sources */,
 				9573231E286EF4E80068C115 /* Constants.swift in Sources */,
 				957322BB286EF4E80068C115 /* DefaultEditBillingDetailsButtonStyle.swift in Sources */,
+				CB106193287726EE007322FE /* CardNumberView.swift in Sources */,
 				957322D0286EF4E80068C115 /* CellTextFieldStyle.swift in Sources */,
 				957322CA286EF4E80068C115 /* SimpleErrorView.swift in Sources */,
 				9573231D286EF4E80068C115 /* UIResponderExtensions.swift in Sources */,
@@ -2146,6 +2111,7 @@
 				957322EE286EF4E80068C115 /* BillingFormTextFieldView.swift in Sources */,
 				95732329286EF4E80068C115 /* ContentTypeProviding.swift in Sources */,
 				952F328D283C303E00F616FF /* CheckoutFont.swift in Sources */,
+				CBAA859528802C92000F6578 /* SecurityCodeView.swift in Sources */,
 				957322E2286EF4E80068C115 /* DefaultBillingFormAddressLine1CellStyle.swift in Sources */,
 				95732301286EF4E80068C115 /* CountrySelectionViewController.swift in Sources */,
 				957322A8286EF4E80068C115 /* CountryValidator.swift in Sources */,
@@ -2154,6 +2120,7 @@
 				957322AA286EF4E80068C115 /* AddressLine1Validator.swift in Sources */,
 				95732320286EF4E80068C115 /* CheckoutAPIService.swift in Sources */,
 				957322ED286EF4E80068C115 /* BillingFormHeaderCell.swift in Sources */,
+				CB106195287726FF007322FE /* CardNumberViewModel.swift in Sources */,
 				957322EB286EF4E80068C115 /* MainBillingFormTextField.swift in Sources */,
 				957322EC286EF4E80068C115 /* BillingFormTextField.swift in Sources */,
 				957322D7286EF4E80068C115 /* DefaultHintInputLabelStyle.swift in Sources */,
@@ -2177,7 +2144,6 @@
 				957322AF286EF4E80068C115 /* FullNameValidator.swift in Sources */,
 				957322AE286EF4E80068C115 /* StateValidator.swift in Sources */,
 				957322CE286EF4E80068C115 /* CellStyle.swift in Sources */,
-				95B32CBB2877174F001D1205 /* SecurityCodeView.swift in Sources */,
 				957322F0286EF4E80068C115 /* BillingFormCellTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2187,6 +2153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				957323D5286EF50F0068C115 /* FullNameValidatorTests.swift in Sources */,
+				CBB6F521287EC11F00A1379D /* CardNumberViewTests.swift in Sources */,
 				957323DE286EF50F0068C115 /* ExpiryDateViewTests.swift in Sources */,
 				957323B6286EF50F0068C115 /* StubCheckoutEventLogger.swift in Sources */,
 				957323C6286EF50F0068C115 /* CardListCellTests.swift in Sources */,
@@ -2214,7 +2181,9 @@
 				957323D6286EF50F0068C115 /* BillingFormSummaryViewTests.swift in Sources */,
 				957323A4286EF50F0068C115 /* StubTheme.swift in Sources */,
 				957323B7286EF50F0068C115 /* StubDateProvider.swift in Sources */,
+				CB10619828784821007322FE /* CardNumberViewModelTests.swift in Sources */,
 				957323E5286EF50F0068C115 /* CardViewTests.swift in Sources */,
+				CBB6F527287ED39900A1379D /* ConstantsSchemeIconTests.swift in Sources */,
 				9572608E286DE8A00080E2C8 /* ResourcesTests.swift in Sources */,
 				9573239D286EF50F0068C115 /* CorrelationIDGeneratorTests.swift in Sources */,
 				957323CA286EF50F0068C115 /* StandardInputViewTests.swift in Sources */,
@@ -2225,6 +2194,7 @@
 				957323CB286EF50F0068C115 /* BillingFormCellTypeTests.swift in Sources */,
 				957323AF286EF50F0068C115 /* StubJSONEncoder.swift in Sources */,
 				957323E0286EF50F0068C115 /* ThreedsWebViewControllerTests.swift in Sources */,
+				CB10619C28786650007322FE /* MockCardNumberViewModelDelegate.swift in Sources */,
 				95732397286EF50F0068C115 /* DispatchQueue+DispatchingTests.swift in Sources */,
 				957323A6286EF50F0068C115 /* BillingFormTextFieldCellMockDelegate.swift in Sources */,
 				9573239A286EF50F0068C115 /* URL+ExtensionsTests.swift in Sources */,
@@ -2233,6 +2203,7 @@
 				957323AD286EF50F0068C115 /* BillingFormViewModelEditingMockDelegate.swift in Sources */,
 				957323E2286EF50F0068C115 /* SimpleLoadingViewControllerTests.swift in Sources */,
 				957323B2286EF50F0068C115 /* CvvViewControllerDelegateMock.swift in Sources */,
+				CBB6F523287EC18100A1379D /* MockCardNumberViewModel.swift in Sources */,
 				9573239C286EF50F0068C115 /* CardUtilsTests.swift in Sources */,
 				957323DA286EF50F0068C115 /* MirrorObject.swift in Sources */,
 				957323DD286EF50F0068C115 /* BillingFormTextFieldErrorViewTests.swift in Sources */,
@@ -2244,13 +2215,14 @@
 				957323D0286EF50F0068C115 /* CountryValidatorTests.swift in Sources */,
 				957323A2286EF50F0068C115 /* StubCheckoutAPIService.swift in Sources */,
 				957323C7286EF50F0068C115 /* CvvConfirmationViewControllerTests.swift in Sources */,
+				CB10619A287861DC007322FE /* MockCardNumberView.swift in Sources */,
 				957323A7286EF50F0068C115 /* StubCorrelationIDGenerator.swift in Sources */,
 				957323A8286EF50F0068C115 /* NotificationCenterMock.swift in Sources */,
 				957323AC286EF50F0068C115 /* StubDispatcher.swift in Sources */,
 				957323C3286EF50F0068C115 /* CountrySelectionViewControllerTests.swift in Sources */,
 				957323BD286EF50F0068C115 /* StubURLSession.swift in Sources */,
 				9573239F286EF50F0068C115 /* ThemeTests.swift in Sources */,
-				957323B8286EF50F0068C115 /* StubCardValidator.swift in Sources */,
+				957323B8286EF50F0068C115 /* MockCardValidator.swift in Sources */,
 				957323E1286EF50F0068C115 /* ExpirationDatePickerTests.swift in Sources */,
 				957323B0286EF50F0068C115 /* MockThreeDSWKNavigationHelper.swift in Sources */,
 				957323B1286EF50F0068C115 /* CardViewControllerMock.swift in Sources */,

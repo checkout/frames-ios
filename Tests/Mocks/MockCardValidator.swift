@@ -1,5 +1,5 @@
 //
-//  StubCardValidator.swift
+//  MockCardValidator.swift
 //  
 //
 //  Created by Harry Brown on 07/02/2022.
@@ -7,7 +7,7 @@
 
 import Checkout
 
-final class StubCardValidator: CardValidating {
+final class MockCardValidator: CardValidating {
     var eagerValidateCardNumberToReturn: Result<Card.Scheme, ValidationError.EagerCardNumber> = .success(.visa)
     private(set) var eagerValidateCardNumberCalledWith: String?
     func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.EagerCardNumber> {

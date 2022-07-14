@@ -40,6 +40,6 @@ final class ResourcesTests: XCTestCase {
         }
 
         XCTAssertEqual(framesResourceBundle.localizations.count, 6)
-        XCTAssertNotNil(framesResourceBundle.url(forResource: "icon-amex", withExtension: "png"))
+        XCTAssertNotNil(UIImage(named: "icon-amex", in: framesResourceBundle, compatibleWith: nil))
     }
 }

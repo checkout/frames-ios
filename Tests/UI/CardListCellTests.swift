@@ -32,25 +32,12 @@ class CardListCellTests: XCTestCase {
     }
 
     func testSetSchemeIcons_WithIcons() {
-        let schemesWithoutIcons: [Card.Scheme] = [.mada, .unknown]
-        let testCases = Set(Card.Scheme.allCases).symmetricDifference(schemesWithoutIcons)
+        let testCases = Card.Scheme.allCases
 
         testCases.forEach { scheme in
             cardListCell.schemeImageView.image = nil
             cardListCell.setSchemeIcon(scheme: scheme)
             XCTAssertNotNil(cardListCell.schemeImageView.image)
-        }
-    }
-
-    func testSetSchemeIcons_WithoutIcons() {
-        let testCases: [Card.Scheme] = [.mada, .unknown]
-
-        testCases.forEach { scheme in
-            cardListCell.setSchemeIcon(scheme: .visa)
-            XCTAssertNotNil(cardListCell.schemeImageView.image)
-
-            cardListCell.setSchemeIcon(scheme: scheme)
-            XCTAssertNil(cardListCell.schemeImageView.image)
         }
     }
 
