@@ -290,7 +290,6 @@
 		957323EB286EF50F0068C115 /* applePayTokenInvalid.json in Resources */ = {isa = PBXBuildFile; fileRef = 95732393286EF50F0068C115 /* applePayTokenInvalid.json */; };
 		957323EC286EF50F0068C115 /* cardTokenInvalidNumber.json in Resources */ = {isa = PBXBuildFile; fileRef = 95732394286EF50F0068C115 /* cardTokenInvalidNumber.json */; };
 		957323ED286EF50F0068C115 /* applePayToken.json in Resources */ = {isa = PBXBuildFile; fileRef = 95732395286EF50F0068C115 /* applePayToken.json */; };
-		95B32CBB2877174F001D1205 /* SecurityCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B32CBA2877174F001D1205 /* SecurityCodeView.swift */; };
 		95B32CC0287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B32CBF287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift */; };
 		95ED57A0285A13D70010B493 /* CustomStyle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ED579E285A13D70010B493 /* CustomStyle2.swift */; };
 		95ED57A1285A13D70010B493 /* CustomStyle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ED579F285A13D70010B493 /* CustomStyle1.swift */; };
@@ -301,6 +300,7 @@
 		CB10619828784821007322FE /* CardNumberViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB10619728784821007322FE /* CardNumberViewModelTests.swift */; };
 		CB10619A287861DC007322FE /* MockCardNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB106199287861DC007322FE /* MockCardNumberView.swift */; };
 		CB10619C28786650007322FE /* MockCardNumberViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB10619B28786650007322FE /* MockCardNumberViewModelDelegate.swift */; };
+		CBAA859528802C92000F6578 /* SecurityCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAA859428802C92000F6578 /* SecurityCodeView.swift */; };
 		CBB6F521287EC11F00A1379D /* CardNumberViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB6F520287EC11F00A1379D /* CardNumberViewTests.swift */; };
 		CBB6F523287EC18100A1379D /* MockCardNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB6F522287EC18100A1379D /* MockCardNumberViewModel.swift */; };
 		CBB6F525287ED04E00A1379D /* Constants+SchemeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB6F524287ED04E00A1379D /* Constants+SchemeIcon.swift */; };
@@ -640,7 +640,6 @@
 		95732393286EF50F0068C115 /* applePayTokenInvalid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applePayTokenInvalid.json; sourceTree = "<group>"; };
 		95732394286EF50F0068C115 /* cardTokenInvalidNumber.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardTokenInvalidNumber.json; sourceTree = "<group>"; };
 		95732395286EF50F0068C115 /* applePayToken.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applePayToken.json; sourceTree = "<group>"; };
-		95B32CBA2877174F001D1205 /* SecurityCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityCodeView.swift; sourceTree = "<group>"; };
 		95B32CBF287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSecurityCodeFormStyle.swift; sourceTree = "<group>"; };
 		95ED579E285A13D70010B493 /* CustomStyle2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle2.swift; sourceTree = "<group>"; };
 		95ED579F285A13D70010B493 /* CustomStyle1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle1.swift; sourceTree = "<group>"; };
@@ -652,6 +651,7 @@
 		CB10619B28786650007322FE /* MockCardNumberViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCardNumberViewModelDelegate.swift; sourceTree = "<group>"; };
 		CB8CE61C2805D00E0069ADB0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB9412CE2825647600C889E8 /* Checkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Checkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBAA859428802C92000F6578 /* SecurityCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityCodeView.swift; sourceTree = "<group>"; };
 		CBB6F520287EC11F00A1379D /* CardNumberViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberViewTests.swift; sourceTree = "<group>"; };
 		CBB6F522287EC18100A1379D /* MockCardNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCardNumberViewModel.swift; sourceTree = "<group>"; };
 		CBB6F524287ED04E00A1379D /* Constants+SchemeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+SchemeIcon.swift"; sourceTree = "<group>"; };
@@ -983,6 +983,7 @@
 		957321D1286EF4E80068C115 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CBAA859428802C92000F6578 /* SecurityCodeView.swift */,
 				CB106191287726EE007322FE /* CardNumber */,
 				957321D3286EF4E80068C115 /* BillingFormSummaryView.swift */,
 				957321D4286EF4E80068C115 /* ExpiryDateView.swift */,
@@ -1653,6 +1654,14 @@
 			path = Fixtures;
 			sourceTree = "<group>";
 		};
+		95B32CBE287717AA001D1205 /* SecurityCode */ = {
+			isa = PBXGroup;
+			children = (
+				95B32CBF287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift */,
+			);
+			path = SecurityCode;
+			sourceTree = "<group>";
+		};
 		CB106191287726EE007322FE /* CardNumber */ = {
 			isa = PBXGroup;
 			children = (
@@ -1668,14 +1677,6 @@
 				CBB6F51F287EC10700A1379D /* CardNumber */,
 			);
 			path = PaymentForm;
-			sourceTree = "<group>";
-		};
-		95B32CBE287717AA001D1205 /* SecurityCode */ = {
-			isa = PBXGroup;
-			children = (
-				95B32CBF287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift */,
-			);
-			path = SecurityCode;
 			sourceTree = "<group>";
 		};
 		CB8CE5C72805D00D0069ADB0 /* Tests */ = {
@@ -2110,6 +2111,7 @@
 				957322EE286EF4E80068C115 /* BillingFormTextFieldView.swift in Sources */,
 				95732329286EF4E80068C115 /* ContentTypeProviding.swift in Sources */,
 				952F328D283C303E00F616FF /* CheckoutFont.swift in Sources */,
+				CBAA859528802C92000F6578 /* SecurityCodeView.swift in Sources */,
 				957322E2286EF4E80068C115 /* DefaultBillingFormAddressLine1CellStyle.swift in Sources */,
 				95732301286EF4E80068C115 /* CountrySelectionViewController.swift in Sources */,
 				957322A8286EF4E80068C115 /* CountryValidator.swift in Sources */,
@@ -2142,7 +2144,6 @@
 				957322AF286EF4E80068C115 /* FullNameValidator.swift in Sources */,
 				957322AE286EF4E80068C115 /* StateValidator.swift in Sources */,
 				957322CE286EF4E80068C115 /* CellStyle.swift in Sources */,
-				95B32CBB2877174F001D1205 /* SecurityCodeView.swift in Sources */,
 				957322F0286EF4E80068C115 /* BillingFormCellTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
