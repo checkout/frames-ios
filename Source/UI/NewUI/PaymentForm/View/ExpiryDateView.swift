@@ -63,7 +63,6 @@ public final class ExpiryDateView: UIView {
         delegate?.update(expiryDate: expiryDate)
         updateErrorViewStyle(isHidden: true, textfieldText: newDate)
       case .failure(let error):
-        print(error)
         updateErrorViewStyle(isHidden: false, textfieldText: newDate, error: error)
     }
   }

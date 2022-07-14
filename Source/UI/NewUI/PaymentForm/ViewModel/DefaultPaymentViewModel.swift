@@ -7,9 +7,10 @@ class DefaultPaymentViewModel: PaymentViewModel {
   var updateAddBillingDetailsView: (() -> Void)?
   var updateExpiryDateView: (() -> Void)?
   var updateCardNumberView: (() -> Void)?
-  var updateSecurityCodeView: (() -> Void)?
+  var updateSecurityCodeView: (([CardScheme]) -> Void)?
 
   var environment: Environment
+  var supportedSchemes: [CardScheme]
   var paymentFormStyle: PaymentFormStyle?
   var billingFormStyle: BillingFormStyle?
   var billingFormData: BillingForm? {
@@ -23,24 +24,26 @@ class DefaultPaymentViewModel: PaymentViewModel {
   init(environment: Environment,
        billingFormData: BillingForm?,
        paymentFormStyle: PaymentFormStyle?,
-       billingFormStyle: BillingFormStyle?) {
+       billingFormStyle: BillingFormStyle?,
+       supportedSchemes: [CardScheme]) {
     self.environment = environment
+    self.supportedSchemes = supportedSchemes
     self.billingFormData = billingFormData
     self.paymentFormStyle = paymentFormStyle
     self.billingFormStyle = billingFormStyle
   }
 
   func updateAll() {
-    updateCardNumber()
-    updateExpiryDate()
-    updateSecurityCode()
+    updateCardNumberView?()
+    updateExpiryDateView?()
+    updateSecurityCodeView?(supportedSchemes)
     if isAddBillingSummaryNotUpdated() {
       updateBillingSummaryView()
     }
   }
 
-  private func updateCardNumber() {
-    updateCardNumberView?()
+  func getSupportedSchemes() -> [Card.Scheme] {
+    supportedSchemes.compactMap { $0.checkoutScheme }
   }
 
   func updateBillingSummaryView() {
@@ -71,14 +74,6 @@ class DefaultPaymentViewModel: PaymentViewModel {
     updateEditBillingSummaryView?()
   }
 
-  private func updateExpiryDate() {
-    updateExpiryDateView?()
-  }
-
-  private func updateSecurityCode() {
-    updateSecurityCodeView?()
-  }
-
   private func isAddBillingSummaryNotUpdated() -> Bool {
     guard billingFormData?.address != nil ||
             billingFormData?.phone != nil else {
@@ -106,7 +101,11 @@ extension DefaultPaymentViewModel: BillingFormViewModelDelegate {
 }
 
 extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
-  // TODO: Will fixed in payment ticket
+
+  // TODO: Will be implemented in payment ticket
+  func securityCodeIsUpdated(value: String) {}
+
+  // TODO: Will be implemented in payment ticket
   func expiryDateIsUpdated(value: ExpiryDate) {}
 
   func addBillingButtonIsPressed(sender: UINavigationController?) {

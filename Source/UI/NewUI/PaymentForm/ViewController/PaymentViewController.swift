@@ -5,6 +5,7 @@ protocol PaymentViewControllerDelegate: AnyObject {
   func addBillingButtonIsPressed(sender: UINavigationController?)
   func editBillingButtonIsPressed(sender: UINavigationController?)
   func expiryDateIsUpdated(value: ExpiryDate)
+  func securityCodeIsUpdated(value: String)
 }
 
 final class PaymentViewController: UIViewController {
@@ -15,11 +16,11 @@ final class PaymentViewController: UIViewController {
 
   private(set) var viewModel: PaymentViewModel
   private var notificationCenter = NotificationCenter.default
-    private let cardValidator: CardValidating
+  private var cardValidator: CardValidator
 
-  // MARK: - UI properties
+  //MARK: - UI properties
 
-  // TODO: Replace it with new header
+  //TODO: Replace it with new header
   private lazy var emptyHeader: UIView = {
     UIView().disabledAutoresizingIntoConstraints()
   }()
@@ -64,7 +65,9 @@ final class PaymentViewController: UIViewController {
   }()
 
   private lazy var securityCodeView: SecurityCodeView = {
-    SecurityCodeView(cardValidator: CardValidator(environment: viewModel.environment.checkoutEnvironment))
+    let view = SecurityCodeView(cardValidator: CardValidator(environment: viewModel.environment.checkoutEnvironment))
+    view.delegate = self
+    return view
   }()
 
  
@@ -179,9 +182,9 @@ extension PaymentViewController {
   }
 
   private func setupSecurityCodeViewClosure() {
-    viewModel.updateSecurityCodeView = { [weak self] in
+    viewModel.updateSecurityCodeView = { [weak self] supportedScheme in
       DispatchQueue.main.async {
-        self?.updateSecurityCode()
+        self?.updateSecurityCode(supportedSchema: supportedScheme)
       }
     }
   }
@@ -196,7 +199,7 @@ extension PaymentViewController {
     expiryDateView.update(style: style)
   }
 
-  private func updateSecurityCode() {
+  private func updateSecurityCode(supportedSchema: [CardScheme]){
     guard let style = viewModel.paymentFormStyle?.securityCode else { return }
     securityCodeView.update(style: style)
   }
@@ -281,5 +284,11 @@ extension PaymentViewController: BillingFormSummaryViewDelegate {
 extension PaymentViewController: ExpiryDateViewDelegate {
   func update(expiryDate: ExpiryDate) {
     delegate?.expiryDateIsUpdated(value: expiryDate)
+  }
+}
+
+extension PaymentViewController: SecurityCodeViewDelegate {
+  func update(securityCode: String) {
+    delegate?.securityCodeIsUpdated(value: securityCode)
   }
 }

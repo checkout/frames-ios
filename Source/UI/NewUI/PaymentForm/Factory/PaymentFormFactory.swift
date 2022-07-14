@@ -4,12 +4,14 @@ public struct PaymentFormFactory {
 
     public static func getPaymentFormViewController(billingFormData: BillingForm?,
                                                     paymentFormStyle: PaymentFormStyle?,
-                                                    billingFormStyle: BillingFormStyle?) -> UIViewController {
+                                                    billingFormStyle: BillingFormStyle?,
+                                                    supportedSchemes: [CardScheme] ) -> UIViewController {
 
       let viewModel = DefaultPaymentViewModel(environment: .live ,
                                               billingFormData: billingFormData,
                                                 paymentFormStyle: paymentFormStyle,
-                                                billingFormStyle: billingFormStyle)
+                                              billingFormStyle: billingFormStyle,
+                                              supportedSchemes: supportedSchemes)
         let viewController =  PaymentViewController(viewModel: viewModel)
 
         if #available(iOS 13.0, *) {

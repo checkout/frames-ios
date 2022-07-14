@@ -50,7 +50,12 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
     @IBAction private func goToDefaultUIPaymentPage(_ sender: Any) {
 
         let cardFormData = Self.defaultCardFormData()
-        let paymentFormViewController = PaymentFormFactory.getPaymentFormViewController(billingFormData: cardFormData.billingForm, paymentFormStyle: cardFormData.paymentFormStyle, billingFormStyle: cardFormData.billingFormStyle)
+
+      let paymentFormViewController = PaymentFormFactory.getPaymentFormViewController(
+        billingFormData: cardFormData.billingForm,
+        paymentFormStyle: cardFormData.paymentFormStyle,
+        billingFormStyle: cardFormData.billingFormStyle,
+        supportedSchemes: [.visa, .mastercard, .maestro])
         navigationController?.pushViewController(paymentFormViewController, animated: true)
     }
 
@@ -69,7 +74,8 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
         let paymentFormViewController = PaymentFormFactory.getPaymentFormViewController(
             billingFormData: billingForm,
             paymentFormStyle: Style.Custom1.paymentForm,
-            billingFormStyle: Style.Custom1.billingForm)
+            billingFormStyle: Style.Custom1.billingForm,
+            supportedSchemes: [.visa, .mastercard, .maestro])
         navigationController?.pushViewController(paymentFormViewController, animated: true)
     }
 
@@ -88,7 +94,8 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
         let paymentFormViewController = PaymentFormFactory.getPaymentFormViewController(
             billingFormData: billingForm,
             paymentFormStyle: Style.Custom2.paymentForm,
-            billingFormStyle: Style.Custom2.billingForm)
+            billingFormStyle: Style.Custom2.billingForm,
+            supportedSchemes: [.visa, .mastercard, .maestro])
         navigationController?.pushViewController(paymentFormViewController, animated: true)
     }
 
