@@ -1,13 +1,13 @@
 import UIKit
 import Checkout
 
-public typealias CardScheme = Checkout.Card.Scheme
+public typealias Card = Checkout.Card
 
 public struct PaymentFormFactory {
     public static func getPaymentFormViewController(billingFormData: BillingForm?,
                                                     paymentFormStyle: PaymentFormStyle?,
                                                     billingFormStyle: BillingFormStyle?,
-                                                    supportedSchemes: [CardScheme] ) -> UIViewController {
+                                                    supportedSchemes: [Card.Scheme] ) -> UIViewController {
 
       let viewModel = DefaultPaymentViewModel(environment: Environment.live ,
                                               billingFormData: billingFormData,

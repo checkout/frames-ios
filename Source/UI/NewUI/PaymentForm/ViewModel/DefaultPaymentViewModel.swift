@@ -7,10 +7,10 @@ class DefaultPaymentViewModel: PaymentViewModel {
   var updateAddBillingDetailsView: (() -> Void)?
   var updateExpiryDateView: (() -> Void)?
   var updateCardNumberView: (() -> Void)?
-  var updateSecurityCodeView: (([CardScheme]) -> Void)?
+  var updateSecurityCodeView: (([Card.Scheme]) -> Void)?
 
   var environment: Environment
-  var supportedSchemes: [CardScheme]
+  var supportedSchemes: [Card.Scheme]
   var paymentFormStyle: PaymentFormStyle?
   var billingFormStyle: BillingFormStyle?
   var billingFormData: BillingForm? {
@@ -25,7 +25,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
        billingFormData: BillingForm?,
        paymentFormStyle: PaymentFormStyle?,
        billingFormStyle: BillingFormStyle?,
-       supportedSchemes: [CardScheme]) {
+       supportedSchemes: [Card.Scheme]) {
     self.environment = environment
     self.supportedSchemes = supportedSchemes
     self.billingFormData = billingFormData
