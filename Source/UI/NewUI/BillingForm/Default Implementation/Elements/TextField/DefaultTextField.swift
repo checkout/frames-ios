@@ -2,7 +2,6 @@ import UIKit
 
 public struct DefaultTextField: ElementTextFieldStyle {
     public var isHidden: Bool = false
-    public var isPlaceHolderHidden: Bool  = false
     public var isSupportingNumericKeyboard: Bool = false
     public var text: String = ""
     public var placeHolder: String = ""
