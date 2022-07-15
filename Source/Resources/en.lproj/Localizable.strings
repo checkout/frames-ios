@@ -23,7 +23,7 @@
 "SecurityCodeErrorMessage" = "Please enter a valid security code";
 
 "CardNumber" = "Card Number";
-"CardNumberErrorMessage" = "Missing Card Number";
+"CardNumberErrorMessage" = "Please enter a valid card number";
 "city" = "City";
 "cancel" = "Cancel";
 "done" = "Done";

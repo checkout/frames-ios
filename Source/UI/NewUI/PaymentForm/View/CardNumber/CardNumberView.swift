@@ -8,20 +8,30 @@
 
 import UIKit
 
-protocol CardNumberViewProtocol: AnyObject {
-  var schemeIcon: Constants.Bundle.SchemeIcon { get set }
+enum CardNumberError: Error {
+  case invalid
 }
 
-final class CardNumberView: UIView, CardNumberViewProtocol {
+final class CardNumberView: UIView {
   private let viewModel: CardNumberViewModelProtocol
 
-  var schemeIcon = Constants.Bundle.SchemeIcon.blank {
+  private(set) var schemeIcon = Constants.Bundle.SchemeIcon.blank {
     didSet {
       if schemeIcon != oldValue {
         updateIcon()
       }
     }
   }
+
+  private(set) var cardNumberError: CardNumberError? {
+    didSet {
+      if cardNumberError != oldValue {
+        updateError()
+      }
+    }
+  }
+
+  private var style: CellTextFieldStyle?
 
   private lazy var cardNumberInputView: InputView = {
     let view = InputView().disabledAutoresizingIntoConstraints()
@@ -41,6 +51,13 @@ final class CardNumberView: UIView, CardNumberViewProtocol {
   }
 
   func update(style: CellTextFieldStyle) {
+    var style = style
+
+    if let errorStyle = style.error, errorStyle.text.isEmpty {
+      style.error?.text = Constants.LocalizationKeys.PaymentForm.CardNumber.error
+    }
+
+    self.style = style
     cardNumberInputView.update(style: style, image: schemeIcon.image)
   }
 
@@ -52,13 +69,31 @@ final class CardNumberView: UIView, CardNumberViewProtocol {
   private func updateIcon() {
     cardNumberInputView.update(image: schemeIcon.image, animated: true)
   }
+
+  private func updateError() {
+    guard var style = style else { return }
+    style.error?.isHidden = cardNumberError == nil
+
+    update(style: style)
+  }
 }
 
 extension CardNumberView: TextFieldViewDelegate {
   func textFieldShouldBeginEditing(textField: UITextField) { }
   func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) { }
   func textFieldShouldReturn() -> Bool { true }
-  func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool { true }
+
+  func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
+    switch viewModel.validate(cardNumber: replacementString) {
+    case .success(let schemeIcon):
+      self.schemeIcon = schemeIcon
+      self.cardNumberError = nil
+    case .failure(let cardNumberError):
+      self.cardNumberError = cardNumberError
+    }
+
+    return true
+  }
 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     guard
@@ -70,8 +105,11 @@ extension CardNumberView: TextFieldViewDelegate {
 
     let text = oldValue.replacingCharacters(in: textRange, with: string)
 
-    if let newTextFieldValue = viewModel.textFieldUpdate(from: text) {
+    if let (newTextFieldValue, schemeIcon) = viewModel.eagerValidate(cardNumber: text) {
       textField.text = newTextFieldValue
+      style?.textfield.text = newTextFieldValue
+      self.schemeIcon = schemeIcon
+      self.cardNumberError = nil
     }
 
     return false

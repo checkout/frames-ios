@@ -13,12 +13,12 @@ protocol CardNumberViewModelDelegate: AnyObject {
 }
 
 protocol CardNumberViewModelProtocol {
-  func textFieldUpdate(from: String) -> String?
+  func validate(cardNumber: String) -> Result<Constants.Bundle.SchemeIcon, CardNumberError>
+  func eagerValidate(cardNumber: String) -> (newTextFieldValue: String, schemeIcon: Constants.Bundle.SchemeIcon)?
 }
 
 class CardNumberViewModel {
   weak var delegate: CardNumberViewModelDelegate?
-  weak var cardNumberView: CardNumberViewProtocol?
 
   private let cardUtils = CardUtils()
   private let cardValidator: CardValidating
@@ -29,12 +29,25 @@ class CardNumberViewModel {
 }
 
 extension CardNumberViewModel: CardNumberViewModelProtocol {
-  func textFieldUpdate(from text: String) -> String? {
-    let cardNumber = cardUtils.removeNonDigits(from: text)
+  func validate(cardNumber rawText: String) -> Result<Constants.Bundle.SchemeIcon, CardNumberError> {
+    let cardNumber = cardUtils.removeNonDigits(from: rawText)
+
+    switch cardValidator.validate(cardNumber: cardNumber) {
+    case .failure, .success(.unknown):
+      delegate?.update(cardNumber: cardNumber, scheme: .unknown)
+      return .failure(.invalid)
+    case .success(let scheme):
+      delegate?.update(cardNumber: cardNumber, scheme: scheme)
+      return .success(.init(scheme: scheme))
+    }
+  }
+
+  func eagerValidate(cardNumber rawText: String) -> (newTextFieldValue: String, schemeIcon: Constants.Bundle.SchemeIcon)? {
+    let cardNumber = cardUtils.removeNonDigits(from: rawText)
 
     if let scheme = shouldAllowChange(cardNumber: cardNumber) {
       // using CardUtils until we add this functionality into Checkout SDK
-      return cardUtils.format(cardNumber: cardNumber, scheme: scheme)
+      return (cardUtils.format(cardNumber: cardNumber, scheme: scheme), Constants.Bundle.SchemeIcon(scheme: scheme))
     }
 
     return nil
@@ -50,7 +63,6 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
   }
 
   private func handleValidationSuccess(cardNumber: String, scheme: Card.Scheme) -> Card.Scheme? {
-    cardNumberView?.schemeIcon = .init(scheme: scheme)
     delegate?.update(cardNumber: cardNumber, scheme: scheme)
 
     return scheme
@@ -61,8 +73,6 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
     case .tooLong:
       return nil
     case .invalidScheme:
-      cardNumberView?.schemeIcon = .init(scheme: .unknown)
-
       return .unknown
     case .cardNumber(let cardNumberError):
       switch cardNumberError {
