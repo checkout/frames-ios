@@ -15,7 +15,7 @@ protocol SecurityCodeViewDelegate: AnyObject {
 public final class SecurityCodeView: UIView {
   weak var delegate: SecurityCodeViewDelegate?
   private let maxSecurityCodeCount = 4
-  private var cardValidator: CardValidator
+  private let cardValidator: CardValidator
   private(set) var supportedScheme: Card.Scheme = .unknown
   private(set) var style: CellTextFieldStyle?
 

@@ -12,5 +12,4 @@ protocol PaymentViewModel {
     var updateCardNumberView: (() -> Void)? { get set }
     var updateSecurityCodeView: (([CardScheme]) -> Void)? { get set }
     func updateAll()
-    func getSupportedSchemes() -> [Card.Scheme]
 }

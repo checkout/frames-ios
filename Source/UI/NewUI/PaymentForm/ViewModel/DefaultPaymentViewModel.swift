@@ -42,10 +42,6 @@ class DefaultPaymentViewModel: PaymentViewModel {
     }
   }
 
-  func getSupportedSchemes() -> [Card.Scheme] {
-    supportedSchemes.compactMap { $0.checkoutScheme }
-  }
-
   func updateBillingSummaryView() {
     guard paymentFormStyle?.editBillingSummary != nil else { return }
     var summaryValue = [String?]()

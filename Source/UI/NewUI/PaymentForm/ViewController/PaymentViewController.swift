@@ -16,11 +16,11 @@ final class PaymentViewController: UIViewController {
 
   private(set) var viewModel: PaymentViewModel
   private var notificationCenter = NotificationCenter.default
-  private var cardValidator: CardValidator
+  private let cardValidator: CardValidator
 
-  //MARK: - UI properties
+  // MARK: - UI properties
 
-  //TODO: Replace it with new header
+  // TODO: Replace it with new header
   private lazy var emptyHeader: UIView = {
     UIView().disabledAutoresizingIntoConstraints()
   }()
@@ -70,7 +70,6 @@ final class PaymentViewController: UIViewController {
     return view
   }()
 
- 
   init(viewModel: PaymentViewModel) {
     self.viewModel = viewModel
     self.cardValidator = CardValidator(environment: viewModel.environment.checkoutEnvironment)
@@ -182,9 +181,9 @@ extension PaymentViewController {
   }
 
   private func setupSecurityCodeViewClosure() {
-    viewModel.updateSecurityCodeView = { [weak self] supportedScheme in
+    viewModel.updateSecurityCodeView = { [weak self] _ in
       DispatchQueue.main.async {
-        self?.updateSecurityCode(supportedSchema: supportedScheme)
+        self?.updateSecurityCode()
       }
     }
   }
@@ -199,7 +198,7 @@ extension PaymentViewController {
     expiryDateView.update(style: style)
   }
 
-  private func updateSecurityCode(supportedSchema: [CardScheme]){
+  private func updateSecurityCode() {
     guard let style = viewModel.paymentFormStyle?.securityCode else { return }
     securityCodeView.update(style: style)
   }

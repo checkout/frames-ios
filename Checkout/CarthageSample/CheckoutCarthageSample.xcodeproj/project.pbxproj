@@ -86,7 +86,6 @@
 		CB05A9B927748FB50086DDA0 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A98927748FB50086DDA0 /* NetworkManagerTests.swift */; };
 		CB05A9BA27748FB50086DDA0 /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A98B27748FB50086DDA0 /* NetworkErrorTests.swift */; };
 		CB05A9BB27748FB50086DDA0 /* RequestFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A98C27748FB50086DDA0 /* RequestFactoryTests.swift */; };
-		CB05A9BC27748FB50086DDA0 /* CardSchemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A98E27748FB50086DDA0 /* CardSchemeTests.swift */; };
 		CB05A9BD27748FB50086DDA0 /* EnvironmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A98F27748FB50086DDA0 /* EnvironmentTests.swift */; };
 		CB05A9BE27748FB50086DDA0 /* CountryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A99027748FB50086DDA0 /* CountryTests.swift */; };
 		CB05A9BF27748FB50086DDA0 /* CheckoutAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A99227748FB50086DDA0 /* CheckoutAPIServiceTests.swift */; };
@@ -302,7 +301,6 @@
 		CB05A98927748FB50086DDA0 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		CB05A98B27748FB50086DDA0 /* NetworkErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
 		CB05A98C27748FB50086DDA0 /* RequestFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFactoryTests.swift; sourceTree = "<group>"; };
-		CB05A98E27748FB50086DDA0 /* CardSchemeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSchemeTests.swift; sourceTree = "<group>"; };
 		CB05A98F27748FB50086DDA0 /* EnvironmentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentTests.swift; sourceTree = "<group>"; };
 		CB05A99027748FB50086DDA0 /* CountryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTests.swift; sourceTree = "<group>"; };
 		CB05A99227748FB50086DDA0 /* CheckoutAPIServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAPIServiceTests.swift; sourceTree = "<group>"; };
@@ -669,7 +667,6 @@
 		CB05A98D27748FB50086DDA0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CB05A98E27748FB50086DDA0 /* CardSchemeTests.swift */,
 				CB05A98F27748FB50086DDA0 /* EnvironmentTests.swift */,
 				CB05A99027748FB50086DDA0 /* CountryTests.swift */,
 			);
@@ -1237,7 +1234,6 @@
 				CB05A9BB27748FB50086DDA0 /* RequestFactoryTests.swift in Sources */,
 				CBE83F0927C3DB2B006F5701 /* StubWKNavigationAction.swift in Sources */,
 				CB05A9A527748FB50086DDA0 /* StubLuhnChecker.swift in Sources */,
-				CB05A9BC27748FB50086DDA0 /* CardSchemeTests.swift in Sources */,
 				CB05A9C227748FB50086DDA0 /* TokenRequestFactoryTests.swift in Sources */,
 				CB918B2E278C8F3200C68EF4 /* StubAnyCodable.swift in Sources */,
 				CB05A9BF27748FB50086DDA0 /* CheckoutAPIServiceTests.swift in Sources */,
