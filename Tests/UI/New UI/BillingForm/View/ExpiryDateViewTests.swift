@@ -15,28 +15,14 @@ class ExpiryDateViewTests: XCTestCase {
   }
 
   func testValidExpiryDate(){
-    guard let nextMonthDate = Calendar.current.date(byAdding: .month, value: 1, to: Date()) else {
-      XCTFail("Next Month Date is empty")
-      return
-    }
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MM/yy"
-    let updateExpiryDate = dateFormatter.string(from: nextMonthDate)
-    view.updateExpiryDate(to: updateExpiryDate)
-
+    let isValid = view.updateExpiryDate(to: "01/7", replacementText: "0")
+    XCTAssertTrue(isValid)
     XCTAssertTrue(view.style?.error?.isHidden ?? false)
   }
 
   func testInValidExpiryDate(){
-    guard let previousYearDate = Calendar.current.date(byAdding: .year, value: -1, to: Date()) else {
-      XCTFail("Previous Year Date is empty")
-      return
-    }
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MM/yy"
-    let updateExpiryDate = dateFormatter.string(from: previousYearDate)
-    view.updateExpiryDate(to: updateExpiryDate)
-
+    let isValid = view.updateExpiryDate(to: "01/1", replacementText: "0")
+    XCTAssertFalse(isValid)
     XCTAssertFalse(view.style?.error?.isHidden ?? true)
     XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.past)
   }
@@ -45,80 +31,92 @@ class ExpiryDateViewTests: XCTestCase {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MM/yy"
     let updateExpiryDate = dateFormatter.string(from: Date())
-    view.updateExpiryDate(to: updateExpiryDate)
-
+    let isValid = view.updateExpiryDate(to: updateExpiryDate, replacementText: "")
+    XCTAssertTrue(isValid)
     XCTAssertTrue(view.style?.error?.isHidden ?? false)
   }
 
   func testEmptyExpiryDate(){
-    view.updateExpiryDate(to: "")
+    let isValid = view.updateExpiryDate(to: "", replacementText: "")
+    XCTAssertFalse(isValid)
     XCTAssertFalse(view.style?.error?.isHidden ?? true)
     XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
   }
 
   func testExpiryDateWithWrongYearFormat(){
-    view.updateExpiryDate(to: "01/2035")
+    let isValid = view.updateExpiryDate(to: "01/2035", replacementText: "")
+    XCTAssertFalse(isValid)
     XCTAssertFalse(view.style?.error?.isHidden ?? true)
     XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
   }
 
   func testExpiryDateWithWrongMonthFormat(){
-    view.updateExpiryDate(to: "Jan/35")
+    let isValid = view.updateExpiryDate(to: "Jan/35", replacementText: "")
+    XCTAssertFalse(isValid)
     XCTAssertFalse(view.style?.error?.isHidden ?? true)
     XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
   }
 
 
   func testExpiryDateWithWrongFormat(){
-    view.updateExpiryDate(to: "01.35")
+    let isValid = view.updateExpiryDate(to: "01.35", replacementText: "")
+    XCTAssertFalse(isValid)
     XCTAssertFalse(view.style?.error?.isHidden ?? true)
     XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
   }
 
   func testExpiryDateWithMoreThan5Characters(){
-    view.updateExpiryDate(to: "01/01/01/01")
+    let isValid = view.updateExpiryDate(to: "01/01/01/01", replacementText: "")
+    XCTAssertFalse(isValid)
     XCTAssertFalse(view.style?.error?.isHidden ?? true)
     XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
   }
 
   func testExpiryDateWithOutBackSlash(){
-    view.updateExpiryDate(to: "01350")
+    let isValid = view.updateExpiryDate(to: "01350", replacementText: "")
+    XCTAssertFalse(isValid)
     XCTAssertFalse(view.style?.error?.isHidden ?? true)
     XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
   }
 
   func testExpiryDateWithmoreLess5Characters(){
-    view.updateExpiryDate(to: "01/0")
+    let isValid = view.updateExpiryDate(to: "01/0", replacementText: "")
+    XCTAssertFalse(isValid)
     XCTAssertFalse(view.style?.error?.isHidden ?? true)
     XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
   }
 
   func testExpiryDateWithString(){
-    view.updateExpiryDate(to: "Test")
+    let isValid = view.updateExpiryDate(to: "Test", replacementText: "")
+    XCTAssertFalse(isValid)
     XCTAssertFalse(view.style?.error?.isHidden ?? true)
     XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
   }
 
   func testExpiryDateWithInvalidMaxDate(){
-    view.updateExpiryDate(to: "99/99")
+    let isValid = view.updateExpiryDate(to: "99/99", replacementText: "")
+    XCTAssertFalse(isValid)
     XCTAssertFalse(view.style?.error?.isHidden ?? true)
     XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
   }
 
   func testExpiryDateWithInvalidMinDate(){
-    view.updateExpiryDate(to: "00/00")
+    let isValid = view.updateExpiryDate(to: "00/00", replacementText: "")
+    XCTAssertFalse(isValid)
     XCTAssertFalse(view.style?.error?.isHidden ?? true)
     XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
   }
 
   func testExpiryDateWithInvalidLongNumbers(){
-    view.updateExpiryDate(to: "999999999/999999999")
+    let isValid = view.updateExpiryDate(to: "999999999/999999999", replacementText: "")
+    XCTAssertFalse(isValid)
     XCTAssertFalse(view.style?.error?.isHidden ?? true)
     XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
   }
 
   func testExpiryDateWithInvalidLongSpecialCharacter(){
-    view.updateExpiryDate(to: "-*/@@")
+    let isValid = view.updateExpiryDate(to: "-*/@@", replacementText: "")
+    XCTAssertFalse(isValid)
     XCTAssertFalse(view.style?.error?.isHidden ?? true)
     XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
   }
