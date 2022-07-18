@@ -67,7 +67,6 @@ final class PaymentViewController: UIViewController {
     SecurityCodeView(cardValidator: CardValidator(environment: viewModel.environment.checkoutEnvironment))
   }()
 
- 
   init(viewModel: PaymentViewModel) {
     self.viewModel = viewModel
     self.cardValidator = CardValidator(environment: viewModel.environment.checkoutEnvironment)

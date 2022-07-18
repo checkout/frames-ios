@@ -4,7 +4,7 @@ public struct DefaultBillingSummaryViewStyle: BillingSummaryViewStyle {
     public var isMandatory: Bool = true
     public var cornerRadius: CGFloat = 10
     public var borderWidth: CGFloat = 1.0
-    public var separatorLineColor: UIColor = .doveGray
+    public var separatorLineColor: UIColor = .paleGray
     public var backgroundColor: UIColor = .clear
     public var borderColor: UIColor = .doveGray
     public var button: ElementButtonStyle = DefaultEditBillingDetailsButtonStyle()
