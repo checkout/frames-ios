@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9552EAEC28855AAE00E9ECD9 /* CardSchemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9552EAEB28855AAE00E9ECD9 /* CardSchemeTests.swift */; };
 		CB05A93927748FA10086DDA0 /* NSRegularExpression+initStaticPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A8F927748FA10086DDA0 /* NSRegularExpression+initStaticPattern.swift */; };
 		CB05A93A27748FA10086DDA0 /* URL+initStaticString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A8FA27748FA10086DDA0 /* URL+initStaticString.swift */; };
 		CB05A93B27748FA10086DDA0 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A8FB27748FA10086DDA0 /* Foundation+Extensions.swift */; };
@@ -222,6 +223,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9552EAEB28855AAE00E9ECD9 /* CardSchemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSchemeTests.swift; sourceTree = "<group>"; };
 		CB05A8F927748FA10086DDA0 /* NSRegularExpression+initStaticPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+initStaticPattern.swift"; sourceTree = "<group>"; };
 		CB05A8FA27748FA10086DDA0 /* URL+initStaticString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+initStaticString.swift"; sourceTree = "<group>"; };
 		CB05A8FB27748FA10086DDA0 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
@@ -668,6 +670,7 @@
 			isa = PBXGroup;
 			children = (
 				CB05A98F27748FB50086DDA0 /* EnvironmentTests.swift */,
+				9552EAEB28855AAE00E9ECD9 /* CardSchemeTests.swift */,
 				CB05A99027748FB50086DDA0 /* CountryTests.swift */,
 			);
 			path = Model;
@@ -1145,6 +1148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB23C14D271DC86200F68C0E /* Test.swift in Sources */,
+				9552EAEC28855AAE00E9ECD9 /* CardSchemeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
