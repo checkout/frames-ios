@@ -7,7 +7,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
   var updateAddBillingDetailsView: (() -> Void)?
   var updateExpiryDateView: (() -> Void)?
   var updateCardNumberView: (() -> Void)?
-  var updateSecurityCodeView: (([Card.Scheme]) -> Void)?
+  var updateSecurityCodeView: (() -> Void)?
 
   var environment: Environment
   var supportedSchemes: [Card.Scheme]
@@ -36,7 +36,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
   func updateAll() {
     updateCardNumberView?()
     updateExpiryDateView?()
-    updateSecurityCodeView?(supportedSchemes)
+    updateSecurityCodeView?()
     if isAddBillingSummaryNotUpdated() {
       updateBillingSummaryView()
     }

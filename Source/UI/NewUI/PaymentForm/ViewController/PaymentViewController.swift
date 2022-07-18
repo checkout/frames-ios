@@ -181,7 +181,7 @@ extension PaymentViewController {
   }
 
   private func setupSecurityCodeViewClosure() {
-    viewModel.updateSecurityCodeView = { [weak self] _ in
+    viewModel.updateSecurityCodeView = { [weak self] in
       DispatchQueue.main.async {
         self?.updateSecurityCode()
       }
