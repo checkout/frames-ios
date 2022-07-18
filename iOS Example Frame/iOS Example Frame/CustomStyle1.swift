@@ -344,7 +344,7 @@ struct TextFieldCustom1: ElementTextFieldStyle {
     var borderWidth: CGFloat = 0
     var isHidden: Bool = false
     var text: String = ""
-    var placeHolder: String = ""
+    var placeHolder: String?
     var font: UIFont = UIFont(name: "Helvetica Neue", size: 14)!
     var textColor: UIColor = UIColor(red: 40/255.0, green: 46/255.0, blue: 54/255.0, alpha: 1.0)
     var normalBorderColor: UIColor = .mediumGray

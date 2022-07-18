@@ -26,12 +26,9 @@ class TextFieldViewTests: XCTestCase {
     XCTAssertEqual(view.textField.font, style.font)
     XCTAssertEqual(view.textField.textColor, style.textColor)
     XCTAssertEqual(view.textField.tintColor, style.tintColor)
-
-    let placeHolder = style.placeHolder.isEmpty ? nil : style.placeHolder
-    XCTAssertEqual(view.textField.placeholder, placeHolder)
-
-    let keypad: UIKeyboardType = style.isSupportingNumericKeyboard ? .numberPad : .default
-    XCTAssertEqual(view.textField.keyboardType, keypad)
+    XCTAssertEqual(view.textField.placeholder, style.placeHolder)
+    XCTAssertFalse(style.isSupportingNumericKeyboard)
+    XCTAssertEqual(view.textField.keyboardType, .default)
   }
 
   func testSecuredTextFieldViewIsNotSubView(){
