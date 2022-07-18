@@ -93,7 +93,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
   private func updateSummaryValue(with summaryValues: [String?]) -> String {
     summaryValues
       .compactMap { $0?.trimmingCharacters(in: .whitespaces) }
-      .joined(separator: "\n\n")
+      .joined(separator: "\n")
   }
 
 }
