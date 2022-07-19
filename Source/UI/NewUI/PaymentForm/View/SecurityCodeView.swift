@@ -8,10 +8,15 @@
 import UIKit
 import Checkout
 
-public final class SecurityCodeView: UIView {
+protocol SecurityCodeViewDelegate: AnyObject {
+  func update(securityCode: String)
+}
 
+public final class SecurityCodeView: UIView {
+  weak var delegate: SecurityCodeViewDelegate?
   private let maxSecurityCodeCount = 4
-  private var cardValidator: CardValidator
+  private let cardValidator: CardValidator
+  private(set) var supportedScheme: Card.Scheme = .unknown
   private(set) var style: CellTextFieldStyle?
 
   private lazy var codeInputView: InputView = {
@@ -39,20 +44,37 @@ public final class SecurityCodeView: UIView {
     codeInputView.update(style: self.style)
   }
 
+  // TODO: integrate with payment vc when card view is finished
+  func updateCardScheme(cardScheme: Card.Scheme) {
+    supportedScheme = cardScheme
+  }
+
   private func updateErrorViewStyle(isHidden: Bool, textfieldText: String?) {
     style?.error?.isHidden = isHidden
     style?.textfield.text = textfieldText ?? ""
     codeInputView.update(style: style)
   }
+
+  func validateSecurityCode(with text: String?) {
+    guard let text = text?.filter({ !$0.isWhitespace }), !text.isEmpty else {
+      updateErrorViewStyle(isHidden: false, textfieldText: text)
+      return
+    }
+    switch cardValidator.validate(cvv: text, cardScheme: supportedScheme) {
+      case .success:
+        updateErrorViewStyle(isHidden: true, textfieldText: text)
+        delegate?.update(securityCode: text)
+      case .failure:
+        updateErrorViewStyle(isHidden: false, textfieldText: text)
+    }
+  }
 }
 
 extension SecurityCodeView: TextFieldViewDelegate {
   func textFieldShouldBeginEditing(textField: UITextField) {}
-  func textFieldShouldReturn() -> Bool {  return false }
+  func textFieldShouldReturn() -> Bool {  return true }
   func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
-    if textField.text?.count ?? 0 < maxSecurityCodeCount {
-      updateErrorViewStyle(isHidden: false, textfieldText: textField.text)
-    }
+    validateSecurityCode(with: textField.text)
     return true
   }
 

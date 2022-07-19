@@ -15,7 +15,8 @@ class PaymentViewModelTests: XCTestCase {
     viewModel = DefaultPaymentViewModel(environment: .sandbox,
                                         billingFormData: nil,
                                         paymentFormStyle: DefaultPaymentFormStyle(),
-                                        billingFormStyle: DefaultBillingFormStyle())
+                                        billingFormStyle: DefaultBillingFormStyle(),
+                                        supportedSchemes: [.unknown])
 
         let expectation = expectation(description: #function)
         viewModel?.updateExpiryDateView = {
@@ -31,7 +32,8 @@ class PaymentViewModelTests: XCTestCase {
       viewModel = DefaultPaymentViewModel(environment: .sandbox,
                                           billingFormData: nil,
                                           paymentFormStyle: DefaultPaymentFormStyle(),
-                                          billingFormStyle: DefaultBillingFormStyle())
+                                          billingFormStyle: DefaultBillingFormStyle(),
+                                          supportedSchemes: [.unknown])
 
         let expectation = expectation(description: #function)
         viewModel?.updateAddBillingDetailsView = {
@@ -59,7 +61,8 @@ class PaymentViewModelTests: XCTestCase {
       viewModel = DefaultPaymentViewModel(environment: .sandbox,
                                           billingFormData: billingFormData,
                                           paymentFormStyle: DefaultPaymentFormStyle(),
-                                          billingFormStyle: DefaultBillingFormStyle())
+                                          billingFormStyle: DefaultBillingFormStyle(),
+                                          supportedSchemes: [.unknown])
 
         let expectation = expectation(description: #function)
         viewModel.updateEditBillingSummaryView = {
@@ -80,7 +83,8 @@ class PaymentViewModelTests: XCTestCase {
         viewModel = DefaultPaymentViewModel(environment: .sandbox,
                                             billingFormData: billingFormData,
                                             paymentFormStyle: DefaultPaymentFormStyle(),
-                                            billingFormStyle: DefaultBillingFormStyle())
+                                            billingFormStyle: DefaultBillingFormStyle(),
+                                            supportedSchemes: [.unknown])
 
         let summaryValue = "User Custom 1\n\n77 1234 1234"
         viewModel.updateBillingSummaryView()
