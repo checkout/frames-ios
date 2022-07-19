@@ -82,7 +82,7 @@ class PaymentViewModelTests: XCTestCase {
                                             paymentFormStyle: DefaultPaymentFormStyle(),
                                             billingFormStyle: DefaultBillingFormStyle())
 
-        let summaryValue = "User Custom 1\n77 1234 1234"
+        let summaryValue = "User Custom 1\n\n77 1234 1234"
         viewModel.updateBillingSummaryView()
         let expectedSummaryText = try XCTUnwrap(viewModel.paymentFormStyle?.editBillingSummary?.summary?.text)
         XCTAssertEqual(expectedSummaryText, summaryValue)
