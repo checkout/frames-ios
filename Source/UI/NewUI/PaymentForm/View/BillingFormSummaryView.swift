@@ -6,7 +6,7 @@ protocol BillingFormSummaryViewDelegate: AnyObject {
 
 class BillingFormSummaryView: UIView {
     weak var delegate: BillingFormSummaryViewDelegate?
-    private var style: BillingSummaryViewStyle?
+    private(set) var style: BillingSummaryViewStyle?
 
     private(set) lazy var titleLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()

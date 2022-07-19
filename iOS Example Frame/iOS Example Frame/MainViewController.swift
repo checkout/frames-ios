@@ -49,6 +49,7 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
     @IBAction private func goToDefaultUIPaymentPage(_ sender: Any) {
 
         let cardFormData = Self.defaultCardFormData()
+
       let paymentFormViewController = PaymentFormFactory.getPaymentFormViewController(
         environment: environment,
         billingFormData: cardFormData.billingForm,
@@ -90,7 +91,6 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
 
         let name = "User Custom 2"
         let billingForm = BillingForm(name: name, address: address, phone: nil)
-
         let paymentFormViewController = PaymentFormFactory.getPaymentFormViewController(
           environment: environment,
             billingFormData: billingForm,

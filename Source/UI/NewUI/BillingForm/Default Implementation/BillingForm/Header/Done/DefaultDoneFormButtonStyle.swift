@@ -13,8 +13,8 @@ public struct DefaultDoneFormButtonStyle: ElementButtonStyle {
     public var errorBorderColor: UIColor = .clear
     public var imageTintColor: UIColor = .clear
     public var textColor: UIColor = .brandeisBlue
-    public var isHidden: Bool = false
-    public var isEnabled: Bool = true
+    public var isHidden = false
+    public var isEnabled = true
     public var height: Double = Constants.Style.BillingForm.DoneButton.height.rawValue
     public var width: Double = Constants.Style.BillingForm.DoneButton.width.rawValue
     public var cornerRadius: CGFloat = 0
