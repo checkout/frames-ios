@@ -2,15 +2,13 @@ import UIKit
 import Checkout
 
 class DefaultPaymentViewModel: PaymentViewModel {
-
   var updateEditBillingSummaryView: (() -> Void)?
   var updateAddBillingDetailsView: (() -> Void)?
   var updateExpiryDateView: (() -> Void)?
   var updateCardNumberView: (() -> Void)?
   var updateSecurityCodeView: (() -> Void)?
-
-  var environment: Environment
   var supportedSchemes: [Card.Scheme]
+  var cardValidator: CardValidator
   var paymentFormStyle: PaymentFormStyle?
   var billingFormStyle: BillingFormStyle?
   var billingFormData: BillingForm? {
@@ -21,13 +19,13 @@ class DefaultPaymentViewModel: PaymentViewModel {
     }
   }
 
-  init(environment: Environment,
+  init(cardValidator: CardValidator,
        billingFormData: BillingForm?,
        paymentFormStyle: PaymentFormStyle?,
        billingFormStyle: BillingFormStyle?,
        supportedSchemes: [Card.Scheme]) {
-    self.environment = environment
     self.supportedSchemes = supportedSchemes
+    self.cardValidator = cardValidator
     self.billingFormData = billingFormData
     self.paymentFormStyle = paymentFormStyle
     self.billingFormStyle = billingFormStyle
@@ -86,11 +84,9 @@ class DefaultPaymentViewModel: PaymentViewModel {
       .compactMap { $0?.trimmingCharacters(in: .whitespaces) }
       .joined(separator: "\n\n")
   }
-
 }
 
 extension DefaultPaymentViewModel: BillingFormViewModelDelegate {
-
   func onTapDoneButton(data: BillingForm) {
     self.billingFormData = data
   }
@@ -113,7 +109,7 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
   }
 
   private func onTapAddressView(sender: UINavigationController?) {
-    guard let viewController = BillingFormFactory.getBillingFormViewController(style: billingFormStyle, data: billingFormData, delegate: self) else { return  }
+    guard let viewController = BillingFormFactory.getBillingFormViewController(style: billingFormStyle, data: billingFormData, delegate: self) else { return }
     sender?.present(viewController, animated: true)
   }
 }

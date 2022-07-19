@@ -12,7 +12,7 @@ class PaymentViewModelTests: XCTestCase {
     }
 
   func testUpdateExpiryDateView() {
-    viewModel = DefaultPaymentViewModel(environment: .sandbox,
+    viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
                                         billingFormData: nil,
                                         paymentFormStyle: DefaultPaymentFormStyle(),
                                         billingFormStyle: DefaultBillingFormStyle(),
@@ -29,7 +29,7 @@ class PaymentViewModelTests: XCTestCase {
     }
 
     func testUpdateAddBillingSummaryView() {
-      viewModel = DefaultPaymentViewModel(environment: .sandbox,
+      viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
                                           billingFormData: nil,
                                           paymentFormStyle: DefaultPaymentFormStyle(),
                                           billingFormStyle: DefaultBillingFormStyle(),
@@ -58,7 +58,7 @@ class PaymentViewModelTests: XCTestCase {
         let billingFormData = BillingForm(name: userName,
                                           address: address,
                                           phone: phone)
-      viewModel = DefaultPaymentViewModel(environment: .sandbox,
+      viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
                                           billingFormData: billingFormData,
                                           paymentFormStyle: DefaultPaymentFormStyle(),
                                           billingFormStyle: DefaultBillingFormStyle(),
@@ -80,7 +80,7 @@ class PaymentViewModelTests: XCTestCase {
         let billingFormData = BillingForm(name: userName,
                                           address: nil,
                                           phone: phone)
-        viewModel = DefaultPaymentViewModel(environment: .sandbox,
+        viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
                                             billingFormData: billingFormData,
                                             paymentFormStyle: DefaultPaymentFormStyle(),
                                             billingFormStyle: DefaultBillingFormStyle(),
