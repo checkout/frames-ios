@@ -18,12 +18,11 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
 
     private static let successURL = URL(string: "https://httpstat.us/200")!
     private static let failureURL = URL(string: "https://httpstat.us/403")!
-
+    private let environment: Frames.Environment = .sandbox
     private static let countryGB = Country(iso3166Alpha2: "GB")!
 
     // Step1 : create instance of CheckoutAPIService
-    let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
-                                                       environment: .sandbox)
+    lazy var checkoutAPIService = Frames.CheckoutAPIService(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73", environment: environment)
     var cardViewController: CardViewController?
 
     // MARK: View Methods.
@@ -50,8 +49,8 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
     @IBAction private func goToDefaultUIPaymentPage(_ sender: Any) {
 
         let cardFormData = Self.defaultCardFormData()
-
       let paymentFormViewController = PaymentFormFactory.getPaymentFormViewController(
+        environment: environment,
         billingFormData: cardFormData.billingForm,
         paymentFormStyle: cardFormData.paymentFormStyle,
         billingFormStyle: cardFormData.billingFormStyle,
@@ -72,6 +71,7 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
         let name = "User Custom 1"
         let billingForm = BillingForm(name: name, address: address, phone: phone)
         let paymentFormViewController = PaymentFormFactory.getPaymentFormViewController(
+          environment: environment,
             billingFormData: billingForm,
             paymentFormStyle: Style.Custom1.paymentForm,
             billingFormStyle: Style.Custom1.billingForm,
@@ -92,6 +92,7 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
         let billingForm = BillingForm(name: name, address: address, phone: nil)
 
         let paymentFormViewController = PaymentFormFactory.getPaymentFormViewController(
+          environment: environment,
             billingFormData: billingForm,
             paymentFormStyle: Style.Custom2.paymentForm,
             billingFormStyle: Style.Custom2.billingForm,

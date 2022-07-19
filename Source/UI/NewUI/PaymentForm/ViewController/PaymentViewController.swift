@@ -16,7 +16,6 @@ final class PaymentViewController: UIViewController {
 
   private(set) var viewModel: PaymentViewModel
   private var notificationCenter = NotificationCenter.default
-  private let cardValidator: CardValidator
 
   // MARK: - UI properties
 
@@ -51,13 +50,13 @@ final class PaymentViewController: UIViewController {
   }()
 
   private lazy var expiryDateView: ExpiryDateView = {
-    let view = ExpiryDateView(environment: viewModel.environment)
+    let view = ExpiryDateView(cardValidator: viewModel.cardValidator)
     view.delegate = self
     return view
   }()
 
   private lazy var cardNumberView: CardNumberView = {
-    let cardNumberViewModel = CardNumberViewModel(cardValidator: cardValidator)
+    let cardNumberViewModel = CardNumberViewModel(cardValidator: viewModel.cardValidator)
     let cardNumberView = CardNumberView(viewModel: cardNumberViewModel)
     cardNumberViewModel.cardNumberView = cardNumberView
 
@@ -65,14 +64,15 @@ final class PaymentViewController: UIViewController {
   }()
 
   private lazy var securityCodeView: SecurityCodeView = {
-    let view = SecurityCodeView(cardValidator: CardValidator(environment: viewModel.environment.checkoutEnvironment))
+    let view = SecurityCodeView(cardValidator: viewModel.cardValidator)
     view.delegate = self
     return view
   }()
 
+  // MARK: - functions
+
   init(viewModel: PaymentViewModel) {
     self.viewModel = viewModel
-    self.cardValidator = CardValidator(environment: viewModel.environment.checkoutEnvironment)
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -132,13 +132,11 @@ final class PaymentViewController: UIViewController {
       self.scrollView.contentInset = contentInset
     }
   }
-
 }
 
 // MARK: View Model Integration
 
 extension PaymentViewController {
-
   private func setupViewModel() {
     delegate = self.viewModel as? PaymentViewControllerDelegate
     setupAddBillingDetailsViewClosure()
@@ -221,7 +219,6 @@ extension PaymentViewController {
 // MARK: Setup Views
 
 extension PaymentViewController {
-
   private func setupViewsInOrder() {
     setupHeaderView()
     setupScrollView()

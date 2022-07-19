@@ -1,4 +1,5 @@
 import XCTest
+import Checkout
 @testable import Frames
 
 class ExpiryDateViewTests: XCTestCase {
@@ -10,7 +11,7 @@ class ExpiryDateViewTests: XCTestCase {
     super.setUp()
     UIFont.loadAllCheckoutFonts
     style = DefaultExpiryDateFormStyle()
-    view = ExpiryDateView(environment: .sandbox)
+    view = ExpiryDateView(cardValidator: CardValidator(environment: .sandbox))
     view.update(style: style)
   }
 
