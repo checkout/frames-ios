@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9552EAEC28855AAE00E9ECD9 /* CardSchemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9552EAEB28855AAE00E9ECD9 /* CardSchemeTests.swift */; };
 		CB05A93927748FA10086DDA0 /* NSRegularExpression+initStaticPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A8F927748FA10086DDA0 /* NSRegularExpression+initStaticPattern.swift */; };
 		CB05A93A27748FA10086DDA0 /* URL+initStaticString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A8FA27748FA10086DDA0 /* URL+initStaticString.swift */; };
 		CB05A93B27748FA10086DDA0 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A8FB27748FA10086DDA0 /* Foundation+Extensions.swift */; };
@@ -86,7 +87,6 @@
 		CB05A9B927748FB50086DDA0 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A98927748FB50086DDA0 /* NetworkManagerTests.swift */; };
 		CB05A9BA27748FB50086DDA0 /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A98B27748FB50086DDA0 /* NetworkErrorTests.swift */; };
 		CB05A9BB27748FB50086DDA0 /* RequestFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A98C27748FB50086DDA0 /* RequestFactoryTests.swift */; };
-		CB05A9BC27748FB50086DDA0 /* CardSchemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A98E27748FB50086DDA0 /* CardSchemeTests.swift */; };
 		CB05A9BD27748FB50086DDA0 /* EnvironmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A98F27748FB50086DDA0 /* EnvironmentTests.swift */; };
 		CB05A9BE27748FB50086DDA0 /* CountryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A99027748FB50086DDA0 /* CountryTests.swift */; };
 		CB05A9BF27748FB50086DDA0 /* CheckoutAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A99227748FB50086DDA0 /* CheckoutAPIServiceTests.swift */; };
@@ -223,6 +223,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9552EAEB28855AAE00E9ECD9 /* CardSchemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSchemeTests.swift; sourceTree = "<group>"; };
 		CB05A8F927748FA10086DDA0 /* NSRegularExpression+initStaticPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+initStaticPattern.swift"; sourceTree = "<group>"; };
 		CB05A8FA27748FA10086DDA0 /* URL+initStaticString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+initStaticString.swift"; sourceTree = "<group>"; };
 		CB05A8FB27748FA10086DDA0 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
@@ -302,7 +303,6 @@
 		CB05A98927748FB50086DDA0 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		CB05A98B27748FB50086DDA0 /* NetworkErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
 		CB05A98C27748FB50086DDA0 /* RequestFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFactoryTests.swift; sourceTree = "<group>"; };
-		CB05A98E27748FB50086DDA0 /* CardSchemeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSchemeTests.swift; sourceTree = "<group>"; };
 		CB05A98F27748FB50086DDA0 /* EnvironmentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentTests.swift; sourceTree = "<group>"; };
 		CB05A99027748FB50086DDA0 /* CountryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTests.swift; sourceTree = "<group>"; };
 		CB05A99227748FB50086DDA0 /* CheckoutAPIServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutAPIServiceTests.swift; sourceTree = "<group>"; };
@@ -669,8 +669,8 @@
 		CB05A98D27748FB50086DDA0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CB05A98E27748FB50086DDA0 /* CardSchemeTests.swift */,
 				CB05A98F27748FB50086DDA0 /* EnvironmentTests.swift */,
+				9552EAEB28855AAE00E9ECD9 /* CardSchemeTests.swift */,
 				CB05A99027748FB50086DDA0 /* CountryTests.swift */,
 			);
 			path = Model;
@@ -1148,6 +1148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB23C14D271DC86200F68C0E /* Test.swift in Sources */,
+				9552EAEC28855AAE00E9ECD9 /* CardSchemeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1237,7 +1238,6 @@
 				CB05A9BB27748FB50086DDA0 /* RequestFactoryTests.swift in Sources */,
 				CBE83F0927C3DB2B006F5701 /* StubWKNavigationAction.swift in Sources */,
 				CB05A9A527748FB50086DDA0 /* StubLuhnChecker.swift in Sources */,
-				CB05A9BC27748FB50086DDA0 /* CardSchemeTests.swift in Sources */,
 				CB05A9C227748FB50086DDA0 /* TokenRequestFactoryTests.swift in Sources */,
 				CB918B2E278C8F3200C68EF4 /* StubAnyCodable.swift in Sources */,
 				CB05A9BF27748FB50086DDA0 /* CheckoutAPIServiceTests.swift in Sources */,

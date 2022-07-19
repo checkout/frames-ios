@@ -1,27 +1,33 @@
 import UIKit
+import Checkout
+
+public typealias Card = Checkout.Card
 
 public struct PaymentFormFactory {
+  public static func getPaymentFormViewController(environment: Environment,
+                                                  billingFormData: BillingForm?,
+                                                  paymentFormStyle: PaymentFormStyle?,
+                                                  billingFormStyle: BillingFormStyle?,
+                                                  supportedSchemes: [Card.Scheme]) -> UIViewController {
+    let cardValidator = CardValidator(environment: environment.checkoutEnvironment)
+    let viewModel = DefaultPaymentViewModel(cardValidator: cardValidator,
+                                            billingFormData: billingFormData,
+                                            paymentFormStyle: paymentFormStyle,
+                                            billingFormStyle: billingFormStyle,
+                                            supportedSchemes: supportedSchemes)
 
-    public static func getPaymentFormViewController(billingFormData: BillingForm?,
-                                                    paymentFormStyle: PaymentFormStyle?,
-                                                    billingFormStyle: BillingFormStyle?) -> UIViewController {
+    let viewController = PaymentViewController(viewModel: viewModel)
 
-      let viewModel = DefaultPaymentViewModel(environment: .live ,
-                                              billingFormData: billingFormData,
-                                                paymentFormStyle: paymentFormStyle,
-                                                billingFormStyle: billingFormStyle)
-        let viewController =  PaymentViewController(viewModel: viewModel)
-
-        if #available(iOS 13.0, *) {
-            viewController.isModalInPresentation  = true
-        }
-        return viewController
+    if #available(iOS 13.0, *) {
+      viewController.isModalInPresentation = true
     }
+    return viewController
+  }
 
-    static func getButton(style: CellButtonStyle, delegate: SelectionButtonViewDelegate?) -> UIView {
-        let view = SelectionButtonView()
-        view.delegate = delegate
-        view.update(style: style)
-        return view
-    }
+  static func getButton(style: CellButtonStyle, delegate: SelectionButtonViewDelegate?) -> UIView {
+    let view = SelectionButtonView()
+    view.delegate = delegate
+    view.update(style: style)
+    return view
+  }
 }
