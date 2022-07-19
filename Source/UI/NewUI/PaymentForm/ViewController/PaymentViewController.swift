@@ -5,6 +5,7 @@ protocol PaymentViewControllerDelegate: AnyObject {
   func addBillingButtonIsPressed(sender: UINavigationController?)
   func editBillingButtonIsPressed(sender: UINavigationController?)
   func expiryDateIsUpdated(value: ExpiryDate)
+  func securityCodeIsUpdated(value: String)
 }
 
 final class PaymentViewController: UIViewController {
@@ -15,7 +16,7 @@ final class PaymentViewController: UIViewController {
 
   private(set) var viewModel: PaymentViewModel
   private var notificationCenter = NotificationCenter.default
-    private let cardValidator: CardValidating
+  private let cardValidator: CardValidator
 
   // MARK: - UI properties
 
@@ -64,10 +65,11 @@ final class PaymentViewController: UIViewController {
   }()
 
   private lazy var securityCodeView: SecurityCodeView = {
-    SecurityCodeView(cardValidator: CardValidator(environment: viewModel.environment.checkoutEnvironment))
+    let view = SecurityCodeView(cardValidator: CardValidator(environment: viewModel.environment.checkoutEnvironment))
+    view.delegate = self
+    return view
   }()
 
- 
   init(viewModel: PaymentViewModel) {
     self.viewModel = viewModel
     self.cardValidator = CardValidator(environment: viewModel.environment.checkoutEnvironment)
@@ -281,5 +283,11 @@ extension PaymentViewController: BillingFormSummaryViewDelegate {
 extension PaymentViewController: ExpiryDateViewDelegate {
   func update(expiryDate: ExpiryDate) {
     delegate?.expiryDateIsUpdated(value: expiryDate)
+  }
+}
+
+extension PaymentViewController: SecurityCodeViewDelegate {
+  func update(securityCode: String) {
+    delegate?.securityCodeIsUpdated(value: securityCode)
   }
 }

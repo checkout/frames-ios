@@ -1,15 +1,19 @@
 import UIKit
+import Checkout
+
+public typealias Card = Checkout.Card
 
 public struct PaymentFormFactory {
-
     public static func getPaymentFormViewController(billingFormData: BillingForm?,
                                                     paymentFormStyle: PaymentFormStyle?,
-                                                    billingFormStyle: BillingFormStyle?) -> UIViewController {
+                                                    billingFormStyle: BillingFormStyle?,
+                                                    supportedSchemes: [Card.Scheme] ) -> UIViewController {
 
-      let viewModel = DefaultPaymentViewModel(environment: .live ,
+      let viewModel = DefaultPaymentViewModel(environment: Environment.live ,
                                               billingFormData: billingFormData,
                                                 paymentFormStyle: paymentFormStyle,
-                                                billingFormStyle: billingFormStyle)
+                                              billingFormStyle: billingFormStyle,
+                                              supportedSchemes: supportedSchemes)
         let viewController =  PaymentViewController(viewModel: viewModel)
 
         if #available(iOS 13.0, *) {

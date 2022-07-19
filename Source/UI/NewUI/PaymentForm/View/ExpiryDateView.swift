@@ -65,7 +65,6 @@ public final class ExpiryDateView: UIView {
         updateErrorViewStyle(isHidden: true, textfieldText: textfieldText)
         return true
       case .failure(let error):
-        print(error)
         updateErrorViewStyle(isHidden: false, textfieldText: textfieldText, error: error)
         return false
     }
