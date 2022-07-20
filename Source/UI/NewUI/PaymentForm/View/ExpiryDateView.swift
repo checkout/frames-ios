@@ -41,8 +41,8 @@ public final class ExpiryDateView: UIView {
     dateInputView.update(style: self.style)
   }
 
-  func updateExpiryDate(to textfieldText: String, replacementText: String) -> Bool {
-    let date = textfieldText + replacementText
+  func validateInputChanges(Of textfieldText: String, newInput: String) -> Bool {
+    let date = textfieldText + newInput
     guard date.count == dateFormatTextCount else {
       updateErrorViewStyle(isHidden: false, textfieldText: textfieldText, error: .invalidYear)
       return false
@@ -131,7 +131,7 @@ public final class ExpiryDateView: UIView {
         }
 
       case 4:
-        return updateExpiryDate(to: textField.text ?? "", replacementText: replacementText)
+        return validateInputChanges(Of: textField.text ?? "", newInput: replacementText)
       default: break
     }
 
