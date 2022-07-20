@@ -6,7 +6,7 @@ protocol SelectionButtonViewDelegate: AnyObject {
 
 class SelectionButtonView: UIView {
     weak var delegate: SelectionButtonViewDelegate?
-    private var style: CellButtonStyle?
+    private(set) var style: CellButtonStyle?
 
     private(set) lazy var titleLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()

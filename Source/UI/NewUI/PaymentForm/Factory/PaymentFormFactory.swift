@@ -17,7 +17,6 @@ public struct PaymentFormFactory {
                                             supportedSchemes: supportedSchemes)
 
     let viewController = PaymentViewController(viewModel: viewModel)
-
     if #available(iOS 13.0, *) {
       viewController.isModalInPresentation = true
     }

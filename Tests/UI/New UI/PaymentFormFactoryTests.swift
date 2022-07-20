@@ -10,7 +10,6 @@ import Checkout
 @testable import Frames
 
 class PaymentFormFactoryTests: XCTestCase {
-
   func testGetPaymentFormViewController() throws {
 
     let billingFormStyle = BillingFormFactory.defaultBillingFormStyle
@@ -43,7 +42,6 @@ class PaymentFormFactoryTests: XCTestCase {
     XCTAssertNotNil(paymentViewController.viewModel.billingFormData)
     XCTAssertNotNil(paymentViewController.viewModel.billingFormStyle)
     XCTAssertNotNil(paymentViewController.viewModel.paymentFormStyle)
-
   }
 
 }
