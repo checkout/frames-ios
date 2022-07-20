@@ -37,29 +37,32 @@ public final class ExpiryDateView: UIView {
     dateInputView.update(style: self.style)
   }
 
-  func updateExpiryDate(to newDate: String?) {
-    guard newDate?.count == dateFormatTextCount else {
-      updateErrorViewStyle(isHidden: false, textfieldText: newDate, error: .invalidYear)
-      return
+  func validateInputChanges(of textfieldText: String, newInput: String) -> Bool {
+    let date = textfieldText + newInput
+    guard date.count == dateFormatTextCount else {
+      updateErrorViewStyle(isHidden: false, textfieldText: textfieldText, error: .invalidYear)
+      return false
     }
-    let subString = newDate?.split(separator: "/")
-    guard let month = subString?.first,
+    let subString = date.split(separator: "/")
+    guard let month = subString.first,
           month.count == 2,
           let monthDigit = Int(month),
-          let year = subString?.last,
+          let year = subString.last,
           year.count == 2,
           let yearDigit = Int(year) else {
-      updateErrorViewStyle(isHidden: false, textfieldText: newDate, error: .invalidYear)
-      return
+      updateErrorViewStyle(isHidden: false, textfieldText: textfieldText, error: .invalidYear)
+      return false
     }
 
     switch cardValidator.validate(expiryMonth: monthDigit, expiryYear: yearDigit) {
       case .success:
         let expiryDate = ExpiryDate(month: monthDigit, year: yearDigit)
         delegate?.update(expiryDate: expiryDate)
-        updateErrorViewStyle(isHidden: true, textfieldText: newDate)
+        updateErrorViewStyle(isHidden: true, textfieldText: textfieldText)
+        return true
       case .failure(let error):
-        updateErrorViewStyle(isHidden: false, textfieldText: newDate, error: error)
+        updateErrorViewStyle(isHidden: false, textfieldText: textfieldText, error: error)
+        return false
     }
   }
 
@@ -123,10 +126,7 @@ public final class ExpiryDateView: UIView {
         }
 
       case 4:
-        updateExpiryDate(to: (textField.text ?? "") + replacementText)
-        dateInputView.textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
-        return false
-
+        return validateInputChanges(of: textField.text ?? "", newInput: replacementText)
       default: break
     }
 
