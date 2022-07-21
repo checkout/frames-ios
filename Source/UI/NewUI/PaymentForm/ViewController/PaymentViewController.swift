@@ -242,33 +242,23 @@ extension PaymentViewController {
 
 extension PaymentViewController {
   private func setupViewsInOrder() {
-    setupHeaderView()
     setupScrollView()
     setupStackView()
     addArrangedSubviewForStackView()
   }
 
   private func addArrangedSubviewForStackView() {
-    stackView.addArrangedSubview(cardNumberView)
+    stackView.addArrangedSubview(headerView)
     stackView.addArrangedSubview(expiryDateView)
     stackView.addArrangedSubview(securityCodeView)
     stackView.addArrangedSubview(addBillingFormButtonView)
     stackView.addArrangedSubview(billingFormSummaryView)
   }
 
-  func setupHeaderView() {
-    view.addSubview(headerView)
-    NSLayoutConstraint.activate([
-      headerView.topAnchor.constraint(equalTo: view.safeTopAnchor),
-      headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-    ])
-  }
-
   func setupScrollView() {
     view.addSubview(scrollView)
     NSLayoutConstraint.activate([
-      scrollView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+      scrollView.topAnchor.constraint(equalTo: view.safeTopAnchor),
       scrollView.leadingAnchor.constraint(equalTo: view.safeLeadingAnchor),
       scrollView.trailingAnchor.constraint(equalTo: view.safeTrailingAnchor),
       scrollView.bottomAnchor.constraint(equalTo: view.safeBottomAnchor)

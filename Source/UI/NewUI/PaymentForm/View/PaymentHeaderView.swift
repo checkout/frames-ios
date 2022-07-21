@@ -101,15 +101,7 @@ extension PaymentHeaderView {
 
   func setupMainStackView() {
     addSubview(stackView)
-    NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalTo: topAnchor,
-                                     constant: Constants.Padding.l.rawValue),
-      stackView.leadingAnchor.constraint(equalTo: safeLeadingAnchor,
-                                         constant: Constants.Padding.l.rawValue),
-      stackView.trailingAnchor.constraint(equalTo: safeTrailingAnchor,
-                                          constant: -Constants.Padding.l.rawValue),
-      stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
-    ])
+    stackView.setupConstraintEqualTo(view: self)
   }
 
   private func setupIconStackView() {
