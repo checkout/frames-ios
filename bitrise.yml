@@ -183,7 +183,7 @@ workflows:
     steps:
     - script@1:
         inputs:
-        - content: pod trunk push --allow-warnings Frames.podspec
+        - content: pod trunk push --allow-warnings --verbose Frames.podspec
     before_run:
     - set-up
   send-slack-message:
