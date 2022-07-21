@@ -10,13 +10,13 @@ import XCTest
 @testable import Frames
 
 final class UIFont_PropertyProvidingTests: XCTestCase {
-    let font = UIFont.systemFont(ofSize: 12)
+    let font = UIFont(name: "Arial", size: 12)!
 
     func test_equality() {
         XCTAssertEqual(font.properties, font.properties)
     }
 
     func test_properties() {
-        XCTAssertEqual(font.properties, [.size: 12.0, .name: ".SFUI-Regular"])
+        XCTAssertEqual(font.properties, [.size: 12.0, .name: "ArialMT"])
     }
 }

@@ -12,6 +12,11 @@ import CheckoutEventLoggerKit
 
 final class ThemeTests: XCTestCase {
     let subject = Theme()
+    let font = UIFont(name: "Arial", size: 12)!
+
+    override func setUp() {
+        CheckoutTheme.font = font
+    }
 
     func test_equality() {
         XCTAssertEqual(subject, subject)
@@ -31,16 +36,13 @@ final class ThemeTests: XCTestCase {
                                                                                                 "alpha": AnyCodable(Double(1)),
                                                                                                 "blue": AnyCodable(Double(2.0 / 3.0)),
                                                                                                 "green": AnyCodable(Double(2.0 / 3.0))]),
-                                                               .primaryBackgroundColor: AnyCodable(["red": AnyCodable(Double(242.0 / 255.0)),
-                                                                                                    "alpha": AnyCodable(Double(1)),
-                                                                                                    "green": AnyCodable(Double(242.0 / 255.0)),
-                                                                                                    "blue": AnyCodable(Double(247.0 / 255.0))]),
+                                                               .primaryBackgroundColor: AnyCodable(UIColor.groupTableViewBackground.properties.mapKeys(\.rawValue)),
                                                                .errorTextColor: AnyCodable(["blue": AnyCodable(Double(0)),
                                                                                             "red": AnyCodable(Double(1)),
                                                                                             "green": AnyCodable(Double(0)),
                                                                                             "alpha": AnyCodable(Double(1))]),
-                                                               .font: AnyCodable(["size": AnyCodable(Double(14)),
-                                                                                  "name": AnyCodable(".SFUI-Regular")]),
+                                                               .font: AnyCodable(["size": AnyCodable(Double(12)),
+                                                                                  "name": AnyCodable("ArialMT")]),
                                                                .secondaryBackgroundColor: AnyCodable(["alpha": AnyCodable(Double(1)),
                                                                                                       "red": AnyCodable(Double(1)),
                                                                                                       "green": AnyCodable(Double(1)),
