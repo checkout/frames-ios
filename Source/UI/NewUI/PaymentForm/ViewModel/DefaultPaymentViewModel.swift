@@ -2,14 +2,13 @@ import UIKit
 import Checkout
 
 class DefaultPaymentViewModel: PaymentViewModel {
-
   var updateEditBillingSummaryView: (() -> Void)?
   var updateAddBillingDetailsView: (() -> Void)?
   var updateExpiryDateView: (() -> Void)?
   var updateCardNumberView: (() -> Void)?
   var updateSecurityCodeView: (() -> Void)?
-
-  var environment: Environment
+  var supportedSchemes: [Card.Scheme]
+  var cardValidator: CardValidator
   var paymentFormStyle: PaymentFormStyle?
   var billingFormStyle: BillingFormStyle?
   var billingFormData: BillingForm? {
@@ -20,27 +19,25 @@ class DefaultPaymentViewModel: PaymentViewModel {
     }
   }
 
-  init(environment: Environment,
+  init(cardValidator: CardValidator,
        billingFormData: BillingForm?,
        paymentFormStyle: PaymentFormStyle?,
-       billingFormStyle: BillingFormStyle?) {
-    self.environment = environment
+       billingFormStyle: BillingFormStyle?,
+       supportedSchemes: [Card.Scheme]) {
+    self.supportedSchemes = supportedSchemes
+    self.cardValidator = cardValidator
     self.billingFormData = billingFormData
     self.paymentFormStyle = paymentFormStyle
     self.billingFormStyle = billingFormStyle
   }
 
   func updateAll() {
-    updateCardNumber()
-    updateExpiryDate()
-    updateSecurityCode()
+    updateCardNumberView?()
+    updateExpiryDateView?()
+    updateSecurityCodeView?()
     if isAddBillingSummaryNotUpdated() {
       updateBillingSummaryView()
     }
-  }
-
-  private func updateCardNumber() {
-    updateCardNumberView?()
   }
 
   func updateBillingSummaryView() {
@@ -71,14 +68,6 @@ class DefaultPaymentViewModel: PaymentViewModel {
     updateEditBillingSummaryView?()
   }
 
-  private func updateExpiryDate() {
-    updateExpiryDateView?()
-  }
-
-  private func updateSecurityCode() {
-    updateSecurityCodeView?()
-  }
-
   private func isAddBillingSummaryNotUpdated() -> Bool {
     guard billingFormData?.address != nil ||
             billingFormData?.phone != nil else {
@@ -93,20 +82,23 @@ class DefaultPaymentViewModel: PaymentViewModel {
   private func updateSummaryValue(with summaryValues: [String?]) -> String {
     summaryValues
       .compactMap { $0?.trimmingCharacters(in: .whitespaces) }
+      .filter { !$0.isEmpty }
       .joined(separator: "\n\n")
   }
-
 }
 
 extension DefaultPaymentViewModel: BillingFormViewModelDelegate {
-
   func onTapDoneButton(data: BillingForm) {
     self.billingFormData = data
   }
 }
 
 extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
-  // TODO: Will fixed in payment ticket
+
+  // TODO: Will be implemented in payment ticket
+  func securityCodeIsUpdated(value: String) {}
+
+  // TODO: Will be implemented in payment ticket
   func expiryDateIsUpdated(value: ExpiryDate) {}
 
   func addBillingButtonIsPressed(sender: UINavigationController?) {
@@ -118,7 +110,7 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
   }
 
   private func onTapAddressView(sender: UINavigationController?) {
-    guard let viewController = BillingFormFactory.getBillingFormViewController(style: billingFormStyle, data: billingFormData, delegate: self) else { return  }
+    guard let viewController = BillingFormFactory.getBillingFormViewController(style: billingFormStyle, data: billingFormData, delegate: self) else { return }
     sender?.present(viewController, animated: true)
   }
 }

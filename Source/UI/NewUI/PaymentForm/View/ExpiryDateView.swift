@@ -10,12 +10,8 @@ public final class ExpiryDateView: UIView {
 
   /// 5 is the expected text count, for example "11/35".
   private let dateFormatTextCount = 5
-  private let environment: Environment
   private(set) var style: CellTextFieldStyle?
-
-  private lazy var cardValidator: CardValidator = {
-    CardValidator(environment: environment.checkoutEnvironment)
-  }()
+  private let cardValidator: CardValidator
 
   private lazy var dateInputView: InputView = {
     let view = InputView().disabledAutoresizingIntoConstraints()
@@ -23,8 +19,8 @@ public final class ExpiryDateView: UIView {
     return view
   }()
 
-  init(environment: Environment) {
-    self.environment = environment
+  init(cardValidator: CardValidator) {
+    self.cardValidator = cardValidator
     super.init(frame: .zero)
     // setup expiry DateView
     addSubview(dateInputView)
@@ -41,30 +37,32 @@ public final class ExpiryDateView: UIView {
     dateInputView.update(style: self.style)
   }
 
-  func updateExpiryDate(to newDate: String?) {
-    guard newDate?.count == dateFormatTextCount else {
-      updateErrorViewStyle(isHidden: false, textfieldText: newDate, error: .invalidYear)
-      return
+  func validateInputChanges(of textfieldText: String, newInput: String) -> Bool {
+    let date = textfieldText + newInput
+    guard date.count == dateFormatTextCount else {
+      updateErrorViewStyle(isHidden: false, textfieldText: textfieldText, error: .invalidYear)
+      return false
     }
-    let subString = newDate?.split(separator: "/")
-    guard let month = subString?.first,
+    let subString = date.split(separator: "/")
+    guard let month = subString.first,
           month.count == 2,
           let monthDigit = Int(month),
-          let year = subString?.last,
+          let year = subString.last,
           year.count == 2,
           let yearDigit = Int(year) else {
-      updateErrorViewStyle(isHidden: false, textfieldText: newDate, error: .invalidYear)
-      return
+      updateErrorViewStyle(isHidden: false, textfieldText: textfieldText, error: .invalidYear)
+      return false
     }
 
     switch cardValidator.validate(expiryMonth: monthDigit, expiryYear: yearDigit) {
       case .success:
         let expiryDate = ExpiryDate(month: monthDigit, year: yearDigit)
         delegate?.update(expiryDate: expiryDate)
-        updateErrorViewStyle(isHidden: true, textfieldText: newDate)
+        updateErrorViewStyle(isHidden: true, textfieldText: textfieldText)
+        return true
       case .failure(let error):
-        print(error)
-        updateErrorViewStyle(isHidden: false, textfieldText: newDate, error: error)
+        updateErrorViewStyle(isHidden: false, textfieldText: textfieldText, error: error)
+        return false
     }
   }
 
@@ -96,7 +94,6 @@ public final class ExpiryDateView: UIView {
 
   private func validateInput(_ textField: UITextField, currentDigit: Int, location: Int, replacementText: String) -> Bool {
     switch location {
-
       case 0 where 2...9 ~= currentDigit:
         textField.text = "0"
 
@@ -129,10 +126,7 @@ public final class ExpiryDateView: UIView {
         }
 
       case 4:
-        updateExpiryDate(to: (textField.text ?? "") + replacementText)
-        dateInputView.textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
-        return false
-
+        return validateInputChanges(of: textField.text ?? "", newInput: replacementText)
       default: break
     }
 
@@ -151,7 +145,7 @@ public final class ExpiryDateView: UIView {
 
 extension ExpiryDateView: TextFieldViewDelegate {
   func textFieldShouldBeginEditing(textField: UITextField) {}
-  func textFieldShouldReturn() -> Bool {  return false }
+  func textFieldShouldReturn() -> Bool { return false }
   func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
     if textField.text?.count ?? 0 < dateFormatTextCount {
       updateErrorViewStyle(isHidden: false, textfieldText: textField.text, error: .invalidMonth)

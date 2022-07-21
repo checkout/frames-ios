@@ -12,11 +12,11 @@
 "BillingFormOptional" = "Optional";
 "PaymentFormSummaryViewHintText" = "We need this information as an additional security measure to verify this card.";
 "AddBillingAddress" = "Add billing address";
-"ExpiryDate" = "ExpiryDate";
+"ExpiryDate" = "Expiry date";
 "ExpiryDateFormat" = "Format is MM/YY";
-"ExpiryDatePlaceholder" = "_ _ /_ _";
-"ExpiryDateErrorMessageInvalid" = "Please enter a valid Expiry Date";
-"ExpiryDateErrorMessageInvalidInPast" = "Expiry Date is in the past";
+"ExpiryDatePlaceholder" = "_ _  / _ _";
+"ExpiryDateErrorMessageInvalid" = "Please enter a valid expiry date";
+"ExpiryDateErrorMessageInvalidInPast" = "Expiry date is in the past";
 
 "SecurityCode" = "Security code";
 "SecurityCodeHint" = "3 - 4 digit code on your card";

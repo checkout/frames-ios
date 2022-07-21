@@ -21,6 +21,16 @@ class TextFieldViewTests: XCTestCase {
     view.update(with: style)
   }
   
+  func testStyle(){
+    XCTAssertEqual(view.textField.text, style.text)
+    XCTAssertEqual(view.textField.font, style.font)
+    XCTAssertEqual(view.textField.textColor, style.textColor)
+    XCTAssertEqual(view.textField.tintColor, style.tintColor)
+    XCTAssertEqual(view.textField.placeholder, style.placeHolder)
+    XCTAssertFalse(style.isSupportingNumericKeyboard)
+    XCTAssertEqual(view.textField.keyboardType, .default)
+  }
+
   func testSecuredTextFieldViewIsNotSubView(){
     let subviews = view.subviews
     

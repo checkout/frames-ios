@@ -6,7 +6,7 @@ protocol BillingFormSummaryViewDelegate: AnyObject {
 
 class BillingFormSummaryView: UIView {
     weak var delegate: BillingFormSummaryViewDelegate?
-    private var style: BillingSummaryViewStyle?
+    private(set) var style: BillingSummaryViewStyle?
 
     private(set) lazy var titleLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
@@ -110,7 +110,7 @@ extension BillingFormSummaryView {
 
         NSLayoutConstraint.activate([
             summaryLabel.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
-                                              constant: Constants.Padding.xxxl.rawValue),
+                                              constant: Constants.Padding.xxl.rawValue),
             summaryLabel.leadingAnchor.constraint(equalTo: leadingAnchor,
                                                   constant: Constants.Padding.l.rawValue),
             summaryLabel.trailingAnchor.constraint(equalTo: trailingAnchor,
@@ -144,7 +144,7 @@ extension BillingFormSummaryView {
         addSubview(summaryContainerView)
         NSLayoutConstraint.activate([
             summaryContainerView.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
-                                                      constant: Constants.Padding.l.rawValue),
+                                                      constant: Constants.Padding.s.rawValue),
             summaryContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             summaryContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             summaryContainerView.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor,

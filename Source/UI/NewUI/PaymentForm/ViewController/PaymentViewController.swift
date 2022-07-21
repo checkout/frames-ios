@@ -5,6 +5,7 @@ protocol PaymentViewControllerDelegate: AnyObject {
   func addBillingButtonIsPressed(sender: UINavigationController?)
   func editBillingButtonIsPressed(sender: UINavigationController?)
   func expiryDateIsUpdated(value: ExpiryDate)
+  func securityCodeIsUpdated(value: String)
 }
 
 final class PaymentViewController: UIViewController {
@@ -15,7 +16,6 @@ final class PaymentViewController: UIViewController {
 
   private(set) var viewModel: PaymentViewModel
   private var notificationCenter = NotificationCenter.default
-    private let cardValidator: CardValidating
 
   // MARK: - UI properties
 
@@ -50,26 +50,28 @@ final class PaymentViewController: UIViewController {
   }()
 
   private lazy var expiryDateView: ExpiryDateView = {
-    let view = ExpiryDateView(environment: viewModel.environment)
+    let view = ExpiryDateView(cardValidator: viewModel.cardValidator)
     view.delegate = self
     return view
   }()
 
   private lazy var cardNumberView: CardNumberView = {
-    let cardNumberViewModel = CardNumberViewModel(cardValidator: cardValidator)
+    let cardNumberViewModel = CardNumberViewModel(cardValidator: viewModel.cardValidator)
     let cardNumberView = CardNumberView(viewModel: cardNumberViewModel)
 
     return cardNumberView
   }()
 
   private lazy var securityCodeView: SecurityCodeView = {
-    SecurityCodeView(cardValidator: CardValidator(environment: viewModel.environment.checkoutEnvironment))
+    let view = SecurityCodeView(cardValidator: viewModel.cardValidator)
+    view.delegate = self
+    return view
   }()
 
- 
+  // MARK: - functions
+
   init(viewModel: PaymentViewModel) {
     self.viewModel = viewModel
-    self.cardValidator = CardValidator(environment: viewModel.environment.checkoutEnvironment)
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -129,13 +131,11 @@ final class PaymentViewController: UIViewController {
       self.scrollView.contentInset = contentInset
     }
   }
-
 }
 
 // MARK: View Model Integration
 
 extension PaymentViewController {
-
   private func setupViewModel() {
     delegate = self.viewModel as? PaymentViewControllerDelegate
     setupAddBillingDetailsViewClosure()
@@ -218,7 +218,6 @@ extension PaymentViewController {
 // MARK: Setup Views
 
 extension PaymentViewController {
-
   private func setupViewsInOrder() {
     setupHeaderView()
     setupScrollView()
@@ -280,5 +279,11 @@ extension PaymentViewController: BillingFormSummaryViewDelegate {
 extension PaymentViewController: ExpiryDateViewDelegate {
   func update(expiryDate: ExpiryDate) {
     delegate?.expiryDateIsUpdated(value: expiryDate)
+  }
+}
+
+extension PaymentViewController: SecurityCodeViewDelegate {
+  func update(securityCode: String) {
+    delegate?.securityCodeIsUpdated(value: securityCode)
   }
 }
