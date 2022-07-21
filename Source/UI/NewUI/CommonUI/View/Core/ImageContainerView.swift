@@ -20,7 +20,7 @@ class ImageContainerView: UIView {
 
     func update(with image: UIImage?, tintColor: UIColor? = nil, animated: Bool = false) {
       let updateBlock = { [weak self] in
-        self?.imageView.image = image?.withRenderingMode(tintColor == nil ? .alwaysOriginal : .alwaysTemplate)
+        self?.imageView.image = image?.withRenderingMode(tintColor == nil ? .alwaysOriginal : .automatic)
         self?.imageView.tintColor = tintColor
       }
 

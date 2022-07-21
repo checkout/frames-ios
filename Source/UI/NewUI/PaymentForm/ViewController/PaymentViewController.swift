@@ -249,6 +249,7 @@ extension PaymentViewController {
 
   private func addArrangedSubviewForStackView() {
     stackView.addArrangedSubview(headerView)
+    stackView.addArrangedSubview(cardNumberView)
     stackView.addArrangedSubview(expiryDateView)
     stackView.addArrangedSubview(securityCodeView)
     stackView.addArrangedSubview(addBillingFormButtonView)
