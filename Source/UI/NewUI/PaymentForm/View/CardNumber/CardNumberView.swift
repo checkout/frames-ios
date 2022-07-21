@@ -8,10 +8,6 @@
 
 import UIKit
 
-enum CardNumberError: Error {
-  case invalid
-}
-
 final class CardNumberView: UIView {
   private let viewModel: CardNumberViewModelProtocol
 
@@ -19,14 +15,6 @@ final class CardNumberView: UIView {
     didSet {
       if schemeIcon != oldValue {
         updateIcon()
-      }
-    }
-  }
-
-  private(set) var cardNumberError: CardNumberError? {
-    didSet {
-      if cardNumberError != oldValue {
-        updateError()
       }
     }
   }
@@ -54,6 +42,7 @@ final class CardNumberView: UIView {
     var style = style
 
     if let errorStyle = style.error, errorStyle.text.isEmpty {
+      style.error?.isHidden = true
       style.error?.text = Constants.LocalizationKeys.PaymentForm.CardNumber.error
     }
 
@@ -70,9 +59,9 @@ final class CardNumberView: UIView {
     cardNumberInputView.update(image: schemeIcon.image, animated: true)
   }
 
-  private func updateError() {
+  private func updateError(show: Bool) {
     guard var style = style else { return }
-    style.error?.isHidden = cardNumberError == nil
+    style.error?.isHidden = !show
 
     update(style: style)
   }
@@ -85,11 +74,11 @@ extension CardNumberView: TextFieldViewDelegate {
 
   func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
     switch viewModel.validate(cardNumber: replacementString) {
-    case .success(let schemeIcon):
+    case .some(let schemeIcon):
       self.schemeIcon = schemeIcon
-      self.cardNumberError = nil
-    case .failure(let cardNumberError):
-      self.cardNumberError = cardNumberError
+      updateError(show: false)
+    case nil:
+      updateError(show: true)
     }
 
     return true
@@ -109,7 +98,7 @@ extension CardNumberView: TextFieldViewDelegate {
       textField.text = newTextFieldValue
       style?.textfield.text = newTextFieldValue
       self.schemeIcon = schemeIcon
-      self.cardNumberError = nil
+      updateError(show: false)
     }
 
     return false

@@ -143,7 +143,7 @@ class CardNumberViewModelTests: XCTestCase {
       let result = subject.validate(cardNumber: "1234")
 
       // then
-      XCTAssertEqual(result, .success(Constants.Bundle.SchemeIcon(scheme: scheme)))
+      XCTAssertEqual(result, Constants.Bundle.SchemeIcon(scheme: scheme))
       XCTAssertEqual(mockCardValidator.validateCardNumberCalledWith, "1234")
     }
   }
@@ -156,7 +156,7 @@ class CardNumberViewModelTests: XCTestCase {
     let result = subject.validate(cardNumber: "1234")
 
     // then
-    XCTAssertEqual(result, .failure(.invalid))
+    XCTAssertNil(result)
     XCTAssertEqual(mockCardValidator.validateCardNumberCalledWith, "1234")
   }
 }

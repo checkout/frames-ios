@@ -13,7 +13,7 @@ protocol CardNumberViewModelDelegate: AnyObject {
 }
 
 protocol CardNumberViewModelProtocol {
-  func validate(cardNumber: String) -> Result<Constants.Bundle.SchemeIcon, CardNumberError>
+  func validate(cardNumber: String) -> Constants.Bundle.SchemeIcon?
   func eagerValidate(cardNumber: String) -> (newTextFieldValue: String, schemeIcon: Constants.Bundle.SchemeIcon)?
 }
 
@@ -29,16 +29,16 @@ class CardNumberViewModel {
 }
 
 extension CardNumberViewModel: CardNumberViewModelProtocol {
-  func validate(cardNumber rawText: String) -> Result<Constants.Bundle.SchemeIcon, CardNumberError> {
+  func validate(cardNumber rawText: String) -> Constants.Bundle.SchemeIcon? {
     let cardNumber = cardUtils.removeNonDigits(from: rawText)
 
     switch cardValidator.validate(cardNumber: cardNumber) {
     case .failure, .success(.unknown):
       delegate?.update(cardNumber: cardNumber, scheme: .unknown)
-      return .failure(.invalid)
+      return nil
     case .success(let scheme):
       delegate?.update(cardNumber: cardNumber, scheme: scheme)
-      return .success(.init(scheme: scheme))
+      return Constants.Bundle.SchemeIcon(scheme: scheme)
     }
   }
 

@@ -31,7 +31,6 @@ final class CardNumberViewTests: XCTestCase {
     XCTAssertTrue(subject.textFieldShouldReturn())
     XCTAssertNil(mockViewModel.eagerValidateCalledWith)
     XCTAssertEqual(subject.schemeIcon, .blank)
-    XCTAssertNil(subject.cardNumberError)
   }
 
   func test_textField_rangeIsInvalid_returnTrue() {
@@ -44,7 +43,6 @@ final class CardNumberViewTests: XCTestCase {
     XCTAssertTrue(subject.textField(textField, shouldChangeCharactersIn: range, replacementString: ""))
     XCTAssertNil(mockViewModel.eagerValidateCalledWith)
     XCTAssertEqual(subject.schemeIcon, .blank)
-    XCTAssertNil(subject.cardNumberError)
   }
 
   func test_textField_noUpdateFromViewModel() {
@@ -60,7 +58,6 @@ final class CardNumberViewTests: XCTestCase {
     XCTAssertEqual(textField.text, "")
     XCTAssertEqual(mockViewModel.eagerValidateCalledWith, "12345")
     XCTAssertEqual(subject.schemeIcon, .blank)
-    XCTAssertNil(subject.cardNumberError)
   }
 
   func test_textField_updateFromViewModel() {
@@ -76,32 +73,29 @@ final class CardNumberViewTests: XCTestCase {
     XCTAssertEqual(textField.text, "45678")
     XCTAssertEqual(mockViewModel.eagerValidateCalledWith, "12345")
     XCTAssertEqual(subject.schemeIcon, .visa)
-    XCTAssertNil(subject.cardNumberError)
   }
 
   func test_textFieldShouldEndEditing_success() {
     // given
-    mockViewModel.validateToReturn = .success(.visa)
+    mockViewModel.validateToReturn = .visa
 
     // when
     XCTAssertTrue(subject.textFieldShouldEndEditing(textField: UITextField(), replacementString: "12345"))
 
     // then
     XCTAssertEqual(subject.schemeIcon, .visa)
-    XCTAssertNil(subject.cardNumberError)
     XCTAssertEqual(mockViewModel.validateCalledWith, "12345")
   }
 
   func test_textFieldShouldEndEditing_failure() {
     // given
-    mockViewModel.validateToReturn = .failure(.invalid)
+    mockViewModel.validateToReturn = nil
 
     // when
     XCTAssertTrue(subject.textFieldShouldEndEditing(textField: UITextField(), replacementString: "12345"))
 
     // then
     XCTAssertEqual(subject.schemeIcon, .blank)
-    XCTAssertEqual(subject.cardNumberError, .invalid)
     XCTAssertEqual(mockViewModel.validateCalledWith, "12345")
   }
 }

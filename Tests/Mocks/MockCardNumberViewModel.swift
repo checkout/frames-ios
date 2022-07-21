@@ -10,12 +10,12 @@
 
 final class MockCardNumberViewModel: CardNumberViewModelProtocol {
   private(set) var validateCalledWith: String?
-  var validateToReturn: Result<Constants.Bundle.SchemeIcon, CardNumberError> = .failure(.invalid)
+  var validateToReturn: Constants.Bundle.SchemeIcon?
 
   private(set) var eagerValidateCalledWith: String?
   var eagerValidateToReturn: (newTextFieldValue: String, schemeIcon: Constants.Bundle.SchemeIcon)?
 
-  func validate(cardNumber: String) -> Result<Constants.Bundle.SchemeIcon, CardNumberError> {
+  func validate(cardNumber: String) -> Constants.Bundle.SchemeIcon? {
     validateCalledWith = cardNumber
     return validateToReturn
   }
