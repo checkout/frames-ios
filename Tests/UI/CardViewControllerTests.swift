@@ -328,18 +328,19 @@ class CardViewControllerTests: XCTestCase {
     }
 
     func test_viewDidLoad_paymentFormPresentedLogCalled() {
-
+        
         let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
-
+        let initialEventCount = stubLogger.logCalledWithFramesLogEvents.count
         cardViewController.viewWillAppear(true)
         
         let events = stubLogger.logCalledWithFramesLogEvents
-        XCTAssertEqual(1, events.count)
+        XCTAssertEqual(1, events.count - initialEventCount)
 
-        let event = events[0]
-        XCTAssertEqual(.paymentFormPresented, event)
+        let event = events[initialEventCount]
+        XCTAssertEqual(.paymentFormPresented(theme: Theme(), locale: Locale.current), event)
+
     }
 
     func test_viewDidLoad_paymentFormPresentedLogNotCalledAfterAddressView() {
@@ -347,6 +348,7 @@ class CardViewControllerTests: XCTestCase {
         let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
                                                     cardHolderNameState: .normal,
                                                     billingDetailsState: .normal)
+        let initialEventCount = stubLogger.logCalledWithFramesLogEvents.count
 
         cardViewController.viewWillAppear(true)
 
@@ -356,9 +358,25 @@ class CardViewControllerTests: XCTestCase {
         cardViewController.viewWillAppear(true)
 
         let events = stubLogger.logCalledWithFramesLogEvents
-        XCTAssertEqual(2, events.count)
+        XCTAssertEqual(2, events.count - initialEventCount)
 
-        let event = events[0]
-        XCTAssertEqual(.paymentFormPresented, event)
+        let event = events[initialEventCount]
+        XCTAssertEqual(.paymentFormPresented(theme: Theme(), locale: Locale.current), event)
+    }
+
+    func test_onTapAddressView_billingFormPresentedLogCalled() {
+
+        let cardViewController = CardViewController(checkoutApiClient: stubCheckoutAPIClient,
+                                                    cardHolderNameState: .normal,
+                                                    billingDetailsState: .normal)
+        let initialEventCount = stubLogger.logCalledWithFramesLogEvents.count
+
+        cardViewController.onTapAddressView()
+
+        let events = stubLogger.logCalledWithFramesLogEvents
+        XCTAssertEqual(1, events.count - initialEventCount)
+
+        let event = events[initialEventCount]
+        XCTAssertEqual(.billingFormPresented, event)
     }
 }

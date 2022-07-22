@@ -1,8 +1,9 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
 // swift-module-flags: -target x86_64-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CheckoutEventLoggerKit
 import Foundation
 import Swift
+import _Concurrency
 public enum Environment {
   case sandbox
   case production
@@ -17,63 +18,63 @@ internal protocol _AnyDecodable {
   var value: Any { get }
   init<T>(_ value: T?)
 }
-extension _AnyDecodable {
+extension CheckoutEventLoggerKit._AnyDecodable {
   public init(from decoder: Swift.Decoder) throws
 }
 public struct AnyCodable : Swift.Codable {
   public let value: Any
   public init<T>(_ value: T?)
 }
-extension AnyCodable : CheckoutEventLoggerKit._AnyEncodable, CheckoutEventLoggerKit._AnyDecodable {
+extension CheckoutEventLoggerKit.AnyCodable : CheckoutEventLoggerKit._AnyEncodable, CheckoutEventLoggerKit._AnyDecodable {
 }
-extension AnyCodable : Swift.Equatable {
+extension CheckoutEventLoggerKit.AnyCodable : Swift.Equatable {
   public static func == (lhs: CheckoutEventLoggerKit.AnyCodable, rhs: CheckoutEventLoggerKit.AnyCodable) -> Swift.Bool
 }
-extension AnyCodable : Swift.CustomStringConvertible {
+extension CheckoutEventLoggerKit.AnyCodable : Swift.CustomStringConvertible {
   public var description: Swift.String {
     get
   }
 }
-extension AnyCodable : Swift.CustomDebugStringConvertible {
+extension CheckoutEventLoggerKit.AnyCodable : Swift.CustomDebugStringConvertible {
   public var debugDescription: Swift.String {
     get
   }
 }
-extension AnyCodable : Swift.ExpressibleByNilLiteral {
+extension CheckoutEventLoggerKit.AnyCodable : Swift.ExpressibleByNilLiteral {
 }
-extension AnyCodable : Swift.ExpressibleByBooleanLiteral {
+extension CheckoutEventLoggerKit.AnyCodable : Swift.ExpressibleByBooleanLiteral {
   public typealias BooleanLiteralType = Swift.Bool
 }
-extension AnyCodable : Swift.ExpressibleByIntegerLiteral {
+extension CheckoutEventLoggerKit.AnyCodable : Swift.ExpressibleByIntegerLiteral {
   public typealias IntegerLiteralType = Swift.Int
 }
-extension AnyCodable : Swift.ExpressibleByFloatLiteral {
+extension CheckoutEventLoggerKit.AnyCodable : Swift.ExpressibleByFloatLiteral {
   public typealias FloatLiteralType = Swift.Double
 }
-extension AnyCodable : Swift.ExpressibleByStringLiteral {
+extension CheckoutEventLoggerKit.AnyCodable : Swift.ExpressibleByStringLiteral {
   public typealias ExtendedGraphemeClusterLiteralType = Swift.String
   public typealias StringLiteralType = Swift.String
   public typealias UnicodeScalarLiteralType = Swift.String
 }
-extension AnyCodable : Swift.ExpressibleByArrayLiteral {
+extension CheckoutEventLoggerKit.AnyCodable : Swift.ExpressibleByArrayLiteral {
   public typealias ArrayLiteralElement = Any
 }
-extension AnyCodable : Swift.ExpressibleByDictionaryLiteral {
+extension CheckoutEventLoggerKit.AnyCodable : Swift.ExpressibleByDictionaryLiteral {
   public typealias Key = Swift.AnyHashable
   public typealias Value = Any
 }
-extension AnyCodable {
-  public static func add(customEquality: @escaping (Any, Any) -> Swift.Bool, customEncoding: @escaping (Any, inout Swift.SingleValueEncodingContainer) throws -> Swift.Bool)
+extension CheckoutEventLoggerKit.AnyCodable {
+  public static func add(customEquality: @escaping (_ lhs: Any, _ rhs: Any) -> Swift.Bool, customEncoding: @escaping (_ value: Any, _ container: inout Swift.SingleValueEncodingContainer) throws -> Swift.Bool)
 }
 @usableFromInline
 internal protocol _AnyEncodable {
   var value: Any { get }
   init<T>(_ value: T?)
 }
-extension _AnyEncodable {
+extension CheckoutEventLoggerKit._AnyEncodable {
   public func encode(to encoder: Swift.Encoder) throws
 }
-extension _AnyEncodable {
+extension CheckoutEventLoggerKit._AnyEncodable {
   public init(nilLiteral _: ())
   public init(booleanLiteral value: Swift.Bool)
   public init(integerLiteral value: Swift.Int)
@@ -105,6 +106,14 @@ public protocol CheckoutEventLogging {
   func enableRemoteProcessor(environment: CheckoutEventLoggerKit.Environment, remoteProcessorMetadata: CheckoutEventLoggerKit.RemoteProcessorMetadata)
 }
 final public class CheckoutEventLogger : CheckoutEventLoggerKit.CheckoutEventLogging {
+  public enum MetadataKey : Swift.String {
+    case correlationID
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
   public init(productName: Swift.String)
   final public func enableLocalProcessor(monitoringLevel: CheckoutEventLoggerKit.MonitoringLevel)
   final public func enableRemoteProcessor(environment: CheckoutEventLoggerKit.Environment, remoteProcessorMetadata: CheckoutEventLoggerKit.RemoteProcessorMetadata)
@@ -132,5 +141,8 @@ public enum MonitoringLevel : Swift.String, Swift.CaseIterable, Swift.Comparable
 }
 extension CheckoutEventLoggerKit.Environment : Swift.Equatable {}
 extension CheckoutEventLoggerKit.Environment : Swift.Hashable {}
+extension CheckoutEventLoggerKit.CheckoutEventLogger.MetadataKey : Swift.Equatable {}
+extension CheckoutEventLoggerKit.CheckoutEventLogger.MetadataKey : Swift.Hashable {}
+extension CheckoutEventLoggerKit.CheckoutEventLogger.MetadataKey : Swift.RawRepresentable {}
 extension CheckoutEventLoggerKit.MonitoringLevel : Swift.Hashable {}
 extension CheckoutEventLoggerKit.MonitoringLevel : Swift.RawRepresentable {}

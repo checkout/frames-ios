@@ -63,11 +63,17 @@ class URLHelperMock: URLHelping {
     }
 }
 
+enum TestError: Error {
+    case one
+}
+
 class ThreedsWebViewControllerTests: XCTestCase {
 
     var threedsWebViewController: ThreedsWebViewController!
     let navigationAction = WKNavigationActionMock()
     var urlHelper = URLHelperMock()
+    var logger: StubFramesEventLogger! = StubFramesEventLogger()
+
     let successUrl = URL(string: "https://www.successurl.com/")!
     let failUrl = URL(string: "https://www.failurl.com/")!
 
@@ -75,9 +81,15 @@ class ThreedsWebViewControllerTests: XCTestCase {
         super.setUp()
 
         urlHelper = URLHelperMock()
-        threedsWebViewController = ThreedsWebViewControllerForDismiss(successUrl: successUrl, failUrl: failUrl, urlHelper: urlHelper)
+        threedsWebViewController = ThreedsWebViewControllerForDismiss(successUrl: successUrl, failUrl: failUrl, urlHelper: urlHelper, logger: logger)
         let window = UIWindow()
         window.rootViewController = threedsWebViewController
+    }
+
+    override func tearDown() {
+        logger = nil
+
+        super.tearDown()
     }
 
     func testInitialization() {
@@ -128,6 +140,7 @@ class ThreedsWebViewControllerTests: XCTestCase {
         threedsWebViewController.loadView()
         threedsWebViewController.viewDidLoad()
         XCTAssertEqual(threedsWebViewController.webView.url?.absoluteString, url)
+        XCTAssertEqual(logger.logCalledWithFramesLogEvents, [.threeDSWebviewPresented])
     }
 
     func testDismissIfSuccessUrl() {
@@ -159,6 +172,8 @@ class ThreedsWebViewControllerTests: XCTestCase {
 
         XCTAssertEqual(urlHelper.extractTokenCalledWith.count, 1)
         XCTAssertEqual(urlHelper.extractTokenCalledWith.first, successUrl)
+
+        XCTAssertEqual(logger.logCalledWithFramesLogEvents, [.threeDSChallengeComplete(success: true, tokenID: nil)])
     }
 
     func testDismissIfSuccessUrl_tokenPresent() {
@@ -193,6 +208,8 @@ class ThreedsWebViewControllerTests: XCTestCase {
 
         XCTAssertEqual(urlHelper.extractTokenCalledWith.count, 1)
         XCTAssertEqual(urlHelper.extractTokenCalledWith.first, urlWithToken)
+
+        XCTAssertEqual(logger.logCalledWithFramesLogEvents, [.threeDSChallengeComplete(success: true, tokenID: "testValue")])
     }
 
     func testDismissIfFailureUrl() {
@@ -224,6 +241,8 @@ class ThreedsWebViewControllerTests: XCTestCase {
         XCTAssertEqual(urlHelper.urlsMatchCalledWith[1].matchingUrl, failUrl)
 
         XCTAssertEqual(urlHelper.extractTokenCalledWith.count, 0)
+
+        XCTAssertEqual(logger.logCalledWithFramesLogEvents, [.threeDSChallengeComplete(success: false, tokenID: nil)])
     }
 
     func testNoDismissIfOtherUrl() {
@@ -254,5 +273,39 @@ class ThreedsWebViewControllerTests: XCTestCase {
         XCTAssertEqual(urlHelper.urlsMatchCalledWith[1].matchingUrl, failUrl)
 
         XCTAssertEqual(urlHelper.extractTokenCalledWith.count, 0)
+
+        XCTAssertEqual(logger.logCalledWithFramesLogEvents, [])
+    }
+
+    func testLocalStorageSessionStoragePresent() {
+        let delegate = ThreedsWebViewControllerMockDelegate()
+        threedsWebViewController.delegate = delegate
+        threedsWebViewController.loadViewIfNeeded()
+
+        XCTAssertFalse(threedsWebViewController.webView.configuration.websiteDataStore.isPersistent)
+    }
+
+    func testLogOnLoaded() {
+        let url = "https://example.com/"
+        threedsWebViewController.url = url
+        threedsWebViewController.loadView()
+        threedsWebViewController.viewDidLoad()
+        XCTAssertEqual(logger.logCalledWithFramesLogEvents, [.threeDSWebviewPresented])
+        let navigation = WKNavigation()
+        threedsWebViewController.authUrlNavigation = navigation
+        threedsWebViewController.webView(threedsWebViewController.webView, didFinish: navigation)
+        XCTAssertEqual(logger.logCalledWithFramesLogEvents, [.threeDSWebviewPresented, .threeDSChallengeLoaded(success: true)])
+    }
+
+    func testLogOnLoadFailed() {
+        let url = "https://example.com/"
+        threedsWebViewController.url = url
+        threedsWebViewController.loadView()
+        threedsWebViewController.viewDidLoad()
+        XCTAssertEqual(logger.logCalledWithFramesLogEvents, [.threeDSWebviewPresented])
+        let navigation = WKNavigation()
+        threedsWebViewController.authUrlNavigation = navigation
+        threedsWebViewController.webView(threedsWebViewController.webView, didFail: navigation, withError: TestError.one)
+        XCTAssertEqual(logger.logCalledWithFramesLogEvents, [.threeDSWebviewPresented, .threeDSChallengeLoaded(success: false)])
     }
 }

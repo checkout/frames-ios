@@ -8,23 +8,26 @@ protocol FramesEventLogging {
     func log(_ framesLogEvent: FramesLogEvent)
     
     /// Adds a metadata value for the associated key to all subsequent log events.
-    func add(metadata: String, forKey key: MetadataKey)
+    func add(metadata: String, forKey key: CheckoutEventLogger.MetadataKey)
     
 }
 
 final class FramesEventLogger: FramesEventLogging {
-    
+
+    private let correlationID: String
     private let checkoutEventLogger: CheckoutEventLogging
     private let dateProvider: DateProviding
     
     // MARK: - Init
     
-    init(checkoutEventLogger: CheckoutEventLogging,
+    init(correlationID: String,
+         checkoutEventLogger: CheckoutEventLogging,
          dateProvider: DateProviding) {
-        self.checkoutEventLogger = checkoutEventLogger
-        self.dateProvider = dateProvider
+      self.correlationID = correlationID
+      self.checkoutEventLogger = checkoutEventLogger
+      self.dateProvider = dateProvider
     }
-    
+
     // MARK: - FramesEventLogging
     
     func log(_ framesLogEvent: FramesLogEvent) {
@@ -33,12 +36,12 @@ final class FramesEventLogger: FramesEventLogging {
             typeIdentifier: framesLogEvent.typeIdentifier,
             time: dateProvider.currentDate,
             monitoringLevel: framesLogEvent.monitoringLevel,
-            properties: framesLogEvent.properties.mapKeys(\.rawValue))
-        
+            properties: framesLogEvent.rawProperties)
+
         checkoutEventLogger.log(event: event)
     }
     
-    func add(metadata: String, forKey key: MetadataKey) {
+    func add(metadata: String, forKey key: CheckoutEventLogger.MetadataKey) {
         
         checkoutEventLogger.add(metadata: key.rawValue, value: metadata)
     }

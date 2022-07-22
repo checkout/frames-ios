@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Frames"
-  s.version      = "3.5.2"
+  s.version      = "3.5.3"
   s.summary      = "Checkout API Client, Payment Form UI and Utilities in Swift"
   s.description  = <<-DESC
   Checkout API Client and Payment Form Utilities in Swift.
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
 	}
 
   s.dependency 'PhoneNumberKit', '3.3.3'
-  s.dependency 'CheckoutEventLoggerKit', '1.1.1'
+  s.dependency 'CheckoutEventLoggerKit', '1.2.0'
 
   s.test_spec do |t|
     t.source_files = 'Tests/**/*.swift'

@@ -17,7 +17,7 @@ public class CheckoutAPIClient {
     /// Frames event logger.
     let logger: FramesEventLogging
 
-    private let correlationIDGenerator: CorrelationIDGenerating
+    private let correlationIDManager: CorrelationIDManaging
     private let mainDispatcher: Dispatching
     private let networkFlowLoggerProvider: NetworkFlowLoggerProviding
     private let requestExecutor: RequestExecuting
@@ -26,7 +26,7 @@ public class CheckoutAPIClient {
 
     init(publicKey: String,
          environment: Environment,
-         correlationIDGenerator: CorrelationIDGenerating,
+         correlationIDManager: CorrelationIDManaging,
          logger: FramesEventLogging,
          mainDispatcher: Dispatching,
          networkFlowLoggerProvider: NetworkFlowLoggerProviding,
@@ -34,11 +34,13 @@ public class CheckoutAPIClient {
 
         self.publicKey = publicKey
         self.environment = environment
-        self.correlationIDGenerator = correlationIDGenerator
+        self.correlationIDManager = correlationIDManager
         self.logger = logger
         self.mainDispatcher = mainDispatcher
         self.networkFlowLoggerProvider = networkFlowLoggerProvider
         self.requestExecutor = requestExecutor
+
+        logger.log(.checkoutAPIClientInitialised(environment: environment))
     }
 
     /// Create an instance with the specified public key and environment
@@ -89,17 +91,19 @@ public class CheckoutAPIClient {
             remoteProcessorMetadata: remoteProcessorMetadata)
         
         let dateProvider = DateProvider()
-        let framesEventLogger = FramesEventLogger(checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
+        let correlationIDManager = CorrelationIDManager()
+        let framesEventLogger = FramesEventLogger(correlationID: correlationIDManager.generateCorrelationID(),
+                                                  checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
+        framesEventLogger.add(metadata: correlationIDManager.generateCorrelationID(),
+                              forKey: CheckoutEventLogger.MetadataKey.correlationID)
         let networkFlowLoggerFactory = NetworkFlowLoggerFactory(
             framesEventLogger: framesEventLogger,
             publicKey: publicKey)
-        
-        let correlationIDGenerator = CorrelationIDGenerator()
         let mainDispatcher = DispatchQueue.main
 
         self.init(publicKey: publicKey,
                   environment: environment,
-                  correlationIDGenerator: correlationIDGenerator,
+                  correlationIDManager: correlationIDManager,
                   logger: framesEventLogger,
                   mainDispatcher: mainDispatcher,
                   networkFlowLoggerProvider: networkFlowLoggerFactory,
@@ -116,7 +120,7 @@ public class CheckoutAPIClient {
     public func getCardProviders(successHandler: @escaping ([CardProvider]) -> Void,
                                  errorHandler: @escaping (Error) -> Void) {
         
-        let correlationID = correlationIDGenerator.generateCorrelationID()
+        let correlationID = correlationIDManager.generateCorrelationID()
         let request = Request.cardProviders(publicKey: publicKey, correlationID: correlationID)
         requestExecutor.execute(request, responseType: CardProviderResponse.self) { [mainDispatcher] (result, _) in
             
@@ -165,22 +169,22 @@ public class CheckoutAPIClient {
         card: CkoCardTokenRequest,
         completion: @escaping ((Swift.Result<CkoCardTokenResponse, NetworkError>) -> Void)
     ) {
-        let correlationID = correlationIDGenerator.generateCorrelationID()
+        let correlationID = correlationIDManager.generateCorrelationID()
         let networkFlowLogger = networkFlowLoggerProvider.createLogger(
             correlationID: correlationID,
             tokenType: .card)
-        
+
         networkFlowLogger.logRequest()
-        
+
         let request = Request.cardToken(
             body: card,
             publicKey: publicKey,
             correlationID: correlationID)
         requestExecutor.execute(request, responseType: CkoCardTokenResponse.self) {
             [mainDispatcher] (result, response) in
-            
             networkFlowLogger.logResponse(result: result, response: response)
-            
+            // call destroy to use a new correlationID
+            self.correlationIDManager.destroyCorrelationID()
             mainDispatcher.async {
                 completion(result)
             }
@@ -223,7 +227,7 @@ public class CheckoutAPIClient {
         paymentData: Data,
         completion: @escaping ((Swift.Result<CkoCardTokenResponse, NetworkError>) -> Void)
     ) {
-        let correlationID = correlationIDGenerator.generateCorrelationID()
+        let correlationID = correlationIDManager.generateCorrelationID()
         let networkFlowLogger = networkFlowLoggerProvider.createLogger(
             correlationID: correlationID,
             tokenType: .applePay)
@@ -241,7 +245,8 @@ public class CheckoutAPIClient {
             [mainDispatcher] (result, response) in
             
             networkFlowLogger.logResponse(result: result, response: response)
-            
+            // call destroyCorrelationID only when you need to create a new correlation ID.
+            self.correlationIDManager.destroyCorrelationID()
             mainDispatcher.async {
                 completion(result)
             }
@@ -261,5 +266,9 @@ public class CheckoutAPIClient {
                                        deviceName: uiDevice.modelName,
                                        platform: "iOS",
                                        osVersion: uiDevice.systemVersion)
+    }
+
+    func correlationID() -> String {
+        return self.correlationIDManager.generateCorrelationID()
     }
 }

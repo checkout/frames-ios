@@ -36,5 +36,4 @@ public enum Environment: String, EnvironmentURLProviding {
             return URL(staticString: "https://api.sandbox.checkout.com/")
         }
     }
-    
 }
