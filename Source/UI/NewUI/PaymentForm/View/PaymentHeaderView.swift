@@ -53,22 +53,20 @@ public final class PaymentHeaderView: UIView {
     self.style = style
 
     backgroundColor = style.backgroundColor
-    headerLabel.isHidden = true
-    subtitleLabel.isHidden = true
+    headerLabel.isHidden = style.headerLabel == nil
+    subtitleLabel.isHidden = style.subtitleLabel == nil
 
     if let headerStyle = style.headerLabel {
-      headerLabel.isHidden = false
       headerLabel.update(with: headerStyle)
     }
     if let subtitleStyle = style.subtitleLabel {
-      subtitleLabel.isHidden = false
       subtitleLabel.update(with: subtitleStyle)
     }
 
-    addArrangedSubviewForStackView()
+    updateIconsStack()
   }
 
-  private func addArrangedSubviewForStackView() {
+  private func updateIconsStack() {
     guard let icons = style?.schemaIcons else {
       iconsStackView.isHidden = true
       return
@@ -93,13 +91,13 @@ extension PaymentHeaderView {
     addArrangedSubview()
   }
 
-  func addArrangedSubview() {
+  private func addArrangedSubview() {
     stackView.addArrangedSubview(headerLabel)
     stackView.addArrangedSubview(subtitleLabel)
     stackView.addArrangedSubview(iconsViewContainer)
   }
 
-  func setupMainStackView() {
+  private func setupMainStackView() {
     addSubview(stackView)
     stackView.setupConstraintEqualTo(view: self)
   }
