@@ -22,7 +22,7 @@
 "SecurityCodeHint" = "3 - 4 digit code on your card";
 "SecurityCodeErrorMessage" = "Please enter a valid security code";
 
-"CardNumber" = "Card Number";
+"CardNumber" = "Card number";
 "CardNumberErrorMessage" = "Please enter a valid card number";
 "city" = "City";
 "cancel" = "Cancel";

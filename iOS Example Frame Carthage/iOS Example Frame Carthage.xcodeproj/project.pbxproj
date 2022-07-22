@@ -300,7 +300,6 @@
 		CB106193287726EE007322FE /* CardNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB106192287726EE007322FE /* CardNumberView.swift */; };
 		CB106195287726FF007322FE /* CardNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB106194287726FF007322FE /* CardNumberViewModel.swift */; };
 		CB10619828784821007322FE /* CardNumberViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB10619728784821007322FE /* CardNumberViewModelTests.swift */; };
-		CB10619A287861DC007322FE /* MockCardNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB106199287861DC007322FE /* MockCardNumberView.swift */; };
 		CB10619C28786650007322FE /* MockCardNumberViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB10619B28786650007322FE /* MockCardNumberViewModelDelegate.swift */; };
 		CBAA859528802C92000F6578 /* SecurityCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAA859428802C92000F6578 /* SecurityCodeView.swift */; };
 		CBB6F521287EC11F00A1379D /* CardNumberViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB6F520287EC11F00A1379D /* CardNumberViewTests.swift */; };
@@ -651,7 +650,6 @@
 		CB106192287726EE007322FE /* CardNumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberView.swift; sourceTree = "<group>"; };
 		CB106194287726FF007322FE /* CardNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberViewModel.swift; sourceTree = "<group>"; };
 		CB10619728784821007322FE /* CardNumberViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberViewModelTests.swift; sourceTree = "<group>"; };
-		CB106199287861DC007322FE /* MockCardNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCardNumberView.swift; sourceTree = "<group>"; };
 		CB10619B28786650007322FE /* MockCardNumberViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCardNumberViewModelDelegate.swift; sourceTree = "<group>"; };
 		CB8CE61C2805D00E0069ADB0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB9412CE2825647600C889E8 /* Checkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Checkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1535,7 +1533,6 @@
 				9573235D286EF50F0068C115 /* StubCardViewControllerDelegate.swift */,
 				9573235E286EF50F0068C115 /* StubError.swift */,
 				9573235F286EF50F0068C115 /* CvvInputViewMockDelegate.swift */,
-				CB106199287861DC007322FE /* MockCardNumberView.swift */,
 				CB10619B28786650007322FE /* MockCardNumberViewModelDelegate.swift */,
 				CBB6F522287EC18100A1379D /* MockCardNumberViewModel.swift */,
 			);
@@ -2223,7 +2220,6 @@
 				957323D0286EF50F0068C115 /* CountryValidatorTests.swift in Sources */,
 				957323A2286EF50F0068C115 /* StubCheckoutAPIService.swift in Sources */,
 				957323C7286EF50F0068C115 /* CvvConfirmationViewControllerTests.swift in Sources */,
-				CB10619A287861DC007322FE /* MockCardNumberView.swift in Sources */,
 				957323A7286EF50F0068C115 /* StubCorrelationIDGenerator.swift in Sources */,
 				957323A8286EF50F0068C115 /* NotificationCenterMock.swift in Sources */,
 				957323AC286EF50F0068C115 /* StubDispatcher.swift in Sources */,

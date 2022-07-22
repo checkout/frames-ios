@@ -29,12 +29,8 @@ final class CardNumberViewTests: XCTestCase {
 
   func test_textFieldShouldReturn_returnTrue() {
     XCTAssertTrue(subject.textFieldShouldReturn())
-    XCTAssertNil(mockViewModel.textFieldUpdateCalledWith)
-  }
-
-  func test_textFieldShouldEndEditing_returnTrue() {
-    XCTAssertTrue(subject.textFieldShouldEndEditing(textField: UITextField(), replacementString: ""))
-    XCTAssertNil(mockViewModel.textFieldUpdateCalledWith)
+    XCTAssertNil(mockViewModel.eagerValidateCalledWith)
+    XCTAssertEqual(subject.schemeIcon, .blank)
   }
 
   func test_textField_rangeIsInvalid_returnTrue() {
@@ -45,35 +41,62 @@ final class CardNumberViewTests: XCTestCase {
 
     // then
     XCTAssertTrue(subject.textField(textField, shouldChangeCharactersIn: range, replacementString: ""))
-    XCTAssertNil(mockViewModel.textFieldUpdateCalledWith)
+    XCTAssertNil(mockViewModel.eagerValidateCalledWith)
+    XCTAssertEqual(subject.schemeIcon, .blank)
   }
 
   func test_textField_noUpdateFromViewModel() {
     // given
     let textField = UITextField()
     textField.text = ""
-    mockViewModel.textFieldUpdateToReturn = nil
+    mockViewModel.eagerValidateToReturn = nil
 
     // when
     XCTAssertFalse(subject.textField(textField, shouldChangeCharactersIn: NSRange(), replacementString: "12345"))
 
     // then
     XCTAssertEqual(textField.text, "")
-    XCTAssertEqual(mockViewModel.textFieldUpdateCalledWith, "12345")
+    XCTAssertEqual(mockViewModel.eagerValidateCalledWith, "12345")
+    XCTAssertEqual(subject.schemeIcon, .blank)
   }
 
   func test_textField_updateFromViewModel() {
     // given
     let textField = UITextField()
     textField.text = ""
-    mockViewModel.textFieldUpdateToReturn = "45678"
+    mockViewModel.eagerValidateToReturn = ("45678", .visa)
 
     // when
     XCTAssertFalse(subject.textField(textField, shouldChangeCharactersIn: NSRange(), replacementString: "12345"))
 
     // then
     XCTAssertEqual(textField.text, "45678")
-    XCTAssertEqual(mockViewModel.textFieldUpdateCalledWith, "12345")
+    XCTAssertEqual(mockViewModel.eagerValidateCalledWith, "12345")
+    XCTAssertEqual(subject.schemeIcon, .visa)
+  }
+
+  func test_textFieldShouldEndEditing_success() {
+    // given
+    mockViewModel.validateToReturn = .visa
+
+    // when
+    XCTAssertTrue(subject.textFieldShouldEndEditing(textField: UITextField(), replacementString: "12345"))
+
+    // then
+    XCTAssertEqual(subject.schemeIcon, .visa)
+    XCTAssertEqual(mockViewModel.validateCalledWith, "12345")
+  }
+
+  func test_textFieldShouldEndEditing_failure() {
+    // given
+    mockViewModel.validateToReturn = nil
+
+    // when
+    XCTAssertTrue(subject.textFieldShouldEndEditing(textField: UITextField(), replacementString: "12345"))
+
+    // then
+    XCTAssertEqual(subject.schemeIcon, .blank)
+    XCTAssertEqual(mockViewModel.validateCalledWith, "12345")
   }
 }
 
