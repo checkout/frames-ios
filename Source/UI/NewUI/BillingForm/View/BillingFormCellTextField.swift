@@ -21,8 +21,15 @@ final class BillingFormCellTextField: UITableViewCell {
         return view
     }()
 
+    private lazy var tapGesture: UITapGestureRecognizer = {
+      let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(gestureRecognizer:)))
+      tapGesture.cancelsTouchesInView = false
+      return tapGesture
+    }()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        addGestureRecognizer(tapGesture)
         setupViewsInOrder()
         backgroundColor = .clear
     }
@@ -38,6 +45,15 @@ final class BillingFormCellTextField: UITableViewCell {
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+  @objc private func hideKeyboard(gestureRecognizer: UITapGestureRecognizer) {
+    let view = gestureRecognizer.view
+    let loc = gestureRecognizer.location(in: view)
+    let subview = view?.hitTest(loc, with: nil)
+    guard !(subview is SecureDisplayView) else { return }
+    UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil)
+  }
+
 }
 
 extension BillingFormCellTextField {

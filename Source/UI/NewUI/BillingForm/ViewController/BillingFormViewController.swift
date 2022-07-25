@@ -54,6 +54,7 @@ final class BillingFormViewController: UIViewController {
         view.showsHorizontalScrollIndicator = false
         view.allowsSelection = false
         view.backgroundColor = .clear
+        view.keyboardDismissMode = .onDrag
         view.register(BillingFormCellTextField.self)
         view.register(SelectionButtonTableViewCell.self)
         return view
@@ -115,10 +116,6 @@ final class BillingFormViewController: UIViewController {
     }
 
     // MARK: - Keyboard
-
-    @objc private func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
 
     @objc private func keyboardWillShow(notification: NSNotification) {
         guard let scrollView = tableView else { return }

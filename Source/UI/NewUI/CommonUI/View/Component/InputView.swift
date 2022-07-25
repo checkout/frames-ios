@@ -45,9 +45,24 @@ class InputView: UIView {
         return view
     }()
 
+    private lazy var tapGesture: UITapGestureRecognizer = {
+      let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(gestureRecognizer:)))
+      tapGesture.cancelsTouchesInView = false
+      return tapGesture
+    }()
+
     override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViewsInOrder()
+      super.init(frame: frame)
+      addGestureRecognizer(tapGesture)
+      setupViewsInOrder()
+    }
+
+    @objc private func hideKeyboard(gestureRecognizer: UITapGestureRecognizer) {
+      let view = gestureRecognizer.view
+      let loc = gestureRecognizer.location(in: view)
+      let subview = view?.hitTest(loc, with: nil)
+      guard !(subview is SecureDisplayView) else { return }
+      UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 
     required init?(coder: NSCoder) {
