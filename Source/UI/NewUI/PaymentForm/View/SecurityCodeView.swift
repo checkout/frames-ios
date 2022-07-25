@@ -19,7 +19,7 @@ public final class SecurityCodeView: UIView {
   private(set) var supportedScheme: Card.Scheme = .unknown
   private(set) var style: CellTextFieldStyle?
 
-  private lazy var codeInputView: InputView = {
+  private(set) lazy var codeInputView: InputView = {
     let view = InputView().disabledAutoresizingIntoConstraints()
     view.delegate = self
     return view
@@ -41,6 +41,9 @@ public final class SecurityCodeView: UIView {
   func update(style: CellTextFieldStyle?) {
     self.style = style
     self.style?.textfield.isSupportingNumericKeyboard = true
+    if !validateSecurityCode(with: self.style?.textfield.text) {
+      self.style?.textfield.text = ""
+    }
     codeInputView.update(style: self.style)
   }
 
@@ -55,17 +58,16 @@ public final class SecurityCodeView: UIView {
     codeInputView.update(style: style)
   }
 
-  func validateSecurityCode(with text: String?) {
-    guard let text = text?.filter({ !$0.isWhitespace }), !text.isEmpty else {
-      updateErrorViewStyle(isHidden: false, textfieldText: text)
-      return
+  func validateSecurityCode(with text: String?) -> Bool {
+    guard let text = text?.filter({ !$0.isWhitespace }), !text.isEmpty, Int(text) != nil else {
+      return false
     }
     switch cardValidator.validate(cvv: text, cardScheme: supportedScheme) {
       case .success:
-        updateErrorViewStyle(isHidden: true, textfieldText: text)
         delegate?.update(securityCode: text)
+        return true
       case .failure:
-        updateErrorViewStyle(isHidden: false, textfieldText: text)
+        return false
     }
   }
 }
@@ -74,7 +76,8 @@ extension SecurityCodeView: TextFieldViewDelegate {
   func textFieldShouldBeginEditing(textField: UITextField) {}
   func textFieldShouldReturn() -> Bool {  return true }
   func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
-    validateSecurityCode(with: textField.text)
+    let isValid = validateSecurityCode(with: textField.text)
+    updateErrorViewStyle(isHidden: isValid, textfieldText: textField.text)
     return true
   }
 

@@ -19,99 +19,107 @@ class SecurityCodeViewTests: XCTestCase {
     UIFont.loadAllCheckoutFonts
     style = DefaultSecurityCodeFormStyle()
     view = SecurityCodeView(cardValidator: CardValidator(environment: .sandbox))
-    view.update(style: style)
   }
+
+  // Invalid string case of of pre-filled security code text from the merchant.
+    func testInValidCodePrefilledTextFieldTextStyle(){
+      style.textfield.text = "Test"
+      view.update(style: style)
+      XCTAssertEqual(view.codeInputView.textFieldView.textField.text, "")
+    }
+
+    // Invalid old date case of of pre-filled security code  text from the merchant.
+    func testInValid1CodePrefilledTextFieldTextStyle(){
+      style.textfield.text = "1"
+      view.update(style: style)
+
+      XCTAssertEqual(view.codeInputView.textFieldView.textField.text, "")
+    }
+
+    // Valid date case of pre-filled security code  text from the merchant.
+    func testValidCodePrefilledTextFieldTextStyle(){
+      style.textfield.text = "1234"
+      view.update(style: style)
+
+      XCTAssertEqual(view.codeInputView.textFieldView.textField.text, "1234")
+    }
 
   func testCodeValidationWhenTextIsEmpty() throws {
     let text = ""
-    view.validateSecurityCode(with: text)
-    let isHidden = try XCTUnwrap(view.style?.error?.isHidden)
-    XCTAssertFalse(isHidden)
+    let isValid = view.validateSecurityCode(with: text)
+    XCTAssertFalse(isValid)
   }
 
   func testCodeValidationWhenTextIsWhiteSpace() throws {
     let text = " "
-    view.validateSecurityCode(with: text)
-    let isHidden = try XCTUnwrap(view.style?.error?.isHidden)
-    XCTAssertFalse(isHidden)
+   let isValid = view.validateSecurityCode(with: text)
+    XCTAssertFalse(isValid)
   }
 
   func testCodeValidationWhenTextWithOneNumber() throws {
     let text = "1"
-    view.validateSecurityCode(with: text)
-    let isHidden = try XCTUnwrap(view.style?.error?.isHidden)
-    XCTAssertFalse(isHidden)
+   let isValid = view.validateSecurityCode(with: text)
+    XCTAssertFalse(isValid)
   }
 
   func testCodeValidationWhenTextWithTwoNumbers() throws {
     let text = "12"
-    view.validateSecurityCode(with: text)
-    let isHidden = try XCTUnwrap(view.style?.error?.isHidden)
-    XCTAssertFalse(isHidden)
+   let isValid = view.validateSecurityCode(with: text)
+    XCTAssertFalse(isValid)
   }
 
   func testCodeValidationWhenTextWithThreeNumbers() throws {
     let text = "123"
-    view.validateSecurityCode(with: text)
-    let isHidden = try XCTUnwrap(view.style?.error?.isHidden)
-    XCTAssertTrue(isHidden)
+    let isValid = view.validateSecurityCode(with: text)
+    XCTAssertTrue(isValid)
   }
 
   func testCodeValidationWhenTextWithFourNumbers() throws {
     let text = "1234"
-    view.validateSecurityCode(with: text)
-    let isHidden = try XCTUnwrap(view.style?.error?.isHidden)
-    XCTAssertTrue(isHidden)
+    let isValid = view.validateSecurityCode(with: text)
+    XCTAssertTrue(isValid)
   }
 
   func testCodeValidationWhenTextWithFiveNumbers() throws {
     let text = "12345"
-    view.validateSecurityCode(with: text)
-    let isHidden = try XCTUnwrap(view.style?.error?.isHidden)
-    XCTAssertFalse(isHidden)
+   let isValid = view.validateSecurityCode(with: text)
+    XCTAssertFalse(isValid)
   }
 
   func testCodeValidationWhenTextWithEmoji() throws {
     let text = "📱"
-    view.validateSecurityCode(with: text)
-    let isHidden = try XCTUnwrap(view.style?.error?.isHidden)
-    XCTAssertFalse(isHidden)
+   let isValid = view.validateSecurityCode(with: text)
+    XCTAssertFalse(isValid)
   }
-
 
   func testCodeValidationWhenTextWithString() throws {
     let text = "Hello"
-    view.validateSecurityCode(with: text)
-    let isHidden = try XCTUnwrap(view.style?.error?.isHidden)
-    XCTAssertFalse(isHidden)
+   let isValid = view.validateSecurityCode(with: text)
+    XCTAssertFalse(isValid)
   }
 
   func testCodeValidationWhenTextWithSpecialCharacter() throws {
     let text = "123$"
-    view.validateSecurityCode(with: text)
-    let isHidden = try XCTUnwrap(view.style?.error?.isHidden)
-    XCTAssertFalse(isHidden)
+   let isValid = view.validateSecurityCode(with: text)
+    XCTAssertFalse(isValid)
   }
 
   func testCodeValidationWhenTextWithDouble() throws {
     let text = "123.45"
-    view.validateSecurityCode(with: text)
-    let isHidden = try XCTUnwrap(view.style?.error?.isHidden)
-    XCTAssertFalse(isHidden)
+   let isValid = view.validateSecurityCode(with: text)
+    XCTAssertFalse(isValid)
   }
 
   func testCodeValidationWhenTextWithNegativeNumber() throws {
     let text = "-123"
-    view.validateSecurityCode(with: text)
-    let isHidden = try XCTUnwrap(view.style?.error?.isHidden)
-    XCTAssertFalse(isHidden)
+   let isValid = view.validateSecurityCode(with: text)
+    XCTAssertFalse(isValid)
   }
 
   func testCodeValidationWhenTextWithWhiteSpacedNumbers() throws {
     let text = "1 2 3 4"
-    view.validateSecurityCode(with: text)
-    let isHidden = try XCTUnwrap(view.style?.error?.isHidden)
-    XCTAssertTrue(isHidden)
+    let isValid = view.validateSecurityCode(with: text)
+    XCTAssertTrue(isValid)
   }
 
 }
