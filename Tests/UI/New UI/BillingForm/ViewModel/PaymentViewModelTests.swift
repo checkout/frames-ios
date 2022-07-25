@@ -98,7 +98,7 @@ class PaymentViewModelTests: XCTestCase {
     let address = Address(addressLine1: "Checkout.com",
                           addressLine2: "",
                           city: "London city",
-                          state: "London state",
+                          state: "London County",
                           zip: "N12345",
                           country: Country(iso3166Alpha2: "GB"))
 
@@ -113,7 +113,7 @@ class PaymentViewModelTests: XCTestCase {
                                           billingFormStyle: DefaultBillingFormStyle(),
                                           supportedSchemes: [.unknown])
 
-      let summaryValue = "User\n\nCheckout.com\n\nLondon city\n\nLondon state\n\nN12345\n\nUnited Kingdom\n\n077 1234 1234"
+      let summaryValue = "User\n\nCheckout.com\n\nLondon city\n\nLondon County\n\nN12345\n\nUnited Kingdom\n\n077 1234 1234"
       viewModel.updateBillingSummaryView()
       let expectedSummaryText = try XCTUnwrap(viewModel.paymentFormStyle?.editBillingSummary?.summary?.text)
       XCTAssertEqual(expectedSummaryText, summaryValue)

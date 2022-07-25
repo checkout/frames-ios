@@ -80,8 +80,8 @@ extension Constants {
             }
 
             struct State {
-                static let text = "state".localized
-                static let error = "missingBillingFormState".localized
+                static let text = "County".localized
+                static let error = "missingBillingFormCounty".localized
             }
 
             struct Header {
