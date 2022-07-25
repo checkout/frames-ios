@@ -67,7 +67,7 @@ public final class PaymentHeaderView: UIView {
   }
 
   private func updateIconsStack() {
-    guard let icons = style?.schemaIcons else {
+    guard let icons = style?.schemeIcons else {
       iconsStackView.isHidden = true
       return
     }
