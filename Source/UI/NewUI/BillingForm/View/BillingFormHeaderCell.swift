@@ -73,7 +73,7 @@ extension BillingFormHeaderCell {
             cancelButton.topAnchor.constraint(
                 equalTo: safeTopAnchor),
             cancelButton.leadingAnchor.constraint(
-                equalTo: leadingAnchor, constant: 20),
+                equalTo: safeLeadingAnchor, constant: 20),
             cancelButton.heightAnchor.constraint(
                 equalToConstant: style?.cancelButton.height ?? Constants.Style.BillingForm.CancelButton.height.rawValue),
             cancelButton.widthAnchor.constraint(
@@ -87,7 +87,7 @@ extension BillingFormHeaderCell {
             doneButton.topAnchor.constraint(
                 equalTo: safeTopAnchor),
             doneButton.trailingAnchor.constraint(
-                equalTo: trailingAnchor),
+                equalTo: safeTrailingAnchor),
             doneButton.heightAnchor.constraint(
                 equalToConstant: style?.doneButton.height ?? Constants.Style.BillingForm.DoneButton.height.rawValue),
             doneButton.widthAnchor.constraint(
@@ -102,10 +102,10 @@ extension BillingFormHeaderCell {
                 equalTo: safeTopAnchor,
                 constant: 58),
             headerLabel.leadingAnchor.constraint(
-                equalTo: leadingAnchor,
+                equalTo: safeLeadingAnchor,
                 constant: Constants.Padding.l.rawValue),
             headerLabel.trailingAnchor.constraint(
-                equalTo: trailingAnchor,
+                equalTo: safeTrailingAnchor,
                 constant: -Constants.Padding.l.rawValue),
             headerLabel.bottomAnchor.constraint(
                 equalTo: safeBottomAnchor,

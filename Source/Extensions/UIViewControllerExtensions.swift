@@ -55,12 +55,12 @@ extension UIViewController {
 }
 
 extension UIViewController {
-    func customizeNavigationBarAppearance() {
+  func customizeNavigationBarAppearance(color: UIColor) {
         if #available(iOS 15.0, *) {
             let appearance = UINavigationBarAppearance()
-            appearance.configureWithDefaultBackground()
-            appearance.backgroundColor = .white
-            appearance.shadowColor = .white
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = color
+            appearance.shadowColor = .clear
             appearance.shadowImage = UIImage()
             navigationController?.navigationBar.standardAppearance = appearance
             navigationController?.navigationBar.compactAppearance = appearance

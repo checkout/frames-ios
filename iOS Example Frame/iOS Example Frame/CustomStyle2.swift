@@ -27,11 +27,24 @@ private enum Constants {
 // MARK: - Main Payment Form
 
 struct PaymentFormStyleCustom2: PaymentFormStyle {
+  var headerView: PaymentHeaderCellStyle = PaymentHeaderCellStyleCustom2()
   var addBillingSummary: CellButtonStyle? = AddBillingDetailsViewStyleCustom2()
   var editBillingSummary: BillingSummaryViewStyle? = EditBillingSummaryStyleCustom2()
   var cardNumber: CellTextFieldStyle?
   var expiryDate: CellTextFieldStyle? = ExpiryDateFormStyleCustom2()
   var securityCode: CellTextFieldStyle? =  SecurityCodeFormStyleCustom2()
+}
+
+// MARK: - Header View
+
+struct PaymentHeaderCellStyleCustom2: PaymentHeaderCellStyle {
+  var backgroundColor = Constants.greenBackgroundColor
+  var headerLabel: ElementStyle? = HeaderLabelFormStyleCustom2(text: "Payment details")
+  public var subtitleLabel: ElementStyle? = TitleLabelStyleCustom2(text: "Visa, Mastercard and American Express accepted.")
+  public var schemaIcons: [UIImage?]? = [
+    UIImage(named: "visa-icon"),
+    UIImage(named: "mastercard-icon"),
+    UIImage(named: "amex-icon")]
 }
 
 // MARK: - Billing Form WITH Summary ( Edit details )
@@ -370,7 +383,7 @@ struct ErrorInputLabelStyleCustom2: ElementErrorViewStyle {
   var text: String = ""
   var font = UIFont(name: "Helvetica Neue", size: 14)!
   var textColor: UIColor =  .tallPoppyRed
-  var image = UIImage(named: "warning")!
+  var image: UIImage? = UIImage(named: "warning")
   var height: Double = 18
 }
 

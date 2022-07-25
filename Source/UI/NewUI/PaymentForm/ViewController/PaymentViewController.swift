@@ -20,8 +20,8 @@ final class PaymentViewController: UIViewController {
   // MARK: - UI properties
 
   // TODO: Replace it with new header
-  private lazy var emptyHeader: UIView = {
-    UIView().disabledAutoresizingIntoConstraints()
+  private lazy var headerView: PaymentHeaderView = {
+    PaymentHeaderView().disabledAutoresizingIntoConstraints()
   }()
 
   private lazy var scrollView: UIScrollView = {
@@ -79,6 +79,7 @@ final class PaymentViewController: UIViewController {
     super.viewDidLoad()
     UIFont.loadAllCheckoutFonts
     UITextField.disableHardwareLayout()
+    setupNavigationBar()
     view.backgroundColor = .white
     setupViewModel()
     setupViewsInOrder()
@@ -92,14 +93,22 @@ final class PaymentViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-
-    // TODO: Remove when the new header view is added
-    navigationController?.isNavigationBarHidden = false
+    navigationController?.setNavigationBarHidden(false, animated: animated)
     setUpKeyboard()
   }
 
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+
+  private func setupNavigationBar() {
+    customizeNavigationBarAppearance(color: viewModel.paymentFormStyle?.headerView.backgroundColor ?? .white)
+    navigationController?.navigationBar.tintColor = viewModel.paymentFormStyle?.headerView.headerLabel?.textColor
+    navigationItem.leftBarButtonItem = UIBarButtonItem(image: Constants.Bundle.Images.leftArrow.image, style: .plain, target: self, action: #selector(popViewController))
+  }
+
+  @objc private func popViewController() {
+    self.navigationController?.popViewController(animated: true)
   }
 
   @objc private func keyboardWillShow(notification: Notification) {
@@ -143,6 +152,15 @@ extension PaymentViewController {
     setupExpiryDateViewClosure()
     setupCardNumberViewClosure()
     setupSecurityCodeViewClosure()
+    setupHeaderViewClosure()
+  }
+
+  private func setupHeaderViewClosure() {
+    viewModel.updateHeaderView = { [weak self] in
+      DispatchQueue.main.async {
+        self?.updateHeaderView()
+      }
+    }
   }
 
   private func setupAddBillingDetailsViewClosure() {
@@ -213,6 +231,11 @@ extension PaymentViewController {
     billingFormSummaryView.isHidden = false
     billingFormSummaryView.update(style: style)
   }
+
+  public func updateHeaderView() {
+    guard let style = viewModel.paymentFormStyle?.headerView else { return }
+    headerView.update(style: style)
+  }
 }
 
 // MARK: Setup Views
@@ -234,23 +257,18 @@ extension PaymentViewController {
   }
 
   func setupHeaderView() {
-    view.addSubview(emptyHeader)
+    view.addSubview(headerView)
     NSLayoutConstraint.activate([
-      emptyHeader.topAnchor.constraint(equalTo: view.topAnchor,
-                                       constant: Constants.Padding.l.rawValue),
-      emptyHeader.leadingAnchor.constraint(equalTo: view.leadingAnchor,
-                                           constant: Constants.Padding.l.rawValue),
-      emptyHeader.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-                                            constant: -Constants.Padding.l.rawValue),
-      emptyHeader.heightAnchor.constraint(equalToConstant: 80)
+      headerView.topAnchor.constraint(equalTo: view.safeTopAnchor),
+      headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
     ])
   }
 
   func setupScrollView() {
     view.addSubview(scrollView)
     NSLayoutConstraint.activate([
-      scrollView.topAnchor.constraint(equalTo: emptyHeader.bottomAnchor,
-                                      constant: Constants.Padding.l.rawValue),
+      scrollView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
       scrollView.leadingAnchor.constraint(equalTo: view.safeLeadingAnchor),
       scrollView.trailingAnchor.constraint(equalTo: view.safeTrailingAnchor),
       scrollView.bottomAnchor.constraint(equalTo: view.safeBottomAnchor)

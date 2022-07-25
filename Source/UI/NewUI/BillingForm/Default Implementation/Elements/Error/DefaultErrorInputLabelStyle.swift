@@ -8,6 +8,6 @@ public struct DefaultErrorInputLabelStyle: ElementErrorViewStyle {
     public var text: String = ""
     public var font: UIFont = UIFont(graphikStyle: .medium, size: Constants.Style.BillingForm.InputErrorLabel.fontSize.rawValue)
     public var textColor: UIColor =  .tallPoppyRed
-    public var image: UIImage =  "warning".vectorPDFImage(forClass: CheckoutTheme.self) ?? UIImage()
+    public var image: UIImage? = Constants.Bundle.Images.warning.image
     public var height: Double = Constants.Style.BillingForm.InputErrorLabel.height.rawValue
 }
