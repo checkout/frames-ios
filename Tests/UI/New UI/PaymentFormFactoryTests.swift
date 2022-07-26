@@ -10,8 +10,14 @@ import Checkout
 @testable import Frames
 
 class PaymentFormFactoryTests: XCTestCase {
+    
+  override func setUp() {
+    super.setUp()
+        
+    UIFont.loadAllCheckoutFonts
+  }
+    
   func testGetPaymentFormViewController() throws {
-
     let billingFormStyle = BillingFormFactory.defaultBillingFormStyle
     let paymentFormStyle = BillingFormFactory.defaultPaymentFormStyle
     let address = Address(addressLine1: "Test line1",
@@ -31,14 +37,16 @@ class PaymentFormFactoryTests: XCTestCase {
     let formStyle = PaymentStyle(paymentFormStyle: paymentFormStyle, billingFormStyle: billingFormStyle)
     let viewController = PaymentFormFactory.buildViewController(configuration: formConfig, style: formStyle)
 
-    XCTAssertNotNil(viewController)
-
     let paymentViewController = try XCTUnwrap(viewController as? PaymentViewController)
+    let viewModel = try XCTUnwrap(paymentViewController.viewModel)
 
     XCTAssertNotNil(paymentViewController.viewModel)
-    XCTAssertNotNil(paymentViewController.viewModel.billingFormData)
-    XCTAssertNotNil(paymentViewController.viewModel.billingFormStyle)
-    XCTAssertNotNil(paymentViewController.viewModel.paymentFormStyle)
+    XCTAssertNotNil(viewModel.billingFormData)
+    XCTAssertNotNil(viewModel.billingFormStyle)
+    XCTAssertNotNil(viewModel.paymentFormStyle)
+    XCTAssertNotNil(viewModel.cardValidator)
+    XCTAssertEqual(viewModel.supportedSchemes, formConfig.supportedSchemes)
+    XCTAssertEqual(viewModel.billingFormData, billingForm)
   }
 
 }

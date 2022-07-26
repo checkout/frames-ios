@@ -30,7 +30,7 @@ final class PaymentViewController: UIViewController {
     return scrollView
   }()
 
-  private(set) lazy var stackView: UIStackView = {
+  private lazy var stackView: UIStackView = {
     let view = UIStackView().disabledAutoresizingIntoConstraints()
     view.axis = .vertical
     view.spacing = 20
