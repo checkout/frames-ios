@@ -80,7 +80,7 @@ extension Constants {
             }
 
             struct State {
-                static let text = "County".localized
+                static let text = "county".localized
                 static let error = "missingBillingFormCounty".localized
             }
 
