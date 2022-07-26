@@ -21,15 +21,11 @@ public final class CheckoutAPIService: CheckoutAPIProtocol {
     let logger: FramesEventLogging
     private let checkoutAPIService: Checkout.CheckoutAPIProtocol
 
-    public convenience init(publicKey: String, environment: Environment) {
+    public init(publicKey: String, environment: Environment) {
         let checkoutAPIService = Checkout.CheckoutAPIService(publicKey: publicKey, environment: environment.checkoutEnvironment)
         let cardValidator = CardValidator(environment: environment.checkoutEnvironment)
         let logger = FramesEventLogger(environment: environment, getCorrelationID: { checkoutAPIService.correlationID })
-
-        self.init(checkoutAPIService: checkoutAPIService, cardValidator: cardValidator, logger: logger)
-    }
-
-    init(checkoutAPIService: Checkout.CheckoutAPIProtocol, cardValidator: CardValidating, logger: FramesEventLogger) {
+        
         self.checkoutAPIService = checkoutAPIService
         self.cardValidator = cardValidator
         self.logger = logger
