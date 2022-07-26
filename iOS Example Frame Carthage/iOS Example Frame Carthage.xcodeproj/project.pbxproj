@@ -292,6 +292,7 @@
 		957323EB286EF50F0068C115 /* applePayTokenInvalid.json in Resources */ = {isa = PBXBuildFile; fileRef = 95732393286EF50F0068C115 /* applePayTokenInvalid.json */; };
 		957323EC286EF50F0068C115 /* cardTokenInvalidNumber.json in Resources */ = {isa = PBXBuildFile; fileRef = 95732394286EF50F0068C115 /* cardTokenInvalidNumber.json */; };
 		957323ED286EF50F0068C115 /* applePayToken.json in Resources */ = {isa = PBXBuildFile; fileRef = 95732395286EF50F0068C115 /* applePayToken.json */; };
+		958826FC28902ED400385E7D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958826FB28902ED400385E7D /* UIViewExtension.swift */; };
 		95B32CC0287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B32CBF287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift */; };
 		95ED57A0285A13D70010B493 /* CustomStyle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ED579E285A13D70010B493 /* CustomStyle2.swift */; };
 		95ED57A1285A13D70010B493 /* CustomStyle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ED579F285A13D70010B493 /* CustomStyle1.swift */; };
@@ -643,6 +644,7 @@
 		95732393286EF50F0068C115 /* applePayTokenInvalid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applePayTokenInvalid.json; sourceTree = "<group>"; };
 		95732394286EF50F0068C115 /* cardTokenInvalidNumber.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardTokenInvalidNumber.json; sourceTree = "<group>"; };
 		95732395286EF50F0068C115 /* applePayToken.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applePayToken.json; sourceTree = "<group>"; };
+		958826FB28902ED400385E7D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		95B32CBF287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSecurityCodeFormStyle.swift; sourceTree = "<group>"; };
 		95ED579E285A13D70010B493 /* CustomStyle2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle2.swift; sourceTree = "<group>"; };
 		95ED579F285A13D70010B493 /* CustomStyle1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle1.swift; sourceTree = "<group>"; };
@@ -1422,6 +1424,7 @@
 				95732259286EF4E80068C115 /* UIColor+PropertyProviding.swift */,
 				9573225A286EF4E80068C115 /* Dictionary+Additions.swift */,
 				9573225B286EF4E80068C115 /* UIResponderExtensions.swift */,
+				958826FB28902ED400385E7D /* UIViewExtension.swift */,
 			);
 			name = Extensions;
 			path = ../../Source/Extensions;
@@ -2044,6 +2047,7 @@
 				95732313286EF4E80068C115 /* DispatchQueue+Dispatching.swift in Sources */,
 				957322BF286EF4E80068C115 /* DefaultCardNumberFormStyle.swift in Sources */,
 				957322DD286EF4E80068C115 /* DefaultBillingFormAddressLine2CellStyle.swift in Sources */,
+				958826FC28902ED400385E7D /* UIViewExtension.swift in Sources */,
 				957322F3286EF4E80068C115 /* BillingFormHeaderCellStyle.swift in Sources */,
 				957322C6286EF4E80068C115 /* SecureDisplayView.swift in Sources */,
 				957322C4286EF4E80068C115 /* PaymentFormFactory.swift in Sources */,
