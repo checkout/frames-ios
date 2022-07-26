@@ -27,12 +27,9 @@ class PaymentFormFactoryTests: XCTestCase {
 
     let billingForm = BillingForm(name: name, address: address, phone: phone)
 
-    let viewController = PaymentFormFactory.getPaymentFormViewController(
-      environment: .sandbox,
-      billingFormData: billingForm,
-      paymentFormStyle: paymentFormStyle,
-      billingFormStyle: billingFormStyle,
-      supportedSchemes: [.visa])
+    let formConfig = PaymentFormConfiguration(apiKey: "", environment: .sandbox, supportedSchemes: [.visa], billingFormData: billingForm)
+    let formStyle = PaymentStyle(paymentFormStyle: paymentFormStyle, billingFormStyle: billingFormStyle)
+    let viewController = PaymentFormFactory.buildViewController(configuration: formConfig, style: formStyle)
 
     XCTAssertNotNil(viewController)
 
