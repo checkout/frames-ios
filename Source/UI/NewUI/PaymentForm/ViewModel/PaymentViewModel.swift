@@ -6,6 +6,7 @@ protocol PaymentViewModel {
     var billingFormStyle: BillingFormStyle? { get set }
     var supportedSchemes: [Card.Scheme] { get set}
     var cardValidator: CardValidator { get set }
+    var logger: FramesEventLogging { get }
     var updateEditBillingSummaryView: (() -> Void)? { get set }
     var updateAddBillingDetailsView: (() -> Void)? { get set }
     var updateExpiryDateView: (() -> Void)? { get set }

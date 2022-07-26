@@ -12,11 +12,12 @@ class PaymentViewModelTests: XCTestCase {
     }
 
   func testUpdateExpiryDateView() {
-    viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
-                                        billingFormData: nil,
-                                        paymentFormStyle: DefaultPaymentFormStyle(),
-                                        billingFormStyle: DefaultBillingFormStyle(),
-                                        supportedSchemes: [.unknown])
+      viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
+                                          logger: StubFramesEventLogger(),
+                                          billingFormData: nil,
+                                          paymentFormStyle: DefaultPaymentFormStyle(),
+                                          billingFormStyle: DefaultBillingFormStyle(),
+                                          supportedSchemes: [.unknown])
 
         let expectation = expectation(description: #function)
         viewModel?.updateExpiryDateView = {
@@ -30,6 +31,7 @@ class PaymentViewModelTests: XCTestCase {
 
     func testUpdateAddBillingSummaryView() {
       viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
+                                          logger: StubFramesEventLogger(),
                                           billingFormData: nil,
                                           paymentFormStyle: DefaultPaymentFormStyle(),
                                           billingFormStyle: DefaultBillingFormStyle(),
@@ -59,6 +61,7 @@ class PaymentViewModelTests: XCTestCase {
                                           address: address,
                                           phone: phone)
       viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
+                                          logger: StubFramesEventLogger(),
                                           billingFormData: billingFormData,
                                           paymentFormStyle: DefaultPaymentFormStyle(),
                                           billingFormStyle: DefaultBillingFormStyle(),
@@ -81,6 +84,7 @@ class PaymentViewModelTests: XCTestCase {
                                           address: nil,
                                           phone: phone)
         viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
+                                            logger: StubFramesEventLogger(),
                                             billingFormData: billingFormData,
                                             paymentFormStyle: DefaultPaymentFormStyle(),
                                             billingFormStyle: DefaultBillingFormStyle(),
@@ -108,6 +112,7 @@ class PaymentViewModelTests: XCTestCase {
                                         address: address,
                                         phone: phone)
       viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
+                                          logger: StubFramesEventLogger(),
                                           billingFormData: billingFormData,
                                           paymentFormStyle: DefaultPaymentFormStyle(),
                                           billingFormStyle: DefaultBillingFormStyle(),

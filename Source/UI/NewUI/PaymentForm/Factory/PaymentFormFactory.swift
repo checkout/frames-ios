@@ -8,7 +8,10 @@ public struct PaymentFormFactory {
   public static func buildViewController(configuration: PaymentFormConfiguration,
                                          style: PaymentStyle) -> UIViewController {
     let cardValidator = CardValidator(environment: configuration.environment.checkoutEnvironment)
+    let sessionCorrelationID = UUID().uuidString
+    let logger = FramesEventLogger(environment: configuration.environment, getCorrelationID: { sessionCorrelationID })
     let viewModel = DefaultPaymentViewModel(cardValidator: cardValidator,
+                                            logger: logger,
                                             billingFormData: configuration.billingFormData,
                                             paymentFormStyle: style.paymentFormStyle,
                                             billingFormStyle: style.billingFormStyle,
