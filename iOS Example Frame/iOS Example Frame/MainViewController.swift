@@ -50,12 +50,13 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
 
         let cardFormData = Self.defaultCardFormData()
 
-      let paymentFormViewController = PaymentFormFactory.getPaymentFormViewController(
-        environment: environment,
-        billingFormData: cardFormData.billingForm,
-        paymentFormStyle: cardFormData.paymentFormStyle,
-        billingFormStyle: cardFormData.billingFormStyle,
-        supportedSchemes: [.visa, .mastercard, .maestro])
+        let paymentConfiguration = PaymentFormConfiguration(apiKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
+                                                            environment: environment,
+                                                            supportedSchemes: [.visa, .mastercard, .maestro],
+                                                            billingFormData: cardFormData.billingForm)
+        let paymentStyle = PaymentStyle(paymentFormStyle: cardFormData.paymentFormStyle,
+                                        billingFormStyle: cardFormData.billingFormStyle)
+        let paymentFormViewController = PaymentFormFactory.buildViewController(configuration: paymentConfiguration, style: paymentStyle)
         navigationController?.pushViewController(paymentFormViewController, animated: true)
     }
 
@@ -71,12 +72,14 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
                           country: Self.countryGB)
         let name = "User Custom 1"
         let billingForm = BillingForm(name: name, address: address, phone: phone)
-        let paymentFormViewController = PaymentFormFactory.getPaymentFormViewController(
-          environment: environment,
-            billingFormData: billingForm,
-            paymentFormStyle: Style.Custom1.paymentForm,
-            billingFormStyle: Style.Custom1.billingForm,
-            supportedSchemes: [.visa, .mastercard, .maestro])
+        
+        let paymentConfiguration = PaymentFormConfiguration(apiKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
+                                                            environment: environment,
+                                                            supportedSchemes: [.visa, .mastercard, .maestro],
+                                                            billingFormData: billingForm)
+        let paymentStyle = PaymentStyle(paymentFormStyle: Style.Custom1.paymentForm,
+                                        billingFormStyle: Style.Custom1.billingForm)
+        let paymentFormViewController = PaymentFormFactory.buildViewController(configuration: paymentConfiguration, style: paymentStyle)
         navigationController?.pushViewController(paymentFormViewController, animated: true)
     }
 
@@ -91,12 +94,14 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
 
         let name = "User Custom 2"
         let billingForm = BillingForm(name: name, address: address, phone: nil)
-        let paymentFormViewController = PaymentFormFactory.getPaymentFormViewController(
-          environment: environment,
-            billingFormData: billingForm,
-            paymentFormStyle: Style.Custom2.paymentForm,
-            billingFormStyle: Style.Custom2.billingForm,
-            supportedSchemes: [.visa, .mastercard, .maestro])
+        
+        let paymentConfiguration = PaymentFormConfiguration(apiKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
+                                                            environment: environment,
+                                                            supportedSchemes: [.visa, .mastercard, .maestro],
+                                                            billingFormData: billingForm)
+        let paymentStyle = PaymentStyle(paymentFormStyle: Style.Custom2.paymentForm,
+                                        billingFormStyle: Style.Custom2.billingForm)
+        let paymentFormViewController = PaymentFormFactory.buildViewController(configuration: paymentConfiguration, style: paymentStyle)
         navigationController?.pushViewController(paymentFormViewController, animated: true)
     }
 
