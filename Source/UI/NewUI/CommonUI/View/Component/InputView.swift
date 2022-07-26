@@ -204,7 +204,8 @@ extension InputView: TextFieldViewDelegate {
     }
 
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
-        delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString) ?? true
+        textFieldContainer.layer.borderColor = style?.textfield.normalBorderColor.cgColor
+        return delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString) ?? true
     }
 
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
