@@ -10,6 +10,26 @@ class PaymentViewModelTests: XCTestCase {
         super.setUp()
         UIFont.loadAllCheckoutFonts
     }
+    
+    func testInit() {
+        let testCardValidator = CardValidator(environment: .sandbox)
+        let testLogger = StubFramesEventLogger()
+        let testBillingFormData = BillingForm(name: "John Doe",
+                                              address: Address(addressLine1: "home", addressLine2: "sleeping", city: "rough night", state: "tired", zip: "Zzzz", country: nil),
+                                              phone: Phone(number: "notAvailable", country: nil))
+        let testSupportedSchemes = [Card.Scheme.discover, .mada]
+        let viewModel = DefaultPaymentViewModel(cardValidator: testCardValidator,
+                                                logger: testLogger,
+                                                billingFormData: testBillingFormData,
+                                                paymentFormStyle: nil,
+                                                billingFormStyle: nil,
+                                                supportedSchemes: testSupportedSchemes)
+        
+        XCTAssertTrue(viewModel.cardValidator === testCardValidator)
+        XCTAssertTrue((viewModel.logger as? StubFramesEventLogger) === testLogger)
+        XCTAssertEqual(viewModel.billingFormData, testBillingFormData)
+        XCTAssertEqual(viewModel.supportedSchemes, testSupportedSchemes)
+    }
 
   func testUpdateExpiryDateView() {
       viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
