@@ -20,7 +20,8 @@
 "SecurityCode" = "Security code";
 "SecurityCodeHint" = "3 - 4 digit code on your card";
 "SecurityCodeErrorMessage" = "Please enter a valid security code";
-
+"PaymentHeaderTitle" = "Payment details";
+"PaymentHeaderSubtitle" = "Visa, Mastercard and American Express accepted.";
 "CardNumber" = "Card number";
 "CardNumberErrorMessage" = "Please enter a valid card number";
 "city" = "City";
