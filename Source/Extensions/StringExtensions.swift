@@ -44,7 +44,7 @@ extension String {
             $0.cgContext.translateBy(x: 0.0, y: pageRect.size.height)
             $0.cgContext.scaleBy(x: 1.0, y: -1.0)
             $0.cgContext.drawPDFPage(page)
-        }.withRenderingMode(.alwaysTemplate)
+        }.withRenderingMode(.automatic)
     }
 
     // MARK: - register custom font to framework

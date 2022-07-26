@@ -277,4 +277,5 @@ extension UIViewController {
 
         navigationController?.setNeedsStatusBarAppearanceUpdate()
     }
+
 }

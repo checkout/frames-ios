@@ -10,6 +10,17 @@ import Checkout
 import UIKit
 
 extension Constants.Bundle {
+
+  enum Images: String, CaseIterable {
+    case rightArrow = "arrow_blue_right"
+    case warning = "warning"
+    case leftArrow = "left_arrow"
+
+    var image: UIImage? {
+      return rawValue.image(forClass: PaymentViewController.self)
+    }
+  }
+
   enum SchemeIcon: String, CaseIterable {
     case blank = "icon-blank"
     case americanExpress = "icon-amex"
