@@ -34,6 +34,10 @@ class DefaultPaymentViewModel: PaymentViewModel {
     self.logger = logger
   }
 
+  func viewControllerWillAppear() {
+      logger.log(.paymentFormPresented(logTheme: false))
+  }
+    
   func updateAll() {
     updateCardNumberView?()
     updateExpiryDateView?()

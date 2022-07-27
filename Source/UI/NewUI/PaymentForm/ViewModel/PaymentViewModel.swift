@@ -13,4 +13,5 @@ protocol PaymentViewModel {
     var updateCardNumberView: (() -> Void)? { get set }
     var updateSecurityCodeView: (() -> Void)? { get set }
     func updateAll()
+    func viewControllerWillAppear()
 }

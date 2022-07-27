@@ -30,6 +30,25 @@ class PaymentViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.billingFormData, testBillingFormData)
         XCTAssertEqual(viewModel.supportedSchemes, testSupportedSchemes)
     }
+    
+    func testOnAppearSendsEventToLoggger() {
+        let testLogger = StubFramesEventLogger()
+        let viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
+                                                logger: testLogger,
+                                                billingFormData: nil,
+                                                paymentFormStyle: nil,
+                                                billingFormStyle: nil,
+                                                supportedSchemes: [])
+        
+        XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
+        XCTAssertTrue(testLogger.logCalledWithFramesLogEvents.isEmpty)
+        
+        viewModel.viewControllerWillAppear()
+        
+        XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
+        XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.count, 1)
+        XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.first, .paymentFormPresented(logTheme: false))
+    }
 
   func testUpdateExpiryDateView() {
       viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),

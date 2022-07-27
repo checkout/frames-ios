@@ -96,6 +96,7 @@ final class PaymentViewController: UIViewController {
     // TODO: Remove when the new header view is added
     navigationController?.isNavigationBarHidden = false
     setUpKeyboard()
+    viewModel.viewControllerWillAppear()
   }
 
   required init?(coder: NSCoder) {
