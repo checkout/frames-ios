@@ -4,7 +4,7 @@ import Checkout
 public typealias Card = Checkout.Card
 
 public struct PaymentFormFactory {
-    
+
   // Persist in memory the correlation ID
   internal static var sessionCorrelationID = ""
 

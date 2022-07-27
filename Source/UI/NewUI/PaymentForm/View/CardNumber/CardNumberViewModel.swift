@@ -56,16 +56,10 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
   private func shouldAllowChange(cardNumber: String) -> Card.Scheme? {
     switch cardValidator.eagerValidate(cardNumber: cardNumber) {
     case .success(let scheme):
-      return handleValidationSuccess(cardNumber: cardNumber, scheme: scheme)
+      return scheme
     case .failure(let error):
       return handleValidationError(error: error)
     }
-  }
-
-  private func handleValidationSuccess(cardNumber: String, scheme: Card.Scheme) -> Card.Scheme? {
-    delegate?.update(cardNumber: cardNumber, scheme: scheme)
-
-    return scheme
   }
 
   private func handleValidationError(error: ValidationError.EagerCardNumber) -> Card.Scheme? {

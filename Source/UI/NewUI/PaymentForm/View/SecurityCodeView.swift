@@ -15,8 +15,9 @@ protocol SecurityCodeViewDelegate: AnyObject {
 public final class SecurityCodeView: UIView {
   weak var delegate: SecurityCodeViewDelegate?
   private let maxSecurityCodeCount = 4
+  private var currentCode = ""
   private let cardValidator: CardValidator
-  private(set) var supportedScheme: Card.Scheme = .unknown
+  private(set) var cardScheme: Card.Scheme = .unknown
   private(set) var style: CellTextFieldStyle?
 
   private(set) lazy var codeInputView: InputView = {
@@ -38,18 +39,16 @@ public final class SecurityCodeView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func update(style: CellTextFieldStyle?) {
+  func update(style: CellTextFieldStyle?, cardScheme: Card.Scheme) {
     self.style = style
+    self.cardScheme = cardScheme
     self.style?.textfield.isSupportingNumericKeyboard = true
-    if !validateSecurityCode(with: self.style?.textfield.text) {
+    if !currentCode.isEmpty, !validateSecurityCode(with: currentCode) {
+      updateErrorViewStyle(isHidden: false, textfieldText: currentCode)
+    } else if !validateSecurityCode(with: self.style?.textfield.text) {
       self.style?.textfield.text = ""
     }
     codeInputView.update(style: self.style)
-  }
-
-  // TODO: integrate with payment vc when card view is finished
-  func updateCardScheme(cardScheme: Card.Scheme) {
-    supportedScheme = cardScheme
   }
 
   private func updateErrorViewStyle(isHidden: Bool, textfieldText: String?) {
@@ -62,8 +61,9 @@ public final class SecurityCodeView: UIView {
     guard let text = text?.filter({ !$0.isWhitespace }), !text.isEmpty, Int(text) != nil else {
       return false
     }
-    switch cardValidator.validate(cvv: text, cardScheme: supportedScheme) {
+    switch cardValidator.validate(cvv: text, cardScheme: cardScheme) {
       case .success:
+        currentCode = text
         delegate?.update(securityCode: text)
         return true
       case .failure:

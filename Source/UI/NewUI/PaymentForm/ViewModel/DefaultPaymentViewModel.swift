@@ -6,7 +6,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
   var updateAddBillingDetailsView: (() -> Void)?
   var updateExpiryDateView: (() -> Void)?
   var updateCardNumberView: (() -> Void)?
-  var updateSecurityCodeView: (() -> Void)?
+  var updateSecurityCodeView: ((Card.Scheme) -> Void)?
   var updateHeaderView: (() -> Void)?
   var supportedSchemes: [Card.Scheme]
   var cardValidator: CardValidator
@@ -20,6 +20,8 @@ class DefaultPaymentViewModel: PaymentViewModel {
       }
     }
   }
+
+  private var cardScheme: Card.Scheme = .unknown
 
   init(cardValidator: CardValidator,
        logger: FramesEventLogging,
@@ -38,12 +40,12 @@ class DefaultPaymentViewModel: PaymentViewModel {
   func viewControllerWillAppear() {
       logger.log(.paymentFormPresented)
   }
-    
+
   func updateAll() {
     updateHeaderView?()
     updateCardNumberView?()
     updateExpiryDateView?()
-    updateSecurityCodeView?()
+    updateSecurityCodeView?(cardScheme)
     if isAddBillingSummaryNotUpdated() {
       updateBillingSummaryView()
     }
@@ -100,7 +102,7 @@ extension DefaultPaymentViewModel: BillingFormViewModelDelegate {
   func onBillingScreenShown() {
     logger.log(.billingFormPresented)
   }
-    
+
   func onTapDoneButton(data: BillingForm) {
     self.billingFormData = data
   }
@@ -125,5 +127,12 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
   private func onTapAddressView(sender: UINavigationController?) {
     guard let viewController = BillingFormFactory.getBillingFormViewController(style: billingFormStyle, data: billingFormData, delegate: self) else { return }
     sender?.present(viewController, animated: true)
+  }
+}
+
+extension DefaultPaymentViewModel: CardNumberViewModelDelegate {
+  func update(cardNumber: String, scheme: Card.Scheme) {
+    self.cardScheme = scheme
+    updateSecurityCodeView?(cardScheme)
   }
 }

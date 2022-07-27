@@ -91,8 +91,6 @@ class CardNumberViewModelTests: XCTestCase {
       XCTAssertEqual(result?.newTextFieldValue, "1234")
       XCTAssertEqual(result?.schemeIcon, icon)
       XCTAssertEqual(mockCardValidator.eagerValidateCardNumberCalledWith, "1234")
-      XCTAssertEqual(mockCardNumberViewModelDelegate.updateCalledWith?.scheme, scheme)
-      XCTAssertEqual(mockCardNumberViewModelDelegate.updateCalledWith?.cardNumber, "1234")
     }
   }
 
@@ -127,8 +125,6 @@ class CardNumberViewModelTests: XCTestCase {
       XCTAssertEqual(result?.newTextFieldValue, formattedCardNumber)
       XCTAssertEqual(result?.schemeIcon, Constants.Bundle.SchemeIcon(scheme: scheme))
       XCTAssertEqual(mockCardValidator.eagerValidateCardNumberCalledWith, cardNumber)
-      XCTAssertEqual(mockCardNumberViewModelDelegate.updateCalledWith?.scheme, scheme)
-      XCTAssertEqual(mockCardNumberViewModelDelegate.updateCalledWith?.cardNumber, cardNumber)
     }
   }
 

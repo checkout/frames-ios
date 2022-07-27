@@ -57,8 +57,8 @@ final class PaymentViewController: UIViewController {
 
   private lazy var cardNumberView: CardNumberView = {
     let cardNumberViewModel = CardNumberViewModel(cardValidator: viewModel.cardValidator)
+    cardNumberViewModel.delegate = viewModel as? CardNumberViewModelDelegate
     let cardNumberView = CardNumberView(viewModel: cardNumberViewModel)
-
     return cardNumberView
   }()
 
@@ -197,9 +197,9 @@ extension PaymentViewController {
   }
 
   private func setupSecurityCodeViewClosure() {
-    viewModel.updateSecurityCodeView = { [weak self] in
+    viewModel.updateSecurityCodeView = { [weak self] cardScheme in
       DispatchQueue.main.async {
-        self?.updateSecurityCode()
+        self?.updateSecurityCode(cardScheme: cardScheme)
       }
     }
   }
@@ -214,9 +214,9 @@ extension PaymentViewController {
     expiryDateView.update(style: style)
   }
 
-  private func updateSecurityCode() {
+  private func updateSecurityCode(cardScheme: Card.Scheme) {
     guard let style = viewModel.paymentFormStyle?.securityCode else { return }
-    securityCodeView.update(style: style)
+    securityCodeView.update(style: style, cardScheme: cardScheme)
   }
 
   private func updateAddBillingFormButtonView() {

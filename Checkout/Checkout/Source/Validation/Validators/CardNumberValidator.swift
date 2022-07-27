@@ -28,7 +28,6 @@ final class CardNumberValidator: CardNumberValidating {
 
     switch cardTypeMatch(cardNumber, \.fullCardNumberRegex) {
     case .some(let fullMatch):
-
       let cardScheme = luhnChecker.luhnCheck(cardNumber: cardNumber) ? fullMatch : .unknown
       return .success(cardScheme)
     case .none:

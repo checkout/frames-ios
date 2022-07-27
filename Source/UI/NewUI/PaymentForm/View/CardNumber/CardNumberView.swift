@@ -29,7 +29,6 @@ final class CardNumberView: UIView {
 
   init(viewModel: CardNumberViewModelProtocol) {
     self.viewModel = viewModel
-
     super.init(frame: .zero)
     setupView()
   }
