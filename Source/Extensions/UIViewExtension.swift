@@ -1,5 +1,5 @@
 //
-//  UITapGestureRecognizerExtension.swift
+//  UIViewExtension.swift
 //  Frames
 //
 //  Created by Ehab Alsharkawy
@@ -18,8 +18,8 @@ extension UIView {
 
   @objc private static func hideKeyboard(gestureRecognizer: UITapGestureRecognizer) {
     let view = gestureRecognizer.view
-    let loc = gestureRecognizer.location(in: view)
-    let subview = view?.hitTest(loc, with: nil)
+    let location = gestureRecognizer.location(in: view)
+    let subview = view?.hitTest(location, with: nil)
     guard !(subview is SecureDisplayView) else { return }
     UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil)
   }
