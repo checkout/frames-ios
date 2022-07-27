@@ -42,8 +42,6 @@
 		95732287286EF4E80068C115 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732183286EF4E80068C115 /* checkmark.png */; };
 		95732288286EF4E80068C115 /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732184286EF4E80068C115 /* checkmark@2x.png */; };
 		95732289286EF4E80068C115 /* checkmark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732185286EF4E80068C115 /* checkmark@3x.png */; };
-		9573228A286EF4E80068C115 /* warning.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 95732188286EF4E80068C115 /* warning.pdf */; };
-		9573228B286EF4E80068C115 /* arrow_blue_right.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 95732189286EF4E80068C115 /* arrow_blue_right.pdf */; };
 		9573228C286EF4E80068C115 /* keyboard-previous@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9573218B286EF4E80068C115 /* keyboard-previous@2x.png */; };
 		9573228D286EF4E80068C115 /* keyboard-next@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9573218C286EF4E80068C115 /* keyboard-next@3x.png */; };
 		9573228E286EF4E80068C115 /* keyboard-next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9573218D286EF4E80068C115 /* keyboard-next@2x.png */; };
@@ -293,10 +291,13 @@
 		957323EC286EF50F0068C115 /* cardTokenInvalidNumber.json in Resources */ = {isa = PBXBuildFile; fileRef = 95732394286EF50F0068C115 /* cardTokenInvalidNumber.json */; };
 		957323ED286EF50F0068C115 /* applePayToken.json in Resources */ = {isa = PBXBuildFile; fileRef = 95732395286EF50F0068C115 /* applePayToken.json */; };
 		95B32CC0287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B32CBF287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift */; };
+		95D73A472889935300D93554 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95D73A462889935300D93554 /* Images.xcassets */; };
+		95E816D828887A4300C7876B /* PaymentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E816D728887A4300C7876B /* PaymentHeaderView.swift */; };
+		95E816DA28887BF800C7876B /* PaymentHeaderCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E816D928887BF800C7876B /* PaymentHeaderCellStyle.swift */; };
+		95E816DC2888850200C7876B /* DefaultPaymentHeaderCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E816DB2888850200C7876B /* DefaultPaymentHeaderCellStyle.swift */; };
 		95ED57A0285A13D70010B493 /* CustomStyle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ED579E285A13D70010B493 /* CustomStyle2.swift */; };
 		95ED57A1285A13D70010B493 /* CustomStyle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ED579F285A13D70010B493 /* CustomStyle1.swift */; };
 		CB10618C2875E5ED007322FE /* Checkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9412CE2825647600C889E8 /* Checkout.framework */; };
-		CB1061902877195B007322FE /* schemes.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB10618F2877195B007322FE /* schemes.xcassets */; };
 		CB106193287726EE007322FE /* CardNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB106192287726EE007322FE /* CardNumberView.swift */; };
 		CB106195287726FF007322FE /* CardNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB106194287726FF007322FE /* CardNumberViewModel.swift */; };
 		CB10619828784821007322FE /* CardNumberViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB10619728784821007322FE /* CardNumberViewModelTests.swift */; };
@@ -391,8 +392,6 @@
 		95732184286EF4E80068C115 /* checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark@2x.png"; sourceTree = "<group>"; };
 		95732185286EF4E80068C115 /* checkmark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark@3x.png"; sourceTree = "<group>"; };
 		95732186286EF4E80068C115 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
-		95732188286EF4E80068C115 /* warning.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = warning.pdf; sourceTree = "<group>"; };
-		95732189286EF4E80068C115 /* arrow_blue_right.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = arrow_blue_right.pdf; sourceTree = "<group>"; };
 		9573218B286EF4E80068C115 /* keyboard-previous@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-previous@2x.png"; sourceTree = "<group>"; };
 		9573218C286EF4E80068C115 /* keyboard-next@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-next@3x.png"; sourceTree = "<group>"; };
 		9573218D286EF4E80068C115 /* keyboard-next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-next@2x.png"; sourceTree = "<group>"; };
@@ -644,9 +643,12 @@
 		95732394286EF50F0068C115 /* cardTokenInvalidNumber.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardTokenInvalidNumber.json; sourceTree = "<group>"; };
 		95732395286EF50F0068C115 /* applePayToken.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applePayToken.json; sourceTree = "<group>"; };
 		95B32CBF287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSecurityCodeFormStyle.swift; sourceTree = "<group>"; };
+		95D73A462889935300D93554 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		95E816D728887A4300C7876B /* PaymentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHeaderView.swift; sourceTree = "<group>"; };
+		95E816D928887BF800C7876B /* PaymentHeaderCellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHeaderCellStyle.swift; sourceTree = "<group>"; };
+		95E816DB2888850200C7876B /* DefaultPaymentHeaderCellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPaymentHeaderCellStyle.swift; sourceTree = "<group>"; };
 		95ED579E285A13D70010B493 /* CustomStyle2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle2.swift; sourceTree = "<group>"; };
 		95ED579F285A13D70010B493 /* CustomStyle1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle1.swift; sourceTree = "<group>"; };
-		CB10618F2877195B007322FE /* schemes.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = schemes.xcassets; sourceTree = "<group>"; };
 		CB106192287726EE007322FE /* CardNumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberView.swift; sourceTree = "<group>"; };
 		CB106194287726FF007322FE /* CardNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberViewModel.swift; sourceTree = "<group>"; };
 		CB10619728784821007322FE /* CardNumberViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberViewModelTests.swift; sourceTree = "<group>"; };
@@ -768,9 +770,8 @@
 			isa = PBXGroup;
 			children = (
 				95732168286EF4E80068C115 /* Localizable.strings */,
-				CB10618F2877195B007322FE /* schemes.xcassets */,
+				95D73A462889935300D93554 /* Images.xcassets */,
 				95732182286EF4E80068C115 /* checkmarks */,
-				95732187286EF4E80068C115 /* warning */,
 				9573218A286EF4E80068C115 /* arrows */,
 				95732196286EF4E80068C115 /* Font */,
 			);
@@ -786,15 +787,6 @@
 				95732185286EF4E80068C115 /* checkmark@3x.png */,
 			);
 			path = checkmarks;
-			sourceTree = "<group>";
-		};
-		95732187286EF4E80068C115 /* warning */ = {
-			isa = PBXGroup;
-			children = (
-				95732188286EF4E80068C115 /* warning.pdf */,
-				95732189286EF4E80068C115 /* arrow_blue_right.pdf */,
-			);
-			path = warning;
 			sourceTree = "<group>";
 		};
 		9573218A286EF4E80068C115 /* arrows */ = {
@@ -915,6 +907,7 @@
 			children = (
 				957321C1286EF4E80068C115 /* PaymentFormStyle.swift */,
 				957321C2286EF4E80068C115 /* BillingSummaryViewStyle.swift */,
+				95E816D928887BF800C7876B /* PaymentHeaderCellStyle.swift */,
 			);
 			path = StyleProtocol;
 			sourceTree = "<group>";
@@ -927,6 +920,7 @@
 				957321CC286EF4E80068C115 /* ExpiryDate */,
 				957321CE286EF4E80068C115 /* CardNumber */,
 				957321D0286EF4E80068C115 /* DefaultPaymentFormStyle.swift */,
+				95E816DB2888850200C7876B /* DefaultPaymentHeaderCellStyle.swift */,
 			);
 			path = "Default Implementation";
 			sourceTree = "<group>";
@@ -989,6 +983,7 @@
 				CB106191287726EE007322FE /* CardNumber */,
 				957321D3286EF4E80068C115 /* BillingFormSummaryView.swift */,
 				957321D4286EF4E80068C115 /* ExpiryDateView.swift */,
+				95E816D728887A4300C7876B /* PaymentHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1430,17 +1425,14 @@
 		9573225C286EF4E80068C115 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				9573225D286EF4E80068C115 /* Constants.swift */,
+				95D73A432889492B00D93554 /* Constants */,
 				9573225E286EF4E80068C115 /* Environment.swift */,
 				9573225F286EF4E80068C115 /* CheckoutAPIService.swift */,
 				95732260286EF4E80068C115 /* TopLevelEncoder.swift */,
 				95732261286EF4E80068C115 /* TopLevelDecoder.swift */,
 				95732262286EF4E80068C115 /* ThreeDSWKNavigationHelperFactory.swift */,
 				95732263286EF4E80068C115 /* Dispatching.swift */,
-				95732264286EF4E80068C115 /* Constants+LocalizationKeys.swift */,
-				95732265286EF4E80068C115 /* Constants+Padding.swift */,
 				95732266286EF4E80068C115 /* InputState.swift */,
-				95732267286EF4E80068C115 /* Constants+Style.swift */,
 				95732268286EF4E80068C115 /* ContentTypeProviding.swift */,
 				CBB6F524287ED04E00A1379D /* Constants+SchemeIcon.swift */,
 				95732269286EF4E80068C115 /* Logging */,
@@ -1663,6 +1655,17 @@
 				95B32CBF287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift */,
 			);
 			path = SecurityCode;
+			sourceTree = "<group>";
+		};
+		95D73A432889492B00D93554 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				9573225D286EF4E80068C115 /* Constants.swift */,
+				95732264286EF4E80068C115 /* Constants+LocalizationKeys.swift */,
+				95732265286EF4E80068C115 /* Constants+Padding.swift */,
+				95732267286EF4E80068C115 /* Constants+Style.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		CB106191287726EE007322FE /* CardNumber */ = {
@@ -1915,17 +1918,14 @@
 				95732271286EF4E80068C115 /* Localizable.strings in Resources */,
 				95732295286EF4E80068C115 /* GraphikLCG-ThinItalic.otf in Resources */,
 				9573229E286EF4E80068C115 /* GraphikLCG-Regular.otf in Resources */,
-				9573228A286EF4E80068C115 /* warning.pdf in Resources */,
 				957322A4286EF4E80068C115 /* GraphikLCG-Thin.otf in Resources */,
 				95732293286EF4E80068C115 /* keyboard-down@2x.png in Resources */,
 				9573229F286EF4E80068C115 /* GraphikLCG-LightItalic.otf in Resources */,
-				CB1061902877195B007322FE /* schemes.xcassets in Resources */,
 				95732291286EF4E80068C115 /* keyboard-previous.png in Resources */,
 				9573228D286EF4E80068C115 /* keyboard-next@3x.png in Resources */,
 				957322A0286EF4E80068C115 /* GraphikLCG-Medium.otf in Resources */,
 				95732287286EF4E80068C115 /* checkmark.png in Resources */,
 				95732289286EF4E80068C115 /* checkmark@3x.png in Resources */,
-				9573228B286EF4E80068C115 /* arrow_blue_right.pdf in Resources */,
 				95732299286EF4E80068C115 /* GraphikLCG-BoldItalic.otf in Resources */,
 				9573228E286EF4E80068C115 /* keyboard-next@2x.png in Resources */,
 				95732292286EF4E80068C115 /* keyboard-next.png in Resources */,
@@ -1937,6 +1937,7 @@
 				9573228C286EF4E80068C115 /* keyboard-previous@2x.png in Resources */,
 				95732294286EF4E80068C115 /* keyboard-down@3x.png in Resources */,
 				957322A5286EF4E80068C115 /* GraphikLCG-Light.otf in Resources */,
+				95D73A472889935300D93554 /* Images.xcassets in Resources */,
 				9573229C286EF4E80068C115 /* GraphikLCG-RegularItalic.otf in Resources */,
 				9573229A286EF4E80068C115 /* GraphikLCG-Black.otf in Resources */,
 				95732288286EF4E80068C115 /* checkmark@2x.png in Resources */,
@@ -2010,6 +2011,7 @@
 				95732325286EF4E80068C115 /* Constants+LocalizationKeys.swift in Sources */,
 				957322CF286EF4E80068C115 /* CellButtonStyle.swift in Sources */,
 				957322FB286EF4E80068C115 /* ExpirationDatePickerDelegate.swift in Sources */,
+				95E816DA28887BF800C7876B /* PaymentHeaderCellStyle.swift in Sources */,
 				95732330286EF4E90068C115 /* CorrelationIDGenerator.swift in Sources */,
 				957322CB286EF4E80068C115 /* SelectionButtonView.swift in Sources */,
 				95732307286EF4E80068C115 /* SchemeIconsStackView.swift in Sources */,
@@ -2063,6 +2065,7 @@
 				9573231A286EF4E80068C115 /* UIDeviceExtensions.swift in Sources */,
 				957322E1286EF4E80068C115 /* DefaultBillingFormPhoneNumberCellStyle.swift in Sources */,
 				957322BC286EF4E80068C115 /* DefaultBillingSummaryViewStyle.swift in Sources */,
+				95E816DC2888850200C7876B /* DefaultPaymentHeaderCellStyle.swift in Sources */,
 				957322FE286EF4E80068C115 /* AddressViewControllerDelegate.swift in Sources */,
 				957322AB286EF4E80068C115 /* Validator.swift in Sources */,
 				957322D2286EF4E80068C115 /* ElementErrorViewStyle.swift in Sources */,
@@ -2105,6 +2108,7 @@
 				9573232C286EF4E80068C115 /* PropertyProviding.swift in Sources */,
 				95732309286EF4E80068C115 /* PhoneNumberInputView.swift in Sources */,
 				957322FC286EF4E80068C115 /* CardViewControllerDelegate.swift in Sources */,
+				95E816D828887A4300C7876B /* PaymentHeaderView.swift in Sources */,
 				95732319286EF4E80068C115 /* URL+Extensions.swift in Sources */,
 				95732314286EF4E80068C115 /* JSONEncoder+ContentTypeProviding.swift in Sources */,
 				9573232A286EF4E80068C115 /* FramesEventLogger.swift in Sources */,

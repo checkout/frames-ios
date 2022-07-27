@@ -17,7 +17,6 @@
 "ExpiryDatePlaceholder" = "_ _  / _ _";
 "ExpiryDateErrorMessageInvalid" = "Please enter a valid expiry date";
 "ExpiryDateErrorMessageInvalidInPast" = "Expiry date is in the past";
-
 "SecurityCode" = "Security code";
 "SecurityCodeHint" = "3 - 4 digit code on your card";
 "SecurityCodeErrorMessage" = "Please enter a valid security code";

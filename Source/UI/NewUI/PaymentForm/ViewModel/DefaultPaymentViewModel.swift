@@ -7,6 +7,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
   var updateExpiryDateView: (() -> Void)?
   var updateCardNumberView: (() -> Void)?
   var updateSecurityCodeView: (() -> Void)?
+  var updateHeaderView: (() -> Void)?
   var supportedSchemes: [Card.Scheme]
   var cardValidator: CardValidator
   var logger: FramesEventLogging
@@ -39,6 +40,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
   }
     
   func updateAll() {
+    updateHeaderView?()
     updateCardNumberView?()
     updateExpiryDateView?()
     updateSecurityCodeView?()
