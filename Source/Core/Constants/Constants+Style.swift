@@ -14,6 +14,10 @@ extension Constants {
       static let animationLength: TimeInterval = 0.25
 
         enum PaymentForm {
+
+          enum Header: Double {
+            case subtitleFontSize = 13
+          }
             enum InputBillingFormButton: Double {
                 case height = 56
                 case width = 0

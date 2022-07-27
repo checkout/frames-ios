@@ -2,7 +2,7 @@
 "missingBillingFormAddressLine1" = "Missing Address Line 1";
 "missingBillingFormAddressLine2" = "Missing Address Line 2";
 "missingBillingFormCity" = "Missing City";
-"missingBillingFormState" = "Missing State";
+"missingBillingFormCounty" = "Missing County";
 "missingBillingFormPostcode" = "Missing Postcode";
 "missingBillingFormPhoneNumber" = "Missing Phone Number";
 "missingBillingFormCountry" = "Missing Country";
@@ -20,7 +20,8 @@
 "SecurityCode" = "Security code";
 "SecurityCodeHint" = "3 - 4 digit code on your card";
 "SecurityCodeErrorMessage" = "Please enter a valid security code";
-
+"PaymentHeaderTitle" = "Payment details";
+"PaymentHeaderSubtitle" = "Visa, Mastercard and American Express accepted.";
 "CardNumber" = "Card number";
 "CardNumberErrorMessage" = "Please enter a valid card number";
 "city" = "City";
@@ -37,7 +38,7 @@
 "countryRegion" = "Country";
 "addressLine1" = "Address line 1";
 "addressLine2" = "Address line 2";
-"state" = "County";
+"county" = "County";
 "postalTown" = "Town";
 "postcode" = "Postcode";
 "phone" = "Phone";
