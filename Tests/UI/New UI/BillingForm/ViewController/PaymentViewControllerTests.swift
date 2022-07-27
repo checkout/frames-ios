@@ -55,7 +55,7 @@ final class PaymentViewControllerTests: XCTestCase {
         
         XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
         XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.count, 1)
-        XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.first, .paymentFormPresented(logTheme: false))
+        XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.first, .paymentFormPresented)
     }
     
 }

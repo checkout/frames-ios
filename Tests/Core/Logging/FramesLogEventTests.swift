@@ -9,7 +9,7 @@ final class FramesLogEventTests: XCTestCase {
 
     func test_typeIdentifier_paymentFormPresented_returnsCorrectValue() {
         
-        let subject = FramesLogEvent.paymentFormPresented(logTheme: true)
+        let subject = FramesLogEvent.paymentFormPresented
         XCTAssertEqual("com.checkout.frames-mobile-sdk.payment_form_presented", subject.typeIdentifier)
     }
 
@@ -23,7 +23,7 @@ final class FramesLogEventTests: XCTestCase {
 
     func test_monitoringLevel_paymentFormPresented_returnsCorrectValue() {
         
-        let subject = FramesLogEvent.paymentFormPresented(logTheme: true)
+        let subject = FramesLogEvent.paymentFormPresented
         XCTAssertEqual(.info, subject.monitoringLevel)
     }
 
@@ -36,13 +36,11 @@ final class FramesLogEventTests: XCTestCase {
     // MARK: - properties
 
     func test_properties_paymentFormPresented_returnsCorrectValue() {
-        let event = FramesLogEvent.paymentFormPresented(logTheme: true)
+        let event = FramesLogEvent.paymentFormPresented
         let eventProperties = event.properties.mapValues(\.value)
         
-        XCTAssertEqual(eventProperties.count, 2)
+        XCTAssertEqual(eventProperties.count, 1)
         XCTAssertEqual(eventProperties[.locale] as? String, Locale.current.identifier)
-        // There is an issue with the theme recording! This will go with new UI so have spent sufficient time on it without luck.
-        // The theme is not currently recorded as it has been at time of recording, it will be recorded as it is at time of dispatch!!!
     }
 
     func test_properties_exception_returnsCorrectValue() {

@@ -36,7 +36,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
   }
 
   func viewControllerWillAppear() {
-      logger.log(.paymentFormPresented(logTheme: false))
+      logger.log(.paymentFormPresented)
   }
     
   func updateAll() {
