@@ -10,13 +10,53 @@ class PaymentViewModelTests: XCTestCase {
         super.setUp()
         UIFont.loadAllCheckoutFonts
     }
+    
+    func testInit() {
+        let testCardValidator = CardValidator(environment: .sandbox)
+        let testLogger = StubFramesEventLogger()
+        let testBillingFormData = BillingForm(name: "John Doe",
+                                              address: Address(addressLine1: "home", addressLine2: "sleeping", city: "rough night", state: "tired", zip: "Zzzz", country: nil),
+                                              phone: Phone(number: "notAvailable", country: nil))
+        let testSupportedSchemes = [Card.Scheme.discover, .mada]
+        let viewModel = DefaultPaymentViewModel(cardValidator: testCardValidator,
+                                                logger: testLogger,
+                                                billingFormData: testBillingFormData,
+                                                paymentFormStyle: nil,
+                                                billingFormStyle: nil,
+                                                supportedSchemes: testSupportedSchemes)
+        
+        XCTAssertTrue(viewModel.cardValidator === testCardValidator)
+        XCTAssertTrue((viewModel.logger as? StubFramesEventLogger) === testLogger)
+        XCTAssertEqual(viewModel.billingFormData, testBillingFormData)
+        XCTAssertEqual(viewModel.supportedSchemes, testSupportedSchemes)
+    }
+    
+    func testOnAppearSendsEventToLoggger() {
+        let testLogger = StubFramesEventLogger()
+        let viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
+                                                logger: testLogger,
+                                                billingFormData: nil,
+                                                paymentFormStyle: nil,
+                                                billingFormStyle: nil,
+                                                supportedSchemes: [])
+        
+        XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
+        XCTAssertTrue(testLogger.logCalledWithFramesLogEvents.isEmpty)
+        
+        viewModel.viewControllerWillAppear()
+        
+        XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
+        XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.count, 1)
+        XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.first, .paymentFormPresented)
+    }
 
   func testUpdateExpiryDateView() {
-    viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
-                                        billingFormData: nil,
-                                        paymentFormStyle: DefaultPaymentFormStyle(),
-                                        billingFormStyle: DefaultBillingFormStyle(),
-                                        supportedSchemes: [.unknown])
+      viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
+                                          logger: StubFramesEventLogger(),
+                                          billingFormData: nil,
+                                          paymentFormStyle: DefaultPaymentFormStyle(),
+                                          billingFormStyle: DefaultBillingFormStyle(),
+                                          supportedSchemes: [.unknown])
 
         let expectation = expectation(description: #function)
         viewModel?.updateExpiryDateView = {
@@ -30,6 +70,7 @@ class PaymentViewModelTests: XCTestCase {
 
     func testUpdateAddBillingSummaryView() {
       viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
+                                          logger: StubFramesEventLogger(),
                                           billingFormData: nil,
                                           paymentFormStyle: DefaultPaymentFormStyle(),
                                           billingFormStyle: DefaultBillingFormStyle(),
@@ -59,6 +100,7 @@ class PaymentViewModelTests: XCTestCase {
                                           address: address,
                                           phone: phone)
       viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
+                                          logger: StubFramesEventLogger(),
                                           billingFormData: billingFormData,
                                           paymentFormStyle: DefaultPaymentFormStyle(),
                                           billingFormStyle: DefaultBillingFormStyle(),
@@ -81,6 +123,7 @@ class PaymentViewModelTests: XCTestCase {
                                           address: nil,
                                           phone: phone)
         viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
+                                            logger: StubFramesEventLogger(),
                                             billingFormData: billingFormData,
                                             paymentFormStyle: DefaultPaymentFormStyle(),
                                             billingFormStyle: DefaultBillingFormStyle(),
@@ -108,6 +151,7 @@ class PaymentViewModelTests: XCTestCase {
                                         address: address,
                                         phone: phone)
       viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
+                                          logger: StubFramesEventLogger(),
                                           billingFormData: billingFormData,
                                           paymentFormStyle: DefaultPaymentFormStyle(),
                                           billingFormStyle: DefaultBillingFormStyle(),

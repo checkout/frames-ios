@@ -10,8 +10,14 @@ import Checkout
 @testable import Frames
 
 class PaymentFormFactoryTests: XCTestCase {
+    
+  override func setUp() {
+    super.setUp()
+        
+    UIFont.loadAllCheckoutFonts
+  }
+    
   func testGetPaymentFormViewController() throws {
-
     let billingFormStyle = BillingFormFactory.defaultBillingFormStyle
     let paymentFormStyle = BillingFormFactory.defaultPaymentFormStyle
     let address = Address(addressLine1: "Test line1",
@@ -27,21 +33,33 @@ class PaymentFormFactoryTests: XCTestCase {
 
     let billingForm = BillingForm(name: name, address: address, phone: phone)
 
-    let viewController = PaymentFormFactory.getPaymentFormViewController(
-      environment: .sandbox,
-      billingFormData: billingForm,
-      paymentFormStyle: paymentFormStyle,
-      billingFormStyle: billingFormStyle,
-      supportedSchemes: [.visa])
-
-    XCTAssertNotNil(viewController)
+    let formConfig = PaymentFormConfiguration(apiKey: "", environment: .sandbox, supportedSchemes: [.visa], billingFormData: billingForm)
+    let formStyle = PaymentStyle(paymentFormStyle: paymentFormStyle, billingFormStyle: billingFormStyle)
+    let viewController = PaymentFormFactory.buildViewController(configuration: formConfig, style: formStyle)
 
     let paymentViewController = try XCTUnwrap(viewController as? PaymentViewController)
+    let viewModel = try XCTUnwrap(paymentViewController.viewModel)
 
     XCTAssertNotNil(paymentViewController.viewModel)
-    XCTAssertNotNil(paymentViewController.viewModel.billingFormData)
-    XCTAssertNotNil(paymentViewController.viewModel.billingFormStyle)
-    XCTAssertNotNil(paymentViewController.viewModel.paymentFormStyle)
+    XCTAssertNotNil(viewModel.billingFormData)
+    XCTAssertNotNil(viewModel.billingFormStyle)
+    XCTAssertNotNil(viewModel.paymentFormStyle)
+    XCTAssertNotNil(viewModel.cardValidator)
+    XCTAssertEqual(viewModel.supportedSchemes, formConfig.supportedSchemes)
+    XCTAssertEqual(viewModel.billingFormData, billingForm)
   }
 
+    func testLoggerCorrelationIDUpdatedOnEachFactoryUse() {
+        // This will be setup by some other tests running as part of full test suite
+        let startCorrelationID = PaymentFormFactory.sessionCorrelationID
+        
+        let formConfig = PaymentFormConfiguration(apiKey: "", environment: .sandbox, supportedSchemes: [.visa], billingFormData: nil)
+        let formStyle = PaymentStyle(paymentFormStyle: BillingFormFactory.defaultPaymentFormStyle,
+                                     billingFormStyle: BillingFormFactory.defaultBillingFormStyle)
+        
+        // Creating a VC will generate a new session correlation id
+        _ = PaymentFormFactory.buildViewController(configuration: formConfig, style: formStyle)
+        
+        XCTAssertNotEqual(PaymentFormFactory.sessionCorrelationID, startCorrelationID)
+    }
 }

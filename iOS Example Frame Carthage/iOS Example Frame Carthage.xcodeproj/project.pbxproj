@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0B6A7FDA28913D5700F7CC01 /* PaymentFormConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */; };
+		0B6A7FDB28913D5700F7CC01 /* PaymentStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */; };
 		4422777226163748009626A0 /* Frames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; };
 		4422777326163748009626A0 /* Frames.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4422783E2616376E009626A0 /* CheckoutSdkIos.h in Headers */ = {isa = PBXBuildFile; fileRef = 442277E52616376E009626A0 /* CheckoutSdkIos.h */; };
@@ -364,6 +366,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentFormConfiguration.swift; sourceTree = "<group>"; };
+		0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStyle.swift; sourceTree = "<group>"; };
 		4422774726163716009626A0 /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4422775D26163748009626A0 /* Frames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Frames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4422775F26163748009626A0 /* Frames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Frames.h; sourceTree = "<group>"; };
@@ -717,6 +721,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B6A7FD728913D5700F7CC01 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */,
+				0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4422775E26163748009626A0 /* Frames */ = {
 			isa = PBXGroup;
 			children = (
@@ -886,6 +899,7 @@
 				957321B8286EF4E80068C115 /* ViewModel */,
 				957321C0286EF4E80068C115 /* StyleProtocol */,
 				957321C3286EF4E80068C115 /* Default Implementation */,
+				0B6A7FD728913D5700F7CC01 /* Model */,
 				957321D1286EF4E80068C115 /* View */,
 				957321D5286EF4E80068C115 /* ViewController */,
 				957321D7286EF4E80068C115 /* Factory */,
@@ -2072,11 +2086,13 @@
 				9573231B286EF4E80068C115 /* UIColor+PropertyProviding.swift in Sources */,
 				9573230C286EF4E80068C115 /* CvvInputView.swift in Sources */,
 				957322C1286EF4E80068C115 /* BillingFormSummaryView.swift in Sources */,
+				0B6A7FDA28913D5700F7CC01 /* PaymentFormConfiguration.swift in Sources */,
 				957322F7286EF4E80068C115 /* CardNumberInputViewDelegate.swift in Sources */,
 				95732306286EF4E80068C115 /* DetailsInputView.swift in Sources */,
 				952F32D5283C303E00F616FF /* CheckoutTheme.swift in Sources */,
 				9573231C286EF4E80068C115 /* Dictionary+Additions.swift in Sources */,
 				957322DA286EF4E80068C115 /* DefaultErrorInputLabelStyle.swift in Sources */,
+				0B6A7FDB28913D5700F7CC01 /* PaymentStyle.swift in Sources */,
 				95732300286EF4E80068C115 /* CvvConfirmationViewController.swift in Sources */,
 				957322DE286EF4E80068C115 /* DefaultBillingFormCityCellStyle.swift in Sources */,
 				957322D1286EF4E80068C115 /* ElementTextFieldStyle.swift in Sources */,

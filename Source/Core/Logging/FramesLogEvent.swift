@@ -36,7 +36,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
     }
 
     case checkoutAPIClientInitialised(environment: Environment)
-    case paymentFormPresented(theme: Theme, locale: Locale)
+    case paymentFormPresented
     case billingFormPresented
     case threeDSWebviewPresented
     case threeDSChallengeLoaded(success: Bool)
@@ -86,8 +86,8 @@ enum FramesLogEvent: Equatable, PropertyProviding {
         case .billingFormPresented,
              .threeDSWebviewPresented:
             return [:]
-        case let .paymentFormPresented(theme, locale):
-            return [.theme: theme.rawProperties, .locale: locale.identifier].mapValues(AnyCodable.init(_:))
+        case .paymentFormPresented:
+            return [Property.locale: Locale.current.identifier].mapValues(AnyCodable.init(_:))
         case let .checkoutAPIClientInitialised(environment):
             let environmentString = environment.rawValue == "live" ? "production" : environment.rawValue
             return [.environment: environmentString].mapValues(AnyCodable.init(_:))

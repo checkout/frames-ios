@@ -134,7 +134,7 @@ public class CardViewController: UIViewController,
             return
         }
 
-        checkoutAPIService.logger.log(.paymentFormPresented(theme: Theme(), locale: .current))
+        checkoutAPIService.logger.log(.paymentFormPresented)
     }
 
     /// Notifies the view controller that its view is about to be removed from a view hierarchy.

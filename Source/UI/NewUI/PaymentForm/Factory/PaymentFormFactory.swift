@@ -4,17 +4,22 @@ import Checkout
 public typealias Card = Checkout.Card
 
 public struct PaymentFormFactory {
-  public static func getPaymentFormViewController(environment: Environment,
-                                                  billingFormData: BillingForm?,
-                                                  paymentFormStyle: PaymentFormStyle?,
-                                                  billingFormStyle: BillingFormStyle?,
-                                                  supportedSchemes: [Card.Scheme]) -> UIViewController {
-    let cardValidator = CardValidator(environment: environment.checkoutEnvironment)
+    
+  // Persist in memory the correlation ID
+  internal static var sessionCorrelationID = ""
+
+  public static func buildViewController(configuration: PaymentFormConfiguration,
+                                         style: PaymentStyle) -> UIViewController {
+    // Ensure a consistent identifier is used for the monitoring of a journey
+    Self.sessionCorrelationID = UUID().uuidString
+    let logger = FramesEventLogger(environment: configuration.environment, getCorrelationID: { Self.sessionCorrelationID })
+    let cardValidator = CardValidator(environment: configuration.environment.checkoutEnvironment)
     let viewModel = DefaultPaymentViewModel(cardValidator: cardValidator,
-                                            billingFormData: billingFormData,
-                                            paymentFormStyle: paymentFormStyle,
-                                            billingFormStyle: billingFormStyle,
-                                            supportedSchemes: supportedSchemes)
+                                            logger: logger,
+                                            billingFormData: configuration.billingFormData,
+                                            paymentFormStyle: style.paymentFormStyle,
+                                            billingFormStyle: style.billingFormStyle,
+                                            supportedSchemes: configuration.supportedSchemes)
 
     let viewController = PaymentViewController(viewModel: viewModel)
     if #available(iOS 13.0, *) {

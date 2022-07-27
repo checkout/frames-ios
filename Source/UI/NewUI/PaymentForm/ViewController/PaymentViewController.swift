@@ -30,7 +30,7 @@ final class PaymentViewController: UIViewController {
     return scrollView
   }()
 
-  private(set) lazy var stackView: UIStackView = {
+  private lazy var stackView: UIStackView = {
     let view = UIStackView().disabledAutoresizingIntoConstraints()
     view.axis = .vertical
     view.spacing = 20
@@ -95,6 +95,7 @@ final class PaymentViewController: UIViewController {
     super.viewWillAppear(animated)
     navigationController?.setNavigationBarHidden(false, animated: animated)
     setUpKeyboard()
+    viewModel.viewControllerWillAppear()
   }
 
   required init?(coder: NSCoder) {

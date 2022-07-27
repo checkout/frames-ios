@@ -10,6 +10,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
   var updateHeaderView: (() -> Void)?
   var supportedSchemes: [Card.Scheme]
   var cardValidator: CardValidator
+  var logger: FramesEventLogging
   var paymentFormStyle: PaymentFormStyle?
   var billingFormStyle: BillingFormStyle?
   var billingFormData: BillingForm? {
@@ -21,6 +22,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
   }
 
   init(cardValidator: CardValidator,
+       logger: FramesEventLogging,
        billingFormData: BillingForm?,
        paymentFormStyle: PaymentFormStyle?,
        billingFormStyle: BillingFormStyle?,
@@ -30,8 +32,13 @@ class DefaultPaymentViewModel: PaymentViewModel {
     self.billingFormData = billingFormData
     self.paymentFormStyle = paymentFormStyle
     self.billingFormStyle = billingFormStyle
+    self.logger = logger
   }
 
+  func viewControllerWillAppear() {
+      logger.log(.paymentFormPresented)
+  }
+    
   func updateAll() {
     updateHeaderView?()
     updateCardNumberView?()
