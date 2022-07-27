@@ -45,14 +45,11 @@ class InputView: UIView {
         return view
     }()
 
-    private lazy var tapGesture: UITapGestureRecognizer = {
-      UIView.keyboardDismissTapGesture
-    }()
-
     override init(frame: CGRect) {
       super.init(frame: frame)
-      addGestureRecognizer(tapGesture)
       setupViewsInOrder()
+      /// Tap Gesture to dismiss the keyboard on touch on view without canceling touches In current view
+      addGestureRecognizer(UIView.keyboardDismissTapGesture)
     }
 
     required init?(coder: NSCoder) {

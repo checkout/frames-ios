@@ -21,15 +21,12 @@ final class BillingFormCellTextField: UITableViewCell {
         return view
     }()
 
-    private lazy var tapGesture: UITapGestureRecognizer = {
-      UIView.keyboardDismissTapGesture
-    }()
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addGestureRecognizer(tapGesture)
         setupViewsInOrder()
         backgroundColor = .clear
+      /// Tap Gesture to dismiss the keyboard on touch on view without canceling touches In current view
+      addGestureRecognizer(UIView.keyboardDismissTapGesture)
     }
 
     func update(type: BillingFormCell?, style: CellTextFieldStyle?, tag: Int, textFieldValue: String?) {

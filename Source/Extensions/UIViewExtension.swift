@@ -11,7 +11,7 @@ import UIKit
 extension UIView {
 
   static var keyboardDismissTapGesture: UITapGestureRecognizer {
-    let gesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(gestureRecognizer:)))
+    let gesture = UITapGestureRecognizer(target: UIView.self, action: #selector(hideKeyboard(gestureRecognizer:)))
     gesture.cancelsTouchesInView = false
     return gesture
   }
