@@ -25,6 +25,8 @@ final class BillingFormCellTextField: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViewsInOrder()
         backgroundColor = .clear
+      /// Tap Gesture to dismiss the keyboard on touch on view without canceling touches In current view
+      addGestureRecognizer(UIView.keyboardDismissTapGesture)
     }
 
     func update(type: BillingFormCell?, style: CellTextFieldStyle?, tag: Int, textFieldValue: String?) {
@@ -38,6 +40,7 @@ final class BillingFormCellTextField: UITableViewCell {
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
 }
 
 extension BillingFormCellTextField {
