@@ -4,12 +4,16 @@ import Checkout
 public typealias Card = Checkout.Card
 
 public struct PaymentFormFactory {
+    
+  // Persist in memory the correlation ID
+  internal static var sessionCorrelationID = ""
 
   public static func buildViewController(configuration: PaymentFormConfiguration,
                                          style: PaymentStyle) -> UIViewController {
+    // Ensure a consistent identifier is used for the monitoring of a journey
+    Self.sessionCorrelationID = UUID().uuidString
+    let logger = FramesEventLogger(environment: configuration.environment, getCorrelationID: { Self.sessionCorrelationID })
     let cardValidator = CardValidator(environment: configuration.environment.checkoutEnvironment)
-    let sessionCorrelationID = UUID().uuidString
-    let logger = FramesEventLogger(environment: configuration.environment, getCorrelationID: { sessionCorrelationID })
     let viewModel = DefaultPaymentViewModel(cardValidator: cardValidator,
                                             logger: logger,
                                             billingFormData: configuration.billingFormData,

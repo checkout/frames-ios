@@ -49,4 +49,17 @@ class PaymentFormFactoryTests: XCTestCase {
     XCTAssertEqual(viewModel.billingFormData, billingForm)
   }
 
+    func testLoggerCorrelationIDUpdatedOnEachFactoryUse() {
+        // This will be setup by some other tests running as part of full test suite
+        let startCorrelationID = PaymentFormFactory.sessionCorrelationID
+        
+        let formConfig = PaymentFormConfiguration(apiKey: "", environment: .sandbox, supportedSchemes: [.visa], billingFormData: nil)
+        let formStyle = PaymentStyle(paymentFormStyle: BillingFormFactory.defaultPaymentFormStyle,
+                                     billingFormStyle: BillingFormFactory.defaultBillingFormStyle)
+        
+        // Creating a VC will generate a new session correlation id
+        _ = PaymentFormFactory.buildViewController(configuration: formConfig, style: formStyle)
+        
+        XCTAssertNotEqual(PaymentFormFactory.sessionCorrelationID, startCorrelationID)
+    }
 }
