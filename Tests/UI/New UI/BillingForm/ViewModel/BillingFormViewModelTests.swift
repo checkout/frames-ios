@@ -122,10 +122,19 @@ class BillingFormViewModelTests: XCTestCase {
         viewModel.textValueOfCellType = textValueOfCellType
         viewModel.editDelegate = delegate
         
-        viewModel.textFieldShouldEndEditing(textField: DefaultBillingFormTextField(type: .fullName(nil), tag: 2), replacementString: "text")
+        _ = viewModel.textFieldShouldEndEditing(textField: DefaultBillingFormTextField(type: .fullName(nil), tag: 2), replacementString: "text")
         
         XCTAssertEqual(delegate.didFinishEditingBillingFormCalledTimes, 0)
         XCTAssertNil(delegate.didFinishEditingBillingFormLastCalledWithSuccessfully)
+    }
+    
+    func testCallsDelegateWhenViewControllerIsApearing() {
+        let delegate = BillingFormViewModelMockDelegate()
+        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), delegate: delegate)
+        
+        XCTAssertEqual(delegate.onBillingScreenShownCounter, 0)
+        viewModel.viewControllerWillAppear()
+        XCTAssertEqual(delegate.onBillingScreenShownCounter, 1)
     }
     
 }

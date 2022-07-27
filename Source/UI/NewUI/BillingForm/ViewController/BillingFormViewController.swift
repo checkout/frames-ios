@@ -72,6 +72,7 @@ final class BillingFormViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
         setUpKeyboard()
+        viewModel.viewControllerWillAppear()
     }
 
     override func viewWillDisappear(_ animated: Bool) {

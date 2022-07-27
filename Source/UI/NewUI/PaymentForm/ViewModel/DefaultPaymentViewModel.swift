@@ -97,6 +97,10 @@ class DefaultPaymentViewModel: PaymentViewModel {
 }
 
 extension DefaultPaymentViewModel: BillingFormViewModelDelegate {
+  func onBillingScreenShown() {
+    logger.log(.billingFormPresented)
+  }
+    
   func onTapDoneButton(data: BillingForm) {
     self.billingFormData = data
   }

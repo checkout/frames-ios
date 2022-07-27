@@ -43,6 +43,10 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         updateCellsValues()
     }
 
+    func viewControllerWillAppear() {
+        delegate?.onBillingScreenShown()
+    }
+    
     func getHeaderView(delegate: BillingFormHeaderCellDelegate?) -> UIView {
         let isDoneButtonEnabled = textValueOfCellType.values.count == self.style.cells.count
         style.header.doneButton.isEnabled = isDoneButtonEnabled
