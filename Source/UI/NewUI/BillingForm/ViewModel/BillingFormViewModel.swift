@@ -2,6 +2,7 @@ import Checkout
 
 protocol BillingFormViewModelDelegate: AnyObject {
     func onTapDoneButton(data: BillingForm)
+    func onBillingScreenShown()
 }
 
 protocol BillingFormViewModelEditingDelegate: AnyObject {
@@ -13,4 +14,5 @@ protocol BillingFormViewModel {
     var data: BillingForm? { get }
     var updatedRow: Int? { get }
     var updateRow: (() -> Void)? { get set }
+    func viewControllerWillAppear()
 }
