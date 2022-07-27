@@ -90,7 +90,7 @@ public final class ExpiryDateView: UIView {
    then validate full Expiry Date
    */
 
-  func validateInput(_ textField: UITextField, location: Int, replacementText: String) -> Bool {
+  private func validateInput(_ textField: UITextField, location: Int, replacementText: String) -> Bool {
     // check for max length including added spacers which all equal to 5
     guard !replacementText.isEmpty else { return false }
     let replacementText = replacementText.replacingOccurrences(of: " ", with: "")

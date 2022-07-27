@@ -45,17 +45,6 @@ class ExpiryDateViewTests: XCTestCase {
     XCTAssertTrue(view.style?.error?.isHidden ?? false)
   }
 
-  func testInValidExpiryDate(){
-    let textField = UITextField()
-    textField.text = "01/1"
-    let input = "3"
-
-    let isValid = view.validateInput(textField, location: textField.text?.count ?? 0, replacementText: input)
-    XCTAssertFalse(isValid)
-    XCTAssertFalse(view.style?.error?.isHidden ?? true)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.past)
-  }
-
   func testValidTodayExpiryDate(){
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MM/yy"
