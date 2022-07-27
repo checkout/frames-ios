@@ -138,7 +138,7 @@ public struct ExpiryDateFormStyleCustom1: CellTextFieldStyle {
   public var title: ElementStyle? = TitleLabelStyleCustom1(text: "Expiry date")
   public var hint: ElementStyle? = HintInputLabelStyleCustom1(text: "Format is MM/YY")
   public var mandatory: ElementStyle?
-  public var textfield: ElementTextFieldStyle = TextFieldCustom1(placeHolder: "MM/YY")
+  public var textfield: ElementTextFieldStyle = TextFieldCustom1(text: "test", placeHolder: "MM/YY")
   public var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom1(text: "please fill expiry date")
 }
 
