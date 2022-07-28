@@ -149,6 +149,16 @@ public class CardValidator: CardValidating {
     return cvvValidator.validate(cvv: cvv, cardScheme: cardScheme)
   }
     
+  /// Checks whether a CVV is valid for a given card scheme.
+  /// If the cardScheme is `unknown`, this validates that the cvv is conforming to internal generic standards
+  /// - Parameters:
+  ///   - cvv: The CVV of the card.
+  ///   - cardScheme: The scheme of the card.
+  /// - Returns: True if CVV is valid, otherwise False
+  public func isValid(cvv: String, for scheme: Card.Scheme) -> Bool {
+    cvvValidator.isValid(cvv: cvv, for: scheme)
+  }
+    
   /**
    Checks what the maximum CVV lenght is for a given scaheme.
    - Parameters:

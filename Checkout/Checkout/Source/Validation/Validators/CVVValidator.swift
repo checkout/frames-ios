@@ -13,6 +13,7 @@ public protocol CVVValidating {
     cardScheme: Card.Scheme
   ) -> ValidationResult<ValidationError.CVV>
     
+    func isValid(cvv: String, for scheme: Card.Scheme) -> Bool
     func maxLenghtCVV(for scheme: Card.Scheme) -> Int
 }
 
@@ -30,6 +31,10 @@ final class CVVValidator: CVVValidating {
           .success :
           .failure(.invalidLength)
   }
+    
+    func isValid(cvv: String, for scheme: Card.Scheme) -> Bool {
+        return validate(cvv: cvv, cardScheme: scheme) == .success
+    }
     
     func maxLenghtCVV(for scheme: Card.Scheme) -> Int {
         scheme.cvvLengths.max() ?? 4

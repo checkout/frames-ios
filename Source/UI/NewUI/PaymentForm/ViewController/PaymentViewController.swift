@@ -63,7 +63,8 @@ final class PaymentViewController: UIViewController {
   }()
 
   private lazy var securityCodeView: SecurityCodeView = {
-    let view = SecurityCodeView(cardValidator: viewModel.cardValidator)
+    let viewModel = SecurityCodeViewModel(cardValidator: viewModel.cardValidator)
+    let view = SecurityCodeView(viewModel: viewModel)
     view.delegate = self
     return view
   }()
