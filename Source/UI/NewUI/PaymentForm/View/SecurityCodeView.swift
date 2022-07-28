@@ -41,7 +41,8 @@ public final class SecurityCodeView: UIView {
   func update(style: CellTextFieldStyle?) {
     self.style = style
     self.style?.textfield.isSupportingNumericKeyboard = true
-    viewModel.updateInput(to: style?.textfield.text ?? "")
+    viewModel.updateInput(to: self.style?.textfield.text)
+    self.style?.textfield.text = viewModel.isInputValid ? viewModel.cvv : ""
     codeInputView.update(style: self.style)
   }
 
@@ -77,10 +78,8 @@ extension SecurityCodeView: TextFieldViewDelegate {
     if range.location >= viewModel.inputMaxLength && !string.isEmpty {
       return false
     }
-    // Enable deleting of text
-    if string.isEmpty { return true }
-    // Prevent non numeric input from being inserted
-    return Int(string) != nil
+    // Enable deleting of text & ensure only numbers are accepted
+    return string.isEmpty || Int(string) != nil
   }
 }
 

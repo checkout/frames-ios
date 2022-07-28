@@ -37,7 +37,11 @@ final class SecurityCodeViewModel {
     }
 
     func updateInput(to newInput: String?) {
-        cvv = newInput ?? ""
+        guard let cleanedInput = newInput?.filter({ !$0.isWhitespace }),
+              Int(cleanedInput) != nil else {
+            return
+        }
+        cvv = cleanedInput
         isInputValid = cardValidator.validate(cvv: cvv, cardScheme: scheme) == .success
     }
 }

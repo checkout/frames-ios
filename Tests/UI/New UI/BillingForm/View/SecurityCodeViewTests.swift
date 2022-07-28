@@ -18,7 +18,9 @@ class SecurityCodeViewTests: XCTestCase {
     super.setUp()
     UIFont.loadAllCheckoutFonts
     style = DefaultSecurityCodeFormStyle()
-    view = SecurityCodeView(cardValidator: CardValidator(environment: .sandbox))
+    let testCardValidator = CardValidator(environment: .sandbox)
+    let testViewModel = SecurityCodeViewModel(cardValidator: testCardValidator)
+    view = SecurityCodeView(viewModel: testViewModel)
   }
 
   // Invalid string case of of pre-filled security code text from the merchant.
@@ -43,83 +45,5 @@ class SecurityCodeViewTests: XCTestCase {
 
       XCTAssertEqual(view.codeInputView.textFieldView.textField.text, "1234")
     }
-
-  func testCodeValidationWhenTextIsEmpty() throws {
-    let text = ""
-    let isValid = view.validateSecurityCode(with: text)
-    XCTAssertFalse(isValid)
-  }
-
-  func testCodeValidationWhenTextIsWhiteSpace() throws {
-    let text = " "
-   let isValid = view.validateSecurityCode(with: text)
-    XCTAssertFalse(isValid)
-  }
-
-  func testCodeValidationWhenTextWithOneNumber() throws {
-    let text = "1"
-   let isValid = view.validateSecurityCode(with: text)
-    XCTAssertFalse(isValid)
-  }
-
-  func testCodeValidationWhenTextWithTwoNumbers() throws {
-    let text = "12"
-   let isValid = view.validateSecurityCode(with: text)
-    XCTAssertFalse(isValid)
-  }
-
-  func testCodeValidationWhenTextWithThreeNumbers() throws {
-    let text = "123"
-    let isValid = view.validateSecurityCode(with: text)
-    XCTAssertTrue(isValid)
-  }
-
-  func testCodeValidationWhenTextWithFourNumbers() throws {
-    let text = "1234"
-    let isValid = view.validateSecurityCode(with: text)
-    XCTAssertTrue(isValid)
-  }
-
-  func testCodeValidationWhenTextWithFiveNumbers() throws {
-    let text = "12345"
-   let isValid = view.validateSecurityCode(with: text)
-    XCTAssertFalse(isValid)
-  }
-
-  func testCodeValidationWhenTextWithEmoji() throws {
-    let text = "📱"
-   let isValid = view.validateSecurityCode(with: text)
-    XCTAssertFalse(isValid)
-  }
-
-  func testCodeValidationWhenTextWithString() throws {
-    let text = "Hello"
-   let isValid = view.validateSecurityCode(with: text)
-    XCTAssertFalse(isValid)
-  }
-
-  func testCodeValidationWhenTextWithSpecialCharacter() throws {
-    let text = "123$"
-   let isValid = view.validateSecurityCode(with: text)
-    XCTAssertFalse(isValid)
-  }
-
-  func testCodeValidationWhenTextWithDouble() throws {
-    let text = "123.45"
-   let isValid = view.validateSecurityCode(with: text)
-    XCTAssertFalse(isValid)
-  }
-
-  func testCodeValidationWhenTextWithNegativeNumber() throws {
-    let text = "-123"
-   let isValid = view.validateSecurityCode(with: text)
-    XCTAssertFalse(isValid)
-  }
-
-  func testCodeValidationWhenTextWithWhiteSpacedNumbers() throws {
-    let text = "1 2 3 4"
-    let isValid = view.validateSecurityCode(with: text)
-    XCTAssertTrue(isValid)
-  }
 
 }
