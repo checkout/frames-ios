@@ -38,7 +38,8 @@ final class SecurityCodeViewModel {
 
     func updateInput(to newInput: String?) {
         guard let cleanedInput = newInput?.filter({ !$0.isWhitespace }),
-              Int(cleanedInput) != nil else {
+              (Int(cleanedInput) ?? 0 > 0) || cleanedInput == "",
+              cleanedInput.count <= inputMaxLength else {
             return
         }
         cvv = cleanedInput
