@@ -23,10 +23,16 @@ final class MockCardValidator: CardValidating {
     }
 
     var validateCVVToReturn: ValidationResult<ValidationError.CVV> = .success
+    var expectedMaxLenghtCVV = 4
+    var maxLenghtCVVCalledWith = [Card.Scheme]()
     private(set) var validateCVVCalledWith: (cvv: String, cardScheme: Card.Scheme)?
     func validate(cvv: String, cardScheme: Card.Scheme) -> ValidationResult<ValidationError.CVV> {
         validateCVVCalledWith = (cvv, cardScheme)
         return validateCVVToReturn
+    }
+    func maxLenghtCVV(for scheme: Card.Scheme) -> Int {
+        maxLenghtCVVCalledWith.append(scheme)
+        return expectedMaxLenghtCVV
     }
 
     var validateExpiryStringToReturn: Result<ExpiryDate, ValidationError.ExpiryDate> = expiryDate(month: 2, year: 2050)

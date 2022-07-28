@@ -148,6 +148,16 @@ public class CardValidator: CardValidating {
     logManager.queue(event: .validateCVV)
     return cvvValidator.validate(cvv: cvv, cardScheme: cardScheme)
   }
+    
+  /**
+   Checks what the maximum CVV lenght is for a given scaheme.
+   - Parameters:
+       - scheme: The scheme against which the request is made
+   - Returns: The maximum lenght for input for it to be valid
+   */
+  public func maxLenghtCVV(for scheme: Card.Scheme) -> Int {
+    cvvValidator.maxLenghtCVV(for: scheme)
+  }
 
   public func validate(_ card: Card) -> ValidationResult<ValidationError.Card> {
     let cardScheme: Card.Scheme
