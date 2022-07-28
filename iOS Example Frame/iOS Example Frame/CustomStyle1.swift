@@ -42,7 +42,7 @@ struct PaymentFormStyleCustom1: PaymentFormStyle {
 struct PaymentHeaderCellStyleCustom1: PaymentHeaderCellStyle {
   var backgroundColor = Constants.redBackgroundColor
   var headerLabel: ElementStyle? = HeaderLabelFormStyleCustom1(text: "Payment details")
-  public var subtitleLabel: ElementStyle? = TitleLabelStyleCustom1(text: "Visa, Mastercard and American Express accepted.")
+  public var subtitleLabel: ElementStyle? = nil
   public var schemeIcons: [UIImage?]? = [
     UIImage(named: "visa-icon"),
     UIImage(named: "mastercard-icon"),
