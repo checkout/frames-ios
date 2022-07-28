@@ -110,7 +110,7 @@ import Checkout
 
         switch cardValidator.validate(cardNumber: cardNumber) {
         case .success(let scheme):
-            guard scheme == .unknown else {
+            guard scheme.scheme == .unknown else {
                 break
             }
 

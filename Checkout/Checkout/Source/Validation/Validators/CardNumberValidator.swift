@@ -8,8 +8,9 @@
 import Foundation
 
 public protocol CardNumberValidating {
+  typealias ValidationScheme = (isComplete: Bool, scheme: Card.Scheme)
   func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.EagerCardNumber>
-  func validate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber>
+  func validate(cardNumber: String) -> Result<ValidationScheme, ValidationError.CardNumber>
 }
 
 final class CardNumberValidator: CardNumberValidating {
@@ -19,7 +20,7 @@ final class CardNumberValidator: CardNumberValidating {
     self.luhnChecker = luhnChecker
   }
 
-  func validate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber> {
+  func validate(cardNumber: String) -> Result<ValidationScheme, ValidationError.CardNumber> {
     let cardNumber = cardNumber.filter { !$0.isWhitespace }
 
     guard validateDigitsOnly(in: cardNumber) else {
@@ -28,12 +29,11 @@ final class CardNumberValidator: CardNumberValidating {
 
     switch cardTypeMatch(cardNumber, \.fullCardNumberRegex) {
     case .some(let fullMatch):
-
-      let cardScheme = luhnChecker.luhnCheck(cardNumber: cardNumber) ? fullMatch : .unknown
-      return .success(cardScheme)
+      let isValidNumber = luhnChecker.luhnCheck(cardNumber: cardNumber)
+      let cardScheme = isValidNumber ? fullMatch : .unknown
+        return .success((isComplete: isValidNumber, scheme: cardScheme))
     case .none:
-
-      return .success(.unknown)
+      return .success((isComplete: false, scheme: .unknown))
     }
   }
 

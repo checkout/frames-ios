@@ -79,7 +79,7 @@ public class CardValidator: CardValidating {
   /// - Parameters:
   ///   - cardNumber: The card number to validate.
   /// - Returns: The card's scheme if successful, else an error.
-  public func validate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber> {
+  public func validate(cardNumber: String) -> Result<ValidationScheme, ValidationError.CardNumber> {
     logManager.queue(event: .validateCardNumber)
     return cardNumberValidator.validate(cardNumber: cardNumber)
   }
@@ -174,7 +174,7 @@ public class CardValidator: CardValidating {
 
     switch validate(cardNumber: card.number) {
     case .success(let scheme):
-      cardScheme = scheme
+      cardScheme = scheme.scheme
     case .failure(let error):
       return .failure(.cardNumber(error))
     }

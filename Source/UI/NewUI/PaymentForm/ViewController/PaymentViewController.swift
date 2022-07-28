@@ -57,6 +57,7 @@ final class PaymentViewController: UIViewController {
 
   private lazy var cardNumberView: CardNumberView = {
     let cardNumberViewModel = CardNumberViewModel(cardValidator: viewModel.cardValidator)
+    cardNumberViewModel.delegate = self
     let cardNumberView = CardNumberView(viewModel: cardNumberViewModel)
 
     return cardNumberView
@@ -297,4 +298,14 @@ extension PaymentViewController: SecurityCodeViewDelegate {
   func update(securityCode: String) {
     delegate?.securityCodeIsUpdated(value: securityCode)
   }
+}
+
+extension PaymentViewController: CardNumberViewModelDelegate {
+    func update(cardNumber: String, scheme: Card.Scheme) {
+      securityCodeView.updateCardScheme(cardScheme: scheme)
+    }
+
+    func schemeUpdatedEagerly(to newScheme: Card.Scheme) {
+        securityCodeView.updateCardScheme(cardScheme: newScheme)
+    }
 }

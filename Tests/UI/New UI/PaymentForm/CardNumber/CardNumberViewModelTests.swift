@@ -137,7 +137,7 @@ class CardNumberViewModelTests: XCTestCase {
 
     testCases.forEach { scheme in
       // given
-      mockCardValidator.validateCardNumberToReturn = .success(scheme)
+      mockCardValidator.validateCardNumberToReturn = .success((true, scheme))
 
       // when
       let result = subject.validate(cardNumber: "1234")

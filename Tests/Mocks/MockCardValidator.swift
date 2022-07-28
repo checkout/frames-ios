@@ -15,16 +15,18 @@ final class MockCardValidator: CardValidating {
         return eagerValidateCardNumberToReturn
     }
 
-    var validateCardNumberToReturn: Result<Card.Scheme, ValidationError.CardNumber> = .success(.visa)
+    var validateCardNumberToReturn: Result<ValidationScheme, ValidationError.CardNumber> = .success((true, .visa))
     private(set) var validateCardNumberCalledWith: String?
-    func validate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber> {
+    func validate(cardNumber: String) -> Result<ValidationScheme, ValidationError.CardNumber> {
         validateCardNumberCalledWith = cardNumber
         return validateCardNumberToReturn
     }
 
     var validateCVVToReturn: ValidationResult<ValidationError.CVV> = .success
     var expectedMaxLenghtCVV = 4
+    var expectedIsValidCVV = false
     var maxLenghtCVVCalledWith = [Card.Scheme]()
+    var receivedIsValidCVVArguments: [(String, Card.Scheme)] = []
     private(set) var validateCVVCalledWith: (cvv: String, cardScheme: Card.Scheme)?
     func validate(cvv: String, cardScheme: Card.Scheme) -> ValidationResult<ValidationError.CVV> {
         validateCVVCalledWith = (cvv, cardScheme)
@@ -34,6 +36,10 @@ final class MockCardValidator: CardValidating {
         maxLenghtCVVCalledWith.append(scheme)
         return expectedMaxLenghtCVV
     }
+    func isValid(cvv: String, for scheme: Card.Scheme) -> Bool {
+        expectedIsValidCVV
+    }
+    
 
     var validateExpiryStringToReturn: Result<ExpiryDate, ValidationError.ExpiryDate> = expiryDate(month: 2, year: 2050)
     private(set) var validateExpiryStringCalledWith: (expiryMonth: String, expiryYear: String)?
