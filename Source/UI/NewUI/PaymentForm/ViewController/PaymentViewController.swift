@@ -306,6 +306,6 @@ extension PaymentViewController: CardNumberViewModelDelegate {
     }
 
     func schemeUpdatedEagerly(to newScheme: Card.Scheme) {
-        securityCodeView.updateCardScheme(cardScheme: newScheme)
+      securityCodeView.updateCardScheme(cardScheme: newScheme)
     }
 }
