@@ -12,12 +12,9 @@ public protocol CVVValidating {
     cvv: String,
     cardScheme: Card.Scheme
   ) -> ValidationResult<ValidationError.CVV>
-    
-    func maxLenghtCVV(for scheme: Card.Scheme) -> Int
 }
 
 final class CVVValidator: CVVValidating {
-    
   func validate(
     cvv: String,
     cardScheme: Card.Scheme
@@ -26,14 +23,14 @@ final class CVVValidator: CVVValidating {
       return .failure(.containsNonDigits)
     }
 
-      return cardScheme.cvvLengths.contains(cvv.count) ?
-          .success :
-          .failure(.invalidLength)
-  }
-    
-    func maxLenghtCVV(for scheme: Card.Scheme) -> Int {
-        scheme.cvvLengths.max() ?? 4
+    guard let cvvLength = cardScheme.cvvLength else {
+      let isValidCVV = cvv.count == 3 || cvv.count == 4
+      return isValidCVV ? .success : .failure(.invalidLength)
     }
+
+    return cvv.count == cvvLength ? .success : .failure(.invalidLength)
+  }
+
 
   // MARK: - Private
 
