@@ -35,7 +35,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
         case success
     }
 
-    case checkoutAPIClientInitialised(environment: Environment)
+    case paymentJourneyStart(environment: Environment)
     case paymentFormPresented
     case billingFormPresented
     case threeDSWebviewPresented
@@ -49,8 +49,8 @@ enum FramesLogEvent: Equatable, PropertyProviding {
 
     private var typeIdentifierSuffix: String {
         switch self {
-        case .checkoutAPIClientInitialised:
-            return "checkout_api_client_initialised"
+        case .paymentJourneyStart:
+            return "payment_journey_start"
         case .paymentFormPresented:
             return "payment_form_presented"
         case .billingFormPresented:
@@ -68,7 +68,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
 
     var monitoringLevel: MonitoringLevel {
         switch self {
-        case .checkoutAPIClientInitialised,
+        case .paymentJourneyStart,
              .paymentFormPresented,
              .billingFormPresented,
              .threeDSWebviewPresented:
@@ -88,7 +88,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
             return [:]
         case .paymentFormPresented:
             return [Property.locale: Locale.current.identifier].mapValues(AnyCodable.init(_:))
-        case let .checkoutAPIClientInitialised(environment):
+        case let .paymentJourneyStart(environment):
             let environmentString = environment.rawValue == "live" ? "production" : environment.rawValue
             return [.environment: environmentString].mapValues(AnyCodable.init(_:))
         case let .threeDSChallengeLoaded(success):
@@ -105,7 +105,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
 
     var loggedOncePerCorrelationID: Bool {
         switch self {
-        case .checkoutAPIClientInitialised,
+        case .paymentJourneyStart,
              .paymentFormPresented,
              .billingFormPresented,
              .threeDSWebviewPresented:

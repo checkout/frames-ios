@@ -72,7 +72,7 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
                           country: Self.countryGB)
         let name = "User Custom 1"
         let billingForm = BillingForm(name: name, address: address, phone: phone)
-        
+
         let paymentConfiguration = PaymentFormConfiguration(apiKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
                                                             environment: environment,
                                                             supportedSchemes: [.visa, .mastercard, .maestro],
@@ -94,7 +94,7 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
 
         let name = "User Custom 2"
         let billingForm = BillingForm(name: name, address: address, phone: nil)
-        
+
         let paymentConfiguration = PaymentFormConfiguration(apiKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
                                                             environment: environment,
                                                             supportedSchemes: [.visa, .mastercard, .maestro],

@@ -38,7 +38,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
   func viewControllerWillAppear() {
       logger.log(.paymentFormPresented)
   }
-    
+
   func updateAll() {
     updateHeaderView?()
     updateCardNumberView?()
@@ -100,7 +100,7 @@ extension DefaultPaymentViewModel: BillingFormViewModelDelegate {
   func onBillingScreenShown() {
     logger.log(.billingFormPresented)
   }
-    
+
   func onTapDoneButton(data: BillingForm) {
     self.billingFormData = data
   }
