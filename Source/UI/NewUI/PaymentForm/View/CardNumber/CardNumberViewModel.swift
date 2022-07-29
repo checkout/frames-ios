@@ -41,12 +41,11 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
     // In this case we only update delegate if we have a final result to avoiding
     //    overriding the eager validation with a less informative update
     case .success((let isComplete, let scheme)):
-      if isComplete {
-        delegate?.update(cardNumber: cardNumber, scheme: scheme)
-        return Constants.Bundle.SchemeIcon(scheme: scheme)
-      } else {
-        return nil
+      guard isComplete else {
+          return nil
       }
+      delegate?.update(cardNumber: cardNumber, scheme: scheme)
+      return Constants.Bundle.SchemeIcon(scheme: scheme)
     }
   }
 
