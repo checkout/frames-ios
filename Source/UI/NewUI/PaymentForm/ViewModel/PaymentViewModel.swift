@@ -1,5 +1,4 @@
 import Checkout
-import UIKit
 
 protocol PaymentViewModel {
   var billingFormData: BillingForm? { get set }

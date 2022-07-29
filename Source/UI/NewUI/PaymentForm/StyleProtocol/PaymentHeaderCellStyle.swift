@@ -12,5 +12,5 @@ public protocol PaymentHeaderCellStyle {
     var backgroundColor: UIColor { get }
     var headerLabel: ElementStyle? { get }
     var subtitleLabel: ElementStyle? { get }
-    var schemeIcons: [UIImage?]? { get }
+    var schemeIcons: [UIImage?] { get }
 }

@@ -156,8 +156,7 @@ final class PaymentViewController: UIViewController {
 extension PaymentViewController {
   private func setupViewModel() {
     delegate = self.viewModel as? PaymentViewControllerDelegate
-    view.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
-    stackView.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
+    updateBackgroundViews()
     setupAddBillingDetailsViewClosure()
     setupEditBillingSummaryViewClosure()
     setupExpiryDateViewClosure()
@@ -212,6 +211,11 @@ extension PaymentViewController {
         self?.updateSecurityCode()
       }
     }
+  }
+
+  private func updateBackgroundViews() {
+    view.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
+    stackView.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
   }
 
   private func updateCardNumber() {
