@@ -46,7 +46,6 @@ public final class SecurityCodeView: UIView {
     codeInputView.update(style: self.style)
   }
 
-  // TODO: integrate with payment vc when card view is finished
   func updateCardScheme(cardScheme: Card.Scheme) {
       viewModel.updateScheme(to: cardScheme)
   }
@@ -86,7 +85,8 @@ extension SecurityCodeView: TextFieldViewDelegate {
 extension SecurityCodeView: SecurityCodeDelegate {
 
     func schemeChanged() {
-        updateErrorViewStyle(isHidden: viewModel.isInputValid, textfieldText: viewModel.cvv)
+        let isInputValid = viewModel.isInputValid || viewModel.cvv.isEmpty
+        updateErrorViewStyle(isHidden: isInputValid, textfieldText: viewModel.cvv)
     }
 
 }
