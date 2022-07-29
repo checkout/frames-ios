@@ -13,7 +13,6 @@ public struct PaymentFormFactory {
     // Ensure a consistent identifier is used for the monitoring of a journey
     Self.sessionCorrelationID = UUID().uuidString
     let logger = FramesEventLogger(environment: configuration.environment, getCorrelationID: { Self.sessionCorrelationID })
-    logger.log(.paymentJourneyStart(environment: configuration.environment))
     let cardValidator = CardValidator(environment: configuration.environment.checkoutEnvironment)
     let viewModel = DefaultPaymentViewModel(cardValidator: cardValidator,
                                             logger: logger,
@@ -23,6 +22,7 @@ public struct PaymentFormFactory {
                                             supportedSchemes: configuration.supportedSchemes)
 
     let viewController = PaymentViewController(viewModel: viewModel)
+    logger.log(.paymentFormInitialised(environment: configuration.environment))
     if #available(iOS 13.0, *) {
       viewController.isModalInPresentation = true
     }
