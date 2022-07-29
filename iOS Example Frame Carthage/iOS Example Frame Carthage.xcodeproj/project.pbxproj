@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		0B6A7FDA28913D5700F7CC01 /* PaymentFormConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */; };
 		0B6A7FDB28913D5700F7CC01 /* PaymentStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */; };
+		0BFE5B302893D51F00E540B9 /* SecurityCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFE5B2F2893D51F00E540B9 /* SecurityCodeViewModel.swift */; };
 		4422777226163748009626A0 /* Frames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; };
 		4422777326163748009626A0 /* Frames.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4422783E2616376E009626A0 /* CheckoutSdkIos.h in Headers */ = {isa = PBXBuildFile; fileRef = 442277E52616376E009626A0 /* CheckoutSdkIos.h */; };
@@ -213,12 +214,10 @@
 		9573239C286EF50F0068C115 /* CardUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732339286EF50F0068C115 /* CardUtilsTests.swift */; };
 		9573239D286EF50F0068C115 /* CorrelationIDGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573233B286EF50F0068C115 /* CorrelationIDGeneratorTests.swift */; };
 		9573239E286EF50F0068C115 /* FramesEventLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573233C286EF50F0068C115 /* FramesEventLoggerTests.swift */; };
-		9573239F286EF50F0068C115 /* ThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573233D286EF50F0068C115 /* ThemeTests.swift */; };
 		957323A0286EF50F0068C115 /* FramesLogEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573233E286EF50F0068C115 /* FramesLogEventTests.swift */; };
 		957323A1286EF50F0068C115 /* StubJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732340286EF50F0068C115 /* StubJSONDecoder.swift */; };
 		957323A2286EF50F0068C115 /* StubCheckoutAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732341286EF50F0068C115 /* StubCheckoutAPIService.swift */; };
 		957323A3286EF50F0068C115 /* MockThreeDSWKNavigationHelperFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732342286EF50F0068C115 /* MockThreeDSWKNavigationHelperFactory.swift */; };
-		957323A4286EF50F0068C115 /* StubTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732343286EF50F0068C115 /* StubTheme.swift */; };
 		957323A5286EF50F0068C115 /* StubFramesEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732344286EF50F0068C115 /* StubFramesEventLogger.swift */; };
 		957323A6286EF50F0068C115 /* BillingFormTextFieldCellMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732345286EF50F0068C115 /* BillingFormTextFieldCellMockDelegate.swift */; };
 		957323A7286EF50F0068C115 /* StubCorrelationIDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732346286EF50F0068C115 /* StubCorrelationIDGenerator.swift */; };
@@ -368,6 +367,7 @@
 /* Begin PBXFileReference section */
 		0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentFormConfiguration.swift; sourceTree = "<group>"; };
 		0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStyle.swift; sourceTree = "<group>"; };
+		0BFE5B2F2893D51F00E540B9 /* SecurityCodeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityCodeViewModel.swift; sourceTree = "<group>"; };
 		4422774726163716009626A0 /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4422775D26163748009626A0 /* Frames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Frames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4422775F26163748009626A0 /* Frames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Frames.h; sourceTree = "<group>"; };
@@ -567,12 +567,10 @@
 		95732339286EF50F0068C115 /* CardUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardUtilsTests.swift; sourceTree = "<group>"; };
 		9573233B286EF50F0068C115 /* CorrelationIDGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrelationIDGeneratorTests.swift; sourceTree = "<group>"; };
 		9573233C286EF50F0068C115 /* FramesEventLoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesEventLoggerTests.swift; sourceTree = "<group>"; };
-		9573233D286EF50F0068C115 /* ThemeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeTests.swift; sourceTree = "<group>"; };
 		9573233E286EF50F0068C115 /* FramesLogEventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesLogEventTests.swift; sourceTree = "<group>"; };
 		95732340286EF50F0068C115 /* StubJSONDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubJSONDecoder.swift; sourceTree = "<group>"; };
 		95732341286EF50F0068C115 /* StubCheckoutAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCheckoutAPIService.swift; sourceTree = "<group>"; };
 		95732342286EF50F0068C115 /* MockThreeDSWKNavigationHelperFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockThreeDSWKNavigationHelperFactory.swift; sourceTree = "<group>"; };
-		95732343286EF50F0068C115 /* StubTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubTheme.swift; sourceTree = "<group>"; };
 		95732344286EF50F0068C115 /* StubFramesEventLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubFramesEventLogger.swift; sourceTree = "<group>"; };
 		95732345286EF50F0068C115 /* BillingFormTextFieldCellMockDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormTextFieldCellMockDelegate.swift; sourceTree = "<group>"; };
 		95732346286EF50F0068C115 /* StubCorrelationIDGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubCorrelationIDGenerator.swift; sourceTree = "<group>"; };
@@ -994,6 +992,7 @@
 			isa = PBXGroup;
 			children = (
 				CBAA859428802C92000F6578 /* SecurityCodeView.swift */,
+				0BFE5B2F2893D51F00E540B9 /* SecurityCodeViewModel.swift */,
 				CB106191287726EE007322FE /* CardNumber */,
 				957321D3286EF4E80068C115 /* BillingFormSummaryView.swift */,
 				957321D4286EF4E80068C115 /* ExpiryDateView.swift */,
@@ -1498,7 +1497,6 @@
 			children = (
 				9573233B286EF50F0068C115 /* CorrelationIDGeneratorTests.swift */,
 				9573233C286EF50F0068C115 /* FramesEventLoggerTests.swift */,
-				9573233D286EF50F0068C115 /* ThemeTests.swift */,
 				9573233E286EF50F0068C115 /* FramesLogEventTests.swift */,
 			);
 			path = Logging;
@@ -1510,7 +1508,6 @@
 				95732340286EF50F0068C115 /* StubJSONDecoder.swift */,
 				95732341286EF50F0068C115 /* StubCheckoutAPIService.swift */,
 				95732342286EF50F0068C115 /* MockThreeDSWKNavigationHelperFactory.swift */,
-				95732343286EF50F0068C115 /* StubTheme.swift */,
 				95732344286EF50F0068C115 /* StubFramesEventLogger.swift */,
 				95732345286EF50F0068C115 /* BillingFormTextFieldCellMockDelegate.swift */,
 				95732346286EF50F0068C115 /* StubCorrelationIDGenerator.swift */,
@@ -2097,6 +2094,7 @@
 				957322DE286EF4E80068C115 /* DefaultBillingFormCityCellStyle.swift in Sources */,
 				957322D1286EF4E80068C115 /* ElementTextFieldStyle.swift in Sources */,
 				95732324286EF4E80068C115 /* Dispatching.swift in Sources */,
+				0BFE5B302893D51F00E540B9 /* SecurityCodeViewModel.swift in Sources */,
 				95732310286EF4E80068C115 /* UIBarStyle+stringValue.swift in Sources */,
 				957322B8286EF4E80068C115 /* PaymentFormStyle.swift in Sources */,
 				957322EF286EF4E80068C115 /* BillingFormPhoneNumberText.swift in Sources */,
@@ -2203,7 +2201,6 @@
 				957323A0286EF50F0068C115 /* FramesLogEventTests.swift in Sources */,
 				957323BA286EF50F0068C115 /* BillingFormViewControllerMockDelegate.swift in Sources */,
 				957323D6286EF50F0068C115 /* BillingFormSummaryViewTests.swift in Sources */,
-				957323A4286EF50F0068C115 /* StubTheme.swift in Sources */,
 				957323B7286EF50F0068C115 /* StubDateProvider.swift in Sources */,
 				CB10619828784821007322FE /* CardNumberViewModelTests.swift in Sources */,
 				957323E5286EF50F0068C115 /* CardViewTests.swift in Sources */,
@@ -2245,7 +2242,6 @@
 				957323AC286EF50F0068C115 /* StubDispatcher.swift in Sources */,
 				957323C3286EF50F0068C115 /* CountrySelectionViewControllerTests.swift in Sources */,
 				957323BD286EF50F0068C115 /* StubURLSession.swift in Sources */,
-				9573239F286EF50F0068C115 /* ThemeTests.swift in Sources */,
 				957323B8286EF50F0068C115 /* MockCardValidator.swift in Sources */,
 				957323E1286EF50F0068C115 /* ExpirationDatePickerTests.swift in Sources */,
 				957323B0286EF50F0068C115 /* MockThreeDSWKNavigationHelper.swift in Sources */,
