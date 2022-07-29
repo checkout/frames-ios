@@ -33,7 +33,7 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
   func validate(cardNumber rawText: String) -> Constants.Bundle.SchemeIcon? {
     let cardNumber = cardUtils.removeNonDigits(from: rawText)
 
-    switch cardValidator.validate(cardNumber: cardNumber) {
+    switch cardValidator.validateCompleteness(cardNumber: cardNumber) {
     case .failure:
         return nil
     // An unknown scheme can also be generated when an eager validation was matched

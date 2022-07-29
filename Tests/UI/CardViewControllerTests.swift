@@ -288,7 +288,7 @@ class CardViewControllerTests: XCTestCase {
                                                     billingDetailsState: .required)
 
         let stubCardValidator = MockCardValidator()
-        stubCardValidator.validateCardNumberToReturn = .success((true, .visa))
+        stubCardValidator.validateCardNumberToReturn = .success(.visa)
         stubCheckoutAPIService.cardValidatorToReturn = stubCardValidator
 
 
@@ -320,26 +320,6 @@ class CardViewControllerTests: XCTestCase {
         let nFadedCard = cardViewController.cardView.schemeIconsStackView.arrangedSubviews
             .filter { $0.alpha == 0.5}.count
         XCTAssertEqual(nFadedCard, 0)
-    }
-
-    func test_onTapDoneCardButton_checkoutAPIClientReturnsError_delegateCalledWithFailure() {
-
-        let stubCardViewControllerDelegate = StubCardViewControllerDelegate()
-        let cardViewController = CardViewController(checkoutAPIService: stubCheckoutAPIService,
-                                                    cardHolderNameState: .normal,
-                                                    billingDetailsState: .normal)
-
-        cardViewController.delegate = stubCardViewControllerDelegate
-        cardViewController.cardView.cardNumberInputView.textField.text = "4242 4242 4242 4242"
-        cardViewController.cardView.cvvInputView.textField.text = "123"
-        cardViewController.cardView.expirationDateInputView.textField.text = "01/23"
-
-        cardViewController.onTapDoneCardButton()
-
-        stubCheckoutAPIService.createTokenCalledWith?.completion(.failure(.networkError(.connectionLost)))
-
-        XCTAssertEqual(stubCardViewControllerDelegate.onTapDoneCalledWith?.controller, cardViewController)
-        XCTAssertEqual(stubCardViewControllerDelegate.onTapDoneCalledWith?.result, .failure(.networkError(.connectionLost)))
     }
 
     func test_viewDidLoad_paymentFormPresentedLogCalled() {

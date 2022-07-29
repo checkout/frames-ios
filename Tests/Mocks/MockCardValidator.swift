@@ -14,10 +14,17 @@ final class MockCardValidator: CardValidating {
         eagerValidateCardNumberCalledWith = cardNumber
         return eagerValidateCardNumberToReturn
     }
+    
+    var expectedValidateCompletenessResult: Result<ValidationScheme, ValidationError.CardNumber> = .failure(.invalidCharacters)
+    var receivedValidateCompletenessCardNumbers: [String] = []
+    func validateCompleteness(cardNumber: String) -> Result<CardValidating.ValidationScheme, ValidationError.CardNumber> {
+        receivedValidateCompletenessCardNumbers.append(cardNumber)
+        return expectedValidateCompletenessResult
+    }
 
-    var validateCardNumberToReturn: Result<ValidationScheme, ValidationError.CardNumber> = .success((true, .visa))
+    var validateCardNumberToReturn: Result<Card.Scheme, ValidationError.CardNumber> = .failure(.invalidCharacters)
     private(set) var validateCardNumberCalledWith: String?
-    func validate(cardNumber: String) -> Result<ValidationScheme, ValidationError.CardNumber> {
+    func validate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber> {
         validateCardNumberCalledWith = cardNumber
         return validateCardNumberToReturn
     }

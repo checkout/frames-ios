@@ -208,8 +208,8 @@ public class CardViewController: UIViewController,
         var cardScheme = Card.Scheme.unknown
         switch cardValidator.validate(cardNumber: cardNumber) {
         case .success(let scheme):
-            if availableSchemes.contains(where: { scheme.scheme == $0 }) {
-                cardScheme = scheme.scheme
+            if availableSchemes.contains(where: { scheme == $0 }) {
+                cardScheme = scheme
             } else {
                 let message = "cardTypeNotAccepted".localized(forClass: CardViewController.self)
                 cardView.cardNumberInputView.showError(message: message)
@@ -294,7 +294,7 @@ public class CardViewController: UIViewController,
         switch cardValidator.validate(cardNumber: cardNumber) {
         case .success(let scheme):
             print(scheme)
-            switch cardValidator.validate(cvv: cvv, cardScheme: scheme.scheme) {
+            switch cardValidator.validate(cvv: cvv, cardScheme: scheme) {
             case .success:
                 print("success")
             case .failure(let error):
@@ -379,7 +379,7 @@ public class CardViewController: UIViewController,
         }
 
         let cardNumberStandardized = cardUtils.removeNonDigits(from: cardNumber)
-        let scheme = (try? checkoutAPIService?.cardValidator.validate(cardNumber: cardNumberStandardized).get().scheme) ?? .unknown
+        let scheme = (try? checkoutAPIService?.cardValidator.validate(cardNumber: cardNumberStandardized).get()) ?? .unknown
         cardView.cvvInputView.scheme = scheme
     }
 
