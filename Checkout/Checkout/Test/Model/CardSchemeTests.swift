@@ -38,9 +38,9 @@ class CardSchemeTests: XCTestCase {
     Card.Scheme.allCases.forEach { scheme in
       switch scheme {
       case .unknown:
-        XCTAssertNil(scheme.cvvLength)
+        XCTAssertEqual(scheme.cvvLengths, [0, 3, 4])
       case .americanExpress:
-        XCTAssertEqual(scheme.cvvLength, 4)
+        XCTAssertEqual(scheme.cvvLengths, [4])
       case .visa,
         .mada,
         .mastercard,
@@ -48,7 +48,7 @@ class CardSchemeTests: XCTestCase {
         .discover,
         .dinersClub,
         .jcb:
-        XCTAssertEqual(scheme.cvvLength, 3)
+        XCTAssertEqual(scheme.cvvLengths, [3])
       }
     }
   }
