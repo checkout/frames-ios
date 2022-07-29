@@ -19,6 +19,10 @@ public protocol CVVValidating {
 
 final class CVVValidator: CVVValidating {
     
+    private enum Constants {
+        static let fallbackMaximumCVVLength = 4
+    }
+    
   func validate(
     cvv: String,
     cardScheme: Card.Scheme
@@ -37,7 +41,7 @@ final class CVVValidator: CVVValidating {
     }
     
     func maxLengthCVV(for scheme: Card.Scheme) -> Int {
-        scheme.cvvLengths.max() ?? 4
+        scheme.cvvLengths.max() ?? Constants.fallbackMaximumCVVLength
     }
 
   // MARK: - Private
