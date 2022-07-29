@@ -23,7 +23,7 @@ final class SecurityCodeViewModel {
 
     init(cardValidator: CardValidating) {
         self.cardValidator = cardValidator
-        inputMaxLength = cardValidator.maxLenghtCVV(for: .unknown)
+        inputMaxLength = cardValidator.maxLengthCVV(for: .unknown)
     }
 
     func updateScheme(to newScheme: Card.Scheme) {
@@ -31,7 +31,7 @@ final class SecurityCodeViewModel {
             return
         }
         self.scheme = newScheme
-        inputMaxLength = cardValidator.maxLenghtCVV(for: newScheme)
+        inputMaxLength = cardValidator.maxLengthCVV(for: newScheme)
         updateInput(to: cvv)
         delegate?.schemeChanged()
     }

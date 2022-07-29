@@ -52,13 +52,13 @@ final class CVVValidatorTests: XCTestCase {
 
   func testValidateCVVIncorrectLengthReturnsCorrectError() {
     Card.Scheme.allCases.forEach { scheme in
-      for lenght in scheme.cvvLengths {
+      for length in scheme.cvvLengths {
         // Check too short
-        guard lenght > 0 else {
+        guard length > 0 else {
           return
         }
 
-        let shortCVV = String((0..<(lenght - 1)).map { _ in "0123456789".randomElement()! })
+        let shortCVV = String((0..<(length - 1)).map { _ in "0123456789".randomElement()! })
         let tooShortResult = subject.validate(
           cvv: shortCVV,
           cardScheme: scheme)
@@ -71,7 +71,7 @@ final class CVVValidatorTests: XCTestCase {
         }
 
         // Check too long
-        let longCVV = String((0..<(lenght + 1)).map { _ in "0123456789".randomElement()! })
+        let longCVV = String((0..<(length + 1)).map { _ in "0123456789".randomElement()! })
         let tooLongResult = subject.validate(
           cvv: longCVV,
           cardScheme: scheme)

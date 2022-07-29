@@ -41,7 +41,7 @@ final class StubCardValidator: CardValidating {
     true
   }
     
-  func maxLenghtCVV(for scheme: Card.Scheme) -> Int {
+  func maxLengthCVV(for scheme: Card.Scheme) -> Int {
     3
   }
 

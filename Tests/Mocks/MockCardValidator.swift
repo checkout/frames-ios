@@ -39,7 +39,7 @@ final class MockCardValidator: CardValidating {
         validateCVVCalledWith = (cvv, cardScheme)
         return validateCVVToReturn
     }
-    func maxLenghtCVV(for scheme: Card.Scheme) -> Int {
+    func maxLengthCVV(for scheme: Card.Scheme) -> Int {
         maxLenghtCVVCalledWith.append(scheme)
         return expectedMaxLenghtCVV
     }

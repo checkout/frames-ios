@@ -22,7 +22,7 @@ extension Card {
   public enum Scheme: String, CaseIterable, CustomStringConvertible {
       
     private enum Constants {
-      static let validCVVLenghtsUnknownScheme = [0, 3, 4]
+      static let validCVVLengthsUnknownScheme = [0, 3, 4]
     }
       
     case unknown
@@ -119,7 +119,7 @@ extension Card {
     var cvvLengths: [Int] {
       switch self {
       case .unknown:
-        return Constants.validCVVLenghtsUnknownScheme
+        return Constants.validCVVLengthsUnknownScheme
       case .americanExpress:
         return [4]
       case .visa,

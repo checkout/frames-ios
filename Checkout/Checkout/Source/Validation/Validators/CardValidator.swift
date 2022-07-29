@@ -165,13 +165,13 @@ public class CardValidator: CardValidating {
   }
     
   /**
-   Checks what the maximum CVV lenght is for a given scaheme.
+   Checks what the maximum CVV length is for a given scaheme.
    - Parameters:
        - scheme: The scheme against which the request is made
-   - Returns: The maximum lenght for input for it to be valid
+   - Returns: The maximum length for input for it to be valid
    */
-  public func maxLenghtCVV(for scheme: Card.Scheme) -> Int {
-    cvvValidator.maxLenghtCVV(for: scheme)
+  public func maxLengthCVV(for scheme: Card.Scheme) -> Int {
+    cvvValidator.maxLengthCVV(for: scheme)
   }
 
   public func validate(_ card: Card) -> ValidationResult<ValidationError.Card> {

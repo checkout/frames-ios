@@ -12,9 +12,9 @@ final class StubCVVValidator: CVVValidating {
   private(set) var validateCalledWith: (cvv: String, cardScheme: Card.Scheme)?
 
   var isValidCVVResult = false
-  var maxLenghtCVVResult = 3
+  var maxLengthCVVResult = 3
   var receivedIsValidCVV: [(String, Card.Scheme)] = []
-  var receivedMaxLenghtCVV: [Card.Scheme] = []
+  var receivedMaxLengthCVV: [Card.Scheme] = []
 
   func validate(
     cvv: String,
@@ -29,8 +29,8 @@ final class StubCVVValidator: CVVValidating {
     return isValidCVVResult
   }
 
-  func maxLenghtCVV(for scheme: Card.Scheme) -> Int {
-    receivedMaxLenghtCVV.append(scheme)
-    return maxLenghtCVVResult
+  func maxLengthCVV(for scheme: Card.Scheme) -> Int {
+    receivedMaxLengthCVV.append(scheme)
+    return maxLengthCVVResult
   }
 }
