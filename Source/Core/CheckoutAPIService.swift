@@ -25,7 +25,7 @@ public final class CheckoutAPIService: CheckoutAPIProtocol {
         let checkoutAPIService = Checkout.CheckoutAPIService(publicKey: publicKey, environment: environment.checkoutEnvironment)
         let cardValidator = CardValidator(environment: environment.checkoutEnvironment)
         let logger = FramesEventLogger(environment: environment, getCorrelationID: { checkoutAPIService.correlationID })
-        
+
         self.checkoutAPIService = checkoutAPIService
         self.cardValidator = cardValidator
         self.logger = logger

@@ -12,7 +12,7 @@ public struct PaymentFormConfiguration {
     let environment: Environment
     let supportedSchemes: [Card.Scheme]
     let billingFormData: BillingForm?
-    
+
     /**
      Create a configuration for the Payment form
      

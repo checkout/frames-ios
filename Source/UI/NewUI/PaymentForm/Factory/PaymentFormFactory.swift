@@ -4,7 +4,7 @@ import Checkout
 public typealias Card = Checkout.Card
 
 public struct PaymentFormFactory {
-    
+
   // Persist in memory the correlation ID
   internal static var sessionCorrelationID = ""
 
@@ -22,6 +22,7 @@ public struct PaymentFormFactory {
                                             supportedSchemes: configuration.supportedSchemes)
 
     let viewController = PaymentViewController(viewModel: viewModel)
+    logger.log(.paymentFormInitialised(environment: configuration.environment))
     if #available(iOS 13.0, *) {
       viewController.isModalInPresentation = true
     }

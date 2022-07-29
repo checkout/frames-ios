@@ -10,7 +10,7 @@ import Foundation
 public struct PaymentStyle {
     let paymentFormStyle: PaymentFormStyle
     let billingFormStyle: BillingFormStyle
-    
+
     /**
      Define the payment form UI Styling
      
@@ -23,5 +23,5 @@ public struct PaymentStyle {
         self.paymentFormStyle = paymentFormStyle
         self.billingFormStyle = billingFormStyle
     }
-    
+
 }
