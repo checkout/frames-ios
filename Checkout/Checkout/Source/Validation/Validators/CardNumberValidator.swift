@@ -10,7 +10,8 @@ import Foundation
 public protocol CardNumberValidating {
   typealias ValidationScheme = (isComplete: Bool, scheme: Card.Scheme)
   func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.EagerCardNumber>
-  func validate(cardNumber: String) -> Result<ValidationScheme, ValidationError.CardNumber>
+  func validate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber>
+  func validateCompleteness(cardNumber: String) -> Result<ValidationScheme, ValidationError.CardNumber>
 }
 
 final class CardNumberValidator: CardNumberValidating {
@@ -20,7 +21,11 @@ final class CardNumberValidator: CardNumberValidating {
     self.luhnChecker = luhnChecker
   }
 
-  func validate(cardNumber: String) -> Result<ValidationScheme, ValidationError.CardNumber> {
+  func validate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber> {
+    return validateCompleteness(cardNumber: cardNumber).map(\.scheme)
+  }
+    
+  func validateCompleteness(cardNumber: String) -> Result<ValidationScheme, ValidationError.CardNumber> {
     let cardNumber = cardNumber.filter { !$0.isWhitespace }
 
     guard validateDigitsOnly(in: cardNumber) else {
