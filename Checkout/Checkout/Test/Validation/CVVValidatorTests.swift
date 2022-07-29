@@ -54,20 +54,18 @@ final class CVVValidatorTests: XCTestCase {
     Card.Scheme.allCases.forEach { scheme in
       for length in scheme.cvvLengths {
         // Check too short
-        guard length > 0 else {
-          return
-        }
+        if length > 0 {
+          let shortCVV = String((0..<(length - 1)).map { _ in "0123456789".randomElement()! })
+          let tooShortResult = subject.validate(
+            cvv: shortCVV,
+            cardScheme: scheme)
 
-        let shortCVV = String((0..<(length - 1)).map { _ in "0123456789".randomElement()! })
-        let tooShortResult = subject.validate(
-          cvv: shortCVV,
-          cardScheme: scheme)
-
-        switch tooShortResult {
-        case .success:
-          XCTFail("Unexpected successful CVV validation.")
-        case .failure(let error):
-          XCTAssertEqual(error, .invalidLength)
+          switch tooShortResult {
+          case .success:
+            XCTFail("Unexpected successful CVV validation.")
+          case .failure(let error):
+            XCTAssertEqual(error, .invalidLength)
+          }
         }
 
         // Check too long
