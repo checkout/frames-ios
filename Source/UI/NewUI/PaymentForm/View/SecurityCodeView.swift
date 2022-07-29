@@ -82,7 +82,7 @@ extension SecurityCodeView: TextFieldViewDelegate {
   }
 }
 
-extension SecurityCodeView: SecurityCodeDelegate {
+extension SecurityCodeView: SecurityCodeViewModelDelegate {
 
     func schemeChanged() {
         let isInputValid = viewModel.isInputValid || viewModel.cvv.isEmpty

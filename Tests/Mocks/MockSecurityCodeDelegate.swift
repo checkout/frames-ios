@@ -8,7 +8,7 @@
 @testable import Frames
 import XCTest
 
-class MockSecurityCodeDelegate: SecurityCodeDelegate {
+class MockSecurityCodeDelegate: SecurityCodeViewModelDelegate {
     
     var schemeChangedCompletion = { XCTFail("Not setup to happen") }
     

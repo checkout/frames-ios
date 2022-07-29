@@ -7,13 +7,13 @@
 
 import Checkout
 
-protocol SecurityCodeDelegate: AnyObject {
+protocol SecurityCodeViewModelDelegate: AnyObject {
     func schemeChanged()
 }
 
 final class SecurityCodeViewModel {
 
-    weak var delegate: SecurityCodeDelegate?
+    weak var delegate: SecurityCodeViewModelDelegate?
 
     private(set) var inputMaxLength: Int
     private(set) var cvv = ""
