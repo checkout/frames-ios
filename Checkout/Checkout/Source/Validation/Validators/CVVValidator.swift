@@ -33,7 +33,7 @@ final class CVVValidator: CVVValidating {
   }
     
     func isValid(cvv: String, for scheme: Card.Scheme) -> Bool {
-        return validate(cvv: cvv, cardScheme: scheme) == .success
+        validate(cvv: cvv, cardScheme: scheme) == .success
     }
     
     func maxLengthCVV(for scheme: Card.Scheme) -> Int {
