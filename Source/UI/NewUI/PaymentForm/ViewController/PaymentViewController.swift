@@ -19,7 +19,6 @@ final class PaymentViewController: UIViewController {
 
   // MARK: - UI properties
 
-  // TODO: Replace it with new header
   private lazy var headerView: PaymentHeaderView = {
     PaymentHeaderView().disabledAutoresizingIntoConstraints()
   }()
@@ -27,13 +26,14 @@ final class PaymentViewController: UIViewController {
   private lazy var scrollView: UIScrollView = {
     let scrollView = UIScrollView().disabledAutoresizingIntoConstraints()
     scrollView.keyboardDismissMode = .onDrag
+    scrollView.delegate = self
     return scrollView
   }()
 
   private lazy var stackView: UIStackView = {
     let view = UIStackView().disabledAutoresizingIntoConstraints()
     view.axis = .vertical
-    view.spacing = 20
+    view.spacing = Constants.Padding.l.rawValue
     return view
   }()
 
@@ -96,6 +96,7 @@ final class PaymentViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationController?.setNavigationBarHidden(false, animated: animated)
+
     setUpKeyboard()
     viewModel.viewControllerWillAppear()
   }
@@ -105,7 +106,12 @@ final class PaymentViewController: UIViewController {
   }
 
   private func setupNavigationBar() {
-    customizeNavigationBarAppearance(color: viewModel.paymentFormStyle?.headerView.backgroundColor ?? .white)
+    let backgroundColor = viewModel.paymentFormStyle?.headerView.backgroundColor ?? .white
+    let titleColor = viewModel.paymentFormStyle?.headerView.headerLabel?.textColor ?? .black
+
+    let titleFont = viewModel.paymentFormStyle?.headerView.headerLabel?.font ?? UIFont.systemFont(ofSize: Constants.defaultNavigationHeaderFontSize)
+    customizeNavigationBarAppearance(color: backgroundColor, titleColor: titleColor, font: titleFont)
+
     navigationController?.navigationBar.tintColor = viewModel.paymentFormStyle?.headerView.headerLabel?.textColor
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: Constants.Bundle.Images.leftArrow.image, style: .plain, target: self, action: #selector(popViewController))
   }
@@ -119,7 +125,7 @@ final class PaymentViewController: UIViewController {
     var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
     keyboardFrame = view.convert(keyboardFrame, from: nil)
     var contentInset: UIEdgeInsets = scrollView.contentInset
-    contentInset.bottom = keyboardFrame.size.height + 20
+    contentInset.bottom = keyboardFrame.size.height + Constants.Padding.l.rawValue
     updateScrollViewInset(to: contentInset, from: notification)
   }
 
@@ -150,6 +156,7 @@ final class PaymentViewController: UIViewController {
 extension PaymentViewController {
   private func setupViewModel() {
     delegate = self.viewModel as? PaymentViewControllerDelegate
+    updateBackgroundViews()
     setupAddBillingDetailsViewClosure()
     setupEditBillingSummaryViewClosure()
     setupExpiryDateViewClosure()
@@ -206,6 +213,11 @@ extension PaymentViewController {
     }
   }
 
+  private func updateBackgroundViews() {
+    view.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
+    stackView.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
+  }
+
   private func updateCardNumber() {
     guard let style = viewModel.paymentFormStyle?.cardNumber else { return }
     cardNumberView.update(style: style)
@@ -257,22 +269,27 @@ extension PaymentViewController {
     stackView.addArrangedSubview(securityCodeView)
     stackView.addArrangedSubview(addBillingFormButtonView)
     stackView.addArrangedSubview(billingFormSummaryView)
+    stackView.layoutMargins = UIEdgeInsets(top: 0,
+                                           left: Constants.Padding.l.rawValue,
+                                           bottom: Constants.Padding.l.rawValue,
+                                           right: Constants.Padding.l.rawValue)
+    stackView.isLayoutMarginsRelativeArrangement = true
   }
 
   func setupScrollView() {
     view.addSubview(scrollView)
     NSLayoutConstraint.activate([
-      scrollView.topAnchor.constraint(equalTo: view.safeTopAnchor),
-      scrollView.leadingAnchor.constraint(equalTo: view.safeLeadingAnchor),
-      scrollView.trailingAnchor.constraint(equalTo: view.safeTrailingAnchor),
+      scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+      scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       scrollView.bottomAnchor.constraint(equalTo: view.safeBottomAnchor)
     ])
   }
 
   func setupStackView() {
     scrollView.addSubview(stackView)
-    stackView.setupConstraintEqualTo(view: scrollView, constant: Constants.Padding.l.rawValue)
-    stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -Constants.Padding.xxxl.rawValue).isActive = true
+    stackView.setupConstraintEqualTo(view: scrollView)
+    stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
   }
 }
 
@@ -308,4 +325,22 @@ extension PaymentViewController: CardNumberViewModelDelegate {
     func schemeUpdatedEagerly(to newScheme: Card.Scheme) {
       securityCodeView.updateCardScheme(cardScheme: newScheme)
     }
+}
+
+extension PaymentViewController: UIScrollViewDelegate {
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    var contentOffsetY = scrollView.contentOffset.y
+
+    if #available(iOS 11.0, *) {
+      contentOffsetY += scrollView.adjustedContentInset.top
+    }
+
+    if headerView.frame.maxY > 0, contentOffsetY > headerView.frame.maxY / 2 {
+      title = viewModel.paymentFormStyle?.headerView.headerLabel?.text
+      scrollView.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
+    } else {
+      title = nil
+      scrollView.backgroundColor = viewModel.paymentFormStyle?.headerView.backgroundColor
+    }
+  }
 }

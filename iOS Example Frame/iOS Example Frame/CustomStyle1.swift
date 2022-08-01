@@ -28,6 +28,7 @@ private enum Constants {
 // MARK: - Main Payment Form
 
 struct PaymentFormStyleCustom1: PaymentFormStyle {
+  var backgroundColor: UIColor = Constants.whiteBackgroundColor
   var headerView: PaymentHeaderCellStyle = PaymentHeaderCellStyleCustom1()
   var addBillingSummary: CellButtonStyle?
   var editBillingSummary: BillingSummaryViewStyle? = EditBillingSummaryStyleCustom1()
@@ -41,8 +42,8 @@ struct PaymentFormStyleCustom1: PaymentFormStyle {
 struct PaymentHeaderCellStyleCustom1: PaymentHeaderCellStyle {
   var backgroundColor = Constants.redBackgroundColor
   var headerLabel: ElementStyle? = HeaderLabelFormStyleCustom1(text: "Payment details")
-  public var subtitleLabel: ElementStyle? = TitleLabelStyleCustom1(text: "Visa, Mastercard and American Express accepted.")
-  public var schemeIcons: [UIImage?]? = [
+  public var subtitleLabel: ElementStyle? = nil
+  public var schemeIcons: [UIImage?] = [
     UIImage(named: "visa-icon"),
     UIImage(named: "mastercard-icon"),
     UIImage(named: "amex-icon")]

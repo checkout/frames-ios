@@ -55,11 +55,12 @@ extension UIViewController {
 }
 
 extension UIViewController {
-  func customizeNavigationBarAppearance(color: UIColor) {
+  func customizeNavigationBarAppearance(color: UIColor, titleColor: UIColor, font: UIFont) {
         if #available(iOS 15.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = color
+            appearance.titleTextAttributes = [.foregroundColor: titleColor, .font: font]
             appearance.shadowColor = .clear
             appearance.shadowImage = UIImage()
             navigationController?.navigationBar.standardAppearance = appearance
