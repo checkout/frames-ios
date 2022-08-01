@@ -1,6 +1,7 @@
-import Foundation
+import UIKit
 
 public struct DefaultPaymentFormStyle: PaymentFormStyle {
+    public var backgroundColor: UIColor = .white
     public var headerView: PaymentHeaderCellStyle = DefaultPaymentHeaderCellStyle()
     public var editBillingSummary: BillingSummaryViewStyle? = DefaultBillingSummaryViewStyle()
     public var addBillingSummary: CellButtonStyle? = DefaultAddBillingDetailsViewStyle()

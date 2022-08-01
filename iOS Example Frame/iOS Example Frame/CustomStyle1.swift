@@ -28,6 +28,7 @@ private enum Constants {
 // MARK: - Main Payment Form
 
 struct PaymentFormStyleCustom1: PaymentFormStyle {
+  var backgroundColor: UIColor = Constants.whiteBackgroundColor
   var headerView: PaymentHeaderCellStyle = PaymentHeaderCellStyleCustom1()
   var addBillingSummary: CellButtonStyle?
   var editBillingSummary: BillingSummaryViewStyle? = EditBillingSummaryStyleCustom1()
