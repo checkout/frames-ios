@@ -62,7 +62,8 @@ final class CardValidatorTests: XCTestCase {
   }
 
   func test_expiryDate_previousMonth() {
-    let currentDate = Date()
+    let utc12SecondOffset: Double = 60 * 60 * 12
+    let currentDate = Date(timeInterval: -utc12SecondOffset, since: Date())
     guard let previousMonth = calendar.date(byAdding: .month, value: calendar.component(.day, from: currentDate) > 15 ? -2 : -1, to: currentDate) else {
       XCTFail("could not build next month date")
       return
