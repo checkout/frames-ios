@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import Checkout
+@testable import Checkout
 
 final class CardValidatorTests: XCTestCase {
   private let subject = CardValidator(environment: .sandbox)
@@ -62,14 +62,16 @@ final class CardValidatorTests: XCTestCase {
   }
 
   func test_expiryDate_previousMonth() {
-    let currentDate = Date()
-    guard let previousMonth = calendar.date(byAdding: .month, value: calendar.component(.day, from: currentDate) > 15 ? -2 : -1, to: currentDate) else {
-      XCTFail("could not build next month date")
-      return
-    }
+    let formatter = DateFormatter()
+    formatter.timeZone = TimeZone.utcMinus12
+    formatter.dateFormat = "yyyy-MM-dd"
+      
+    let testDateString = formatter.string(from: Date())
+    var testDate = formatter.date(from: testDateString)!
+    testDate = calendar.date(byAdding: .month, value: -1, to: testDate)!
 
-    let month = calendar.component(.month, from: previousMonth)
-    let year = calendar.component(.year, from: previousMonth)
+    let month = calendar.component(.month, from: testDate)
+    let year = calendar.component(.year, from: testDate)
 
     let result = subject.validate(expiryMonth: month, expiryYear: year)
 
