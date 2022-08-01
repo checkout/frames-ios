@@ -8,8 +8,28 @@
 import Foundation
 
 public protocol CardNumberValidating {
+  typealias ValidationScheme = (isComplete: Bool, scheme: Card.Scheme)
+    
+  /// Run a validation on an input that is known to be incomplete
+  ///
+  /// - Parameters:
+  ///   - cardNumber: incomplete card number to be verified if matching a Card Scheme
+  /// - Returns: Result with a card scheme if matched or a matching error otherwise
   func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.EagerCardNumber>
+
+  /// Run a validation on an input that is expected to be a card number
+  ///
+  /// - Parameters:
+  ///   - cardNumber: complete card number to be verified if matching a Card Scheme
+  /// - Returns: Result with a card scheme if matched or a matching error otherwise
   func validate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber>
+    
+  /// Run a validation on an input that is expected to match a card number but unknown whether complete or not
+  ///
+  /// - Parameters:
+  ///   - cardNumber: incomplete card number to be verified if matching a Card Scheme
+  /// - Returns:  ValidationScheme if successful. This will contain the scheme matched and a boolean to describe if input is complete card number or partial.  ValidationError if a scheme could not be matched
+  func validateCompleteness(cardNumber: String) -> Result<ValidationScheme, ValidationError.CardNumber>
 }
 
 final class CardNumberValidator: CardNumberValidating {
@@ -20,6 +40,10 @@ final class CardNumberValidator: CardNumberValidating {
   }
 
   func validate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber> {
+    return validateCompleteness(cardNumber: cardNumber).map(\.scheme)
+  }
+    
+  func validateCompleteness(cardNumber: String) -> Result<ValidationScheme, ValidationError.CardNumber> {
     let cardNumber = cardNumber.filter { !$0.isWhitespace }
 
     guard validateDigitsOnly(in: cardNumber) else {
@@ -28,12 +52,11 @@ final class CardNumberValidator: CardNumberValidating {
 
     switch cardTypeMatch(cardNumber, \.fullCardNumberRegex) {
     case .some(let fullMatch):
-
-      let cardScheme = luhnChecker.luhnCheck(cardNumber: cardNumber) ? fullMatch : .unknown
-      return .success(cardScheme)
+      let isValidNumber = luhnChecker.luhnCheck(cardNumber: cardNumber)
+      let cardScheme = isValidNumber ? fullMatch : .unknown
+        return .success((isComplete: isValidNumber, scheme: cardScheme))
     case .none:
-
-      return .success(.unknown)
+      return .success((isComplete: false, scheme: .unknown))
     }
   }
 

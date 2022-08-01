@@ -50,90 +50,49 @@ final class CVVValidatorTests: XCTestCase {
     }
   }
 
-  func test_validateCVV_correctLength_returnsCorrectError() {
+  func testValidateCVVIncorrectLengthReturnsCorrectError() {
     Card.Scheme.allCases.forEach { scheme in
-      guard let cvvLength = scheme.cvvLength else {
-        return
-      }
+      for length in scheme.cvvLengths where scheme != .unknown {
+        // Check too short
+        let shortCVV = String((0..<(length - 1)).map { _ in "0123456789".randomElement()! })
+        let tooShortResult = subject.validate(
+          cvv: shortCVV,
+          cardScheme: scheme)
 
-      let cvv = String((0..<cvvLength).map { _ in "0123456789".randomElement()! })
-      let result = subject.validate(
-        cvv: cvv,
-        cardScheme: scheme)
+        switch tooShortResult {
+        case .success:
+          XCTFail("Unexpected successful CVV validation.")
+        case .failure(let error):
+          XCTAssertEqual(error, .invalidLength)
+        }
 
-      switch result {
-      case .success:
-        break
-      case .failure(let error):
-        XCTFail(error.localizedDescription)
+        // Check too long
+        let longCVV = String((0..<(length + 1)).map { _ in "0123456789".randomElement()! })
+        let tooLongResult = subject.validate(
+          cvv: longCVV,
+          cardScheme: scheme)
+
+        switch tooLongResult {
+        case .success:
+          XCTFail("Unexpected successful CVV validation.")
+        case .failure(let error):
+          XCTAssertEqual(error, .invalidLength)
+        }
       }
     }
   }
-
-  func test_validateCVV_cardSchemeUnknown_incorrectLength_returnsCorrectError() {
-    let cardScheme = Card.Scheme.unknown
-
-    var result = subject.validate(
-      cvv: "12",
-      cardScheme: cardScheme)
-
-    switch result {
-    case .success:
-      XCTFail("Unexpected successful CVV validation.")
-    case .failure(let error):
-      XCTAssertEqual(error, .invalidLength)
+      
+    func testUnknownSchemeLenghtsAndValidations() {
+        let scheme = Card.Scheme.unknown
+        XCTAssertEqual(scheme.cvvLengths, [0, 3, 4])
+        
+        let validator = CVVValidator()
+        
+        XCTAssertEqual(validator.validate(cvv: "", cardScheme: scheme), .success)
+        XCTAssertEqual(validator.validate(cvv: "1", cardScheme: scheme), .failure(.invalidLength))
+        XCTAssertEqual(validator.validate(cvv: "12", cardScheme: scheme), .failure(.invalidLength))
+        XCTAssertEqual(validator.validate(cvv: "123", cardScheme: scheme), .success)
+        XCTAssertEqual(validator.validate(cvv: "1234", cardScheme: scheme), .success)
+        XCTAssertEqual(validator.validate(cvv: "12345", cardScheme: scheme), .failure(.invalidLength))
     }
-
-    result = subject.validate(
-      cvv: "12345",
-      cardScheme: cardScheme)
-
-    switch result {
-    case .success:
-      XCTFail("Unexpected successful CVV validation.")
-    case .failure(let error):
-      XCTAssertEqual(error, .invalidLength)
-    }
-  }
-
-
-  func test_validateCVV_incorrectLength_returnsCorrectError() {
-    // Too short
-    Card.Scheme.allCases.forEach { scheme in
-      guard let cvvLength = scheme.cvvLength else {
-        return
-      }
-
-      let cvv = String((0..<(cvvLength - 1)).map { _ in "0123456789".randomElement()! })
-      let result = subject.validate(
-        cvv: cvv,
-        cardScheme: scheme)
-
-      switch result {
-      case .success:
-        XCTFail("Unexpected successful CVV validation.")
-      case .failure(let error):
-        XCTAssertEqual(error, .invalidLength)
-      }
-    }
-
-    // Too long
-    Card.Scheme.allCases.forEach { scheme in
-      guard let cvvLength = scheme.cvvLength else {
-        return
-      }
-
-      let cvv = String((0..<(cvvLength + 1)).map { _ in "0123456789".randomElement()! })
-      let result = subject.validate(
-        cvv: cvv,
-        cardScheme: scheme)
-
-      switch result {
-      case .success:
-        XCTFail("Unexpected successful CVV validation.")
-      case .failure(let error):
-        XCTAssertEqual(error, .invalidLength)
-      }
-    }
-  }
 }

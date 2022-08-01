@@ -24,12 +24,25 @@ final class StubCardValidator: CardValidating {
     validateCardNumberCalledWith = cardNumber
     return validateCardNumberToReturn
   }
+    
+  var validateCompletenessCardNumberToReturnResult: Result<CardValidating.ValidationScheme, ValidationError.CardNumber> = .success((true, .visa))
+  func validateCompleteness(cardNumber: String) -> Result<CardValidating.ValidationScheme, ValidationError.CardNumber> {
+    return validateCompletenessCardNumberToReturnResult
+  }
 
   var validateCVVToReturn: ValidationResult<ValidationError.CVV> = .success
   private(set) var validateCVVCalledWith: (cvv: String, cardScheme: Card.Scheme)?
   func validate(cvv: String, cardScheme: Card.Scheme) -> ValidationResult<ValidationError.CVV> {
     validateCVVCalledWith = (cvv, cardScheme)
     return validateCVVToReturn
+  }
+
+  func isValid(cvv: String, for scheme: Card.Scheme) -> Bool {
+    true
+  }
+    
+  func maxLengthCVV(for scheme: Card.Scheme) -> Int {
+    3
   }
 
   var validateExpiryStringToReturn: Result<ExpiryDate, ValidationError.ExpiryDate> = .success(

@@ -14,9 +14,6 @@ protocol SecurityCodeViewDelegate: AnyObject {
 
 public final class SecurityCodeView: UIView {
   weak var delegate: SecurityCodeViewDelegate?
-  private let maxSecurityCodeCount = 4
-  private let cardValidator: CardValidator
-  private(set) var supportedScheme: Card.Scheme = .unknown
   private(set) var style: CellTextFieldStyle?
 
   private(set) lazy var codeInputView: InputView = {
@@ -25,10 +22,13 @@ public final class SecurityCodeView: UIView {
     return view
   }()
 
-  init(cardValidator: CardValidator) {
-    self.cardValidator = cardValidator
+  private let viewModel: SecurityCodeViewModel
+
+  init(viewModel: SecurityCodeViewModel) {
+    self.viewModel = viewModel
     super.init(frame: .zero)
 
+    viewModel.delegate = self
     // setup security code view
     addSubview(codeInputView)
     codeInputView.setupConstraintEqualTo(view: self)
@@ -41,34 +41,19 @@ public final class SecurityCodeView: UIView {
   func update(style: CellTextFieldStyle?) {
     self.style = style
     self.style?.textfield.isSupportingNumericKeyboard = true
-    if !validateSecurityCode(with: self.style?.textfield.text) {
-      self.style?.textfield.text = ""
-    }
+    viewModel.updateInput(to: self.style?.textfield.text)
+    self.style?.textfield.text = viewModel.isInputValid ? viewModel.cvv : ""
     codeInputView.update(style: self.style)
   }
 
-  // TODO: integrate with payment vc when card view is finished
   func updateCardScheme(cardScheme: Card.Scheme) {
-    supportedScheme = cardScheme
+      viewModel.updateScheme(to: cardScheme)
   }
 
   private func updateErrorViewStyle(isHidden: Bool, textfieldText: String?) {
     style?.error?.isHidden = isHidden
-    style?.textfield.text = textfieldText ?? ""
+    style?.textfield.text = viewModel.cvv
     codeInputView.update(style: style)
-  }
-
-  func validateSecurityCode(with text: String?) -> Bool {
-    guard let text = text?.filter({ !$0.isWhitespace }), !text.isEmpty, Int(text) != nil else {
-      return false
-    }
-    switch cardValidator.validate(cvv: text, cardScheme: supportedScheme) {
-      case .success:
-        delegate?.update(securityCode: text)
-        return true
-      case .failure:
-        return false
-    }
   }
 }
 
@@ -76,21 +61,32 @@ extension SecurityCodeView: TextFieldViewDelegate {
   func textFieldShouldBeginEditing(textField: UITextField) {}
   func textFieldShouldReturn() -> Bool {  return true }
   func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
-    let isValid = validateSecurityCode(with: textField.text)
-    updateErrorViewStyle(isHidden: isValid, textfieldText: textField.text)
+    viewModel.updateInput(to: textField.text)
+    updateErrorViewStyle(isHidden: viewModel.isInputValid, textfieldText: textField.text)
     return true
   }
 
   func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
     codeInputView.textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
+    viewModel.updateInput(to: textField.text)
+    delegate?.update(securityCode: viewModel.cvv)
   }
 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     updateErrorViewStyle(isHidden: true, textfieldText: textField.text)
-    guard range.location < maxSecurityCodeCount else { return false }
-    // Enable deleting of text
-    if string.isEmpty { return true }
-    // Prevent non numeric input from being inserted
-    return Int(string) != nil
+    if range.location >= viewModel.inputMaxLength && !string.isEmpty {
+      return false
+    }
+    // Enable deleting of text & ensure only numbers are accepted
+    return string.isEmpty || Int(string) != nil
   }
+}
+
+extension SecurityCodeView: SecurityCodeViewModelDelegate {
+
+    func schemeChanged() {
+        let isInputValid = viewModel.isInputValid || viewModel.cvv.isEmpty
+        updateErrorViewStyle(isHidden: isInputValid, textfieldText: viewModel.cvv)
+    }
+
 }

@@ -8,6 +8,11 @@
 @testable import Checkout
 
 final class StubCardNumberValidator: CardNumberValidating {
+  var validateCompletenessCardNumberToReturn: Result<CardNumberValidating.ValidationScheme, ValidationError.CardNumber> = .success((true, .americanExpress))
+  func validateCompleteness(cardNumber: String) -> Result<CardNumberValidating.ValidationScheme, ValidationError.CardNumber> {
+    validateCompletenessCardNumberToReturn
+  }
+    
   var validateCardNumberToReturn: Result<Card.Scheme, ValidationError.CardNumber> = .success(.americanExpress)
   private(set) var validateCardNumberCalledWith: String?
 

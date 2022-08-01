@@ -137,26 +137,27 @@ class CardNumberViewModelTests: XCTestCase {
 
     testCases.forEach { scheme in
       // given
-      mockCardValidator.validateCardNumberToReturn = .success(scheme)
+      mockCardValidator.expectedValidateCompletenessResult = .success((true, scheme))
+      mockCardValidator.receivedValidateCompletenessCardNumbers = []
 
       // when
       let result = subject.validate(cardNumber: "1234")
 
       // then
       XCTAssertEqual(result, Constants.Bundle.SchemeIcon(scheme: scheme))
-      XCTAssertEqual(mockCardValidator.validateCardNumberCalledWith, "1234")
+      XCTAssertEqual(mockCardValidator.receivedValidateCompletenessCardNumbers, ["1234"])
     }
   }
 
   func test_validate_failure() {
     // given
-    mockCardValidator.validateCardNumberToReturn = .failure(.invalidCharacters)
+    mockCardValidator.expectedValidateCompletenessResult = .failure(.invalidCharacters)
 
     // when
     let result = subject.validate(cardNumber: "1234")
 
     // then
     XCTAssertNil(result)
-    XCTAssertEqual(mockCardValidator.validateCardNumberCalledWith, "1234")
+    XCTAssertEqual(mockCardValidator.receivedValidateCompletenessCardNumbers, ["1234"])
   }
 }

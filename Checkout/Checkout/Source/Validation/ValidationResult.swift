@@ -8,7 +8,7 @@
 import Foundation
 
 /// Defines the outcome of a validation check, either success or failure.
-public enum ValidationResult<T: CheckoutError> {
+public enum ValidationResult<T: CheckoutError>: Equatable {
   case success
   case failure(T)
 }
