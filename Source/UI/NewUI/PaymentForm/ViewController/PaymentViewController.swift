@@ -109,7 +109,7 @@ final class PaymentViewController: UIViewController {
     let backgroundColor = viewModel.paymentFormStyle?.headerView.backgroundColor ?? .white
     let titleColor = viewModel.paymentFormStyle?.headerView.headerLabel?.textColor ?? .black
 
-    let titleFont = viewModel.paymentFormStyle?.headerView.headerLabel?.font.withSize(15) ?? UIFont.systemFont(ofSize: 15)
+    let titleFont = viewModel.paymentFormStyle?.headerView.headerLabel?.font ?? UIFont.systemFont(ofSize: Constants.defaultNavigationHeaderFontSize)
     customizeNavigationBarAppearance(color: backgroundColor, titleColor: titleColor, font: titleFont)
 
     navigationController?.navigationBar.tintColor = viewModel.paymentFormStyle?.headerView.headerLabel?.textColor
