@@ -89,10 +89,10 @@ final class CVVValidatorTests: XCTestCase {
         let validator = CVVValidator()
         
         XCTAssertEqual(validator.validate(cvv: "", cardScheme: scheme), .success)
-        XCTAssertEqual(validator.validate(cvv: "1", cardScheme: scheme), .success)
-        XCTAssertEqual(validator.validate(cvv: "12", cardScheme: scheme), .success)
+        XCTAssertEqual(validator.validate(cvv: "1", cardScheme: scheme), .failure(.invalidLength))
+        XCTAssertEqual(validator.validate(cvv: "12", cardScheme: scheme), .failure(.invalidLength))
         XCTAssertEqual(validator.validate(cvv: "123", cardScheme: scheme), .success)
         XCTAssertEqual(validator.validate(cvv: "1234", cardScheme: scheme), .success)
-        XCTAssertEqual(validator.validate(cvv: "12345", cardScheme: scheme), .success)
+        XCTAssertEqual(validator.validate(cvv: "12345", cardScheme: scheme), .failure(.invalidLength))
     }
 }
