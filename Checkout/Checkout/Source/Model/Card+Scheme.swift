@@ -138,8 +138,9 @@ extension Card {
 
     var maxCardLength: Int {
       switch self {
+      case .visa:
+          return 19
       case .mada,
-        .visa,
         .mastercard:
         return 16
       case .americanExpress:
