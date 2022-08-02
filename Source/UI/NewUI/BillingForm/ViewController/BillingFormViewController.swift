@@ -36,6 +36,8 @@ final class BillingFormViewController: UIViewController {
     private var focusedTextField: UITextField?
     private var viewModel: BillingFormViewModel
     private var notificationCenter = NotificationCenter.default
+    private var oldOrientation: UIDeviceOrientation = .portrait
+    private var currentOrientation: UIDeviceOrientation = .portrait
 
     // MARK: - UI elements
 
@@ -64,6 +66,9 @@ final class BillingFormViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+      oldOrientation = UIKit.UIDevice.current.orientation
+      UIKit.UIDevice.current.setValue(currentOrientation.rawValue, forKey: "orientation")
+      UIFont.loadAllCheckoutFonts
         view.backgroundColor = viewModel.style.mainBackground
         setupViewsInOrder()
     }
@@ -135,6 +140,15 @@ final class BillingFormViewController: UIViewController {
                                       keyboardWillShow: #selector(keyboardWillShow),
                                       keyboardWillHide: #selector(keyboardWillHide))
     }
+
+  override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+    UIKit.UIDevice.current.setValue(currentOrientation.rawValue, forKey: "orientation")
+  }
+
+  override func viewDidDisappear(_ animated: Bool) {
+    UIKit.UIDevice.current.setValue(oldOrientation.rawValue, forKey: "orientation")
+  }
 }
 
 // MARK: - Views Layout Constraint

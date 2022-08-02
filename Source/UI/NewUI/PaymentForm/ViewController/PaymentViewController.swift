@@ -16,7 +16,8 @@ final class PaymentViewController: UIViewController {
 
   private(set) var viewModel: PaymentViewModel
   private var notificationCenter = NotificationCenter.default
-
+  private var currentOrientation: UIDeviceOrientation = .portrait
+  private var oldOrientation: UIDeviceOrientation = .portrait
   // MARK: - UI properties
 
   private lazy var headerView: PaymentHeaderView = {
@@ -59,7 +60,6 @@ final class PaymentViewController: UIViewController {
     let cardNumberViewModel = CardNumberViewModel(cardValidator: viewModel.cardValidator)
     cardNumberViewModel.delegate = self
     let cardNumberView = CardNumberView(viewModel: cardNumberViewModel)
-
     return cardNumberView
   }()
 
@@ -79,6 +79,8 @@ final class PaymentViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    oldOrientation = UIKit.UIDevice.current.orientation
+    UIKit.UIDevice.current.setValue(currentOrientation.rawValue, forKey: "orientation")
     UIFont.loadAllCheckoutFonts
     UITextField.disableHardwareLayout()
     setupNavigationBar()
@@ -86,6 +88,15 @@ final class PaymentViewController: UIViewController {
     setupViewModel()
     setupViewsInOrder()
     viewModel.updateAll()
+  }
+
+  override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+    UIKit.UIDevice.current.setValue(currentOrientation.rawValue, forKey: "orientation")
+  }
+
+  override func viewDidDisappear(_ animated: Bool) {
+    UIKit.UIDevice.current.setValue(oldOrientation.rawValue, forKey: "orientation")
   }
 
   override func viewWillDisappear(_ animated: Bool) {
