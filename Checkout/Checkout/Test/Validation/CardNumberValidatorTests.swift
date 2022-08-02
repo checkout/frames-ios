@@ -129,7 +129,7 @@ final class CardNumberValidatorTests: XCTestCase {
   func test_eagerValidateCardNumber_tooLong() {
     let testCases: [String: Result<Card.Scheme, ValidationError.EagerCardNumber>] = [
       // too long to be a valid visa
-      "42424242424242424": .failure(.tooLong),
+      "42424242424242424123": .failure(.tooLong),
       // too long to be a valid amex
       "3434343434343434": .failure(.tooLong),
       // too long to be any card (max length is 19)
