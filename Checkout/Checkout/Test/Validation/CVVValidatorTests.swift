@@ -51,8 +51,9 @@ final class CVVValidatorTests: XCTestCase {
   }
 
   func testValidateCVVIncorrectLengthReturnsCorrectError() {
+    let excludedSchemes = [Card.Scheme.maestro, .unknown]
     Card.Scheme.allCases.forEach { scheme in
-      for length in scheme.cvvLengths where scheme != .unknown {
+      for length in scheme.cvvLengths where !excludedSchemes.contains(scheme) {
         // Check too short
         let shortCVV = String((0..<(length - 1)).map { _ in "0123456789".randomElement()! })
         let tooShortResult = subject.validate(
@@ -95,4 +96,18 @@ final class CVVValidatorTests: XCTestCase {
         XCTAssertEqual(validator.validate(cvv: "1234", cardScheme: scheme), .success)
         XCTAssertEqual(validator.validate(cvv: "12345", cardScheme: scheme), .failure(.invalidLength))
     }
+    
+  func testMaestroSchemeLenghtsAndValidations() {
+      let scheme = Card.Scheme.maestro
+      XCTAssertEqual(scheme.cvvLengths, [0, 3])
+      
+      let validator = CVVValidator()
+      
+      XCTAssertEqual(validator.validate(cvv: "", cardScheme: scheme), .success)
+      XCTAssertEqual(validator.validate(cvv: "1", cardScheme: scheme), .failure(.invalidLength))
+      XCTAssertEqual(validator.validate(cvv: "12", cardScheme: scheme), .failure(.invalidLength))
+      XCTAssertEqual(validator.validate(cvv: "123", cardScheme: scheme), .success)
+      XCTAssertEqual(validator.validate(cvv: "1234", cardScheme: scheme), .failure(.invalidLength))
+      XCTAssertEqual(validator.validate(cvv: "12345", cardScheme: scheme), .failure(.invalidLength))
+  }
 }

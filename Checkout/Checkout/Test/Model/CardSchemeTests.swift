@@ -41,10 +41,11 @@ class CardSchemeTests: XCTestCase {
         XCTAssertEqual(scheme.cvvLengths, [0, 3, 4])
       case .americanExpress:
         XCTAssertEqual(scheme.cvvLengths, [4])
+      case .maestro:
+          XCTAssertEqual(scheme.cvvLengths, [0, 3])
       case .visa,
         .mada,
         .mastercard,
-        .maestro,
         .discover,
         .dinersClub,
         .jcb:
