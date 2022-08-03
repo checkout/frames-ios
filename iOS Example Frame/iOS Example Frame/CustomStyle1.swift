@@ -266,7 +266,7 @@ private struct StyleOrganiser {
         var focusBorderColor: UIColor = .clear
         var errorBorderColor: UIColor = .clear
         var image: UIImage?
-        var textLeading: CGFloat = 0
+        var textLeading: CGFloat = 20
         var cornerRadius: CGFloat = 0
         var borderWidth: CGFloat = 0
         var height: Double = 30
