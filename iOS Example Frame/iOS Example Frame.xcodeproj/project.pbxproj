@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BF40C3A289ABC42007D4023 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF40C39289ABC42007D4023 /* UIFont+Extensions.swift */; };
 		3A51FA6F531B59F9E514DE33 /* Pods_iOS_Example_Frame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FB254FE28DE0FCDB94BAC6 /* Pods_iOS_Example_Frame.framework */; };
 		44E647B3260CEDC900503D6C /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 44E647B2260CEDC800503D6C /* .travis.yml */; };
 		577A98AC26A4F16D00CF21C1 /* example_apple_pay_payment_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 577A98AB26A4F16D00CF21C1 /* example_apple_pay_payment_data.json */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BF40C39289ABC42007D4023 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		1083E6EC0F0AFED5ED8C3EA1 /* Pods_iOS_Example_Frame_iOS_Example_FrameUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_Frame_iOS_Example_FrameUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1099E80F698C7325B120243A /* Pods-iOS Example Frame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example Frame.debug.xcconfig"; path = "Target Support Files/Pods-iOS Example Frame/Pods-iOS Example Frame.debug.xcconfig"; sourceTree = "<group>"; };
 		3DAED23DE034B60868FD06A1 /* Pods-iOS Example Frame-iOS Example FrameUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example Frame-iOS Example FrameUITests.debug.xcconfig"; path = "Target Support Files/Pods-iOS Example Frame-iOS Example FrameUITests/Pods-iOS Example Frame-iOS Example FrameUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				9591877728652519004C3216 /* Style.swift */,
 				F59CDCD5284ABE05003D9EDC /* CustomStyle1.swift */,
 				F52A9416284EAA8F0093E1A8 /* CustomStyle2.swift */,
+				0BF40C39289ABC42007D4023 /* UIFont+Extensions.swift */,
 				E6646F9120CE6C0900D8353A /* Main.storyboard */,
 				E6646F9420CE6C0A00D8353A /* Assets.xcassets */,
 				E6646F9620CE6C0A00D8353A /* LaunchScreen.storyboard */,
@@ -356,6 +359,7 @@
 				E6646F9020CE6C0900D8353A /* MainViewController.swift in Sources */,
 				E6646F8E20CE6C0900D8353A /* AppDelegate.swift in Sources */,
 				F52A9417284EAA8F0093E1A8 /* CustomStyle2.swift in Sources */,
+				0BF40C3A289ABC42007D4023 /* UIFont+Extensions.swift in Sources */,
 				9591877828652519004C3216 /* Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
