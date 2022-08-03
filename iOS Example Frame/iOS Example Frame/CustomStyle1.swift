@@ -243,7 +243,7 @@ private struct StyleOrganiser {
         var borderWidth: CGFloat = Constants.borderWidth
         var separatorLineColor: UIColor = Constants.secondaryFontColor
         var borderColor: UIColor = Constants.mainFontColor
-        var button: ElementButtonStyle = AddBillingDetailsButtonStyle(text: "Update Billing Address")
+        var button: ElementButtonStyle = AddBillingDetailsButtonStyle(textLeading: 20, text: "\u{276F} Update Billing Address")
         var isMandatory: Bool = true
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "Billing address")
@@ -266,7 +266,7 @@ private struct StyleOrganiser {
         var focusBorderColor: UIColor = .clear
         var errorBorderColor: UIColor = .clear
         var image: UIImage?
-        var textLeading: CGFloat = 20
+        var textLeading: CGFloat = 0
         var cornerRadius: CGFloat = 0
         var borderWidth: CGFloat = 0
         var height: Double = 30
