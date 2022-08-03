@@ -66,9 +66,11 @@ final class BillingFormViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      oldOrientation = UIKit.UIDevice.current.orientation
-      UIKit.UIDevice.current.setValue(currentOrientation.rawValue, forKey: "orientation")
-      UIFont.loadAllCheckoutFonts
+        if UIKit.UIDevice.current.userInterfaceIdiom == .phone {
+            oldOrientation = UIKit.UIDevice.current.orientation
+            UIKit.UIDevice.current.setValue(currentOrientation.rawValue, forKey: "orientation")
+        }
+        UIFont.loadAllCheckoutFonts
         view.backgroundColor = viewModel.style.mainBackground
         setupViewsInOrder()
     }
@@ -143,11 +145,15 @@ final class BillingFormViewController: UIViewController {
 
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
-    UIKit.UIDevice.current.setValue(currentOrientation.rawValue, forKey: "orientation")
+      if UIKit.UIDevice.current.userInterfaceIdiom == .phone {
+          UIKit.UIDevice.current.setValue(currentOrientation.rawValue, forKey: "orientation")
+      }
   }
 
   override func viewDidDisappear(_ animated: Bool) {
-    UIKit.UIDevice.current.setValue(oldOrientation.rawValue, forKey: "orientation")
+      if UIKit.UIDevice.current.userInterfaceIdiom == .phone {
+          UIKit.UIDevice.current.setValue(oldOrientation.rawValue, forKey: "orientation")
+      }
   }
 }
 
