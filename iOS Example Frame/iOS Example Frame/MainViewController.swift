@@ -39,11 +39,6 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
         cardViewController?.addressViewController.setCountrySelected(country: Self.countryGB)
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        UIFont.loadAllCheckoutFonts
-    }
-
     // MARK: IBAction Methods.
 
     @IBAction private func goToDefaultUIPaymentPage(_ sender: Any) {
