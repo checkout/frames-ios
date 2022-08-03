@@ -27,10 +27,10 @@ Frames for iOS provides a convenient solution that can take the customer's sensi
 Frames can be integrated in 2 ways:
 
 1. Integrated with the UI
-Embed the fully customisable UI provided by the SDK to accept card details, customer name and billling details and exchange them for a secure token. (See the [`CardViewController` tab](https://docs.checkout.com/integrate/sdks/ios-sdk#iOSSDK-Step2:ImporttheiOSSDKandchooseyourapproach))
+   Embed the fully customisable UI provided by the SDK to accept card details, customer name and billling details and exchange them for a secure token. (See the [`CardViewController` tab](https://docs.checkout.com/integrate/sdks/ios-sdk#iOSSDK-Step2:ImporttheiOSSDKandchooseyourapproach))
 
 2. Integrated without the UI
-Use the provided API to send sensitive data to the Checkout.com server and retrieve the secure token (See the [`Headless` tab](https://docs.checkout.com/integrate/sdks/ios-sdk#iOSSDK-Step2:ImporttheiOSSDKandchooseyourapproach)).
+   Use the provided API to send sensitive data to the Checkout.com server and retrieve the secure token (See the [`Headless` tab](https://docs.checkout.com/integrate/sdks/ios-sdk#iOSSDK-Step2:ImporttheiOSSDKandchooseyourapproach)).
 
 You can find the Frames API reference [on this website](https://checkout.github.io/frames-ios/index.html).
 
@@ -156,7 +156,7 @@ class ViewController: UIViewController, CardViewControllerDelegate {
 }
 ```
 
-### Headless Mode 
+### Headless Mode
 
 ```swift
 // Create a CheckoutAPIClient instance with your public key.
@@ -353,7 +353,6 @@ When you send a 3D secure charge request from your server you will get back a 3D
 
 The redirection URLs (`success_url` and `failure_url`) are set in the Checkout.com Hub, but they can be overwritten in the charge request sent from your server. It is important to provide the correct URLs to ensure a successful payment flow.
 
-
 Create and configure a `ThreedsWebViewController`.
 
 ```swift
@@ -382,7 +381,7 @@ extension ViewController: ThreedsWebViewControllerDelegate {
 
 ### Customize with `CheckoutTheme`
 
-Further documentation about customizing Frames is available from the [customization guide](https://docs.checkout.com/integrate/sdks/ios-sdk/ios-sdk-customization-guide).
+Further documentation about customizing Frames is available from the [customization guide](https://www.checkout.com/docs/integrate/sdks/ios-sdk/customization-guide).
 
 ```swift
 CheckoutTheme.primaryBackgroundColor = .purple

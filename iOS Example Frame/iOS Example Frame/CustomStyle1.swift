@@ -11,7 +11,6 @@ import Frames
 
 // MARK: - Color Constants -
 
-/// Predefined custom 1 Dark Mode theme colors
 private enum Constants {
     static let mainFontColor = UIColor(red: 0 / 255, green: 204 / 255, blue: 45 / 255, alpha: 1)
     static let secondaryFontColor = UIColor(red: 177 / 255, green: 177 / 255, blue: 177 / 255, alpha: 1)
