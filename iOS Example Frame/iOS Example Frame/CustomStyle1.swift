@@ -278,7 +278,7 @@ private struct StyleOrganiser {
     }
 
     struct BillingFullNameInput: CellTextFieldStyle {
-        var textfield: ElementTextFieldStyle = TextFieldStyle()
+        var textfield: ElementTextFieldStyle = TextFieldStyle(isSupportingNumericKeyboard: false)
         var isMandatory: Bool = true
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "Full name")
@@ -288,7 +288,7 @@ private struct StyleOrganiser {
     }
 
     struct BillingAddressLine1Input: CellTextFieldStyle {
-        var textfield: ElementTextFieldStyle = TextFieldStyle()
+        var textfield: ElementTextFieldStyle = TextFieldStyle(isSupportingNumericKeyboard: false)
         var isMandatory: Bool = true
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "Address line 1")
@@ -298,7 +298,7 @@ private struct StyleOrganiser {
     }
 
     struct BillingAddressLine2Input: CellTextFieldStyle {
-        var textfield: ElementTextFieldStyle = TextFieldStyle()
+        var textfield: ElementTextFieldStyle = TextFieldStyle(isSupportingNumericKeyboard: false)
         var isMandatory: Bool = false
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "Address line 2")
@@ -308,7 +308,7 @@ private struct StyleOrganiser {
     }
 
     struct BillingCityInput: CellTextFieldStyle {
-        var textfield: ElementTextFieldStyle = TextFieldStyle()
+        var textfield: ElementTextFieldStyle = TextFieldStyle(isSupportingNumericKeyboard: false)
         var isMandatory: Bool = true
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "City")
@@ -318,7 +318,7 @@ private struct StyleOrganiser {
     }
 
     struct BillingStateInput: CellTextFieldStyle {
-        var textfield: ElementTextFieldStyle = TextFieldStyle()
+        var textfield: ElementTextFieldStyle = TextFieldStyle(isSupportingNumericKeyboard: false)
         var isMandatory: Bool = true
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "State")
@@ -328,7 +328,7 @@ private struct StyleOrganiser {
     }
 
     struct BillingPostcodeInput: CellTextFieldStyle {
-        var textfield: ElementTextFieldStyle = TextFieldStyle()
+        var textfield: ElementTextFieldStyle = TextFieldStyle(isSupportingNumericKeyboard: false)
         var isMandatory: Bool = true
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "Postcode/Zip")
