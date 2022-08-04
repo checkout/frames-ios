@@ -55,7 +55,7 @@ struct BillingFormStyleCustom1: BillingFormStyle {
 private struct StyleOrganiser {
 
     struct PaymentHeaderViewStyle: PaymentHeaderCellStyle {
-        var backgroundColor: UIColor = .clear
+        var backgroundColor: UIColor = Constants.backgroundColor
         var headerLabel: ElementStyle? = PaymentHeaderLabel()
         var subtitleLabel: ElementStyle? = PaymentHeaderSubtitle()
         var schemeIcons: [UIImage?] = []

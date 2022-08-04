@@ -29,7 +29,7 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
     override func viewDidLoad() {
         super.viewDidLoad()
         UIFont.loadAllCheckoutFonts
-        
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
