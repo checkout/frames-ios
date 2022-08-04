@@ -120,12 +120,13 @@ extension Card {
       switch self {
       case .unknown:
         return Constants.validCVVLengthsUnknownScheme
+      case .maestro:
+          return [0, 3]
       case .americanExpress:
         return [4]
       case .visa,
         .mada,
         .mastercard,
-        .maestro,
         .discover,
         .dinersClub,
         .jcb:
