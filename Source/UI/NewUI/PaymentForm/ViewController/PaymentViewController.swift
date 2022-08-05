@@ -321,10 +321,6 @@ extension PaymentViewController: CardNumberViewModelDelegate {
     func update(cardNumber: String, scheme: Card.Scheme) {
       securityCodeView.updateCardScheme(cardScheme: scheme)
     }
-
-    func schemeUpdatedEagerly(to newScheme: Card.Scheme) {
-      securityCodeView.updateCardScheme(cardScheme: newScheme)
-    }
 }
 
 extension PaymentViewController: UIScrollViewDelegate {

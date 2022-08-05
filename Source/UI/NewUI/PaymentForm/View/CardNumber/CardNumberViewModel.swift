@@ -10,7 +10,6 @@ import Checkout
 
 protocol CardNumberViewModelDelegate: AnyObject {
   func update(cardNumber: String, scheme: Card.Scheme)
-  func schemeUpdatedEagerly(to newScheme: Card.Scheme)
 }
 
 protocol CardNumberViewModelProtocol {
@@ -53,8 +52,7 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
     let cardNumber = cardUtils.removeNonDigits(from: rawText)
 
     if let scheme = shouldAllowChange(cardNumber: cardNumber) {
-      // using CardUtils until we add this functionality into Checkout SDK
-      delegate?.schemeUpdatedEagerly(to: scheme)
+      delegate?.update(cardNumber: cardNumber, scheme: scheme)
       return (cardUtils.format(cardNumber: cardNumber, scheme: scheme), Constants.Bundle.SchemeIcon(scheme: scheme))
     }
 
@@ -64,16 +62,10 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
   private func shouldAllowChange(cardNumber: String) -> Card.Scheme? {
     switch cardValidator.eagerValidate(cardNumber: cardNumber) {
     case .success(let scheme):
-      return handleValidationSuccess(cardNumber: cardNumber, scheme: scheme)
+      return scheme
     case .failure(let error):
       return handleValidationError(error: error)
     }
-  }
-
-  private func handleValidationSuccess(cardNumber: String, scheme: Card.Scheme) -> Card.Scheme? {
-    delegate?.update(cardNumber: cardNumber, scheme: scheme)
-
-    return scheme
   }
 
   private func handleValidationError(error: ValidationError.EagerCardNumber) -> Card.Scheme? {

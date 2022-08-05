@@ -11,13 +11,8 @@ import Checkout
 
 final class MockCardNumberViewModelDelegate: CardNumberViewModelDelegate {
   private(set) var updateCalledWith: (cardNumber: String, scheme: Card.Scheme)?
-  private(set) var schemeUpdatedEagerlyCalledWith: [Card.Scheme] = []
     
   func update(cardNumber: String, scheme: Card.Scheme) {
     updateCalledWith = (cardNumber, scheme)
-  }
-    
-  func schemeUpdatedEagerly(to newScheme: Card.Scheme) {
-    schemeUpdatedEagerlyCalledWith.append(newScheme)
   }
 }

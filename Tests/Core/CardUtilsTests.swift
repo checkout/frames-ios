@@ -100,6 +100,6 @@ class CardUtilsTests: XCTestCase {
     }
 
     func testCardGaps() {
-        XCTAssertEqual(Card.Scheme.allCases.filter { cards.cardGaps[$0] == nil }, [.unknown])
+        XCTAssertEqual(Card.Scheme.allCases.filter { $0.cardGaps.isEmpty }, [.unknown])
     }
 }
