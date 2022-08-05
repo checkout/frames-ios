@@ -51,7 +51,7 @@ final class CVVValidatorTests: XCTestCase {
   }
 
   func testValidateCVVIncorrectLengthReturnsCorrectError() {
-    let excludedSchemes = [Card.Scheme.maestro, .unknown]
+    let excludedSchemes = [Card.Scheme.maestro(), .unknown]
     Card.Scheme.allCases.forEach { scheme in
       for length in scheme.cvvLengths where !excludedSchemes.contains(scheme) {
         // Check too short
@@ -98,7 +98,7 @@ final class CVVValidatorTests: XCTestCase {
     }
     
   func testMaestroSchemeLenghtsAndValidations() {
-      let scheme = Card.Scheme.maestro
+      let scheme = Card.Scheme.maestro(length: 0)
       XCTAssertEqual(scheme.cvvLengths, [0, 3])
       
       let validator = CVVValidator()

@@ -22,7 +22,7 @@ class CardSchemeTests: XCTestCase {
       .visa: "Card.Scheme.visa",
       .mada: "Card.Scheme.mada",
       .mastercard: "Card.Scheme.mastercard",
-      .maestro: "Card.Scheme.maestro",
+      .maestro(): "Card.Scheme.maestro",
       .americanExpress: "Card.Scheme.americanExpress",
       .discover: "Card.Scheme.discover",
       .dinersClub: "Card.Scheme.dinersClub",
@@ -63,7 +63,7 @@ class CardSchemeTests: XCTestCase {
       "mastercard - mada": .mada,
       "visa": .visa,
       "mastercard": .mastercard,
-      "maestro": .maestro,
+      "maestro": .maestro(),
       "amex": .americanExpress,
       "american express": .americanExpress,
       "discover": .discover,
@@ -74,7 +74,7 @@ class CardSchemeTests: XCTestCase {
 
       // capitalised
       "AMERICAN EXPRESS": .americanExpress,
-      "MAESTRO": .maestro
+      "MAESTRO": .maestro()
     ]
 
     testCases.forEach { rawValue, expectedScheme in
