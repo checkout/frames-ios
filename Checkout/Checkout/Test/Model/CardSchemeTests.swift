@@ -81,4 +81,42 @@ class CardSchemeTests: XCTestCase {
       XCTAssertEqual(Card.Scheme(rawValue: rawValue), expectedScheme)
     }
   }
+    
+    func testCardGapsUnknownCard() {
+        XCTAssertEqual(Card.Scheme.unknown.cardGaps, [])
+    }
+    
+    func testCardGapsMadaCard() {
+        XCTAssertEqual(Card.Scheme.mada.cardGaps, [4, 8, 12])
+    }
+    
+    func testCardGapsVisaCard() {
+        XCTAssertEqual(Card.Scheme.visa.cardGaps, [4, 8, 12])
+    }
+    
+    func testCardGapsMastercardCard() {
+        XCTAssertEqual(Card.Scheme.mastercard.cardGaps, [4, 8, 12])
+    }
+    
+    func testCardGapsDiscoverCard() {
+        XCTAssertEqual(Card.Scheme.discover.cardGaps, [4, 8, 12])
+    }
+    
+    func testCardGapsMaestroCardAllLenghts() {
+        for i in 0...Card.Scheme.maestro(length: 0).maxCardLength {
+            XCTAssertEqual(Card.Scheme.maestro(length: i).cardGaps, [4, 8, 12])
+        }
+    }
+    
+    func testCardGapsJCBCard() {
+        XCTAssertEqual(Card.Scheme.jcb.cardGaps, [4, 8, 12])
+    }
+    
+    func testCardGapsAmericanExpressCard() {
+        XCTAssertEqual(Card.Scheme.americanExpress.cardGaps, [4, 10])
+    }
+    
+    func testCardGapsDinersClubCard() {
+        XCTAssertEqual(Card.Scheme.dinersClub.cardGaps, [4, 10])
+    }
 }
