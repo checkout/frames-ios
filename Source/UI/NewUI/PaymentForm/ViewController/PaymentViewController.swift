@@ -70,6 +70,8 @@ final class PaymentViewController: UIViewController {
     return view
   }()
 
+  private let headerBackgroundView = UIView().disabledAutoresizingIntoConstraints()
+
   // MARK: - functions
 
   init(viewModel: PaymentViewModel) {
@@ -249,6 +251,7 @@ extension PaymentViewController {
   public func updateHeaderView() {
     guard let style = viewModel.paymentFormStyle?.headerView else { return }
     headerView.update(style: style)
+    headerBackgroundView.backgroundColor = style.backgroundColor
   }
 }
 
@@ -259,6 +262,7 @@ extension PaymentViewController {
     setupScrollView()
     setupStackView()
     addArrangedSubviewForStackView()
+    setupHeaderBackground()
   }
 
   private func addArrangedSubviewForStackView() {
@@ -273,6 +277,17 @@ extension PaymentViewController {
                                            bottom: Constants.Padding.l.rawValue,
                                            right: Constants.Padding.l.rawValue)
     stackView.isLayoutMarginsRelativeArrangement = true
+  }
+
+  private func setupHeaderBackground() {
+    stackView.addSubview(headerBackgroundView)
+    stackView.sendSubviewToBack(headerBackgroundView)
+    NSLayoutConstraint.activate([
+      headerBackgroundView.topAnchor.constraint(equalTo: headerView.topAnchor),
+      headerBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      headerBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      headerBackgroundView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor)
+    ])
   }
 
   func setupScrollView() {
