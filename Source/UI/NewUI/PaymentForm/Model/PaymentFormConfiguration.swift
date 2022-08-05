@@ -24,11 +24,11 @@ public struct PaymentFormConfiguration {
      */
     public init(apiKey: String,
                 environment: Environment,
-                supportedSchemes: [Card.Scheme],
+                supportedSchemes: [CardScheme],
                 billingFormData: BillingForm?) {
         self.serviceAPIKey = apiKey
         self.environment = environment
-        self.supportedSchemes = supportedSchemes
+        self.supportedSchemes = supportedSchemes.compactMap { $0.mapToCheckoutCardScheme() }
         self.billingFormData = billingFormData
     }
 }

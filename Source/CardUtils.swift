@@ -15,7 +15,7 @@ public final class CardUtils {
                                           .dinersClub: [4, 10],
                                           .discover: [4, 8, 12],
                                           .jcb: [4, 8, 12],
-                                          .maestro: [4, 8, 12]]
+                                          .maestro(): [4, 8, 12]]
 
     // MARK: - Initialization
 

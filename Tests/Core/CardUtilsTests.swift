@@ -59,7 +59,7 @@ class CardUtilsTests: XCTestCase {
             ["6921566956623303", "6921 5669 5662 3303"],
             ["6945584356562221", "6945 5843 5656 2221"]
             ].forEach {
-                XCTAssertEqual(cards.format(cardNumber: $0[0], scheme: .maestro), $0[1])
+                XCTAssertEqual(cards.format(cardNumber: $0[0], scheme: .maestro()), $0[1])
         }
         // JCB
         [

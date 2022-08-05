@@ -2,6 +2,9 @@ import UIKit
 import Checkout
 
 public typealias Card = Checkout.Card
+public typealias Address = Checkout.Address
+public typealias Phone = Checkout.Phone
+public typealias Country = Checkout.Country
 
 public struct PaymentFormFactory {
 

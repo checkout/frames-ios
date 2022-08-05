@@ -119,7 +119,7 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
         cardViewController = createCardViewController(address: address,
                                                       phone: phone,
                                                       checkoutAPIService: checkoutAPIService)
-        cardViewController?.availableSchemes = [.visa, .mastercard, .maestro]
+        cardViewController?.availableSchemes = [.visa, .mastercard, .maestro()]
         pushCardViewController(cardViewController: cardViewController)
     }
 
