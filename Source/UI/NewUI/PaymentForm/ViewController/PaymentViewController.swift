@@ -109,8 +109,7 @@ final class PaymentViewController: UIViewController {
     let backgroundColor = viewModel.paymentFormStyle?.headerView.backgroundColor ?? .white
     let titleColor = viewModel.paymentFormStyle?.headerView.headerLabel?.textColor ?? .black
 
-    let titleFont = viewModel.paymentFormStyle?.headerView.headerLabel?.font ?? UIFont.systemFont(ofSize: Constants.defaultNavigationHeaderFontSize)
-    customizeNavigationBarAppearance(color: backgroundColor, titleColor: titleColor, font: titleFont)
+    customizeNavigationBarAppearance(color: backgroundColor, titleColor: titleColor)
 
     navigationController?.navigationBar.tintColor = viewModel.paymentFormStyle?.headerView.headerLabel?.textColor
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: Constants.Bundle.Images.leftArrow.image, style: .plain, target: self, action: #selector(popViewController))
