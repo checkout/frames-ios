@@ -73,6 +73,8 @@ extension CardNumberView: TextFieldViewDelegate {
   func textFieldShouldReturn() -> Bool { true }
 
   func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
+    textField.text = replacementString
+    style?.textfield.text = replacementString
     switch viewModel.validate(cardNumber: replacementString) {
     case .some(let schemeIcon):
       self.schemeIcon = schemeIcon
@@ -80,11 +82,18 @@ extension CardNumberView: TextFieldViewDelegate {
     case nil:
       updateError(show: true)
     }
-
     return true
   }
 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+    // some characters are deleted
+    // notify payment view controller to disable the pay button
+    if string.count == 0 && range.length > 0 {
+      _ = viewModel.validate(cardNumber: string)
+      return true
+    }
+
     guard
       let oldValue = textField.text,
       let textRange = Range(range, in: oldValue)

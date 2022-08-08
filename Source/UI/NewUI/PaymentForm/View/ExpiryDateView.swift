@@ -2,7 +2,7 @@ import UIKit
 import Checkout
 
 protocol ExpiryDateViewDelegate: AnyObject {
-  func update(expiryDate: ExpiryDate)
+  func update(expiryDate: ExpiryDate?)
 }
 
 public final class ExpiryDateView: UIView {
@@ -146,6 +146,9 @@ public final class ExpiryDateView: UIView {
       Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.past :
       Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid
     style?.error?.isHidden = isHidden
+    if !isHidden {
+      delegate?.update(expiryDate: nil)
+    }
     style?.textfield.text = textfieldText ?? ""
     dateInputView.update(style: style)
   }
@@ -166,6 +169,14 @@ extension ExpiryDateView: TextFieldViewDelegate {
   }
 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+    // some characters are deleted
+    // notify payment view controller to disable the pay button
+    if string.count == 0 && range.length > 0 {
+      delegate?.update(expiryDate: nil)
+      return true
+    }
+
     updateErrorViewStyle(isHidden: true, textfieldText: textField.text)
     /*
      Expiry date text format is "MM/yy"

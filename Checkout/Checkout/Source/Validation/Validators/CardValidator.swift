@@ -175,9 +175,9 @@ public class CardValidator: CardValidating {
   }
 
   public func validate(_ card: Card) -> ValidationResult<ValidationError.Card> {
+    guard let number = card.number else { return .failure(.cardNumber(.invalidCharacters))}
     let cardScheme: Card.Scheme
-
-    switch validate(cardNumber: card.number) {
+    switch validate(cardNumber: number) {
     case .success(let scheme):
       cardScheme = scheme
     case .failure(let error):

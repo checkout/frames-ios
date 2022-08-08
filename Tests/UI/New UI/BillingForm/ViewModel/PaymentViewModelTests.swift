@@ -18,7 +18,10 @@ class PaymentViewModelTests: XCTestCase {
                                               address: Address(addressLine1: "home", addressLine2: "sleeping", city: "rough night", state: "tired", zip: "Zzzz", country: nil),
                                               phone: Phone(number: "notAvailable", country: nil))
         let testSupportedSchemes = [Card.Scheme.discover, .mada]
-        let viewModel = DefaultPaymentViewModel(cardValidator: testCardValidator,
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+
+        let viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
+                                                cardValidator: testCardValidator,
                                                 logger: testLogger,
                                                 billingFormData: testBillingFormData,
                                                 paymentFormStyle: nil,
@@ -31,14 +34,16 @@ class PaymentViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.supportedSchemes, testSupportedSchemes)
     }
     
-    func testOnAppearSendsEventToLoggger() {
+    func testOnAppearSendsEventToLogger() {
         let testLogger = StubFramesEventLogger()
-        let viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
-                                                logger: testLogger,
-                                                billingFormData: nil,
-                                                paymentFormStyle: nil,
-                                                billingFormStyle: nil,
-                                                supportedSchemes: [])
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+        let viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
+                                                cardValidator: CardValidator(environment: .sandbox),
+                                                  logger: testLogger,
+                                                  billingFormData: nil,
+                                                  paymentFormStyle: nil,
+                                                  billingFormStyle: nil,
+                                                  supportedSchemes: [])
         
         XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
         XCTAssertTrue(testLogger.logCalledWithFramesLogEvents.isEmpty)
@@ -52,12 +57,14 @@ class PaymentViewModelTests: XCTestCase {
     
     func testOnBillingScreenShownSendsEventToLogger() {
         let testLogger = StubFramesEventLogger()
-        let viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
-                                                logger: testLogger,
-                                                billingFormData: nil,
-                                                paymentFormStyle: nil,
-                                                billingFormStyle: nil,
-                                                supportedSchemes: [])
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+        let viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
+                                                cardValidator: CardValidator(environment: .sandbox),
+                                                  logger: testLogger,
+                                                  billingFormData: nil,
+                                                  paymentFormStyle: nil,
+                                                  billingFormStyle: nil,
+                                                  supportedSchemes: [])
         
         XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
         XCTAssertTrue(testLogger.logCalledWithFramesLogEvents.isEmpty)
@@ -70,12 +77,14 @@ class PaymentViewModelTests: XCTestCase {
     }
 
   func testUpdateExpiryDateView() {
-      viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
-                                          logger: StubFramesEventLogger(),
-                                          billingFormData: nil,
-                                          paymentFormStyle: DefaultPaymentFormStyle(),
-                                          billingFormStyle: DefaultBillingFormStyle(),
-                                          supportedSchemes: [.unknown])
+      let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+      viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
+                                          cardValidator: CardValidator(environment: .sandbox),
+                                            logger: StubFramesEventLogger(),
+                                            billingFormData: nil,
+                                            paymentFormStyle: DefaultPaymentFormStyle(),
+                                            billingFormStyle: DefaultBillingFormStyle(),
+                                            supportedSchemes: [.unknown])
 
         let expectation = expectation(description: #function)
         viewModel?.updateExpiryDateView = {
@@ -88,12 +97,14 @@ class PaymentViewModelTests: XCTestCase {
     }
 
     func testUpdateAddBillingSummaryView() {
-      viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
-                                          logger: StubFramesEventLogger(),
-                                          billingFormData: nil,
-                                          paymentFormStyle: DefaultPaymentFormStyle(),
-                                          billingFormStyle: DefaultBillingFormStyle(),
-                                          supportedSchemes: [.unknown])
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+        viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
+                                            cardValidator: CardValidator(environment: .sandbox),
+                                            logger: StubFramesEventLogger(),
+                                            billingFormData: nil,
+                                            paymentFormStyle: DefaultPaymentFormStyle(),
+                                            billingFormStyle: DefaultBillingFormStyle(),
+                                            supportedSchemes: [.unknown])
 
         let expectation = expectation(description: #function)
         viewModel?.updateAddBillingDetailsView = {
@@ -118,12 +129,13 @@ class PaymentViewModelTests: XCTestCase {
         let billingFormData = BillingForm(name: userName,
                                           address: address,
                                           phone: phone)
-      viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
-                                          logger: StubFramesEventLogger(),
-                                          billingFormData: billingFormData,
-                                          paymentFormStyle: DefaultPaymentFormStyle(),
-                                          billingFormStyle: DefaultBillingFormStyle(),
-                                          supportedSchemes: [.unknown])
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+        viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService, cardValidator: CardValidator(environment: .sandbox),
+                                            logger: StubFramesEventLogger(),
+                                            billingFormData: billingFormData,
+                                            paymentFormStyle: DefaultPaymentFormStyle(),
+                                            billingFormStyle: DefaultBillingFormStyle(),
+                                            supportedSchemes: [.unknown])
 
         let expectation = expectation(description: #function)
         viewModel.updateEditBillingSummaryView = {
@@ -141,12 +153,14 @@ class PaymentViewModelTests: XCTestCase {
         let billingFormData = BillingForm(name: userName,
                                           address: nil,
                                           phone: phone)
-        viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
-                                            logger: StubFramesEventLogger(),
-                                            billingFormData: billingFormData,
-                                            paymentFormStyle: DefaultPaymentFormStyle(),
-                                            billingFormStyle: DefaultBillingFormStyle(),
-                                            supportedSchemes: [.unknown])
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+        viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
+                                            cardValidator: CardValidator(environment: .sandbox),
+                                              logger: StubFramesEventLogger(),
+                                              billingFormData: billingFormData,
+                                              paymentFormStyle: DefaultPaymentFormStyle(),
+                                              billingFormStyle: DefaultBillingFormStyle(),
+                                              supportedSchemes: [.unknown])
 
         let summaryValue = "User Custom 1\n\n77 1234 1234"
         viewModel.updateBillingSummaryView()
@@ -169,12 +183,13 @@ class PaymentViewModelTests: XCTestCase {
       let billingFormData = BillingForm(name: userName,
                                         address: address,
                                         phone: phone)
-      viewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
-                                          logger: StubFramesEventLogger(),
-                                          billingFormData: billingFormData,
-                                          paymentFormStyle: DefaultPaymentFormStyle(),
-                                          billingFormStyle: DefaultBillingFormStyle(),
-                                          supportedSchemes: [.unknown])
+      let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+      viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService, cardValidator: CardValidator(environment: .sandbox),
+                                            logger: StubFramesEventLogger(),
+                                            billingFormData: billingFormData,
+                                            paymentFormStyle: DefaultPaymentFormStyle(),
+                                            billingFormStyle: DefaultBillingFormStyle(),
+                                            supportedSchemes: [.unknown])
 
       let summaryValue = "User\n\nCheckout.com\n\nLondon city\n\nLondon County\n\nN12345\n\nUnited Kingdom\n\n077 1234 1234"
       viewModel.updateBillingSummaryView()

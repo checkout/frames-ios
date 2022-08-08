@@ -26,6 +26,9 @@ extension Constants {
                 case borderWidth = 1
                 case textLeading = 20
             }
+            enum PayButton: Double {
+              case fontSize = 15
+            }
         }
 
         enum BillingForm {

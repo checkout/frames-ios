@@ -1,6 +1,7 @@
 import Checkout
 
 protocol PaymentViewModel {
+  var checkoutAPIService: CheckoutAPIProtocol { get set }
   var billingFormData: BillingForm? { get set }
   var paymentFormStyle: PaymentFormStyle? { get set }
   var billingFormStyle: BillingFormStyle? { get set }
@@ -12,7 +13,10 @@ protocol PaymentViewModel {
   var updateExpiryDateView: (() -> Void)? { get set }
   var updateCardNumberView: (() -> Void)? { get set }
   var updateSecurityCodeView: (() -> Void)? { get set }
+  var updatePayButtonView: (() -> Void)? { get set }
   var updateHeaderView: (() -> Void)? { get set }
+  var shouldEnablePayButton: ((Bool) -> Void)? { get set }
+  var cardTokenRequested: ((Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)? { get set }
   func updateAll()
   func viewControllerWillAppear()
 }

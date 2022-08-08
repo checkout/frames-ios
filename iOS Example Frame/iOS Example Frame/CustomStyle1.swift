@@ -25,6 +25,29 @@ private enum Constants {
 // MARK: - Payment Form
 // **********************
 
+struct PayButtonFormStyleCustom1: ElementButtonStyle {
+  var image: UIImage?
+  var textAlignment: NSTextAlignment = .center
+  var text: String = "Pay 100$"
+  var font: UIFont = UIFont.systemFont(ofSize: 15)
+  var disabledTextColor: UIColor = Constants.secondaryFontColor
+  var disabledTintColor: UIColor = Constants.secondaryFontColor
+  var activeTintColor: UIColor = Constants.mainFontColor
+  var backgroundColor: UIColor = Constants.mainFontColor
+  var textColor: UIColor = .white
+  var normalBorderColor: UIColor = .clear
+  var focusBorderColor: UIColor = .clear
+  var errorBorderColor: UIColor = .clear
+  var imageTintColor: UIColor = .clear
+  var isHidden = false
+  var isEnabled = true
+  var height: Double = 56
+  var width: Double = 0
+  var cornerRadius: CGFloat = 10
+  var borderWidth: CGFloat = 0
+  var textLeading: CGFloat = 0
+}
+
 // MARK: - Main Payment Form
 
 struct PaymentFormStyleCustom1: PaymentFormStyle {
@@ -35,6 +58,7 @@ struct PaymentFormStyleCustom1: PaymentFormStyle {
   var cardNumber: CellTextFieldStyle? = StyleOrganiser.CardNumberSection()
   var expiryDate: CellTextFieldStyle? = StyleOrganiser.ExpiryDateSection()
   var securityCode: CellTextFieldStyle? = StyleOrganiser.SecurityNumberSection()
+  var payButton: ElementButtonStyle =  PayButtonFormStyleCustom1()
 }
 
 struct BillingFormStyleCustom1: BillingFormStyle {
@@ -68,7 +92,8 @@ private struct StyleOrganiser {
         var doneButton: ElementButtonStyle = DoneButtonStyle()
     }
 
-    struct BillingHeaderLabel: ElementStyle {
+  struct BillingHeaderLabel: ElementStyle {
+        var textAlignment: NSTextAlignment = .natural
         var isHidden: Bool = false
         var text: String = "Billing address"
         var font: UIFont = UIFont(sfMono: .semibold, size: 24)
@@ -77,6 +102,7 @@ private struct StyleOrganiser {
     }
 
     struct CancelButtonStyle: ElementButtonStyle {
+        var textAlignment: NSTextAlignment = .natural
         var isEnabled: Bool = true
         var disabledTextColor: UIColor = Constants.secondaryFontColor
         var disabledTintColor: UIColor = .clear
@@ -99,6 +125,7 @@ private struct StyleOrganiser {
     }
 
     struct DoneButtonStyle: ElementButtonStyle {
+        var textAlignment: NSTextAlignment = .natural
         var isEnabled: Bool = true
         var disabledTextColor: UIColor = Constants.secondaryFontColor
         var disabledTintColor: UIColor = .clear
@@ -121,6 +148,7 @@ private struct StyleOrganiser {
     }
 
     struct PaymentHeaderLabel: ElementStyle {
+        var textAlignment: NSTextAlignment = .natural
         var isHidden: Bool = false
         var text: String = "Payment details"
         var font: UIFont = UIFont(size: 24)
@@ -129,6 +157,7 @@ private struct StyleOrganiser {
     }
 
     struct PaymentHeaderSubtitle: ElementStyle {
+        var textAlignment: NSTextAlignment = .natural
         var isHidden: Bool = false
         var text: String = "Visa, Mastercard and American Express accepted."
         var font: UIFont = UIFont(size: 12)
@@ -167,6 +196,7 @@ private struct StyleOrganiser {
     }
 
     struct TextFieldStyle: ElementTextFieldStyle {
+        var textAlignment: NSTextAlignment = .natural
         var text: String = ""
         var isSupportingNumericKeyboard: Bool = true
         var height: Double = 30
@@ -184,6 +214,7 @@ private struct StyleOrganiser {
     }
 
     struct TitleStyle: ElementStyle {
+        var textAlignment: NSTextAlignment = .natural
         var text: String
         var isHidden: Bool = false
         var font: UIFont = UIFont(size: 15)
@@ -192,6 +223,7 @@ private struct StyleOrganiser {
     }
 
     struct MandatoryStyle: ElementStyle {
+        var textAlignment: NSTextAlignment = .natural
         var text: String
         var isHidden: Bool = false
         var font: UIFont = UIFont(size: 13)
@@ -200,6 +232,7 @@ private struct StyleOrganiser {
     }
 
     struct SubtitleElementStyle: ElementStyle {
+        var textAlignment: NSTextAlignment = .natural
         var text: String
         var textColor: UIColor = Constants.secondaryFontColor
         var backgroundColor: UIColor = .clear
@@ -211,6 +244,7 @@ private struct StyleOrganiser {
     }
 
     struct ErrorViewStyle: ElementErrorViewStyle {
+        var textAlignment: NSTextAlignment = .natural
         var text: String
         var textColor: UIColor = Constants.errorColor
         var backgroundColor: UIColor = .clear
@@ -256,6 +290,7 @@ private struct StyleOrganiser {
     }
 
     struct AddBillingDetailsButtonStyle: ElementButtonStyle {
+        var textAlignment: NSTextAlignment = .natural
         var isEnabled: Bool = true
         var disabledTextColor: UIColor = Constants.secondaryFontColor
         var disabledTintColor: UIColor = Constants.secondaryFontColor
@@ -358,6 +393,7 @@ private struct StyleOrganiser {
     }
 
     struct BillingSummaryElementStyle: ElementStyle {
+        var textAlignment: NSTextAlignment = .natural
         var isHidden: Bool = false
         var text: String
         var font: UIFont = UIFont(size: 14)
@@ -366,6 +402,7 @@ private struct StyleOrganiser {
     }
 
     struct BillingCountryButton: ElementButtonStyle {
+        var textAlignment: NSTextAlignment = .natural
         var isEnabled: Bool = true
         var disabledTextColor: UIColor = Constants.secondaryFontColor
         var disabledTintColor: UIColor = .clear

@@ -12,7 +12,9 @@ class ButtonView: UIView {
     var isEnabled: Bool = true {
         didSet {
             if let style = style {
+                self.style?.isEnabled = isEnabled
                 updateLabelStyle(with: style)
+                updateButtonStyle(with: style)
             }
         }
     }
@@ -39,8 +41,10 @@ class ButtonView: UIView {
     func update(with style: ElementButtonStyle) {
         self.style = style
         backgroundColor = style.backgroundColor
+        clipsToBounds = true
+        layer.borderColor = style.normalBorderColor.cgColor
         layer.cornerRadius = style.cornerRadius
-        isEnabled = style.isEnabled
+        layer.borderWidth = style.borderWidth
         updateButtonStyle(with: style)
         updateLabelStyle(with: style)
     }
@@ -50,19 +54,17 @@ class ButtonView: UIView {
     }
 
     private func updateButtonStyle(with style: ElementButtonStyle) {
+        button.isEnabled = style.isEnabled
+        backgroundColor = isEnabled ? style.backgroundColor : style.disabledTintColor
         button.tintColor = .clear
-        button.clipsToBounds = true
-        button.layer.borderColor = style.normalBorderColor.cgColor
-        button.layer.borderWidth = style.borderWidth
-        button.setTitleColor(style.disabledTextColor, for: .disabled)
-        button.setTitleColor(style.textColor, for: .normal)
+        button.heightAnchor.constraint(equalToConstant: style.height).isActive = true
     }
 
     private func updateLabelStyle(with style: ElementButtonStyle) {
-        button.isEnabled = isEnabled
-        let buttonTextLabelStyle = DefaultHeaderLabelFormStyle(text: style.text,
-                                                               font: style.font,
-                                                               textColor: isEnabled ? style.textColor : style.disabledTextColor)
+      let buttonTextLabelStyle = DefaultHeaderLabelFormStyle(textAlignment: style.textAlignment,
+                                                             text: style.text,
+                                                             font: style.font,
+                                                             textColor: isEnabled ? style.textColor : style.disabledTextColor)
         buttonTextLabel.update(with: buttonTextLabelStyle)
         constraintLeading?.constant = style.textLeading
         constraintLeading?.priority = .required

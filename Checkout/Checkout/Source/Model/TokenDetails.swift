@@ -34,5 +34,29 @@ public struct TokenDetails: Equatable {
   public struct Phone: Equatable {
     public let number: String?
     public let countryCode: String?
+
+    public init(number: String?, countryCode: String?) {
+      self.number = number
+      self.countryCode = countryCode
+    }
+  }
+
+  public init(type: TokenType, token: String, expiresOn: String, expiryDate: ExpiryDate, scheme: Card.Scheme?, last4: String, bin: String, cardType: String?, cardCategory: String?, issuer: String?, issuerCountry: String?, productId: String?, productType: String?, billingAddress: Address?, phone: Phone?, name: String?) {
+    self.type = type
+    self.token = token
+    self.expiresOn = expiresOn
+    self.expiryDate = expiryDate
+    self.scheme = scheme
+    self.last4 = last4
+    self.bin = bin
+    self.cardType = cardType
+    self.cardCategory = cardCategory
+    self.issuer = issuer
+    self.issuerCountry = issuerCountry
+    self.productId = productId
+    self.productType = productType
+    self.billingAddress = billingAddress
+    self.phone = phone
+    self.name = name
   }
 }

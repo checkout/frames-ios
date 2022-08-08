@@ -7,10 +7,14 @@ class DefaultPaymentViewModel: PaymentViewModel {
   var updateExpiryDateView: (() -> Void)?
   var updateCardNumberView: (() -> Void)?
   var updateSecurityCodeView: (() -> Void)?
+  var updatePayButtonView: (() -> Void)?
   var updateHeaderView: (() -> Void)?
+  var shouldEnablePayButton: ((Bool) -> Void)?
+  var cardTokenRequested: ((Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)?
   var supportedSchemes: [Card.Scheme]
   var cardValidator: CardValidator
   var logger: FramesEventLogging
+  var checkoutAPIService: CheckoutAPIProtocol
   var paymentFormStyle: PaymentFormStyle?
   var billingFormStyle: BillingFormStyle?
   var billingFormData: BillingForm? {
@@ -21,12 +25,20 @@ class DefaultPaymentViewModel: PaymentViewModel {
     }
   }
 
-  init(cardValidator: CardValidator,
+  private var cardDetails: Card = Card() {
+    didSet {
+      shouldEnablePayButton?(cardDetails.expiryDate != nil && cardDetails.number != nil)
+    }
+  }
+
+  init(checkoutAPIService: CheckoutAPIProtocol,
+       cardValidator: CardValidator,
        logger: FramesEventLogging,
        billingFormData: BillingForm?,
        paymentFormStyle: PaymentFormStyle?,
        billingFormStyle: BillingFormStyle?,
        supportedSchemes: [Card.Scheme]) {
+    self.checkoutAPIService = checkoutAPIService
     self.supportedSchemes = supportedSchemes
     self.cardValidator = cardValidator
     self.billingFormData = billingFormData
@@ -44,6 +56,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
     updateCardNumberView?()
     updateExpiryDateView?()
     updateSecurityCodeView?()
+    updatePayButtonView?()
     if isAddBillingSummaryNotUpdated() {
       updateBillingSummaryView()
     }
@@ -94,6 +107,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
       .filter { !$0.isEmpty }
       .joined(separator: "\n\n")
   }
+
 }
 
 extension DefaultPaymentViewModel: BillingFormViewModelDelegate {
@@ -107,12 +121,23 @@ extension DefaultPaymentViewModel: BillingFormViewModelDelegate {
 }
 
 extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
+  func cardNumberIsUpdated(value: String?) {
+    cardDetails.number = value
+  }
 
-  // TODO: Will be implemented in payment ticket
-  func securityCodeIsUpdated(value: String) {}
+  func payButtonIsPressed() {
+    checkoutAPIService.createToken(.card(cardDetails)) { [weak self] result in
+      self?.cardTokenRequested?(result)
+    }
+  }
 
-  // TODO: Will be implemented in payment ticket
-  func expiryDateIsUpdated(value: ExpiryDate) {}
+  func securityCodeIsUpdated(value: String?) {
+    cardDetails.cvv = value
+  }
+
+  func expiryDateIsUpdated(value: ExpiryDate?) {
+    cardDetails.expiryDate = value
+  }
 
   func addBillingButtonIsPressed(sender: UINavigationController?) {
     onTapAddressView(sender: sender)

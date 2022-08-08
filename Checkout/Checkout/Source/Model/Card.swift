@@ -8,14 +8,14 @@
 import Foundation
 
 public struct Card: Equatable {
-  public let number: String
-  public let expiryDate: ExpiryDate
-  public let name: String?
-  public let cvv: String?
-  public let billingAddress: Address?
-  public let phone: Phone?
+  public var number: String?
+  public var expiryDate: ExpiryDate?
+  public var name: String?
+  public var cvv: String?
+  public var billingAddress: Address?
+  public var phone: Phone?
 
-  public init(number: String, expiryDate: ExpiryDate, name: String?, cvv: String?, billingAddress: Address?, phone: Phone?) {
+  public init(number: String? = nil, expiryDate: ExpiryDate? = nil, name: String? = nil, cvv: String? = nil, billingAddress: Address? = nil, phone: Phone? = nil) {
     self.number = number
     self.expiryDate = expiryDate
     self.name = name

@@ -36,6 +36,7 @@ class TextFieldView: UIView {
         textField.placeholder = style.placeHolder
         textField.textColor = style.textColor
         textField.tintColor = style.tintColor
+        textField.textAlignment = style.textAlignment
         textField.keyboardType = style.isSupportingNumericKeyboard ? .numberPad : .default
     }
 

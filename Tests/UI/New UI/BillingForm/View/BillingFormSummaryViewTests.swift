@@ -54,9 +54,10 @@ class BillingFormSummaryViewTests: XCTestCase {
         XCTAssertEqual(view.buttonView.layer.cornerRadius, style.button.cornerRadius)
         XCTAssertEqual(view.buttonView.button.isEnabled, style.button.isEnabled)
         XCTAssertEqual(view.buttonView.button.tintColor, .clear)
-        XCTAssertEqual(view.buttonView.button.clipsToBounds, true)
-        XCTAssertEqual(view.buttonView.button.layer.borderColor, style.button.normalBorderColor.cgColor)
-        XCTAssertEqual(view.buttonView.button.layer.borderWidth , style.button.borderWidth)
+        XCTAssertEqual(view.buttonView.clipsToBounds, true)
+        XCTAssertEqual(view.buttonView.layer.borderColor, style.button.normalBorderColor.cgColor)
+        XCTAssertEqual(view.buttonView.layer.cornerRadius, style.button.cornerRadius)
+        XCTAssertEqual(view.buttonView.layer.borderWidth , style.button.borderWidth)
     }
 
     func testStyleErrorView() {

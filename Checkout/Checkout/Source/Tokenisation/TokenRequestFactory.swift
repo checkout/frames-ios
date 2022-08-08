@@ -33,14 +33,14 @@ final class TokenRequestFactory: TokenRequestProviding {
     switch cardValidator.validate(card) {
     case .success:
       // strip any white spaces from card number before creating request object
-      let cardNumber = card.number.filter { !$0.isWhitespace }
+      let cardNumber = card.number?.filter { !$0.isWhitespace }
       return .success(
         TokenRequest(
           type: .card,
           tokenData: nil,
           number: cardNumber,
-          expiryMonth: card.expiryDate.month,
-          expiryYear: card.expiryDate.year,
+          expiryMonth: card.expiryDate?.month,
+          expiryYear: card.expiryDate?.year,
           name: card.name,
           cvv: card.cvv,
           billingAddress: card.billingAddress.map(create(address:)),

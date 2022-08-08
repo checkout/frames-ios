@@ -4,8 +4,10 @@ import Checkout
 protocol PaymentViewControllerDelegate: AnyObject {
   func addBillingButtonIsPressed(sender: UINavigationController?)
   func editBillingButtonIsPressed(sender: UINavigationController?)
-  func expiryDateIsUpdated(value: ExpiryDate)
-  func securityCodeIsUpdated(value: String)
+  func expiryDateIsUpdated(value: ExpiryDate?)
+  func securityCodeIsUpdated(value: String?)
+  func cardNumberIsUpdated(value: String?)
+  func payButtonIsPressed()
 }
 
 final class PaymentViewController: UIViewController {
@@ -13,6 +15,7 @@ final class PaymentViewController: UIViewController {
   // MARK: - Variables
 
   weak var delegate: PaymentViewControllerDelegate?
+  var cardTokenRequested: ((Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)?
 
   private(set) var viewModel: PaymentViewModel
   private var notificationCenter = NotificationCenter.default
@@ -67,6 +70,20 @@ final class PaymentViewController: UIViewController {
     let viewModel = SecurityCodeViewModel(cardValidator: viewModel.cardValidator)
     let view = SecurityCodeView(viewModel: viewModel)
     view.delegate = self
+    return view
+  }()
+
+  private lazy var payButtonView: ButtonView = {
+    let view = ButtonView()
+    view.delegate = self
+    view.isEnabled = false
+    return view
+  }()
+
+  private lazy var activityIndicator: UIActivityIndicatorView = {
+    let view =  UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+    let barButton = UIBarButtonItem(customView: view)
+    navigationItem.setRightBarButton(barButton, animated: true)
     return view
   }()
 
@@ -162,7 +179,9 @@ extension PaymentViewController {
     setupExpiryDateViewClosure()
     setupCardNumberViewClosure()
     setupSecurityCodeViewClosure()
+    setupPayButtonViewClosure()
     setupHeaderViewClosure()
+    setupTokenResponseClosure()
   }
 
   private func setupHeaderViewClosure() {
@@ -213,9 +232,31 @@ extension PaymentViewController {
     }
   }
 
+  private func setupPayButtonViewClosure() {
+    viewModel.updatePayButtonView = { [weak self] in
+      DispatchQueue.main.async {
+        self?.updatePayButtonView()
+      }
+    }
+
+    viewModel.shouldEnablePayButton = { [weak self] isEnabled in
+      self?.payButtonView.isEnabled = isEnabled
+    }
+  }
+
+  private func setupTokenResponseClosure() {
+    viewModel.cardTokenRequested = { [weak self] result in
+      DispatchQueue.main.async {
+        self?.cardTokenRequested?(result)
+        self?.activityIndicator.stopAnimating()
+      }
+    }
+  }
+
   private func updateBackgroundViews() {
     view.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
     stackView.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
+    activityIndicator.color = viewModel.paymentFormStyle?.payButton.activeTintColor
   }
 
   private func updateCardNumber() {
@@ -231,6 +272,11 @@ extension PaymentViewController {
   private func updateSecurityCode() {
     guard let style = viewModel.paymentFormStyle?.securityCode else { return }
     securityCodeView.update(style: style)
+  }
+
+  private func updatePayButtonView() {
+    guard let style = viewModel.paymentFormStyle?.payButton else { return }
+    payButtonView.update(with: style)
   }
 
   private func updateAddBillingFormButtonView() {
@@ -263,12 +309,15 @@ extension PaymentViewController {
   }
 
   private func addArrangedSubviewForStackView() {
-    stackView.addArrangedSubview(headerView)
-    stackView.addArrangedSubview(cardNumberView)
-    stackView.addArrangedSubview(expiryDateView)
-    stackView.addArrangedSubview(securityCodeView)
-    stackView.addArrangedSubview(addBillingFormButtonView)
-    stackView.addArrangedSubview(billingFormSummaryView)
+    let arrangedSubViews = [
+      headerView,
+      cardNumberView,
+      expiryDateView,
+      securityCodeView,
+      addBillingFormButtonView,
+      billingFormSummaryView,
+      payButtonView]
+    stackView.addArrangedSubviews(arrangedSubViews)
     stackView.layoutMargins = UIEdgeInsets(top: 0,
                                            left: Constants.Padding.l.rawValue,
                                            bottom: Constants.Padding.l.rawValue,
@@ -306,19 +355,28 @@ extension PaymentViewController: BillingFormSummaryViewDelegate {
 }
 
 extension PaymentViewController: ExpiryDateViewDelegate {
-  func update(expiryDate: ExpiryDate) {
+  func update(expiryDate: ExpiryDate?) {
     delegate?.expiryDateIsUpdated(value: expiryDate)
   }
 }
 
 extension PaymentViewController: SecurityCodeViewDelegate {
-  func update(securityCode: String) {
+  func update(securityCode: String?) {
     delegate?.securityCodeIsUpdated(value: securityCode)
   }
 }
 
+extension PaymentViewController: ButtonViewDelegate {
+  func selectionButtonIsPressed(sender: UIView) {
+    activityIndicator.startAnimating()
+    delegate?.payButtonIsPressed()
+  }
+}
+
 extension PaymentViewController: CardNumberViewModelDelegate {
-    func update(cardNumber: String, scheme: Card.Scheme) {
+    func update(cardNumber: String?, scheme: Card.Scheme?) {
+      delegate?.cardNumberIsUpdated(value: cardNumber)
+      guard let scheme = scheme else { return }
       securityCodeView.updateCardScheme(cardScheme: scheme)
     }
 
