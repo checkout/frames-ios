@@ -9,7 +9,7 @@
 import Checkout
 
 protocol CardNumberViewModelDelegate: AnyObject {
-  func update(cardNumber: String?, scheme: Card.Scheme?)
+  func update(cardNumber: String?, scheme: Card.Scheme)
   func schemeUpdatedEagerly(to newScheme: Card.Scheme)
 }
 
@@ -35,7 +35,7 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
 
     switch cardValidator.validateCompleteness(cardNumber: cardNumber) {
     case .failure:
-        delegate?.update(cardNumber: nil, scheme: nil)
+        delegate?.update(cardNumber: nil, scheme: .unknown)
         return nil
     // An unknown scheme can also be generated when an eager validation was matched
     //    but the number is not complete.
@@ -43,7 +43,7 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
     //    overriding the eager validation with a less informative update
     case .success((let isComplete, let scheme)):
       guard isComplete else {
-          delegate?.update(cardNumber: nil, scheme: nil)
+        delegate?.update(cardNumber: nil, scheme: .unknown)
           return nil
       }
       delegate?.update(cardNumber: cardNumber, scheme: scheme)
@@ -59,7 +59,7 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
       delegate?.schemeUpdatedEagerly(to: scheme)
       return (cardUtils.format(cardNumber: cardNumber, scheme: scheme), Constants.Bundle.SchemeIcon(scheme: scheme))
     }
-    delegate?.update(cardNumber: nil, scheme: nil)
+    delegate?.update(cardNumber: nil, scheme: .unknown)
     return nil
   }
 

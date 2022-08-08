@@ -374,9 +374,8 @@ extension PaymentViewController: ButtonViewDelegate {
 }
 
 extension PaymentViewController: CardNumberViewModelDelegate {
-    func update(cardNumber: String?, scheme: Card.Scheme?) {
+    func update(cardNumber: String?, scheme: Card.Scheme) {
       delegate?.cardNumberIsUpdated(value: cardNumber)
-      guard let scheme = scheme else { return }
       securityCodeView.updateCardScheme(cardScheme: scheme)
     }
 

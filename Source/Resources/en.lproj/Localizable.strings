@@ -24,7 +24,7 @@
 "PaymentHeaderSubtitle" = "Visa, Mastercard and American Express accepted.";
 "CardNumber" = "Card number";
 "CardNumberErrorMessage" = "Please enter a valid card number";
-"Pay £99.99" = "Pay £99.99";
+"Pay" = "Pay";
 "city" = "City";
 "cancel" = "Cancel";
 "done" = "Done";

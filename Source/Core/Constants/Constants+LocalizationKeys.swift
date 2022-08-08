@@ -37,7 +37,7 @@ extension Constants {
           }
 
           struct PayButton {
-            static let title = "Pay £99.99".localized
+            static let title = "Pay".localized
           }
         }
 
