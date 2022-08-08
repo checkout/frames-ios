@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0B194AC328A0F407001AEAFD /* CardScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B194AC228A0F407001AEAFD /* CardScheme.swift */; };
 		0B6A7FDA28913D5700F7CC01 /* PaymentFormConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */; };
 		0B6A7FDB28913D5700F7CC01 /* PaymentStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */; };
 		0BFE5B302893D51F00E540B9 /* SecurityCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFE5B2F2893D51F00E540B9 /* SecurityCodeViewModel.swift */; };
@@ -365,6 +366,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B194AC228A0F407001AEAFD /* CardScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardScheme.swift; sourceTree = "<group>"; };
 		0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentFormConfiguration.swift; sourceTree = "<group>"; };
 		0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStyle.swift; sourceTree = "<group>"; };
 		0BFE5B2F2893D51F00E540B9 /* SecurityCodeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityCodeViewModel.swift; sourceTree = "<group>"; };
@@ -719,6 +721,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B194AC128A0F407001AEAFD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0B194AC228A0F407001AEAFD /* CardScheme.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		0B6A7FD728913D5700F7CC01 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1438,6 +1448,7 @@
 		9573225C286EF4E80068C115 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0B194AC128A0F407001AEAFD /* Models */,
 				95D73A432889492B00D93554 /* Constants */,
 				9573225E286EF4E80068C115 /* Environment.swift */,
 				9573225F286EF4E80068C115 /* CheckoutAPIService.swift */,
@@ -2027,6 +2038,7 @@
 				957322CB286EF4E80068C115 /* SelectionButtonView.swift in Sources */,
 				95732307286EF4E80068C115 /* SchemeIconsStackView.swift in Sources */,
 				957322FA286EF4E80068C115 /* CountrySelectionViewControllerDelegate.swift in Sources */,
+				0B194AC328A0F407001AEAFD /* CardScheme.swift in Sources */,
 				957322C8286EF4E80068C115 /* LabelView.swift in Sources */,
 				95732326286EF4E80068C115 /* Constants+Padding.swift in Sources */,
 				957322C5286EF4E80068C115 /* TextFieldView.swift in Sources */,
