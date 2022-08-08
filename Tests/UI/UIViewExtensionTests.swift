@@ -9,16 +9,15 @@
 import XCTest
 @testable import Frames
 
-class UIStackViewExtensionTests: XCTestCase {
+class UIViewExtensionTests: XCTestCase {
 
   func testRemoveArrangedSubviews() {
     let view1 = UIView()
     let view2 = UIView()
     let view3 = UIView()
     let stackView = UIStackView(arrangedSubviews: [view1, view2, view3])
-    stackView.removeAllArrangedSubviews()
+    stackView.removeSubviews()
 
     XCTAssertEqual(stackView.arrangedSubviews.count, 0)
   }
-
 }

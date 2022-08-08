@@ -73,7 +73,7 @@ public final class PaymentHeaderView: UIView {
 
   private func updateIconsStack() {
     iconsStackView.isHidden = style?.showAcceptedCardsList ?? true
-    iconsStackView.removeAllArrangedSubviews()
+    iconsStackView.removeSubviews()
 
     for scheme in supportedSchemes {
       let imageView = UIImageView().disabledAutoresizingIntoConstraints()
