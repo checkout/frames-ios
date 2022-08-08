@@ -9,8 +9,8 @@
 import UIKit
 
 public protocol PaymentHeaderCellStyle {
+    var isIconsViewHidden: Bool { get }
     var backgroundColor: UIColor { get }
     var headerLabel: ElementStyle? { get }
     var subtitleLabel: ElementStyle? { get }
-    var schemeIcons: [UIImage?] { get }
 }

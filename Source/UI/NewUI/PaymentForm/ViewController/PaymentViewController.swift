@@ -20,7 +20,7 @@ final class PaymentViewController: UIViewController {
   // MARK: - UI properties
 
   private lazy var headerView: PaymentHeaderView = {
-    PaymentHeaderView().disabledAutoresizingIntoConstraints()
+    PaymentHeaderView(supportedSchemes: viewModel.supportedSchemes).disabledAutoresizingIntoConstraints()
   }()
 
   private lazy var scrollView: UIScrollView = {
@@ -56,7 +56,7 @@ final class PaymentViewController: UIViewController {
   }()
 
   private lazy var cardNumberView: CardNumberView = {
-    let cardNumberViewModel = CardNumberViewModel(cardValidator: viewModel.cardValidator)
+    let cardNumberViewModel = CardNumberViewModel(cardValidator: viewModel.cardValidator, supportedSchemes: viewModel.supportedSchemes)
     cardNumberViewModel.delegate = self
     let cardNumberView = CardNumberView(viewModel: cardNumberViewModel)
 

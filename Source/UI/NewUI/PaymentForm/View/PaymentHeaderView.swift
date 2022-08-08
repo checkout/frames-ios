@@ -10,7 +10,7 @@ import UIKit
 
 public final class PaymentHeaderView: UIView {
   private var style: PaymentHeaderCellStyle?
-
+  private let supportedSchemes: [Card.Scheme]
   private lazy var backgroundView: UIView = {
     UIView().disabledAutoresizingIntoConstraints()
   }()
@@ -43,8 +43,9 @@ public final class PaymentHeaderView: UIView {
     return view
   }()
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  init(supportedSchemes: [Card.Scheme]) {
+  self.supportedSchemes = supportedSchemes
+    super.init(frame: .zero)
     setupViewsInOrder()
   }
 
@@ -71,14 +72,10 @@ public final class PaymentHeaderView: UIView {
   }
 
   private func updateIconsStack() {
-    guard let icons = style?.schemeIcons else {
-      iconsStackView.isHidden = true
-      return
-    }
-    iconsStackView.isHidden = false
-    for image in icons where image != nil {
+    iconsStackView.isHidden = style?.isIconsViewHidden ?? true
+    for scheme in supportedSchemes {
       let imageView = UIImageView().disabledAutoresizingIntoConstraints()
-      imageView.image = image?.withRenderingMode(.alwaysOriginal)
+      imageView.image = Constants.Bundle.SchemeIcon(scheme: scheme).image?.withRenderingMode(.alwaysOriginal)
       imageView.contentMode = .scaleAspectFit
       imageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
       imageView.widthAnchor.constraint(equalToConstant: 33).isActive = true
