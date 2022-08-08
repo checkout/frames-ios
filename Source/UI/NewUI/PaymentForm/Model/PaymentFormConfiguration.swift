@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Checkout
 
 public struct PaymentFormConfiguration {
     let serviceAPIKey: String
