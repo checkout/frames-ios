@@ -13,7 +13,7 @@ public struct DefaultPaymentHeaderCellStyle: PaymentHeaderCellStyle {
   public var headerLabel: ElementStyle? = DefaultHeaderLabelFormStyle(text: Constants.LocalizationKeys.PaymentForm.Header.title)
   public var subtitleLabel: ElementStyle? = DefaultTitleLabelStyle(
     text: Constants.LocalizationKeys.PaymentForm.Header.subtitle,
-    font: UIFont(graphikStyle: .regular, size: Constants.Style.PaymentForm.Header.subtitleFontSize.rawValue))
+    font: UIFont.systemFont(ofSize: Constants.Style.PaymentForm.Header.subtitleFontSize.rawValue))
   public var schemeIcons: [UIImage?] = [
     Constants.Bundle.SchemeIcon(scheme: .visa).image,
     Constants.Bundle.SchemeIcon(scheme: .mastercard).image,

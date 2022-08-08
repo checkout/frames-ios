@@ -79,7 +79,6 @@ final class PaymentViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    UIFont.loadAllCheckoutFonts
     UITextField.disableHardwareLayout()
     setupNavigationBar()
     view.backgroundColor = .white
