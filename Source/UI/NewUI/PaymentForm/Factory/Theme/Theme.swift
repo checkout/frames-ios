@@ -8,56 +8,68 @@
 import UIKit
 
 /// Template theme generating UI components for your layout
-struct Theme {
-    
+public struct Theme {
+
     // MARK: Font colors
     /// Font color associated with text displaying primary font colour, like inputs, titles and other important text
-    var primaryFontColor: UIColor
+    public var primaryFontColor: UIColor
     /// Font color associated with text displaying secondary information, like subtitles and other non core text
-    var secondaryFontColor: UIColor
+    public var secondaryFontColor: UIColor
     /// Font color associated with text
-    var errorFontColor: UIColor
-    
+    public var errorFontColor: UIColor
+
     // MARK: Font sizes
     /// Font size used for page headers
-    var headerFontSize = UIFont.preferredFont(forTextStyle: .title1).pointSize
+    public var headerFontSize = UIFont.preferredFont(forTextStyle: .title1).pointSize
     /// Font size used for input sections titles
-    var titleFontSize = UIFont.preferredFont(forTextStyle: .subheadline).pointSize
+    public var titleFontSize = UIFont.preferredFont(forTextStyle: .subheadline).pointSize
     /// Font size used for text displaying secondary information, like subtitles and other non core text
-    var subtitleFontSize = UIFont.preferredFont(forTextStyle: .footnote).pointSize
+    public var subtitleFontSize = UIFont.preferredFont(forTextStyle: .footnote).pointSize
     /// Font size used for input fields where user is inputting the values
-    var inputFontSize = UIFont.preferredFont(forTextStyle: .subheadline).pointSize
+    public var inputFontSize = UIFont.preferredFont(forTextStyle: .subheadline).pointSize
     /// Font size used for buttons that the user will interact with
-    var buttonsFontSize = UIFont.preferredFont(forTextStyle: .body).pointSize
-    
+    public var buttonsFontSize = UIFont.preferredFont(forTextStyle: .body).pointSize
+
     // MARK: UI Formatting colors
     /// Color used as background on screens
-    var backgroundColor: UIColor
+    public var backgroundColor: UIColor
     /// Color used as background for text input fields
-    var textInputBackgroundColor: UIColor
+    public var textInputBackgroundColor: UIColor = .clear
     /// Color used for border around data input sections. Will require a borderWidth to be provided for border to be shown
-    var borderColor: UIColor = .clear
+    public var borderColor: UIColor = .clear
     /// Color used for border around text inputs. Will require a textInputBorderRadius to be provided for the border to be shown
-    var textInputBorderColor: UIColor = .clear
+    public var textInputBorderColor: UIColor = .clear
     /// Color used for border when a validated field is receiving an error. Will be used by errorBorder or errorTextInputBorder as setup
-    var errorBorderColor: UIColor
-    
+    public var errorBorderColor: UIColor
+
     // MARK: Border formatting
     /// Border radius around data input sections
-    var borderRadius: CGFloat = 0
+    public var borderRadius: CGFloat = 0
     /// Border width around data input sections
-    var borderWidth: CGFloat = 0
+    public var borderWidth: CGFloat = 0
     /// Border radius around text input fields
-    var textInputBorderRadius: CGFloat = 0
+    public var textInputBorderRadius: CGFloat = 0
     /// Border width around text input fields
-    var textInputBorderWidth: CGFloat = 0
+    public var textInputBorderWidth: CGFloat = 0
     /// Border radius around data input sections when showing an error
-    var errorBorderRadius: CGFloat = 4
+    public var errorBorderRadius: CGFloat = 4
     /// Border width around data input sections when showing an error
-    var errorBorderWidth: CGFloat = 1
+    public var errorBorderWidth: CGFloat = 1
     /// Border radius around text input fields when showing an error
-    var errorTextInputBorderRadius: CGFloat = 0
+    public var errorTextInputBorderRadius: CGFloat = 0
     /// Border width around text input fields when showing an error
-    var errorTextInputBorderWidth: CGFloat = 0
-    
+    public var errorTextInputBorderWidth: CGFloat = 0
+
+    public init(primaryFontColor: UIColor,
+                secondaryFontColor: UIColor,
+                errorFontColor: UIColor,
+                backgroundColor: UIColor,
+                errorBorderColor: UIColor) {
+        self.primaryFontColor = primaryFontColor
+        self.secondaryFontColor = secondaryFontColor
+        self.errorFontColor = errorFontColor
+        self.backgroundColor = backgroundColor
+        self.errorBorderColor = errorBorderColor
+    }
+
 }
