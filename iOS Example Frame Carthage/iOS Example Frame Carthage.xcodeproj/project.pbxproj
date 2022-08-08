@@ -37,6 +37,8 @@
 		952F328E283C303E00F616FF /* CheckoutSdkIos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F31DC283C303E00F616FF /* CheckoutSdkIos.swift */; };
 		952F32D5283C303E00F616FF /* CheckoutTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F3232283C303E00F616FF /* CheckoutTheme.swift */; };
 		9552EAEA2881B0B800E9ECD9 /* PaymentFormFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9552EAE92881B0B800E9ECD9 /* PaymentFormFactoryTests.swift */; };
+		955B65F628A14FF5005C23AA /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B65F528A14FF5005C23AA /* UIStackViewExtension.swift */; };
+		955B65F828A15065005C23AA /* UIStackViewExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B65F728A15065005C23AA /* UIStackViewExtensionTests.swift */; };
 		9562D083286512E300C94D6B /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562D081286512C500C94D6B /* Style.swift */; };
 		9572608C286DE8A00080E2C8 /* GraphikFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572602D286DE8A00080E2C8 /* GraphikFontTests.swift */; };
 		9572608D286DE8A00080E2C8 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572602E286DE8A00080E2C8 /* ColorTests.swift */; };
@@ -386,6 +388,8 @@
 		952F31DC283C303E00F616FF /* CheckoutSdkIos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutSdkIos.swift; path = ../../Source/CheckoutSdkIos.swift; sourceTree = "<group>"; };
 		952F3232283C303E00F616FF /* CheckoutTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutTheme.swift; path = ../../Source/CheckoutTheme.swift; sourceTree = "<group>"; };
 		9552EAE92881B0B800E9ECD9 /* PaymentFormFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentFormFactoryTests.swift; sourceTree = "<group>"; };
+		955B65F528A14FF5005C23AA /* UIStackViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
+		955B65F728A15065005C23AA /* UIStackViewExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtensionTests.swift; sourceTree = "<group>"; };
 		9562D081286512C500C94D6B /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		9572602D286DE8A00080E2C8 /* GraphikFontTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphikFontTests.swift; sourceTree = "<group>"; };
 		9572602E286DE8A00080E2C8 /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
@@ -1420,6 +1424,7 @@
 				9573224D286EF4E80068C115 /* UIFont+PropertyProviding.swift */,
 				9573224E286EF4E80068C115 /* UIBarStyle+stringValue.swift */,
 				9573224F286EF4E80068C115 /* UITextFieldExtension.swift */,
+				955B65F528A14FF5005C23AA /* UIStackViewExtension.swift */,
 				95732250286EF4E80068C115 /* StringExtensions.swift */,
 				95732251286EF4E80068C115 /* DispatchQueue+Dispatching.swift */,
 				95732252286EF4E80068C115 /* JSONEncoder+ContentTypeProviding.swift */,
@@ -1563,6 +1568,7 @@
 				95732388286EF50F0068C115 /* SimpleLoadingViewControllerTests.swift */,
 				95732389286EF50F0068C115 /* Views */,
 				9573238E286EF50F0068C115 /* CardViewControllerTests.swift */,
+				955B65F728A15065005C23AA /* UIStackViewExtensionTests.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -2081,6 +2087,7 @@
 				957322BC286EF4E80068C115 /* DefaultBillingSummaryViewStyle.swift in Sources */,
 				95E816DC2888850200C7876B /* DefaultPaymentHeaderCellStyle.swift in Sources */,
 				957322FE286EF4E80068C115 /* AddressViewControllerDelegate.swift in Sources */,
+				955B65F628A14FF5005C23AA /* UIStackViewExtension.swift in Sources */,
 				957322AB286EF4E80068C115 /* Validator.swift in Sources */,
 				957322D2286EF4E80068C115 /* ElementErrorViewStyle.swift in Sources */,
 				9573231B286EF4E80068C115 /* UIColor+PropertyProviding.swift in Sources */,
@@ -2185,6 +2192,7 @@
 				9552EAEA2881B0B800E9ECD9 /* PaymentFormFactoryTests.swift in Sources */,
 				957323DC286EF50F0068C115 /* TextFieldViewTests.swift in Sources */,
 				957323A3286EF50F0068C115 /* MockThreeDSWKNavigationHelperFactory.swift in Sources */,
+				955B65F828A15065005C23AA /* UIStackViewExtensionTests.swift in Sources */,
 				9572608D286DE8A00080E2C8 /* ColorTests.swift in Sources */,
 				957323D1286EF50F0068C115 /* CityValidatorTests.swift in Sources */,
 				957323D2286EF50F0068C115 /* AddressLine2ValidatorTests.swift in Sources */,
