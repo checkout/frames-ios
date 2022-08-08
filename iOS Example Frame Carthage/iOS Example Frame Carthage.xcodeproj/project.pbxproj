@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		0B6A7FDA28913D5700F7CC01 /* PaymentFormConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */; };
 		0B6A7FDB28913D5700F7CC01 /* PaymentStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */; };
+		0BF40C38289AB483007D4023 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF40C37289AB483007D4023 /* UIFont+Extensions.swift */; };
 		0BFE5B302893D51F00E540B9 /* SecurityCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFE5B2F2893D51F00E540B9 /* SecurityCodeViewModel.swift */; };
 		4422777226163748009626A0 /* Frames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; };
 		4422777326163748009626A0 /* Frames.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -367,6 +368,7 @@
 /* Begin PBXFileReference section */
 		0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentFormConfiguration.swift; sourceTree = "<group>"; };
 		0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStyle.swift; sourceTree = "<group>"; };
+		0BF40C37289AB483007D4023 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		0BFE5B2F2893D51F00E540B9 /* SecurityCodeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityCodeViewModel.swift; sourceTree = "<group>"; };
 		4422774726163716009626A0 /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4422775D26163748009626A0 /* Frames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Frames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1757,6 +1759,7 @@
 				F59820082805B75F007AB07C /* LaunchScreen.storyboard */,
 				F598200A2805B75F007AB07C /* Main.storyboard */,
 				F59820102805B75F007AB07C /* AppDelegate.swift */,
+				0BF40C37289AB483007D4023 /* UIFont+Extensions.swift */,
 				F59820112805B75F007AB07C /* Info.plist */,
 			);
 			name = "iOS Example Frame";
@@ -2275,6 +2278,7 @@
 				F59820192805B75F007AB07C /* AppDelegate.swift in Sources */,
 				95ED57A1285A13D70010B493 /* CustomStyle1.swift in Sources */,
 				F59820152805B75F007AB07C /* MainViewController.swift in Sources */,
+				0BF40C38289AB483007D4023 /* UIFont+Extensions.swift in Sources */,
 				9562D083286512E300C94D6B /* Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

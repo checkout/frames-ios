@@ -7,10 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B2F59792899527800838E63 /* CustomStyle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F59782899527800838E63 /* CustomStyle1.swift */; };
+		0BF40C1D289A8647007D4023 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF40C1C289A8647007D4023 /* UIFont+Extensions.swift */; };
+		0BF40C2B289A8ACD007D4023 /* SF-Mono-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0BF40C1F289A8ACD007D4023 /* SF-Mono-Bold.otf */; };
+		0BF40C2C289A8ACD007D4023 /* SF-Mono-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0BF40C20289A8ACD007D4023 /* SF-Mono-Light.otf */; };
+		0BF40C2D289A8ACD007D4023 /* SF-Mono-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0BF40C21289A8ACD007D4023 /* SF-Mono-Regular.otf */; };
+		0BF40C2E289A8ACD007D4023 /* SF-Mono-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0BF40C22289A8ACD007D4023 /* SF-Mono-Heavy.otf */; };
+		0BF40C2F289A8ACD007D4023 /* SF-Mono-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0BF40C23289A8ACD007D4023 /* SF-Mono-BoldItalic.otf */; };
+		0BF40C30289A8ACD007D4023 /* SF-Mono-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0BF40C24289A8ACD007D4023 /* SF-Mono-MediumItalic.otf */; };
+		0BF40C31289A8ACD007D4023 /* SF-Mono-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0BF40C25289A8ACD007D4023 /* SF-Mono-RegularItalic.otf */; };
+		0BF40C32289A8ACD007D4023 /* SF-Mono-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0BF40C26289A8ACD007D4023 /* SF-Mono-Semibold.otf */; };
+		0BF40C33289A8ACD007D4023 /* SF-Mono-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0BF40C27289A8ACD007D4023 /* SF-Mono-SemiboldItalic.otf */; };
+		0BF40C34289A8ACD007D4023 /* SF-Mono-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0BF40C28289A8ACD007D4023 /* SF-Mono-Medium.otf */; };
+		0BF40C35289A8ACD007D4023 /* SF-Mono-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0BF40C29289A8ACD007D4023 /* SF-Mono-LightItalic.otf */; };
+		0BF40C36289A8ACD007D4023 /* SF-Mono-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0BF40C2A289A8ACD007D4023 /* SF-Mono-HeavyItalic.otf */; };
 		443FCD9426137A4C009D6DE6 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 443FCD9326137A4C009D6DE6 /* Frames */; };
 		95A4AA142864ABE800F4ABEF /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A4AA132864ABE800F4ABEF /* Style.swift */; };
 		95B343DA2853582D001AAA44 /* CustomStyle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B343D92853582D001AAA44 /* CustomStyle2.swift */; };
-		95B343DB2853582D001AAA44 /* CustomStyle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B343D82853582D001AAA44 /* CustomStyle1.swift */; };
 		CB9412DB2825714C00C889E8 /* iOS_Example_FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9412D92825714C00C889E8 /* iOS_Example_FrameUITests.swift */; };
 		CBA81CC027ABDF21000DF192 /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBA81CAB27ABDF21000DF192 /* LaunchScreen.strings */; };
 		CBA81CC127ABDF21000DF192 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBA81CAD27ABDF21000DF192 /* Main.strings */; };
@@ -33,13 +46,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B2F59782899527800838E63 /* CustomStyle1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyle1.swift; sourceTree = "<group>"; };
+		0BF40C1C289A8647007D4023 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		0BF40C1F289A8ACD007D4023 /* SF-Mono-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-Bold.otf"; sourceTree = "<group>"; };
+		0BF40C20289A8ACD007D4023 /* SF-Mono-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-Light.otf"; sourceTree = "<group>"; };
+		0BF40C21289A8ACD007D4023 /* SF-Mono-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-Regular.otf"; sourceTree = "<group>"; };
+		0BF40C22289A8ACD007D4023 /* SF-Mono-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-Heavy.otf"; sourceTree = "<group>"; };
+		0BF40C23289A8ACD007D4023 /* SF-Mono-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-BoldItalic.otf"; sourceTree = "<group>"; };
+		0BF40C24289A8ACD007D4023 /* SF-Mono-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-MediumItalic.otf"; sourceTree = "<group>"; };
+		0BF40C25289A8ACD007D4023 /* SF-Mono-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-RegularItalic.otf"; sourceTree = "<group>"; };
+		0BF40C26289A8ACD007D4023 /* SF-Mono-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-Semibold.otf"; sourceTree = "<group>"; };
+		0BF40C27289A8ACD007D4023 /* SF-Mono-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		0BF40C28289A8ACD007D4023 /* SF-Mono-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-Medium.otf"; sourceTree = "<group>"; };
+		0BF40C29289A8ACD007D4023 /* SF-Mono-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-LightItalic.otf"; sourceTree = "<group>"; };
+		0BF40C2A289A8ACD007D4023 /* SF-Mono-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-HeavyItalic.otf"; sourceTree = "<group>"; };
 		443FCD8F261379CB009D6DE6 /* frames-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "frames-ios"; path = ..; sourceTree = "<group>"; };
 		44E647AC260CEAFF00503D6C /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44E647B6260CF03700503D6C /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		953C08B42860B5ED001602F5 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		953C08B52860B5ED001602F5 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		95A4AA132864ABE800F4ABEF /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
-		95B343D82853582D001AAA44 /* CustomStyle1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyle1.swift; sourceTree = "<group>"; };
 		95B343D92853582D001AAA44 /* CustomStyle2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyle2.swift; sourceTree = "<group>"; };
 		CB9412D92825714C00C889E8 /* iOS_Example_FrameUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS_Example_FrameUITests.swift; sourceTree = "<group>"; };
 		CB9412DA2825714C00C889E8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,6 +107,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BF40C1E289A8ACD007D4023 /* SF-Mono */ = {
+			isa = PBXGroup;
+			children = (
+				0BF40C1F289A8ACD007D4023 /* SF-Mono-Bold.otf */,
+				0BF40C20289A8ACD007D4023 /* SF-Mono-Light.otf */,
+				0BF40C21289A8ACD007D4023 /* SF-Mono-Regular.otf */,
+				0BF40C22289A8ACD007D4023 /* SF-Mono-Heavy.otf */,
+				0BF40C23289A8ACD007D4023 /* SF-Mono-BoldItalic.otf */,
+				0BF40C24289A8ACD007D4023 /* SF-Mono-MediumItalic.otf */,
+				0BF40C25289A8ACD007D4023 /* SF-Mono-RegularItalic.otf */,
+				0BF40C26289A8ACD007D4023 /* SF-Mono-Semibold.otf */,
+				0BF40C27289A8ACD007D4023 /* SF-Mono-SemiboldItalic.otf */,
+				0BF40C28289A8ACD007D4023 /* SF-Mono-Medium.otf */,
+				0BF40C29289A8ACD007D4023 /* SF-Mono-LightItalic.otf */,
+				0BF40C2A289A8ACD007D4023 /* SF-Mono-HeavyItalic.otf */,
+			);
+			name = "SF-Mono";
+			path = "../../iOS Example/iOS Example/SF-Mono";
+			sourceTree = "<group>";
+		};
 		443FCD9226137A4C009D6DE6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,7 +151,7 @@
 				CBA81CB327ABDF21000DF192 /* example_apple_pay_payment_data.json */,
 				CBA81CB427ABDF21000DF192 /* MainViewController.swift */,
 				95A4AA132864ABE800F4ABEF /* Style.swift */,
-				95B343D82853582D001AAA44 /* CustomStyle1.swift */,
+				0B2F59782899527800838E63 /* CustomStyle1.swift */,
 				95B343D92853582D001AAA44 /* CustomStyle2.swift */,
 				CBA81CB527ABDF21000DF192 /* Assets.xcassets */,
 				CBA81CB627ABDF21000DF192 /* LaunchScreen.storyboard */,
@@ -113,6 +159,8 @@
 				CBA81CAD27ABDF21000DF192 /* Main.strings */,
 				CBA81CBE27ABDF21000DF192 /* AppDelegate.swift */,
 				CBA81CBF27ABDF21000DF192 /* Info.plist */,
+				0BF40C1E289A8ACD007D4023 /* SF-Mono */,
+				0BF40C1C289A8647007D4023 /* UIFont+Extensions.swift */,
 			);
 			name = "iOS Example Frame";
 			path = "../iOS Example Frame/iOS Example Frame";
@@ -227,10 +275,22 @@
 			files = (
 				CBA81CC527ABDF21000DF192 /* LaunchScreen.storyboard in Resources */,
 				CBA81CC227ABDF21000DF192 /* example_apple_pay_payment_data.json in Resources */,
+				0BF40C33289A8ACD007D4023 /* SF-Mono-SemiboldItalic.otf in Resources */,
+				0BF40C2F289A8ACD007D4023 /* SF-Mono-BoldItalic.otf in Resources */,
+				0BF40C2B289A8ACD007D4023 /* SF-Mono-Bold.otf in Resources */,
+				0BF40C35289A8ACD007D4023 /* SF-Mono-LightItalic.otf in Resources */,
 				CBA81CC427ABDF21000DF192 /* Assets.xcassets in Resources */,
+				0BF40C34289A8ACD007D4023 /* SF-Mono-Medium.otf in Resources */,
+				0BF40C2C289A8ACD007D4023 /* SF-Mono-Light.otf in Resources */,
+				0BF40C30289A8ACD007D4023 /* SF-Mono-MediumItalic.otf in Resources */,
+				0BF40C2E289A8ACD007D4023 /* SF-Mono-Heavy.otf in Resources */,
+				0BF40C31289A8ACD007D4023 /* SF-Mono-RegularItalic.otf in Resources */,
 				CBA81CC627ABDF21000DF192 /* Main.storyboard in Resources */,
 				CBA81CC027ABDF21000DF192 /* LaunchScreen.strings in Resources */,
+				0BF40C2D289A8ACD007D4023 /* SF-Mono-Regular.otf in Resources */,
+				0BF40C32289A8ACD007D4023 /* SF-Mono-Semibold.otf in Resources */,
 				CBA81CC127ABDF21000DF192 /* Main.strings in Resources */,
+				0BF40C36289A8ACD007D4023 /* SF-Mono-HeavyItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,8 +331,9 @@
 			files = (
 				95B343DA2853582D001AAA44 /* CustomStyle2.swift in Sources */,
 				CBA81CC727ABDF21000DF192 /* AppDelegate.swift in Sources */,
-				95B343DB2853582D001AAA44 /* CustomStyle1.swift in Sources */,
+				0B2F59792899527800838E63 /* CustomStyle1.swift in Sources */,
 				CBA81CC327ABDF21000DF192 /* MainViewController.swift in Sources */,
+				0BF40C1D289A8647007D4023 /* UIFont+Extensions.swift in Sources */,
 				95A4AA142864ABE800F4ABEF /* Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

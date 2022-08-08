@@ -39,6 +39,8 @@ class ButtonView: UIView {
     func update(with style: ElementButtonStyle) {
         self.style = style
         backgroundColor = style.backgroundColor
+        layer.cornerRadius = style.cornerRadius
+        isEnabled = style.isEnabled
         updateButtonStyle(with: style)
         updateLabelStyle(with: style)
     }
@@ -51,7 +53,6 @@ class ButtonView: UIView {
         button.tintColor = .clear
         button.clipsToBounds = true
         button.layer.borderColor = style.normalBorderColor.cgColor
-        button.layer.cornerRadius = style.cornerRadius
         button.layer.borderWidth = style.borderWidth
         button.setTitleColor(style.disabledTextColor, for: .disabled)
         button.setTitleColor(style.textColor, for: .normal)
