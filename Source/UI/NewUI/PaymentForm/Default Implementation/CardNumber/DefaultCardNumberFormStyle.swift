@@ -14,6 +14,6 @@ public struct DefaultCardNumberFormStyle: CellTextFieldStyle {
     public var title: ElementStyle? = DefaultTitleLabelStyle(text: Constants.LocalizationKeys.PaymentForm.CardNumber.title)
     public var hint: ElementStyle?
     public var mandatory: ElementStyle?
-    public var textfield: ElementTextFieldStyle = DefaultTextField(isSupportingNumericKeyboard: true, placeHolder: "")
+    public var textfield: ElementTextFieldStyle = DefaultTextField(isSupportingNumericKeyboard: true, placeholder: "")
     public var error: ElementErrorViewStyle? = DefaultErrorInputLabelStyle(text: Constants.LocalizationKeys.PaymentForm.CardNumber.error)
 }

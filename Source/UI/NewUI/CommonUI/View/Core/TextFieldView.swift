@@ -33,7 +33,7 @@ class TextFieldView: UIView {
     func update(with style: ElementTextFieldStyle) {
         textField.text = style.text
         textField.font = style.font
-        textField.placeholder = style.placeHolder
+        textField.placeholder = style.placeholder
         textField.textColor = style.textColor
         textField.tintColor = style.tintColor
         textField.keyboardType = style.isSupportingNumericKeyboard ? .numberPad : .default

@@ -134,7 +134,7 @@ public struct ExpiryDateFormStyleCustom2: CellTextFieldStyle {
   public var title: ElementStyle? = TitleLabelStyleCustom2(text: "Expiry date")
   public var hint: ElementStyle? = HintInputLabelStyleCustom2(text: "Format is MM/YY")
   public var mandatory: ElementStyle?
-  public var textfield: ElementTextFieldStyle = TextFieldCustom2(placeHolder: "MM/YY")
+  public var textfield: ElementTextFieldStyle = TextFieldCustom2(placeholder: "MM/YY")
   public var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom2(text: "please fill expiry date")
 }
 
@@ -357,7 +357,7 @@ struct TextFieldCustom2: ElementTextFieldStyle {
     var borderWidth: CGFloat = 1.0
     var isHidden: Bool = false
     var text: String = ""
-    var placeHolder: String?
+    var placeholder: String?
     var font: UIFont = UIFont(name: "Helvetica Neue", size: 14)!
     var textColor: UIColor = UIColor(red: 40/255.0, green: 46/255.0, blue: 54/255.0, alpha: 1.0)
     var normalBorderColor: UIColor = Constants.greenBackgroundColor
