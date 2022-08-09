@@ -11,7 +11,7 @@ import Checkout
 
 class PaymentViewControllerTests: XCTestCase {
   var viewController: PaymentViewController!
-  var viewModel: PaymentViewModel!
+  var viewModel: DefaultPaymentViewModel!
   let delegate = PaymentViewControllerMockDelegate()
   let stubCheckoutAPIService = StubCheckoutAPIService()
   
@@ -80,27 +80,30 @@ class PaymentViewControllerTests: XCTestCase {
   func testCallDelegateMethodFinishEditingExpiryDateView() {
     viewController.delegate = delegate
     let expiryDate = ExpiryDate(month: 01, year: 25)
-    viewController.update(expiryDate: expiryDate)
+    viewController.update(result: .success(expiryDate))
     XCTAssertEqual(delegate.expiryDateIsUpdatedWithValue.count, 1)
-    XCTAssertEqual(delegate.expiryDateIsUpdatedWithValue.last, expiryDate)
+    switch delegate.expiryDateIsUpdatedWithValue.last {
+      case .success(let result):
+        XCTAssertEqual(result, expiryDate)
+      default:
+        XCTFail()
+    }
+
   }
   
   func testCallDelegateMethodFinishEditingSecurityCodeView() {
     viewController.delegate = delegate
     let value = "1234"
-    viewController.update(securityCode: value)
+    viewController.update(result: .success("1234"))
     XCTAssertEqual(delegate.securityCodeIsUpdatedWithValue.count, 1)
-    XCTAssertEqual(delegate.securityCodeIsUpdatedWithValue.last, value)
+    switch delegate.securityCodeIsUpdatedWithValue.last {
+      case .success(let result):
+        XCTAssertEqual(result, value)
+      default:
+        XCTFail()
+    }
   }
-  
-  func testCallDelegateMethodFinishEditingCardNumberView() {
-    viewController.delegate = delegate
-    let value = "1234 1234 1234 1234"
-    viewController.update(cardNumber: value, scheme: .unknown)
-    XCTAssertEqual(delegate.cardNumberIsUpdatedWithValue.count, 1)
-    XCTAssertEqual(delegate.cardNumberIsUpdatedWithValue.last, value)
-  }
-  
+
   func testCallDelegateMethodOnTapPayButton() {
     viewController.delegate = delegate
     let button = UIButton()
@@ -110,13 +113,14 @@ class PaymentViewControllerTests: XCTestCase {
   
   func testCardTokenRequested() {
     let expectation = XCTestExpectation(description: #function)
-    viewController.delegate = viewModel as? PaymentViewControllerDelegate
-    
     let stubCardValidator = MockCardValidator()
     stubCardValidator.validateCardNumberToReturn = .success(.visa)
     stubCheckoutAPIService.cardValidatorToReturn = stubCardValidator
     viewController.viewDidLoad()
-    
+
+    viewModel.update(result: .success(CardInfo("4242 4242 4242 4242", .visa)))
+    viewController.update(result: .success(ExpiryDate(month: 01, year: 25)))
+
     viewController.cardTokenRequested = { result in
       if case let .success(token) = result {
         XCTAssertEqual(token, StubCheckoutAPIService.createTokenDetails())
@@ -129,7 +133,7 @@ class PaymentViewControllerTests: XCTestCase {
     let button = UIButton()
     viewController.selectionButtonIsPressed(sender: button)
     
-    wait(for: [expectation], timeout: 2.0)
+    wait(for: [expectation], timeout: 1)
   }
   
   func testPaymentViewControllerNotSendingPaymentFormPresentedOnWrongLifecycleEvent() {

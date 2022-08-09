@@ -7,9 +7,13 @@
 //
 
 import UIKit
+protocol CardNumberViewDelegate: AnyObject {
+  func textFieldDidStartDeleteText()
+}
 
 final class CardNumberView: UIView {
-  private let viewModel: CardNumberViewModelProtocol
+  private weak var delegate: CardNumberViewDelegate?
+  private var viewModel: CardNumberViewModelProtocol
 
   private(set) var schemeIcon = Constants.Bundle.SchemeIcon.blank {
     didSet {
@@ -29,7 +33,7 @@ final class CardNumberView: UIView {
 
   init(viewModel: CardNumberViewModelProtocol) {
     self.viewModel = viewModel
-
+    delegate = viewModel as? CardNumberViewDelegate
     super.init(frame: .zero)
     setupView()
   }
@@ -90,7 +94,7 @@ extension CardNumberView: TextFieldViewDelegate {
     // some characters are deleted
     // notify payment view controller to disable the pay button
     if string.count == 0 && range.length > 0 {
-      _ = viewModel.validate(cardNumber: string)
+      delegate?.textFieldDidStartDeleteText()
       return true
     }
 

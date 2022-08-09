@@ -104,10 +104,10 @@ final class CheckoutAPIServiceIntegrationTests: XCTestCase {
     XCTAssertNotNil(ISO8601DateFormatter().date(from: tokenDetails.expiresOn))
 
     XCTAssertEqual(tokenDetails.expiryDate, card.expiryDate)
-    let cardNumber = try! XCTUnwrap(card.number)
+
     XCTAssertEqual(
       tokenDetails.scheme,
-      try! CardValidator(environment: .sandbox).validate(cardNumber: cardNumber).get()
+      try! CardValidator(environment: .sandbox).validate(cardNumber: card.number).get()
     )
 
     let last4digits = "4242"

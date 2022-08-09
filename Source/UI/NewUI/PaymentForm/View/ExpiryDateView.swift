@@ -1,8 +1,12 @@
 import UIKit
 import Checkout
 
+enum ExpiryDateError: Error {
+  case InvalidCode
+}
+
 protocol ExpiryDateViewDelegate: AnyObject {
-  func update(expiryDate: ExpiryDate?)
+  func update(result: Result<ExpiryDate, ExpiryDateError>)
 }
 
 public final class ExpiryDateView: UIView {
@@ -57,7 +61,7 @@ public final class ExpiryDateView: UIView {
     switch cardValidator.validate(expiryMonth: monthDigit, expiryYear: yearDigit) {
       case .success:
         let expiryDate = ExpiryDate(month: monthDigit, year: yearDigit)
-        delegate?.update(expiryDate: expiryDate)
+        delegate?.update(result: .success(expiryDate))
         return nil
       case .failure(let error):
         return error
@@ -147,7 +151,7 @@ public final class ExpiryDateView: UIView {
       Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid
     style?.error?.isHidden = isHidden
     if !isHidden {
-      delegate?.update(expiryDate: nil)
+      delegate?.update(result: .failure(.InvalidCode))
     }
     style?.textfield.text = textfieldText ?? ""
     dateInputView.update(style: style)
@@ -173,7 +177,7 @@ extension ExpiryDateView: TextFieldViewDelegate {
     // some characters are deleted
     // notify payment view controller to disable the pay button
     if string.count == 0 && range.length > 0 {
-      delegate?.update(expiryDate: nil)
+      delegate?.update(result: .failure(.InvalidCode))
       return true
     }
 

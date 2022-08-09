@@ -8,8 +8,16 @@
 
 import Checkout
 
+typealias CardInfo = (cardNumber: String, scheme: Card.Scheme)
+
+enum CardNumberError: Error {
+  case invalidCharacters
+  case isNotComplete
+  case invalidScheme
+}
+
 protocol CardNumberViewModelDelegate: AnyObject {
-  func update(cardNumber: String?, scheme: Card.Scheme)
+  func update(result: Result<CardInfo, CardNumberError>)
   func schemeUpdatedEagerly(to newScheme: Card.Scheme)
 }
 
@@ -30,12 +38,14 @@ class CardNumberViewModel {
 }
 
 extension CardNumberViewModel: CardNumberViewModelProtocol {
+
+  // TODO: separate the validation logic from getting the icon
   func validate(cardNumber rawText: String) -> Constants.Bundle.SchemeIcon? {
     let cardNumber = cardUtils.removeNonDigits(from: rawText)
 
     switch cardValidator.validateCompleteness(cardNumber: cardNumber) {
     case .failure:
-        delegate?.update(cardNumber: nil, scheme: .unknown)
+        delegate?.update(result: .failure(.invalidCharacters))
         return nil
     // An unknown scheme can also be generated when an eager validation was matched
     //    but the number is not complete.
@@ -43,14 +53,15 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
     //    overriding the eager validation with a less informative update
     case .success((let isComplete, let scheme)):
       guard isComplete else {
-        delegate?.update(cardNumber: nil, scheme: .unknown)
+        delegate?.update(result: .failure(.isNotComplete))
           return nil
       }
-      delegate?.update(cardNumber: cardNumber, scheme: scheme)
+      delegate?.update(result: .success((cardNumber, scheme)))
       return Constants.Bundle.SchemeIcon(scheme: scheme)
     }
   }
 
+  // TODO: separate the validation logic from getting the icon
   func eagerValidate(cardNumber rawText: String) -> (newTextFieldValue: String, schemeIcon: Constants.Bundle.SchemeIcon)? {
     let cardNumber = cardUtils.removeNonDigits(from: rawText)
 
@@ -59,7 +70,7 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
       delegate?.schemeUpdatedEagerly(to: scheme)
       return (cardUtils.format(cardNumber: cardNumber, scheme: scheme), Constants.Bundle.SchemeIcon(scheme: scheme))
     }
-    delegate?.update(cardNumber: nil, scheme: .unknown)
+    delegate?.update(result: .failure(.invalidScheme))
     return nil
   }
 
@@ -73,7 +84,7 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
   }
 
   private func handleValidationSuccess(cardNumber: String, scheme: Card.Scheme) -> Card.Scheme? {
-    delegate?.update(cardNumber: cardNumber, scheme: scheme)
+    delegate?.update(result: .success((cardNumber, scheme)))
 
     return scheme
   }
@@ -90,5 +101,11 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
         return nil
       }
     }
+  }
+}
+
+extension CardNumberViewModel: CardNumberViewDelegate {
+  func textFieldDidStartDeleteText() {
+    delegate?.update(result: .failure(.isNotComplete))
   }
 }

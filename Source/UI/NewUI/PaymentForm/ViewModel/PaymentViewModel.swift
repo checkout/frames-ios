@@ -12,7 +12,8 @@ protocol PaymentViewModel {
   var updateAddBillingDetailsView: (() -> Void)? { get set }
   var updateExpiryDateView: (() -> Void)? { get set }
   var updateCardNumberView: (() -> Void)? { get set }
-  var updateSecurityCodeView: (() -> Void)? { get set }
+  var updateSecurityCodeViewScheme: ((Card.Scheme) -> Void)? { get set }
+  var updateSecurityCodeViewStyle: (() -> Void)? { get set }
   var updatePayButtonView: (() -> Void)? { get set }
   var updateHeaderView: (() -> Void)? { get set }
   var shouldEnablePayButton: ((Bool) -> Void)? { get set }
