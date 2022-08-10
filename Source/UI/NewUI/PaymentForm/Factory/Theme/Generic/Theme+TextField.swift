@@ -30,8 +30,10 @@ public extension Theme {
     
     /// Create a TextField Style from text
     func buildTextField(text: String,
-                        placeholderText: String) -> ThemeTextField {
+                        placeholderText: String,
+                        isNumbericInput: Bool) -> ThemeTextField {
         ThemeTextField(text: text,
+                       isSupportingNumericKeyboard: isNumbericInput,
                        cornerRadius: self.textInputBorderRadius,
                        borderWidth: self.textInputBorderWidth,
                        placeholder: placeholderText,

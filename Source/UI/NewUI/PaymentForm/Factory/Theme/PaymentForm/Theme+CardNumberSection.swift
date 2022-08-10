@@ -53,7 +53,8 @@ public extension Theme {
 
         return ThemeCardNumberSection(
             textfield: self.buildTextField(text: textFieldText,
-                                           placeholderText: textFieldPlaceholder),
+                                           placeholderText: textFieldPlaceholder,
+                                           isNumbericInput: true),
             title: self.buildTitle(text: titleText),
             mandatory: addMandatory ? self.buildIsRequiredInput(text: mandatoryText) : nil,
             hint: addSubtitle ? self.buildSubtitle(text: subtitleText,
