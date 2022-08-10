@@ -10,6 +10,7 @@ import UIKit
 
 public final class PaymentHeaderView: UIView {
   private var style: PaymentHeaderCellStyle?
+
   private let supportedSchemes: [Card.Scheme]
   private lazy var backgroundView: UIView = {
     UIView().disabledAutoresizingIntoConstraints()
@@ -57,7 +58,6 @@ public final class PaymentHeaderView: UIView {
     guard let style = style else { return }
     self.style = style
 
-    backgroundView.backgroundColor = style.backgroundColor
     headerLabel.isHidden = style.headerLabel == nil
     subtitleLabel.isHidden = style.subtitleLabel == nil
 
@@ -89,23 +89,9 @@ public final class PaymentHeaderView: UIView {
 extension PaymentHeaderView {
 
   private func setupViewsInOrder() {
-    setupBackgroundView()
     setupMainStackView()
     setupIconStackView()
     addArrangedSubview()
-  }
-
-  private func setupBackgroundView() {
-    addSubview(backgroundView)
-    NSLayoutConstraint.activate([
-      backgroundView.topAnchor.constraint(equalTo: topAnchor,
-                                          constant: -Constants.Padding.l.rawValue),
-      backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor,
-                                              constant: -Constants.Padding.l.rawValue),
-      backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                               constant: Constants.Padding.l.rawValue),
-      backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor)
-    ])
   }
 
   private func addArrangedSubview() {
