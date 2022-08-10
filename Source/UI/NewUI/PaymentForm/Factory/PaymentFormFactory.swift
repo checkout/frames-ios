@@ -10,7 +10,7 @@ public struct PaymentFormFactory {
 
   public static func buildViewController(configuration: PaymentFormConfiguration,
                                          style: PaymentStyle,
-                                         cardTokenResultClousure: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
+                                         completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
     // Ensure a consistent identifier is used for the monitoring of a journey
     Self.sessionCorrelationID = UUID().uuidString
     let logger = FramesEventLogger(environment: configuration.environment, getCorrelationID: { Self.sessionCorrelationID })
@@ -26,7 +26,7 @@ public struct PaymentFormFactory {
                                             supportedSchemes: configuration.supportedSchemes)
 
     let viewController = PaymentViewController(viewModel: viewModel)
-    viewController.cardTokenRequested = cardTokenResultClousure
+    viewController.cardTokenRequested = completionHandler
     logger.log(.paymentFormInitialised(environment: configuration.environment))
     if #available(iOS 13.0, *) {
       viewController.isModalInPresentation = true
