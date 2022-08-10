@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  UIStackViewExtension.swift
 //  
 //
 //  Created by Ehab Alsharkawy on 03/08/2022.
