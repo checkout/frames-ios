@@ -6,7 +6,7 @@
 //
 
 @testable import Frames
-import Checkout
+@testable import Checkout
 
 final class StubCheckoutAPIService: Frames.CheckoutAPIProtocol {
   var cardValidatorToReturn = MockCardValidator()
@@ -35,7 +35,7 @@ final class StubCheckoutAPIService: Frames.CheckoutAPIProtocol {
 
 }
 
-extension StubCheckoutAPIService{
+extension StubCheckoutAPIService {
 
   static func createTokenDetails(
     type: TokenDetails.TokenType = .card,
