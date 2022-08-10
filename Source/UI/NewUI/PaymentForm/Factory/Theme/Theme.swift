@@ -15,6 +15,8 @@ public struct Theme {
     public var primaryFontColor: UIColor
     /// Font color associated with text displaying secondary information, like subtitles and other non core text
     public var secondaryFontColor: UIColor
+    /// Font color associated with text displayed inside actionable buttons
+    public var buttonFontColor: UIColor
     /// Font color associated with text
     public var errorFontColor: UIColor
 
@@ -35,6 +37,8 @@ public struct Theme {
     public var backgroundColor: UIColor
     /// Color used as background for text input fields
     public var textInputBackgroundColor: UIColor = .clear
+    /// Color used for border on text input field when its focussed
+    public var focussedTextInputBorderColor: UIColor = .clear
     /// Color used for border around data input sections. Will require a borderWidth to be provided for border to be shown
     public var borderColor: UIColor = .clear
     /// Color used for border around text inputs. Will require a textInputBorderRadius to be provided for the border to be shown
@@ -62,11 +66,13 @@ public struct Theme {
 
     public init(primaryFontColor: UIColor,
                 secondaryFontColor: UIColor,
+                buttonFontColor: UIColor,
                 errorFontColor: UIColor,
                 backgroundColor: UIColor,
                 errorBorderColor: UIColor) {
         self.primaryFontColor = primaryFontColor
         self.secondaryFontColor = secondaryFontColor
+        self.buttonFontColor = buttonFontColor
         self.errorFontColor = errorFontColor
         self.backgroundColor = backgroundColor
         self.errorBorderColor = errorBorderColor
