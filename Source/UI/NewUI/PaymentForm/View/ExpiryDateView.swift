@@ -2,7 +2,7 @@ import UIKit
 import Checkout
 
 enum ExpiryDateError: Error {
-  case InvalidCode
+  case invalidCode
 }
 
 protocol ExpiryDateViewDelegate: AnyObject {
@@ -151,7 +151,7 @@ public final class ExpiryDateView: UIView {
       Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid
     style?.error?.isHidden = isHidden
     if !isHidden {
-      delegate?.update(result: .failure(.InvalidCode))
+      delegate?.update(result: .failure(.invalidCode))
     }
     style?.textfield.text = textfieldText ?? ""
     dateInputView.update(style: style)
@@ -177,7 +177,7 @@ extension ExpiryDateView: TextFieldViewDelegate {
     // some characters are deleted
     // notify payment view controller to disable the pay button
     if string.count == 0 && range.length > 0 {
-      delegate?.update(result: .failure(.InvalidCode))
+      delegate?.update(result: .failure(.invalidCode))
       return true
     }
 

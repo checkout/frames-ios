@@ -9,7 +9,7 @@ import UIKit
 import Checkout
 
 enum SecurityCodeError: Error {
-  case InvalidCode
+  case invalidCode
 }
 
 protocol SecurityCodeViewDelegate: AnyObject {
@@ -56,7 +56,7 @@ public final class SecurityCodeView: UIView {
 
   private func updateErrorViewStyle(isHidden: Bool, textfieldText: String?) {
     if !isHidden {
-      delegate?.update(result: .failure(.InvalidCode))
+      delegate?.update(result: .failure(.invalidCode))
     }
     style?.error?.isHidden = isHidden
     style?.textfield.text = viewModel.cvv
@@ -86,7 +86,7 @@ extension SecurityCodeView: TextFieldViewDelegate {
     // some characters are deleted
     // notify payment view controller to disable the pay button
     if string.count == 0 && range.length > 0 {
-      delegate?.update(result: .failure(.InvalidCode))
+      delegate?.update(result: .failure(.invalidCode))
       return true
     }
 

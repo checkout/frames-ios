@@ -51,14 +51,15 @@ class PaymentViewControllerTests: XCTestCase {
     XCTAssertTrue(scrollView?.subviews[0] is UIStackView)
     
     let stackView = scrollView?.subviews[0]
-    XCTAssertEqual(stackView?.subviews.count, 7)
-    XCTAssertTrue(stackView?.subviews[0] is PaymentHeaderView)
-    XCTAssertTrue(stackView?.subviews[1] is CardNumberView)
-    XCTAssertTrue(stackView?.subviews[2] is ExpiryDateView)
-    XCTAssertTrue(stackView?.subviews[3] is SecurityCodeView)
-    XCTAssertTrue(stackView?.subviews[4] is SelectionButtonView)
-    XCTAssertTrue(stackView?.subviews[5] is BillingFormSummaryView)
-    XCTAssertTrue(stackView?.subviews[6] is ButtonView) // pay button
+    XCTAssertEqual(stackView?.subviews.count, 8)
+    XCTAssertTrue(stackView?.subviews[0] is UIView) // background for the header view
+    XCTAssertTrue(stackView?.subviews[1] is PaymentHeaderView)
+    XCTAssertTrue(stackView?.subviews[2] is CardNumberView)
+    XCTAssertTrue(stackView?.subviews[3] is ExpiryDateView)
+    XCTAssertTrue(stackView?.subviews[4] is SecurityCodeView)
+    XCTAssertTrue(stackView?.subviews[5] is SelectionButtonView)
+    XCTAssertTrue(stackView?.subviews[6] is BillingFormSummaryView)
+    XCTAssertTrue(stackView?.subviews[7] is ButtonView) // pay button
   }
   
   func testCallDelegateMethodOnTapAddBillingButton() {

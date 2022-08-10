@@ -85,6 +85,10 @@ final class PaymentViewController: UIViewController {
     return view
   }()
 
+  private lazy var headerBackgroundView: UIView = {
+    UIView().disabledAutoresizingIntoConstraints()
+  }()
+
   // MARK: - functions
 
   init(viewModel: PaymentViewModel) {
@@ -124,8 +128,7 @@ final class PaymentViewController: UIViewController {
     let backgroundColor = viewModel.paymentFormStyle?.headerView.backgroundColor ?? .white
     let titleColor = viewModel.paymentFormStyle?.headerView.headerLabel?.textColor ?? .black
 
-    let titleFont = viewModel.paymentFormStyle?.headerView.headerLabel?.font ?? UIFont.systemFont(ofSize: Constants.defaultNavigationHeaderFontSize)
-    customizeNavigationBarAppearance(color: backgroundColor, titleColor: titleColor, font: titleFont)
+    customizeNavigationBarAppearance(color: backgroundColor, titleColor: titleColor)
 
     navigationController?.navigationBar.tintColor = viewModel.paymentFormStyle?.headerView.headerLabel?.textColor
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: Constants.Bundle.Images.leftArrow.image, style: .plain, target: self, action: #selector(popViewController))
@@ -300,6 +303,7 @@ extension PaymentViewController {
   public func updateHeaderView() {
     guard let style = viewModel.paymentFormStyle?.headerView else { return }
     headerView.update(style: style)
+    headerBackgroundView.backgroundColor = style.backgroundColor
   }
 }
 
@@ -310,6 +314,7 @@ extension PaymentViewController {
     setupScrollView()
     setupStackView()
     addArrangedSubviewForStackView()
+    setupHeaderBackground()
   }
 
   private func addArrangedSubviewForStackView() {
@@ -327,6 +332,17 @@ extension PaymentViewController {
                                            bottom: Constants.Padding.l.rawValue,
                                            right: Constants.Padding.l.rawValue)
     stackView.isLayoutMarginsRelativeArrangement = true
+  }
+
+  private func setupHeaderBackground() {
+    stackView.addSubview(headerBackgroundView)
+    stackView.sendSubviewToBack(headerBackgroundView)
+    NSLayoutConstraint.activate([
+      headerBackgroundView.topAnchor.constraint(equalTo: headerView.topAnchor),
+      headerBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      headerBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      headerBackgroundView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor)
+    ])
   }
 
   func setupScrollView() {
