@@ -45,7 +45,7 @@ public extension Theme {
         public var error: ElementErrorViewStyle?
     }
     
-    /// Create a Card Number Input Section from Styles defined for each sub component
+    /// Create a Billing Summary from Styles defined for each sub component
     func buildBillingSummary(button: ElementButtonStyle,
                              textField: ThemeTextField,
                              title: ThemeTitle,
