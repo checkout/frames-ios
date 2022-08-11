@@ -4,11 +4,6 @@ import Checkout
 
 class BillingFormViewModelTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        UIFont.loadAllCheckoutFonts
-    }
-    
     func testIntialization() {
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
         XCTAssertNotNil(viewModel)

@@ -26,7 +26,6 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
     var cardViewController: CardViewController?
 
     // MARK: View Methods.
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         customizeNavigationBarAppearance()
@@ -37,11 +36,6 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
         super.viewDidAppear(animated)
 
         cardViewController?.addressViewController.setCountrySelected(country: Self.countryGB)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        UIFont.loadAllCheckoutFonts
     }
 
     // MARK: IBAction Methods.
@@ -61,7 +55,6 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
     }
 
     @IBAction private func goToCustom1PaymentPage(_ sender: Any) {
-
         let address = Address(addressLine1: "Test line1 Custom 1",
                               addressLine2: nil,
                               city: "London Custom 1",
@@ -76,7 +69,7 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
         let paymentConfiguration = PaymentFormConfiguration(apiKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
                                                             environment: environment,
                                                             supportedSchemes: [.visa, .mastercard, .maestro],
-                                                            billingFormData: billingForm)
+                                                            billingFormData: nil)
         let paymentStyle = PaymentStyle(paymentFormStyle: Style.Custom1.paymentForm,
                                         billingFormStyle: Style.Custom1.billingForm)
         let paymentFormViewController = PaymentFormFactory.buildViewController(configuration: paymentConfiguration, style: paymentStyle)

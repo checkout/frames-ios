@@ -125,8 +125,7 @@ public class CardViewController: UIViewController,
         super.viewWillAppear(animated)
         customizeNavigationBarAppearance(
         color: .white,
-        titleColor: .black,
-        font: UIFont.systemFont(ofSize: UIFont.systemFontSize))
+        titleColor: .black)
 
         title = "cardViewControllerTitle".localized(forClass: CardViewController.self)
         registerKeyboardHandlers(notificationCenter: notificationCenter,

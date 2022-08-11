@@ -22,6 +22,20 @@
 
 /* Begin PBXBuildFile section */
 		0B194AC328A0F407001AEAFD /* CardScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B194AC228A0F407001AEAFD /* CardScheme.swift */; };
+		0B194AFC28A1132B001AEAFD /* UIFont+SFMono.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B194AED28A1132B001AEAFD /* UIFont+SFMono.swift */; };
+		0B194AFD28A1132B001AEAFD /* SF-Mono-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B194AEF28A1132B001AEAFD /* SF-Mono-Bold.otf */; };
+		0B194AFE28A1132B001AEAFD /* SF-Mono-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B194AF028A1132B001AEAFD /* SF-Mono-Light.otf */; };
+		0B194AFF28A1132B001AEAFD /* SF-Mono-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B194AF128A1132B001AEAFD /* SF-Mono-Regular.otf */; };
+		0B194B0028A1132B001AEAFD /* SF-Mono-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B194AF228A1132B001AEAFD /* SF-Mono-Heavy.otf */; };
+		0B194B0128A1132B001AEAFD /* SF-Mono-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B194AF328A1132B001AEAFD /* SF-Mono-BoldItalic.otf */; };
+		0B194B0228A1132B001AEAFD /* SF-Mono-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B194AF428A1132B001AEAFD /* SF-Mono-MediumItalic.otf */; };
+		0B194B0328A1132B001AEAFD /* SF-Mono-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B194AF528A1132B001AEAFD /* SF-Mono-RegularItalic.otf */; };
+		0B194B0428A1132B001AEAFD /* SF-Mono-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B194AF628A1132B001AEAFD /* SF-Mono-Semibold.otf */; };
+		0B194B0528A1132B001AEAFD /* SF-Mono-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B194AF728A1132B001AEAFD /* SF-Mono-SemiboldItalic.otf */; };
+		0B194B0628A1132B001AEAFD /* SF-Mono-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B194AF828A1132B001AEAFD /* SF-Mono-Medium.otf */; };
+		0B194B0728A1132B001AEAFD /* SF-Mono-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B194AF928A1132B001AEAFD /* SF-Mono-LightItalic.otf */; };
+		0B194B0828A1132B001AEAFD /* SF-Mono-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B194AFA28A1132B001AEAFD /* SF-Mono-HeavyItalic.otf */; };
+		0B194B0928A1132B001AEAFD /* UIFont+Graphik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B194AFB28A1132B001AEAFD /* UIFont+Graphik.swift */; };
 		0B6A7FDA28913D5700F7CC01 /* PaymentFormConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */; };
 		0B6A7FDB28913D5700F7CC01 /* PaymentStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */; };
 		0BFE5B302893D51F00E540B9 /* SecurityCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFE5B2F2893D51F00E540B9 /* SecurityCodeViewModel.swift */; };
@@ -33,7 +47,6 @@
 		950DBEB6287C946900FA04C0 /* SecurityCodeViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBEB5287C946900FA04C0 /* SecurityCodeViewTests.swift */; };
 		952F3240283C303E00F616FF /* CardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F3165283C303E00F616FF /* CardUtils.swift */; };
 		952F3241283C303E00F616FF /* CheckoutColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F3166283C303E00F616FF /* CheckoutColor.swift */; };
-		952F328D283C303E00F616FF /* CheckoutFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F31DB283C303E00F616FF /* CheckoutFont.swift */; };
 		952F328E283C303E00F616FF /* CheckoutSdkIos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F31DC283C303E00F616FF /* CheckoutSdkIos.swift */; };
 		952F32D5283C303E00F616FF /* CheckoutTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F3232283C303E00F616FF /* CheckoutTheme.swift */; };
 		9552EAEA2881B0B800E9ECD9 /* PaymentFormFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9552EAE92881B0B800E9ECD9 /* PaymentFormFactoryTests.swift */; };
@@ -55,24 +68,6 @@
 		95732292286EF4E80068C115 /* keyboard-next.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732191286EF4E80068C115 /* keyboard-next.png */; };
 		95732293286EF4E80068C115 /* keyboard-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732192286EF4E80068C115 /* keyboard-down@2x.png */; };
 		95732294286EF4E80068C115 /* keyboard-down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95732193286EF4E80068C115 /* keyboard-down@3x.png */; };
-		95732295286EF4E80068C115 /* GraphikLCG-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 95732198286EF4E80068C115 /* GraphikLCG-ThinItalic.otf */; };
-		95732296286EF4E80068C115 /* GraphikLCG-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 95732199286EF4E80068C115 /* GraphikLCG-BlackItalic.otf */; };
-		95732297286EF4E80068C115 /* GraphikLCG-Super.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9573219A286EF4E80068C115 /* GraphikLCG-Super.otf */; };
-		95732298286EF4E80068C115 /* GraphikLCG-Extralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9573219B286EF4E80068C115 /* GraphikLCG-Extralight.otf */; };
-		95732299286EF4E80068C115 /* GraphikLCG-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9573219C286EF4E80068C115 /* GraphikLCG-BoldItalic.otf */; };
-		9573229A286EF4E80068C115 /* GraphikLCG-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9573219D286EF4E80068C115 /* GraphikLCG-Black.otf */; };
-		9573229B286EF4E80068C115 /* GraphikLCG-SuperItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9573219E286EF4E80068C115 /* GraphikLCG-SuperItalic.otf */; };
-		9573229C286EF4E80068C115 /* GraphikLCG-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9573219F286EF4E80068C115 /* GraphikLCG-RegularItalic.otf */; };
-		9573229D286EF4E80068C115 /* GraphikLCG-ExtralightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 957321A0286EF4E80068C115 /* GraphikLCG-ExtralightItalic.otf */; };
-		9573229E286EF4E80068C115 /* GraphikLCG-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 957321A1286EF4E80068C115 /* GraphikLCG-Regular.otf */; };
-		9573229F286EF4E80068C115 /* GraphikLCG-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 957321A2286EF4E80068C115 /* GraphikLCG-LightItalic.otf */; };
-		957322A0286EF4E80068C115 /* GraphikLCG-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 957321A3286EF4E80068C115 /* GraphikLCG-Medium.otf */; };
-		957322A1286EF4E80068C115 /* GraphikLCG-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 957321A4286EF4E80068C115 /* GraphikLCG-Semibold.otf */; };
-		957322A2286EF4E80068C115 /* GraphikLCG-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 957321A5286EF4E80068C115 /* GraphikLCG-MediumItalic.otf */; };
-		957322A3286EF4E80068C115 /* GraphikLCG-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 957321A6286EF4E80068C115 /* GraphikLCG-SemiboldItalic.otf */; };
-		957322A4286EF4E80068C115 /* GraphikLCG-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 957321A7286EF4E80068C115 /* GraphikLCG-Thin.otf */; };
-		957322A5286EF4E80068C115 /* GraphikLCG-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 957321A8286EF4E80068C115 /* GraphikLCG-Light.otf */; };
-		957322A6286EF4E80068C115 /* GraphikLCG-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 957321A9286EF4E80068C115 /* GraphikLCG-Bold.otf */; };
 		957322A7286EF4E80068C115 /* PostCodeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957321AC286EF4E80068C115 /* PostCodeValidator.swift */; };
 		957322A8286EF4E80068C115 /* CountryValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957321AD286EF4E80068C115 /* CountryValidator.swift */; };
 		957322A9286EF4E80068C115 /* PhoneNumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957321AE286EF4E80068C115 /* PhoneNumberValidator.swift */; };
@@ -367,6 +362,20 @@
 
 /* Begin PBXFileReference section */
 		0B194AC228A0F407001AEAFD /* CardScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardScheme.swift; sourceTree = "<group>"; };
+		0B194AED28A1132B001AEAFD /* UIFont+SFMono.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+SFMono.swift"; sourceTree = "<group>"; };
+		0B194AEF28A1132B001AEAFD /* SF-Mono-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-Bold.otf"; sourceTree = "<group>"; };
+		0B194AF028A1132B001AEAFD /* SF-Mono-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-Light.otf"; sourceTree = "<group>"; };
+		0B194AF128A1132B001AEAFD /* SF-Mono-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-Regular.otf"; sourceTree = "<group>"; };
+		0B194AF228A1132B001AEAFD /* SF-Mono-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-Heavy.otf"; sourceTree = "<group>"; };
+		0B194AF328A1132B001AEAFD /* SF-Mono-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-BoldItalic.otf"; sourceTree = "<group>"; };
+		0B194AF428A1132B001AEAFD /* SF-Mono-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-MediumItalic.otf"; sourceTree = "<group>"; };
+		0B194AF528A1132B001AEAFD /* SF-Mono-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-RegularItalic.otf"; sourceTree = "<group>"; };
+		0B194AF628A1132B001AEAFD /* SF-Mono-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-Semibold.otf"; sourceTree = "<group>"; };
+		0B194AF728A1132B001AEAFD /* SF-Mono-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		0B194AF828A1132B001AEAFD /* SF-Mono-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-Medium.otf"; sourceTree = "<group>"; };
+		0B194AF928A1132B001AEAFD /* SF-Mono-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-LightItalic.otf"; sourceTree = "<group>"; };
+		0B194AFA28A1132B001AEAFD /* SF-Mono-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-HeavyItalic.otf"; sourceTree = "<group>"; };
+		0B194AFB28A1132B001AEAFD /* UIFont+Graphik.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Graphik.swift"; sourceTree = "<group>"; };
 		0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentFormConfiguration.swift; sourceTree = "<group>"; };
 		0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStyle.swift; sourceTree = "<group>"; };
 		0BFE5B2F2893D51F00E540B9 /* SecurityCodeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityCodeViewModel.swift; sourceTree = "<group>"; };
@@ -382,7 +391,6 @@
 		950DBEB5287C946900FA04C0 /* SecurityCodeViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityCodeViewTests.swift; sourceTree = "<group>"; };
 		952F3165283C303E00F616FF /* CardUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardUtils.swift; path = ../../Source/CardUtils.swift; sourceTree = "<group>"; };
 		952F3166283C303E00F616FF /* CheckoutColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutColor.swift; path = ../../Source/CheckoutColor.swift; sourceTree = "<group>"; };
-		952F31DB283C303E00F616FF /* CheckoutFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutFont.swift; path = ../../Source/CheckoutFont.swift; sourceTree = "<group>"; };
 		952F31DC283C303E00F616FF /* CheckoutSdkIos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutSdkIos.swift; path = ../../Source/CheckoutSdkIos.swift; sourceTree = "<group>"; };
 		952F3232283C303E00F616FF /* CheckoutTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutTheme.swift; path = ../../Source/CheckoutTheme.swift; sourceTree = "<group>"; };
 		9552EAE92881B0B800E9ECD9 /* PaymentFormFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentFormFactoryTests.swift; sourceTree = "<group>"; };
@@ -409,24 +417,6 @@
 		95732193286EF4E80068C115 /* keyboard-down@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-down@3x.png"; sourceTree = "<group>"; };
 		95732194286EF4E80068C115 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		95732195286EF4E80068C115 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		95732198286EF4E80068C115 /* GraphikLCG-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-ThinItalic.otf"; sourceTree = "<group>"; };
-		95732199286EF4E80068C115 /* GraphikLCG-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-BlackItalic.otf"; sourceTree = "<group>"; };
-		9573219A286EF4E80068C115 /* GraphikLCG-Super.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Super.otf"; sourceTree = "<group>"; };
-		9573219B286EF4E80068C115 /* GraphikLCG-Extralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Extralight.otf"; sourceTree = "<group>"; };
-		9573219C286EF4E80068C115 /* GraphikLCG-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-BoldItalic.otf"; sourceTree = "<group>"; };
-		9573219D286EF4E80068C115 /* GraphikLCG-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Black.otf"; sourceTree = "<group>"; };
-		9573219E286EF4E80068C115 /* GraphikLCG-SuperItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-SuperItalic.otf"; sourceTree = "<group>"; };
-		9573219F286EF4E80068C115 /* GraphikLCG-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-RegularItalic.otf"; sourceTree = "<group>"; };
-		957321A0286EF4E80068C115 /* GraphikLCG-ExtralightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-ExtralightItalic.otf"; sourceTree = "<group>"; };
-		957321A1286EF4E80068C115 /* GraphikLCG-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Regular.otf"; sourceTree = "<group>"; };
-		957321A2286EF4E80068C115 /* GraphikLCG-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-LightItalic.otf"; sourceTree = "<group>"; };
-		957321A3286EF4E80068C115 /* GraphikLCG-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Medium.otf"; sourceTree = "<group>"; };
-		957321A4286EF4E80068C115 /* GraphikLCG-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Semibold.otf"; sourceTree = "<group>"; };
-		957321A5286EF4E80068C115 /* GraphikLCG-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-MediumItalic.otf"; sourceTree = "<group>"; };
-		957321A6286EF4E80068C115 /* GraphikLCG-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-SemiboldItalic.otf"; sourceTree = "<group>"; };
-		957321A7286EF4E80068C115 /* GraphikLCG-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Thin.otf"; sourceTree = "<group>"; };
-		957321A8286EF4E80068C115 /* GraphikLCG-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Light.otf"; sourceTree = "<group>"; };
-		957321A9286EF4E80068C115 /* GraphikLCG-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Bold.otf"; sourceTree = "<group>"; };
 		957321AC286EF4E80068C115 /* PostCodeValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCodeValidator.swift; sourceTree = "<group>"; };
 		957321AD286EF4E80068C115 /* CountryValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryValidator.swift; sourceTree = "<group>"; };
 		957321AE286EF4E80068C115 /* PhoneNumberValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberValidator.swift; sourceTree = "<group>"; };
@@ -727,6 +717,33 @@
 				0B194AC228A0F407001AEAFD /* CardScheme.swift */,
 			);
 			path = Models;
+		0B194AEC28A1132B001AEAFD /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0B194AED28A1132B001AEAFD /* UIFont+SFMono.swift */,
+				0B194AFB28A1132B001AEAFD /* UIFont+Graphik.swift */,
+				0B194AEE28A1132B001AEAFD /* SF-Mono */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		0B194AEE28A1132B001AEAFD /* SF-Mono */ = {
+			isa = PBXGroup;
+			children = (
+				0B194AEF28A1132B001AEAFD /* SF-Mono-Bold.otf */,
+				0B194AF028A1132B001AEAFD /* SF-Mono-Light.otf */,
+				0B194AF128A1132B001AEAFD /* SF-Mono-Regular.otf */,
+				0B194AF228A1132B001AEAFD /* SF-Mono-Heavy.otf */,
+				0B194AF328A1132B001AEAFD /* SF-Mono-BoldItalic.otf */,
+				0B194AF428A1132B001AEAFD /* SF-Mono-MediumItalic.otf */,
+				0B194AF528A1132B001AEAFD /* SF-Mono-RegularItalic.otf */,
+				0B194AF628A1132B001AEAFD /* SF-Mono-Semibold.otf */,
+				0B194AF728A1132B001AEAFD /* SF-Mono-SemiboldItalic.otf */,
+				0B194AF828A1132B001AEAFD /* SF-Mono-Medium.otf */,
+				0B194AF928A1132B001AEAFD /* SF-Mono-LightItalic.otf */,
+				0B194AFA28A1132B001AEAFD /* SF-Mono-HeavyItalic.otf */,
+			);
+			path = "SF-Mono";
 			sourceTree = "<group>";
 		};
 		0B6A7FD728913D5700F7CC01 /* Model */ = {
@@ -743,7 +760,6 @@
 			children = (
 				952F3165283C303E00F616FF /* CardUtils.swift */,
 				952F3166283C303E00F616FF /* CheckoutColor.swift */,
-				952F31DB283C303E00F616FF /* CheckoutFont.swift */,
 				952F31DC283C303E00F616FF /* CheckoutSdkIos.swift */,
 				952F3232283C303E00F616FF /* CheckoutTheme.swift */,
 				9573225C286EF4E80068C115 /* Core */,
@@ -794,7 +810,6 @@
 				95D73A462889935300D93554 /* Images.xcassets */,
 				95732182286EF4E80068C115 /* checkmarks */,
 				9573218A286EF4E80068C115 /* arrows */,
-				95732196286EF4E80068C115 /* Font */,
 			);
 			name = Resources;
 			path = ../../Source/Resources;
@@ -824,39 +839,6 @@
 				95732193286EF4E80068C115 /* keyboard-down@3x.png */,
 			);
 			path = arrows;
-			sourceTree = "<group>";
-		};
-		95732196286EF4E80068C115 /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				95732197286EF4E80068C115 /* Graphik */,
-			);
-			path = Font;
-			sourceTree = "<group>";
-		};
-		95732197286EF4E80068C115 /* Graphik */ = {
-			isa = PBXGroup;
-			children = (
-				95732198286EF4E80068C115 /* GraphikLCG-ThinItalic.otf */,
-				95732199286EF4E80068C115 /* GraphikLCG-BlackItalic.otf */,
-				9573219A286EF4E80068C115 /* GraphikLCG-Super.otf */,
-				9573219B286EF4E80068C115 /* GraphikLCG-Extralight.otf */,
-				9573219C286EF4E80068C115 /* GraphikLCG-BoldItalic.otf */,
-				9573219D286EF4E80068C115 /* GraphikLCG-Black.otf */,
-				9573219E286EF4E80068C115 /* GraphikLCG-SuperItalic.otf */,
-				9573219F286EF4E80068C115 /* GraphikLCG-RegularItalic.otf */,
-				957321A0286EF4E80068C115 /* GraphikLCG-ExtralightItalic.otf */,
-				957321A1286EF4E80068C115 /* GraphikLCG-Regular.otf */,
-				957321A2286EF4E80068C115 /* GraphikLCG-LightItalic.otf */,
-				957321A3286EF4E80068C115 /* GraphikLCG-Medium.otf */,
-				957321A4286EF4E80068C115 /* GraphikLCG-Semibold.otf */,
-				957321A5286EF4E80068C115 /* GraphikLCG-MediumItalic.otf */,
-				957321A6286EF4E80068C115 /* GraphikLCG-SemiboldItalic.otf */,
-				957321A7286EF4E80068C115 /* GraphikLCG-Thin.otf */,
-				957321A8286EF4E80068C115 /* GraphikLCG-Light.otf */,
-				957321A9286EF4E80068C115 /* GraphikLCG-Bold.otf */,
-			);
-			path = Graphik;
 			sourceTree = "<group>";
 		};
 		957321AA286EF4E80068C115 /* UI */ = {
@@ -1768,6 +1750,7 @@
 				F59820082805B75F007AB07C /* LaunchScreen.storyboard */,
 				F598200A2805B75F007AB07C /* Main.storyboard */,
 				F59820102805B75F007AB07C /* AppDelegate.swift */,
+				0B194AEC28A1132B001AEAFD /* Fonts */,
 				F59820112805B75F007AB07C /* Info.plist */,
 			);
 			name = "iOS Example Frame";
@@ -1933,37 +1916,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				9573228F286EF4E80068C115 /* keyboard-previous@3x.png in Resources */,
-				95732296286EF4E80068C115 /* GraphikLCG-BlackItalic.otf in Resources */,
-				957322A2286EF4E80068C115 /* GraphikLCG-MediumItalic.otf in Resources */,
-				957322A1286EF4E80068C115 /* GraphikLCG-Semibold.otf in Resources */,
-				957322A6286EF4E80068C115 /* GraphikLCG-Bold.otf in Resources */,
 				95732271286EF4E80068C115 /* Localizable.strings in Resources */,
-				95732295286EF4E80068C115 /* GraphikLCG-ThinItalic.otf in Resources */,
-				9573229E286EF4E80068C115 /* GraphikLCG-Regular.otf in Resources */,
-				957322A4286EF4E80068C115 /* GraphikLCG-Thin.otf in Resources */,
 				95732293286EF4E80068C115 /* keyboard-down@2x.png in Resources */,
-				9573229F286EF4E80068C115 /* GraphikLCG-LightItalic.otf in Resources */,
 				95732291286EF4E80068C115 /* keyboard-previous.png in Resources */,
 				9573228D286EF4E80068C115 /* keyboard-next@3x.png in Resources */,
-				957322A0286EF4E80068C115 /* GraphikLCG-Medium.otf in Resources */,
 				95732287286EF4E80068C115 /* checkmark.png in Resources */,
 				95732289286EF4E80068C115 /* checkmark@3x.png in Resources */,
-				95732299286EF4E80068C115 /* GraphikLCG-BoldItalic.otf in Resources */,
 				9573228E286EF4E80068C115 /* keyboard-next@2x.png in Resources */,
 				95732292286EF4E80068C115 /* keyboard-next.png in Resources */,
-				95732298286EF4E80068C115 /* GraphikLCG-Extralight.otf in Resources */,
-				95732297286EF4E80068C115 /* GraphikLCG-Super.otf in Resources */,
-				9573229D286EF4E80068C115 /* GraphikLCG-ExtralightItalic.otf in Resources */,
 				95732290286EF4E80068C115 /* keyboard-down.png in Resources */,
-				9573229B286EF4E80068C115 /* GraphikLCG-SuperItalic.otf in Resources */,
 				9573228C286EF4E80068C115 /* keyboard-previous@2x.png in Resources */,
 				95732294286EF4E80068C115 /* keyboard-down@3x.png in Resources */,
-				957322A5286EF4E80068C115 /* GraphikLCG-Light.otf in Resources */,
 				95D73A472889935300D93554 /* Images.xcassets in Resources */,
-				9573229C286EF4E80068C115 /* GraphikLCG-RegularItalic.otf in Resources */,
-				9573229A286EF4E80068C115 /* GraphikLCG-Black.otf in Resources */,
 				95732288286EF4E80068C115 /* checkmark@2x.png in Resources */,
-				957322A3286EF4E80068C115 /* GraphikLCG-SemiboldItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1986,10 +1951,22 @@
 			files = (
 				F59820122805B75F007AB07C /* LaunchScreen.strings in Resources */,
 				F59820142805B75F007AB07C /* example_apple_pay_payment_data.json in Resources */,
+				0B194B0528A1132B001AEAFD /* SF-Mono-SemiboldItalic.otf in Resources */,
+				0B194B0128A1132B001AEAFD /* SF-Mono-BoldItalic.otf in Resources */,
+				0B194AFD28A1132B001AEAFD /* SF-Mono-Bold.otf in Resources */,
+				0B194B0728A1132B001AEAFD /* SF-Mono-LightItalic.otf in Resources */,
 				F59820162805B75F007AB07C /* Assets.xcassets in Resources */,
+				0B194B0628A1132B001AEAFD /* SF-Mono-Medium.otf in Resources */,
+				0B194AFE28A1132B001AEAFD /* SF-Mono-Light.otf in Resources */,
+				0B194B0228A1132B001AEAFD /* SF-Mono-MediumItalic.otf in Resources */,
+				0B194B0028A1132B001AEAFD /* SF-Mono-Heavy.otf in Resources */,
+				0B194B0328A1132B001AEAFD /* SF-Mono-RegularItalic.otf in Resources */,
 				F59820182805B75F007AB07C /* Main.storyboard in Resources */,
 				F59820172805B75F007AB07C /* LaunchScreen.storyboard in Resources */,
+				0B194AFF28A1132B001AEAFD /* SF-Mono-Regular.otf in Resources */,
+				0B194B0428A1132B001AEAFD /* SF-Mono-Semibold.otf in Resources */,
 				F59820132805B75F007AB07C /* Main.strings in Resources */,
+				0B194B0828A1132B001AEAFD /* SF-Mono-HeavyItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2143,7 +2120,6 @@
 				957322E8286EF4E80068C115 /* DefaultBillingFormHeaderCellStyle.swift in Sources */,
 				957322EE286EF4E80068C115 /* BillingFormTextFieldView.swift in Sources */,
 				95732329286EF4E80068C115 /* ContentTypeProviding.swift in Sources */,
-				952F328D283C303E00F616FF /* CheckoutFont.swift in Sources */,
 				CBAA859528802C92000F6578 /* SecurityCodeView.swift in Sources */,
 				957322E2286EF4E80068C115 /* DefaultBillingFormAddressLine1CellStyle.swift in Sources */,
 				95732301286EF4E80068C115 /* CountrySelectionViewController.swift in Sources */,
@@ -2284,7 +2260,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				95ED57A0285A13D70010B493 /* CustomStyle2.swift in Sources */,
+				0B194B0928A1132B001AEAFD /* UIFont+Graphik.swift in Sources */,
 				F59820192805B75F007AB07C /* AppDelegate.swift in Sources */,
+				0B194AFC28A1132B001AEAFD /* UIFont+SFMono.swift in Sources */,
 				95ED57A1285A13D70010B493 /* CustomStyle1.swift in Sources */,
 				F59820152805B75F007AB07C /* MainViewController.swift in Sources */,
 				9562D083286512E300C94D6B /* Style.swift in Sources */,

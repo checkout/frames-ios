@@ -9,7 +9,6 @@ class ExpiryDateViewTests: XCTestCase {
 
   override func setUp() {
     super.setUp()
-    UIFont.loadAllCheckoutFonts
     style = DefaultExpiryDateFormStyle()
     view = ExpiryDateView(cardValidator: CardValidator(environment: .sandbox))
     view.update(style: style)

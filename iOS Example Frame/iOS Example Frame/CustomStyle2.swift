@@ -375,7 +375,6 @@ struct TextFieldCustom2: ElementTextFieldStyle {
 
 struct ErrorInputLabelStyleCustom2: ElementErrorViewStyle {
   var isHidden = true
-  var isWarningImageOnLeft = true
   var backgroundColor: UIColor = .clear
   var tintColor: UIColor = .tallPoppyRed
   var text: String = ""

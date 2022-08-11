@@ -7,7 +7,6 @@ class BillingFormButtonViewTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        UIFont.loadAllCheckoutFonts
         style = DefaultBillingFormCountryCellStyle()
         view = SelectionButtonView()
         view.update(style: style)
@@ -20,9 +19,9 @@ class BillingFormButtonViewTests: XCTestCase {
     }
 
     func testButtonStyle() {
+        XCTAssertEqual(view.buttonView.layer.cornerRadius, style.button.cornerRadius)
         XCTAssertEqual(view.buttonView.button.layer.borderColor, style.button.normalBorderColor.cgColor)
         XCTAssertEqual(view.buttonView.button.isEnabled, style.button.isEnabled)
-        XCTAssertEqual(view.buttonView.button.layer.cornerRadius, style.button.cornerRadius)
         XCTAssertEqual(view.buttonView.button.layer.borderWidth, style.button.borderWidth)
     }
 

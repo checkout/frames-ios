@@ -6,7 +6,6 @@ class BillingFormSummaryViewTests: XCTestCase {
     var style: DefaultBillingSummaryViewStyle!
     override func setUp() {
         super.setUp()
-        UIFont.loadAllCheckoutFonts
         style = DefaultBillingSummaryViewStyle()
         view = BillingFormSummaryView()
         view.update(style: style)
@@ -51,11 +50,11 @@ class BillingFormSummaryViewTests: XCTestCase {
     }
 
     func testStyleButtonView() {
+        XCTAssertEqual(view.buttonView.layer.cornerRadius, style.button.cornerRadius)
         XCTAssertEqual(view.buttonView.button.isEnabled, style.button.isEnabled)
         XCTAssertEqual(view.buttonView.button.tintColor, .clear)
         XCTAssertEqual(view.buttonView.button.clipsToBounds, true)
         XCTAssertEqual(view.buttonView.button.layer.borderColor, style.button.normalBorderColor.cgColor)
-        XCTAssertEqual(view.buttonView.button.layer.cornerRadius, style.button.cornerRadius)
         XCTAssertEqual(view.buttonView.button.layer.borderWidth , style.button.borderWidth)
     }
 

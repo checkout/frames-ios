@@ -7,7 +7,6 @@ class BillingFormTextFieldViewTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        UIFont.loadAllCheckoutFonts
         style = DefaultBillingFormFullNameCellStyle()
         view = BillingFormTextFieldView()
         view.update(style: style, type: .fullName(nil), tag: 0)

@@ -7,5 +7,5 @@ public protocol PaymentFormStyle {
   var cardNumber: CellTextFieldStyle? { get set }
   var expiryDate: CellTextFieldStyle? { get set }
   var securityCode: CellTextFieldStyle? { get set }
-  var headerView: PaymentHeaderCellStyle { get set}
+  var headerView: PaymentHeaderCellStyle { get set }
 }
