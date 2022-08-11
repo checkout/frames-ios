@@ -26,12 +26,6 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
     var cardViewController: CardViewController?
 
     // MARK: View Methods.
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        UIFont.loadAllCheckoutFonts
-
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         customizeNavigationBarAppearance()
