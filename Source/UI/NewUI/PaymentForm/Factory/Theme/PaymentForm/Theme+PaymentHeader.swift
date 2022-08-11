@@ -35,7 +35,7 @@ public extension Theme {
         let hasSubtitle = !subtitleText.isEmpty
         
         return buildPaymentHeader(
-            headerLabel: buildPaymentHeaderTitle(text: title),
+            headerLabel: buildPageHeaderTitle(text: title),
             subtitleLabel: hasSubtitle ? buildPaymentHeaderSubtitle(text: subtitleText) : nil,
             schemeIcons: schemeIcons)
     }
