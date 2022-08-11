@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol PaymentHeaderCellStyle {
-    var showAcceptedCardsList: Bool { get }
+    var shouldHideAcceptedCardsList: Bool { get }
     var backgroundColor: UIColor { get }
     var headerLabel: ElementStyle? { get }
     var subtitleLabel: ElementStyle? { get }

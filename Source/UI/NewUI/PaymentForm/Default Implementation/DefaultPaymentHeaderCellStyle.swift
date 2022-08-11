@@ -9,7 +9,7 @@
 import UIKit
 
 public struct DefaultPaymentHeaderCellStyle: PaymentHeaderCellStyle {
-  public var showAcceptedCardsList: Bool = false
+  public var shouldHideAcceptedCardsList: Bool = false
   public var backgroundColor: UIColor = .white
   public var headerLabel: ElementStyle? = DefaultHeaderLabelFormStyle(text: Constants.LocalizationKeys.PaymentForm.Header.title)
   public var subtitleLabel: ElementStyle? = DefaultTitleLabelStyle(

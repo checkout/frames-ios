@@ -39,7 +39,7 @@ struct PaymentFormStyleCustom2: PaymentFormStyle {
 // MARK: - Header View
 
 struct PaymentHeaderCellStyleCustom2: PaymentHeaderCellStyle {
-  var showAcceptedCardsList: Bool = false
+  var shouldHideAcceptedCardsList: Bool = false
   var backgroundColor = Constants.greenBackgroundColor
   var headerLabel: ElementStyle? = HeaderLabelFormStyleCustom2(text: "Payment details")
   var subtitleLabel: ElementStyle? = TitleLabelStyleCustom2(text: "Current supported cards")

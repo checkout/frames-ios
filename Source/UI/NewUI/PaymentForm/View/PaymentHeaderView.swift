@@ -72,7 +72,7 @@ public final class PaymentHeaderView: UIView {
   }
 
   private func updateIconsStack() {
-    iconsStackView.isHidden = style?.showAcceptedCardsList ?? true
+    iconsStackView.isHidden = style?.shouldHideAcceptedCardsList ?? true
     iconsStackView.removeSubviews()
 
     for scheme in supportedSchemes {
