@@ -16,7 +16,6 @@ class SecurityCodeViewTests: XCTestCase {
 
   override func setUp() {
     super.setUp()
-    UIFont.loadAllCheckoutFonts
     style = DefaultSecurityCodeFormStyle()
     let testCardValidator = CardValidator(environment: .sandbox)
     let testViewModel = SecurityCodeViewModel(cardValidator: testCardValidator)

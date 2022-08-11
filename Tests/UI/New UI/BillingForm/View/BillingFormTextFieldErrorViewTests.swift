@@ -7,7 +7,6 @@ class BillingFormTextFieldErrorViewTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        UIFont.loadAllCheckoutFonts
         style = DefaultErrorInputLabelStyle()
         errorView = SimpleErrorView()
         errorView.update(style: style)
