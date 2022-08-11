@@ -27,7 +27,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
        paymentFormStyle: PaymentFormStyle?,
        billingFormStyle: BillingFormStyle?,
        supportedSchemes: [Card.Scheme]) {
-    self.supportedSchemes = supportedSchemes
+    self.supportedSchemes = NSOrderedSet(array: supportedSchemes).array as? [Card.Scheme] ?? []
     self.cardValidator = cardValidator
     self.billingFormData = billingFormData
     self.paymentFormStyle = paymentFormStyle

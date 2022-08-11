@@ -39,10 +39,10 @@ struct PaymentFormStyleCustom2: PaymentFormStyle {
 // MARK: - Header View
 
 struct PaymentHeaderCellStyleCustom2: PaymentHeaderCellStyle {
+  var shouldHideAcceptedCardsList: Bool = false
   var backgroundColor = Constants.greenBackgroundColor
   var headerLabel: ElementStyle? = HeaderLabelFormStyleCustom2(text: "Payment details")
-  public var subtitleLabel: ElementStyle? = TitleLabelStyleCustom2(text: "Visa, Mastercard and American Express accepted.")
-  public var schemeIcons: [UIImage?] = []
+  var subtitleLabel: ElementStyle? = TitleLabelStyleCustom2(text: "Current supported cards")
 }
 
 // MARK: - Billing Form WITH Summary ( Edit details )
@@ -128,26 +128,26 @@ struct AddBillingDetailsButtonStyleCustom2: ElementButtonStyle {
 
 // MARK: - Expiry Date
 
-public struct ExpiryDateFormStyleCustom2: CellTextFieldStyle {
-  public var isMandatory = true
-  public var backgroundColor: UIColor = .clear
-  public var title: ElementStyle? = TitleLabelStyleCustom2(text: "Expiry date")
-  public var hint: ElementStyle? = HintInputLabelStyleCustom2(text: "Format is MM/YY")
-  public var mandatory: ElementStyle?
-  public var textfield: ElementTextFieldStyle = TextFieldCustom2(placeHolder: "MM/YY")
-  public var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom2(text: "please fill expiry date")
+struct ExpiryDateFormStyleCustom2: CellTextFieldStyle {
+  var isMandatory = true
+  var backgroundColor: UIColor = .clear
+  var title: ElementStyle? = TitleLabelStyleCustom2(text: "Expiry date")
+  var hint: ElementStyle? = HintInputLabelStyleCustom2(text: "Format is MM/YY")
+  var mandatory: ElementStyle?
+  var textfield: ElementTextFieldStyle = TextFieldCustom2(placeHolder: "MM/YY")
+  var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom2(text: "please fill expiry date")
 }
 
 // MARK: - Security Code
 
-public struct SecurityCodeFormStyleCustom2: CellTextFieldStyle {
-  public var isMandatory = true
-  public var backgroundColor: UIColor = .clear
-  public var title: ElementStyle? = TitleLabelStyleCustom2(text: "Security code")
-  public var hint: ElementStyle? = HintInputLabelStyleCustom2(text: "3 - 4 digit code on your card")
-  public var mandatory: ElementStyle?
-  public var textfield: ElementTextFieldStyle = TextFieldCustom2()
-  public var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom2(text: "please fill security code")
+struct SecurityCodeFormStyleCustom2: CellTextFieldStyle {
+  var isMandatory = true
+  var backgroundColor: UIColor = .clear
+  var title: ElementStyle? = TitleLabelStyleCustom2(text: "Security code")
+  var hint: ElementStyle? = HintInputLabelStyleCustom2(text: "3 - 4 digit code on your card")
+  var mandatory: ElementStyle?
+  var textfield: ElementTextFieldStyle = TextFieldCustom2()
+  var error: ElementErrorViewStyle? = ErrorInputLabelStyleCustom2(text: "please fill security code")
 }
 
 // **********************

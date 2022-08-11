@@ -10,7 +10,19 @@ import XCTest
 @testable import Checkout
 
 final class PaymentViewControllerTests: XCTestCase {
-    
+  
+    func testUniquenessAndOrderOfSupportedSchemes(){
+      let testLogger = StubFramesEventLogger()
+      let testViewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
+                                                  logger: testLogger,
+                                                  billingFormData: nil,
+                                                  paymentFormStyle: nil,
+                                                  billingFormStyle: nil,
+                                                  supportedSchemes: [.visa, .visa, .visa, .mastercard])
+      let testVC = PaymentViewController(viewModel: testViewModel)
+      XCTAssertEqual(testVC.viewModel.supportedSchemes, [.visa, .mastercard])
+    }
+
     func testPaymentViewControllerNotSendingPaymentFormPresentedOnWrongLifecycleEvent() {
         let testLogger = StubFramesEventLogger()
         let testViewModel = DefaultPaymentViewModel(cardValidator: CardValidator(environment: .sandbox),
