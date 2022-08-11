@@ -12,7 +12,7 @@ class PaymentViewModelTests: XCTestCase {
         let testBillingFormData = BillingForm(name: "John Doe",
                                               address: Address(addressLine1: "home", addressLine2: "sleeping", city: "rough night", state: "tired", zip: "Zzzz", country: nil),
                                               phone: Phone(number: "notAvailable", country: nil))
-        let testSupportedSchemes = [Card.Scheme.discover, .mada]
+        let testSupportedSchemes: [Card.Scheme] = [.discover, .mada]
         let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
 
         let viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,

@@ -50,6 +50,7 @@
 		952F32D5283C303E00F616FF /* CheckoutTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F3232283C303E00F616FF /* CheckoutTheme.swift */; };
 		9552EAEA2881B0B800E9ECD9 /* PaymentFormFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9552EAE92881B0B800E9ECD9 /* PaymentFormFactoryTests.swift */; };
 		9562D083286512E300C94D6B /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562D081286512C500C94D6B /* Style.swift */; };
+		9570411C28A166EE00A64CEC /* UIViewExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9570411B28A166EE00A64CEC /* UIViewExtensionTests.swift */; };
 		9572608D286DE8A00080E2C8 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572602E286DE8A00080E2C8 /* ColorTests.swift */; };
 		9572608E286DE8A00080E2C8 /* ResourcesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572602F286DE8A00080E2C8 /* ResourcesTests.swift */; };
 		95732271286EF4E80068C115 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95732168286EF4E80068C115 /* Localizable.strings */; };
@@ -397,6 +398,7 @@
 		952F3232283C303E00F616FF /* CheckoutTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutTheme.swift; path = ../../Source/CheckoutTheme.swift; sourceTree = "<group>"; };
 		9552EAE92881B0B800E9ECD9 /* PaymentFormFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentFormFactoryTests.swift; sourceTree = "<group>"; };
 		9562D081286512C500C94D6B /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		9570411B28A166EE00A64CEC /* UIViewExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensionTests.swift; sourceTree = "<group>"; };
 		9572602E286DE8A00080E2C8 /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		9572602F286DE8A00080E2C8 /* ResourcesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesTests.swift; sourceTree = "<group>"; };
 		95732169286EF4E80068C115 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1549,6 +1551,7 @@
 				95732368286EF50F0068C115 /* ExpirationDateInputViewTests.swift */,
 				95732369286EF50F0068C115 /* CardListCellNameTests.swift */,
 				9573236A286EF50F0068C115 /* StandardInputViewTests.swift */,
+				9570411B28A166EE00A64CEC /* UIViewExtensionTests.swift */,
 				9573236B286EF50F0068C115 /* New UI */,
 				95732386286EF50F0068C115 /* ThreedsWebViewControllerTests.swift */,
 				95732387286EF50F0068C115 /* ExpirationDatePickerTests.swift */,
@@ -2250,6 +2253,7 @@
 				957323D7286EF50F0068C115 /* BillingFormFullNameTextFieldCellTests.swift in Sources */,
 				957323CD286EF50F0068C115 /* BillingFormViewModelTests.swift in Sources */,
 				95D44301289FEA1F00F69F6E /* PaymentViewControllerMockDelegate.swift in Sources */,
+				9570411C28A166EE00A64CEC /* UIViewExtensionTests.swift in Sources */,
 				957323BF286EF50F0068C115 /* StubError.swift in Sources */,
 				957323D8286EF50F0068C115 /* SecureDisplayViewTests.swift in Sources */,
 				957323C0286EF50F0068C115 /* CvvInputViewMockDelegate.swift in Sources */,

@@ -31,9 +31,11 @@ class CardNumberViewModel {
 
   private let cardUtils = CardUtils()
   private let cardValidator: CardValidating
+  private let supportedSchemes: [Card.Scheme]
 
-  init(cardValidator: CardValidating) {
+  init(cardValidator: CardValidating, supportedSchemes: [Card.Scheme]) {
     self.cardValidator = cardValidator
+    self.supportedSchemes = supportedSchemes
   }
 }
 
@@ -44,20 +46,17 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
     let cardNumber = cardUtils.removeNonDigits(from: rawText)
 
     switch cardValidator.validateCompleteness(cardNumber: cardNumber) {
-    case .failure:
-        delegate?.update(result: .failure(.invalidCharacters))
-        return nil
-    // An unknown scheme can also be generated when an eager validation was matched
-    //    but the number is not complete.
-    // In this case we only update delegate if we have a final result to avoiding
-    //    overriding the eager validation with a less informative update
-    case .success((let isComplete, let scheme)):
-      guard isComplete else {
+        // An unknown scheme can also be generated when an eager validation was matched
+        //    but the number is not complete.
+        // In this case we only update delegate if we have a final result to avoiding
+        //    overriding the eager validation with a less informative update
+      case let .success((isComplete, scheme)) where isComplete && supportedSchemes.contains(scheme):
+        delegate?.update(result: .success((cardNumber, scheme)))
+        return Constants.Bundle.SchemeIcon(scheme: scheme)
+      case .success,
+           .failure:
         delegate?.update(result: .failure(.isNotComplete))
-          return nil
-      }
-      delegate?.update(result: .success((cardNumber, scheme)))
-      return Constants.Bundle.SchemeIcon(scheme: scheme)
+        return nil
     }
   }
 

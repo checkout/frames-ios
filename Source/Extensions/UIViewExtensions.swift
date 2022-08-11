@@ -92,7 +92,11 @@ extension UIView {
     func disabledAutoresizingIntoConstraints() -> Self {
           translatesAutoresizingMaskIntoConstraints = false
           return self
-      }
+    }
+
+    func removeSubviews() {
+      subviews.forEach({ $0.removeFromSuperview() })
+    }
 }
 
 extension UIView {
