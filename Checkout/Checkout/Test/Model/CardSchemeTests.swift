@@ -91,7 +91,7 @@ class CardSchemeTests: XCTestCase {
     }
     
     func testCardGapsVisaCard() {
-        XCTAssertEqual(Card.Scheme.visa.cardGaps, [4, 8, 12])
+        XCTAssertEqual(Card.Scheme.visa.cardGaps, [4, 8, 12, 16])
     }
     
     func testCardGapsMastercardCard() {
@@ -99,17 +99,17 @@ class CardSchemeTests: XCTestCase {
     }
     
     func testCardGapsDiscoverCard() {
-        XCTAssertEqual(Card.Scheme.discover.cardGaps, [4, 8, 12])
+        XCTAssertEqual(Card.Scheme.discover.cardGaps, [4, 8, 12, 16])
     }
     
     func testCardGapsMaestroCardAllLenghts() {
         for i in 0...Card.Scheme.maestro(length: 0).maxCardLength {
-            XCTAssertEqual(Card.Scheme.maestro(length: i).cardGaps, [4, 8, 12])
+            XCTAssertEqual(Card.Scheme.maestro(length: i).cardGaps, [4, 8, 12, 16])
         }
     }
     
     func testCardGapsJCBCard() {
-        XCTAssertEqual(Card.Scheme.jcb.cardGaps, [4, 8, 12])
+        XCTAssertEqual(Card.Scheme.jcb.cardGaps, [4, 8, 12, 16])
     }
     
     func testCardGapsAmericanExpressCard() {
