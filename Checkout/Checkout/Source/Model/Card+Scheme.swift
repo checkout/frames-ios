@@ -123,10 +123,7 @@ extension Card {
       case .unknown:
         return Constants.validCVVLengthsUnknownScheme
       case .maestro(let length):
-        if length == 16 {
-          return [3]
-        }
-        return [0, 3]
+        return length == 16 ? [3] : [0, 3]
       case .americanExpress:
         return [4]
       case .visa,

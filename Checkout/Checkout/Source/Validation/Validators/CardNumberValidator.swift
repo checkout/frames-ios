@@ -44,7 +44,6 @@ final class CardNumberValidator: CardNumberValidating {
   }
     
   func validateCompleteness(cardNumber: String) -> Result<ValidationScheme, ValidationError.CardNumber> {
-      "".first?.isWhitespace
     let cardNumber = cardNumber.filter { Int("\($0)") != nil }
 
     guard validateDigitsOnly(in: cardNumber) else {
@@ -101,8 +100,8 @@ final class CardNumberValidator: CardNumberValidating {
   }
     
   private func addSchemePropertyIfNeeded(scheme: Card.Scheme?, cardNumber: String) -> Card.Scheme? {
-    if scheme == .maestro(length: 0) {
-        return .maestro(length: cardNumber.count)
+    if case .maestro = scheme {
+      return .maestro(length: cardNumber.count)
     }
     return scheme
   }
