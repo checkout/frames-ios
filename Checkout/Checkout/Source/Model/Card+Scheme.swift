@@ -166,7 +166,7 @@ extension Card {
         case .unknown:
             return []
         case .mada, .visa, .mastercard, .discover, .maestro, .jcb:
-            return [4, 8, 12]
+            return [4, 8, 12, 16]
         case .americanExpress, .dinersClub:
             return [4, 10]
         }
