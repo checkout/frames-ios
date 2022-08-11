@@ -6,7 +6,6 @@ class BillingFormSummaryViewTests: XCTestCase {
     var style: DefaultBillingSummaryViewStyle!
     override func setUp() {
         super.setUp()
-        UIFont.loadAllCheckoutFonts
         style = DefaultBillingSummaryViewStyle()
         view = BillingFormSummaryView()
         view.update(style: style)

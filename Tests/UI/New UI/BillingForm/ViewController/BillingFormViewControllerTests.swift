@@ -6,7 +6,6 @@ class BillingFormViewControllerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        UIFont.loadAllCheckoutFonts
         // Put setup code here. This method is called before the invocation of each test method in the class.
         let style = DefaultBillingFormStyle()
         let viewModel = DefaultBillingFormViewModel(style: style, data: nil)

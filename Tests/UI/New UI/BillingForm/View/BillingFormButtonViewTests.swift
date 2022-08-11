@@ -7,7 +7,6 @@ class BillingFormButtonViewTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        UIFont.loadAllCheckoutFonts
         style = DefaultBillingFormCountryCellStyle()
         view = SelectionButtonView()
         view.update(style: style)

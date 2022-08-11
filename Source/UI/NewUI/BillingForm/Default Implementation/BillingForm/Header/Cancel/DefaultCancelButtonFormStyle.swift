@@ -4,7 +4,7 @@ public struct DefaultCancelButtonFormStyle: ElementButtonStyle {
     public var textAlignment: NSTextAlignment = .natural
     public var image: UIImage?
     public var text: String = Constants.LocalizationKeys.BillingForm.Header.cancel
-    public var font: UIFont = UIFont(graphikStyle: .regular, size: Constants.Style.BillingForm.DoneButton.fontSize.rawValue)
+    public var font: UIFont = UIFont.systemFont(ofSize: Constants.Style.BillingForm.DoneButton.fontSize.rawValue)
     public var disabledTextColor: UIColor = .doveGray
     public var disabledTintColor: UIColor = .doveGray
     public var activeTintColor: UIColor = .brandeisBlue

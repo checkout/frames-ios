@@ -4,7 +4,7 @@ public final class DefaultAddBillingDetailsButtonStyle: ElementButtonStyle {
     public var textAlignment: NSTextAlignment = .natural
     public var image: UIImage? = Constants.Bundle.Images.rightArrow.image?.imageFlippedForRightToLeftLayoutDirection()
     public var text: String = "AddBillingAddress".localized(forClass: CheckoutTheme.self)
-    public var font: UIFont = UIFont(graphikStyle: .regular, size: Constants.Style.BillingForm.InputCountryButton.fontSize.rawValue)
+    public var font: UIFont = UIFont.systemFont(ofSize: Constants.Style.BillingForm.InputCountryButton.fontSize.rawValue)
     public var textColor: UIColor = .brandeisBlue
     public var disabledTextColor: UIColor = .mediumGray
     public var disabledTintColor: UIColor = .mediumGray

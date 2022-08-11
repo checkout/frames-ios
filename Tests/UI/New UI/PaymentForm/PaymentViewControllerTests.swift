@@ -17,7 +17,6 @@ class PaymentViewControllerTests: XCTestCase {
   
   override func setUp() {
     super.setUp()
-    UIFont.loadAllCheckoutFonts
     
     let testBillingFormData = BillingForm(name: "Name",
                                           address: Address(addressLine1: "addressLine1",

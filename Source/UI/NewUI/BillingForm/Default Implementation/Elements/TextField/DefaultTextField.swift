@@ -16,6 +16,5 @@ public struct DefaultTextField: ElementTextFieldStyle {
     public var cornerRadius: CGFloat = 10.0
     public var width: Double = Constants.Style.BillingForm.InputTextField.width.rawValue
     public var height: Double = Constants.Style.BillingForm.InputTextField.height.rawValue
-    public var font: UIFont = UIFont(graphikStyle: .regular,
-                                     size: Constants.Style.BillingForm.InputTextField.fontSize.rawValue)
+    public var font: UIFont = UIFont.systemFont(ofSize: Constants.Style.BillingForm.InputTextField.fontSize.rawValue)
 }

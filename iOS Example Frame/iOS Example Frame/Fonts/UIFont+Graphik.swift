@@ -1,15 +1,13 @@
+//
+//  UIFont+Graphik.swift
+//  iOS Example Frame
+//
+//  Created by Alex Ioja-Yang on 08/08/2022.
+//  Copyright © 2022 Checkout. All rights reserved.
+//
+
+import Foundation
 import UIKit
-
-extension UIFont {
-
-    // load framework font in application
-    public static let loadAllCheckoutFonts: () = {
-        for style in GraphikStyle.allCases {
-            style.fontName.registerFont(for: CheckoutTheme.self, withExtension: "otf")
-        }
-    }()
-
-}
 
 extension UIFont {
 

@@ -11,12 +11,6 @@ import Checkout
 
 class PaymentFormFactoryTests: XCTestCase {
     
-  override func setUp() {
-    super.setUp()
-        
-    UIFont.loadAllCheckoutFonts
-  }
-    
   func testGetPaymentFormViewController() throws {
     let billingFormStyle = BillingFormFactory.defaultBillingFormStyle
     let paymentFormStyle = BillingFormFactory.defaultPaymentFormStyle
