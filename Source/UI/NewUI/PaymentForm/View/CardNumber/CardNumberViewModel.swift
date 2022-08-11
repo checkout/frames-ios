@@ -103,9 +103,3 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
     }
   }
 }
-
-extension CardNumberViewModel: CardNumberViewDelegate {
-  func textFieldDidStartDeleteText() {
-    delegate?.update(result: .failure(.isNotComplete))
-  }
-}

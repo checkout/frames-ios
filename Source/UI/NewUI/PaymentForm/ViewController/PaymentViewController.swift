@@ -181,7 +181,19 @@ extension PaymentViewController {
     setupSecurityCodeViewClosures()
     setupPayButtonViewClosure()
     setupHeaderViewClosure()
-    setupTokenResponseClosure()
+    setupLoadingIndicatorClosure()
+  }
+
+  private func setupLoadingIndicatorClosure() {
+    viewModel.updateLoading = { [weak self] in
+      DispatchQueue.main.async {
+        if self?.viewModel.isLoading ?? false {
+          self?.activityIndicator.startAnimating()
+        } else {
+          self?.activityIndicator.stopAnimating()
+        }
+      }
+    }
   }
 
   private func setupHeaderViewClosure() {
@@ -250,15 +262,6 @@ extension PaymentViewController {
     }
   }
 
-  private func setupTokenResponseClosure() {
-    viewModel.cardTokenRequested = { [weak self] result in
-      DispatchQueue.main.async {
-        self?.cardTokenRequested?(result)
-        self?.activityIndicator.stopAnimating()
-      }
-    }
-  }
-
   private func updateBackgroundViews() {
     view.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
     stackView.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
@@ -302,6 +305,7 @@ extension PaymentViewController {
   public func updateHeaderView() {
     guard let style = viewModel.paymentFormStyle?.headerView else { return }
     headerView.update(style: style)
+    activityIndicator.color = .blue
     headerBackgroundView.backgroundColor = style.backgroundColor
   }
 }
@@ -387,7 +391,6 @@ extension PaymentViewController: SecurityCodeViewDelegate {
 
 extension PaymentViewController: ButtonViewDelegate {
   func selectionButtonIsPressed(sender: UIView) {
-    activityIndicator.startAnimating()
     delegate?.payButtonIsPressed()
   }
 }

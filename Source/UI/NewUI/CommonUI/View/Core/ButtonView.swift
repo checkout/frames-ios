@@ -13,6 +13,7 @@ class ButtonView: UIView {
         didSet {
             if let style = style {
                 self.style?.isEnabled = isEnabled
+                button.isEnabled = isEnabled
                 updateLabelStyle(with: style)
                 updateButtonStyle(with: style)
             }
@@ -54,7 +55,6 @@ class ButtonView: UIView {
     }
 
     private func updateButtonStyle(with style: ElementButtonStyle) {
-        button.isEnabled = style.isEnabled
         backgroundColor = isEnabled ? style.backgroundColor : style.disabledTintColor
         button.tintColor = .clear
         button.heightAnchor.constraint(equalToConstant: style.height).isActive = true

@@ -121,7 +121,7 @@ class PaymentViewControllerTests: XCTestCase {
     viewModel.update(result: .success(CardInfo("4242 4242 4242 4242", .visa)))
     viewController.update(result: .success(ExpiryDate(month: 01, year: 25)))
 
-    viewController.cardTokenRequested = { result in
+    viewModel.cardTokenRequested = { result in
       if case let .success(token) = result {
         XCTAssertEqual(token, StubCheckoutAPIService.createTokenDetails())
       } else {

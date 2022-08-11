@@ -80,7 +80,7 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
         navigationController?.pushViewController(paymentFormViewController, animated: true)
     }
 
-  func handleTokenResponse(with result: Result<TokenDetails, TokenisationError.TokenRequest>) {
+  private func handleTokenResponse(with result: Result<TokenDetails, TokenisationError.TokenRequest>) {
     switch result {
       case .failure(let error):
         showAlert(with: error.localizedDescription)

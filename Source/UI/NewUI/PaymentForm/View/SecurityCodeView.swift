@@ -77,18 +77,10 @@ extension SecurityCodeView: TextFieldViewDelegate {
     codeInputView.textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
     viewModel.updateInput(to: textField.text)
     delegate?.update(result: .success(viewModel.cvv))
-
   }
 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     updateErrorViewStyle(isHidden: true, textfieldText: textField.text)
-
-    // some characters are deleted
-    // notify payment view controller to disable the pay button
-    if string.count == 0 && range.length > 0 {
-      delegate?.update(result: .failure(.invalidCode))
-      return true
-    }
 
     if range.location >= viewModel.inputMaxLength && !string.isEmpty {
       return false

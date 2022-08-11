@@ -24,9 +24,8 @@ public struct PaymentFormFactory {
                                             paymentFormStyle: style.paymentFormStyle,
                                             billingFormStyle: style.billingFormStyle,
                                             supportedSchemes: configuration.supportedSchemes)
-
     let viewController = PaymentViewController(viewModel: viewModel)
-    viewController.cardTokenRequested = completionHandler
+    viewModel.cardTokenRequested = completionHandler
     logger.log(.paymentFormInitialised(environment: configuration.environment))
     if #available(iOS 13.0, *) {
       viewController.isModalInPresentation = true

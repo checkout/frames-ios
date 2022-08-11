@@ -30,6 +30,7 @@ private struct CardDetails {
 }
 
 class DefaultPaymentViewModel: PaymentViewModel {
+  var updateLoading: (() -> Void)?
   var updateEditBillingSummaryView: (() -> Void)?
   var updateAddBillingDetailsView: (() -> Void)?
   var updateExpiryDateView: (() -> Void)?
@@ -55,6 +56,11 @@ class DefaultPaymentViewModel: PaymentViewModel {
       if isAddBillingSummaryNotUpdated() {
         updateBillingSummaryView()
       }
+    }
+  }
+  var isLoading: Bool = false {
+    didSet {
+      updateLoading?()
     }
   }
 
@@ -174,7 +180,9 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
 
   func payButtonIsPressed() {
     guard let card = cardDetails.getCard() else { return }
+    isLoading = true
     checkoutAPIService.createToken(.card(card)) { [weak self] result in
+      self?.isLoading = false
       self?.cardTokenRequested?(result)
     }
   }

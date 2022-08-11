@@ -174,13 +174,6 @@ extension ExpiryDateView: TextFieldViewDelegate {
 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
-    // some characters are deleted
-    // notify payment view controller to disable the pay button
-    if string.count == 0 && range.length > 0 {
-      delegate?.update(result: .failure(.invalidCode))
-      return true
-    }
-
     updateErrorViewStyle(isHidden: true, textfieldText: textField.text)
     /*
      Expiry date text format is "MM/yy"
