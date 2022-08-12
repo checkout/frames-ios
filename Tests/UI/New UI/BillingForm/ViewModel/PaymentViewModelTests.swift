@@ -5,11 +5,6 @@ import Checkout
 class PaymentViewModelTests: XCTestCase {
 
     var viewModel: DefaultPaymentViewModel!
-
-    override func setUp() {
-        super.setUp()
-        UIFont.loadAllCheckoutFonts
-    }
     
     func testInit() {
         let testCardValidator = CardValidator(environment: .sandbox)
@@ -17,7 +12,7 @@ class PaymentViewModelTests: XCTestCase {
         let testBillingFormData = BillingForm(name: "John Doe",
                                               address: Address(addressLine1: "home", addressLine2: "sleeping", city: "rough night", state: "tired", zip: "Zzzz", country: nil),
                                               phone: Phone(number: "notAvailable", country: nil))
-        let testSupportedSchemes = [Card.Scheme.discover, .mada]
+        let testSupportedSchemes: [Card.Scheme] = [.discover, .mada]
         let viewModel = DefaultPaymentViewModel(cardValidator: testCardValidator,
                                                 logger: testLogger,
                                                 billingFormData: testBillingFormData,

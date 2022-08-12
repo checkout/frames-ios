@@ -8,7 +8,7 @@
 import UIKit
 
 public extension Theme {
-    
+
     /// Theme generated Page Header Title
     struct ThemePageHeaderTitle: ElementStyle {
         public var isHidden: Bool = false
@@ -17,12 +17,12 @@ public extension Theme {
         public var backgroundColor: UIColor = .clear
         public var textColor: UIColor
     }
-    
+
     /// Create a Page Form Header Title from given text
     func buildPageHeaderTitle(text: String) -> ThemePageHeaderTitle {
         ThemePageHeaderTitle(text: text,
                              font: UIFont.systemFont(ofSize: self.titleFontSize, weight: .semibold),
                              textColor: self.primaryFontColor)
     }
-    
+
 }

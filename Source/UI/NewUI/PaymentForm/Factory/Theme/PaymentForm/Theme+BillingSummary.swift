@@ -8,7 +8,7 @@
 import UIKit
 
 public extension Theme {
-    
+
     /// Theme generated Billing Summary Style
     struct ThemeBillingSummary: BillingSummaryViewStyle {
         public var summary: ElementStyle?
@@ -24,7 +24,7 @@ public extension Theme {
         public var hint: ElementStyle?
         public var error: ElementErrorViewStyle?
     }
-    
+
     /// Theme generated Summary Content Style
     struct ThemeSummaryElement: ElementStyle {
         public var isHidden: Bool = false
@@ -33,7 +33,7 @@ public extension Theme {
         public var backgroundColor: UIColor = .clear
         public var textColor: UIColor
     }
-    
+
     /// Theme generated Billing Modify Button Style
     struct ThemeBillingModifyButton: CellButtonStyle {
         public var isMandatory: Bool = true
@@ -44,7 +44,7 @@ public extension Theme {
         public var hint: ElementStyle?
         public var error: ElementErrorViewStyle?
     }
-    
+
     /// Create a Billing Summary from Styles defined for each sub component
     func buildBillingSummary(button: ElementButtonStyle,
                              textField: ThemeTextField,
@@ -54,7 +54,7 @@ public extension Theme {
                              error: ThemeError) -> ThemeBillingSummary {
         let summary = ThemeSummaryElement(font: UIFont.systemFont(ofSize: self.inputFontSize),
                                           textColor: self.secondaryFontColor)
-        
+
         return ThemeBillingSummary(summary: summary,
                                    borderColor: self.borderColor,
                                    cornerRadius: self.borderRadius,
@@ -66,7 +66,7 @@ public extension Theme {
                                    hint: subtitle,
                                    error: error)
     }
-    
+
     /// Create a Billing Summary from provided content
     func buildBillingSummary(buttonText: String,
                              titleText: String,
@@ -77,16 +77,16 @@ public extension Theme {
                              errorImage: UIImage? = nil) -> ThemeBillingSummary {
         let subtitleText = subtitleText ?? ""
         let showSubtitle = !subtitleText.isEmpty || subtitleImage != nil
-        
+
         let isRequiredText = isRequiredText ?? ""
         let showMandatory = !isRequiredText.isEmpty
-        
+
         let errorText = errorText ?? ""
         let showError = !errorText.isEmpty || errorImage != nil
-        
+
         let summary = ThemeSummaryElement(font: UIFont.systemFont(ofSize: self.inputFontSize),
                                           textColor: self.secondaryFontColor)
-        
+
         return ThemeBillingSummary(
             summary: summary,
             borderColor: self.borderColor,

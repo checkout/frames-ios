@@ -26,12 +26,6 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
     var cardViewController: CardViewController?
 
     // MARK: View Methods.
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        UIFont.loadAllCheckoutFonts
-
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         customizeNavigationBarAppearance()
@@ -93,10 +87,12 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
 
         let name = "User Custom 2"
         let billingForm = BillingForm(name: name, address: address, phone: nil)
+        let supportedCardSchemes: [Card.Scheme] = [ .visa, .mastercard, .maestro, .americanExpress, .dinersClub, .discover, .jcb, .mada]
+        let apiKey = "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73"
 
-        let paymentConfiguration = PaymentFormConfiguration(apiKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
+        let paymentConfiguration = PaymentFormConfiguration(apiKey: apiKey,
                                                             environment: environment,
-                                                            supportedSchemes: [.visa, .mastercard, .maestro],
+                                                            supportedSchemes: supportedCardSchemes,
                                                             billingFormData: billingForm)
         let paymentStyle = PaymentStyle(paymentFormStyle: Style.Custom2.paymentForm,
                                         billingFormStyle: Style.Custom2.billingForm)

@@ -3,7 +3,7 @@ import UIKit
 public struct DefaultCountryFormButtonStyle: ElementButtonStyle {
   public var image: UIImage? = Constants.Bundle.Images.rightArrow.image?.imageFlippedForRightToLeftLayoutDirection()
     public var text: String = "countryRegion".localized(forClass: CheckoutTheme.self)
-    public var font: UIFont = UIFont(graphikStyle: .regular, size: Constants.Style.BillingForm.InputCountryButton.fontSize.rawValue)
+    public var font: UIFont = UIFont.systemFont(ofSize: Constants.Style.BillingForm.InputCountryButton.fontSize.rawValue)
     public var disabledTextColor: UIColor = .mediumGray
     public var disabledTintColor: UIColor = .mediumGray
     public var activeTintColor: UIColor = .brandeisBlue

@@ -8,7 +8,7 @@
 import UIKit
 
 public extension Theme {
-    
+
     /// Theme generated Billing Input Style
     struct ThemeBillingInput: CellTextFieldStyle {
         public var textfield: ElementTextFieldStyle
@@ -19,7 +19,7 @@ public extension Theme {
         public var hint: ElementStyle?
         public var error: ElementErrorViewStyle?
     }
-    
+
     /// Create a Billing Input from provided themed components
     func buildBillingInput(textField: ThemeTextField,
                            isMandatory: Bool,
@@ -34,7 +34,7 @@ public extension Theme {
                           hint: subtitle,
                           error: error)
     }
-    
+
     /// Create a Billing Input from provided content
     func buildBillingInput(text: String,
                            placeholder: String = "",
@@ -48,13 +48,13 @@ public extension Theme {
                            errorImage: UIImage? = nil) -> ThemeBillingInput {
         let subtitleText = subtitle ?? ""
         let showSubtitle = !subtitleText.isEmpty || subtitleImage != nil
-        
+
         let errorText = errorText ?? ""
         let showError = !errorText.isEmpty || errorImage != nil
-        
+
         let mandatoryText = isRequiredText ?? ""
         let showMandatory = !mandatoryText.isEmpty
-        
+
         return ThemeBillingInput(textfield: self.buildTextField(text: text,
                                                                 placeholderText: placeholder,
                                                                 isNumbericInput: isNumbericInput),

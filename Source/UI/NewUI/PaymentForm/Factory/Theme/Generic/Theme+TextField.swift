@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 public extension Theme {
-    
+
     /// Theme generated TextField style
     struct ThemeTextField: ElementTextFieldStyle {
         public var text: String
@@ -27,7 +27,7 @@ public extension Theme {
         public var backgroundColor: UIColor
         public var textColor: UIColor
     }
-    
+
     /// Create a TextField Style from text
     func buildTextField(text: String,
                         placeholderText: String,
@@ -45,5 +45,5 @@ public extension Theme {
                        backgroundColor: self.textInputBackgroundColor,
                        textColor: self.primaryFontColor)
     }
-    
+
 }

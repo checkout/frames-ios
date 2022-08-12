@@ -8,7 +8,7 @@
 import UIKit
 
 public extension Theme {
-    
+
     /// Theme generated navigation button Style
     struct NavigationButtonStyle: ElementButtonStyle {
         public var isEnabled: Bool = true
@@ -19,7 +19,7 @@ public extension Theme {
         public var normalBorderColor: UIColor = .clear
         public var focusBorderColor: UIColor = .clear
         public var errorBorderColor: UIColor = .clear
-        public var image: UIImage? = nil
+        public var image: UIImage?
         public var textLeading: CGFloat = 0
         public var cornerRadius: CGFloat = 0
         public var borderWidth: CGFloat = 0
@@ -31,7 +31,7 @@ public extension Theme {
         public var backgroundColor: UIColor = .clear
         public var textColor: UIColor
     }
-    
+
     /// Theme generated Button Style for showing Country Selection to user
     struct CountryListButton: ElementButtonStyle {
         public var isEnabled: Bool = true
@@ -54,7 +54,7 @@ public extension Theme {
         public var backgroundColor: UIColor
         public var textColor: UIColor
     }
-    
+
     /// Create a navigation button style with the provided title
     func buildNavigationButton(text: String) -> NavigationButtonStyle {
         NavigationButtonStyle(
@@ -66,7 +66,7 @@ public extension Theme {
             font: UIFont.systemFont(ofSize: self.titleFontSize),
             textColor: self.buttonFontColor)
     }
-    
+
     /// Create a button for launching a Country selection journey
     func buildCountryListButton(text: String,
                                 image: UIImage? = nil) -> CountryListButton {
@@ -85,5 +85,5 @@ public extension Theme {
                           backgroundColor: self.textInputBackgroundColor,
                           textColor: self.primaryFontColor)
     }
-    
+
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 public extension Theme {
-    
+
     /// Theme generated Payment Header View Subtitle  for the Payment Form
     struct ThemePaymentHeaderSubtitle: ElementStyle {
         public var text: String
@@ -17,7 +17,7 @@ public extension Theme {
         public var backgroundColor: UIColor = .clear
         public var textColor: UIColor
     }
- 
+
     /// Create a Payment Form Header Subtitle from given text
     func buildPaymentHeaderSubtitle(text: String) -> ThemePaymentHeaderSubtitle {
         ThemePaymentHeaderSubtitle(text: text,

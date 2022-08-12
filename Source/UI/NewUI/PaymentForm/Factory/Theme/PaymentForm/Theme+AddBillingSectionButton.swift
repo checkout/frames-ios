@@ -8,7 +8,7 @@
 import UIKit
 
 public extension Theme {
-    
+
     /// Theme generated Add Billing Section Button Style
     struct ThemeAddBillingSectionButton: CellButtonStyle {
         public var isMandatory: Bool = true
@@ -19,7 +19,7 @@ public extension Theme {
         public var hint: ElementStyle?
         public var error: ElementErrorViewStyle?
     }
-    
+
     /// Theme generated Add Billing Button Styile
     struct ThemeBillingButton: ElementButtonStyle {
         public var isEnabled: Bool = true
@@ -42,7 +42,7 @@ public extension Theme {
         public var backgroundColor: UIColor = .clear
         public var textColor: UIColor
     }
-    
+
     /// Create an Add Billing Section Button from Styles from core information
     func buildAddBillingSectionButton(text: String,
                                       isBillingAddressMandatory: Bool,
@@ -54,13 +54,13 @@ public extension Theme {
                                       errorImage: UIImage? = nil) -> ThemeAddBillingSectionButton {
         let mandatoryText = mandatoryText ?? ""
         let showMandatory = !mandatoryText.isEmpty
-        
+
         let subtitleText = subtitleText ?? ""
         let showSubtitle = !subtitleText.isEmpty || subtitleImage != nil
-        
+
         let errorText = errorText ?? ""
         let showError = !errorText.isEmpty || errorImage != nil
-        
+
         return ThemeAddBillingSectionButton(
             isMandatory: isBillingAddressMandatory,
             button: self.buildBillingButton(text: text),
@@ -71,7 +71,7 @@ public extension Theme {
             error: showError ? self.buildError(text: errorText, image: errorImage) : nil
         )
     }
-    
+
     /// Create an Add Billing Section Button from Styles defined for each component
     func buildAddBillingSectionButton(buttonStyle: ThemeBillingButton,
                                       isBillingAddressMandatory: Bool,
@@ -87,7 +87,7 @@ public extension Theme {
                                      hint: subtitle,
                                      error: error)
     }
-    
+
     /// Create an Add Billing Button from using theme and text
     func buildBillingButton(text: String) -> ThemeBillingButton {
         ThemeBillingButton(disabledTextColor: self.secondaryFontColor,
@@ -97,5 +97,5 @@ public extension Theme {
                            font: UIFont.systemFont(ofSize: self.buttonsFontSize, weight: .semibold),
                            textColor: self.buttonFontColor)
     }
-    
+
 }

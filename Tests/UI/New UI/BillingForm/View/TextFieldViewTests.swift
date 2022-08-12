@@ -15,7 +15,6 @@ class TextFieldViewTests: XCTestCase {
   
   override func setUp() {
     super.setUp()
-    UIFont.loadAllCheckoutFonts
     style = DefaultTextField()
     view = TextFieldView()
     view.update(with: style)
