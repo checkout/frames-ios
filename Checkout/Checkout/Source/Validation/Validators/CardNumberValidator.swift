@@ -44,9 +44,7 @@ final class CardNumberValidator: CardNumberValidating {
   }
     
   func validateCompleteness(cardNumber: String) -> Result<ValidationScheme, ValidationError.CardNumber> {
-    let cardNumber = cardNumber.filter { !$0.isWhitespace }
-
-    guard validateDigitsOnly(in: cardNumber) else {
+    guard validateDigitsOnly(in: cardNumber.removeWhitespaces()) else {
       return .failure(.invalidCharacters)
     }
 
@@ -61,9 +59,7 @@ final class CardNumberValidator: CardNumberValidating {
   }
 
   func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.EagerCardNumber> {
-    let cardNumber = cardNumber.filter { !$0.isWhitespace }
-
-    guard validateDigitsOnly(in: cardNumber) else {
+    guard validateDigitsOnly(in: cardNumber.removeWhitespaces()) else {
       return .failure(.cardNumber(.invalidCharacters))
     }
 
