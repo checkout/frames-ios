@@ -719,6 +719,8 @@
 				0B194AC228A0F407001AEAFD /* CardScheme.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
 		0B194AEC28A1132B001AEAFD /* Fonts */ = {
 			isa = PBXGroup;
 			children = (

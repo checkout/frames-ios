@@ -5,6 +5,8 @@
 //  Created by Alex Ioja-Yang on 05/08/2022.
 //
 
+import Checkout
+
 public enum CardScheme {
     case unknown
     case mada
