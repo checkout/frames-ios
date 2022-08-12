@@ -19,7 +19,7 @@ class CardNumberViewModelTests: XCTestCase {
   override func setUp() {
     super.setUp()
 
-    subject = CardNumberViewModel(cardValidator: mockCardValidator)
+    subject = CardNumberViewModel(cardValidator: mockCardValidator, supportedSchemes: [.unknown])
     subject.delegate = mockCardNumberViewModelDelegate
   }
 
@@ -134,7 +134,7 @@ class CardNumberViewModelTests: XCTestCase {
 
   func test_validate_success() {
     let testCases = Set(Card.Scheme.allCases).symmetricDifference([.unknown])
-
+    subject = CardNumberViewModel(cardValidator: mockCardValidator, supportedSchemes: Card.Scheme.allCases)
     testCases.forEach { scheme in
       // given
       mockCardValidator.expectedValidateCompletenessResult = .success((true, scheme))
