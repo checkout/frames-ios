@@ -31,6 +31,7 @@ public extension Theme {
         public var focusBorderColor: UIColor = .clear
         public var errorBorderColor: UIColor = .clear
         public var image: UIImage?
+        public var textAlignment: NSTextAlignment = .natural
         public var textLeading: CGFloat = 0
         public var cornerRadius: CGFloat = 0
         public var borderWidth: CGFloat = 0

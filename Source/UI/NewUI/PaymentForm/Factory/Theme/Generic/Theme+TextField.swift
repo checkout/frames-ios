@@ -14,6 +14,7 @@ public extension Theme {
     struct ThemeTextField: ElementTextFieldStyle {
         public var text: String
         public var isSupportingNumericKeyboard: Bool = true
+        public var textAlignment: NSTextAlignment = .natural
         public var height: Double = 30
         public var cornerRadius: CGFloat
         public var borderWidth: CGFloat

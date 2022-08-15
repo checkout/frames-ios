@@ -12,6 +12,7 @@ public extension Theme {
     /// Theme generated Subtitle style
     struct ThemeSubtitle: ElementStyle {
         public var text: String
+        public var textAlignment: NSTextAlignment = .natural
         public var textColor: UIColor
         public var backgroundColor: UIColor = .clear
         public var tintColor: UIColor

@@ -12,6 +12,7 @@ public extension Theme {
     /// Theme generated Mandatory style
     struct ThemeMandatory: ElementStyle {
         public var text: String
+        public var textAlignment: NSTextAlignment = .natural
         public var isHidden: Bool = false
         public var font: UIFont
         public var backgroundColor: UIColor = .clear
