@@ -65,7 +65,7 @@ final class CardNumberValidatorTests: XCTestCase {
         "expected \(expectedResult) for card number \(cardNumber),received \(actualResult)"
       )
 
-      XCTAssertEqual(stubLuhnChecker.luhnCheckCalledWith, cardNumber.filter { !$0.isWhitespace })
+      XCTAssertEqual(stubLuhnChecker.luhnCheckCalledWith, cardNumber.removeWhitespaces())
     }
   }
 
