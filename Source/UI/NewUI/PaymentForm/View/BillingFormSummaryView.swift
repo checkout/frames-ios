@@ -133,7 +133,7 @@ extension BillingFormSummaryView {
     private func setupButton() {
         addSubview(buttonView)
         NSLayoutConstraint.activate([
-          buttonView.topAnchor.constraint(equalTo: summarySeparatorLineView.bottomAnchor, constant: 10),
+          buttonView.topAnchor.constraint(equalTo: summarySeparatorLineView.bottomAnchor),
           buttonView.bottomAnchor.constraint(equalTo: bottomAnchor),
           buttonView.leadingAnchor.constraint(equalTo: leadingAnchor),
           buttonView.trailingAnchor.constraint(equalTo: trailingAnchor)
@@ -147,8 +147,7 @@ extension BillingFormSummaryView {
                                                       constant: Constants.Padding.s.rawValue),
             summaryContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             summaryContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            summaryContainerView.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor,
-                                                         constant: Constants.Padding.s.rawValue)
+            summaryContainerView.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor)
         ])
         bringSubviewToFront(buttonView)
     }

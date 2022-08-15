@@ -9,7 +9,7 @@
 import UIKit
 
 final class CardNumberView: UIView {
-  private let viewModel: CardNumberViewModelProtocol
+  private var viewModel: CardNumberViewModelProtocol
 
   private(set) var schemeIcon = Constants.Bundle.SchemeIcon.blank {
     didSet {
@@ -29,7 +29,6 @@ final class CardNumberView: UIView {
 
   init(viewModel: CardNumberViewModelProtocol) {
     self.viewModel = viewModel
-
     super.init(frame: .zero)
     setupView()
   }
@@ -73,6 +72,8 @@ extension CardNumberView: TextFieldViewDelegate {
   func textFieldShouldReturn() -> Bool { true }
 
   func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
+    textField.text = replacementString
+    style?.textfield.text = replacementString
     switch viewModel.validate(cardNumber: replacementString) {
     case .some(let schemeIcon):
       self.schemeIcon = schemeIcon
@@ -80,11 +81,11 @@ extension CardNumberView: TextFieldViewDelegate {
     case nil:
       updateError(show: true)
     }
-
     return true
   }
 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
     guard
       let oldValue = textField.text,
       let textRange = Range(range, in: oldValue)

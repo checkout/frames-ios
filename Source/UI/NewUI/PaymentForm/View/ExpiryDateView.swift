@@ -1,8 +1,12 @@
 import UIKit
 import Checkout
 
+enum ExpiryDateError: Error {
+  case invalidCode
+}
+
 protocol ExpiryDateViewDelegate: AnyObject {
-  func update(expiryDate: ExpiryDate)
+  func update(result: Result<ExpiryDate, ExpiryDateError>)
 }
 
 public final class ExpiryDateView: UIView {
@@ -57,7 +61,7 @@ public final class ExpiryDateView: UIView {
     switch cardValidator.validate(expiryMonth: monthDigit, expiryYear: yearDigit) {
       case .success:
         let expiryDate = ExpiryDate(month: monthDigit, year: yearDigit)
-        delegate?.update(expiryDate: expiryDate)
+        delegate?.update(result: .success(expiryDate))
         return nil
       case .failure(let error):
         return error
@@ -146,6 +150,9 @@ public final class ExpiryDateView: UIView {
       Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.past :
       Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid
     style?.error?.isHidden = isHidden
+    if !isHidden {
+      delegate?.update(result: .failure(.invalidCode))
+    }
     style?.textfield.text = textfieldText ?? ""
     dateInputView.update(style: style)
   }
@@ -166,6 +173,7 @@ extension ExpiryDateView: TextFieldViewDelegate {
   }
 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
     updateErrorViewStyle(isHidden: true, textfieldText: textField.text)
     /*
      Expiry date text format is "MM/yy"
