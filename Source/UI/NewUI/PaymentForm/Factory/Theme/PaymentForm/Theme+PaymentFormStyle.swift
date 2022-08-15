@@ -18,6 +18,7 @@ public extension Theme {
         public var cardNumber: CellTextFieldStyle?
         public var expiryDate: CellTextFieldStyle?
         public var securityCode: CellTextFieldStyle?
+        public var payButton: ElementButtonStyle
     }
 
     /// Create a Payment Form from the provided Styles for each section
@@ -26,14 +27,16 @@ public extension Theme {
                           billingSummary: BillingSummaryViewStyle?,
                           cardNumber: CellTextFieldStyle,
                           expiryDate: CellTextFieldStyle,
-                          securityCode: CellTextFieldStyle) -> ThemePaymentForm {
+                          securityCode: CellTextFieldStyle,
+                          payButton: ElementButtonStyle) -> ThemePaymentForm {
         ThemePaymentForm(backgroundColor: self.backgroundColor,
                          headerView: headerView,
                          addBillingSummary: addBillingButton,
                          editBillingSummary: billingSummary,
                          cardNumber: cardNumber,
                          expiryDate: expiryDate,
-                         securityCode: securityCode)
+                         securityCode: securityCode,
+                         payButton: payButton)
     }
 
 }
