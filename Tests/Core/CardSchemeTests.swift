@@ -10,11 +10,6 @@ import XCTest
 
 final class CardSchemeTests: XCTestCase {
     
-    func testMapUnknown() {
-        let scheme = CardScheme.unknown
-        XCTAssertEqual(scheme.mapToCheckoutCardScheme(), .unknown)
-    }
-    
     func testMapMada() {
         let scheme = CardScheme.mada
         XCTAssertEqual(scheme.mapToCheckoutCardScheme(), .mada)
