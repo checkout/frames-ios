@@ -274,7 +274,10 @@ extension PaymentViewController {
 
   private func addArrangedSubviewForStackView() {
     stackView.addArrangedSubview(headerView)
-    stackView.addArrangedSubview(cardholderView)
+    if let cardholderStyle = viewModel.paymentFormStyle?.cardholderInput {
+      stackView.addArrangedSubview(cardholderView)
+      cardholderView.update(style: cardholderStyle)
+    }
     stackView.addArrangedSubview(cardNumberView)
     stackView.addArrangedSubview(expiryDateView)
     stackView.addArrangedSubview(securityCodeView)

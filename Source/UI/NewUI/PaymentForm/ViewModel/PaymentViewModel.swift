@@ -15,4 +15,21 @@ protocol PaymentViewModel {
   var updateHeaderView: (() -> Void)? { get set }
   func updateAll()
   func viewControllerWillAppear()
+  mutating func preventDuplicateCardholderInput()
+}
+
+extension PaymentViewModel {
+
+    mutating func preventDuplicateCardholderInput() {
+        if paymentFormStyle?.cardholderInput != nil {
+            let filteredCells = billingFormStyle?.cells.filter {
+                if case .fullName = $0 {
+                    return false
+                }
+                return true
+            } ?? []
+            billingFormStyle?.cells = filteredCells
+        }
+    }
+
 }

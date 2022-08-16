@@ -14,12 +14,13 @@ public struct PaymentFormFactory {
     Self.sessionCorrelationID = UUID().uuidString
     let logger = FramesEventLogger(environment: configuration.environment, getCorrelationID: { Self.sessionCorrelationID })
     let cardValidator = CardValidator(environment: configuration.environment.checkoutEnvironment)
-    let viewModel = DefaultPaymentViewModel(cardValidator: cardValidator,
+    var viewModel = DefaultPaymentViewModel(cardValidator: cardValidator,
                                             logger: logger,
                                             billingFormData: configuration.billingFormData,
                                             paymentFormStyle: style.paymentFormStyle,
                                             billingFormStyle: style.billingFormStyle,
                                             supportedSchemes: configuration.supportedSchemes)
+    viewModel.preventDuplicateCardholderInput()
 
     let viewController = PaymentViewController(viewModel: viewModel)
     logger.log(.paymentFormInitialised(environment: configuration.environment))
