@@ -37,26 +37,21 @@ public extension Theme {
     func buildBillingCountryInput(buttonText: String,
                                   buttonImage: UIImage? = nil,
                                   title: String,
-                                  subtitle: String? = nil,
+                                  subtitle: String = "",
                                   subtitleImage: UIImage? = nil,
-                                  isRequiredText: String? = nil,
-                                  errorText: String? = nil,
+                                  isRequiredText: String = "",
+                                  errorText: String = "",
                                   errorImage: UIImage? = nil) -> ThemeBillingCountryInput {
-        let subtitleText = subtitle ?? ""
-        let showSubtitle = !subtitleText.isEmpty || subtitleImage != nil
-
-        let errorText = errorText ?? ""
+        let showSubtitle = !subtitle.isEmpty || subtitleImage != nil
         let showError = !errorText.isEmpty || errorImage != nil
-
-        let mandatoryText = isRequiredText ?? ""
-        let showMandatory = !mandatoryText.isEmpty
+        let showMandatory = !isRequiredText.isEmpty
 
         let button = buildCountryListButton(text: buttonText, image: buttonImage)
 
         return ThemeBillingCountryInput(button: button,
                                         title: self.buildTitle(text: title),
-                                        hint: showSubtitle ? self.buildSubtitle(text: subtitleText, image: subtitleImage) : nil,
-                                        mandatory: showMandatory ? self.buildIsRequiredInput(text: mandatoryText) : nil,
+                                        hint: showSubtitle ? self.buildSubtitle(text: subtitle, image: subtitleImage) : nil,
+                                        mandatory: showMandatory ? self.buildIsRequiredInput(text: isRequiredText) : nil,
                                         error: showError ? self.buildError(text: errorText, image: errorImage) : nil)
     }
 

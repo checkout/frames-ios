@@ -41,27 +41,22 @@ public extension Theme {
                            isNumbericInput: Bool,
                            isMandatory: Bool,
                            title: String,
-                           subtitle: String? = nil,
+                           subtitle: String = "",
                            subtitleImage: UIImage? = nil,
-                           isRequiredText: String? = nil,
-                           errorText: String? = nil,
+                           isRequiredText: String = "",
+                           errorText: String = "",
                            errorImage: UIImage? = nil) -> ThemeBillingInput {
-        let subtitleText = subtitle ?? ""
-        let showSubtitle = !subtitleText.isEmpty || subtitleImage != nil
-
-        let errorText = errorText ?? ""
+        let showSubtitle = !subtitle.isEmpty || subtitleImage != nil
         let showError = !errorText.isEmpty || errorImage != nil
-
-        let mandatoryText = isRequiredText ?? ""
-        let showMandatory = !mandatoryText.isEmpty
+        let showMandatory = !isRequiredText.isEmpty
 
         return ThemeBillingInput(textfield: self.buildTextField(text: text,
                                                                 placeholderText: placeholder,
                                                                 isNumbericInput: isNumbericInput),
                                  isMandatory: isMandatory,
                                  title: self.buildTitle(text: title),
-                                 mandatory: showMandatory ? self.buildIsRequiredInput(text: mandatoryText) : nil,
-                                 hint: showSubtitle ? self.buildSubtitle(text: subtitleText, image: subtitleImage) : nil,
+                                 mandatory: showMandatory ? self.buildIsRequiredInput(text: isRequiredText) : nil,
+                                 hint: showSubtitle ? self.buildSubtitle(text: subtitle, image: subtitleImage) : nil,
                                  error: showError ? self.buildError(text: errorText, image: errorImage) : nil)
     }
 }

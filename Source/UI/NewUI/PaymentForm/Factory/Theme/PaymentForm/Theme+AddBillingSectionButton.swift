@@ -48,18 +48,13 @@ public extension Theme {
     func buildAddBillingSectionButton(text: String,
                                       isBillingAddressMandatory: Bool,
                                       titleText: String,
-                                      subtitleText: String? = nil,
+                                      subtitleText: String = "",
                                       subtitleImage: UIImage? = nil,
-                                      mandatoryText: String? = nil,
-                                      errorText: String? = nil,
+                                      mandatoryText: String = "",
+                                      errorText: String = "",
                                       errorImage: UIImage? = nil) -> ThemeAddBillingSectionButton {
-        let mandatoryText = mandatoryText ?? ""
         let showMandatory = !mandatoryText.isEmpty
-
-        let subtitleText = subtitleText ?? ""
         let showSubtitle = !subtitleText.isEmpty || subtitleImage != nil
-
-        let errorText = errorText ?? ""
         let showError = !errorText.isEmpty || errorImage != nil
 
         return ThemeAddBillingSectionButton(

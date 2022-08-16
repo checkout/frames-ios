@@ -38,26 +38,21 @@ public extension Theme {
                            textFieldPlaceholder: String,
                            isTextFieldNumericInput: Bool,
                            titleText: String,
-                           subtitleText: String? = nil,
+                           subtitleText: String = "",
                            subtitleImage: UIImage? = nil,
-                           isRequiredInputText: String? = nil,
-                           errorText: String? = nil,
+                           isRequiredInputText: String = "",
+                           errorText: String = "",
                            errorImage: UIImage? = nil) -> ThemePaymentInput {
-        let subtitleText = subtitleText ?? ""
         let addSubtitle = !subtitleText.isEmpty || subtitleImage != nil
-
-        let errorText = errorText ?? ""
         let addError = !errorText.isEmpty || errorImage != nil
-
-        let mandatoryText = isRequiredInputText ?? ""
-        let addMandatory = !mandatoryText.isEmpty
+        let addMandatory = !isRequiredInputText.isEmpty
 
         return ThemePaymentInput(
             textfield: self.buildTextField(text: textFieldText,
                                            placeholderText: textFieldPlaceholder,
                                            isNumbericInput: isTextFieldNumericInput),
             title: self.buildTitle(text: titleText),
-            mandatory: addMandatory ? self.buildIsRequiredInput(text: mandatoryText) : nil,
+            mandatory: addMandatory ? self.buildIsRequiredInput(text: isRequiredInputText) : nil,
             hint: addSubtitle ? self.buildSubtitle(text: subtitleText,
                                                    image: subtitleImage) : nil,
             error: addError ? self.buildError(text: errorText,

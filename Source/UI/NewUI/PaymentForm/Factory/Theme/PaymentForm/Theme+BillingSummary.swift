@@ -71,18 +71,13 @@ public extension Theme {
     /// Create a Billing Summary from provided content
     func buildBillingSummary(buttonText: String,
                              titleText: String,
-                             subtitleText: String? = nil,
+                             subtitleText: String = "",
                              subtitleImage: UIImage? = nil,
-                             isRequiredText: String? = nil,
-                             errorText: String? = nil,
+                             isRequiredText: String = "",
+                             errorText: String = "",
                              errorImage: UIImage? = nil) -> ThemeBillingSummary {
-        let subtitleText = subtitleText ?? ""
         let showSubtitle = !subtitleText.isEmpty || subtitleImage != nil
-
-        let isRequiredText = isRequiredText ?? ""
         let showMandatory = !isRequiredText.isEmpty
-
-        let errorText = errorText ?? ""
         let showError = !errorText.isEmpty || errorImage != nil
 
         let summary = ThemeSummaryElement(font: UIFont.systemFont(ofSize: self.inputFontSize),

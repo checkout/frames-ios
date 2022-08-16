@@ -27,13 +27,12 @@ public extension Theme {
 
     /// Create a Payment Form Header with given text
     func buildPaymentHeader(title: String,
-                            subtitle: String?,
+                            subtitle: String,
                             schemeIcons: [UIImage?]) -> ThemePaymentHeader {
-        let subtitleText = subtitle ?? ""
-        let hasSubtitle = !subtitleText.isEmpty
+        let hasSubtitle = !subtitle.isEmpty
 
         return buildPaymentHeader(
             headerLabel: buildPageHeaderTitle(text: title),
-            subtitleLabel: hasSubtitle ? buildPaymentHeaderSubtitle(text: subtitleText) : nil)
+            subtitleLabel: hasSubtitle ? buildPaymentHeaderSubtitle(text: subtitle) : nil)
     }
 }
