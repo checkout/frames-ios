@@ -20,16 +20,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
   var paymentFormStyle: PaymentFormStyle?
   var billingFormStyle: BillingFormStyle?
   var currentScheme: Card.Scheme = .unknown
-  var billingFormData: BillingForm? {
-    didSet {
-      cardDetails.phone = billingFormData?.phone
-      cardDetails.billingAddress = billingFormData?.address
-      cardDetails.name = billingFormData?.name
-      if isAddBillingSummaryNotUpdated() {
-        updateBillingSummaryView()
-      }
-    }
-  }
+  var billingFormData: BillingForm?
   var isLoading: Bool = false {
     didSet {
       updateLoading?()
@@ -52,10 +43,13 @@ class DefaultPaymentViewModel: PaymentViewModel {
     self.checkoutAPIService = checkoutAPIService
     self.supportedSchemes = NSOrderedSet(array: supportedSchemes).array as? [Card.Scheme] ?? []
     self.cardValidator = cardValidator
-    self.billingFormData = billingFormData
     self.paymentFormStyle = paymentFormStyle
     self.billingFormStyle = billingFormStyle
     self.logger = logger
+
+    if let billingFormData = billingFormData {
+      updateBillingData(to: billingFormData)
+    }
   }
 
   func viewControllerWillAppear() {
@@ -101,6 +95,17 @@ class DefaultPaymentViewModel: PaymentViewModel {
     updateEditBillingSummaryView?()
   }
 
+  private func updateBillingData(to billingForm: BillingForm) {
+    cardDetails.phone = billingForm.phone
+    cardDetails.billingAddress = billingForm.address
+    if let billingName = billingForm.name {
+      cardDetails.name = billingName
+    }
+    if isAddBillingSummaryNotUpdated() {
+      updateBillingSummaryView()
+    }
+  }
+
   private func isAddBillingSummaryNotUpdated() -> Bool {
     guard billingFormData?.address != nil ||
             billingFormData?.phone != nil else {
@@ -127,7 +132,7 @@ extension DefaultPaymentViewModel: BillingFormViewModelDelegate {
   }
 
   func onTapDoneButton(data: BillingForm) {
-    self.billingFormData = data
+    updateBillingData(to: data)
   }
 }
 
@@ -144,7 +149,7 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
   func securityCodeIsUpdated(result: Result<String, SecurityCodeError>) {
     switch result {
       case .failure:
-        cardDetails.cvv = nil
+        cardDetails.cvv = ""
       case .success(let cvv):
         cardDetails.cvv = cvv
     }
@@ -181,7 +186,7 @@ extension DefaultPaymentViewModel: CardNumberViewModelDelegate {
   func update(result: Result<CardInfo, CardNumberError>) {
     switch result {
       case .failure:
-        cardDetails.number = nil
+        cardDetails.number = ""
       case .success(let cardInfo):
         cardDetails.number = cardInfo.cardNumber
         updateSecurityCodeViewScheme?(cardInfo.scheme)

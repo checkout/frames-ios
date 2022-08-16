@@ -257,7 +257,7 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
             zip: textValueOfCellType[BillingFormCell.postcode(nil).index],
             country: country)
 
-        let name = textValueOfCellType[BillingFormCell.fullName(nil).index] ?? ""
+        let name = textValueOfCellType[BillingFormCell.fullName(nil).index]
 
         let data: BillingForm = BillingForm(name: name,
                                                      address: address,
