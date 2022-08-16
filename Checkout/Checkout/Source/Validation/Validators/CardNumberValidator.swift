@@ -60,7 +60,7 @@ final class CardNumberValidator: CardNumberValidating {
   }
 
   func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.EagerCardNumber> {
-    let cardNumber = cardNumber.filter { !$0.isWhitespace }
+    let cardNumber = cardNumber.removeWhitespaces()
     guard validateDigitsOnly(in: cardNumber) else {
       return .failure(.cardNumber(.invalidCharacters))
     }
