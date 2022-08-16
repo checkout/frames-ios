@@ -15,4 +15,7 @@ final class CardholderViewModel {
 
     weak var delegate: CardholderDelegate?
 
+    func inputUpdated(to newInput: String) {
+        delegate?.cardholderUpdated(to: newInput)
+    }
 }

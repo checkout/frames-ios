@@ -122,7 +122,10 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
     onTapAddressView(sender: sender)
   }
 
-  func cardholderIsUpdated(value: String) {}
+  // TODO: Need updating from Payment ticket merge
+  func cardholderIsUpdated(value: String) {
+      print("CARDHOLDER INPUT IS UPDATED", value)
+  }
 
   private func onTapAddressView(sender: UINavigationController?) {
     guard let viewController = BillingFormFactory.getBillingFormViewController(style: billingFormStyle, data: billingFormData, delegate: self) else { return }
