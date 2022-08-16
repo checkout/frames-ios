@@ -1,6 +1,7 @@
 import UIKit
 
 public struct DefaultErrorInputLabelStyle: ElementErrorViewStyle {
+    public var textAlignment: NSTextAlignment = .natural
     public var isHidden: Bool = true
     public var backgroundColor: UIColor = .clear
     public var tintColor: UIColor = .tallPoppyRed

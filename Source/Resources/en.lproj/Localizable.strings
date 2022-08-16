@@ -24,6 +24,7 @@
 "PaymentHeaderSubtitle" = "Visa, Mastercard and American Express accepted.";
 "CardNumber" = "Card number";
 "CardNumberErrorMessage" = "Please enter a valid card number";
+"Pay" = "Pay";
 "city" = "City";
 "cancel" = "Cancel";
 "done" = "Done";

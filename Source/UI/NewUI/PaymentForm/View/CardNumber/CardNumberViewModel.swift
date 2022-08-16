@@ -8,8 +8,16 @@
 
 import Checkout
 
+typealias CardInfo = (cardNumber: String, scheme: Card.Scheme)
+
+enum CardNumberError: Error {
+  case invalidCharacters
+  case isNotComplete
+  case invalidScheme
+}
+
 protocol CardNumberViewModelDelegate: AnyObject {
-  func update(cardNumber: String, scheme: Card.Scheme)
+  func update(result: Result<CardInfo, CardNumberError>)
 }
 
 protocol CardNumberViewModelProtocol {
@@ -31,6 +39,7 @@ class CardNumberViewModel {
 }
 
 extension CardNumberViewModel: CardNumberViewModelProtocol {
+
   func validate(cardNumber rawText: String) -> Constants.Bundle.SchemeIcon? {
     let cardNumber = cardUtils.removeNonDigits(from: rawText)
 
@@ -40,10 +49,11 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
         // In this case we only update delegate if we have a final result to avoiding
         //    overriding the eager validation with a less informative update
       case let .success((isComplete, scheme)) where isComplete && supportedSchemes.contains(scheme):
-        delegate?.update(cardNumber: cardNumber, scheme: scheme)
+        delegate?.update(result: .success((cardNumber, scheme)))
         return Constants.Bundle.SchemeIcon(scheme: scheme)
       case .success,
            .failure:
+        delegate?.update(result: .failure(.isNotComplete))
         return nil
     }
   }
@@ -52,10 +62,10 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
     let cardNumber = cardUtils.removeNonDigits(from: rawText)
 
     if let scheme = shouldAllowChange(cardNumber: cardNumber) {
-      delegate?.update(cardNumber: cardNumber, scheme: scheme)
+      delegate?.update(result: .success((cardNumber, scheme)))
       return (cardUtils.format(cardNumber: cardNumber, scheme: scheme), Constants.Bundle.SchemeIcon(scheme: scheme))
     }
-
+    delegate?.update(result: .failure(.invalidScheme))
     return nil
   }
 
