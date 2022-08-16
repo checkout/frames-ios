@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0B194AC328A0F407001AEAFD /* CardScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B194AC228A0F407001AEAFD /* CardScheme.swift */; };
 		0B194AFC28A1132B001AEAFD /* UIFont+SFMono.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B194AED28A1132B001AEAFD /* UIFont+SFMono.swift */; };
 		0B194AFD28A1132B001AEAFD /* SF-Mono-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B194AEF28A1132B001AEAFD /* SF-Mono-Bold.otf */; };
 		0B194AFE28A1132B001AEAFD /* SF-Mono-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B194AF028A1132B001AEAFD /* SF-Mono-Light.otf */; };
@@ -361,6 +362,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B194AC228A0F407001AEAFD /* CardScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardScheme.swift; sourceTree = "<group>"; };
 		0B194AED28A1132B001AEAFD /* UIFont+SFMono.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+SFMono.swift"; sourceTree = "<group>"; };
 		0B194AEF28A1132B001AEAFD /* SF-Mono-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-Bold.otf"; sourceTree = "<group>"; };
 		0B194AF028A1132B001AEAFD /* SF-Mono-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-Light.otf"; sourceTree = "<group>"; };
@@ -711,6 +713,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B194AC128A0F407001AEAFD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0B194AC228A0F407001AEAFD /* CardScheme.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		0B194AEC28A1132B001AEAFD /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1424,6 +1434,7 @@
 		9573225C286EF4E80068C115 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0B194AC128A0F407001AEAFD /* Models */,
 				95D73A432889492B00D93554 /* Constants */,
 				9573225E286EF4E80068C115 /* Environment.swift */,
 				9573225F286EF4E80068C115 /* CheckoutAPIService.swift */,
@@ -2009,6 +2020,7 @@
 				957322CB286EF4E80068C115 /* SelectionButtonView.swift in Sources */,
 				95732307286EF4E80068C115 /* SchemeIconsStackView.swift in Sources */,
 				957322FA286EF4E80068C115 /* CountrySelectionViewControllerDelegate.swift in Sources */,
+				0B194AC328A0F407001AEAFD /* CardScheme.swift in Sources */,
 				957322C8286EF4E80068C115 /* LabelView.swift in Sources */,
 				95732326286EF4E80068C115 /* Constants+Padding.swift in Sources */,
 				957322C5286EF4E80068C115 /* TextFieldView.swift in Sources */,

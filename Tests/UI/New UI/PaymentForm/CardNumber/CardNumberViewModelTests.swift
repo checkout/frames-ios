@@ -73,7 +73,7 @@ class CardNumberViewModelTests: XCTestCase {
       .mada: .mada,
       .visa: .visa,
       .mastercard: .mastercard,
-      .maestro: .maestro,
+      .maestro(): .maestro,
       .americanExpress: .americanExpress,
       .discover: .discover,
       .dinersClub: .dinersClub,
@@ -108,10 +108,10 @@ class CardNumberViewModelTests: XCTestCase {
       (.dinersClub, "38520000023237", "3852 000002 3237"),
       (.discover, "6011000400000000", "6011 0004 0000 0000"),
       (.discover, "6011111111111117", "6011 1111 1111 1117"),
-      (.maestro, "6921566956623303", "6921 5669 5662 3303"),
-      (.maestro, "6945584356562221", "6945 5843 5656 2221"),
+      (.maestro(), "6921566956623303", "6921 5669 5662 3303"),
+      (.maestro(), "6945584356562221", "6945 5843 5656 2221"),
       (.jcb, "3566002020360505", "3566 0020 2036 0505"),
-      (.jcb, "353445444300732639", "3534 4544 4300 732639"),
+      (.jcb, "353445444300732639", "3534 4544 4300 7326 39"),
       (.mada, "5297412542005689", "5297 4125 4200 5689"),
       (.mada, "5078036246600381", "5078 0362 4660 0381")
     ]
