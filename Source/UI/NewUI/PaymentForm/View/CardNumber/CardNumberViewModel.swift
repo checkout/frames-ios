@@ -41,7 +41,6 @@ class CardNumberViewModel {
 
 extension CardNumberViewModel: CardNumberViewModelProtocol {
 
-  // TODO: separate the validation logic from getting the icon
   func validate(cardNumber rawText: String) -> Constants.Bundle.SchemeIcon? {
     let cardNumber = cardUtils.removeNonDigits(from: rawText)
 
@@ -60,7 +59,6 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
     }
   }
 
-  // TODO: separate the validation logic from getting the icon
   func eagerValidate(cardNumber rawText: String) -> (newTextFieldValue: String, schemeIcon: Constants.Bundle.SchemeIcon)? {
     let cardNumber = cardUtils.removeNonDigits(from: rawText)
 

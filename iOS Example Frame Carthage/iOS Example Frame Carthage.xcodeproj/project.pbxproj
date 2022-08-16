@@ -43,6 +43,7 @@
 		4422783E2616376E009626A0 /* CheckoutSdkIos.h in Headers */ = {isa = PBXBuildFile; fileRef = 442277E52616376E009626A0 /* CheckoutSdkIos.h */; };
 		44A4DFE5261CC59B00E0C349 /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */; settings = {ATTRIBUTES = (Required, ); }; };
 		57256C7E269F1181001EC3D8 /* Frames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; platformFilter = ios; };
+		9502D0C628ABBEB0008B3E19 /* CardCreationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502D0C528ABBEB0008B3E19 /* CardCreationModel.swift */; };
 		950DBEB6287C946900FA04C0 /* SecurityCodeViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBEB5287C946900FA04C0 /* SecurityCodeViewTests.swift */; };
 		952F3240283C303E00F616FF /* CardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F3165283C303E00F616FF /* CardUtils.swift */; };
 		952F3241283C303E00F616FF /* CheckoutColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F3166283C303E00F616FF /* CheckoutColor.swift */; };
@@ -391,6 +392,7 @@
 		44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = ../Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
 		44A4DFCF261CC17800E0C349 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 		57256C79269F1181001EC3D8 /* FramesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FramesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9502D0C528ABBEB0008B3E19 /* CardCreationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCreationModel.swift; sourceTree = "<group>"; };
 		950DBEB5287C946900FA04C0 /* SecurityCodeViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityCodeViewTests.swift; sourceTree = "<group>"; };
 		952F3165283C303E00F616FF /* CardUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardUtils.swift; path = ../../Source/CardUtils.swift; sourceTree = "<group>"; };
 		952F3166283C303E00F616FF /* CheckoutColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutColor.swift; path = ../../Source/CheckoutColor.swift; sourceTree = "<group>"; };
@@ -900,6 +902,7 @@
 		957321B8286EF4E80068C115 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9502D0C528ABBEB0008B3E19 /* CardCreationModel.swift */,
 				957321B9286EF4E80068C115 /* PaymentViewModel.swift */,
 				957321BF286EF4E80068C115 /* DefaultPaymentViewModel.swift */,
 			);
@@ -2037,6 +2040,7 @@
 				957322A7286EF4E80068C115 /* PostCodeValidator.swift in Sources */,
 				957322D8286EF4E80068C115 /* DefaultTitleLabelStyle.swift in Sources */,
 				95732304286EF4E80068C115 /* AddressViewController.swift in Sources */,
+				9502D0C628ABBEB0008B3E19 /* CardCreationModel.swift in Sources */,
 				957322BD286EF4E80068C115 /* DefaultAddBillingDetailsViewStyle.swift in Sources */,
 				95732312286EF4E80068C115 /* StringExtensions.swift in Sources */,
 				957322E0286EF4E80068C115 /* DefaultBillingFormStateCellStyle.swift in Sources */,

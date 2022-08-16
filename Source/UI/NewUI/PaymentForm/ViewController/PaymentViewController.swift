@@ -14,7 +14,6 @@ final class PaymentViewController: UIViewController {
   // MARK: - Variables
 
   weak var delegate: PaymentViewControllerDelegate?
-  var cardTokenRequested: ((Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)?
 
   private(set) var viewModel: PaymentViewModel
   private var notificationCenter = NotificationCenter.default
@@ -58,7 +57,7 @@ final class PaymentViewController: UIViewController {
   }()
 
   private lazy var cardNumberView: CardNumberView = {
-let cardNumberViewModel = CardNumberViewModel(cardValidator: viewModel.cardValidator, supportedSchemes: viewModel.supportedSchemes)
+    let cardNumberViewModel = CardNumberViewModel(cardValidator: viewModel.cardValidator, supportedSchemes: viewModel.supportedSchemes)
     cardNumberViewModel.delegate = viewModel as? CardNumberViewModelDelegate
     let cardNumberView = CardNumberView(viewModel: cardNumberViewModel)
     return cardNumberView
