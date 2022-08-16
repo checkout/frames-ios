@@ -8,6 +8,9 @@
 extension Constants {
 
     struct LocalizationKeys {
+
+        static let optionalInput = "OptionalInputField".localized
+
         struct PaymentForm {
           struct Header {
             static let title = "PaymentHeaderTitle".localized
@@ -47,10 +50,6 @@ extension Constants {
         }
 
         struct BillingForm {
-
-            struct Cell {
-                static let optionalInput = "BillingFormOptional".localized
-            }
 
             struct AddressLine1 {
                 static let title = "addressLine1".localized

@@ -23,7 +23,7 @@ public struct PaymentFormFactory {
                                             billingFormStyle: style.billingFormStyle,
                                             supportedSchemes: configuration.supportedSchemes)
     viewModel.preventDuplicateCardholderInput()
-      
+
     let viewController = PaymentViewController(viewModel: viewModel)
     viewModel.cardTokenRequested = completionHandler
     logger.log(.paymentFormInitialised(environment: configuration.environment))

@@ -30,8 +30,8 @@ struct PayButtonFormStyleCustom1: ElementButtonStyle {
   var textAlignment: NSTextAlignment = .center
   var text: String = "Pay 100$"
   var font: UIFont = UIFont.systemFont(ofSize: 15)
-  var disabledTextColor: UIColor = .white
-  var disabledTintColor: UIColor = Constants.secondaryFontColor
+  var disabledTextColor: UIColor = Constants.secondaryFontColor
+  var disabledTintColor: UIColor = Constants.mainFontColor.withAlphaComponent(0.2)
   var activeTintColor: UIColor = Constants.mainFontColor
   var backgroundColor: UIColor = Constants.mainFontColor
   var textColor: UIColor = .white

@@ -167,9 +167,8 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
     onTapAddressView(sender: sender)
   }
 
-  // TODO: Need updating from Payment ticket merge
   func cardholderIsUpdated(value: String) {
-      print("CARDHOLDER INPUT IS UPDATED", value)
+    cardDetails.name = value
   }
 
   private func onTapAddressView(sender: UINavigationController?) {

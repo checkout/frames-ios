@@ -9,7 +9,7 @@
 import UIKit
 
 public struct DefaultCardNumberFormStyle: CellTextFieldStyle {
-    public var isMandatory: Bool = true
+    public var isMandatory: Bool = false
     public var backgroundColor: UIColor = .clear
     public var title: ElementStyle? = DefaultTitleLabelStyle(text: Constants.LocalizationKeys.PaymentForm.CardNumber.title)
     public var hint: ElementStyle?
