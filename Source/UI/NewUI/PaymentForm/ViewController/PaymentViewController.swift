@@ -5,6 +5,7 @@ protocol PaymentViewControllerDelegate: AnyObject {
   func addBillingButtonIsPressed(sender: UINavigationController?)
   func editBillingButtonIsPressed(sender: UINavigationController?)
   func expiryDateIsUpdated(value: ExpiryDate)
+  func cardholderIsUpdated(value: String)
   func securityCodeIsUpdated(value: String)
 }
 
@@ -52,6 +53,13 @@ final class PaymentViewController: UIViewController {
   private lazy var expiryDateView: ExpiryDateView = {
     let view = ExpiryDateView(cardValidator: viewModel.cardValidator)
     view.delegate = self
+    return view
+  }()
+
+  private lazy var cardholderView: CardholderView = {
+    let cardholderViewModel = CardholderViewModel()
+    cardholderViewModel.delegate = self
+    let view = CardholderView(viewModel: cardholderViewModel)
     return view
   }()
 
@@ -266,6 +274,7 @@ extension PaymentViewController {
 
   private func addArrangedSubviewForStackView() {
     stackView.addArrangedSubview(headerView)
+    stackView.addArrangedSubview(cardholderView)
     stackView.addArrangedSubview(cardNumberView)
     stackView.addArrangedSubview(expiryDateView)
     stackView.addArrangedSubview(securityCodeView)
@@ -321,6 +330,12 @@ extension PaymentViewController: BillingFormSummaryViewDelegate {
 extension PaymentViewController: ExpiryDateViewDelegate {
   func update(expiryDate: ExpiryDate) {
     delegate?.expiryDateIsUpdated(value: expiryDate)
+  }
+}
+
+extension PaymentViewController: CardholderDelegate {
+  func cardholderUpdated(to cardholderInput: String) {
+    delegate?.cardholderIsUpdated(value: cardholderInput)
   }
 }
 

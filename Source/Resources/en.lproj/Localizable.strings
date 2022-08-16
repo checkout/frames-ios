@@ -12,6 +12,8 @@
 "BillingFormOptional" = "Optional";
 "PaymentFormSummaryViewHintText" = "We need this information as an additional security measure to verify this card.";
 "AddBillingAddress" = "Add billing address";
+/* Title of input section on the Payment Form where user is expected to input the Cardholder name as displayed on card */
+"CardholderInputTitle" = "Cardholder Name";
 "ExpiryDate" = "Expiry date";
 "ExpiryDateFormat" = "Format is MM/YY";
 "ExpiryDatePlaceholder" = "_ _  / _ _";

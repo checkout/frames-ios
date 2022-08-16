@@ -14,6 +14,11 @@ extension Constants {
             static let subtitle = "PaymentHeaderSubtitle".localized
 
           }
+
+            struct Cardholder {
+                static let title = "CardholderInputTitle".localized
+            }
+
             struct CardNumber {
                 static let title = "CardNumber".localized
                 static let error = "CardNumberErrorMessage".localized
