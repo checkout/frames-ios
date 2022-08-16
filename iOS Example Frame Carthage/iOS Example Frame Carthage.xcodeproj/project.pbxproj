@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0B194AC328A0F407001AEAFD /* CardScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B194AC228A0F407001AEAFD /* CardScheme.swift */; };
 		0B194AFC28A1132B001AEAFD /* UIFont+SFMono.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B194AED28A1132B001AEAFD /* UIFont+SFMono.swift */; };
 		0B194AFD28A1132B001AEAFD /* SF-Mono-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B194AEF28A1132B001AEAFD /* SF-Mono-Bold.otf */; };
 		0B194AFE28A1132B001AEAFD /* SF-Mono-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B194AF028A1132B001AEAFD /* SF-Mono-Light.otf */; };
@@ -60,6 +61,7 @@
 		4422783E2616376E009626A0 /* CheckoutSdkIos.h in Headers */ = {isa = PBXBuildFile; fileRef = 442277E52616376E009626A0 /* CheckoutSdkIos.h */; };
 		44A4DFE5261CC59B00E0C349 /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */; settings = {ATTRIBUTES = (Required, ); }; };
 		57256C7E269F1181001EC3D8 /* Frames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; platformFilter = ios; };
+		9502D0C628ABBEB0008B3E19 /* CardCreationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502D0C528ABBEB0008B3E19 /* CardCreationModel.swift */; };
 		950DBEB6287C946900FA04C0 /* SecurityCodeViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBEB5287C946900FA04C0 /* SecurityCodeViewTests.swift */; };
 		952F3240283C303E00F616FF /* CardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F3165283C303E00F616FF /* CardUtils.swift */; };
 		952F3241283C303E00F616FF /* CheckoutColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F3166283C303E00F616FF /* CheckoutColor.swift */; };
@@ -381,6 +383,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B194AC228A0F407001AEAFD /* CardScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardScheme.swift; sourceTree = "<group>"; };
 		0B194AED28A1132B001AEAFD /* UIFont+SFMono.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+SFMono.swift"; sourceTree = "<group>"; };
 		0B194AEF28A1132B001AEAFD /* SF-Mono-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-Bold.otf"; sourceTree = "<group>"; };
 		0B194AF028A1132B001AEAFD /* SF-Mono-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-Light.otf"; sourceTree = "<group>"; };
@@ -424,6 +427,7 @@
 		44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = ../Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
 		44A4DFCF261CC17800E0C349 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 		57256C79269F1181001EC3D8 /* FramesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FramesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9502D0C528ABBEB0008B3E19 /* CardCreationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCreationModel.swift; sourceTree = "<group>"; };
 		950DBEB5287C946900FA04C0 /* SecurityCodeViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityCodeViewTests.swift; sourceTree = "<group>"; };
 		952F3165283C303E00F616FF /* CardUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardUtils.swift; path = ../../Source/CardUtils.swift; sourceTree = "<group>"; };
 		952F3166283C303E00F616FF /* CheckoutColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutColor.swift; path = ../../Source/CheckoutColor.swift; sourceTree = "<group>"; };
@@ -751,6 +755,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B194AC128A0F407001AEAFD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0B194AC228A0F407001AEAFD /* CardScheme.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		0B194AEC28A1132B001AEAFD /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -980,6 +992,7 @@
 		957321B8286EF4E80068C115 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9502D0C528ABBEB0008B3E19 /* CardCreationModel.swift */,
 				957321B9286EF4E80068C115 /* PaymentViewModel.swift */,
 				957321BF286EF4E80068C115 /* DefaultPaymentViewModel.swift */,
 			);
@@ -1514,6 +1527,7 @@
 		9573225C286EF4E80068C115 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0B194AC128A0F407001AEAFD /* Models */,
 				95D73A432889492B00D93554 /* Constants */,
 				9573225E286EF4E80068C115 /* Environment.swift */,
 				9573225F286EF4E80068C115 /* CheckoutAPIService.swift */,
@@ -2102,6 +2116,7 @@
 				957322CB286EF4E80068C115 /* SelectionButtonView.swift in Sources */,
 				95732307286EF4E80068C115 /* SchemeIconsStackView.swift in Sources */,
 				957322FA286EF4E80068C115 /* CountrySelectionViewControllerDelegate.swift in Sources */,
+				0B194AC328A0F407001AEAFD /* CardScheme.swift in Sources */,
 				957322C8286EF4E80068C115 /* LabelView.swift in Sources */,
 				95732326286EF4E80068C115 /* Constants+Padding.swift in Sources */,
 				957322C5286EF4E80068C115 /* TextFieldView.swift in Sources */,
@@ -2122,6 +2137,7 @@
 				957322A7286EF4E80068C115 /* PostCodeValidator.swift in Sources */,
 				957322D8286EF4E80068C115 /* DefaultTitleLabelStyle.swift in Sources */,
 				95732304286EF4E80068C115 /* AddressViewController.swift in Sources */,
+				9502D0C628ABBEB0008B3E19 /* CardCreationModel.swift in Sources */,
 				957322BD286EF4E80068C115 /* DefaultAddBillingDetailsViewStyle.swift in Sources */,
 				95732312286EF4E80068C115 /* StringExtensions.swift in Sources */,
 				957322E0286EF4E80068C115 /* DefaultBillingFormStateCellStyle.swift in Sources */,

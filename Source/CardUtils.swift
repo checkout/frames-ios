@@ -6,17 +6,6 @@ public final class CardUtils {
 
     // MARK: - Properties
 
-    /// map of card scheme to indexes of spaces in formatted card number string
-    /// eg. a visa card has gaps at 4, 8 and 12. 4242424242424242 becomes 4242 4242 4242 4242
-    let cardGaps: [Card.Scheme: [Int]] = [.visa: [4, 8, 12],
-                                          .mastercard: [4, 8, 12],
-                                          .mada: [4, 8, 12],
-                                          .americanExpress: [4, 10],
-                                          .dinersClub: [4, 10],
-                                          .discover: [4, 8, 12],
-                                          .jcb: [4, 8, 12],
-                                          .maestro: [4, 8, 12]]
-
     // MARK: - Initialization
 
     /// Create an instance of `CardUtils`
@@ -35,13 +24,9 @@ public final class CardUtils {
     ///
     /// - returns: The formatted card number
     public func format(cardNumber: String, scheme: Card.Scheme) -> String {
-        guard let gaps = cardGaps[scheme] else {
-            return cardNumber
-        }
-
         var cardNumber = cardNumber
 
-        for gap in gaps.sorted().reversed() {
+        for gap in scheme.cardGaps.sorted(by: >) {
             if gap < cardNumber.count {
                 cardNumber.insert(" ", at: cardNumber.index(cardNumber.startIndex, offsetBy: gap))
             }

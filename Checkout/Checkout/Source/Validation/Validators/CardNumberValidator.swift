@@ -44,8 +44,7 @@ final class CardNumberValidator: CardNumberValidating {
   }
     
   func validateCompleteness(cardNumber: String) -> Result<ValidationScheme, ValidationError.CardNumber> {
-    let cardNumber = cardNumber.filter { !$0.isWhitespace }
-
+    let cardNumber = cardNumber.removeWhitespaces()
     guard validateDigitsOnly(in: cardNumber) else {
       return .failure(.invalidCharacters)
     }
@@ -61,8 +60,7 @@ final class CardNumberValidator: CardNumberValidating {
   }
 
   func eagerValidate(cardNumber: String) -> Result<Card.Scheme, ValidationError.EagerCardNumber> {
-    let cardNumber = cardNumber.filter { !$0.isWhitespace }
-
+    let cardNumber = cardNumber.removeWhitespaces()
     guard validateDigitsOnly(in: cardNumber) else {
       return .failure(.cardNumber(.invalidCharacters))
     }
@@ -89,12 +87,21 @@ final class CardNumberValidator: CardNumberValidating {
   ) -> Card.Scheme? {
     let range = NSRange(location: 0, length: cardNumber.utf16.count)
 
-    return Card.Scheme.allCases.first { scheme in
+    let matchedScheme = Card.Scheme.allCases.first { scheme in
       cardSchemeToRegex(scheme)?.firstMatch(in: cardNumber, options: [], range: range) != nil
     }
+    return addSchemePropertyIfNeeded(scheme: matchedScheme, cardNumber: cardNumber)
   }
 
   private func validateDigitsOnly(in string: String) -> Bool {
     return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: string))
   }
+    
+  private func addSchemePropertyIfNeeded(scheme: Card.Scheme?, cardNumber: String) -> Card.Scheme? {
+    if case .maestro = scheme {
+      return .maestro(length: cardNumber.filter { Int("\($0)") != nil }.count)
+    }
+    return scheme
+  }
+    
 }

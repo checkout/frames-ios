@@ -1,8 +1,6 @@
 import UIKit
 import Checkout
 
-public typealias Card = Checkout.Card
-
 public struct PaymentFormFactory {
 
   // Persist in memory the correlation ID

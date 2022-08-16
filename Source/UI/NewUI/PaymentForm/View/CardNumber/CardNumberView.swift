@@ -9,7 +9,7 @@
 import UIKit
 
 final class CardNumberView: UIView {
-  private var viewModel: CardNumberViewModelProtocol
+  private let viewModel: CardNumberViewModelProtocol
 
   private(set) var schemeIcon = Constants.Bundle.SchemeIcon.blank {
     didSet {

@@ -13,8 +13,6 @@ final class MockCardNumberViewModelDelegate: CardNumberViewModelDelegate {
   private(set) var updateCalledWithValue: (cardNumber: String?, scheme: Card.Scheme)?
   private(set) var updateCalledWithError: CardNumberError?
 
-  private(set) var schemeUpdatedEagerlyCalledWith: [Card.Scheme] = []
-    
   func update(result: Result<CardInfo, CardNumberError>) {
     switch result {
       case .failure(let error):
@@ -23,9 +21,5 @@ final class MockCardNumberViewModelDelegate: CardNumberViewModelDelegate {
         updateCalledWithValue = (cardInfo.cardNumber, cardInfo.scheme)
     }
 
-  }
-    
-  func schemeUpdatedEagerly(to newScheme: Card.Scheme) {
-    schemeUpdatedEagerlyCalledWith.append(newScheme)
   }
 }

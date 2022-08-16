@@ -18,7 +18,6 @@ enum CardNumberError: Error {
 
 protocol CardNumberViewModelDelegate: AnyObject {
   func update(result: Result<CardInfo, CardNumberError>)
-  func schemeUpdatedEagerly(to newScheme: Card.Scheme)
 }
 
 protocol CardNumberViewModelProtocol {
@@ -41,7 +40,6 @@ class CardNumberViewModel {
 
 extension CardNumberViewModel: CardNumberViewModelProtocol {
 
-  // TODO: separate the validation logic from getting the icon
   func validate(cardNumber rawText: String) -> Constants.Bundle.SchemeIcon? {
     let cardNumber = cardUtils.removeNonDigits(from: rawText)
 
@@ -60,13 +58,11 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
     }
   }
 
-  // TODO: separate the validation logic from getting the icon
   func eagerValidate(cardNumber rawText: String) -> (newTextFieldValue: String, schemeIcon: Constants.Bundle.SchemeIcon)? {
     let cardNumber = cardUtils.removeNonDigits(from: rawText)
 
     if let scheme = shouldAllowChange(cardNumber: cardNumber) {
-      // using CardUtils until we add this functionality into Checkout SDK
-      delegate?.schemeUpdatedEagerly(to: scheme)
+      delegate?.update(result: .success((cardNumber, scheme)))
       return (cardUtils.format(cardNumber: cardNumber, scheme: scheme), Constants.Bundle.SchemeIcon(scheme: scheme))
     }
     delegate?.update(result: .failure(.invalidScheme))
@@ -76,16 +72,10 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
   private func shouldAllowChange(cardNumber: String) -> Card.Scheme? {
     switch cardValidator.eagerValidate(cardNumber: cardNumber) {
     case .success(let scheme):
-      return handleValidationSuccess(cardNumber: cardNumber, scheme: scheme)
+      return scheme
     case .failure(let error):
       return handleValidationError(error: error)
     }
-  }
-
-  private func handleValidationSuccess(cardNumber: String, scheme: Card.Scheme) -> Card.Scheme? {
-    delegate?.update(result: .success((cardNumber, scheme)))
-
-    return scheme
   }
 
   private func handleValidationError(error: ValidationError.EagerCardNumber) -> Card.Scheme? {

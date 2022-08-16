@@ -1,34 +1,6 @@
 import UIKit
 import Checkout
 
-private struct CardDetails {
-  var number: String?
-  var expiryDate: ExpiryDate?
-  var name: String?
-  var cvv: String?
-  var billingAddress: Address?
-  var phone: Phone?
-
-  init(number: String? = nil, expiryDate: ExpiryDate? = nil, name: String? = nil, cvv: String? = nil, billingAddress: Address? = nil, phone: Phone? = nil) {
-    self.number = number
-    self.expiryDate = expiryDate
-    self.name = name
-    self.cvv = cvv
-    self.billingAddress = billingAddress
-    self.phone = phone
-  }
-
-  func getCard() -> Card? {
-    guard let number = number, let expiryDate = expiryDate else { return nil }
-    return Card(number: number,
-                expiryDate: expiryDate,
-                name: name,
-                cvv: cvv,
-                billingAddress: billingAddress,
-                phone: phone)
-  }
-}
-
 class DefaultPaymentViewModel: PaymentViewModel {
   var updateLoading: (() -> Void)?
   var updateEditBillingSummaryView: (() -> Void)?
@@ -64,7 +36,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
     }
   }
 
-  private var cardDetails: CardDetails = CardDetails() {
+  private var cardDetails: CardCreationModel =  CardCreationModel() {
     didSet {
       shouldEnablePayButton?(cardDetails.expiryDate != nil && cardDetails.number != nil)
     }

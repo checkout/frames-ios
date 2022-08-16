@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Checkout
 
 public final class PaymentHeaderView: UIView {
   private var style: PaymentHeaderCellStyle?
