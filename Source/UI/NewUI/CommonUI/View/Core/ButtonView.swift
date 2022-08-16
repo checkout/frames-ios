@@ -40,6 +40,7 @@ class ButtonView: UIView {
         self.style = style
         backgroundColor = style.backgroundColor
         layer.cornerRadius = style.cornerRadius
+        button.layer.cornerRadius = style.cornerRadius
         isEnabled = style.isEnabled
         updateButtonStyle(with: style)
         updateLabelStyle(with: style)

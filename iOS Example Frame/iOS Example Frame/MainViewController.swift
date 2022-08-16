@@ -47,7 +47,7 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
         let paymentConfiguration = PaymentFormConfiguration(apiKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
                                                             environment: environment,
                                                             supportedSchemes: [.visa, .mastercard, .maestro],
-                                                            billingFormData: cardFormData.billingForm)
+                                                            billingFormData: nil)
         let paymentStyle = PaymentStyle(paymentFormStyle: cardFormData.paymentFormStyle,
                                         billingFormStyle: cardFormData.billingFormStyle)
         let paymentFormViewController = PaymentFormFactory.buildViewController(configuration: paymentConfiguration, style: paymentStyle)
