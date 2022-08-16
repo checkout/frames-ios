@@ -18,7 +18,7 @@ final class TokenDetailsFactory: TokenDetailsProviding {
       token: tokenResponse.token,
       expiresOn: tokenResponse.expiresOn,
       expiryDate: create(expiryMonth: tokenResponse.expiryMonth, expiryYear: tokenResponse.expiryYear),
-      scheme: tokenResponse.scheme.flatMap(Card.Scheme.init(rawValue:)),
+      scheme: tokenResponse.scheme.flatMap({ Card.Scheme(rawValue: $0) }),
       last4: tokenResponse.last4,
       bin: tokenResponse.bin,
       cardType: tokenResponse.cardType,

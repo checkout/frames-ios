@@ -21,7 +21,7 @@ class CardUtilsTests: XCTestCase {
         [
             ["4651997672049328", "4651 9976 7204 9328"],
             ["4485958561669511", "4485 9585 6166 9511"],
-            ["4000001234562345678", "4000 0012 3456 2345678"],
+            ["4000001234562345678", "4000 0012 3456 2345 678"],
             ["4", "4"]
             ].forEach {
                 XCTAssertEqual(cards.format(cardNumber: $0[0], scheme: .visa), $0[1])
@@ -59,12 +59,12 @@ class CardUtilsTests: XCTestCase {
             ["6921566956623303", "6921 5669 5662 3303"],
             ["6945584356562221", "6945 5843 5656 2221"]
             ].forEach {
-                XCTAssertEqual(cards.format(cardNumber: $0[0], scheme: .maestro), $0[1])
+                XCTAssertEqual(cards.format(cardNumber: $0[0], scheme: .maestro()), $0[1])
         }
         // JCB
         [
             ["3566002020360505", "3566 0020 2036 0505"],
-            ["353445444300732639", "3534 4544 4300 732639"]
+            ["353445444300732639", "3534 4544 4300 7326 39"]
             ].forEach {
                 XCTAssertEqual(cards.format(cardNumber: $0[0], scheme: .jcb), $0[1])
         }
@@ -100,6 +100,6 @@ class CardUtilsTests: XCTestCase {
     }
 
     func testCardGaps() {
-        XCTAssertEqual(Card.Scheme.allCases.filter { cards.cardGaps[$0] == nil }, [.unknown])
+        XCTAssertEqual(Card.Scheme.allCases.filter { $0.cardGaps.isEmpty }, [.unknown])
     }
 }

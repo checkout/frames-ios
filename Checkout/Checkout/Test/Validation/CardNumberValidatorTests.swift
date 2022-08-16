@@ -28,10 +28,10 @@ final class CardNumberValidatorTests: XCTestCase {
       "6501111111111117": .success(.discover),
       "3530111333300000": .success(.jcb),
       "5297412542005689": .success(.mada),
-      "6759649826438453": .success(.maestro),
-      "6016607095058666": .success(.maestro),
-      "501800000009": .success(.maestro),
-      "6799990100000000019": .success(.maestro),
+      "6759649826438453": .success(.maestro(length: 16)),
+      "6016607095058666": .success(.maestro(length: 16)),
+      "501800000009": .success(.maestro(length: 12)),
+      "6799990100000000019": .success(.maestro(length: 19)),
       "5555555555554444": .success(.mastercard),
       "2223000048400011": .success(.mastercard),
       "2234888888888882": .success(.mastercard),
@@ -65,7 +65,7 @@ final class CardNumberValidatorTests: XCTestCase {
         "expected \(expectedResult) for card number \(cardNumber),received \(actualResult)"
       )
 
-      XCTAssertEqual(stubLuhnChecker.luhnCheckCalledWith, cardNumber.filter { !$0.isWhitespace })
+      XCTAssertEqual(stubLuhnChecker.luhnCheckCalledWith, cardNumber.removeWhitespaces())
     }
   }
 
@@ -77,7 +77,7 @@ final class CardNumberValidatorTests: XCTestCase {
       "601103": .success(.discover),
       "35": .success(.jcb),
       "529741": .success(.mada),
-      "67": .success(.maestro),
+      "67": .success(.maestro(length: 2)),
       "55": .success(.mastercard),
       "42": .success(.visa)
     ]
