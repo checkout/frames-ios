@@ -23,6 +23,7 @@ class LabelView: UIView {
         label.text = style?.text
         label.font = style?.font
         label.textColor = style?.textColor
+        label.textAlignment = style?.textAlignment ?? .natural
         label.backgroundColor = style?.backgroundColor
     }
 

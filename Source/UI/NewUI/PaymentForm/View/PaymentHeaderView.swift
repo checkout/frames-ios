@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Checkout
 
 public final class PaymentHeaderView: UIView {
   private var style: PaymentHeaderCellStyle?
@@ -95,9 +96,10 @@ extension PaymentHeaderView {
   }
 
   private func addArrangedSubview() {
-    stackView.addArrangedSubview(headerLabel)
-    stackView.addArrangedSubview(subtitleLabel)
-    stackView.addArrangedSubview(iconsViewContainer)
+    let arrangedSubviews = [headerLabel,
+                            subtitleLabel,
+                            iconsViewContainer]
+    stackView.addArrangedSubviews(arrangedSubviews)
   }
 
   private func setupMainStackView() {

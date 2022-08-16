@@ -9,4 +9,5 @@ public struct DefaultPaymentFormStyle: PaymentFormStyle {
     public var cardNumber: CellTextFieldStyle? = DefaultCardNumberFormStyle()
     public var expiryDate: CellTextFieldStyle? = DefaultExpiryDateFormStyle()
     public var securityCode: CellTextFieldStyle? = DefaultSecurityCodeFormStyle()
+    public var payButton: ElementButtonStyle = DefaultPayButtonFormStyle()
 }

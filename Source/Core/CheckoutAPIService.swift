@@ -12,6 +12,7 @@ import CheckoutEventLoggerKit
 protocol CheckoutAPIProtocol {
     var cardValidator: CardValidating { get }
     var logger: FramesEventLogging { get }
+    init(publicKey: String, environment: Environment)
     func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)
 }
 

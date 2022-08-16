@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BD4BF9F28AA32FE008ED92E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4BF9E28AA32FE008ED92E /* StringExtensions.swift */; };
 		9552EAEC28855AAE00E9ECD9 /* CardSchemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9552EAEB28855AAE00E9ECD9 /* CardSchemeTests.swift */; };
 		CB05A93927748FA10086DDA0 /* NSRegularExpression+initStaticPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A8F927748FA10086DDA0 /* NSRegularExpression+initStaticPattern.swift */; };
 		CB05A93A27748FA10086DDA0 /* URL+initStaticString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB05A8FA27748FA10086DDA0 /* URL+initStaticString.swift */; };
@@ -223,6 +224,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0BD4BF9E28AA32FE008ED92E /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		9552EAEB28855AAE00E9ECD9 /* CardSchemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSchemeTests.swift; sourceTree = "<group>"; };
 		CB05A8F927748FA10086DDA0 /* NSRegularExpression+initStaticPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+initStaticPattern.swift"; sourceTree = "<group>"; };
 		CB05A8FA27748FA10086DDA0 /* URL+initStaticString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+initStaticString.swift"; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				CB05A8F927748FA10086DDA0 /* NSRegularExpression+initStaticPattern.swift */,
 				CB05A8FA27748FA10086DDA0 /* URL+initStaticString.swift */,
 				CB05A8FB27748FA10086DDA0 /* Foundation+Extensions.swift */,
+				0BD4BF9E28AA32FE008ED92E /* StringExtensions.swift */,
 				CB05A8FC27748FA10086DDA0 /* UIDevice+modelName.swift */,
 				CB05A8FD27748FA10086DDA0 /* Dictionary+Additions.swift */,
 				CB0CFDBA27C53B49006BF661 /* TimeZone+constants.swift */,
@@ -1178,6 +1181,7 @@
 				CB05A96127748FA10086DDA0 /* CardNumberValidator.swift in Sources */,
 				CB05A95327748FA10086DDA0 /* TokenisationError+ServerError.swift in Sources */,
 				CB05A96A27748FA10086DDA0 /* ValidationError+CVV.swift in Sources */,
+				0BD4BF9F28AA32FE008ED92E /* StringExtensions.swift in Sources */,
 				CB05A96627748FA10086DDA0 /* ValidationError+Phone.swift in Sources */,
 				CBACFCB427BFDFC800EA02CC /* ThreeDSError.swift in Sources */,
 				CB05A93A27748FA10086DDA0 /* URL+initStaticString.swift in Sources */,

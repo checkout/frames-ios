@@ -18,7 +18,7 @@ final class ConstantsSchemeIconTests: XCTestCase {
       .dinersClub: .dinersClub,
       .discover: .discover,
       .jcb: .jcb,
-      .maestro: .maestro,
+      .maestro(): .maestro,
       .mastercard: .mastercard,
       .visa: .visa,
       .mada: .mada,

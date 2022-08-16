@@ -50,7 +50,9 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
                                                             billingFormData: cardFormData.billingForm)
         let paymentStyle = PaymentStyle(paymentFormStyle: cardFormData.paymentFormStyle,
                                         billingFormStyle: cardFormData.billingFormStyle)
-        let paymentFormViewController = PaymentFormFactory.buildViewController(configuration: paymentConfiguration, style: paymentStyle)
+        let paymentFormViewController = PaymentFormFactory.buildViewController(configuration: paymentConfiguration, style: paymentStyle) { [weak self] result in
+          self?.handleTokenResponse(with: result)
+        }
         navigationController?.pushViewController(paymentFormViewController, animated: true)
     }
 
@@ -72,9 +74,20 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
                                                             billingFormData: nil)
         let paymentStyle = PaymentStyle(paymentFormStyle: Style.Custom1.paymentForm,
                                         billingFormStyle: Style.Custom1.billingForm)
-        let paymentFormViewController = PaymentFormFactory.buildViewController(configuration: paymentConfiguration, style: paymentStyle)
+        let paymentFormViewController = PaymentFormFactory.buildViewController(configuration: paymentConfiguration, style: paymentStyle) { [weak self] result in
+          self?.handleTokenResponse(with: result)
+        }
         navigationController?.pushViewController(paymentFormViewController, animated: true)
     }
+
+  private func handleTokenResponse(with result: Result<TokenDetails, TokenisationError.TokenRequest>) {
+    switch result {
+      case .failure(let error):
+        showAlert(with: error.localizedDescription)
+      case .success(let tokenDetails):
+        showAlert(with: tokenDetails.token)
+    }
+  }
 
     @IBAction private func goToCustom2PaymentPage(_ sender: Any) {
 
@@ -87,7 +100,7 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
 
         let name = "User Custom 2"
         let billingForm = BillingForm(name: name, address: address, phone: nil)
-        let supportedCardSchemes: [Card.Scheme] = [ .visa, .mastercard, .maestro, .americanExpress, .dinersClub, .discover, .jcb, .mada]
+        let supportedCardSchemes: [CardScheme] = [ .visa, .mastercard, .maestro, .americanExpress, .dinersClub, .discover, .jcb, .mada]
         let apiKey = "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73"
 
         let paymentConfiguration = PaymentFormConfiguration(apiKey: apiKey,
@@ -96,7 +109,9 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
                                                             billingFormData: billingForm)
         let paymentStyle = PaymentStyle(paymentFormStyle: Style.Custom2.paymentForm,
                                         billingFormStyle: Style.Custom2.billingForm)
-        let paymentFormViewController = PaymentFormFactory.buildViewController(configuration: paymentConfiguration, style: paymentStyle)
+        let paymentFormViewController = PaymentFormFactory.buildViewController(configuration: paymentConfiguration, style: paymentStyle) { [weak self] result in
+          self?.handleTokenResponse(with: result)
+        }
         navigationController?.pushViewController(paymentFormViewController, animated: true)
     }
 
@@ -114,7 +129,7 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
         cardViewController = createCardViewController(address: address,
                                                       phone: phone,
                                                       checkoutAPIService: checkoutAPIService)
-        cardViewController?.availableSchemes = [.visa, .mastercard, .maestro]
+        cardViewController?.availableSchemes = [.visa, .mastercard, .maestro()]
         pushCardViewController(cardViewController: cardViewController)
     }
 
@@ -172,16 +187,16 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
     }
 
     private func showAlert(with cardToken: String) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Payment",
-                                          message: cardToken, preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default) { _ in
-                alert.dismiss(animated: true, completion: nil)
-            }
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
+          DispatchQueue.main.async {
+              let alert = UIAlertController(title: "Payment",
+                                            message: cardToken, preferredStyle: .alert)
+              let action = UIAlertAction(title: "OK", style: .default) { _ in
+                  alert.dismiss(animated: true, completion: nil)
+              }
+              alert.addAction(action)
+              self.present(alert, animated: true, completion: nil)
+          }
+      }
 
     private func createCardViewController(address: Address,
                                           phone: Phone,

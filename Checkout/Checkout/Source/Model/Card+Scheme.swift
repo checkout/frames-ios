@@ -19,7 +19,9 @@ extension Card {
   ///   - Maestro
   ///   - Mastercard
   ///   - Visa
-  public enum Scheme: String, CaseIterable, CustomStringConvertible {
+  public enum Scheme: CaseIterable, Equatable, Hashable {
+      
+    public static var allCases: [Card.Scheme] = [.unknown, .mada, .visa, .mastercard, .maestro(length: 0), .americanExpress, .discover, .dinersClub, .jcb]
       
     private enum Constants {
       static let validCVVLengthsUnknownScheme = [0, 3, 4]
@@ -29,13 +31,13 @@ extension Card {
     case mada
     case visa
     case mastercard
-    case maestro
+    case maestro(length: Int = 0)
     case americanExpress
     case discover
     case dinersClub
     case jcb
 
-    public init?(rawValue: String) {
+    public init?(rawValue: String, length: Int? = nil) {
       switch rawValue.lowercased() {
       case "unknown":
         self = .unknown
@@ -46,7 +48,7 @@ extension Card {
       case "mastercard":
         self = .mastercard
       case "maestro":
-        self = .maestro
+        self = .maestro(length: length ?? 0)
       case "amex", "american express":
         self = .americanExpress
       case "discover":
@@ -120,8 +122,8 @@ extension Card {
       switch self {
       case .unknown:
         return Constants.validCVVLengthsUnknownScheme
-      case .maestro:
-          return [0, 3]
+      case .maestro(let length):
+        return length == 16 ? [3] : [0, 3]
       case .americanExpress:
         return [4]
       case .visa,
@@ -133,7 +135,45 @@ extension Card {
         return [3]
       }
     }
-
+      
+    public var rawValue: String {
+        switch self {
+        case .unknown:
+            return "unknown"
+        case .mada:
+            return "mada"
+        case .visa:
+            return "visa"
+        case .mastercard:
+            return "mastercard"
+        case .maestro:
+            return "maestro"
+        case .americanExpress:
+            return "americanExpress"
+        case .discover:
+            return "discover"
+        case .dinersClub:
+            return "dinersClub"
+        case .jcb:
+            return "jcb"
+        }
+    }
+      
+    /// map of card scheme to indexes of spaces in formatted card number string
+    /// eg. a visa card has gaps at 4, 8 and 12. 4242424242424242 becomes 4242 4242 4242 4242
+    public var cardGaps: [Int] {
+        switch self {
+        case .unknown:
+            return []
+        case .visa, .discover, .maestro, .jcb:
+            return [4, 8, 12, 16]
+        case .mada, .mastercard:
+            return [4, 8, 12]
+        case .americanExpress, .dinersClub:
+            return [4, 10]
+        }
+    }
+      
     /// maximum card length for any scheme
     private static let maxCardLengthAllSchemes = 19
 

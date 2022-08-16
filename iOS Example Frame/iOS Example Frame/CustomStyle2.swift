@@ -24,9 +24,33 @@ private enum Constants {
 // MARK: - Payment Form
 // **********************
 
+struct PayButtonFormStyleCustom2: ElementButtonStyle {
+  var image: UIImage?
+  var text: String = "Pay 100$"
+  var textAlignment: NSTextAlignment = .center
+  var font: UIFont = UIFont.systemFont(ofSize: 15)
+  var disabledTextColor: UIColor = Constants.grayBackgroundColor
+  var disabledTintColor: UIColor =  Constants.grayBackgroundColor
+  var activeTintColor: UIColor =  Constants.greenBackgroundColor
+  var backgroundColor: UIColor = Constants.greenBackgroundColor
+  var textColor: UIColor = .white
+  var normalBorderColor: UIColor = .clear
+  var focusBorderColor: UIColor = .clear
+  var errorBorderColor: UIColor = .clear
+  var imageTintColor: UIColor = .clear
+  var isHidden = false
+  var isEnabled = true
+  var height: Double = 56
+  var width: Double = 0
+  var cornerRadius: CGFloat = 10
+  var borderWidth: CGFloat = 0
+  var textLeading: CGFloat = 0
+}
+
 // MARK: - Main Payment Form
 
 struct PaymentFormStyleCustom2: PaymentFormStyle {
+  var payButton: ElementButtonStyle =  PayButtonFormStyleCustom2()
   var backgroundColor: UIColor = Constants.whiteBackgroundColor
   var headerView: PaymentHeaderCellStyle = PaymentHeaderCellStyleCustom2()
   var addBillingSummary: CellButtonStyle? = AddBillingDetailsViewStyleCustom2()
@@ -69,6 +93,7 @@ struct EditBillingSummaryStyleCustom2: BillingSummaryViewStyle {
 /// This style for summary button with pre-filled summary view style
 struct SummaryButtonStyleCustom2: ElementButtonStyle {
   var image: UIImage? =  UIImage(named: "arrow_blue_right")?.imageFlippedForRightToLeftLayoutDirection()
+  var textAlignment: NSTextAlignment = .natural
   var text: String = "Edit billing address"
   var font = UIFont.systemFont(ofSize: 15)
   var textColor: UIColor = Constants.greenBackgroundColor
@@ -108,6 +133,7 @@ struct AddBillingDetailsViewStyleCustom2: CellButtonStyle {
 struct AddBillingDetailsButtonStyleCustom2: ElementButtonStyle {
   var image: UIImage? =  UIImage(named: "arrow_blue_right")?.imageFlippedForRightToLeftLayoutDirection()
   var text: String = "Add billing address"
+  var textAlignment: NSTextAlignment = .natural
   var font = UIFont.systemFont(ofSize: 15)
   var textColor: UIColor = Constants.greenBackgroundColor
   var disabledTextColor: UIColor = Constants.grayBackgroundColor
@@ -286,6 +312,7 @@ struct BillingFormHeaderCellStyleCustom2: BillingFormHeaderCellStyle {
 // MARK: - Header title
 
 struct HeaderLabelFormStyleCustom2: ElementStyle {
+  var textAlignment: NSTextAlignment = .natural
   var backgroundColor: UIColor = .clear
   var isHidden = false
   var text: String = "Billing Details"
@@ -297,6 +324,7 @@ struct HeaderLabelFormStyleCustom2: ElementStyle {
 
 struct CancelButtonFormStyleCustom2: ElementButtonStyle {
   var image: UIImage?
+  var textAlignment: NSTextAlignment = .natural
   var text: String = "Cancel"
   var font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
   var disabledTextColor: UIColor = Constants.grayBackgroundColor
@@ -321,6 +349,7 @@ struct CancelButtonFormStyleCustom2: ElementButtonStyle {
 
 struct DoneFormButtonStyleCustom2: ElementButtonStyle {
   var image: UIImage?
+  var textAlignment: NSTextAlignment = .natural
   var text: String = "Done"
   var font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
   var disabledTextColor: UIColor = Constants.grayBackgroundColor
@@ -344,6 +373,7 @@ struct DoneFormButtonStyleCustom2: ElementButtonStyle {
 // MARK: - Common Title Label
 
 struct TitleLabelStyleCustom2: ElementStyle {
+  var textAlignment: NSTextAlignment = .natural
   var backgroundColor: UIColor = .clear
   var isHidden = false
   var text: String = ""
@@ -354,6 +384,7 @@ struct TitleLabelStyleCustom2: ElementStyle {
 // MARK: - Common TextField
 
 struct TextFieldCustom2: ElementTextFieldStyle {
+    var textAlignment: NSTextAlignment = .natural
     var cornerRadius: CGFloat = 10
     var borderWidth: CGFloat = 1.0
     var isHidden: Bool = false
@@ -375,6 +406,7 @@ struct TextFieldCustom2: ElementTextFieldStyle {
 // MARK: - Common Error View
 
 struct ErrorInputLabelStyleCustom2: ElementErrorViewStyle {
+  var textAlignment: NSTextAlignment = .natural
   var isHidden = true
   var backgroundColor: UIColor = .clear
   var tintColor: UIColor = .tallPoppyRed
@@ -389,6 +421,7 @@ struct ErrorInputLabelStyleCustom2: ElementErrorViewStyle {
 
 struct CountryFormButtonStyleCustom2: ElementButtonStyle {
   var image: UIImage? =  UIImage(named: "arrow_blue_right")?.imageFlippedForRightToLeftLayoutDirection()
+  var textAlignment: NSTextAlignment = .natural
   var text: String = Locale.current.regionCode ?? "Country"
   var font = UIFont(name: "Helvetica Neue", size: 14)!
   var disabledTextColor: UIColor = .mediumGray
@@ -412,6 +445,7 @@ struct CountryFormButtonStyleCustom2: ElementButtonStyle {
 // MARK: - Common Hint
 
 struct HintInputLabelStyleCustom2: ElementStyle {
+  var textAlignment: NSTextAlignment = .natural
   var backgroundColor: UIColor = .clear
   var isHidden = false
   var text: String = ""

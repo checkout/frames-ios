@@ -22,7 +22,8 @@ final class SimpleErrorView: UIView {
     func update(style: ElementErrorViewStyle?) {
         guard let style = style else { return }
         backgroundColor = style.backgroundColor
-        let headerLabelStyle = DefaultTitleLabelStyle(backgroundColor: .clear,
+        let headerLabelStyle = DefaultTitleLabelStyle(textAlignment: style.textAlignment,
+                                                      backgroundColor: .clear,
                                                       isHidden: false,
                                                       text: style.text,
                                                       font: style.font,
