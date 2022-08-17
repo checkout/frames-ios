@@ -12,9 +12,12 @@ import UIKit
 extension Constants.Bundle {
 
   enum Images: String, CaseIterable {
-    case rightArrow = "arrow_blue_right"
     case warning = "warning"
     case leftArrow = "left_arrow"
+    case rightArrow = "arrow_blue_right"
+    case keyboardPrevious = "keyboard-previous"
+    case keyboardNext = "keyboard-next"
+    case keyboardDown = "keyboard-down"
 
     var image: UIImage? {
       return rawValue.image(forClass: PaymentViewController.self)

@@ -89,7 +89,7 @@ extension UIView {
 }
 
 extension UIView {
-    func disabledAutoresizingIntoConstraints() -> Self {
+    public func disabledAutoresizingIntoConstraints() -> Self {
           translatesAutoresizingMaskIntoConstraints = false
           return self
     }

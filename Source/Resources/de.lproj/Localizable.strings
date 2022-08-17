@@ -22,5 +22,4 @@
 "cvvInvalid" = "Der Lebenslauf ist ungültig";
 "phoneNumberInvalid" = "Ungültig, Ländercode verwenden (z. B. +44)";
 
-"cardViewControllerTitle" = "Zahlung";
 "addressViewControllerTitle" = "Abrechnung";

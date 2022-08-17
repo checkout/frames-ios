@@ -22,5 +22,4 @@
 "cvvInvalid" = "The cvv is invalid";
 "phoneNumberInvalid" = "Invalid, use country code (e.g. +44)";
 
-"cardViewControllerTitle" = "Paiement";
 "addressViewControllerTitle" = "Facturation";

@@ -35,7 +35,7 @@ extension UIViewController {
         scrollView.scrollIndicatorInsets = contentInsets
     }
 
-    func registerKeyboardHandlers(notificationCenter: NotificationCenter,
+    public func registerKeyboardHandlers(notificationCenter: NotificationCenter,
                                   keyboardWillShow: Selector,
                                   keyboardWillHide: Selector) {
         notificationCenter.addObserver(self,
@@ -48,7 +48,7 @@ extension UIViewController {
                                        object: nil)
     }
 
-    func deregisterKeyboardHandlers(notificationCenter: NotificationCenter) {
+    public func deregisterKeyboardHandlers(notificationCenter: NotificationCenter) {
         notificationCenter.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         notificationCenter.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }

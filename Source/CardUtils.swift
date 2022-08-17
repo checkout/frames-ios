@@ -4,70 +4,29 @@ import Checkout
 /// Payment Form Utilities
 public final class CardUtils {
 
-    // MARK: - Properties
+  // MARK: - Methods
 
-    // MARK: - Initialization
+  /// Format the card number based on the card type
+  /// e.g. Visa card: 4242 4242 4242 4242
+  ///
+  /// - parameter cardNumber: Card number
+  /// - parameter cardType: Card type
+  ///
+  ///
+  /// - returns: The formatted card number
+  static func format(cardNumber: String, scheme: Card.Scheme) -> String {
+    var cardNumber = cardNumber
 
-    /// Create an instance of `CardUtils`
-    ///
-    /// - returns: The new `CardUtils` instance
-    public init() {}
-
-    // MARK: - Methods
-
-    /// Format the card number based on the card type
-    /// e.g. Visa card: 4242 4242 4242 4242
-    ///
-    /// - parameter cardNumber: Card number
-    /// - parameter cardType: Card type
-    ///
-    ///
-    /// - returns: The formatted card number
-    public func format(cardNumber: String, scheme: Card.Scheme) -> String {
-        var cardNumber = cardNumber
-
-        for gap in scheme.cardGaps.sorted(by: >) {
-            if gap < cardNumber.count {
-                cardNumber.insert(" ", at: cardNumber.index(cardNumber.startIndex, offsetBy: gap))
-            }
-        }
-
-        return cardNumber
+    for gap in scheme.cardGaps.sorted(by: >) {
+      if gap < cardNumber.count {
+        cardNumber.insert(" ", at: cardNumber.index(cardNumber.startIndex, offsetBy: gap))
+      }
     }
 
-    func removeNonDigits(from string: String) -> String {
-        return string.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-    }
+    return cardNumber
+  }
 
-    /// Standardize the expiration date by removing non digits and spaces
-    ///
-    /// - parameter expirationDate: Expiration Date (e.g. 05/2020)
-    ///
-    ///
-    /// - returns: Expiry month and expiry year (month: 05, year: 21)
-    public func standardize(expirationDate: String) -> (month: String, year: String) {
-        let digitOnlyDate = removeNonDigits(from: expirationDate)
-        switch digitOnlyDate.count {
-        case ..<1:
-            return (month: "", year: "")
-        case ..<3:
-            if let monthInt = Int(digitOnlyDate) {
-                return  monthInt < 10 ? (month: "0\(digitOnlyDate)", year: "") : (month: digitOnlyDate, year: "")
-            }
-        case ...5:
-            let indexEndMonth = digitOnlyDate.index(digitOnlyDate.startIndex, offsetBy: 2)
-            let month = digitOnlyDate[..<indexEndMonth]
-            let year = digitOnlyDate[indexEndMonth...]
-            return (month: String(month), year: String(year))
-        case 5...:
-            let indexEndMonth = digitOnlyDate.index(digitOnlyDate.startIndex, offsetBy: 2)
-            let indexStartYear = digitOnlyDate.index(digitOnlyDate.startIndex, offsetBy: 4)
-            let month = digitOnlyDate[..<indexEndMonth]
-            let year = digitOnlyDate[indexStartYear...]
-            return (month: String(month), year: String(year))
-        default:
-            break
-        }
-        return (month: "", year: "")
-    }
+  static func removeNonDigits(from string: String) -> String {
+    return string.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+  }
 }

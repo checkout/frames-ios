@@ -22,5 +22,4 @@
 "cvvInvalid" = "Het cvv is ongeldig";
 "phoneNumberInvalid" = "Ongeldig, gebruik landcode (bijvoorbeeld +44)";
 
-"cardViewControllerTitle" = "Betaling";
 "addressViewControllerTitle" = "Facturering";
