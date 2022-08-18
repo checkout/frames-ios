@@ -163,4 +163,26 @@ class CardNumberViewModelTests: XCTestCase {
     XCTAssertNil(result)
     XCTAssertEqual(mockCardValidator.receivedValidateCompletenessCardNumbers, ["1234"])
   }
+    
+    func testValidateMaestroIgnoresAssociatedValueWhenSupported() {
+        let mockValidator = MockCardValidator()
+        mockValidator.expectedValidateCompletenessResult = .success((isComplete: true, scheme: .maestro(length: 19)))
+        let testCard = "6799990100000000019"
+        let viewModel = CardNumberViewModel(cardValidator: mockValidator, supportedSchemes: [.maestro(length: 5)])
+        
+        let schemeIcon = viewModel.validate(cardNumber: testCard)
+        XCTAssertEqual(schemeIcon, .maestro)
+        XCTAssertEqual(mockValidator.receivedValidateCompletenessCardNumbers, [testCard])
+    }
+    
+    func testValidateMaestroIgnoresAssociatedValueWhenNotSupported() {
+        let mockValidator = MockCardValidator()
+        mockValidator.expectedValidateCompletenessResult = .success((isComplete: true, scheme: .maestro(length: 19)))
+        let testCard = "6799990100000000019"
+        let viewModel = CardNumberViewModel(cardValidator: mockValidator, supportedSchemes: [.mastercard, .visa, .jcb])
+        
+        let schemeIcon = viewModel.validate(cardNumber: testCard)
+        XCTAssertNil(schemeIcon)
+        XCTAssertEqual(mockValidator.receivedValidateCompletenessCardNumbers, [testCard])
+    }
 }
