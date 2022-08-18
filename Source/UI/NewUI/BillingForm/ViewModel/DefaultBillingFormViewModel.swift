@@ -260,8 +260,8 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
         let name = textValueOfCellType[BillingFormCell.fullName(nil).index]
 
         let data: BillingForm = BillingForm(name: name,
-                                                     address: address,
-                                                     phone: phone)
+                                            address: address,
+                                            phone: phone)
 
         delegate?.onTapDoneButton(data: data)
 

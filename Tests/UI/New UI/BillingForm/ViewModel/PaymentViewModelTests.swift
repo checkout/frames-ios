@@ -191,4 +191,56 @@ class PaymentViewModelTests: XCTestCase {
       let expectedSummaryText = try XCTUnwrap(viewModel.paymentFormStyle?.editBillingSummary?.summary?.text)
       XCTAssertEqual(expectedSummaryText, summaryValue)
   }
+    
+    func testPreventDuplicateCardholderInput() {
+        let paymentFormStyle = DefaultPaymentFormStyle()
+        let billingFormStyle = DefaultBillingFormStyle()
+        var viewModel = makeViewModel(paymentFormStyle: paymentFormStyle,
+                                      billingFormStyle: billingFormStyle)
+        
+        XCTAssertNotNil(viewModel.paymentFormStyle?.cardholderInput)
+        var billingName = viewModel.billingFormStyle?.cells.first(where: {
+            if case BillingFormCell.fullName = $0 {
+                return true
+            }
+            return false
+        })
+        XCTAssertNotNil(billingName)
+        
+        viewModel.preventDuplicateCardholderInput()
+        XCTAssertNotNil(viewModel.paymentFormStyle?.cardholderInput)
+        billingName = viewModel.billingFormStyle?.cells.first(where: {
+            if case BillingFormCell.fullName = $0 {
+                return true
+            }
+            return false
+        })
+        XCTAssertNil(billingName)
+    }
+    
+    func testCardholderIsUpdatedCallbackShouldEnablePayButton() {
+        let model = makeViewModel()
+        let testExpectation = expectation(description: "Should trigger callback")
+        model.shouldEnablePayButton = { _ in
+            testExpectation.fulfill()
+        }
+        model.cardholderIsUpdated(value: "new owner")
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    private func makeViewModel(apiService: Frames.CheckoutAPIProtocol = StubCheckoutAPIService(),
+                               cardValidator: CardValidator = CardValidator(environment: .sandbox),
+                               logger: FramesEventLogging = StubFramesEventLogger(),
+                               billingForm: BillingForm? = nil,
+                               paymentFormStyle: PaymentFormStyle? = nil,
+                               billingFormStyle: BillingFormStyle? = nil,
+                               supportedCardSchemes: [Card.Scheme] = [.mastercard, .visa]) -> DefaultPaymentViewModel {
+        DefaultPaymentViewModel(checkoutAPIService: apiService,
+                                cardValidator: cardValidator,
+                                logger: logger,
+                                billingFormData: billingForm,
+                                paymentFormStyle: paymentFormStyle,
+                                billingFormStyle: billingFormStyle,
+                                supportedSchemes: supportedCardSchemes)
+    }
 }

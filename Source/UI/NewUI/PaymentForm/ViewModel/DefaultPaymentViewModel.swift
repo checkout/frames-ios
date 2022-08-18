@@ -96,6 +96,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
   }
 
   private func updateBillingData(to billingForm: BillingForm) {
+    self.billingFormData = billingForm
     cardDetails.phone = billingForm.phone
     cardDetails.billingAddress = billingForm.address
     if let billingName = billingForm.name {

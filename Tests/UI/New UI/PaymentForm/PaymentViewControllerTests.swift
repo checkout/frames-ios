@@ -50,15 +50,16 @@ class PaymentViewControllerTests: XCTestCase {
     XCTAssertTrue(scrollView?.subviews[0] is UIStackView)
     
     let stackView = scrollView?.subviews[0]
-    XCTAssertEqual(stackView?.subviews.count, 8)
+    XCTAssertEqual(stackView?.subviews.count, 9)
     XCTAssertTrue(stackView?.subviews[0] is UIView) // background for the header view
     XCTAssertTrue(stackView?.subviews[1] is PaymentHeaderView)
-    XCTAssertTrue(stackView?.subviews[2] is CardNumberView)
-    XCTAssertTrue(stackView?.subviews[3] is ExpiryDateView)
-    XCTAssertTrue(stackView?.subviews[4] is SecurityCodeView)
-    XCTAssertTrue(stackView?.subviews[5] is SelectionButtonView)
-    XCTAssertTrue(stackView?.subviews[6] is BillingFormSummaryView)
-    XCTAssertTrue(stackView?.subviews[7] is ButtonView) // pay button
+    XCTAssertTrue(stackView?.subviews[2] is CardholderView)
+    XCTAssertTrue(stackView?.subviews[3] is CardNumberView)
+    XCTAssertTrue(stackView?.subviews[4] is ExpiryDateView)
+    XCTAssertTrue(stackView?.subviews[5] is SecurityCodeView)
+    XCTAssertTrue(stackView?.subviews[6] is SelectionButtonView)
+    XCTAssertTrue(stackView?.subviews[7] is BillingFormSummaryView)
+    XCTAssertTrue(stackView?.subviews[8] is ButtonView) // pay button
   }
   
   func testCallDelegateMethodOnTapAddBillingButton() {
@@ -76,6 +77,20 @@ class PaymentViewControllerTests: XCTestCase {
     XCTAssertEqual(delegate.editBillingButtonIsPressedWithSender.count, 1)
     XCTAssertEqual(delegate.editBillingButtonIsPressedWithSender.last, navigationController)
   }
+    
+  func testCallDelegateMethodUpdateEditingCardholderView() {
+    let testCardholderValue = "card owner"
+    viewController.delegate = delegate
+    let testExpectation = expectation(description: "Should call completion handler when triggered")
+    delegate.cardholderIsUpdatedCompletionHandler = {
+        testExpectation.fulfill()
+    }
+    viewController.cardholderUpdated(to: testCardholderValue)
+      
+    waitForExpectations(timeout: 0.1)
+    XCTAssertEqual(delegate.cardholderIsUpdatedWithValue, [testCardholderValue])
+  }
+        
   
   func testCallDelegateMethodFinishEditingExpiryDateView() {
     viewController.delegate = delegate
