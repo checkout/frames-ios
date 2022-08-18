@@ -72,8 +72,8 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
                                                             environment: environment,
                                                             supportedSchemes: [.visa, .mastercard, .maestro],
                                                             billingFormData: nil)
-        let paymentStyle = PaymentStyle(paymentFormStyle: Style.Custom1.paymentForm,
-                                        billingFormStyle: Style.Custom1.billingForm)
+        let paymentStyle = PaymentStyle(paymentFormStyle: Style.paymentForm,
+                                        billingFormStyle: Style.billingForm)
         let paymentFormViewController = PaymentFormFactory.buildViewController(configuration: paymentConfiguration, style: paymentStyle) { [weak self] result in
           self?.handleTokenResponse(with: result)
         }
@@ -90,15 +90,14 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
   }
 
     @IBAction private func goToCustom2PaymentPage(_ sender: Any) {
-
-        let address = Address(addressLine1: "Test line Custom 2  Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2 Test line Custom 2",
+        let address = Address(addressLine1: "78 Marvelous Rd",
                               addressLine2: nil,
-                              city: "London Custom 2",
-                              state: "London Custom 2",
-                              zip: "N12345",
+                              city: "London",
+                              state: nil,
+                              zip: nil,
                               country: Self.countryGB)
 
-        let name = "User Custom 2"
+        let name = "Bob Higgins"
         let billingForm = BillingForm(name: name, address: address, phone: nil)
         let supportedCardSchemes: [CardScheme] = [ .visa, .mastercard, .maestro, .americanExpress, .dinersClub, .discover, .jcb, .mada]
         let apiKey = "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73"
@@ -107,8 +106,7 @@ final class MainViewController: UIViewController, CardViewControllerDelegate, Th
                                                             environment: environment,
                                                             supportedSchemes: supportedCardSchemes,
                                                             billingFormData: billingForm)
-        let paymentStyle = PaymentStyle(paymentFormStyle: Style.Custom2.paymentForm,
-                                        billingFormStyle: Style.Custom2.billingForm)
+        let paymentStyle = ThemeDemo.buildCustom2Example()
         let paymentFormViewController = PaymentFormFactory.buildViewController(configuration: paymentConfiguration, style: paymentStyle) { [weak self] result in
           self?.handleTokenResponse(with: result)
         }

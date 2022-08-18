@@ -32,10 +32,10 @@ public extension Theme {
         public var errorBorderColor: UIColor = .clear
         public var image: UIImage?
         public var textAlignment: NSTextAlignment = .natural
-        public var textLeading: CGFloat = 0
+        public var textLeading: CGFloat = Constants.Padding.l.rawValue
         public var cornerRadius: CGFloat = 0
         public var borderWidth: CGFloat = 0
-        public var height: Double = 30
+        public var height: Double = 60
         public var width: Double = 300
         public var isHidden: Bool = false
         public var text: String

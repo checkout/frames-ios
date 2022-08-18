@@ -45,7 +45,7 @@ public extension Theme {
         public var errorBorderColor: UIColor = .clear
         public var image: UIImage?
         public var textAlignment: NSTextAlignment = .natural
-        public var textLeading: CGFloat = 0
+        public var textLeading: CGFloat = Constants.Padding.l.rawValue
         public var cornerRadius: CGFloat
         public var borderWidth: CGFloat
         public var height: Double = 60

@@ -37,7 +37,7 @@ public extension Theme {
     func buildPayButton(text: String,
                         image: UIImage? = nil) -> ThemePayButton {
         ThemePayButton(disabledTextColor: self.secondaryFontColor,
-                       disabledTintColor: self.secondaryFontColor,
+                       disabledTintColor: .clear,
                        activeTintColor: self.primaryFontColor,
                        imageTintColor: self.primaryFontColor,
                        image: image,
