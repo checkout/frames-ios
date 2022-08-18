@@ -5,7 +5,7 @@
 //  Copyright © 2022 Checkout. All rights reserved.
 //
 
-public enum Constants {
+enum Constants {
 
     static let productName = "frames-ios-sdk"
     static let version = "3.5.3"

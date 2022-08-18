@@ -2,7 +2,7 @@ import Foundation
 import Checkout
 
 /// Payment Form Utilities
-public final class CardUtils {
+final class CardUtils {
 
   // MARK: - Methods
 

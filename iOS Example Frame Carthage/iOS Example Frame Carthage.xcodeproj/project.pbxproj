@@ -230,7 +230,6 @@
 		957323ED286EF50F0068C115 /* applePayToken.json in Resources */ = {isa = PBXBuildFile; fileRef = 95732395286EF50F0068C115 /* applePayToken.json */; };
 		95783366289EF9BE006C7D92 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95783365289EF9BE006C7D92 /* UIStackViewExtension.swift */; };
 		95783368289EFA11006C7D92 /* DefaultCountryFormButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95783367289EFA11006C7D92 /* DefaultCountryFormButtonStyle.swift */; };
-		9578336A289EFA41006C7D92 /* DefaultPayButtonFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95783369289EFA41006C7D92 /* DefaultPayButtonFormStyle.swift */; };
 		9578336D289EFE70006C7D92 /* UIStackViewExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578336B289EFDE2006C7D92 /* UIStackViewExtensionTests.swift */; };
 		95B32CC0287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B32CBF287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift */; };
 		95D442FC289FE55600F69F6E /* DefaultPayButtonFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D442FB289FE55600F69F6E /* DefaultPayButtonFormStyle.swift */; };
@@ -521,7 +520,6 @@
 		95732395286EF50F0068C115 /* applePayToken.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = applePayToken.json; sourceTree = "<group>"; };
 		95783365289EF9BE006C7D92 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
 		95783367289EFA11006C7D92 /* DefaultCountryFormButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCountryFormButtonStyle.swift; sourceTree = "<group>"; };
-		95783369289EFA41006C7D92 /* DefaultPayButtonFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefaultPayButtonFormStyle.swift; path = ../DefaultPayButtonFormStyle.swift; sourceTree = "<group>"; };
 		9578336B289EFDE2006C7D92 /* UIStackViewExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtensionTests.swift; sourceTree = "<group>"; };
 		95B32CBF287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSecurityCodeFormStyle.swift; sourceTree = "<group>"; };
 		95D442FB289FE55600F69F6E /* DefaultPayButtonFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultPayButtonFormStyle.swift; sourceTree = "<group>"; };
@@ -855,7 +853,6 @@
 		957321CE286EF4E80068C115 /* CardNumber */ = {
 			isa = PBXGroup;
 			children = (
-				95783369289EFA41006C7D92 /* DefaultPayButtonFormStyle.swift */,
 				957321CF286EF4E80068C115 /* DefaultCardNumberFormStyle.swift */,
 			);
 			path = CardNumber;
@@ -1956,7 +1953,6 @@
 				957322C9286EF4E80068C115 /* ImageContainerView.swift in Sources */,
 				95D442FC289FE55600F69F6E /* DefaultPayButtonFormStyle.swift in Sources */,
 				957322AF286EF4E80068C115 /* FullNameValidator.swift in Sources */,
-				9578336A289EFA41006C7D92 /* DefaultPayButtonFormStyle.swift in Sources */,
 				957322AE286EF4E80068C115 /* StateValidator.swift in Sources */,
 				957322CE286EF4E80068C115 /* CellStyle.swift in Sources */,
 				957322F0286EF4E80068C115 /* BillingFormCellTextField.swift in Sources */,

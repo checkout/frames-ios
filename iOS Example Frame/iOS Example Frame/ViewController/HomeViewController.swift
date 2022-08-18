@@ -105,7 +105,7 @@ class HomeViewController: UIViewController {
     var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
     keyboardFrame = view.convert(keyboardFrame, from: nil)
     var contentInset: UIEdgeInsets = scrollView.contentInset
-    contentInset.bottom = keyboardFrame.size.height + Constants.Padding.l.rawValue
+    contentInset.bottom = keyboardFrame.size.height + 20
     updateScrollViewInset(to: contentInset, from: notification)
   }
 

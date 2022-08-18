@@ -25,8 +25,9 @@ class BillingFormTextFieldCellTests: XCTestCase {
         let delegate = BillingFormTextFieldCellMockDelegate()
         cell.delegate = delegate
 
-        cell.textFieldShouldReturn()
+        let shouldReturn = cell.textFieldShouldReturn()
         XCTAssertEqual(delegate.textFieldShouldReturnCalledTimes, 1)
+        XCTAssertTrue(shouldReturn)
     }
 
     func testCallDelegateMethodTextFieldDidEndEditing() {
@@ -34,10 +35,11 @@ class BillingFormTextFieldCellTests: XCTestCase {
         let textField = DefaultBillingFormTextField(type: .fullName(nil), tag: 2)
         cell.delegate = delegate
 
-        cell.textFieldShouldEndEditing(textField: textField, replacementString: "test")
+        let shouldEndEditing = cell.textFieldShouldEndEditing(textField: textField, replacementString: "test")
 
         XCTAssertEqual(delegate.textFieldShouldEndEditingCalledTimes, 1)
         XCTAssertEqual(delegate.textFieldShouldEndEditingLastCalledWithTextField, textField)
+        XCTAssertTrue(shouldEndEditing)
     }
 
 }

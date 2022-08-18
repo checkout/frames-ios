@@ -109,6 +109,7 @@ class ThreedsWebViewControllerTests: XCTestCase {
     func testInitialization() {
         /// Empty constructor
         let threedsWebViewController = ThreedsWebViewController()
+        XCTAssertNotNil(threedsWebViewController)
     }
 
     func testInitializationWithUrls() {

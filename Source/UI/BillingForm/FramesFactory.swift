@@ -1,5 +1,6 @@
 import UIKit
 
+/// Factory object building required components to start presenting a tokenisation journey to the user
 public struct FramesFactory {
 
     public static var defaultPaymentFormStyle: PaymentFormStyle {

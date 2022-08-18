@@ -1,5 +1,5 @@
 //
-//  FramesFactory.swift
+//  Factory.swift
 //  iOS Example Frame
 //
 //  Created by Ehab Alsharkawy.
@@ -13,6 +13,8 @@ import UIKit
 struct Factory {
   static let successURL = URL(string: "https://httpstat.us/200")!
   static let failureURL = URL(string: "https://httpstat.us/403")!
+  private static let apiKey = "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73"
+  private static let environment: Frames.Environment = .sandbox
 
   static func getDefaultPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
 
@@ -32,10 +34,6 @@ struct Factory {
     let billingFormStyle = FramesFactory.defaultBillingFormStyle
 
     let paymentFormStyle = FramesFactory.defaultPaymentFormStyle
-
-    let apiKey = "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73"
-
-    let environment: Frames.Environment = .sandbox
 
     let supportedSchemes: [CardScheme] = [.visa, .mastercard, .maestro]
 
@@ -73,10 +71,6 @@ struct Factory {
 
     let paymentFormStyle = Style.Custom1.paymentForm
 
-    let apiKey = "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73"
-
-    let environment: Frames.Environment = .sandbox
-
     let supportedSchemes: [CardScheme] = [.visa, .mastercard, .maestro]
 
     let configuration = PaymentFormConfiguration(apiKey: apiKey,
@@ -112,10 +106,6 @@ struct Factory {
     let billingFormStyle = Style.Custom2.billingForm
 
     let paymentFormStyle = Style.Custom2.paymentForm
-
-    let apiKey = "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73"
-
-    let environment: Frames.Environment = .sandbox
 
     let supportedSchemes: [CardScheme] = [.visa, .mastercard, .maestro]
 

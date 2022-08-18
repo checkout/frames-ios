@@ -17,7 +17,6 @@ extension Constants.Bundle {
     case rightArrow = "arrow_blue_right"
     case keyboardPrevious = "keyboard-previous"
     case keyboardNext = "keyboard-next"
-    case keyboardDown = "keyboard-down"
 
     var image: UIImage? {
       return rawValue.image(forClass: PaymentViewController.self)

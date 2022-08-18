@@ -187,7 +187,7 @@ extension BillingFormTextFieldView {
                                                     constant: Constants.Padding.xs.rawValue),
             textFieldContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
             textFieldContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
-            textFieldContainerBottomAnchor ?? textFieldContainer.bottomAnchor.constraint(equalTo: bottomAnchor)
+            textFieldContainerBottomAnchor
         ])
     }
 
