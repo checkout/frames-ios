@@ -31,8 +31,7 @@ struct ThemeDemo {
 
         let paymentFormStyle = theme.buildPaymentForm(
             headerView: theme.buildPaymentHeader(title: "Payment details",
-                                                 subtitle: "Accepting your favourite payment methods",
-                                                 schemeIcons: []),
+                                                 subtitle: "Accepting your favourite payment methods"),
             addBillingButton: theme.buildAddBillingSectionButton(text: "Add billing details",
                                                                  isBillingAddressMandatory: false,
                                                                  titleText: "Billing details"),

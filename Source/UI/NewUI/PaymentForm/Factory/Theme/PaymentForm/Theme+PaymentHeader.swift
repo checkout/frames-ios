@@ -27,8 +27,7 @@ public extension Theme {
 
     /// Create a Payment Form Header with given text
     func buildPaymentHeader(title: String,
-                            subtitle: String,
-                            schemeIcons: [UIImage?]) -> ThemePaymentHeader {
+                            subtitle: String) -> ThemePaymentHeader {
         let hasSubtitle = !subtitle.isEmpty
 
         return buildPaymentHeader(
