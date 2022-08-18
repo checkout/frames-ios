@@ -48,9 +48,19 @@ extension CardNumberViewModel: CardNumberViewModelProtocol {
         //    but the number is not complete.
         // In this case we only update delegate if we have a final result to avoiding
         //    overriding the eager validation with a less informative update
-      case let .success((isComplete, scheme)) where isComplete && supportedSchemes.contains(scheme):
-        delegate?.update(result: .success((cardNumber, scheme)))
-        return Constants.Bundle.SchemeIcon(scheme: scheme)
+      case let .success((isComplete, scheme)) where isComplete:
+        let isSupportedScheme = supportedSchemes.contains(where: {
+            if case .maestro = $0,
+               case .maestro = scheme {
+                return true
+            }
+            return $0 == scheme
+        })
+        if isSupportedScheme {
+            delegate?.update(result: .success((cardNumber, scheme)))
+            return Constants.Bundle.SchemeIcon(scheme: scheme)
+        }
+        fallthrough
       case .success,
            .failure:
         delegate?.update(result: .failure(.isNotComplete))
