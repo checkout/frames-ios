@@ -29,7 +29,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
 
   private var cardDetails: CardCreationModel =  CardCreationModel() {
     didSet {
-      shouldEnablePayButton?(cardDetails.expiryDate != nil && cardDetails.number != nil)
+      validateMandatoryInputProvided()
     }
   }
 
@@ -176,6 +176,42 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
   func cardholderIsUpdated(value: String) {
     cardDetails.name = value
   }
+    
+  private func validateMandatoryInputProvided() {
+    var isMandatoryInputProvided = false
+    defer { shouldEnablePayButton?(isMandatoryInputProvided) }
+    
+    // If a scheme is not recorded the number hasn't started being inputted
+    // so we can safely know mandatory fields are not provided
+    guard let cardScheme = cardDetails.scheme else { return }
+    
+    // Check if cardholder is required and if so whether it is provided
+    let isCardholderRequired = paymentFormStyle?.cardholderInput?.isMandatory == true
+    if isCardholderRequired && cardDetails.name.isEmpty { return }
+    
+    // Check if security code is required and if so whether it is valid
+    let isSecurityCodeRequired = paymentFormStyle?.securityCode?.isMandatory == true
+    if isSecurityCodeRequired && cardValidator.isValid(cvv: cardDetails.cvv, for: cardScheme) { return }
+      
+    // Check if Billing is required and if so whether it exists
+    let isAddBillingRequired = paymentFormStyle?.addBillingSummary?.isMandatory == true
+    let isEditBillingRequired = paymentFormStyle?.editBillingSummary?.isMandatory == true
+    let isBillingRequired = isAddBillingRequired && isEditBillingRequired
+    if isBillingRequired && cardDetails.billingAddress == nil { return }
+    
+    // Ensure compulsory fields of Card Number and Expiry date have valid values
+    if case .success(let scheme) = cardValidator.validateCompleteness(cardNumber: cardDetails.number),
+       scheme.isComplete {
+        isMandatoryInputProvided = true
+    }
+      
+    if let expiryDate = cardDetails.expiryDate,
+      case .success(let expiryDate) = cardValidator.validate(expiryMonth: expiryDate.month, expiryYear: expiryDate.year) {
+      isMandatoryInputProvided = true
+    } else {
+      isMandatoryInputProvided = false
+    }
+  }
 
   private func onTapAddressView(sender: UINavigationController?) {
     guard let viewController = BillingFormFactory.getBillingFormViewController(style: billingFormStyle, data: billingFormData, delegate: self) else { return }
@@ -190,6 +226,7 @@ extension DefaultPaymentViewModel: CardNumberViewModelDelegate {
         cardDetails.number = ""
       case .success(let cardInfo):
         cardDetails.number = cardInfo.cardNumber
+        cardDetails.scheme = cardInfo.scheme
         updateSecurityCodeViewScheme?(cardInfo.scheme)
     }
   }
