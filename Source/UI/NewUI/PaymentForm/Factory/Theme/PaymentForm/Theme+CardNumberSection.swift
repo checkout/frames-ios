@@ -34,8 +34,8 @@ public extension Theme {
     }
 
     /// Create a Payment Input Section from basic input data for presentation
-    func buildPaymentInput(textFieldText: String,
-                           textFieldPlaceholder: String,
+    func buildPaymentInput(textFieldText: String = "",
+                           textFieldPlaceholder: String = "",
                            isTextFieldNumericInput: Bool,
                            titleText: String,
                            subtitleText: String = "",
