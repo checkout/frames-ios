@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
   // UI elements
   @IBOutlet private weak var scrollView: UIScrollView! {
     didSet {
-      scrollView.keyboardDismissMode = .onDrag
+      scrollView.keyboardDismissMode = .interactive
     }
   }
   @IBOutlet private weak var threeDSURLTextField: UITextField!

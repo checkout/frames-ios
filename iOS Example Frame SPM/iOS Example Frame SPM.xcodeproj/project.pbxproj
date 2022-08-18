@@ -174,77 +174,6 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		95C8C0BA28AD5FEE00B8D3D0 /* Fields */ = {
-			isa = PBXGroup;
-			children = (
-				95C8C0BB28AD5FEE00B8D3D0 /* Postcode */,
-				95C8C0BC28AD5FEE00B8D3D0 /* AddressLine2 */,
-				95C8C0BD28AD5FEE00B8D3D0 /* City */,
-				95C8C0BE28AD5FEE00B8D3D0 /* FullName */,
-				95C8C0BF28AD5FEE00B8D3D0 /* State */,
-				95C8C0C028AD5FEE00B8D3D0 /* PhoneNumber */,
-				95C8C0C128AD5FEE00B8D3D0 /* AddressLine1 */,
-				95C8C0C228AD5FEE00B8D3D0 /* Country */,
-			);
-			path = Fields;
-			sourceTree = "<group>";
-		};
-		95C8C0BB28AD5FEE00B8D3D0 /* Postcode */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Postcode;
-			sourceTree = "<group>";
-		};
-		95C8C0BC28AD5FEE00B8D3D0 /* AddressLine2 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AddressLine2;
-			sourceTree = "<group>";
-		};
-		95C8C0BD28AD5FEE00B8D3D0 /* City */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = City;
-			sourceTree = "<group>";
-		};
-		95C8C0BE28AD5FEE00B8D3D0 /* FullName */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FullName;
-			sourceTree = "<group>";
-		};
-		95C8C0BF28AD5FEE00B8D3D0 /* State */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = State;
-			sourceTree = "<group>";
-		};
-		95C8C0C028AD5FEE00B8D3D0 /* PhoneNumber */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PhoneNumber;
-			sourceTree = "<group>";
-		};
-		95C8C0C128AD5FEE00B8D3D0 /* AddressLine1 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AddressLine1;
-			sourceTree = "<group>";
-		};
-		95C8C0C228AD5FEE00B8D3D0 /* Country */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Country;
-			sourceTree = "<group>";
-		};
 		95C8C0C828AD5FEE00B8D3D0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,7 +300,6 @@
 				95C8C0D428AD5FEE00B8D3D0 /* Data */,
 				95C8C0B428AD5FEE00B8D3D0 /* Extension */,
 				95C8C10A28AD5FEE00B8D3D0 /* Factory */,
-				95C8C0BA28AD5FEE00B8D3D0 /* Fields */,
 				95C8C0D628AD5FEE00B8D3D0 /* Resources */,
 				95C8C0CF28AD5FEE00B8D3D0 /* Storyboards */,
 				95C8C10628AD5FEE00B8D3D0 /* Style */,
