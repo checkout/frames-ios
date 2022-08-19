@@ -8,7 +8,6 @@
 import Checkout
 
 public enum CardScheme {
-    case unknown
     case mada
     case visa
     case mastercard
@@ -20,8 +19,6 @@ public enum CardScheme {
 
     internal func mapToCheckoutCardScheme() -> Card.Scheme {
         switch self {
-        case .unknown:
-            return .unknown
         case .mada:
             return .mada
         case .visa:

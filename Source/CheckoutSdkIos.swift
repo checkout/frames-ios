@@ -8,10 +8,10 @@ func addKeyboardToolbarNavigation(textFields: [UITextField]) {
     // create the toolbar
     for (index, textField) in textFields.enumerated() {
         let toolbar = UIToolbar()
-        let prevButton = UIBarButtonItem(image: "arrows/keyboard-previous".image(forClass: CardUtils.self),
+        let prevButton = UIBarButtonItem(image: Constants.Bundle.Images.keyboardPrevious.image ?? UIImage(),
                                          style: .plain, target: nil, action: nil)
         prevButton.width = 30
-        let nextButton = UIBarButtonItem(image: "arrows/keyboard-next".image(forClass: CardUtils.self),
+        let nextButton = UIBarButtonItem(image: Constants.Bundle.Images.keyboardNext.image ?? UIImage(),
                                          style: .plain, target: nil, action: nil)
         let flexspace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
                                         target: nil, action: nil)
