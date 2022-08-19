@@ -38,6 +38,26 @@
 		0B194B0928A1132B001AEAFD /* UIFont+Graphik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B194AFB28A1132B001AEAFD /* UIFont+Graphik.swift */; };
 		0B6A7FDA28913D5700F7CC01 /* PaymentFormConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */; };
 		0B6A7FDB28913D5700F7CC01 /* PaymentStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */; };
+		0BC60B5E28AFB27800F30992 /* ThemeDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B5D28AFB27800F30992 /* ThemeDemo.swift */; };
+		0BC60B7628AFB32600F30992 /* Theme+BillingSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B6128AFB32600F30992 /* Theme+BillingSummary.swift */; };
+		0BC60B7728AFB32600F30992 /* Theme+PaymentFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B6228AFB32600F30992 /* Theme+PaymentFormStyle.swift */; };
+		0BC60B7828AFB32600F30992 /* Theme+AddBillingSectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B6328AFB32600F30992 /* Theme+AddBillingSectionButton.swift */; };
+		0BC60B7928AFB32600F30992 /* Theme+CardNumberSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B6428AFB32600F30992 /* Theme+CardNumberSection.swift */; };
+		0BC60B7A28AFB32600F30992 /* Theme+PaymentHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B6528AFB32600F30992 /* Theme+PaymentHeader.swift */; };
+		0BC60B7B28AFB32600F30992 /* Theme+PaymentHeaderSubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B6628AFB32600F30992 /* Theme+PaymentHeaderSubtitle.swift */; };
+		0BC60B7C28AFB32600F30992 /* Theme+PayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B6728AFB32600F30992 /* Theme+PayButton.swift */; };
+		0BC60B7D28AFB32600F30992 /* Theme+BillingCountryInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B6928AFB32600F30992 /* Theme+BillingCountryInput.swift */; };
+		0BC60B7E28AFB32600F30992 /* Theme+BillingInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B6A28AFB32600F30992 /* Theme+BillingInput.swift */; };
+		0BC60B7F28AFB32600F30992 /* Theme+BillingForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B6B28AFB32600F30992 /* Theme+BillingForm.swift */; };
+		0BC60B8028AFB32600F30992 /* Theme+BillingHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B6C28AFB32600F30992 /* Theme+BillingHeader.swift */; };
+		0BC60B8128AFB32600F30992 /* Theme+Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B6E28AFB32600F30992 /* Theme+Button.swift */; };
+		0BC60B8228AFB32600F30992 /* Theme+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B6F28AFB32600F30992 /* Theme+Error.swift */; };
+		0BC60B8328AFB32600F30992 /* Theme+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B7028AFB32600F30992 /* Theme+TextField.swift */; };
+		0BC60B8428AFB32600F30992 /* Theme+PageHeaderTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B7128AFB32600F30992 /* Theme+PageHeaderTitle.swift */; };
+		0BC60B8528AFB32600F30992 /* Theme+Mandatory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B7228AFB32600F30992 /* Theme+Mandatory.swift */; };
+		0BC60B8628AFB32600F30992 /* Theme+Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B7328AFB32600F30992 /* Theme+Title.swift */; };
+		0BC60B8728AFB32600F30992 /* Theme+Subtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B7428AFB32600F30992 /* Theme+Subtitle.swift */; };
+		0BC60B8828AFB32600F30992 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B7528AFB32600F30992 /* Theme.swift */; };
 		0BFE5B302893D51F00E540B9 /* SecurityCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFE5B2F2893D51F00E540B9 /* SecurityCodeViewModel.swift */; };
 		4422777226163748009626A0 /* Frames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; };
 		4422777326163748009626A0 /* Frames.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -164,7 +184,6 @@
 		9573232C286EF4E80068C115 /* PropertyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573226C286EF4E80068C115 /* PropertyProviding.swift */; };
 		9573232D286EF4E90068C115 /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573226D286EF4E80068C115 /* DateProvider.swift */; };
 		9573232E286EF4E90068C115 /* RemoteProcessorMetadata+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573226E286EF4E80068C115 /* RemoteProcessorMetadata+extensions.swift */; };
-		9573232F286EF4E90068C115 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573226F286EF4E80068C115 /* Theme.swift */; };
 		95732330286EF4E90068C115 /* CorrelationIDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732270286EF4E80068C115 /* CorrelationIDGenerator.swift */; };
 		95732396286EF50F0068C115 /* Dictionary+AdditionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732333286EF50F0068C115 /* Dictionary+AdditionsTests.swift */; };
 		95732397286EF50F0068C115 /* DispatchQueue+DispatchingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95732334286EF50F0068C115 /* DispatchQueue+DispatchingTests.swift */; };
@@ -240,7 +259,6 @@
 		95E816D828887A4300C7876B /* PaymentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E816D728887A4300C7876B /* PaymentHeaderView.swift */; };
 		95E816DA28887BF800C7876B /* PaymentHeaderCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E816D928887BF800C7876B /* PaymentHeaderCellStyle.swift */; };
 		95E816DC2888850200C7876B /* DefaultPaymentHeaderCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E816DB2888850200C7876B /* DefaultPaymentHeaderCellStyle.swift */; };
-		95ED57A0285A13D70010B493 /* CustomStyle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ED579E285A13D70010B493 /* CustomStyle2.swift */; };
 		95ED57A1285A13D70010B493 /* CustomStyle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ED579F285A13D70010B493 /* CustomStyle1.swift */; };
 		95EDB1CB28AC29830029DFA5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EDB1CA28AC29830029DFA5 /* HomeViewController.swift */; };
 		95EDB1CF28AD312B0029DFA5 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EDB1CE28AD312B0029DFA5 /* Factory.swift */; };
@@ -328,6 +346,26 @@
 		0B194AFB28A1132B001AEAFD /* UIFont+Graphik.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Graphik.swift"; sourceTree = "<group>"; };
 		0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentFormConfiguration.swift; sourceTree = "<group>"; };
 		0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStyle.swift; sourceTree = "<group>"; };
+		0BC60B5D28AFB27800F30992 /* ThemeDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemeDemo.swift; path = ../ThemeDemo.swift; sourceTree = "<group>"; };
+		0BC60B6128AFB32600F30992 /* Theme+BillingSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+BillingSummary.swift"; sourceTree = "<group>"; };
+		0BC60B6228AFB32600F30992 /* Theme+PaymentFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+PaymentFormStyle.swift"; sourceTree = "<group>"; };
+		0BC60B6328AFB32600F30992 /* Theme+AddBillingSectionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+AddBillingSectionButton.swift"; sourceTree = "<group>"; };
+		0BC60B6428AFB32600F30992 /* Theme+CardNumberSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+CardNumberSection.swift"; sourceTree = "<group>"; };
+		0BC60B6528AFB32600F30992 /* Theme+PaymentHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+PaymentHeader.swift"; sourceTree = "<group>"; };
+		0BC60B6628AFB32600F30992 /* Theme+PaymentHeaderSubtitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+PaymentHeaderSubtitle.swift"; sourceTree = "<group>"; };
+		0BC60B6728AFB32600F30992 /* Theme+PayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+PayButton.swift"; sourceTree = "<group>"; };
+		0BC60B6928AFB32600F30992 /* Theme+BillingCountryInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+BillingCountryInput.swift"; sourceTree = "<group>"; };
+		0BC60B6A28AFB32600F30992 /* Theme+BillingInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+BillingInput.swift"; sourceTree = "<group>"; };
+		0BC60B6B28AFB32600F30992 /* Theme+BillingForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+BillingForm.swift"; sourceTree = "<group>"; };
+		0BC60B6C28AFB32600F30992 /* Theme+BillingHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+BillingHeader.swift"; sourceTree = "<group>"; };
+		0BC60B6E28AFB32600F30992 /* Theme+Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Button.swift"; sourceTree = "<group>"; };
+		0BC60B6F28AFB32600F30992 /* Theme+Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Error.swift"; sourceTree = "<group>"; };
+		0BC60B7028AFB32600F30992 /* Theme+TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+TextField.swift"; sourceTree = "<group>"; };
+		0BC60B7128AFB32600F30992 /* Theme+PageHeaderTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+PageHeaderTitle.swift"; sourceTree = "<group>"; };
+		0BC60B7228AFB32600F30992 /* Theme+Mandatory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Mandatory.swift"; sourceTree = "<group>"; };
+		0BC60B7328AFB32600F30992 /* Theme+Title.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Title.swift"; sourceTree = "<group>"; };
+		0BC60B7428AFB32600F30992 /* Theme+Subtitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Subtitle.swift"; sourceTree = "<group>"; };
+		0BC60B7528AFB32600F30992 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		0BFE5B2F2893D51F00E540B9 /* SecurityCodeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityCodeViewModel.swift; sourceTree = "<group>"; };
 		4422774726163716009626A0 /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4422775D26163748009626A0 /* Frames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Frames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -463,7 +501,6 @@
 		9573226C286EF4E80068C115 /* PropertyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyProviding.swift; sourceTree = "<group>"; };
 		9573226D286EF4E80068C115 /* DateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
 		9573226E286EF4E80068C115 /* RemoteProcessorMetadata+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RemoteProcessorMetadata+extensions.swift"; sourceTree = "<group>"; };
-		9573226F286EF4E80068C115 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		95732270286EF4E80068C115 /* CorrelationIDGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrelationIDGenerator.swift; sourceTree = "<group>"; };
 		95732333286EF50F0068C115 /* Dictionary+AdditionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+AdditionsTests.swift"; sourceTree = "<group>"; };
 		95732334286EF50F0068C115 /* DispatchQueue+DispatchingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+DispatchingTests.swift"; sourceTree = "<group>"; };
@@ -539,7 +576,6 @@
 		95E816D728887A4300C7876B /* PaymentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHeaderView.swift; sourceTree = "<group>"; };
 		95E816D928887BF800C7876B /* PaymentHeaderCellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHeaderCellStyle.swift; sourceTree = "<group>"; };
 		95E816DB2888850200C7876B /* DefaultPaymentHeaderCellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPaymentHeaderCellStyle.swift; sourceTree = "<group>"; };
-		95ED579E285A13D70010B493 /* CustomStyle2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle2.swift; sourceTree = "<group>"; };
 		95ED579F285A13D70010B493 /* CustomStyle1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle1.swift; sourceTree = "<group>"; };
 		95EDB1CA28AC29830029DFA5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		95EDB1CE28AD312B0029DFA5 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
@@ -657,6 +693,56 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		0BC60B5F28AFB32600F30992 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				0BC60B6028AFB32600F30992 /* PaymentForm */,
+				0BC60B6828AFB32600F30992 /* BillingForm */,
+				0BC60B6D28AFB32600F30992 /* Generic */,
+				0BC60B7528AFB32600F30992 /* Theme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		0BC60B6028AFB32600F30992 /* PaymentForm */ = {
+			isa = PBXGroup;
+			children = (
+				0BC60B6128AFB32600F30992 /* Theme+BillingSummary.swift */,
+				0BC60B6228AFB32600F30992 /* Theme+PaymentFormStyle.swift */,
+				0BC60B6328AFB32600F30992 /* Theme+AddBillingSectionButton.swift */,
+				0BC60B6428AFB32600F30992 /* Theme+CardNumberSection.swift */,
+				0BC60B6528AFB32600F30992 /* Theme+PaymentHeader.swift */,
+				0BC60B6628AFB32600F30992 /* Theme+PaymentHeaderSubtitle.swift */,
+				0BC60B6728AFB32600F30992 /* Theme+PayButton.swift */,
+			);
+			path = PaymentForm;
+			sourceTree = "<group>";
+		};
+		0BC60B6828AFB32600F30992 /* BillingForm */ = {
+			isa = PBXGroup;
+			children = (
+				0BC60B6928AFB32600F30992 /* Theme+BillingCountryInput.swift */,
+				0BC60B6A28AFB32600F30992 /* Theme+BillingInput.swift */,
+				0BC60B6B28AFB32600F30992 /* Theme+BillingForm.swift */,
+				0BC60B6C28AFB32600F30992 /* Theme+BillingHeader.swift */,
+			);
+			path = BillingForm;
+			sourceTree = "<group>";
+		};
+		0BC60B6D28AFB32600F30992 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				0BC60B6E28AFB32600F30992 /* Theme+Button.swift */,
+				0BC60B6F28AFB32600F30992 /* Theme+Error.swift */,
+				0BC60B7028AFB32600F30992 /* Theme+TextField.swift */,
+				0BC60B7128AFB32600F30992 /* Theme+PageHeaderTitle.swift */,
+				0BC60B7228AFB32600F30992 /* Theme+Mandatory.swift */,
+				0BC60B7328AFB32600F30992 /* Theme+Title.swift */,
+				0BC60B7428AFB32600F30992 /* Theme+Subtitle.swift */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
 		4422775E26163748009626A0 /* Frames */ = {
 			isa = PBXGroup;
 			children = (
@@ -762,6 +848,7 @@
 				957321D9286EF4E80068C115 /* CommonUI */,
 				9573223A286EF4E80068C115 /* CountrySelection */,
 				957321B7286EF4E80068C115 /* PaymentForm */,
+				0BC60B5F28AFB32600F30992 /* Theme */,
 				957321AB286EF4E80068C115 /* Validator */,
 			);
 			name = UI;
@@ -1332,7 +1419,6 @@
 				9573226C286EF4E80068C115 /* PropertyProviding.swift */,
 				9573226D286EF4E80068C115 /* DateProvider.swift */,
 				9573226E286EF4E80068C115 /* RemoteProcessorMetadata+extensions.swift */,
-				9573226F286EF4E80068C115 /* Theme.swift */,
 				95732270286EF4E80068C115 /* CorrelationIDGenerator.swift */,
 			);
 			path = Logging;
@@ -1524,9 +1610,9 @@
 		95EDB1D528AD3B280029DFA5 /* Style */ = {
 			isa = PBXGroup;
 			children = (
+				0BC60B5D28AFB27800F30992 /* ThemeDemo.swift */,
 				9562D081286512C500C94D6B /* Style.swift */,
 				95ED579F285A13D70010B493 /* CustomStyle1.swift */,
-				95ED579E285A13D70010B493 /* CustomStyle2.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -1894,6 +1980,7 @@
 				0B194AC328A0F407001AEAFD /* CardScheme.swift in Sources */,
 				957322C8286EF4E80068C115 /* LabelView.swift in Sources */,
 				95732326286EF4E80068C115 /* Constants+Padding.swift in Sources */,
+				0BC60B8428AFB32600F30992 /* Theme+PageHeaderTitle.swift in Sources */,
 				957322C5286EF4E80068C115 /* TextFieldView.swift in Sources */,
 				957322AD286EF4E80068C115 /* AddressLine2Validator.swift in Sources */,
 				957322AC286EF4E80068C115 /* CityValidator.swift in Sources */,
@@ -1904,12 +1991,14 @@
 				957322DF286EF4E80068C115 /* DefaultBillingFormFullNameCellStyle.swift in Sources */,
 				95732328286EF4E80068C115 /* Constants+Style.swift in Sources */,
 				957322A7286EF4E80068C115 /* PostCodeValidator.swift in Sources */,
+				0BC60B7A28AFB32600F30992 /* Theme+PaymentHeader.swift in Sources */,
 				957322D8286EF4E80068C115 /* DefaultTitleLabelStyle.swift in Sources */,
 				9502D0C628ABBEB0008B3E19 /* CardCreationModel.swift in Sources */,
 				957322BD286EF4E80068C115 /* DefaultAddBillingDetailsViewStyle.swift in Sources */,
 				95732312286EF4E80068C115 /* StringExtensions.swift in Sources */,
 				957322E0286EF4E80068C115 /* DefaultBillingFormStateCellStyle.swift in Sources */,
 				95732311286EF4E80068C115 /* UITextFieldExtension.swift in Sources */,
+				0BC60B8628AFB32600F30992 /* Theme+Title.swift in Sources */,
 				95B32CC0287717AA001D1205 /* DefaultSecurityCodeFormStyle.swift in Sources */,
 				957322B7286EF4E80068C115 /* DefaultPaymentViewModel.swift in Sources */,
 				957322D3286EF4E80068C115 /* ElementStyle.swift in Sources */,
@@ -1918,6 +2007,7 @@
 				95732313286EF4E80068C115 /* DispatchQueue+Dispatching.swift in Sources */,
 				957322BF286EF4E80068C115 /* DefaultCardNumberFormStyle.swift in Sources */,
 				95783368289EFA11006C7D92 /* DefaultCountryFormButtonStyle.swift in Sources */,
+				0BC60B7728AFB32600F30992 /* Theme+PaymentFormStyle.swift in Sources */,
 				957322DD286EF4E80068C115 /* DefaultBillingFormAddressLine2CellStyle.swift in Sources */,
 				957322F3286EF4E80068C115 /* BillingFormHeaderCellStyle.swift in Sources */,
 				957322C6286EF4E80068C115 /* SecureDisplayView.swift in Sources */,
@@ -1929,6 +2019,7 @@
 				CBB6F525287ED04E00A1379D /* Constants+SchemeIcon.swift in Sources */,
 				95732318286EF4E80068C115 /* UIViewExtensions.swift in Sources */,
 				957322CC286EF4E80068C115 /* InputView.swift in Sources */,
+				0BC60B7F28AFB32600F30992 /* Theme+BillingForm.swift in Sources */,
 				9573230E286EF4E80068C115 /* UITableViewExtensions.swift in Sources */,
 				957322E3286EF4E80068C115 /* DefaultBillingFormCountryCellStyle.swift in Sources */,
 				957322DC286EF4E80068C115 /* DefaultBillingFormPostCodeCellStyle.swift in Sources */,
@@ -1943,9 +2034,13 @@
 				957322D2286EF4E80068C115 /* ElementErrorViewStyle.swift in Sources */,
 				9573231B286EF4E80068C115 /* UIColor+PropertyProviding.swift in Sources */,
 				957322C1286EF4E80068C115 /* BillingFormSummaryView.swift in Sources */,
+				0BC60B7D28AFB32600F30992 /* Theme+BillingCountryInput.swift in Sources */,
 				0B6A7FDA28913D5700F7CC01 /* PaymentFormConfiguration.swift in Sources */,
 				952F32D5283C303E00F616FF /* CheckoutTheme.swift in Sources */,
+				0BC60B7828AFB32600F30992 /* Theme+AddBillingSectionButton.swift in Sources */,
 				9573231C286EF4E80068C115 /* Dictionary+Additions.swift in Sources */,
+				0BC60B8828AFB32600F30992 /* Theme.swift in Sources */,
+				0BC60B8228AFB32600F30992 /* Theme+Error.swift in Sources */,
 				957322DA286EF4E80068C115 /* DefaultErrorInputLabelStyle.swift in Sources */,
 				0B6A7FDB28913D5700F7CC01 /* PaymentStyle.swift in Sources */,
 				957322DE286EF4E80068C115 /* DefaultBillingFormCityCellStyle.swift in Sources */,
@@ -1960,31 +2055,38 @@
 				957322BB286EF4E80068C115 /* DefaultEditBillingDetailsButtonStyle.swift in Sources */,
 				CB106193287726EE007322FE /* CardNumberView.swift in Sources */,
 				957322D0286EF4E80068C115 /* CellTextFieldStyle.swift in Sources */,
+				0BC60B8028AFB32600F30992 /* Theme+BillingHeader.swift in Sources */,
 				957322CA286EF4E80068C115 /* SimpleErrorView.swift in Sources */,
 				9573231D286EF4E80068C115 /* UIResponderExtensions.swift in Sources */,
 				957322F4286EF4E80068C115 /* FramesFactory.swift in Sources */,
 				957322C0286EF4E80068C115 /* DefaultPaymentFormStyle.swift in Sources */,
 				957322E5286EF4E80068C115 /* DefaultCancelButtonFormStyle.swift in Sources */,
+				0BC60B8128AFB32600F30992 /* Theme+Button.swift in Sources */,
 				95732316286EF4E80068C115 /* UIViewControllerExtensions.swift in Sources */,
 				95732322286EF4E80068C115 /* TopLevelDecoder.swift in Sources */,
 				957322B9286EF4E80068C115 /* BillingSummaryViewStyle.swift in Sources */,
-				9573232F286EF4E90068C115 /* Theme.swift in Sources */,
 				95732321286EF4E80068C115 /* TopLevelEncoder.swift in Sources */,
 				957322D4286EF4E80068C115 /* ElementButtonStyle.swift in Sources */,
 				9573232C286EF4E80068C115 /* PropertyProviding.swift in Sources */,
 				95E816D828887A4300C7876B /* PaymentHeaderView.swift in Sources */,
+				0BC60B7B28AFB32600F30992 /* Theme+PaymentHeaderSubtitle.swift in Sources */,
 				95732319286EF4E80068C115 /* URL+Extensions.swift in Sources */,
 				95732314286EF4E80068C115 /* JSONEncoder+ContentTypeProviding.swift in Sources */,
 				9573232A286EF4E80068C115 /* FramesEventLogger.swift in Sources */,
 				957322D6286EF4E80068C115 /* DefaultBillingFormViewModel.swift in Sources */,
+				0BC60B7928AFB32600F30992 /* Theme+CardNumberSection.swift in Sources */,
 				9573231F286EF4E80068C115 /* Environment.swift in Sources */,
+				0BC60B7E28AFB32600F30992 /* Theme+BillingInput.swift in Sources */,
 				957322E8286EF4E80068C115 /* DefaultBillingFormHeaderCellStyle.swift in Sources */,
+				0BC60B7C28AFB32600F30992 /* Theme+PayButton.swift in Sources */,
 				957322EE286EF4E80068C115 /* BillingFormTextFieldView.swift in Sources */,
 				95732329286EF4E80068C115 /* ContentTypeProviding.swift in Sources */,
 				CBAA859528802C92000F6578 /* SecurityCodeView.swift in Sources */,
 				957322E2286EF4E80068C115 /* DefaultBillingFormAddressLine1CellStyle.swift in Sources */,
 				95732301286EF4E80068C115 /* CountrySelectionViewController.swift in Sources */,
+				0BC60B8728AFB32600F30992 /* Theme+Subtitle.swift in Sources */,
 				957322A8286EF4E80068C115 /* CountryValidator.swift in Sources */,
+				0BC60B7628AFB32600F30992 /* Theme+BillingSummary.swift in Sources */,
 				957322EA286EF4E80068C115 /* BillingForm.swift in Sources */,
 				957322E4286EF4E80068C115 /* DefaultBillingFormStyle.swift in Sources */,
 				957322AA286EF4E80068C115 /* AddressLine1Validator.swift in Sources */,
@@ -1996,6 +2098,7 @@
 				957322D7286EF4E80068C115 /* DefaultHintInputLabelStyle.swift in Sources */,
 				957322F9286EF4E80068C115 /* ThreedsWebViewControllerDelegate.swift in Sources */,
 				952F3240283C303E00F616FF /* CardUtils.swift in Sources */,
+				0BC60B8528AFB32600F30992 /* Theme+Mandatory.swift in Sources */,
 				957322B1286EF4E80068C115 /* PaymentViewModel.swift in Sources */,
 				9573232E286EF4E90068C115 /* RemoteProcessorMetadata+extensions.swift in Sources */,
 				9573230F286EF4E80068C115 /* UIFont+PropertyProviding.swift in Sources */,
@@ -2003,6 +2106,7 @@
 				957322E7286EF4E80068C115 /* DefaultDoneFormButtonStyle.swift in Sources */,
 				957322C3286EF4E80068C115 /* PaymentViewController.swift in Sources */,
 				957322F2286EF4E80068C115 /* BillingFormStyle.swift in Sources */,
+				0BC60B8328AFB32600F30992 /* Theme+TextField.swift in Sources */,
 				957322D9286EF4E80068C115 /* DefaultTextField.swift in Sources */,
 				9573232D286EF4E90068C115 /* DateProvider.swift in Sources */,
 				957322A9286EF4E80068C115 /* PhoneNumberValidator.swift in Sources */,
@@ -2105,7 +2209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95ED57A0285A13D70010B493 /* CustomStyle2.swift in Sources */,
+				0BC60B5E28AFB27800F30992 /* ThemeDemo.swift in Sources */,
 				0B194B0928A1132B001AEAFD /* UIFont+Graphik.swift in Sources */,
 				95EDB1D328AD3AFA0029DFA5 /* UIViewExtension.swift in Sources */,
 				95EDB1D128AD3AD20029DFA5 /* UIViewControllerExtension.swift in Sources */,
