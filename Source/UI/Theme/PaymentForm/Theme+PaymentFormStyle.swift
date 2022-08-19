@@ -15,6 +15,7 @@ public extension Theme {
         public var headerView: PaymentHeaderCellStyle
         public var addBillingSummary: CellButtonStyle?
         public var editBillingSummary: BillingSummaryViewStyle?
+        public var cardholderInput: CellTextFieldStyle?
         public var cardNumber: CellTextFieldStyle?
         public var expiryDate: CellTextFieldStyle?
         public var securityCode: CellTextFieldStyle?
@@ -25,14 +26,16 @@ public extension Theme {
     func buildPaymentForm(headerView: PaymentHeaderCellStyle,
                           addBillingButton: CellButtonStyle?,
                           billingSummary: BillingSummaryViewStyle?,
+                          cardholder: CellTextFieldStyle?,
                           cardNumber: CellTextFieldStyle,
                           expiryDate: CellTextFieldStyle,
-                          securityCode: CellTextFieldStyle,
+                          securityCode: CellTextFieldStyle?,
                           payButton: ElementButtonStyle) -> ThemePaymentForm {
         ThemePaymentForm(backgroundColor: self.backgroundColor,
                          headerView: headerView,
                          addBillingSummary: addBillingButton,
                          editBillingSummary: billingSummary,
+                         cardholderInput: cardholder,
                          cardNumber: cardNumber,
                          expiryDate: expiryDate,
                          securityCode: securityCode,

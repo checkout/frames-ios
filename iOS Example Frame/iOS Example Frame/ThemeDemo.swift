@@ -26,6 +26,11 @@ struct ThemeDemo {
         billingSummary.borderColor = .white
         billingSummary.borderWidth = 1
 
+        var cardholderInput = theme.buildPaymentInput(isTextFieldNumericInput: false,
+                                                      titleText: "Cardholder name",
+                                                      isRequiredInputText: "Optional")
+        cardholderInput.isMandatory = false
+
         var payButton = theme.buildPayButton(text: "Pay now!")
         payButton.textAlignment = .center
 
@@ -36,6 +41,7 @@ struct ThemeDemo {
                                                                  isBillingAddressMandatory: false,
                                                                  titleText: "Billing details"),
             billingSummary: billingSummary,
+            cardholder: cardholderInput,
             cardNumber: theme.buildPaymentInput(isTextFieldNumericInput: true,
                                                 titleText: "Card number",
                                                 errorText: "Please enter valid card number",

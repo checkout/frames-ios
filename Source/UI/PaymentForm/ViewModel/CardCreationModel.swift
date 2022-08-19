@@ -8,15 +8,19 @@
 import Checkout
 
 struct CardCreationModel {
-  var number: String?
+  var number: String = ""
   var expiryDate: ExpiryDate?
-  var name: String?
-  var cvv: String?
+  var name: String = ""
+  var cvv: String = ""
   var billingAddress: Address?
   var phone: Phone?
 
   func getCard() -> Card? {
-    guard let number = number, let expiryDate = expiryDate else { return nil }
+    guard !number.isEmpty,
+          let expiryDate = expiryDate else {
+        return nil
+    }
+
     return Card(number: number,
                 expiryDate: expiryDate,
                 name: name,

@@ -7,7 +7,7 @@ public struct DefaultBillingFormStateCellStyle: CellTextFieldStyle {
     public var hint: ElementStyle?
     public var mandatory: ElementStyle? = DefaultTitleLabelStyle(
       backgroundColor: .clear,
-      text: Constants.LocalizationKeys.BillingForm.Cell.optionalInput,
+      text: Constants.LocalizationKeys.optionalInput,
       font: UIFont.systemFont(ofSize: Constants.Style.BillingForm.InputOptionalLabel.fontSize.rawValue),
       textColor: .doveGray)
     public var textfield: ElementTextFieldStyle = DefaultTextField()
