@@ -1774,7 +1774,6 @@
 				4422775926163748009626A0 /* Sources */,
 				4422775A26163748009626A0 /* Frameworks */,
 				4422775B26163748009626A0 /* Resources */,
-				953A893628AFDCBD00C1CDF5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1984,24 +1983,6 @@
 		};
 		953A893528AFDCA300C1CDF5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Adds support for Apple Silicon brew directory export \nPATH=\"$PATH:/opt/homebrew/bin\"  \n\nif which swiftlint > /dev/null; then\n  swiftlint --fix --config ../.swiftlint.yml\nelse\n  echo \"error: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		953A893628AFDCBD00C1CDF5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
