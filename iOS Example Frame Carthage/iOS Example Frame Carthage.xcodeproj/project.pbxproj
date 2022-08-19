@@ -1022,7 +1022,6 @@
 				9573221E286EF4E80068C115 /* BillingFormCell.swift */,
 				9573222E286EF4E80068C115 /* FramesFactory.swift */,
 				957321F5286EF4E80068C115 /* Default Implementation */,
-				9573222D286EF4E80068C115 /* Factory */,
 				9573221F286EF4E80068C115 /* Model */,
 				9573222A286EF4E80068C115 /* Style Protocol */,
 				95732221286EF4E80068C115 /* View */,
@@ -1278,13 +1277,6 @@
 				9573222C286EF4E80068C115 /* BillingFormHeaderCellStyle.swift */,
 			);
 			path = "Style Protocol";
-			sourceTree = "<group>";
-		};
-		9573222D286EF4E80068C115 /* Factory */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Factory;
 			sourceTree = "<group>";
 		};
 		95732231286EF4E80068C115 /* 3DS */ = {
