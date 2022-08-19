@@ -79,7 +79,7 @@ struct BillingFormStyleCustom1: BillingFormStyle {
 
 private struct StyleOrganiser {
 
-  struct PaymentHeaderViewStyle: PaymentHeaderCellStyle {
+    struct PaymentHeaderViewStyle: PaymentHeaderCellStyle {
         var shouldHideAcceptedCardsList: Bool = true
         var backgroundColor: UIColor = Constants.backgroundColor
         var headerLabel: ElementStyle? = PaymentHeaderLabel()
@@ -178,7 +178,7 @@ private struct StyleOrganiser {
     }
 
     struct ExpiryDateSection: CellTextFieldStyle {
-        var textfield: ElementTextFieldStyle = TextFieldStyle(placeHolder: "_ _ / _ _")
+        var textfield: ElementTextFieldStyle = TextFieldStyle(placeholder: "_ _ / _ _")
         var isMandatory: Bool = true
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "Expiry date")
@@ -204,7 +204,7 @@ private struct StyleOrganiser {
         var height: Double = 30
         var cornerRadius: CGFloat = Constants.borderRadius
         var borderWidth: CGFloat = Constants.borderWidth
-        var placeHolder: String?
+        var placeholder: String?
         var tintColor: UIColor = Constants.mainFontColor
         var normalBorderColor: UIColor = .clear
         var focusBorderColor: UIColor = .clear

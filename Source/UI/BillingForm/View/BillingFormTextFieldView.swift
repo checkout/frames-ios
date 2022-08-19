@@ -110,7 +110,7 @@ class BillingFormTextFieldView: UIView {
         textField?.textContentType = style.textfield.isSupportingNumericKeyboard ? .telephoneNumber : .name
         textField?.text = style.textfield.text
         textField?.font = style.textfield.font
-        textField?.placeholder = style.textfield.placeHolder
+        textField?.placeholder = style.textfield.placeholder
         textField?.textColor = style.textfield.textColor
         textField?.tintColor = style.textfield.tintColor
     }
