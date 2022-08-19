@@ -15,13 +15,15 @@ public struct PaymentFormFactory {
     let cardValidator = CardValidator(environment: configuration.environment.checkoutEnvironment)
     let checkoutAPIService = CheckoutAPIService(publicKey: configuration.serviceAPIKey,
                                                 environment: configuration.environment)
-    let viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
+    var viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
                                             cardValidator: cardValidator,
                                             logger: logger,
                                             billingFormData: configuration.billingFormData,
                                             paymentFormStyle: style.paymentFormStyle,
                                             billingFormStyle: style.billingFormStyle,
                                             supportedSchemes: configuration.supportedSchemes)
+    viewModel.preventDuplicateCardholderInput()
+
     let viewController = PaymentViewController(viewModel: viewModel)
     viewModel.cardTokenRequested = completionHandler
     logger.log(.paymentFormInitialised(environment: configuration.environment))

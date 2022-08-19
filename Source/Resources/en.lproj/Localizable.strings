@@ -9,9 +9,12 @@
 "billingFormPhoneNumberHint" = "Phone Number";
 "billingAddressTitle" = "Billing address";
 "BillingFormCountryButtonTitle" = "Please select a country";
-"BillingFormOptional" = "Optional";
 "PaymentFormSummaryViewHintText" = "We need this information as an additional security measure to verify this card.";
 "AddBillingAddress" = "Add billing address";
+/* Accessory shown alongside input fields to denote that the input is not required for validation when completing request */
+"OptionalInputField" = "Optional";
+/* Title of input section on the Payment Form where user is expected to input the Cardholder name as displayed on card */
+"CardholderInputTitle" = "Cardholder name";
 "ExpiryDate" = "Expiry date";
 "ExpiryDateFormat" = "Format is MM/YY";
 "ExpiryDatePlaceholder" = "_ _  / _ _";

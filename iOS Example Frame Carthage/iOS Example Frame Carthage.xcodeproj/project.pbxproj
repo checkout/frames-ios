@@ -38,6 +38,9 @@
 		0B194B0928A1132B001AEAFD /* UIFont+Graphik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B194AFB28A1132B001AEAFD /* UIFont+Graphik.swift */; };
 		0B6A7FDA28913D5700F7CC01 /* PaymentFormConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */; };
 		0B6A7FDB28913D5700F7CC01 /* PaymentStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */; };
+		0BD4BFA228AE6D6B008ED92E /* DefaultCardholderFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4BFA128AE6D6B008ED92E /* DefaultCardholderFormStyle.swift */; };
+		0BD4BFA628AE6D96008ED92E /* CardholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4BFA428AE6D96008ED92E /* CardholderView.swift */; };
+		0BD4BFA728AE6D96008ED92E /* CardholderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4BFA528AE6D96008ED92E /* CardholderViewModel.swift */; };
 		0BFE5B302893D51F00E540B9 /* SecurityCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFE5B2F2893D51F00E540B9 /* SecurityCodeViewModel.swift */; };
 		4422777226163748009626A0 /* Frames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; };
 		4422777326163748009626A0 /* Frames.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -328,6 +331,9 @@
 		0B194AFB28A1132B001AEAFD /* UIFont+Graphik.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Graphik.swift"; sourceTree = "<group>"; };
 		0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentFormConfiguration.swift; sourceTree = "<group>"; };
 		0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStyle.swift; sourceTree = "<group>"; };
+		0BD4BFA128AE6D6B008ED92E /* DefaultCardholderFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCardholderFormStyle.swift; sourceTree = "<group>"; };
+		0BD4BFA428AE6D96008ED92E /* CardholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardholderView.swift; sourceTree = "<group>"; };
+		0BD4BFA528AE6D96008ED92E /* CardholderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardholderViewModel.swift; sourceTree = "<group>"; };
 		0BFE5B2F2893D51F00E540B9 /* SecurityCodeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityCodeViewModel.swift; sourceTree = "<group>"; };
 		4422774726163716009626A0 /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4422775D26163748009626A0 /* Frames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Frames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -657,6 +663,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		0BD4BFA028AE6D6B008ED92E /* Cardholder */ = {
+			isa = PBXGroup;
+			children = (
+				0BD4BFA128AE6D6B008ED92E /* DefaultCardholderFormStyle.swift */,
+			);
+			path = Cardholder;
+			sourceTree = "<group>";
+		};
+		0BD4BFA328AE6D96008ED92E /* CardholderName */ = {
+			isa = PBXGroup;
+			children = (
+				0BD4BFA428AE6D96008ED92E /* CardholderView.swift */,
+				0BD4BFA528AE6D96008ED92E /* CardholderViewModel.swift */,
+			);
+			path = CardholderName;
+			sourceTree = "<group>";
+		};
 		4422775E26163748009626A0 /* Frames */ = {
 			isa = PBXGroup;
 			children = (
@@ -825,6 +848,7 @@
 				957321C4286EF4E80068C115 /* BillingFormSummary */,
 				957321CC286EF4E80068C115 /* ExpiryDate */,
 				957321CE286EF4E80068C115 /* CardNumber */,
+				0BD4BFA028AE6D6B008ED92E /* Cardholder */,
 				957321D0286EF4E80068C115 /* DefaultPaymentFormStyle.swift */,
 				95D442FB289FE55600F69F6E /* DefaultPayButtonFormStyle.swift */,
 				95E816DB2888850200C7876B /* DefaultPaymentHeaderCellStyle.swift */,
@@ -889,6 +913,7 @@
 				CBAA859428802C92000F6578 /* SecurityCodeView.swift */,
 				0BFE5B2F2893D51F00E540B9 /* SecurityCodeViewModel.swift */,
 				CB106191287726EE007322FE /* CardNumber */,
+				0BD4BFA328AE6D96008ED92E /* CardholderName */,
 				957321D3286EF4E80068C115 /* BillingFormSummaryView.swift */,
 				957321D4286EF4E80068C115 /* ExpiryDateView.swift */,
 				95E816D728887A4300C7876B /* PaymentHeaderView.swift */,
@@ -997,7 +1022,6 @@
 				9573221E286EF4E80068C115 /* BillingFormCell.swift */,
 				9573222E286EF4E80068C115 /* FramesFactory.swift */,
 				957321F5286EF4E80068C115 /* Default Implementation */,
-				9573222D286EF4E80068C115 /* Factory */,
 				9573221F286EF4E80068C115 /* Model */,
 				9573222A286EF4E80068C115 /* Style Protocol */,
 				95732221286EF4E80068C115 /* View */,
@@ -1253,13 +1277,6 @@
 				9573222C286EF4E80068C115 /* BillingFormHeaderCellStyle.swift */,
 			);
 			path = "Style Protocol";
-			sourceTree = "<group>";
-		};
-		9573222D286EF4E80068C115 /* Factory */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Factory;
 			sourceTree = "<group>";
 		};
 		95732231286EF4E80068C115 /* 3DS */ = {
@@ -1944,6 +1961,7 @@
 				9573231B286EF4E80068C115 /* UIColor+PropertyProviding.swift in Sources */,
 				957322C1286EF4E80068C115 /* BillingFormSummaryView.swift in Sources */,
 				0B6A7FDA28913D5700F7CC01 /* PaymentFormConfiguration.swift in Sources */,
+				0BD4BFA228AE6D6B008ED92E /* DefaultCardholderFormStyle.swift in Sources */,
 				952F32D5283C303E00F616FF /* CheckoutTheme.swift in Sources */,
 				9573231C286EF4E80068C115 /* Dictionary+Additions.swift in Sources */,
 				957322DA286EF4E80068C115 /* DefaultErrorInputLabelStyle.swift in Sources */,
@@ -2005,6 +2023,7 @@
 				957322F2286EF4E80068C115 /* BillingFormStyle.swift in Sources */,
 				957322D9286EF4E80068C115 /* DefaultTextField.swift in Sources */,
 				9573232D286EF4E90068C115 /* DateProvider.swift in Sources */,
+				0BD4BFA728AE6D96008ED92E /* CardholderViewModel.swift in Sources */,
 				957322A9286EF4E80068C115 /* PhoneNumberValidator.swift in Sources */,
 				952F3241283C303E00F616FF /* CheckoutColor.swift in Sources */,
 				957322C9286EF4E80068C115 /* ImageContainerView.swift in Sources */,
@@ -2013,6 +2032,7 @@
 				957322AE286EF4E80068C115 /* StateValidator.swift in Sources */,
 				957322CE286EF4E80068C115 /* CellStyle.swift in Sources */,
 				957322F0286EF4E80068C115 /* BillingFormCellTextField.swift in Sources */,
+				0BD4BFA628AE6D96008ED92E /* CardholderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

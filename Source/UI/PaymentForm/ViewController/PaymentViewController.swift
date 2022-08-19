@@ -6,6 +6,7 @@ protocol PaymentViewControllerDelegate: AnyObject {
   func editBillingButtonIsPressed(sender: UINavigationController?)
   func expiryDateIsUpdated(result: Result<ExpiryDate, ExpiryDateError>)
   func securityCodeIsUpdated(result: Result<String, SecurityCodeError>)
+  func cardholderIsUpdated(value: String)
   func payButtonIsPressed()
 }
 
@@ -53,6 +54,13 @@ final class PaymentViewController: UIViewController {
   private lazy var expiryDateView: ExpiryDateView = {
     let view = ExpiryDateView(cardValidator: viewModel.cardValidator)
     view.delegate = self
+    return view
+  }()
+
+  private lazy var cardholderView: CardholderView = {
+    let cardholderViewModel = CardholderViewModel()
+    cardholderViewModel.delegate = self
+    let view = CardholderView(viewModel: cardholderViewModel)
     return view
   }()
 
@@ -320,15 +328,21 @@ extension PaymentViewController {
   }
 
   private func addArrangedSubviewForStackView() {
-    let arrangedSubViews = [
-      headerView,
+    var paymentViews: [UIView] = [
+      headerView
+    ]
+    if let cardholderStyle = viewModel.paymentFormStyle?.cardholderInput {
+      paymentViews.append(cardholderView)
+      cardholderView.update(style: cardholderStyle)
+    }
+    paymentViews.append(contentsOf: [
       cardNumberView,
       expiryDateView,
       securityCodeView,
       addBillingFormButtonView,
       billingFormSummaryView,
-      payButtonView]
-    stackView.addArrangedSubviews(arrangedSubViews)
+      payButtonView])
+    stackView.addArrangedSubviews(paymentViews)
     stackView.layoutMargins = UIEdgeInsets(top: 0,
                                            left: Constants.Padding.l.rawValue,
                                            bottom: Constants.Padding.l.rawValue,
@@ -379,6 +393,12 @@ extension PaymentViewController: BillingFormSummaryViewDelegate {
 extension PaymentViewController: ExpiryDateViewDelegate {
   func update(result: Result<ExpiryDate, ExpiryDateError>) {
     delegate?.expiryDateIsUpdated(result: result)
+  }
+}
+
+extension PaymentViewController: CardholderDelegate {
+  func cardholderUpdated(to cardholderInput: String) {
+    delegate?.cardholderIsUpdated(value: cardholderInput)
   }
 }
 

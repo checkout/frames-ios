@@ -16,7 +16,9 @@ class PaymentViewControllerMockDelegate: PaymentViewControllerDelegate {
   var editBillingButtonIsPressedWithSender: [UINavigationController?] = []
   var expiryDateIsUpdatedWithValue: [Result<ExpiryDate, ExpiryDateError>] = []
   var securityCodeIsUpdatedWithValue: [Result<String, SecurityCodeError>] = []
+  var cardholderIsUpdatedWithValue: [String] = []
   var payButtonIsPressedCounter: Int = 0
+  var cardholderIsUpdatedCompletionHandler: (() -> Void)?
 
   func addBillingButtonIsPressed(sender: UINavigationController?) {
     addBillingButtonIsPressedWithSender.append(sender)
@@ -32,6 +34,11 @@ class PaymentViewControllerMockDelegate: PaymentViewControllerDelegate {
 
   func securityCodeIsUpdated(result: Result<String, SecurityCodeError>) {
     securityCodeIsUpdatedWithValue.append(result)
+  }
+    
+  func cardholderIsUpdated(value: String) {
+    cardholderIsUpdatedWithValue.append(value)
+    cardholderIsUpdatedCompletionHandler?()
   }
 
   func payButtonIsPressed() {

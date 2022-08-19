@@ -55,6 +55,7 @@ struct PaymentFormStyleCustom2: PaymentFormStyle {
   var headerView: PaymentHeaderCellStyle = PaymentHeaderCellStyleCustom2()
   var addBillingSummary: CellButtonStyle? = AddBillingDetailsViewStyleCustom2()
   var editBillingSummary: BillingSummaryViewStyle? = EditBillingSummaryStyleCustom2()
+  var cardholderInput: CellTextFieldStyle?
   var cardNumber: CellTextFieldStyle?
   var expiryDate: CellTextFieldStyle? = ExpiryDateFormStyleCustom2()
   var securityCode: CellTextFieldStyle? =  SecurityCodeFormStyleCustom2()
