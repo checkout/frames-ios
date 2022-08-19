@@ -10,13 +10,7 @@ import Foundation
 
 enum Style {
 
-    enum Custom1 {
-        static let paymentForm = PaymentFormStyleCustom1()
-        static let billingForm = BillingFormStyleCustom1()
-    }
+    static let paymentForm = PaymentFormStyleCustom1()
+    static let billingForm = BillingFormStyleCustom1()
 
-    enum Custom2 {
-        static let paymentForm = PaymentFormStyleCustom2()
-        static let billingForm = BillingFormStyleCustom2()
-    }
 }

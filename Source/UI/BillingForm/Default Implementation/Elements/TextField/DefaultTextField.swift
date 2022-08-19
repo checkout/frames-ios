@@ -5,7 +5,7 @@ public struct DefaultTextField: ElementTextFieldStyle {
     public var isHidden: Bool = false
     public var isSupportingNumericKeyboard: Bool = false
     public var text: String = ""
-    public var placeHolder: String?
+    public var placeholder: String?
     public var textColor: UIColor = .codGray
     public var normalBorderColor: UIColor = .mediumGray
     public var focusBorderColor: UIColor = .brandeisBlue

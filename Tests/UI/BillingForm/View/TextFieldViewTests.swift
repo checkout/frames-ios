@@ -25,7 +25,7 @@ class TextFieldViewTests: XCTestCase {
     XCTAssertEqual(view.textField.font, style.font)
     XCTAssertEqual(view.textField.textColor, style.textColor)
     XCTAssertEqual(view.textField.tintColor, style.tintColor)
-    XCTAssertEqual(view.textField.placeholder, style.placeHolder)
+    XCTAssertEqual(view.textField.placeholder, style.placeholder)
     XCTAssertFalse(style.isSupportingNumericKeyboard)
     XCTAssertEqual(view.textField.keyboardType, .default)
   }

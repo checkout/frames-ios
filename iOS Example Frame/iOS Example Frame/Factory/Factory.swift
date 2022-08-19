@@ -67,9 +67,9 @@ struct Factory {
 
     let billingFormData = BillingForm(name: "User 1", address: address, phone: phone)
 
-    let billingFormStyle = Style.Custom1.billingForm
+    let billingFormStyle = Style.billingForm
 
-    let paymentFormStyle = Style.Custom1.paymentForm
+    let paymentFormStyle = Style.paymentForm
 
     let supportedSchemes: [CardScheme] = [.visa, .mastercard, .maestro]
 
@@ -90,32 +90,23 @@ struct Factory {
 
   static func getOtherPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
 
-    let country = Country(iso3166Alpha2: "GB")!
-
-    let address = Address(addressLine1: "Test line1",
+    let address = Address(addressLine1: "78 Marvelous Rd",
                           addressLine2: nil,
                           city: "London",
-                          state: "London",
-                          zip: "N12345",
-                          country: country)
+                          state: nil,
+                          zip: nil,
+                          country: Country(iso3166Alpha2: "GB"))
 
-    let phone = Phone(number: "77 1234 1234", country: country)
+    let billingFormData = BillingForm(name: "Bob Higgins", address: address, phone: nil)
 
-    let billingFormData = BillingForm(name: "User 1", address: address, phone: phone)
-
-    let billingFormStyle = Style.Custom2.billingForm
-
-    let paymentFormStyle = Style.Custom2.paymentForm
-
-    let supportedSchemes: [CardScheme] = [.visa, .mastercard, .maestro]
+    let supportedSchemes: [CardScheme] = [.visa, .mastercard, .maestro, .americanExpress, .mada]
 
     let configuration = PaymentFormConfiguration(apiKey: apiKey,
                                                  environment: environment,
                                                  supportedSchemes: supportedSchemes,
                                                  billingFormData: billingFormData)
 
-    let style = PaymentStyle(paymentFormStyle: paymentFormStyle,
-                             billingFormStyle: billingFormStyle)
+    let style = ThemeDemo.buildCustom2Example()
 
     let viewController = PaymentFormFactory.buildViewController(configuration: configuration,
                                                                 style: style,
