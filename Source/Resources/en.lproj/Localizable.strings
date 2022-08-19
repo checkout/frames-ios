@@ -14,7 +14,7 @@
 /* Accessory shown alongside input fields to denote that the input is not required for validation when completing request */
 "OptionalInputField" = "Optional";
 /* Title of input section on the Payment Form where user is expected to input the Cardholder name as displayed on card */
-"CardholderInputTitle" = "Cardholder Name";
+"CardholderInputTitle" = "Cardholder name";
 "ExpiryDate" = "Expiry date";
 "ExpiryDateFormat" = "Format is MM/YY";
 "ExpiryDatePlaceholder" = "_ _  / _ _";
@@ -31,26 +31,10 @@
 "city" = "City";
 "cancel" = "Cancel";
 "done" = "Done";
-"cardNumber" = "Card Number*";
-"cardholderName" = "Cardholder's name";
-"cardholderNameRequired" = "Cardholder's name*";
-"expirationDate" = "Expiration Date*";
-"cvv" = "CVV*";
-"billingDetails" = "Billing Details";
-"billingDetailsRequired" = "Billing Details*";
 "name" = "Name";
 "countryRegion" = "Country";
 "addressLine1" = "Address line 1";
 "addressLine2" = "Address line 2";
 "county" = "County";
-"postalTown" = "Town";
 "postcode" = "Postcode";
 "phone" = "Phone";
-"acceptedCards" = "Accepted Cards";
-"cardNumberInvalid" = "The card number is invalid";
-"cardTypeNotAccepted" = "The card type is not accepted";
-"cvvInvalid" = "The cvv is invalid";
-"expiryDateInvalid" = "The Expiry Date is invalid";
-"phoneNumberInvalid" = "Invalid, use country code (e.g. +44)";
-"cardViewControllerTitle" = "Payment";
-"addressViewControllerTitle" = "Billing";
