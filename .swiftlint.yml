@@ -1,12 +1,28 @@
+parent_config: https://raw.githubusercontent.com/raywenderlich/swift-style-guide/master/com.raywenderlich.swiftlint.yml
+
 included: # paths to include during linting. `--path` is ignored if present.
   - Source
   - iOS Example
+  - iOS Example Apple Pay
   - iOS Example Frame
   - iOS Example Frame Carthage
   - iOS Example Frame SPM
-excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Tests
+  - Checkout
+  - scripts
+  - Documentation
+  
+nesting:
+
+  type_level:
+    warning: 2
+
+  function_level:
+    warning: 3
+
+cyclomatic_complexity:
+  warning: 12
+
+excluded:
   - Carthage
   - Pods
-identifier_name:
-  excluded:
-    - id
