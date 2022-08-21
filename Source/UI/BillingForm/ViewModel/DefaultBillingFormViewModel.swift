@@ -6,7 +6,6 @@ import Checkout
  */
 
 final class DefaultBillingFormViewModel: BillingFormViewModel {
-
     // MARK: - Properties
 
     /// Delegates
@@ -92,7 +91,6 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     }
 
     private func getTextFieldCell(tableView: UITableView, indexPath: IndexPath, sender: UIViewController?) -> UITableViewCell {
-
         if let cell: BillingFormCellTextField = tableView.dequeueReusable(for: indexPath) {
             let cellStyle = updateTextFieldStyle(for: indexPath.row)
             cell.delegate = sender as? CellTextFieldDelegate
@@ -108,7 +106,6 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
     /// country selection button
     private func getCountryCell(tableView: UITableView, indexPath: IndexPath, sender: UIViewController?) -> UITableViewCell {
-
         if let cell: SelectionButtonTableViewCell = tableView.dequeueReusable(for: indexPath) {
             let cellStyle = updateCountrySelectionStyle(for: indexPath.row)
             cell.delegate = sender as? SelectionButtonTableViewCellDelegate
@@ -118,7 +115,6 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             return cell
         }
         return UITableViewCell()
-
     }
 
     /// update text fields with pre-filled text
@@ -163,7 +159,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         let isEmptyText = textField.text?.isEmpty ?? true
         let isMandatoryField = type.style?.isMandatory ?? false
         let shouldRemoveText = isEmptyText && isMandatoryField
-        let hasErrorValue = errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.allSatisfy({$0})
+        let hasErrorValue = errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.allSatisfy({ $0 })
 
         if !isEmptyText {
             textValueOfCellType[type.index] = textField.text
@@ -184,7 +180,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
         let shouldSaveText = !(textField.text?.isEmpty ?? true)
 
-        textValueOfCellType[type.index] =  shouldSaveText ? textField.text : nil
+        textValueOfCellType[type.index] = shouldSaveText ? textField.text : nil
 
         updatedRow = textField.tag
     }
@@ -244,7 +240,6 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
     }
 
     func doneButtonIsPressed(sender: UIViewController) {
-
         let phone = Phone(
             number: textValueOfCellType[BillingFormCell.phoneNumber(nil).index],
             country: country)
@@ -259,7 +254,7 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
 
         let name = textValueOfCellType[BillingFormCell.fullName(nil).index]
 
-        let data: BillingForm = BillingForm(name: name,
+        let data = BillingForm(name: name,
                                             address: address,
                                             phone: phone)
 

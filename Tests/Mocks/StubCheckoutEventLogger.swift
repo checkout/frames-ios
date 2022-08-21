@@ -14,7 +14,6 @@ class StubCheckoutEventLogger: CheckoutEventLogging {
     var addMetadataCalledWithPairs: [(metadata: String, value: String)] = []
 
     func add(metadata: String, value: String) {
-
         addMetadataCalledWithPairs.append((metadata, value))
     }
 
@@ -27,14 +26,12 @@ class StubCheckoutEventLogger: CheckoutEventLogging {
     private(set) var enableLocalProcessorCalledWith: MonitoringLevel?
 
     func enableLocalProcessor(monitoringLevel: MonitoringLevel) {
-
         enableLocalProcessorCalledWith = monitoringLevel
     }
 
     private(set) var enableRemoteProcessorCalledWith: (environment: CheckoutEventLoggerKit.Environment, remoteProcessorMetadata: RemoteProcessorMetadata)?
 
     func enableRemoteProcessor(environment: CheckoutEventLoggerKit.Environment, remoteProcessorMetadata: RemoteProcessorMetadata) {
-
         enableRemoteProcessorCalledWith = (environment, remoteProcessorMetadata)
     }
 }

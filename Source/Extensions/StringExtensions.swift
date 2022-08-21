@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 extension String {
-
     func getBundle(forClass: AnyClass) -> Foundation.Bundle {
 #if SWIFT_PACKAGE
         let baseBundle = Bundle.module

@@ -11,7 +11,6 @@ import Foundation
 import Checkout
 
 final class MockThreeDSWKNavigationHelperFactory: ThreeDSWKNavigationHelperFactoryProtocol {
-
     private(set) var buildCalledWith: (successURL: URL?, failureURL: URL?)?
     var buildToReturn: ThreeDSWKNavigationHelping = MockThreeDSWKNavigationHelper()
     func build(successURL: URL?, failureURL: URL?) -> ThreeDSWKNavigationHelping {

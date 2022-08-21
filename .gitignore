@@ -154,3 +154,6 @@ xcuserdata
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,swift,xcode,carthage,cocoapods,swiftpm
+
+# SwiftLint Remote Config Cache
+.swiftlint/RemoteConfigCache

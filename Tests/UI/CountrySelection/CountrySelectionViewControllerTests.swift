@@ -13,7 +13,6 @@ class MockDelegate: CountrySelectionViewControllerDelegate {
 }
 
 class CountrySelectionViewControllerTests: XCTestCase {
-
     var countrySelectionViewController = CountrySelectionViewController()
     let numberOfCountries = 256
 
@@ -107,5 +106,4 @@ class CountrySelectionViewControllerTests: XCTestCase {
                                                             cellForRowAt: indexPath)
         XCTAssertEqual(cell.textLabel?.text, countryAt50)
     }
-
 }

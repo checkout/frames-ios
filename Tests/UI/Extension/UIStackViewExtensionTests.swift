@@ -10,7 +10,6 @@ import XCTest
 @testable import Frames
 
 class UIStackViewExtensionTests: XCTestCase {
-
   func testAddArrangedSubviews() {
     let view1 = UIView()
     let view2 = UIView()
@@ -23,5 +22,4 @@ class UIStackViewExtensionTests: XCTestCase {
     XCTAssertEqual(stackView.arrangedSubviews[1], view2)
     XCTAssertEqual(stackView.arrangedSubviews[2], view3)
   }
-
 }

@@ -6,7 +6,6 @@ protocol PhoneNumberTextFieldDelegate: AnyObject {
 }
 
 class BillingFormTextFieldView: UIView {
-
     // MARK: - Properties
 
     weak var delegate: TextFieldViewDelegate?
@@ -46,7 +45,7 @@ class BillingFormTextFieldView: UIView {
     }()
 
     private(set) lazy var phoneNumberTextField: BillingFormTextField = {
-        let view: BillingFormTextField  = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self).disabledAutoresizingIntoConstraints()
+        let view: BillingFormTextField = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self).disabledAutoresizingIntoConstraints()
         view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         view.autocorrectionType = .no
         view.delegate = self
@@ -141,7 +140,6 @@ class BillingFormTextFieldView: UIView {
 // MARK: - Views Layout Constraint
 
 extension BillingFormTextFieldView {
-
     private func setupViewsInOrder() {
         backgroundColor = style?.backgroundColor
         setupHeaderLabel()
@@ -225,7 +223,6 @@ extension BillingFormTextFieldView {
 // MARK: - Text Field Delegate
 
 extension BillingFormTextFieldView: UITextFieldDelegate {
-
     func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
         textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
@@ -238,7 +235,6 @@ extension BillingFormTextFieldView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldReturn() ?? true
     }
-
 }
 
 // MARK: - Phone Number Text Delegate

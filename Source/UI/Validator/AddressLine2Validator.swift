@@ -8,5 +8,4 @@ class AddressLine2Validator: Validator {
     private func isEmpty(text: String?) -> Bool {
         text?.isEmpty ?? false
     }
-
 }

@@ -66,7 +66,7 @@ public final class SecurityCodeView: UIView {
 
 extension SecurityCodeView: TextFieldViewDelegate {
   func textFieldShouldBeginEditing(textField: UITextField) {}
-  func textFieldShouldReturn() -> Bool {  return true }
+  func textFieldShouldReturn() -> Bool { return true }
   func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
     viewModel.updateInput(to: textField.text)
     updateErrorViewStyle(isHidden: viewModel.isInputValid, textfieldText: textField.text)
@@ -91,10 +91,8 @@ extension SecurityCodeView: TextFieldViewDelegate {
 }
 
 extension SecurityCodeView: SecurityCodeViewModelDelegate {
-
     func schemeChanged() {
         let isInputValid = viewModel.isInputValid || viewModel.cvv.isEmpty
         updateErrorViewStyle(isHidden: isInputValid, textfieldText: viewModel.cvv)
     }
-
 }

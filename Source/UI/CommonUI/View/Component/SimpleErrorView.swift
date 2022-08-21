@@ -1,7 +1,6 @@
 import UIKit
 
 final class SimpleErrorView: UIView {
-
     lazy var headerLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
@@ -34,7 +33,6 @@ final class SimpleErrorView: UIView {
 }
 
 extension SimpleErrorView {
-
     private func setupViewsInOrder() {
         setupHeaderLabel()
         setupImageView()

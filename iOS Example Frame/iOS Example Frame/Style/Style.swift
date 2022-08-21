@@ -9,8 +9,6 @@
 import Foundation
 
 enum Style {
-
     static let paymentForm = PaymentFormStyleCustom1()
     static let billingForm = BillingFormStyleCustom1()
-
 }

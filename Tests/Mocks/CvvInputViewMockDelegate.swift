@@ -2,7 +2,6 @@ import XCTest
 @testable import Frames
 
 class CvvInputViewMockDelegate: UIViewController, UITextFieldDelegate {
-
     var calledTimes = 0
     var lastCalledWith: UITextField!
 

@@ -3,7 +3,6 @@ import FramesIos
 import Alamofire
 
 class MerchantAPIClient {
-
     let baseUrl = "https://just-a-test-2.herokuapp.com/"
     let headers = [
         "Content-Type": "application/json"
@@ -87,5 +86,4 @@ class MerchantAPIClient {
             }
         }
     }
-
 }

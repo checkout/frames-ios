@@ -3,12 +3,11 @@ import FramesIos
 import Alamofire
 
 class MerchantAPIClient {
-    
     let baseUrl = "https://just-a-test-2.herokuapp.com/"
     let headers = [
         "Content-Type": "application/json"
     ]
-    
+
     func get(customer: String, successHandler: @escaping (Customer) -> Void) {
         let endpoint = "customers/\(customer)"
         request("\(baseUrl)\(endpoint)").validate().responseJSON { response in
@@ -28,7 +27,7 @@ class MerchantAPIClient {
             }
         }
     }
-    
+
     func save(cardWith cardToken: String, for customer: String, isId: Bool = false,
               successHandler: @escaping () -> Void) {
         let endpoint = "cards/verify"
@@ -57,4 +56,3 @@ class MerchantAPIClient {
         }
     }
 }
-

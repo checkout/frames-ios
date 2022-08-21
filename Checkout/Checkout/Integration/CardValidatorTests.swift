@@ -65,7 +65,7 @@ final class CardValidatorTests: XCTestCase {
     let formatter = DateFormatter()
     formatter.timeZone = TimeZone.utcMinus12
     formatter.dateFormat = "yyyy-MM-dd"
-      
+
     let testDateString = formatter.string(from: Date())
     var testDate = formatter.date(from: testDateString)!
     testDate = calendar.date(byAdding: .month, value: -1, to: testDate)!

@@ -9,7 +9,6 @@ protocol BillingFormPhoneNumberTextDelegate {
 // `PhoneNumberTextField` is the parent textfield from `PhoneNumberKit`
 // `BillingFormPhoneNumberText` is a `PhoneNumberTextField` and implement `BillingFormTextField` protocol
 final class BillingFormPhoneNumberText: PhoneNumberTextField, BillingFormTextField {
-
     var type: BillingFormCell?
     var phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate?
 

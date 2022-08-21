@@ -23,5 +23,4 @@ public struct PaymentStyle {
         self.paymentFormStyle = paymentFormStyle
         self.billingFormStyle = billingFormStyle
     }
-
 }

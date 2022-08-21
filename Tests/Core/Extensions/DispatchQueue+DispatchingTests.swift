@@ -3,9 +3,7 @@ import XCTest
 @testable import Frames
 
 final class DispatchQueue_DispatchingTests: XCTestCase {
-
     func test_async_blockCalled() {
-
         let subject: Dispatching = DispatchQueue.main
 
         let expectation = XCTestExpectation(description: "Block called")
@@ -13,5 +11,4 @@ final class DispatchQueue_DispatchingTests: XCTestCase {
 
         wait(for: [expectation], timeout: 1.0)
     }
-
 }

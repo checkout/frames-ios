@@ -9,7 +9,6 @@ import UIKit
 
 /// Template theme generating UI components for your layout
 public struct Theme {
-
     // MARK: Font colors
     /// Font color associated with text displaying primary font colour, like inputs, titles and other important text
     public var primaryFontColor: UIColor
@@ -77,5 +76,4 @@ public struct Theme {
         self.backgroundColor = backgroundColor
         self.errorBorderColor = errorBorderColor
     }
-
 }

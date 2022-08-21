@@ -3,9 +3,8 @@ import Checkout
 @testable import Frames
 
 class PaymentViewModelTests: XCTestCase {
-
     var viewModel: DefaultPaymentViewModel!
-    
+
     func testInit() {
         let testCardValidator = CardValidator(environment: .sandbox)
         let testLogger = StubFramesEventLogger()
@@ -22,13 +21,13 @@ class PaymentViewModelTests: XCTestCase {
                                                 paymentFormStyle: nil,
                                                 billingFormStyle: nil,
                                                 supportedSchemes: testSupportedSchemes)
-        
+
         XCTAssertTrue(viewModel.cardValidator === testCardValidator)
         XCTAssertTrue((viewModel.logger as? StubFramesEventLogger) === testLogger)
         XCTAssertEqual(viewModel.billingFormData, testBillingFormData)
         XCTAssertEqual(viewModel.supportedSchemes, testSupportedSchemes)
     }
-    
+
     func testOnAppearSendsEventToLogger() {
         let testLogger = StubFramesEventLogger()
         let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
@@ -39,17 +38,17 @@ class PaymentViewModelTests: XCTestCase {
                                                   paymentFormStyle: nil,
                                                   billingFormStyle: nil,
                                                   supportedSchemes: [])
-        
+
         XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
         XCTAssertTrue(testLogger.logCalledWithFramesLogEvents.isEmpty)
-        
+
         viewModel.viewControllerWillAppear()
-        
+
         XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
         XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.count, 1)
         XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.first, .paymentFormPresented)
     }
-    
+
     func testOnBillingScreenShownSendsEventToLogger() {
         let testLogger = StubFramesEventLogger()
         let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
@@ -60,12 +59,12 @@ class PaymentViewModelTests: XCTestCase {
                                                   paymentFormStyle: nil,
                                                   billingFormStyle: nil,
                                                   supportedSchemes: [])
-        
+
         XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
         XCTAssertTrue(testLogger.logCalledWithFramesLogEvents.isEmpty)
-        
+
         viewModel.onBillingScreenShown()
-        
+
         XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
         XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.count, 1)
         XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.first, .billingFormPresented)
@@ -191,13 +190,13 @@ class PaymentViewModelTests: XCTestCase {
       let expectedSummaryText = try XCTUnwrap(viewModel.paymentFormStyle?.editBillingSummary?.summary?.text)
       XCTAssertEqual(expectedSummaryText, summaryValue)
   }
-    
+
     func testPreventDuplicateCardholderInput() {
         let paymentFormStyle = DefaultPaymentFormStyle()
         let billingFormStyle = DefaultBillingFormStyle()
         var viewModel = makeViewModel(paymentFormStyle: paymentFormStyle,
                                       billingFormStyle: billingFormStyle)
-        
+
         XCTAssertNotNil(viewModel.paymentFormStyle?.cardholderInput)
         var billingName = viewModel.billingFormStyle?.cells.first(where: {
             if case BillingFormCell.fullName = $0 {
@@ -206,7 +205,7 @@ class PaymentViewModelTests: XCTestCase {
             return false
         })
         XCTAssertNotNil(billingName)
-        
+
         viewModel.preventDuplicateCardholderInput()
         XCTAssertNotNil(viewModel.paymentFormStyle?.cardholderInput)
         billingName = viewModel.billingFormStyle?.cells.first(where: {
@@ -217,7 +216,7 @@ class PaymentViewModelTests: XCTestCase {
         })
         XCTAssertNil(billingName)
     }
-    
+
     func testCardholderIsUpdatedCallbackShouldEnablePayButton() {
         let model = makeViewModel()
         let testExpectation = expectation(description: "Should trigger callback")
@@ -227,7 +226,7 @@ class PaymentViewModelTests: XCTestCase {
         model.cardholderIsUpdated(value: "new owner")
         waitForExpectations(timeout: 0.1)
     }
-    
+
     private func makeViewModel(apiService: Frames.CheckoutAPIProtocol = StubCheckoutAPIService(),
                                cardValidator: CardValidator = CardValidator(environment: .sandbox),
                                logger: FramesEventLogging = StubFramesEventLogger(),

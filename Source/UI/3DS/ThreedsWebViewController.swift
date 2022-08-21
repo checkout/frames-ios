@@ -5,7 +5,6 @@ import CheckoutEventLoggerKit
 
 /// A view controller to manage 3ds
 public class ThreedsWebViewController: UIViewController {
-
     // MARK: - Properties
 
     var webView: WKWebView!

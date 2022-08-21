@@ -87,31 +87,31 @@ class BillingFormViewControllerTests: XCTestCase {
         let style = DefaultBillingFormStyle()
         let viewModel = DefaultBillingFormViewModel(style: style, delegate: fakeDelegate)
         let testVC = BillingFormViewController(viewModel: viewModel)
-        
+
         let expect = expectation(description: "Free up main thread in case UI work influences outcome")
         testVC.viewDidLoad()
         testVC.viewDidAppear(false)
         testVC.viewDidLayoutSubviews()
         testVC.viewWillDisappear(false)
         testVC.viewDidDisappear(false)
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: 1)
-        
+
         XCTAssertEqual(fakeDelegate.onBillingScreenShownCounter, 0)
     }
-    
+
     func testBillingViewControllerCallingDelegateOnLifecycleEvent() {
         let fakeDelegate = BillingFormViewModelMockDelegate()
         let style = DefaultBillingFormStyle()
         let viewModel = DefaultBillingFormViewModel(style: style, delegate: fakeDelegate)
         let testVC = BillingFormViewController(viewModel: viewModel)
-        
+
         testVC.viewWillAppear(true)
-        
+
         XCTAssertEqual(fakeDelegate.onBillingScreenShownCounter, 1)
     }
 }

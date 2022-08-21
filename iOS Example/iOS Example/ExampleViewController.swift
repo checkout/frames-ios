@@ -8,7 +8,6 @@ class ExampleViewController: UIViewController,
     CardViewControllerDelegate,
     CvvConfirmationViewControllerDelegate,
     ThreedsWebViewControllerDelegate {
-
     func onConfirm(controller: CvvConfirmationViewController, cvv: String) {
         if let card = selectedCard as? CustomerCard {
             merchantAPIClient.payWith3ds(value: 509, cardId: card.id, cvv: cvv, customer: customerEmail) { response in
@@ -166,5 +165,4 @@ class ExampleViewController: UIViewController,
     func onFailure3D() {
         print("dismissed 😢")
     }
-
 }

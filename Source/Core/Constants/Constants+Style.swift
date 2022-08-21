@@ -8,13 +8,10 @@
 import Foundation
 
 extension Constants {
-
     enum Style {
-
       static let animationLength: TimeInterval = 0.25
 
         enum PaymentForm {
-
           enum Header: Double {
             case subtitleFontSize = 13
           }
@@ -32,7 +29,6 @@ extension Constants {
         }
 
         enum BillingForm {
-
             enum CancelButton: Double {
                 case height = 44
                 case width = 80
@@ -80,7 +76,6 @@ extension Constants {
                 case borderWidth = 1
                 case textLeading = 20
             }
-
         }
     }
 }

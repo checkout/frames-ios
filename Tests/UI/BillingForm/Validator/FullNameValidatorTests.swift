@@ -2,7 +2,6 @@ import XCTest
 @testable import Frames
 
 class FullNameValidatorTests: XCTestCase {
-
     func testValidationWhenTextIsEmptyThenShouldBeTrue() {
         let expectedType = BillingFormCell.fullName(nil)
         let text = ""

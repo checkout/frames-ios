@@ -40,5 +40,4 @@ class BillingFormTextFieldViewTests: XCTestCase {
         XCTAssertEqual(view.textField.textColor, style.textfield.textColor)
         XCTAssertEqual(view.textField.tintColor, style.textfield.tintColor)
     }
-
 }

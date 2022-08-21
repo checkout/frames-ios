@@ -9,7 +9,6 @@
 import UIKit
 
 extension UIFont {
-
     enum SFMono: String, CaseIterable {
         case bold = "Bold"
         case boldItalic = "BoldItalic"
@@ -37,5 +36,4 @@ extension UIFont {
     convenience init (sfMono: SFMono = .regular, size: CGFloat) {
         self.init(name: sfMono.fontName, size: size)!
     }
-
 }

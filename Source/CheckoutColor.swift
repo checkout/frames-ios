@@ -1,7 +1,6 @@
 import UIKit
 
 extension UIColor {
-
   // MARK: - Blue
     public static let brandeisBlue = UIColor(hex: "#0B5FF0")
 
@@ -38,5 +37,4 @@ extension UIColor {
             alpha: CGFloat(1.0)
         )
     }
-
 }

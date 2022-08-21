@@ -1,13 +1,11 @@
 import Foundation
 
 protocol CorrelationIDManaging {
-
     func generateCorrelationID() -> String
     func destroyCorrelationID()
 }
 
 final class CorrelationIDManager: CorrelationIDManaging {
-
     private var correlationID: String?
 
     // MARK: - CorrelationIDManaging
@@ -24,5 +22,4 @@ final class CorrelationIDManager: CorrelationIDManaging {
     func destroyCorrelationID() {
         correlationID = nil
     }
-
 }

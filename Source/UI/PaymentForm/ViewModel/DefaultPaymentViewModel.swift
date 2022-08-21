@@ -21,13 +21,13 @@ class DefaultPaymentViewModel: PaymentViewModel {
   var billingFormStyle: BillingFormStyle?
   var currentScheme: Card.Scheme = .unknown
   var billingFormData: BillingForm?
-  var isLoading: Bool = false {
+  var isLoading = false {
     didSet {
       updateLoading?()
     }
   }
 
-  private var cardDetails: CardCreationModel =  CardCreationModel() {
+  private var cardDetails = CardCreationModel() {
     didSet {
       shouldEnablePayButton?(cardDetails.expiryDate != nil && cardDetails.number != nil)
     }
@@ -124,7 +124,6 @@ class DefaultPaymentViewModel: PaymentViewModel {
       .filter { !$0.isEmpty }
       .joined(separator: "\n\n")
   }
-
 }
 
 extension DefaultPaymentViewModel: BillingFormViewModelDelegate {

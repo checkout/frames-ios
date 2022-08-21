@@ -2,7 +2,6 @@ import UIKit
 import Checkout
 
 public struct PaymentFormFactory {
-
   // Persist in memory the correlation ID
   internal static var sessionCorrelationID = ""
 

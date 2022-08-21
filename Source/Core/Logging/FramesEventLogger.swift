@@ -1,18 +1,15 @@
 import CheckoutEventLoggerKit
 
 protocol FramesEventLogging {
-
     /// Logs the specified event.
     /// - Parameter framesLogEvent: The event to log.
     func log(_ framesLogEvent: FramesLogEvent)
 
     /// Adds a metadata value for the associated key to all subsequent log events.
     func add(metadata: String, forKey key: CheckoutEventLogger.MetadataKey)
-
 }
 
 final class FramesEventLogger: FramesEventLogging {
-
     private let getCorrelationID: () -> String
     private let checkoutEventLogger: CheckoutEventLogging
     private let dateProvider: DateProviding
@@ -43,7 +40,6 @@ final class FramesEventLogger: FramesEventLogging {
                                              appPackageName: String,
                                              appPackageVersion: String,
                                              uiDevice: UIDevice) -> RemoteProcessorMetadata {
-
             return RemoteProcessorMetadata(productIdentifier: Constants.productName,
                                            productVersion: Constants.version,
                                            environment: environment.rawValue,
@@ -83,7 +79,6 @@ final class FramesEventLogger: FramesEventLogging {
     }
 
     func add(metadata: String, forKey key: CheckoutEventLogger.MetadataKey) {
-
         checkoutEventLogger.add(metadata: key.rawValue, value: metadata)
     }
 }

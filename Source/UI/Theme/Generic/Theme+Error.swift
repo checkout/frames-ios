@@ -8,7 +8,6 @@
 import UIKit
 
 public extension Theme {
-
     /// Theme generated Error style
     struct ThemeError: ElementErrorViewStyle {
         public var text: String
@@ -18,7 +17,7 @@ public extension Theme {
         public var tintColor: UIColor
         public var image: UIImage?
         public var height: Double = 30
-        public var isHidden: Bool = true
+        public var isHidden = true
         public var font: UIFont
     }
 

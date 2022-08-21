@@ -10,7 +10,6 @@ import XCTest
 @testable import Frames
 
 class UIViewExtensionTests: XCTestCase {
-
   func testRemoveArrangedSubviews() {
     let view1 = UIView()
     let view2 = UIView()

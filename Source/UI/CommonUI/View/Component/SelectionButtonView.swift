@@ -49,11 +49,9 @@ class SelectionButtonView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }
 
 extension SelectionButtonView {
-
     private func setupViewsInOrder() {
         setupTitleLabel()
         setupHintLabel()
@@ -114,7 +112,6 @@ extension SelectionButtonView {
             errorView.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
-
 }
 
 extension SelectionButtonView: ButtonViewDelegate {

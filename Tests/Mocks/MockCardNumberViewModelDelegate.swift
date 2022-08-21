@@ -20,6 +20,5 @@ final class MockCardNumberViewModelDelegate: CardNumberViewModelDelegate {
       case .success(let cardInfo):
         updateCalledWithValue = (cardInfo.cardNumber, cardInfo.scheme)
     }
-
   }
 }

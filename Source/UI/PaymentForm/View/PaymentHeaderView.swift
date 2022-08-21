@@ -88,7 +88,6 @@ public final class PaymentHeaderView: UIView {
 }
 
 extension PaymentHeaderView {
-
   private func setupViewsInOrder() {
     setupMainStackView()
     setupIconStackView()

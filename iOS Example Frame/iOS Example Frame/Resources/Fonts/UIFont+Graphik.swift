@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 extension UIFont {
-
     enum GraphikStyle: String, CaseIterable {
         case black = "Black"
         case blackItalic = "BlackItalic"
@@ -47,5 +46,4 @@ extension UIFont {
     convenience init(graphikStyle: GraphikStyle, size: CGFloat) {
         self.init(name: graphikStyle.fontName, size: size)!
     }
-
 }

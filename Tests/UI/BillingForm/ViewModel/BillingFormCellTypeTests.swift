@@ -2,7 +2,6 @@ import XCTest
 @testable import Frames
 
 class BillingFormCellTests: XCTestCase {
-
     func testFullNameValidatorType() {
         XCTAssertTrue(BillingFormCell.fullName(nil).validator is FullNameValidator)
     }

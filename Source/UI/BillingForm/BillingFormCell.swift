@@ -1,7 +1,6 @@
 import Foundation
 
 @frozen public enum BillingFormCell {
-
     case fullName(CellTextFieldStyle?)
     case addressLine1(CellTextFieldStyle?)
     case addressLine2(CellTextFieldStyle?)

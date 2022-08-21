@@ -10,7 +10,6 @@ import CheckoutEventLoggerKit
 import UIKit
 
 extension RemoteProcessorMetadata {
-
     init(environment: Environment) {
         let appPackageName = Bundle.main.bundleIdentifier
             ?? Constants.Bundle.FallbackValues.noBundleIdentifier.rawValue
@@ -27,7 +26,6 @@ extension RemoteProcessorMetadata {
          appPackageName: String,
          appPackageVersion: String,
          uiDevice: UIDevice) {
-
         self.init(productIdentifier: Constants.productName,
                   productVersion: Constants.version,
                   environment: environment.rawValue,

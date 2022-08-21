@@ -10,7 +10,6 @@ import UIKit
 @testable import Frames
 
 final class SecureDisplayViewUIKitTests: XCTestCase {
-
     func testCreateView() {
         let view = SecureDisplayView.secure(UIView())
         validateView(view)

@@ -10,7 +10,6 @@ import Checkout
 import UIKit
 
 extension Constants.Bundle {
-
   enum Images: String, CaseIterable {
     case warning = "warning"
     case leftArrow = "left_arrow"

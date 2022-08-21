@@ -8,12 +8,11 @@
 import UIKit
 
 public extension Theme {
-
     /// Theme generated Title style
     struct ThemeTitle: ElementStyle {
         public var text: String
         public var textAlignment: NSTextAlignment = .natural
-        public var isHidden: Bool = false
+        public var isHidden = false
         public var font: UIFont
         public var backgroundColor: UIColor = .clear
         public var textColor: UIColor
@@ -25,5 +24,4 @@ public extension Theme {
                    font: UIFont.systemFont(ofSize: self.titleFontSize),
                    textColor: self.primaryFontColor)
     }
-
 }

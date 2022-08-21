@@ -40,11 +40,9 @@ final class BillingFormCellTextField: UITableViewCell {
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }
 
 extension BillingFormCellTextField {
-
     private func setupViewsInOrder() {
         guard let textFieldView = textFieldView else { return }
         contentView.addSubview(textFieldView)
@@ -81,7 +79,6 @@ extension BillingFormCellTextField: TextFieldViewDelegate {
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
         delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString) ?? true
     }
-
 }
 
 extension BillingFormCellTextField: PhoneNumberTextFieldDelegate {

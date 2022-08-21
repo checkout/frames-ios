@@ -1,7 +1,6 @@
 import UIKit
 
 extension UITextField {
-
     static func disableHardwareLayout() {
 #if targetEnvironment(simulator)
         // Disable hardware keyboards.

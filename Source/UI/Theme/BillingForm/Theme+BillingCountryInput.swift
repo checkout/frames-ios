@@ -8,10 +8,9 @@
 import UIKit
 
 public extension Theme {
-
     /// Theme generated Billing Country Input Style
     struct ThemeBillingCountryInput: CellButtonStyle {
-        public var isMandatory: Bool = true
+        public var isMandatory = true
         public var backgroundColor: UIColor = .clear
         public var button: ElementButtonStyle
         public var title: ElementStyle?
@@ -54,5 +53,4 @@ public extension Theme {
                                         mandatory: showMandatory ? self.buildIsRequiredInput(text: isRequiredText) : nil,
                                         error: showError ? self.buildError(text: errorText, image: errorImage) : nil)
     }
-
 }

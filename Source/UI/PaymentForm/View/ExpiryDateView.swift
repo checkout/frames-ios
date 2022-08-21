@@ -173,7 +173,6 @@ extension ExpiryDateView: TextFieldViewDelegate {
   }
 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
     updateErrorViewStyle(isHidden: true, textfieldText: textField.text)
     /*
      Expiry date text format is "MM/yy"

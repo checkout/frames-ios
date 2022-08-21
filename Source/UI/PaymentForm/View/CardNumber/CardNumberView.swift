@@ -85,7 +85,6 @@ extension CardNumberView: TextFieldViewDelegate {
   }
 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
     guard
       let oldValue = textField.text,
       let textRange = Range(range, in: oldValue)

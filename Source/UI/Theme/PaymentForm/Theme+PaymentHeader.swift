@@ -8,10 +8,9 @@
 import UIKit
 
 public extension Theme {
-
     /// Theme generated Payment Header for the Payment Form
     struct ThemePaymentHeader: PaymentHeaderCellStyle {
-        public var shouldHideAcceptedCardsList: Bool = false
+        public var shouldHideAcceptedCardsList = false
         public var backgroundColor: UIColor
         public var headerLabel: ElementStyle?
         public var subtitleLabel: ElementStyle?

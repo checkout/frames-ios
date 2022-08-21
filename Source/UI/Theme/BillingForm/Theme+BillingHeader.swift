@@ -8,7 +8,6 @@
 import UIKit
 
 public extension Theme {
-
     /// Theme generated Billing Header Style
     struct ThemeBillingHeader: BillingFormHeaderCellStyle {
         public var backgroundColor: UIColor = .clear
@@ -34,5 +33,4 @@ public extension Theme {
                            cancelButton: self.buildNavigationButton(text: cancelButtonTitle),
                            doneButton: self.buildNavigationButton(text: doneButtonTitle))
     }
-
 }

@@ -11,7 +11,6 @@ import Checkout
 @testable import Frames
 
 class PaymentViewControllerMockDelegate: PaymentViewControllerDelegate {
-
   var addBillingButtonIsPressedWithSender: [UINavigationController?] = []
   var editBillingButtonIsPressedWithSender: [UINavigationController?] = []
   var expiryDateIsUpdatedWithValue: [Result<ExpiryDate, ExpiryDateError>] = []
@@ -35,7 +34,7 @@ class PaymentViewControllerMockDelegate: PaymentViewControllerDelegate {
   func securityCodeIsUpdated(result: Result<String, SecurityCodeError>) {
     securityCodeIsUpdatedWithValue.append(result)
   }
-    
+
   func cardholderIsUpdated(value: String) {
     cardholderIsUpdatedWithValue.append(value)
     cardholderIsUpdatedCompletionHandler?()
@@ -44,5 +43,4 @@ class PaymentViewControllerMockDelegate: PaymentViewControllerDelegate {
   func payButtonIsPressed() {
     payButtonIsPressedCounter += 1
   }
-
 }

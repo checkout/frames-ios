@@ -26,7 +26,6 @@ protocol BillingFormViewControllerDelegate: AnyObject {
  */
 
 final class BillingFormViewController: UIViewController {
-
     // MARK: - Properties
 
     weak var delegate: BillingFormViewControllerDelegate?
@@ -140,7 +139,6 @@ final class BillingFormViewController: UIViewController {
 // MARK: - Views Layout Constraint
 
 extension BillingFormViewController {
-
     private func setupViewsInOrder() {
         setupHeaderView()
         setupTableView()
@@ -179,13 +177,11 @@ extension BillingFormViewController {
                 constant: Constants.Padding.l.rawValue)
         ])
     }
-
 }
 
 // MARK: - UITableViewDataSource and UITableViewDelegate
 
 extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableViewDelegate?.tableView(numberOfRowsInSection: section) ?? 0
     }
@@ -223,13 +219,11 @@ extension BillingFormViewController: CellTextFieldDelegate {
         view.endEditing(true)
         return false
     }
-
 }
 
 // MARK: - Header Cell Delegate
 
 extension BillingFormViewController: BillingFormHeaderCellDelegate {
-
     func doneButtonIsPressed() {
         delegate?.doneButtonIsPressed(sender: self)
     }

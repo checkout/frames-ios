@@ -8,7 +8,6 @@
 import UIKit
 
 public extension Theme {
-
     /// Theme generated Billing Form Style
     struct ThemeBillingForm: BillingFormStyle {
         public var mainBackground: UIColor
@@ -23,5 +22,4 @@ public extension Theme {
                          header: header,
                          cells: cells)
     }
-
 }

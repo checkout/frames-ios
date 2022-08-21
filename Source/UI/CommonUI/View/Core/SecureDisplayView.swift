@@ -12,7 +12,6 @@ import UIKit
 Secure display view preventing leaking of content
  */
 final class SecureDisplayView: UIView {
-
     // MARK: Protect content from leaking
     public override var subviews: [UIView] { [] }
     public override var inputView: UIView? { nil }

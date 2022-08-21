@@ -1,5 +1,4 @@
 extension Dictionary {
-
     /// Returns an updated `Dictionary`containing the `value` associated to the `key`, if the value is not nil.
     /// If the key does not exist, then the value is inserted, otherwise the existing value associated with the key is replaced.
     /// - Parameters:
@@ -7,7 +6,6 @@ extension Dictionary {
     ///   - value: The value to insert or replace.
     /// - Returns: A new `Dictionary`  containing the `value` associated to the `key`, if the value is not nil.
     func updating(key: Key, value: Value?) -> Self {
-
         guard let value = value else { return self }
 
         var result = self
@@ -20,8 +18,6 @@ extension Dictionary {
     /// - Parameter transform: A closure that transforms the key to a different type.
     /// - Returns: A dictionary with transformed keys that correspond to the same values.
     func mapKeys<T>(_ transform: (Key) throws -> T) rethrows -> [T: Value] {
-
-        return .init(uniqueKeysWithValues: try map { (key, value) in (try transform(key), value) })
+        return .init(uniqueKeysWithValues: try map { key, value in (try transform(key), value) })
     }
-
 }

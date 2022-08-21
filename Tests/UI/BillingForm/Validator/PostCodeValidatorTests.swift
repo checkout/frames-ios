@@ -2,7 +2,6 @@ import XCTest
 @testable import Frames
 
 class PostcodeValidatorTests: XCTestCase {
-
     func testValidationWhenTextIsEmptyThenShouldBeTrue() {
         let expectedType = BillingFormCell.postcode(nil)
         let text = ""

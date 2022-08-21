@@ -9,9 +9,8 @@
 import XCTest
 
 class MockSecurityCodeDelegate: SecurityCodeViewModelDelegate {
-    
     var schemeChangedCompletion = { XCTFail("Not setup to happen") }
-    
+
     func schemeChanged() {
         schemeChangedCompletion()
     }

@@ -8,7 +8,6 @@
 import UIKit
 
 public extension Theme {
-
     /// Theme generated Subtitle style
     struct ThemeSubtitle: ElementStyle {
         public var text: String
@@ -18,7 +17,7 @@ public extension Theme {
         public var tintColor: UIColor
         public var image: UIImage?
         public var height: Double = 30
-        public var isHidden: Bool = false
+        public var isHidden = false
         public var font: UIFont
     }
 

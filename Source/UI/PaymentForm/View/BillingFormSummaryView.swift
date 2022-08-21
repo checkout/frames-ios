@@ -70,11 +70,9 @@ class BillingFormSummaryView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }
 
 extension BillingFormSummaryView {
-
      func setupViewsInOrder() {
         setupTitleLabel()
         setupHintLabel()
@@ -172,7 +170,6 @@ extension BillingFormSummaryView {
             errorView.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
-
 }
 
 extension BillingFormSummaryView: ButtonViewDelegate {

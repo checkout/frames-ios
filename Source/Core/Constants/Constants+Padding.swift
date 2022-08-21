@@ -11,7 +11,6 @@ extension Constants {
     static let defaultNavigationHeaderFontSize: Double = 15
 
     public enum Padding: Double {
-
         /// parameter size: 2
         case xxs = 2
 

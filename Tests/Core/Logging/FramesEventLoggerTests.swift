@@ -4,7 +4,6 @@ import XCTest
 @testable import Frames
 
 final class FramesEventLoggerTests: XCTestCase {
-
     private var stubCheckoutEventLogger: StubCheckoutEventLogger!
     private var stubDateProvider: StubDateProvider!
     private var subject: FramesEventLogger!
@@ -13,7 +12,6 @@ final class FramesEventLoggerTests: XCTestCase {
     // MARK: - setUp
 
     override func setUp() {
-
         super.setUp()
 
         stubCheckoutEventLogger = StubCheckoutEventLogger()
@@ -27,7 +25,6 @@ final class FramesEventLoggerTests: XCTestCase {
     // MARK: - tearDown
 
     override func tearDown() {
-
         stubCheckoutEventLogger = nil
         stubDateProvider = nil
         subject = nil
@@ -38,7 +35,6 @@ final class FramesEventLoggerTests: XCTestCase {
     // MARK: - log
 
     func test_log_logCalledWithCorrectEvent() {
-
         let expectedDate = Date()
         stubDateProvider.currentDateReturnValue = expectedDate
 
@@ -55,7 +51,6 @@ final class FramesEventLoggerTests: XCTestCase {
     }
 
     func test_log_twiceForTwoCorrelationID() {
-
         let expectedDate = Date()
         stubDateProvider.currentDateReturnValue = expectedDate
 
@@ -77,7 +72,6 @@ final class FramesEventLoggerTests: XCTestCase {
     }
 
     func test_log_onlyOnceForCorrelationID() {
-
         let expectedDate = Date()
         stubDateProvider.currentDateReturnValue = expectedDate
 
@@ -100,7 +94,6 @@ final class FramesEventLoggerTests: XCTestCase {
     // MARK: - add
 
     func test_add_metadataAndKey_addCalledWithCorrectMetadata() {
-
         let key = CheckoutEventLogger.MetadataKey.correlationID
         let expectedMetadata = key.rawValue
 
@@ -111,7 +104,6 @@ final class FramesEventLoggerTests: XCTestCase {
     }
 
     func test_add_metadataAndKey_addCalledWithCorrectValue() {
-
         let expectedValue = "expected metadata"
 
         subject.add(metadata: expectedValue, forKey: .correlationID)
@@ -119,5 +111,4 @@ final class FramesEventLoggerTests: XCTestCase {
         let actualValue = stubCheckoutEventLogger.addMetadataCalledWithPairs.first?.value
         XCTAssertEqual(expectedValue, actualValue)
     }
-
 }

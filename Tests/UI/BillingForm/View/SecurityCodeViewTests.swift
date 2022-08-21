@@ -23,14 +23,14 @@ class SecurityCodeViewTests: XCTestCase {
   }
 
   // Invalid string case of of pre-filled security code text from the merchant.
-    func testInValidCodePrefilledTextFieldTextStyle(){
+    func testInValidCodePrefilledTextFieldTextStyle() {
       style.textfield.text = "Test"
       view.update(style: style)
       XCTAssertEqual(view.codeInputView.textFieldView.textField.text, "")
     }
 
     // Invalid old date case of of pre-filled security code  text from the merchant.
-    func testInValid1CodePrefilledTextFieldTextStyle(){
+    func testInValid1CodePrefilledTextFieldTextStyle() {
       style.textfield.text = "1"
       view.update(style: style)
 
@@ -38,11 +38,10 @@ class SecurityCodeViewTests: XCTestCase {
     }
 
     // Valid date case of pre-filled security code  text from the merchant.
-    func testValidCodePrefilledTextFieldTextStyle(){
+    func testValidCodePrefilledTextFieldTextStyle() {
       style.textfield.text = "1234"
       view.update(style: style)
 
       XCTAssertEqual(view.codeInputView.textFieldView.textField.text, "1234")
     }
-
 }

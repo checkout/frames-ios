@@ -4,7 +4,6 @@ import WebKit
 @testable import Checkout
 
 class ThreedsWebViewControllerMockDelegate: ThreedsWebViewControllerDelegate {
-
     private(set) var onSuccess3DCalledTimes = 0
 
     func onSuccess3D() {
@@ -31,7 +30,6 @@ class ThreedsWebViewControllerMockDelegate: ThreedsWebViewControllerDelegate {
 }
 
 class WKNavigationActionMock: WKNavigationAction {
-
     var requestToReturn = URLRequest(url: URL(staticString: "https://www.example.com"))
 
     override var request: URLRequest { requestToReturn }
@@ -54,12 +52,10 @@ class ThreedsWebViewControllerForDismiss: ThreedsWebViewController {
 }
 
 class URLHelperMock: URLHelping {
-
     private(set) var urlsMatchCalledWith: [(redirectUrl: URL, matchingUrl: URL)] = []
     var urlsMatchToReturn: [URL: [URL: Bool]] = [:]
 
     func urlsMatch(redirectUrl: URL, matchingUrl: URL) -> Bool {
-
         urlsMatchCalledWith.append((redirectUrl, matchingUrl))
         return urlsMatchToReturn[redirectUrl]?[matchingUrl] ?? false
     }
@@ -68,7 +64,6 @@ class URLHelperMock: URLHelping {
     var extractTokenToReturn: String?
 
     func extractToken(from url: URL) -> String? {
-
         extractTokenCalledWith.append(url)
         return extractTokenToReturn
     }
@@ -79,7 +74,6 @@ enum TestError: Error {
 }
 
 class ThreedsWebViewControllerTests: XCTestCase {
-
     var threedsWebViewController: ThreedsWebViewController!
     let navigationAction = WKNavigationActionMock()
     var urlHelper = URLHelperMock()
@@ -113,8 +107,8 @@ class ThreedsWebViewControllerTests: XCTestCase {
     }
 
     func testInitializationWithUrls() {
-        let successUrl =  URL(string: "https://www.successurl.com/")!
-        let failUrl =  URL(string: "https://www.failurl.com/")!
+        let successUrl = URL(string: "https://www.successurl.com/")!
+        let failUrl = URL(string: "https://www.failurl.com/")!
         _ = ThreedsWebViewController(checkoutAPIProtocol: checkoutAPIService, successUrl: successUrl, failUrl: failUrl, threeDSWKNavigationHelperFactory: mockThreeDSWKNavigationHelperFactory)
     }
 

@@ -99,4 +99,3 @@ final class CardNumberViewTests: XCTestCase {
     XCTAssertEqual(mockViewModel.validateCalledWith, "12345")
   }
 }
-

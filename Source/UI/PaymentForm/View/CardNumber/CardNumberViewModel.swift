@@ -38,7 +38,6 @@ class CardNumberViewModel {
 }
 
 extension CardNumberViewModel: CardNumberViewModelProtocol {
-
   func validate(cardNumber rawText: String) -> Constants.Bundle.SchemeIcon? {
     let cardNumber = CardUtils.removeNonDigits(from: rawText)
 

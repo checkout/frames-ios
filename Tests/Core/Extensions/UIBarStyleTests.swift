@@ -10,7 +10,6 @@ import XCTest
 @testable import Frames
 
 final class UIBarStyleTests: XCTestCase {
-
     func test_stringValue() {
         let testCases: [(UIBarStyle, String)] = [(.default, "default"),
                                                  (.black, "black"),

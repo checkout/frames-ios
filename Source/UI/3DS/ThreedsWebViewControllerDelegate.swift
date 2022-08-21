@@ -2,7 +2,6 @@ import Foundation
 
 /// Methods to handle the response in the 3ds web view
 public protocol ThreedsWebViewControllerDelegate: AnyObject {
-
     /// Called if the response is successful
     @available(*, deprecated, renamed: "threeDSWebViewControllerAuthenticationDidSucceed(_:token:)")
     func onSuccess3D()
@@ -22,11 +21,9 @@ public protocol ThreedsWebViewControllerDelegate: AnyObject {
     /// - Parameters:
     ///   - threeDSWebViewController: The `ThreedsWebViewController` instance calling this method.
     func threeDSWebViewControllerAuthenticationDidFail(_ threeDSWebViewController: ThreedsWebViewController)
-
 }
 
 public extension ThreedsWebViewControllerDelegate {
-
     func onSuccess3D() {}
 
     func onFailure3D() {}

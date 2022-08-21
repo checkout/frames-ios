@@ -14,7 +14,7 @@ final class MockCardValidator: CardValidating {
         eagerValidateCardNumberCalledWith = cardNumber
         return eagerValidateCardNumberToReturn
     }
-    
+
     var expectedValidateCompletenessResult: Result<ValidationScheme, ValidationError.CardNumber> = .failure(.invalidCharacters)
     var receivedValidateCompletenessCardNumbers: [String] = []
     func validateCompleteness(cardNumber: String) -> Result<CardValidating.ValidationScheme, ValidationError.CardNumber> {
@@ -46,7 +46,7 @@ final class MockCardValidator: CardValidating {
     func isValid(cvv: String, for scheme: Card.Scheme) -> Bool {
         expectedIsValidCVV
     }
-    
+
 
     var validateExpiryStringToReturn: Result<ExpiryDate, ValidationError.ExpiryDate> = expiryDate(month: 2, year: 2050)
     private(set) var validateExpiryStringCalledWith: (expiryMonth: String, expiryYear: String)?

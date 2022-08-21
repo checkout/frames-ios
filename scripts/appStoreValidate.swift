@@ -2,7 +2,6 @@ import Combine
 import Foundation
 
 struct AppleIDCredentials: Decodable {
-
     enum CodingKeys: String, CodingKey {
         case appleID = "appleId"
         case appSpecificPassword
@@ -10,16 +9,13 @@ struct AppleIDCredentials: Decodable {
 
     let appleID: String
     let appSpecificPassword: String
-
 }
 
 func printError(_ text: String, terminator: String = "\n") {
-
     fputs("Error: \(text)\(terminator)", stderr)
 }
 
 func environmentValue(forKey key: String) -> String {
-
     guard let value = ProcessInfo.processInfo.environment[key] else {
         printError("Unable to get environment variable \(key)")
         exit(EXIT_FAILURE)
@@ -28,7 +24,6 @@ func environmentValue(forKey key: String) -> String {
 }
 
 func execute(_ arguments: String...) -> Int32 {
-
     let task = Process()
     task.launchPath = "/usr/bin/env"
     task.arguments = arguments
@@ -38,7 +33,6 @@ func execute(_ arguments: String...) -> Int32 {
 }
 
 func handleCompletion(_ completion: Subscribers.Completion<Error>) {
-
     if case .failure(let error) = completion {
         printError("Credentials request failed: \(error.localizedDescription)")
         exit(EXIT_FAILURE)
@@ -46,7 +40,6 @@ func handleCompletion(_ completion: Subscribers.Completion<Error>) {
 }
 
 func handleAppleIDCredentials(_ appleIDCredentials: AppleIDCredentials) {
-
     let terminationStatus = execute(
         "xcrun", "altool", "--validate-app",
         "--file", bitriseIPAPath,

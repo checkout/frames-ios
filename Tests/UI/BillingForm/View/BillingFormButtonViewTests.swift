@@ -33,5 +33,4 @@ class BillingFormButtonViewTests: XCTestCase {
     func testErrorStyle() {
         XCTAssertTrue(view.errorView.isHidden)
     }
-
 }

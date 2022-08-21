@@ -9,11 +9,10 @@ import Foundation
 import UIKit
 
 public extension Theme {
-
     /// Theme generated TextField style
     struct ThemeTextField: ElementTextFieldStyle {
         public var text: String
-        public var isSupportingNumericKeyboard: Bool = true
+        public var isSupportingNumericKeyboard = true
         public var textAlignment: NSTextAlignment = .natural
         public var height: Double = 30
         public var cornerRadius: CGFloat
@@ -23,7 +22,7 @@ public extension Theme {
         public var normalBorderColor: UIColor
         public var focusBorderColor: UIColor
         public var errorBorderColor: UIColor
-        public var isHidden: Bool = false
+        public var isHidden = false
         public var font: UIFont
         public var backgroundColor: UIColor
         public var textColor: UIColor
@@ -46,5 +45,4 @@ public extension Theme {
                        backgroundColor: self.textInputBackgroundColor,
                        textColor: self.primaryFontColor)
     }
-
 }

@@ -3,7 +3,6 @@ import Checkout
 
 /// Payment Form Utilities
 final class CardUtils {
-
   // MARK: - Methods
 
   /// Format the card number based on the card type

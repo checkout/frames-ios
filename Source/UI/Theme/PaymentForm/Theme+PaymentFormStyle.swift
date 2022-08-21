@@ -8,7 +8,6 @@
 import UIKit
 
 public extension Theme {
-
     /// Theme generated payment form
     struct ThemePaymentForm: PaymentFormStyle {
         public var backgroundColor: UIColor
@@ -41,5 +40,4 @@ public extension Theme {
                          securityCode: securityCode,
                          payButton: payButton)
     }
-
 }

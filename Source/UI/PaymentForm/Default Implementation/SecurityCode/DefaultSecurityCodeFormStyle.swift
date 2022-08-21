@@ -8,7 +8,7 @@
 import UIKit
 
 public struct DefaultSecurityCodeFormStyle: CellTextFieldStyle {
-    public var isMandatory: Bool = true
+    public var isMandatory = true
     public var backgroundColor: UIColor = .clear
     public var title: ElementStyle? = DefaultTitleLabelStyle(text: Constants.LocalizationKeys.PaymentForm.SecurityCode.title)
     public var hint: ElementStyle? = DefaultHintInputLabelStyle(text: Constants.LocalizationKeys.PaymentForm.SecurityCode.hint)

@@ -41,7 +41,7 @@ final class StubCalendar: CalendarProtocol {
       return dateByAddingToReturn
     }
   }
-  
+
   func component(_ component: Calendar.Component, from date: Date) -> Int {
     Calendar(identifier: .gregorian).component(component, from: date)
   }

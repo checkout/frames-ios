@@ -8,7 +8,7 @@ class BillingFormViewModelMockDelegate: BillingFormViewModelDelegate {
 
     var updateCountryCodeCalledTimes = 0
     var updateCountryCodeLastCalledWithCode: Int?
-    
+
     var onBillingScreenShownCounter = 0
 
     func onTapDoneButton(data: BillingForm) {

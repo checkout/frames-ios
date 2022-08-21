@@ -41,5 +41,4 @@ class BillingFormTextFieldCellTests: XCTestCase {
         XCTAssertEqual(delegate.textFieldShouldEndEditingLastCalledWithTextField, textField)
         XCTAssertTrue(shouldEndEditing)
     }
-
 }

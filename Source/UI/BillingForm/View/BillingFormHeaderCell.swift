@@ -59,7 +59,6 @@ final class BillingFormHeaderCell: UIView {
 }
 
 extension BillingFormHeaderCell {
-
     private func setupViewsInOrder() {
         backgroundColor = style?.backgroundColor
         setupCancelButton()

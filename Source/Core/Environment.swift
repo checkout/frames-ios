@@ -7,7 +7,6 @@ import CheckoutEventLoggerKit
 /// - live
 /// - sandbox
 @frozen public enum Environment: String {
-
     /// live environment used for production using
     case live
 

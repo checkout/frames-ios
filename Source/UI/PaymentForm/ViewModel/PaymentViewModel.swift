@@ -5,7 +5,7 @@ protocol PaymentViewModel {
   var billingFormData: BillingForm? { get set }
   var paymentFormStyle: PaymentFormStyle? { get set }
   var billingFormStyle: BillingFormStyle? { get set }
-  var supportedSchemes: [Card.Scheme] { get set}
+  var supportedSchemes: [Card.Scheme] { get set }
   var cardValidator: CardValidator { get set }
   var logger: FramesEventLogging { get }
   var isLoading: Bool { get set }
@@ -26,7 +26,6 @@ protocol PaymentViewModel {
 }
 
 extension PaymentViewModel {
-
     mutating func preventDuplicateCardholderInput() {
         if paymentFormStyle?.cardholderInput != nil {
             let filteredCells = billingFormStyle?.cells.filter {
@@ -38,5 +37,4 @@ extension PaymentViewModel {
             billingFormStyle?.cells = filteredCells
         }
     }
-
 }

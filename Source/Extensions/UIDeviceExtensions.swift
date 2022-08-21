@@ -1,13 +1,11 @@
 import UIKit
 
 protocol UIDevice {
-
     var modelName: String { get }
     var systemVersion: String { get }
 }
 
 extension UIKit.UIDevice: UIDevice {
-
     var modelName: String {
         // added simulator support from https://gist.github.com/SergLam/50c0e400877d76c499c2649b109b3890
         #if targetEnvironment(simulator)

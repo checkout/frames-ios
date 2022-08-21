@@ -9,9 +9,7 @@ import XCTest
 @testable import Frames
 
 final class ResourcesTests: XCTestCase {
-
     func test_findExpectedResources() {
-
         let framesTopLevelBundle = Bundle(for: CardUtils.self)
 
         #if SWIFT_PACKAGE
@@ -33,7 +31,7 @@ final class ResourcesTests: XCTestCase {
         #if !SWIFT_PACKAGE && !COCOAPODS
         let framesResourceBundleURL = framesTopLevelBundle.bundleURL
         #endif
-        
+
         guard let framesResourceBundle = Bundle(url: framesResourceBundleURL) else {
             XCTFail("could not find internal bundle")
             return

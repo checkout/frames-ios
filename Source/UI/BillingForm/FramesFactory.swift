@@ -2,7 +2,6 @@ import UIKit
 
 /// Factory object building required components to start presenting a tokenisation journey to the user
 public struct FramesFactory {
-
     public static var defaultPaymentFormStyle: PaymentFormStyle {
         DefaultPaymentFormStyle()
     }
@@ -24,15 +23,13 @@ public struct FramesFactory {
     }
 
     static func getBillingFormViewController(style: BillingFormStyle?, data: BillingForm?, delegate: BillingFormViewModelDelegate?) -> UINavigationController? {
-
         guard let style = style, !style.cells.isEmpty else { return nil }
         let viewModel = DefaultBillingFormViewModel(style: style, data: data, delegate: delegate)
         let viewController = BillingFormViewController(viewModel: viewModel)
 
         if #available(iOS 13.0, *) {
-            viewController.isModalInPresentation  = true
+            viewController.isModalInPresentation = true
         }
         return UINavigationController(rootViewController: viewController)
     }
-
 }

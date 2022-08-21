@@ -4,7 +4,7 @@ public struct DefaultCountryFormButtonStyle: ElementButtonStyle {
     public var textAlignment: NSTextAlignment = .natural
     public var image: UIImage? = Constants.Bundle.Images.rightArrow.image?.imageFlippedForRightToLeftLayoutDirection()
     public var text: String = "countryRegion".localized(forClass: CheckoutTheme.self)
-    public var font: UIFont = UIFont.systemFont(ofSize: Constants.Style.BillingForm.InputCountryButton.fontSize.rawValue)
+    public var font = UIFont.systemFont(ofSize: Constants.Style.BillingForm.InputCountryButton.fontSize.rawValue)
     public var disabledTextColor: UIColor = .mediumGray
     public var disabledTintColor: UIColor = .mediumGray
     public var activeTintColor: UIColor = .brandeisBlue

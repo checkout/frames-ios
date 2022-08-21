@@ -17,7 +17,6 @@ struct Factory {
   private static let environment: Frames.Environment = .sandbox
 
   static func getDefaultPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
-
     let country = Country(iso3166Alpha2: "GB")!
 
     let address = Address(addressLine1: "Test line1",
@@ -53,7 +52,6 @@ struct Factory {
   }
 
   static func getMatrixPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
-
     let country = Country(iso3166Alpha2: "GB")!
 
     let address = Address(addressLine1: "Test line1",
@@ -89,7 +87,6 @@ struct Factory {
   }
 
   static func getOtherPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
-
     let address = Address(addressLine1: "78 Marvelous Rd",
                           addressLine2: nil,
                           city: "London",
@@ -114,5 +111,4 @@ struct Factory {
 
     return viewController
   }
-
 }

@@ -8,13 +8,12 @@
 import UIKit
 
 public extension Theme {
-
     /// Theme generated Payment Header View Subtitle  for the Payment Form
     struct ThemePaymentHeaderSubtitle: ElementStyle {
         public var text: String
         public var textAlignment: NSTextAlignment = .natural
         public var font: UIFont
-        public var isHidden: Bool = false
+        public var isHidden = false
         public var backgroundColor: UIColor = .clear
         public var textColor: UIColor
     }

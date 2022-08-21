@@ -8,10 +8,9 @@
 import UIKit
 
 public extension Theme {
-
     /// Theme generated Pay Button
     struct ThemePayButton: ElementButtonStyle {
-        public var isEnabled: Bool = true
+        public var isEnabled = true
         public var disabledTextColor: UIColor
         public var disabledTintColor: UIColor
         public var activeTintColor: UIColor
@@ -26,7 +25,7 @@ public extension Theme {
         public var borderWidth: CGFloat
         public var height: Double = 60
         public var width: Double = 70
-        public var isHidden: Bool = false
+        public var isHidden = false
         public var text: String
         public var font: UIFont
         public var backgroundColor: UIColor

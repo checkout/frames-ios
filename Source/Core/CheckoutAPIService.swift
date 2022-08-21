@@ -17,7 +17,6 @@ protocol CheckoutAPIProtocol {
 }
 
 public final class CheckoutAPIService: CheckoutAPIProtocol {
-
     let cardValidator: CardValidating
     let logger: FramesEventLogging
     private let checkoutAPIService: Checkout.CheckoutAPIProtocol

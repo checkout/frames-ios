@@ -10,7 +10,6 @@ import Checkout
 @testable import Frames
 
 class FramesFactoryTests: XCTestCase {
-    
   func testGetPaymentFormViewController() throws {
     let billingFormStyle = FramesFactory.defaultBillingFormStyle
     let paymentFormStyle = FramesFactory.defaultPaymentFormStyle
@@ -45,14 +44,14 @@ class FramesFactoryTests: XCTestCase {
     func testLoggerCorrelationIDUpdatedOnEachFactoryUse() {
         // This will be setup by some other tests running as part of full test suite
         let startCorrelationID = PaymentFormFactory.sessionCorrelationID
-        
+
         let formConfig = PaymentFormConfiguration(apiKey: "", environment: .sandbox, supportedSchemes: [.visa], billingFormData: nil)
         let formStyle = PaymentStyle(paymentFormStyle: FramesFactory.defaultPaymentFormStyle,
                                      billingFormStyle: FramesFactory.defaultBillingFormStyle)
-        
+
         // Creating a VC will generate a new session correlation id
         _ = PaymentFormFactory.buildViewController(configuration: formConfig, style: formStyle) { _ in }
-        
+
         XCTAssertNotEqual(PaymentFormFactory.sessionCorrelationID, startCorrelationID)
     }
 }

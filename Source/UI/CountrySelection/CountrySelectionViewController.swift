@@ -6,7 +6,6 @@ public final class CountrySelectionViewController: UIViewController,
     UITableViewDelegate,
     UITableViewDataSource,
     UISearchBarDelegate {
-
     // MARK: - Properties
 
     var countries: [(String, String)] {
@@ -142,5 +141,4 @@ public final class CountrySelectionViewController: UIViewController,
         filteredCountries = countries
         tableView.reloadData()
     }
-
 }

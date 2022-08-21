@@ -12,7 +12,6 @@ protocol SecurityCodeViewModelDelegate: AnyObject {
 }
 
 final class SecurityCodeViewModel {
-
     weak var delegate: SecurityCodeViewModelDelegate?
 
     private(set) var inputMaxLength: Int

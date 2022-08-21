@@ -9,7 +9,6 @@ import XCTest
 @testable import Frames
 
 final class URL_ExtensionsTests: XCTestCase {
-
     func test_withoutQuery_withQuery() {
         let testURL = URL(string: "https://www.checkout.com/test/path?test=test_value")!
         let expectedResult = URL(string: "https://www.checkout.com/test/path")!

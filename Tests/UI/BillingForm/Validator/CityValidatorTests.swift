@@ -2,7 +2,6 @@ import XCTest
 @testable import Frames
 
 class CityValidatorTests: XCTestCase {
-
     func testValidationWhenTextIsEmptyThenShouldBeTrue() {
         let expectedType = BillingFormCell.city(nil)
         let text = ""

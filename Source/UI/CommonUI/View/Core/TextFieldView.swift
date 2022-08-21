@@ -52,7 +52,6 @@ class TextFieldView: UIView {
 }
 
 extension TextFieldView: UITextFieldDelegate {
-
     func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
     }

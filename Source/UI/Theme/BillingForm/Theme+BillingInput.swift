@@ -8,7 +8,6 @@
 import UIKit
 
 public extension Theme {
-
     /// Theme generated Billing Input Style
     struct ThemeBillingInput: CellTextFieldStyle {
         public var textfield: ElementTextFieldStyle

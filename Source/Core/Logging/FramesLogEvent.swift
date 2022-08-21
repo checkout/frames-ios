@@ -2,7 +2,6 @@ import Foundation
 import CheckoutEventLoggerKit
 
 enum FramesLogEvent: Equatable, PropertyProviding {
-
     enum Property: String {
         case environment
         case errorCodes

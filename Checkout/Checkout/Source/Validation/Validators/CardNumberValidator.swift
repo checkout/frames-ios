@@ -9,7 +9,7 @@ import Foundation
 
 public protocol CardNumberValidating {
   typealias ValidationScheme = (isComplete: Bool, scheme: Card.Scheme)
-    
+
   /// Run a validation on an input that is known to be incomplete
   ///
   /// - Parameters:
@@ -23,7 +23,7 @@ public protocol CardNumberValidating {
   ///   - cardNumber: complete card number to be verified if matching a Card Scheme
   /// - Returns: Result with a card scheme if matched or a matching error otherwise
   func validate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber>
-    
+
   /// Run a validation on an input that is expected to match a card number but unknown whether complete or not
   ///
   /// - Parameters:
@@ -42,7 +42,7 @@ final class CardNumberValidator: CardNumberValidating {
   func validate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber> {
     return validateCompleteness(cardNumber: cardNumber).map(\.scheme)
   }
-    
+
   func validateCompleteness(cardNumber: String) -> Result<ValidationScheme, ValidationError.CardNumber> {
     let cardNumber = cardNumber.removeWhitespaces()
     guard validateDigitsOnly(in: cardNumber) else {
@@ -96,12 +96,11 @@ final class CardNumberValidator: CardNumberValidating {
   private func validateDigitsOnly(in string: String) -> Bool {
     return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: string))
   }
-    
+
   private func addSchemePropertyIfNeeded(scheme: Card.Scheme?, cardNumber: String) -> Card.Scheme? {
     if case .maestro = scheme {
       return .maestro(length: cardNumber.filter { Int("\($0)") != nil }.count)
     }
     return scheme
   }
-    
 }

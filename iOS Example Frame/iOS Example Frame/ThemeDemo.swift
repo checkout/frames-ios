@@ -10,7 +10,6 @@ import UIKit
 import Frames
 
 struct ThemeDemo {
-
     static func buildCustom2Example() -> PaymentStyle {
         var theme = Theme(primaryFontColor: UIColor(red: 0 / 255, green: 204 / 255, blue: 45 / 255, alpha: 1),
                           secondaryFontColor: UIColor(red: 177 / 255, green: 177 / 255, blue: 177 / 255, alpha: 1),
@@ -70,5 +69,4 @@ struct ThemeDemo {
         return PaymentStyle(paymentFormStyle: paymentFormStyle,
                             billingFormStyle: billingFormStyle)
     }
-
 }

@@ -50,5 +50,4 @@ class BillingFormTableViewMockDelegate: BillingFormTableViewDelegate {
         cellForRowAtLastCalledWithSender = sender
         return UITableViewCell()
     }
-
 }

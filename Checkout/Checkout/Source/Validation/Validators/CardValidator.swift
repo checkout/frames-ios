@@ -83,7 +83,7 @@ public class CardValidator: CardValidating {
     logManager.queue(event: .validateCardNumber)
     return cardNumberValidator.validateCompleteness(cardNumber: cardNumber)
   }
-    
+
   public func validate(cardNumber: String) -> Result<Card.Scheme, ValidationError.CardNumber> {
     logManager.queue(event: .validateCardNumber)
     return cardNumberValidator.validate(cardNumber: cardNumber)
@@ -153,7 +153,7 @@ public class CardValidator: CardValidating {
     logManager.queue(event: .validateCVV)
     return cvvValidator.validate(cvv: cvv, cardScheme: cardScheme)
   }
-    
+
   /// Checks whether a CVV is valid for a given card scheme.
   /// If the cardScheme is `unknown`, this validates that the cvv is conforming to internal generic standards
   /// - Parameters:
@@ -163,7 +163,7 @@ public class CardValidator: CardValidating {
   public func isValid(cvv: String, for scheme: Card.Scheme) -> Bool {
     cvvValidator.isValid(cvv: cvv, for: scheme)
   }
-    
+
   /**
    Checks what the maximum CVV length is for a given scaheme.
    - Parameters:

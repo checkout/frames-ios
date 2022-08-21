@@ -7,7 +7,6 @@ extension UIView {
 }
 
 extension UITableView {
-
     func register<T: UITableViewCell>(_: T.Type) {
         register(T.self, forCellReuseIdentifier: T.reuseIdentifier)
     }
@@ -22,7 +21,6 @@ extension UITableView {
 }
 
 extension UITableView {
-
     func setBottomInset(to value: CGFloat) {
         let edgeInset = UIEdgeInsets(top: 0, left: 0, bottom: value, right: 0)
         contentInset = edgeInset

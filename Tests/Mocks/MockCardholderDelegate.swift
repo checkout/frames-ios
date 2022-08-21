@@ -9,13 +9,11 @@ import Foundation
 @testable import Frames
 
 final class MockCardholderDelegate: CardholderDelegate {
-    
     var cardholderUpdatedReceivedArguments: [String] = []
     var cardhodlerUpdatedCompletion: (() -> Void)?
-    
+
     func cardholderUpdated(to cardholderInput: String) {
         cardholderUpdatedReceivedArguments.append(cardholderInput)
         cardhodlerUpdatedCompletion?()
     }
-    
 }

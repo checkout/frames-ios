@@ -8,5 +8,4 @@ class StateValidator: Validator {
     private func isEmpty(text: String?) -> Bool {
         text?.isEmpty ?? false
     }
-
 }

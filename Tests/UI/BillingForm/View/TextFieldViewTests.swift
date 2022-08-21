@@ -12,15 +12,15 @@ import XCTest
 class TextFieldViewTests: XCTestCase {
   var view: TextFieldView!
   var style: ElementTextFieldStyle!
-  
+
   override func setUp() {
     super.setUp()
     style = DefaultTextField()
     view = TextFieldView()
     view.update(with: style)
   }
-  
-  func testStyle(){
+
+  func testStyle() {
     XCTAssertEqual(view.textField.text, style.text)
     XCTAssertEqual(view.textField.font, style.font)
     XCTAssertEqual(view.textField.textColor, style.textColor)
@@ -30,28 +30,27 @@ class TextFieldViewTests: XCTestCase {
     XCTAssertEqual(view.textField.keyboardType, .default)
   }
 
-  func testSecuredTextFieldViewIsNotSubView(){
+  func testSecuredTextFieldViewIsNotSubView() {
     let subviews = view.subviews
-    
-    let isTextFieldExposed = subviews.contains{
+
+    let isTextFieldExposed = subviews.contains {
       $0 is UITextField
     }
     XCTAssertFalse(isTextFieldExposed)
   }
-  
+
   func testSecuredTextFieldMirror() {
     let mirror = Mirror(reflecting: view as Any)
-    
+
     mirror.children.forEach {
       XCTAssertFalse($0.value is UITextField)
     }
   }
-  
-  func testSecuredTextFieldWithMirrorObject(){
+
+  func testSecuredTextFieldWithMirrorObject() {
     let viewMirror = TextFieldViewToTestMirror(view: view)
     XCTAssertNil(viewMirror.textField)
   }
-  
 }
 
 

@@ -12,7 +12,6 @@ protocol CardholderDelegate: AnyObject {
 }
 
 final class CardholderViewModel {
-
     weak var delegate: CardholderDelegate?
 
     func inputUpdated(to newInput: String) {

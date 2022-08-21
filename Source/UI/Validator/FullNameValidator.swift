@@ -8,5 +8,4 @@ class FullNameValidator: Validator {
     private func isEmpty(text: String?) -> Bool {
         text?.isEmpty ?? false
     }
-
 }

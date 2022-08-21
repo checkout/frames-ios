@@ -32,11 +32,9 @@ final class StubCheckoutAPIService: Frames.CheckoutAPIProtocol {
     createTokenCalledWith = (paymentSource, completion)
     completion(.success(StubCheckoutAPIService.createTokenDetails()))
   }
-
 }
 
 extension StubCheckoutAPIService {
-
   static func createTokenDetails(
     type: TokenDetails.TokenType = .card,
     token: String = "token",
@@ -83,5 +81,4 @@ extension StubCheckoutAPIService {
       phone: phone,
       name: name)
   }
-
 }

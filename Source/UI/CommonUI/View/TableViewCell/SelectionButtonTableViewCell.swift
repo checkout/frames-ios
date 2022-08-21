@@ -31,7 +31,6 @@ final class SelectionButtonTableViewCell: UITableViewCell {
 }
 
 extension SelectionButtonTableViewCell {
-
     private func setupViewsInOrder() {
         contentView.addSubview(mainView)
         NSLayoutConstraint.activate([

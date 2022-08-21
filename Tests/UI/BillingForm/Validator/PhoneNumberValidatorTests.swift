@@ -2,7 +2,6 @@ import XCTest
 @testable import Frames
 
 class PhoneNumberValidatorTests: XCTestCase {
-
     func testValidationWhenTextIsEmptyThenShouldBeTrue() {
         let expectedType = BillingFormCell.phoneNumber(nil)
         let text = ""

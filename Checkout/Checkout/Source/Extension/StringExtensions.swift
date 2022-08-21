@@ -8,9 +8,7 @@
 import Foundation
 
 extension String {
-    
     func removeWhitespaces() -> String {
         filter { !$0.isWhitespace }
     }
-    
 }

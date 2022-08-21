@@ -12,7 +12,7 @@ final class StubCardNumberValidator: CardNumberValidating {
   func validateCompleteness(cardNumber: String) -> Result<CardNumberValidating.ValidationScheme, ValidationError.CardNumber> {
     validateCompletenessCardNumberToReturn
   }
-    
+
   var validateCardNumberToReturn: Result<Card.Scheme, ValidationError.CardNumber> = .success(.americanExpress)
   private(set) var validateCardNumberCalledWith: String?
 

@@ -24,7 +24,7 @@ final class StubCardValidator: CardValidating {
     validateCardNumberCalledWith = cardNumber
     return validateCardNumberToReturn
   }
-    
+
   var validateCompletenessCardNumberToReturnResult: Result<CardValidating.ValidationScheme, ValidationError.CardNumber> = .success((true, .visa))
   func validateCompleteness(cardNumber: String) -> Result<CardValidating.ValidationScheme, ValidationError.CardNumber> {
     return validateCompletenessCardNumberToReturnResult
@@ -40,7 +40,7 @@ final class StubCardValidator: CardValidating {
   func isValid(cvv: String, for scheme: Card.Scheme) -> Bool {
     true
   }
-    
+
   func maxLengthCVV(for scheme: Card.Scheme) -> Int {
     3
   }

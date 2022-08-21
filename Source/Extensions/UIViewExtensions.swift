@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 extension UIView {
-
     var safeTopAnchor: NSLayoutYAxisAnchor {
         if #available(iOS 11.0, *) {
             return self.safeAreaLayoutGuide.topAnchor
@@ -74,7 +73,6 @@ extension UIView {
         // return scrollView bottom anchor constraint, used to manage the keyboard
         return scrollViewBottomConstraint
     }
-
 }
 
 extension UIView {
@@ -100,7 +98,6 @@ extension UIView {
 }
 
 extension UIView {
-
   static var keyboardDismissTapGesture: UITapGestureRecognizer {
     let gesture = UITapGestureRecognizer(target: UIView.self, action: #selector(hideKeyboard(gestureRecognizer:)))
     gesture.cancelsTouchesInView = false
@@ -114,5 +111,4 @@ extension UIView {
     guard !(subview is SecureDisplayView) else { return }
     UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil)
   }
-
 }

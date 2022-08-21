@@ -8,7 +8,6 @@
 import UIKit
 
 final class CardholderView: UIView {
-
     private var style: CellTextFieldStyle?
     private let viewModel: CardholderViewModel
 
@@ -39,7 +38,6 @@ final class CardholderView: UIView {
         style?.error?.isHidden = isHidden
         cardholderInputView.update(style: style)
     }
-
 }
 
 extension CardholderView: TextFieldViewDelegate {
@@ -51,5 +49,4 @@ extension CardholderView: TextFieldViewDelegate {
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         viewModel.inputUpdated(to: textField.text ?? "")
     }
-
 }

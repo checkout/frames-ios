@@ -1,7 +1,6 @@
 import UIKit
 
 class InputView: UIView {
-
     // MARK: - Properties
 
     weak var delegate: TextFieldViewDelegate?
@@ -110,7 +109,6 @@ class InputView: UIView {
 // MARK: - Views Layout Constraint
 
 extension InputView {
-
     private func setupViewsInOrder() {
         backgroundColor = style?.backgroundColor
         setupHeaderLabel()
