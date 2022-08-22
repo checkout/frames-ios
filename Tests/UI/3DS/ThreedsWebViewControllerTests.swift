@@ -88,7 +88,11 @@ class ThreedsWebViewControllerTests: XCTestCase {
 
         urlHelper = URLHelperMock()
 
-        threedsWebViewController = ThreedsWebViewControllerForDismiss(checkoutAPIProtocol: checkoutAPIService, successUrl: successUrl, failUrl: failUrl, threeDSWKNavigationHelperFactory: mockThreeDSWKNavigationHelperFactory)
+        threedsWebViewController = ThreedsWebViewControllerForDismiss(
+          checkoutAPIProtocol: checkoutAPIService,
+          successUrl: successUrl,
+          failUrl: failUrl,
+          threeDSWKNavigationHelperFactory: mockThreeDSWKNavigationHelperFactory)
         let window = UIWindow()
         window.rootViewController = threedsWebViewController
     }

@@ -35,7 +35,7 @@ public final class CountrySelectionViewController: UIViewController,
         customizeNavigationBarAppearance(color: .white, titleColor: .black)
         setup()
         view.backgroundColor = CheckoutTheme.primaryBackgroundColor
-        navigationItem.title = "countryRegion".localized(forClass: CountrySelectionViewController.self)
+        navigationItem.title = LocalizationKey.country.localizedValue
         // table view
         filteredCountries = countries
         tableView.delegate = self

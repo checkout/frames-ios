@@ -15,16 +15,16 @@ extension Constants {
         case xxs = 2
 
         /// parameter size: 8
-        case xs = 8
+        case xSmall = 8
 
         /// parameter size: 10
-        case s = 10
+        case small = 10
 
         /// parameter size: 16
-        case m = 16
+        case medium = 16
 
         /// parameter size: 20
-        case l = 20
+        case large = 20
 
         /// parameter size: 24
         case xl = 24

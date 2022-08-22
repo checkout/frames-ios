@@ -21,12 +21,13 @@ final class SimpleErrorView: UIView {
     func update(style: ElementErrorViewStyle?) {
         guard let style = style else { return }
         backgroundColor = style.backgroundColor
-        let headerLabelStyle = DefaultTitleLabelStyle(textAlignment: style.textAlignment,
-                                                      backgroundColor: .clear,
-                                                      isHidden: false,
-                                                      text: style.text,
-                                                      font: style.font,
-                                                      textColor: style.textColor)
+        let headerLabelStyle = DefaultTitleLabelStyle(
+            textAlignment: style.textAlignment,
+            backgroundColor: .clear,
+            isHidden: false,
+            text: style.text,
+            font: style.font,
+            textColor: style.textColor)
         headerLabel.update(with: headerLabelStyle)
         imageContainerView.update(with: style.image, tintColor: style.tintColor)
     }
@@ -50,12 +51,13 @@ extension SimpleErrorView {
     private func setupImageView() {
         addSubview(imageContainerView)
         NSLayoutConstraint.activate([
-          imageContainerView.topAnchor.constraint(equalTo: topAnchor),
+            imageContainerView.topAnchor.constraint(equalTo: topAnchor),
             imageContainerView.bottomAnchor.constraint(equalTo: bottomAnchor),
-          imageContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
-          imageContainerView.trailingAnchor.constraint(equalTo: headerLabel.leadingAnchor,
-                                            constant: -Constants.Padding.s.rawValue),
-          imageContainerView.widthAnchor.constraint(equalToConstant: 15)
+            imageContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageContainerView.trailingAnchor.constraint(
+                equalTo: headerLabel.leadingAnchor,
+                constant: -Constants.Padding.small.rawValue),
+            imageContainerView.widthAnchor.constraint(equalToConstant: 15)
         ])
     }
 }

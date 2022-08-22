@@ -1,8 +1,8 @@
 import CheckoutEventLoggerKit
 import XCTest
-
 @testable import Frames
 
+// swiftlint:disable implicitly_unwrapped_optional
 final class FramesEventLoggerTests: XCTestCase {
     private var stubCheckoutEventLogger: StubCheckoutEventLogger!
     private var stubDateProvider: StubDateProvider!

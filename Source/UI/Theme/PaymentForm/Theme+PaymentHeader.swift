@@ -17,18 +17,18 @@ public extension Theme {
     }
 
     /// Create a Payment Form Header from given elements
-    func buildPaymentHeader(headerLabel: ElementStyle,
-                            subtitleLabel: ElementStyle?) -> ThemePaymentHeader {
-        ThemePaymentHeader(backgroundColor: self.backgroundColor,
-                           headerLabel: headerLabel,
-                           subtitleLabel: subtitleLabel)
+    func buildPaymentHeader(headerLabel: ElementStyle, subtitleLabel: ElementStyle?) -> ThemePaymentHeader {
+        ThemePaymentHeader(
+            backgroundColor: self.backgroundColor,
+            headerLabel: headerLabel,
+            subtitleLabel: subtitleLabel)
     }
 
     /// Create a Payment Form Header with given text
-    func buildPaymentHeader(title: String,
-                            subtitle: String) -> ThemePaymentHeader {
+    func buildPaymentHeader(
+        title: String,
+        subtitle: String) -> ThemePaymentHeader {
         let hasSubtitle = !subtitle.isEmpty
-
         return buildPaymentHeader(
             headerLabel: buildPageHeaderTitle(text: title),
             subtitleLabel: hasSubtitle ? buildPaymentHeaderSubtitle(text: subtitle) : nil)

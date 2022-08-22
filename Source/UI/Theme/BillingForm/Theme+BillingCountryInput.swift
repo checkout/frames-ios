@@ -20,37 +20,41 @@ public extension Theme {
     }
 
     /// Create a Billing Country Input from provided themed components
-    func buildBillingCountryInput(button: CountryListButton,
-                                  title: ThemeTitle,
-                                  mandatory: ThemeMandatory? = nil,
-                                  subtitle: ThemeSubtitle? = nil,
-                                  error: ThemeError? = nil) -> ThemeBillingCountryInput {
-        ThemeBillingCountryInput(button: button,
-                                 title: title,
-                                 hint: subtitle,
-                                 mandatory: mandatory,
-                                 error: error)
+    func buildBillingCountryInput(
+        button: CountryListButton,
+        title: ThemeTitle,
+        mandatory: ThemeMandatory? = nil,
+        subtitle: ThemeSubtitle? = nil,
+        error: ThemeError? = nil) -> ThemeBillingCountryInput {
+        ThemeBillingCountryInput(
+            button: button,
+            title: title,
+            hint: subtitle,
+            mandatory: mandatory,
+            error: error)
     }
 
     /// Create a Billing Country Input from provided content
-    func buildBillingCountryInput(buttonText: String,
-                                  buttonImage: UIImage? = nil,
-                                  title: String,
-                                  subtitle: String = "",
-                                  subtitleImage: UIImage? = nil,
-                                  isRequiredText: String = "",
-                                  errorText: String = "",
-                                  errorImage: UIImage? = nil) -> ThemeBillingCountryInput {
+    func buildBillingCountryInput(
+        buttonText: String,
+        buttonImage: UIImage? = nil,
+        title: String,
+        subtitle: String = "",
+        subtitleImage: UIImage? = nil,
+        isRequiredText: String = "",
+        errorText: String = "",
+        errorImage: UIImage? = nil) -> ThemeBillingCountryInput {
         let showSubtitle = !subtitle.isEmpty || subtitleImage != nil
         let showError = !errorText.isEmpty || errorImage != nil
         let showMandatory = !isRequiredText.isEmpty
 
         let button = buildCountryListButton(text: buttonText, image: buttonImage)
 
-        return ThemeBillingCountryInput(button: button,
-                                        title: self.buildTitle(text: title),
-                                        hint: showSubtitle ? self.buildSubtitle(text: subtitle, image: subtitleImage) : nil,
-                                        mandatory: showMandatory ? self.buildIsRequiredInput(text: isRequiredText) : nil,
-                                        error: showError ? self.buildError(text: errorText, image: errorImage) : nil)
+        return ThemeBillingCountryInput(
+            button: button,
+            title: self.buildTitle(text: title),
+            hint: showSubtitle ? self.buildSubtitle(text: subtitle, image: subtitleImage) : nil,
+            mandatory: showMandatory ? self.buildIsRequiredInput(text: isRequiredText) : nil,
+            error: showError ? self.buildError(text: errorText, image: errorImage) : nil)
     }
 }

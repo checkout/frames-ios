@@ -14,8 +14,8 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     weak var delegate: BillingFormViewModelDelegate?
 
     var updateRow: (() -> Void)?
-    var errorFlagOfCellType = [Int: Bool]()
-    var textValueOfCellType = [Int: String]()
+    var errorFlagOfCellType: [Int: Bool] = [:]
+    var textValueOfCellType: [Int: String] = [:]
 
     private var countryRow: Int?
     private(set) var country: Country?
@@ -143,8 +143,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
     func validate(text: String?, cellStyle: BillingFormCell, row: Int) {
         let currentCellTypeIndex = style.cells[row].index
-        guard let style = cellStyle.style,
-              style.isMandatory else {
+        guard let style = cellStyle.style, style.isMandatory else {
             errorFlagOfCellType[currentCellTypeIndex] = false
             return
         }
@@ -159,7 +158,8 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         let isEmptyText = textField.text?.isEmpty ?? true
         let isMandatoryField = type.style?.isMandatory ?? false
         let shouldRemoveText = isEmptyText && isMandatoryField
-        let hasErrorValue = errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.allSatisfy({ $0 })
+        let allValueAreTrue = errorFlagOfCellType.values.allSatisfy({ $0 })
+        let hasErrorValue = errorFlagOfCellType.isEmpty || allValueAreTrue
 
         if !isEmptyText {
             textValueOfCellType[type.index] = textField.text

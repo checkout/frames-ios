@@ -22,12 +22,14 @@ public extension Theme {
     }
 
     /// Create an Error Style from text and optional image
-    func buildError(text: String,
-                    image: UIImage? = nil) -> ThemeError {
-        ThemeError(text: text,
-                   textColor: self.errorFontColor,
-                   tintColor: self.errorFontColor,
-                   image: image,
-                   font: UIFont.systemFont(ofSize: self.subtitleFontSize))
+    func buildError(
+        text: String,
+        image: UIImage? = nil) -> ThemeError {
+        ThemeError(
+            text: text,
+            textColor: self.errorFontColor,
+            tintColor: self.errorFontColor,
+            image: image,
+            font: UIFont.systemFont(ofSize: self.subtitleFontSize))
     }
 }

@@ -3,7 +3,8 @@ import UIKit
 public final class DefaultEditBillingDetailsButtonStyle: ElementButtonStyle {
     public var textAlignment: NSTextAlignment = .natural
     public var image: UIImage? = Constants.Bundle.Images.rightArrow.image?.imageFlippedForRightToLeftLayoutDirection()
-    public var text: String = "Edit billing address".localized(forClass: CheckoutTheme.self)
+    public var text: String = LocalizationKey.editBillingAddress.localizedValue
+
     public var font = UIFont.systemFont(ofSize: Constants.Style.BillingForm.InputCountryButton.fontSize.rawValue)
     public var textColor: UIColor = .brandeisBlue
     public var disabledTextColor: UIColor = .clear

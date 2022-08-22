@@ -14,7 +14,7 @@ final class FramesEventLogger: FramesEventLogging {
     private let checkoutEventLogger: CheckoutEventLogging
     private let dateProvider: DateProviding
 
-    private var logged = [String: Set<String>]()
+    private var logged: [String: Set<String>] = [:]
 
     // MARK: - Init
 
@@ -22,7 +22,9 @@ final class FramesEventLogger: FramesEventLogging {
         let checkoutEventLogger = CheckoutEventLogger(productName: Constants.productName)
         let remoteProcessorMetadata = RemoteProcessorMetadata(environment: environment)
 
-        checkoutEventLogger.enableRemoteProcessor(environment: environment.eventLoggerEnvironment, remoteProcessorMetadata: remoteProcessorMetadata)
+        checkoutEventLogger.enableRemoteProcessor(
+            environment: environment.eventLoggerEnvironment,
+            remoteProcessorMetadata: remoteProcessorMetadata)
         let dateProvider = DateProvider()
 
         self.init(getCorrelationID: getCorrelationID, checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)

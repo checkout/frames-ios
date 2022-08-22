@@ -11,9 +11,9 @@ import UIKit
 public struct DefaultCardNumberFormStyle: CellTextFieldStyle {
     public var isMandatory = true
     public var backgroundColor: UIColor = .clear
-    public var title: ElementStyle? = DefaultTitleLabelStyle(text: Constants.LocalizationKeys.PaymentForm.CardNumber.title)
+    public var title: ElementStyle? = DefaultTitleLabelStyle(text: LocalizationKey.cardNumber.localizedValue)
     public var hint: ElementStyle?
     public var mandatory: ElementStyle?
     public var textfield: ElementTextFieldStyle = DefaultTextField(isSupportingNumericKeyboard: true)
-    public var error: ElementErrorViewStyle? = DefaultErrorInputLabelStyle(text: Constants.LocalizationKeys.PaymentForm.CardNumber.error)
+    public var error: ElementErrorViewStyle? = DefaultErrorInputLabelStyle(text: LocalizationKey.cardNumberInvalid.localizedValue)
 }

@@ -46,41 +46,39 @@ public extension Theme {
     }
 
     /// Create a Billing Summary from Styles defined for each sub component
-    func buildBillingSummary(button: ElementButtonStyle,
-                             textField: ThemeTextField,
-                             title: ThemeTitle,
-                             mandatory: ThemeMandatory?,
-                             subtitle: ThemeSubtitle?,
-                             error: ThemeError) -> ThemeBillingSummary {
-        let summary = ThemeSummaryElement(font: UIFont.systemFont(ofSize: self.inputFontSize),
-                                          textColor: self.secondaryFontColor)
+    func buildBillingSummary(
+        button: ElementButtonStyle,
+        textField: ThemeTextField,
+        title: ThemeTitle,
+        mandatory: ThemeMandatory?,
+        subtitle: ThemeSubtitle?,
+        error: ThemeError) -> ThemeBillingSummary {
+        let summary = ThemeSummaryElement(
+            font: UIFont.systemFont(ofSize: self.inputFontSize),
+            textColor: self.secondaryFontColor)
 
-        return ThemeBillingSummary(summary: summary,
-                                   borderColor: self.borderColor,
-                                   cornerRadius: self.borderRadius,
-                                   borderWidth: self.borderWidth,
-                                   separatorLineColor: self.secondaryFontColor,
-                                   button: button,
-                                   title: title,
-                                   mandatory: mandatory,
-                                   hint: subtitle,
-                                   error: error)
+        return ThemeBillingSummary(
+            summary: summary,
+            borderColor: self.borderColor,
+            cornerRadius: self.borderRadius,
+            borderWidth: self.borderWidth,
+            separatorLineColor: self.secondaryFontColor,
+            button: button,
+            title: title,
+            mandatory: mandatory,
+            hint: subtitle,
+            error: error)
     }
 
     /// Create a Billing Summary from provided content
-    func buildBillingSummary(buttonText: String,
-                             titleText: String,
-                             subtitleText: String = "",
-                             subtitleImage: UIImage? = nil,
-                             isRequiredText: String = "",
-                             errorText: String = "",
-                             errorImage: UIImage? = nil) -> ThemeBillingSummary {
+    func buildBillingSummary(buttonText: String, titleText: String, subtitleText: String = "", subtitleImage: UIImage? = nil, isRequiredText: String = "", errorText: String = "", errorImage: UIImage? = nil) -> ThemeBillingSummary {
         let showSubtitle = !subtitleText.isEmpty || subtitleImage != nil
         let showMandatory = !isRequiredText.isEmpty
         let showError = !errorText.isEmpty || errorImage != nil
 
-        let summary = ThemeSummaryElement(font: UIFont.systemFont(ofSize: self.inputFontSize),
-                                          textColor: self.secondaryFontColor)
+        let summary = ThemeSummaryElement(
+            font: UIFont.systemFont(ofSize: self.inputFontSize),
+            textColor: self.secondaryFontColor)
 
         return ThemeBillingSummary(
             summary: summary,

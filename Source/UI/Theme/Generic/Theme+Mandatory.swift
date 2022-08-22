@@ -17,11 +17,11 @@ public extension Theme {
         public var backgroundColor: UIColor = .clear
         public var textColor: UIColor
     }
-
     /// Create a Mandatory Style from text
     func buildIsRequiredInput(text: String) -> ThemeMandatory {
-        ThemeMandatory(text: text,
-                       font: UIFont.systemFont(ofSize: self.titleFontSize),
-                       textColor: self.secondaryFontColor)
+        ThemeMandatory(
+            text: text,
+            font: UIFont.systemFont(ofSize: self.titleFontSize),
+            textColor: self.secondaryFontColor)
     }
 }

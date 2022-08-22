@@ -29,20 +29,22 @@ public extension Theme {
     }
 
     /// Create a TextField Style from text
-    func buildTextField(text: String,
-                        placeholderText: String,
-                        isNumbericInput: Bool) -> ThemeTextField {
-        ThemeTextField(text: text,
-                       isSupportingNumericKeyboard: isNumbericInput,
-                       cornerRadius: self.textInputBorderRadius,
-                       borderWidth: self.textInputBorderWidth,
-                       placeholder: placeholderText,
-                       tintColor: self.primaryFontColor,
-                       normalBorderColor: self.textInputBorderColor,
-                       focusBorderColor: self.focussedTextInputBorderColor,
-                       errorBorderColor: self.errorBorderColor,
-                       font: UIFont.systemFont(ofSize: self.inputFontSize),
-                       backgroundColor: self.textInputBackgroundColor,
-                       textColor: self.primaryFontColor)
-    }
+    func buildTextField(
+        text: String,
+        placeholderText: String,
+        isNumericInput: Bool) -> ThemeTextField {
+            ThemeTextField(
+                text: text,
+                isSupportingNumericKeyboard: isNumericInput,
+                cornerRadius: self.textInputBorderRadius,
+                borderWidth: self.textInputBorderWidth,
+                placeholder: placeholderText,
+                tintColor: self.primaryFontColor,
+                normalBorderColor: self.textInputBorderColor,
+                focusBorderColor: self.focussedTextInputBorderColor,
+                errorBorderColor: self.errorBorderColor,
+                font: UIFont.systemFont(ofSize: self.inputFontSize),
+                backgroundColor: self.textInputBackgroundColor,
+                textColor: self.primaryFontColor)
+        }
 }

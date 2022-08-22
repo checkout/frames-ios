@@ -61,10 +61,11 @@ class ButtonView: UIView {
     }
 
     private func updateLabelStyle(with style: ElementButtonStyle) {
-      let buttonTextLabelStyle = DefaultHeaderLabelFormStyle(textAlignment: style.textAlignment,
-                                                             text: style.text,
-                                                             font: style.font,
-                                                             textColor: isEnabled ? style.textColor : style.disabledTextColor)
+        let buttonTextLabelStyle = DefaultHeaderLabelFormStyle(
+            textAlignment: style.textAlignment,
+            text: style.text,
+            font: style.font,
+            textColor: isEnabled ? style.textColor : style.disabledTextColor)
         buttonTextLabel.update(with: buttonTextLabelStyle)
         constraintLeading?.constant = style.textLeading
         constraintLeading?.priority = .required

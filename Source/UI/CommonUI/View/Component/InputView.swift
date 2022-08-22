@@ -45,10 +45,10 @@ class InputView: UIView {
     }()
 
     override init(frame: CGRect) {
-      super.init(frame: frame)
-      setupViewsInOrder()
-      /// Tap Gesture to dismiss the keyboard on touch on view without canceling touches In current view
-      addGestureRecognizer(UIView.keyboardDismissTapGesture)
+        super.init(frame: frame)
+        setupViewsInOrder()
+        /// Tap Gesture to dismiss the keyboard on touch on view without canceling touches In current view
+        addGestureRecognizer(UIView.keyboardDismissTapGesture)
     }
 
     required init?(coder: NSCoder) {
@@ -140,8 +140,9 @@ extension InputView {
     private func setupHintLabel() {
         addSubview(hintLabel)
         NSLayoutConstraint.activate([
-            hintLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor,
-                                           constant: Constants.Padding.s.rawValue),
+            hintLabel.topAnchor.constraint(
+                equalTo: headerLabel.bottomAnchor,
+                constant: Constants.Padding.small.rawValue),
             hintLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             hintLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
@@ -151,8 +152,9 @@ extension InputView {
         textFieldContainer.setContentHuggingPriority(.required, for: .vertical)
         addSubview(textFieldContainer)
         NSLayoutConstraint.activate([
-            textFieldContainer.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
-                                                    constant: Constants.Padding.s.rawValue),
+            textFieldContainer.topAnchor.constraint(
+                equalTo: hintLabel.bottomAnchor,
+                constant: Constants.Padding.small.rawValue),
             textFieldContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
             textFieldContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
             textFieldContainerBottomAnchor
@@ -179,8 +181,9 @@ extension InputView {
         addSubview(errorView)
 
         NSLayoutConstraint.activate([
-            errorView.topAnchor.constraint(equalTo: textFieldContainer.bottomAnchor,
-                                           constant: Constants.Padding.m.rawValue),
+            errorView.topAnchor.constraint(
+                equalTo: textFieldContainer.bottomAnchor,
+                constant: Constants.Padding.medium.rawValue),
             errorView.leadingAnchor.constraint(equalTo: leadingAnchor),
             errorView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
@@ -200,7 +203,7 @@ extension InputView: TextFieldViewDelegate {
     }
 
     func textFieldShouldReturn() -> Bool {
-         delegate?.textFieldShouldReturn() ?? false
+        delegate?.textFieldShouldReturn() ?? false
     }
 
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {

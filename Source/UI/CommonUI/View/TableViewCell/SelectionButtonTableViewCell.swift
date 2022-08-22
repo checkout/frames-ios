@@ -36,7 +36,7 @@ extension SelectionButtonTableViewCell {
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(
                 equalTo: contentView.topAnchor,
-                constant: Constants.Padding.l.rawValue),
+                constant: Constants.Padding.large.rawValue),
             mainView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor),
             mainView.trailingAnchor.constraint(

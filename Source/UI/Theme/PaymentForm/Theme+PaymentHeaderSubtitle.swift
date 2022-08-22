@@ -20,8 +20,9 @@ public extension Theme {
 
     /// Create a Payment Form Header Subtitle from given text
     func buildPaymentHeaderSubtitle(text: String) -> ThemePaymentHeaderSubtitle {
-        ThemePaymentHeaderSubtitle(text: text,
-                                   font: UIFont.systemFont(ofSize: self.subtitleFontSize),
-                                   textColor: self.primaryFontColor)
+        ThemePaymentHeaderSubtitle(
+            text: text,
+            font: UIFont.systemFont(ofSize: self.subtitleFontSize),
+            textColor: self.primaryFontColor)
     }
 }

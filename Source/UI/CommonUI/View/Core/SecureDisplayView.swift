@@ -9,7 +9,7 @@
 import UIKit
 
 /**
-Secure display view preventing leaking of content
+ Secure display view preventing leaking of content
  */
 final class SecureDisplayView: UIView {
     // MARK: Protect content from leaking
@@ -19,9 +19,10 @@ final class SecureDisplayView: UIView {
     public override var textInputMode: UITextInputMode? { nil }
     public override var isUserInteractionEnabled: Bool {
         get {
-            guard let secured = super.subviews.first,
-                  secured.isUserInteractionEnabled,
-                  secured.canBecomeFirstResponder else {
+            guard
+                let secured = super.subviews.first,
+                secured.isUserInteractionEnabled,
+                secured.canBecomeFirstResponder else {
                 return false
             }
             secured.becomeFirstResponder()
@@ -70,12 +71,11 @@ final class SecureDisplayView: UIView {
         super.subviews.first?.systemLayoutSizeFitting(targetSize) ?? .zero
     }
 
-    public override func systemLayoutSizeFitting(_ targetSize: CGSize,
-                                                 withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
-                                                 verticalFittingPriority: UILayoutPriority) -> CGSize {
-        super.subviews.first?.systemLayoutSizeFitting(targetSize,
-                                                      withHorizontalFittingPriority: horizontalFittingPriority,
-                                                      verticalFittingPriority: verticalFittingPriority) ?? .zero
+    public override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+        super.subviews.first?.systemLayoutSizeFitting(
+            targetSize,
+            withHorizontalFittingPriority: horizontalFittingPriority,
+            verticalFittingPriority: verticalFittingPriority) ?? .zero
     }
 
     // MARK: Protect views

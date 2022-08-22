@@ -10,15 +10,15 @@
 import Checkout
 
 final class MockCardNumberViewModelDelegate: CardNumberViewModelDelegate {
-  private(set) var updateCalledWithValue: (cardNumber: String?, scheme: Card.Scheme)?
-  private(set) var updateCalledWithError: CardNumberError?
+    private(set) var updateCalledWithValue: (cardNumber: String?, scheme: Card.Scheme)?
+    private(set) var updateCalledWithError: CardNumberError?
 
-  func update(result: Result<CardInfo, CardNumberError>) {
-    switch result {
-      case .failure(let error):
-        updateCalledWithError = error
-      case .success(let cardInfo):
-        updateCalledWithValue = (cardInfo.cardNumber, cardInfo.scheme)
+    func update(result: Result<CardInfo, CardNumberError>) {
+        switch result {
+            case .failure(let error):
+                updateCalledWithError = error
+            case .success(let cardInfo):
+                updateCalledWithValue = (cardInfo.cardNumber, cardInfo.scheme)
+        }
     }
-  }
 }

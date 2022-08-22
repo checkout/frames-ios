@@ -16,10 +16,7 @@ public extension Theme {
     }
 
     /// Create a Billing Form from Styles defined for each sub component
-    func buildBillingForm(header: ThemeBillingHeader,
-                          cells: [BillingFormCell]) -> ThemeBillingForm {
-        ThemeBillingForm(mainBackground: self.backgroundColor,
-                         header: header,
-                         cells: cells)
+    func buildBillingForm(header: ThemeBillingHeader, cells: [BillingFormCell]) -> ThemeBillingForm {
+        ThemeBillingForm(mainBackground: self.backgroundColor, header: header, cells: cells)
     }
 }

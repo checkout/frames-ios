@@ -58,8 +58,9 @@ extension UIView {
         contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         contentView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0).isActive = true
-        let contentViewHeightConstraint = contentView.heightAnchor.constraint(equalTo: heightAnchor,
-                                                                              multiplier: 1.0)
+        let contentViewHeightConstraint = contentView.heightAnchor.constraint(
+            equalTo: heightAnchor,
+            multiplier: 1.0)
         contentViewHeightConstraint.priority = .defaultLow
         contentViewHeightConstraint.isActive = true
         // Scroll View Constraints
@@ -88,27 +89,27 @@ extension UIView {
 
 extension UIView {
     func disabledAutoresizingIntoConstraints() -> Self {
-          translatesAutoresizingMaskIntoConstraints = false
-          return self
+        translatesAutoresizingMaskIntoConstraints = false
+        return self
     }
 
     func removeSubviews() {
-      subviews.forEach({ $0.removeFromSuperview() })
+        subviews.forEach({ $0.removeFromSuperview() })
     }
 }
 
 extension UIView {
-  static var keyboardDismissTapGesture: UITapGestureRecognizer {
-    let gesture = UITapGestureRecognizer(target: UIView.self, action: #selector(hideKeyboard(gestureRecognizer:)))
-    gesture.cancelsTouchesInView = false
-    return gesture
-  }
+    static var keyboardDismissTapGesture: UITapGestureRecognizer {
+        let gesture = UITapGestureRecognizer(target: UIView.self, action: #selector(hideKeyboard(gestureRecognizer:)))
+        gesture.cancelsTouchesInView = false
+        return gesture
+    }
 
-  @objc private static func hideKeyboard(gestureRecognizer: UITapGestureRecognizer) {
-    let view = gestureRecognizer.view
-    let location = gestureRecognizer.location(in: view)
-    let subview = view?.hitTest(location, with: nil)
-    guard !(subview is SecureDisplayView) else { return }
-    UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil)
-  }
+    @objc private static func hideKeyboard(gestureRecognizer: UITapGestureRecognizer) {
+        let view = gestureRecognizer.view
+        let location = gestureRecognizer.location(in: view)
+        let subview = view?.hitTest(location, with: nil)
+        guard !(subview is SecureDisplayView) else { return }
+        UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
 }

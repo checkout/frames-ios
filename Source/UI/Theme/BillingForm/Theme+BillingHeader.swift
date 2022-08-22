@@ -17,20 +17,24 @@ public extension Theme {
     }
 
     /// Create a Billing Header from provided themed components
-    func buildBillingHeader(label: ElementStyle,
-                            cancelButton: ElementButtonStyle,
-                            doneButton: ElementButtonStyle) -> ThemeBillingHeader {
-        ThemeBillingHeader(headerLabel: label,
-                           cancelButton: cancelButton,
-                           doneButton: doneButton)
+    func buildBillingHeader(
+        label: ElementStyle,
+        cancelButton: ElementButtonStyle,
+        doneButton: ElementButtonStyle) -> ThemeBillingHeader {
+        ThemeBillingHeader(
+            headerLabel: label,
+            cancelButton: cancelButton,
+            doneButton: doneButton)
     }
 
     /// Create a Billing Header from provided content
-    func buildBillingHeader(title: String,
-                            cancelButtonTitle: String,
-                            doneButtonTitle: String) -> ThemeBillingHeader {
-        ThemeBillingHeader(headerLabel: self.buildPageHeaderTitle(text: title),
-                           cancelButton: self.buildNavigationButton(text: cancelButtonTitle),
-                           doneButton: self.buildNavigationButton(text: doneButtonTitle))
+    func buildBillingHeader(
+        title: String,
+        cancelButtonTitle: String,
+        doneButtonTitle: String) -> ThemeBillingHeader {
+        ThemeBillingHeader(
+            headerLabel: self.buildPageHeaderTitle(text: title),
+            cancelButton: self.buildNavigationButton(text: cancelButtonTitle),
+            doneButton: self.buildNavigationButton(text: doneButtonTitle))
     }
 }

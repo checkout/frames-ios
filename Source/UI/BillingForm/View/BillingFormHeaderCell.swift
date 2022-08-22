@@ -102,10 +102,10 @@ extension BillingFormHeaderCell {
                 constant: 58),
             headerLabel.leadingAnchor.constraint(
                 equalTo: safeLeadingAnchor,
-                constant: Constants.Padding.l.rawValue),
+                constant: Constants.Padding.large.rawValue),
             headerLabel.trailingAnchor.constraint(
                 equalTo: safeTrailingAnchor,
-                constant: -Constants.Padding.l.rawValue),
+                constant: -Constants.Padding.large.rawValue),
             headerLabel.bottomAnchor.constraint(
                 equalTo: safeBottomAnchor,
                 constant: -Constants.Padding.xxxl.rawValue)
@@ -124,10 +124,8 @@ extension BillingFormHeaderCell: ButtonViewDelegate {
         switch sender {
             case doneButton:
                 delegate?.doneButtonIsPressed()
-                break
             case cancelButton:
                 delegate?.cancelButtonIsPressed()
-                break
             default: break
         }
     }

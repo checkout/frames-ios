@@ -17,13 +17,11 @@ class MerchantAPIClient {
                     let jsonData = try JSONSerialization.data(withJSONObject: value)
                     let data = String(data: jsonData, encoding: .utf8)?.data(using: .utf8)
                     let decoder = JSONDecoder()
-                    let customerResponse = try decoder.decode(Customer.self, from: data!)
+                    guard let data = data else { return }
+                    let customerResponse = try decoder.decode(Customer.self, from: data)
                     successHandler(customerResponse)
-                } catch let error {
-                    print(error)
-                }
-            case .failure(let error):
-                print(error)
+                } catch { }
+            case .failure: break
             }
         }
     }

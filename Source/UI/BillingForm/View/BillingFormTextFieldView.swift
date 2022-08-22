@@ -45,7 +45,8 @@ class BillingFormTextFieldView: UIView {
     }()
 
     private(set) lazy var phoneNumberTextField: BillingFormTextField = {
-        let view: BillingFormTextField = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self).disabledAutoresizingIntoConstraints()
+        let view: BillingFormTextField = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self)
+            .disabledAutoresizingIntoConstraints()
         view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         view.autocorrectionType = .no
         view.delegate = self
@@ -178,11 +179,11 @@ extension BillingFormTextFieldView {
     }
 
     private func setupTextFieldContainer() {
-      textFieldContainer.setContentHuggingPriority(.required, for: .vertical)
+        textFieldContainer.setContentHuggingPriority(.required, for: .vertical)
         addSubview(textFieldContainer)
         NSLayoutConstraint.activate([
             textFieldContainer.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
-                                                    constant: Constants.Padding.xs.rawValue),
+                                                    constant: Constants.Padding.xSmall.rawValue),
             textFieldContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
             textFieldContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
             textFieldContainerBottomAnchor
@@ -199,10 +200,12 @@ extension BillingFormTextFieldView {
             textFieldContainer.addSubview(textField)
             NSLayoutConstraint.activate([
                 textField.topAnchor.constraint(equalTo: textFieldContainer.topAnchor),
-                textField.leadingAnchor.constraint(equalTo: textFieldContainer.leadingAnchor,
-                                                   constant: Constants.Padding.l.rawValue),
-                textField.trailingAnchor.constraint(equalTo: textFieldContainer.trailingAnchor,
-                                                    constant: -Constants.Padding.l.rawValue),
+                textField.leadingAnchor.constraint(
+                    equalTo: textFieldContainer.leadingAnchor,
+                    constant: Constants.Padding.large.rawValue),
+                textField.trailingAnchor.constraint(
+                    equalTo: textFieldContainer.trailingAnchor,
+                    constant: -Constants.Padding.large.rawValue),
                 textField.bottomAnchor.constraint(equalTo: textFieldContainer.bottomAnchor),
                 textField.heightAnchor.constraint(equalToConstant: heightStyle)
             ])
@@ -213,7 +216,7 @@ extension BillingFormTextFieldView {
         addSubview(errorView)
 
         NSLayoutConstraint.activate([
-            errorView.topAnchor.constraint(equalTo: textFieldContainer.bottomAnchor, constant: Constants.Padding.s.rawValue),
+            errorView.topAnchor.constraint(equalTo: textFieldContainer.bottomAnchor, constant: Constants.Padding.small.rawValue),
             errorView.leadingAnchor.constraint(equalTo: leadingAnchor),
             errorView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])

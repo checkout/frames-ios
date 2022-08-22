@@ -10,16 +10,15 @@ import Foundation
 public struct PaymentStyle {
     let paymentFormStyle: PaymentFormStyle
     let billingFormStyle: BillingFormStyle
-
+    // swiftlint:disable indentation_width
     /**
      Define the payment form UI Styling
-     
+
      - Parameters:
-        - paymentFormStyle: UI Styling for the payment form, the root screen handling the payment
-        - billingFormStyle: UI Styling for the billing form if the user will interact with the address billing
+     - paymentFormStyle: UI Styling for the payment form, the root screen handling the payment
+     - billingFormStyle: UI Styling for the billing form if the user will interact with the address billing
      */
-    public init(paymentFormStyle: PaymentFormStyle,
-                billingFormStyle: BillingFormStyle) {
+    public init(paymentFormStyle: PaymentFormStyle, billingFormStyle: BillingFormStyle) {
         self.paymentFormStyle = paymentFormStyle
         self.billingFormStyle = billingFormStyle
     }

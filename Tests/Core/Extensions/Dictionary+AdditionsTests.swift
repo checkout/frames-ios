@@ -2,7 +2,7 @@ import XCTest
 
 @testable import Frames
 
-final class Dictionary_AdditionsTests: XCTestCase {
+final class DictionaryAdditionsTests: XCTestCase {
     // MARK: - updating
 
     func test_updating_value_returnsDictionaryWithNewKeyValuePair() {

@@ -33,18 +33,18 @@ public extension Theme {
     }
 
     /// Create a button for ending the Payment journey and attempting to tokenise inputs
-    func buildPayButton(text: String,
-                        image: UIImage? = nil) -> ThemePayButton {
-        ThemePayButton(disabledTextColor: self.secondaryFontColor,
-                       disabledTintColor: .clear,
-                       activeTintColor: self.primaryFontColor,
-                       imageTintColor: self.primaryFontColor,
-                       image: image,
-                       cornerRadius: self.borderRadius,
-                       borderWidth: self.borderWidth,
-                       text: text,
-                       font: UIFont.systemFont(ofSize: self.buttonsFontSize),
-                       backgroundColor: self.textInputBackgroundColor,
-                       textColor: self.primaryFontColor)
+    func buildPayButton(text: String, image: UIImage? = nil) -> ThemePayButton {
+        ThemePayButton(
+            disabledTextColor: self.secondaryFontColor,
+            disabledTintColor: .clear,
+            activeTintColor: self.primaryFontColor,
+            imageTintColor: self.primaryFontColor,
+            image: image,
+            cornerRadius: self.borderRadius,
+            borderWidth: self.borderWidth,
+            text: text,
+            font: UIFont.systemFont(ofSize: self.buttonsFontSize),
+            backgroundColor: self.textInputBackgroundColor,
+            textColor: self.primaryFontColor)
     }
 }

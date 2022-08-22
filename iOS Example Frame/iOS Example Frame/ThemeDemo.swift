@@ -60,11 +60,11 @@ struct ThemeDemo {
             header: theme.buildBillingHeader(title: "Billing information",
                                              cancelButtonTitle: "Cancel",
                                              doneButtonTitle: "Done"),
-            cells: [.fullName(theme.buildBillingInput(text: "", isNumbericInput: false, isMandatory: false, title: "Your name")),
-                    .addressLine1(theme.buildBillingInput(text: "", isNumbericInput: false, isMandatory: true, title: "Address")),
-                    .city(theme.buildBillingInput(text: "", isNumbericInput: false, isMandatory: true, title: "City")),
+            cells: [.fullName(theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: false, title: "Your name")),
+                    .addressLine1(theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: true, title: "Address")),
+                    .city(theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: true, title: "City")),
                     .country(theme.buildBillingCountryInput(buttonText: "Select your country", title: "Country")),
-                    .phoneNumber(theme.buildBillingInput(text: "", isNumbericInput: true, isMandatory: true, title: "Phone number"))])
+                    .phoneNumber(theme.buildBillingInput(text: "", isNumericInput: true, isMandatory: true, title: "Phone number"))])
 
         return PaymentStyle(paymentFormStyle: paymentFormStyle,
                             billingFormStyle: billingFormStyle)

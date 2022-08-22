@@ -60,74 +60,74 @@ class ExpiryDateViewTests: XCTestCase {
   func testEmptyExpiryDate() {
     let error = view.validateInputChanges(of: "", newInput: "")
     XCTAssertEqual(error, .incompleteYear)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+      XCTAssertEqual(view.style?.error?.text, LocalizationKey.expiryDateInvalid.localizedValue)
   }
 
   func testExpiryDateWithWrongYearFormat() {
     let error = view.validateInputChanges(of: "01/2035", newInput: "")
     XCTAssertEqual(error, .incompleteYear)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+    XCTAssertEqual(view.style?.error?.text, LocalizationKey.expiryDateInvalid.localizedValue)
   }
 
   func testExpiryDateWithWrongMonthFormat() {
     let error = view.validateInputChanges(of: "Jan/35", newInput: "")
     XCTAssertEqual(error, .incompleteYear)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+    XCTAssertEqual(view.style?.error?.text, LocalizationKey.expiryDateInvalid.localizedValue)
   }
 
 
   func testExpiryDateWithWrongFormat() {
     let error = view.validateInputChanges(of: "01.35", newInput: "")
     XCTAssertEqual(error, .invalidYearString)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+    XCTAssertEqual(view.style?.error?.text, LocalizationKey.expiryDateInvalid.localizedValue)
   }
 
   func testExpiryDateWithMoreThan5Characters() {
     let error = view.validateInputChanges(of: "01/01/01/01", newInput: "")
     XCTAssertEqual(error, .incompleteYear)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+    XCTAssertEqual(view.style?.error?.text, LocalizationKey.expiryDateInvalid.localizedValue)
   }
 
   func testExpiryDateWithOutBackSlash() {
     let error = view.validateInputChanges(of: "01350", newInput: "")
     XCTAssertEqual(error, .invalidYearString)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+    XCTAssertEqual(view.style?.error?.text, LocalizationKey.expiryDateInvalid.localizedValue)
   }
 
   func testExpiryDateWithmoreLess5Characters() {
     let error = view.validateInputChanges(of: "01/0", newInput: "")
     XCTAssertEqual(error, .incompleteYear)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+    XCTAssertEqual(view.style?.error?.text, LocalizationKey.expiryDateInvalid.localizedValue)
   }
 
   func testExpiryDateWithString() {
     let error = view.validateInputChanges(of: "Test", newInput: "")
     XCTAssertEqual(error, .incompleteYear)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+    XCTAssertEqual(view.style?.error?.text, LocalizationKey.expiryDateInvalid.localizedValue)
   }
 
   func testExpiryDateWithInvalidMaxDate() {
     let error = view.validateInputChanges(of: "99/99", newInput: "")
     XCTAssertEqual(error, .invalidMonth)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+    XCTAssertEqual(view.style?.error?.text, LocalizationKey.expiryDateInvalid.localizedValue)
   }
 
   func testExpiryDateWithInvalidMinDate() {
     let error = view.validateInputChanges(of: "00/00", newInput: "")
     XCTAssertEqual(error, .incompleteYear)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+    XCTAssertEqual(view.style?.error?.text, LocalizationKey.expiryDateInvalid.localizedValue)
   }
 
   func testExpiryDateWithInvalidLongNumbers() {
     let error = view.validateInputChanges(of: "999999999/999999999", newInput: "")
     XCTAssertEqual(error, .incompleteYear)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+    XCTAssertEqual(view.style?.error?.text, LocalizationKey.expiryDateInvalid.localizedValue)
   }
 
   func testExpiryDateWithInvalidLongSpecialCharacter() {
     let error = view.validateInputChanges(of: "-*/@@", newInput: "")
     XCTAssertEqual(error, .invalidYearString)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+    XCTAssertEqual(view.style?.error?.text, LocalizationKey.expiryDateInvalid.localizedValue)
   }
 
   func testValidFirstDigitInputWith0() {
@@ -150,7 +150,7 @@ class ExpiryDateViewTests: XCTestCase {
     let shouldContinueAdding = view.textField(textField, shouldChangeCharactersIn: NSRange(location: 1, length: 0), replacementString: input)
 
     XCTAssertFalse(shouldContinueAdding)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+    XCTAssertEqual(view.style?.error?.text, LocalizationKey.expiryDateInvalid.localizedValue)
     XCTAssertEqual(textField.text, "0")
   }
 
@@ -186,7 +186,7 @@ class ExpiryDateViewTests: XCTestCase {
     let shouldContinueAdding = view.textField(textField, shouldChangeCharactersIn: NSRange(location: 1, length: 0), replacementString: input)
 
     XCTAssertFalse(shouldContinueAdding)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+    XCTAssertEqual(view.style?.error?.text, LocalizationKey.expiryDateInvalid.localizedValue)
     XCTAssertEqual(textField.text, "1")
   }
 
@@ -198,7 +198,7 @@ class ExpiryDateViewTests: XCTestCase {
     let shouldContinueAdding = view.textField(textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString: input)
 
     XCTAssertFalse(shouldContinueAdding)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+    XCTAssertEqual(view.style?.error?.text, LocalizationKey.expiryDateInvalid.localizedValue)
     XCTAssertEqual(textField.text, "01/")
   }
 
@@ -210,7 +210,7 @@ class ExpiryDateViewTests: XCTestCase {
     let shouldContinueAdding = view.textField(textField, shouldChangeCharactersIn: NSRange(location: 2, length: 0), replacementString: input)
 
     XCTAssertFalse(shouldContinueAdding)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+    XCTAssertEqual(view.style?.error?.text, LocalizationKey.expiryDateInvalid.localizedValue)
     XCTAssertEqual(textField.text, "02/")
   }
 
@@ -246,7 +246,7 @@ class ExpiryDateViewTests: XCTestCase {
     let shouldContinueAdding = view.textField(textField, shouldChangeCharactersIn: NSRange(location: 3, length: 0), replacementString: input)
 
     XCTAssertFalse(shouldContinueAdding)
-    XCTAssertEqual(view.style?.error?.text, Constants.LocalizationKeys.PaymentForm.ExpiryDate.Error.invalid)
+    XCTAssertEqual(view.style?.error?.text, LocalizationKey.expiryDateInvalid.localizedValue)
     XCTAssertEqual(textField.text, "02/2")
   }
 }

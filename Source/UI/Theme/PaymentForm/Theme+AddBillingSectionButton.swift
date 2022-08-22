@@ -31,7 +31,7 @@ public extension Theme {
         public var errorBorderColor: UIColor = .clear
         public var image: UIImage?
         public var textAlignment: NSTextAlignment = .natural
-        public var textLeading: CGFloat = Constants.Padding.l.rawValue
+        public var textLeading: CGFloat = Constants.Padding.large.rawValue
         public var cornerRadius: CGFloat = 0
         public var borderWidth: CGFloat = 0
         public var height: Double = 60
@@ -44,14 +44,15 @@ public extension Theme {
     }
 
     /// Create an Add Billing Section Button from Styles from core information
-    func buildAddBillingSectionButton(text: String,
-                                      isBillingAddressMandatory: Bool,
-                                      titleText: String,
-                                      subtitleText: String = "",
-                                      subtitleImage: UIImage? = nil,
-                                      mandatoryText: String = "",
-                                      errorText: String = "",
-                                      errorImage: UIImage? = nil) -> ThemeAddBillingSectionButton {
+    func buildAddBillingSectionButton(
+        text: String,
+        isBillingAddressMandatory: Bool,
+        titleText: String,
+        subtitleText: String = "",
+        subtitleImage: UIImage? = nil,
+        mandatoryText: String = "",
+        errorText: String = "",
+        errorImage: UIImage? = nil) -> ThemeAddBillingSectionButton {
         let showMandatory = !mandatoryText.isEmpty
         let showSubtitle = !subtitleText.isEmpty || subtitleImage != nil
         let showError = !errorText.isEmpty || errorImage != nil
@@ -68,28 +69,31 @@ public extension Theme {
     }
 
     /// Create an Add Billing Section Button from Styles defined for each component
-    func buildAddBillingSectionButton(buttonStyle: ThemeBillingButton,
-                                      isBillingAddressMandatory: Bool,
-                                      title: ThemeTitle,
-                                      subtitle: ThemeSubtitle?,
-                                      isRequiredText: ThemeMandatory?,
-                                      error: ThemeError?) -> ThemeAddBillingSectionButton {
-        ThemeAddBillingSectionButton(isMandatory: isBillingAddressMandatory,
-                                     button: buttonStyle,
-                                     backgroundColor: self.backgroundColor,
-                                     title: title,
-                                     mandatory: isRequiredText,
-                                     hint: subtitle,
-                                     error: error)
+    func buildAddBillingSectionButton(
+        buttonStyle: ThemeBillingButton,
+        isBillingAddressMandatory: Bool,
+        title: ThemeTitle,
+        subtitle: ThemeSubtitle?,
+        isRequiredText: ThemeMandatory?,
+        error: ThemeError?) -> ThemeAddBillingSectionButton {
+        ThemeAddBillingSectionButton(
+            isMandatory: isBillingAddressMandatory,
+            button: buttonStyle,
+            backgroundColor: self.backgroundColor,
+            title: title,
+            mandatory: isRequiredText,
+            hint: subtitle,
+            error: error)
     }
 
     /// Create an Add Billing Button from using theme and text
     func buildBillingButton(text: String) -> ThemeBillingButton {
-        ThemeBillingButton(disabledTextColor: self.secondaryFontColor,
-                           disabledTintColor: self.secondaryFontColor,
-                           activeTintColor: self.primaryFontColor,
-                           text: text,
-                           font: UIFont.systemFont(ofSize: self.buttonsFontSize, weight: .semibold),
-                           textColor: self.buttonFontColor)
+        ThemeBillingButton(
+            disabledTextColor: self.secondaryFontColor,
+            disabledTintColor: self.secondaryFontColor,
+            activeTintColor: self.primaryFontColor,
+            text: text,
+            font: UIFont.systemFont(ofSize: self.buttonsFontSize, weight: .semibold),
+            textColor: self.buttonFontColor)
     }
 }

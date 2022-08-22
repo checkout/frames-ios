@@ -9,12 +9,12 @@ import Foundation
 
 extension Constants {
     enum Style {
-      static let animationLength: TimeInterval = 0.25
+        static let animationLength: TimeInterval = 0.25
 
         enum PaymentForm {
-          enum Header: Double {
-            case subtitleFontSize = 13
-          }
+            enum Header: Double {
+                case subtitleFontSize = 13
+            }
             enum InputBillingFormButton: Double {
                 case height = 56
                 case width = 0
@@ -24,7 +24,7 @@ extension Constants {
                 case textLeading = 20
             }
             enum PayButton: Double {
-              case fontSize = 15
+                case fontSize = 15
             }
         }
 

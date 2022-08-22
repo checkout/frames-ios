@@ -20,8 +20,9 @@ public extension Theme {
 
     /// Create a Page Form Header Title from given text
     func buildPageHeaderTitle(text: String) -> ThemePageHeaderTitle {
-        ThemePageHeaderTitle(text: text,
-                             font: UIFont.systemFont(ofSize: self.headerFontSize, weight: .semibold),
-                             textColor: self.primaryFontColor)
+        ThemePageHeaderTitle(
+            text: text,
+            font: UIFont.systemFont(ofSize: self.headerFontSize, weight: .semibold),
+            textColor: self.primaryFontColor)
     }
 }

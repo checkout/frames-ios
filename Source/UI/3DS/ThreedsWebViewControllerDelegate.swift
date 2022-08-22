@@ -14,8 +14,7 @@ public protocol ThreedsWebViewControllerDelegate: AnyObject {
     /// - Parameters:
     ///   - threeDSWebViewController: The `ThreedsWebViewController` instance calling this method.
     ///   - token: The token extracted from the success URL.
-    func threeDSWebViewControllerAuthenticationDidSucceed(_ threeDSWebViewController: ThreedsWebViewController,
-                                                          token: String?)
+    func threeDSWebViewControllerAuthenticationDidSucceed(_ threeDSWebViewController: ThreedsWebViewController, token: String?)
 
     /// Called upon unsuccessful 3D Secure authentication.
     /// - Parameters:
@@ -28,8 +27,7 @@ public extension ThreedsWebViewControllerDelegate {
 
     func onFailure3D() {}
 
-    func threeDSWebViewControllerAuthenticationDidSucceed(_ threeDSWebViewController: ThreedsWebViewController,
-                                                          token: String?) {}
+    func threeDSWebViewControllerAuthenticationDidSucceed(_ threeDSWebViewController: ThreedsWebViewController, token: String?) {}
 
     func threeDSWebViewControllerAuthenticationDidFail(_ threeDSWebViewController: ThreedsWebViewController) {}
 }

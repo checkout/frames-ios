@@ -73,7 +73,7 @@ class BillingFormSummaryView: UIView {
 }
 
 extension BillingFormSummaryView {
-     func setupViewsInOrder() {
+    func setupViewsInOrder() {
         setupTitleLabel()
         setupHintLabel()
         setupSummaryLabel()
@@ -96,8 +96,9 @@ extension BillingFormSummaryView {
     private func setupHintLabel() {
         addSubview(hintLabel)
         NSLayoutConstraint.activate([
-            hintLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
-                                           constant: Constants.Padding.s.rawValue),
+            hintLabel.topAnchor.constraint(
+                equalTo: titleLabel.bottomAnchor,
+                constant: Constants.Padding.small.rawValue),
             hintLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             hintLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
@@ -107,12 +108,15 @@ extension BillingFormSummaryView {
         addSubview(summaryLabel)
 
         NSLayoutConstraint.activate([
-            summaryLabel.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
-                                              constant: Constants.Padding.xxl.rawValue),
-            summaryLabel.leadingAnchor.constraint(equalTo: leadingAnchor,
-                                                  constant: Constants.Padding.l.rawValue),
-            summaryLabel.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                                   constant: -Constants.Padding.l.rawValue)
+            summaryLabel.topAnchor.constraint(
+                equalTo: hintLabel.bottomAnchor,
+                constant: Constants.Padding.xxl.rawValue),
+            summaryLabel.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: Constants.Padding.large.rawValue),
+            summaryLabel.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -Constants.Padding.large.rawValue)
         ])
     }
 
@@ -120,8 +124,9 @@ extension BillingFormSummaryView {
         addSubview(summarySeparatorLineView)
 
         NSLayoutConstraint.activate([
-            summarySeparatorLineView.topAnchor.constraint(equalTo: summaryLabel.bottomAnchor,
-                                                          constant: Constants.Padding.m.rawValue),
+            summarySeparatorLineView.topAnchor.constraint(
+                equalTo: summaryLabel.bottomAnchor,
+                constant: Constants.Padding.medium.rawValue),
             summarySeparatorLineView.leadingAnchor.constraint(equalTo: leadingAnchor),
             summarySeparatorLineView.trailingAnchor.constraint(equalTo: trailingAnchor),
             summarySeparatorLineView.heightAnchor.constraint(equalToConstant: 1)
@@ -131,18 +136,19 @@ extension BillingFormSummaryView {
     private func setupButton() {
         addSubview(buttonView)
         NSLayoutConstraint.activate([
-          buttonView.topAnchor.constraint(equalTo: summarySeparatorLineView.bottomAnchor),
-          buttonView.bottomAnchor.constraint(equalTo: bottomAnchor),
-          buttonView.leadingAnchor.constraint(equalTo: leadingAnchor),
-          buttonView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            buttonView.topAnchor.constraint(equalTo: summarySeparatorLineView.bottomAnchor),
+            buttonView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            buttonView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            buttonView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 
     private func setupSummaryContainerView() {
         addSubview(summaryContainerView)
         NSLayoutConstraint.activate([
-            summaryContainerView.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
-                                                      constant: Constants.Padding.s.rawValue),
+            summaryContainerView.topAnchor.constraint(
+                equalTo: hintLabel.bottomAnchor,
+                constant: Constants.Padding.small.rawValue),
             summaryContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             summaryContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             summaryContainerView.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor)
@@ -153,11 +159,12 @@ extension BillingFormSummaryView {
     private func setupImageView() {
         addSubview(imageContainerView)
         NSLayoutConstraint.activate([
-          imageContainerView.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
-          imageContainerView.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                            constant: -Constants.Padding.xxxl.rawValue),
-          imageContainerView.widthAnchor.constraint(equalToConstant: 11),
-          imageContainerView.heightAnchor.constraint(equalToConstant: 13)
+            imageContainerView.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
+            imageContainerView.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -Constants.Padding.xxxl.rawValue),
+            imageContainerView.widthAnchor.constraint(equalToConstant: 11),
+            imageContainerView.heightAnchor.constraint(equalToConstant: 13)
         ])
     }
 

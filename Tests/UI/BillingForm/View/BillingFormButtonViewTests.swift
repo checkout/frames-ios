@@ -13,7 +13,7 @@ class BillingFormButtonViewTests: XCTestCase {
     }
 
     func testHeaderLabelStyle() {
-      XCTAssertEqual(view.titleLabel.label.text, style.button.text)
+        XCTAssertEqual(view.titleLabel.label.text, style.button.text)
         XCTAssertEqual(view.titleLabel.label.font, style.button.font)
         XCTAssertEqual(view.titleLabel.label.textColor, style.title?.textColor)
     }

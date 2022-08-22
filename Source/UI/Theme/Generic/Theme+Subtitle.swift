@@ -22,12 +22,14 @@ public extension Theme {
     }
 
     /// Create a Subtitle Style from text and optional image
-    func buildSubtitle(text: String,
-                       image: UIImage? = nil) -> ThemeSubtitle {
-        ThemeSubtitle(text: text,
-                      textColor: self.secondaryFontColor,
-                      tintColor: self.secondaryFontColor,
-                      image: image,
-                      font: UIFont.systemFont(ofSize: self.subtitleFontSize))
-    }
+    func buildSubtitle(
+        text: String,
+        image: UIImage? = nil) -> ThemeSubtitle {
+            ThemeSubtitle(
+                text: text,
+                textColor: self.secondaryFontColor,
+                tintColor: self.secondaryFontColor,
+                image: image,
+                font: UIFont.systemFont(ofSize: self.subtitleFontSize))
+        }
 }

@@ -20,42 +20,52 @@ public extension Theme {
     }
 
     /// Create a Payment Input Section from Styles defined for each sub component
-    func buildCardNumberSection(textField: ThemeTextField,
-                                title: ThemeTitle,
-                                mandatory: ThemeMandatory?,
-                                subtitle: ThemeSubtitle?,
-                                error: ThemeError) -> ThemePaymentInput {
-        ThemePaymentInput(textfield: textField,
-                          title: title,
-                          mandatory: mandatory,
-                          hint: subtitle,
-                          error: error)
-    }
+    func buildCardNumberSection(
+        textField: ThemeTextField,
+        title: ThemeTitle,
+        mandatory: ThemeMandatory?,
+        subtitle: ThemeSubtitle?,
+        error: ThemeError) -> ThemePaymentInput {
+            ThemePaymentInput(
+                textfield: textField,
+                title: title,
+                mandatory: mandatory,
+                hint: subtitle,
+                error: error)
+        }
 
     /// Create a Payment Input Section from basic input data for presentation
-    func buildPaymentInput(textFieldText: String = "",
-                           textFieldPlaceholder: String = "",
-                           isTextFieldNumericInput: Bool,
-                           titleText: String,
-                           subtitleText: String = "",
-                           subtitleImage: UIImage? = nil,
-                           isRequiredInputText: String = "",
-                           errorText: String = "",
-                           errorImage: UIImage? = nil) -> ThemePaymentInput {
+    func buildPaymentInput(
+        textFieldText: String = "",
+        textFieldPlaceholder: String = "",
+        isTextFieldNumericInput: Bool,
+        titleText: String,
+        subtitleText: String = "",
+        subtitleImage: UIImage? = nil,
+        isRequiredInputText: String = "",
+        errorText: String = "",
+        errorImage: UIImage? = nil) -> ThemePaymentInput {
         let addSubtitle = !subtitleText.isEmpty || subtitleImage != nil
         let addError = !errorText.isEmpty || errorImage != nil
         let addMandatory = !isRequiredInputText.isEmpty
-
+        let textfield = buildTextField(
+            text: textFieldText,
+            placeholderText: textFieldPlaceholder,
+            isNumericInput: isTextFieldNumericInput
+        )
+        let mandatory = addMandatory ? self.buildIsRequiredInput(text: isRequiredInputText) : nil
+        let hint = addSubtitle ? self.buildSubtitle(
+            text: subtitleText,
+            image: subtitleImage) : nil
+        let error = addError ? self.buildError(
+            text: errorText,
+            image: errorImage) : nil
         return ThemePaymentInput(
-            textfield: self.buildTextField(text: textFieldText,
-                                           placeholderText: textFieldPlaceholder,
-                                           isNumbericInput: isTextFieldNumericInput),
-            title: self.buildTitle(text: titleText),
-            mandatory: addMandatory ? self.buildIsRequiredInput(text: isRequiredInputText) : nil,
-            hint: addSubtitle ? self.buildSubtitle(text: subtitleText,
-                                                   image: subtitleImage) : nil,
-            error: addError ? self.buildError(text: errorText,
-                                              image: errorImage) : nil
+            textfield: textfield,
+            title: buildTitle(text: titleText),
+            mandatory: mandatory,
+            hint: hint,
+            error: error
         )
     }
 }

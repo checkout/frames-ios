@@ -8,7 +8,7 @@
 
 import XCTest
 
-class iOS_Example_Apple_PayUITests: XCTestCase {
+class ApplePayUITests: XCTestCase {
     var app: XCUIApplication!
 
     override func setUp() {
@@ -53,7 +53,7 @@ class iOS_Example_Apple_PayUITests: XCTestCase {
         expectation(for: exists, evaluatedWith: app.tables.staticTexts["Visa ····4242"], handler: nil)
         waitForExpectations(timeout: 5, handler: nil)
 
-        let visa4242StaticText = app.tables/*@START_MENU_TOKEN@*/.staticTexts["Visa ····4242"]/*[[".cells.staticTexts[\"Visa ····4242\"]",".staticTexts[\"Visa ····4242\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        let visa4242StaticText = app.tables.staticTexts["Visa ····4242"]
         visa4242StaticText.tap()
 
         app.buttons["Pay with Card"].tap()

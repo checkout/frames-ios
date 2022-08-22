@@ -20,8 +20,9 @@ public extension Theme {
 
     /// Create a Title Style from text
     func buildTitle(text: String) -> ThemeTitle {
-        ThemeTitle(text: text,
-                   font: UIFont.systemFont(ofSize: self.titleFontSize),
-                   textColor: self.primaryFontColor)
+        ThemeTitle(
+            text: text,
+            font: UIFont.systemFont(ofSize: self.titleFontSize),
+            textColor: self.primaryFontColor)
     }
 }

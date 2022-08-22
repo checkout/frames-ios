@@ -81,9 +81,9 @@ final class BillingFormViewController: UIViewController {
 
     /**
      Initializes a view controller with view model protocol
-
+     
      - Parameters:
-        - viewModel: The bill form view model implementation.
+     - viewModel: The bill form view model implementation.
      */
 
     init(viewModel: BillingFormViewModel) {
@@ -119,9 +119,10 @@ final class BillingFormViewController: UIViewController {
 
     @objc private func keyboardWillShow(notification: NSNotification) {
         guard let scrollView = tableView else { return }
-        scrollViewOnKeyboardWillShow(notification: notification,
-                                     scrollView: scrollView,
-                                          activeField: focusedTextField)
+        scrollViewOnKeyboardWillShow(
+            notification: notification,
+            scrollView: scrollView,
+            activeField: focusedTextField)
     }
 
     @objc private func keyboardWillHide(notification: Notification) {
@@ -130,9 +131,10 @@ final class BillingFormViewController: UIViewController {
     }
 
     private func setUpKeyboard() {
-        registerKeyboardHandlers(notificationCenter: notificationCenter,
-                                      keyboardWillShow: #selector(keyboardWillShow),
-                                      keyboardWillHide: #selector(keyboardWillHide))
+        registerKeyboardHandlers(
+            notificationCenter: notificationCenter,
+            keyboardWillShow: #selector(keyboardWillShow),
+            keyboardWillHide: #selector(keyboardWillHide))
     }
 }
 
@@ -168,13 +170,13 @@ extension BillingFormViewController {
                 equalTo: headerView.safeBottomAnchor),
             tableView.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
-                constant: Constants.Padding.l.rawValue),
+                constant: Constants.Padding.large.rawValue),
             tableView.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor,
-                constant: -Constants.Padding.l.rawValue),
+                constant: -Constants.Padding.large.rawValue),
             tableView.bottomAnchor.constraint(
                 equalTo: view.safeBottomAnchor,
-                constant: Constants.Padding.l.rawValue)
+                constant: Constants.Padding.large.rawValue)
         ])
     }
 }

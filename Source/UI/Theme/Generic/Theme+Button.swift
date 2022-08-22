@@ -44,7 +44,7 @@ public extension Theme {
         public var errorBorderColor: UIColor = .clear
         public var image: UIImage?
         public var textAlignment: NSTextAlignment = .natural
-        public var textLeading: CGFloat = Constants.Padding.l.rawValue
+        public var textLeading: CGFloat = Constants.Padding.large.rawValue
         public var cornerRadius: CGFloat
         public var borderWidth: CGFloat
         public var height: Double = 60
@@ -69,21 +69,23 @@ public extension Theme {
     }
 
     /// Create a button for launching a Country selection journey
-    func buildCountryListButton(text: String,
-                                image: UIImage? = nil) -> CountryListButton {
-        CountryListButton(disabledTextColor: self.secondaryFontColor,
-                          disabledTintColor: self.secondaryFontColor,
-                          activeTintColor: self.primaryFontColor,
-                          imageTintColor: self.primaryFontColor,
-                          normalBorderColor: self.textInputBorderColor,
-                          focusBorderColor: self.focussedTextInputBorderColor,
-                          errorBorderColor: self.errorBorderColor,
-                          image: image,
-                          cornerRadius: self.textInputBorderRadius,
-                          borderWidth: self.textInputBorderWidth,
-                          text: text,
-                          font: UIFont.systemFont(ofSize: self.inputFontSize),
-                          backgroundColor: self.textInputBackgroundColor,
-                          textColor: self.primaryFontColor)
-    }
+    func buildCountryListButton(
+        text: String,
+        image: UIImage? = nil) -> CountryListButton {
+            CountryListButton(
+                disabledTextColor: self.secondaryFontColor,
+                disabledTintColor: self.secondaryFontColor,
+                activeTintColor: self.primaryFontColor,
+                imageTintColor: self.primaryFontColor,
+                normalBorderColor: self.textInputBorderColor,
+                focusBorderColor: self.focussedTextInputBorderColor,
+                errorBorderColor: self.errorBorderColor,
+                image: image,
+                cornerRadius: self.textInputBorderRadius,
+                borderWidth: self.textInputBorderWidth,
+                text: text,
+                font: UIFont.systemFont(ofSize: self.inputFontSize),
+                backgroundColor: self.textInputBackgroundColor,
+                textColor: self.primaryFontColor)
+        }
 }

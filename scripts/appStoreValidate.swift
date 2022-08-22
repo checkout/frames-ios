@@ -41,11 +41,14 @@ func handleCompletion(_ completion: Subscribers.Completion<Error>) {
 
 func handleAppleIDCredentials(_ appleIDCredentials: AppleIDCredentials) {
     let terminationStatus = execute(
-        "xcrun", "altool", "--validate-app",
+        "xcrun",
+        "altool",
+        "--validate-app",
         "--file", bitriseIPAPath,
         "--username", appleIDCredentials.appleID,
         "--password", appleIDCredentials.appSpecificPassword,
-        "-t", "iOS"
+        "-t",
+        "iOS"
     )
     exit(terminationStatus)
 }

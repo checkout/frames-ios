@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0BC60B5C28AFA4A600F30992 /* ThemeDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B5B28AFA4A600F30992 /* ThemeDemo.swift */; };
 		443FCD9426137A4C009D6DE6 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 443FCD9326137A4C009D6DE6 /* Frames */; };
-		9554571A28AE91EA00C34759 /* iOS_Example_FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9554571928AE91EA00C34759 /* iOS_Example_FrameUITests.swift */; };
+		9554571A28AE91EA00C34759 /* ExampleFrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9554571928AE91EA00C34759 /* ExampleFrameUITests.swift */; };
 		95C8C10D28AD5FEE00B8D3D0 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C0B528AD5FEE00B8D3D0 /* UIViewControllerExtension.swift */; };
 		95C8C10E28AD5FEE00B8D3D0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C0B628AD5FEE00B8D3D0 /* UIViewExtension.swift */; };
 		95C8C10F28AD5FEE00B8D3D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C0B728AD5FEE00B8D3D0 /* AppDelegate.swift */; };
@@ -73,7 +73,7 @@
 		443FCD8F261379CB009D6DE6 /* frames-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "frames-ios"; path = ..; sourceTree = "<group>"; };
 		44E647AC260CEAFF00503D6C /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9554570E28AE91C300C34759 /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9554571928AE91EA00C34759 /* iOS_Example_FrameUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS_Example_FrameUITests.swift; sourceTree = "<group>"; };
+		9554571928AE91EA00C34759 /* ExampleFrameUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleFrameUITests.swift; sourceTree = "<group>"; };
 		95C8C0B528AD5FEE00B8D3D0 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		95C8C0B628AD5FEE00B8D3D0 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		95C8C0B728AD5FEE00B8D3D0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 		CB9412D82825714C00C889E8 /* iOS Example FrameUITests */ = {
 			isa = PBXGroup;
 			children = (
-				9554571928AE91EA00C34759 /* iOS_Example_FrameUITests.swift */,
+				9554571928AE91EA00C34759 /* ExampleFrameUITests.swift */,
 				CB9412DA2825714C00C889E8 /* Info.plist */,
 			);
 			name = "iOS Example FrameUITests";
@@ -491,7 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9554571A28AE91EA00C34759 /* iOS_Example_FrameUITests.swift in Sources */,
+				9554571A28AE91EA00C34759 /* ExampleFrameUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

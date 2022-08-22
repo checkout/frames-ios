@@ -72,8 +72,9 @@ extension SelectionButtonView {
     private func setupHintLabel() {
         addSubview(hintLabel)
         NSLayoutConstraint.activate([
-            hintLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
-                                           constant: Constants.Padding.xxs.rawValue),
+            hintLabel.topAnchor.constraint(
+                equalTo: titleLabel.bottomAnchor,
+                constant: Constants.Padding.xxs.rawValue),
             hintLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             hintLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
@@ -84,22 +85,24 @@ extension SelectionButtonView {
         let heightStyle = style?.button.height ?? Constants.Style.BillingForm.InputCountryButton.height.rawValue
 
         NSLayoutConstraint.activate([
-          buttonView.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
-                                          constant: Constants.Padding.s.rawValue),
-          buttonView.bottomAnchor.constraint(equalTo: bottomAnchor),
-          buttonView.leadingAnchor.constraint(equalTo: leadingAnchor),
-          buttonView.trailingAnchor.constraint(equalTo: trailingAnchor),
-          buttonView.heightAnchor.constraint(equalToConstant: heightStyle)
+            buttonView.topAnchor.constraint(
+                equalTo: hintLabel.bottomAnchor,
+                constant: Constants.Padding.small.rawValue),
+            buttonView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            buttonView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            buttonView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            buttonView.heightAnchor.constraint(equalToConstant: heightStyle)
         ])
     }
     private func setupImageView() {
         addSubview(imageContainerView)
         NSLayoutConstraint.activate([
-          imageContainerView.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
-          imageContainerView.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                            constant: -Constants.Padding.l.rawValue),
-          imageContainerView.widthAnchor.constraint(equalToConstant: 15),
-          imageContainerView.heightAnchor.constraint(equalToConstant: 15)
+            imageContainerView.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
+            imageContainerView.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -Constants.Padding.large.rawValue),
+            imageContainerView.widthAnchor.constraint(equalToConstant: 15),
+            imageContainerView.heightAnchor.constraint(equalToConstant: 15)
         ])
     }
 

@@ -63,17 +63,18 @@ public struct Theme {
     /// Border width around text input fields when showing an error
     public var errorTextInputBorderWidth: CGFloat = 0
 
-    public init(primaryFontColor: UIColor,
-                secondaryFontColor: UIColor,
-                buttonFontColor: UIColor,
-                errorFontColor: UIColor,
-                backgroundColor: UIColor,
-                errorBorderColor: UIColor) {
-        self.primaryFontColor = primaryFontColor
-        self.secondaryFontColor = secondaryFontColor
-        self.buttonFontColor = buttonFontColor
-        self.errorFontColor = errorFontColor
-        self.backgroundColor = backgroundColor
-        self.errorBorderColor = errorBorderColor
-    }
+    public init(
+        primaryFontColor: UIColor,
+        secondaryFontColor: UIColor,
+        buttonFontColor: UIColor,
+        errorFontColor: UIColor,
+        backgroundColor: UIColor,
+        errorBorderColor: UIColor) {
+            self.primaryFontColor = primaryFontColor
+            self.secondaryFontColor = secondaryFontColor
+            self.buttonFontColor = buttonFontColor
+            self.errorFontColor = errorFontColor
+            self.backgroundColor = backgroundColor
+            self.errorBorderColor = errorBorderColor
+        }
 }

@@ -8,4 +8,4 @@
 
 import XCTest
 
-class iOS_Example_FrameUITests: XCTestCase { }
+class ExampleFrameUITests: XCTestCase { }

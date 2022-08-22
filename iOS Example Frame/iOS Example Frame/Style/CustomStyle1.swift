@@ -26,55 +26,55 @@ private enum Constants {
 // **********************
 
 struct PayButtonFormStyleCustom1: ElementButtonStyle {
-  var image: UIImage?
-  var textAlignment: NSTextAlignment = .center
-  var text: String = "Pay 100$"
-  var font = UIFont.systemFont(ofSize: 15)
-  var disabledTextColor: UIColor = Constants.secondaryFontColor
-  var disabledTintColor: UIColor = Constants.mainFontColor.withAlphaComponent(0.2)
-  var activeTintColor: UIColor = Constants.mainFontColor
-  var backgroundColor: UIColor = Constants.mainFontColor
-  var textColor: UIColor = .white
-  var normalBorderColor: UIColor = .clear
-  var focusBorderColor: UIColor = .clear
-  var errorBorderColor: UIColor = .clear
-  var imageTintColor: UIColor = .clear
-  var isHidden = false
-  var isEnabled = true
-  var height: Double = 56
-  var width: Double = 0
-  var cornerRadius: CGFloat = 10
-  var borderWidth: CGFloat = 0
-  var textLeading: CGFloat = 0
+    var image: UIImage?
+    var textAlignment: NSTextAlignment = .center
+    var text: String = "Pay 100$"
+    var font = UIFont.systemFont(ofSize: 15)
+    var disabledTextColor: UIColor = Constants.secondaryFontColor
+    var disabledTintColor: UIColor = Constants.mainFontColor.withAlphaComponent(0.2)
+    var activeTintColor: UIColor = Constants.mainFontColor
+    var backgroundColor: UIColor = Constants.mainFontColor
+    var textColor: UIColor = .white
+    var normalBorderColor: UIColor = .clear
+    var focusBorderColor: UIColor = .clear
+    var errorBorderColor: UIColor = .clear
+    var imageTintColor: UIColor = .clear
+    var isHidden = false
+    var isEnabled = true
+    var height: Double = 56
+    var width: Double = 0
+    var cornerRadius: CGFloat = 10
+    var borderWidth: CGFloat = 0
+    var textLeading: CGFloat = 0
 }
 
 // MARK: - Main Payment Form
 
 struct PaymentFormStyleCustom1: PaymentFormStyle {
-  var backgroundColor: UIColor = Constants.backgroundColor
-  var headerView: PaymentHeaderCellStyle = StyleOrganiser.PaymentHeaderViewStyle()
-  var addBillingSummary: CellButtonStyle? = StyleOrganiser.BillingStartButton()
-  var editBillingSummary: BillingSummaryViewStyle? = StyleOrganiser.BillingSummaryStyle()
-  var cardholderInput: CellTextFieldStyle?
-  var cardNumber: CellTextFieldStyle? = StyleOrganiser.CardNumberSection()
-  var expiryDate: CellTextFieldStyle? = StyleOrganiser.ExpiryDateSection()
-  var securityCode: CellTextFieldStyle? = StyleOrganiser.SecurityNumberSection()
-  var payButton: ElementButtonStyle = PayButtonFormStyleCustom1()
+    var backgroundColor: UIColor = Constants.backgroundColor
+    var headerView: PaymentHeaderCellStyle = StyleOrganiser.PaymentHeaderViewStyle()
+    var addBillingSummary: CellButtonStyle? = StyleOrganiser.BillingStartButton()
+    var editBillingSummary: BillingSummaryViewStyle? = StyleOrganiser.BillingSummaryStyle()
+    var cardholderInput: CellTextFieldStyle?
+    var cardNumber: CellTextFieldStyle? = StyleOrganiser.CardNumberSection()
+    var expiryDate: CellTextFieldStyle? = StyleOrganiser.ExpiryDateSection()
+    var securityCode: CellTextFieldStyle? = StyleOrganiser.SecurityNumberSection()
+    var payButton: ElementButtonStyle = PayButtonFormStyleCustom1()
 }
 
 struct BillingFormStyleCustom1: BillingFormStyle {
-  var mainBackground: UIColor = Constants.backgroundColor
-  var header: BillingFormHeaderCellStyle = StyleOrganiser.BillingHeaderViewStyle()
-  var cells: [BillingFormCell] = [
-    .fullName(StyleOrganiser.BillingFullNameInput()),
-    .addressLine1(StyleOrganiser.BillingAddressLine1Input()),
-    .addressLine2(StyleOrganiser.BillingAddressLine2Input()),
-    .city(StyleOrganiser.BillingCityInput()),
-    .state(StyleOrganiser.BillingStateInput()),
-    .postcode(StyleOrganiser.BillingPostcodeInput()),
-    .country(StyleOrganiser.BillingCountryInput()),
-    .phoneNumber(StyleOrganiser.BillingPhoneInput())
-  ]
+    var mainBackground: UIColor = Constants.backgroundColor
+    var header: BillingFormHeaderCellStyle = StyleOrganiser.BillingHeaderViewStyle()
+    var cells: [BillingFormCell] = [
+        .fullName(StyleOrganiser.BillingFullNameInput()),
+        .addressLine1(StyleOrganiser.BillingAddressLine1Input()),
+        .addressLine2(StyleOrganiser.BillingAddressLine2Input()),
+        .city(StyleOrganiser.BillingCityInput()),
+        .state(StyleOrganiser.BillingStateInput()),
+        .postcode(StyleOrganiser.BillingPostcodeInput()),
+        .country(StyleOrganiser.BillingCountryInput()),
+        .phoneNumber(StyleOrganiser.BillingPhoneInput())
+    ]
 }
 
 private struct StyleOrganiser {
@@ -93,7 +93,7 @@ private struct StyleOrganiser {
         var doneButton: ElementButtonStyle = DoneButtonStyle()
     }
 
-  struct BillingHeaderLabel: ElementStyle {
+    struct BillingHeaderLabel: ElementStyle {
         var textAlignment: NSTextAlignment = .natural
         var isHidden = false
         var text: String = "Billing address"
