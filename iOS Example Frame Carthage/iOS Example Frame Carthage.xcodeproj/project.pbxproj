@@ -747,8 +747,8 @@
 				0BC60B7428AFB32600F30992 /* Theme+Subtitle.swift */,
 			);
 			path = Generic;
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
 		0BD4BFA028AE6D6B008ED92E /* Cardholder */ = {
 			isa = PBXGroup;
 			children = (
@@ -1831,6 +1831,7 @@
 				E6646F8720CE6C0900D8353A /* Frameworks */,
 				E6646F8820CE6C0900D8353A /* Resources */,
 				4422774B26163716009626A0 /* Embed Frameworks */,
+				953A893528AFDCA300C1CDF5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1979,6 +1980,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "checkoutEventLoggerKitVersion=\"1.1.1\"\nzipDownload=\"CheckoutEventLoggerKit.zip\"\n\ncurl -L \"https://github.com/checkout/checkout-event-logger-ios-framework/archive/refs/tags/$checkoutEventLoggerKitVersion.zip\" > $zipDownload\nunzip $zipDownload\ncp -r \"checkout-event-logger-ios-framework-$checkoutEventLoggerKitVersion/CheckoutEventLoggerKit.xcframework\" .\nrm -r \"checkout-event-logger-ios-framework-$checkoutEventLoggerKitVersion\"\nrm $zipDownload\n";
+		};
+		953A893528AFDCA300C1CDF5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Adds support for Apple Silicon brew directory export \nPATH=\"$PATH:/opt/homebrew/bin\"  \n\nif which swiftlint > /dev/null; then\n  swiftlint --fix --config ../.swiftlint.yml\nelse\n  echo \"error: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
