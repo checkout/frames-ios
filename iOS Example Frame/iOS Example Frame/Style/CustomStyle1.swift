@@ -56,8 +56,8 @@ struct PaymentFormStyleCustom1: PaymentFormStyle {
   var addBillingSummary: CellButtonStyle? = StyleOrganiser.BillingStartButton()
   var editBillingSummary: BillingSummaryViewStyle? = StyleOrganiser.BillingSummaryStyle()
   var cardholderInput: CellTextFieldStyle?
-  var cardNumber: CellTextFieldStyle? = StyleOrganiser.CardNumberSection()
-  var expiryDate: CellTextFieldStyle? = StyleOrganiser.ExpiryDateSection()
+  var cardNumber: CellTextFieldStyle = StyleOrganiser.CardNumberSection()
+  var expiryDate: CellTextFieldStyle = StyleOrganiser.ExpiryDateSection()
   var securityCode: CellTextFieldStyle? = StyleOrganiser.SecurityNumberSection()
   var payButton: ElementButtonStyle =  PayButtonFormStyleCustom1()
 }
