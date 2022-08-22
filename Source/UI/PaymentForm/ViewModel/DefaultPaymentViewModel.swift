@@ -189,9 +189,10 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
     let isCardholderRequired = paymentFormStyle?.cardholderInput?.isMandatory == true
     if isCardholderRequired && cardDetails.name.isEmpty { return }
 
-    // Check if security code is required and if so whether it is valid
-    let isSecurityCodeRequired = paymentFormStyle?.securityCode?.isMandatory == true
-    if isSecurityCodeRequired && cardValidator.isValid(cvv: cardDetails.cvv, for: cardScheme) { return }
+    // Check if security code is displayed and if so whether it is valid
+    // This is business logic that wants Security code to be mandatory whenever its shown
+    let isSecurityCodeRequired = paymentFormStyle?.securityCode != nil
+    if isSecurityCodeRequired && !cardValidator.isValid(cvv: cardDetails.cvv, for: cardScheme) { return }
 
     // Check if Billing is required and if so whether it exists
     let isAddBillingRequired = paymentFormStyle?.addBillingSummary?.isMandatory == true

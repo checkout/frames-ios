@@ -228,6 +228,361 @@ class PaymentViewModelTests: XCTestCase {
         waitForExpectations(timeout: 0.1)
     }
     
+    // MARK: Mandatory input validation tests
+    func testNoSchemePresentFailMandatoryInput() {
+        let testPaymentForm = makeBillingFormStyle()
+        let model = makeViewModel(paymentFormStyle: testPaymentForm)
+
+        let expectation = expectation(description: "Callback is expected")
+        expectation.expectedFulfillmentCount = 2
+        model.shouldEnablePayButton = { isMandatoryInputProvided in
+            XCTAssertFalse(isMandatoryInputProvided)
+            expectation.fulfill()
+        }
+        model.update(result: .failure(.invalidScheme))
+        model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
+
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testMandatoryCardholderNotPresentFailMandatoryInput() {
+        let testPaymentForm = makeBillingFormStyle(isCardholderMandatory: true)
+        let model = makeViewModel(paymentFormStyle: testPaymentForm)
+        
+        let expectation = expectation(description: "Callback is expected")
+        expectation.expectedFulfillmentCount = 2
+        model.shouldEnablePayButton = { isMandatoryInputProvided in
+            XCTAssertFalse(isMandatoryInputProvided)
+            expectation.fulfill()
+        }
+        
+        model.update(result: .success(("4242424242424242", .visa)))
+        model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testOptionalCardholderNotPresentPassesMandatoryInput() {
+        var expectedCallbacks = 3
+        let testPaymentForm = makeBillingFormStyle(isCardholderMandatory: false)
+        let model = makeViewModel(paymentFormStyle: testPaymentForm)
+        
+        let expectation = expectation(description: "Callback is expected")
+        expectation.expectedFulfillmentCount = expectedCallbacks
+        model.shouldEnablePayButton = { isMandatoryInputProvided in
+            expectedCallbacks -= 1
+            // On the last call we expect that all mandatory inputs were provided
+            if expectedCallbacks == 0 {
+                XCTAssertTrue(isMandatoryInputProvided)
+            } else {
+                XCTAssertFalse(isMandatoryInputProvided)
+            }
+            expectation.fulfill()
+        }
+        
+        model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
+        model.securityCodeIsUpdated(result: .success("123"))
+        model.update(result: .success(("4242424242424242", .visa)))
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testMissingCardholderPassesMandatoryInput() {
+        var expectedCallbacks = 3
+        var testPaymentForm = makeBillingFormStyle(isCardholderMandatory: true)
+        testPaymentForm.cardholderInput = nil
+        let model = makeViewModel(paymentFormStyle: testPaymentForm)
+        
+        let expectation = expectation(description: "Callback is expected")
+        expectation.expectedFulfillmentCount = expectedCallbacks
+        model.shouldEnablePayButton = { isMandatoryInputProvided in
+            expectedCallbacks -= 1
+            // On the last call we expect that all mandatory inputs were provided
+            if expectedCallbacks == 0 {
+                XCTAssertTrue(isMandatoryInputProvided)
+            } else {
+                XCTAssertFalse(isMandatoryInputProvided)
+            }
+            expectation.fulfill()
+        }
+        
+        model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
+        model.securityCodeIsUpdated(result: .success("123"))
+        model.update(result: .success(("4242424242424242", .visa)))
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testMandatorySecurityCodeNotPresentFailMandatoryInput() {
+        let testPaymentForm = makeBillingFormStyle(isSecurityCodeMandatory: true)
+        let model = makeViewModel(paymentFormStyle: testPaymentForm)
+        
+        let expectation = expectation(description: "Callback is expected")
+        expectation.expectedFulfillmentCount = 2
+        model.shouldEnablePayButton = { isMandatoryInputProvided in
+            XCTAssertFalse(isMandatoryInputProvided)
+            expectation.fulfill()
+        }
+        
+        model.update(result: .success(("4242424242424242", .visa)))
+        model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testOptionalSecurityCodeNotPresentFailsMandatoryInput() {
+        // Business requirements specifically asked that Security Code has specific behaviour
+        // If shown it is mandatory, making it optional will have no effect in requiring it
+        let testPaymentForm = makeBillingFormStyle(isSecurityCodeMandatory: true)
+        let model = makeViewModel(paymentFormStyle: testPaymentForm)
+        
+        let expectation = expectation(description: "Callback is expected")
+        expectation.expectedFulfillmentCount = 2
+        model.shouldEnablePayButton = { isMandatoryInputProvided in
+            XCTAssertFalse(isMandatoryInputProvided)
+            expectation.fulfill()
+        }
+        
+        model.update(result: .success(("4242424242424242", .visa)))
+        model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testMissingSecurityCodePassesMandatoryInput() {
+        var expectedCallbacks = 2
+        var testPaymentForm = makeBillingFormStyle(isSecurityCodeMandatory: true)
+        testPaymentForm.securityCode = nil
+        let model = makeViewModel(paymentFormStyle: testPaymentForm)
+        
+        let expectation = expectation(description: "Callback is expected")
+        expectation.expectedFulfillmentCount = expectedCallbacks
+        model.shouldEnablePayButton = { isMandatoryInputProvided in
+            expectedCallbacks -= 1
+            // On the last call we expect that all mandatory inputs were provided
+            if expectedCallbacks == 0 {
+                XCTAssertTrue(isMandatoryInputProvided)
+            } else {
+                XCTAssertFalse(isMandatoryInputProvided)
+            }
+            expectation.fulfill()
+        }
+        
+        model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
+        model.update(result: .success(("4242424242424242", .visa)))
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testMandatoryBillingNotPresentFailMandatoryInput() {
+        let testPaymentForm = makeBillingFormStyle(isBillingMandatory: true)
+        let model = makeViewModel(paymentFormStyle: testPaymentForm)
+        
+        let expectation = expectation(description: "Callback is expected")
+        expectation.expectedFulfillmentCount = 2
+        model.shouldEnablePayButton = { isMandatoryInputProvided in
+            XCTAssertFalse(isMandatoryInputProvided)
+            expectation.fulfill()
+        }
+        
+        model.update(result: .success(("4242424242424242", .visa)))
+        model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testOptionalBillingNotPresentPassesMandatoryInput() {
+        var expectedCallbacks = 3
+        let testPaymentForm = makeBillingFormStyle(isBillingMandatory: false)
+        let model = makeViewModel(paymentFormStyle: testPaymentForm)
+        
+        let expectation = expectation(description: "Callback is expected")
+        expectation.expectedFulfillmentCount = expectedCallbacks
+        model.shouldEnablePayButton = { isMandatoryInputProvided in
+            expectedCallbacks -= 1
+            // On the last call we expect that all mandatory inputs were provided
+            if expectedCallbacks == 0 {
+                XCTAssertTrue(isMandatoryInputProvided)
+            } else {
+                XCTAssertFalse(isMandatoryInputProvided)
+            }
+            expectation.fulfill()
+        }
+        
+        model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
+        model.update(result: .success(("4242424242424242", .visa)))
+        model.securityCodeIsUpdated(result: .success("123"))
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testMissingBillingPassesMandatoryInput() {
+        var expectedCallbacks = 3
+        var testPaymentForm = makeBillingFormStyle(isBillingMandatory: true)
+        testPaymentForm.editBillingSummary = nil
+        let model = makeViewModel(paymentFormStyle: testPaymentForm)
+        
+        let expectation = expectation(description: "Callback is expected")
+        expectation.expectedFulfillmentCount = expectedCallbacks
+        model.shouldEnablePayButton = { isMandatoryInputProvided in
+            expectedCallbacks -= 1
+            // On the last call we expect that all mandatory inputs were provided
+            if expectedCallbacks == 0 {
+                XCTAssertTrue(isMandatoryInputProvided)
+            } else {
+                XCTAssertFalse(isMandatoryInputProvided)
+            }
+            expectation.fulfill()
+        }
+        
+        model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
+        model.update(result: .success(("4242424242424242", .visa)))
+        model.securityCodeIsUpdated(result: .success("123"))
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testMissingCardNumberFailMandatoryInput() {
+        let testPaymentForm = makeBillingFormStyle(isCardholderMandatory: true,
+                                                   isSecurityCodeMandatory: true,
+                                                   isBillingMandatory: true)
+        let model = makeViewModel(paymentFormStyle: testPaymentForm)
+        
+        let expectation = expectation(description: "Callback is expected")
+        expectation.expectedFulfillmentCount = 4
+        model.shouldEnablePayButton = { isMandatoryInputProvided in
+            XCTAssertFalse(isMandatoryInputProvided)
+            expectation.fulfill()
+        }
+        
+        model.cardholderIsUpdated(value: "John Price")
+        model.securityCodeIsUpdated(result: .success("123"))
+        model.onTapDoneButton(data: makeMockBillingForm())
+        model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testIncompleteCardNumberFailMandatoryInput() {
+        let testPaymentForm = makeBillingFormStyle(isCardholderMandatory: true,
+                                                   isSecurityCodeMandatory: true,
+                                                   isBillingMandatory: true)
+        let model = makeViewModel(paymentFormStyle: testPaymentForm)
+        
+        let expectation = expectation(description: "Callback is expected")
+        expectation.expectedFulfillmentCount = 5
+        model.shouldEnablePayButton = { isMandatoryInputProvided in
+            XCTAssertFalse(isMandatoryInputProvided)
+            expectation.fulfill()
+        }
+        
+        model.cardholderIsUpdated(value: "John Price")
+        model.securityCodeIsUpdated(result: .success("123"))
+        model.onTapDoneButton(data: makeMockBillingForm())
+        model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
+        model.update(result: .success((cardNumber: "42424242", scheme: .visa)))
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testMissingExpiryDateFailMandatoryInput() {
+        let testPaymentForm = makeBillingFormStyle(isCardholderMandatory: true,
+                                                   isSecurityCodeMandatory: true,
+                                                   isBillingMandatory: true)
+        let model = makeViewModel(paymentFormStyle: testPaymentForm)
+        
+        let expectation = expectation(description: "Callback is expected")
+        expectation.expectedFulfillmentCount = 4
+        model.shouldEnablePayButton = { isMandatoryInputProvided in
+            XCTAssertFalse(isMandatoryInputProvided)
+            expectation.fulfill()
+        }
+        
+        model.cardholderIsUpdated(value: "John Price")
+        model.securityCodeIsUpdated(result: .success("123"))
+        model.onTapDoneButton(data: makeMockBillingForm())
+        model.update(result: .success((cardNumber: "4242424242424242", scheme: .visa)))
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testHistoricExpiryDateFailMandatoryInput() {
+        let testPaymentForm = makeBillingFormStyle(isCardholderMandatory: true,
+                                                   isSecurityCodeMandatory: true,
+                                                   isBillingMandatory: true)
+        let model = makeViewModel(paymentFormStyle: testPaymentForm)
+        
+        let expectation = expectation(description: "Callback is expected")
+        expectation.expectedFulfillmentCount = 5
+        model.shouldEnablePayButton = { isMandatoryInputProvided in
+            XCTAssertFalse(isMandatoryInputProvided)
+            expectation.fulfill()
+        }
+        
+        model.cardholderIsUpdated(value: "John Price")
+        model.securityCodeIsUpdated(result: .success("123"))
+        model.onTapDoneButton(data: makeMockBillingForm())
+        model.update(result: .success((cardNumber: "4242424242424242", scheme: .visa)))
+        model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 01, year: 1800)))
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testCardNumberAndExpiryDateProvidedAllOtherOptionalMissingIsValid() {
+        var expectedCallbacks = 2
+        var testPaymentForm = makeBillingFormStyle(isCardholderMandatory: false,
+                                                   isSecurityCodeMandatory: false,
+                                                   isBillingMandatory: false)
+        testPaymentForm.securityCode = nil
+        let model = makeViewModel(paymentFormStyle: testPaymentForm)
+        
+        let expectation = expectation(description: "Callback is expected")
+        expectation.expectedFulfillmentCount = expectedCallbacks
+        model.shouldEnablePayButton = { isMandatoryInputProvided in
+            expectedCallbacks -= 1
+            if expectedCallbacks == 0 {
+                XCTAssertTrue(isMandatoryInputProvided)
+            } else {
+                XCTAssertFalse(isMandatoryInputProvided)
+            }
+            expectation.fulfill()
+        }
+        
+        model.update(result: .success((cardNumber: "4242424242424242", scheme: .visa)))
+        model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testAllFieldsRequiredAndProvided() {
+        var expectedCallbacks = 6
+        let testPaymentForm = makeBillingFormStyle(isCardholderMandatory: true,
+                                                   isSecurityCodeMandatory: true,
+                                                   isBillingMandatory: true)
+        let model = makeViewModel(paymentFormStyle: testPaymentForm)
+        
+        let expectation = expectation(description: "Callback is expected")
+        expectation.expectedFulfillmentCount = expectedCallbacks
+        model.shouldEnablePayButton = { isMandatoryInputProvided in
+            expectedCallbacks -= 1
+            if expectedCallbacks == 0 {
+                XCTAssertTrue(isMandatoryInputProvided)
+            } else {
+                XCTAssertFalse(isMandatoryInputProvided)
+            }
+            expectation.fulfill()
+        }
+        
+        model.cardholderIsUpdated(value: "John Price")
+        model.securityCodeIsUpdated(result: .success("123"))
+        model.onTapDoneButton(data: makeMockBillingForm())
+        model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
+        model.update(result: .success((cardNumber: "42424242", scheme: .visa)))
+        model.update(result: .success((cardNumber: "4242424242424242", scheme: .visa)))
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
     private func makeViewModel(apiService: Frames.CheckoutAPIProtocol = StubCheckoutAPIService(),
                                cardValidator: CardValidator = CardValidator(environment: .sandbox),
                                logger: FramesEventLogging = StubFramesEventLogger(),
@@ -242,5 +597,29 @@ class PaymentViewModelTests: XCTestCase {
                                 paymentFormStyle: paymentFormStyle,
                                 billingFormStyle: billingFormStyle,
                                 supportedSchemes: supportedCardSchemes)
+    }
+    
+    private func makeMockBillingForm() -> BillingForm {
+        BillingForm(name: "John", address: Address(addressLine1: "Kong Drive", addressLine2: "Blister", city: "Dreamland", state: nil, zip: "DR38ML", country: Country.allAvailable.first), phone: nil)
+    }
+    
+    private func makeBillingFormStyle(isCardholderMandatory: Bool = false,
+                                      isSecurityCodeMandatory: Bool = false,
+                                      isBillingMandatory: Bool = false) -> PaymentFormStyle {
+        var style = DefaultPaymentFormStyle()
+        
+        let cardholderInput = DefaultCardholderFormStyle(isMandatory: isCardholderMandatory)
+        style.cardholderInput = cardholderInput
+        
+        let securityCode = DefaultSecurityCodeFormStyle(isMandatory: isSecurityCodeMandatory)
+        style.securityCode = securityCode
+        
+        let addBillingDetails = DefaultAddBillingDetailsViewStyle(isMandatory: isBillingMandatory)
+        style.addBillingSummary = addBillingDetails
+        
+        let billingSummary = DefaultBillingSummaryViewStyle(isMandatory: isBillingMandatory)
+        style.editBillingSummary = billingSummary
+        
+        return style
     }
 }
