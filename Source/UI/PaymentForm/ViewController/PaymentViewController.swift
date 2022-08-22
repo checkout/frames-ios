@@ -335,10 +335,13 @@ extension PaymentViewController {
       paymentViews.append(cardholderView)
       cardholderView.update(style: cardholderStyle)
     }
+    paymentViews.append(contentsOf: [cardNumberView, expiryDateView])
+
+    if viewModel.paymentFormStyle?.securityCode != nil {
+      paymentViews.append(securityCodeView)
+    }
+
     paymentViews.append(contentsOf: [
-      cardNumberView,
-      expiryDateView,
-      securityCodeView,
       addBillingFormButtonView,
       billingFormSummaryView,
       payButtonView])
