@@ -5,7 +5,6 @@ let package = Package(
     name: "Frames",
     defaultLocalization: "en",
     platforms: [
-        .macOS(.v10_12),
         .iOS(.v10)
     ],
     products: [

@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E6646F9D20CE6C0A00D8353A"
+               BlueprintIdentifier = "9554570D28AE91C300C34759"
                BuildableName = "iOS Example FrameUITests.xctest"
                BlueprintName = "iOS Example FrameUITests"
                ReferencedContainer = "container:iOS Example Frame SPM.xcodeproj">
