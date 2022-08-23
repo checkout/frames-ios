@@ -89,10 +89,10 @@ class ThreedsWebViewControllerTests: XCTestCase {
         urlHelper = URLHelperMock()
 
         threedsWebViewController = ThreedsWebViewControllerForDismiss(
-          checkoutAPIProtocol: checkoutAPIService,
-          successUrl: successUrl,
-          failUrl: failUrl,
-          threeDSWKNavigationHelperFactory: mockThreeDSWKNavigationHelperFactory)
+            checkoutAPIProtocol: checkoutAPIService,
+            successUrl: successUrl,
+            failUrl: failUrl,
+            threeDSWKNavigationHelperFactory: mockThreeDSWKNavigationHelperFactory)
         let window = UIWindow()
         window.rootViewController = threedsWebViewController
     }
@@ -141,7 +141,7 @@ class ThreedsWebViewControllerTests: XCTestCase {
         threedsWebViewController.authURL = url
         threedsWebViewController.loadView()
         threedsWebViewController.viewDidLoad()
-        XCTAssertEqual(threedsWebViewController.webView.url, url)
+        XCTAssertEqual(threedsWebViewController.webView?.url, url)
         XCTAssertEqual(logger.logCalledWithFramesLogEvents, [.threeDSWebviewPresented])
     }
 
@@ -150,7 +150,7 @@ class ThreedsWebViewControllerTests: XCTestCase {
         threedsWebViewController.delegate = delegate
         threedsWebViewController.loadViewIfNeeded()
 
-        XCTAssertFalse(threedsWebViewController.webView.configuration.websiteDataStore.isPersistent)
+        XCTAssertFalse(((threedsWebViewController.webView?.configuration.websiteDataStore.isPersistent) != nil))
     }
 
     func testLogOnLoaded() {

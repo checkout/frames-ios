@@ -22,7 +22,16 @@ public extension Theme {
     }
 
     /// Create a Payment Form from the provided Styles for each section
-    func buildPaymentForm(headerView: PaymentHeaderCellStyle, addBillingButton: CellButtonStyle?, billingSummary: BillingSummaryViewStyle?, cardholder: CellTextFieldStyle?, cardNumber: CellTextFieldStyle, expiryDate: CellTextFieldStyle, securityCode: CellTextFieldStyle?, payButton: ElementButtonStyle) -> ThemePaymentForm {
+    //
+    func buildPaymentForm(
+        headerView: PaymentHeaderCellStyle,
+        addBillingButton: CellButtonStyle?,
+        billingSummary: BillingSummaryViewStyle?,
+        cardholder: CellTextFieldStyle?,
+        cardNumber: CellTextFieldStyle,
+        expiryDate: CellTextFieldStyle,
+        securityCode: CellTextFieldStyle?,
+        payButton: ElementButtonStyle) -> ThemePaymentForm {
         ThemePaymentForm(
             backgroundColor: self.backgroundColor,
             headerView: headerView,

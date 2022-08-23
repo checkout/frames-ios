@@ -7,7 +7,7 @@ import CheckoutEventLoggerKit
 public class ThreedsWebViewController: UIViewController {
     // MARK: - Properties
 
-    var webView: WKWebView!
+    var webView: WKWebView?
 
     /// Delegate
     public weak var delegate: ThreedsWebViewControllerDelegate?
@@ -87,8 +87,8 @@ public class ThreedsWebViewController: UIViewController {
         logger?.log(.threeDSWebviewPresented)
 
         let authRequest = URLRequest(url: authURL)
-        webView.navigationDelegate = threeDSWKNavigationHelper
-        authUrlNavigation = webView.load(authRequest)
+        webView?.navigationDelegate = threeDSWKNavigationHelper
+        authUrlNavigation = webView?.load(authRequest)
     }
 }
 
@@ -104,18 +104,18 @@ extension ThreedsWebViewController: ThreeDSWKNavigationHelperDelegate {
 
     public func threeDSWKNavigationHelperDelegate(didReceiveResult result: Result<String, ThreeDSError>) {
         switch result {
-        case .success(let token):
-            logger?.log(.threeDSChallengeComplete(success: true, tokenID: token))
-            delegate?.threeDSWebViewControllerAuthenticationDidSucceed(self, token: token)
-        case .failure(let error):
-            switch error {
-            case .couldNotExtractToken:
-                logger?.log(.threeDSChallengeComplete(success: false, tokenID: nil))
-                delegate?.threeDSWebViewControllerAuthenticationDidSucceed(self, token: nil)
-            default:
-                logger?.log(.threeDSChallengeComplete(success: false, tokenID: nil))
-                delegate?.threeDSWebViewControllerAuthenticationDidFail(self)
-            }
+            case .success(let token):
+                logger?.log(.threeDSChallengeComplete(success: true, tokenID: token))
+                delegate?.threeDSWebViewControllerAuthenticationDidSucceed(self, token: token)
+            case .failure(let error):
+                switch error {
+                    case .couldNotExtractToken:
+                        logger?.log(.threeDSChallengeComplete(success: false, tokenID: nil))
+                        delegate?.threeDSWebViewControllerAuthenticationDidSucceed(self, token: nil)
+                    default:
+                        logger?.log(.threeDSChallengeComplete(success: false, tokenID: nil))
+                        delegate?.threeDSWebViewControllerAuthenticationDidFail(self)
+                }
         }
     }
 }

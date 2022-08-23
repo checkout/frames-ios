@@ -171,8 +171,9 @@ extension BillingFormTextFieldView {
     private func setupHintLabel() {
         addSubview(hintLabel)
         NSLayoutConstraint.activate([
-            hintLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor,
-                                           constant: Constants.Padding.xxs.rawValue),
+            hintLabel.topAnchor.constraint(
+                equalTo: headerLabel.bottomAnchor,
+                constant: Constants.Padding.xxs.rawValue),
             hintLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             hintLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
@@ -182,8 +183,9 @@ extension BillingFormTextFieldView {
         textFieldContainer.setContentHuggingPriority(.required, for: .vertical)
         addSubview(textFieldContainer)
         NSLayoutConstraint.activate([
-            textFieldContainer.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
-                                                    constant: Constants.Padding.xSmall.rawValue),
+            textFieldContainer.topAnchor.constraint(
+                equalTo: hintLabel.bottomAnchor,
+                constant: Constants.Padding.xSmall.rawValue),
             textFieldContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
             textFieldContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
             textFieldContainerBottomAnchor

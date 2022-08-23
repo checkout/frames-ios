@@ -1,7 +1,7 @@
 import UIKit
 
 /// Factory object building required components to start presenting a tokenisation journey to the user
-public struct FramesFactory {
+public enum FramesFactory {
     public static var defaultPaymentFormStyle: PaymentFormStyle {
         DefaultPaymentFormStyle()
     }
@@ -12,14 +12,16 @@ public struct FramesFactory {
 
     // in order
     static var cellsStyleInOrder: [BillingFormCell] {
-        [.fullName(DefaultBillingFormFullNameCellStyle()),
-         .addressLine1(DefaultBillingFormAddressLine1CellStyle()),
-         .addressLine2(DefaultBillingFormAddressLine2CellStyle()),
-         .city(DefaultBillingFormCityCellStyle()),
-         .state(DefaultBillingFormStateCellStyle()),
-         .postcode(DefaultBillingFormPostcodeCellStyle()),
-         .country(DefaultBillingFormCountryCellStyle()),
-         .phoneNumber(DefaultBillingFormPhoneNumberCellStyle())]
+        [
+            .fullName(DefaultBillingFormFullNameCellStyle()),
+            .addressLine1(DefaultBillingFormAddressLine1CellStyle()),
+            .addressLine2(DefaultBillingFormAddressLine2CellStyle()),
+            .city(DefaultBillingFormCityCellStyle()),
+            .state(DefaultBillingFormStateCellStyle()),
+            .postcode(DefaultBillingFormPostcodeCellStyle()),
+            .country(DefaultBillingFormCountryCellStyle()),
+            .phoneNumber(DefaultBillingFormPhoneNumberCellStyle())
+        ]
     }
 
     static func getBillingFormViewController(style: BillingFormStyle?, data: BillingForm?, delegate: BillingFormViewModelDelegate?) -> UINavigationController? {

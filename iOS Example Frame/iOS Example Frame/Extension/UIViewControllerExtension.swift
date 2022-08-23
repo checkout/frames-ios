@@ -24,18 +24,21 @@ extension UIViewController {
         navigationController?.setNeedsStatusBarAppearanceUpdate()
     }
 
-    func registerKeyboardHandlers(notificationCenter: NotificationCenter,
-                                  keyboardWillShow: Selector,
-                                  keyboardWillHide: Selector) {
-        notificationCenter.addObserver(self,
-                                       selector: keyboardWillShow,
-                                       name: UIResponder.keyboardWillShowNotification,
-                                       object: nil)
-        notificationCenter.addObserver(self,
-                                       selector: keyboardWillHide,
-                                       name: UIResponder.keyboardWillHideNotification,
-                                       object: nil)
-    }
+    func registerKeyboardHandlers(
+        notificationCenter: NotificationCenter,
+        keyboardWillShow: Selector,
+        keyboardWillHide: Selector) {
+            notificationCenter.addObserver(
+                self,
+                selector: keyboardWillShow,
+                name: UIResponder.keyboardWillShowNotification,
+                object: nil)
+            notificationCenter.addObserver(
+                self,
+                selector: keyboardWillHide,
+                name: UIResponder.keyboardWillHideNotification,
+                object: nil)
+        }
 
     func deregisterKeyboardHandlers(notificationCenter: NotificationCenter) {
         notificationCenter.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)

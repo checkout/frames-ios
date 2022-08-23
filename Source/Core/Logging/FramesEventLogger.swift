@@ -30,26 +30,29 @@ final class FramesEventLogger: FramesEventLogging {
         self.init(getCorrelationID: getCorrelationID, checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
     }
 
-    init(getCorrelationID: @escaping () -> String,
-         checkoutEventLogger: CheckoutEventLogging,
-         dateProvider: DateProviding) {
-      self.getCorrelationID = getCorrelationID
-      self.checkoutEventLogger = checkoutEventLogger
-      self.dateProvider = dateProvider
-    }
+    init(
+        getCorrelationID: @escaping () -> String,
+        checkoutEventLogger: CheckoutEventLogging,
+        dateProvider: DateProviding) {
+            self.getCorrelationID = getCorrelationID
+            self.checkoutEventLogger = checkoutEventLogger
+            self.dateProvider = dateProvider
+        }
 
-    static func buildRemoteProcessorMetadata(environment: Environment,
-                                             appPackageName: String,
-                                             appPackageVersion: String,
-                                             uiDevice: UIDevice) -> RemoteProcessorMetadata {
-            return RemoteProcessorMetadata(productIdentifier: Constants.productName,
-                                           productVersion: Constants.version,
-                                           environment: environment.rawValue,
-                                           appPackageName: appPackageName,
-                                           appPackageVersion: appPackageVersion,
-                                           deviceName: uiDevice.modelName,
-                                           platform: "iOS",
-                                           osVersion: uiDevice.systemVersion)
+    static func buildRemoteProcessorMetadata(
+        environment: Environment,
+        appPackageName: String,
+        appPackageVersion: String,
+        uiDevice: UIDevice) -> RemoteProcessorMetadata {
+            return RemoteProcessorMetadata(
+                productIdentifier: Constants.productName,
+                productVersion: Constants.version,
+                environment: environment.rawValue,
+                appPackageName: appPackageName,
+                appPackageVersion: appPackageVersion,
+                deviceName: uiDevice.modelName,
+                platform: "iOS",
+                osVersion: uiDevice.systemVersion)
         }
 
     // MARK: - FramesEventLogging

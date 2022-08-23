@@ -93,7 +93,7 @@ public final class ExpiryDateView: UIView {
      if location 5 (2nd year digit)
      then validate full Expiry Date
      */
-
+    // swiftlint:disable:next cyclomatic_complexity
     private func validateInput(_ textField: UITextField, location: Int, replacementText: String) -> Bool {
         // check for max length including added spacers which all equal to 5
         guard !replacementText.isEmpty else { return false }

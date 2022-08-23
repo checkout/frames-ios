@@ -77,9 +77,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             textValueOfCellType[type.index] = hasValue ? value : (!isMandatory ? "" : nil)
             errorFlagOfCellType[type.index] = hasValue ? false : (value != nil ? isMandatory : nil)
         }
-        if country == nil,
-           let regionCode = Locale.current.regionCode,
-           let deviceCountry = Country(iso3166Alpha2: regionCode) {
+        if country == nil, let regionCode = Locale.current.regionCode, let deviceCountry = Country(iso3166Alpha2: regionCode) {
             self.country = deviceCountry
         }
     }
@@ -94,10 +92,11 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         if let cell: BillingFormCellTextField = tableView.dequeueReusable(for: indexPath) {
             let cellStyle = updateTextFieldStyle(for: indexPath.row)
             cell.delegate = sender as? CellTextFieldDelegate
-            cell.update(type: style.cells[indexPath.row],
-                        style: cellStyle,
-                        tag: indexPath.row,
-                        textFieldValue: textValueOfCellType[style.cells[indexPath.row].index])
+            cell.update(
+                type: style.cells[indexPath.row],
+                style: cellStyle,
+                tag: indexPath.row,
+                textFieldValue: textValueOfCellType[style.cells[indexPath.row].index])
             return cell
         }
 
@@ -254,9 +253,10 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
 
         let name = textValueOfCellType[BillingFormCell.fullName(nil).index]
 
-        let data = BillingForm(name: name,
-                                            address: address,
-                                            phone: phone)
+        let data = BillingForm(
+            name: name,
+            address: address,
+            phone: phone)
 
         delegate?.onTapDoneButton(data: data)
 
