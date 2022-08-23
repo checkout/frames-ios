@@ -11,10 +11,12 @@ import XCTest
 
 final class UIBarStyleTests: XCTestCase {
     func test_stringValue() {
-        let testCases: [(UIBarStyle, String)] = [(.default, "default"),
-                                                 (.black, "black"),
-                                                 (.blackOpaque, "black"),
-                                                 (.blackTranslucent, "blackTranslucent")]
+        let testCases: [(UIBarStyle, String)] = [
+            (.default, "default"),
+            (.black, "black"),
+            (.blackOpaque, "black"),
+            (.blackTranslucent, "blackTranslucent")
+        ]
 
         testCases.forEach { subject, expectedValue in
             XCTAssertEqual(subject.stringValue, expectedValue, "expected \(expectedValue), received \(subject.stringValue) for \(subject)")

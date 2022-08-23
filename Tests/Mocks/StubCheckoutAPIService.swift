@@ -20,7 +20,9 @@ final class StubCheckoutAPIService: Frames.CheckoutAPIProtocol {
         return cardValidatorToReturn
     }
 
-    private(set) var createTokenCalledWith: (paymentSource: PaymentSource, completion: (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)?
+    private(set) var createTokenCalledWith: (
+        paymentSource: PaymentSource,
+        completion: (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)?
     private(set) var cardValidatorCalled = false
     private(set) var loggerCalled = false
 
@@ -39,7 +41,7 @@ extension StubCheckoutAPIService {
         type: TokenDetails.TokenType = .card,
         token: String = "token",
         expiresOn: String = "expiresOn",
-        expiryDate: ExpiryDate = try! CardValidator(environment: .sandbox).validate(expiryMonth: 5, expiryYear: 50).get(),
+        expiryDate: ExpiryDate = ExpiryDate(month: 5, year: 50),
         scheme: Card.Scheme? = .visa,
         last4: String = "4242",
         bin: String = "424242",

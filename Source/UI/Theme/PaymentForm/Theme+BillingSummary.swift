@@ -46,6 +46,7 @@ public extension Theme {
     }
 
     /// Create a Billing Summary from Styles defined for each sub component
+    // swiftlint:disable:next function_parameter_count
     func buildBillingSummary(
         button: ElementButtonStyle,
         textField: ThemeTextField,

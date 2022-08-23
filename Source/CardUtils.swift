@@ -2,7 +2,7 @@ import Foundation
 import Checkout
 
 /// Payment Form Utilities
-final class CardUtils {
+enum CardUtils {
     // MARK: - Methods
 
     /// Format the card number based on the card type
@@ -16,10 +16,8 @@ final class CardUtils {
     static func format(cardNumber: String, scheme: Card.Scheme) -> String {
         var cardNumber = cardNumber
 
-        for gap in scheme.cardGaps.sorted(by: >) {
-            if gap < cardNumber.count {
-                cardNumber.insert(" ", at: cardNumber.index(cardNumber.startIndex, offsetBy: gap))
-            }
+        for gap in scheme.cardGaps.sorted(by: >)  where gap < cardNumber.count {
+            cardNumber.insert(" ", at: cardNumber.index(cardNumber.startIndex, offsetBy: gap))
         }
 
         return cardNumber

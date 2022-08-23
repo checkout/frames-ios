@@ -2,8 +2,8 @@ import UIKit
 import Checkout
 
 /**
- This final class is for billing form list view model logic.
- */
+This final class is for billing form list view model logic.
+*/
 
 final class DefaultBillingFormViewModel: BillingFormViewModel {
     // MARK: - Properties
@@ -28,12 +28,12 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     // MARK: - Public methods
 
     /**
-     Initializes view model with some required protocols
+    Initializes view model with some required protocols
      
-     - Parameters:
-     - style: The bill form view Style implementation.
-     - delegate: Optional billing form view Model delegate
-     */
+    - Parameters:
+    - style: The bill form view Style implementation.
+    - delegate: Optional billing form view Model delegate
+    */
 
     init(style: BillingFormStyle, data: BillingForm? = nil, delegate: BillingFormViewModelDelegate? = nil) {
         self.style = style
@@ -157,7 +157,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         let isEmptyText = textField.text?.isEmpty ?? true
         let isMandatoryField = type.style?.isMandatory ?? false
         let shouldRemoveText = isEmptyText && isMandatoryField
-        let allValueAreTrue = errorFlagOfCellType.values.allSatisfy({ $0 })
+        let allValueAreTrue = errorFlagOfCellType.values.allSatisfy { $0 }
         let hasErrorValue = errorFlagOfCellType.isEmpty || allValueAreTrue
 
         if !isEmptyText {

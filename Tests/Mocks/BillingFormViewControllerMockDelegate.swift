@@ -2,6 +2,7 @@ import UIKit
 import Checkout
 @testable import Frames
 
+// swiftlint:disable identifier_name
 class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
     var doneButtonIsPressedCalledTimes = 0
     var doneButtonIsPressedLastCalledWithSender: UIViewController?

@@ -27,7 +27,7 @@ extension Constants {
         case large = 20
 
         /// parameter size: 24
-        case xl = 24
+        case xLarge = 24
 
         /// parameter size: 28
         case xxl = 28

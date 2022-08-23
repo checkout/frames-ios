@@ -48,71 +48,68 @@ enum FramesLogEvent: Equatable, PropertyProviding {
 
     private var typeIdentifierSuffix: String {
         switch self {
-        case .paymentFormInitialised:
-            return "payment_form_initialised"
-        case .paymentFormPresented:
-            return "payment_form_presented"
-        case .billingFormPresented:
-            return "billing_form_presented"
-        case .threeDSWebviewPresented:
-            return "3ds_webview_presented"
-        case .threeDSChallengeLoaded:
-            return "3ds_challenge_loaded"
-        case .threeDSChallengeComplete:
-            return "3ds_challenge_complete"
-        case .exception:
-            return "exception"
+            case .paymentFormInitialised:
+                return "payment_form_initialised"
+            case .paymentFormPresented:
+                return "payment_form_presented"
+            case .billingFormPresented:
+                return "billing_form_presented"
+            case .threeDSWebviewPresented:
+                return "3ds_webview_presented"
+            case .threeDSChallengeLoaded:
+                return "3ds_challenge_loaded"
+            case .threeDSChallengeComplete:
+                return "3ds_challenge_complete"
+            case .exception:
+                return "exception"
         }
     }
 
     var monitoringLevel: MonitoringLevel {
         switch self {
-        case .paymentFormInitialised,
-             .paymentFormPresented,
-             .billingFormPresented,
-             .threeDSWebviewPresented:
-            return .info
-        case .exception:
-            return .error
-        case .threeDSChallengeLoaded(let success),
-             .threeDSChallengeComplete(let success, _):
-            return success ? .info : .error
+            case .paymentFormInitialised, .paymentFormPresented, .billingFormPresented, .threeDSWebviewPresented:
+                return .info
+            case .exception:
+                return .error
+            case .threeDSChallengeLoaded(let success), .threeDSChallengeComplete(let success, _):
+                return success ? .info : .error
         }
     }
 
     var properties: [Property: AnyCodable] {
         switch self {
-        case .billingFormPresented,
-             .threeDSWebviewPresented:
-            return [:]
-        case .paymentFormPresented:
-            return [Property.locale: Locale.current.identifier].mapValues(AnyCodable.init(_:))
-        case let .paymentFormInitialised(environment):
-            let environmentString = environment.rawValue == "live" ? "production" : environment.rawValue
-            return [.environment: environmentString].mapValues(AnyCodable.init(_:))
-        case let .threeDSChallengeLoaded(success):
-            return [.success: success].mapValues(AnyCodable.init(_:))
-        case let .threeDSChallengeComplete(success, tokenID):
-            return [.success: success]
-                .updating(key: .tokenID, value: tokenID)
-                .mapValues(AnyCodable.init(_:))
-        case let .exception(message):
-            return [.message: message]
-                .mapValues(AnyCodable.init(_:))
+            case .billingFormPresented, .threeDSWebviewPresented:
+                return [:]
+            case .paymentFormPresented:
+                return [Property.locale: Locale.current.identifier].mapValues(AnyCodable.init(_:))
+            case let .paymentFormInitialised(environment):
+                let environmentString = environment.rawValue == "live" ? "production" : environment.rawValue
+                return [.environment: environmentString].mapValues(AnyCodable.init(_:))
+            case let .threeDSChallengeLoaded(success):
+                return [.success: success].mapValues(AnyCodable.init(_:))
+            case let .threeDSChallengeComplete(success, tokenID):
+                return [.success: success]
+                    .updating(key: .tokenID, value: tokenID)
+                    .mapValues(AnyCodable.init(_:))
+            case let .exception(message):
+                return [.message: message]
+                    .mapValues(AnyCodable.init(_:))
         }
     }
 
     var loggedOncePerCorrelationID: Bool {
         switch self {
-        case .paymentFormInitialised,
-             .paymentFormPresented,
-             .billingFormPresented,
-             .threeDSWebviewPresented:
-            return true
-        case .threeDSChallengeLoaded,
-             .threeDSChallengeComplete,
-             .exception:
-            return false
+            case
+                .paymentFormInitialised,
+                    .paymentFormPresented,
+                    .billingFormPresented,
+                    .threeDSWebviewPresented:
+                return true
+            case
+                .threeDSChallengeLoaded,
+                    .threeDSChallengeComplete,
+                    .exception:
+                return false
         }
     }
 }

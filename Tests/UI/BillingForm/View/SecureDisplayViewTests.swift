@@ -135,8 +135,8 @@ final class SecureDisplayViewUIKitTests: XCTestCase {
     }
 
 
-  @available(iOS 11.0, *)
-  func testSecureView() {
+    @available(iOS 11.0, *)
+    func testSecureView() throws {
         let secureText = "Hide ME NoW"
         let securedLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         securedLabel.text = secureText
@@ -154,14 +154,15 @@ final class SecureDisplayViewUIKitTests: XCTestCase {
         validateView(secureView)
 
         // Try copying view and ensure still safe
-        let secureViewArchive = try! NSKeyedArchiver.archivedData(withRootObject: secureView, requiringSecureCoding: true)
+        let secureViewArchive = try NSKeyedArchiver.archivedData(withRootObject: secureView, requiringSecureCoding: true)
         XCTAssertThrowsError(try NSKeyedUnarchiver.unarchivedObject(ofClass: UIView.self, from: secureViewArchive))
         XCTAssertThrowsError(try NSKeyedUnarchiver.unarchivedObject(ofClass: SecureDisplayView.self, from: secureViewArchive))
 
         XCTAssertNotNil(securedLabel)
         XCTAssertEqual(securedLabel.text, secureText)
         XCTAssertTrue(securedLabel.superview === secureView)
-        validateView(securedLabel.superview!)
+        let superView = try XCTUnwrap(securedLabel.superview)
+        validateView(superView)
     }
 
     func testIdealSizingOfProtectedViewIsProvidedToSecureViewUser() {
@@ -174,8 +175,7 @@ final class SecureDisplayViewUIKitTests: XCTestCase {
 
         XCTAssertNotEqual(securedLabel.systemLayoutSizeFitting(desiredTargetSize), .zero)
         XCTAssertNotEqual(secureView.systemLayoutSizeFitting(desiredTargetSize), .zero)
-        XCTAssertEqual(secureView.systemLayoutSizeFitting(desiredTargetSize),
-                       securedLabel.systemLayoutSizeFitting(desiredTargetSize))
+        XCTAssertEqual(secureView.systemLayoutSizeFitting(desiredTargetSize), securedLabel.systemLayoutSizeFitting(desiredTargetSize))
     }
 
     func testSetProtectedViewAccessibilityLabel() {
@@ -202,10 +202,10 @@ final class SecureDisplayViewUIKitTests: XCTestCase {
         XCTAssertNil(testView.accessibilityHint, line: line)
         XCTAssertNil(testView.accessibilityValue, line: line)
         XCTAssertNil(testView.accessibilityElements, line: line)
-      if #available(iOS 11.0, *) {
-        XCTAssertNil(testView.accessibilityAttributedLabel)
-        XCTAssertNil(testView.accessibilityAttributedValue)
-      }
+        if #available(iOS 11.0, *) {
+            XCTAssertNil(testView.accessibilityAttributedLabel)
+            XCTAssertNil(testView.accessibilityAttributedValue)
+        }
     }
 }
 

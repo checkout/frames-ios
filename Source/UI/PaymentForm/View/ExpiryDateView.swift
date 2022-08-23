@@ -72,27 +72,27 @@ public final class ExpiryDateView: UIView {
     // MARK: - private functions
 
     /*
-     Input validation from location 0 to 4 (MM/yy):
+    Input validation from location 0 to 4 (MM/yy):
      
-     if location 0 (first month digit)
-     if user enters a number between 2-9,
-     then move to the year selector and append a 0 before the digit
+    if location 0 (first month digit)
+    if user enters a number between 2-9,
+    then move to the year selector and append a 0 before the digit
      
-     if location 1 (2nd month digit)
-     if user enters a 0,
-     then enter any digit between 1-9
-     if user enters a 1,
-     then enter any digit between 0-2
+    if location 1 (2nd month digit)
+    if user enters a 0,
+    then enter any digit between 1-9
+    if user enters a 1,
+    then enter any digit between 0-2
      
-     if location 3 (backslash '/')
-     then user must enter a number between 2-9 to start with
+    if location 3 (backslash '/')
+    then user must enter a number between 2-9 to start with
      
-     if location 4 (first year digit)
-     then user must enter a number between 2-9 to start with
+    if location 4 (first year digit)
+    then user must enter a number between 2-9 to start with
      
-     if location 5 (2nd year digit)
-     then validate full Expiry Date
-     */
+    if location 5 (2nd year digit)
+    then validate full Expiry Date
+    */
     // swiftlint:disable:next cyclomatic_complexity
     private func validateInput(_ textField: UITextField, location: Int, replacementText: String) -> Bool {
         // check for max length including added spacers which all equal to 5

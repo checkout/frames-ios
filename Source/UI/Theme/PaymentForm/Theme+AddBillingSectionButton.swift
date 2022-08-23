@@ -69,6 +69,7 @@ public extension Theme {
     }
 
     /// Create an Add Billing Section Button from Styles defined for each component
+    // swiftlint:disable:next function_parameter_count
     func buildAddBillingSectionButton(
         buttonStyle: ThemeBillingButton,
         isBillingAddressMandatory: Bool,

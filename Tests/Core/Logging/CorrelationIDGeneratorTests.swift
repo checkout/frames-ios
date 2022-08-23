@@ -10,11 +10,11 @@ final class CorrelationIDGeneratorTests: XCTestCase {
         XCTAssertNotNil(subject.generateCorrelationID())
     }
 
-  func test_generateCorrelationID_returnsCorrectValue_postDestroyCorrelationID() throws {
-      let subject = CorrelationIDManager()
-      XCTAssertNotNil(subject.generateCorrelationID())
-      let temp = subject.generateCorrelationID()
-      subject.destroyCorrelationID()
-      XCTAssertNotEqual(subject.generateCorrelationID(), temp)
-  }
+    func test_generateCorrelationID_returnsCorrectValue_postDestroyCorrelationID() throws {
+        let subject = CorrelationIDManager()
+        XCTAssertNotNil(subject.generateCorrelationID())
+        let temp = subject.generateCorrelationID()
+        subject.destroyCorrelationID()
+        XCTAssertNotEqual(subject.generateCorrelationID(), temp)
+    }
 }

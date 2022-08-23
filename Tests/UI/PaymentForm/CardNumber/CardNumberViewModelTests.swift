@@ -11,16 +11,20 @@ import XCTest
 import Checkout
 
 class CardNumberViewModelTests: XCTestCase {
-    private var subject: CardNumberViewModel!
+    private var subject: CardNumberViewModel?
 
-    private var mockCardValidator: MockCardValidator! = MockCardValidator()
-    private var mockCardNumberViewModelDelegate: MockCardNumberViewModelDelegate! = MockCardNumberViewModelDelegate()
+    private var mockCardValidator: MockCardValidator? = MockCardValidator()
+    private var mockCardNumberViewModelDelegate: MockCardNumberViewModelDelegate? = MockCardNumberViewModelDelegate()
 
     override func setUp() {
         super.setUp()
+        guard let mockCardValidator = mockCardValidator else {
+            XCTFail("mockCardValidator is nil")
+            return
+        }
 
         subject = CardNumberViewModel(cardValidator: mockCardValidator, supportedSchemes: [.unknown])
-        subject.delegate = mockCardNumberViewModelDelegate
+        subject?.delegate = mockCardNumberViewModelDelegate
     }
 
     override func tearDown() {
@@ -32,39 +36,39 @@ class CardNumberViewModelTests: XCTestCase {
 
     func test_eagerValidate_tooLong_noChange() {
         // given
-        mockCardValidator.eagerValidateCardNumberToReturn = .failure(.tooLong)
+        mockCardValidator?.eagerValidateCardNumberToReturn = .failure(.tooLong)
 
         // when
-        let result = subject.eagerValidate(cardNumber: "12345")
+        let result = subject?.eagerValidate(cardNumber: "12345")
 
         // then
         XCTAssertNil(result)
-        XCTAssertEqual(mockCardValidator.eagerValidateCardNumberCalledWith, "12345")
+        XCTAssertEqual(mockCardValidator?.eagerValidateCardNumberCalledWith, "12345")
     }
 
     func test_eagerValidate_invalidScheme_changeTextAndIcon() {
         // given
-        mockCardValidator.eagerValidateCardNumberToReturn = .failure(.invalidScheme)
+        mockCardValidator?.eagerValidateCardNumberToReturn = .failure(.invalidScheme)
 
         // when
-        let result = subject.eagerValidate(cardNumber: "12345")
+        let result = subject?.eagerValidate(cardNumber: "12345")
 
         // then
         XCTAssertEqual(result?.newTextFieldValue, "12345")
         XCTAssertEqual(result?.schemeIcon, .blank)
-        XCTAssertEqual(mockCardValidator.eagerValidateCardNumberCalledWith, "12345")
+        XCTAssertEqual(mockCardValidator?.eagerValidateCardNumberCalledWith, "12345")
     }
 
     func test_eagerValidate_invalidCharacters_noChange() {
         // given
-        mockCardValidator.eagerValidateCardNumberToReturn = .failure(.cardNumber(.invalidCharacters))
+        mockCardValidator?.eagerValidateCardNumberToReturn = .failure(.cardNumber(.invalidCharacters))
 
         // when
-        let result = subject.eagerValidate(cardNumber: "12345")
+        let result = subject?.eagerValidate(cardNumber: "12345")
 
         // then
         XCTAssertNil(result)
-        XCTAssertEqual(mockCardValidator.eagerValidateCardNumberCalledWith, "12345")
+        XCTAssertEqual(mockCardValidator?.eagerValidateCardNumberCalledWith, "12345")
     }
 
     func test_eagerValidate_eagerValidateSuccess_changeTextAndIcon() {
@@ -82,19 +86,19 @@ class CardNumberViewModelTests: XCTestCase {
 
         testCases.forEach { scheme, icon in
             // given
-            mockCardValidator.eagerValidateCardNumberToReturn = .success(scheme)
+            mockCardValidator?.eagerValidateCardNumberToReturn = .success(scheme)
 
             // when
-            let result = subject.eagerValidate(cardNumber: "1234")
+            let result = subject?.eagerValidate(cardNumber: "1234")
 
             // then
             XCTAssertEqual(result?.newTextFieldValue, "1234")
             XCTAssertEqual(result?.schemeIcon, icon)
-            XCTAssertEqual(mockCardValidator.eagerValidateCardNumberCalledWith, "1234")
+            XCTAssertEqual(mockCardValidator?.eagerValidateCardNumberCalledWith, "1234")
 
-            XCTAssertEqual(mockCardNumberViewModelDelegate.updateCalledWithValue?.scheme, scheme)
-            XCTAssertEqual(mockCardNumberViewModelDelegate.updateCalledWithValue?.cardNumber, "1234")
-            XCTAssertNil(mockCardNumberViewModelDelegate.updateCalledWithError)
+            XCTAssertEqual(mockCardNumberViewModelDelegate?.updateCalledWithValue?.scheme, scheme)
+            XCTAssertEqual(mockCardNumberViewModelDelegate?.updateCalledWithValue?.cardNumber, "1234")
+            XCTAssertNil(mockCardNumberViewModelDelegate?.updateCalledWithError)
         }
     }
 
@@ -120,23 +124,24 @@ class CardNumberViewModelTests: XCTestCase {
 
         testCases.forEach { scheme, cardNumber, formattedCardNumber in
             // given
-            mockCardValidator.eagerValidateCardNumberToReturn = .success(scheme)
+            mockCardValidator?.eagerValidateCardNumberToReturn = .success(scheme)
 
             // when
-            let result = subject.eagerValidate(cardNumber: cardNumber)
+            let result = subject?.eagerValidate(cardNumber: cardNumber)
 
             // then
             XCTAssertEqual(result?.newTextFieldValue, formattedCardNumber)
             XCTAssertEqual(result?.schemeIcon, Constants.Bundle.SchemeIcon(scheme: scheme))
-            XCTAssertEqual(mockCardValidator.eagerValidateCardNumberCalledWith, cardNumber)
-            XCTAssertEqual(mockCardNumberViewModelDelegate.updateCalledWithValue?.scheme, scheme)
-            XCTAssertEqual(mockCardNumberViewModelDelegate.updateCalledWithValue?.cardNumber, cardNumber)
-            XCTAssertNil(mockCardNumberViewModelDelegate.updateCalledWithError)
+            XCTAssertEqual(mockCardValidator?.eagerValidateCardNumberCalledWith, cardNumber)
+            XCTAssertEqual(mockCardNumberViewModelDelegate?.updateCalledWithValue?.scheme, scheme)
+            XCTAssertEqual(mockCardNumberViewModelDelegate?.updateCalledWithValue?.cardNumber, cardNumber)
+            XCTAssertNil(mockCardNumberViewModelDelegate?.updateCalledWithError)
         }
     }
 
-    func test_validate_success() {
+    func test_validate_success() throws {
         let testCases = Set(Card.Scheme.allCases).symmetricDifference([.unknown])
+        let mockCardValidator = try XCTUnwrap(mockCardValidator)
         subject = CardNumberViewModel(cardValidator: mockCardValidator, supportedSchemes: Card.Scheme.allCases)
         testCases.forEach { scheme in
             // given
@@ -144,7 +149,7 @@ class CardNumberViewModelTests: XCTestCase {
             mockCardValidator.receivedValidateCompletenessCardNumbers = []
 
             // when
-            let result = subject.validate(cardNumber: "1234")
+            let result = subject?.validate(cardNumber: "1234")
 
             // then
             XCTAssertEqual(result, Constants.Bundle.SchemeIcon(scheme: scheme))
@@ -154,14 +159,14 @@ class CardNumberViewModelTests: XCTestCase {
 
     func test_validate_failure() {
         // given
-        mockCardValidator.expectedValidateCompletenessResult = .failure(.invalidCharacters)
+        mockCardValidator?.expectedValidateCompletenessResult = .failure(.invalidCharacters)
 
         // when
-        let result = subject.validate(cardNumber: "1234")
+        let result = subject?.validate(cardNumber: "1234")
 
         // then
         XCTAssertNil(result)
-        XCTAssertEqual(mockCardValidator.receivedValidateCompletenessCardNumbers, ["1234"])
+        XCTAssertEqual(mockCardValidator?.receivedValidateCompletenessCardNumbers, ["1234"])
     }
 
     func testValidateMaestroIgnoresAssociatedValueWhenSupported() {

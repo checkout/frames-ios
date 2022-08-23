@@ -22,7 +22,7 @@ public extension Theme {
     }
 
     /// Create a Payment Form from the provided Styles for each section
-    //
+    // swiftlint:disable:next function_parameter_count
     func buildPaymentForm(
         headerView: PaymentHeaderCellStyle,
         addBillingButton: CellButtonStyle?,

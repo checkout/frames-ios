@@ -1,15 +1,16 @@
 import UIKit
 
 extension UITextField {
+    // Disable hardware keyboards.
     static func disableHardwareLayout() {
 #if targetEnvironment(simulator)
-        // Disable hardware keyboards.
+// swiftlint:disable indentation_width
         let setHardwareLayout = NSSelectorFromString("setHardwareLayout:")
 
         UITextInputMode.activeInputModes
-        // Filter `UIKeyboardInputMode`s.
-            .filter({ $0.responds(to: setHardwareLayout) })
+            .filter { $0.responds(to: setHardwareLayout) }
             .forEach { $0.perform(setHardwareLayout, with: nil) }
+// swiftlint:enable indentation_width
 #endif
     }
 }

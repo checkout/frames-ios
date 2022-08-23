@@ -1,6 +1,7 @@
 import UIKit
 @testable import Frames
 
+// swiftlint:disable identifier_name
 class BillingFormTextFieldCellMockDelegate: CellTextFieldDelegate {
     var textFieldShouldBeginEditingCalledTimes = 0
     var textFieldShouldBeginEditingLastCalledWithTextField: UITextField?

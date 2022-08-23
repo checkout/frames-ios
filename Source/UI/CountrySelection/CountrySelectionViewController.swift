@@ -2,18 +2,18 @@ import UIKit
 import Checkout
 
 /// A view controller that allows the user to select a country.
-public final class CountrySelectionViewController: UIViewController,
-    UITableViewDelegate,
-    UITableViewDataSource,
-    UISearchBarDelegate {
+public final class CountrySelectionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     // MARK: - Properties
 
     var countries: [(String, String)] {
         let locale = Locale.current
-        let countries = Locale.isoRegionCodes.map {
-            (locale.localizedString(forRegionCode: $0)!, $0)
+        var mappedCountries: [(String, String)] = []
+        for code in Locale.isoRegionCodes {
+            if let localizedString = locale.localizedString(forRegionCode: code) {
+                mappedCountries.append((localizedString, code))
+            }
         }
-        return countries.sorted { $0.0 < $1.0 }
+        return mappedCountries.sorted { $0.0 < $1.0 }
     }
 
     var filteredCountries: [(String, String)] = []

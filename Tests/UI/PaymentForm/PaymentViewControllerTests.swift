@@ -10,38 +10,47 @@ import Checkout
 @testable import Frames
 
 class PaymentViewControllerTests: XCTestCase {
-    var viewController: PaymentViewController!
-    var viewModel: DefaultPaymentViewModel!
+    var viewController: PaymentViewController?
+    var viewModel: DefaultPaymentViewModel?
     let delegate = PaymentViewControllerMockDelegate()
     let stubCheckoutAPIService = StubCheckoutAPIService()
 
     override func setUp() {
         super.setUp()
 
-        let testBillingFormData = BillingForm(name: "Name",
-                                              address: Address(addressLine1: "addressLine1",
-                                                               addressLine2: "addressLine2",
-                                                               city: "city",
-                                                               state: "state",
-                                                               zip: "zip",
-                                                               country: Country(iso3166Alpha2: "GB")!),
-                                              phone: Phone(number: "0771234567",
-                                                           country: Country(iso3166Alpha2: "GB")!))
-        viewModel = DefaultPaymentViewModel(checkoutAPIService: stubCheckoutAPIService,
-                                            cardValidator: CardValidator(environment: .sandbox),
-                                            logger: StubFramesEventLogger(),
-                                            billingFormData: testBillingFormData,
-                                            paymentFormStyle: DefaultPaymentFormStyle(),
-                                            billingFormStyle: DefaultBillingFormStyle(),
-                                            supportedSchemes: [.discover, .mada])
+        let testBillingFormData = BillingForm(
+            name: "Name",
+            address: Address(
+                addressLine1: "addressLine1",
+                addressLine2: "addressLine2",
+                city: "city",
+                state: "state",
+                zip: "zip",
+                country:
+                    Country(iso3166Alpha2: "GB")),
+            phone: Phone(
+                number: "0771234567",
+                country: Country(iso3166Alpha2: "GB")))
+        viewModel = DefaultPaymentViewModel(
+            checkoutAPIService: stubCheckoutAPIService,
+            cardValidator: CardValidator(environment: .sandbox),
+            logger: StubFramesEventLogger(),
+            billingFormData: testBillingFormData,
+            paymentFormStyle: DefaultPaymentFormStyle(),
+            billingFormStyle: DefaultBillingFormStyle(),
+            supportedSchemes: [.discover, .mada])
+        guard let viewModel = viewModel else {
+            XCTFail("viewModel is nil")
+            return
+        }
         viewController = PaymentViewController(viewModel: viewModel)
     }
 
     func testPaymentViewsHierarchy() {
-        viewController.viewDidLoad()
-        viewController.viewDidLayoutSubviews()
+        viewController?.viewDidLoad()
+        viewController?.viewDidLayoutSubviews()
 
-        let mainView = viewController.view
+        let mainView = viewController?.view
         XCTAssertEqual(mainView?.subviews.count, 1)
         XCTAssertTrue(mainView?.subviews[0] is UIScrollView)
 
@@ -62,16 +71,18 @@ class PaymentViewControllerTests: XCTestCase {
         XCTAssertTrue(stackView?.subviews[8] is ButtonView) // pay button
     }
 
-    func testCallDelegateMethodOnTapAddBillingButton() {
-        viewController.delegate = delegate
+    func testCallDelegateMethodOnTapAddBillingButton() throws {
+        viewController?.delegate = delegate
+        let viewController = try XCTUnwrap(viewController)
         let navigationController = UINavigationController(rootViewController: viewController)
         viewController.selectionButtonIsPressed()
         XCTAssertEqual(delegate.addBillingButtonIsPressedWithSender.count, 1)
         XCTAssertEqual(delegate.addBillingButtonIsPressedWithSender.last, navigationController)
     }
 
-    func testCallDelegateMethodOnTapEditBillingButton() {
-        viewController.delegate = delegate
+    func testCallDelegateMethodOnTapEditBillingButton() throws {
+        viewController?.delegate = delegate
+        let viewController = try XCTUnwrap(viewController)
         let navigationController = UINavigationController(rootViewController: viewController)
         viewController.summaryButtonIsPressed()
         XCTAssertEqual(delegate.editBillingButtonIsPressedWithSender.count, 1)
@@ -80,12 +91,12 @@ class PaymentViewControllerTests: XCTestCase {
 
     func testCallDelegateMethodUpdateEditingCardholderView() {
         let testCardholderValue = "card owner"
-        viewController.delegate = delegate
+        viewController?.delegate = delegate
         let testExpectation = expectation(description: "Should call completion handler when triggered")
         delegate.cardholderIsUpdatedCompletionHandler = {
             testExpectation.fulfill()
         }
-        viewController.cardholderUpdated(to: testCardholderValue)
+        viewController?.cardholderUpdated(to: testCardholderValue)
 
         waitForExpectations(timeout: 0.1)
         XCTAssertEqual(delegate.cardholderIsUpdatedWithValue, [testCardholderValue])
@@ -93,35 +104,35 @@ class PaymentViewControllerTests: XCTestCase {
 
 
     func testCallDelegateMethodFinishEditingExpiryDateView() {
-        viewController.delegate = delegate
+        viewController?.delegate = delegate
         let expiryDate = ExpiryDate(month: 01, year: 25)
-        viewController.update(result: .success(expiryDate))
+        viewController?.update(result: .success(expiryDate))
         XCTAssertEqual(delegate.expiryDateIsUpdatedWithValue.count, 1)
         switch delegate.expiryDateIsUpdatedWithValue.last {
             case .success(let result):
                 XCTAssertEqual(result, expiryDate)
             default:
-                XCTFail()
+                XCTFail("expiryDateIsUpdatedWithValue fail")
         }
     }
 
     func testCallDelegateMethodFinishEditingSecurityCodeView() {
-        viewController.delegate = delegate
+        viewController?.delegate = delegate
         let value = "1234"
-        viewController.update(result: .success("1234"))
+        viewController?.update(result: .success("1234"))
         XCTAssertEqual(delegate.securityCodeIsUpdatedWithValue.count, 1)
         switch delegate.securityCodeIsUpdatedWithValue.last {
             case .success(let result):
                 XCTAssertEqual(result, value)
             default:
-                XCTFail()
+                XCTFail("securityCodeIsUpdatedWithValue fail")
         }
     }
 
     func testCallDelegateMethodOnTapPayButton() {
-        viewController.delegate = delegate
+        viewController?.delegate = delegate
         let button = UIButton()
-        viewController.selectionButtonIsPressed(sender: button)
+        viewController?.selectionButtonIsPressed(sender: button)
         XCTAssertEqual(delegate.payButtonIsPressedCounter, 1)
     }
 
@@ -130,12 +141,12 @@ class PaymentViewControllerTests: XCTestCase {
         let stubCardValidator = MockCardValidator()
         stubCardValidator.validateCardNumberToReturn = .success(.visa)
         stubCheckoutAPIService.cardValidatorToReturn = stubCardValidator
-        viewController.viewDidLoad()
+        viewController?.viewDidLoad()
 
-        viewModel.update(result: .success(CardInfo("4242 4242 4242 4242", .visa)))
-        viewController.update(result: .success(ExpiryDate(month: 01, year: 25)))
+        viewModel?.update(result: .success(CardInfo("4242 4242 4242 4242", .visa)))
+        viewController?.update(result: .success(ExpiryDate(month: 01, year: 25)))
 
-        viewModel.cardTokenRequested = { result in
+        viewModel?.cardTokenRequested = { result in
             if case let .success(token) = result {
                 XCTAssertEqual(token, StubCheckoutAPIService.createTokenDetails())
             } else {
@@ -145,20 +156,21 @@ class PaymentViewControllerTests: XCTestCase {
         }
 
         let button = UIButton()
-        viewController.selectionButtonIsPressed(sender: button)
+        viewController?.selectionButtonIsPressed(sender: button)
 
         wait(for: [expectation], timeout: 1)
     }
 
     func testPaymentViewControllerNotSendingPaymentFormPresentedOnWrongLifecycleEvent() {
         let testLogger = StubFramesEventLogger()
-        let testViewModel = DefaultPaymentViewModel(checkoutAPIService: stubCheckoutAPIService,
-                                                    cardValidator: CardValidator(environment: .sandbox),
-                                                    logger: testLogger,
-                                                    billingFormData: nil,
-                                                    paymentFormStyle: nil,
-                                                    billingFormStyle: nil,
-                                                    supportedSchemes: [])
+        let testViewModel = DefaultPaymentViewModel(
+            checkoutAPIService: stubCheckoutAPIService,
+            cardValidator: CardValidator(environment: .sandbox),
+            logger: testLogger,
+            billingFormData: nil,
+            paymentFormStyle: nil,
+            billingFormStyle: nil,
+            supportedSchemes: [])
         let testVC = PaymentViewController(viewModel: testViewModel)
 
         let expect = expectation(description: "Free up main thread in case UI work influences outcome")
@@ -180,13 +192,14 @@ class PaymentViewControllerTests: XCTestCase {
 
     func testPaymentViewControllerSendingPaymentForPresentedOnLifecycleEvent() {
         let testLogger = StubFramesEventLogger()
-        let testViewModel = DefaultPaymentViewModel(checkoutAPIService: stubCheckoutAPIService,
-                                                    cardValidator: CardValidator(environment: .sandbox),
-                                                    logger: testLogger,
-                                                    billingFormData: nil,
-                                                    paymentFormStyle: nil,
-                                                    billingFormStyle: nil,
-                                                    supportedSchemes: [])
+        let testViewModel = DefaultPaymentViewModel(
+            checkoutAPIService: stubCheckoutAPIService,
+            cardValidator: CardValidator(environment: .sandbox),
+            logger: testLogger,
+            billingFormData: nil,
+            paymentFormStyle: nil,
+            billingFormStyle: nil,
+            supportedSchemes: [])
         let testVC = PaymentViewController(viewModel: testViewModel)
 
         XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)

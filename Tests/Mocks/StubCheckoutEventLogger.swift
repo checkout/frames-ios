@@ -29,7 +29,10 @@ class StubCheckoutEventLogger: CheckoutEventLogging {
         enableLocalProcessorCalledWith = monitoringLevel
     }
 
-    private(set) var enableRemoteProcessorCalledWith: (environment: CheckoutEventLoggerKit.Environment, remoteProcessorMetadata: RemoteProcessorMetadata)?
+    private(set) var enableRemoteProcessorCalledWith: (
+        environment: CheckoutEventLoggerKit.Environment,
+        remoteProcessorMetadata: RemoteProcessorMetadata
+    )?
 
     func enableRemoteProcessor(environment: CheckoutEventLoggerKit.Environment, remoteProcessorMetadata: RemoteProcessorMetadata) {
         enableRemoteProcessorCalledWith = (environment, remoteProcessorMetadata)

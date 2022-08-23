@@ -10,6 +10,7 @@ import UIKit
 import Frames
 
 enum ThemeDemo {
+    // swiftlint:disable function_body_length
     static func buildCustom2Example() -> PaymentStyle {
         var theme = Theme(
             primaryFontColor: UIColor(red: 0 / 255, green: 204 / 255, blue: 45 / 255, alpha: 1),

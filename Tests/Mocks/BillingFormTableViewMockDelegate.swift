@@ -1,6 +1,7 @@
 import UIKit
 @testable import Frames
 
+// swiftlint:disable identifier_name
 class BillingFormTableViewMockDelegate: BillingFormTableViewDelegate {
     var numberOfRowsInSectionCalledTimes = 0
     var numberOfRowsInSectionLastCalledWithSection: Int?

@@ -20,7 +20,9 @@ class HomeViewController: UIViewController {
     @IBOutlet private weak var threeDSURLTextField: UITextField!
 
     private var notificationCenter: NotificationCenter = .default
-    private lazy var checkoutAPIService = Frames.CheckoutAPIService(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73", environment: .sandbox)
+    private lazy var checkoutAPIService = Frames.CheckoutAPIService(
+        publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
+        environment: .sandbox)
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -85,15 +87,18 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction private func get3DSToken(_ sender: Any) {
-        guard let threeDSURLString = threeDSURLTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-              let threeDSURL = URL(string: threeDSURLString) else {
+        guard
+            let threeDSURLString = threeDSURLTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+            let threeDSURL = URL(string: threeDSURLString) else {
             showAlert(with: "3DS URL could not be parsed")
             return
         }
-
-        let webViewController = ThreedsWebViewController(checkoutAPIService: checkoutAPIService,
-                                                         successUrl: Factory.successURL,
-                                                         failUrl: Factory.failureURL)
+        guard let successURL = Factory.successURL else { return }
+        guard let failureURL = Factory.failureURL else { return }
+        let webViewController = ThreedsWebViewController(
+            checkoutAPIService: checkoutAPIService,
+            successUrl: successURL,
+            failUrl: failureURL)
         webViewController.delegate = self
         webViewController.authURL = threeDSURL
 
@@ -101,9 +106,8 @@ class HomeViewController: UIViewController {
     }
 
     @objc private func keyboardWillShow(notification: Notification) {
-        guard let userInfo = notification.userInfo else { return }
-        var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        keyboardFrame = view.convert(keyboardFrame, from: nil)
+        guard let keyboardRect = notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue else { return }
+        let keyboardFrame: CGRect = view.convert(keyboardRect.cgRectValue, from: nil)
         var contentInset: UIEdgeInsets = scrollView.contentInset
         contentInset.bottom = keyboardFrame.size.height + 20
         updateScrollViewInset(to: contentInset, from: notification)
@@ -114,15 +118,15 @@ class HomeViewController: UIViewController {
     }
 
     private func setUpKeyboard() {
-        registerKeyboardHandlers(notificationCenter: notificationCenter,
-                                 keyboardWillShow: #selector(keyboardWillShow),
-                                 keyboardWillHide: #selector(keyboardWillHide))
+        registerKeyboardHandlers(
+            notificationCenter: notificationCenter,
+            keyboardWillShow: #selector(keyboardWillShow),
+            keyboardWillHide: #selector(keyboardWillHide))
     }
 
     private func updateScrollViewInset(to contentInset: UIEdgeInsets, from notification: Notification) {
         var animationDuration: Double = 0
-        if let userInfo = notification.userInfo,
-           let notificationAnimationDuration: Double = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+        if let notificationAnimationDuration: Double = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
             animationDuration = notificationAnimationDuration
         }
         UIView.animate(withDuration: animationDuration) {
@@ -141,8 +145,9 @@ class HomeViewController: UIViewController {
 
     private func showAlert(with cardToken: String) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Payment",
-                                          message: cardToken, preferredStyle: .alert)
+            let alert = UIAlertController(
+                title: "Payment",
+                message: cardToken, preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default) { _ in
                 alert.dismiss(animated: true, completion: nil)
             }

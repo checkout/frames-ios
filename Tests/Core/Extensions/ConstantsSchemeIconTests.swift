@@ -12,29 +12,29 @@ import Checkout
 
 
 final class ConstantsSchemeIconTests: XCTestCase {
-  func test_schemeInit() {
-    let testCases: [Card.Scheme: Constants.Bundle.SchemeIcon] = [
-      .americanExpress: .americanExpress,
-      .dinersClub: .dinersClub,
-      .discover: .discover,
-      .jcb: .jcb,
-      .maestro(): .maestro,
-      .mastercard: .mastercard,
-      .visa: .visa,
-      .mada: .mada,
-      .unknown: .blank
-    ]
+    func test_schemeInit() {
+        let testCases: [Card.Scheme: Constants.Bundle.SchemeIcon] = [
+            .americanExpress: .americanExpress,
+            .dinersClub: .dinersClub,
+            .discover: .discover,
+            .jcb: .jcb,
+            .maestro(): .maestro,
+            .mastercard: .mastercard,
+            .visa: .visa,
+            .mada: .mada,
+            .unknown: .blank
+        ]
 
-    testCases.forEach { scheme, expectedIcon in
-      XCTAssertEqual(Constants.Bundle.SchemeIcon(scheme: scheme), expectedIcon, "expected \(expectedIcon) for \(scheme)")
+        testCases.forEach { scheme, expectedIcon in
+            XCTAssertEqual(Constants.Bundle.SchemeIcon(scheme: scheme), expectedIcon, "expected \(expectedIcon) for \(scheme)")
+        }
     }
-  }
 
-  func test_allIconsHaveImage() {
-    let testCases = Constants.Bundle.SchemeIcon.allCases
+    func test_allIconsHaveImage() {
+        let testCases = Constants.Bundle.SchemeIcon.allCases
 
-    testCases.forEach { schemeIconLocation in
-      XCTAssertNotNil(schemeIconLocation.image, "no image found for \(schemeIconLocation)")
+        testCases.forEach { schemeIconLocation in
+            XCTAssertNotNil(schemeIconLocation.image, "no image found for \(schemeIconLocation)")
+        }
     }
-  }
 }

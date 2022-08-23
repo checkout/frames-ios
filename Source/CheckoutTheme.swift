@@ -1,7 +1,7 @@
 import UIKit
 
 /// Class used to customize the views.
-public final class CheckoutTheme {
+public enum CheckoutTheme {
     /// Background color of the views
     public static var primaryBackgroundColor = UIColor.groupTableViewBackground
     public static var secondaryBackgroundColor: UIColor = .white

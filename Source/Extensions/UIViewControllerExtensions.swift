@@ -25,8 +25,9 @@ extension UIViewController {
                 aRect.size.height -= keyboardSize.height
                 let activeTextFieldRect: CGRect? = activeField.frame
                 let activeTextFieldOrigin: CGPoint? = activeTextFieldRect?.origin
-                if !aRect.contains(activeTextFieldOrigin!) {
-                    scrollView.scrollRectToVisible(activeTextFieldRect!, animated: true)
+                guard let activeTextFieldOrigin = activeTextFieldOrigin else { return }
+                if !aRect.contains(activeTextFieldOrigin), let activeTextFieldRect = activeTextFieldRect {
+                    scrollView.scrollRectToVisible(activeTextFieldRect, animated: true)
                 }
             }
         }

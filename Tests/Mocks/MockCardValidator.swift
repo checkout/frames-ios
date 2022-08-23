@@ -30,9 +30,9 @@ final class MockCardValidator: CardValidating {
     }
 
     var validateCVVToReturn: ValidationResult<ValidationError.CVV> = .success
-    var expectedMaxLenghtCVV = 4
+    var expectedMaxLengthCVV = 4
     var expectedIsValidCVV = false
-    var maxLenghtCVVCalledWith = [Card.Scheme]()
+    var maxLengthCVVCalledWith: [Card.Scheme] = []
     var receivedIsValidCVVArguments: [(String, Card.Scheme)] = []
     private(set) var validateCVVCalledWith: (cvv: String, cardScheme: Card.Scheme)?
     func validate(cvv: String, cardScheme: Card.Scheme) -> ValidationResult<ValidationError.CVV> {
@@ -40,8 +40,8 @@ final class MockCardValidator: CardValidating {
         return validateCVVToReturn
     }
     func maxLengthCVV(for scheme: Card.Scheme) -> Int {
-        maxLenghtCVVCalledWith.append(scheme)
-        return expectedMaxLenghtCVV
+        maxLengthCVVCalledWith.append(scheme)
+        return expectedMaxLengthCVV
     }
     func isValid(cvv: String, for scheme: Card.Scheme) -> Bool {
         expectedIsValidCVV

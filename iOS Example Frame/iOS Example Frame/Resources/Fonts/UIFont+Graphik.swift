@@ -44,6 +44,7 @@ extension UIFont {
     }
 
     convenience init(graphikStyle: GraphikStyle, size: CGFloat) {
+        // swiftlint:disable:next force_unwrapping
         self.init(name: graphikStyle.fontName, size: size)!
     }
 }

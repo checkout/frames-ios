@@ -9,17 +9,17 @@ import XCTest
 @testable import Frames
 
 final class URLExtensionsTests: XCTestCase {
-    func test_withoutQuery_withQuery() {
-        let testURL = URL(string: "https://www.checkout.com/test/path?test=test_value")!
-        let expectedResult = URL(string: "https://www.checkout.com/test/path")!
+    func test_withoutQuery_withQuery() throws {
+        let testURL = try XCTUnwrap(URL(string: "https://www.checkout.com/test/path?test=test_value"))
+        let expectedResult = try XCTUnwrap(URL(string: "https://www.checkout.com/test/path"))
         let actualResult = testURL.withoutQuery
 
         XCTAssertEqual(actualResult, expectedResult)
     }
 
-    func test_withoutQuery_withoutQuery() {
-        let testURL = URL(string: "https://www.checkout.com/test/path")!
-        let expectedResult = URL(string: "https://www.checkout.com/test/path")!
+    func test_withoutQuery_withoutQuery() throws {
+        let testURL = try XCTUnwrap(URL(string: "https://www.checkout.com/test/path"))
+        let expectedResult = try XCTUnwrap(URL(string: "https://www.checkout.com/test/path"))
         let actualResult = testURL.withoutQuery
 
         XCTAssertEqual(actualResult, expectedResult)

@@ -9,14 +9,16 @@ class BillingFormViewModelTests: XCTestCase {
     }
 
     func testCountryCodeIsNotEmpty() {
-        let address = Address(addressLine1: "Test line1",
-                              addressLine2: nil,
-                              city: "London",
-                              state: "London",
-                              zip: "N12345",
-                              country: nil)
-        let phone = Phone(number: "77 1234 1234",
-                          country: Country(iso3166Alpha2: "GB"))
+        let address = Address(
+            addressLine1: "Test line1",
+            addressLine2: nil,
+            city: "London",
+            state: "London",
+            zip: "N12345",
+            country: nil)
+        let phone = Phone(
+            number: "77 1234 1234",
+            country: Country(iso3166Alpha2: "GB"))
         let name = "User 1"
         let billingForm = BillingForm(name: name, address: address, phone: phone)
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: billingForm)
@@ -72,15 +74,19 @@ class BillingFormViewModelTests: XCTestCase {
             BillingFormCell.city(nil).index: "city" ,
             BillingFormCell.addressLine1(nil).index: "addressLine1" ,
             BillingFormCell.addressLine2(nil).index: "addressLine2" ,
-            BillingFormCell.state(nil).index: "state" ]
+            BillingFormCell.state(nil).index: "state"
+        ]
 
-        let phone = Phone(number: textValueOfCellType[BillingFormCell.phoneNumber(nil).index], country: country)
-        let address = Address(addressLine1: textValueOfCellType[BillingFormCell.addressLine1(nil).index],
-                              addressLine2: textValueOfCellType[BillingFormCell.addressLine2(nil).index],
-                              city: textValueOfCellType[BillingFormCell.city(nil).index],
-                              state: textValueOfCellType[BillingFormCell.state(nil).index],
-                              zip: textValueOfCellType[BillingFormCell.postcode(nil).index],
-                              country: country)
+        let phone = Phone(
+            number: textValueOfCellType[BillingFormCell.phoneNumber(nil).index],
+            country: country)
+        let address = Address(
+            addressLine1: textValueOfCellType[BillingFormCell.addressLine1(nil).index],
+            addressLine2: textValueOfCellType[BillingFormCell.addressLine2(nil).index],
+            city: textValueOfCellType[BillingFormCell.city(nil).index],
+            state: textValueOfCellType[BillingFormCell.state(nil).index],
+            zip: textValueOfCellType[BillingFormCell.postcode(nil).index],
+            country: country)
 
         let data = BillingForm(name: name, address: address, phone: phone)
         viewModel.textValueOfCellType = textValueOfCellType
@@ -104,18 +110,23 @@ class BillingFormViewModelTests: XCTestCase {
     func testCallDelegateMethodDidFinishEditingBillingForm() {
         let delegate = BillingFormViewModelEditingMockDelegate()
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
-        let textValueOfCellType = [BillingFormCell.fullName(nil).index: "fullName" ,
-                       BillingFormCell.postcode(nil).index: "postcode" ,
-                       BillingFormCell.phoneNumber(nil).index: "phoneNumber" ,
-                       BillingFormCell.country(nil).index: "country" ,
-                       BillingFormCell.city(nil).index: "city" ,
-                       BillingFormCell.addressLine1(nil).index: "addressLine1" ,
-                       BillingFormCell.addressLine2(nil).index: "addressLine2" ,
-                       BillingFormCell.state(nil).index: "state" ]
+        let textValueOfCellType = [
+            BillingFormCell.fullName(nil).index: "fullName" ,
+            BillingFormCell.postcode(nil).index: "postcode" ,
+            BillingFormCell.phoneNumber(nil).index: "phoneNumber" ,
+            BillingFormCell.country(nil).index: "country" ,
+            BillingFormCell.city(nil).index: "city" ,
+            BillingFormCell.addressLine1(nil).index: "addressLine1" ,
+            BillingFormCell.addressLine2(nil).index: "addressLine2" ,
+            BillingFormCell.state(nil).index: "state" ]
         viewModel.textValueOfCellType = textValueOfCellType
         viewModel.editDelegate = delegate
 
-        _ = viewModel.textFieldShouldEndEditing(textField: DefaultBillingFormTextField(type: .fullName(nil), tag: 2), replacementString: "text")
+        _ = viewModel.textFieldShouldEndEditing(
+            textField: DefaultBillingFormTextField(
+                type: .fullName(nil),
+                tag: 2),
+            replacementString: "text")
 
         XCTAssertEqual(delegate.didFinishEditingBillingFormCalledTimes, 0)
         XCTAssertNil(delegate.didFinishEditingBillingFormLastCalledWithSuccessfully)

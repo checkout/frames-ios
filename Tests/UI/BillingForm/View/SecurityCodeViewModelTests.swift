@@ -12,7 +12,7 @@ import XCTest
 final class SecurityCodeViewModelTests: XCTestCase {
     func testValidateEmptyStringExpectedTrue() {
         let string = ""
-        let model = createViewModel(maximumCVVLenght: 3, isCVVInputValid: true)
+        let model = createViewModel(maximumCVVLength: 3, isCVVInputValid: true)
         model.updateInput(to: string)
 
         XCTAssertEqual(model.cvv, "")
@@ -21,7 +21,7 @@ final class SecurityCodeViewModelTests: XCTestCase {
 
     func testValidateEmptyStringExpectedFalse() {
         let string = ""
-        let model = createViewModel(maximumCVVLenght: 3, isCVVInputValid: false)
+        let model = createViewModel(maximumCVVLength: 3, isCVVInputValid: false)
         model.updateInput(to: string)
 
         XCTAssertEqual(model.cvv, "")
@@ -30,23 +30,23 @@ final class SecurityCodeViewModelTests: XCTestCase {
 
     func testValidateWhitespaceString() {
         let string = " 1 "
-        let model = createViewModel(maximumCVVLenght: 3)
+        let model = createViewModel(maximumCVVLength: 3)
         model.updateInput(to: string)
 
         XCTAssertEqual(model.cvv, "1")
     }
 
-    func testValidateCodeReachingMaximumCVVLenght() {
+    func testValidateCodeReachingMaximumCVVLength() {
         let string = "231"
-        let model = createViewModel(maximumCVVLenght: 3)
+        let model = createViewModel(maximumCVVLength: 3)
         model.updateInput(to: string)
 
         XCTAssertEqual(model.cvv, "231")
     }
 
-    func testValidateCodeOverMaximumCVVLenght() {
+    func testValidateCodeOverMaximumCVVLength() {
         let string = "2314"
-        let model = createViewModel(maximumCVVLenght: 3)
+        let model = createViewModel(maximumCVVLength: 3)
         model.updateInput(to: string)
 
         XCTAssertEqual(model.cvv, "")
@@ -107,7 +107,7 @@ final class SecurityCodeViewModelTests: XCTestCase {
         let model = createViewModel()
         let fakeDelegate = MockSecurityCodeDelegate()
         fakeDelegate.schemeChangedCompletion = {
-            XCTFail()
+            XCTFail("schemeChangedCompletion has failed")
         }
         model.delegate = fakeDelegate
 
@@ -131,11 +131,12 @@ final class SecurityCodeViewModelTests: XCTestCase {
     }
 
 
-    private func createViewModel(mockValidator: MockCardValidator = MockCardValidator(),
-                                 maximumCVVLenght: Int = 3,
-                                 isCVVInputValid: Bool = true) -> SecurityCodeViewModel {
-        mockValidator.validateCVVToReturn = isCVVInputValid ? .success : .failure(.invalidLength)
-        mockValidator.expectedMaxLenghtCVV = maximumCVVLenght
-        return SecurityCodeViewModel(cardValidator: mockValidator)
-    }
+    private func createViewModel(
+        mockValidator: MockCardValidator = MockCardValidator(),
+        maximumCVVLength: Int = 3,
+        isCVVInputValid: Bool = true) -> SecurityCodeViewModel {
+            mockValidator.validateCVVToReturn = isCVVInputValid ? .success : .failure(.invalidLength)
+            mockValidator.expectedMaxLengthCVV = maximumCVVLength
+            return SecurityCodeViewModel(cardValidator: mockValidator)
+        }
 }

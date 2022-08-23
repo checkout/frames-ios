@@ -3,7 +3,7 @@ import XCTest
 
 class CvvInputViewMockDelegate: UIViewController, UITextFieldDelegate {
     var calledTimes = 0
-    var lastCalledWith: UITextField!
+    var lastCalledWith: UITextField?
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         calledTimes += 1

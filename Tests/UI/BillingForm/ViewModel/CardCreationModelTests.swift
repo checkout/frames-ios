@@ -12,7 +12,6 @@ import Checkout
 final class CardCreationModelTests: XCTestCase {
     func testInit() {
         let model = CardCreationModel()
-
         XCTAssertEqual(model.number, "")
         XCTAssertNil(model.expiryDate)
         XCTAssertEqual(model.name, "")
@@ -29,9 +28,16 @@ final class CardCreationModelTests: XCTestCase {
         model.expiryDate = ExpiryDate(month: 12, year: 2024)
         model.name = "Owner"
         model.cvv = "123"
-        model.billingAddress = Address(addressLine1: "home", addressLine2: "sweet", city: "home", state: "nice", zip: "home", country: Country(iso3166Alpha2: "SG"))
-        model.phone = Phone(number: "01111255632", country: Country(iso3166Alpha2: "SG"))
-
+        model.billingAddress = Address(
+            addressLine1: "home",
+            addressLine2: "sweet",
+            city: "home",
+            state: "nice",
+            zip: "home",
+            country: Country(iso3166Alpha2: "SG"))
+        model.phone = Phone(
+            number: "01111255632",
+            country: Country(iso3166Alpha2: "SG"))
         XCTAssertNil(model.getCard())
     }
 
@@ -41,8 +47,16 @@ final class CardCreationModelTests: XCTestCase {
         model.expiryDate = nil
         model.name = "Owner"
         model.cvv = "123"
-        model.billingAddress = Address(addressLine1: "home", addressLine2: "sweet", city: "home", state: "nice", zip: "home", country: Country(iso3166Alpha2: "SG"))
-        model.phone = Phone(number: "01111255632", country: Country(iso3166Alpha2: "SG"))
+        model.billingAddress = Address(
+            addressLine1: "home",
+            addressLine2: "sweet",
+            city: "home",
+            state: "nice",
+            zip: "home",
+            country: Country(iso3166Alpha2: "SG"))
+        model.phone = Phone(
+            number: "01111255632",
+            country: Country(iso3166Alpha2: "SG"))
 
         XCTAssertNil(model.getCard())
     }
@@ -72,8 +86,16 @@ final class CardCreationModelTests: XCTestCase {
         model.expiryDate = ExpiryDate(month: 12, year: 2024)
         model.name = "Owner"
         model.cvv = "123"
-        model.billingAddress = Address(addressLine1: "home", addressLine2: "sweet", city: "home", state: "nice", zip: "home", country: Country(iso3166Alpha2: "SG"))
-        model.phone = Phone(number: "01111255632", country: Country(iso3166Alpha2: "SG"))
+        model.billingAddress = Address(
+            addressLine1: "home",
+            addressLine2: "sweet",
+            city: "home",
+            state: "nice",
+            zip: "home",
+            country: Country(iso3166Alpha2: "SG"))
+        model.phone = Phone(
+            number: "01111255632",
+            country: Country(iso3166Alpha2: "SG"))
 
         let card = model.getCard()
         XCTAssertNotNil(card)

@@ -34,16 +34,14 @@ class CountrySelectionViewControllerTests: XCTestCase {
     }
 
     func testNumberOfRowsInSection() {
-       let actual = countrySelectionViewController.tableView(countrySelectionViewController.tableView,
-                                                             numberOfRowsInSection: 0)
-    XCTAssertEqual(actual, numberOfCountries)
+        let actual = countrySelectionViewController.tableView(countrySelectionViewController.tableView, numberOfRowsInSection: 0)
+        XCTAssertEqual(actual, numberOfCountries)
     }
 
     func testCallDelegateMethodOnCountrySelected() {
         let delegate = MockDelegate()
         countrySelectionViewController.delegate = delegate
-        countrySelectionViewController.tableView(countrySelectionViewController.tableView,
-                                                 didSelectRowAt: IndexPath(row: 0, section: 0))
+        countrySelectionViewController.tableView(countrySelectionViewController.tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
         XCTAssertEqual(delegate.methodCalledTimes, 1)
         XCTAssertEqual(delegate.methodLastCalledWithCountry?.iso3166Alpha2, countrySelectionViewController.countries[0].1)
         XCTAssertEqual(delegate.methodLastCalledWithCountry?.name, countrySelectionViewController.countries[0].0)
@@ -51,59 +49,49 @@ class CountrySelectionViewControllerTests: XCTestCase {
 
     func testUpdateSearchResults() {
         /// Initial list
-        XCTAssertEqual(countrySelectionViewController.filteredCountries.count,
-                       countrySelectionViewController.countries.count)
+        XCTAssertEqual(countrySelectionViewController.filteredCountries.count, countrySelectionViewController.countries.count)
         /// Search with nothing
         countrySelectionViewController.updateSearchResults(text: nil)
-        XCTAssertEqual(countrySelectionViewController.filteredCountries.count,
-                       countrySelectionViewController.countries.count)
+        XCTAssertEqual(countrySelectionViewController.filteredCountries.count, countrySelectionViewController.countries.count)
         /// Search with 'A'
         countrySelectionViewController.updateSearchResults(text: "A")
-        XCTAssertLessThan(countrySelectionViewController.filteredCountries.count,
-                          countrySelectionViewController.countries.count)
+        XCTAssertLessThan(countrySelectionViewController.filteredCountries.count, countrySelectionViewController.countries.count)
     }
 
     func testSearchBarSearchButtonClicked() {
         countrySelectionViewController.searchBar.text = "A"
-        XCTAssertEqual(countrySelectionViewController.filteredCountries.count,
-                       countrySelectionViewController.countries.count)
+        XCTAssertEqual(countrySelectionViewController.filteredCountries.count, countrySelectionViewController.countries.count)
         countrySelectionViewController.searchBarSearchButtonClicked(countrySelectionViewController.searchBar)
-        XCTAssertLessThan(countrySelectionViewController.filteredCountries.count,
-                          countrySelectionViewController.countries.count)
+        XCTAssertLessThan(countrySelectionViewController.filteredCountries.count, countrySelectionViewController.countries.count)
     }
 
     func testSearchBarCancelButtonClicked() {
         // setup
         countrySelectionViewController.searchBar.text = "A"
         countrySelectionViewController.updateSearchResults(text: "A")
-        XCTAssertLessThan(countrySelectionViewController.filteredCountries.count,
-                          countrySelectionViewController.countries.count)
+        XCTAssertLessThan(countrySelectionViewController.filteredCountries.count, countrySelectionViewController.countries.count)
         // execute
         countrySelectionViewController.searchBarCancelButtonClicked(countrySelectionViewController.searchBar)
         // assert
         XCTAssertEqual(countrySelectionViewController.searchBar.text, "")
-        XCTAssertEqual(countrySelectionViewController.filteredCountries.count,
-                       countrySelectionViewController.countries.count)
+        XCTAssertEqual(countrySelectionViewController.filteredCountries.count, countrySelectionViewController.countries.count)
     }
 
     func testUpdateSearchOnTextChanged() {
         countrySelectionViewController.searchBar(countrySelectionViewController.searchBar, textDidChange: "A")
-        XCTAssertLessThan(countrySelectionViewController.filteredCountries.count,
-                          countrySelectionViewController.countries.count)
+        XCTAssertLessThan(countrySelectionViewController.filteredCountries.count, countrySelectionViewController.countries.count)
     }
 
     func testResetSearchResultsWhenTextBecomesEmpty() {
         testUpdateSearchOnTextChanged()
         countrySelectionViewController.searchBar(countrySelectionViewController.searchBar, textDidChange: "")
-        XCTAssertEqual(countrySelectionViewController.filteredCountries.count,
-                          countrySelectionViewController.countries.count)
+        XCTAssertEqual(countrySelectionViewController.filteredCountries.count, countrySelectionViewController.countries.count)
     }
 
     func testCellInsertedAtTheLocation() {
         let countryAt50 = countrySelectionViewController.filteredCountries[50].0
         let indexPath = IndexPath(row: 50, section: 0)
-        let cell = countrySelectionViewController.tableView(countrySelectionViewController.tableView,
-                                                            cellForRowAt: indexPath)
+        let cell = countrySelectionViewController.tableView(countrySelectionViewController.tableView, cellForRowAt: indexPath)
         XCTAssertEqual(cell.textLabel?.text, countryAt50)
     }
 }

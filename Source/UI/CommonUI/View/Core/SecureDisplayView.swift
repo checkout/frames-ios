@@ -9,8 +9,8 @@
 import UIKit
 
 /**
- Secure display view preventing leaking of content
- */
+    Secure display view preventing leaking of content
+*/
 final class SecureDisplayView: UIView {
     // MARK: Protect content from leaking
     public override var subviews: [UIView] { [] }
@@ -89,8 +89,8 @@ final class SecureDisplayView: UIView {
     }
 
     /**
-     Will protect the provided view.
-     */
+    Will protect the provided view.
+    */
     public static func secure(_ view: UIView) -> SecureDisplayView {
         SecureDisplayView(secure: view)
     }

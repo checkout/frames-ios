@@ -11,8 +11,8 @@ import Checkout
 @testable import Frames
 
 class SecurityCodeViewTests: XCTestCase {
-    var view: SecurityCodeView!
-    var style: DefaultSecurityCodeFormStyle!
+    var view: SecurityCodeView?
+    var style: DefaultSecurityCodeFormStyle?
 
     override func setUp() {
         super.setUp()
@@ -24,24 +24,24 @@ class SecurityCodeViewTests: XCTestCase {
 
     // Invalid string case of of pre-filled security code text from the merchant.
     func testInValidCodePrefilledTextFieldTextStyle() {
-        style.textfield.text = "Test"
-        view.update(style: style)
-        XCTAssertEqual(view.codeInputView.textFieldView.textField.text, "")
+        style?.textfield.text = "Test"
+        view?.update(style: style)
+        XCTAssertEqual(view?.codeInputView.textFieldView.textField.text, "")
     }
 
     // Invalid old date case of of pre-filled security code  text from the merchant.
     func testInValid1CodePrefilledTextFieldTextStyle() {
-        style.textfield.text = "1"
-        view.update(style: style)
+        style?.textfield.text = "1"
+        view?.update(style: style)
 
-        XCTAssertEqual(view.codeInputView.textFieldView.textField.text, "")
+        XCTAssertEqual(view?.codeInputView.textFieldView.textField.text, "")
     }
 
     // Valid date case of pre-filled security code  text from the merchant.
     func testValidCodePrefilledTextFieldTextStyle() {
-        style.textfield.text = "1234"
-        view.update(style: style)
+        style?.textfield.text = "1234"
+        view?.update(style: style)
 
-        XCTAssertEqual(view.codeInputView.textFieldView.textField.text, "1234")
+        XCTAssertEqual(view?.codeInputView.textFieldView.textField.text, "1234")
     }
 }

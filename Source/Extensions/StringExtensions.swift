@@ -1,7 +1,9 @@
 import Foundation
 import UIKit
 
+// swiftlint:disable convenience_type
 class BundleIdentifier {
+    // swiftlint:disable indentation_width
     static func getBundle() -> Foundation.Bundle {
 #if SWIFT_PACKAGE
         let baseBundle = Bundle.module
@@ -12,6 +14,7 @@ class BundleIdentifier {
         guard let bundle = Foundation.Bundle(path: path) else { return baseBundle }
         return bundle
     }
+    // swiftlint:enable indentation_width
 }
 
 extension String {

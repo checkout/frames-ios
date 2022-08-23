@@ -36,8 +36,9 @@ func addKeyboardToolbarNavigation(textFields: [UITextField]) {
         // last text field
         if index == textFields.count - 1 {
             nextButton.isEnabled = false
-            let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: textField,
-                                             action: #selector(UITextField.resignFirstResponder))
+            let doneButton = UIBarButtonItem(
+                barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: textField,
+                action: #selector(UITextField.resignFirstResponder))
             items.append(doneButton)
         } else {
             nextButton.target = textFields[index + 1]

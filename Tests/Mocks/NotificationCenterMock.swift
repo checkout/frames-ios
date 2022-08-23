@@ -4,10 +4,15 @@ import Foundation
 class NotificationCenterMock: NotificationCenter {
     var handlers: [NotificationHandlers] = []
     override func addObserver(_ observer: Any, selector: Selector, name: NSNotification.Name?, object: Any?) {
-        handlers.append(NotificationHandlers(observer: observer,
-                                             selector: selector,
-                                             name: name!,
-                                             object: object))
+        guard let name = name else {
+            assertionFailure("name is nil")
+            return
+        }
+        handlers.append(NotificationHandlers(
+            observer: observer,
+            selector: selector,
+            name: name,
+            object: object))
     }
 
     override func removeObserver(_ observer: Any, name: NSNotification.Name?, object: Any?) {

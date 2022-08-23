@@ -22,8 +22,8 @@ protocol BillingFormViewControllerDelegate: AnyObject {
 }
 
 /**
- This final class is for billing form list that allow user to fill required fields
- */
+This final class is for billing form list that allow user to fill required fields
+*/
 
 final class BillingFormViewController: UIViewController {
     // MARK: - Properties
@@ -80,11 +80,11 @@ final class BillingFormViewController: UIViewController {
     }
 
     /**
-     Initializes a view controller with view model protocol
+    Initializes a view controller with view model protocol
      
-     - Parameters:
-     - viewModel: The bill form view model implementation.
-     */
+    - Parameters:
+    - viewModel: The bill form view model implementation.
+    */
 
     init(viewModel: BillingFormViewModel) {
         self.viewModel = viewModel
