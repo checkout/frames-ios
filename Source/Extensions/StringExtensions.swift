@@ -3,11 +3,11 @@ import UIKit
 
 class BundleIdentifier {
     static func getBundle() -> Foundation.Bundle {
-    #if SWIFT_PACKAGE
+#if SWIFT_PACKAGE
         let baseBundle = Bundle.module
-    #else
+#else
         let baseBundle = Foundation.Bundle(for: Self.self)
-    #endif
+#endif
         guard let path = baseBundle.path(forResource: "Frames", ofType: "bundle") else { return baseBundle }
         guard let bundle = Foundation.Bundle(path: path) else { return baseBundle }
         return bundle
