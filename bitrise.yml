@@ -49,9 +49,6 @@ workflows:
     - cocoapods-install@2.2:
         inputs:
         - podfile_path: $FRAMES_PODFILE
-    - swiftlint-extended@1:
-        inputs:
-        - linting_path: "$BITRISE_SOURCE_DIR"
     - xcode-test@2:
         inputs:
         - project_path: $FRAMES_COCOAPODS_PROJECT
