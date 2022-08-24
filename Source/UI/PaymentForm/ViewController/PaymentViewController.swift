@@ -335,13 +335,19 @@ extension PaymentViewController {
       paymentViews.append(cardholderView)
       cardholderView.update(style: cardholderStyle)
     }
-    paymentViews.append(contentsOf: [
-      cardNumberView,
-      expiryDateView,
-      securityCodeView,
-      addBillingFormButtonView,
-      billingFormSummaryView,
-      payButtonView])
+    paymentViews.append(contentsOf: [cardNumberView, expiryDateView])
+
+    if viewModel.paymentFormStyle?.securityCode != nil {
+      paymentViews.append(securityCodeView)
+    }
+
+    if viewModel.paymentFormStyle?.addBillingSummary != nil && viewModel.paymentFormStyle?.editBillingSummary != nil {
+      paymentViews.append(contentsOf: [
+        addBillingFormButtonView,
+        billingFormSummaryView])
+    }
+
+    paymentViews.append(payButtonView)
     stackView.addArrangedSubviews(paymentViews)
     stackView.layoutMargins = UIEdgeInsets(top: 0,
                                            left: Constants.Padding.l.rawValue,

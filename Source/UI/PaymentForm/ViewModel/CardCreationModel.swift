@@ -14,6 +14,7 @@ struct CardCreationModel {
   var cvv: String = ""
   var billingAddress: Address?
   var phone: Phone?
+  var scheme: Card.Scheme?
 
   func getCard() -> Card? {
     guard !number.isEmpty,

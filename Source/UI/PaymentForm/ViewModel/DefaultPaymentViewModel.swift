@@ -27,11 +27,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
     }
   }
 
-  private var cardDetails: CardCreationModel =  CardCreationModel() {
-    didSet {
-      shouldEnablePayButton?(cardDetails.expiryDate != nil && cardDetails.number != nil)
-    }
-  }
+  private var cardDetails: CardCreationModel =  CardCreationModel()
 
   init(checkoutAPIService: CheckoutAPIProtocol,
        cardValidator: CardValidator,
@@ -105,6 +101,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
     if isAddBillingSummaryNotUpdated() {
       updateBillingSummaryView()
     }
+    validateMandatoryInputProvided()
   }
 
   private func isAddBillingSummaryNotUpdated() -> Bool {
@@ -145,6 +142,7 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
       case .success(let expiryDate):
         cardDetails.expiryDate = expiryDate
     }
+    validateMandatoryInputProvided()
   }
 
   func securityCodeIsUpdated(result: Result<String, SecurityCodeError>) {
@@ -154,6 +152,7 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
       case .success(let cvv):
         cardDetails.cvv = cvv
     }
+    validateMandatoryInputProvided()
   }
 
   func payButtonIsPressed() {
@@ -175,6 +174,45 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
 
   func cardholderIsUpdated(value: String) {
     cardDetails.name = value
+    validateMandatoryInputProvided()
+  }
+
+  private func validateMandatoryInputProvided() {
+    var isMandatoryInputProvided = false
+    defer { shouldEnablePayButton?(isMandatoryInputProvided) }
+
+    // If a scheme is not recorded the number hasn't started being inputted
+    // so we can safely know mandatory fields are not provided
+    guard let cardScheme = cardDetails.scheme else { return }
+
+    // Check if cardholder is required and if so whether it is provided
+    let isCardholderRequired = paymentFormStyle?.cardholderInput?.isMandatory == true
+    if isCardholderRequired && cardDetails.name.isEmpty { return }
+
+    // Check if security code is displayed and if so whether it is valid
+    // This is business logic that wants Security code to be mandatory whenever its shown
+    let isSecurityCodeRequired = paymentFormStyle?.securityCode != nil
+    if isSecurityCodeRequired && !cardValidator.isValid(cvv: cardDetails.cvv, for: cardScheme) { return }
+
+    // Check if Billing is required and if so whether it exists
+    let isAddBillingRequired = paymentFormStyle?.addBillingSummary?.isMandatory == true
+    let isEditBillingRequired = paymentFormStyle?.editBillingSummary?.isMandatory == true
+    let isBillingRequired = isAddBillingRequired && isEditBillingRequired
+    if isBillingRequired && cardDetails.billingAddress == nil { return }
+
+    // Ensure compulsory fields of Card Number and Expiry date have valid values
+    guard case .success(let scheme) = cardValidator.validateCompleteness(cardNumber: cardDetails.number),
+       scheme.isComplete else {
+        // Incomplete card number
+        return
+    }
+
+    guard let expiryDate = cardDetails.expiryDate,
+      case .success = cardValidator.validate(expiryMonth: expiryDate.month, expiryYear: expiryDate.year) else {
+       // Missing / invalid expiry date
+       return
+      }
+    isMandatoryInputProvided = true
   }
 
   private func onTapAddressView(sender: UINavigationController?) {
@@ -188,10 +226,13 @@ extension DefaultPaymentViewModel: CardNumberViewModelDelegate {
     switch result {
       case .failure:
         cardDetails.number = ""
+        cardDetails.scheme = nil
       case .success(let cardInfo):
         cardDetails.number = cardInfo.cardNumber
+        cardDetails.scheme = cardInfo.scheme
         updateSecurityCodeViewScheme?(cardInfo.scheme)
     }
+    validateMandatoryInputProvided()
   }
 
   func schemeUpdatedEagerly(to newScheme: Card.Scheme) {

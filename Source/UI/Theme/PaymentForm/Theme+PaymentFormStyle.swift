@@ -16,8 +16,8 @@ public extension Theme {
         public var addBillingSummary: CellButtonStyle?
         public var editBillingSummary: BillingSummaryViewStyle?
         public var cardholderInput: CellTextFieldStyle?
-        public var cardNumber: CellTextFieldStyle?
-        public var expiryDate: CellTextFieldStyle?
+        public var cardNumber: CellTextFieldStyle
+        public var expiryDate: CellTextFieldStyle
         public var securityCode: CellTextFieldStyle?
         public var payButton: ElementButtonStyle
     }

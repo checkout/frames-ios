@@ -6,8 +6,8 @@ public struct DefaultPaymentFormStyle: PaymentFormStyle {
     public var editBillingSummary: BillingSummaryViewStyle? = DefaultBillingSummaryViewStyle()
     public var addBillingSummary: CellButtonStyle? = DefaultAddBillingDetailsViewStyle()
     public var cardholderInput: CellTextFieldStyle? = DefaultCardholderFormStyle()
-    public var cardNumber: CellTextFieldStyle? = DefaultCardNumberFormStyle()
-    public var expiryDate: CellTextFieldStyle? = DefaultExpiryDateFormStyle()
+    public var cardNumber: CellTextFieldStyle = DefaultCardNumberFormStyle()
+    public var expiryDate: CellTextFieldStyle = DefaultExpiryDateFormStyle()
     public var securityCode: CellTextFieldStyle? = DefaultSecurityCodeFormStyle()
     public var payButton: ElementButtonStyle = DefaultPayButtonFormStyle()
 }
