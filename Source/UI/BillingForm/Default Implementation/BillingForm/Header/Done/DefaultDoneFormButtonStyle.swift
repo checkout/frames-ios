@@ -6,7 +6,7 @@ public struct DefaultDoneFormButtonStyle: ElementButtonStyle {
     public var text: String = Constants.LocalizationKeys.BillingForm.Header.done
     public var font: UIFont = UIFont.systemFont(ofSize: Constants.Style.BillingForm.DoneButton.fontSize.rawValue)
     public var disabledTextColor: UIColor = .doveGray
-    public var disabledTintColor: UIColor = .doveGray
+    public var disabledTintColor: UIColor = .clear
     public var activeTintColor: UIColor = .brandeisBlue
     public var backgroundColor: UIColor = .clear
     public var normalBorderColor: UIColor = .clear
