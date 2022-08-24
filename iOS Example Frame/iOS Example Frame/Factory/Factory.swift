@@ -13,10 +13,13 @@ import UIKit
 struct Factory {
   static let successURL = URL(string: "https://httpstat.us/200")!
   static let failureURL = URL(string: "https://httpstat.us/403")!
-  private static let apiKey = "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73"
-  private static let environment: Frames.Environment = .sandbox
+  static let apiKey = "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73"
+  static let environment: Frames.Environment = .sandbox
 
   static func getDefaultPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
+    #if UITEST
+    return getMinimalUITestVC(completionHandler: completionHandler)
+    #endif
 
     let country = Country(iso3166Alpha2: "GB")!
 
