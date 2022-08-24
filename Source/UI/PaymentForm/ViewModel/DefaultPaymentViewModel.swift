@@ -207,12 +207,12 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
         return
     }
 
-    if let expiryDate = cardDetails.expiryDate,
-      case .success = cardValidator.validate(expiryMonth: expiryDate.month, expiryYear: expiryDate.year) {
-      isMandatoryInputProvided = true
-    } else {
-      isMandatoryInputProvided = false
-    }
+    guard let expiryDate = cardDetails.expiryDate,
+      case .success = cardValidator.validate(expiryMonth: expiryDate.month, expiryYear: expiryDate.year) else {
+       // Missing / invalid expiry date
+       return
+      }
+    isMandatoryInputProvided = true
   }
 
   private func onTapAddressView(sender: UINavigationController?) {
