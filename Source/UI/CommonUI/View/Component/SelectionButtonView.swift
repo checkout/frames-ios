@@ -96,6 +96,7 @@ extension SelectionButtonView {
     }
     private func setupImageView() {
         addSubview(imageContainerView)
+        sendSubviewToBack(imageContainerView)
         NSLayoutConstraint.activate([
           imageContainerView.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
           imageContainerView.trailingAnchor.constraint(equalTo: trailingAnchor,
