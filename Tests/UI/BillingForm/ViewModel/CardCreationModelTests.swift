@@ -17,7 +17,7 @@ final class CardCreationModelTests: XCTestCase {
         XCTAssertEqual(model.number, "")
         XCTAssertNil(model.expiryDate)
         XCTAssertEqual(model.name, "")
-        XCTAssertEqual(model.cvv, "")
+        XCTAssertNil(model.cvv)
         XCTAssertNil(model.billingAddress)
         XCTAssertNil(model.phone)
         
