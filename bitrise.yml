@@ -3,8 +3,6 @@ format_version: '8'
 default_step_lib_source: 'https://github.com/bitrise-io/bitrise-steplib.git'
 project_type: ios
 trigger_map:
-- push_branch: '*'
-  workflow: frames-test-pods
 - pull_request_source_branch: '*'
   workflow: pr-checks
 workflows:
@@ -20,6 +18,7 @@ workflows:
     - _frames-build-carthage
     - _frames-build-pods
     - _frames-build-spm
+    - _run-uitests
     - _frames-slack
   _frames-set-up:
     steps:
@@ -64,6 +63,14 @@ workflows:
         - scheme: $FRAMES_APP_SCHEME
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
+  _run-uitests:
+    steps:
+    - xcode-test:
+        inputs:
+        - project_path: $FRAMES_SPM_PROJECT
+        - scheme: $FRAMES_UITEST_SCHEME
+    - deploy-to-bitrise-io@1: {}
+    - cache-push@2: {}
   _frames-slack:
     steps:
     - slack@3:
@@ -71,27 +78,6 @@ workflows:
         - webhook_url: $iOSBuildsChannel
     after_run: []
   
-  # frames test individual package manager
-  frames-test-pods:
-    steps:
-    - activate-ssh-key@4:
-        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@4: {}
-    - cache-pull@2: {}
-    - certificate-and-profile-installer@1: {}
-    - cocoapods-install@2.2:
-        inputs:
-        - podfile_path: $FRAMES_PODFILE
-    - xcode-test@2:
-        inputs:
-        - project_path: $FRAMES_COCOAPODS_PROJECT
-        - scheme: $FRAMES_TEST_SCHEME
-    - deploy-to-bitrise-io@1: {}
-    - cache-push@2: {}
-    - slack@3:
-        inputs:
-        - webhook_url: $FRAMES_IOS_BUILDS_CHANNEL
-    after_run: []
   frames-test-spm:
     steps:
     - activate-ssh-key@4:
@@ -331,6 +317,9 @@ app:
   - opts:
       is_expand: false
     FRAMES_APP_SCHEME: iOS Example Frame
+  - opts:
+      is_expand: false
+    FRAMES_UITEST_SCHEME: UITest
   - opts:
       is_expand: false
     CARTHAGE_XCFRAMEWORK: '--use-xcframeworks --platform iOS --cache-builds'
