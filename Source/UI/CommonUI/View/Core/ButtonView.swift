@@ -9,7 +9,7 @@ class ButtonView: UIView {
     var style: ElementButtonStyle?
     lazy var constraintLeading: NSLayoutConstraint? = buttonTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 120.0)
 
-    var isEnabled: Bool = false {
+    var isEnabled: Bool = true {
         didSet {
             if let style = style {
                 self.style?.isEnabled = isEnabled
