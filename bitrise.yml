@@ -34,11 +34,6 @@ workflows:
         inputs:
         - carthage_options: $CARTHAGE_XCFRAMEWORK
         - github_access_token: $access_token
-    - xcode-test@4.1:
-        inputs:
-        - project_path: $FRAMES_CARTHAGE_PROJECT
-        - destination: 'platform=iOS Simulator,name=iPhone 13,OS=latest'
-        - scheme: $FRAMES_APP_SCHEME
     - deploy-to-bitrise-io@1: {}
     - cache-push@2:
         inputs:
