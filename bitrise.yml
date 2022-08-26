@@ -34,6 +34,11 @@ workflows:
         inputs:
         - carthage_options: $CARTHAGE_XCFRAMEWORK
         - github_access_token: $access_token
+    - xcode-test@4.1:
+        inputs:
+        - project_path: $FRAMES_CARTHAGE_PROJECT
+        - destination: 'platform=iOS Simulator,name=iPhone 13,OS=latest'
+        - scheme: $FRAMES_APP_SCHEME
     - deploy-to-bitrise-io@1: {}
     - cache-push@2:
         inputs:
@@ -43,10 +48,6 @@ workflows:
     - cocoapods-install@2.2:
         inputs:
         - podfile_path: $FRAMES_PODFILE
-    - xcode-test@2:
-        inputs:
-        - project_path: $FRAMES_COCOAPODS_PROJECT
-        - scheme: $FRAMES_APP_SCHEME
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     after_run: []
@@ -80,10 +81,6 @@ workflows:
     - git-clone@4: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
-    - xcode-test@2:
-        inputs:
-        - project_path: $FRAMES_SPM_PROJECT
-        - scheme: $FRAMES_TEST_SCHEME
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     - slack@3:
@@ -102,10 +99,6 @@ workflows:
             # run carthage update command.
             carthage update --use-xcframeworks --platform iOS
     - certificate-and-profile-installer@1: {}
-    - xcode-test@2:
-        inputs:
-        - project_path: $FRAMES_CARTHAGE_PROJECT
-        - scheme: $FRAMES_TEST_SCHEME
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
   
@@ -294,9 +287,6 @@ app:
   - opts:
       is_expand: false
     FRAMES_COCOAPODS_PROJECT: iOS Example Frame/iOS Example Frame.xcworkspace
-  - opts:
-      is_expand: false
-    FRAMES_TEST_SCHEME: Frames-Unit-Tests
   - opts:
       is_expand: false
     BITRISE_EXPORT_METHOD: development
