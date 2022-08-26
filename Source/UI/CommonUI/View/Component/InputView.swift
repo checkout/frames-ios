@@ -6,10 +6,16 @@ class InputView: UIView {
 
     weak var delegate: TextFieldViewDelegate?
     private(set) var style: CellTextFieldStyle?
-    private(set) lazy var textFieldContainerBottomAnchor = textFieldContainer.bottomAnchor.constraint(equalTo: bottomAnchor)
     private(set) lazy var iconViewWidthAnchor = iconView.widthAnchor.constraint(equalToConstant: 32)
 
     // MARK: - UI elements
+
+    private lazy var stackView: UIStackView = {
+      let view = UIStackView().disabledAutoresizingIntoConstraints()
+      view.axis = .vertical
+      view.spacing = Constants.Padding.xs.rawValue
+      return view
+    }()
 
     private(set) lazy var headerLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
@@ -72,7 +78,10 @@ class InputView: UIView {
         guard let style = style else { return }
         self.style = style
         backgroundColor = style.backgroundColor
+
         mandatoryLabel.isHidden = style.isMandatory
+        headerLabel.isHidden = style.title == nil
+        hintLabel.isHidden = style.hint == nil
 
         headerLabel.update(with: style.title)
         mandatoryLabel.update(with: style.mandatory)
@@ -100,10 +109,7 @@ class InputView: UIView {
 
     private func updateErrorView(style: CellTextFieldStyle) {
         errorView.update(style: style.error)
-        let shouldHideErrorView = style.error?.isHidden ?? false
-        let expectedErrorViewHeight = style.error?.height ?? 0
-        errorView.isHidden = shouldHideErrorView
-        textFieldContainerBottomAnchor.constant = -(shouldHideErrorView ? 0 : expectedErrorViewHeight)
+        errorView.isHidden = style.error?.isHidden ?? false
     }
 }
 
@@ -113,52 +119,31 @@ extension InputView {
 
     private func setupViewsInOrder() {
         backgroundColor = style?.backgroundColor
-        setupHeaderLabel()
+        setupStackView()
         setupMandatoryLabel()
-        setupHintLabel()
-        setupTextFieldContainer()
         setupIcon()
         setupTextField()
-        setupErrorView()
     }
 
-    private func setupHeaderLabel() {
-        addSubview(headerLabel)
-        NSLayoutConstraint.activate([
-            headerLabel.topAnchor.constraint(equalTo: topAnchor),
-            headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor)
-        ])
+    private func setupStackView() {
+        addSubview(stackView)
+        let arrangedSubviews = [
+            headerLabel,
+            hintLabel,
+            textFieldContainer,
+            errorView
+        ]
+        stackView.addArrangedSubviews(arrangedSubviews)
+        stackView.setupConstraintEqualTo(view: self)
     }
 
     private func setupMandatoryLabel() {
         addSubview(mandatoryLabel)
         NSLayoutConstraint.activate([
-            mandatoryLabel.topAnchor.constraint(equalTo: topAnchor),
-            mandatoryLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            mandatoryLabel.leadingAnchor.constraint(greaterThanOrEqualTo: headerLabel.trailingAnchor)
+            mandatoryLabel.topAnchor.constraint(equalTo: stackView.topAnchor),
+            mandatoryLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
         ])
-    }
-
-    private func setupHintLabel() {
-        addSubview(hintLabel)
-        NSLayoutConstraint.activate([
-            hintLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor,
-                                           constant: Constants.Padding.s.rawValue),
-            hintLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            hintLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-    }
-
-    private func setupTextFieldContainer() {
-        textFieldContainer.setContentHuggingPriority(.required, for: .vertical)
-        addSubview(textFieldContainer)
-        NSLayoutConstraint.activate([
-            textFieldContainer.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
-                                                    constant: Constants.Padding.s.rawValue),
-            textFieldContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
-            textFieldContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
-            textFieldContainerBottomAnchor
-        ])
+        mandatoryLabel.bringSubviewToFront(self)
     }
 
     private func setupIcon() {
@@ -177,16 +162,6 @@ extension InputView {
         ])
     }
 
-    private func setupErrorView() {
-        addSubview(errorView)
-
-        NSLayoutConstraint.activate([
-            errorView.topAnchor.constraint(equalTo: textFieldContainer.bottomAnchor,
-                                           constant: Constants.Padding.m.rawValue),
-            errorView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            errorView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-    }
 }
 
 // MARK: - Text Field Delegate
