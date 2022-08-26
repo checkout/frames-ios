@@ -9,7 +9,7 @@ class ButtonView: UIView {
     var style: ElementButtonStyle?
     lazy var constraintLeading: NSLayoutConstraint? = buttonTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 120.0)
 
-    var isEnabled: Bool = true {
+    var isEnabled: Bool = false {
         didSet {
             if let style = style {
                 self.style?.isEnabled = isEnabled
@@ -23,6 +23,7 @@ class ButtonView: UIView {
     lazy var button: UIButton = {
         let view = UIButton().disabledAutoresizingIntoConstraints()
         view.addTarget(self, action: #selector(selectionButtonIsPressed), for: .touchUpInside)
+        view.isEnabled = false
         return view
     }()
 
@@ -58,6 +59,7 @@ class ButtonView: UIView {
         backgroundColor = isEnabled ? style.backgroundColor : style.disabledTintColor
         button.tintColor = .clear
         button.heightAnchor.constraint(equalToConstant: style.height).isActive = true
+        button.accessibilityIdentifier = style.text
     }
 
     private func updateLabelStyle(with style: ElementButtonStyle) {

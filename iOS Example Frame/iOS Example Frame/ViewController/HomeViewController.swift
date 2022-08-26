@@ -28,8 +28,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         #if UITEST
-        defaultButton.accessibilityLabel = "UITestDefault"
-        theme1Button.accessibilityLabel = "UITestTheme1"
+        defaultButton.accessibilityIdentifier = "UITestDefault"
+        theme1Button.accessibilityIdentifier = "UITestTheme1"
         #endif
     }
 
