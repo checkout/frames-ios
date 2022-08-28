@@ -51,7 +51,7 @@ struct PayButtonFormStyleCustom1: ElementButtonStyle {
 // MARK: - Main Payment Form
 
 struct PaymentFormStyleCustom1: PaymentFormStyle {
-  var backgroundColor: UIColor = Constants.backgroundColor
+  var backgroundColor: UIColor = .white
   var headerView: PaymentHeaderCellStyle = StyleOrganiser.PaymentHeaderViewStyle()
   var addBillingSummary: CellButtonStyle? = StyleOrganiser.BillingStartButton()
   var editBillingSummary: BillingSummaryViewStyle? = StyleOrganiser.BillingSummaryStyle()
