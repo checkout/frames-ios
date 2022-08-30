@@ -38,6 +38,7 @@ workflows:
         inputs:
         - project_path: $FRAMES_CARTHAGE_PROJECT
         - scheme: $FRAMES_APP_SCHEME
+        - configuration: Debug
     - deploy-to-bitrise-io@1: {}
     - cache-push@2:
         inputs:
