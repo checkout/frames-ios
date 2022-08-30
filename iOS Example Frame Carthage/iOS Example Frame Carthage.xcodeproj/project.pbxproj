@@ -361,18 +361,18 @@
 		0BC60B7328AFB32600F30992 /* Theme+Title.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Title.swift"; sourceTree = "<group>"; };
 		0BC60B7428AFB32600F30992 /* Theme+Subtitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Subtitle.swift"; sourceTree = "<group>"; };
 		0BC60B7528AFB32600F30992 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		0BD2ECEC28BE26960041A942 /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BD2ECED28BE26960041A942 /* FramesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = FramesTests.xctest; path = "/Users/alexiojayang/Desktop/projects/frames-ios/iOS Example Frame Carthage/build/Debug-iphoneos/FramesTests.xctest"; sourceTree = "<absolute>"; };
 		0BD4BFA128AE6D6B008ED92E /* DefaultCardholderFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCardholderFormStyle.swift; sourceTree = "<group>"; };
 		0BD4BFA428AE6D96008ED92E /* CardholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardholderView.swift; sourceTree = "<group>"; };
 		0BD4BFA528AE6D96008ED92E /* CardholderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardholderViewModel.swift; sourceTree = "<group>"; };
 		0BFE5B2F2893D51F00E540B9 /* SecurityCodeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityCodeViewModel.swift; sourceTree = "<group>"; };
-		4422774726163716009626A0 /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "iOS Example Frame.app"; path = "/Users/alexiojayang/Desktop/projects/frames-ios/iOS Example Frame Carthage/build/Debug-iphoneos/iOS Example Frame.app"; sourceTree = "<absolute>"; };
 		4422775D26163748009626A0 /* Frames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Frames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4422775F26163748009626A0 /* Frames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Frames.h; sourceTree = "<group>"; };
 		442277E52616376E009626A0 /* CheckoutSdkIos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckoutSdkIos.h; sourceTree = "<group>"; };
 		442277E62616376E009626A0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = ../Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
 		44A4DFCF261CC17800E0C349 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
-		57256C79269F1181001EC3D8 /* FramesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = FramesTests.xctest; path = "/Users/alexiojayang/Desktop/projects/frames-ios/iOS Example Frame Carthage/build/Debug-iphoneos/FramesTests.xctest"; sourceTree = "<absolute>"; };
 		9502D0C528ABBEB0008B3E19 /* CardCreationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCreationModel.swift; sourceTree = "<group>"; };
 		950DBEB5287C946900FA04C0 /* SecurityCodeViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityCodeViewTests.swift; sourceTree = "<group>"; };
 		952F3165283C303E00F616FF /* CardUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardUtils.swift; path = ../../Source/CardUtils.swift; sourceTree = "<group>"; };
@@ -1702,6 +1702,7 @@
 				CB8CE5C72805D00D0069ADB0 /* Tests */,
 				443FCD9226137A4C009D6DE6 /* Frameworks */,
 				4422775D26163748009626A0 /* Frames.framework */,
+				0BD2ECEC28BE26960041A942 /* iOS Example Frame.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1773,7 +1774,7 @@
 			);
 			name = FramesTests;
 			productName = FramesTests;
-			productReference = 57256C79269F1181001EC3D8 /* FramesTests.xctest */;
+			productReference = 0BD2ECED28BE26960041A942 /* FramesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		E6646F8920CE6C0900D8353A /* iOS Example Frame */ = {
@@ -1795,7 +1796,7 @@
 			packageProductDependencies = (
 			);
 			productName = "iOS Example Frame";
-			productReference = 4422774726163716009626A0 /* iOS Example Frame.app */;
+			productReference = 0BD2ECEC28BE26960041A942 /* iOS Example Frame.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2405,6 +2406,7 @@
 		E6646FA520CE6C0A00D8353A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -2465,6 +2467,7 @@
 		E6646FA620CE6C0A00D8353A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
