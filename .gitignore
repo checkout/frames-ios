@@ -133,13 +133,14 @@ iOSInjectionProject/
 ### SwiftPM ###
 Packages
 xcuserdata
-*.xcodeproj
+Package.resolved
+IDEWorkspaceChecks.plist
 
 
 ### Xcode ###
 # Xcode
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
-
+contents.xcworkspacedata
 
 
 
@@ -147,9 +148,10 @@ xcuserdata
 /*.gcno
 
 ### Xcode Patch ###
+*.xcodeproj/project.workspace/xcshareddata/swiftpm/Package.resolved
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
-!*.xcodeproj/xcshareddata/
+*/IDEWorkspaceChecks.plist
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
 
