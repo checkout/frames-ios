@@ -34,7 +34,7 @@ workflows:
         inputs:
         - carthage_options: $CARTHAGE_XCFRAMEWORK
         - github_access_token: $access_token
-    - xcode-build-for-simulator@0:
+    - xcode-build-for-test@2:
         inputs:
         - project_path: $FRAMES_CARTHAGE_PROJECT
         - scheme: $FRAMES_APP_SCHEME
@@ -47,7 +47,7 @@ workflows:
     - cocoapods-install@2.2:
         inputs:
         - podfile_path: $FRAMES_PODFILE
-    - xcode-build-for-simulator@0:
+    - xcode-build-for-test@2:
         inputs:
         - project_path: $FRAMES_COCOAPODS_PROJECT
         - scheme: $FRAMES_APP_SCHEME
@@ -83,7 +83,7 @@ workflows:
     - git-clone@6: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
-    - xcode-build-for-simulator@0:
+    - xcode-build-for-test@2:
         inputs:
         - project_path: $FRAMES_SPM_PROJECT
         - scheme: $FRAMES_APP_SCHEME
@@ -104,7 +104,7 @@ workflows:
             # run carthage update command.
             carthage update --use-xcframeworks --platform iOS
     - certificate-and-profile-installer@1: {}
-    - xcode-build-for-simulator@0:
+    - xcode-build-for-test@2:
         inputs:
         - project_path: $FRAMES_CARTHAGE_PROJECT
         - scheme: $FRAMES_APP_SCHEME
@@ -156,7 +156,7 @@ workflows:
     - cocoapods-install@1:
         inputs:
         - podfile_path: $FRAMES_PODFILE
-    - xcode-build-for-simulator@0:
+    - xcode-build-for-test@2:
         inputs:
         - scheme: $FRAMES_APP_SCHEME
         - configuration: Debug
