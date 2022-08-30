@@ -34,6 +34,11 @@ workflows:
         inputs:
         - carthage_options: $CARTHAGE_XCFRAMEWORK
         - github_access_token: $access_token
+    - xcode-build-for-simulator@0: {
+        inputs:
+        - project_path: $FRAMES_CARTHAGE_PROJECT
+        - scheme: $FRAMES_APP_SCHEME
+    }
     - deploy-to-bitrise-io@1: {}
     - cache-push@2:
         inputs:
@@ -43,6 +48,11 @@ workflows:
     - cocoapods-install@2.2:
         inputs:
         - podfile_path: $FRAMES_PODFILE
+    - xcode-build-for-simulator@0: {
+        inputs:
+        - project_path: $FRAMES_COCOAPODS_PROJECT
+        - scheme: $FRAMES_APP_SCHEME
+    }
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     after_run: []
@@ -76,6 +86,11 @@ workflows:
     - git-clone@4: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
+    - xcode-build-for-simulator@0: {
+        inputs:
+        - project_path: $FRAMES_SPM_PROJECT
+        - scheme: $FRAMES_APP_SCHEME
+    }
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     - slack@3:
@@ -94,6 +109,11 @@ workflows:
             # run carthage update command.
             carthage update --use-xcframeworks --platform iOS
     - certificate-and-profile-installer@1: {}
+    - xcode-build-for-simulator@0: {
+        inputs:
+        - project_path: $FRAMES_CARTHAGE_PROJECT
+        - scheme: $FRAMES_APP_SCHEME
+    }
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
   
