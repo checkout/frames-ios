@@ -35,11 +35,10 @@ workflows:
         - carthage_options: $CARTHAGE_XCFRAMEWORK
         - github_access_token: $access_token
     - script@1:
-        title: Build project
+        title: Build Carthage Test project
         inputs:
         - content: |
-            # run carthage update command.
-            xcodebuild "-workspace" "iOS Example Frame Carthage/iOS Example Frame Carthage.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "id=0DD4E294-6C62-4FAD-AEBE-B021CF8DAA56" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
+            xcodebuild "-workspace" "iOS Example Frame Carthage/iOS Example Frame Carthage.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 13 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
     - cache-push@2:
         inputs:
         - cache_paths: $CARTHAGE_FOLDER
@@ -48,10 +47,11 @@ workflows:
     - cocoapods-install@2.2:
         inputs:
         - podfile_path: $FRAMES_PODFILE
-    - xcode-build-for-test@2:
+    - script@1:
+        title: Build Pods Test project
         inputs:
-        - project_path: $FRAMES_COCOAPODS_PROJECT
-        - scheme: $FRAMES_APP_SCHEME
+        - content: |
+            xcodebuild "-workspace" "iOS Example Frame/iOS Example Frame.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 13 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
     - cache-push@2: {}
     after_run: []
   _frames-build-spm:
@@ -84,10 +84,11 @@ workflows:
     - git-clone@6: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
-    - xcode-build-for-test@2:
+    - script@1:
+        title: Build SPM Test project
         inputs:
-        - project_path: $FRAMES_SPM_PROJECT
-        - scheme: $FRAMES_APP_SCHEME
+        - content: |
+            xcodebuild "-project" "iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 13 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
     - cache-push@2: {}
     - slack@3:
         inputs:
@@ -158,10 +159,11 @@ workflows:
     - cocoapods-install@1:
         inputs:
         - podfile_path: $FRAMES_PODFILE
-    - xcode-build-for-test@2:
+    - script@1:
+        title: Build Pods Test project
         inputs:
-        - scheme: $FRAMES_APP_SCHEME
-        - configuration: Debug
+        - content: |
+            xcodebuild "-workspace" "iOS Example Frame/iOS Example Frame.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 13 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
     - cache-push@2: {}
     after_run: []
     before_run:
