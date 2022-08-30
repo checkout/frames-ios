@@ -339,6 +339,7 @@
 		0B194AF928A1132B001AEAFD /* SF-Mono-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-LightItalic.otf"; sourceTree = "<group>"; };
 		0B194AFA28A1132B001AEAFD /* SF-Mono-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Mono-HeavyItalic.otf"; sourceTree = "<group>"; };
 		0B194AFB28A1132B001AEAFD /* UIFont+Graphik.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Graphik.swift"; sourceTree = "<group>"; };
+		0B5D782728BE42B900E9D769 /* FramesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FramesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentFormConfiguration.swift; sourceTree = "<group>"; };
 		0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStyle.swift; sourceTree = "<group>"; };
 		0BC60B5D28AFB27800F30992 /* ThemeDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemeDemo.swift; path = ../ThemeDemo.swift; sourceTree = "<group>"; };
@@ -362,7 +363,6 @@
 		0BC60B7428AFB32600F30992 /* Theme+Subtitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Subtitle.swift"; sourceTree = "<group>"; };
 		0BC60B7528AFB32600F30992 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		0BD2ECEC28BE26960041A942 /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0BD2ECED28BE26960041A942 /* FramesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = FramesTests.xctest; path = "/Users/alexiojayang/Desktop/projects/frames-ios/iOS Example Frame Carthage/build/Debug-iphoneos/FramesTests.xctest"; sourceTree = "<absolute>"; };
 		0BD4BFA128AE6D6B008ED92E /* DefaultCardholderFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCardholderFormStyle.swift; sourceTree = "<group>"; };
 		0BD4BFA428AE6D96008ED92E /* CardholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardholderView.swift; sourceTree = "<group>"; };
 		0BD4BFA528AE6D96008ED92E /* CardholderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardholderViewModel.swift; sourceTree = "<group>"; };
@@ -1703,6 +1703,7 @@
 				443FCD9226137A4C009D6DE6 /* Frameworks */,
 				4422775D26163748009626A0 /* Frames.framework */,
 				0BD2ECEC28BE26960041A942 /* iOS Example Frame.app */,
+				0B5D782728BE42B900E9D769 /* FramesTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1774,7 +1775,7 @@
 			);
 			name = FramesTests;
 			productName = FramesTests;
-			productReference = 0BD2ECED28BE26960041A942 /* FramesTests.xctest */;
+			productReference = 0B5D782728BE42B900E9D769 /* FramesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		E6646F8920CE6C0900D8353A /* iOS Example Frame */ = {
@@ -2524,8 +2525,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 635KC97JGT;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "../iOS Example Frame/iOS Example Frame/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2534,6 +2535,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.floriel.iOS-Example-Frame";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2544,8 +2546,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 635KC97JGT;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "../iOS Example Frame/iOS Example Frame/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2554,6 +2556,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.floriel.iOS-Example-Frame";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
