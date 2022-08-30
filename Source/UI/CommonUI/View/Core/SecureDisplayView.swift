@@ -11,27 +11,20 @@ import UIKit
 /**
 Secure display view preventing leaking of content
  */
-final class SecureDisplayView: UIView {
+public final class SecureDisplayView: UIView {
+
+    /**
+     Will protect the provided view.
+     */
+    public static func secure(_ view: UIView, acceptsInput: Bool = false) -> SecureDisplayView {
+        SecureDisplayView(secure: view, acceptsInput: acceptsInput)
+    }
 
     // MARK: Protect content from leaking
     public override var subviews: [UIView] { [] }
     public override var inputView: UIView? { nil }
     public override var inputViewController: UIInputViewController? { nil }
     public override var textInputMode: UITextInputMode? { nil }
-    public override var isUserInteractionEnabled: Bool {
-        get {
-            guard let secured = super.subviews.first,
-                  secured.isUserInteractionEnabled,
-                  secured.canBecomeFirstResponder else {
-                return false
-            }
-            secured.becomeFirstResponder()
-            return true
-        }
-        set {
-            super.isUserInteractionEnabled = newValue
-        }
-    }
     public override var accessibilityLabel: String? {
         get { nil }
         set { }
@@ -82,17 +75,28 @@ final class SecureDisplayView: UIView {
     // MARK: Protect views
 
     /// Create SecureDisplayView protecting the provided view.
-    public convenience init(secure subview: UIView) {
+    public convenience init(secure subview: UIView, acceptsInput: Bool = false) {
         self.init(frame: .zero)
 
         backgroundColor = .clear
         super.addSubview(subview)
+
+        if acceptsInput {
+            addGestureToView()
+        }
     }
 
-    /**
-     Will protect the provided view.
-     */
-    public static func secure(_ view: UIView) -> SecureDisplayView {
-        SecureDisplayView(secure: view)
+    private func addGestureToView() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewWasTapped))
+        addGestureRecognizer(tapGesture)
+    }
+
+    @objc private func viewWasTapped() {
+        guard let secured = super.subviews.first,
+              secured.isUserInteractionEnabled,
+              secured.canBecomeFirstResponder else {
+            return
+        }
+        secured.becomeFirstResponder()
     }
 }
