@@ -25,7 +25,7 @@ workflows:
     steps:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@4: {}
+    - git-clone@6: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
     after_run: []
@@ -76,7 +76,7 @@ workflows:
     steps:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@4: {}
+    - git-clone@6: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
     - cocoapods-install@2.2:
@@ -96,7 +96,7 @@ workflows:
     steps:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@4: {}
+    - git-clone@6: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
     - xcode-test@2:
@@ -112,7 +112,7 @@ workflows:
     steps:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@4: {}
+    - git-clone@6: {}
     - cache-pull@2: {}
     - script@1:
         title: Do anything with Script step
@@ -133,7 +133,7 @@ workflows:
     steps:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@4: {}
+    - git-clone@6: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
     - cocoapods-install@2.2:
