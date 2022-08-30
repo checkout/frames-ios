@@ -45,7 +45,7 @@ class TextFieldView: UIView {
     }
 
     private func setupConstraintsInOrder() {
-        let securedTextField = SecureDisplayView(secure: textField).disabledAutoresizingIntoConstraints()
+        let securedTextField = SecureDisplayView(secure: textField, acceptsInput: true).disabledAutoresizingIntoConstraints()
         addSubview(securedTextField)
         securedTextField.setupConstraintEqualTo(view: self)
     }
