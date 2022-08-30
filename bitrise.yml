@@ -110,6 +110,7 @@ workflows:
         inputs:
         - project_path: $FRAMES_CARTHAGE_PROJECT
         - scheme: $FRAMES_APP_SCHEME
+        - configuration: Debug
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
   
@@ -161,7 +162,7 @@ workflows:
     - xcode-build-for-simulator@0:
         inputs:
         - scheme: $FRAMES_APP_SCHEME
-        - configuration: Release
+        - configuration: Debug
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     after_run: []
@@ -345,5 +346,5 @@ app:
     CHECKOUT_SOURCE_DIR: Checkout
 meta:
   bitrise.io:
-    stack: osx-xcode-13.3.x
+    stack: osx-xcode-13.4.x
     machine_type_id: g2.4core
