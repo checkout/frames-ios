@@ -37,6 +37,7 @@ workflows:
     - xcode-build-for-test@2:
         inputs:
         - project_path: $FRAMES_CARTHAGE_PROJECT
+        - scheme: $FRAMES_APP_SCHEME
         - configuration: Debug
     - cache-push@2:
         inputs:
@@ -106,6 +107,7 @@ workflows:
     - xcode-build-for-test@2:
         inputs:
         - project_path: $FRAMES_CARTHAGE_PROJECT
+        - scheme: $FRAMES_APP_SCHEME
         - configuration: Debug
     - cache-push@2: {}
   
