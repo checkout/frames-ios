@@ -39,7 +39,6 @@ workflows:
         - project_path: $FRAMES_CARTHAGE_PROJECT
         - scheme: $FRAMES_APP_SCHEME
         - configuration: Debug
-    - deploy-to-bitrise-io@1: {}
     - cache-push@2:
         inputs:
         - cache_paths: $CARTHAGE_FOLDER
@@ -52,7 +51,6 @@ workflows:
         inputs:
         - project_path: $FRAMES_COCOAPODS_PROJECT
         - scheme: $FRAMES_APP_SCHEME
-    - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     after_run: []
   _frames-build-spm:
@@ -89,7 +87,6 @@ workflows:
         inputs:
         - project_path: $FRAMES_SPM_PROJECT
         - scheme: $FRAMES_APP_SCHEME
-    - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     - slack@3:
         inputs:
@@ -112,7 +109,6 @@ workflows:
         - project_path: $FRAMES_CARTHAGE_PROJECT
         - scheme: $FRAMES_APP_SCHEME
         - configuration: Debug
-    - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
   
   # frames misc workflows
@@ -164,7 +160,6 @@ workflows:
         inputs:
         - scheme: $FRAMES_APP_SCHEME
         - configuration: Debug
-    - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     after_run: []
     before_run:
