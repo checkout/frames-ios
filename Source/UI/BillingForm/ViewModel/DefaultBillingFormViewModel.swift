@@ -75,8 +75,8 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             let value = type.getText(from: data)
             let isEmpty = value?.isEmpty ?? true
             country = data?.address?.country
-            textValueOfCellType[type.index] = !isEmpty ? value : (!isMandatory ? "" : nil)
-            errorFlagOfCellType[type.index] = !isEmpty ? false : (value != nil ? isMandatory : nil)
+            textValueOfCellType[type.index] = isEmpty ? (isMandatory ? nil : "") : value
+            errorFlagOfCellType[type.index] = isEmpty ? (value != nil ? isMandatory : nil) : false
         }
         if country == nil,
            let regionCode = Locale.current.regionCode,
@@ -172,17 +172,13 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         if shouldRemoveText {
             textValueOfCellType[type.index] = nil
         }
-        var areAllFieldsAreFulfilled = true
 
-        for cell in style.cells where cell.style?.isMandatory ?? false {
-            let isEmpty = textValueOfCellType[cell.index]?.isEmpty
-            guard isEmpty == false else {
-                areAllFieldsAreFulfilled = false
-                break
-            }
-        }
+        let areAllFieldFulfilled = style.cells.first(where: {
+          guard let style = $0.style, style.isMandatory else { return false }
+          return textValueOfCellType[$0.index]?.isEmpty == true
+        }) == nil
 
-        editDelegate?.didFinishEditingBillingForm(successfully: areAllFieldsAreFulfilled && !hasErrorValue)
+        editDelegate?.didFinishEditingBillingForm(successfully: areAllFieldFulfilled && !hasErrorValue)
     }
 
     private func validateTextOnEndEditing(textField: BillingFormTextField) {
