@@ -89,6 +89,10 @@ class InputView: UIView {
         updateTextFieldContainer(style: style)
         textFieldView.update(with: style.textfield)
         updateErrorView(style: style)
+
+        if let textFieldValue = textFieldValue {
+            textFieldView.textField.text = textFieldValue
+        }
     }
 
     private func updateTextFieldContainer(style: CellTextFieldStyle) {
