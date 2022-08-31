@@ -29,7 +29,7 @@ struct Factory {
 
     let phone = Phone(number: "77 1234 1234", country: country)
 
-    let billingFormData = BillingForm(name: "User 1", address: address, phone: phone)
+    let billingFormData = BillingForm(name: "Bình Inyene", address: address, phone: phone)
 
     let billingFormStyle = FramesFactory.defaultBillingFormStyle
 
@@ -65,7 +65,7 @@ struct Factory {
 
     let phone = Phone(number: "77 1234 1234", country: country)
 
-    let billingFormData = BillingForm(name: "User 1", address: address, phone: phone)
+    let billingFormData = BillingForm(name: "Şan Lacey", address: address, phone: phone)
 
     let billingFormStyle = Style.billingForm
 

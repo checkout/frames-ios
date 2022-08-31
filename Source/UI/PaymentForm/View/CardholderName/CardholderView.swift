@@ -9,12 +9,19 @@ import UIKit
 
 final class CardholderView: UIView {
 
+    private enum Constants {
+        static let inputAllowedCharacterSet = CharacterSet.letters.union([" ", "-", "'"])
+    }
+
     private var style: CellTextFieldStyle?
     private let viewModel: CardholderViewModel
 
     private lazy var cardholderInputView: InputView = {
         let view = InputView().disabledAutoresizingIntoConstraints()
         view.delegate = self
+        view.textFieldView.textField.textContentType = .name
+        view.textFieldView.textField.keyboardType = .alphabet
+        view.textFieldView.textField.autocapitalizationType = .words
         return view
     }()
 
@@ -46,7 +53,10 @@ extension CardholderView: TextFieldViewDelegate {
     func textFieldShouldBeginEditing(textField: UITextField) {}
     func textFieldShouldReturn() -> Bool { true }
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool { true }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool { true }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        Constants.inputAllowedCharacterSet
+            .isSuperset(of: CharacterSet(charactersIn: string))
+    }
 
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
         viewModel.inputUpdated(to: textField.text ?? "")
