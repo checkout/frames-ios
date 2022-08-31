@@ -21,7 +21,7 @@ extension Card {
   ///   - Visa
   public enum Scheme: CaseIterable, Equatable, Hashable {
       
-    public static var allCases: [Card.Scheme] = [.unknown,  .discover, .mada, .mastercard, .maestro(length: 0), .americanExpress, .dinersClub, .jcb .visa]
+    public static var allCases: [Card.Scheme] = [.unknown,  .discover, .mada, .mastercard, .maestro(length: 0), .americanExpress, .dinersClub, .jcb, .visa]
 
       
     private enum Constants {
