@@ -18,9 +18,20 @@ class HomeViewController: UIViewController {
     }
   }
   @IBOutlet private weak var threeDSURLTextField: UITextField!
+    @IBOutlet private weak var defaultButton: UIButton!
+    @IBOutlet private weak var theme1Button: UIButton!
 
   private var notificationCenter: NotificationCenter = .default
   private lazy var checkoutAPIService = Frames.CheckoutAPIService(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73", environment: .sandbox)
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        #if UITEST
+        defaultButton.accessibilityIdentifier = "UITestDefault"
+        theme1Button.accessibilityIdentifier = "UITestTheme1"
+        #endif
+    }
 
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
