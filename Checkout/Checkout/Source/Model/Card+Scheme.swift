@@ -21,7 +21,7 @@ extension Card {
   ///   - Visa
   public enum Scheme: CaseIterable, Equatable, Hashable {
       
-    public static var allCases: [Card.Scheme] = [.unknown, .mada, .visa, .mastercard, .maestro(length: 0), .americanExpress, .discover, .dinersClub, .jcb]
+    public static var allCases: [Card.Scheme] = [.unknown, .mada, .discover, .maestro(length: 0), .americanExpress, .dinersClub, .jcb, .visa, .mastercard]
       
     private enum Constants {
       static let validCVVLengthsUnknownScheme = [0, 3, 4]
@@ -78,7 +78,7 @@ extension Card {
         return NSRegularExpression(staticPattern: "^3[47]\\d{13}$")
       case .discover:
         // swiftlint:disable:next line_length
-        return NSRegularExpression(staticPattern: "^6(011(0[0-9]|[2-4]\\d|74|7[7-9]|8[6-9]|9[0-9])|4[4-9]\\d{3}|5\\d{4})\\d{10}$")
+        return NSRegularExpression(staticPattern: "^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$")
       case .dinersClub:
         return NSRegularExpression(staticPattern: "^3(0[0-5]|[68]\\d)\\d{11,16}$")
       case .jcb:
@@ -107,7 +107,7 @@ extension Card {
       case .americanExpress:
         return NSRegularExpression(staticPattern: "^3[47]")
       case .discover:
-        return NSRegularExpression(staticPattern: "^6(011(0[0-9]|[2-4]|74|7[7-9]|8[6-9]|9[0-9])|4[4-9]|5)")
+        return NSRegularExpression(staticPattern: "^65[4-9]|64[4-9]|6011|(622(?:12[6-9]|1[3-9]|[2-8]|9[01]|92[0-5]))")
       case .dinersClub:
         return NSRegularExpression(staticPattern: "^3(0|[68])")
       case .jcb:
