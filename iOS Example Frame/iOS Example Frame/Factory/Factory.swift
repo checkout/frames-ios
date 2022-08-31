@@ -56,6 +56,9 @@ struct Factory {
   }
 
   static func getMatrixPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
+    #if UITEST
+    return getCompleteUITestVC(completionHandler: completionHandler)
+    #endif
 
     let country = Country(iso3166Alpha2: "GB")!
 

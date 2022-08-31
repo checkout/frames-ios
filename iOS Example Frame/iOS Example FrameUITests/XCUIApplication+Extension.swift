@@ -32,7 +32,13 @@ extension XCUIApplication {
             return
         }
         element.tap()
-        text.forEach { keys["\($0)"].tap() }
+        text.forEach {
+            if $0 == " " {
+                keys["space"].tap()
+            } else {
+                keys["\($0)"].tap()
+            }
+        }
     }
 
     func deleteCharacter(count: Int, from element: XCUIElement) {
