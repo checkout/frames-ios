@@ -18,6 +18,7 @@ final class BillingFormHeaderCell: UIView {
     private lazy var doneButton: ButtonView = {
         let view = ButtonView().disabledAutoresizingIntoConstraints()
         view.delegate = self
+        view.isEnabled = false
         return view
     }()
 
@@ -43,10 +44,6 @@ final class BillingFormHeaderCell: UIView {
         doneButton.update(with: style.doneButton)
         cancelButton.update(with: style.cancelButton)
         headerLabel.update(with: style.headerLabel)
-    }
-
-    @objc private func doneAction() {
-        delegate?.doneButtonIsPressed()
     }
 
     @objc private func cancelAction() {

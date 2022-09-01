@@ -180,7 +180,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
         let areAllFieldFulfilled = style.cells.first(where: {
           guard let style = $0.style, style.isMandatory else { return false }
-          return textValueOfCellType[$0.index]?.isEmpty == true
+          return textValueOfCellType[$0.index]?.isEmpty != false
         }) == nil
 
         editDelegate?.didFinishEditingBillingForm(successfully: areAllFieldFulfilled)
