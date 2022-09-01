@@ -9,10 +9,6 @@ import UIKit
 
 final class CardholderView: UIView {
 
-    private enum Constants {
-        static let inputAllowedCharacterSet = CharacterSet.letters.union([" ", "-", "'"])
-    }
-
     private var style: CellTextFieldStyle?
     private let viewModel: CardholderViewModel
 
@@ -54,8 +50,7 @@ extension CardholderView: TextFieldViewDelegate {
     func textFieldShouldReturn() -> Bool { true }
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool { true }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        Constants.inputAllowedCharacterSet
-            .isSuperset(of: CharacterSet(charactersIn: string))
+        viewModel.isNewInputValid(string)
     }
 
     func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
