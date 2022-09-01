@@ -45,10 +45,6 @@ final class BillingFormHeaderCell: UIView {
         headerLabel.update(with: style.headerLabel)
     }
 
-    @objc private func cancelAction() {
-        delegate?.cancelButtonIsPressed()
-    }
-
     private func shouldEnableDoneButton(flag: Bool) {
         doneButton.isEnabled = flag
     }
