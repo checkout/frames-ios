@@ -111,13 +111,66 @@ final class FrameUITests: XCTestCase {
         // MARK: Full UI Billing
         let cancelButton = app.getButton(name: "Cancel")
         let doneButton = app.getButton(name: "Done")
-        let addressLine1TextField = app.tables.children(matching: .cell).element(boundBy: 0).children(matching: .textField).element
-        let addressLine2TextField = app.tables.children(matching: .cell).element(boundBy: 1).children(matching: .textField).element
-        let cityTextField = app.tables.children(matching: .cell).element(boundBy: 2).children(matching: .textField).element
-        let postcodeTextField = app.tables.children(matching: .cell).element(boundBy: 3).children(matching: .textField).element
-        let countryButton = app.tables.staticTexts["United Kingdom"]
-        let phoneTextField = app.tables.children(matching: .cell).element(boundBy: 4).children(matching: .textField).element
-        
-        // Select country -> tablesQuery2/*@START_MENU_TOKEN@*/.staticTexts["Antarctica"]/*[[".cells.staticTexts[\"Antarctica\"]",".staticTexts[\"Antarctica\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let addressLine1TextField = app.tables.cells.containing(.staticText, identifier: "Address line 1").children(matching: .textField).element
+        let addressLine2TextField = app.tables.cells.containing(.staticText, identifier: "Address line 2").children(matching: .textField).element
+        let cityTextField = app.tables.cells.containing(.staticText, identifier: "City").children(matching: .textField).element
+        let postcodeTextField = app.tables.cells.containing(.staticText, identifier: "Postcode").children(matching: .textField).element
+        let countryButton = app.tables.staticTexts["Select country"]
+        let phoneTextField = app.tables.cells.containing(.staticText, identifier: "Phone number").children(matching: .textField).element
+
+        XCTAssertFalse(doneButton.isEnabled)
+        XCTAssertTrue(cancelButton.isEnabled)
+
+        // Compulsory elements ⬇️
+
+        let addressLine1 = "Famous avenue"
+        app.enterText(addressLine1, into: addressLine1TextField)
+        app.staticTexts["Address line 1"].tap()
+        XCTAssertFalse(doneButton.isEnabled)
+
+        let city = "Zlimont"
+        app.enterText(city, into: cityTextField)
+        app.staticTexts["City"].tap()
+        XCTAssertFalse(doneButton.isEnabled)
+
+        let country = "Antarctica"
+        XCTAssertFalse(app.staticTexts[country].exists)
+        countryButton.tap()
+        app.tables.staticTexts[country].tap()
+        XCTAssertTrue(doneButton.isEnabled)
+        XCTAssertTrue(app.staticTexts[country].exists)
+
+        // Optional elements ⬇️
+
+        let addressLine2 = "Not bad neighbourhood"
+        app.enterText(addressLine2, into: addressLine2TextField)
+        app.staticTexts["Address line 2"].tap()
+        XCTAssertTrue(doneButton.isEnabled)
+
+        let postcode = "Cz"
+        app.enterText(postcode, into: postcodeTextField)
+        app.staticTexts["Postcode"].tap()
+        XCTAssertTrue(doneButton.isEnabled)
+
+        let phoneNumber = "01222333123"
+        app.enterText(phoneNumber, into: phoneTextField)
+        app.staticTexts["Phone number"].tap()
+        XCTAssertTrue(doneButton.isEnabled)
+        doneButton.tap()
+
+        // MARK: Complete Payment + Billing input
+        XCTAssertTrue(app.label(containingText: addressLine1).exists)
+        XCTAssertTrue(app.label(containingText: addressLine2).exists)
+        XCTAssertTrue(app.label(containingText: postcode).exists)
+        XCTAssertTrue(app.label(containingText: city).exists)
+        XCTAssertTrue(app.label(containingText: country).exists)
+        XCTAssertTrue(app.label(containingText: phoneNumber).exists)
+        XCTAssertTrue(payButton.isEnabled)
+
+        payButton.tap()
+        let alert = app.alerts["Payment"]
+        XCTAssertNotNil(alert)
+        XCTAssertEqual(alert.label, "Payment")
     }
+
 }

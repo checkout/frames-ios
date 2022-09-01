@@ -14,6 +14,12 @@ extension XCUIApplication {
         static let maximumWaitForElement = 10.0
     }
 
+    // MARK: Static Texts
+    func label(containingText string: String) -> XCUIElement {
+        let predicate = NSPredicate(format: "label CONTAINS %@", string)
+        return staticTexts.element(matching: predicate)
+    }
+
     // MARK: Buttons
     func tapButton(name: String) {
         let predicate = NSPredicate(format: "identifier LIKE %@", name)
