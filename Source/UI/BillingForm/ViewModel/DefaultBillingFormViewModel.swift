@@ -73,10 +73,10 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         style.cells.forEach { type in
             let isMandatory = type.style?.isMandatory ?? true
             let value = type.getText(from: data)
-            let hasValue = value != nil
+            let isEmpty = value?.isEmpty ?? true
             country = data?.address?.country
-            textValueOfCellType[type.index] = hasValue ? value : (!isMandatory ? "" : nil)
-            errorFlagOfCellType[type.index] = hasValue ? false : (value != nil ? isMandatory : nil)
+            textValueOfCellType[type.index] = isEmpty ? (isMandatory ? nil : "") : value
+            errorFlagOfCellType[type.index] = isEmpty ? (value != nil ? isMandatory : nil) : false
         }
         if country == nil,
            let regionCode = Locale.current.regionCode,
@@ -173,8 +173,12 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             textValueOfCellType[type.index] = nil
         }
 
-        let areAllFieldsAreFulfilled = textValueOfCellType.values.count == style.cells.count && !hasErrorValue
-        editDelegate?.didFinishEditingBillingForm(successfully: areAllFieldsAreFulfilled)
+        let areAllFieldFulfilled = style.cells.first(where: {
+          guard let style = $0.style, style.isMandatory else { return false }
+          return textValueOfCellType[$0.index]?.isEmpty == true
+        }) == nil
+
+        editDelegate?.didFinishEditingBillingForm(successfully: areAllFieldFulfilled && !hasErrorValue)
     }
 
     private func validateTextOnEndEditing(textField: BillingFormTextField) {
