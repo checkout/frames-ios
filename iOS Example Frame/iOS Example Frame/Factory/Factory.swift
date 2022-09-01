@@ -13,10 +13,13 @@ import UIKit
 struct Factory {
   static let successURL = URL(string: "https://httpstat.us/200")!
   static let failureURL = URL(string: "https://httpstat.us/403")!
-  private static let apiKey = "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73"
-  private static let environment: Frames.Environment = .sandbox
+  static let apiKey = "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73"
+  static let environment: Frames.Environment = .sandbox
 
   static func getDefaultPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
+    #if UITEST
+    return getMinimalUITestVC(completionHandler: completionHandler)
+    #endif
 
     let country = Country(iso3166Alpha2: "GB")!
 
@@ -29,7 +32,7 @@ struct Factory {
 
     let phone = Phone(number: "77 1234 1234", country: country)
 
-    let billingFormData = BillingForm(name: "User 1", address: address, phone: phone)
+    let billingFormData = BillingForm(name: "Bình Inyene", address: address, phone: phone)
 
     let billingFormStyle = FramesFactory.defaultBillingFormStyle
 
@@ -65,7 +68,7 @@ struct Factory {
 
     let phone = Phone(number: "77 1234 1234", country: country)
 
-    let billingFormData = BillingForm(name: "User 1", address: address, phone: phone)
+    let billingFormData = BillingForm(name: "Şan Lacey", address: address, phone: phone)
 
     let billingFormStyle = Style.billingForm
 
@@ -106,10 +109,10 @@ struct Factory {
                                                  supportedSchemes: supportedSchemes,
                                                  billingFormData: billingFormData)
 
-    let style = ThemeDemo.buildCustom2Example()
+      let style = ThemeDemo.buildCustom2Example()
 
-    let viewController = PaymentFormFactory.buildViewController(configuration: configuration,
-                                                                style: style,
+      let viewController = PaymentFormFactory.buildViewController(configuration: configuration,
+                                                                  style: style,
                                                                 completionHandler: completionHandler)
 
     return viewController

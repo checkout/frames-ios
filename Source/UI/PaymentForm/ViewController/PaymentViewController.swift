@@ -79,9 +79,8 @@ final class PaymentViewController: UIViewController {
   }()
 
   private lazy var payButtonView: ButtonView = {
-    let view = ButtonView()
+    let view = ButtonView(startEnabled: false)
     view.delegate = self
-    view.isEnabled = false
     return view
   }()
 
@@ -184,6 +183,7 @@ extension PaymentViewController {
     setupAddBillingDetailsViewClosure()
     setupEditBillingSummaryViewClosure()
     setupExpiryDateViewClosure()
+    setupCardholderViewClosure()
     setupCardNumberViewClosure()
     setupSecurityCodeViewClosures()
     setupPayButtonViewClosure()
@@ -235,6 +235,14 @@ extension PaymentViewController {
     }
   }
 
+  private func setupCardholderViewClosure() {
+    viewModel.updateCardholderView = { [weak self] in
+      DispatchQueue.main.async {
+        self?.updateCardholder()
+      }
+    }
+  }
+
   private func setupCardNumberViewClosure() {
     viewModel.updateCardNumberView = { [weak self] in
       DispatchQueue.main.async {
@@ -273,6 +281,11 @@ extension PaymentViewController {
     view.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
     stackView.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
     activityIndicator.color = viewModel.paymentFormStyle?.payButton.activeTintColor
+  }
+
+  private func updateCardholder() {
+    guard let style = viewModel.paymentFormStyle?.cardholderInput else { return }
+    cardholderView.update(style: style)
   }
 
   private func updateCardNumber() {
@@ -433,7 +446,9 @@ extension PaymentViewController: UIScrollViewDelegate {
       scrollView.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
     } else {
       title = nil
-      scrollView.backgroundColor = viewModel.paymentFormStyle?.headerView.backgroundColor
+      if scrollView.contentSize.height > scrollView.frame.maxY {
+        scrollView.backgroundColor = viewModel.paymentFormStyle?.headerView.backgroundColor
+      }
     }
   }
 }

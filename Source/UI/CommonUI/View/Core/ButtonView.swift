@@ -23,12 +23,20 @@ class ButtonView: UIView {
     lazy var button: UIButton = {
         let view = UIButton().disabledAutoresizingIntoConstraints()
         view.addTarget(self, action: #selector(selectionButtonIsPressed), for: .touchUpInside)
+        view.isEnabled = isEnabled
         return view
     }()
 
     private(set) lazy var buttonTextLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
+
+    convenience init(startEnabled: Bool = true) {
+        self.init(frame: .zero)
+
+        self.isEnabled = startEnabled
+        button.isEnabled = startEnabled
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,6 +66,7 @@ class ButtonView: UIView {
         backgroundColor = isEnabled ? style.backgroundColor : style.disabledTintColor
         button.tintColor = .clear
         button.heightAnchor.constraint(equalToConstant: style.height).isActive = true
+        button.accessibilityIdentifier = style.text
     }
 
     private func updateLabelStyle(with style: ElementButtonStyle) {

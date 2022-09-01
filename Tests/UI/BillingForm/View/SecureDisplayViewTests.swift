@@ -87,57 +87,25 @@ final class SecureDisplayViewUIKitTests: XCTestCase {
         validateView(view)
     }
 
-    // MARK: First responder
-    func testUserInteractionProtectingUIView() {
-        let toSecure = UIView()
-        let securedView = SecureDisplayView.secure(toSecure)
-
-        XCTAssertFalse(securedView.isUserInteractionEnabled)
-    }
-
-    func testUserInteractionProtectingUILabel() {
-        let toSecure = UILabel()
-        let securedView = SecureDisplayView.secure(toSecure)
-
-        validateView(securedView)
-        XCTAssertFalse(securedView.isUserInteractionEnabled)
-    }
-
-    func testUserInteractionProtectingUIButton() {
-        let toSecure = UIButton()
-        let securedView = SecureDisplayView.secure(toSecure)
-
-        validateView(securedView)
-        XCTAssertFalse(securedView.isUserInteractionEnabled)
-    }
-
-    func testUserInteractionProtectingUIImageView() {
-        let toSecure = UIImageView()
-        let securedView = SecureDisplayView.secure(toSecure)
-
-        validateView(securedView)
-        XCTAssertFalse(securedView.isUserInteractionEnabled)
-    }
-
-    func testUserInteractionProtectingUITextField() {
+    // MARK: Accepts inputs
+    func testGestureExistsWhenContentAcceptsInput() {
         let toSecure = UITextField()
-        let securedView = SecureDisplayView.secure(toSecure)
-
+        let securedView = SecureDisplayView.secure(toSecure, acceptsInput: true)
+        
         validateView(securedView)
-        XCTAssertTrue(securedView.isUserInteractionEnabled)
+        XCTAssertEqual(securedView.gestureRecognizers?.count, 1)
     }
 
-    func testUserInteractionProtectingUITextView() {
-        let toSecure = UITextView()
-        let securedView = SecureDisplayView.secure(toSecure)
+    func testNoGesturesExist() {
+        let toSecure = UITextField()
+        let securedView = SecureDisplayView.secure(toSecure, acceptsInput: false)
 
         validateView(securedView)
-        XCTAssertTrue(securedView.isUserInteractionEnabled)
+        XCTAssertNil(securedView.gestureRecognizers)
     }
 
-
-  @available(iOS 11.0, *)
-  func testSecureView() {
+    @available(iOS 11.0, *)
+    func testSecureView() {
         let secureText = "Hide ME NoW"
         let securedLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         securedLabel.text = secureText
@@ -191,6 +159,7 @@ final class SecureDisplayViewUIKitTests: XCTestCase {
 
         validateView(secureView)
     }
+
     private func validateView(_ testView: UIView, line: UInt = #line) {
         XCTAssertFalse(testView is UILabel)
         XCTAssertFalse(testView is UITextField)

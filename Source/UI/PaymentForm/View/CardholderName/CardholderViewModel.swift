@@ -12,10 +12,20 @@ protocol CardholderDelegate: AnyObject {
 }
 
 final class CardholderViewModel {
+    
+    private enum Constants {
+        static let inputAllowedCharacterSet = CharacterSet.letters.union([" ", "-", "'"])
+    }
 
     weak var delegate: CardholderDelegate?
 
     func inputUpdated(to newInput: String) {
         delegate?.cardholderUpdated(to: newInput)
     }
+
+    func isNewInputValid(_ string: String) -> Bool {
+        Constants.inputAllowedCharacterSet
+            .isSuperset(of: CharacterSet(charactersIn: string))
+    }
+
 }

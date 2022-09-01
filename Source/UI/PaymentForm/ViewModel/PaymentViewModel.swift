@@ -13,6 +13,7 @@ protocol PaymentViewModel {
   var updateEditBillingSummaryView: (() -> Void)? { get set }
   var updateAddBillingDetailsView: (() -> Void)? { get set }
   var updateExpiryDateView: (() -> Void)? { get set }
+  var updateCardholderView: (() -> Void)? { get set }
   var updateCardNumberView: (() -> Void)? { get set }
   var updateSecurityCodeViewScheme: ((Card.Scheme) -> Void)? { get set }
   var updateSecurityCodeViewStyle: (() -> Void)? { get set }

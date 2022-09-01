@@ -90,6 +90,28 @@ class PaymentViewModelTests: XCTestCase {
 
         waitForExpectations(timeout: 1)
     }
+    
+    func testUpdateCardholderView() {
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+        viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
+                                            cardValidator: CardValidator(environment: .sandbox),
+                                              logger: StubFramesEventLogger(),
+                                              billingFormData: nil,
+                                              paymentFormStyle: DefaultPaymentFormStyle(),
+                                              billingFormStyle: DefaultBillingFormStyle(),
+                                              supportedSchemes: [.unknown])
+        
+        let testCardholder = "Hà Tracey"
+        viewModel.cardholderIsUpdated(value: testCardholder)
+        let expectation = expectation(description: #function)
+        viewModel?.updateCardholderView = {
+            expectation.fulfill()
+        }
+
+        viewModel?.updateAll()
+
+        waitForExpectations(timeout: 1)
+    }
 
     func testUpdateAddBillingSummaryView() {
         let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)

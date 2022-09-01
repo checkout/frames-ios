@@ -12,7 +12,6 @@
         <!--Navigation Controller-->
         <scene sceneID="9Eh-xX-QrI">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gez-Fn-7kq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="NL5-0J-36O" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6P9-pW-gVN">
@@ -23,6 +22,7 @@
                         <segue destination="3dw-ol-MV7" kind="relationship" relationship="rootViewController" id="vNu-LX-bpa"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gez-Fn-7kq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1505" y="-88"/>
         </scene>
@@ -462,7 +462,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="YnK-SA-BPk"/>
                     <connections>
+                        <outlet property="defaultButton" destination="npI-wS-PHN" id="RZO-Tf-AdO"/>
                         <outlet property="scrollView" destination="yAX-V1-VAD" id="678-IM-Fpd"/>
+                        <outlet property="theme1Button" destination="Vy0-I7-Zjz" id="aqu-YN-W1n"/>
                         <outlet property="threeDSURLTextField" destination="nvN-3Z-pAr" id="frP-Bh-MKg"/>
                     </connections>
                 </viewController>

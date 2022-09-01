@@ -6,6 +6,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
   var updateEditBillingSummaryView: (() -> Void)?
   var updateAddBillingDetailsView: (() -> Void)?
   var updateExpiryDateView: (() -> Void)?
+  var updateCardholderView: (() -> Void)?
   var updateCardNumberView: (() -> Void)?
   var updateSecurityCodeViewStyle: (() -> Void)?
   var updatePayButtonView: (() -> Void)?
@@ -54,6 +55,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
 
   func updateAll() {
     updateHeaderView?()
+    updateCardholderView?()
     updateCardNumberView?()
     updateExpiryDateView?()
     updateSecurityCodeViewStyle?()
@@ -97,6 +99,8 @@ class DefaultPaymentViewModel: PaymentViewModel {
     cardDetails.billingAddress = billingForm.address
     if let billingName = billingForm.name {
       cardDetails.name = billingName
+      paymentFormStyle?.cardholderInput?.textfield.text = billingName
+      updateCardholderView?()
     }
     if isAddBillingSummaryNotUpdated() {
       updateBillingSummaryView()

@@ -9,9 +9,5 @@ target 'iOS Example Frame' do
   pod 'Frames', :path => '../', :testspecs => ['Tests']
   pod 'Checkout', :path => '../', :testspecs => ['Tests']
 
-  target 'iOS Example FrameUITests' do
-    # Pods for testing
-  end
-
 end
 
