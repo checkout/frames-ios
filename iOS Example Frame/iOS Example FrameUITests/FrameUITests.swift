@@ -163,7 +163,7 @@ final class FrameUITests: XCTestCase {
         app.enterText(phoneNumber, into: phoneTextField)
         app.staticTexts["Phone number"].tap()
         XCTAssertTrue(doneButton.isEnabled)
-        
+
         // 12. Confirm Billing input and return to Payment form
         doneButton.tap()
 
