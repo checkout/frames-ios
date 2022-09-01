@@ -183,6 +183,7 @@ extension PaymentViewController {
     setupAddBillingDetailsViewClosure()
     setupEditBillingSummaryViewClosure()
     setupExpiryDateViewClosure()
+    setupCardholderViewClosure()
     setupCardNumberViewClosure()
     setupSecurityCodeViewClosures()
     setupPayButtonViewClosure()
@@ -234,6 +235,14 @@ extension PaymentViewController {
     }
   }
 
+  private func setupCardholderViewClosure() {
+    viewModel.updateCardholderView = { [weak self] in
+      DispatchQueue.main.async {
+        self?.updateCardholder()
+      }
+    }
+  }
+
   private func setupCardNumberViewClosure() {
     viewModel.updateCardNumberView = { [weak self] in
       DispatchQueue.main.async {
@@ -272,6 +281,11 @@ extension PaymentViewController {
     view.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
     stackView.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
     activityIndicator.color = viewModel.paymentFormStyle?.payButton.activeTintColor
+  }
+
+  private func updateCardholder() {
+    guard let style = viewModel.paymentFormStyle?.cardholderInput else { return }
+    cardholderView.update(style: style)
   }
 
   private func updateCardNumber() {
