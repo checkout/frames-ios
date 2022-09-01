@@ -106,6 +106,7 @@ final class FrameUITests: XCTestCase {
         app.staticTexts["Cardholder"].tap()
         XCTAssertTrue(payButton.isEnabled)
 
+        // 5. Open billing
         billingButton.tap()
 
         // MARK: Full UI Billing
@@ -123,16 +124,19 @@ final class FrameUITests: XCTestCase {
 
         // Compulsory elements ⬇️
 
+        // 6. Enter Address
         let addressLine1 = "Famous avenue"
         app.enterText(addressLine1, into: addressLine1TextField)
         app.staticTexts["Address line 1"].tap()
         XCTAssertFalse(doneButton.isEnabled)
 
+        // 7. Enter City
         let city = "Zlimont"
         app.enterText(city, into: cityTextField)
         app.staticTexts["City"].tap()
         XCTAssertFalse(doneButton.isEnabled)
 
+        // 8. Select country
         let country = "Antarctica"
         XCTAssertFalse(app.staticTexts[country].exists)
         countryButton.tap()
@@ -142,23 +146,29 @@ final class FrameUITests: XCTestCase {
 
         // Optional elements ⬇️
 
+        // 9. Enter Address Line 2
         let addressLine2 = "Not bad neighbourhood"
         app.enterText(addressLine2, into: addressLine2TextField)
         app.staticTexts["Address line 2"].tap()
         XCTAssertTrue(doneButton.isEnabled)
 
+        // 10. Enter postcode
         let postcode = "Cz"
         app.enterText(postcode, into: postcodeTextField)
         app.staticTexts["Postcode"].tap()
         XCTAssertTrue(doneButton.isEnabled)
 
+        // 11. Enter phone number
         let phoneNumber = "01222333123"
         app.enterText(phoneNumber, into: phoneTextField)
         app.staticTexts["Phone number"].tap()
         XCTAssertTrue(doneButton.isEnabled)
+        
+        // 12. Confirm Billing input and return to Payment form
         doneButton.tap()
 
         // MARK: Complete Payment + Billing input
+        // 13. Validate Billing input previously entered is now displayed
         XCTAssertTrue(app.label(containingText: addressLine1).exists)
         XCTAssertTrue(app.label(containingText: addressLine2).exists)
         XCTAssertTrue(app.label(containingText: postcode).exists)
@@ -167,6 +177,7 @@ final class FrameUITests: XCTestCase {
         XCTAssertTrue(app.label(containingText: phoneNumber).exists)
         XCTAssertTrue(payButton.isEnabled)
 
+        // 14. Press Pay Button
         payButton.tap()
         let alert = app.alerts["Payment"]
         XCTAssertNotNil(alert)
