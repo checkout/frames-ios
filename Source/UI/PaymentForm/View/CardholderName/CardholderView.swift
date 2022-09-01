@@ -37,9 +37,9 @@ final class CardholderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func update(style: CellTextFieldStyle, text: String?) {
+    func update(style: CellTextFieldStyle) {
         self.style = style
-        cardholderInputView.update(style: style, textFieldValue: text)
+        cardholderInputView.update(style: style)
     }
 
     private func updateErrorViewStyle(isHidden: Bool, textfieldText: String?) {

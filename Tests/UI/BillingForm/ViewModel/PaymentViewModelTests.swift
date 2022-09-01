@@ -106,7 +106,6 @@ class PaymentViewModelTests: XCTestCase {
         let expectation = expectation(description: #function)
         viewModel?.updateCardholderView = {
             expectation.fulfill()
-            XCTAssertEqual($0, testCardholder)
         }
 
         viewModel?.updateAll()

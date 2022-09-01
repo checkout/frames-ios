@@ -72,7 +72,7 @@ class InputView: UIView {
 
     // MARK: - Update subviews style
 
-    func update(style: CellTextFieldStyle? = nil, textFieldValue: String? = nil, image: UIImage? = nil, animated: Bool = false) {
+    func update(style: CellTextFieldStyle? = nil, image: UIImage? = nil, animated: Bool = false) {
         updateTextFieldContainer(image: image, animated: animated)
 
         guard let style = style else { return }
@@ -89,10 +89,6 @@ class InputView: UIView {
         updateTextFieldContainer(style: style)
         textFieldView.update(with: style.textfield)
         updateErrorView(style: style)
-
-        if let textFieldValue = textFieldValue {
-            textFieldView.textField.text = textFieldValue
-        }
     }
 
     private func updateTextFieldContainer(style: CellTextFieldStyle) {

@@ -237,9 +237,9 @@ extension PaymentViewController {
   }
 
   private func setupCardholderViewClosure() {
-    viewModel.updateCardholderView = { [weak self] cardholder in
+    viewModel.updateCardholderView = { [weak self] in
       DispatchQueue.main.async {
-        self?.updateCardholder(cardholder)
+        self?.updateCardholder()
       }
     }
   }
@@ -284,9 +284,9 @@ extension PaymentViewController {
     activityIndicator.color = viewModel.paymentFormStyle?.payButton.activeTintColor
   }
 
-  private func updateCardholder(_ cardholderInput: String?) {
+  private func updateCardholder() {
     guard let style = viewModel.paymentFormStyle?.cardholderInput else { return }
-    cardholderView.update(style: style, text: cardholderInput)
+    cardholderView.update(style: style)
   }
 
   private func updateCardNumber() {
@@ -347,7 +347,7 @@ extension PaymentViewController {
     ]
     if let cardholderStyle = viewModel.paymentFormStyle?.cardholderInput {
       paymentViews.append(cardholderView)
-      cardholderView.update(style: cardholderStyle, text: "")
+      cardholderView.update(style: cardholderStyle)
     }
     paymentViews.append(contentsOf: [cardNumberView, expiryDateView])
 
