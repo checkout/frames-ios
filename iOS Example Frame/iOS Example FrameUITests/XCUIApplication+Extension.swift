@@ -39,11 +39,7 @@ extension XCUIApplication {
         }
         element.tap()
         text.forEach {
-            if $0 == " " {
-                keys["space"].tap()
-            } else {
-                keys["\($0)"].tap()
-            }
+            keyboardInput(char: $0)
         }
     }
 
@@ -53,5 +49,26 @@ extension XCUIApplication {
         }
         element.tap()
         (0..<count).forEach { _ in keys["Delete"].tap() }
+    }
+
+    private func keyboardInput(char: Character) {
+        var key = "\(char)"
+        if key == " " {
+            key = "space"
+        }
+        // We don't know state of keyboard but if the keyboard doesn't contain character
+        //   we can try to toggle its inputs with more & shift
+        //   and hope it is found
+        if !keys[key].exists {
+            // !!! Shift is not found under keys, but under buttons !!!
+            buttons["shift"].tap()
+        }
+        if !keys[key].exists {
+            keys["more"].tap()
+        }
+        if !keys[key].exists {
+            buttons["shift"].tap()
+        }
+        keys[key].tap()
     }
 }

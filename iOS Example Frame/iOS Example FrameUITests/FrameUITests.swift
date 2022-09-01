@@ -102,7 +102,7 @@ final class FrameUITests: XCTestCase {
         XCTAssertFalse(payButton.isEnabled)
 
         // 4. Enter cardholder name
-        app.enterText("John doe", into: cardholderTextField)
+        app.enterText("John Doe", into: cardholderTextField)
         app.staticTexts["Cardholder"].tap()
         XCTAssertTrue(payButton.isEnabled)
 
@@ -125,7 +125,7 @@ final class FrameUITests: XCTestCase {
         // Compulsory elements ⬇️
 
         // 6. Enter Address
-        let addressLine1 = "Famous avenue"
+        let addressLine1 = "Famous Avenue, 14"
         app.enterText(addressLine1, into: addressLine1TextField)
         app.staticTexts["Address line 1"].tap()
         XCTAssertFalse(doneButton.isEnabled)
@@ -147,13 +147,13 @@ final class FrameUITests: XCTestCase {
         // Optional elements ⬇️
 
         // 9. Enter Address Line 2
-        let addressLine2 = "Not bad neighbourhood"
+        let addressLine2 = "Not Bad Neighbourhood"
         app.enterText(addressLine2, into: addressLine2TextField)
         app.staticTexts["Address line 2"].tap()
         XCTAssertTrue(doneButton.isEnabled)
 
         // 10. Enter postcode
-        let postcode = "Cz"
+        let postcode = "CZ34 9JK"
         app.enterText(postcode, into: postcodeTextField)
         app.staticTexts["Postcode"].tap()
         XCTAssertTrue(doneButton.isEnabled)
