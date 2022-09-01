@@ -432,7 +432,9 @@ extension PaymentViewController: UIScrollViewDelegate {
       scrollView.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
     } else {
       title = nil
-      scrollView.backgroundColor = viewModel.paymentFormStyle?.headerView.backgroundColor
+      if scrollView.contentSize.height > scrollView.frame.maxY {
+        scrollView.backgroundColor = viewModel.paymentFormStyle?.headerView.backgroundColor
+      }
     }
   }
 }

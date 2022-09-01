@@ -26,6 +26,7 @@ final class CardNumberValidatorTests: XCTestCase {
       "6011039964691945": .success(.discover),
       "6441111111111117": .success(.discover),
       "6501111111111117": .success(.discover),
+      "6011111111111117": .success(.discover),
       "3530111333300000": .success(.jcb),
       "5297412542005689": .success(.mada),
       "6759649826438453": .success(.maestro(length: 16)),
@@ -79,6 +80,8 @@ final class CardNumberValidatorTests: XCTestCase {
       "529741": .success(.mada),
       "67": .success(.maestro(length: 2)),
       "55": .success(.mastercard),
+      "65": .success(.discover),
+      "6011": .success(.discover),
       "42": .success(.visa)
     ]
 

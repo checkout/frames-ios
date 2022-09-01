@@ -112,10 +112,10 @@ struct Factory {
                                                  supportedSchemes: supportedSchemes,
                                                  billingFormData: billingFormData)
 
-    let style = ThemeDemo.buildCustom2Example()
+      let style = ThemeDemo.buildCustom2Example()
 
-    let viewController = PaymentFormFactory.buildViewController(configuration: configuration,
-                                                                style: style,
+      let viewController = PaymentFormFactory.buildViewController(configuration: configuration,
+                                                                  style: style,
                                                                 completionHandler: completionHandler)
 
     return viewController
