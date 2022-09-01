@@ -79,7 +79,7 @@ extension Card {
         return NSRegularExpression(staticPattern: "^3[47]\\d{13}$")
       case .discover:
         // swiftlint:disable:next line_length
-        return NSRegularExpression(staticPattern: "^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$")
+        return NSRegularExpression(staticPattern: "^65[0-9]{14}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$")
       case .dinersClub:
         return NSRegularExpression(staticPattern: "^3(0[0-5]|[68]\\d)\\d{11,16}$")
       case .jcb:
@@ -108,7 +108,7 @@ extension Card {
       case .americanExpress:
         return NSRegularExpression(staticPattern: "^3[47]")
       case .discover:
-        return NSRegularExpression(staticPattern: "^65[4-9]|64[4-9]|6011|(622(?:12[6-9]|1[3-9]|[2-8]|9[01]|92[0-5]))")
+        return NSRegularExpression(staticPattern: "^65|64[4-9]|6011|(622(?:12[6-9]|1[3-9]|[2-8]|9[01]|92[0-5]))")
       case .dinersClub:
         return NSRegularExpression(staticPattern: "^3(0|[68])")
       case .jcb:
