@@ -16,9 +16,8 @@ final class BillingFormHeaderCell: UIView {
     }()
 
     private lazy var doneButton: ButtonView = {
-        let view = ButtonView().disabledAutoresizingIntoConstraints()
+        let view = ButtonView(startEnabled: false).disabledAutoresizingIntoConstraints()
         view.delegate = self
-        view.isEnabled = false
         return view
     }()
 
