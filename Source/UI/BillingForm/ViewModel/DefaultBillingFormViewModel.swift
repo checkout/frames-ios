@@ -177,13 +177,17 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             editDelegate?.didFinishEditingBillingForm(successfully: false)
             return
         }
+        var areAllFieldsFulfilled = true
 
-        let areAllFieldFulfilled = style.cells.first(where: {
-          guard let style = $0.style, style.isMandatory else { return false }
-          return textValueOfCellType[$0.index]?.isEmpty == true
-        }) == nil
+        for cell in style.cells where cell.style?.isMandatory ?? false {
+            let isEmpty = textValueOfCellType[cell.index]?.isEmpty
+            guard isEmpty == false else {
+                areAllFieldsFulfilled = false
+                break
+            }
+        }
 
-        editDelegate?.didFinishEditingBillingForm(successfully: areAllFieldFulfilled)
+        editDelegate?.didFinishEditingBillingForm(successfully: areAllFieldsFulfilled)
     }
 
     private func validateTextOnEndEditing(textField: BillingFormTextField) {
