@@ -161,7 +161,7 @@ private struct StyleOrganiser {
     struct PaymentHeaderSubtitle: ElementStyle {
         var textAlignment: NSTextAlignment = .natural
         var isHidden: Bool = false
-        var text: String = "Visa, Mastercard and American Express accepted."
+        var text: String = "Visa, Mastercard and Maestro accepted."
         var font: UIFont = UIFont(size: 12)
         var backgroundColor: UIColor = .clear
         var textColor: UIColor = Constants.mainFontColor

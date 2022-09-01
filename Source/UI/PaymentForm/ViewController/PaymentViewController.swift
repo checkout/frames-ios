@@ -79,9 +79,8 @@ final class PaymentViewController: UIViewController {
   }()
 
   private lazy var payButtonView: ButtonView = {
-    let view = ButtonView()
+    let view = ButtonView(startEnabled: false)
     view.delegate = self
-    view.isEnabled = false
     return view
   }()
 
@@ -447,7 +446,9 @@ extension PaymentViewController: UIScrollViewDelegate {
       scrollView.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
     } else {
       title = nil
-      scrollView.backgroundColor = viewModel.paymentFormStyle?.headerView.backgroundColor
+      if scrollView.contentSize.height > scrollView.frame.maxY {
+        scrollView.backgroundColor = viewModel.paymentFormStyle?.headerView.backgroundColor
+      }
     }
   }
 }

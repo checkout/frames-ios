@@ -53,20 +53,9 @@
 		95289AAC28AD61DE0036DDEE /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95289A7F28AD61DE0036DDEE /* Factory.swift */; };
 		95289AAD28AD61DE0036DDEE /* CustomStyle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95289A8128AD61DE0036DDEE /* CustomStyle1.swift */; };
 		95289AAE28AD61DE0036DDEE /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95289A8228AD61DE0036DDEE /* Style.swift */; };
-		9554570228AE8C2700C34759 /* iOS_Example_FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9554570128AE8C2700C34759 /* iOS_Example_FrameUITests.swift */; };
 		E6646F8E20CE6C0900D8353A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646F8D20CE6C0900D8353A /* AppDelegate.swift */; };
 		E6646F9520CE6C0A00D8353A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6646F9420CE6C0A00D8353A /* Assets.xcassets */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		9554570528AE8C2700C34759 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E6646F8220CE6C0900D8353A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E6646F8920CE6C0900D8353A;
-			remoteInfo = "iOS Example Frame";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0BC60B8928AFBA4D00F30992 /* ThemeDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemeDemo.swift; path = "iOS Example Frame/ThemeDemo.swift"; sourceTree = SOURCE_ROOT; };
@@ -127,8 +116,6 @@
 		95289A7F28AD61DE0036DDEE /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		95289A8128AD61DE0036DDEE /* CustomStyle1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle1.swift; sourceTree = "<group>"; };
 		95289A8228AD61DE0036DDEE /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
-		955456FF28AE8C2700C34759 /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9554570128AE8C2700C34759 /* iOS_Example_FrameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_Example_FrameUITests.swift; sourceTree = "<group>"; };
 		A5FB254FE28DE0FCDB94BAC6 /* Pods_iOS_Example_Frame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_Frame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C143A35EF2223A62DF5C70D7 /* Pods-iOS Example Frame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example Frame.release.xcconfig"; path = "Target Support Files/Pods-iOS Example Frame/Pods-iOS Example Frame.release.xcconfig"; sourceTree = "<group>"; };
 		E620C49520EA2A7A00045DC6 /* FramesIos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FramesIos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,17 +123,9 @@
 		E6646F8D20CE6C0900D8353A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6646F9420CE6C0A00D8353A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E6646F9920CE6C0A00D8353A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E6646FA420CE6C0A00D8353A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		955456FC28AE8C2700C34759 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E6646F8720CE6C0900D8353A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -275,22 +254,12 @@
 			path = Style;
 			sourceTree = "<group>";
 		};
-		9554570028AE8C2700C34759 /* iOS Example FrameUITests */ = {
-			isa = PBXGroup;
-			children = (
-				9554570128AE8C2700C34759 /* iOS_Example_FrameUITests.swift */,
-			);
-			path = "iOS Example FrameUITests";
-			sourceTree = "<group>";
-		};
 		E6646F8120CE6C0900D8353A = {
 			isa = PBXGroup;
 			children = (
 				449D4E4E26E7A67300D1A614 /* bitrise.yml */,
 				44E647B2260CEDC800503D6C /* .travis.yml */,
 				E6646F8C20CE6C0900D8353A /* iOS Example Frame */,
-				E6646FA120CE6C0A00D8353A /* iOS Example FrameUITests */,
-				9554570028AE8C2700C34759 /* iOS Example FrameUITests */,
 				E6646F8B20CE6C0900D8353A /* Products */,
 				E6646FAF20CE7A8000D8353A /* Frameworks */,
 				FBD99979778E97ADB4B9FF06 /* Pods */,
@@ -301,7 +270,6 @@
 			isa = PBXGroup;
 			children = (
 				E6646F8A20CE6C0900D8353A /* iOS Example Frame.app */,
-				955456FF28AE8C2700C34759 /* iOS Example FrameUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -321,14 +289,6 @@
 				E6646F9920CE6C0A00D8353A /* Info.plist */,
 			);
 			path = "iOS Example Frame";
-			sourceTree = "<group>";
-		};
-		E6646FA120CE6C0A00D8353A /* iOS Example FrameUITests */ = {
-			isa = PBXGroup;
-			children = (
-				E6646FA420CE6C0A00D8353A /* Info.plist */,
-			);
-			path = "iOS Example FrameUITests";
 			sourceTree = "<group>";
 		};
 		E6646FAF20CE7A8000D8353A /* Frameworks */ = {
@@ -355,24 +315,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		955456FE28AE8C2700C34759 /* iOS Example FrameUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9554570728AE8C2700C34759 /* Build configuration list for PBXNativeTarget "iOS Example FrameUITests" */;
-			buildPhases = (
-				955456FB28AE8C2700C34759 /* Sources */,
-				955456FC28AE8C2700C34759 /* Frameworks */,
-				955456FD28AE8C2700C34759 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9554570628AE8C2700C34759 /* PBXTargetDependency */,
-			);
-			name = "iOS Example FrameUITests";
-			productName = "iOS Example FrameUITests";
-			productReference = 955456FF28AE8C2700C34759 /* iOS Example FrameUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		E6646F8920CE6C0900D8353A /* iOS Example Frame */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E6646FA720CE6C0A00D8353A /* Build configuration list for PBXNativeTarget "iOS Example Frame" */;
@@ -403,10 +345,6 @@
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = Checkout;
 				TargetAttributes = {
-					955456FE28AE8C2700C34759 = {
-						CreatedOnToolsVersion = 13.4.1;
-						TestTargetID = E6646F8920CE6C0900D8353A;
-					};
 					E6646F8920CE6C0900D8353A = {
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 1100;
@@ -432,19 +370,11 @@
 			projectRoot = "";
 			targets = (
 				E6646F8920CE6C0900D8353A /* iOS Example Frame */,
-				955456FE28AE8C2700C34759 /* iOS Example FrameUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		955456FD28AE8C2700C34759 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E6646F8820CE6C0900D8353A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -551,14 +481,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		955456FB28AE8C2700C34759 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9554570228AE8C2700C34759 /* iOS_Example_FrameUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E6646F8620CE6C0900D8353A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -577,14 +499,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9554570628AE8C2700C34759 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E6646F8920CE6C0900D8353A /* iOS Example Frame */;
-			targetProxy = 9554570528AE8C2700C34759 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		95289A3D28AD61DE0036DDEE /* LaunchScreen.storyboard */ = {
@@ -630,49 +544,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		9554570828AE8C2700C34759 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "cko.iOS-Example-FrameUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "iOS Example Frame";
-				TVOS_DEPLOYMENT_TARGET = 13.0;
-			};
-			name = Debug;
-		};
-		9554570928AE8C2700C34759 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "cko.iOS-Example-FrameUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "iOS Example Frame";
-				TVOS_DEPLOYMENT_TARGET = 13.0;
-			};
-			name = Release;
-		};
 		E6646FA520CE6C0A00D8353A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -838,15 +709,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9554570728AE8C2700C34759 /* Build configuration list for PBXNativeTarget "iOS Example FrameUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9554570828AE8C2700C34759 /* Debug */,
-				9554570928AE8C2700C34759 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		E6646F8520CE6C0900D8353A /* Build configuration list for PBXProject "iOS Example Frame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

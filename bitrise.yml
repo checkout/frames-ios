@@ -3,8 +3,6 @@ format_version: '8'
 default_step_lib_source: 'https://github.com/bitrise-io/bitrise-steplib.git'
 project_type: ios
 trigger_map:
-- push_branch: '*'
-  workflow: frames-test-pods
 - pull_request_source_branch: '*'
   workflow: pr-checks
 workflows:
@@ -20,6 +18,7 @@ workflows:
     - _frames-build-carthage
     - _frames-build-pods
     - _frames-build-spm
+    - _run-uitests
     - _frames-slack
   _frames-set-up:
     steps:
@@ -35,12 +34,11 @@ workflows:
         inputs:
         - carthage_options: $CARTHAGE_XCFRAMEWORK
         - github_access_token: $access_token
-    - xcode-test@4.1:
+    - script@1:
+        title: Build Carthage Test project
         inputs:
-        - project_path: $FRAMES_CARTHAGE_PROJECT
-        - destination: 'platform=iOS Simulator,name=iPhone 13,OS=latest'
-        - scheme: $FRAMES_APP_SCHEME
-    - deploy-to-bitrise-io@1: {}
+        - content: |
+            xcodebuild "-workspace" "iOS Example Frame Carthage/iOS Example Frame Carthage.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 13 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
     - cache-push@2:
         inputs:
         - cache_paths: $CARTHAGE_FOLDER
@@ -49,11 +47,11 @@ workflows:
     - cocoapods-install@2.2:
         inputs:
         - podfile_path: $FRAMES_PODFILE
-    - xcode-test@2:
+    - script@1:
+        title: Build Pods Test project
         inputs:
-        - project_path: $FRAMES_COCOAPODS_PROJECT
-        - scheme: $FRAMES_APP_SCHEME
-    - deploy-to-bitrise-io@1: {}
+        - content: |
+            xcodebuild "-workspace" "iOS Example Frame/iOS Example Frame.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 13 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
     - cache-push@2: {}
     after_run: []
   _frames-build-spm:
@@ -64,6 +62,14 @@ workflows:
         - scheme: $FRAMES_APP_SCHEME
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
+  _run-uitests:
+    steps:
+    - xcode-test:
+        inputs:
+        - project_path: $FRAMES_SPM_PROJECT
+        - scheme: $FRAMES_UITEST_SCHEME
+    - deploy-to-bitrise-io@1: {}
+    - cache-push@2: {}
   _frames-slack:
     steps:
     - slack@3:
@@ -71,27 +77,6 @@ workflows:
         - webhook_url: $iOSBuildsChannel
     after_run: []
   
-  # frames test individual package manager
-  frames-test-pods:
-    steps:
-    - activate-ssh-key@4:
-        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@6: {}
-    - cache-pull@2: {}
-    - certificate-and-profile-installer@1: {}
-    - cocoapods-install@2.2:
-        inputs:
-        - podfile_path: $FRAMES_PODFILE
-    - xcode-test@2:
-        inputs:
-        - project_path: $FRAMES_COCOAPODS_PROJECT
-        - scheme: $FRAMES_TEST_SCHEME
-    - deploy-to-bitrise-io@1: {}
-    - cache-push@2: {}
-    - slack@3:
-        inputs:
-        - webhook_url: $FRAMES_IOS_BUILDS_CHANNEL
-    after_run: []
   frames-test-spm:
     steps:
     - activate-ssh-key@4:
@@ -99,11 +84,11 @@ workflows:
     - git-clone@6: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
-    - xcode-test@2:
+    - script@1:
+        title: Build SPM Test project
         inputs:
-        - project_path: $FRAMES_SPM_PROJECT
-        - scheme: $FRAMES_TEST_SCHEME
-    - deploy-to-bitrise-io@1: {}
+        - content: |
+            xcodebuild "-project" "iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 13 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
     - cache-push@2: {}
     - slack@3:
         inputs:
@@ -115,17 +100,18 @@ workflows:
     - git-clone@6: {}
     - cache-pull@2: {}
     - script@1:
-        title: Do anything with Script step
+        title: Carthage update
         inputs:
         - content: |
             # run carthage update command.
             carthage update --use-xcframeworks --platform iOS
     - certificate-and-profile-installer@1: {}
-    - xcode-test@2:
+    - script@1:
+        title: Build project
         inputs:
-        - project_path: $FRAMES_CARTHAGE_PROJECT
-        - scheme: $FRAMES_TEST_SCHEME
-    - deploy-to-bitrise-io@1: {}
+        - content: |
+            # run carthage update command.
+            xcodebuild "-workspace" "iOS Example Frame Carthage/iOS Example Frame Carthage.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "id=0DD4E294-6C62-4FAD-AEBE-B021CF8DAA56" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
     - cache-push@2: {}
   
   # frames misc workflows
@@ -173,11 +159,11 @@ workflows:
     - cocoapods-install@1:
         inputs:
         - podfile_path: $FRAMES_PODFILE
-    - xcode-build-for-simulator@0:
+    - script@1:
+        title: Build Pods Test project
         inputs:
-        - scheme: $FRAMES_APP_SCHEME
-        - configuration: Release
-    - deploy-to-bitrise-io@1: {}
+        - content: |
+            xcodebuild "-workspace" "iOS Example Frame/iOS Example Frame.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 13 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
     - cache-push@2: {}
     after_run: []
     before_run:
@@ -315,9 +301,6 @@ app:
     FRAMES_COCOAPODS_PROJECT: iOS Example Frame/iOS Example Frame.xcworkspace
   - opts:
       is_expand: false
-    FRAMES_TEST_SCHEME: Frames-Unit-Tests
-  - opts:
-      is_expand: false
     BITRISE_EXPORT_METHOD: development
   - opts:
       is_expand: false
@@ -331,6 +314,9 @@ app:
   - opts:
       is_expand: false
     FRAMES_APP_SCHEME: iOS Example Frame
+  - opts:
+      is_expand: false
+    FRAMES_UITEST_SCHEME: UITest
   - opts:
       is_expand: false
     CARTHAGE_XCFRAMEWORK: '--use-xcframeworks --platform iOS --cache-builds'
@@ -360,5 +346,5 @@ app:
     CHECKOUT_SOURCE_DIR: Checkout
 meta:
   bitrise.io:
-    stack: osx-xcode-13.3.x
+    stack: osx-xcode-13.4.x
     machine_type_id: g2.4core
