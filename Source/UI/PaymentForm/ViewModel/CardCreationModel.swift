@@ -11,7 +11,7 @@ struct CardCreationModel {
   var number: String = ""
   var expiryDate: ExpiryDate?
   var name: String = ""
-  var cvv: String?
+  var cvv: String = ""
   var billingAddress: Address?
   var phone: Phone?
   var scheme: Card.Scheme?

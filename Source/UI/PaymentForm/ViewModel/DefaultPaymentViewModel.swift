@@ -145,13 +145,8 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
     validateMandatoryInputProvided()
   }
 
-  func securityCodeIsUpdated(result: Result<String, SecurityCodeError>) {
-    switch result {
-      case .failure:
-        cardDetails.cvv = nil
-      case .success(let cvv):
-        cardDetails.cvv = cvv
-    }
+  func securityCodeIsUpdated(to newCode: String) {
+    cardDetails.cvv = newCode
     validateMandatoryInputProvided()
   }
 
@@ -192,9 +187,7 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
     // Check if security code is displayed and if so whether it is valid
     // This is business logic that wants Security code to be mandatory whenever its shown
     let isSecurityCodeRequired = paymentFormStyle?.securityCode != nil
-    if isSecurityCodeRequired {
-        guard let cvv = cardDetails.cvv, cardValidator.isValid(cvv: cvv, for: cardScheme) else { return }
-    }
+    if isSecurityCodeRequired, !cardValidator.isValid(cvv: cardDetails.cvv, for: cardScheme) { return }
 
     // Check if Billing is required and if so whether it exists
     let isAddBillingRequired = paymentFormStyle?.addBillingSummary?.isMandatory == true

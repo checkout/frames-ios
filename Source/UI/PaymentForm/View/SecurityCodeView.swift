@@ -8,12 +8,8 @@
 import UIKit
 import Checkout
 
-enum SecurityCodeError: Error {
-  case invalidCode
-}
-
 protocol SecurityCodeViewDelegate: AnyObject {
-  func update(result: Result<String, SecurityCodeError>)
+  func update(securityCode: String)
 }
 
 public final class SecurityCodeView: UIView {
@@ -55,9 +51,6 @@ public final class SecurityCodeView: UIView {
   }
 
   private func updateErrorViewStyle(isHidden: Bool, textfieldText: String?) {
-    if !isHidden {
-      delegate?.update(result: .failure(.invalidCode))
-    }
     style?.error?.isHidden = isHidden
     style?.textfield.text = viewModel.cvv
     codeInputView.update(style: style)
@@ -76,7 +69,7 @@ extension SecurityCodeView: TextFieldViewDelegate {
   func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
     codeInputView.textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
     viewModel.updateInput(to: textField.text)
-    delegate?.update(result: .success(viewModel.cvv))
+    delegate?.update(securityCode: viewModel.cvv)
   }
 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
