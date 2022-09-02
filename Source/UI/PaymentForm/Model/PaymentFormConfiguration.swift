@@ -19,7 +19,7 @@ public struct PaymentFormConfiguration {
      
      - Parameters:
         - apiKey: API Key provided by Checkout enabling you access to our services
-        - environment: Enum describing whether the SDK is running in a testing/sandbox/dev environment or if its been shipped to end customer for a live environment
+        - environment: Enum describing the environment the SDK is running in
         - supportedSchemes: Card schemes supported for receiving payments. Accurate declaration of supported schemes will improve customer experience
         - billingFormData: Pre filled Billing form information to be included and help reduce user input if known
      */

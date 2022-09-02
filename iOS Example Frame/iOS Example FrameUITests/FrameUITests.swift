@@ -8,6 +8,7 @@
 
 import XCTest
 
+// swiftlint:disable:file line_length
 final class FrameUITests: XCTestCase {
 
     func testPaymentWithMinimumInput() {
