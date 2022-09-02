@@ -5,7 +5,7 @@ protocol PaymentViewControllerDelegate: AnyObject {
   func addBillingButtonIsPressed(sender: UINavigationController?)
   func editBillingButtonIsPressed(sender: UINavigationController?)
   func expiryDateIsUpdated(result: Result<ExpiryDate, ExpiryDateError>)
-  func securityCodeIsUpdated(result: Result<String, SecurityCodeError>)
+  func securityCodeIsUpdated(to newCode: String)
   func cardholderIsUpdated(value: String)
   func payButtonIsPressed()
 }
@@ -422,8 +422,8 @@ extension PaymentViewController: CardholderDelegate {
 }
 
 extension PaymentViewController: SecurityCodeViewDelegate {
-  func update(result: Result<String, SecurityCodeError>) {
-    delegate?.securityCodeIsUpdated(result: result)
+  func update(securityCode: String) {
+    delegate?.securityCodeIsUpdated(to: securityCode)
   }
 }
 

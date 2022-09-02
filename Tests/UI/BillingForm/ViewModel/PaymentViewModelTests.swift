@@ -303,7 +303,7 @@ class PaymentViewModelTests: XCTestCase {
         }
         
         model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
-        model.securityCodeIsUpdated(result: .success("123"))
+        model.securityCodeIsUpdated(to: "123")
         model.update(result: .success(("4242424242424242", .visa)))
         
         waitForExpectations(timeout: 0.1)
@@ -329,7 +329,7 @@ class PaymentViewModelTests: XCTestCase {
         }
         
         model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
-        model.securityCodeIsUpdated(result: .success("123"))
+        model.securityCodeIsUpdated(to: "123")
         model.update(result: .success(("4242424242424242", .visa)))
         
         waitForExpectations(timeout: 0.1)
@@ -433,7 +433,7 @@ class PaymentViewModelTests: XCTestCase {
         
         model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
         model.update(result: .success(("4242424242424242", .visa)))
-        model.securityCodeIsUpdated(result: .success("123"))
+        model.securityCodeIsUpdated(to: "123")
         
         waitForExpectations(timeout: 0.1)
     }
@@ -459,7 +459,7 @@ class PaymentViewModelTests: XCTestCase {
         
         model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
         model.update(result: .success(("4242424242424242", .visa)))
-        model.securityCodeIsUpdated(result: .success("123"))
+        model.securityCodeIsUpdated(to: "123")
         
         waitForExpectations(timeout: 0.1)
     }
@@ -478,7 +478,7 @@ class PaymentViewModelTests: XCTestCase {
         }
         
         model.cardholderIsUpdated(value: "John Price")
-        model.securityCodeIsUpdated(result: .success("123"))
+        model.securityCodeIsUpdated(to: "123")
         model.onTapDoneButton(data: makeMockBillingForm())
         model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
         
@@ -499,7 +499,7 @@ class PaymentViewModelTests: XCTestCase {
         }
         
         model.cardholderIsUpdated(value: "John Price")
-        model.securityCodeIsUpdated(result: .success("123"))
+        model.securityCodeIsUpdated(to: "123")
         model.onTapDoneButton(data: makeMockBillingForm())
         model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
         model.update(result: .success((cardNumber: "42424242", scheme: .visa)))
@@ -521,7 +521,7 @@ class PaymentViewModelTests: XCTestCase {
         }
         
         model.cardholderIsUpdated(value: "John Price")
-        model.securityCodeIsUpdated(result: .success("123"))
+        model.securityCodeIsUpdated(to: "123")
         model.onTapDoneButton(data: makeMockBillingForm())
         model.update(result: .success((cardNumber: "4242424242424242", scheme: .visa)))
         
@@ -542,7 +542,7 @@ class PaymentViewModelTests: XCTestCase {
         }
         
         model.cardholderIsUpdated(value: "John Price")
-        model.securityCodeIsUpdated(result: .success("123"))
+        model.securityCodeIsUpdated(to: "123")
         model.onTapDoneButton(data: makeMockBillingForm())
         model.update(result: .success((cardNumber: "4242424242424242", scheme: .visa)))
         model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 01, year: 1800)))
@@ -596,7 +596,7 @@ class PaymentViewModelTests: XCTestCase {
         }
         
         model.cardholderIsUpdated(value: "John Price")
-        model.securityCodeIsUpdated(result: .success("123"))
+        model.securityCodeIsUpdated(to: "123")
         model.onTapDoneButton(data: makeMockBillingForm())
         model.expiryDateIsUpdated(result: .success(ExpiryDate(month: 5, year: 2067)))
         model.update(result: .success((cardNumber: "42424242", scheme: .visa)))

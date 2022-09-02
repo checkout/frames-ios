@@ -109,14 +109,8 @@ class PaymentViewControllerTests: XCTestCase {
   func testCallDelegateMethodFinishEditingSecurityCodeView() {
     viewController.delegate = delegate
     let value = "1234"
-    viewController.update(result: .success("1234"))
-    XCTAssertEqual(delegate.securityCodeIsUpdatedWithValue.count, 1)
-    switch delegate.securityCodeIsUpdatedWithValue.last {
-      case .success(let result):
-        XCTAssertEqual(result, value)
-      default:
-        XCTFail()
-    }
+    viewController.update(securityCode: value)
+    XCTAssertEqual(delegate.securityCodeIsUpdatedWithValue, [value])
   }
 
   func testCallDelegateMethodOnTapPayButton() {
