@@ -2,7 +2,7 @@ import Foundation
 import Checkout
 
 /// Payment Form Utilities
-final class CardUtils {
+enum CardUtils {
 
   // MARK: - Methods
 

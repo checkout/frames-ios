@@ -38,7 +38,7 @@ public final class ExpiryDateView: UIView {
   func update(style: CellTextFieldStyle?) {
     self.style = style
     self.style?.textfield.isSupportingNumericKeyboard = true
-    if let _ = validateInputChanges(of: self.style?.textfield.text ?? "", newInput: "") {
+    if validateInputChanges(of: self.style?.textfield.text ?? "", newInput: "") != nil {
       self.style?.textfield.text = ""
     }
     dateInputView.update(style: self.style)

@@ -1,7 +1,7 @@
 import UIKit
 import Checkout
 
-public struct PaymentFormFactory {
+public enum PaymentFormFactory {
 
   // Persist in memory the correlation ID
   internal static var sessionCorrelationID = ""
@@ -11,7 +11,7 @@ public struct PaymentFormFactory {
                                          completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
     // Ensure a consistent identifier is used for the monitoring of a journey
     Self.sessionCorrelationID = UUID().uuidString
-    let logger = FramesEventLogger(environment: configuration.environment, getCorrelationID: { Self.sessionCorrelationID })
+    let logger = FramesEventLogger(environment: configuration.environment) { Self.sessionCorrelationID }
     let cardValidator = CardValidator(environment: configuration.environment.checkoutEnvironment)
     let checkoutAPIService = CheckoutAPIService(publicKey: configuration.serviceAPIKey,
                                                 environment: configuration.environment)

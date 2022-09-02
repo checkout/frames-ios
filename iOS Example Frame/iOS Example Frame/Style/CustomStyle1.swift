@@ -9,6 +9,7 @@
 import UIKit
 import Frames
 
+// swiftlint:disable file_length
 // MARK: - Color Constants -
 
 private enum Constants {
@@ -77,7 +78,7 @@ struct BillingFormStyleCustom1: BillingFormStyle {
   ]
 }
 
-private struct StyleOrganiser {
+private enum StyleOrganiser {
 
     struct PaymentHeaderViewStyle: PaymentHeaderCellStyle {
         var shouldHideAcceptedCardsList = true
