@@ -163,7 +163,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         let isEmptyText = textField.text?.isEmpty ?? true
         let isMandatoryField = type.style?.isMandatory ?? false
         let shouldRemoveText = isEmptyText && isMandatoryField
-        let hasErrorValue = errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.allSatisfy({ $0 })
+        let hasErrorValue = errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.allSatisfy { $0 }
 
         if !isEmptyText {
             textValueOfCellType[type.index] = textField.text

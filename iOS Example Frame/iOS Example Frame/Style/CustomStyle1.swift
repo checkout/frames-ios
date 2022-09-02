@@ -10,6 +10,7 @@ import UIKit
 import Frames
 
 // swiftlint:disable file_length
+// swiftlint:disable type_body_length
 // MARK: - Color Constants -
 
 private enum Constants {
