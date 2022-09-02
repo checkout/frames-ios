@@ -11,8 +11,11 @@ import Checkout
 import UIKit
 
 enum Factory {
+
+  // swiftlint:disable force_unwrapping
   static let successURL = URL(string: "https://httpstat.us/200")!
   static let failureURL = URL(string: "https://httpstat.us/403")!
+  // swiftlint:enable force_unwrapping
   static let apiKey = "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73"
   static let environment: Frames.Environment = .sandbox
 
@@ -21,6 +24,7 @@ enum Factory {
     return getMinimalUITestVC(completionHandler: completionHandler)
     #endif
 
+    // swiftlint:disable:next force_unwrapping
     let country = Country(iso3166Alpha2: "GB")!
 
     let address = Address(addressLine1: "Test line1",
@@ -57,6 +61,7 @@ enum Factory {
 
   static func getMatrixPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
 
+    // swiftlint:disable:next force_unwrapping
     let country = Country(iso3166Alpha2: "GB")!
 
     let address = Address(addressLine1: "Test line1",

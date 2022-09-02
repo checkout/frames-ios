@@ -1,5 +1,6 @@
 import UIKit
 
+// TODO: This file should have been removed
 /// Class used to customize the views.
 public final class CheckoutTheme {
     /// Background color of the views

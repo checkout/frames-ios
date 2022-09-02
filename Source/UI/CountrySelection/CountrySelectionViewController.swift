@@ -11,8 +11,9 @@ public final class CountrySelectionViewController: UIViewController,
 
     var countries: [(String, String)] {
         let locale = Locale.current
-        let countries = Locale.isoRegionCodes.map {
-            return (locale.localizedString(forRegionCode: $0)!, $0)
+        let countries: [(String, String)] = Locale.isoRegionCodes.compactMap {
+            guard let countryName = locale.localizedString(forRegionCode: $0) else { return nil }
+            return (countryName, $0)
         }
         return countries.sorted { $0.0 < $1.0 }
     }

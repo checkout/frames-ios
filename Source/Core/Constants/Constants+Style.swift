@@ -7,7 +7,6 @@
 
 import Foundation
 
-// swiftlint:disable file_length
 extension Constants {
 
     enum Style {

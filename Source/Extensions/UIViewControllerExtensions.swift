@@ -3,7 +3,8 @@ import UIKit
 
 extension UIViewController {
 
-    @objc func scrollViewOnKeyboardWillShow(notification: NSNotification, scrollView: UIScrollView,
+    @objc func scrollViewOnKeyboardWillShow(notification: NSNotification,
+                                            scrollView: UIScrollView,
                                             activeField: UITextField?) {
         let additionalSpace = CGFloat(80.0)
         let textField = activeField ?? UIResponder.current as? UITextField
@@ -21,10 +22,10 @@ extension UIViewController {
             // Your app might not need or want this behavior.
             var aRect: CGRect = self.view.frame
             aRect.size.height -= keyboardSize.height
-            let activeTextFieldRect: CGRect? = activeField.frame
-            let activeTextFieldOrigin: CGPoint? = activeTextFieldRect?.origin
-            if !aRect.contains(activeTextFieldOrigin!) {
-                scrollView.scrollRectToVisible(activeTextFieldRect!, animated: true)
+            let activeTextFieldRect: CGRect = activeField.frame
+            let activeTextFieldOrigin: CGPoint = activeTextFieldRect.origin
+            if !aRect.contains(activeTextFieldOrigin) {
+                scrollView.scrollRectToVisible(activeTextFieldRect, animated: true)
             }
         }
     }
