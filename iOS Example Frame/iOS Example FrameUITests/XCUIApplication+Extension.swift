@@ -69,17 +69,16 @@ extension XCUIApplication {
         if !keys[key].exists {
             buttons["shift"].tap()
         }
-            
+
         // A fresh simulator will display a hint on using keyboard to the user
         // If this is the first attempt at setting input we can check for it
-        if !keys[key].exists,
-           retryInputIfFailed,
-           buttons["Continue"].exists {
-            buttons["Continue"].tap()
-            keyboardInput(char: char)
+        if retryInputIfFailed,
+           staticTexts["Continue"].exists {
+            staticTexts["Continue"].tap()
+            keyboardInput(char: char, retryInputIfFailed: false)
             return
         }
-        
+
         // If after all checks the key is still not found, we will still invoke it
         //   allowing test to fail and snapshot to be generated showing UI
         keys[key].tap()
