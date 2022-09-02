@@ -21,7 +21,7 @@ extension Dictionary {
     /// - Returns: A dictionary with transformed keys that correspond to the same values.
     func mapKeys<T>(_ transform: (Key) throws -> T) rethrows -> [T: Value] {
 
-        return .init(uniqueKeysWithValues: try map { (key, value) in (try transform(key), value) })
+        return .init(uniqueKeysWithValues: try map { key, value in (try transform(key), value) })
     }
 
 }

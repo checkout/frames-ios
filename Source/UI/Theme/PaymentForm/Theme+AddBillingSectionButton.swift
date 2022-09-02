@@ -11,7 +11,7 @@ public extension Theme {
 
     /// Theme generated Add Billing Section Button Style
     struct ThemeAddBillingSectionButton: CellButtonStyle {
-        public var isMandatory: Bool = true
+        public var isMandatory = true
         public var button: ElementButtonStyle
         public var backgroundColor: UIColor
         public var title: ElementStyle?
@@ -22,7 +22,7 @@ public extension Theme {
 
     /// Theme generated Add Billing Button Styile
     struct ThemeBillingButton: ElementButtonStyle {
-        public var isEnabled: Bool = true
+        public var isEnabled = true
         public var disabledTextColor: UIColor
         public var disabledTintColor: UIColor
         public var activeTintColor: UIColor
@@ -37,7 +37,7 @@ public extension Theme {
         public var borderWidth: CGFloat = 0
         public var height: Double = 60
         public var width: Double = 300
-        public var isHidden: Bool = false
+        public var isHidden = false
         public var text: String
         public var font: UIFont
         public var backgroundColor: UIColor = .clear

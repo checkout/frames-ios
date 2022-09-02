@@ -11,7 +11,7 @@ public extension Theme {
 
     /// Theme generated Page Header Title
     struct ThemePageHeaderTitle: ElementStyle {
-        public var isHidden: Bool = false
+        public var isHidden = false
         public var text: String
         public var textAlignment: NSTextAlignment = .natural
         public var font: UIFont

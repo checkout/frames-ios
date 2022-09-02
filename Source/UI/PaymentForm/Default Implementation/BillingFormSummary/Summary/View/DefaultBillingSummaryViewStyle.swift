@@ -1,7 +1,7 @@
 import UIKit
 
 public struct DefaultBillingSummaryViewStyle: BillingSummaryViewStyle {
-    public var isMandatory: Bool = true
+    public var isMandatory = true
     public var cornerRadius: CGFloat = 10
     public var borderWidth: CGFloat = 1.0
     public var separatorLineColor: UIColor = .paleGray

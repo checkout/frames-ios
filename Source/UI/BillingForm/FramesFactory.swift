@@ -30,7 +30,7 @@ public struct FramesFactory {
         let viewController = BillingFormViewController(viewModel: viewModel)
 
         if #available(iOS 13.0, *) {
-            viewController.isModalInPresentation  = true
+            viewController.isModalInPresentation = true
         }
         return UINavigationController(rootViewController: viewController)
     }

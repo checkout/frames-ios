@@ -29,7 +29,7 @@ struct PayButtonFormStyleCustom1: ElementButtonStyle {
   var image: UIImage?
   var textAlignment: NSTextAlignment = .center
   var text: String = "Pay 100$"
-  var font: UIFont = UIFont.systemFont(ofSize: 15)
+  var font = UIFont.systemFont(ofSize: 15)
   var disabledTextColor: UIColor = Constants.secondaryFontColor
   var disabledTintColor: UIColor = Constants.mainFontColor.withAlphaComponent(0.2)
   var activeTintColor: UIColor = Constants.mainFontColor
@@ -59,7 +59,7 @@ struct PaymentFormStyleCustom1: PaymentFormStyle {
   var cardNumber: CellTextFieldStyle = StyleOrganiser.CardNumberSection()
   var expiryDate: CellTextFieldStyle = StyleOrganiser.ExpiryDateSection()
   var securityCode: CellTextFieldStyle? = StyleOrganiser.SecurityNumberSection()
-  var payButton: ElementButtonStyle =  PayButtonFormStyleCustom1()
+  var payButton: ElementButtonStyle = PayButtonFormStyleCustom1()
 }
 
 struct BillingFormStyleCustom1: BillingFormStyle {
@@ -80,7 +80,7 @@ struct BillingFormStyleCustom1: BillingFormStyle {
 private struct StyleOrganiser {
 
     struct PaymentHeaderViewStyle: PaymentHeaderCellStyle {
-        var shouldHideAcceptedCardsList: Bool = true
+        var shouldHideAcceptedCardsList = true
         var backgroundColor: UIColor = Constants.backgroundColor
         var headerLabel: ElementStyle? = PaymentHeaderLabel()
         var subtitleLabel: ElementStyle? = PaymentHeaderSubtitle()
@@ -96,16 +96,16 @@ private struct StyleOrganiser {
 
   struct BillingHeaderLabel: ElementStyle {
         var textAlignment: NSTextAlignment = .natural
-        var isHidden: Bool = false
+        var isHidden = false
         var text: String = "Billing address"
-        var font: UIFont = UIFont(sfMono: .semibold, size: 24)
+        var font = UIFont(sfMono: .semibold, size: 24)
         var backgroundColor: UIColor = .clear
         var textColor: UIColor = Constants.mainFontColor
     }
 
     struct CancelButtonStyle: ElementButtonStyle {
         var textAlignment: NSTextAlignment = .natural
-        var isEnabled: Bool = true
+        var isEnabled = true
         var disabledTextColor: UIColor = Constants.secondaryFontColor
         var disabledTintColor: UIColor = .clear
         var activeTintColor: UIColor = .clear
@@ -119,16 +119,16 @@ private struct StyleOrganiser {
         var borderWidth: CGFloat = Constants.borderWidth
         var height: Double = 60
         var width: Double = 70
-        var isHidden: Bool = false
+        var isHidden = false
         var text: String = "Cancel"
-        var font: UIFont = UIFont(sfMono: .semibold, size: 17)
+        var font = UIFont(sfMono: .semibold, size: 17)
         var backgroundColor: UIColor = .clear
         var textColor: UIColor = Constants.mainFontColor
     }
 
     struct DoneButtonStyle: ElementButtonStyle {
         var textAlignment: NSTextAlignment = .natural
-        var isEnabled: Bool = true
+        var isEnabled = true
         var disabledTextColor: UIColor = Constants.secondaryFontColor
         var disabledTintColor: UIColor = .clear
         var activeTintColor: UIColor = .clear
@@ -142,33 +142,33 @@ private struct StyleOrganiser {
         var borderWidth: CGFloat = Constants.borderWidth
         var height: Double = 60
         var width: Double = 70
-        var isHidden: Bool = false
+        var isHidden = false
         var text: String = "Done"
-        var font: UIFont = UIFont(sfMono: .semibold, size: 17)
+        var font = UIFont(sfMono: .semibold, size: 17)
         var backgroundColor: UIColor = .clear
         var textColor: UIColor = Constants.mainFontColor
     }
 
     struct PaymentHeaderLabel: ElementStyle {
         var textAlignment: NSTextAlignment = .natural
-        var isHidden: Bool = false
+        var isHidden = false
         var text: String = "Payment details"
-        var font: UIFont = UIFont(size: 24)
+        var font = UIFont(size: 24)
         var backgroundColor: UIColor = .clear
         var textColor: UIColor = Constants.mainFontColor
     }
 
     struct PaymentHeaderSubtitle: ElementStyle {
         var textAlignment: NSTextAlignment = .natural
-        var isHidden: Bool = false
+        var isHidden = false
         var text: String = "Visa, Mastercard and Maestro accepted."
-        var font: UIFont = UIFont(size: 12)
+        var font = UIFont(size: 12)
         var backgroundColor: UIColor = .clear
         var textColor: UIColor = Constants.mainFontColor
     }
 
     struct CardNumberSection: CellTextFieldStyle {
-        var isMandatory: Bool = true
+        var isMandatory = true
         var backgroundColor: UIColor = .clear
         var textfield: ElementTextFieldStyle = TextFieldStyle()
         var title: ElementStyle? = TitleStyle(text: "Card number")
@@ -179,7 +179,7 @@ private struct StyleOrganiser {
 
     struct ExpiryDateSection: CellTextFieldStyle {
         var textfield: ElementTextFieldStyle = TextFieldStyle(placeholder: "_ _ / _ _")
-        var isMandatory: Bool = true
+        var isMandatory = true
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "Expiry date")
         var mandatory: ElementStyle? = MandatoryStyle(text: "")
@@ -189,7 +189,7 @@ private struct StyleOrganiser {
 
     struct SecurityNumberSection: CellTextFieldStyle {
         var textfield: ElementTextFieldStyle = TextFieldStyle()
-        var isMandatory: Bool = true
+        var isMandatory = true
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "Security code")
         var mandatory: ElementStyle? = MandatoryStyle(text: "")
@@ -200,7 +200,7 @@ private struct StyleOrganiser {
     struct TextFieldStyle: ElementTextFieldStyle {
         var textAlignment: NSTextAlignment = .natural
         var text: String = ""
-        var isSupportingNumericKeyboard: Bool = true
+        var isSupportingNumericKeyboard = true
         var height: Double = 30
         var cornerRadius: CGFloat = Constants.borderRadius
         var borderWidth: CGFloat = Constants.borderWidth
@@ -209,8 +209,8 @@ private struct StyleOrganiser {
         var normalBorderColor: UIColor = .clear
         var focusBorderColor: UIColor = .clear
         var errorBorderColor: UIColor = Constants.errorColor
-        var isHidden: Bool = false
-        var font: UIFont = UIFont(size: 15)
+        var isHidden = false
+        var font = UIFont(size: 15)
         var backgroundColor: UIColor = Constants.textFieldBackgroundColor
         var textColor: UIColor = Constants.mainFontColor
     }
@@ -218,8 +218,8 @@ private struct StyleOrganiser {
     struct TitleStyle: ElementStyle {
         var textAlignment: NSTextAlignment = .natural
         var text: String
-        var isHidden: Bool = false
-        var font: UIFont = UIFont(size: 15)
+        var isHidden = false
+        var font = UIFont(size: 15)
         var backgroundColor: UIColor = .clear
         var textColor: UIColor = Constants.mainFontColor
     }
@@ -227,8 +227,8 @@ private struct StyleOrganiser {
     struct MandatoryStyle: ElementStyle {
         var textAlignment: NSTextAlignment = .natural
         var text: String
-        var isHidden: Bool = false
-        var font: UIFont = UIFont(size: 13)
+        var isHidden = false
+        var font = UIFont(size: 13)
         var backgroundColor: UIColor = .clear
         var textColor: UIColor = Constants.secondaryFontColor
     }
@@ -241,8 +241,8 @@ private struct StyleOrganiser {
         var tintColor: UIColor = Constants.mainFontColor
         var image: UIImage?
         var height: Double = 30
-        var isHidden: Bool = false
-        var font: UIFont = UIFont(size: 13)
+        var isHidden = false
+        var font = UIFont(size: 13)
     }
 
     struct ErrorViewStyle: ElementErrorViewStyle {
@@ -253,13 +253,13 @@ private struct StyleOrganiser {
         var tintColor: UIColor = Constants.errorColor
         var image: UIImage?
         var height: Double = 30
-        var isHidden: Bool = true
-        var font: UIFont = UIFont(size: 13)
+        var isHidden = true
+        var font = UIFont(size: 13)
     }
 
     // MARK: Billing
     struct BillingStartButton: CellButtonStyle {
-        var isMandatory: Bool = true
+        var isMandatory = true
         var button: ElementButtonStyle = AddBillingDetailsButtonStyle()
         var backgroundColor: UIColor = .red// .clear
         var title: ElementStyle? = TitleStyle(text: "Billing address")
@@ -279,7 +279,7 @@ private struct StyleOrganiser {
         var separatorLineColor: UIColor = Constants.secondaryFontColor
         var borderColor: UIColor = Constants.mainFontColor
         var button: ElementButtonStyle = AddBillingDetailsButtonStyle(textLeading: 20, text: "\u{276F} Update Billing Address")
-        var isMandatory: Bool = true
+        var isMandatory = true
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "Billing address")
         var mandatory: ElementStyle?
@@ -293,7 +293,7 @@ private struct StyleOrganiser {
 
     struct AddBillingDetailsButtonStyle: ElementButtonStyle {
         var textAlignment: NSTextAlignment = .natural
-        var isEnabled: Bool = true
+        var isEnabled = true
         var disabledTextColor: UIColor = Constants.secondaryFontColor
         var disabledTintColor: UIColor = Constants.secondaryFontColor
         var activeTintColor: UIColor = Constants.mainFontColor
@@ -307,16 +307,16 @@ private struct StyleOrganiser {
         var borderWidth: CGFloat = 0
         var height: Double = 30
         var width: Double = 300
-        var isHidden: Bool = false
+        var isHidden = false
         var text: String = "\u{276F} Add billing address"
-        var font: UIFont = UIFont(sfMono: .semibold, size: 15)
+        var font = UIFont(sfMono: .semibold, size: 15)
         var backgroundColor: UIColor = .clear
         var textColor: UIColor = Constants.mainFontColor
     }
 
     struct BillingFullNameInput: CellTextFieldStyle {
         var textfield: ElementTextFieldStyle = TextFieldStyle(isSupportingNumericKeyboard: false)
-        var isMandatory: Bool = true
+        var isMandatory = true
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "Full name")
         var mandatory: ElementStyle?
@@ -326,7 +326,7 @@ private struct StyleOrganiser {
 
     struct BillingAddressLine1Input: CellTextFieldStyle {
         var textfield: ElementTextFieldStyle = TextFieldStyle(isSupportingNumericKeyboard: false)
-        var isMandatory: Bool = true
+        var isMandatory = true
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "Address line 1")
         var mandatory: ElementStyle?
@@ -336,7 +336,7 @@ private struct StyleOrganiser {
 
     struct BillingAddressLine2Input: CellTextFieldStyle {
         var textfield: ElementTextFieldStyle = TextFieldStyle(isSupportingNumericKeyboard: false)
-        var isMandatory: Bool = false
+        var isMandatory = false
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "Address line 2")
         var mandatory: ElementStyle? = MandatoryStyle(text: "Optional")
@@ -346,7 +346,7 @@ private struct StyleOrganiser {
 
     struct BillingCityInput: CellTextFieldStyle {
         var textfield: ElementTextFieldStyle = TextFieldStyle(isSupportingNumericKeyboard: false)
-        var isMandatory: Bool = true
+        var isMandatory = true
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "City")
         var mandatory: ElementStyle?
@@ -356,7 +356,7 @@ private struct StyleOrganiser {
 
     struct BillingStateInput: CellTextFieldStyle {
         var textfield: ElementTextFieldStyle = TextFieldStyle(isSupportingNumericKeyboard: false)
-        var isMandatory: Bool = true
+        var isMandatory = true
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "State")
         var mandatory: ElementStyle?
@@ -366,7 +366,7 @@ private struct StyleOrganiser {
 
     struct BillingPostcodeInput: CellTextFieldStyle {
         var textfield: ElementTextFieldStyle = TextFieldStyle(isSupportingNumericKeyboard: false)
-        var isMandatory: Bool = true
+        var isMandatory = true
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "Postcode/Zip")
         var mandatory: ElementStyle?
@@ -376,7 +376,7 @@ private struct StyleOrganiser {
 
     struct BillingCountryInput: CellButtonStyle {
         var button: ElementButtonStyle = BillingCountryButton()
-        var isMandatory: Bool = true
+        var isMandatory = true
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "Country")
         var mandatory: ElementStyle?
@@ -386,7 +386,7 @@ private struct StyleOrganiser {
 
     struct BillingPhoneInput: CellTextFieldStyle {
         var textfield: ElementTextFieldStyle = TextFieldStyle()
-        var isMandatory: Bool = true
+        var isMandatory = true
         var backgroundColor: UIColor = .clear
         var title: ElementStyle? = TitleStyle(text: "Phone number")
         var mandatory: ElementStyle?
@@ -396,16 +396,16 @@ private struct StyleOrganiser {
 
     struct BillingSummaryElementStyle: ElementStyle {
         var textAlignment: NSTextAlignment = .natural
-        var isHidden: Bool = false
+        var isHidden = false
         var text: String
-        var font: UIFont = UIFont(size: 14)
+        var font = UIFont(size: 14)
         var backgroundColor: UIColor = .clear
         var textColor: UIColor = Constants.secondaryFontColor
     }
 
     struct BillingCountryButton: ElementButtonStyle {
         var textAlignment: NSTextAlignment = .natural
-        var isEnabled: Bool = true
+        var isEnabled = true
         var disabledTextColor: UIColor = Constants.secondaryFontColor
         var disabledTintColor: UIColor = .clear
         var activeTintColor: UIColor = Constants.mainFontColor
@@ -419,9 +419,9 @@ private struct StyleOrganiser {
         var borderWidth: CGFloat = 0
         var height: Double = 20
         var width: Double = 80
-        var isHidden: Bool = false
+        var isHidden = false
         var text: String = "Please select a country"
-        var font: UIFont = UIFont(size: 15)
+        var font = UIFont(size: 15)
         var backgroundColor: UIColor = Constants.textFieldBackgroundColor
         var textColor: UIColor = Constants.secondaryFontColor
     }

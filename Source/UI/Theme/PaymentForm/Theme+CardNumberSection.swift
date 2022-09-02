@@ -11,7 +11,7 @@ public extension Theme {
 
     /// Theme generated Payment Input section
     struct ThemePaymentInput: CellTextFieldStyle {
-        public var isMandatory: Bool = true
+        public var isMandatory = true
         public var backgroundColor: UIColor = .clear
         public var textfield: ElementTextFieldStyle
         public var title: ElementStyle?

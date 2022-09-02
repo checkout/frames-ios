@@ -163,7 +163,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         let isEmptyText = textField.text?.isEmpty ?? true
         let isMandatoryField = type.style?.isMandatory ?? false
         let shouldRemoveText = isEmptyText && isMandatoryField
-        let hasErrorValue = errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.allSatisfy({$0})
+        let hasErrorValue = errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.allSatisfy({ $0 })
 
         if !isEmptyText {
             textValueOfCellType[type.index] = textField.text
@@ -193,7 +193,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
         let shouldSaveText = !(textField.text?.isEmpty ?? true)
 
-        textValueOfCellType[type.index] =  shouldSaveText ? textField.text : nil
+        textValueOfCellType[type.index] = shouldSaveText ? textField.text : nil
 
         updatedRow = textField.tag
     }
@@ -268,9 +268,9 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
 
         let name = textValueOfCellType[BillingFormCell.fullName(nil).index]
 
-        let data: BillingForm = BillingForm(name: name,
-                                            address: address,
-                                            phone: phone)
+        let data = BillingForm(name: name,
+                               address: address,
+                               phone: phone)
 
         delegate?.onTapDoneButton(data: data)
 
