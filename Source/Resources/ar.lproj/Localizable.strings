@@ -9,12 +9,13 @@
 "billingFormPhoneNumberHint" = "رقم الهاتف";
 "billingAddressTitle" = "عنوان الفاتوره";
 "BillingFormCountryButtonTitle" = "يُرجى إختيار الدولة";
-"PaymentFormSummaryViewHintText" = "نحن نريد هذه البيانات كإجراء أمني إضافي للتأكد من البطاقة";
 "AddBillingAddress" = "يُرجى إدخال عنوان الفاتوره";
+"Edit billing address" = "عدل عنوان الفاتوره";
+"PaymentFormSummaryViewHintText" = "نحن نريد هذه البيانات كإجراء أمني إضافي للتأكد من البطاقة";
 "OptionalInputField" = "إختياري";
 "CardholderInputTitle" = "إسم حامل البطاقة";
 "ExpiryDate" = "تاريخ إنتهاء الصلاحية";
-"ExpiryDateFormat" = "الهيئه رقم شهر/ رقم السنه";
+"ExpiryDateFormat" = "الهيئه ش ش / س س";
 "ExpiryDatePlaceholder" = "_ _  / _ _";
 "ExpiryDateErrorMessageInvalid" = "يُرجي إدخال تاريخ إنتهاء الصلاحيه";
 "ExpiryDateErrorMessageInvalidInPast" = "تاريخ إنتهاء الصلاحيه في الماضي";
