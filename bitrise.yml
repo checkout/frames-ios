@@ -68,6 +68,7 @@ workflows:
         inputs:
         - project_path: $FRAMES_SPM_PROJECT
         - scheme: $FRAMES_UITEST_SCHEME
+        - simulator_device: $UITEST_SIMULATOR_DEVICE
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
   _frames-slack:
@@ -296,6 +297,9 @@ workflows:
 
 app:
   envs:
+  - opts:
+      is_expand: false
+    UITEST_SIMULATOR_DEVICE: iPhone 13 Pro
   - opts:
       is_expand: false
     FRAMES_COCOAPODS_PROJECT: iOS Example Frame/iOS Example Frame.xcworkspace
