@@ -5,7 +5,7 @@ public struct DefaultAddBillingDetailsViewStyle: CellButtonStyle {
     public var backgroundColor: UIColor = .clear
     public var button: ElementButtonStyle = DefaultAddBillingDetailsButtonStyle()
     public var isMandatory: Bool = true
-    public var title: ElementStyle? = DefaultTitleLabelStyle(text: "billingAddressTitle".localized(forClass: CheckoutTheme.self))
-    public var hint: ElementStyle? = DefaultHintInputLabelStyle(text: "PaymentFormSummaryViewHintText".localized(forClass: CheckoutTheme.self))
+    public var title: ElementStyle? = DefaultTitleLabelStyle(text: Constants.LocalizationKeys.BillingForm.Header.title)
+    public var hint: ElementStyle? = DefaultHintInputLabelStyle(text: Constants.LocalizationKeys.PaymentForm.BillingSummary.hint)
     public var error: ElementErrorViewStyle?
 }

@@ -12,7 +12,7 @@ protocol CardholderDelegate: AnyObject {
 }
 
 final class CardholderViewModel {
-    
+
     private enum Constants {
         static let inputAllowedCharacterSet = CharacterSet.letters.union([" ", "-", "'"])
     }

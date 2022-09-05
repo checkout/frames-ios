@@ -8,8 +8,8 @@ public struct DefaultBillingSummaryViewStyle: BillingSummaryViewStyle {
     public var backgroundColor: UIColor = .clear
     public var borderColor: UIColor = .doveGray
     public var button: ElementButtonStyle = DefaultEditBillingDetailsButtonStyle()
-    public var title: ElementStyle? = DefaultTitleLabelStyle(text: "billingAddressTitle".localized(forClass: CheckoutTheme.self))
-    public var hint: ElementStyle? = DefaultHintInputLabelStyle(text: "We need this information as an additional security measure to verify this card.")
+    public var title: ElementStyle? = DefaultTitleLabelStyle(text: Constants.LocalizationKeys.PaymentForm.BillingSummary.title)
+    public var hint: ElementStyle? = DefaultHintInputLabelStyle(text: Constants.LocalizationKeys.PaymentForm.BillingSummary.hint)
     public var summary: ElementStyle? = DefaultTitleLabelStyle()
     public var mandatory: ElementStyle?
     public var error: ElementErrorViewStyle?
