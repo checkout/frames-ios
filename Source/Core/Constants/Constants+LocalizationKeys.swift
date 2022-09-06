@@ -48,7 +48,7 @@ extension Constants {
             static let title = "billingAddressTitle".localized
             static let hint = "PaymentFormSummaryViewHintText".localized
             static let addBillingAddress = "AddBillingAddress".localized
-            static let editBillingAddress = "Edit billing address".localized
+            static let editBillingAddress = "EditBillingAddress".localized
           }
 
           struct PayButton {

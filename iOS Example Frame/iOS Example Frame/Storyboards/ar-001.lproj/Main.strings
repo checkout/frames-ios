@@ -1,15 +1,15 @@
 
 /* Class = "UILabel"; text = "Mobile SDK"; ObjectID = "60b-6U-Yk7"; */
-"60b-6U-Yk7.text" = "Mobile SDK";
+"60b-6U-Yk7.text" = "موبيل SDK";
 
 /* Class = "UILabel"; text = "Simulate APMs and Wallets"; ObjectID = "B9h-NX-cxF"; */
-"B9h-NX-cxF.text" = "Simulate APMs and Wallets";
+"B9h-NX-cxF.text" = "محاكاة APMs والمحافظ";
 
 /* Class = "UILabel"; text = "Matrix"; ObjectID = "BJ1-B6-dcP"; */
-"BJ1-B6-dcP.text" = "Matrix";
+"BJ1-B6-dcP.text" = "ماتريكس";
 
 /* Class = "UILabel"; text = "Default"; ObjectID = "EcO-sw-Yy8"; */
-"EcO-sw-Yy8.text" = "Default";
+"EcO-sw-Yy8.text" = "الأساسي";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "SDi-9v-CfX"; */
 "SDi-9v-CfX.normalTitle" = "Button";
@@ -18,22 +18,22 @@
 "Vy0-I7-Zjz.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "Payment experience"; ObjectID = "W61-6d-hBD"; */
-"W61-6d-hBD.text" = "Payment experience";
+"W61-6d-hBD.text" = "تجربة الدفع";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Xzo-v0-h5p"; */
 "Xzo-v0-h5p.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "ApplePay"; ObjectID = "cNs-hV-sBo"; */
-"cNs-hV-sBo.text" = "ApplePay";
+"cNs-hV-sBo.text" = "ابل باي";
 
 /* Class = "UILabel"; text = "Sample App"; ObjectID = "hwu-gf-4Vi"; */
-"hwu-gf-4Vi.text" = "Sample App";
+"hwu-gf-4Vi.text" = "نموذج التطبيق";
 
 /* Class = "UILabel"; text = "3DS"; ObjectID = "kKU-l9-0BN"; */
 "kKU-l9-0BN.text" = "3DS";
 
 /* Class = "UILabel"; text = "Payment data"; ObjectID = "lQh-49-SUH"; */
-"lQh-49-SUH.text" = "Payment data";
+"lQh-49-SUH.text" = "بيانات الدفع";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "m2u-mh-OW1"; */
 "m2u-mh-OW1.normalTitle" = "Button";
@@ -42,7 +42,7 @@
 "npI-wS-PHN.normalTitle" = "Button";
 
 /* Class = "UITextField"; placeholder = "URL"; ObjectID = "nvN-3Z-pAr"; */
-"nvN-3Z-pAr.placeholder" = "URL";
+"nvN-3Z-pAr.placeholder" = "اللينك";
 
 /* Class = "UILabel"; text = "Other"; ObjectID = "o0C-or-Xrv"; */
-"o0C-or-Xrv.text" = "Other";
+"o0C-or-Xrv.text" = "آخرى";
