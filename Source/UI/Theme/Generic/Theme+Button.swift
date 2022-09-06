@@ -61,7 +61,7 @@ public extension Theme {
     func buildNavigationButton(text: String) -> NavigationButtonStyle {
         NavigationButtonStyle(
             disabledTextColor: self.secondaryFontColor,
-            disabledTintColor: self.secondaryFontColor,
+            disabledTintColor: .clear,
             activeTintColor: self.primaryFontColor,
             cornerRadius: self.borderRadius,
             text: text,

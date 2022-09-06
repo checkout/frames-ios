@@ -59,7 +59,6 @@ class BillingFormSummaryView: UIView {
 
         titleLabel.update(with: style.title)
         hintLabel.update(with: style.hint)
-        summaryLabel.update(with: style.hint)
         buttonView.update(with: style.button)
         imageContainerView.update(with: style.button.image, tintColor: style.button.imageTintColor)
         errorView.update(style: style.error)

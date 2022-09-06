@@ -163,7 +163,6 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         let isEmptyText = textField.text?.isEmpty ?? true
         let isMandatoryField = type.style?.isMandatory ?? false
         let shouldRemoveText = isEmptyText && isMandatoryField
-        let hasErrorValue = errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.allSatisfy({ $0 })
 
         if !isEmptyText {
             textValueOfCellType[type.index] = textField.text
@@ -173,17 +172,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             textValueOfCellType[type.index] = nil
         }
 
-        guard !hasErrorValue else {
-            editDelegate?.didFinishEditingBillingForm(successfully: false)
-            return
-        }
-
-        let areAllFieldFulfilled = style.cells.first(where: {
-          guard let style = $0.style, style.isMandatory else { return false }
-          return textValueOfCellType[$0.index]?.isEmpty == true
-        }) == nil
-
-        editDelegate?.didFinishEditingBillingForm(successfully: areAllFieldFulfilled)
+        notifyContentChangeToDelegate()
     }
 
     private func validateTextOnEndEditing(textField: BillingFormTextField) {
@@ -196,6 +185,21 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         textValueOfCellType[type.index] = shouldSaveText ? textField.text : nil
 
         updatedRow = textField.tag
+    }
+
+    private func notifyContentChangeToDelegate() {
+        let hasErrorValue = errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.allSatisfy { $0 }
+        guard !hasErrorValue else {
+            editDelegate?.didFinishEditingBillingForm(successfully: false)
+            return
+        }
+
+        let areAllFieldFulfilled = style.cells.first {
+          guard let style = $0.style, style.isMandatory else { return false }
+          return textValueOfCellType[$0.index]?.isEmpty != false
+        } == nil
+
+        editDelegate?.didFinishEditingBillingForm(successfully: areAllFieldFulfilled)
     }
 }
 
@@ -246,6 +250,7 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
         let index = BillingFormCell.country(nil).index
         textValueOfCellType[index] = country.name
         updatedRow = countryRow
+        notifyContentChangeToDelegate()
     }
 
     func getViewForHeader(sender: UIViewController) -> UIView? {
