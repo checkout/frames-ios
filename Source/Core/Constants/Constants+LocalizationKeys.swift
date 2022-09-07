@@ -44,6 +44,13 @@ extension Constants {
               static let error = "SecurityCodeErrorMessage".localized
           }
 
+          struct BillingSummary {
+            static let title = "billingAddressTitle".localized
+            static let hint = "PaymentFormSummaryViewHintText".localized
+            static let addBillingAddress = "AddBillingAddress".localized
+            static let editBillingAddress = "EditBillingAddress".localized
+          }
+
           struct PayButton {
             static let title = "Pay".localized
           }
