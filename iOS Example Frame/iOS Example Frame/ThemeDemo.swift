@@ -9,6 +9,7 @@
 import UIKit
 import Frames
 
+// swiftlint:disable function_body_length
 struct ThemeDemo {
 
     static func buildCustom2Example() -> PaymentStyle {

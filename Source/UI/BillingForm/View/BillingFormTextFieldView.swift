@@ -46,7 +46,7 @@ class BillingFormTextFieldView: UIView {
     }()
 
     private(set) lazy var phoneNumberTextField: BillingFormTextField = {
-        let view: BillingFormTextField  = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self).disabledAutoresizingIntoConstraints()
+        let view: BillingFormTextField = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self).disabledAutoresizingIntoConstraints()
         view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         view.autocorrectionType = .no
         view.delegate = self

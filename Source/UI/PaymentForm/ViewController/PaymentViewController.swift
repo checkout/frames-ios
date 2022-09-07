@@ -85,7 +85,7 @@ final class PaymentViewController: UIViewController {
   }()
 
   private lazy var activityIndicator: UIActivityIndicatorView = {
-    let view =  UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+    let view = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
     let barButton = UIBarButtonItem(customView: view)
     navigationItem.setRightBarButton(barButton, animated: true)
     return view

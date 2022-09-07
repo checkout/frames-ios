@@ -14,7 +14,7 @@ public extension Theme {
         public var text: String
         public var textAlignment: NSTextAlignment = .natural
         public var font: UIFont
-        public var isHidden: Bool = false
+        public var isHidden = false
         public var backgroundColor: UIColor = .clear
         public var textColor: UIColor
     }

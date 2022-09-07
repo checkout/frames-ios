@@ -18,7 +18,7 @@ public extension Theme {
         public var tintColor: UIColor
         public var image: UIImage?
         public var height: Double = 30
-        public var isHidden: Bool = false
+        public var isHidden = false
         public var font: UIFont
     }
 

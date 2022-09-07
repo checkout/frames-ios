@@ -12,7 +12,7 @@ public extension Theme {
     /// Theme generated Billing Summary Style
     struct ThemeBillingSummary: BillingSummaryViewStyle {
         public var summary: ElementStyle?
-        public var isMandatory: Bool = true
+        public var isMandatory = true
         public var backgroundColor: UIColor = .clear
         public var borderColor: UIColor
         public var cornerRadius: CGFloat
@@ -27,7 +27,7 @@ public extension Theme {
 
     /// Theme generated Summary Content Style
     struct ThemeSummaryElement: ElementStyle {
-        public var isHidden: Bool = false
+        public var isHidden = false
         public var text: String = ""
         public var textAlignment: NSTextAlignment = .natural
         public var font: UIFont
@@ -37,7 +37,7 @@ public extension Theme {
 
     /// Theme generated Billing Modify Button Style
     struct ThemeBillingModifyButton: CellButtonStyle {
-        public var isMandatory: Bool = true
+        public var isMandatory = true
         public var button: ElementButtonStyle
         public var backgroundColor: UIColor = .clear
         public var title: ElementStyle?

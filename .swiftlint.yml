@@ -1,12 +1,67 @@
-included: # paths to include during linting. `--path` is ignored if present.
-  - Source
-  - iOS Example
-  - iOS Example Frame
-  - iOS Example Frame Carthage
-  - iOS Example Frame SPM
-excluded: # paths to ignore during linting. Takes precedence over `included`.
-  - Carthage
-  - Pods
+included:
+    - Source
+    - iOS Example Frame
+    - iOS Example Frame Carthage
+    - iOS Example Frame SPM
+    
+excluded:
+    - iOS Example Frame/Pods
+     
+opt_in_rules:
+    - array_init
+    - attributes
+    - closure_end_indentation
+    - closure_spacing
+    - collection_alignment
+    - colon # promote to error
+    - convenience_type
+    - discouraged_object_literal
+    - empty_collection_literal
+    - empty_count
+    - empty_string
+    - enum_case_associated_values_count
+    - fatal_error_message
+    - first_where
+    - force_unwrapping
+    - implicitly_unwrapped_optional
+    - last_where
+    - legacy_random
+    - literal_expression_end_indentation
+    - multiline_arguments
+    - multiline_function_chains
+    - multiline_literal_brackets
+    - multiline_parameters
+    - multiline_parameters_brackets
+    - operator_usage_whitespace
+    - overridden_super_call
+    - pattern_matching_keywords
+    - prefer_self_type_over_type_of_self
+    - redundant_nil_coalescing
+    - redundant_type_annotation
+    - strict_fileprivate
+    - toggle_bool
+    - trailing_closure
+    - unneeded_parentheses_in_closure_argument
+    - unused_import
+    - yoda_condition
+    
+disabled_rules:
+    - discarded_notification_center_observer
+    - notification_center_detachment
+    - orphaned_doc_comment
+    - unused_capture_list
+    - switch_case_alignment
+    - multiline_arguments
+    - multiline_parameters_brackets
+    - multiline_literal_brackets
+    - class_delegate_protocol
+    # Enable in separate PR
+    - line_length
+    - force_cast
+    - identifier_name
+    - force_try
+    - shorthand_operator
+
 identifier_name:
   excluded:
     - id

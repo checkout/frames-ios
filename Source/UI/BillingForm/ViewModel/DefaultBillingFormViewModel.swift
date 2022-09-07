@@ -182,22 +182,22 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
         let shouldSaveText = !(textField.text?.isEmpty ?? true)
 
-        textValueOfCellType[type.index] =  shouldSaveText ? textField.text : nil
+        textValueOfCellType[type.index] = shouldSaveText ? textField.text : nil
 
         updatedRow = textField.tag
     }
 
     private func notifyContentChangeToDelegate() {
-        let hasErrorValue = errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.allSatisfy({$0})
+        let hasErrorValue = errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.allSatisfy { $0 }
         guard !hasErrorValue else {
             editDelegate?.didFinishEditingBillingForm(successfully: false)
             return
         }
 
-        let areAllFieldFulfilled = style.cells.first(where: {
+        let areAllFieldFulfilled = style.cells.first {
           guard let style = $0.style, style.isMandatory else { return false }
           return textValueOfCellType[$0.index]?.isEmpty != false
-        }) == nil
+        } == nil
 
         editDelegate?.didFinishEditingBillingForm(successfully: areAllFieldFulfilled)
     }
@@ -273,9 +273,9 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
 
         let name = textValueOfCellType[BillingFormCell.fullName(nil).index]
 
-        let data: BillingForm = BillingForm(name: name,
-                                            address: address,
-                                            phone: phone)
+        let data = BillingForm(name: name,
+                               address: address,
+                               phone: phone)
 
         delegate?.onTapDoneButton(data: data)
 
