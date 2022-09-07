@@ -48,12 +48,14 @@ class BillingFormTextFieldViewTests: XCTestCase {
         
         XCTAssertNotNil(view.phoneNumberTextField)
         XCTAssertEqual(view.phoneNumberTextField?.isHidden, false)
-        XCTAssertFalse(view.textField.isHidden)
+        XCTAssertTrue(view.textField.isHidden)
+        XCTAssertEqual(view.textFieldContainer.subviews.count, 2)
         
         view.refreshLayoutComponents()
         XCTAssertNotNil(view.phoneNumberTextField)
         XCTAssertEqual(view.phoneNumberTextField?.isHidden, false)
-        XCTAssertFalse(view.textField.isHidden)
+        XCTAssertTrue(view.textField.isHidden)
+        XCTAssertEqual(view.textFieldContainer.subviews.count, 2)
     }
 
     func testNotPhoneNumberInputStyle() {
@@ -63,10 +65,12 @@ class BillingFormTextFieldViewTests: XCTestCase {
         
         XCTAssertNil(view.phoneNumberTextField)
         XCTAssertFalse(view.textField.isHidden)
+        XCTAssertEqual(view.textFieldContainer.subviews.count, 1)
         
         view.refreshLayoutComponents()
         XCTAssertNil(view.phoneNumberTextField)
         XCTAssertFalse(view.textField.isHidden)
+        XCTAssertEqual(view.textFieldContainer.subviews.count, 1)
     }
     
     func testChangingFromTypeToType() {
@@ -76,14 +80,17 @@ class BillingFormTextFieldViewTests: XCTestCase {
         
         XCTAssertNil(view.phoneNumberTextField)
         XCTAssertFalse(view.textField.isHidden)
+        XCTAssertEqual(view.textFieldContainer.subviews.count, 1)
         
         view.update(style: style, type: .phoneNumber(nil), tag: 0)
         XCTAssertNotNil(view.phoneNumberTextField)
         XCTAssertEqual(view.phoneNumberTextField?.isHidden, false)
-        XCTAssertFalse(view.textField.isHidden)
+        XCTAssertTrue(view.textField.isHidden)
+        XCTAssertEqual(view.textFieldContainer.subviews.count, 2)
         
         view.update(style: style, type: .state(nil), tag: 0)
         XCTAssertNil(view.phoneNumberTextField)
         XCTAssertFalse(view.textField.isHidden)
+        XCTAssertEqual(view.textFieldContainer.subviews.count, 1)
     }
 }

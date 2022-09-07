@@ -84,7 +84,9 @@ class BillingFormTextFieldView: UIView {
     }
 
     func refreshLayoutComponents() {
-        if isPhoneNumberType() {
+        let handlesPhoneNumber = isPhoneNumberType()
+        textField.isHidden = handlesPhoneNumber
+        if handlesPhoneNumber {
             addPhoneNumberTextField()
         } else {
             phoneNumberTextField?.removeFromSuperview()
@@ -149,7 +151,7 @@ extension BillingFormTextFieldView {
         setupMandatoryLabel()
         setupHintLabel()
         setupTextFieldContainer()
-        setupTextField()
+        addTextFieldToView(textField)
         setupErrorView()
     }
 
@@ -192,7 +194,7 @@ extension BillingFormTextFieldView {
         ])
     }
 
-    private func setupTextField() {
+    private func addTextFieldToView(_ textField: UITextField) {
         let heightStyle = style?.textfield.height ?? Constants.Style.BillingForm.InputTextField.height.rawValue
         textFieldContainer.addSubview(textField)
         NSLayoutConstraint.activate([
@@ -207,16 +209,14 @@ extension BillingFormTextFieldView {
     }
 
     private func addPhoneNumberTextField() {
+        guard phoneNumberTextField == nil else { return }
         let phoneNumberTextField: BillingFormTextField  = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self).disabledAutoresizingIntoConstraints()
         phoneNumberTextField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         phoneNumberTextField.autocorrectionType = .no
         phoneNumberTextField.delegate = self
         phoneNumberTextField.backgroundColor = .clear
         self.phoneNumberTextField = phoneNumberTextField
-
-        // Overlap phone number textfield on standard textfield
-        textField.addSubview(phoneNumberTextField)
-        phoneNumberTextField.setupConstraintEqualTo(view: textField)
+        addTextFieldToView(phoneNumberTextField)
     }
 
     private func setupErrorView() {
