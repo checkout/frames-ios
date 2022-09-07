@@ -137,7 +137,7 @@ final class PaymentViewController: UIViewController {
     customizeNavigationBarAppearance(color: backgroundColor, titleColor: titleColor)
 
     navigationController?.navigationBar.tintColor = viewModel.paymentFormStyle?.headerView.headerLabel?.textColor
-    navigationItem.leftBarButtonItem = UIBarButtonItem(image: Constants.Bundle.Images.leftArrow.image, style: .plain, target: self, action: #selector(popViewController))
+    navigationItem.leftBarButtonItem = UIBarButtonItem(image: Constants.Bundle.Images.leftArrow.image?.imageFlippedForRightToLeftLayoutDirection(), style: .plain, target: self, action: #selector(popViewController))
   }
 
   @objc private func popViewController() {
