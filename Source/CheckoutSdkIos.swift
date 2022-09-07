@@ -34,7 +34,10 @@ func addKeyboardToolbarNavigation(textFields: [UITextField]) {
         } else {
             nextButton.target = textFields[index + 1]
             nextButton.action = #selector(UITextField.becomeFirstResponder)
-            let downButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: textField, action: #selector(UITextField.resignFirstResponder))
+            let downButton = UIBarButtonItem(title: "Done",
+                                             style: UIBarButtonItem.Style.done,
+                                             target: textField,
+                                             action: #selector(UITextField.resignFirstResponder))
             items.append(downButton)
         }
         toolbar.items = items

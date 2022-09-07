@@ -90,6 +90,7 @@ extension ThemeDemo {
                             billingFormStyle: billingFormStyle)
     }
 
+    // swiftlint:disable:next function_body_length
     static func buildCompleteUITest() -> PaymentStyle {
         var theme = Theme(primaryFontColor: UIColor(red: 0 / 255, green: 204 / 255, blue: 45 / 255, alpha: 1),
                           secondaryFontColor: UIColor(red: 177 / 255, green: 177 / 255, blue: 177 / 255, alpha: 1),

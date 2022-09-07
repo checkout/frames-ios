@@ -23,7 +23,8 @@ enum ThemeDemo {
         theme.textInputBorderRadius = 4
         theme.borderRadius = 4
 
-        var billingSummary = theme.buildBillingSummary(buttonText: "Change billing details", titleText: "Billing details")
+        var billingSummary = theme.buildBillingSummary(buttonText: "Change billing details",
+                                                       titleText: "Billing details")
         billingSummary.borderColor = .white
         billingSummary.borderWidth = 1
 

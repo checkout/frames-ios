@@ -55,12 +55,10 @@ disabled_rules:
     - multiline_literal_brackets
     - class_delegate_protocol
     - nesting
-    # Enable in separate PR
-    - line_length
-    - force_cast
-    - identifier_name
-    - force_try
-    - shorthand_operator
+
+line_length:
+     warning: 160
+     ignores_urls: true
 
 identifier_name:
   excluded:

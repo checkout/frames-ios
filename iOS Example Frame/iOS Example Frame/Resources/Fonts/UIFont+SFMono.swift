@@ -35,6 +35,7 @@ extension UIFont {
     }
 
     convenience init (sfMono: SFMono = .regular, size: CGFloat) {
+        // swiftlint:disable:next force_unwrapping
         self.init(name: sfMono.fontName, size: size)!
     }
 

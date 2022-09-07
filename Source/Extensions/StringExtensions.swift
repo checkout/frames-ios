@@ -10,6 +10,7 @@ extension String {
         let baseBundle = Foundation.Bundle(for: forClass)
 #endif
         let path = baseBundle.path(forResource: "Frames", ofType: "bundle")
+        // swiftlint:disable:next force_unwrapping
         return path == nil ? baseBundle : Foundation.Bundle(path: path!)!
     }
 

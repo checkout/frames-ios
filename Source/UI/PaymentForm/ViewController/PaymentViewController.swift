@@ -137,7 +137,11 @@ final class PaymentViewController: UIViewController {
     customizeNavigationBarAppearance(color: backgroundColor, titleColor: titleColor)
 
     navigationController?.navigationBar.tintColor = viewModel.paymentFormStyle?.headerView.headerLabel?.textColor
-    navigationItem.leftBarButtonItem = UIBarButtonItem(image: Constants.Bundle.Images.leftArrow.image?.imageFlippedForRightToLeftLayoutDirection(), style: .plain, target: self, action: #selector(popViewController))
+      navigationItem.leftBarButtonItem = UIBarButtonItem(
+        image: Constants.Bundle.Images.leftArrow.image?.imageFlippedForRightToLeftLayoutDirection(),
+        style: .plain,
+        target: self,
+        action: #selector(popViewController))
   }
 
   @objc private func popViewController() {
@@ -145,8 +149,9 @@ final class PaymentViewController: UIViewController {
   }
 
   @objc private func keyboardWillShow(notification: Notification) {
-    guard let userInfo = notification.userInfo else { return }
-    var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+    guard let userInfo = notification.userInfo,
+      let keyboardFrameValue = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue else { return }
+    var keyboardFrame = keyboardFrameValue.cgRectValue
     keyboardFrame = view.convert(keyboardFrame, from: nil)
     var contentInset: UIEdgeInsets = scrollView.contentInset
     contentInset.bottom = keyboardFrame.size.height + Constants.Padding.l.rawValue

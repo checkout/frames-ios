@@ -17,10 +17,8 @@ enum CardUtils {
   static func format(cardNumber: String, scheme: Card.Scheme) -> String {
     var cardNumber = cardNumber
 
-    for gap in scheme.cardGaps.sorted(by: >) {
-      if gap < cardNumber.count {
-        cardNumber.insert(" ", at: cardNumber.index(cardNumber.startIndex, offsetBy: gap))
-      }
+    for gap in scheme.cardGaps.sorted(by: >) where gap < cardNumber.count {
+      cardNumber.insert(" ", at: cardNumber.index(cardNumber.startIndex, offsetBy: gap))
     }
 
     return cardNumber
