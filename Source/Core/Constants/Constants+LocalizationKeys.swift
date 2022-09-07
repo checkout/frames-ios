@@ -39,14 +39,21 @@ extension Constants {
             }
 
             enum SecurityCode {
-              static let title = "SecurityCode".localized
-              static let hint = "SecurityCodeHint".localized
-              static let error = "SecurityCodeErrorMessage".localized
-          }
+                static let title = "SecurityCode".localized
+                static let hint = "SecurityCodeHint".localized
+                static let error = "SecurityCodeErrorMessage".localized
+            }
+
+            enum BillingSummary {
+                static let title = "billingAddressTitle".localized
+                static let hint = "PaymentFormSummaryViewHintText".localized
+                static let addBillingAddress = "AddBillingAddress".localized
+                static let editBillingAddress = "EditBillingAddress".localized
+            }
 
             enum PayButton {
-            static let title = "Pay".localized
-          }
+                static let title = "Pay".localized
+            }
         }
 
         enum BillingForm {

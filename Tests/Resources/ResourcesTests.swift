@@ -39,7 +39,7 @@ final class ResourcesTests: XCTestCase {
             return
         }
 
-        XCTAssertEqual(framesResourceBundle.localizations.count, 6)
+        XCTAssertEqual(framesResourceBundle.localizations.count, 7)
         XCTAssertNotNil(UIImage(named: "icon-amex", in: framesResourceBundle, compatibleWith: nil))
     }
 }
