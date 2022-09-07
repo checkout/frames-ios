@@ -12,7 +12,7 @@ final class ResourcesTests: XCTestCase {
 
     func test_findExpectedResources() {
 
-        let framesTopLevelBundle = Bundle(for: CardUtils.self)
+        let framesTopLevelBundle = Bundle(for: AddressLine1Validator.self)
 
         #if SWIFT_PACKAGE
         let framesResourceBundlePath = "Frames_Frames"
@@ -39,7 +39,7 @@ final class ResourcesTests: XCTestCase {
             return
         }
 
-        XCTAssertEqual(framesResourceBundle.localizations.count, 6)
+        XCTAssertEqual(framesResourceBundle.localizations.count, 7)
         XCTAssertNotNil(UIImage(named: "icon-amex", in: framesResourceBundle, compatibleWith: nil))
     }
 }

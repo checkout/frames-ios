@@ -210,7 +210,7 @@ extension BillingFormTextFieldView {
 
     private func addPhoneNumberTextField() {
         guard phoneNumberTextField == nil else { return }
-        let phoneNumberTextField: BillingFormTextField  = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self).disabledAutoresizingIntoConstraints()
+        let phoneNumberTextField: BillingFormTextField = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self).disabledAutoresizingIntoConstraints()
         phoneNumberTextField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         phoneNumberTextField.autocorrectionType = .no
         phoneNumberTextField.delegate = self

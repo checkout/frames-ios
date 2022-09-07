@@ -1,9 +1,10 @@
 import UIKit
 
+// TODO: This file should have been removed
 /// Class used to customize the views.
 public final class CheckoutTheme {
     /// Background color of the views
-    public static var primaryBackgroundColor: UIColor = UIColor.groupTableViewBackground
+    public static var primaryBackgroundColor = UIColor.groupTableViewBackground
     public static var secondaryBackgroundColor: UIColor = .white
     /// Background used for the Table View Cell in country selection table
     public static var tertiaryBackgroundColor: UIColor = .white
@@ -16,7 +17,7 @@ public final class CheckoutTheme {
     /// Chevron color
     public static var chevronColor: UIColor = .black
     /// Font
-    public static var font: UIFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+    public static var font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
     /// Bar style, used for the search bar
-    public static var barStyle: UIBarStyle = UIBarStyle.default
+    public static var barStyle = UIBarStyle.default
 }

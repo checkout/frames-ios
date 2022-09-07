@@ -1,7 +1,7 @@
 import UIKit
 
 public struct DefaultBillingFormStateCellStyle: CellTextFieldStyle {
-    public var isMandatory: Bool = false
+    public var isMandatory = false
     public var backgroundColor: UIColor = .clear
     public var title: ElementStyle? = DefaultTitleLabelStyle(text: Constants.LocalizationKeys.BillingForm.State.text)
     public var hint: ElementStyle?

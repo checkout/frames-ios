@@ -9,7 +9,8 @@
 import UIKit
 import Frames
 
-struct ThemeDemo {
+// swiftlint:disable function_body_length
+enum ThemeDemo {
 
     static func buildCustom2Example() -> PaymentStyle {
         var theme = Theme(primaryFontColor: UIColor(red: 0 / 255, green: 204 / 255, blue: 45 / 255, alpha: 1),
@@ -22,7 +23,8 @@ struct ThemeDemo {
         theme.textInputBorderRadius = 4
         theme.borderRadius = 4
 
-        var billingSummary = theme.buildBillingSummary(buttonText: "Change billing details", titleText: "Billing details")
+        var billingSummary = theme.buildBillingSummary(buttonText: "Change billing details",
+                                                       titleText: "Billing details")
         billingSummary.borderColor = .white
         billingSummary.borderWidth = 1
 

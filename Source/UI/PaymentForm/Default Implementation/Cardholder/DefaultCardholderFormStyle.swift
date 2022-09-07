@@ -8,7 +8,7 @@
 import UIKit
 
 public struct DefaultCardholderFormStyle: CellTextFieldStyle {
-    public var isMandatory: Bool = false
+    public var isMandatory = false
     public var backgroundColor: UIColor = .clear
     public var title: ElementStyle? = DefaultTitleLabelStyle(text: Constants.LocalizationKeys.PaymentForm.Cardholder.title)
     public var hint: ElementStyle?

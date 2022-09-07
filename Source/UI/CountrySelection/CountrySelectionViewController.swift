@@ -11,8 +11,9 @@ public final class CountrySelectionViewController: UIViewController,
 
     var countries: [(String, String)] {
         let locale = Locale.current
-        let countries = Locale.isoRegionCodes.map {
-            return (locale.localizedString(forRegionCode: $0)!, $0)
+        let countries: [(String, String)] = Locale.isoRegionCodes.compactMap {
+            guard let countryName = locale.localizedString(forRegionCode: $0) else { return nil }
+            return (countryName, $0)
         }
         return countries.sorted { $0.0 < $1.0 }
     }
@@ -36,7 +37,7 @@ public final class CountrySelectionViewController: UIViewController,
         customizeNavigationBarAppearance(color: .white, titleColor: .black)
         setup()
         view.backgroundColor = CheckoutTheme.primaryBackgroundColor
-        navigationItem.title = "countryRegion".localized(forClass: CountrySelectionViewController.self)
+        navigationItem.title = Constants.LocalizationKeys.BillingForm.Country.text
         // table view
         filteredCountries = countries
         tableView.delegate = self

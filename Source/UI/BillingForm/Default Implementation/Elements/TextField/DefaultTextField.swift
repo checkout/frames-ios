@@ -2,8 +2,8 @@ import UIKit
 
 public struct DefaultTextField: ElementTextFieldStyle {
     public var textAlignment: NSTextAlignment = .natural
-    public var isHidden: Bool = false
-    public var isSupportingNumericKeyboard: Bool = false
+    public var isHidden = false
+    public var isSupportingNumericKeyboard = false
     public var text: String = ""
     public var placeholder: String?
     public var textColor: UIColor = .codGray
@@ -16,5 +16,5 @@ public struct DefaultTextField: ElementTextFieldStyle {
     public var cornerRadius: CGFloat = 10.0
     public var width: Double = Constants.Style.BillingForm.InputTextField.width.rawValue
     public var height: Double = Constants.Style.BillingForm.InputTextField.height.rawValue
-    public var font: UIFont = UIFont.systemFont(ofSize: Constants.Style.BillingForm.InputTextField.fontSize.rawValue)
+    public var font = UIFont.systemFont(ofSize: Constants.Style.BillingForm.InputTextField.fontSize.rawValue)
 }
