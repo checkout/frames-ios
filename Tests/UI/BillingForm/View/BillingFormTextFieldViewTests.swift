@@ -40,5 +40,50 @@ class BillingFormTextFieldViewTests: XCTestCase {
         XCTAssertEqual(view.textField.textColor, style.textfield.textColor)
         XCTAssertEqual(view.textField.tintColor, style.textfield.tintColor)
     }
+    
+    func testPhoneNumberInputStyle() {
+        style = DefaultBillingFormFullNameCellStyle()
+        view = BillingFormTextFieldView()
+        view.update(style: style, type: .phoneNumber(nil), tag: 0)
+        
+        XCTAssertNotNil(view.phoneNumberTextField)
+        XCTAssertEqual(view.phoneNumberTextField?.isHidden, false)
+        XCTAssertFalse(view.textField.isHidden)
+        
+        view.refreshLayoutComponents()
+        XCTAssertNotNil(view.phoneNumberTextField)
+        XCTAssertEqual(view.phoneNumberTextField?.isHidden, false)
+        XCTAssertFalse(view.textField.isHidden)
+    }
 
+    func testNotPhoneNumberInputStyle() {
+        style = DefaultBillingFormFullNameCellStyle()
+        view = BillingFormTextFieldView()
+        view.update(style: style, type: .city(nil), tag: 0)
+        
+        XCTAssertNil(view.phoneNumberTextField)
+        XCTAssertFalse(view.textField.isHidden)
+        
+        view.refreshLayoutComponents()
+        XCTAssertNil(view.phoneNumberTextField)
+        XCTAssertFalse(view.textField.isHidden)
+    }
+    
+    func testChangingFromTypeToType() {
+        style = DefaultBillingFormFullNameCellStyle()
+        view = BillingFormTextFieldView()
+        view.update(style: style, type: .city(nil), tag: 0)
+        
+        XCTAssertNil(view.phoneNumberTextField)
+        XCTAssertFalse(view.textField.isHidden)
+        
+        view.update(style: style, type: .phoneNumber(nil), tag: 0)
+        XCTAssertNotNil(view.phoneNumberTextField)
+        XCTAssertEqual(view.phoneNumberTextField?.isHidden, false)
+        XCTAssertFalse(view.textField.isHidden)
+        
+        view.update(style: style, type: .state(nil), tag: 0)
+        XCTAssertNil(view.phoneNumberTextField)
+        XCTAssertFalse(view.textField.isHidden)
+    }
 }
