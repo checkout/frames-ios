@@ -10,7 +10,7 @@ import Frames
 import Checkout
 import UIKit
 
-struct Factory {
+enum Factory {
   static let successURL = URL(string: "https://httpstat.us/200")!
   static let failureURL = URL(string: "https://httpstat.us/403")!
   static let apiKey = "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73"

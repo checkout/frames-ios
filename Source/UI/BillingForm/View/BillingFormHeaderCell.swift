@@ -117,10 +117,8 @@ extension BillingFormHeaderCell: ButtonViewDelegate {
         switch sender {
             case doneButton:
                 delegate?.doneButtonIsPressed()
-                break
             case cancelButton:
                 delegate?.cancelButtonIsPressed()
-                break
             default: break
         }
     }

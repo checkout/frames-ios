@@ -7,6 +7,7 @@
 
 import UIKit
 
+// swiftlint:disable function_parameter_count
 public extension Theme {
 
     /// Theme generated payment form

@@ -42,7 +42,7 @@ final class SecurityCodeViewModel {
         }
 
         guard let cleanedInput = newInput?.filter({ !$0.isWhitespace }),
-              (Int(cleanedInput) ?? 0 > 0) || cleanedInput == "",
+              (Int(cleanedInput) ?? 0 > 0) || cleanedInput.isEmpty,
               cleanedInput.count <= inputMaxLength else {
             return
         }

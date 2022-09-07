@@ -10,6 +10,7 @@ protocol PaymentViewControllerDelegate: AnyObject {
   func payButtonIsPressed()
 }
 
+// swiftlint:disable file_length
 final class PaymentViewController: UIViewController {
 
   // MARK: - Variables

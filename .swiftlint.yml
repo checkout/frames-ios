@@ -9,7 +9,6 @@ excluded:
      
 opt_in_rules:
     - array_init
-    - attributes
     - closure_end_indentation
     - closure_spacing
     - collection_alignment
@@ -55,6 +54,7 @@ disabled_rules:
     - multiline_parameters_brackets
     - multiline_literal_brackets
     - class_delegate_protocol
+    - nesting
     # Enable in separate PR
     - line_length
     - force_cast

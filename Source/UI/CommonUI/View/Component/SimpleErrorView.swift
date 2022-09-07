@@ -53,7 +53,7 @@ extension SimpleErrorView {
         addSubview(imageContainerView)
         NSLayoutConstraint.activate([
           imageContainerView.topAnchor.constraint(equalTo: topAnchor),
-            imageContainerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+          imageContainerView.bottomAnchor.constraint(equalTo: bottomAnchor),
           imageContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
           imageContainerView.trailingAnchor.constraint(equalTo: headerLabel.leadingAnchor,
                                             constant: -Constants.Padding.s.rawValue),
