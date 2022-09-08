@@ -2,7 +2,7 @@ import Checkout
 import UIKit
 import PhoneNumberKit
 
-protocol BillingFormPhoneNumberTextDelegate {
+protocol BillingFormPhoneNumberTextDelegate: AnyObject {
     func phoneNumberIsUpdated(number: String, tag: Int)
 }
 
@@ -11,7 +11,7 @@ protocol BillingFormPhoneNumberTextDelegate {
 final class BillingFormPhoneNumberText: PhoneNumberTextField, BillingFormTextField {
 
     var type: BillingFormCell?
-    var phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate?
+    weak var phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate?
 
     init(type: BillingFormCell?, tag: Int, phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate) {
         super.init(frame: .zero)
