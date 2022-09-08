@@ -45,14 +45,7 @@ class BillingFormTextFieldView: UIView {
         return  view
     }()
 
-    private(set) lazy var phoneNumberTextField: BillingFormTextField = {
-        let view: BillingFormTextField = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self).disabledAutoresizingIntoConstraints()
-        view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
-        view.autocorrectionType = .no
-        view.delegate = self
-        view.backgroundColor = .clear
-        return  view
-    }()
+    private(set) var phoneNumberTextField: BillingFormTextField?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,6 +72,7 @@ class BillingFormTextFieldView: UIView {
         self.style = style
         backgroundColor = style.backgroundColor
         mandatoryLabel.isHidden = style.isMandatory
+        refreshLayoutComponents()
 
         headerLabel.update(with: style.title)
         mandatoryLabel.update(with: style.mandatory)
@@ -87,6 +81,17 @@ class BillingFormTextFieldView: UIView {
         updateTextFieldContainer(style: style)
         updateTextField(style: style, textFieldValue: textFieldValue, tag: tag)
         updateErrorView(style: style)
+    }
+
+    func refreshLayoutComponents() {
+        let handlesPhoneNumber = isPhoneNumberType()
+        textField.isHidden = handlesPhoneNumber
+        if handlesPhoneNumber {
+            addPhoneNumberTextField()
+        } else {
+            phoneNumberTextField?.removeFromSuperview()
+            phoneNumberTextField = nil
+        }
     }
 
     private func updateTextFieldContainer(style: CellTextFieldStyle) {
@@ -115,9 +120,7 @@ class BillingFormTextFieldView: UIView {
         textField?.tintColor = style.textfield.tintColor
     }
 
-    func updateTextField(style: CellTextFieldStyle, textFieldValue: String?, tag: Int) {
-        phoneNumberTextField.isHidden = !isPhoneNumberType()
-        textField.isHidden = isPhoneNumberType()
+    private func updateTextField(style: CellTextFieldStyle, textFieldValue: String?, tag: Int) {
         if isPhoneNumberType() {
             update(textField: phoneNumberTextField, style: style, textFieldValue: textFieldValue, tag: tag)
             return
@@ -148,7 +151,7 @@ extension BillingFormTextFieldView {
         setupMandatoryLabel()
         setupHintLabel()
         setupTextFieldContainer()
-        setupTextField()
+        addTextFieldToView(textField)
         setupErrorView()
     }
 
@@ -191,24 +194,29 @@ extension BillingFormTextFieldView {
         ])
     }
 
-    private func setupTextField() {
-        setup(textField: textField)
-        setup(textField: phoneNumberTextField)
+    private func addTextFieldToView(_ textField: UITextField) {
+        let heightStyle = style?.textfield.height ?? Constants.Style.BillingForm.InputTextField.height.rawValue
+        textFieldContainer.addSubview(textField)
+        NSLayoutConstraint.activate([
+            textField.topAnchor.constraint(equalTo: textFieldContainer.topAnchor),
+            textField.leadingAnchor.constraint(equalTo: textFieldContainer.leadingAnchor,
+                                               constant: Constants.Padding.l.rawValue),
+            textField.trailingAnchor.constraint(equalTo: textFieldContainer.trailingAnchor,
+                                                constant: -Constants.Padding.l.rawValue),
+            textField.bottomAnchor.constraint(equalTo: textFieldContainer.bottomAnchor),
+            textField.heightAnchor.constraint(equalToConstant: heightStyle)
+        ])
+    }
 
-        func setup(textField: BillingFormTextField?) {
-            guard let textField = textField else { return }
-            let heightStyle = style?.textfield.height ?? Constants.Style.BillingForm.InputTextField.height.rawValue
-            textFieldContainer.addSubview(textField)
-            NSLayoutConstraint.activate([
-                textField.topAnchor.constraint(equalTo: textFieldContainer.topAnchor),
-                textField.leadingAnchor.constraint(equalTo: textFieldContainer.leadingAnchor,
-                                                   constant: Constants.Padding.l.rawValue),
-                textField.trailingAnchor.constraint(equalTo: textFieldContainer.trailingAnchor,
-                                                    constant: -Constants.Padding.l.rawValue),
-                textField.bottomAnchor.constraint(equalTo: textFieldContainer.bottomAnchor),
-                textField.heightAnchor.constraint(equalToConstant: heightStyle)
-            ])
-        }
+    private func addPhoneNumberTextField() {
+        guard phoneNumberTextField == nil else { return }
+        let phoneNumberTextField: BillingFormTextField = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self).disabledAutoresizingIntoConstraints()
+        phoneNumberTextField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        phoneNumberTextField.autocorrectionType = .no
+        phoneNumberTextField.delegate = self
+        phoneNumberTextField.backgroundColor = .clear
+        self.phoneNumberTextField = phoneNumberTextField
+        addTextFieldToView(phoneNumberTextField)
     }
 
     private func setupErrorView() {
