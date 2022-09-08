@@ -28,6 +28,7 @@ public enum FramesFactory {
         guard let style = style, !style.cells.isEmpty else { return nil }
         let viewModel = DefaultBillingFormViewModel(style: style, data: data, delegate: delegate)
         let viewController = BillingFormViewController(viewModel: viewModel)
+        viewModel.editDelegate = viewController
 
         if #available(iOS 13.0, *) {
             viewController.isModalInPresentation = true

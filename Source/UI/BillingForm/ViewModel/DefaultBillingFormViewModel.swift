@@ -47,12 +47,9 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         delegate?.onBillingScreenShown()
     }
 
-    func getHeaderView(delegate: BillingFormHeaderCellDelegate?) -> UIView {
-        let isDoneButtonEnabled = textValueOfCellType.values.count == self.style.cells.count
-        style.header.doneButton.isEnabled = isDoneButtonEnabled
-        let view = BillingFormHeaderCell(style: style.header, delegate: delegate)
+    func getHeaderView() -> UIView {
+        let view = BillingFormHeaderCell(style: style.header)
         view.update(style: style.header)
-        editDelegate = view
         return view
     }
 
@@ -253,8 +250,8 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
         notifyContentChangeToDelegate()
     }
 
-    func getViewForHeader(sender: UIViewController) -> UIView? {
-        return getHeaderView(delegate: sender as? BillingFormHeaderCellDelegate)
+    func getViewForHeader() -> UIView? {
+        getHeaderView()
     }
 
     func doneButtonIsPressed(sender: UIViewController) {

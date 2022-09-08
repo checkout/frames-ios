@@ -16,7 +16,7 @@ protocol BillingFormTextFieldDelegate: AnyObject {
 protocol BillingFormViewControllerDelegate: AnyObject {
     func doneButtonIsPressed(sender: UIViewController)
     func cancelButtonIsPressed(sender: UIViewController)
-    func getViewForHeader(sender: UIViewController) -> UIView?
+    func getViewForHeader() -> UIView?
     func update(country: Country)
     func phoneNumberIsUpdated(number: String, tag: Int)
 }
@@ -38,17 +38,37 @@ final class BillingFormViewController: UIViewController {
     private var notificationCenter = NotificationCenter.default
 
     // MARK: - UI elements
+    private(set) lazy var cancelItem: UIBarButtonItem = {
+        let item = UIBarButtonItem(title: viewModel.style.header.cancelButton.text,
+                         style: .plain,
+                         target: self,
+                         action: #selector(cancel))
+        item.tintColor = viewModel.style.header.cancelButton.textColor
+        return item
+    }()
 
-    private lazy var headerView: UIView? = {
-        delegate?.getViewForHeader(sender: self)?.disabledAutoresizingIntoConstraints() ?? UIView()
+    private(set) lazy var doneItem: UIBarButtonItem = {
+        let item = UIBarButtonItem(title: viewModel.style.header.doneButton.text,
+                         style: .plain,
+                         target: self,
+                         action: #selector(done))
+        item.isEnabled = viewModel.data != nil
+        item.tintColor = viewModel.data == nil ? viewModel.style.header.doneButton.disabledTextColor :
+        viewModel.style.header.doneButton.textColor
+       return item
+    }()
+
+    private lazy var headerView: UIView = {
+        delegate?.getViewForHeader()?.disabledAutoresizingIntoConstraints() ?? UIView()
     }()
 
     private(set) lazy var tableView: UITableView? = {
-        let view = UITableView().disabledAutoresizingIntoConstraints()
+        let view = UITableView(frame: .zero, style: .grouped).disabledAutoresizingIntoConstraints()
         view.dataSource = self
         view.delegate = self
         view.rowHeight = UITableView.automaticDimension
         view.estimatedRowHeight = 300
+        view.sectionHeaderHeight = UITableView.automaticDimension
         view.separatorStyle = .none
         view.showsVerticalScrollIndicator = false
         view.showsHorizontalScrollIndicator = false
@@ -64,13 +84,15 @@ final class BillingFormViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
+
         view.backgroundColor = viewModel.style.mainBackground
         setupViewsInOrder()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(false, animated: false)
         setUpKeyboard()
         viewModel.viewControllerWillAppear()
     }
@@ -102,7 +124,6 @@ final class BillingFormViewController: UIViewController {
         delegate = viewModel as? BillingFormViewControllerDelegate
         tableViewDelegate = viewModel as? BillingFormTableViewDelegate
         textFieldDelegate = viewModel as? BillingFormTextFieldDelegate
-
         viewModel.updateRow = { [weak self] in
             DispatchQueue.main.async {
                 self?.refreshCell(at: self?.viewModel.updatedRow)
@@ -135,39 +156,40 @@ final class BillingFormViewController: UIViewController {
                                       keyboardWillShow: #selector(keyboardWillShow),
                                       keyboardWillHide: #selector(keyboardWillHide))
     }
+
+    @objc private func cancel() {
+        delegate?.cancelButtonIsPressed(sender: self)
+    }
+
+    @objc private func done() {
+        delegate?.doneButtonIsPressed(sender: self)
+    }
 }
 
 // MARK: - Views Layout Constraint
 
 extension BillingFormViewController {
+    private func setupNavigationBar() {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        let backgroundColor = viewModel.style.header.headerLabel.backgroundColor
+        let titleColor = viewModel.style.header.headerLabel.textColor
+        navigationController?.navigationBar.tintColor = viewModel.style.header.cancelButton.activeTintColor
 
-    private func setupViewsInOrder() {
-        setupHeaderView()
-        setupTableView()
+        navigationItem.leftBarButtonItem = cancelItem
+        navigationItem.rightBarButtonItem = doneItem
+        customizeNavigationBarAppearance(color: backgroundColor, titleColor: titleColor)
     }
 
-    private func setupHeaderView() {
-        guard let headerView = headerView else { return }
-        view.addSubview(headerView)
-        NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(
-                equalTo: view.safeTopAnchor),
-            headerView.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor),
-            headerView.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor),
-            headerView.heightAnchor.constraint(
-                equalToConstant: 130)
-        ])
+    private func setupViewsInOrder() {
+        setupTableView()
     }
 
     private func setupTableView() {
         guard let tableView = tableView else { return }
-        guard let headerView = headerView else { return }
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(
-                equalTo: headerView.safeBottomAnchor),
+                equalTo: view.safeTopAnchor),
             tableView.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
                 constant: Constants.Padding.l.rawValue),
@@ -196,6 +218,10 @@ extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate 
 
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         tableViewDelegate?.tableView(estimatedHeightForRowAt: indexPath) ?? 0.0
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        headerView
     }
 }
 
@@ -226,19 +252,6 @@ extension BillingFormViewController: CellTextFieldDelegate {
 
 }
 
-// MARK: - Header Cell Delegate
-
-extension BillingFormViewController: BillingFormHeaderCellDelegate {
-
-    func doneButtonIsPressed() {
-        delegate?.doneButtonIsPressed(sender: self)
-    }
-
-    func cancelButtonIsPressed() {
-        delegate?.cancelButtonIsPressed(sender: self)
-    }
-}
-
 extension BillingFormViewController: SelectionButtonTableViewCellDelegate {
     func selectionButtonIsPressed(tag: Int) {
         let countryViewController = CountrySelectionViewController()
@@ -251,5 +264,28 @@ extension BillingFormViewController: SelectionButtonTableViewCellDelegate {
 extension BillingFormViewController: CountrySelectionViewControllerDelegate {
     func onCountrySelected(country: Country) {
         delegate?.update(country: country)
+    }
+}
+
+extension BillingFormViewController: UIScrollViewDelegate {
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    var contentOffsetY = scrollView.contentOffset.y
+
+    if #available(iOS 11.0, *) {
+      contentOffsetY += scrollView.adjustedContentInset.top
+    }
+
+    if headerView.frame.maxY > 0, contentOffsetY > headerView.frame.maxY / 2 {
+      title = viewModel.style.header.headerLabel.text
+    } else {
+      title = nil
+
+    }
+  }
+}
+extension BillingFormViewController: BillingFormViewModelEditingDelegate {
+    func didFinishEditingBillingForm(successfully: Bool) {
+        doneItem.isEnabled = successfully
+        doneItem.tintColor = successfully ? viewModel.style.header.doneButton.textColor : viewModel.style.header.doneButton.disabledTextColor
     }
 }
