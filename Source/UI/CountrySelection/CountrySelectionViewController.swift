@@ -34,7 +34,9 @@ public final class CountrySelectionViewController: UIViewController,
     /// Called after the controller's view is loaded into memory.
     override public func viewDidLoad() {
         super.viewDidLoad()
-        customizeNavigationBarAppearance(color: .white, titleColor: .black)
+        if #available(iOS 13.0, *) {
+            view?.overrideUserInterfaceStyle = .light
+        }
         setup()
         view.backgroundColor = CheckoutTheme.primaryBackgroundColor
         navigationItem.title = Constants.LocalizationKeys.BillingForm.Country.text
@@ -53,6 +55,7 @@ public final class CountrySelectionViewController: UIViewController,
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
+        customizeNavigationBarAppearance(color: .white, titleColor: .black)
     }
 
     private func setup() {
