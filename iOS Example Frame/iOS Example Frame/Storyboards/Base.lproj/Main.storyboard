@@ -316,7 +316,7 @@
                                                         </constraints>
                                                         <color key="tintColor" red="0.0" green="0.0" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" image="key.icloud.fill" catalog="system">
+                                                        <buttonConfiguration key="configuration" style="plain" image="cloud-key">
                                                             <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
                                                         </buttonConfiguration>
                                                         <userDefinedRuntimeAttributes>
@@ -476,7 +476,7 @@
     <resources>
         <image name="apple-pay" width="44" height="28"/>
         <image name="checkout-logo" width="22" height="23"/>
-        <image name="key.icloud.fill" catalog="system" width="128" height="88"/>
+        <image name="cloud-key" width="40" height="40"/>
         <image name="new-experince" width="44" height="44"/>
         <image name="old-experince" width="44" height="44"/>
         <systemColor name="systemBackgroundColor">
