@@ -29,6 +29,10 @@ class InputView: UIView {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
+    private lazy var textFieldContainerBorder: UIView = {
+        UIView().disabledAutoresizingIntoConstraints()
+    }()
+
     private(set) lazy var textFieldContainer: UIStackView = {
         let view = UIStackView().disabledAutoresizingIntoConstraints()
         view.axis = .horizontal
@@ -96,10 +100,10 @@ class InputView: UIView {
         style.textfield.errorBorderColor.cgColor :
         style.textfield.normalBorderColor.cgColor
 
-        textFieldContainer.layer.borderColor = borderColor
-        textFieldContainer.layer.cornerRadius = style.textfield.cornerRadius
-        textFieldContainer.layer.borderWidth = style.textfield.borderWidth
-        textFieldContainer.backgroundColor = style.textfield.backgroundColor
+        textFieldContainerBorder.layer.borderColor = borderColor
+        textFieldContainerBorder.layer.cornerRadius = style.textfield.cornerRadius
+        textFieldContainerBorder.layer.borderWidth = style.textfield.borderWidth
+        textFieldContainerBorder.backgroundColor = style.textfield.backgroundColor
     }
 
     private func updateTextFieldContainer(image: UIImage?, animated: Bool) {
@@ -130,7 +134,7 @@ extension InputView {
         let arrangedSubviews = [
             headerLabel,
             hintLabel,
-            textFieldContainer,
+            textFieldContainerBorder,
             errorView
         ]
         stackView.addArrangedSubviews(arrangedSubviews)
@@ -160,6 +164,8 @@ extension InputView {
         NSLayoutConstraint.activate([
             textFieldView.heightAnchor.constraint(equalToConstant: heightStyle)
         ])
+        addSubview(textFieldContainer)
+        textFieldContainer.setupConstraintEqualTo(view: textFieldContainerBorder)
     }
 
 }
@@ -173,7 +179,7 @@ extension InputView: TextFieldViewDelegate {
 
     func textFieldShouldBeginEditing(textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
-        textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
+        textFieldContainerBorder.layer.borderColor = style?.textfield.focusBorderColor.cgColor
     }
 
     func textFieldShouldReturn() -> Bool {
@@ -183,7 +189,7 @@ extension InputView: TextFieldViewDelegate {
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
         let shouldEndEditing = delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString) ?? true
         if shouldEndEditing {
-            textFieldContainer.layer.borderColor = (style?.error?.isHidden ?? true) ?
+            textFieldContainerBorder.layer.borderColor = (style?.error?.isHidden ?? true) ?
                 style?.textfield.normalBorderColor.cgColor :
                 style?.textfield.errorBorderColor.cgColor
         }
