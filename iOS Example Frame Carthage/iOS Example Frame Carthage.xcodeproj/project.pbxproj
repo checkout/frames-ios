@@ -379,6 +379,13 @@
 		952F3166283C303E00F616FF /* CheckoutColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutColor.swift; path = ../../Source/CheckoutColor.swift; sourceTree = "<group>"; };
 		952F31DC283C303E00F616FF /* CheckoutSdkIos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutSdkIos.swift; path = ../../Source/CheckoutSdkIos.swift; sourceTree = "<group>"; };
 		952F3232283C303E00F616FF /* CheckoutTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutTheme.swift; path = ../../Source/CheckoutTheme.swift; sourceTree = "<group>"; };
+		95433B3828C9F13300200683 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		95433B3928C9F13300200683 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
+		95433B3A28C9F17B00200683 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		95433B3B28C9F23800200683 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
+		95433B3C28C9F23900200683 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		95433B3D28C9F23C00200683 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		95433B3E28C9F23D00200683 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9552EAE92881B0B800E9ECD9 /* FramesFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesFactoryTests.swift; sourceTree = "<group>"; };
 		9562D081286512C500C94D6B /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		9570411B28A166EE00A64CEC /* UIViewExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensionTests.swift; sourceTree = "<group>"; };
@@ -1839,6 +1846,7 @@
 				it,
 				fr,
 				nl,
+				ar,
 			);
 			mainGroup = E6646F8120CE6C0900D8353A;
 			packageReferences = (
@@ -2226,6 +2234,7 @@
 				95732186286EF4E80068C115 /* it */,
 				95732194286EF4E80068C115 /* fr */,
 				95732195286EF4E80068C115 /* nl */,
+				95433B3A28C9F17B00200683 /* ar */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2238,6 +2247,8 @@
 				F59820032805B75F007AB07C /* it */,
 				F598200C2805B75F007AB07C /* fr */,
 				F598200E2805B75F007AB07C /* nl */,
+				95433B3D28C9F23C00200683 /* ar */,
+				95433B3E28C9F23D00200683 /* en */,
 			);
 			name = LaunchScreen.strings;
 			sourceTree = "<group>";
@@ -2250,6 +2261,8 @@
 				F59820042805B75F007AB07C /* it */,
 				F598200D2805B75F007AB07C /* fr */,
 				F598200F2805B75F007AB07C /* nl */,
+				95433B3B28C9F23800200683 /* ar */,
+				95433B3C28C9F23900200683 /* en */,
 			);
 			name = Main.strings;
 			sourceTree = "<group>";
@@ -2258,6 +2271,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F59820092805B75F007AB07C /* Base */,
+				95433B3828C9F13300200683 /* ar */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -2266,6 +2280,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F598200B2805B75F007AB07C /* Base */,
+				95433B3928C9F13300200683 /* ar */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
