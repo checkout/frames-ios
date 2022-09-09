@@ -187,16 +187,17 @@ class PaymentViewModelTests: XCTestCase {
 
   func testSummaryTextWithEmptyValue() throws {
       let userName = "User"
+      let country = Country(iso3166Alpha2: "GB")
 
     let address = Address(addressLine1: "Checkout.com",
                           addressLine2: "",
                           city: "London city",
                           state: "London County",
                           zip: "N12345",
-                          country: Country(iso3166Alpha2: "GB"))
+                          country: country)
 
       let phone = Phone(number: "077 1234 1234",
-                        country: Country(iso3166Alpha2: "GB"))
+                        country: country)
       let billingFormData = BillingForm(name: userName,
                                         address: address,
                                         phone: phone)
@@ -207,8 +208,8 @@ class PaymentViewModelTests: XCTestCase {
                                             paymentFormStyle: DefaultPaymentFormStyle(),
                                             billingFormStyle: DefaultBillingFormStyle(),
                                             supportedSchemes: [.unknown])
-
-      let summaryValue = "User\n\nCheckout.com\n\nLondon city\n\nLondon County\n\nN12345\n\nUnited Kingdom\n\n077 1234 1234"
+      let countryName = try XCTUnwrap(country?.name)
+      let summaryValue = "User\n\nCheckout.com\n\nLondon city\n\nLondon County\n\nN12345\n\n\(countryName)\n\n077 1234 1234"
       viewModel.updateBillingSummaryView()
       let expectedSummaryText = try XCTUnwrap(viewModel.paymentFormStyle?.editBillingSummary?.summary?.text)
       XCTAssertEqual(expectedSummaryText, summaryValue)
