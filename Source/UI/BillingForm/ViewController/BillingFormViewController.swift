@@ -42,7 +42,7 @@ final class BillingFormViewController: UIViewController {
         let item = UIBarButtonItem(title: viewModel.style.header.cancelButton.text,
                          style: .plain,
                          target: self,
-                         action: #selector(cancel))
+                         action: #selector(cancelButtonIsPressed))
         item.tintColor = viewModel.style.header.cancelButton.textColor
         return item
     }()
@@ -51,7 +51,7 @@ final class BillingFormViewController: UIViewController {
         let item = UIBarButtonItem(title: viewModel.style.header.doneButton.text,
                          style: .plain,
                          target: self,
-                         action: #selector(done))
+                         action: #selector(doneButtonIsPressed))
         item.isEnabled = viewModel.data != nil
         item.tintColor = viewModel.data == nil ? viewModel.style.header.doneButton.disabledTextColor :
         viewModel.style.header.doneButton.textColor
@@ -157,11 +157,11 @@ final class BillingFormViewController: UIViewController {
                                       keyboardWillHide: #selector(keyboardWillHide))
     }
 
-    @objc private func cancel() {
+    @objc func cancelButtonIsPressed() {
         delegate?.cancelButtonIsPressed(sender: self)
     }
 
-    @objc private func done() {
+    @objc func doneButtonIsPressed() {
         delegate?.doneButtonIsPressed(sender: self)
     }
 }

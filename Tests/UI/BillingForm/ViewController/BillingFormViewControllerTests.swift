@@ -17,8 +17,7 @@ class BillingFormViewControllerTests: XCTestCase {
     func testInitialization() {
         billingFormViewController.viewDidLoad()
         billingFormViewController.viewDidLayoutSubviews()
-        XCTAssertEqual(billingFormViewController.view.subviews.count, 2)
-        XCTAssertTrue(billingFormViewController.view.subviews.first is BillingFormHeaderCell)
+        XCTAssertEqual(billingFormViewController.view.subviews.count, 1)
         XCTAssertTrue(billingFormViewController.view.subviews.last is UITableView)
     }
 

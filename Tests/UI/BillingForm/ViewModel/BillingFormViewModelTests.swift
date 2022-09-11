@@ -26,7 +26,7 @@ class BillingFormViewModelTests: XCTestCase {
 
     func testGetHeaderCell() {
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
-        let view = viewModel.getViewForHeader(sender: UIViewController())
+        let view = viewModel.getViewForHeader()
         XCTAssertNotNil(view)
     }
   
