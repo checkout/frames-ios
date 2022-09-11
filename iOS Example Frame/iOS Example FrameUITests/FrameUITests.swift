@@ -114,8 +114,9 @@ final class FrameUITests: XCTestCase {
         billingButton.tap()
 
         // MARK: Full UI Billing
-        let cancelButton = app.getButton(name: "Cancel")
-        let doneButton = app.getButton(name: "Done")
+
+        let cancelButton = app.navigationBars.buttons.matching(identifier: "Cancel").element
+        let doneButton = app.navigationBars.buttons.matching(identifier: "Done").element
         let addressLine1TextField = app.tables.cells.containing(.staticText, identifier: "Address line 1").children(matching: .textField).element
         let addressLine2TextField = app.tables.cells.containing(.staticText, identifier: "Address line 2").children(matching: .textField).element
         let cityTextField = app.tables.cells.containing(.staticText, identifier: "City").children(matching: .textField).element
