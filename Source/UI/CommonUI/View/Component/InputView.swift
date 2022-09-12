@@ -174,7 +174,9 @@ extension InputView {
 
 extension InputView: TextFieldViewDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        delegate?.textField(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true
+        let shouldChangeCharacter = delegate?.textField(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true
+        textFieldContainerBorder.layer.borderColor = style?.textfield.focusBorderColor.cgColor
+        return shouldChangeCharacter
     }
 
     func textFieldShouldBeginEditing(textField: UITextField) {
