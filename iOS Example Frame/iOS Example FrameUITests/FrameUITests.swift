@@ -18,7 +18,6 @@ final class FrameUITests: XCTestCase {
 
         app.tapButton(name: "UITestDefault")
 
-        // MARK: Full UI Payment
         let cardNumberTextField = app.scrollViews.children(matching: .other).element(boundBy: 0).children(matching: .other).element(boundBy: 2).children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element
         let expiryTextField = app.scrollViews.children(matching: .other).element(boundBy: 0).children(matching: .other).element(boundBy: 3).children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element
 
