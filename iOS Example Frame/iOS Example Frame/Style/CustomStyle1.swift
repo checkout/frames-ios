@@ -203,7 +203,7 @@ private enum StyleOrganiser {
         var textAlignment: NSTextAlignment = .natural
         var text: String = ""
         var isSupportingNumericKeyboard = true
-        var height: Double = 30
+        var height: Double = 56
         var cornerRadius: CGFloat = Constants.borderRadius
         var borderWidth: CGFloat = Constants.borderWidth
         var placeholder: String?
@@ -307,7 +307,7 @@ private enum StyleOrganiser {
         var textLeading: CGFloat = 0
         var cornerRadius: CGFloat = 0
         var borderWidth: CGFloat = 0
-        var height: Double = 30
+        var height: Double = 56
         var width: Double = 300
         var isHidden = false
         var text: String = "\u{276F} Add billing address"

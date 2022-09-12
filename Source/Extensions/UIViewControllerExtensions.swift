@@ -57,7 +57,7 @@ extension UIViewController {
 
 extension UIViewController {
   func customizeNavigationBarAppearance(color: UIColor, titleColor: UIColor) {
-        if #available(iOS 15.0, *) {
+        if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = color
@@ -67,8 +67,12 @@ extension UIViewController {
             navigationController?.navigationBar.standardAppearance = appearance
             navigationController?.navigationBar.compactAppearance = appearance
             navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        } else {
+            navigationController?.navigationBar.shadowImage = UIImage()
+            navigationController?.navigationBar.barTintColor = color
+            navigationController?.navigationBar.tintColor = color
+            navigationController?.navigationBar.isTranslucent = true
+            navigationItem.title = title
         }
-
-        navigationController?.setNeedsStatusBarAppearanceUpdate()
     }
 }

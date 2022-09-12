@@ -29,6 +29,11 @@ final class BillingFormCellTextField: UITableViewCell {
       addGestureRecognizer(UIView.keyboardDismissTapGesture)
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        textFieldView?.refreshLayoutComponents()
+    }
+
     func update(type: BillingFormCell?, style: CellTextFieldStyle?, tag: Int, textFieldValue: String?) {
         self.type = type
         self.style = style
