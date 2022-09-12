@@ -1,9 +1,9 @@
 PODS:
-  - Checkout (3.5.2):
+  - Checkout (3.5.3):
     - CheckoutEventLoggerKit (= 1.2.0)
-  - Checkout/Integration-Tests (3.5.2):
+  - Checkout/Integration-Tests (3.5.3):
     - CheckoutEventLoggerKit (= 1.2.0)
-  - Checkout/Tests (3.5.2):
+  - Checkout/Tests (3.5.3):
     - CheckoutEventLoggerKit (= 1.2.0)
   - CheckoutEventLoggerKit (1.2.0)
 
@@ -21,9 +21,9 @@ EXTERNAL SOURCES:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  Checkout: c63bfe8bbc522b7bef5c64f9a39ff519e90ef564
+  Checkout: ab80edf6f4bede430527c23ce36fbdc4c93be314
   CheckoutEventLoggerKit: 03d0076e2aa412df966517a36a3e4e3805b56ecb
 
-PODFILE CHECKSUM: b9ae931222884ca7e4b71ce05bc3f45054bc1c20
+PODFILE CHECKSUM: 958723adb0bf56547075a31138cf4024107d4f79
 
 COCOAPODS: 1.11.3
