@@ -1,5 +1,5 @@
 ---
-format_version: '8'
+format_version: '11'
 default_step_lib_source: 'https://github.com/bitrise-io/bitrise-steplib.git'
 project_type: ios
 trigger_map:
@@ -38,7 +38,8 @@ workflows:
         title: Build Carthage Test project
         inputs:
         - content: |
-            xcodebuild "-workspace" "iOS Example Frame Carthage/iOS Example Frame Carthage.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 11" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
+            xcodebuild "-workspace" "iOS Example Frame Carthage/iOS Example Frame Carthage.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug"  "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
+        - simulator_device: $UITEST_SIMULATOR_DEVICE
     - cache-push@2:
         inputs:
         - cache_paths: $CARTHAGE_FOLDER
@@ -112,7 +113,8 @@ workflows:
         inputs:
         - content: |
             # run carthage update command.
-            xcodebuild "-workspace" "iOS Example Frame Carthage/iOS Example Frame Carthage.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 11" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
+            xcodebuild "-workspace" "iOS Example Frame Carthage/iOS Example Frame Carthage.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcprettyinou
+        - destination: platform=iOS Simulator,name=iPhone 11
     - cache-push@2: {}
   
   # frames misc workflows
@@ -164,7 +166,8 @@ workflows:
         title: Build Pods Test project
         inputs:
         - content: |
-            xcodebuild "-workspace" "iOS Example Frame/iOS Example Frame.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 11" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
+            xcodebuild "-workspace" "iOS Example Frame/iOS Example Frame.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug""COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
+        - simulator_device: $UITEST_SIMULATOR_DEVICE
     - cache-push@2: {}
     after_run: []
     before_run:
