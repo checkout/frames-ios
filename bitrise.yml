@@ -350,5 +350,5 @@ app:
     CHECKOUT_SOURCE_DIR: Checkout
 meta:
   bitrise.io:
-    stack: osx-xcode-13.4.x
+    stack: osx-xcode-14.0
     machine_type_id: g2.4core
