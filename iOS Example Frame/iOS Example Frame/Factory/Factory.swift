@@ -21,7 +21,7 @@ enum Factory {
 
   static func getDefaultPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
     #if UITEST
-    return getMinimalUITestVC(completionHandler: completionHandler)
+      return UITestFactory.getMinimalUITestVC(completionHandler: completionHandler)
     #endif
 
     // swiftlint:disable:next force_unwrapping
@@ -61,7 +61,7 @@ enum Factory {
 
   static func getMatrixPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
     #if UITEST
-    return getCompleteUITestVC(completionHandler: completionHandler)
+      return UITestFactory.getCompleteUITestVC(completionHandler: completionHandler)
     #endif
 
     // swiftlint:disable:next force_unwrapping

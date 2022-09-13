@@ -11,7 +11,13 @@ import Frames
 import Checkout
 
 #if UITEST
-extension Factory {
+enum UITestFactory {
+    // swiftlint:disable:next force_unwrapping
+    static let successURL = URL(string: "https://httpstat.us/200")!
+    // swiftlint:disable:next force_unwrapping
+    static let failureURL = URL(string: "https://httpstat.us/403")!
+    static let apiKey = "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73"
+    static let environment: Frames.Environment = .sandbox
 
     static func getMinimalUITestVC(completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
         let supportedSchemes: [CardScheme] = [.visa, .mastercard, .maestro, .americanExpress, .mada]
@@ -20,7 +26,7 @@ extension Factory {
                                                      environment: environment,
                                                      supportedSchemes: supportedSchemes,
                                                      billingFormData: nil)
-        let style = ThemeDemo.buildMinimalUITest()
+        let style = UITestThemeDemo.buildMinimalUITest()
 
         let viewController = PaymentFormFactory.buildViewController(configuration: configuration,
                                                                     style: style,
@@ -36,7 +42,7 @@ extension Factory {
                                                      environment: environment,
                                                      supportedSchemes: supportedSchemes,
                                                      billingFormData: nil)
-        let style = ThemeDemo.buildCompleteUITest()
+        let style = UITestThemeDemo.buildCompleteUITest()
 
         let viewController = PaymentFormFactory.buildViewController(configuration: configuration,
                                                                     style: style,
@@ -46,7 +52,7 @@ extension Factory {
     }
 }
 
-extension ThemeDemo {
+enum UITestThemeDemo {
 
     static func buildMinimalUITest() -> FramesStyle {
         var theme = Theme(primaryFontColor: UIColor(red: 0 / 255, green: 204 / 255, blue: 45 / 255, alpha: 1),
