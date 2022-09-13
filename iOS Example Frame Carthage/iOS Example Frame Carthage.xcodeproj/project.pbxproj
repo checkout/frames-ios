@@ -37,8 +37,6 @@
 		0B194B0828A1132B001AEAFD /* SF-Mono-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B194AFA28A1132B001AEAFD /* SF-Mono-HeavyItalic.otf */; };
 		0B194B0928A1132B001AEAFD /* UIFont+Graphik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B194AFB28A1132B001AEAFD /* UIFont+Graphik.swift */; };
 		0B6A7FDA28913D5700F7CC01 /* PaymentFormConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */; };
-		0B6A7FDB28913D5700F7CC01 /* PaymentStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */; };
-		0BC60B5E28AFB27800F30992 /* ThemeDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B5D28AFB27800F30992 /* ThemeDemo.swift */; };
 		0BC60B7628AFB32600F30992 /* Theme+BillingSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B6128AFB32600F30992 /* Theme+BillingSummary.swift */; };
 		0BC60B7728AFB32600F30992 /* Theme+PaymentFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B6228AFB32600F30992 /* Theme+PaymentFormStyle.swift */; };
 		0BC60B7828AFB32600F30992 /* Theme+AddBillingSectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B6328AFB32600F30992 /* Theme+AddBillingSectionButton.swift */; };
@@ -73,8 +71,10 @@
 		952F3241283C303E00F616FF /* CheckoutColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F3166283C303E00F616FF /* CheckoutColor.swift */; };
 		952F328E283C303E00F616FF /* CheckoutSdkIos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F31DC283C303E00F616FF /* CheckoutSdkIos.swift */; };
 		952F32D5283C303E00F616FF /* CheckoutTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952F3232283C303E00F616FF /* CheckoutTheme.swift */; };
+		95433B3128C9EB1A00200683 /* FramesStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95433B3028C9EB1A00200683 /* FramesStyle.swift */; };
 		9552EAEA2881B0B800E9ECD9 /* FramesFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9552EAE92881B0B800E9ECD9 /* FramesFactoryTests.swift */; };
-		9562D083286512E300C94D6B /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562D081286512C500C94D6B /* Style.swift */; };
+		955B581928D0FB0F006A280C /* OtherStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B581728D0FB0F006A280C /* OtherStyle.swift */; };
+		955B581A28D0FB0F006A280C /* MatrixStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B581828D0FB0F006A280C /* MatrixStyle.swift */; };
 		9570411C28A166EE00A64CEC /* UIViewExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9570411B28A166EE00A64CEC /* UIViewExtensionTests.swift */; };
 		9572608D286DE8A00080E2C8 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572602E286DE8A00080E2C8 /* ColorTests.swift */; };
 		9572608E286DE8A00080E2C8 /* ResourcesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572602F286DE8A00080E2C8 /* ResourcesTests.swift */; };
@@ -261,7 +261,6 @@
 		95E816D828887A4300C7876B /* PaymentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E816D728887A4300C7876B /* PaymentHeaderView.swift */; };
 		95E816DA28887BF800C7876B /* PaymentHeaderCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E816D928887BF800C7876B /* PaymentHeaderCellStyle.swift */; };
 		95E816DC2888850200C7876B /* DefaultPaymentHeaderCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E816DB2888850200C7876B /* DefaultPaymentHeaderCellStyle.swift */; };
-		95ED57A1285A13D70010B493 /* CustomStyle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ED579F285A13D70010B493 /* CustomStyle1.swift */; };
 		95EDB1CB28AC29830029DFA5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EDB1CA28AC29830029DFA5 /* HomeViewController.swift */; };
 		95EDB1CF28AD312B0029DFA5 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EDB1CE28AD312B0029DFA5 /* Factory.swift */; };
 		95EDB1D128AD3AD20029DFA5 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EDB1D028AD3AD20029DFA5 /* UIViewControllerExtension.swift */; };
@@ -341,8 +340,6 @@
 		0B194AFB28A1132B001AEAFD /* UIFont+Graphik.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Graphik.swift"; sourceTree = "<group>"; };
 		0B5D782728BE42B900E9D769 /* FramesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FramesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentFormConfiguration.swift; sourceTree = "<group>"; };
-		0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStyle.swift; sourceTree = "<group>"; };
-		0BC60B5D28AFB27800F30992 /* ThemeDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemeDemo.swift; path = ../ThemeDemo.swift; sourceTree = "<group>"; };
 		0BC60B6128AFB32600F30992 /* Theme+BillingSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+BillingSummary.swift"; sourceTree = "<group>"; };
 		0BC60B6228AFB32600F30992 /* Theme+PaymentFormStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+PaymentFormStyle.swift"; sourceTree = "<group>"; };
 		0BC60B6328AFB32600F30992 /* Theme+AddBillingSectionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+AddBillingSectionButton.swift"; sourceTree = "<group>"; };
@@ -379,6 +376,7 @@
 		952F3166283C303E00F616FF /* CheckoutColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutColor.swift; path = ../../Source/CheckoutColor.swift; sourceTree = "<group>"; };
 		952F31DC283C303E00F616FF /* CheckoutSdkIos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutSdkIos.swift; path = ../../Source/CheckoutSdkIos.swift; sourceTree = "<group>"; };
 		952F3232283C303E00F616FF /* CheckoutTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutTheme.swift; path = ../../Source/CheckoutTheme.swift; sourceTree = "<group>"; };
+		95433B3028C9EB1A00200683 /* FramesStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesStyle.swift; sourceTree = "<group>"; };
 		95433B3828C9F13300200683 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		95433B3928C9F13300200683 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		95433B3A28C9F17B00200683 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -387,7 +385,8 @@
 		95433B3D28C9F23C00200683 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		95433B3E28C9F23D00200683 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9552EAE92881B0B800E9ECD9 /* FramesFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesFactoryTests.swift; sourceTree = "<group>"; };
-		9562D081286512C500C94D6B /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		955B581728D0FB0F006A280C /* OtherStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherStyle.swift; sourceTree = "<group>"; };
+		955B581828D0FB0F006A280C /* MatrixStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixStyle.swift; sourceTree = "<group>"; };
 		9570411B28A166EE00A64CEC /* UIViewExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensionTests.swift; sourceTree = "<group>"; };
 		9572602E286DE8A00080E2C8 /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		9572602F286DE8A00080E2C8 /* ResourcesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesTests.swift; sourceTree = "<group>"; };
@@ -579,7 +578,6 @@
 		95E816D728887A4300C7876B /* PaymentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHeaderView.swift; sourceTree = "<group>"; };
 		95E816D928887BF800C7876B /* PaymentHeaderCellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHeaderCellStyle.swift; sourceTree = "<group>"; };
 		95E816DB2888850200C7876B /* DefaultPaymentHeaderCellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPaymentHeaderCellStyle.swift; sourceTree = "<group>"; };
-		95ED579F285A13D70010B493 /* CustomStyle1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle1.swift; sourceTree = "<group>"; };
 		95EDB1CA28AC29830029DFA5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		95EDB1CE28AD312B0029DFA5 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		95EDB1D028AD3AD20029DFA5 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -683,8 +681,8 @@
 		0B6A7FD728913D5700F7CC01 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				95433B3028C9EB1A00200683 /* FramesStyle.swift */,
 				0B6A7FD828913D5700F7CC01 /* PaymentFormConfiguration.swift */,
-				0B6A7FD928913D5700F7CC01 /* PaymentStyle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1609,9 +1607,8 @@
 		95EDB1D528AD3B280029DFA5 /* Style */ = {
 			isa = PBXGroup;
 			children = (
-				0BC60B5D28AFB27800F30992 /* ThemeDemo.swift */,
-				9562D081286512C500C94D6B /* Style.swift */,
-				95ED579F285A13D70010B493 /* CustomStyle1.swift */,
+				955B581828D0FB0F006A280C /* MatrixStyle.swift */,
+				955B581728D0FB0F006A280C /* OtherStyle.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -1971,6 +1968,7 @@
 				957322AD286EF4E80068C115 /* AddressLine2Validator.swift in Sources */,
 				957322AC286EF4E80068C115 /* CityValidator.swift in Sources */,
 				957322F1286EF4E80068C115 /* BillingFormViewController.swift in Sources */,
+				95433B3128C9EB1A00200683 /* FramesStyle.swift in Sources */,
 				957322CD286EF4E80068C115 /* SelectionButtonTableViewCell.swift in Sources */,
 				957322E6286EF4E80068C115 /* DefaultHeaderLabelFormStyle.swift in Sources */,
 				952F328E283C303E00F616FF /* CheckoutSdkIos.swift in Sources */,
@@ -2029,7 +2027,6 @@
 				0BC60B8828AFB32600F30992 /* Theme.swift in Sources */,
 				0BC60B8228AFB32600F30992 /* Theme+Error.swift in Sources */,
 				957322DA286EF4E80068C115 /* DefaultErrorInputLabelStyle.swift in Sources */,
-				0B6A7FDB28913D5700F7CC01 /* PaymentStyle.swift in Sources */,
 				957322DE286EF4E80068C115 /* DefaultBillingFormCityCellStyle.swift in Sources */,
 				957322D1286EF4E80068C115 /* ElementTextFieldStyle.swift in Sources */,
 				95732324286EF4E80068C115 /* Dispatching.swift in Sources */,
@@ -2190,15 +2187,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BC60B5E28AFB27800F30992 /* ThemeDemo.swift in Sources */,
 				0B194B0928A1132B001AEAFD /* UIFont+Graphik.swift in Sources */,
 				95EDB1D328AD3AFA0029DFA5 /* UIViewExtension.swift in Sources */,
 				95EDB1D128AD3AD20029DFA5 /* UIViewControllerExtension.swift in Sources */,
 				F59820192805B75F007AB07C /* AppDelegate.swift in Sources */,
 				95EDB1CB28AC29830029DFA5 /* HomeViewController.swift in Sources */,
 				0B194AFC28A1132B001AEAFD /* UIFont+SFMono.swift in Sources */,
-				95ED57A1285A13D70010B493 /* CustomStyle1.swift in Sources */,
-				9562D083286512E300C94D6B /* Style.swift in Sources */,
+				955B581928D0FB0F006A280C /* OtherStyle.swift in Sources */,
+				955B581A28D0FB0F006A280C /* MatrixStyle.swift in Sources */,
 				95EDB1CF28AD312B0029DFA5 /* Factory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

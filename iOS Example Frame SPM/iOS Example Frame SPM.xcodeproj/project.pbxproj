@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0BB538AD28B637980060A8DE /* Factory+UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB538AC28B637980060A8DE /* Factory+UITest.swift */; };
-		0BC60B5C28AFA4A600F30992 /* ThemeDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B5B28AFA4A600F30992 /* ThemeDemo.swift */; };
+		0BC60B5C28AFA4A600F30992 /* OtherStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B5B28AFA4A600F30992 /* OtherStyle.swift */; };
 		0BD2ECBF28B65DA10041A942 /* FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2ECBE28B65DA10041A942 /* FrameUITests.swift */; };
 		0BD2ECC128B65EC20041A942 /* XCUIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2ECC028B65EC20041A942 /* XCUIApplication+Extension.swift */; };
 		443FCD9426137A4C009D6DE6 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 443FCD9326137A4C009D6DE6 /* Frames */; };
@@ -54,8 +54,7 @@
 		95C8C13728AD5FEE00B8D3D0 /* GraphikLCG-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 95C8C10328AD5FEE00B8D3D0 /* GraphikLCG-Thin.otf */; };
 		95C8C13828AD5FEE00B8D3D0 /* GraphikLCG-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 95C8C10428AD5FEE00B8D3D0 /* GraphikLCG-Light.otf */; };
 		95C8C13928AD5FEE00B8D3D0 /* GraphikLCG-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 95C8C10528AD5FEE00B8D3D0 /* GraphikLCG-Bold.otf */; };
-		95C8C13A28AD5FEE00B8D3D0 /* CustomStyle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C10728AD5FEE00B8D3D0 /* CustomStyle1.swift */; };
-		95C8C13B28AD5FEE00B8D3D0 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C10828AD5FEE00B8D3D0 /* Style.swift */; };
+		95C8C13A28AD5FEE00B8D3D0 /* MatrixStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C10728AD5FEE00B8D3D0 /* MatrixStyle.swift */; };
 		95C8C13D28AD5FEE00B8D3D0 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C10B28AD5FEE00B8D3D0 /* Factory.swift */; };
 		95C8C13F28AD603700B8D3D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95C8C13E28AD603700B8D3D0 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -72,7 +71,7 @@
 
 /* Begin PBXFileReference section */
 		0BB538AC28B637980060A8DE /* Factory+UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Factory+UITest.swift"; sourceTree = "<group>"; };
-		0BC60B5B28AFA4A600F30992 /* ThemeDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeDemo.swift; sourceTree = "<group>"; };
+		0BC60B5B28AFA4A600F30992 /* OtherStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherStyle.swift; sourceTree = "<group>"; };
 		0BD2ECBE28B65DA10041A942 /* FrameUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameUITests.swift; sourceTree = "<group>"; };
 		0BD2ECC028B65EC20041A942 /* XCUIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extension.swift"; sourceTree = "<group>"; };
 		443FCD8F261379CB009D6DE6 /* frames-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "frames-ios"; path = ..; sourceTree = "<group>"; };
@@ -128,8 +127,7 @@
 		95C8C10328AD5FEE00B8D3D0 /* GraphikLCG-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Thin.otf"; sourceTree = "<group>"; };
 		95C8C10428AD5FEE00B8D3D0 /* GraphikLCG-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Light.otf"; sourceTree = "<group>"; };
 		95C8C10528AD5FEE00B8D3D0 /* GraphikLCG-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GraphikLCG-Bold.otf"; sourceTree = "<group>"; };
-		95C8C10728AD5FEE00B8D3D0 /* CustomStyle1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle1.swift; sourceTree = "<group>"; };
-		95C8C10828AD5FEE00B8D3D0 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		95C8C10728AD5FEE00B8D3D0 /* MatrixStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixStyle.swift; sourceTree = "<group>"; };
 		95C8C10B28AD5FEE00B8D3D0 /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		95C8C13E28AD603700B8D3D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95E81B2528C60F4000DE87EE /* ar-001 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-001"; path = "ar-001.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -273,8 +271,8 @@
 		95C8C10628AD5FEE00B8D3D0 /* Style */ = {
 			isa = PBXGroup;
 			children = (
-				95C8C10728AD5FEE00B8D3D0 /* CustomStyle1.swift */,
-				95C8C10828AD5FEE00B8D3D0 /* Style.swift */,
+				0BC60B5B28AFA4A600F30992 /* OtherStyle.swift */,
+				95C8C10728AD5FEE00B8D3D0 /* MatrixStyle.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -304,7 +302,6 @@
 			children = (
 				95C8C0B728AD5FEE00B8D3D0 /* AppDelegate.swift */,
 				95C8C13E28AD603700B8D3D0 /* Assets.xcassets */,
-				0BC60B5B28AFA4A600F30992 /* ThemeDemo.swift */,
 				95C8C0D428AD5FEE00B8D3D0 /* Data */,
 				95C8C0B428AD5FEE00B8D3D0 /* Extension */,
 				95C8C10A28AD5FEE00B8D3D0 /* Factory */,
@@ -509,14 +506,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95C8C13B28AD5FEE00B8D3D0 /* Style.swift in Sources */,
 				95C8C10D28AD5FEE00B8D3D0 /* UIViewControllerExtension.swift in Sources */,
 				95C8C12728AD5FEE00B8D3D0 /* UIFont+Graphik.swift in Sources */,
 				95C8C10E28AD5FEE00B8D3D0 /* UIViewExtension.swift in Sources */,
 				0BB538AD28B637980060A8DE /* Factory+UITest.swift in Sources */,
-				95C8C13A28AD5FEE00B8D3D0 /* CustomStyle1.swift in Sources */,
+				95C8C13A28AD5FEE00B8D3D0 /* MatrixStyle.swift in Sources */,
 				95C8C11328AD5FEE00B8D3D0 /* HomeViewController.swift in Sources */,
-				0BC60B5C28AFA4A600F30992 /* ThemeDemo.swift in Sources */,
+				0BC60B5C28AFA4A600F30992 /* OtherStyle.swift in Sources */,
 				95C8C13D28AD5FEE00B8D3D0 /* Factory.swift in Sources */,
 				95C8C11A28AD5FEE00B8D3D0 /* UIFont+SFMono.swift in Sources */,
 				95C8C10F28AD5FEE00B8D3D0 /* AppDelegate.swift in Sources */,

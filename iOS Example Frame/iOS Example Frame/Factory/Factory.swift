@@ -49,7 +49,7 @@ enum Factory {
                                                  supportedSchemes: supportedSchemes,
                                                  billingFormData: billingFormData)
 
-    let style = PaymentStyle(paymentFormStyle: paymentFormStyle,
+    let style = FramesStyle(paymentFormStyle: paymentFormStyle,
                              billingFormStyle: billingFormStyle)
 
     let viewController = PaymentFormFactory.buildViewController(configuration: configuration,
@@ -78,9 +78,9 @@ enum Factory {
 
     let billingFormData = BillingForm(name: "Şan Lacey", address: address, phone: phone)
 
-    let billingFormStyle = Style.billingForm
+    let billingFormStyle = MatrixStyle.billingForm
 
-    let paymentFormStyle = Style.paymentForm
+    let paymentFormStyle = MatrixStyle.paymentForm
 
     let supportedSchemes: [CardScheme] = [.visa, .mastercard, .maestro]
 
@@ -89,7 +89,7 @@ enum Factory {
                                                  supportedSchemes: supportedSchemes,
                                                  billingFormData: billingFormData)
 
-    let style = PaymentStyle(paymentFormStyle: paymentFormStyle,
+    let style = FramesStyle(paymentFormStyle: paymentFormStyle,
                              billingFormStyle: billingFormStyle)
 
     let viewController = PaymentFormFactory.buildViewController(configuration: configuration,
@@ -117,7 +117,7 @@ enum Factory {
                                                  supportedSchemes: supportedSchemes,
                                                  billingFormData: billingFormData)
 
-      let style = ThemeDemo.buildCustom2Example()
+      let style = OtherStyle.buildWithOneFunction()
 
       let viewController = PaymentFormFactory.buildViewController(configuration: configuration,
                                                                   style: style,

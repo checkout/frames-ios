@@ -1,5 +1,5 @@
 //
-//  PaymentStyle.swift
+//  FramesStyle.swift
 //  
 //
 //  Created by Alex Ioja-Yang on 26/07/2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PaymentStyle {
+public struct FramesStyle {
     let paymentFormStyle: PaymentFormStyle
     let billingFormStyle: BillingFormStyle
 

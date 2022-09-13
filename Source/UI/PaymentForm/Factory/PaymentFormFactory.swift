@@ -7,7 +7,7 @@ public enum PaymentFormFactory {
   internal static var sessionCorrelationID = ""
 
   public static func buildViewController(configuration: PaymentFormConfiguration,
-                                         style: PaymentStyle,
+                                         style: FramesStyle,
                                          completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
     // Ensure a consistent identifier is used for the monitoring of a journey
     Self.sessionCorrelationID = UUID().uuidString

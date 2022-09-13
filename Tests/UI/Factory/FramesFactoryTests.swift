@@ -28,7 +28,7 @@ class FramesFactoryTests: XCTestCase {
     let billingForm = BillingForm(name: name, address: address, phone: phone)
 
     let formConfig = PaymentFormConfiguration(apiKey: "", environment: .sandbox, supportedSchemes: [.visa], billingFormData: billingForm)
-    let formStyle = PaymentStyle(paymentFormStyle: paymentFormStyle, billingFormStyle: billingFormStyle)
+    let formStyle = FramesStyle(paymentFormStyle: paymentFormStyle, billingFormStyle: billingFormStyle)
     let viewController = PaymentFormFactory.buildViewController(configuration: formConfig, style: formStyle) { _ in }
     let paymentViewController = try XCTUnwrap(viewController as? PaymentViewController)
     let viewModel = try XCTUnwrap(paymentViewController.viewModel)
@@ -47,7 +47,7 @@ class FramesFactoryTests: XCTestCase {
         let startCorrelationID = PaymentFormFactory.sessionCorrelationID
         
         let formConfig = PaymentFormConfiguration(apiKey: "", environment: .sandbox, supportedSchemes: [.visa], billingFormData: nil)
-        let formStyle = PaymentStyle(paymentFormStyle: FramesFactory.defaultPaymentFormStyle,
+        let formStyle = FramesStyle(paymentFormStyle: FramesFactory.defaultPaymentFormStyle,
                                      billingFormStyle: FramesFactory.defaultBillingFormStyle)
         
         // Creating a VC will generate a new session correlation id

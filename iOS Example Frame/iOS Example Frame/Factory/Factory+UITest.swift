@@ -48,7 +48,7 @@ extension Factory {
 
 extension ThemeDemo {
 
-    static func buildMinimalUITest() -> PaymentStyle {
+    static func buildMinimalUITest() -> FramesStyle {
         var theme = Theme(primaryFontColor: UIColor(red: 0 / 255, green: 204 / 255, blue: 45 / 255, alpha: 1),
                           secondaryFontColor: UIColor(red: 177 / 255, green: 177 / 255, blue: 177 / 255, alpha: 1),
                           buttonFontColor: .green,
@@ -86,12 +86,12 @@ extension ThemeDemo {
                                              doneButtonTitle: "Done"),
             cells: [])
 
-        return PaymentStyle(paymentFormStyle: paymentFormStyle,
+        return FramesStyle(paymentFormStyle: paymentFormStyle,
                             billingFormStyle: billingFormStyle)
     }
 
     // swiftlint:disable:next function_body_length
-    static func buildCompleteUITest() -> PaymentStyle {
+    static func buildCompleteUITest() -> FramesStyle {
         var theme = Theme(primaryFontColor: UIColor(red: 0 / 255, green: 204 / 255, blue: 45 / 255, alpha: 1),
                           secondaryFontColor: UIColor(red: 177 / 255, green: 177 / 255, blue: 177 / 255, alpha: 1),
                           buttonFontColor: .green,
@@ -148,7 +148,7 @@ extension ThemeDemo {
                 .phoneNumber(theme.buildBillingInput(text: "", isNumbericInput: true, isMandatory: false, title: "Phone number"))
             ])
 
-        return PaymentStyle(paymentFormStyle: paymentFormStyle,
+        return FramesStyle(paymentFormStyle: paymentFormStyle,
                             billingFormStyle: billingFormStyle)
     }
 
