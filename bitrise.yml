@@ -38,7 +38,7 @@ workflows:
         title: Build Carthage Test project
         inputs:
         - content: |
-            xcodebuild "-workspace" "iOS Example Frame Carthage/iOS Example Frame Carthage.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 13 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
+            xcodebuild "-workspace" "iOS Example Frame Carthage/iOS Example Frame Carthage.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 11" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
     - cache-push@2:
         inputs:
         - cache_paths: $CARTHAGE_FOLDER
@@ -51,7 +51,7 @@ workflows:
         title: Build Pods Test project
         inputs:
         - content: |
-            xcodebuild "-workspace" "iOS Example Frame/iOS Example Frame.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 13 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
+            xcodebuild "-workspace" "iOS Example Frame/iOS Example Frame.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 11" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
     - cache-push@2: {}
     after_run: []
   _frames-build-spm:
@@ -89,7 +89,7 @@ workflows:
         title: Build SPM Test project
         inputs:
         - content: |
-            xcodebuild "-project" "iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 13 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
+            xcodebuild "-project" "iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 11" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
     - cache-push@2: {}
     - slack@3:
         inputs:
@@ -164,7 +164,7 @@ workflows:
         title: Build Pods Test project
         inputs:
         - content: |
-            xcodebuild "-workspace" "iOS Example Frame/iOS Example Frame.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 13 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
+            xcodebuild "-workspace" "iOS Example Frame/iOS Example Frame.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 11" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
     - cache-push@2: {}
     after_run: []
     before_run:
@@ -299,7 +299,7 @@ app:
   envs:
   - opts:
       is_expand: false
-    UITEST_SIMULATOR_DEVICE: iPhone 13 Pro
+    UITEST_SIMULATOR_DEVICE: iPhone 11
   - opts:
       is_expand: false
     FRAMES_COCOAPODS_PROJECT: iOS Example Frame/iOS Example Frame.xcworkspace
