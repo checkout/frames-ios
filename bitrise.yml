@@ -303,7 +303,7 @@ app:
     UNIT_TEST_DEVICE: iPhone 14
   - opts:
       is_expand: false
-    UITEST_SIMULATOR_DEVICE: iPhone 13 Pro
+    UITEST_SIMULATOR_DEVICE: iPhone 14 Pro
   - opts:
       is_expand: false
     FRAMES_COCOAPODS_PROJECT: iOS Example Frame/iOS Example Frame.xcworkspace
