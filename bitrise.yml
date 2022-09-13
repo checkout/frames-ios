@@ -59,6 +59,7 @@ workflows:
     - xcode-test@2:
         inputs:
         - project_path: $FRAMES_SPM_PROJECT
+        - simulator_device: iPhone 11
         - scheme: $FRAMES_APP_SCHEME
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
