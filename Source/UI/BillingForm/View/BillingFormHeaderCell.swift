@@ -38,9 +38,9 @@ extension BillingFormHeaderCell {
                 equalTo: topAnchor,
                 constant: Constants.Padding.s.rawValue),
             headerLabel.leadingAnchor.constraint(
-                equalTo: safeLeadingAnchor),
+                equalTo: safeAreaLayoutGuide.leadingAnchor),
             headerLabel.trailingAnchor.constraint(
-                equalTo: safeTrailingAnchor),
+                equalTo: safeAreaLayoutGuide.trailingAnchor),
             headerLabel.bottomAnchor.constraint(
                 equalTo: bottomAnchor,
                 constant: -Constants.Padding.s.rawValue)

@@ -47,12 +47,6 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         delegate?.onBillingScreenShown()
     }
 
-    func getHeaderView() -> UIView {
-        let view = BillingFormHeaderCell(style: style.header)
-        view.update(style: style.header)
-        return view
-    }
-
     func getCell(tableView: UITableView, indexPath: IndexPath, sender: UIViewController?) -> UITableViewCell {
         guard style.cells.count > indexPath.row else { return UITableViewCell() }
 
@@ -248,10 +242,6 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
         textValueOfCellType[index] = country.name
         updatedRow = countryRow
         notifyContentChangeToDelegate()
-    }
-
-    func getViewForHeader() -> UIView? {
-        getHeaderView()
     }
 
     func doneButtonIsPressed(sender: UIViewController) {

@@ -14,8 +14,6 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
     var textFieldIsChangedLastCalledWithBillingFormTextField: BillingFormTextField?
     var textFieldIsChangedLastCalledWithReplacementString: String?
 
-    var getViewForHeaderCalledTimes = 0
-
     var textFieldShouldEndEditingCalledTimes = 0
     var textFieldShouldEndEditingLastCalledWithBillingFormTextField: BillingFormTextField?
     var textFieldShouldEndEditingLastCalledWithReplacementString: String?
@@ -52,11 +50,6 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
         textFieldIsChangedCalledTimes += 1
         textFieldIsChangedLastCalledWithBillingFormTextField = textField
         textFieldIsChangedLastCalledWithReplacementString = replacementString
-    }
-
-    func getViewForHeader() -> UIView? {
-        getViewForHeaderCalledTimes += 1
-        return UIView()
     }
 
     func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String) {

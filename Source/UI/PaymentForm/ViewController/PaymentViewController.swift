@@ -392,7 +392,7 @@ extension PaymentViewController {
       scrollView.topAnchor.constraint(equalTo: view.topAnchor),
       scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      scrollView.bottomAnchor.constraint(equalTo: view.safeBottomAnchor)
+      scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
     ])
   }
 
@@ -441,11 +441,7 @@ extension PaymentViewController: ButtonViewDelegate {
 
 extension PaymentViewController: UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    var contentOffsetY = scrollView.contentOffset.y
-
-    if #available(iOS 11.0, *) {
-      contentOffsetY += scrollView.adjustedContentInset.top
-    }
+    let contentOffsetY = scrollView.contentOffset.y + scrollView.adjustedContentInset.top
 
     if headerView.frame.maxY > 0, contentOffsetY > headerView.frame.maxY / 2 {
       title = viewModel.paymentFormStyle?.headerView.headerLabel?.text

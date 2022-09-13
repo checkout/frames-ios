@@ -16,7 +16,6 @@ protocol BillingFormTextFieldDelegate: AnyObject {
 protocol BillingFormViewControllerDelegate: AnyObject {
     func doneButtonIsPressed(sender: UIViewController)
     func cancelButtonIsPressed(sender: UIViewController)
-    func getViewForHeader() -> UIView?
     func update(country: Country)
     func phoneNumberIsUpdated(number: String, tag: Int)
 }
@@ -59,7 +58,9 @@ final class BillingFormViewController: UIViewController {
     }()
 
     private lazy var headerView: UIView = {
-        delegate?.getViewForHeader()?.disabledAutoresizingIntoConstraints() ?? UIView()
+        let view = BillingFormHeaderCell(style: viewModel.style.header)
+        view.update(style: viewModel.style.header)
+        return view
     }()
 
     private(set) lazy var tableView: UITableView? = {
@@ -92,7 +93,6 @@ final class BillingFormViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: false)
         setUpKeyboard()
         viewModel.viewControllerWillAppear()
     }
@@ -170,13 +170,12 @@ final class BillingFormViewController: UIViewController {
 
 extension BillingFormViewController {
     private func setupNavigationBar() {
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        let backgroundColor = viewModel.style.header.headerLabel.backgroundColor
-        let titleColor = viewModel.style.header.headerLabel.textColor
         navigationController?.navigationBar.tintColor = viewModel.style.header.cancelButton.activeTintColor
-
         navigationItem.leftBarButtonItem = cancelItem
         navigationItem.rightBarButtonItem = doneItem
+
+        let backgroundColor = viewModel.style.header.headerLabel.backgroundColor
+        let titleColor = viewModel.style.header.headerLabel.textColor
         customizeNavigationBarAppearance(color: backgroundColor, titleColor: titleColor)
     }
 
@@ -189,7 +188,7 @@ extension BillingFormViewController {
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(
-                equalTo: view.safeTopAnchor),
+                equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
                 constant: Constants.Padding.l.rawValue),
@@ -197,7 +196,7 @@ extension BillingFormViewController {
                 equalTo: view.trailingAnchor,
                 constant: -Constants.Padding.l.rawValue),
             tableView.bottomAnchor.constraint(
-                equalTo: view.safeBottomAnchor,
+                equalTo: view.safeAreaLayoutGuide.bottomAnchor,
                 constant: Constants.Padding.l.rawValue)
         ])
     }
@@ -269,17 +268,12 @@ extension BillingFormViewController: CountrySelectionViewControllerDelegate {
 
 extension BillingFormViewController: UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    var contentOffsetY = scrollView.contentOffset.y
-
-    if #available(iOS 11.0, *) {
-      contentOffsetY += scrollView.adjustedContentInset.top
-    }
+    let contentOffsetY = scrollView.contentOffset.y + scrollView.adjustedContentInset.top
 
     if headerView.frame.maxY > 0, contentOffsetY > headerView.frame.maxY / 2 {
       title = viewModel.style.header.headerLabel.text
     } else {
       title = nil
-
     }
   }
 }

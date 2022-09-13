@@ -172,10 +172,6 @@ final class SecureDisplayViewUIKitTests: XCTestCase {
         XCTAssertNil(testView.accessibilityHint, line: line)
         XCTAssertNil(testView.accessibilityValue, line: line)
         XCTAssertNil(testView.accessibilityElements, line: line)
-      if #available(iOS 11.0, *) {
-        XCTAssertNil(testView.accessibilityAttributedLabel)
-        XCTAssertNil(testView.accessibilityAttributedValue)
-      }
     }
 }
 
