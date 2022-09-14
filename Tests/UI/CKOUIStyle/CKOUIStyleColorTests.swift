@@ -3,27 +3,125 @@ import XCTest
 
 final class CKOUIStyleColorTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    // MARK: - Background -
+
+    func testBackgroundPrimaryColor(){
+        let color = CKOUIStyle.Color.backgroundPrimary
+        let expectedColor = UIColor(hex: "#FFFFFF")
+
+        XCTAssertEqual(color, expectedColor)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    // MARK: - Text -
+
+    func testTextPrimaryColor(){
+        let color = CKOUIStyle.Color.textPrimary
+        let expectedColor = UIColor(hex: "#000000")
+
+        XCTAssertEqual(color, expectedColor)
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testTextSecondaryColor(){
+        let color = CKOUIStyle.Color.textSecondary
+        let expectedColor = UIColor(hex: "#727272")
+
+        XCTAssertEqual(color, expectedColor)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testTextActionPrimaryColor(){
+        let color = CKOUIStyle.Color.textActionPrimary
+        let expectedColor = UIColor(hex: "#727272")
+
+        XCTAssertEqual(color, expectedColor)
     }
 
+    func testTextActionSecondaryColor(){
+        let color = CKOUIStyle.Color.textActionSecondary
+        let expectedColor = UIColor(hex: "#0B5FF0")
+
+        XCTAssertEqual(color, expectedColor)
+    }
+
+    func testTextDisabledColor(){
+        let color = CKOUIStyle.Color.textDisabled
+        let expectedColor = UIColor(hex: "#727272")
+
+        XCTAssertEqual(color, expectedColor)
+    }
+
+    func testTextErrorColor(){
+        let color = CKOUIStyle.Color.textError
+        let expectedColor = UIColor(hex: "#AD283E")
+
+        XCTAssertEqual(color, expectedColor)
+    }
+
+    // MARK: - Border -
+
+    func testBorderPrimaryColor(){
+        let color = CKOUIStyle.Color.borderPrimary
+        let expectedColor = UIColor(hex: "#8A8A8A")
+
+        XCTAssertEqual(color, expectedColor)
+    }
+
+    func testBorderSecondaryColor(){
+        let color = CKOUIStyle.Color.borderSecondary
+        let expectedColor = UIColor(hex: "#D9D9D9")
+
+        XCTAssertEqual(color, expectedColor)
+    }
+
+    func testBorderActiveColor(){
+        let color = CKOUIStyle.Color.borderActive
+        let expectedColor = UIColor(hex: "#0B5FF0")
+
+        XCTAssertEqual(color, expectedColor)
+    }
+
+    func testBorderErrorColor(){
+        let color = CKOUIStyle.Color.borderError
+        let expectedColor = UIColor(hex: "#AD283E")
+
+        XCTAssertEqual(color, expectedColor)
+    }
+
+    // MARK: - Icon -
+
+    func testIconPrimaryColor(){
+        let color = CKOUIStyle.Color.iconPrimary
+        let expectedColor = UIColor(hex: "#000000")
+
+        XCTAssertEqual(color, expectedColor)
+    }
+
+    func testIconDisabledColor(){
+        let color = CKOUIStyle.Color.iconDisabled
+        let expectedColor = UIColor(hex: "#8A8A8A")
+
+        XCTAssertEqual(color, expectedColor)
+    }
+
+    func testIconActionColor(){
+        let color = CKOUIStyle.Color.iconAction
+        let expectedColor = UIColor(hex: "#0B5FF0")
+
+        XCTAssertEqual(color, expectedColor)
+    }
+
+    // MARK: - Action -
+
+    func testActionPrimaryColor(){
+        let color = CKOUIStyle.Color.actionPrimary
+        let expectedColor = UIColor(hex: "#0B5FF0")
+
+        XCTAssertEqual(color, expectedColor)
+    }
+
+    func testActionDisabledColor(){
+        let color = CKOUIStyle.Color.actionDisabled
+        let expectedColor = UIColor(hex: "#F0F0F0")
+
+        XCTAssertEqual(color, expectedColor)
+    }
 }

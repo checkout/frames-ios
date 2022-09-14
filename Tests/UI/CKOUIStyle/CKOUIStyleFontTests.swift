@@ -3,125 +3,88 @@ import XCTest
 
 final class CKOUIStyleFontTests: XCTestCase {
 
-    // MARK: - Background -
+    func testCKOUIStyleFont() {
+        let font = CKOUIStyle.font(size: 15, weight: .regular)
+        let expectedFont =  UIFont.systemFont(ofSize: 15, weight: .regular)
 
-    func testBackgroundPrimaryColor(){
-        let color = CKOUIStyle.Color.backgroundPrimary
-        let expectedColor = UIColor(hex: "#FFFFFF")
-
-        XCTAssertEqual(color, expectedColor)
+        XCTAssertEqual(font, expectedFont)
     }
 
-    // MARK: - Text -
+    // MARK: - Title -
 
-    func testTextPrimaryColor(){
-        let color = CKOUIStyle.Color.textPrimary
-        let expectedColor = UIColor(hex: "#000000")
+    func testTitle2Font(){
+        let font = CKOUIStyle.Font.title2
+        let expectedFont = CKOUIStyle.font(size: 24, weight: .medium)
 
-        XCTAssertEqual(color, expectedColor)
+        XCTAssertEqual(font, expectedFont)
     }
 
-    func testTextSecondaryColor(){
-        let color = CKOUIStyle.Color.textSecondary
-        let expectedColor = UIColor(hex: "#727272")
+    func testHeadlineFont(){
+        let font = CKOUIStyle.Font.headline
+        let expectedFont = CKOUIStyle.font(size: 17, weight: .semibold)
 
-        XCTAssertEqual(color, expectedColor)
-    }
-    
-    func testTextActionPrimaryColor(){
-        let color = CKOUIStyle.Color.textActionPrimary
-        let expectedColor = UIColor(hex: "#727272")
-
-        XCTAssertEqual(color, expectedColor)
+        XCTAssertEqual(font, expectedFont)
     }
 
-    func testTextActionSecondaryColor(){
-        let color = CKOUIStyle.Color.textActionSecondary
-        let expectedColor = UIColor(hex: "#0B5FF0")
+    // MARK: - Body -
 
-        XCTAssertEqual(color, expectedColor)
+    func testBodyLargeFont(){
+        let font = CKOUIStyle.Font.bodyLarge
+        let expectedFont = CKOUIStyle.font(size: 17, weight: .regular)
+
+        XCTAssertEqual(font, expectedFont)
     }
 
-    func testTextDisabledColor(){
-        let color = CKOUIStyle.Color.textDisabled
-        let expectedColor = UIColor(hex: "#727272")
+    func testBodyDefaultFont(){
+        let font = CKOUIStyle.Font.bodyDefault
+        let expectedFont = CKOUIStyle.font(size: 15, weight: .medium)
 
-        XCTAssertEqual(color, expectedColor)
+        XCTAssertEqual(font, expectedFont)
     }
 
-    func testTextErrorColor(){
-        let color = CKOUIStyle.Color.textError
-        let expectedColor = UIColor(hex: "#AD283E")
+    func testBodyDefaultPlusFont(){
+        let font = CKOUIStyle.Font.bodyDefaultPlus
+        let expectedFont = CKOUIStyle.font(size: 15, weight: .regular)
 
-        XCTAssertEqual(color, expectedColor)
+        XCTAssertEqual(font, expectedFont)
     }
 
-    // MARK: - Border -
+    func testBodySmallFont(){
+        let font = CKOUIStyle.Font.bodySmall
+        let expectedFont = CKOUIStyle.font(size: 13, weight: .medium)
 
-    func testBorderPrimaryColor(){
-        let color = CKOUIStyle.Color.borderPrimary
-        let expectedColor = UIColor(hex: "#8A8A8A")
-
-        XCTAssertEqual(color, expectedColor)
-    }
-    
-    func testBorderSecondaryColor(){
-        let color = CKOUIStyle.Color.borderSecondary
-        let expectedColor = UIColor(hex: "#D9D9D9")
-
-        XCTAssertEqual(color, expectedColor)
+        XCTAssertEqual(font, expectedFont)
     }
 
-    func testBorderActiveColor(){
-        let color = CKOUIStyle.Color.borderActive
-        let expectedColor = UIColor(hex: "#0B5FF0")
+    func testBodySmallPlusFont(){
+        let font = CKOUIStyle.Font.bodySmallPlus
+        let expectedFont = CKOUIStyle.font(size: 13, weight: .regular)
 
-        XCTAssertEqual(color, expectedColor)
+        XCTAssertEqual(font, expectedFont)
     }
 
-    func testBorderErrorColor(){
-        let color = CKOUIStyle.Color.borderError
-        let expectedColor = UIColor(hex: "#AD283E")
+    // MARK: - Input -
 
-        XCTAssertEqual(color, expectedColor)
-    }
-    
-    // MARK: - Icon -
+    func testInputLabelFont(){
+        let font = CKOUIStyle.Font.inputLabel
+        let expectedFont = CKOUIStyle.font(size: 15, weight: .regular)
 
-    func testIconPrimaryColor(){
-        let color = CKOUIStyle.Color.iconPrimary
-        let expectedColor = UIColor(hex: "#000000")
-
-        XCTAssertEqual(color, expectedColor)
-    }
-
-    func testIconDisabledColor(){
-        let color = CKOUIStyle.Color.iconDisabled
-        let expectedColor = UIColor(hex: "#8A8A8A")
-
-        XCTAssertEqual(color, expectedColor)
-    }
-
-    func testIconActionColor(){
-        let color = CKOUIStyle.Color.iconAction
-        let expectedColor = UIColor(hex: "#0B5FF0")
-
-        XCTAssertEqual(color, expectedColor)
+        XCTAssertEqual(font, expectedFont)
     }
 
     // MARK: - Action -
 
-    func testActionPrimaryColor(){
-        let color = CKOUIStyle.Color.actionPrimary
-        let expectedColor = UIColor(hex: "#0B5FF0")
+    func testActionLargeFont(){
+        let font = CKOUIStyle.Font.actionLarge
+        let expectedFont = CKOUIStyle.font(size: 15, weight: .medium)
 
-        XCTAssertEqual(color, expectedColor)
+        XCTAssertEqual(font, expectedFont)
     }
 
-    func testActionDisabledColor(){
-        let color = CKOUIStyle.Color.actionDisabled
-        let expectedColor = UIColor(hex: "#F0F0F0")
+    func testActinDefaultFont(){
+        let font = CKOUIStyle.Font.actinDefault
+        let expectedFont = CKOUIStyle.font(size: 15, weight: .regular)
 
-        XCTAssertEqual(color, expectedColor)
+        XCTAssertEqual(font, expectedFont)
     }
 }
