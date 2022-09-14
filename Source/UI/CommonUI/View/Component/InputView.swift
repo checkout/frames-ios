@@ -17,6 +17,13 @@ class InputView: UIView {
       return view
     }()
 
+    private lazy var headerStackView: UIStackView = {
+      let view = UIStackView().disabledAutoresizingIntoConstraints()
+      view.axis = .vertical
+      view.spacing = 6
+      return view
+    }()
+
     private(set) lazy var headerLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
@@ -83,7 +90,7 @@ class InputView: UIView {
         self.style = style
         backgroundColor = style.backgroundColor
 
-        mandatoryLabel.isHidden = style.isMandatory
+        mandatoryLabel.isHidden = style.isMandatory || style.title == nil
         headerLabel.isHidden = style.title == nil
         hintLabel.isHidden = style.hint == nil
 
@@ -123,29 +130,47 @@ extension InputView {
 
     private func setupViewsInOrder() {
         backgroundColor = style?.backgroundColor
+        setupHeaderStackView()
         setupStackView()
         setupMandatoryLabel()
         setupIcon()
         setupTextField()
     }
 
+    private func setupHeaderStackView() {
+        addSubview(headerStackView)
+        let arrangedSubviews = [
+            headerLabel,
+            hintLabel
+        ]
+        headerStackView.addArrangedSubviews(arrangedSubviews)
+        NSLayoutConstraint.activate([
+            headerStackView.topAnchor.constraint(equalTo: topAnchor),
+            headerStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            headerStackView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+
     private func setupStackView() {
         addSubview(stackView)
         let arrangedSubviews = [
-            headerLabel,
-            hintLabel,
             textFieldContainerBorder,
             errorView
         ]
         stackView.addArrangedSubviews(arrangedSubviews)
-        stackView.setupConstraintEqualTo(view: self)
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 12),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 
     private func setupMandatoryLabel() {
         addSubview(mandatoryLabel)
         NSLayoutConstraint.activate([
-            mandatoryLabel.topAnchor.constraint(equalTo: stackView.topAnchor),
-            mandatoryLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
+            mandatoryLabel.topAnchor.constraint(equalTo: headerStackView.topAnchor),
+            mandatoryLabel.trailingAnchor.constraint(equalTo: headerStackView.trailingAnchor)
         ])
         mandatoryLabel.bringSubviewToFront(self)
     }
