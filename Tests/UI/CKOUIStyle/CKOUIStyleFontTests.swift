@@ -81,8 +81,8 @@ final class CKOUIStyleFontTests: XCTestCase {
         XCTAssertEqual(font, expectedFont)
     }
 
-    func testActinDefaultFont(){
-        let font = CKOUIStyle.Font.actinDefault
+    func testActionDefaultFont(){
+        let font = CKOUIStyle.Font.actionDefault
         let expectedFont = CKOUIStyle.font(size: 15, weight: .regular)
 
         XCTAssertEqual(font, expectedFont)
