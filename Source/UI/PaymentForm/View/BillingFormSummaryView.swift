@@ -157,7 +157,7 @@ extension BillingFormSummaryView {
         NSLayoutConstraint.activate([
           imageContainerView.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
           imageContainerView.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                            constant: -Constants.Padding.xxxl.rawValue),
+                                            constant: -Constants.Padding.l.rawValue),
           imageContainerView.widthAnchor.constraint(equalToConstant: 11),
           imageContainerView.heightAnchor.constraint(equalToConstant: 13)
         ])
