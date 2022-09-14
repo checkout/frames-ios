@@ -13,7 +13,7 @@ class InputView: UIView {
     private lazy var stackView: UIStackView = {
       let view = UIStackView().disabledAutoresizingIntoConstraints()
       view.axis = .vertical
-      view.spacing = Constants.Padding.xs.rawValue
+      view.spacing = 6
       return view
     }()
 
