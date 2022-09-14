@@ -98,7 +98,7 @@ extension BillingFormSummaryView {
         addSubview(hintLabel)
         NSLayoutConstraint.activate([
             hintLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
-                                           constant: Constants.Padding.s.rawValue),
+                                           constant: 6),
             hintLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             hintLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
@@ -143,7 +143,7 @@ extension BillingFormSummaryView {
         addSubview(summaryContainerView)
         NSLayoutConstraint.activate([
             summaryContainerView.topAnchor.constraint(equalTo: hintLabel.bottomAnchor,
-                                                      constant: Constants.Padding.s.rawValue),
+                                                      constant: 12),
             summaryContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             summaryContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             summaryContainerView.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor)
