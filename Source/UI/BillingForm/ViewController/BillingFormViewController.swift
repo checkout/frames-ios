@@ -170,7 +170,6 @@ final class BillingFormViewController: UIViewController {
 
 extension BillingFormViewController {
     private func setupNavigationBar() {
-        navigationController?.navigationBar.tintColor = viewModel.style.header.cancelButton.activeTintColor
         navigationItem.leftBarButtonItem = cancelItem
         navigationItem.rightBarButtonItem = doneItem
 
