@@ -1,6 +1,6 @@
 import UIKit
 
-final class BillingFormHeaderCell: UIView {
+final class BillingFormHeaderView: UIView {
     private var style: BillingFormHeaderCellStyle?
 
     private lazy var headerLabel: LabelView = {
@@ -24,7 +24,7 @@ final class BillingFormHeaderCell: UIView {
     }
 }
 
-extension BillingFormHeaderCell {
+extension BillingFormHeaderView {
 
     private func setupViewsInOrder() {
         backgroundColor = style?.backgroundColor

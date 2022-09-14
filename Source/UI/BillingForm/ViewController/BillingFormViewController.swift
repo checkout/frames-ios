@@ -58,7 +58,7 @@ final class BillingFormViewController: UIViewController {
     }()
 
     private lazy var headerView: UIView = {
-        let view = BillingFormHeaderCell(style: viewModel.style.header)
+        let view = BillingFormHeaderView(style: viewModel.style.header)
         view.update(style: viewModel.style.header)
         return view
     }()
