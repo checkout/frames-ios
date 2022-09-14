@@ -10,7 +10,7 @@ import UIKit
 
 extension UIViewController {
   func customizeNavigationBarAppearance() {
-    if #available(iOS 15.0, *) {
+    if #available(iOS 13.0, *) {
       let appearance = UINavigationBarAppearance()
       appearance.configureWithDefaultBackground()
       appearance.backgroundColor = .white

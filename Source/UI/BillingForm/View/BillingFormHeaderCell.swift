@@ -1,33 +1,14 @@
 import UIKit
 
-protocol BillingFormHeaderCellDelegate: AnyObject {
-    func doneButtonIsPressed()
-    func cancelButtonIsPressed()
-}
-
-final class BillingFormHeaderCell: UIView {
-    weak var delegate: BillingFormHeaderCellDelegate?
+final class BillingFormHeaderView: UIView {
     private var style: BillingFormHeaderCellStyle?
-
-    private lazy var cancelButton: ButtonView = {
-        let view = ButtonView().disabledAutoresizingIntoConstraints()
-        view.delegate = self
-        return view
-    }()
-
-    private lazy var doneButton: ButtonView = {
-        let view = ButtonView(startEnabled: false).disabledAutoresizingIntoConstraints()
-        view.delegate = self
-        return view
-    }()
 
     private lazy var headerLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    init(style: BillingFormHeaderCellStyle, delegate: BillingFormHeaderCellDelegate?) {
+    init(style: BillingFormHeaderCellStyle) {
         self.style = style
-        self.delegate = delegate
         super.init(frame: .zero)
         setupViewsInOrder()
     }
@@ -39,87 +20,30 @@ final class BillingFormHeaderCell: UIView {
     func update(style: BillingFormHeaderCellStyle?) {
         guard let style = style else { return }
         self.style = style
-
-        doneButton.update(with: style.doneButton)
-        cancelButton.update(with: style.cancelButton)
         headerLabel.update(with: style.headerLabel)
-    }
-
-    private func shouldEnableDoneButton(flag: Bool) {
-        doneButton.isEnabled = flag
     }
 }
 
-extension BillingFormHeaderCell {
+extension BillingFormHeaderView {
 
     private func setupViewsInOrder() {
         backgroundColor = style?.backgroundColor
-        setupCancelButton()
-        setupDoneButton()
         setupHeaderLabel()
-    }
-
-    private func setupCancelButton() {
-        addSubview(cancelButton)
-        NSLayoutConstraint.activate([
-            cancelButton.topAnchor.constraint(
-                equalTo: safeTopAnchor),
-            cancelButton.leadingAnchor.constraint(
-                equalTo: safeLeadingAnchor, constant: 20),
-            cancelButton.heightAnchor.constraint(
-                equalToConstant: style?.cancelButton.height ?? Constants.Style.BillingForm.CancelButton.height.rawValue),
-            cancelButton.widthAnchor.constraint(
-                equalToConstant: style?.cancelButton.width ?? Constants.Style.BillingForm.CancelButton.width.rawValue)
-        ])
-    }
-
-    private func setupDoneButton() {
-        addSubview(doneButton)
-        NSLayoutConstraint.activate([
-            doneButton.topAnchor.constraint(
-                equalTo: safeTopAnchor),
-            doneButton.trailingAnchor.constraint(
-                equalTo: safeTrailingAnchor),
-            doneButton.heightAnchor.constraint(
-                equalToConstant: style?.doneButton.height ?? Constants.Style.BillingForm.DoneButton.height.rawValue),
-            doneButton.widthAnchor.constraint(
-                equalToConstant: style?.doneButton.width ?? Constants.Style.BillingForm.DoneButton.width.rawValue)
-        ])
     }
 
     private func setupHeaderLabel() {
         addSubview(headerLabel)
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(
-                equalTo: safeTopAnchor,
-                constant: 58),
+                equalTo: topAnchor,
+                constant: Constants.Padding.s.rawValue),
             headerLabel.leadingAnchor.constraint(
-                equalTo: safeLeadingAnchor,
-                constant: Constants.Padding.l.rawValue),
+                equalTo: safeAreaLayoutGuide.leadingAnchor),
             headerLabel.trailingAnchor.constraint(
-                equalTo: safeTrailingAnchor,
-                constant: -Constants.Padding.l.rawValue),
+                equalTo: safeAreaLayoutGuide.trailingAnchor),
             headerLabel.bottomAnchor.constraint(
-                equalTo: safeBottomAnchor,
-                constant: -Constants.Padding.xxxl.rawValue)
+                equalTo: bottomAnchor,
+                constant: -Constants.Padding.s.rawValue)
         ])
-    }
-}
-
-extension BillingFormHeaderCell: BillingFormViewModelEditingDelegate {
-    func didFinishEditingBillingForm(successfully: Bool) {
-        shouldEnableDoneButton(flag: successfully)
-    }
-}
-
-extension BillingFormHeaderCell: ButtonViewDelegate {
-    func selectionButtonIsPressed(sender: UIView) {
-        switch sender {
-            case doneButton:
-                delegate?.doneButtonIsPressed()
-            case cancelButton:
-                delegate?.cancelButtonIsPressed()
-            default: break
-        }
     }
 }

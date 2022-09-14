@@ -24,12 +24,6 @@ class BillingFormViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.country?.iso3166Alpha2.uppercased(), Locale.current.regionCode)
     }
 
-    func testGetHeaderCell() {
-        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
-        let view = viewModel.getViewForHeader(sender: UIViewController())
-        XCTAssertNotNil(view)
-    }
-  
     func testValidationWhenTextFieldIsEmptyThenShowError() throws {
         let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: nil)
         let expectedType = BillingFormCell.fullName(DefaultBillingFormFullNameCellStyle(isMandatory: true))

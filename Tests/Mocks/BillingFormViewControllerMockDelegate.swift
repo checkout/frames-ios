@@ -3,6 +3,7 @@ import Checkout
 @testable import Frames
 
 class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
+
     var doneButtonIsPressedCalledTimes = 0
     var doneButtonIsPressedLastCalledWithSender: UIViewController?
 
@@ -12,9 +13,6 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
     var textFieldIsChangedCalledTimes = 0
     var textFieldIsChangedLastCalledWithBillingFormTextField: BillingFormTextField?
     var textFieldIsChangedLastCalledWithReplacementString: String?
-
-    var getViewForHeaderCalledTimes = 0
-    var getViewForHeaderLastCalledWithSender: UIViewController?
 
     var textFieldShouldEndEditingCalledTimes = 0
     var textFieldShouldEndEditingLastCalledWithBillingFormTextField: BillingFormTextField?
@@ -52,12 +50,6 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
         textFieldIsChangedCalledTimes += 1
         textFieldIsChangedLastCalledWithBillingFormTextField = textField
         textFieldIsChangedLastCalledWithReplacementString = replacementString
-    }
-
-    func getViewForHeader(sender: UIViewController) -> UIView? {
-        getViewForHeaderCalledTimes += 1
-        getViewForHeaderLastCalledWithSender = sender
-        return UIView()
     }
 
     func textFieldShouldEndEditing(textField: BillingFormTextField, replacementString: String) {

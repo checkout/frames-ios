@@ -67,15 +67,15 @@ public final class CountrySelectionViewController: UIViewController,
 
     private func addConstraints() {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.topAnchor.constraint(equalTo: view.safeTopAnchor).isActive = true
-        searchBar.trailingAnchor.constraint(equalTo: view.safeTrailingAnchor).isActive = true
-        searchBar.leadingAnchor.constraint(equalTo: view.safeLeadingAnchor).isActive = true
+        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
 
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.safeBottomAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.safeTrailingAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.safeLeadingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
     }
 
     // MARK: - UITableViewDataSource

@@ -111,8 +111,8 @@ extension PaymentHeaderView {
     iconsViewContainer.addSubview(iconsStackView)
     NSLayoutConstraint.activate([
       iconsStackView.topAnchor.constraint(equalTo: iconsViewContainer.topAnchor),
-      iconsStackView.leadingAnchor.constraint(equalTo: iconsViewContainer.safeLeadingAnchor),
-      iconsStackView.trailingAnchor.constraint(lessThanOrEqualTo: iconsViewContainer.safeTrailingAnchor),
+      iconsStackView.leadingAnchor.constraint(equalTo: iconsViewContainer.safeAreaLayoutGuide.leadingAnchor),
+      iconsStackView.trailingAnchor.constraint(lessThanOrEqualTo: iconsViewContainer.safeAreaLayoutGuide.trailingAnchor),
       iconsStackView.bottomAnchor.constraint(equalTo: iconsViewContainer.bottomAnchor, constant: -Constants.Padding.l.rawValue)
     ])
   }
