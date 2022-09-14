@@ -5,6 +5,6 @@ public struct DefaultTitleLabelStyle: ElementStyle {
     public var backgroundColor: UIColor = .clear
     public var isHidden = false
     public var text: String = ""
-    public var font = CKOUIStyle.Font.Title.headline
-    public var textColor: UIColor = CKOUIStyle.Color.Text.secondary
+    public var font = CKOUIStyle.Font.headline
+    public var textColor: UIColor = CKOUIStyle.Color.textSecondary
 }
