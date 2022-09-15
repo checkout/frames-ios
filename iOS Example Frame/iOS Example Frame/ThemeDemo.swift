@@ -33,7 +33,7 @@ enum ThemeDemo {
                                                       isRequiredInputText: "Optional")
         cardholderInput.isMandatory = false
 
-        var payButton = theme.buildPayButton(text: "Pay now!")
+        var payButton = theme.buildPayButton(text: "Pay now")
         payButton.textAlignment = .center
 
         let paymentFormStyle = theme.buildPaymentForm(
