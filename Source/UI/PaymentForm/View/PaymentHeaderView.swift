@@ -41,7 +41,7 @@ public final class PaymentHeaderView: UIView {
     view.axis = .horizontal
     view.alignment = .leading
     view.distribution = .fillEqually
-    view.spacing = Constants.Padding.xs.rawValue
+    view.spacing = 6
     return view
   }()
 

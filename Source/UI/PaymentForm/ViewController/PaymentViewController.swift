@@ -392,7 +392,7 @@ extension PaymentViewController {
       scrollView.topAnchor.constraint(equalTo: view.topAnchor),
       scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+      scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
     ])
   }
 

@@ -59,7 +59,7 @@ extension ThemeDemo {
         theme.borderRadius = 12
         theme.borderColor = .green
 
-        var payButton = theme.buildPayButton(text: "Pay now!")
+        var payButton = theme.buildPayButton(text: "Pay now")
         payButton.textAlignment = .center
 
         let paymentFormStyle = theme.buildPaymentForm(
@@ -102,7 +102,7 @@ extension ThemeDemo {
         theme.borderRadius = 12
         theme.borderColor = .green
 
-        var payButton = theme.buildPayButton(text: "Pay now!")
+        var payButton = theme.buildPayButton(text: "Pay now")
         payButton.textAlignment = .center
 
         var billingSummary = theme.buildBillingSummary(buttonText: "Change billing details", titleText: "Billing details")

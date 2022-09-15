@@ -11,9 +11,9 @@ public struct DefaultPayButtonFormStyle: ElementButtonStyle {
   public var textAlignment: NSTextAlignment = .center
   public var image: UIImage?
   public var text: String = Constants.LocalizationKeys.PaymentForm.PayButton.title
-  public var font = UIFont.systemFont(ofSize: Constants.Style.PaymentForm.PayButton.fontSize.rawValue)
-  public var disabledTextColor: UIColor = .white
-  public var disabledTintColor: UIColor = .doveGray
+  public var font = CKOUIStyle.Font.actionLarge
+  public var disabledTextColor: UIColor = CKOUIStyle.Color.textDisabled
+  public var disabledTintColor: UIColor = CKOUIStyle.Color.actionDisabled
   public var activeTintColor: UIColor = .brandeisBlue
   public var backgroundColor: UIColor = .brandeisBlue
   public var textColor: UIColor = .white

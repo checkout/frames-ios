@@ -44,7 +44,7 @@ public extension CKOUIStyle {
         static let actionLarge = CKOUIStyle.font(size: 15, weight: .medium)
 
         /// A font for default action with size 15 and regular weight
-        static let actinDefault = CKOUIStyle.font(size: 15, weight: .regular)
+        static let actionDefault = CKOUIStyle.font(size: 15, weight: .regular)
 
     }
 }
