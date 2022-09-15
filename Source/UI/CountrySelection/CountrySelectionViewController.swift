@@ -38,7 +38,7 @@ public final class CountrySelectionViewController: UIViewController,
             view?.overrideUserInterfaceStyle = .light
         }
         setup()
-        view.backgroundColor = CheckoutTheme.primaryBackgroundColor
+        view.backgroundColor = .white
         navigationItem.title = Constants.LocalizationKeys.BillingForm.Country.text
         // table view
         filteredCountries = countries
