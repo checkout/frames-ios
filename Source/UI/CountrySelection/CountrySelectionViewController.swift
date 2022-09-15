@@ -47,7 +47,10 @@ public final class CountrySelectionViewController: UIViewController,
         // search bar
         searchBar.delegate = self
         searchBar.placeholder = Constants.LocalizationKeys.CountrySelection.search
-        tableView.backgroundColor = CheckoutTheme.primaryBackgroundColor
+        searchBar.barTintColor = UIColor(hex: "#F0F0F0")
+        searchBar.tintColor = UIColor(hex: "#F0F0F0")
+        searchBar.backgroundImage = UIImage()
+        tableView.backgroundColor = UIColor(hex: "#F0F0F0")
         searchBar.barStyle = CheckoutTheme.barStyle
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "countryCell")
     }
