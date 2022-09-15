@@ -93,6 +93,9 @@ final class BillingFormViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let backgroundColor = viewModel.style.header.headerLabel.backgroundColor
+        let titleColor = viewModel.style.header.headerLabel.textColor
+        customizeNavigationBarAppearance(color: backgroundColor, titleColor: titleColor)
         setUpKeyboard()
         viewModel.viewControllerWillAppear()
     }
@@ -172,10 +175,6 @@ extension BillingFormViewController {
     private func setupNavigationBar() {
         navigationItem.leftBarButtonItem = cancelItem
         navigationItem.rightBarButtonItem = doneItem
-
-        let backgroundColor = viewModel.style.header.headerLabel.backgroundColor
-        let titleColor = viewModel.style.header.headerLabel.textColor
-        customizeNavigationBarAppearance(color: backgroundColor, titleColor: titleColor)
     }
 
     private func setupViewsInOrder() {
