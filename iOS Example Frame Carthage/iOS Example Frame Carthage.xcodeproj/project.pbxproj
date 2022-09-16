@@ -99,8 +99,6 @@
 		955B593C28D23067006A280C /* Theme+Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B586B28D23066006A280C /* Theme+Title.swift */; };
 		955B593D28D23067006A280C /* Theme+Subtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B586C28D23066006A280C /* Theme+Subtitle.swift */; };
 		955B593E28D23067006A280C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B586D28D23067006A280C /* Theme.swift */; };
-		955B593F28D23067006A280C /* CKOUIStyle+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B587028D23067006A280C /* CKOUIStyle+UIColor.swift */; };
-		955B594028D23067006A280C /* CKOUIStyle+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B587128D23067006A280C /* CKOUIStyle+UIFont.swift */; };
 		955B594128D23067006A280C /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B587428D23067006A280C /* TextFieldView.swift */; };
 		955B594228D23067006A280C /* SecureDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B587528D23067006A280C /* SecureDisplayView.swift */; };
 		955B594328D23067006A280C /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B587628D23067006A280C /* ButtonView.swift */; };
@@ -220,8 +218,6 @@
 		955B5A1C28D23086006A280C /* CardNumberViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B59BD28D23086006A280C /* CardNumberViewTests.swift */; };
 		955B5A1D28D23086006A280C /* CardNumberViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B59BE28D23086006A280C /* CardNumberViewModelTests.swift */; };
 		955B5A1E28D23086006A280C /* PaymentViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B59BF28D23086006A280C /* PaymentViewControllerTests.swift */; };
-		955B5A1F28D23086006A280C /* CKOUIStyleColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B59C128D23086006A280C /* CKOUIStyleColorTests.swift */; };
-		955B5A2028D23086006A280C /* CKOUIStyleFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B59C228D23086006A280C /* CKOUIStyleFontTests.swift */; };
 		955B5A2128D23086006A280C /* CardCreationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B59C528D23086006A280C /* CardCreationModelTests.swift */; };
 		955B5A2228D23086006A280C /* BillingFormCellTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B59C628D23086006A280C /* BillingFormCellTypeTests.swift */; };
 		955B5A2328D23086006A280C /* PaymentViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B59C728D23086006A280C /* PaymentViewModelTests.swift */; };
@@ -281,6 +277,10 @@
 		955B5A5928D23086006A280C /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B5A0528D23086006A280C /* ColorTests.swift */; };
 		955B5A5A28D23086006A280C /* ResourcesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B5A0628D23086006A280C /* ResourcesTests.swift */; };
 		9562D083286512E300C94D6B /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562D081286512C500C94D6B /* Style.swift */; };
+		95D46F2028D4BE2300AF380B /* FramesUIStyle+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D46F1E28D4BE2300AF380B /* FramesUIStyle+UIColor.swift */; };
+		95D46F2128D4BE2300AF380B /* FramesUIStyle+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D46F1F28D4BE2300AF380B /* FramesUIStyle+UIFont.swift */; };
+		95D46F2528D4BE4700AF380B /* FramesUIStyleFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D46F2328D4BE4700AF380B /* FramesUIStyleFontTests.swift */; };
+		95D46F2628D4BE4700AF380B /* FramesUIStyleColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D46F2428D4BE4700AF380B /* FramesUIStyleColorTests.swift */; };
 		95ED57A1285A13D70010B493 /* CustomStyle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ED579F285A13D70010B493 /* CustomStyle1.swift */; };
 		95EDB1CB28AC29830029DFA5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EDB1CA28AC29830029DFA5 /* HomeViewController.swift */; };
 		95EDB1CF28AD312B0029DFA5 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EDB1CE28AD312B0029DFA5 /* Factory.swift */; };
@@ -358,11 +358,7 @@
 		442277E62616376E009626A0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PhoneNumberKit.xcframework; path = ../Carthage/Build/PhoneNumberKit.xcframework; sourceTree = "<group>"; };
 		44A4DFCF261CC17800E0C349 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
-		95433B3828C9F13300200683 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		95433B3928C9F13300200683 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
-		95433B3B28C9F23800200683 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		95433B3C28C9F23900200683 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		95433B3D28C9F23C00200683 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		95433B3E28C9F23D00200683 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		955B581D28D23066006A280C /* PostCodeValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCodeValidator.swift; sourceTree = "<group>"; };
 		955B581E28D23066006A280C /* CountryValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryValidator.swift; sourceTree = "<group>"; };
@@ -422,8 +418,6 @@
 		955B586B28D23066006A280C /* Theme+Title.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Title.swift"; sourceTree = "<group>"; };
 		955B586C28D23066006A280C /* Theme+Subtitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Subtitle.swift"; sourceTree = "<group>"; };
 		955B586D28D23067006A280C /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		955B587028D23067006A280C /* CKOUIStyle+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CKOUIStyle+UIColor.swift"; sourceTree = "<group>"; };
-		955B587128D23067006A280C /* CKOUIStyle+UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CKOUIStyle+UIFont.swift"; sourceTree = "<group>"; };
 		955B587428D23067006A280C /* TextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		955B587528D23067006A280C /* SecureDisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureDisplayView.swift; sourceTree = "<group>"; };
 		955B587628D23067006A280C /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
@@ -499,7 +493,6 @@
 		955B58E528D23067006A280C /* CheckoutSdkIos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutSdkIos.swift; path = ../../Source/CheckoutSdkIos.swift; sourceTree = "<group>"; };
 		955B58E628D23067006A280C /* CardUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardUtils.swift; path = ../../Source/CardUtils.swift; sourceTree = "<group>"; };
 		955B58E928D23067006A280C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		955B58EA28D23067006A280C /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		955B58EB28D23067006A280C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		955B58EC28D23067006A280C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		955B58ED28D23067006A280C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -549,8 +542,6 @@
 		955B59BD28D23086006A280C /* CardNumberViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberViewTests.swift; sourceTree = "<group>"; };
 		955B59BE28D23086006A280C /* CardNumberViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberViewModelTests.swift; sourceTree = "<group>"; };
 		955B59BF28D23086006A280C /* PaymentViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewControllerTests.swift; sourceTree = "<group>"; };
-		955B59C128D23086006A280C /* CKOUIStyleColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKOUIStyleColorTests.swift; sourceTree = "<group>"; };
-		955B59C228D23086006A280C /* CKOUIStyleFontTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKOUIStyleFontTests.swift; sourceTree = "<group>"; };
 		955B59C528D23086006A280C /* CardCreationModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCreationModelTests.swift; sourceTree = "<group>"; };
 		955B59C628D23086006A280C /* BillingFormCellTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingFormCellTypeTests.swift; sourceTree = "<group>"; };
 		955B59C728D23086006A280C /* PaymentViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewModelTests.swift; sourceTree = "<group>"; };
@@ -610,6 +601,10 @@
 		955B5A0528D23086006A280C /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		955B5A0628D23086006A280C /* ResourcesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesTests.swift; sourceTree = "<group>"; };
 		9562D081286512C500C94D6B /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		95D46F1E28D4BE2300AF380B /* FramesUIStyle+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FramesUIStyle+UIColor.swift"; sourceTree = "<group>"; };
+		95D46F1F28D4BE2300AF380B /* FramesUIStyle+UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FramesUIStyle+UIFont.swift"; sourceTree = "<group>"; };
+		95D46F2328D4BE4700AF380B /* FramesUIStyleFontTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesUIStyleFontTests.swift; sourceTree = "<group>"; };
+		95D46F2428D4BE4700AF380B /* FramesUIStyleColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramesUIStyleColorTests.swift; sourceTree = "<group>"; };
 		95ED579F285A13D70010B493 /* CustomStyle1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle1.swift; sourceTree = "<group>"; };
 		95EDB1CA28AC29830029DFA5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		95EDB1CE28AD312B0029DFA5 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
@@ -1006,8 +1001,8 @@
 		955B586F28D23067006A280C /* UIStyle */ = {
 			isa = PBXGroup;
 			children = (
-				955B587028D23067006A280C /* CKOUIStyle+UIColor.swift */,
-				955B587128D23067006A280C /* CKOUIStyle+UIFont.swift */,
+				95D46F1E28D4BE2300AF380B /* FramesUIStyle+UIColor.swift */,
+				95D46F1F28D4BE2300AF380B /* FramesUIStyle+UIFont.swift */,
 			);
 			path = UIStyle;
 			sourceTree = "<group>";
@@ -1509,9 +1504,9 @@
 		955B59B628D23086006A280C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				95D46F2228D4BE4700AF380B /* FramesUIStyle */,
 				955B59B728D23086006A280C /* Extension */,
 				955B59BA28D23086006A280C /* PaymentForm */,
-				955B59C028D23086006A280C /* CKOUIStyle */,
 				955B59C328D23086006A280C /* BillingForm */,
 				955B59E028D23086006A280C /* 3DS */,
 				955B59E228D23086006A280C /* CountrySelection */,
@@ -1546,15 +1541,6 @@
 				955B59BE28D23086006A280C /* CardNumberViewModelTests.swift */,
 			);
 			path = CardNumber;
-			sourceTree = "<group>";
-		};
-		955B59C028D23086006A280C /* CKOUIStyle */ = {
-			isa = PBXGroup;
-			children = (
-				955B59C128D23086006A280C /* CKOUIStyleColorTests.swift */,
-				955B59C228D23086006A280C /* CKOUIStyleFontTests.swift */,
-			);
-			path = CKOUIStyle;
 			sourceTree = "<group>";
 		};
 		955B59C328D23086006A280C /* BillingForm */ = {
@@ -1687,6 +1673,15 @@
 				955B5A0628D23086006A280C /* ResourcesTests.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		95D46F2228D4BE4700AF380B /* FramesUIStyle */ = {
+			isa = PBXGroup;
+			children = (
+				95D46F2328D4BE4700AF380B /* FramesUIStyleFontTests.swift */,
+				95D46F2428D4BE4700AF380B /* FramesUIStyleColorTests.swift */,
+			);
+			path = FramesUIStyle;
 			sourceTree = "<group>";
 		};
 		95EDB1D428AD3B0F0029DFA5 /* Extension */ = {
@@ -1911,7 +1906,6 @@
 				it,
 				fr,
 				nl,
-				ar,
 			);
 			mainGroup = E6646F8120CE6C0900D8353A;
 			packageReferences = (
@@ -2080,6 +2074,7 @@
 				955B593B28D23067006A280C /* Theme+Mandatory.swift in Sources */,
 				955B592E28D23067006A280C /* Theme+AddBillingSectionButton.swift in Sources */,
 				955B595328D23067006A280C /* DefaultHintInputLabelStyle.swift in Sources */,
+				95D46F2028D4BE2300AF380B /* FramesUIStyle+UIColor.swift in Sources */,
 				955B599828D23067006A280C /* UIViewExtensions.swift in Sources */,
 				955B596D28D23067006A280C /* FramesFactory.swift in Sources */,
 				955B593528D23067006A280C /* Theme+BillingForm.swift in Sources */,
@@ -2103,11 +2098,11 @@
 				955B594528D23067006A280C /* ImageContainerView.swift in Sources */,
 				955B590D28D23067006A280C /* FullNameValidator.swift in Sources */,
 				955B594428D23067006A280C /* LabelView.swift in Sources */,
-				955B593F28D23067006A280C /* CKOUIStyle+UIColor.swift in Sources */,
 				955B592628D23067006A280C /* SecurityCodeView.swift in Sources */,
 				955B598528D23067006A280C /* PropertyProviding.swift in Sources */,
 				955B596F28D23067006A280C /* BillingFormStyle.swift in Sources */,
 				955B592A28D23067006A280C /* PaymentViewController.swift in Sources */,
+				95D46F2128D4BE2300AF380B /* FramesUIStyle+UIFont.swift in Sources */,
 				955B594D28D23067006A280C /* ElementTextFieldStyle.swift in Sources */,
 				955B598328D23067006A280C /* FramesEventLogger.swift in Sources */,
 				955B596228D23067006A280C /* DefaultHeaderLabelFormStyle.swift in Sources */,
@@ -2125,7 +2120,6 @@
 				955B598728D23067006A280C /* RemoteProcessorMetadata+extensions.swift in Sources */,
 				955B597028D23067006A280C /* BillingFormHeaderCellStyle.swift in Sources */,
 				955B597828D23067006A280C /* TopLevelDecoder.swift in Sources */,
-				955B594028D23067006A280C /* CKOUIStyle+UIFont.swift in Sources */,
 				955B591C28D23067006A280C /* DefaultPaymentFormStyle.swift in Sources */,
 				955B592328D23067006A280C /* CardNumberViewModel.swift in Sources */,
 				955B593328D23067006A280C /* Theme+BillingCountryInput.swift in Sources */,
@@ -2200,6 +2194,7 @@
 				955B5A3228D23086006A280C /* SecurityCodeViewTests.swift in Sources */,
 				955B5A4A28D23086006A280C /* StubURLSessionDataTask.swift in Sources */,
 				955B5A3828D23086006A280C /* BillingFormViewControllerTests.swift in Sources */,
+				95D46F2628D4BE4700AF380B /* FramesUIStyleColorTests.swift in Sources */,
 				955B5A2628D23086006A280C /* PostCodeValidatorTests.swift in Sources */,
 				955B5A2828D23086006A280C /* CityValidatorTests.swift in Sources */,
 				955B5A0A28D23086006A280C /* DispatchQueue+DispatchingTests.swift in Sources */,
@@ -2215,6 +2210,7 @@
 				955B5A1C28D23086006A280C /* CardNumberViewTests.swift in Sources */,
 				955B5A3628D23086006A280C /* BillingFormTextFieldErrorViewTests.swift in Sources */,
 				955B5A5428D23086006A280C /* BillingFormViewControllerMockDelegate.swift in Sources */,
+				95D46F2528D4BE4700AF380B /* FramesUIStyleFontTests.swift in Sources */,
 				955B5A5928D23086006A280C /* ColorTests.swift in Sources */,
 				955B5A5728D23086006A280C /* StubError.swift in Sources */,
 				955B5A3F28D23086006A280C /* MockCardNumberViewModel.swift in Sources */,
@@ -2255,10 +2251,8 @@
 				955B5A0928D23086006A280C /* ConstantsSchemeIconTests.swift in Sources */,
 				955B5A2928D23086006A280C /* AddressLine2ValidatorTests.swift in Sources */,
 				955B5A4528D23086006A280C /* NavigationControllerMock.swift in Sources */,
-				955B5A2028D23086006A280C /* CKOUIStyleFontTests.swift in Sources */,
 				955B5A5328D23086006A280C /* StubDateProvider.swift in Sources */,
 				955B5A4228D23086006A280C /* BillingFormTextFieldCellMockDelegate.swift in Sources */,
-				955B5A1F28D23086006A280C /* CKOUIStyleColorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2305,7 +2299,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				955B58E928D23067006A280C /* de */,
-				955B58EA28D23067006A280C /* ar */,
 				955B58EB28D23067006A280C /* en */,
 				955B58EC28D23067006A280C /* es */,
 				955B58ED28D23067006A280C /* it */,
@@ -2323,7 +2316,6 @@
 				F59820032805B75F007AB07C /* it */,
 				F598200C2805B75F007AB07C /* fr */,
 				F598200E2805B75F007AB07C /* nl */,
-				95433B3D28C9F23C00200683 /* ar */,
 				95433B3E28C9F23D00200683 /* en */,
 			);
 			name = LaunchScreen.strings;
@@ -2337,7 +2329,6 @@
 				F59820042805B75F007AB07C /* it */,
 				F598200D2805B75F007AB07C /* fr */,
 				F598200F2805B75F007AB07C /* nl */,
-				95433B3B28C9F23800200683 /* ar */,
 				95433B3C28C9F23900200683 /* en */,
 			);
 			name = Main.strings;
@@ -2347,7 +2338,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				F59820092805B75F007AB07C /* Base */,
-				95433B3828C9F13300200683 /* ar */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -2356,7 +2346,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				F598200B2805B75F007AB07C /* Base */,
-				95433B3928C9F13300200683 /* ar */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

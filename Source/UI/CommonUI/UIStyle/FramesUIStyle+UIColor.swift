@@ -1,6 +1,6 @@
 import UIKit
 
-public extension CKOUIStyle {
+public extension FramesUIStyle {
 
     /// Custom Color for Checkout UI style
     enum Color {
