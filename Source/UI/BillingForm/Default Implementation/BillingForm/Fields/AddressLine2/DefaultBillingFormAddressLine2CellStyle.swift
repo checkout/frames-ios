@@ -8,8 +8,8 @@ public struct DefaultBillingFormAddressLine2CellStyle: CellTextFieldStyle {
     public var mandatory: ElementStyle? = DefaultTitleLabelStyle(
         backgroundColor: .clear,
         text: Constants.LocalizationKeys.optionalInput,
-        font: UIStyle.Font.bodySmall,
-        textColor: UIStyle.Color.textSecondary)
+        font: FramesUIStyle.Font.bodySmall,
+        textColor: FramesUIStyle.Color.textSecondary)
     public var textfield: ElementTextFieldStyle = DefaultTextField()
     public var error: ElementErrorViewStyle? = DefaultErrorInputLabelStyle(text: Constants.LocalizationKeys.BillingForm.AddressLine2.error)
 }
