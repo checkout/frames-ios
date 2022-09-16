@@ -493,7 +493,6 @@
 		955B58E528D23067006A280C /* CheckoutSdkIos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutSdkIos.swift; path = ../../Source/CheckoutSdkIos.swift; sourceTree = "<group>"; };
 		955B58E628D23067006A280C /* CardUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardUtils.swift; path = ../../Source/CardUtils.swift; sourceTree = "<group>"; };
 		955B58E928D23067006A280C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		955B58EA28D23067006A280C /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		955B58EB28D23067006A280C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		955B58EC28D23067006A280C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		955B58ED28D23067006A280C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1907,7 +1906,6 @@
 				it,
 				fr,
 				nl,
-				ar,
 			);
 			mainGroup = E6646F8120CE6C0900D8353A;
 			packageReferences = (
@@ -2301,7 +2299,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				955B58E928D23067006A280C /* de */,
-				955B58EA28D23067006A280C /* ar */,
 				955B58EB28D23067006A280C /* en */,
 				955B58EC28D23067006A280C /* es */,
 				955B58ED28D23067006A280C /* it */,
@@ -2319,7 +2316,6 @@
 				F59820032805B75F007AB07C /* it */,
 				F598200C2805B75F007AB07C /* fr */,
 				F598200E2805B75F007AB07C /* nl */,
-				95433B3D28C9F23C00200683 /* ar */,
 				95433B3E28C9F23D00200683 /* en */,
 			);
 			name = LaunchScreen.strings;
@@ -2333,7 +2329,6 @@
 				F59820042805B75F007AB07C /* it */,
 				F598200D2805B75F007AB07C /* fr */,
 				F598200F2805B75F007AB07C /* nl */,
-				95433B3B28C9F23800200683 /* ar */,
 				95433B3C28C9F23900200683 /* en */,
 			);
 			name = Main.strings;
@@ -2343,7 +2338,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				F59820092805B75F007AB07C /* Base */,
-				95433B3828C9F13300200683 /* ar */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -2352,7 +2346,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				F598200B2805B75F007AB07C /* Base */,
-				95433B3928C9F13300200683 /* ar */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
