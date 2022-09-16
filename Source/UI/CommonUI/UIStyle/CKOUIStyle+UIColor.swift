@@ -1,6 +1,6 @@
 import UIKit
 
-public extension CKOUIStyle {
+public extension UIStyle {
 
     /// Custom Color for Checkout UI style
     enum Color {
