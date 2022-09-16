@@ -192,7 +192,6 @@
 		955B599B28D23067006A280C /* UIColor+PropertyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B590028D23067006A280C /* UIColor+PropertyProviding.swift */; };
 		955B599C28D23067006A280C /* Dictionary+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B590128D23067006A280C /* Dictionary+Additions.swift */; };
 		955B599D28D23067006A280C /* UIResponderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B590228D23067006A280C /* UIResponderExtensions.swift */; };
-		955B599E28D23067006A280C /* CheckoutTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B590328D23067006A280C /* CheckoutTheme.swift */; };
 		955B599F28D23067006A280C /* CheckoutColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B590428D23067006A280C /* CheckoutColor.swift */; };
 		955B5A0728D23086006A280C /* CardSchemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B59A128D23086006A280C /* CardSchemeTests.swift */; };
 		955B5A0828D23086006A280C /* Dictionary+AdditionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B59A328D23086006A280C /* Dictionary+AdditionsTests.swift */; };
@@ -493,7 +492,6 @@
 		955B58E528D23067006A280C /* CheckoutSdkIos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutSdkIos.swift; path = ../../Source/CheckoutSdkIos.swift; sourceTree = "<group>"; };
 		955B58E628D23067006A280C /* CardUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardUtils.swift; path = ../../Source/CardUtils.swift; sourceTree = "<group>"; };
 		955B58E928D23067006A280C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		955B58EA28D23067006A280C /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		955B58EB28D23067006A280C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		955B58EC28D23067006A280C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		955B58ED28D23067006A280C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -517,7 +515,6 @@
 		955B590028D23067006A280C /* UIColor+PropertyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+PropertyProviding.swift"; sourceTree = "<group>"; };
 		955B590128D23067006A280C /* Dictionary+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Additions.swift"; sourceTree = "<group>"; };
 		955B590228D23067006A280C /* UIResponderExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIResponderExtensions.swift; sourceTree = "<group>"; };
-		955B590328D23067006A280C /* CheckoutTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutTheme.swift; path = ../../Source/CheckoutTheme.swift; sourceTree = "<group>"; };
 		955B590428D23067006A280C /* CheckoutColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutColor.swift; path = ../../Source/CheckoutColor.swift; sourceTree = "<group>"; };
 		955B59A128D23086006A280C /* CardSchemeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSchemeTests.swift; sourceTree = "<group>"; };
 		955B59A328D23086006A280C /* Dictionary+AdditionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+AdditionsTests.swift"; sourceTree = "<group>"; };
@@ -697,7 +694,6 @@
 				955B58E628D23067006A280C /* CardUtils.swift */,
 				955B590428D23067006A280C /* CheckoutColor.swift */,
 				955B58E528D23067006A280C /* CheckoutSdkIos.swift */,
-				955B590328D23067006A280C /* CheckoutTheme.swift */,
 				955B58CD28D23067006A280C /* Core */,
 				955B58F128D23067006A280C /* Extensions */,
 				955B58E728D23067006A280C /* Resources */,
@@ -1907,7 +1903,6 @@
 				it,
 				fr,
 				nl,
-				ar,
 			);
 			mainGroup = E6646F8120CE6C0900D8353A;
 			packageReferences = (
@@ -2169,7 +2164,6 @@
 				955B597E28D23067006A280C /* Dispatching.swift in Sources */,
 				955B596C28D23067006A280C /* BillingFormCellTextField.swift in Sources */,
 				955B598928D23067006A280C /* CheckoutSdkIos.swift in Sources */,
-				955B599E28D23067006A280C /* CheckoutTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2301,7 +2295,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				955B58E928D23067006A280C /* de */,
-				955B58EA28D23067006A280C /* ar */,
 				955B58EB28D23067006A280C /* en */,
 				955B58EC28D23067006A280C /* es */,
 				955B58ED28D23067006A280C /* it */,
@@ -2319,7 +2312,6 @@
 				F59820032805B75F007AB07C /* it */,
 				F598200C2805B75F007AB07C /* fr */,
 				F598200E2805B75F007AB07C /* nl */,
-				95433B3D28C9F23C00200683 /* ar */,
 				95433B3E28C9F23D00200683 /* en */,
 			);
 			name = LaunchScreen.strings;
@@ -2333,7 +2325,6 @@
 				F59820042805B75F007AB07C /* it */,
 				F598200D2805B75F007AB07C /* fr */,
 				F598200F2805B75F007AB07C /* nl */,
-				95433B3B28C9F23800200683 /* ar */,
 				95433B3C28C9F23900200683 /* en */,
 			);
 			name = Main.strings;
@@ -2343,7 +2334,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				F59820092805B75F007AB07C /* Base */,
-				95433B3828C9F13300200683 /* ar */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -2352,7 +2342,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				F598200B2805B75F007AB07C /* Base */,
-				95433B3928C9F13300200683 /* ar */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

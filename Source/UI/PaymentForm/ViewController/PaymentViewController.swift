@@ -107,7 +107,6 @@ final class PaymentViewController: UIViewController {
     super.viewDidLoad()
     UITextField.disableHardwareLayout()
     setupNavigationBar()
-    view.backgroundColor = .white
     setupViewModel()
     setupViewsInOrder()
     viewModel.updateAll()
@@ -331,7 +330,7 @@ extension PaymentViewController {
   public func updateHeaderView() {
     guard let style = viewModel.paymentFormStyle?.headerView else { return }
     headerView.update(style: style)
-    activityIndicator.color = .blue
+    activityIndicator.color = FramesUIStyle.Color.actionPrimary
     headerBackgroundView.backgroundColor = style.backgroundColor
   }
 }

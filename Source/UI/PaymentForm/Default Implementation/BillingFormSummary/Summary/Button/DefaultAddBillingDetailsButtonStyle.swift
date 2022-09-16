@@ -5,7 +5,7 @@ public final class DefaultAddBillingDetailsButtonStyle: ElementButtonStyle {
     public var image: UIImage? = Constants.Bundle.Images.rightArrow.image?.imageFlippedForRightToLeftLayoutDirection()
     public var text: String = Constants.LocalizationKeys.PaymentForm.BillingSummary.addBillingAddress
     public var font = FramesUIStyle.Font.actionDefault
-    public var textColor: UIColor = FramesUIStyle.Color.textActionPrimary
+    public var textColor: UIColor = FramesUIStyle.Color.textActionSecondary
     public var disabledTextColor: UIColor = FramesUIStyle.Color.textDisabled
     public var disabledTintColor: UIColor = FramesUIStyle.Color.actionDisabled
     public var activeTintColor: UIColor = FramesUIStyle.Color.actionPrimary

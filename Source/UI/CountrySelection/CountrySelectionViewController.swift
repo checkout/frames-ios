@@ -38,7 +38,7 @@ public final class CountrySelectionViewController: UIViewController,
             view?.overrideUserInterfaceStyle = .light
         }
         setup()
-        view.backgroundColor = .white
+        view.backgroundColor = FramesUIStyle.Color.backgroundPrimary
         navigationItem.title = Constants.LocalizationKeys.BillingForm.Country.text
         // table view
         filteredCountries = countries
@@ -47,11 +47,11 @@ public final class CountrySelectionViewController: UIViewController,
         // search bar
         searchBar.delegate = self
         searchBar.placeholder = Constants.LocalizationKeys.CountrySelection.search
-        searchBar.barTintColor = UIColor(hex: "#F0F0F0")
-        searchBar.tintColor = UIColor(hex: "#F0F0F0")
+        searchBar.barTintColor = FramesUIStyle.Color.textSecondary
+        searchBar.tintColor = FramesUIStyle.Color.textSecondary
         searchBar.backgroundImage = UIImage()
-        tableView.backgroundColor = UIColor(hex: "#F0F0F0")
-        searchBar.barStyle = CheckoutTheme.barStyle
+        tableView.backgroundColor = FramesUIStyle.Color.textSecondary
+        searchBar.barStyle = .default
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "countryCell")
     }
 
@@ -89,9 +89,9 @@ public final class CountrySelectionViewController: UIViewController,
     }
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = CheckoutTheme.tertiaryBackgroundColor
+        cell.backgroundColor = FramesUIStyle.Color.backgroundPrimary
         cell.textLabel?.font = FramesUIStyle.Font.bodyDefault
-        cell.textLabel?.textColor = CheckoutTheme.color
+        cell.textLabel?.textColor = FramesUIStyle.Color.textPrimary
     }
 
     /// Tells the data source to return the number of rows in a given section of a table view.
