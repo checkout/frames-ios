@@ -56,6 +56,9 @@ extension Constants {
             }
         }
 
+        enum CountrySelection {
+            static let search = "CountrySearchPlaceholder".localized
+        }
         enum BillingForm {
 
             enum AddressLine1 {

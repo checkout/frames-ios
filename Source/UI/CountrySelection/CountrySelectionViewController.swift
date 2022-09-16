@@ -38,7 +38,7 @@ public final class CountrySelectionViewController: UIViewController,
             view?.overrideUserInterfaceStyle = .light
         }
         setup()
-        view.backgroundColor = CheckoutTheme.primaryBackgroundColor
+        view.backgroundColor = .white
         navigationItem.title = Constants.LocalizationKeys.BillingForm.Country.text
         // table view
         filteredCountries = countries
@@ -46,8 +46,11 @@ public final class CountrySelectionViewController: UIViewController,
         tableView.dataSource = self
         // search bar
         searchBar.delegate = self
-
-        tableView.backgroundColor = CheckoutTheme.primaryBackgroundColor
+        searchBar.placeholder = Constants.LocalizationKeys.CountrySelection.search
+        searchBar.barTintColor = UIColor(hex: "#F0F0F0")
+        searchBar.tintColor = UIColor(hex: "#F0F0F0")
+        searchBar.backgroundImage = UIImage()
+        tableView.backgroundColor = UIColor(hex: "#F0F0F0")
         searchBar.barStyle = CheckoutTheme.barStyle
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "countryCell")
     }
@@ -73,7 +76,7 @@ public final class CountrySelectionViewController: UIViewController,
 
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
     }
@@ -87,7 +90,7 @@ public final class CountrySelectionViewController: UIViewController,
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = CheckoutTheme.tertiaryBackgroundColor
-        cell.textLabel?.font = CheckoutTheme.font
+        cell.textLabel?.font = CKOUIStyle.Font.bodyDefaultPlus
         cell.textLabel?.textColor = CheckoutTheme.color
     }
 
