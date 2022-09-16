@@ -30,7 +30,7 @@ final class UIStyleColorTests: XCTestCase {
 
     func testTextActionPrimaryColor(){
         let color = UIStyle.Color.textActionPrimary
-        let expectedColor = UIColor(hex: "#727272")
+        let expectedColor = UIColor(hex: "#FFFFFF")
 
         XCTAssertEqual(color, expectedColor)
     }

@@ -15,8 +15,8 @@ public struct DefaultCardholderFormStyle: CellTextFieldStyle {
     public var mandatory: ElementStyle? = DefaultTitleLabelStyle(
         backgroundColor: .clear,
         text: Constants.LocalizationKeys.optionalInput,
-        font: UIFont.systemFont(ofSize: Constants.Style.BillingForm.InputOptionalLabel.fontSize.rawValue),
-        textColor: .doveGray)
+        font: UIStyle.Font.bodySmall,
+        textColor: UIStyle.Color.textSecondary)
     public var textfield: ElementTextFieldStyle = DefaultTextField()
     public var error: ElementErrorViewStyle?
 }

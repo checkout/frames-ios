@@ -10,13 +10,13 @@ import UIKit
 public struct DefaultPayButtonFormStyle: ElementButtonStyle {
   public var textAlignment: NSTextAlignment = .center
   public var image: UIImage?
-  public var text: String = Constants.LocalizationKeys.PaymentForm.PayButton.title
+  public var text = Constants.LocalizationKeys.PaymentForm.PayButton.title
   public var font = UIStyle.Font.actionLarge
   public var disabledTextColor: UIColor = UIStyle.Color.textDisabled
   public var disabledTintColor: UIColor = UIStyle.Color.actionDisabled
-  public var activeTintColor: UIColor = .brandeisBlue
-  public var backgroundColor: UIColor = .brandeisBlue
-  public var textColor: UIColor = .white
+  public var activeTintColor: UIColor = UIStyle.Color.actionPrimary
+  public var backgroundColor: UIColor = UIStyle.Color.actionPrimary
+  public var textColor: UIColor = UIStyle.Color.textActionPrimary
   public var normalBorderColor: UIColor = .clear
   public var focusBorderColor: UIColor = .clear
   public var errorBorderColor: UIColor = .clear

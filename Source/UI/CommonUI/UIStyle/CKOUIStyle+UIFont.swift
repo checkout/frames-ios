@@ -22,16 +22,16 @@ public extension UIStyle {
         static let bodyLarge = UIStyle.font(size: 17, weight: .regular)
 
         /// A font for default body with size 15 and medium weight
-        static let bodyDefault = UIStyle.font(size: 15, weight: .medium)
+        static let bodyDefault = UIStyle.font(size: 15, weight: .regular)
 
         /// A font for default plus body with size 15 and regular weight
-        static let bodyDefaultPlus = UIStyle.font(size: 15, weight: .regular)
+        static let bodyDefaultPlus = UIStyle.font(size: 15, weight: .medium)
 
-        /// A font for small body with size 13 and medium weight
-        static let bodySmall = UIStyle.font(size: 13, weight: .medium)
+        /// A font for small body with size 13 and regular weight
+        static let bodySmall = UIStyle.font(size: 13, weight: .regular)
 
-        /// A font for small plus body with size 13 and regular weight
-        static let bodySmallPlus = UIStyle.font(size: 13, weight: .regular)
+        /// A font for small plus body with size 13 and medium weight
+        static let bodySmallPlus = UIStyle.font(size: 13, weight: .medium)
 
         // MARK: - Input -
 

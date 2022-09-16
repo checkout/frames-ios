@@ -4,12 +4,12 @@ public final class DefaultEditBillingDetailsButtonStyle: ElementButtonStyle {
     public var textAlignment: NSTextAlignment = .natural
     public var image: UIImage? = Constants.Bundle.Images.rightArrow.image?.imageFlippedForRightToLeftLayoutDirection()
     public var text: String = Constants.LocalizationKeys.PaymentForm.BillingSummary.editBillingAddress
-    public var font = UIFont.systemFont(ofSize: Constants.Style.BillingForm.InputCountryButton.fontSize.rawValue)
-    public var textColor: UIColor = .brandeisBlue
+    public var font = UIStyle.Font.actionDefault
+    public var textColor: UIColor = UIStyle.Color.textActionSecondary
     public var disabledTextColor: UIColor = .clear
     public var disabledTintColor: UIColor = .clear
-    public var activeTintColor: UIColor = .brandeisBlue
-    public var imageTintColor: UIColor = .brandeisBlue
+    public var activeTintColor: UIColor = UIStyle.Color.actionPrimary
+    public var imageTintColor: UIColor = UIStyle.Color.iconAction
     public var backgroundColor: UIColor = .clear
     public var normalBorderColor: UIColor = .clear
     public var focusBorderColor: UIColor = .clear
