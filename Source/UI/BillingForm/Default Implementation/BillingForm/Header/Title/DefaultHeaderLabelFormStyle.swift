@@ -5,6 +5,6 @@ public struct DefaultHeaderLabelFormStyle: ElementStyle {
     public var backgroundColor: UIColor = .clear
     public var isHidden = false
     public var text: String = ""
-    public var font = UIStyle.Font.title2
-    public var textColor: UIColor = UIStyle.Color.textPrimary
+    public var font = FramesUIStyle.Font.title2
+    public var textColor: UIColor = FramesUIStyle.Color.textPrimary
 }

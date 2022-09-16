@@ -90,7 +90,7 @@ public final class CountrySelectionViewController: UIViewController,
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = CheckoutTheme.tertiaryBackgroundColor
-        cell.textLabel?.font = UIStyle.Font.bodyDefaultPlus
+        cell.textLabel?.font = FramesUIStyle.Font.bodyDefaultPlus
         cell.textLabel?.textColor = CheckoutTheme.color
     }
 

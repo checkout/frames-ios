@@ -5,6 +5,6 @@ public struct DefaultTitleLabelStyle: ElementStyle {
     public var backgroundColor: UIColor = .clear
     public var isHidden = false
     public var text: String = ""
-    public var font = UIStyle.Font.inputLabel
-    public var textColor: UIColor = UIStyle.Color.textPrimary
+    public var font = FramesUIStyle.Font.inputLabel
+    public var textColor: UIColor = FramesUIStyle.Color.textPrimary
 }
