@@ -3,7 +3,7 @@ import UIKit
 
 extension String {
     func localized(comment: String = "") -> String {
-        NSLocalizedString(self, bundle: FramesBundle.base, comment: "")
+        NSLocalizedString(self, bundle: FramesBundle.base, comment: comment)
     }
 
     func image() -> UIImage {
