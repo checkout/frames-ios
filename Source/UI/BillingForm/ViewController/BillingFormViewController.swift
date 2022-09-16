@@ -42,6 +42,10 @@ final class BillingFormViewController: UIViewController {
                          style: .plain,
                          target: self,
                          action: #selector(cancelButtonIsPressed))
+        item.setTitleTextAttributes([
+            .font: viewModel.style.header.cancelButton.font,
+            .foregroundColor: viewModel.style.header.cancelButton.textColor],
+            for: .normal)
         item.tintColor = viewModel.style.header.cancelButton.textColor
         return item
     }()
@@ -51,6 +55,10 @@ final class BillingFormViewController: UIViewController {
                          style: .plain,
                          target: self,
                          action: #selector(doneButtonIsPressed))
+        item.setTitleTextAttributes([
+            .font: viewModel.style.header.doneButton.font,
+            .foregroundColor: viewModel.style.header.doneButton.textColor],
+            for: .normal)
         item.isEnabled = viewModel.data != nil
         item.tintColor = viewModel.data == nil ? viewModel.style.header.doneButton.disabledTextColor :
         viewModel.style.header.doneButton.textColor
