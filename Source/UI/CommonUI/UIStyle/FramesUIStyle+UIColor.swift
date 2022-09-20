@@ -19,7 +19,7 @@ public extension FramesUIStyle {
         static let textSecondary = UIColor(hex: "#727272")
 
         /// A color for primary text action with hex #727272
-        static let textActionPrimary = UIColor(hex: "#727272")
+        static let textActionPrimary = UIColor(hex: "#FFFFFF")
 
         /// A color for secondary text action with hex #0B5FF0
         static let textActionSecondary = UIColor(hex: "#0B5FF0")

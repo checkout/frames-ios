@@ -19,7 +19,7 @@ extension Constants.Bundle {
     case keyboardNext = "keyboard-next"
 
     var image: UIImage? {
-      return rawValue.image(forClass: PaymentViewController.self)
+      rawValue.image()
     }
   }
 
@@ -58,7 +58,7 @@ extension Constants.Bundle {
     }
 
     var image: UIImage? {
-      return rawValue.image(forClass: PaymentViewController.self)
+      rawValue.image()
     }
   }
 }

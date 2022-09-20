@@ -192,7 +192,6 @@
 		955B599B28D23067006A280C /* UIColor+PropertyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B590028D23067006A280C /* UIColor+PropertyProviding.swift */; };
 		955B599C28D23067006A280C /* Dictionary+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B590128D23067006A280C /* Dictionary+Additions.swift */; };
 		955B599D28D23067006A280C /* UIResponderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B590228D23067006A280C /* UIResponderExtensions.swift */; };
-		955B599E28D23067006A280C /* CheckoutTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B590328D23067006A280C /* CheckoutTheme.swift */; };
 		955B599F28D23067006A280C /* CheckoutColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B590428D23067006A280C /* CheckoutColor.swift */; };
 		955B5A0728D23086006A280C /* CardSchemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B59A128D23086006A280C /* CardSchemeTests.swift */; };
 		955B5A0828D23086006A280C /* Dictionary+AdditionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B59A328D23086006A280C /* Dictionary+AdditionsTests.swift */; };
@@ -516,7 +515,6 @@
 		955B590028D23067006A280C /* UIColor+PropertyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+PropertyProviding.swift"; sourceTree = "<group>"; };
 		955B590128D23067006A280C /* Dictionary+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Additions.swift"; sourceTree = "<group>"; };
 		955B590228D23067006A280C /* UIResponderExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIResponderExtensions.swift; sourceTree = "<group>"; };
-		955B590328D23067006A280C /* CheckoutTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutTheme.swift; path = ../../Source/CheckoutTheme.swift; sourceTree = "<group>"; };
 		955B590428D23067006A280C /* CheckoutColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutColor.swift; path = ../../Source/CheckoutColor.swift; sourceTree = "<group>"; };
 		955B59A128D23086006A280C /* CardSchemeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSchemeTests.swift; sourceTree = "<group>"; };
 		955B59A328D23086006A280C /* Dictionary+AdditionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+AdditionsTests.swift"; sourceTree = "<group>"; };
@@ -696,7 +694,6 @@
 				955B58E628D23067006A280C /* CardUtils.swift */,
 				955B590428D23067006A280C /* CheckoutColor.swift */,
 				955B58E528D23067006A280C /* CheckoutSdkIos.swift */,
-				955B590328D23067006A280C /* CheckoutTheme.swift */,
 				955B58CD28D23067006A280C /* Core */,
 				955B58F128D23067006A280C /* Extensions */,
 				955B58E728D23067006A280C /* Resources */,
@@ -2167,7 +2164,6 @@
 				955B597E28D23067006A280C /* Dispatching.swift in Sources */,
 				955B596C28D23067006A280C /* BillingFormCellTextField.swift in Sources */,
 				955B598928D23067006A280C /* CheckoutSdkIos.swift in Sources */,
-				955B599E28D23067006A280C /* CheckoutTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

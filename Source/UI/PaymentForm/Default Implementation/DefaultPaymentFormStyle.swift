@@ -1,7 +1,7 @@
 import UIKit
 
 public struct DefaultPaymentFormStyle: PaymentFormStyle {
-    public var backgroundColor: UIColor = .white
+    public var backgroundColor: UIColor = FramesUIStyle.Color.backgroundPrimary
     public var headerView: PaymentHeaderCellStyle = DefaultPaymentHeaderCellStyle()
     public var editBillingSummary: BillingSummaryViewStyle? = DefaultBillingSummaryViewStyle()
     public var addBillingSummary: CellButtonStyle? = DefaultAddBillingDetailsViewStyle()

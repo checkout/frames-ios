@@ -30,7 +30,7 @@ final class FramesUIStyleColorTests: XCTestCase {
 
     func testTextActionPrimaryColor(){
         let color = FramesUIStyle.Color.textActionPrimary
-        let expectedColor = UIColor(hex: "#727272")
+        let expectedColor = UIColor(hex: "#FFFFFF")
 
         XCTAssertEqual(color, expectedColor)
     }

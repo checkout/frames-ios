@@ -37,28 +37,28 @@ final class FramesUIStyleFontTests: XCTestCase {
 
     func testBodyDefaultFont(){
         let font = FramesUIStyle.Font.bodyDefault
-        let expectedFont = FramesUIStyle.font(size: 15, weight: .medium)
+        let expectedFont = FramesUIStyle.font(size: 15, weight: .regular)
 
         XCTAssertEqual(font, expectedFont)
     }
 
     func testBodyDefaultPlusFont(){
         let font = FramesUIStyle.Font.bodyDefaultPlus
-        let expectedFont = FramesUIStyle.font(size: 15, weight: .regular)
+        let expectedFont = FramesUIStyle.font(size: 15, weight: .medium)
 
         XCTAssertEqual(font, expectedFont)
     }
 
     func testBodySmallFont(){
         let font = FramesUIStyle.Font.bodySmall
-        let expectedFont = FramesUIStyle.font(size: 13, weight: .medium)
+        let expectedFont = FramesUIStyle.font(size: 13, weight: .regular)
 
         XCTAssertEqual(font, expectedFont)
     }
 
     func testBodySmallPlusFont(){
         let font = FramesUIStyle.Font.bodySmallPlus
-        let expectedFont = FramesUIStyle.font(size: 13, weight: .regular)
+        let expectedFont = FramesUIStyle.font(size: 13, weight: .medium)
 
         XCTAssertEqual(font, expectedFont)
     }
