@@ -3,7 +3,7 @@ author: Checkout.com
 author_url: https://www.checkout.com/
 source_host: github
 source_host_url: https://github.com/checkout/frames-ios
-source_host_files_url: https://github.com/checkout/frames-ios/tree/master
+source_host_files_url: https://github.com/checkout/frames-ios/tree/main
 output: docs
 theme: .jazzy/.themes/checkout.com
 clean: true
