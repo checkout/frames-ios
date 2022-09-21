@@ -15,7 +15,7 @@
 "OptionalInputField" = "Opcional";
 "CardholderInputTitle" = "Nombre del titular";
 "ExpiryDate" = "Fecha de vencimiento";
-"ExpiryDateFormat" = "FFormato MM/AA";
+"ExpiryDateFormat" = "Formato MM/AA";
 "ExpiryDatePlaceholder" = "_ _  / _ _";
 "ExpiryDateErrorMessageInvalid" = "Por favor, inserte una fecha de vencimiento válida";
 "ExpiryDateErrorMessageInvalidInPast" = "La fecha de vencimiento es pasada";
