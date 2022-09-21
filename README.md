@@ -1,20 +1,19 @@
 # Frames iOS
-
-[![Build Status](https://travis-ci.org/checkout/frames-ios.svg?branch=master)](https://travis-ci.org/checkout/frames-ios)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Frames.svg)](https://img.shields.io/cocoapods/v/Frames)
-[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/checkout/frames-ios?label=carthage)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/checkout/frames-ios?label=spm)
+
+![Bitrise](https://img.shields.io/bitrise/b458eecbb0222141?token=7EWxlcgiqm8949liUxqcYA)
 [![Platform](https://img.shields.io/cocoapods/p/Frames.svg?style=flat)]()
-[![codecov](https://codecov.io/gh/checkout/frames-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/checkout/frames-ios)
-[![codebeat badge](https://codebeat.co/badges/d9bae177-78c1-40bb-94a7-187a7759d549)](https://codebeat.co/projects/github-com-checkout-frames-ios-master)
 ![license](https://img.shields.io/github/license/checkout/frames-ios.svg)
 
 <p align="center">
-	<img src="https://github.com/checkout/frames-ios/blob/master/screenshots/demo-frames-ios.gif?raw=true" width="320" alt="Demo frames ios"/>
+    <img src="https://github.com/checkout/frames-ios/blob/master/screenshots/demo-frames-ios.gif?raw=true" width="320" alt="Demo frames ios"/>
 </p>
 
 ## Requirements
 
-- iOS 10.0+
+- iOS 12.0+
 - Xcode 12.4+
 - Swift 5.3+
 
@@ -22,15 +21,11 @@
 
 Further information on using the Frames SDK is available in the [integration guide](https://docs.checkout.com/integrate/sdks/ios-sdk).
 
-Frames for iOS provides a convenient solution that can take the customer's sensitive information and exchange them for a secure token that can be used within Checkout.com's infrastructure.
+Frames for iOS tokenises customer and card data for use within [Checkout.com](https://www.checkout.com)'s payment infrastructure.
 
-Frames can be integrated in 2 ways:
-
-1. Integrated with the UI
-   Embed the fully customisable UI provided by the SDK to accept card details, customer name and billling details and exchange them for a secure token. (See the [`CardViewController` tab](https://docs.checkout.com/integrate/sdks/ios-sdk#iOSSDK-Step2:ImporttheiOSSDKandchooseyourapproach))
-
-2. Integrated without the UI
-   Use the provided API to send sensitive data to the Checkout.com server and retrieve the secure token (See the [`Headless` tab](https://docs.checkout.com/integrate/sdks/ios-sdk#iOSSDK-Step2:ImporttheiOSSDKandchooseyourapproach)).
+> Frames only can be integrated with the UI
+   
+Embed the fully customisable UI provided by the SDK to accept card details, customer name and billling details and exchange them for a secure token. (See the [`HomeViewController` tab](https://docs.checkout.com/integrate/sdks/ios-sdk#iOSSDK-Step2:ImporttheiOSSDKandchooseyourapproach))
 
 You can find the Frames API reference [on this website](https://checkout.github.io/frames-ios/index.html).
 
@@ -55,11 +50,11 @@ To integrate Frames into your Xcode project using CocoaPods, specify it in your 
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '10.0'
+platform :ios, '12.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Frames', '~> 3'
+    pod 'Frames', '~> 4'
 end
 ```
 
@@ -82,8 +77,8 @@ $ brew install carthage
 
 To integrate Frames into your Xcode project using Carthage, specify it in your `Cartfile`:
 
-```ogdl
-github "checkout/frames-ios" ~> 3
+```
+github "checkout/frames-ios" ~> 4
 ```
 
 Run `carthage update --use-xcframeworks` to build the framework and drag the built `Frames` into your Xcode project.
@@ -94,256 +89,69 @@ Run `carthage update --use-xcframeworks` to build the framework and drag the bui
 
 Once you have your Swift package set up, adding Frames as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
 
-```
+```swift
 dependencies: [
-    .package(url: "https://github.com/checkout/frames-ios.git", .upToNextMajor(from: "3.0.0"))
+    .package(url: "https://github.com/checkout/frames-ios.git", .upToNextMajor(from: "4.0.0"))
 ]
 ```
 
 ## Usage
 
-Import the SDK:
+import SDK in a Factory
 
 ```swift
 import Frames
-```
+import Checkout
+import UIKit
 
-### Using the `CardViewController` UI
+enum Factory {
+    
+    static func getDefaultPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
 
-```swift
-class ViewController: UIViewController, CardViewControllerDelegate {
+        let country = Country(iso3166Alpha2: "GB")!
+        let address = Address(addressLine1: "Test line1",
+                          addressLine2: nil,
+                          city: "London",
+                          state: "London",
+                          zip: "N12345",
+                          country: country)
 
-    // Create a CheckoutAPIClient instance with your public key.
-    let checkoutAPIClient = CheckoutAPIClient(
-        publicKey: "<Your Public Key>",
-        environment: .sandbox)
+        let phone = Phone(number: "77 1234 1234", country: country)
+        let billingFormData = BillingForm(name: "Bình Inyene", address: address, phone: phone)
+        let billingFormStyle = FramesFactory.defaultBillingFormStyle
+        let paymentFormStyle = FramesFactory.defaultPaymentFormStyle
+        let supportedSchemes: [CardScheme] = [.visa, .mastercard, .maestro]
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Create the CardViewController.
-        let cardViewController = CardViewController(
-            checkoutApiClient: checkoutAPIClient,
-            cardHolderNameState: .hidden,
-            billingDetailsState: .hidden)
-
-        // Set the CardViewController delegate.
-        cardViewController.delegate = self
-
-        // Replace the bar button with Pay.
-        cardViewController.rightBarButtonItem = UIBarButtonItem(
-            title: "Pay",
-            style: .done,
-            target: nil,
-            action: nil)
-
-        // (Optional) Specify which schemes are allowed.
-        cardViewController.availableSchemes = [.visa, .mastercard]
-
-        // Push the cardViewController onto the navigation stack.
-        navigationController?.pushViewController(cardViewController, animated: false)
-    }
-
-    func onTapDone(controller: CardViewController, cardToken: CkoCardTokenResponse?, status: CheckoutTokenStatus) {
-        // Called when the tokenization request has completed.
-        print(cardToken ?? "cardToken is nil")
-    }
-
-    func onSubmit(controller: CardViewController) {
-        // Called just before a create card token request is made.
-    }
-
+        let configuration = PaymentFormConfiguration(apiKey: "<Your Public Key>", environment: .sandbox, supportedSchemes: supportedSchemes, billingFormData: billingFormData)
+    
+        let style = PaymentStyle(paymentFormStyle: paymentFormStyle, billingFormStyle: billingFormStyle)
+    
+        let viewController = PaymentFormFactory.buildViewController(configuration: configuration, style: style, completionHandler: completionHandler)
+    
+        return viewController
+  }
 }
 ```
 
-### Headless Mode
-
+### Using the `getDefaultPaymentViewController` as `UIViewController` in UI
 ```swift
-// Create a CheckoutAPIClient instance with your public key.
-let checkoutAPIClient = CheckoutAPIClient(
-    publicKey: "<Your Public Key>",
-    environment: .sandbox)
-
-let phoneNumber = CkoPhoneNumber(
-    countryCode: "44",
-    number: "7700900000")
-
-let address = CkoAddress(
-    addressLine1: "Wenlock Works",
-    addressLine2: "Shepherdess Walk",
-    city: "London",
-    state: "London",
-    zip: "N1 7BQ",
-    country: "GB")
-
-// Create a CardTokenRequest instance with the phoneNumber and address values.
-let cardTokenRequest = CkoCardTokenRequest(
-    number: "4242424242424242",
-    expiryMonth: "01",
-    expiryYear: "29",
-    cvv: "100",
-    name: "Test Customer",
-    billingAddress: address,
-    phone: phoneNumber)
-
-// Request the card token.
-checkoutAPIClient.createCardToken(card: cardTokenRequest) { result in
+class YourViewController: UIViewController {
+    
+    private func showDefaultTheme() {
+        let viewController = Factory.getDefaultPaymentViewController { [weak self] result in
+            self?.handleTokenResponse(with: result)
+        }
+        navigationController?.pushViewController(viewController, animated: true)
+  } 
+  
+  private func handleTokenResponse(with result: Result<TokenDetails, TokenisationError.TokenRequest>) {
     switch result {
-    case .success(let response):
-        print(response)
-    case .failure(let error):
-        print(error.localizedDescription)
+      case .failure(let error):
+       // handle failure
+      case .success(let tokenDetails):
+        // handle success
     }
-}
-```
-
-### Using Methods available in FramesIos
-
-You can find more examples on the [usage guide](https://checkout.github.io/frames-ios/usage.html).
-
-#### Create the API Client `CheckoutAPIClient`:
-
-```swift
-// Replace "pk_test_6ff46046-30af-41d9-bf58-929022d2cd14" with your own public key.
-let checkoutAPIClient = CheckoutAPIClient(
-    publicKey: "pk_test_6ff46046-30af-41d9-bf58-929022d2cd14",
-    environment: .sandbox)
-```
-
-#### Create the `CardUtils` instance:
-
-```swift
-let cardUtils = CardUtils()
-```
-
-#### Use `CardUtils` to verify card number:
-
-```swift
-// Verify card number.
-let cardNumber = "4242424242424242"
-let isValidCardNumber = cardUtils.isValid(cardNumber: cardNumber)
-
-print(isValidCardNumber) // true
-```
-
-### Validate a CVV with `CardUtils`
-
-```swift
-// Verify CVV.
-let cardNumber = "4242424242424242"
-guard let cardType = cardUtils.getTypeOf(cardNumber: cardNumber) else { return }
-
-let cvv = "100"
-let isValidCVV = cardUtils.isValid(cvv: cvv, cardType: cardType)
-
-print(isValidCVV) // true
-```
-
-### Validate an expiration date with CardUtils
-
-```swift
-// Verify expiration date.
-let expirationMonth = "01"
-let expirationYear = "29"
-
-let isValidExpiration = cardUtils.isValid(
-    expirationMonth: expirationMonth,
-    expirationYear: expirationYear)
-
-print(isValidExpiration) // true
-```
-
-### Get information about a card number with CardUtils
-
-```swift
-let cardNumber = "4242424242424242"
-guard let cardType = cardUtils.getTypeOf(cardNumber: cardNumber) else { return }
-print(cardType.name) // Visa
-```
-
-### Format a card number with CardUtils
-
-```swift
-let cardNumber = "4242424242424242"
-guard let cardType = cardUtils.getTypeOf(cardNumber: cardNumber) else { return }
-
-let formattedCardNumber = cardUtils.format(cardNumber: cardNumber, cardType: cardType)
-print(formattedCardNumber) // 4242 4242 4242 4242
-```
-
-### Standardize a card number with CardUtils
-
-```swift
-let cardNumber = "4242 | 4242 | 4242 | 4242 "
-let standardizedCardNumber = cardUtils.standardize(cardNumber: cardNumber)
-print(standardizedCardNumber) // "4242424242424242"
-```
-
-#### Create the card token request `CkoCardTokenRequest`:
-
-```swift
-// Create a CheckoutAPIClient instance with your public key.
-let checkoutAPIClient = CheckoutAPIClient(
-    publicKey: "<Your Public Key>",
-    environment: .sandbox)
-
-let phoneNumber = CkoPhoneNumber(
-    countryCode: "44",
-    number: "7700900000")
-
-let address = CkoAddress(
-    addressLine1: "Wenlock Works",
-    addressLine2: "Shepherdess Walk",
-    city: "London",
-    state: "London",
-    zip: "N1 7BQ",
-    country: "GB")
-
-// Create a CardTokenRequest instance with the phoneNumber and address values.
-let cardTokenRequest = CkoCardTokenRequest(
-    number: "4242424242424242",
-    expiryMonth: "01",
-    expiryYear: "29",
-    cvv: "100",
-    name: "Test Customer",
-    billingAddress: address,
-    phone: phoneNumber)
-
-// Request the card token.
-checkoutAPIClient.createCardToken(card: cardTokenRequest) { result in
-    switch result {
-    case .success(let response):
-        print(response)
-    case .failure(let error):
-        print(error.localizedDescription)
-    }
-}
-```
-
-The completion handler here provides a `Result<CkoCardTokenResponse, NetworkError>` value.
-
-### Prompt for CVV confirmation
-
-Create and configure a `CvvConfirmationViewController`.
-
-```swift
-let cvvConfirmationViewController = CvvConfirmationViewController()
-cvvConfirmationViewController.delegate = self
-```
-
-Handle the result by adding conformance to `CvvConfirmationViewControllerDelegate`.
-
-```swift
-extension ViewController: CvvConfirmationViewControllerDelegate {
-
-    func onConfirm(controller: CvvConfirmationViewController, cvv: String) {
-        // Handle cvv.
-    }
-
-    func onCancel(controller: CvvConfirmationViewController) {
-        // Handle cancellation.
-    }
-
+  }
 }
 ```
 
@@ -356,18 +164,31 @@ The redirection URLs (`success_url` and `failure_url`) are set in the Checkout.c
 Create and configure a `ThreedsWebViewController`.
 
 ```swift
+let checkoutAPIService = CheckoutAPIService(publicKey: "<Your Public Key>", environment: .sandbox)
+
+guard
+    let successUrl = URL(string: "http://example.com/success"),
+    let failUrl = URL(string: "http://example.com/failure"),
+    let challengeUrl = URL(string: "http://example.com/3ds")\
+else {
+    // handle error
+    return
+}
+
 let threeDSWebViewController = ThreedsWebViewController(
-    successUrl: "http://example.com/success",
-    failUrl: "http://example.com/failure")
-threeDSWebViewController.url = "http://example.com/3ds"
+    checkoutAPIService: checkoutAPIService,
+    successUrl: successUrl,
+    failUrl: failUrl
+)
 threeDSWebViewController.delegate = self
+threeDSWebViewController.url = challengeUrl
 ```
 
 Handle the result by adding conformance to `ThreedsWebViewControllerDelegate`.
 
+> TODO: clean up these delegate methods and update the docs accordingly
 ```swift
-extension ViewController: ThreedsWebViewControllerDelegate {
-
+extension YourViewController: ThreedsWebViewControllerDelegate {
     func threeDSWebViewControllerAuthenticationDidSucceed(_ threeDSWebViewController: ThreedsWebViewController, token: String?) {
         // Handle successful 3DS.
     }
@@ -375,25 +196,65 @@ extension ViewController: ThreedsWebViewControllerDelegate {
     func threeDSWebViewControllerAuthenticationDidFail(_ threeDSWebViewController: ThreedsWebViewController) {
         // Handle failed 3DS.
     }
-
 }
 ```
 
-### Customize with `CheckoutTheme`
+> Suggested syntax instead
+```swift
+typealias ThreeDSWebViewResult = Result<String?, ThreeDSWebViewError>
+
+extension YourViewController: ThreedsWebViewControllerDelegate {
+    func threeDSWebViewComplete(
+        _ threeDSWebViewController: ThreedsWebViewController,
+        result: ThreeDSWebViewResult
+    ) {
+        switch result {
+        case .success(let token):
+            // Handle successful 3DS.
+        case .failure(let error):
+            // Handle failed 3DS
+        }
+    }
+}
+```
+
+## Apple Pay example
+
+Our iOS SDK also supports handling `PKPayment` token data from Apple Pay.
+
+```swift
+func handle(payment: PKPayment) {
+    // Create a CheckoutAPIClient instance with your public key.
+
+    let checkoutAPIService = CheckoutAPIService(
+        publicKey: "<Your Public Key>", 
+        environment: .sandbox
+    )
+
+    // Get the data containing the encrypted payment information.
+    let paymentData = payment.token.paymentData
+
+    // Request an Apple Pay token.
+    checkoutAPIService.createToken(.applePay(ApplePay(paymentData))) { result in
+        switch result {
+        case .success(let tokenDetails):
+            print(tokenDetails)
+        case .failure(let error):
+            print(error.localizedDescription)
+        }
+    }
+}
+```
+
+
+
+### Customize with `Frames Style`
+
+> TODO: update Styling URL
 
 Further documentation about customizing Frames is available from the [customization guide](https://www.checkout.com/docs/integrate/sdks/ios-sdk/customization-guide).
 
-```swift
-CheckoutTheme.primaryBackgroundColor = .purple
-CheckoutTheme.secondaryBackgroundColor = .magenta
-CheckoutTheme.tertiaryBackgroundColor = .red
-CheckoutTheme.color = .white
-CheckoutTheme.secondaryColor = .lightGray
-CheckoutTheme.errorColor = .blue
-CheckoutTheme.chevronColor = .white
-CheckoutTheme.font = UIFont(name: "Chalkboard SE", size: 12)!
-```
 
 ## License
 
-Frames iOS is released under the MIT license. [See LICENSE](https://github.com/checkout/frames-ios/blob/master/LICENSE) for details.
+Frames iOS is released under the MIT license. [See LICENSE](https://github.com/checkout/frames-ios/blob/main/LICENSE) for details.
