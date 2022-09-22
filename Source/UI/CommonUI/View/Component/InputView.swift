@@ -146,9 +146,7 @@ extension InputView {
         headerStackView.addArrangedSubviews(arrangedSubviews)
         NSLayoutConstraint.activate([
             headerStackView.topAnchor.constraint(equalTo: topAnchor),
-            headerStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            headerStackView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
+            headerStackView.leadingAnchor.constraint(equalTo: leadingAnchor)        ])
     }
 
     private func setupStackView() {
@@ -169,8 +167,9 @@ extension InputView {
     private func setupMandatoryLabel() {
         addSubview(mandatoryLabel)
         NSLayoutConstraint.activate([
-            mandatoryLabel.topAnchor.constraint(equalTo: headerStackView.topAnchor),
-            mandatoryLabel.trailingAnchor.constraint(equalTo: headerStackView.trailingAnchor)
+            mandatoryLabel.centerYAnchor.constraint(equalTo: headerStackView.centerYAnchor),
+            mandatoryLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            headerStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60)
         ])
         mandatoryLabel.bringSubviewToFront(self)
     }
