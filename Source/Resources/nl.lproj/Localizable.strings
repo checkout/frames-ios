@@ -11,7 +11,7 @@
 "BillingFormCountryButtonTitle" = "Selecteer alstublieft een land";
 "PaymentFormSummaryViewHintText" = "We hebben deze informatie nodig als extra beveiligingsmaatregel om deze kaart te verifiëren.";
 "AddBillingAddress" = "Factuuradres toevoegen";
-"EditBillingAddress" = "Factuuradres bewerken";
+"EditBillingAddress" = "Factuuradres wijzigen";
 /* Accessory shown alongside input fields to denote that the input is not required for validation when completing request */
 "OptionalInputField" = "Optioneel";
 /* Title of input section on the Payment Form where user is expected to input the Cardholder name as displayed on card */
@@ -21,7 +21,7 @@
 "ExpiryDatePlaceholder" = "_ _  / _ _";
 "ExpiryDateErrorMessageInvalid" = "Voer een geldige vervaldatum in";
 "ExpiryDateErrorMessageInvalidInPast" = "Vervaldatum ligt in het verleden";
-"SecurityCode" = "Beveiligingscode code";
+"SecurityCode" = "Beveiligingscode";
 "SecurityCodeHint" = "3-4 cijferige code op uw kaart";
 "SecurityCodeErrorMessage" = "Voer een geldige beveiligingscode in";
 "PaymentHeaderTitle" = "Betalingsdetails";
