@@ -17,37 +17,51 @@
 - Xcode 12.4+
 - Swift 5.3+
 
-## Documentation
+ 
 
-Further information on using the Frames SDK is available in the [integration guide](https://docs.checkout.com/integrate/sdks/ios-sdk).
+
+## Documentation
 
 Frames for iOS tokenises customer and card data for use within [Checkout.com](https://www.checkout.com)'s payment infrastructure.
 
-> Frames only can be integrated with the UI
+[Integration](#Integration): _Lets talk about our SDK code showing up inside your amazing application's sourcecode._
+
+[Get started](#Get-started): _Start testing what we can do by presenting inside your UI_ 
+
+[Make it your own](#Make-it-your-own)
+
+Complete information will be found in the [Checkout ](https://docs.checkout.com/integrate/sdks/ios-sdk).
    
 Embed the fully customisable UI provided by the SDK to accept card details, customer name and billling details and exchange them for a secure token. (See the [`HomeViewController` tab](https://docs.checkout.com/integrate/sdks/ios-sdk#iOSSDK-Step2:ImporttheiOSSDKandchooseyourapproach))
 
 You can find the Frames API reference [on this website](https://checkout.github.io/frames-ios/index.html).
 
-- [Usage](https://checkout.github.io/frames-ios/usage.html)
-- [Customizing the card view](https://checkout.github.io/frames-ios/customizing-the-card-view.html)
+
 - Walkthrough
   - [Frames iOS example](frames-ios-example.html)
 
-## Installation
+ 
+
+
+## Integration
+
+We've done our best to support most common distribution methods on iOS for you. We are in strong favour of [SPM](#Swift-Package-Manager) but if for any reason this doesn't work for you, we're also supporting [Cocoapods](#Cocoapods) and [Carthage](#Carthage)
+
+### Swift Package Manager
+[Swift Package Manager](https://swift.org/package-manager/) integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies. It should work out of the box on latest Xcode projects since Xcode 11 and has had a lot of community support, seeing huge adoption over the recent years. This makes it our favourite distribution method and the easiest one to integrate, keep updated and build around.
+
+Follow Apple's step by step guide into [adding package dependencies to your app](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app) and get started in no time! Just use this repository's URL (https://github.com/checkout/frames-ios) when adding dependency.
 
 ### CocoaPods
+[CocoaPods](http://cocoapods.org) is the traditional dependency manager for Apple projects. Still supported but not always able to validate all its peculiar ways.
 
-[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
-
+Make sure cocoapods is installed on your machine by running
 ```bash
-$ gem install cocoapods
+$ pod --version
 ```
+Any version newer than **1.10.0** is a good sign. If not installed, or unsupported, follow [Cocoapods Getting Started](https://guides.cocoapods.org/using/getting-started.html)
 
-> CocoaPods 1.10.0+ is required to build Frames.
-
-To integrate Frames into your Xcode project using CocoaPods, specify it in your `Podfile`:
-
+Once Cocoapods of a valid version is on your machine, to integrate Frames into your Xcode project, update your `Podfile`:
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '12.0'
@@ -58,22 +72,22 @@ target '<Your Target Name>' do
 end
 ```
 
-Then, run the following command:
+Then, run the following command in terminal:
 
 ```bash
 $ pod install
+```
+
+To update your existing Cocoapod dependencies, use:
+```bash
+$ pod update
 ```
 
 ### Carthage
 
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
 
-You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
-
-```bash
-$ brew update
-$ brew install carthage
-```
+If you haven't already, [install Carthage](https://github.com/Carthage/Carthage#installing-carthage)
 
 To integrate Frames into your Xcode project using Carthage, specify it in your `Cartfile`:
 
@@ -83,19 +97,13 @@ github "checkout/frames-ios" ~> 4
 
 Run `carthage update --use-xcframeworks` to build the framework and drag the built `Frames` into your Xcode project.
 
-### Swift Package Manager
 
-[Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the swift compiler.
+ 
 
-Once you have your Swift package set up, adding Frames as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
 
-```swift
-dependencies: [
-    .package(url: "https://github.com/checkout/frames-ios.git", .upToNextMajor(from: "4.0.0"))
-]
-```
+## Get started
 
-## Usage
+Assuming you have completed the Integration via one of the suggested Install methods above (please use SPM if possible), let's have a look at getting the code running in your application.
 
 import SDK in a Factory
 
@@ -154,6 +162,8 @@ class YourViewController: UIViewController {
   }
 }
 ```
+
+## Make it your own
 
 ### Handle 3D Secure
 
