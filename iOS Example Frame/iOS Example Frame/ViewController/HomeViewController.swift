@@ -7,7 +7,6 @@
 //
 
 import Frames
-import Checkout
 import UIKit
 
 class HomeViewController: UIViewController {
@@ -142,7 +141,7 @@ class HomeViewController: UIViewController {
     }
   }
 
-  private func handleTokenResponse(with result: Result<TokenDetails, TokenisationError.TokenRequest>) {
+  private func handleTokenResponse(with result: Result<TokenDetails, TokenRequestError>) {
     switch result {
       case .failure(let error):
         showAlert(with: error.localizedDescription)
