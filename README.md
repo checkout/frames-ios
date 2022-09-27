@@ -22,35 +22,38 @@
 
 ## Documentation
 
-Frames for iOS tokenises customer and card data for use within [Checkout.com](https://www.checkout.com)'s payment infrastructure.
+Frames for iOS tokenises customer and card data for use within [Checkout.com](https://www.checkout.com)'s payment infrastructure. We want to abstract all the complexity in taking payments from your Mobile Application and allow you to focus on the amazing experience & features you deliver to your users.
 
-[Integration](#Integration): _Lets talk about our SDK code showing up inside your amazing application's sourcecode._
+- [Integration](#Integration): _Lets talk about our SDK code showing up inside your amazing application's sourcecode._
 
-[Get started](#Get-started): _Start testing what we can do by presenting inside your UI_ 
+- [Demo projects](#Demo-projects): _We have crafted projects showcasing the functionality while testing each distribution method offered_
 
-[Make it your own](#Make-it-your-own)
+- [Get started](#Get-started): _Start testing what you can achieve by presenting inside your Applications UI_ 
 
-Complete information will be found in the [Checkout ](https://docs.checkout.com/integrate/sdks/ios-sdk).
+- [Make it your own](#Make-it-your-own): _Customising the UI to become a part of your app_
+
+- [Other features](): _How we help with Apple Pay & 3D Secure Challenges_
+
+- [License](#License)
+
+
+Complete information will be found in the [Checkout Docs](https://docs.checkout.com/integrate/sdks/ios-sdk).
    
-Embed the fully customisable UI provided by the SDK to accept card details, customer name and billling details and exchange them for a secure token. (See the [`HomeViewController` tab](https://docs.checkout.com/integrate/sdks/ios-sdk#iOSSDK-Step2:ImporttheiOSSDKandchooseyourapproach))
-
 You can find the Frames API reference [on this website](https://checkout.github.io/frames-ios/index.html).
 
-
-- Walkthrough
-  - [Frames iOS example](frames-ios-example.html)
 
  
 
 
-## Integration
+# Integration
 
-We've done our best to support most common distribution methods on iOS for you. We are in strong favour of [SPM](#Swift-Package-Manager) but if for any reason this doesn't work for you, we're also supporting [Cocoapods](#Cocoapods) and [Carthage](#Carthage)
+We've done our best to support most common distribution methods on iOS for you. We are in strong favour of [SPM](#Swift-Package-Manager) (Swift Package Manager) but if for any reason this doesn't work for you, we're also supporting [Cocoapods](#Cocoapods) and [Carthage](#Carthage)
 
 ### Swift Package Manager
 [Swift Package Manager](https://swift.org/package-manager/) integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies. It should work out of the box on latest Xcode projects since Xcode 11 and has had a lot of community support, seeing huge adoption over the recent years. This makes it our favourite distribution method and the easiest one to integrate, keep updated and build around.
 
-Follow Apple's step by step guide into [adding package dependencies to your app](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app) and get started in no time! Just use this repository's URL (https://github.com/checkout/frames-ios) when adding dependency.
+If you've never used it before, get started with Apple's step by step guide into [adding package dependencies to your app](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app) and we'll boost your project in no time! Just use this repository's URL (https://github.com/checkout/frames-ios) when adding dependency.
+
 
 ### CocoaPods
 [CocoaPods](http://cocoapods.org) is the traditional dependency manager for Apple projects. Still supported but not always able to validate all its peculiar ways.
@@ -101,67 +104,110 @@ Run `carthage update --use-xcframeworks` to build the framework and drag the bui
  
 
 
-## Get started
+# Demo projects
 
-Assuming you have completed the Integration via one of the suggested Install methods above (please use SPM if possible), let's have a look at getting the code running in your application.
+With the help of some of our amazing coleagues at Checkout, we have created some very simple demo applications that use our SDK and you should be able to run locally as soon as you cloned the repository (whether directly via git or with suggested Integration methods).
 
-import SDK in a Factory
+Our demo apps also test the supported integration methods (SPM, Cocoapods, Carthage), so if you're having any problems there, they should offer a working example. You will find them in the root of the repository, inside respective folders:
+- iOS Example Frame (Using Cocoapods distribution)
+- iOS Example Frame SPM (SPM distribution)
+- iOS Example Frame Carthage (Carthage distribution)
 
+Once running, you will find the home screen with a number of design options. We have tried to make them pretty contrasting to give your UI/UX teammates an idea of what can be achieved. We've also tried to write the code in the simplest way to track and understand how each UI flavour was created. Just start from `HomeViewController.swift` and follow the button actions in code (`@IBAction`) for some examples on how we achieve those UIs.
+
+
+
+
+ 
+
+
+# Get started
+
+If you got here, we'll either assume you've completed Integration or you're just curious. If none, then please complete [Integration](#Integration) first.
+
+#### 1. Import `Frames`
+<sub>If unsure where to just do it for now from your ViewController that will be presenting the journey.</sub>
 ```swift
 import Frames
-import Checkout
-import UIKit
-
-enum Factory {
-    
-    static func getDefaultPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
-
-        let country = Country(iso3166Alpha2: "GB")!
-        let address = Address(addressLine1: "Test line1",
-                          addressLine2: nil,
-                          city: "London",
-                          state: "London",
-                          zip: "N12345",
-                          country: country)
-
-        let phone = Phone(number: "77 1234 1234", country: country)
-        let billingFormData = BillingForm(name: "Bình Inyene", address: address, phone: phone)
-        let billingFormStyle = FramesFactory.defaultBillingFormStyle
-        let paymentFormStyle = FramesFactory.defaultPaymentFormStyle
-        let supportedSchemes: [CardScheme] = [.visa, .mastercard, .maestro]
-
-        let configuration = PaymentFormConfiguration(apiKey: "<Your Public Key>", environment: .sandbox, supportedSchemes: supportedSchemes, billingFormData: billingFormData)
-    
-        let style = PaymentStyle(paymentFormStyle: paymentFormStyle, billingFormStyle: billingFormStyle)
-    
-        let viewController = PaymentFormFactory.buildViewController(configuration: configuration, style: style, completionHandler: completionHandler)
-    
-        return viewController
-  }
-}
 ```
 
-### Using the `getDefaultPaymentViewController` as `UIViewController` in UI
+#### 2. Prepare your object responsible for the Frames configuration
+This is the logical configuration:
+- ensuring you receive access for the request
+- enable us to prevalidate supported schemes at input stage
+- prefill user information (Optional but may go a long way with User Experience if able to provide)
+
 ```swift
-class YourViewController: UIViewController {
-    
-    private func showDefaultTheme() {
-        let viewController = Factory.getDefaultPaymentViewController { [weak self] result in
-            self?.handleTokenResponse(with: result)
-        }
-        navigationController?.pushViewController(viewController, animated: true)
-  } 
-  
-  private func handleTokenResponse(with result: Result<TokenDetails, TokenisationError.TokenRequest>) {
+/** 
+    This is optional and can use nil instead of this property. 
+    But if you can provide these details for your user you can
+        - make their checkout experience easier by prefilling fields they may need to do
+        - improve acceptance success for card tokenisation
+*/
+let billingFormData = BillingForm(
+    name: "Amazing Customer",
+    address: nil,
+    phone: nil)
+
+let configuration = PaymentFormConfiguration(
+    apiKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
+    environment: .sandbox,
+    supportedSchemes: [.visa, .maestro, .mastercard],
+    billingFormData: billingFormData)
+```
+
+#### 3. Prepare the Styling for the UI
+<sub>We will cover [Make it your own](#Make-it-your-own) later, for now we'll use Default Style</sub>
+```swift
+// Style applied on Card input screen (Payment Form)
+let paymentFormStyle = DefaultPaymentFormStyle()
+
+// Style applied on Billing input screen (Billing Form)
+let billingFormStyle = DefaultBillingFormStyle()
+
+// Frames Style
+let style = PaymentStyle(
+    paymentFormStyle: paymentFormStyle,
+    billingFormStyle: billingFormStyle)
+```
+
+#### 4. Prepare your response from the flow completing
+<sub>If the user completes flow without cancelling, the completion handler will be called, with a card token if successful, or with an error if failed</sub>
+```swift
+let completion: ((Result<TokenDetails, TokenRequestError>) -> Void) = { result in
     switch result {
-      case .failure(let error):
-       // handle failure
-      case .success(let tokenDetails):
-        // handle success
+    case .failure(let error):
+        print("Failed, received error", error.localizedDescription)
+    case .success(let tokenDetails):
+        print("Success, received token", tokenDetails.token)
     }
-  }
 }
 ```
+
+#### 5. Use our `PaymentFormFactory` to generate the ViewController
+<sub>Using properties from Steps 2, 3 & 4, lets now create the ViewController</sub>
+```swift
+let framesViewController = PaymentFormFactory.buildViewController(
+    configuration: configuration, // Step 2,
+    style: style,                 // Step 3
+    completionHandler: completion // Step 4
+)
+```
+
+#### 6. Present the ViewController to your user
+<sub>We now have created the ViewController needed to enable full tokenisation for your user. Let's present it.</sub>
+```swift
+/** 
+    We are assuming you started the Walkthrough from the presenting ViewController 
+        and that a Navigation Controller is available
+    
+    You will need to make minor adjustments otherwise. 
+    
+    For the best experience we recommend embedding the presenting ViewController inside an UINavigationController
+*/
+navigationController?.pushViewController(framesViewController, animated: true)
+```
+
 
 ## Make it your own
 
