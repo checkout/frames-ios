@@ -126,11 +126,12 @@ Once running, you will find the home screen with a number of design options. We 
 If you got here, we'll either assume you've completed Integration or you're just curious. If none, then please complete [Integration](#Integration) first.
 
 #### 1. Import `Frames`
-<sub>If unsure where to just do it for now from your ViewController that will be presenting the journey.</sub>
+<sub>If unsure where to do it, the ViewController that will be presenting the journey is a good start</sub>
 ```swift
 import Frames
 ```
 
+ 
 #### 2. Prepare your object responsible for the Frames configuration
 This is the logical configuration:
 - ensuring you receive access for the request
@@ -156,6 +157,7 @@ let configuration = PaymentFormConfiguration(
     billingFormData: billingFormData)
 ```
 
+ 
 #### 3. Prepare the Styling for the UI
 <sub>We will cover [Make it your own](#Make-it-your-own) later, for now we'll use Default Style</sub>
 ```swift
@@ -171,6 +173,7 @@ let style = PaymentStyle(
     billingFormStyle: billingFormStyle)
 ```
 
+ 
 #### 4. Prepare your response from the flow completing
 <sub>If the user completes flow without cancelling, the completion handler will be called, with a card token if successful, or with an error if failed</sub>
 ```swift
@@ -184,6 +187,7 @@ let completion: ((Result<TokenDetails, TokenRequestError>) -> Void) = { result i
 }
 ```
 
+ 
 #### 5. Use our `PaymentFormFactory` to generate the ViewController
 <sub>Using properties from Steps 2, 3 & 4, lets now create the ViewController</sub>
 ```swift
@@ -194,6 +198,7 @@ let framesViewController = PaymentFormFactory.buildViewController(
 )
 ```
 
+ 
 #### 6. Present the ViewController to your user
 <sub>We now have created the ViewController needed to enable full tokenisation for your user. Let's present it.</sub>
 ```swift
