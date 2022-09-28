@@ -22,7 +22,7 @@
 
 ## Documentation
 
-Frames for iOS tokenises customer and card data for use within [Checkout.com](https://www.checkout.com)'s payment infrastructure. We want to abstract all the complexity in taking payments from your Mobile Application and allow you to focus on the amazing experience & features you deliver to your users.
+Frames for iOS tokenises consumer data for use within [Checkout.com](https://www.checkout.com)'s payment infrastructure. We want to abstract all the complexity in taking payments from your Mobile Application and allow you to focus on the amazing experience & features you deliver to your users.
 
 - [Integration](#Integration): _Lets talk about our SDK code showing up inside your amazing application's sourcecode._
 
