@@ -47,7 +47,7 @@ You can find the Frames API reference [on our Jazzy docs](https://checkout.githu
 
 # Integration
 
-We've done our best to support most common distribution methods on iOS for you. We are in strong favour of [SPM](#Swift-Package-Manager) (Swift Package Manager) but if for any reason this doesn't work for you, we're also supporting [Cocoapods](#Cocoapods) and [Carthage](#Carthage)
+We've done our best to support the most common distribution methods on iOS for you. We are in strong favour of [SPM](#Swift-Package-Manager) (Swift Package Manager) but if for any reason this doesn't work for you, we're also supporting [Cocoapods](#Cocoapods) and [Carthage](#Carthage)
 
 ### Swift Package Manager
 [Swift Package Manager](https://swift.org/package-manager/) integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies. It should work out of the box on latest Xcode projects since Xcode 11 and has had a lot of community support, seeing huge adoption over the recent years. This makes it our favourite distribution method and the easiest one to integrate, keep updated and build around.
