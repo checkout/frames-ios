@@ -34,6 +34,8 @@ Frames for iOS tokenises customer and card data for use within [Checkout.com](ht
 
 - [Other features](#Other-features): _How we help with Apple Pay & 3D Secure Challenges_
 
+- [Migrating](#Migrating): _If you have used 3.5.x version before, 
+
 - [License](#License)
 
 
@@ -410,6 +412,25 @@ func handle(payment: PKPayment) {
     }
 }
 ```
+
+
+ 
+
+
+# Migrating
+3DS and Apple Pay processing remain unaffected so using them should still work the same, but can access via `import Frames` now. 
+
+As Frames is just a wrapper around the original functionality of Checkout module you've already used, most APIs should still work, or have minimal syntax changes flagged by compiler.
+
+We would like to point out the great benefits that we think 4.0.0 brings to our SDK, like:
+- compliance with financial regulations as you would not handle any sensitive card information directly
+- customisable UI focussed on enabling your users to seamlesly transition through the payment flow
+
+If you do decide to migrate from Checkout to Frames, a standard migration won't really work, the flow is very different.  Our suggestion would be:
+- remove usage of Checkout module (this may help you remove screens and a lot of code supporting them)
+- [Get started](#Get-started)
+
+Overall, this should take no more time than traditionally migrating between complex version progressions of most dependencies, whilst allowing you the joy of removing a lot of complex code and letting us help with it. 
 
 
  
