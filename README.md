@@ -32,7 +32,7 @@ Frames for iOS tokenises customer and card data for use within [Checkout.com](ht
 
 - [Make it your own](#Make-it-your-own): _Customising the UI to become a part of your app_
 
-- [Other features](): _How we help with Apple Pay & 3D Secure Challenges_
+- [Other features](#Other-features): _How we help with Apple Pay & 3D Secure Challenges_
 
 - [License](#License)
 
@@ -192,7 +192,7 @@ let completion: ((Result<TokenDetails, TokenRequestError>) -> Void) = { result i
 <sub>Using properties from Steps 2, 3 & 4, lets now create the ViewController</sub>
 ```swift
 let framesViewController = PaymentFormFactory.buildViewController(
-    configuration: configuration, // Step 2,
+    configuration: configuration, // Step 2
     style: style,                 // Step 3
     completionHandler: completion // Step 4
 )
@@ -214,84 +214,188 @@ navigationController?.pushViewController(framesViewController, animated: true)
 ```
 
 
-## Make it your own
+ 
 
+
+# Make it your own
+<sub>!!! Any customisation needs to be done before creating the ViewController. Once style is submitted to the factory, any changes done on it will not be reflected in the UI !!!</sub>
+
+We have been working hard to provide a selection of ways to make it your own. In order of complexity we'll start with:
+
+
+### Modify Default
+In our [Get started](#Get-started) example we have used Default Style to get something working quickly. If that was mostly what you were looking for, then you'll be happy to know that each component is mutable and you should easily be able to customise individual properties. This is also used as example in our demo projects inside `Factory.swift`, in the method `getDefaultPaymentViewController`.
+
+Example:
+```swift
+var paymentFormStyle = DefaultPaymentFormStyle()
+
+// Change background of page
+paymentFormStyle.backgroundColor = UIColor.darkGray
+
+// Change card number input placeholder value
+paymentFormStyle.expiryDate.textfield.placeholder = "00 / 00"
+
+// Change Payment button text
+paymentFormStyle.payButton.text = "Pay £54.63"
+```
+We wouldn't recommend this approach if you're looking to override many values, since you would need to individually identify and change every property. But it can work for small tweaks.
+
+
+### Use Theme
+In our Demo projects we also demo this approach in `ThemeDemo.swift`. With the Theme, we are aiming to give you a design system that you can use to create the full UI style by providing a small number of properties that we will share across to sub components. Since you might not fully agree with our mapping, you can still individually change each component afterwards (as in the Modify Default example).
+
+```swift
+// Declare the theme object with the minimum required properties
+var theme = Theme(primaryFontColor: UIColor(red: 0 / 255, green: 204 / 255, blue: 45 / 255, alpha: 1),
+    secondaryFontColor: UIColor(red: 177 / 255, green: 177 / 255, blue: 177 / 255, alpha: 1),
+    buttonFontColor: .green,
+    errorFontColor: .red,
+    backgroundColor: UIColor(red: 23 / 255, green: 32 / 255, blue: 30 / 255, alpha: 1),
+    errorBorderColor: .red)
+
+// Add border and corner radius around text inputs
+theme.textInputBackgroundColor = UIColor(red: 36 / 255.0, green: 48 / 255.0, blue: 45 / 255.0, alpha: 1.0)
+theme.textInputBorderRadius = 4
+
+// Add border around input sections
+theme.borderRadius = 4
+
+// Build complete payment form by providing only texts
+let paymentFormStyle = theme.buildPaymentForm(
+    headerView: theme.buildPaymentHeader(title: "Payment details",
+                                        subtitle: "Accepting your favourite payment methods"),
+    addBillingButton: theme.buildAddBillingSectionButton(text: "Add billing details",
+                                                        isBillingAddressMandatory: false,
+                                                        titleText: "Billing details"),
+    billingSummary: theme.buildBillingSummary(buttonText: "Change billing details",
+                                            titleText: "Billing details"),
+    cardNumber: theme.buildPaymentInput(isTextFieldNumericInput: true,
+                                                titleText: "Card number",
+                                                errorText: "Please enter valid card number"),
+    expiryDate: theme.buildPaymentInput(textFieldPlaceholder: "__ / __",
+                                                isTextFieldNumericInput: false,
+                                                titleText: "Expiry date",
+                                                errorText: "Please enter valid expiry date"),
+    securityCode: theme.buildPaymentInput(isTextFieldNumericInput: true,
+                                        titleText: "CVV date",
+                                        errorText: "Please enter valid security code"),
+    payButton: heme.buildPayButton(text: "Pay now"))
+
+// Override a custom property from the resulting payment form style
+paymentFormStyle.payButton.disabledTextColor = UIColor.lightGray
+
+let billingFormStyle = theme.buildBillingForm(
+            header: theme.buildBillingHeader(title: "Billing information",
+                                             cancelButtonTitle: "Cancel",
+                                             doneButtonTitle: "Done"),
+            cells: [.fullName(theme.buildBillingInput(text: "", isNumbericInput: false, isMandatory: false, title: "Your name")),
+                    .addressLine1(theme.buildBillingInput(text: "", isNumbericInput: false, isMandatory: true, title: "Address")),
+                    .city(theme.buildBillingInput(text: "", isNumbericInput: false, isMandatory: true, title: "City")),
+                    .country(theme.buildBillingCountryInput(buttonText: "Select your country", title: "Country")),
+                    .phoneNumber(theme.buildBillingInput(text: "", isNumbericInput: true, isMandatory: true, title: "Phone number"))])
+```
+
+We think this approach should hit a good balance between great control of UI & simple, concise code. The font sizes even use `preferredFont(forTextStyle: ...).pointSize` to give you font sizes that match your users device preferences. However if you still find the mapping to need excessive customisation, our final approach may be more to your liking.
+
+
+### Declare all components
+
+This is by no means the easy way, but it is absolutely the way to fully customise every property, and discover the full extent of customisability as you navigate through. You will find inside the Demo projects the files `Style.swift` and `CustomStyle1.swift` which follow this approach.
+
+If deciding to do this, try to:
+
+- let compiler help. Xcode's autocomplete should come in handy to help navigate from highest level into the lowest customisation option
+```swift
+let style = PaymentStyle(paymentFormStyle: <#T##PaymentFormStyle#>,
+                        billingFormStyle: <#T##BillingFormStyle#>)
+```
+
+- protocols are the keyword. Starting from code above, the arguments will be protocol objects until the lowest level. 
+```swift
+// You will need to prepare your objects that conform to the required protocols
+struct MyPaymentFormStyle: PaymentFormStyle {
+    var backgroundColor: UIColor = ...
+    var headerView: PaymentHeaderCellStyle = ...
+    var editBillingSummary: BillingSummaryViewStyle? = ...
+    var addBillingSummary: CellButtonStyle? = ...
+    var cardholderInput: CellTextFieldStyle? = ...
+    var cardNumber: CellTextFieldStyle = ...
+    var expiryDate: CellTextFieldStyle = ...
+    var securityCode: CellTextFieldStyle? = ...
+    var payButton: ElementButtonStyle = ...
+}
+
+// Then feed them to your end PaymentStyle
+let style = PaymentStyle(paymentFormStyle: MyPaymentFormStyle(),
+                        billingFormStyle: <#T##BillingFormStyle#>)
+```
+
+
+ 
+
+
+# Other features
 ### Handle 3D Secure
 
 When you send a 3D secure charge request from your server you will get back a 3D Secure URL. This is available from `_links.redirect.href` within the JSON response. You can then pass the 3D Secure URL to a `ThreedsWebViewController` in order to handle the verification.
 
 The redirection URLs (`success_url` and `failure_url`) are set in the Checkout.com Hub, but they can be overwritten in the charge request sent from your server. It is important to provide the correct URLs to ensure a successful payment flow.
 
-Create and configure a `ThreedsWebViewController`.
+Lets imagine we are now working inside `YourViewController.swift` and we are handling the 3DS challenge:
 
 ```swift
-let checkoutAPIService = CheckoutAPIService(publicKey: "<Your Public Key>", environment: .sandbox)
-
-guard
-    let successUrl = URL(string: "http://example.com/success"),
-    let failUrl = URL(string: "http://example.com/failure"),
-    let challengeUrl = URL(string: "http://example.com/3ds")\
-else {
-    // handle error
-    return
+// Ensure you know the fail & success URLs
+private enum Constants {
+    static let successURL = URL(string: "http://example.com/success")!
+    static let failureURL = URL(string: "http://example.com/failure")
 }
 
+// Prepare the service
+let checkoutAPIService = CheckoutAPIService(publicKey: "<Your Public Key>", environment: .sandbox)
+
+// Create the ThreedsWebViewController
 let threeDSWebViewController = ThreedsWebViewController(
     checkoutAPIService: checkoutAPIService,
-    successUrl: successUrl,
-    failUrl: failUrl
-)
+    // If the payment response provided new success_url or failure_url, use those. Otherwise default to Checkout provided values as documented previously
+    successUrl: serverOverridenSuccessURL ?? Constants.successURL,
+    failUrl: serverOverridenFailureURL ?? Constants.failureURL)
 threeDSWebViewController.delegate = self
-threeDSWebViewController.url = challengeUrl
+threeDSWebViewController.authURL = challengeURL // This is coming from the payment response
+
+// Present threeDSWebViewController
+present(threeDSWebViewController, animated: true, completion: nil)
 ```
 
-Handle the result by adding conformance to `ThreedsWebViewControllerDelegate`.
-
-> TODO: clean up these delegate methods and update the docs accordingly
+Previously we have added the line `threeDSWebViewController.delegate = self`. This will raise compiler error as we now need to have `YourViewController` conform to the required protocol. Doing this, we are able to find the outcome of the challenge and react accordingly
 ```swift
 extension YourViewController: ThreedsWebViewControllerDelegate {
     func threeDSWebViewControllerAuthenticationDidSucceed(_ threeDSWebViewController: ThreedsWebViewController, token: String?) {
-        // Handle successful 3DS.
+        
+        // Congratulations, the Challenge was successful !
+
+        threeDSWebViewController.dismiss(animated: true, completion: nil)
     }
 
     func threeDSWebViewControllerAuthenticationDidFail(_ threeDSWebViewController: ThreedsWebViewController) {
-        // Handle failed 3DS.
+        
+        // Oooops, the payment failed !
+        
+        threeDSWebViewController.dismiss(animated: true, completion: nil)
     }
 }
 ```
 
-> Suggested syntax instead
-```swift
-typealias ThreeDSWebViewResult = Result<String?, ThreeDSWebViewError>
 
-extension YourViewController: ThreedsWebViewControllerDelegate {
-    func threeDSWebViewComplete(
-        _ threeDSWebViewController: ThreedsWebViewController,
-        result: ThreeDSWebViewResult
-    ) {
-        switch result {
-        case .success(let token):
-            // Handle successful 3DS.
-        case .failure(let error):
-            // Handle failed 3DS
-        }
-    }
-}
-```
+### Using Apple Pay
 
-## Apple Pay example
-
-Our iOS SDK also supports handling `PKPayment` token data from Apple Pay.
+We are able to handle `PKPayment` token data from Apple Pay.
 
 ```swift
+// Prepare the service
+let checkoutAPIService = CheckoutAPIService(publicKey: "<Your Public Key>", environment: .sandbox)
+
 func handle(payment: PKPayment) {
-    // Create a CheckoutAPIClient instance with your public key.
-
-    let checkoutAPIService = CheckoutAPIService(
-        publicKey: "<Your Public Key>", 
-        environment: .sandbox
-    )
-
     // Get the data containing the encrypted payment information.
     let paymentData = payment.token.paymentData
 
@@ -299,21 +403,16 @@ func handle(payment: PKPayment) {
     checkoutAPIService.createToken(.applePay(ApplePay(paymentData))) { result in
         switch result {
         case .success(let tokenDetails):
-            print(tokenDetails)
+            // Congratulations, payment token is available
         case .failure(let error):
-            print(error.localizedDescription)
+            // Ooooops, an error ocurred. Check `error.localizedDescription` for hint to what went wrong
         }
     }
 }
 ```
 
 
-
-### Customize with `Frames Style`
-
-> TODO: update Styling URL
-
-Further documentation about customizing Frames is available from the [customization guide](https://www.checkout.com/docs/integrate/sdks/ios-sdk/customization-guide).
+ 
 
 
 ## License
