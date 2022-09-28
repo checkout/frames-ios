@@ -104,7 +104,7 @@ extension Card {
         return NSRegularExpression(staticPattern: "^(2[3-7]|22[2-9]|5[1-5])")
       case .maestro:
         // swiftlint:disable:next line_length
-        return NSRegularExpression(staticPattern: "^(5(018|0[23]|[68])|6[37]|60111|60115|60117([56]|7[56])|60118[0-5]|64[0-3]|66)")
+        return NSRegularExpression(staticPattern: "^(?:5[06789]|6[37]|(?!6011[0234])(?!60117[4789])(?!60118[6789])(?!60119)(?!64[456789])(?!65)6\\d{3})")
       case .americanExpress:
         return NSRegularExpression(staticPattern: "^3[47]")
       case .discover:

@@ -52,7 +52,7 @@ final class BillingFormViewController: UIViewController {
 
     private(set) lazy var doneItem: UIBarButtonItem = {
         let item = UIBarButtonItem(title: viewModel.style.header.doneButton.text,
-                         style: .plain,
+                         style: .done,
                          target: self,
                          action: #selector(doneButtonIsPressed))
         item.setTitleTextAttributes([

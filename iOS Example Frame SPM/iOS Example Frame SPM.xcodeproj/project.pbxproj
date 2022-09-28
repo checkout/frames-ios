@@ -73,6 +73,7 @@
 /* Begin PBXFileReference section */
 		0BB538AC28B637980060A8DE /* Factory+UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Factory+UITest.swift"; sourceTree = "<group>"; };
 		0BC60B5B28AFA4A600F30992 /* ThemeDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeDemo.swift; sourceTree = "<group>"; };
+		0BCCBCEC28DC98F600041870 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		0BD2ECBE28B65DA10041A942 /* FrameUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameUITests.swift; sourceTree = "<group>"; };
 		0BD2ECC028B65EC20041A942 /* XCUIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extension.swift"; sourceTree = "<group>"; };
 		443FCD8F261379CB009D6DE6 /* frames-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "frames-ios"; path = ..; sourceTree = "<group>"; };
@@ -406,6 +407,7 @@
 				nl,
 				ar,
 				"ar-001",
+				ro,
 			);
 			mainGroup = E6646F8120CE6C0900D8353A;
 			packageReferences = (
@@ -560,6 +562,7 @@
 				95C8C0DD28AD5FEE00B8D3D0 /* it */,
 				95C8C0DF28AD5FEE00B8D3D0 /* fr */,
 				95C8C0E128AD5FEE00B8D3D0 /* nl */,
+				0BCCBCEC28DC98F600041870 /* ro */,
 			);
 			name = LaunchScreen.strings;
 			sourceTree = "<group>";

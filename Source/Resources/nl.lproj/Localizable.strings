@@ -1,1 +1,42 @@
-
+"missingBillingFormFullName" = "Naam ontbreekt";
+"missingBillingFormAddressLine1" = "Ontbrekende adresregel 1";
+"missingBillingFormAddressLine2" = "Ontbrekende adresregel 2";
+"missingBillingFormCity" = "Ontbrekende stad";
+"missingBillingFormCounty" = "Ontbrekende provincie";
+"missingBillingFormPostcode" = "Ontbrekende postcode";
+"missingBillingFormPhoneNumber" = "Ontbrekend telefoonnummer";
+"missingBillingFormCountry" = "Ontbrekend land";
+"billingFormPhoneNumberHint" = "Telefoonnummer";
+"billingAddressTitle" = "Facturatie adres";
+"BillingFormCountryButtonTitle" = "Selecteer alstublieft een land";
+"PaymentFormSummaryViewHintText" = "We hebben deze informatie nodig als extra beveiligingsmaatregel om deze kaart te verifiëren.";
+"AddBillingAddress" = "Factuuradres toevoegen";
+"EditBillingAddress" = "Factuuradres wijzigen";
+/* Accessory shown alongside input fields to denote that the input is not required for validation when completing request */
+"OptionalInputField" = "Optioneel";
+/* Title of input section on the Payment Form where user is expected to input the Cardholder name as displayed on card */
+"CardholderInputTitle" = "Naam pashouder";
+"ExpiryDate" = "Vervaldatum";
+"ExpiryDateFormat" = "Formaat is MM/JJ";
+"ExpiryDatePlaceholder" = "_ _  / _ _";
+"ExpiryDateErrorMessageInvalid" = "Voer een geldige vervaldatum in";
+"ExpiryDateErrorMessageInvalidInPast" = "Vervaldatum ligt in het verleden";
+"SecurityCode" = "Beveiligingscode";
+"SecurityCodeHint" = "3-4 cijferige code op uw kaart";
+"SecurityCodeErrorMessage" = "Voer een geldige beveiligingscode in";
+"PaymentHeaderTitle" = "Betalingsdetails";
+"PaymentHeaderSubtitle" = "Geaccepteerde kaarten";
+"CardNumber" = "Kaartnummer";
+"CardNumberErrorMessage" = "Gelieve een geldig kaart nummer in te voeren";
+"Pay" = "Betalen";
+"city" = "Stad";
+"cancel" = "Annuleren";
+"done" = "Gedaan";
+"name" = "Naam";
+"countryRegion" = "Land";
+"addressLine1" = "Adres regel 1";
+"addressLine2" = "Adres regel 2";
+"county" = "Provincie";
+"postcode" = "Postcode";
+"phone" = "Telefoonnummer";
+"CountrySearchPlaceholder" = "Zoeken…";
