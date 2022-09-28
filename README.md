@@ -8,7 +8,7 @@
 ![license](https://img.shields.io/github/license/checkout/frames-ios.svg)
 
 <p align="center">
-    <img src="https://github.com/checkout/frames-ios/blob/feature/PIMOB-1048_support_readme_for_frames_relase_v4.0.0/screenshots/demo-frames-ios.gif?raw=true" width="160" alt="Demo frames ios"/>
+    <img src="https://github.com/checkout/frames-ios/blob/feature/PIMOB-1048_support_readme_for_frames_relase_v4.0.0/screenshots/demo-frames-ios.gif?raw=true" width="240" alt="Demo frames ios"/>
 </p>
 
 ## Requirements
