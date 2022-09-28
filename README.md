@@ -23,7 +23,7 @@
 
 ## Documentation
 
-Frames for iOS tokenises consumer data for use within [Checkout.com](https://www.checkout.com)'s payment infrastructure. We want to abstract all the complexity in taking payments from your Mobile Application and allow you to focus on the amazing experience & features you deliver to your users.
+Frames for iOS tokenises consumer data for use within [Checkout.com](https://www.checkout.com)'s payment infrastructure. We want to abstract all the complexity in taking payments and building a payment screen from your Mobile Application and allow you to focus on your core business.
 
 - [Integration](#Integration): _Lets talk about our SDK code showing up inside your amazing application's sourcecode._
 
@@ -50,7 +50,7 @@ You can find the Frames API reference [on our Jazzy docs](https://checkout.githu
 
 # Integration
 
-We've done our best to support the most common distribution methods on iOS for you. We are in strong favour of [SPM](#Swift-Package-Manager) (Swift Package Manager) but if for any reason this doesn't work for you, we're also supporting [Cocoapods](#Cocoapods) and [Carthage](#Carthage)
+We've done our best to support the most common distribution methods on iOS for you. We are in strong favour of [SPM](#Swift-Package-Manager) (Swift Package Manager) but if for any reason this doesn't work for you, we're also supporting [Cocoapods](#Cocoapods) and [Carthage](#Carthage).
 
 ### Swift Package Manager
 [Swift Package Manager](https://swift.org/package-manager/) integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies. It should work out of the box on latest Xcode projects since Xcode 11 and has had a lot of community support, seeing huge adoption over the recent years. This makes it our favourite distribution method and the easiest one to integrate, keep updated and build around.
@@ -425,9 +425,9 @@ As Frames is just a wrapper around the original functionality of Checkout module
 
 We would like to point out the great benefits that we think 4.0.0 brings to our SDK, like:
 - compliance with financial regulations as you would not handle any sensitive card information directly
-- customisable UI focussed on enabling your users to seamlesly transition through the payment flow
+- customisable UI focussed on enabling your users to seamlessly transition through the payment flow
 
-If you do decide to migrate from Checkout to Frames, a standard migration won't really work, the flow is very different.  Our suggestion would be:
+If you do decide to migrate from any version prior to 4, a standard migration won't really work, as the flow is very different.  Our suggestion would be:
 - remove usage of Checkout module (this may help you remove screens and a lot of code supporting them)
 - [Get started](#Get-started)
 
