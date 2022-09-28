@@ -177,7 +177,7 @@ let style = PaymentStyle(
 ```
 
  
-#### 4. Prepare your response from the flow completing
+#### 4. Prepare your response from the flow completion
 <sub>If the user completes flow without cancelling, the completion handler will be called, with a card token if successful, or with an error if failed</sub>
 ```swift
 let completion: ((Result<TokenDetails, TokenRequestError>) -> Void) = { result in
@@ -265,7 +265,7 @@ theme.textInputBorderRadius = 4
 theme.borderRadius = 4
 
 // Build complete payment form by providing only texts
-let paymentFormStyle = theme.buildPaymentForm(
+var paymentFormStyle = theme.buildPaymentForm(
     headerView: theme.buildPaymentHeader(title: "Payment details",
                                         subtitle: "Accepting your favourite payment methods"),
     addBillingButton: theme.buildAddBillingSectionButton(text: "Add billing details",
@@ -274,12 +274,12 @@ let paymentFormStyle = theme.buildPaymentForm(
     billingSummary: theme.buildBillingSummary(buttonText: "Change billing details",
                                             titleText: "Billing details"),
     cardNumber: theme.buildPaymentInput(isTextFieldNumericInput: true,
-                                                titleText: "Card number",
-                                                errorText: "Please enter valid card number"),
+                                        titleText: "Card number",
+                                        errorText: "Please enter valid card number"),
     expiryDate: theme.buildPaymentInput(textFieldPlaceholder: "__ / __",
-                                                isTextFieldNumericInput: false,
-                                                titleText: "Expiry date",
-                                                errorText: "Please enter valid expiry date"),
+                                        isTextFieldNumericInput: false,
+                                        titleText: "Expiry date",
+                                        errorText: "Please enter valid expiry date"),
     securityCode: theme.buildPaymentInput(isTextFieldNumericInput: true,
                                         titleText: "CVV date",
                                         errorText: "Please enter valid security code"),
