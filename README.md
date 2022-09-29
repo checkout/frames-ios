@@ -35,7 +35,7 @@ Frames for iOS tokenises consumer data for use within [Checkout.com](https://www
 
 - [Other features](#Other-features): _How we help with Apple Pay & 3D Secure Challenges_
 
-- [Migrating](#Migrating): _If you have used 3.5.x version before, 
+- [Migrating](#Migrating): _If you have used 3.5.x version before_
 
 - [License](#License)
 
