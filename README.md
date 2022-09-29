@@ -421,13 +421,15 @@ func handle(payment: PKPayment) {
 # Migrating
 3DS and Apple Pay processing remain unaffected so using them should still work the same, but can access via `import Frames` now. 
 
-As Frames is just a wrapper around the original functionality of Checkout module you've already used, most APIs should still work, or have minimal syntax changes flagged by compiler.
+As Frames is just a wrapper around the original functionality of the Checkout module (this is what any version prior to 4.0.0 would be called) you've already used, most APIs should still work, or have minimal syntax changes flagged by the compiler.
 
 We would like to point out the great benefits that we think 4.0.0 brings to our SDK, like:
-- compliance with financial regulations as you would not handle any sensitive card information directly
-- customisable UI focussed on enabling your users to seamlessly transition through the payment flow
 
-If you do decide to migrate from any version prior to 4, a standard migration won't really work, as the flow is very different.  Our suggestion would be:
+- customisable UI focussed on enabling your users to seamlessly transition through the payment flow
+- updated and improved validation logic, in line with our supported card payment methods
+- using our updated UIs provides added security benefits to your customers
+
+If you do decide to migrate to v4+ from any version prior to that, a standard migration won't really work, as the flow is very different. Our suggestion would be:
 
 1 - remove usage of Checkout module (this may help you remove screens and a lot of code supporting them)
 
