@@ -428,8 +428,10 @@ We would like to point out the great benefits that we think 4.0.0 brings to our 
 - customisable UI focussed on enabling your users to seamlessly transition through the payment flow
 
 If you do decide to migrate from any version prior to 4, a standard migration won't really work, as the flow is very different.  Our suggestion would be:
-- remove usage of Checkout module (this may help you remove screens and a lot of code supporting them)
-- [Get started](#Get-started)
+
+1 - remove usage of Checkout module (this may help you remove screens and a lot of code supporting them)
+
+2 - [Get started](#Get-started)
 
 Overall, this should take no more time than traditionally migrating between complex version progressions of most dependencies, whilst allowing you the joy of removing a lot of complex code and letting us help with it. 
 
