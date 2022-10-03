@@ -154,7 +154,7 @@ let billingFormData = BillingForm(
     phone: nil)
 
 let configuration = PaymentFormConfiguration(
-    apiKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73",
+    apiKey: "<Your Public Key>",
     environment: .sandbox,
     supportedSchemes: [.visa, .maestro, .mastercard],
     billingFormData: billingFormData)
