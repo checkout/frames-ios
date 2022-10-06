@@ -38,6 +38,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
     case paymentFormInitialised(environment: Environment)
     case paymentFormPresented
     case paymentFormSubmitted
+    case paymentFormOutcome(token: String)
     case billingFormPresented
     case threeDSWebviewPresented
     case threeDSChallengeLoaded(success: Bool)
@@ -56,6 +57,8 @@ enum FramesLogEvent: Equatable, PropertyProviding {
             return "payment_form_presented"
         case .paymentFormSubmitted:
             return "payment_form_submitted"
+        case .paymentFormOutcome:
+            return "payment_form_outcome"
         case .billingFormPresented:
             return "billing_form_presented"
         case .threeDSWebviewPresented:
@@ -74,6 +77,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
         case .paymentFormInitialised,
              .paymentFormPresented,
              .paymentFormSubmitted,
+             .paymentFormOutcome,
              .billingFormPresented,
              .threeDSWebviewPresented:
             return .info
@@ -96,6 +100,8 @@ enum FramesLogEvent: Equatable, PropertyProviding {
         case let .paymentFormInitialised(environment):
             let environmentString = environment.rawValue == "live" ? "production" : environment.rawValue
             return [.environment: environmentString].mapValues(AnyCodable.init(_:))
+        case let .paymentFormOutcome(token):
+            return [.tokenID: AnyCodable(token)]
         case let .threeDSChallengeLoaded(success):
             return [.success: success].mapValues(AnyCodable.init(_:))
         case let .threeDSChallengeComplete(success, tokenID):

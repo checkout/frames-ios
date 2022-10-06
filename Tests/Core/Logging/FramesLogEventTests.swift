@@ -55,6 +55,16 @@ final class FramesLogEventTests: XCTestCase {
         XCTAssertEqual(event.monitoringLevel, .info)
         XCTAssertEqual(event.rawProperties, [:])
     }
+    
+    func testPaymentFormOutcomeFormat() {
+        let testToken = "ABCIamAtoken123"
+        let event = FramesLogEvent.paymentFormOutcome(token: testToken)
+
+        XCTAssertEqual(event.typeIdentifier, "com.checkout.frames-mobile-sdk.payment_form_outcome")
+        XCTAssertEqual(event.properties, [FramesLogEvent.Property.tokenID: AnyCodable(testToken)])
+        XCTAssertEqual(event.monitoringLevel, .info)
+        XCTAssertEqual(event.rawProperties, ["tokenID": AnyCodable(testToken)])
+    }
 
     // MARK: - Utility
 
