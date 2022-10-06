@@ -1,6 +1,5 @@
 import CheckoutEventLoggerKit
 import XCTest
-
 @testable import Frames
 
 final class FramesLogEventTests: XCTestCase {
@@ -47,6 +46,14 @@ final class FramesLogEventTests: XCTestCase {
 
         let subject = createExceptionEvent(message: "message")
         XCTAssertEqual([.message: "message"], subject.properties)
+    }
+    
+    func testPaymentFormSubmittedFormat() {
+        let event = FramesLogEvent.paymentFormSubmitted
+        XCTAssertEqual(event.typeIdentifier, "com.checkout.frames-mobile-sdk.payment_form_submitted")
+        XCTAssertEqual(event.properties, [:])
+        XCTAssertEqual(event.monitoringLevel, .info)
+        XCTAssertEqual(event.rawProperties, [:])
     }
 
     // MARK: - Utility
