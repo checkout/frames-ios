@@ -10,6 +10,7 @@
 
 final class StubCheckoutAPIService: Frames.CheckoutAPIProtocol {
   var cardValidatorToReturn = MockCardValidator()
+    var callCompletionOnCreateToken = true
   var loggerToReturn = StubFramesEventLogger()
   var logger: FramesEventLogging {
     loggerCalled = true
@@ -30,7 +31,9 @@ final class StubCheckoutAPIService: Frames.CheckoutAPIProtocol {
 
   func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) {
     createTokenCalledWith = (paymentSource, completion)
-    completion(.success(StubCheckoutAPIService.createTokenDetails()))
+      if callCompletionOnCreateToken {
+          completion(.success(StubCheckoutAPIService.createTokenDetails()))
+      }
   }
 
 }

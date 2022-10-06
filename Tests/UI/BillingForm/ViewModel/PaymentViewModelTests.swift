@@ -2,7 +2,7 @@ import XCTest
 import Checkout
 @testable import Frames
 
-class PaymentViewModelTests: XCTestCase {
+final class PaymentViewModelTests: XCTestCase {
 
     var viewModel: DefaultPaymentViewModel!
     
@@ -34,11 +34,11 @@ class PaymentViewModelTests: XCTestCase {
         let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
         let viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
                                                 cardValidator: CardValidator(environment: .sandbox),
-                                                  logger: testLogger,
-                                                  billingFormData: nil,
-                                                  paymentFormStyle: nil,
-                                                  billingFormStyle: nil,
-                                                  supportedSchemes: [])
+                                                logger: testLogger,
+                                                billingFormData: nil,
+                                                paymentFormStyle: nil,
+                                                billingFormStyle: nil,
+                                                supportedSchemes: [])
         
         XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
         XCTAssertTrue(testLogger.logCalledWithFramesLogEvents.isEmpty)
@@ -55,11 +55,11 @@ class PaymentViewModelTests: XCTestCase {
         let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
         let viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
                                                 cardValidator: CardValidator(environment: .sandbox),
-                                                  logger: testLogger,
-                                                  billingFormData: nil,
-                                                  paymentFormStyle: nil,
-                                                  billingFormStyle: nil,
-                                                  supportedSchemes: [])
+                                                logger: testLogger,
+                                                billingFormData: nil,
+                                                paymentFormStyle: nil,
+                                                billingFormStyle: nil,
+                                                supportedSchemes: [])
         
         XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
         XCTAssertTrue(testLogger.logCalledWithFramesLogEvents.isEmpty)
@@ -71,10 +71,10 @@ class PaymentViewModelTests: XCTestCase {
         XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.first, .billingFormPresented)
     }
 
-  func testUpdateExpiryDateView() {
-      let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
-      viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
-                                          cardValidator: CardValidator(environment: .sandbox),
+    func testUpdateExpiryDateView() {
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+        viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
+                                            cardValidator: CardValidator(environment: .sandbox),
                                             logger: StubFramesEventLogger(),
                                             billingFormData: nil,
                                             paymentFormStyle: DefaultPaymentFormStyle(),
@@ -95,11 +95,11 @@ class PaymentViewModelTests: XCTestCase {
         let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
         viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
                                             cardValidator: CardValidator(environment: .sandbox),
-                                              logger: StubFramesEventLogger(),
-                                              billingFormData: nil,
-                                              paymentFormStyle: DefaultPaymentFormStyle(),
-                                              billingFormStyle: DefaultBillingFormStyle(),
-                                              supportedSchemes: [.unknown])
+                                            logger: StubFramesEventLogger(),
+                                            billingFormData: nil,
+                                            paymentFormStyle: DefaultPaymentFormStyle(),
+                                            billingFormStyle: DefaultBillingFormStyle(),
+                                            supportedSchemes: [.unknown])
         
         let testCardholder = "Hà Tracey"
         viewModel.cardholderIsUpdated(value: testCardholder)
@@ -173,47 +173,47 @@ class PaymentViewModelTests: XCTestCase {
         let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
         viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
                                             cardValidator: CardValidator(environment: .sandbox),
-                                              logger: StubFramesEventLogger(),
-                                              billingFormData: billingFormData,
-                                              paymentFormStyle: DefaultPaymentFormStyle(),
-                                              billingFormStyle: DefaultBillingFormStyle(),
-                                              supportedSchemes: [.unknown])
-
+                                            logger: StubFramesEventLogger(),
+                                            billingFormData: billingFormData,
+                                            paymentFormStyle: DefaultPaymentFormStyle(),
+                                            billingFormStyle: DefaultBillingFormStyle(),
+                                            supportedSchemes: [.unknown])
+        
         let summaryValue = "User Custom 1\n\n77 1234 1234"
         viewModel.updateBillingSummaryView()
         let expectedSummaryText = try XCTUnwrap(viewModel.paymentFormStyle?.editBillingSummary?.summary?.text)
         XCTAssertEqual(expectedSummaryText, summaryValue)
     }
 
-  func testSummaryTextWithEmptyValue() throws {
-      let userName = "User"
-      let country = Country(iso3166Alpha2: "GB")
+    func testSummaryTextWithEmptyValue() throws {
+        let userName = "User"
+        let country = Country(iso3166Alpha2: "GB")
+        
+        let address = Address(addressLine1: "Checkout.com",
+                              addressLine2: "",
+                              city: "London city",
+                              state: "London County",
+                              zip: "N12345",
+                              country: country)
 
-    let address = Address(addressLine1: "Checkout.com",
-                          addressLine2: "",
-                          city: "London city",
-                          state: "London County",
-                          zip: "N12345",
+        let phone = Phone(number: "077 1234 1234",
                           country: country)
-
-      let phone = Phone(number: "077 1234 1234",
-                        country: country)
-      let billingFormData = BillingForm(name: userName,
-                                        address: address,
-                                        phone: phone)
-      let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
-      viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService, cardValidator: CardValidator(environment: .sandbox),
+        let billingFormData = BillingForm(name: userName,
+                                          address: address,
+                                          phone: phone)
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+        viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService, cardValidator: CardValidator(environment: .sandbox),
                                             logger: StubFramesEventLogger(),
                                             billingFormData: billingFormData,
                                             paymentFormStyle: DefaultPaymentFormStyle(),
                                             billingFormStyle: DefaultBillingFormStyle(),
                                             supportedSchemes: [.unknown])
-      let countryName = try XCTUnwrap(country?.name)
-      let summaryValue = "User\n\nCheckout.com\n\nLondon city\n\nLondon County\n\nN12345\n\n\(countryName)\n\n077 1234 1234"
-      viewModel.updateBillingSummaryView()
-      let expectedSummaryText = try XCTUnwrap(viewModel.paymentFormStyle?.editBillingSummary?.summary?.text)
-      XCTAssertEqual(expectedSummaryText, summaryValue)
-  }
+        let countryName = try XCTUnwrap(country?.name)
+        let summaryValue = "User\n\nCheckout.com\n\nLondon city\n\nLondon County\n\nN12345\n\n\(countryName)\n\n077 1234 1234"
+        viewModel.updateBillingSummaryView()
+        let expectedSummaryText = try XCTUnwrap(viewModel.paymentFormStyle?.editBillingSummary?.summary?.text)
+        XCTAssertEqual(expectedSummaryText, summaryValue)
+    }
     
     func testPreventDuplicateCardholderInput() {
         let paymentFormStyle = DefaultPaymentFormStyle()
@@ -253,7 +253,7 @@ class PaymentViewModelTests: XCTestCase {
     
     // MARK: Mandatory input validation tests
     func testNoSchemePresentFailMandatoryInput() {
-        let testPaymentForm = makeBillingFormStyle()
+        let testPaymentForm = makePaymentFormStyle()
         let model = makeViewModel(paymentFormStyle: testPaymentForm)
 
         let expectation = expectation(description: "Callback is expected")
@@ -269,7 +269,7 @@ class PaymentViewModelTests: XCTestCase {
     }
     
     func testMandatoryCardholderNotPresentFailMandatoryInput() {
-        let testPaymentForm = makeBillingFormStyle(isCardholderMandatory: true)
+        let testPaymentForm = makePaymentFormStyle(isCardholderMandatory: true)
         let model = makeViewModel(paymentFormStyle: testPaymentForm)
         
         let expectation = expectation(description: "Callback is expected")
@@ -287,7 +287,7 @@ class PaymentViewModelTests: XCTestCase {
     
     func testOptionalCardholderNotPresentPassesMandatoryInput() {
         var expectedCallbacks = 3
-        let testPaymentForm = makeBillingFormStyle(isCardholderMandatory: false)
+        let testPaymentForm = makePaymentFormStyle(isCardholderMandatory: false)
         let model = makeViewModel(paymentFormStyle: testPaymentForm)
         
         let expectation = expectation(description: "Callback is expected")
@@ -312,7 +312,7 @@ class PaymentViewModelTests: XCTestCase {
     
     func testMissingCardholderPassesMandatoryInput() {
         var expectedCallbacks = 3
-        var testPaymentForm = makeBillingFormStyle(isCardholderMandatory: true)
+        var testPaymentForm = makePaymentFormStyle(isCardholderMandatory: true)
         testPaymentForm.cardholderInput = nil
         let model = makeViewModel(paymentFormStyle: testPaymentForm)
         
@@ -337,7 +337,7 @@ class PaymentViewModelTests: XCTestCase {
     }
     
     func testMandatorySecurityCodeNotPresentFailMandatoryInput() {
-        let testPaymentForm = makeBillingFormStyle(isSecurityCodeMandatory: true)
+        let testPaymentForm = makePaymentFormStyle(isSecurityCodeMandatory: true)
         let model = makeViewModel(paymentFormStyle: testPaymentForm)
         
         let expectation = expectation(description: "Callback is expected")
@@ -356,7 +356,7 @@ class PaymentViewModelTests: XCTestCase {
     func testOptionalSecurityCodeNotPresentFailsMandatoryInput() {
         // Business requirements specifically asked that Security Code has specific behaviour
         // If shown it is mandatory, making it optional will have no effect in requiring it
-        let testPaymentForm = makeBillingFormStyle(isSecurityCodeMandatory: true)
+        let testPaymentForm = makePaymentFormStyle(isSecurityCodeMandatory: true)
         let model = makeViewModel(paymentFormStyle: testPaymentForm)
         
         let expectation = expectation(description: "Callback is expected")
@@ -374,7 +374,7 @@ class PaymentViewModelTests: XCTestCase {
     
     func testMissingSecurityCodePassesMandatoryInput() {
         var expectedCallbacks = 2
-        var testPaymentForm = makeBillingFormStyle(isSecurityCodeMandatory: true)
+        var testPaymentForm = makePaymentFormStyle(isSecurityCodeMandatory: true)
         testPaymentForm.securityCode = nil
         let model = makeViewModel(paymentFormStyle: testPaymentForm)
         
@@ -398,7 +398,7 @@ class PaymentViewModelTests: XCTestCase {
     }
     
     func testMandatoryBillingNotPresentFailMandatoryInput() {
-        let testPaymentForm = makeBillingFormStyle(isBillingMandatory: true)
+        let testPaymentForm = makePaymentFormStyle(isBillingMandatory: true)
         let model = makeViewModel(paymentFormStyle: testPaymentForm)
         
         let expectation = expectation(description: "Callback is expected")
@@ -416,7 +416,7 @@ class PaymentViewModelTests: XCTestCase {
     
     func testOptionalBillingNotPresentPassesMandatoryInput() {
         var expectedCallbacks = 3
-        let testPaymentForm = makeBillingFormStyle(isBillingMandatory: false)
+        let testPaymentForm = makePaymentFormStyle(isBillingMandatory: false)
         let model = makeViewModel(paymentFormStyle: testPaymentForm)
         
         let expectation = expectation(description: "Callback is expected")
@@ -441,7 +441,7 @@ class PaymentViewModelTests: XCTestCase {
     
     func testMissingBillingPassesMandatoryInput() {
         var expectedCallbacks = 3
-        var testPaymentForm = makeBillingFormStyle(isBillingMandatory: true)
+        var testPaymentForm = makePaymentFormStyle(isBillingMandatory: true)
         testPaymentForm.editBillingSummary = nil
         let model = makeViewModel(paymentFormStyle: testPaymentForm)
         
@@ -466,7 +466,7 @@ class PaymentViewModelTests: XCTestCase {
     }
     
     func testMissingCardNumberFailMandatoryInput() {
-        let testPaymentForm = makeBillingFormStyle(isCardholderMandatory: true,
+        let testPaymentForm = makePaymentFormStyle(isCardholderMandatory: true,
                                                    isSecurityCodeMandatory: true,
                                                    isBillingMandatory: true)
         let model = makeViewModel(paymentFormStyle: testPaymentForm)
@@ -487,7 +487,7 @@ class PaymentViewModelTests: XCTestCase {
     }
     
     func testIncompleteCardNumberFailMandatoryInput() {
-        let testPaymentForm = makeBillingFormStyle(isCardholderMandatory: true,
+        let testPaymentForm = makePaymentFormStyle(isCardholderMandatory: true,
                                                    isSecurityCodeMandatory: true,
                                                    isBillingMandatory: true)
         let model = makeViewModel(paymentFormStyle: testPaymentForm)
@@ -509,7 +509,7 @@ class PaymentViewModelTests: XCTestCase {
     }
     
     func testMissingExpiryDateFailMandatoryInput() {
-        let testPaymentForm = makeBillingFormStyle(isCardholderMandatory: true,
+        let testPaymentForm = makePaymentFormStyle(isCardholderMandatory: true,
                                                    isSecurityCodeMandatory: true,
                                                    isBillingMandatory: true)
         let model = makeViewModel(paymentFormStyle: testPaymentForm)
@@ -530,7 +530,7 @@ class PaymentViewModelTests: XCTestCase {
     }
     
     func testHistoricExpiryDateFailMandatoryInput() {
-        let testPaymentForm = makeBillingFormStyle(isCardholderMandatory: true,
+        let testPaymentForm = makePaymentFormStyle(isCardholderMandatory: true,
                                                    isSecurityCodeMandatory: true,
                                                    isBillingMandatory: true)
         let model = makeViewModel(paymentFormStyle: testPaymentForm)
@@ -553,7 +553,7 @@ class PaymentViewModelTests: XCTestCase {
     
     func testCardNumberAndExpiryDateProvidedAllOtherOptionalMissingIsValid() {
         var expectedCallbacks = 2
-        var testPaymentForm = makeBillingFormStyle(isCardholderMandatory: false,
+        var testPaymentForm = makePaymentFormStyle(isCardholderMandatory: false,
                                                    isSecurityCodeMandatory: false,
                                                    isBillingMandatory: false)
         testPaymentForm.securityCode = nil
@@ -579,7 +579,7 @@ class PaymentViewModelTests: XCTestCase {
     
     func testAllFieldsRequiredAndProvided() {
         var expectedCallbacks = 6
-        let testPaymentForm = makeBillingFormStyle(isCardholderMandatory: true,
+        let testPaymentForm = makePaymentFormStyle(isCardholderMandatory: true,
                                                    isSecurityCodeMandatory: true,
                                                    isBillingMandatory: true)
         let model = makeViewModel(paymentFormStyle: testPaymentForm)
@@ -606,6 +606,41 @@ class PaymentViewModelTests: XCTestCase {
         waitForExpectations(timeout: 0.1)
     }
     
+    func testPayButtonPressedWithoutData() {
+        let paymentFormStyle = makePaymentFormStyle()
+        let fakeService = StubCheckoutAPIService()
+        let fakeLogger = StubFramesEventLogger()
+        let model = makeViewModel(apiService: fakeService, logger: fakeLogger)
+        
+        model.payButtonIsPressed()
+        
+        XCTAssertFalse(model.isLoading)
+        XCTAssertNil(fakeService.createTokenCalledWith)
+        XCTAssertFalse(fakeService.loggerCalled)
+        XCTAssertTrue(fakeLogger.logCalledWithFramesLogEvents.isEmpty)
+    }
+    
+    func testPayButtonPressedWithAllDataValid() {
+        let fakeService = StubCheckoutAPIService()
+        fakeService.callCompletionOnCreateToken = false
+        let fakeLogger = StubFramesEventLogger()
+        let model = makeViewModel(apiService: fakeService, logger: fakeLogger)
+        
+        let cardNumber = "4242424242424242"
+        let expiryDate = ExpiryDate(month: 5, year: 2067)
+        model.update(result: .success((cardNumber: cardNumber, scheme: .visa)))
+        model.expiryDateIsUpdated(result: .success(expiryDate))
+        
+        model.payButtonIsPressed()
+        
+        let expectedPaymentCard = Card(number: cardNumber, expiryDate: expiryDate, name: "", cvv: "", billingAddress: nil, phone: nil)
+        XCTAssertTrue(model.isLoading)
+        XCTAssertNotNil(fakeService.createTokenCalledWith)
+        XCTAssertEqual(fakeService.createTokenCalledWith?.paymentSource, .card(expectedPaymentCard))
+        XCTAssertFalse(fakeService.loggerCalled)
+        XCTAssertEqual(fakeLogger.logCalledWithFramesLogEvents, [.paymentFormSubmitted])
+    }
+    
     private func makeViewModel(apiService: Frames.CheckoutAPIProtocol = StubCheckoutAPIService(),
                                cardValidator: CardValidator = CardValidator(environment: .sandbox),
                                logger: FramesEventLogging = StubFramesEventLogger(),
@@ -626,7 +661,7 @@ class PaymentViewModelTests: XCTestCase {
         BillingForm(name: "John", address: Address(addressLine1: "Kong Drive", addressLine2: "Blister", city: "Dreamland", state: nil, zip: "DR38ML", country: Country.allAvailable.first), phone: nil)
     }
     
-    private func makeBillingFormStyle(isCardholderMandatory: Bool = false,
+    private func makePaymentFormStyle(isCardholderMandatory: Bool = false,
                                       isSecurityCodeMandatory: Bool = false,
                                       isBillingMandatory: Bool = false) -> PaymentFormStyle {
         var style = DefaultPaymentFormStyle()
