@@ -607,7 +607,6 @@ final class PaymentViewModelTests: XCTestCase {
     }
     
     func testPayButtonPressedWithoutData() {
-        let paymentFormStyle = makePaymentFormStyle()
         let fakeService = StubCheckoutAPIService()
         let fakeLogger = StubFramesEventLogger()
         let model = makeViewModel(apiService: fakeService, logger: fakeLogger)
