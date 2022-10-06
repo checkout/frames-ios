@@ -621,7 +621,6 @@ final class PaymentViewModelTests: XCTestCase {
     
     func testPayButtonPressedWithAllDataValid() {
         let fakeService = StubCheckoutAPIService()
-        fakeService.callCompletionOnCreateToken = false
         let fakeLogger = StubFramesEventLogger()
         let model = makeViewModel(apiService: fakeService, logger: fakeLogger)
         
@@ -638,6 +637,45 @@ final class PaymentViewModelTests: XCTestCase {
         XCTAssertEqual(fakeService.createTokenCalledWith?.paymentSource, .card(expectedPaymentCard))
         XCTAssertFalse(fakeService.loggerCalled)
         XCTAssertEqual(fakeLogger.logCalledWithFramesLogEvents, [.paymentFormSubmitted])
+    }
+    
+    func testPayButtonOutcomeSuccess() {
+        let fakeService = StubCheckoutAPIService()
+        let testToken = "t3sTtok3n"
+        fakeService.createTokenCompletionResult = .success(StubCheckoutAPIService.createTokenDetails(token: testToken))
+        let fakeLogger = StubFramesEventLogger()
+        let model = makeViewModel(apiService: fakeService, logger: fakeLogger)
+        
+        let cardNumber = "4242424242424242"
+        let expiryDate = ExpiryDate(month: 5, year: 2067)
+        model.update(result: .success((cardNumber: cardNumber, scheme: .visa)))
+        model.expiryDateIsUpdated(result: .success(expiryDate))
+        
+        model.payButtonIsPressed()
+        
+        XCTAssertFalse(model.isLoading)
+        XCTAssertNotNil(fakeService.createTokenCalledWith)
+        XCTAssertEqual(fakeLogger.logCalledWithFramesLogEvents, [.paymentFormSubmitted, .paymentFormOutcome(token: testToken)])
+    }
+    
+    func testPayButtonOutcomeFailure() {
+        let fakeService = StubCheckoutAPIService()
+        let responseError = TokenisationError.TokenRequest.networkError(.connectionFailed)
+        fakeService.createTokenCompletionResult = .failure(responseError)
+        let fakeLogger = StubFramesEventLogger()
+        let model = makeViewModel(apiService: fakeService, logger: fakeLogger)
+        
+        let cardNumber = "4242424242424242"
+        let expiryDate = ExpiryDate(month: 5, year: 2067)
+        model.update(result: .success((cardNumber: cardNumber, scheme: .visa)))
+        model.expiryDateIsUpdated(result: .success(expiryDate))
+        
+        model.payButtonIsPressed()
+        
+        XCTAssertFalse(model.isLoading)
+        XCTAssertNotNil(fakeService.createTokenCalledWith)
+        let expectedWarnMessage = "\(responseError.code) \(responseError.localizedDescription)"
+        XCTAssertEqual(fakeLogger.logCalledWithFramesLogEvents, [.paymentFormSubmitted, .warn(message: expectedWarnMessage)])
     }
     
     private func makeViewModel(apiService: Frames.CheckoutAPIProtocol = StubCheckoutAPIService(),
