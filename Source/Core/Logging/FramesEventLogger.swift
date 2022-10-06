@@ -17,8 +17,6 @@ final class FramesEventLogger: FramesEventLogging {
     private let checkoutEventLogger: CheckoutEventLogging
     private let dateProvider: DateProviding
 
-    private var logged = [String: Set<String>]()
-
     // MARK: - Init
 
     convenience init(environment: Environment, correlationID: String) {
