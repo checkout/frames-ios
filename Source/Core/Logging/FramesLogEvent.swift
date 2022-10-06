@@ -44,6 +44,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
     case threeDSChallengeLoaded(success: Bool)
     case threeDSChallengeComplete(success: Bool, tokenID: String?)
     case exception(message: String)
+    case warn(message: String)
 
     var typeIdentifier: String {
         return "com.checkout.frames-mobile-sdk.\(typeIdentifierSuffix)"
@@ -67,6 +68,8 @@ enum FramesLogEvent: Equatable, PropertyProviding {
             return "3ds_challenge_loaded"
         case .threeDSChallengeComplete:
             return "3ds_challenge_complete"
+        case .warn:
+            return "warn"
         case .exception:
             return "exception"
         }
@@ -81,6 +84,8 @@ enum FramesLogEvent: Equatable, PropertyProviding {
              .billingFormPresented,
              .threeDSWebviewPresented:
             return .info
+        case .warn:
+            return .warn
         case .exception:
             return .error
         case .threeDSChallengeLoaded(let success),
@@ -108,7 +113,8 @@ enum FramesLogEvent: Equatable, PropertyProviding {
             return [.success: success]
                 .updating(key: .tokenID, value: tokenID)
                 .mapValues(AnyCodable.init(_:))
-        case let .exception(message):
+        case let .warn(message),
+            let .exception(message):
             return [.message: message]
                 .mapValues(AnyCodable.init(_:))
         }

@@ -65,6 +65,16 @@ final class FramesLogEventTests: XCTestCase {
         XCTAssertEqual(event.monitoringLevel, .info)
         XCTAssertEqual(event.rawProperties, ["tokenID": AnyCodable(testToken)])
     }
+    
+    func testWarnFormat() {
+        let testWarnMessage = "Hello world!"
+        let event = FramesLogEvent.warn(message: testWarnMessage)
+        
+        XCTAssertEqual(event.typeIdentifier, "com.checkout.frames-mobile-sdk.warn")
+        XCTAssertEqual(event.properties, [FramesLogEvent.Property.message: AnyCodable(testWarnMessage)])
+        XCTAssertEqual(event.monitoringLevel, .warn)
+        XCTAssertEqual(event.rawProperties, ["message": AnyCodable(testWarnMessage)])
+    }
 
     // MARK: - Utility
 
