@@ -31,7 +31,7 @@ final class PaymentViewModelTests: XCTestCase {
     
     func testOnAppearSendsEventToLogger() {
         let testLogger = StubFramesEventLogger()
-        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+        let checkoutAPIService = StubCheckoutAPIService()
         let viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
                                                 cardValidator: CardValidator(environment: .sandbox),
                                                 logger: testLogger,
@@ -48,6 +48,27 @@ final class PaymentViewModelTests: XCTestCase {
         XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
         XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.count, 1)
         XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.first, .paymentFormPresented)
+    }
+    
+    func testViewControllerDismissedSendsEventToLogger() {
+        let testLogger = StubFramesEventLogger()
+        let checkoutAPIService = StubCheckoutAPIService()
+        let viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
+                                                cardValidator: CardValidator(environment: .sandbox),
+                                                logger: testLogger,
+                                                billingFormData: nil,
+                                                paymentFormStyle: nil,
+                                                billingFormStyle: nil,
+                                                supportedSchemes: [])
+        
+        XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
+        XCTAssertTrue(testLogger.logCalledWithFramesLogEvents.isEmpty)
+        
+        viewModel.viewControllerCancelled()
+        
+        XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
+        XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.count, 1)
+        XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.first, .paymentFormCanceled)
     }
     
     func testOnBillingScreenShownSendsEventToLogger() {

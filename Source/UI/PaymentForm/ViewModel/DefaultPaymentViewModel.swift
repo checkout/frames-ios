@@ -53,6 +53,10 @@ class DefaultPaymentViewModel: PaymentViewModel {
         logger.log(.paymentFormPresented)
     }
 
+    func viewControllerCancelled() {
+        logger.log(.paymentFormCanceled)
+    }
+
     func updateAll() {
         updateHeaderView?()
         updateCardholderView?()
