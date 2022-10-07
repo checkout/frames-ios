@@ -220,7 +220,7 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
     guard let viewController = FramesFactory.getBillingFormViewController(style: billingFormStyle, data: billingFormData, delegate: self) else { return }
     sender?.present(viewController, animated: true)
   }
-    
+
     private func logOutcome(_ result: Result<TokenDetails, TokenisationError.TokenRequest>) {
         switch result {
         case .success(let tokenDetails):
