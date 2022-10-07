@@ -159,7 +159,7 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
         logger.log(.paymentFormSubmitted)
         isLoading = true
         checkoutAPIService.createToken(.card(card)) { [weak self] result in
-            self?.logOutcome(result)
+            self?.logTokenResult(result)
             self?.isLoading = false
             self?.cardTokenRequested?(result)
         }
@@ -221,7 +221,7 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
     sender?.present(viewController, animated: true)
   }
 
-    private func logOutcome(_ result: Result<TokenDetails, TokenisationError.TokenRequest>) {
+    private func logTokenResult(_ result: Result<TokenDetails, TokenisationError.TokenRequest>) {
         switch result {
         case .success(let tokenDetails):
             logger.log(.paymentFormOutcome(token: tokenDetails.token))
