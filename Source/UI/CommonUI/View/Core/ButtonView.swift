@@ -20,6 +20,12 @@ class ButtonView: UIView {
         }
     }
 
+    var isLoading = false {
+        didSet {
+            updateLoadingState()
+        }
+    }
+
     lazy var button: UIButton = {
         let view = UIButton().disabledAutoresizingIntoConstraints()
         view.addTarget(self, action: #selector(selectionButtonIsPressed), for: .touchUpInside)
@@ -30,6 +36,8 @@ class ButtonView: UIView {
     private(set) lazy var buttonTextLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
+
+    private var loadingOverlay: UIView?
 
     convenience init(startEnabled: Bool = true) {
         self.init(frame: .zero)
@@ -69,6 +77,25 @@ class ButtonView: UIView {
         button.accessibilityIdentifier = style.text
     }
 
+    private func updateLoadingState() {
+        let contentAlpha: CGFloat = isLoading ? 0 : 1
+        UIView.animate(withDuration: 0.25) { [weak self] in
+            if self?.isLoading == true {
+                self?.setupLoadingOverlay()
+                self?.backgroundColor = self?.backgroundColor?.withAlphaComponent(contentAlpha)
+            } else {
+                self?.loadingOverlay?.removeFromSuperview()
+                self?.loadingOverlay = nil
+
+                if let style = self?.style {
+                    self?.update(with: style)
+                }
+            }
+            self?.button.alpha = contentAlpha
+            self?.buttonTextLabel.alpha = contentAlpha
+        }
+    }
+
     private func updateLabelStyle(with style: ElementButtonStyle) {
       let buttonTextLabelStyle = DefaultHeaderLabelFormStyle(textAlignment: style.textAlignment,
                                                              text: style.text,
@@ -97,5 +124,25 @@ class ButtonView: UIView {
             buttonTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             buttonTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+
+    private func setupLoadingOverlay() {
+        let loadingOverlay = UIView()
+        loadingOverlay.translatesAutoresizingMaskIntoConstraints = false
+        loadingOverlay.backgroundColor = style?.disabledTintColor
+        loadingOverlay.tintColor = .clear
+
+        let loadingSpinner = UIActivityIndicatorView()
+        loadingSpinner.translatesAutoresizingMaskIntoConstraints = false
+        loadingSpinner.color = style?.disabledTextColor
+        loadingSpinner.startAnimating()
+        loadingOverlay.addSubview(loadingSpinner)
+        loadingSpinner.setupConstraintEqualTo(view: loadingOverlay)
+
+        addSubview(loadingOverlay)
+        loadingOverlay.setupConstraintEqualTo(view: self)
+        bringSubviewToFront(loadingOverlay)
+
+        self.loadingOverlay = loadingOverlay
     }
 }
