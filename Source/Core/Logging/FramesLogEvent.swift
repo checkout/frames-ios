@@ -38,7 +38,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
     case paymentFormInitialised(environment: Environment)
     case paymentFormPresented
     case paymentFormSubmitted
-    case paymentFormOutcome(token: String)
+    case paymentFormSubmittedResult(token: String)
     case paymentFormCanceled
     case billingFormPresented
     case billingFormCanceled
@@ -61,8 +61,8 @@ enum FramesLogEvent: Equatable, PropertyProviding {
             return "payment_form_presented"
         case .paymentFormSubmitted:
             return "payment_form_submitted"
-        case .paymentFormOutcome:
-            return "payment_form_outcome"
+        case .paymentFormSubmittedResult:
+            return "payment_form_submitted_result"
         case .paymentFormCanceled:
             return "payment_form_cancelled"
         case .billingFormPresented:
@@ -89,7 +89,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
         case .paymentFormInitialised,
              .paymentFormPresented,
              .paymentFormSubmitted,
-             .paymentFormOutcome,
+             .paymentFormSubmittedResult,
              .paymentFormCanceled,
              .billingFormPresented,
              .billingFormCanceled,
@@ -120,7 +120,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
         case let .paymentFormInitialised(environment):
             let environmentString = environment.rawValue == "live" ? "production" : environment.rawValue
             return [.environment: environmentString].mapValues(AnyCodable.init(_:))
-        case let .paymentFormOutcome(token):
+        case let .paymentFormSubmittedResult(token):
             return [.tokenID: AnyCodable(token)]
         case let .threeDSChallengeLoaded(success):
             return [.success: success].mapValues(AnyCodable.init(_:))
