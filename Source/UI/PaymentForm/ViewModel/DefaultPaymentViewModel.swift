@@ -164,7 +164,10 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
     }
 
     func payButtonIsPressed() {
-        guard let card = cardDetails.getCard() else { return }
+        guard let card = cardDetails.getCard() else {
+            logger.log(.warn(message: "Pay button pressed without all required fields input"))
+            return
+        }
         logger.log(.paymentFormSubmitted)
         isLoading = true
         checkoutAPIService.createToken(.card(card)) { [weak self] result in
