@@ -224,7 +224,7 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
     private func logTokenResult(_ result: Result<TokenDetails, TokenisationError.TokenRequest>) {
         switch result {
         case .success(let tokenDetails):
-            logger.log(.paymentFormOutcome(token: tokenDetails.token))
+            logger.log(.paymentFormSubmittedResult(token: tokenDetails.token))
         case .failure(let requestError):
             logger.log(.warn(message: "\(requestError.code) " + requestError.localizedDescription))
         }
