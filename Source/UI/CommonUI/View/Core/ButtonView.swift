@@ -82,13 +82,17 @@ class ButtonView: UIView {
         UIView.animate(withDuration: 0.25) { [weak self] in
             if self?.isLoading == true {
                 self?.setupLoadingOverlay()
+                self?.backgroundColor = self?.backgroundColor?.withAlphaComponent(contentAlpha)
             } else {
                 self?.loadingOverlay?.removeFromSuperview()
                 self?.loadingOverlay = nil
+
+                if let style = self?.style {
+                    self?.update(with: style)
+                }
             }
             self?.button.alpha = contentAlpha
             self?.buttonTextLabel.alpha = contentAlpha
-            self?.backgroundColor = self?.backgroundColor?.withAlphaComponent(contentAlpha)
         }
     }
 
