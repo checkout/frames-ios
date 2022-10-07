@@ -676,7 +676,7 @@ final class PaymentViewModelTests: XCTestCase {
         
         XCTAssertFalse(model.isLoading)
         XCTAssertNotNil(fakeService.createTokenCalledWith)
-        XCTAssertEqual(fakeLogger.logCalledWithFramesLogEvents, [.paymentFormSubmitted, .paymentFormOutcome(token: testToken)])
+        XCTAssertEqual(fakeLogger.logCalledWithFramesLogEvents, [.paymentFormSubmitted, .paymentFormSubmittedResult(token: testToken)])
     }
     
     func testPayButtonOutcomeFailure() {
