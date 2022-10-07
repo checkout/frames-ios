@@ -85,13 +85,6 @@ final class PaymentViewController: UIViewController {
     return view
   }()
 
-  private lazy var activityIndicator: UIActivityIndicatorView = {
-    let view = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-    let barButton = UIBarButtonItem(customView: view)
-    navigationItem.setRightBarButton(barButton, animated: true)
-    return view
-  }()
-
   private lazy var headerBackgroundView: UIView = {
     UIView().disabledAutoresizingIntoConstraints()
   }()
@@ -196,17 +189,13 @@ extension PaymentViewController {
     setupLoadingIndicatorClosure()
   }
 
-  private func setupLoadingIndicatorClosure() {
-    viewModel.updateLoading = { [weak self] in
-      DispatchQueue.main.async {
-        if self?.viewModel.isLoading ?? false {
-          self?.activityIndicator.startAnimating()
-        } else {
-          self?.activityIndicator.stopAnimating()
+    private func setupLoadingIndicatorClosure() {
+        viewModel.updateLoading = { [weak self] in
+            DispatchQueue.main.async {
+                self?.payButtonView.isLoading = self?.viewModel.isLoading ?? false
+            }
         }
-      }
     }
-  }
 
   private func setupHeaderViewClosure() {
     viewModel.updateHeaderView = { [weak self] in
@@ -285,7 +274,6 @@ extension PaymentViewController {
   private func updateBackgroundViews() {
     view.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
     stackView.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
-    activityIndicator.color = viewModel.paymentFormStyle?.payButton.activeTintColor
   }
 
   private func updateCardholder() {
@@ -330,7 +318,6 @@ extension PaymentViewController {
   public func updateHeaderView() {
     guard let style = viewModel.paymentFormStyle?.headerView else { return }
     headerView.update(style: style)
-    activityIndicator.color = FramesUIStyle.Color.actionPrimary
     headerBackgroundView.backgroundColor = style.backgroundColor
   }
 }
