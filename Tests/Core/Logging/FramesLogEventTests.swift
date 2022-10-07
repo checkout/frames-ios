@@ -66,6 +66,15 @@ final class FramesLogEventTests: XCTestCase {
         XCTAssertEqual(event.rawProperties, ["tokenID": AnyCodable(testToken)])
     }
     
+    func testPaymentFormCanceledFormat() {
+        let event = FramesLogEvent.paymentFormCanceled
+        
+        XCTAssertEqual(event.typeIdentifier, "com.checkout.frames-mobile-sdk.payment_form_cancelled")
+        XCTAssertEqual(event.properties, [:])
+        XCTAssertEqual(event.monitoringLevel, .info)
+        XCTAssertEqual(event.rawProperties, [:])
+    }
+    
     func testWarnFormat() {
         let testWarnMessage = "Hello world!"
         let event = FramesLogEvent.warn(message: testWarnMessage)

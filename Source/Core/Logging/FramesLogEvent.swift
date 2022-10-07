@@ -39,6 +39,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
     case paymentFormPresented
     case paymentFormSubmitted
     case paymentFormOutcome(token: String)
+    case paymentFormCanceled
     case billingFormPresented
     case threeDSWebviewPresented
     case threeDSChallengeLoaded(success: Bool)
@@ -60,6 +61,8 @@ enum FramesLogEvent: Equatable, PropertyProviding {
             return "payment_form_submitted"
         case .paymentFormOutcome:
             return "payment_form_outcome"
+        case .paymentFormCanceled:
+            return "payment_form_cancelled"
         case .billingFormPresented:
             return "billing_form_presented"
         case .threeDSWebviewPresented:
@@ -81,6 +84,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
              .paymentFormPresented,
              .paymentFormSubmitted,
              .paymentFormOutcome,
+             .paymentFormCanceled,
              .billingFormPresented,
              .threeDSWebviewPresented:
             return .info
@@ -97,6 +101,7 @@ enum FramesLogEvent: Equatable, PropertyProviding {
     var properties: [Property: AnyCodable] {
         switch self {
         case .paymentFormSubmitted,
+                .paymentFormCanceled,
                 .billingFormPresented,
                 .threeDSWebviewPresented:
             return [:]
