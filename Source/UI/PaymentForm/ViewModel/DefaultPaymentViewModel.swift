@@ -27,9 +27,9 @@ class DefaultPaymentViewModel: PaymentViewModel {
             updateLoading?()
         }
     }
-    
+
     private var cardDetails = CardCreationModel()
-    
+
     init(checkoutAPIService: CheckoutAPIProtocol,
          cardValidator: CardValidator,
          logger: FramesEventLogging,
@@ -43,16 +43,16 @@ class DefaultPaymentViewModel: PaymentViewModel {
         self.paymentFormStyle = paymentFormStyle
         self.billingFormStyle = billingFormStyle
         self.logger = logger
-        
+
         if let billingFormData = billingFormData {
             updateBillingData(to: billingFormData)
         }
     }
-    
+
     func viewControllerWillAppear() {
         logger.log(.paymentFormPresented)
     }
-    
+
     func updateAll() {
         updateHeaderView?()
         updateCardholderView?()
@@ -64,11 +64,11 @@ class DefaultPaymentViewModel: PaymentViewModel {
             updateBillingSummaryView()
         }
     }
-    
+
     func updateBillingSummaryView() {
         guard paymentFormStyle?.editBillingSummary != nil else { return }
         var summaryValue = [String?]()
-        
+
         billingFormStyle?.cells.forEach {
             switch $0 {
             case .fullName: summaryValue.append(billingFormData?.name)
@@ -81,7 +81,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
             case .phoneNumber: summaryValue.append(billingFormData?.phone?.number)
             }
         }
-        
+
         let summary = updateSummaryValue(with: summaryValue)
         guard !summary.isEmpty else {
             let addBillingSummary = paymentFormStyle?.addBillingSummary ?? DefaultAddBillingDetailsViewStyle()
@@ -92,7 +92,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
         paymentFormStyle?.editBillingSummary?.summary?.text = summary
         updateEditBillingSummaryView?()
     }
-    
+
     private func updateBillingData(to billingForm: BillingForm) {
         self.billingFormData = billingForm
         cardDetails.phone = billingForm.phone
@@ -107,7 +107,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
         }
         validateMandatoryInputProvided()
     }
-    
+
     private func isAddBillingSummaryNotUpdated() -> Bool {
         guard billingFormData?.address != nil ||
                 billingFormData?.phone != nil else {
@@ -118,21 +118,21 @@ class DefaultPaymentViewModel: PaymentViewModel {
         }
         return true
     }
-    
+
     private func updateSummaryValue(with summaryValues: [String?]) -> String {
         summaryValues
             .compactMap { $0?.trimmingCharacters(in: .whitespaces) }
             .filter { !$0.isEmpty }
             .joined(separator: "\n\n")
     }
-    
+
 }
 
 extension DefaultPaymentViewModel: BillingFormViewModelDelegate {
     func onBillingScreenShown() {
         logger.log(.billingFormPresented)
     }
-    
+
     func onTapDoneButton(data: BillingForm) {
         updateBillingData(to: data)
     }
@@ -148,12 +148,12 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
         }
         validateMandatoryInputProvided()
     }
-    
+
     func securityCodeIsUpdated(to newCode: String) {
         cardDetails.cvv = newCode
         validateMandatoryInputProvided()
     }
-    
+
     func payButtonIsPressed() {
         guard let card = cardDetails.getCard() else { return }
         logger.log(.paymentFormSubmitted)
@@ -164,50 +164,50 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
             self?.cardTokenRequested?(result)
         }
     }
-    
+
     func addBillingButtonIsPressed(sender: UINavigationController?) {
         onTapAddressView(sender: sender)
     }
-    
+
     func editBillingButtonIsPressed(sender: UINavigationController?) {
         onTapAddressView(sender: sender)
     }
-    
+
     func cardholderIsUpdated(value: String) {
         cardDetails.name = value
         validateMandatoryInputProvided()
     }
-    
+
     private func validateMandatoryInputProvided() {
         var isMandatoryInputProvided = false
         defer { shouldEnablePayButton?(isMandatoryInputProvided) }
-        
+
         // If a scheme is not recorded the number hasn't started being inputted
         // so we can safely know mandatory fields are not provided
         guard let cardScheme = cardDetails.scheme else { return }
-        
+
         // Check if cardholder is required and if so whether it is provided
         let isCardholderRequired = paymentFormStyle?.cardholderInput?.isMandatory == true
         if isCardholderRequired && cardDetails.name.isEmpty { return }
-        
+
         // Check if security code is displayed and if so whether it is valid
         // This is business logic that wants Security code to be mandatory whenever its shown
         let isSecurityCodeRequired = paymentFormStyle?.securityCode != nil
         if isSecurityCodeRequired, !cardValidator.isValid(cvv: cardDetails.cvv, for: cardScheme) { return }
-        
+
         // Check if Billing is required and if so whether it exists
         let isAddBillingRequired = paymentFormStyle?.addBillingSummary?.isMandatory == true
         let isEditBillingRequired = paymentFormStyle?.editBillingSummary?.isMandatory == true
         let isBillingRequired = isAddBillingRequired && isEditBillingRequired
         if isBillingRequired && cardDetails.billingAddress == nil { return }
-        
+
         // Ensure compulsory fields of Card Number and Expiry date have valid values
         guard case .success(let scheme) = cardValidator.validateCompleteness(cardNumber: cardDetails.number),
               scheme.isComplete else {
             // Incomplete card number
             return
         }
-        
+
         guard let expiryDate = cardDetails.expiryDate,
               case .success = cardValidator.validate(expiryMonth: expiryDate.month, expiryYear: expiryDate.year) else {
             // Missing / invalid expiry date
@@ -215,12 +215,12 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
         }
         isMandatoryInputProvided = true
     }
-    
+
     private func onTapAddressView(sender: UINavigationController?) {
         guard let viewController = FramesFactory.getBillingFormViewController(style: billingFormStyle, data: billingFormData, delegate: self) else { return }
         sender?.present(viewController, animated: true)
     }
-    
+
     private func logOutcome(_ result: Result<TokenDetails, TokenisationError.TokenRequest>) {
         switch result {
         case .success(let tokenDetails):
@@ -244,7 +244,7 @@ extension DefaultPaymentViewModel: CardNumberViewModelDelegate {
         }
         validateMandatoryInputProvided()
     }
-    
+
     func schemeUpdatedEagerly(to newScheme: Card.Scheme) {
         updateSecurityCodeViewScheme?(newScheme)
     }
