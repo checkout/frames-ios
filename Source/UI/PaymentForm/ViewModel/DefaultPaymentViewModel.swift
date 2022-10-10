@@ -154,14 +154,15 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
     validateMandatoryInputProvided()
   }
 
-  func payButtonIsPressed() {
-    guard let card = cardDetails.getCard() else { return }
-    isLoading = true
-    checkoutAPIService.createToken(.card(card)) { [weak self] result in
-      self?.isLoading = false
-      self?.cardTokenRequested?(result)
+    func payButtonIsPressed() {
+        guard let card = cardDetails.getCard() else { return }
+        logger.log(.paymentFormSubmitted)
+        isLoading = true
+        checkoutAPIService.createToken(.card(card)) { [weak self] result in
+            self?.isLoading = false
+            self?.cardTokenRequested?(result)
+        }
     }
-  }
 
   func addBillingButtonIsPressed(sender: UINavigationController?) {
     onTapAddressView(sender: sender)
