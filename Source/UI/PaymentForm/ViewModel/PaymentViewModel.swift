@@ -23,6 +23,7 @@ protocol PaymentViewModel {
   var cardTokenRequested: ((Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)? { get set }
   func updateAll()
   func viewControllerWillAppear()
+  func viewControllerCancelled()
   mutating func preventDuplicateCardholderInput()
 }
 

@@ -137,6 +137,7 @@ final class PaymentViewController: UIViewController {
   }
 
   @objc private func popViewController() {
+    viewModel.viewControllerCancelled()
     self.navigationController?.popViewController(animated: true)
   }
 
