@@ -159,6 +159,7 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
         logger.log(.paymentFormSubmitted)
         isLoading = true
         checkoutAPIService.createToken(.card(card)) { [weak self] result in
+            self?.logTokenResult(result)
             self?.isLoading = false
             self?.cardTokenRequested?(result)
         }
@@ -219,6 +220,15 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
     guard let viewController = FramesFactory.getBillingFormViewController(style: billingFormStyle, data: billingFormData, delegate: self) else { return }
     sender?.present(viewController, animated: true)
   }
+
+    private func logTokenResult(_ result: Result<TokenDetails, TokenisationError.TokenRequest>) {
+        switch result {
+        case .success(let tokenDetails):
+            logger.log(.paymentFormSubmittedResult(token: tokenDetails.token))
+        case .failure(let requestError):
+            logger.log(.warn(message: "\(requestError.code) " + requestError.localizedDescription))
+        }
+    }
 }
 
 extension DefaultPaymentViewModel: CardNumberViewModelDelegate {

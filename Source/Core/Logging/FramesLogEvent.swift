@@ -38,11 +38,13 @@ enum FramesLogEvent: Equatable, PropertyProviding {
     case paymentFormInitialised(environment: Environment)
     case paymentFormPresented
     case paymentFormSubmitted
+    case paymentFormSubmittedResult(token: String)
     case billingFormPresented
     case threeDSWebviewPresented
     case threeDSChallengeLoaded(success: Bool)
     case threeDSChallengeComplete(success: Bool, tokenID: String?)
     case exception(message: String)
+    case warn(message: String)
 
     var typeIdentifier: String {
         return "com.checkout.frames-mobile-sdk.\(typeIdentifierSuffix)"
@@ -56,6 +58,8 @@ enum FramesLogEvent: Equatable, PropertyProviding {
             return "payment_form_presented"
         case .paymentFormSubmitted:
             return "payment_form_submitted"
+        case .paymentFormSubmittedResult:
+            return "payment_form_submitted_result"
         case .billingFormPresented:
             return "billing_form_presented"
         case .threeDSWebviewPresented:
@@ -64,6 +68,8 @@ enum FramesLogEvent: Equatable, PropertyProviding {
             return "3ds_challenge_loaded"
         case .threeDSChallengeComplete:
             return "3ds_challenge_complete"
+        case .warn:
+            return "warn"
         case .exception:
             return "exception"
         }
@@ -74,9 +80,12 @@ enum FramesLogEvent: Equatable, PropertyProviding {
         case .paymentFormInitialised,
              .paymentFormPresented,
              .paymentFormSubmitted,
+             .paymentFormSubmittedResult,
              .billingFormPresented,
              .threeDSWebviewPresented:
             return .info
+        case .warn:
+            return .warn
         case .exception:
             return .error
         case .threeDSChallengeLoaded(let success),
@@ -96,13 +105,16 @@ enum FramesLogEvent: Equatable, PropertyProviding {
         case let .paymentFormInitialised(environment):
             let environmentString = environment.rawValue == "live" ? "production" : environment.rawValue
             return [.environment: environmentString].mapValues(AnyCodable.init(_:))
+        case let .paymentFormSubmittedResult(token):
+            return [.tokenID: AnyCodable(token)]
         case let .threeDSChallengeLoaded(success):
             return [.success: success].mapValues(AnyCodable.init(_:))
         case let .threeDSChallengeComplete(success, tokenID):
             return [.success: success]
                 .updating(key: .tokenID, value: tokenID)
                 .mapValues(AnyCodable.init(_:))
-        case let .exception(message):
+        case let .warn(message),
+            let .exception(message):
             return [.message: message]
                 .mapValues(AnyCodable.init(_:))
         }

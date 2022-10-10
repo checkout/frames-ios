@@ -125,6 +125,7 @@ class PaymentViewControllerTests: XCTestCase {
     let stubCardValidator = MockCardValidator()
     stubCardValidator.validateCardNumberToReturn = .success(.visa)
     stubCheckoutAPIService.cardValidatorToReturn = stubCardValidator
+      stubCheckoutAPIService.createTokenCompletionResult = .success(StubCheckoutAPIService.createTokenDetails())
     viewController.viewDidLoad()
 
     viewModel.update(result: .success(CardInfo("4242 4242 4242 4242", .visa)))
