@@ -102,18 +102,4 @@ enum FramesLogEvent: Equatable, PropertyProviding {
                 .mapValues(AnyCodable.init(_:))
         }
     }
-
-    var loggedOncePerCorrelationID: Bool {
-        switch self {
-        case .paymentFormInitialised,
-             .paymentFormPresented,
-             .billingFormPresented,
-             .threeDSWebviewPresented:
-            return true
-        case .threeDSChallengeLoaded,
-             .threeDSChallengeComplete,
-             .exception:
-            return false
-        }
-    }
 }
