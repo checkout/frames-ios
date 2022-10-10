@@ -637,7 +637,7 @@ final class PaymentViewModelTests: XCTestCase {
         XCTAssertFalse(model.isLoading)
         XCTAssertNil(fakeService.createTokenCalledWith)
         XCTAssertFalse(fakeService.loggerCalled)
-        XCTAssertTrue(fakeLogger.logCalledWithFramesLogEvents.isEmpty)
+        XCTAssertEqual(fakeLogger.logCalledWithFramesLogEvents, [.warn(message: "Pay button pressed without all required fields input")])
     }
     
     func testPayButtonPressedWithAllDataValid() {
