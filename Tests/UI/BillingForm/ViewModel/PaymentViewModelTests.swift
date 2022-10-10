@@ -699,6 +699,25 @@ final class PaymentViewModelTests: XCTestCase {
         XCTAssertEqual(fakeLogger.logCalledWithFramesLogEvents, [.paymentFormSubmitted, .warn(message: expectedWarnMessage)])
     }
     
+    func testBillingTapDoneCallback() {
+        let testLogger = StubFramesEventLogger()
+        let model = makeViewModel(logger: testLogger)
+        XCTAssertNil(model.billingFormData)
+        
+        let testBillingData = makeMockBillingForm()
+        model.onTapDoneButton(data: testBillingData)
+        XCTAssertEqual(model.billingFormData, testBillingData)
+        XCTAssertEqual(testLogger.logCalledWithFramesLogEvents, [.billingFormSubmit])
+    }
+    
+    func testBillingTapCancelCallback() {
+        let testLogger = StubFramesEventLogger()
+        let model = makeViewModel(logger: testLogger)
+        
+        model.onTapCancelButton()
+        XCTAssertEqual(testLogger.logCalledWithFramesLogEvents, [.billingFormCanceled])
+    }
+    
     private func makeViewModel(apiService: Frames.CheckoutAPIProtocol = StubCheckoutAPIService(),
                                cardValidator: CardValidator = CardValidator(environment: .sandbox),
                                logger: FramesEventLogging = StubFramesEventLogger(),

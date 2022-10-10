@@ -75,6 +75,33 @@ final class FramesLogEventTests: XCTestCase {
         XCTAssertEqual(event.rawProperties, [:])
     }
     
+    func testBillingFormPresentedFormat() {
+        let event = FramesLogEvent.billingFormPresented
+        
+        XCTAssertEqual(event.typeIdentifier, "com.checkout.frames-mobile-sdk.billing_form_presented")
+        XCTAssertEqual(event.properties, [:])
+        XCTAssertEqual(event.monitoringLevel, .info)
+        XCTAssertEqual(event.rawProperties, [:])
+    }
+    
+    func testBillingFormCanceledFormat() {
+        let event = FramesLogEvent.billingFormCanceled
+        
+        XCTAssertEqual(event.typeIdentifier, "com.checkout.frames-mobile-sdk.billing_form_cancelled")
+        XCTAssertEqual(event.properties, [:])
+        XCTAssertEqual(event.monitoringLevel, .info)
+        XCTAssertEqual(event.rawProperties, [:])
+    }
+    
+    func testBillingFormSubmitFormat() {
+        let event = FramesLogEvent.billingFormSubmit
+        
+        XCTAssertEqual(event.typeIdentifier, "com.checkout.frames-mobile-sdk.billing_form_submit")
+        XCTAssertEqual(event.properties, [:])
+        XCTAssertEqual(event.monitoringLevel, .info)
+        XCTAssertEqual(event.rawProperties, [:])
+    }
+    
     func testWarnFormat() {
         let testWarnMessage = "Hello world!"
         let event = FramesLogEvent.warn(message: testWarnMessage)

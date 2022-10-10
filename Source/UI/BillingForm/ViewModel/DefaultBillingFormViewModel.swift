@@ -270,6 +270,7 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
     }
 
     func cancelButtonIsPressed(sender: UIViewController) {
+        delegate?.onTapCancelButton()
         sender.dismiss(animated: true)
     }
 }

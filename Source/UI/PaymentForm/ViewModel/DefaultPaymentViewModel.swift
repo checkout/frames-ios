@@ -138,7 +138,12 @@ extension DefaultPaymentViewModel: BillingFormViewModelDelegate {
     }
 
     func onTapDoneButton(data: BillingForm) {
+        logger.log(.billingFormSubmit)
         updateBillingData(to: data)
+    }
+
+    func onTapCancelButton() {
+        logger.log(.billingFormCanceled)
     }
 }
 
