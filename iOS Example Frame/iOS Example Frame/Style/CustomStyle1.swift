@@ -34,7 +34,7 @@ struct PaymentFormStyleCustom1: PaymentFormStyle {
   var cardNumber: CellTextFieldStyle = StyleOrganiser.CardNumberSection()
   var expiryDate: CellTextFieldStyle = StyleOrganiser.ExpiryDateSection()
   var securityCode: CellTextFieldStyle? = StyleOrganiser.SecurityNumberSection()
-  var payButton: ElementButtonStyle = PayButtonFormStyleCustom1()
+  var payButton: ElementButtonStyle = StyleOrganiser.PayButtonFormStyleCustom1()
 }
 
 struct BillingFormStyleCustom1: BillingFormStyle {
@@ -77,7 +77,7 @@ private enum StyleOrganiser {
         var backgroundColor: UIColor = .clear
         var textColor: UIColor = Constants.mainFontColor
     }
-    
+
     struct PayButtonFormStyleCustom1: ElementButtonStyle {
       var image: UIImage?
       var textAlignment: NSTextAlignment = .center
@@ -100,7 +100,7 @@ private enum StyleOrganiser {
       var borderWidth: CGFloat = 0
       var textLeading: CGFloat = 0
     }
-    
+
     struct CancelButtonStyle: ElementButtonStyle {
         var textAlignment: NSTextAlignment = .natural
         var isEnabled = true
