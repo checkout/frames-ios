@@ -25,9 +25,9 @@
 
 Frames for iOS tokenises consumer data for use within [Checkout.com](https://www.checkout.com)'s payment infrastructure. We want to abstract all the complexity in taking payments and building a payment screen from your Mobile Application and allow you to focus on your core business.
 
-- [Integration](#Integration): _Lets talk about our SDK code showing up inside your amazing application's sourcecode._
+- [Integration](#Integration): _a guide for consuming our SDK in your iOS app_
 
-- [Demo projects](#Demo-projects): _We have crafted projects showcasing the functionality while testing each distribution method offered_
+- [Demo projects](#Demo-projects): _We've created projects showcasing the range of functionality available in our SDKs while testing each distribution method offered_
 
 - [Get started](#Get-started): _Start testing what you can achieve by presenting inside your Applications UI_ 
 
@@ -109,7 +109,7 @@ Run `carthage update --use-xcframeworks` to build the framework and drag the bui
 
 # Demo projects
 
-With the help of some of our amazing coleagues at Checkout, we have created some very simple demo applications that use our SDK and you should be able to run locally as soon as you cloned the repository (whether directly via git or with suggested Integration methods).
+We've worked with Product and Design to create simple demo applications that showcase our SDKs, that you'll be able to run locally as soon as you clone the repository (whether directly via git or with suggested integration methods).
 
 Our demo apps also test the supported integration methods (SPM, Cocoapods, Carthage), so if you're having any problems there, they should offer a working example. You will find them in the root of the repository, inside respective folders:
 - iOS Example Frame (Using Cocoapods distribution)
@@ -421,7 +421,7 @@ func handle(payment: PKPayment) {
 # Migrating
 3DS and Apple Pay processing remain unaffected so using them should still work the same. 
 
-If using Frames UI from before v4, or using the component validator directly, this update will bring breaking changes that will require development time.
+If you're using Frames iOS from versions prior to v4.0.0, this update will bring breaking changes that'll require a little development time.
 
 Because of our efforts to greatly improve the UI of the Frames and enabling you to customise it to such extents, the approach required is very different. This will require you to:
 - remove usage of Frames older version from your code base. This may be an opportunity to remove a screen as well, or a few other objects that were created only to support older Frames integration!
