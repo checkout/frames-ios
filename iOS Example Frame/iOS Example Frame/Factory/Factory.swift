@@ -42,7 +42,7 @@ enum Factory {
 
     let paymentFormStyle = FramesFactory.defaultPaymentFormStyle
 
-    let supportedSchemes: [CardScheme] = [.visa, .mastercard, .maestro]
+    let supportedSchemes: [CardScheme] = [.mada, .visa, .mastercard, .maestro, .americanExpress, .discover, .dinersClub, .jcb]
 
     let configuration = PaymentFormConfiguration(apiKey: apiKey,
                                                  environment: environment,
