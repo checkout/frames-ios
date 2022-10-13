@@ -9,7 +9,6 @@ workflows:
   pr-checks:
     after_run:
     - frames-pr-checks
-    - checkout-pr-checks
 
   # frames pr workflows
   frames-pr-checks:
@@ -170,131 +169,6 @@ workflows:
     before_run:
     - _frames-set-up
 
-  # checkout pr workflows
-  checkout-pr-checks:
-    after_run:
-    - _set_up
-    - _checkout-build-carthage
-    - _checkout-build-pods
-    - _checkout-build-spm
-    - _checkout-slack
-    before_run: []
-  _set_up:
-    steps:
-    - activate-ssh-key@4:
-        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@6: {}
-    - cache-pull@2: {}
-    - script@1:
-        title: Do anything with Script step
-    - certificate-and-profile-installer@1: {}
-    - recreate-user-schemes@1:
-        inputs:
-        - project_path: "$CHECKOUT_COCOAPODS_PROJECT"
-    after_run: []
-  _checkout-build-carthage:
-    steps:
-    - carthage@3:
-        inputs:
-        - carthage_options: $CARTHAGE_XCFRAMEWORK
-        - github_access_token: $access_token
-    - xcode-test@4:
-        inputs:
-        - project_path: "$CHECKOUT_CARTHAGE_PROJECT"
-        - scheme: "$CHECKOUT_SCHEME"
-    - deploy-to-bitrise-io@2: {}
-    - cache-push@2: {}
-    after_run: []
-  _checkout-build-pods:
-    steps:
-    - cocoapods-install@2:
-        inputs:
-        - podfile_path: $CHECKOUT_PODFILE
-    - swiftlint-extended@1:
-        inputs:
-        - lint_config_file: $CHECKOUT_SOURCE_DIR/.swiftlint.yml
-        - linting_path: $CHECKOUT_SOURCE_DIR
-    - xcode-test@4:
-        inputs:
-        - project_path: "$CHECKOUT_COCOAPODS_PROJECT"
-        - scheme: "$CHECKOUT_SCHEME"
-    - deploy-to-bitrise-io@2: {}
-    - cache-push@2: {}
-    after_run: []
-  _checkout-build-spm:
-    steps:
-    - xcode-test@4:
-        inputs:
-        - project_path: "$CHECKOUT_SPM_PROJECT"
-        - scheme: "$CHECKOUT_SCHEME"
-    - deploy-to-bitrise-io@2: {}
-    - cache-push@2: {}
-    after_run: []
-  _checkout-slack:
-    steps:
-    - slack@3:
-        inputs:
-        - channel: 'channel: #ios-builds'
-        - text: Checkout-iOS Build Success
-        - webhook_url: "$SLACK_CHANNEL_CHECKOUT"
-  
-  # checkout test invidividual package manager
-  checkout-test-carthage:
-    steps:
-    - activate-ssh-key@4:
-        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@6: {}
-    - cache-pull@2: {}
-    - certificate-and-profile-installer@1: {}
-    - xcode-test@4:
-        inputs:
-        - project_path: "$CHECKOUT_CARTHAGE_PROJECT"
-        - scheme: "$CHECKOUT_SCHEME"
-    - deploy-to-bitrise-io@2: {}
-    - cache-push@2: {}
-    after_run:
-    - _checkout-slack
-  checkout-test-pods:
-    steps:
-    - activate-ssh-key@4:
-        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@6: {}
-    - cache-pull@2: {}
-    - certificate-and-profile-installer@1: {}
-    - recreate-user-schemes@1:
-        inputs:
-        - project_path: "$CHECKOUT_COCOAPODS_PROJECT"
-    - cocoapods-install@2:
-        inputs:
-        - podfile_path: $CHECKOUT_PODFILE
-    - swiftlint-extended@1:
-        inputs:
-        - lint_config_file: $CHECKOUT_SOURCE_DIR/.swiftlint.yml
-        - linting_path: $CHECKOUT_SOURCE_DIR
-    - xcode-test@4:
-        inputs:
-        - project_path: "$CHECKOUT_COCOAPODS_PROJECT"
-        - scheme: "$CHECKOUT_SCHEME"
-    - deploy-to-bitrise-io@2: {}
-    - cache-push@2: {}
-    after_run:
-    - _checkout-slack
-  checkout-test-spm:
-    steps:
-    - activate-ssh-key@4:
-        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@6: {}
-    - cache-pull@2: {}
-    - certificate-and-profile-installer@1: {}
-    - xcode-test@4:
-        inputs:
-        - project_path: "$CHECKOUT_SPM_PROJECT"
-        - scheme: "$CHECKOUT_SCHEME"
-    - deploy-to-bitrise-io@2: {}
-    - cache-push@2: {}
-    after_run:
-    - _checkout-slack
-
 app:
   envs:
   - opts:
@@ -329,25 +203,7 @@ app:
     CARTHAGE_FOLDER: Carthage
   - opts:
       is_expand: false
-    CHECKOUT_COCOAPODS_PROJECT: Checkout/CocoapodsSample/CheckoutCocoapodsSample.xcworkspace
-  - opts:
-      is_expand: false
-    CHECKOUT_SCHEME: Checkout
-  - opts:
-      is_expand: false
     BITRISE_DISTRIBUTION_METHOD: development
-  - opts:
-      is_expand: false
-    CHECKOUT_CARTHAGE_PROJECT: iOS Example Frame Carthage/iOS Example Frame Carthage.xcworkspace
-  - opts:
-      is_expand: false
-    CHECKOUT_SPM_PROJECT: Checkout/SPMSample/CheckoutSPMSample.xcodeproj
-  - opts:
-      is_expand: false
-    CHECKOUT_PODFILE: Checkout/CocoapodsSample/Podfile
-  - opts:
-      is_expand: false
-    CHECKOUT_SOURCE_DIR: Checkout
 meta:
   bitrise.io:
     stack: osx-xcode-13.4.x
