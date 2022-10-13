@@ -7,7 +7,6 @@ target 'iOS Example Frame' do
 
   # Pods for iOS Example Custom
   pod 'Frames', :path => '../', :testspecs => ['Tests']
-  pod 'Checkout', :path => '../', :testspecs => ['Tests']
 
 end
 
