@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1400"
+   LastUpgradeVersion = "1300"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,24 +14,24 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Frames"
-               BuildableName = "Frames"
-               BlueprintName = "Frames"
-               ReferencedContainer = "container:">
+               BlueprintIdentifier = "CB7E9879271DC52800B1A0F4"
+               BuildableName = "CheckoutSDKCarthageSample.app"
+               BlueprintName = "CheckoutSDKCarthageSample"
+               ReferencedContainer = "container:CheckoutSDKCarthageSample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Frames_FramesTests"
-               BuildableName = "Frames_FramesTests"
-               BlueprintName = "Frames_FramesTests"
-               ReferencedContainer = "container:">
+               BlueprintIdentifier = "CB7E9899271DC52C00B1A0F4"
+               BuildableName = "CheckoutSDKCarthageSampleUITests.xctest"
+               BlueprintName = "CheckoutSDKCarthageSampleUITests"
+               ReferencedContainer = "container:CheckoutSDKCarthageSample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,10 +46,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FramesTests"
-               BuildableName = "FramesTests"
-               BlueprintName = "FramesTests"
-               ReferencedContainer = "container:">
+               BlueprintIdentifier = "CB7E9899271DC52C00B1A0F4"
+               BuildableName = "CheckoutCarthageSampleUITests.xctest"
+               BlueprintName = "CheckoutCarthageSampleUITests"
+               ReferencedContainer = "container:CheckoutCarthageSample.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -64,6 +64,25 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "CB7E9879271DC52800B1A0F4"
+            BuildableName = "CheckoutCarthageSample.app"
+            BlueprintName = "CheckoutCarthageSample"
+            ReferencedContainer = "container:CheckoutCarthageSample.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "CB7E9879271DC52800B1A0F4"
+            BuildableName = "CheckoutSDKCarthageSample.app"
+            BlueprintName = "CheckoutSDKCarthageSample"
+            ReferencedContainer = "container:CheckoutSDKCarthageSample.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -74,10 +93,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "Frames"
-            BuildableName = "Frames"
-            BlueprintName = "Frames"
-            ReferencedContainer = "container:">
+            BlueprintIdentifier = "CB7E9879271DC52800B1A0F4"
+            BuildableName = "CheckoutSDKCarthageSample.app"
+            BlueprintName = "CheckoutSDKCarthageSample"
+            ReferencedContainer = "container:CheckoutSDKCarthageSample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

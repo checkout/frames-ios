@@ -48,13 +48,6 @@ let package = Package(
             path: "Checkout"
         ),
         .testTarget(
-            name: "CheckoutTests",
-            dependencies: [
-                "Checkout"
-            ],
-            path: "CheckoutTests"
-        ),
-        .testTarget(
             name: "FramesTests",
             dependencies: [
               "Frames",

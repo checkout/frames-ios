@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Frames"
-               BuildableName = "Frames"
-               BlueprintName = "Frames"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Frames_FramesTests"
-               BuildableName = "Frames_FramesTests"
-               BlueprintName = "Frames_FramesTests"
+               BlueprintIdentifier = "Checkout"
+               BuildableName = "Checkout"
+               BlueprintName = "Checkout"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -40,15 +26,26 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FramesTests"
-               BuildableName = "FramesTests"
-               BlueprintName = "FramesTests"
+               BlueprintIdentifier = "CheckoutTests"
+               BuildableName = "CheckoutTests"
+               BlueprintName = "CheckoutTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CheckoutIntegrationTests"
+               BuildableName = "CheckoutIntegrationTests"
+               BlueprintName = "CheckoutIntegrationTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
@@ -74,9 +71,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "Frames"
-            BuildableName = "Frames"
-            BlueprintName = "Frames"
+            BlueprintIdentifier = "Checkout"
+            BuildableName = "Checkout"
+            BlueprintName = "Checkout"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>

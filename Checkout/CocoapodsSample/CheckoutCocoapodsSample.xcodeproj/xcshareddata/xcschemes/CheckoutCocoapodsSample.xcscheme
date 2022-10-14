@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1400"
+   LastUpgradeVersion = "1300"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,24 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Frames"
-               BuildableName = "Frames"
-               BlueprintName = "Frames"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Frames_FramesTests"
-               BuildableName = "Frames_FramesTests"
-               BlueprintName = "Frames_FramesTests"
-               ReferencedContainer = "container:">
+               BlueprintIdentifier = "CB7E9879271DC52800B1A0F4"
+               BuildableName = "CheckoutCocoapodsSample.app"
+               BlueprintName = "CheckoutCocoapodsSample"
+               ReferencedContainer = "container:CheckoutCocoapodsSample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,10 +32,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FramesTests"
-               BuildableName = "FramesTests"
-               BlueprintName = "FramesTests"
-               ReferencedContainer = "container:">
+               BlueprintIdentifier = "CB7E9899271DC52C00B1A0F4"
+               BuildableName = "CheckoutCocoapodsSampleUITests.xctest"
+               BlueprintName = "CheckoutCocoapodsSampleUITests"
+               ReferencedContainer = "container:CheckoutCocoapodsSample.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -64,6 +50,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "CB7E9879271DC52800B1A0F4"
+            BuildableName = "CheckoutCocoapodsSample.app"
+            BlueprintName = "CheckoutCocoapodsSample"
+            ReferencedContainer = "container:CheckoutCocoapodsSample.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -71,15 +67,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "Frames"
-            BuildableName = "Frames"
-            BlueprintName = "Frames"
-            ReferencedContainer = "container:">
+            BlueprintIdentifier = "CB7E9879271DC52800B1A0F4"
+            BuildableName = "CheckoutCocoapodsSample.app"
+            BlueprintName = "CheckoutCocoapodsSample"
+            ReferencedContainer = "container:CheckoutCocoapodsSample.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
