@@ -1,9 +1,15 @@
 PODS:
+  - Checkout (3.5.3):
+    - CheckoutEventLoggerKit (= 1.2.0)
+  - Checkout/Tests (3.5.3):
+    - CheckoutEventLoggerKit (= 1.2.0)
   - CheckoutEventLoggerKit (1.2.0)
   - Frames (3.5.3):
+    - Checkout (= 3.5.3)
     - CheckoutEventLoggerKit (= 1.2.0)
     - PhoneNumberKit (= 3.3.3)
   - Frames/Tests (3.5.3):
+    - Checkout (= 3.5.3)
     - CheckoutEventLoggerKit (= 1.2.0)
     - PhoneNumberKit (= 3.3.3)
   - PhoneNumberKit (3.3.3):
@@ -14,6 +20,8 @@ PODS:
     - PhoneNumberKit/PhoneNumberKitCore
 
 DEPENDENCIES:
+  - Checkout (from `../`)
+  - Checkout/Tests (from `../`)
   - Frames (from `../`)
   - Frames/Tests (from `../`)
 
@@ -23,14 +31,17 @@ SPEC REPOS:
     - PhoneNumberKit
 
 EXTERNAL SOURCES:
+  Checkout:
+    :path: "../"
   Frames:
     :path: "../"
 
 SPEC CHECKSUMS:
+  Checkout: ab80edf6f4bede430527c23ce36fbdc4c93be314
   CheckoutEventLoggerKit: 03d0076e2aa412df966517a36a3e4e3805b56ecb
-  Frames: bb22a5b0ff4d2c2b163b468eb7ac43411486c8e3
+  Frames: 131b3bfe0d02f74838363a06d6f9293e1a4ad183
   PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
 
-PODFILE CHECKSUM: e8f913b396ea0b4df9b70f2ded893054952bd22f
+PODFILE CHECKSUM: 61ae4bcbe8d7a244d5e684049d5905ae5408b21d
 
 COCOAPODS: 1.11.3
