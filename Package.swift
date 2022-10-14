@@ -45,7 +45,14 @@ let package = Package(
             dependencies: [
                 "CheckoutEventLoggerKit",
             ],
-            path: "Checkout"
+            path: "Checkout/Checkout/Source"
+        ),
+        .testTarget(
+            name: "CheckoutTests",
+            dependencies: [
+                "Checkout"
+            ],
+            path: "CheckoutTests"
         ),
         .testTarget(
             name: "FramesTests",
