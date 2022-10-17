@@ -24,10 +24,6 @@ let package = Package(
             name: "CheckoutEventLoggerKit",
             url: "https://github.com/checkout/checkout-event-logger-ios-framework.git",
             from: "1.2.0"
-        ),
-        .package(
-            name: "Checkout",
-            path: "./Checkout"
         )
     ],
     targets: [
@@ -43,6 +39,20 @@ let package = Package(
             resources: [
                 .process("Resources")
             ]
+        ),
+        .target(
+            name: "Checkout",
+            dependencies: [
+                "CheckoutEventLoggerKit",
+            ],
+            path: "Checkout/Checkout/Source"
+        ),
+        .testTarget(
+            name: "CheckoutTests",
+            dependencies: [
+                "Checkout"
+            ],
+            path: "CheckoutTests"
         ),
         .testTarget(
             name: "FramesTests",
