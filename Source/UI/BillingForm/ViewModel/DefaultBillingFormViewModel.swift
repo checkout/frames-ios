@@ -45,6 +45,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
     func viewControllerWillAppear() {
         delegate?.onBillingScreenShown()
+        notifyContentChangeToDelegate()
     }
 
     func getCell(tableView: UITableView, indexPath: IndexPath, sender: UIViewController?) -> UITableViewCell {
