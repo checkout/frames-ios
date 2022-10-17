@@ -149,7 +149,8 @@ This is the logical configuration:
         - improve acceptance success for card tokenisation
 */
 let country = Country(iso3166Alpha2: "GB")
-let address = Address(addressLine1: "221B Baker Street",
+let address = Address(
+    addressLine1: "221B Baker Street",
     addressLine2: "Marylebone",
     city: "London",
     state: "London",
