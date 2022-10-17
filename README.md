@@ -148,10 +148,19 @@ This is the logical configuration:
         - make their checkout experience easier by prefilling fields they may need to do
         - improve acceptance success for card tokenisation
 */
+let country = Country(iso3166Alpha2: "GB")
+let address = Address(addressLine1: "221B Baker Street",
+    addressLine2: "Marylebone",
+    city: "London",
+    state: "London",
+    zip: "NW1 6XE",
+    country: country)
+let phone = Phone(number: "+44 2072243688",
+    country: country)
 let billingFormData = BillingForm(
     name: "Amazing Customer",
-    address: nil,
-    phone: nil)
+    address: address,
+    phone: phone)
 
 let configuration = PaymentFormConfiguration(
     apiKey: "<Your Public Key>",
