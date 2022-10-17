@@ -143,7 +143,7 @@ final class PaymentViewController: UIViewController {
 
   @objc private func keyboardWillShow(notification: Notification) {
     guard let userInfo = notification.userInfo,
-      let keyboardFrameValue = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue else { return }
+    let keyboardFrameValue = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
     var keyboardFrame = keyboardFrameValue.cgRectValue
     keyboardFrame = view.convert(keyboardFrame, from: nil)
     var contentInset: UIEdgeInsets = scrollView.contentInset
