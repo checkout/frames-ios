@@ -13,28 +13,26 @@ protocol FramesEventLogging {
 
 final class FramesEventLogger: FramesEventLogging {
 
-    private let getCorrelationID: () -> String
+    private let correlationID: String
     private let checkoutEventLogger: CheckoutEventLogging
     private let dateProvider: DateProviding
 
-    private var logged = [String: Set<String>]()
-
     // MARK: - Init
 
-    convenience init(environment: Environment, getCorrelationID: @escaping () -> String) {
+    convenience init(environment: Environment, correlationID: String) {
         let checkoutEventLogger = CheckoutEventLogger(productName: Constants.productName)
         let remoteProcessorMetadata = RemoteProcessorMetadata(environment: environment)
 
         checkoutEventLogger.enableRemoteProcessor(environment: environment.eventLoggerEnvironment, remoteProcessorMetadata: remoteProcessorMetadata)
         let dateProvider = DateProvider()
 
-        self.init(getCorrelationID: getCorrelationID, checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
+        self.init(correlationID: correlationID, checkoutEventLogger: checkoutEventLogger, dateProvider: dateProvider)
     }
 
-    init(getCorrelationID: @escaping () -> String,
+    init(correlationID: String,
          checkoutEventLogger: CheckoutEventLogging,
          dateProvider: DateProviding) {
-      self.getCorrelationID = getCorrelationID
+      self.correlationID = correlationID
       self.checkoutEventLogger = checkoutEventLogger
       self.dateProvider = dateProvider
     }
@@ -57,19 +55,6 @@ final class FramesEventLogger: FramesEventLogging {
     // MARK: - FramesEventLogging
 
     func log(_ framesLogEvent: FramesLogEvent) {
-        let correlationID = getCorrelationID()
-
-        if framesLogEvent.loggedOncePerCorrelationID {
-            var loggedForCorrelationID = logged[correlationID] ?? Set()
-
-            if loggedForCorrelationID.contains(framesLogEvent.typeIdentifier) {
-                return
-            } else {
-                loggedForCorrelationID.insert(framesLogEvent.typeIdentifier)
-                logged[correlationID] = loggedForCorrelationID
-            }
-        }
-
         // by setting correlationID for every log, we always keep in sync with Checkout SDK.
         add(metadata: correlationID, forKey: .correlationID)
 
@@ -83,7 +68,6 @@ final class FramesEventLogger: FramesEventLogging {
     }
 
     func add(metadata: String, forKey key: CheckoutEventLogger.MetadataKey) {
-
         checkoutEventLogger.add(metadata: key.rawValue, value: metadata)
     }
 }

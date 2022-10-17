@@ -2,6 +2,7 @@ import Checkout
 
 protocol BillingFormViewModelDelegate: AnyObject {
     func onTapDoneButton(data: BillingForm)
+    func onTapCancelButton()
     func onBillingScreenShown()
 }
 

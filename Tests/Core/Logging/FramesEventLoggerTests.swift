@@ -18,10 +18,9 @@ final class FramesEventLoggerTests: XCTestCase {
 
         stubCheckoutEventLogger = StubCheckoutEventLogger()
         stubDateProvider = StubDateProvider()
-        subject = FramesEventLogger(
-            getCorrelationID: { [weak self] in self?.stubcorrelationID ?? "" },
-            checkoutEventLogger: stubCheckoutEventLogger,
-            dateProvider: stubDateProvider)
+        subject = FramesEventLogger(correlationID: stubcorrelationID,
+                                    checkoutEventLogger: stubCheckoutEventLogger,
+                                    dateProvider: stubDateProvider)
     }
 
     // MARK: - tearDown
@@ -74,27 +73,6 @@ final class FramesEventLoggerTests: XCTestCase {
 
         // expect only one log
         XCTAssertEqual([expectedEvent, expectedEvent], stubCheckoutEventLogger.logCallArgs)
-    }
-
-    func test_log_onlyOnceForCorrelationID() {
-
-        let expectedDate = Date()
-        stubDateProvider.currentDateReturnValue = expectedDate
-
-        let event = FramesLogEvent.billingFormPresented
-
-        // log twice
-        subject.log(event)
-        subject.log(event)
-
-        let expectedEvent = Event(
-            typeIdentifier: "com.checkout.frames-mobile-sdk.billing_form_presented",
-            time: expectedDate,
-            monitoringLevel: .info,
-            properties: [:])
-
-        // expect only one log
-        XCTAssertEqual([expectedEvent], stubCheckoutEventLogger.logCallArgs)
     }
 
     // MARK: - add

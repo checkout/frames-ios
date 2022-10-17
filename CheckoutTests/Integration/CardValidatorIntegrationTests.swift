@@ -8,7 +8,7 @@
 import XCTest
 @testable import Checkout
 
-final class CardValidatorTests: XCTestCase {
+final class CardValidatorIntegrationTests: XCTestCase {
   private let subject = CardValidator(environment: .sandbox)
   private let calendar = Calendar(identifier: .gregorian)
 

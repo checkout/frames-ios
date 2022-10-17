@@ -126,4 +126,12 @@ class BillingFormViewModelTests: XCTestCase {
         XCTAssertEqual(delegate.onBillingScreenShownCounter, 1)
     }
     
+    func testCancelButtonPressCallDelegate() {
+        let delegate = BillingFormViewModelMockDelegate()
+        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), delegate: delegate)
+        
+        viewModel.cancelButtonIsPressed(sender: UIViewController())
+        XCTAssertEqual(delegate.onTapCancelButtonCalledTimes, 1)
+    }
+    
 }
