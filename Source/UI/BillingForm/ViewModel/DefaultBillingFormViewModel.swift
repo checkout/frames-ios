@@ -45,6 +45,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
     func viewControllerWillAppear() {
         delegate?.onBillingScreenShown()
+        notifyContentChangeToDelegate()
     }
 
     func getCell(tableView: UITableView, indexPath: IndexPath, sender: UIViewController?) -> UITableViewCell {
@@ -270,6 +271,7 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
     }
 
     func cancelButtonIsPressed(sender: UIViewController) {
+        delegate?.onTapCancelButton()
         sender.dismiss(animated: true)
     }
 }

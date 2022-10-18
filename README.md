@@ -148,10 +148,20 @@ This is the logical configuration:
         - make their checkout experience easier by prefilling fields they may need to do
         - improve acceptance success for card tokenisation
 */
+let country = Country(iso3166Alpha2: "GB")
+let address = Address(
+    addressLine1: "221B Baker Street",
+    addressLine2: "Marylebone",
+    city: "London",
+    state: "London",
+    zip: "NW1 6XE",
+    country: country)
+let phone = Phone(number: "+44 2072243688",
+    country: country)
 let billingFormData = BillingForm(
     name: "Amazing Customer",
-    address: nil,
-    phone: nil)
+    address: address,
+    phone: phone)
 
 let configuration = PaymentFormConfiguration(
     apiKey: "<Your Public Key>",
@@ -250,7 +260,8 @@ In our Demo projects we also demo this approach in `ThemeDemo.swift`. With the T
 
 ```swift
 // Declare the theme object with the minimum required properties
-var theme = Theme(primaryFontColor: UIColor(red: 0 / 255, green: 204 / 255, blue: 45 / 255, alpha: 1),
+var theme = Theme(
+    primaryFontColor: UIColor(red: 0 / 255, green: 204 / 255, blue: 45 / 255, alpha: 1),
     secondaryFontColor: UIColor(red: 177 / 255, green: 177 / 255, blue: 177 / 255, alpha: 1),
     buttonFontColor: .green,
     errorFontColor: .red,
@@ -260,9 +271,6 @@ var theme = Theme(primaryFontColor: UIColor(red: 0 / 255, green: 204 / 255, blue
 // Add border and corner radius around text inputs
 theme.textInputBackgroundColor = UIColor(red: 36 / 255.0, green: 48 / 255.0, blue: 45 / 255.0, alpha: 1.0)
 theme.textInputBorderRadius = 4
-
-// Add border around input sections
-theme.borderRadius = 4
 
 // Build complete payment form by providing only texts
 var paymentFormStyle = theme.buildPaymentForm(

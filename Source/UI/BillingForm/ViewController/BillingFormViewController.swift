@@ -59,9 +59,6 @@ final class BillingFormViewController: UIViewController {
             .font: viewModel.style.header.doneButton.font,
             .foregroundColor: viewModel.style.header.doneButton.textColor],
             for: .normal)
-        item.isEnabled = viewModel.data != nil
-        item.tintColor = viewModel.data == nil ? viewModel.style.header.doneButton.disabledTextColor :
-        viewModel.style.header.doneButton.textColor
        return item
     }()
 
