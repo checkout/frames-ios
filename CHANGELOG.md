@@ -13,7 +13,7 @@ Released on 2022-10-19
 2. Fully updated customisation, to be in line with your app experience
 3. More secure UIs that protect your customers
 
-Version causes breaking changes. If unsure, check ReadMe for latest integration advice.
+Version causes breaking changes. Please check our ReadMe for latest integration advice.
 
 #### 3.x Releases
 
