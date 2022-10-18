@@ -260,7 +260,8 @@ In our Demo projects we also demo this approach in `ThemeDemo.swift`. With the T
 
 ```swift
 // Declare the theme object with the minimum required properties
-var theme = Theme(primaryFontColor: UIColor(red: 0 / 255, green: 204 / 255, blue: 45 / 255, alpha: 1),
+var theme = Theme(
+    primaryFontColor: UIColor(red: 0 / 255, green: 204 / 255, blue: 45 / 255, alpha: 1),
     secondaryFontColor: UIColor(red: 177 / 255, green: 177 / 255, blue: 177 / 255, alpha: 1),
     buttonFontColor: .green,
     errorFontColor: .red,
@@ -270,9 +271,6 @@ var theme = Theme(primaryFontColor: UIColor(red: 0 / 255, green: 204 / 255, blue
 // Add border and corner radius around text inputs
 theme.textInputBackgroundColor = UIColor(red: 36 / 255.0, green: 48 / 255.0, blue: 45 / 255.0, alpha: 1.0)
 theme.textInputBorderRadius = 4
-
-// Add border around input sections
-theme.borderRadius = 4
 
 // Build complete payment form by providing only texts
 var paymentFormStyle = theme.buildPaymentForm(
