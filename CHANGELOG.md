@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 `checkout-sdk-ios` adheres to [Semantic Versioning](http://semver.org/).
 
+#### 4.x Releases
+
+## [4.0.0](https://github.com/checkout/frames-ios/releases/tag/4.0.0)
+
+Released on 2022-10-19
+
+1. Improved validation and tokenisation logic
+2. Fully updated customisation, to be in line with your app experience
+3. More secure UIs that protect your customers
+
+Version causes breaking changes. Please check our ReadMe for latest integration advice.
+
 #### 3.x Releases
 
 ## [3.5.2](https://github.com/checkout/frames-ios/releases/tag/3.5.2)
