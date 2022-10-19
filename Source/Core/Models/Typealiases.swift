@@ -11,3 +11,6 @@ public typealias Card = Checkout.Card
 public typealias Address = Checkout.Address
 public typealias Phone = Checkout.Phone
 public typealias Country = Checkout.Country
+public typealias TokenDetails = Checkout.TokenDetails
+public typealias TokenRequestError = Checkout.TokenisationError.TokenRequest
+public typealias ApplePay = Checkout.ApplePay

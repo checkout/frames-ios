@@ -7,7 +7,6 @@
 //
 
 import Frames
-import Checkout
 import UIKit
 
 enum Factory {
@@ -19,7 +18,7 @@ enum Factory {
   static let apiKey = "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73"
   static let environment: Frames.Environment = .sandbox
 
-  static func getDefaultPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
+  static func getDefaultPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenRequestError>) -> Void) -> UIViewController {
     #if UITEST
     return getMinimalUITestVC(completionHandler: completionHandler)
     #endif
@@ -59,7 +58,7 @@ enum Factory {
     return viewController
   }
 
-  static func getMatrixPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
+  static func getMatrixPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenRequestError>) -> Void) -> UIViewController {
     #if UITEST
     return getCompleteUITestVC(completionHandler: completionHandler)
     #endif
@@ -99,7 +98,7 @@ enum Factory {
     return viewController
   }
 
-  static func getOtherPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) -> UIViewController {
+  static func getOtherPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenRequestError>) -> Void) -> UIViewController {
 
     let address = Address(addressLine1: "78 Marvelous Rd",
                           addressLine2: nil,

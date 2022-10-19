@@ -23,33 +23,6 @@ private enum Constants {
     static let borderWidth: CGFloat = 1
 }
 
-// **********************
-// MARK: - Payment Form
-// **********************
-
-struct PayButtonFormStyleCustom1: ElementButtonStyle {
-  var image: UIImage?
-  var textAlignment: NSTextAlignment = .center
-  var text: String = "Pay 100$"
-  var font = UIFont.systemFont(ofSize: 15)
-  var disabledTextColor: UIColor = Constants.secondaryFontColor
-  var disabledTintColor: UIColor = Constants.mainFontColor.withAlphaComponent(0.2)
-  var activeTintColor: UIColor = Constants.mainFontColor
-  var backgroundColor: UIColor = Constants.mainFontColor
-  var textColor: UIColor = .white
-  var normalBorderColor: UIColor = .clear
-  var focusBorderColor: UIColor = .clear
-  var errorBorderColor: UIColor = .clear
-  var imageTintColor: UIColor = .clear
-  var isHidden = false
-  var isEnabled = true
-  var height: Double = 56
-  var width: Double = 0
-  var cornerRadius: CGFloat = 10
-  var borderWidth: CGFloat = 0
-  var textLeading: CGFloat = 0
-}
-
 // MARK: - Main Payment Form
 
 struct PaymentFormStyleCustom1: PaymentFormStyle {
@@ -61,7 +34,7 @@ struct PaymentFormStyleCustom1: PaymentFormStyle {
   var cardNumber: CellTextFieldStyle = StyleOrganiser.CardNumberSection()
   var expiryDate: CellTextFieldStyle = StyleOrganiser.ExpiryDateSection()
   var securityCode: CellTextFieldStyle? = StyleOrganiser.SecurityNumberSection()
-  var payButton: ElementButtonStyle = PayButtonFormStyleCustom1()
+  var payButton: ElementButtonStyle = StyleOrganiser.PayButtonFormStyleCustom1()
 }
 
 struct BillingFormStyleCustom1: BillingFormStyle {
@@ -103,6 +76,29 @@ private enum StyleOrganiser {
         var font = UIFont(sfMono: .semibold, size: 24)
         var backgroundColor: UIColor = .clear
         var textColor: UIColor = Constants.mainFontColor
+    }
+
+    struct PayButtonFormStyleCustom1: ElementButtonStyle {
+      var image: UIImage?
+      var textAlignment: NSTextAlignment = .center
+      var text: String = "Pay 100$"
+      var font = UIFont.systemFont(ofSize: 15)
+      var disabledTextColor: UIColor = Constants.secondaryFontColor
+      var disabledTintColor: UIColor = Constants.mainFontColor.withAlphaComponent(0.2)
+      var activeTintColor: UIColor = Constants.mainFontColor
+      var backgroundColor: UIColor = Constants.mainFontColor
+      var textColor: UIColor = .white
+      var normalBorderColor: UIColor = .clear
+      var focusBorderColor: UIColor = .clear
+      var errorBorderColor: UIColor = .clear
+      var imageTintColor: UIColor = .clear
+      var isHidden = false
+      var isEnabled = true
+      var height: Double = 56
+      var width: Double = 0
+      var cornerRadius: CGFloat = 10
+      var borderWidth: CGFloat = 0
+      var textLeading: CGFloat = 0
     }
 
     struct CancelButtonStyle: ElementButtonStyle {

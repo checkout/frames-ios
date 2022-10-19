@@ -7,7 +7,6 @@
 //
 
 import Frames
-import Checkout
 import UIKit
 
 class HomeViewController: UIViewController {
@@ -22,7 +21,7 @@ class HomeViewController: UIViewController {
     @IBOutlet private weak var theme1Button: UIButton!
 
   private var notificationCenter: NotificationCenter = .default
-  private lazy var checkoutAPIService = Frames.CheckoutAPIService(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73", environment: .sandbox)
+  private lazy var checkoutAPIService = Frames.CheckoutAPIService(publicKey: Factory.apiKey, environment: .sandbox)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,7 +141,7 @@ class HomeViewController: UIViewController {
     }
   }
 
-  private func handleTokenResponse(with result: Result<TokenDetails, TokenisationError.TokenRequest>) {
+  private func handleTokenResponse(with result: Result<TokenDetails, TokenRequestError>) {
     switch result {
       case .failure(let error):
         showAlert(with: error.localizedDescription)
