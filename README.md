@@ -98,7 +98,7 @@ If you haven't already, [install Carthage](https://github.com/Carthage/Carthage#
 To integrate Frames into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```
-github "checkout/frames-ios" ~> 4
+github "checkout/frames-ios" ~> 4.0
 ```
 
 Run `carthage update --use-xcframeworks` to build the framework and drag the built `Frames` into your Xcode project.
