@@ -120,6 +120,27 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/ehabalsharkawy/Documents/Checkout.com/frames-ios/Source/Core/Models/Typealiases.swift",
+      "line": 14,
+      "symbol": "TokenDetails",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ehabalsharkawy/Documents/Checkout.com/frames-ios/Source/Core/Models/Typealiases.swift",
+      "line": 15,
+      "symbol": "TokenRequestError",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ehabalsharkawy/Documents/Checkout.com/frames-ios/Source/Core/Models/Typealiases.swift",
+      "line": 16,
+      "symbol": "ApplePay",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/ehabalsharkawy/Documents/Checkout.com/frames-ios/Source/UI/3DS/ThreedsWebViewController.swift",
       "line": 99,
       "symbol": "ThreedsWebViewController.didFinishLoading(navigation:success:)",
@@ -1055,6 +1076,13 @@
       "line": 6,
       "symbol": "DefaultBillingFormStyle.cells",
       "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ehabalsharkawy/Documents/Checkout.com/frames-ios/Source/UI/BillingForm/Default Implementation/BillingForm/Main/DefaultBillingFormStyle.swift",
+      "line": 8,
+      "symbol": "DefaultBillingFormStyle.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
@@ -2878,6 +2906,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/ehabalsharkawy/Documents/Checkout.com/frames-ios/Source/UI/PaymentForm/Default Implementation/DefaultPaymentFormStyle.swift",
+      "line": 14,
+      "symbol": "DefaultPaymentFormStyle.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/ehabalsharkawy/Documents/Checkout.com/frames-ios/Source/UI/PaymentForm/Default Implementation/DefaultPaymentHeaderCellStyle.swift",
       "line": 11,
       "symbol": "DefaultPaymentHeaderCellStyle",
@@ -3040,7 +3075,7 @@
     },
     {
       "file": "/Users/ehabalsharkawy/Documents/Checkout.com/frames-ios/Source/UI/PaymentForm/Factory/PaymentFormFactory.swift",
-      "line": 9,
+      "line": 6,
       "symbol": "PaymentFormFactory.buildViewController(configuration:style:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
@@ -3229,7 +3264,7 @@
     },
     {
       "file": "/Users/ehabalsharkawy/Documents/Checkout.com/frames-ios/Source/UI/PaymentForm/ViewController/PaymentViewController.swift",
-      "line": 330,
+      "line": 319,
       "symbol": "PaymentViewController.updateHeaderView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
