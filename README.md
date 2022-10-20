@@ -7,10 +7,9 @@
 [![Platform](https://img.shields.io/cocoapods/p/Frames.svg?style=flat)]()
 ![license](https://img.shields.io/github/license/checkout/frames-ios.svg)
 
-<p align="center">
-    <img src="https://user-images.githubusercontent.com/102028170/192789939-1e931a6a-b988-4e12-84da-3d05422b3fe0.mov" width="240" alt="Frames iOS Demo"/>
-</p>
-
+<div align="center">
+    <video src="https://user-images.githubusercontent.com/102028170/192789939-1e931a6a-b988-4e12-84da-3d05422b3fe0.mov" width=40% alt="Frames iOS Demo"/>
+</div>
 
 ## Requirements
 
