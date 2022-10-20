@@ -19,15 +19,4 @@ TODO: Add long description of the pod here.
 
   s.dependency 'CheckoutEventLoggerKit', '1.2.0'
 
-  s.test_spec 'Tests' do |t|
-    t.source_files = 'Checkout/Checkout/Test/**/*'
-    t.requires_app_host = true
-    t.scheme = { :launch_arguments => ['COCOAPODS'] }
-  end
-
-  s.test_spec 'Integration-Tests' do |t|
-    t.source_files = 'Checkout/Checkout/Integration/**/*'
-    t.requires_app_host = true
-    t.scheme = { :launch_arguments => ['COCOAPODS'] }
-  end
 end

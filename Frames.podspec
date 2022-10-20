@@ -23,10 +23,4 @@ Pod::Spec.new do |s|
   s.dependency 'CheckoutEventLoggerKit', '1.2.0'
   s.dependency 'Checkout', "#{s.version}"
 
-  s.test_spec do |t|
-    t.source_files = 'Tests/**/*.swift'
-    t.resources = 'Tests/Fixtures/*'
-    t.requires_app_host = true
-    t.scheme = { :environment_variables => { 'COCOAPODS' => true }}
-  end
 end
