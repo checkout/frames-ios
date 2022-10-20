@@ -8,7 +8,7 @@
 ![license](https://img.shields.io/github/license/checkout/frames-ios.svg)
 
 <div align="center">
-    <img width=40% src="https://github.com/checkout/frames-ios/blob/update_read_me_video/screenshots/demo-frames-ios.webp?raw=true">
+    <img width=40% src="https://github.com/checkout/frames-ios/blob/main/screenshots/demo-frames-ios.webp?raw=true">
 </div>
 
 ## Requirements
