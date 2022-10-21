@@ -101,7 +101,7 @@ class HomeViewController: UIViewController {
         return
     }
 
-    let webViewController = ThreedsWebViewController(checkoutAPIService: checkoutAPIService,
+    let webViewController = ThreedsWebViewController(environment: .sandbox,
                                                      successUrl: Factory.successURL,
                                                      failUrl: Factory.failureURL)
     webViewController.delegate = self
