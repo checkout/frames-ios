@@ -29,11 +29,24 @@ public class ThreedsWebViewController: UIViewController {
     // MARK: - Initialization
 
     /// Initializes a web view controller adapted to handle 3dsecure.
-    public convenience init(environment: Environment, successUrl: URL, failUrl: URL) {
-        let logger = FramesEventLogger(environment: environment, correlationID: UUID().uuidString)
-        let threeDSWKNavigationHelper = ThreeDSWKNavigationHelperFactory().build(successURL: successUrl, failureURL: failUrl)
+    public convenience init(checkoutAPIService: CheckoutAPIService, successUrl: URL, failUrl: URL) {
+        self.init(
+            checkoutAPIProtocol: checkoutAPIService,
+            successUrl: successUrl,
+            failUrl: failUrl,
+            threeDSWKNavigationHelperFactory: ThreeDSWKNavigationHelperFactory()
+        )
+    }
 
-        self.init(threeDSWKNavigationHelper: threeDSWKNavigationHelper, logger: logger)
+    /// Initializes a web view controller adapted to handle 3dsecure.
+    convenience init(
+        checkoutAPIProtocol checkoutAPIService: CheckoutAPIProtocol,
+        successUrl: URL,
+        failUrl: URL,
+        threeDSWKNavigationHelperFactory: ThreeDSWKNavigationHelperFactoryProtocol
+    ) {
+        let threeDSWKNavigationHelper = threeDSWKNavigationHelperFactory.build(successURL: successUrl, failureURL: failUrl)
+        self.init(threeDSWKNavigationHelper: threeDSWKNavigationHelper, logger: checkoutAPIService.logger)
     }
 
     init(threeDSWKNavigationHelper: ThreeDSWKNavigationHelping, logger: FramesEventLogging) {
