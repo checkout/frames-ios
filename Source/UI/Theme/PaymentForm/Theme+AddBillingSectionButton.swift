@@ -91,7 +91,7 @@ public extension Theme {
                            disabledTintColor: self.secondaryFontColor,
                            activeTintColor: self.primaryFontColor,
                            text: text,
-                           font: UIFont.systemFont(ofSize: self.buttonsFontSize, weight: .semibold),
+                           font: buttonFont,
                            textColor: self.buttonFontColor)
     }
 

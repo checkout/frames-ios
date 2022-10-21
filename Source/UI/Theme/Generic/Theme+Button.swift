@@ -65,7 +65,7 @@ public extension Theme {
             activeTintColor: self.primaryFontColor,
             cornerRadius: self.borderRadius,
             text: text,
-            font: UIFont.systemFont(ofSize: self.titleFontSize),
+            font: titleFont,
             textColor: self.buttonFontColor)
     }
 
@@ -83,7 +83,7 @@ public extension Theme {
                           cornerRadius: self.textInputBorderRadius,
                           borderWidth: self.textInputBorderWidth,
                           text: text,
-                          font: UIFont.systemFont(ofSize: self.inputFontSize),
+                          font: inputFont,
                           backgroundColor: self.textInputBackgroundColor,
                           textColor: self.primaryFontColor)
     }

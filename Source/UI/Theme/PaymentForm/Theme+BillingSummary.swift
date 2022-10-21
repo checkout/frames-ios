@@ -54,7 +54,7 @@ public extension Theme {
                              mandatory: ThemeMandatory?,
                              subtitle: ThemeSubtitle?,
                              error: ThemeError) -> ThemeBillingSummary {
-        let summary = ThemeSummaryElement(font: UIFont.systemFont(ofSize: self.inputFontSize),
+        let summary = ThemeSummaryElement(font: inputFont,
                                           textColor: self.secondaryFontColor)
 
         return ThemeBillingSummary(summary: summary,
@@ -81,7 +81,7 @@ public extension Theme {
         let showMandatory = !isRequiredText.isEmpty
         let showError = !errorText.isEmpty || errorImage != nil
 
-        let summary = ThemeSummaryElement(font: UIFont.systemFont(ofSize: self.inputFontSize),
+        let summary = ThemeSummaryElement(font: inputFont,
                                           textColor: self.secondaryFontColor)
 
         return ThemeBillingSummary(

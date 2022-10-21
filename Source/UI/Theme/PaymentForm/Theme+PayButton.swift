@@ -44,7 +44,7 @@ public extension Theme {
                        cornerRadius: self.borderRadius,
                        borderWidth: self.borderWidth,
                        text: text,
-                       font: UIFont.systemFont(ofSize: self.buttonsFontSize),
+                       font: buttonFont,
                        backgroundColor: self.textInputBackgroundColor,
                        textColor: self.primaryFontColor)
     }

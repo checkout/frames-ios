@@ -22,7 +22,7 @@ public extension Theme {
     /// Create a Mandatory Style from text
     func buildIsRequiredInput(text: String) -> ThemeMandatory {
         ThemeMandatory(text: text,
-                       font: UIFont.systemFont(ofSize: self.titleFontSize),
+                       font: titleFont,
                        textColor: self.secondaryFontColor)
     }
 }
