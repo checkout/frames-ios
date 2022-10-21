@@ -115,7 +115,7 @@ class ThreedsWebViewControllerTests: XCTestCase {
     func testInitializationWithUrls() {
         let successUrl =  URL(string: "https://www.successurl.com/")!
         let failUrl =  URL(string: "https://www.failurl.com/")!
-        _ = ThreedsWebViewController(checkoutAPIProtocol: checkoutAPIService, successUrl: successUrl, failUrl: failUrl, threeDSWKNavigationHelperFactory: mockThreeDSWKNavigationHelperFactory)
+        _ = ThreedsWebViewController(environment: .sandbox, successUrl: successUrl, failUrl: failUrl)
     }
 
     func testInitializationNibBundle() {
