@@ -29,6 +29,6 @@ public extension Theme {
                       textColor: self.secondaryFontColor,
                       tintColor: self.secondaryFontColor,
                       image: image,
-                      font: UIFont.systemFont(ofSize: self.subtitleFontSize))
+                      font: subtitleFont)
     }
 }

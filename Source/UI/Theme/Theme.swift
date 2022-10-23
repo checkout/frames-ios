@@ -20,17 +20,18 @@ public struct Theme {
     /// Font color associated with text
     public var errorFontColor: UIColor
 
-    // MARK: Font sizes
-    /// Font size used for page headers
-    public var headerFontSize = UIFont.preferredFont(forTextStyle: .title1).pointSize
-    /// Font size used for input sections titles
-    public var titleFontSize = UIFont.preferredFont(forTextStyle: .subheadline).pointSize
-    /// Font size used for text displaying secondary information, like subtitles and other non core text
-    public var subtitleFontSize = UIFont.preferredFont(forTextStyle: .footnote).pointSize
-    /// Font size used for input fields where user is inputting the values
-    public var inputFontSize = UIFont.preferredFont(forTextStyle: .subheadline).pointSize
-    /// Font size used for buttons that the user will interact with
-    public var buttonsFontSize = UIFont.preferredFont(forTextStyle: .body).pointSize
+    // MARK: Font
+    /// Font used for page headers
+    public var headerFont = UIFont.systemFont(ofSize: UIFont.preferredFont(forTextStyle: .title1).pointSize,
+                                              weight: .semibold)
+    /// Font used for input sections titles
+    public var titleFont = UIFont.preferredFont(forTextStyle: .subheadline)
+    /// Font used for text displaying secondary information, like subtitles and other non core text
+    public var subtitleFont = UIFont.preferredFont(forTextStyle: .footnote)
+    /// Font used for input fields where user is inputting the values
+    public var inputFont = UIFont.preferredFont(forTextStyle: .subheadline)
+    /// Font used for buttons that the user will interact with
+    public var buttonFont = UIFont.preferredFont(forTextStyle: .body)
 
     // MARK: UI Formatting colors
     /// Color used as background on screens

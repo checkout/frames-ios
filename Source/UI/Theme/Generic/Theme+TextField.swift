@@ -42,7 +42,7 @@ public extension Theme {
                        normalBorderColor: self.textInputBorderColor,
                        focusBorderColor: self.focussedTextInputBorderColor,
                        errorBorderColor: self.errorBorderColor,
-                       font: UIFont.systemFont(ofSize: self.inputFontSize),
+                       font: inputFont,
                        backgroundColor: self.textInputBackgroundColor,
                        textColor: self.primaryFontColor)
     }
