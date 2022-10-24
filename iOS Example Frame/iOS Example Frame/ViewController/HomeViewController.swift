@@ -44,7 +44,7 @@ class HomeViewController: UIViewController {
   }
 
   @IBAction private func showDefaultTheme(_ sender: Any) {
-    customizeNavigationBarAppearance(backgroundColor: .red, foregroundColor: .white)
+    customizeNavigationBarAppearance(backgroundColor: .white, foregroundColor: .black)
     let viewController = Factory.getDefaultPaymentViewController { [weak self] result in
       self?.handleTokenResponse(with: result)
     }
@@ -52,7 +52,7 @@ class HomeViewController: UIViewController {
   }
 
   @IBAction private func showMatrixTheme(_ sender: Any) {
-      customizeNavigationBarAppearance(backgroundColor: UIColor(red: 23 / 255, green: 32 / 255, blue: 30 / 255, alpha: 1),
+    customizeNavigationBarAppearance(backgroundColor: UIColor(red: 23 / 255, green: 32 / 255, blue: 30 / 255, alpha: 1),
                                        foregroundColor: .green)
     let viewController = Factory.getMatrixPaymentViewController { [weak self] result in
       self?.handleTokenResponse(with: result)
@@ -61,7 +61,7 @@ class HomeViewController: UIViewController {
   }
 
   @IBAction private func showOtherTheme(_ sender: Any) {
-      customizeNavigationBarAppearance(backgroundColor: UIColor(red: 23 / 255, green: 32 / 255, blue: 30 / 255, alpha: 1),
+    customizeNavigationBarAppearance(backgroundColor: UIColor(red: 23 / 255, green: 32 / 255, blue: 30 / 255, alpha: 1),
                                        foregroundColor: .green)
     let viewController = Factory.getOtherPaymentViewController { [weak self] result in
       self?.handleTokenResponse(with: result)
