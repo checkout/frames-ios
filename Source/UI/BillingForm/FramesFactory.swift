@@ -23,7 +23,7 @@ public enum FramesFactory {
          .phoneNumber(DefaultBillingFormPhoneNumberCellStyle())]
     }
 
-    static func getBillingFormViewController(style: BillingFormStyle?, data: BillingForm?, delegate: BillingFormViewModelDelegate?) -> UINavigationController? {
+    static func getBillingFormViewController(style: BillingFormStyle?, data: BillingForm?, delegate: BillingFormViewModelDelegate?, sender: UINavigationController?) -> UINavigationController? {
 
         guard let style = style, !style.cells.isEmpty else { return nil }
         let viewModel = DefaultBillingFormViewModel(style: style, data: data, delegate: delegate)
@@ -33,7 +33,24 @@ public enum FramesFactory {
         if #available(iOS 13.0, *) {
             viewController.isModalInPresentation = true
         }
-        return UINavigationController(rootViewController: viewController)
+        guard let sender = sender else {
+            return UINavigationController(rootViewController: viewController)
+        }
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.navigationBar.tintColor = sender.navigationBar.tintColor
+
+        if #available(iOS 13.0, *) {
+            navigationController.navigationBar.standardAppearance = sender.navigationBar.standardAppearance
+        } else {
+            let backgroundColor = sender.navigationBar.backgroundColor
+            navigationController.navigationBar.backgroundColor = backgroundColor
+            navigationController.navigationBar.barTintColor = backgroundColor
+            navigationController.navigationBar.shadowImage = sender.navigationBar.shadowImage
+            navigationController.navigationBar.titleTextAttributes = [ .foregroundColor: sender.navigationBar.tintColor ?? .black]
+            navigationController.navigationBar.isTranslucent = true
+        }
+
+        return navigationController
     }
 
 }

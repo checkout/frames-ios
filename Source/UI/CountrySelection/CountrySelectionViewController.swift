@@ -58,7 +58,6 @@ public final class CountrySelectionViewController: UIViewController,
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
-        customizeNavigationBarAppearance(color: .white, titleColor: .black)
     }
 
     private func setup() {

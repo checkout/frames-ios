@@ -42,11 +42,6 @@ final class BillingFormViewController: UIViewController {
                          style: .plain,
                          target: self,
                          action: #selector(cancelButtonIsPressed))
-        item.setTitleTextAttributes([
-            .font: viewModel.style.header.cancelButton.font,
-            .foregroundColor: viewModel.style.header.cancelButton.textColor],
-            for: .normal)
-        item.tintColor = viewModel.style.header.cancelButton.textColor
         return item
     }()
 
@@ -55,10 +50,6 @@ final class BillingFormViewController: UIViewController {
                          style: .done,
                          target: self,
                          action: #selector(doneButtonIsPressed))
-        item.setTitleTextAttributes([
-            .font: viewModel.style.header.doneButton.font,
-            .foregroundColor: viewModel.style.header.doneButton.textColor],
-            for: .normal)
        return item
     }()
 
@@ -98,9 +89,6 @@ final class BillingFormViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let backgroundColor = viewModel.style.header.headerLabel.backgroundColor
-        let titleColor = viewModel.style.header.headerLabel.textColor
-        customizeNavigationBarAppearance(color: backgroundColor, titleColor: titleColor)
         setUpKeyboard()
         viewModel.viewControllerWillAppear()
     }
@@ -180,6 +168,7 @@ extension BillingFormViewController {
     private func setupNavigationBar() {
         navigationItem.leftBarButtonItem = cancelItem
         navigationItem.rightBarButtonItem = doneItem
+        navigationController?.isNavigationBarHidden = false
     }
 
     private func setupViewsInOrder() {
@@ -283,6 +272,6 @@ extension BillingFormViewController: UIScrollViewDelegate {
 extension BillingFormViewController: BillingFormViewModelEditingDelegate {
     func didFinishEditingBillingForm(successfully: Bool) {
         doneItem.isEnabled = successfully
-        doneItem.tintColor = successfully ? viewModel.style.header.doneButton.textColor : viewModel.style.header.doneButton.disabledTextColor
+        doneItem.tintColor = successfully ? navigationController?.navigationBar.tintColor : viewModel.style.header.doneButton.disabledTextColor
     }
 }
