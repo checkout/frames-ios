@@ -123,12 +123,6 @@ final class PaymentViewController: UIViewController {
   }
 
   private func setupNavigationBar() {
-    let backgroundColor = viewModel.paymentFormStyle?.headerView.backgroundColor ?? .white
-    let titleColor = viewModel.paymentFormStyle?.headerView.headerLabel?.textColor ?? .black
-
-    customizeNavigationBarAppearance(color: backgroundColor, titleColor: titleColor)
-
-    navigationController?.navigationBar.tintColor = viewModel.paymentFormStyle?.headerView.headerLabel?.textColor
       navigationItem.leftBarButtonItem = UIBarButtonItem(
         image: Constants.Bundle.Images.leftArrow.image?.imageFlippedForRightToLeftLayoutDirection(),
         style: .plain,

@@ -23,7 +23,10 @@ public enum FramesFactory {
          .phoneNumber(DefaultBillingFormPhoneNumberCellStyle())]
     }
 
-    static func getBillingFormViewController(style: BillingFormStyle?, data: BillingForm?, delegate: BillingFormViewModelDelegate?) -> UINavigationController? {
+    static func getBillingFormViewController(style: BillingFormStyle?,
+                                             data: BillingForm?,
+                                             delegate: BillingFormViewModelDelegate?,
+                                             sender: UINavigationController?) -> UINavigationController? {
 
         guard let style = style, !style.cells.isEmpty else { return nil }
         let viewModel = DefaultBillingFormViewModel(style: style, data: data, delegate: delegate)
@@ -33,7 +36,10 @@ public enum FramesFactory {
         if #available(iOS 13.0, *) {
             viewController.isModalInPresentation = true
         }
-        return UINavigationController(rootViewController: viewController)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        guard let sender = sender else { return navigationController }
+        navigationController.copyStyle(from: sender)
+        return navigationController
     }
 
 }

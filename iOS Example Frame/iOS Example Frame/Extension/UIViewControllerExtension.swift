@@ -9,12 +9,16 @@
 import UIKit
 
 extension UIViewController {
-  func customizeNavigationBarAppearance() {
+  func customizeNavigationBarAppearance(backgroundColor: UIColor, foregroundColor: UIColor) {
     if #available(iOS 13.0, *) {
+
       let appearance = UINavigationBarAppearance()
       appearance.configureWithDefaultBackground()
-      appearance.backgroundColor = .white
-      appearance.shadowColor = .white
+      appearance.backgroundColor = backgroundColor
+      appearance.shadowColor = backgroundColor
+      navigationController?.navigationBar.tintColor = foregroundColor
+      appearance.titleTextAttributes = [.foregroundColor: foregroundColor]
+
       appearance.shadowImage = UIImage()
       navigationController?.navigationBar.standardAppearance = appearance
       navigationController?.navigationBar.compactAppearance = appearance
