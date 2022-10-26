@@ -10,19 +10,23 @@ import UIKit
 
 extension UIViewController {
   func customizeNavigationBarAppearance(backgroundColor: UIColor, foregroundColor: UIColor) {
+    navigationController?.navigationBar.tintColor = foregroundColor
     if #available(iOS 13.0, *) {
-
       let appearance = UINavigationBarAppearance()
-      appearance.configureWithDefaultBackground()
+      appearance.configureWithTransparentBackground()
       appearance.backgroundColor = backgroundColor
       appearance.shadowColor = backgroundColor
-      navigationController?.navigationBar.tintColor = foregroundColor
       appearance.titleTextAttributes = [.foregroundColor: foregroundColor]
-
       appearance.shadowImage = UIImage()
       navigationController?.navigationBar.standardAppearance = appearance
       navigationController?.navigationBar.compactAppearance = appearance
       navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    } else {
+      navigationController?.navigationBar.backgroundColor = backgroundColor
+      navigationController?.navigationBar.barTintColor = backgroundColor
+      navigationController?.navigationBar.shadowImage = UIImage()
+      navigationController?.navigationBar.titleTextAttributes = [ .foregroundColor: foregroundColor]
+      navigationController?.navigationBar.isTranslucent = true
     }
 
     navigationController?.setNeedsStatusBarAppearanceUpdate()

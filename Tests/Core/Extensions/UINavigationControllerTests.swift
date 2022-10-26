@@ -25,6 +25,8 @@ final class UINavigationControllerTests: XCTestCase {
 
         if #available(iOS 13.0, *) {
             XCTAssertEqual(currentNavigationController.navigationBar.standardAppearance, mainNavigationController.navigationBar.standardAppearance)
+            XCTAssertEqual(currentNavigationController.navigationBar.compactAppearance, mainNavigationController.navigationBar.compactAppearance)
+            XCTAssertEqual(currentNavigationController.navigationBar.scrollEdgeAppearance, mainNavigationController.navigationBar.scrollEdgeAppearance)
         } else {
             XCTAssertEqual(currentNavigationController.navigationBar.backgroundColor, mainNavigationController.navigationBar.backgroundColor)
             XCTAssertEqual(currentNavigationController.navigationBar.barTintColor, mainNavigationController.navigationBar.barTintColor)
