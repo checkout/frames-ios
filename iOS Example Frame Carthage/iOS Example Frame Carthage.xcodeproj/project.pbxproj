@@ -275,6 +275,8 @@
 		955B5A5828D23086006A280C /* CvvInputViewMockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B5A0328D23086006A280C /* CvvInputViewMockDelegate.swift */; };
 		955B5A5928D23086006A280C /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B5A0528D23086006A280C /* ColorTests.swift */; };
 		955B5A5A28D23086006A280C /* ResourcesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B5A0628D23086006A280C /* ResourcesTests.swift */; };
+		955FFFC6290926730001AF42 /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955FFFC5290926730001AF42 /* UINavigationControllerExtensions.swift */; };
+		955FFFC8290926A00001AF42 /* UINavigationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955FFFC7290926A00001AF42 /* UINavigationControllerTests.swift */; };
 		9562D083286512E300C94D6B /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562D081286512C500C94D6B /* Style.swift */; };
 		95D46F2028D4BE2300AF380B /* FramesUIStyle+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D46F1E28D4BE2300AF380B /* FramesUIStyle+UIColor.swift */; };
 		95D46F2128D4BE2300AF380B /* FramesUIStyle+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D46F1F28D4BE2300AF380B /* FramesUIStyle+UIFont.swift */; };
@@ -598,6 +600,8 @@
 		955B5A0328D23086006A280C /* CvvInputViewMockDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CvvInputViewMockDelegate.swift; sourceTree = "<group>"; };
 		955B5A0528D23086006A280C /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		955B5A0628D23086006A280C /* ResourcesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesTests.swift; sourceTree = "<group>"; };
+		955FFFC5290926730001AF42 /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
+		955FFFC7290926A00001AF42 /* UINavigationControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationControllerTests.swift; sourceTree = "<group>"; };
 		9562D081286512C500C94D6B /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		95D46F1E28D4BE2300AF380B /* FramesUIStyle+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FramesUIStyle+UIColor.swift"; sourceTree = "<group>"; };
 		95D46F1F28D4BE2300AF380B /* FramesUIStyle+UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FramesUIStyle+UIFont.swift"; sourceTree = "<group>"; };
@@ -1438,6 +1442,7 @@
 				955B58F928D23067006A280C /* JSONEncoder+TopLevelEncoder.swift */,
 				955B58FA28D23067006A280C /* UIStackViewExtension.swift */,
 				955B58FB28D23067006A280C /* UIViewControllerExtensions.swift */,
+				955FFFC5290926730001AF42 /* UINavigationControllerExtensions.swift */,
 				955B58FC28D23067006A280C /* JSONDecoder+TopLevelDecoder.swift */,
 				955B58FD28D23067006A280C /* UIViewExtensions.swift */,
 				955B58FE28D23067006A280C /* URL+Extensions.swift */,
@@ -1469,6 +1474,7 @@
 				955B59A528D23086006A280C /* DispatchQueue+DispatchingTests.swift */,
 				955B59A628D23086006A280C /* UIBarStyleTests.swift */,
 				955B59A728D23086006A280C /* UIColor+PropertyProvidingTests.swift */,
+				955FFFC7290926A00001AF42 /* UINavigationControllerTests.swift */,
 				955B59A828D23086006A280C /* URL+ExtensionsTests.swift */,
 				955B59A928D23086006A280C /* UIFont+PropertyProvidingTests.swift */,
 			);
@@ -2079,6 +2085,7 @@
 				955B594728D23067006A280C /* SelectionButtonView.swift in Sources */,
 				955B593C28D23067006A280C /* Theme+Title.swift in Sources */,
 				955B594B28D23067006A280C /* CellButtonStyle.swift in Sources */,
+				955FFFC6290926730001AF42 /* UINavigationControllerExtensions.swift in Sources */,
 				955B593628D23067006A280C /* Theme+BillingHeader.swift in Sources */,
 				955B594628D23067006A280C /* SimpleErrorView.swift in Sources */,
 				955B595728D23067006A280C /* DefaultCountryFormButtonStyle.swift in Sources */,
@@ -2231,6 +2238,7 @@
 				955B5A3E28D23086006A280C /* MockThreeDSWKNavigationHelperFactory.swift in Sources */,
 				955B5A1B28D23086006A280C /* CardholderViewModelTests.swift in Sources */,
 				955B5A3528D23086006A280C /* TextFieldViewTests.swift in Sources */,
+				955FFFC8290926A00001AF42 /* UINavigationControllerTests.swift in Sources */,
 				955B5A2A28D23086006A280C /* PhoneNumberValidatorTests.swift in Sources */,
 				955B5A2E28D23086006A280C /* BillingFormFullNameTextFieldCellTests.swift in Sources */,
 				955B5A4D28D23086006A280C /* PaymentViewControllerMockDelegate.swift in Sources */,
