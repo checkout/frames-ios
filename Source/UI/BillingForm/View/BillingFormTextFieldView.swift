@@ -78,9 +78,9 @@ class BillingFormTextFieldView: UIView {
         mandatoryLabel.update(with: style.mandatory)
         hintLabel.update(with: style.hint)
 
-        updateTextFieldContainer(style: style)
         updateTextField(style: style, textFieldValue: textFieldValue, tag: tag)
         updateErrorView(style: style)
+        updateTextFieldContainer(style: style)
     }
 
     func refreshLayoutComponents() {
@@ -96,13 +96,20 @@ class BillingFormTextFieldView: UIView {
 
     private func updateTextFieldContainer(style: CellTextFieldStyle) {
         let borderColor = !(style.error?.isHidden ?? true) ?
-        style.textfield.errorBorderColor.cgColor :
-        style.textfield.normalBorderColor.cgColor
+        style.textfield.errorBorderColor :
+        style.textfield.normalBorderColor
 
-        textFieldContainer.layer.borderColor = borderColor
-        textFieldContainer.layer.cornerRadius = style.textfield.cornerRadius
-        textFieldContainer.layer.borderWidth = style.textfield.borderWidth
-        textFieldContainer.backgroundColor = style.textfield.backgroundColor
+        guard let siderBorderList = style.textfield.sideBorders else {
+            textFieldContainer.layer.borderColor = borderColor.cgColor
+            textFieldContainer.layer.cornerRadius = style.textfield.cornerRadius
+            textFieldContainer.layer.borderWidth = style.textfield.borderWidth
+            textFieldContainer.backgroundColor = style.textfield.backgroundColor
+            return
+        }
+        textFieldContainer.addBorder(with: siderBorderList,
+                                     thickness: style.textfield.borderWidth,
+                                     color: borderColor)
+
     }
 
     private func update(textField: BillingFormTextField?, style: CellTextFieldStyle, textFieldValue: String?, tag: Int) {
