@@ -1,6 +1,7 @@
 import UIKit
 
 public struct DefaultTextField: ElementTextFieldStyle {
+    public var sideBorders: [SideBorder]? = [.bottom(layer: nil)]
     public var textAlignment: NSTextAlignment = .natural
     public var isHidden = false
     public var isSupportingNumericKeyboard = false

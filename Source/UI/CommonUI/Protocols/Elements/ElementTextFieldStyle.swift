@@ -10,4 +10,5 @@ public protocol ElementTextFieldStyle: ElementStyle {
     var normalBorderColor: UIColor { get }
     var focusBorderColor: UIColor { get }
     var errorBorderColor: UIColor { get }
+    var sideBorders: [SideBorder]? { get }
 }

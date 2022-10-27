@@ -12,6 +12,7 @@ public extension Theme {
 
     /// Theme generated TextField style
     struct ThemeTextField: ElementTextFieldStyle {
+        public var sideBorders: [SideBorder]?
         public var text: String
         public var isSupportingNumericKeyboard = true
         public var textAlignment: NSTextAlignment = .natural

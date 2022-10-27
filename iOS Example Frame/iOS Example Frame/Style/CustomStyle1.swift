@@ -196,6 +196,7 @@ private enum StyleOrganiser {
     }
 
     struct TextFieldStyle: ElementTextFieldStyle {
+        var sideBorders: [SideBorder]?
         var textAlignment: NSTextAlignment = .natural
         var text: String = ""
         var isSupportingNumericKeyboard = true
