@@ -44,7 +44,7 @@ class HomeViewController: UIViewController {
   }
 
   @IBAction private func showDefaultTheme(_ sender: Any) {
-    customizeNavigationBarAppearance(backgroundColor: .red, foregroundColor: .black)
+    customizeNavigationBarAppearance(backgroundColor: .white, foregroundColor: .black)
     let viewController = Factory.getDefaultPaymentViewController { [weak self] result in
       self?.handleTokenResponse(with: result)
     }
