@@ -23,24 +23,29 @@ final class UINavigationControllerTests: XCTestCase {
         XCTAssertEqual(mainNavigationController.viewControllers.first, viewController1)
         XCTAssertEqual(currentNavigationController.viewControllers.first, viewController2)
 
+        XCTAssertEqual(currentNavigationController.navigationBar.backgroundColor, mainNavigationController.navigationBar.backgroundColor)
+        XCTAssertEqual(currentNavigationController.navigationBar.barTintColor, mainNavigationController.navigationBar.barTintColor)
+        XCTAssertEqual(currentNavigationController.navigationBar.shadowImage, mainNavigationController.navigationBar.shadowImage)
+        let currentNavigationBarForegroundColor = (currentNavigationController.navigationBar.titleTextAttributes?.first { $0.key == .foregroundColor }?.value) as? UIColor
+        let mainNavigationBarForegroundColor = (mainNavigationController.navigationBar.titleTextAttributes?.first { $0.key == .foregroundColor }?.value) as? UIColor
+        XCTAssertEqual(currentNavigationBarForegroundColor, mainNavigationBarForegroundColor)
+        XCTAssertTrue(currentNavigationController.navigationBar.isTranslucent)
+        
         if #available(iOS 13.0, *) {
             XCTAssertEqual(currentNavigationController.navigationBar.standardAppearance, mainNavigationController.navigationBar.standardAppearance)
             XCTAssertEqual(currentNavigationController.navigationBar.compactAppearance, mainNavigationController.navigationBar.compactAppearance)
             XCTAssertEqual(currentNavigationController.navigationBar.scrollEdgeAppearance, mainNavigationController.navigationBar.scrollEdgeAppearance)
-        } else {
-            XCTAssertEqual(currentNavigationController.navigationBar.backgroundColor, mainNavigationController.navigationBar.backgroundColor)
-            XCTAssertEqual(currentNavigationController.navigationBar.barTintColor, mainNavigationController.navigationBar.barTintColor)
-            XCTAssertEqual(currentNavigationController.navigationBar.shadowImage, mainNavigationController.navigationBar.shadowImage)
-            let currentNavigationBarForegroundColor = (currentNavigationController.navigationBar.titleTextAttributes?.first { $0.key == .foregroundColor }?.value) as? UIColor
-            let mainNavigationBarForegroundColor = (mainNavigationController.navigationBar.titleTextAttributes?.first { $0.key == .foregroundColor }?.value) as? UIColor
-            XCTAssertEqual(currentNavigationBarForegroundColor, mainNavigationBarForegroundColor)
-            XCTAssertTrue(currentNavigationController.navigationBar.isTranslucent)
         }
     }
 }
 
 private extension UINavigationController {
     func customizeNavigationBarAppearance(backgroundColor: UIColor, foregroundColor: UIColor) {
+        navigationBar.backgroundColor = backgroundColor
+        navigationBar.barTintColor = backgroundColor
+        navigationBar.shadowImage = UIImage()
+        navigationBar.titleTextAttributes = [.foregroundColor: foregroundColor]
+        navigationBar.isTranslucent = true
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithDefaultBackground()
@@ -52,13 +57,8 @@ private extension UINavigationController {
             navigationBar.standardAppearance = appearance
             navigationBar.compactAppearance = appearance
             navigationBar.scrollEdgeAppearance = appearance
-        } else {
-            navigationBar.backgroundColor = backgroundColor
-            navigationBar.barTintColor = backgroundColor
-            navigationBar.shadowImage = UIImage()
-            navigationBar.titleTextAttributes = [.foregroundColor: foregroundColor]
-            navigationBar.isTranslucent = true
         }
+        
     }
 
 }
