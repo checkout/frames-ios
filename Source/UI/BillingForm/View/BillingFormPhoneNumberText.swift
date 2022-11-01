@@ -3,7 +3,7 @@ import UIKit
 import PhoneNumberKit
 
 protocol BillingFormPhoneNumberTextDelegate: AnyObject {
-    func phoneNumberIsUpdated(number: String, tag: Int)
+    func phoneNumberIsUpdated(number: String, tag: Int, isValidLength: Bool)
 }
 
 // `PhoneNumberTextField` is the parent textfield from `PhoneNumberKit`
@@ -28,7 +28,8 @@ final class BillingFormPhoneNumberText: PhoneNumberTextField, BillingFormTextFie
 
     override func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         super.textFieldDidEndEditing(textField, reason: reason)
-        guard let phoneNumber = text else { return }
-        phoneNumberTextDelegate?.phoneNumberIsUpdated(number: phoneNumber, tag: tag)
+        guard let phoneNumber = textField.text else { return }
+        let isInValidLength = PhoneNumberValidator().validate(text: phoneNumber)
+        phoneNumberTextDelegate?.phoneNumberIsUpdated(number: phoneNumber, tag: tag, isValidLength: !isInValidLength)
     }
 }
