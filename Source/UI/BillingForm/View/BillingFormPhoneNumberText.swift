@@ -29,7 +29,7 @@ final class BillingFormPhoneNumberText: PhoneNumberTextField, BillingFormTextFie
     override func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         super.textFieldDidEndEditing(textField, reason: reason)
         guard let phoneNumber = textField.text else { return }
-        let isInValidLength = PhoneNumberValidator().validate(text: phoneNumber)
+        let isInValidLength = PhoneNumberValidator().isInvalid(text: phoneNumber)
         phoneNumberTextDelegate?.phoneNumberIsUpdated(number: phoneNumber, tag: tag, isValidLength: !isInValidLength)
     }
 }

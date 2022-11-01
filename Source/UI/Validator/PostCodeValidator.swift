@@ -1,7 +1,7 @@
 import Foundation
 
 class PostcodeValidator: Validator {
-    func validate(text: String?) -> Bool {
+    func isInvalid(text: String?) -> Bool {
         isEmpty(text: text)
     }
 

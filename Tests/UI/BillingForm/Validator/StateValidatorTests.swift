@@ -6,14 +6,14 @@ class StateValidatorTests: XCTestCase {
     func testValidationWhenTextIsEmptyThenShouldBeTrue() {
         let expectedType = BillingFormCell.state(nil)
         let text = ""
-        let isValid = expectedType.validator.validate(text: text)
-        XCTAssertTrue(isValid)
+        let isInvalid = expectedType.validator.isInvalid(text: text)
+        XCTAssertTrue(isInvalid)
     }
 
     func testValidationWhenTextIsNonEmptyThenShouldBeFalse() {
         let expectedType = BillingFormCell.state(nil)
         let text = "postcode"
-        let isValid = expectedType.validator.validate(text: text)
-        XCTAssertFalse(isValid)
+        let isInvalid = expectedType.validator.isInvalid(text: text)
+        XCTAssertFalse(isInvalid)
     }
 }

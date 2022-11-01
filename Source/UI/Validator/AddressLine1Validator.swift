@@ -1,7 +1,7 @@
 import Foundation
 
 class AddressLine1Validator: Validator {
-    func validate(text: String?) -> Bool {
+    func isInvalid(text: String?) -> Bool {
         isEmpty(text: text)
     }
 

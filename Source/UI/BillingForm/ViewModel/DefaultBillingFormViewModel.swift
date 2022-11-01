@@ -144,7 +144,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             errorFlagOfCellType[currentCellTypeIndex] = false
             return
         }
-        errorFlagOfCellType[currentCellTypeIndex] = cellStyle.validator.validate(text: text)
+        errorFlagOfCellType[currentCellTypeIndex] = cellStyle.validator.isInvalid(text: text)
 
     }
 
