@@ -145,6 +145,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             return
         }
         errorFlagOfCellType[currentCellTypeIndex] = cellStyle.validator.validate(text: text)
+
     }
 
     func validateTextFieldByCharacter(textField: UITextField, replacementString string: String) {
@@ -180,7 +181,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     }
 
     private func notifyContentChangeToDelegate() {
-        let hasErrorValue = errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.allSatisfy { $0 }
+        let hasErrorValue = errorFlagOfCellType.isEmpty || errorFlagOfCellType.values.contains(true)
         guard !hasErrorValue else {
             editDelegate?.didFinishEditingBillingForm(successfully: false)
             return
@@ -235,6 +236,7 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
         let index = BillingFormCell.phoneNumber(nil).index
         textValueOfCellType[index] = number
         updatedRow = tag
+        notifyContentChangeToDelegate()
     }
 
     func update(country: Country) {
