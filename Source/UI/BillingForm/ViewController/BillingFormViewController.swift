@@ -130,7 +130,7 @@ final class BillingFormViewController: UIViewController {
     private func refreshCell(at row: Int?) {
         guard let row = row else { return }
         let indexPath = IndexPath(row: row, section: 0)
-        tableView?.reloadRows(at: [indexPath], with: .automatic)
+        tableView?.reloadRows(at: [indexPath], with: .none)
     }
 
     // MARK: - Keyboard
