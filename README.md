@@ -299,11 +299,11 @@ let billingFormStyle = theme.buildBillingForm(
             header: theme.buildBillingHeader(title: "Billing information",
                                              cancelButtonTitle: "Cancel",
                                              doneButtonTitle: "Done"),
-            cells: [.fullName(theme.buildBillingInput(text: "", isNumbericInput: false, isMandatory: false, title: "Your name")),
-                    .addressLine1(theme.buildBillingInput(text: "", isNumbericInput: false, isMandatory: true, title: "Address")),
-                    .city(theme.buildBillingInput(text: "", isNumbericInput: false, isMandatory: true, title: "City")),
+            cells: [.fullName(theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: false, title: "Your name")),
+                    .addressLine1(theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: true, title: "Address")),
+                    .city(theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: true, title: "City")),
                     .country(theme.buildBillingCountryInput(buttonText: "Select your country", title: "Country")),
-                    .phoneNumber(theme.buildBillingInput(text: "", isNumbericInput: true, isMandatory: true, title: "Phone number"))])
+                    .phoneNumber(theme.buildBillingInput(text: "", isNumericInput: true, isMandatory: true, title: "Phone number"))])
 ```
 
 We think this approach should hit a good balance between great control of UI & simple, concise code. The font sizes even use `preferredFont(forTextStyle: ...).pointSize` to give you font sizes that match your users device preferences. However if you still find the mapping to need excessive customisation, our final approach may be more to your liking.
