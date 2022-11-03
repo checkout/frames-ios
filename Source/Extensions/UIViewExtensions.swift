@@ -71,24 +71,19 @@ extension UIView {
 
 extension UIView {
 
-    func addBorder(with list: [SideBorder], thickness: Double, color: UIColor) {
+    func addBorder(with list: [UIRectEdge], thickness: Double, color: UIColor) {
         list.forEach {
             addBorder(side: $0, thickness: thickness, color: color)
         }
     }
 
-    private func addBorder(side: SideBorder, thickness: Double, color: UIColor) {
-        var thickness = thickness
-        var edgeView = UIView().disabledAutoresizingIntoConstraints()
-                edgeView.backgroundColor = color
+    private func addBorder(side: UIRectEdge, thickness: Double, color: UIColor) {
+        let edgeView = UIView().disabledAutoresizingIntoConstraints()
+        edgeView.backgroundColor = color
+        addSubview(edgeView)
 
         switch side {
-            case .left(let edge):
-                if let edge = edge {
-                    edgeView = edge
-                    thickness = edgeView.frame.width
-                }
-                addSubview(edgeView)
+            case .left:
                 NSLayoutConstraint.activate([
                     edgeView.topAnchor.constraint(equalTo: topAnchor),
                     edgeView.leftAnchor.constraint(equalTo: leftAnchor),
@@ -96,24 +91,14 @@ extension UIView {
                     edgeView.widthAnchor.constraint(equalToConstant: thickness)
                 ])
 
-            case .right(let edge):
-                if let edge = edge {
-                    edgeView = edge
-                    thickness = edgeView.frame.width
-                }
-                addSubview(edgeView)
+            case .right:
                 NSLayoutConstraint.activate([
                     edgeView.topAnchor.constraint(equalTo: topAnchor),
                     edgeView.rightAnchor.constraint(equalTo: rightAnchor),
                     edgeView.bottomAnchor.constraint(equalTo: bottomAnchor),
                     edgeView.widthAnchor.constraint(equalToConstant: thickness)
                 ])
-            case .top(let edge):
-                if let edge = edge {
-                    edgeView = edge
-                    thickness = edgeView.frame.height
-                }
-                addSubview(edgeView)
+            case .top:
                 NSLayoutConstraint.activate([
                     edgeView.topAnchor.constraint(equalTo: topAnchor),
                     edgeView.rightAnchor.constraint(equalTo: rightAnchor),
@@ -121,18 +106,17 @@ extension UIView {
                     edgeView.heightAnchor.constraint(equalToConstant: thickness)
                 ])
 
-            case .bottom(let edge):
-                if let edge = edge {
-                    edgeView = edge
-                    thickness = edgeView.frame.height
-                }
-                addSubview(edgeView)
+            case .bottom:
                 NSLayoutConstraint.activate([
                     edgeView.bottomAnchor.constraint(equalTo: bottomAnchor),
                     edgeView.rightAnchor.constraint(equalTo: rightAnchor),
                     edgeView.leftAnchor.constraint(equalTo: leftAnchor),
                     edgeView.heightAnchor.constraint(equalToConstant: thickness)
                 ])
+            case .all:
+                addBorder(with: [.left, .right, .top, .bottom], thickness: thickness, color: color)
+
+            default: break
         }
 
     }

@@ -12,37 +12,42 @@ public extension Theme {
 
     /// Theme generated TextField style
     struct ThemeTextField: ElementTextFieldStyle {
-        public var sideBorders: [SideBorder]?
+        public var borderStyle: ElementBorderStyle
         public var text: String
         public var isSupportingNumericKeyboard = true
         public var textAlignment: NSTextAlignment = .natural
         public var height: Double = 30
-        public var cornerRadius: CGFloat
-        public var borderWidth: CGFloat
         public var placeholder: String?
         public var tintColor: UIColor
-        public var normalBorderColor: UIColor
-        public var focusBorderColor: UIColor
-        public var errorBorderColor: UIColor
         public var isHidden = false
         public var font: UIFont
         public var backgroundColor: UIColor
         public var textColor: UIColor
     }
 
+    struct ThemeBorderStyle: ElementBorderStyle {
+        public var sideBorders: [UIRectEdge]
+        public var cornerRadius: CGFloat
+        public var borderWidth: CGFloat
+        public var normalBorderColor: UIColor
+        public var focusBorderColor: UIColor
+        public var errorBorderColor: UIColor
+    }
+
     /// Create a TextField Style from text
     func buildTextField(text: String,
                         placeholderText: String,
                         isNumbericInput: Bool) -> ThemeTextField {
-        ThemeTextField(text: text,
+        ThemeTextField(borderStyle: ThemeBorderStyle(sideBorders: [.all],
+                                                     cornerRadius: self.textInputBorderRadius,
+                                                     borderWidth: self.textInputBorderWidth,
+                                                     normalBorderColor: self.textInputBorderColor,
+                                                     focusBorderColor: self.focussedTextInputBorderColor,
+                                                     errorBorderColor: self.errorBorderColor),
+                       text: text,
                        isSupportingNumericKeyboard: isNumbericInput,
-                       cornerRadius: self.textInputBorderRadius,
-                       borderWidth: self.textInputBorderWidth,
                        placeholder: placeholderText,
                        tintColor: self.primaryFontColor,
-                       normalBorderColor: self.textInputBorderColor,
-                       focusBorderColor: self.focussedTextInputBorderColor,
-                       errorBorderColor: self.errorBorderColor,
                        font: inputFont,
                        backgroundColor: self.textInputBackgroundColor,
                        textColor: self.primaryFontColor)

@@ -80,6 +80,10 @@ class BillingFormTextFieldView: UIView {
 
         updateTextField(style: style, textFieldValue: textFieldValue, tag: tag)
         updateErrorView(style: style)
+        layoutIfNeeded()
+        layoutSubviews()
+        textFieldContainer.layoutIfNeeded()
+        textFieldContainer.layoutSubviews()
         updateTextFieldContainer(style: style)
     }
 
@@ -96,18 +100,18 @@ class BillingFormTextFieldView: UIView {
 
     private func updateTextFieldContainer(style: CellTextFieldStyle) {
         let borderColor = !(style.error?.isHidden ?? true) ?
-        style.textfield.errorBorderColor :
-        style.textfield.normalBorderColor
+        style.textfield.borderStyle.errorBorderColor :
+        style.textfield.borderStyle.normalBorderColor
 
-        guard let siderBorderList = style.textfield.sideBorders else {
+        guard style.textfield.borderStyle.cornerRadius <= 0 else {
             textFieldContainer.layer.borderColor = borderColor.cgColor
-            textFieldContainer.layer.cornerRadius = style.textfield.cornerRadius
-            textFieldContainer.layer.borderWidth = style.textfield.borderWidth
+            textFieldContainer.layer.cornerRadius = style.textfield.borderStyle.cornerRadius
+            textFieldContainer.layer.borderWidth = style.textfield.borderStyle.borderWidth
             textFieldContainer.backgroundColor = style.textfield.backgroundColor
             return
         }
-        textFieldContainer.addBorder(with: siderBorderList,
-                                     thickness: style.textfield.borderWidth,
+        textFieldContainer.addBorder(with: style.textfield.borderStyle.sideBorders,
+                                     thickness: style.textfield.borderStyle.borderWidth,
                                      color: borderColor)
 
     }
@@ -243,7 +247,7 @@ extension BillingFormTextFieldView: UITextFieldDelegate {
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
-        textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
+        textFieldContainer.layer.borderColor = style?.textfield.borderStyle.focusBorderColor.cgColor
     }
 
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {

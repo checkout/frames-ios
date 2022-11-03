@@ -28,7 +28,6 @@ extension UIViewController {
       navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
 
-
     navigationController?.setNeedsStatusBarAppearanceUpdate()
   }
 

@@ -67,7 +67,7 @@ extension SecurityCodeView: TextFieldViewDelegate {
   }
 
   func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
-    codeInputView.textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
+      codeInputView.textFieldContainer.layer.borderColor = style?.textfield.borderStyle.focusBorderColor.cgColor
     viewModel.updateInput(to: textField.text)
     delegate?.update(securityCode: viewModel.cvv)
   }

@@ -24,11 +24,11 @@ class BillingFormTextFieldViewTests: XCTestCase {
 
     func testTextFieldContainerStyle() {
         XCTAssertEqual(view.textFieldContainer.backgroundColor, style.textfield.backgroundColor)
-        XCTAssertEqual(view.textFieldContainer.layer.borderColor, style.textfield.normalBorderColor.cgColor)
-        XCTAssertEqual(view.textFieldContainer.layer.cornerRadius, style.textfield.cornerRadius)
-        XCTAssertEqual(view.textFieldContainer.layer.borderWidth, style.textfield.borderWidth)
-        XCTAssertEqual(view.textFieldContainer.layer.cornerRadius, style.textfield.cornerRadius)
-        XCTAssertEqual(view.textFieldContainer.layer.borderWidth, style.textfield.borderWidth)
+        XCTAssertEqual(view.textFieldContainer.layer.borderColor, style.textfield.borderStyle.normalBorderColor.cgColor)
+        XCTAssertEqual(view.textFieldContainer.layer.cornerRadius, style.textfield.borderStyle.cornerRadius)
+        XCTAssertEqual(view.textFieldContainer.layer.borderWidth, style.textfield.borderStyle.borderWidth)
+        XCTAssertEqual(view.textFieldContainer.layer.cornerRadius, style.textfield.borderStyle.cornerRadius)
+        XCTAssertEqual(view.textFieldContainer.layer.borderWidth, style.textfield.borderStyle.borderWidth)
         XCTAssertEqual(view.textField.keyboardType, .default)
         XCTAssertEqual(view.textField.textContentType, .name)
     }
