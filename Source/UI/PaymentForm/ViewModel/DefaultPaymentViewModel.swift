@@ -229,7 +229,10 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
     }
 
     private func onTapAddressView(sender: UINavigationController?) {
-        guard let viewController = FramesFactory.getBillingFormViewController(style: billingFormStyle, data: billingFormData, delegate: self, sender: sender) else { return }
+        guard let viewController = FramesFactory.getBillingFormViewController(style: billingFormStyle,
+                                                                              data: billingFormData,
+                                                                              delegate: self,
+                                                                              sender: sender) else { return }
         sender?.present(viewController, animated: true)
     }
 

@@ -139,13 +139,13 @@ extension ThemeDemo {
                                              cancelButtonTitle: "Cancel",
                                              doneButtonTitle: "Done"),
             cells: [
-                .fullName(theme.buildBillingInput(text: "", isNumbericInput: false, isMandatory: false, title: "Cardholder name")),
-                .addressLine1(theme.buildBillingInput(text: "", isNumbericInput: false, isMandatory: true, title: "Address line 1", isRequiredText: "°")),
-                .addressLine2(theme.buildBillingInput(text: "", isNumbericInput: false, isMandatory: false, title: "Address line 2")),
-                .city(theme.buildBillingInput(text: "", isNumbericInput: false, isMandatory: true, title: "City", isRequiredText: "°")),
-                .postcode(theme.buildBillingInput(text: "", isNumbericInput: false, isMandatory: false, title: "Postcode")),
+                .fullName(theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: false, title: "Cardholder name")),
+                .addressLine1(theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: true, title: "Address line 1", isRequiredText: "°")),
+                .addressLine2(theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: false, title: "Address line 2")),
+                .city(theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: true, title: "City", isRequiredText: "°")),
+                .postcode(theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: false, title: "Postcode")),
                 .country(theme.buildBillingCountryInput(buttonText: "Select country", title: "Country", isRequiredText: "°")),
-                .phoneNumber(theme.buildBillingInput(text: "", isNumbericInput: true, isMandatory: false, title: "Phone number"))
+                .phoneNumber(theme.buildBillingInput(text: "", isNumericInput: true, isMandatory: false, title: "Phone number"))
             ])
 
         return PaymentStyle(paymentFormStyle: paymentFormStyle,

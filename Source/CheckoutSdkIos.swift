@@ -13,10 +13,10 @@ func addKeyboardToolbarNavigation(textFields: [UITextField]) {
         prevButton.width = 30
         let nextButton = UIBarButtonItem(image: Constants.Bundle.Images.keyboardNext.image ?? UIImage(),
                                          style: .plain, target: nil, action: nil)
-        let flexspace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
                                         target: nil, action: nil)
 
-        var items = [prevButton, nextButton, flexspace]
+        var items = [prevButton, nextButton, flexSpace]
         // first text field
         if index == 0 {
             prevButton.isEnabled = false

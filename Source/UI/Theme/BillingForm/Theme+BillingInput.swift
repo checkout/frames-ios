@@ -38,7 +38,7 @@ public extension Theme {
     /// Create a Billing Input from provided content
     func buildBillingInput(text: String,
                            placeholder: String = "",
-                           isNumbericInput: Bool,
+                           isNumericInput: Bool,
                            isMandatory: Bool,
                            title: String,
                            subtitle: String = "",
@@ -52,7 +52,7 @@ public extension Theme {
 
         return ThemeBillingInput(textfield: self.buildTextField(text: text,
                                                                 placeholderText: placeholder,
-                                                                isNumbericInput: isNumbericInput),
+                                                                isNumericInput: isNumericInput),
                                  isMandatory: isMandatory,
                                  title: self.buildTitle(text: title),
                                  mandatory: showMandatory ? self.buildIsRequiredInput(text: isRequiredText) : nil,

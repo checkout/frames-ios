@@ -50,7 +50,7 @@ public extension Theme {
         return ThemePaymentInput(
             textfield: self.buildTextField(text: textFieldText,
                                            placeholderText: textFieldPlaceholder,
-                                           isNumbericInput: isTextFieldNumericInput),
+                                           isNumericInput: isTextFieldNumericInput),
             title: self.buildTitle(text: titleText),
             mandatory: addMandatory ? self.buildIsRequiredInput(text: isRequiredInputText) : nil,
             hint: addSubtitle ? self.buildSubtitle(text: subtitleText,
