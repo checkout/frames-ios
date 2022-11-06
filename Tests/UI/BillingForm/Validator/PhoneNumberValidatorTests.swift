@@ -3,17 +3,38 @@ import XCTest
 
 class PhoneNumberValidatorTests: XCTestCase {
 
-    func testValidationWhenTextIsEmptyThenShouldBeTrue() {
+    func testValidationTextWithEmptyString() {
         let expectedType = BillingFormCell.phoneNumber(nil)
         let text = ""
-        let isValid = expectedType.validator.validate(text: text)
-        XCTAssertTrue(isValid)
+        let isInvalid = expectedType.validator.validate(text: text)
+        XCTAssertTrue(isInvalid)
     }
 
-    func testValidationWhenTextIsNonEmptyThenShouldBeFalse() {
+    func testValidationTextWithString() {
         let expectedType = BillingFormCell.phoneNumber(nil)
-        let text = "phoneNumber"
-        let isValid = expectedType.validator.validate(text: text)
-        XCTAssertFalse(isValid)
+        let text = "ABC"
+        let isInvalid = expectedType.validator.validate(text: text)
+        XCTAssertTrue(isInvalid)
+    }
+
+    func testValidationTextWithLengthLessThan6() {
+        let expectedType = BillingFormCell.phoneNumber(nil)
+        let text = "134"
+        let isInvalid = expectedType.validator.validate(text: text)
+        XCTAssertTrue(isInvalid)
+    }
+
+    func testValidationTextWithLengthMoreThan25() {
+        let expectedType = BillingFormCell.phoneNumber(nil)
+        let text = "123456789123456789123456789"
+        let isInvalid = expectedType.validator.validate(text: text)
+        XCTAssertTrue(isInvalid)
+    }
+
+    func testValidationWhenTextLengthWithNormalPhoneNumber() {
+        let expectedType = BillingFormCell.phoneNumber(nil)
+        let text = "0771245678"
+        let isInvalid = expectedType.validator.validate(text: text)
+        XCTAssertFalse(isInvalid)
     }
 }
