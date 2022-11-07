@@ -13,6 +13,10 @@ extension String {
     func standardize() -> String {
         return self.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
     }
+
+    func decimalDigits() -> String {
+        components(separatedBy: .decimalDigits.inverted).joined()
+    }
 }
 
 private class FramesBundle {
