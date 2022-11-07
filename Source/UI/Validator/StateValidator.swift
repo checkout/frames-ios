@@ -1,8 +1,8 @@
 import Foundation
 
 class StateValidator: Validator {
-    func isInvalid(text: String?) -> Bool {
-        isEmpty(text: text)
+    func isInvalid(value: Any?) -> Bool {
+        isEmpty(text: value as? String)
     }
 
     private func isEmpty(text: String?) -> Bool {
