@@ -36,6 +36,10 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
     var phoneNumberIsUpdatedLastCalledWithNumber: String?
     var phoneNumberIsUpdatedLastCalledWithTag: Int?
 
+    var isValidPhoneMaxLengthCalledTimes = 0
+    var isValidPhoneMaxLengthLastCalledWithText: String?
+    var isValidPhoneMaxLengthReturn: Bool = true
+
     func doneButtonIsPressed(sender: UIViewController) {
         doneButtonIsPressedCalledTimes += 1
         doneButtonIsPressedLastCalledWithSender = sender
@@ -85,4 +89,11 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
         phoneNumberIsUpdatedLastCalledWithNumber = number
         phoneNumberIsUpdatedLastCalledWithTag = tag
     }
+
+    func isValidPhoneMaxLength(text: String?) -> Bool {
+        isValidPhoneMaxLengthCalledTimes += 1
+        isValidPhoneMaxLengthLastCalledWithText = text
+        return isValidPhoneMaxLengthReturn
+    }
+
 }

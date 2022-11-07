@@ -19,7 +19,11 @@ class BillingFormTextFieldCellMockDelegate: CellTextFieldDelegate {
     var textFieldShouldChangeCharactersInCalledTimes = 0
     var textFieldShouldChangeCharactersInLastCalledWithTextField: UITextField?
     var textFieldShouldChangeCharactersInLastCalledWithString: String?
-    
+
+    var isValidPhoneMaxLengthCalledTimes = 0
+    var isValidPhoneMaxLengthLastCalledWithText: String?
+    var isValidPhoneMaxLengthReturn: Bool = true
+
     func textFieldShouldBeginEditing(textField: UITextField) {
         textFieldShouldBeginEditingCalledTimes += 1
         textFieldShouldBeginEditingLastCalledWithTextField = textField
@@ -48,5 +52,11 @@ class BillingFormTextFieldCellMockDelegate: CellTextFieldDelegate {
         textFieldShouldChangeCharactersInCalledTimes += 1
         textFieldShouldChangeCharactersInLastCalledWithTextField = textField
         textFieldShouldChangeCharactersInLastCalledWithString = string
+    }
+
+    func isValidPhoneMaxLength(text: String?) -> Bool {
+        isValidPhoneMaxLengthCalledTimes += 1
+        isValidPhoneMaxLengthLastCalledWithText = text
+        return isValidPhoneMaxLengthReturn
     }
 }

@@ -133,5 +133,46 @@ class BillingFormViewModelTests: XCTestCase {
         viewModel.cancelButtonIsPressed(sender: UIViewController())
         XCTAssertEqual(delegate.onTapCancelButtonCalledTimes, 1)
     }
+
+    func testValidPhoneNumberMaxLengthWithLessThan25Digit() {
+        let delegate = BillingFormViewModelMockDelegate()
+        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), delegate: delegate)
+        let phone = "+44 123456789"
+        let isValid = viewModel.validatePhoneNumberMaxLength(text: phone)
+        XCTAssertTrue(isValid)
+    }
+
+    func testValidPhoneNumberMaxLengthWithoutCountryCode() {
+        let address = Address(addressLine1: "Test line1",
+                              addressLine2: nil,
+                              city: "London",
+                              state: "London",
+                              zip: "N12345",
+                              country: nil)
+        let phone = Phone(number: "0123456789",
+                          country: Country(iso3166Alpha2: "GB"))
+        let name = "User 1"
+        let billingForm = BillingForm(name: name, address: address, phone: phone)
+        let delegate = BillingFormViewModelMockDelegate()
+        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: billingForm, delegate: delegate)
+        let isValid = viewModel.validatePhoneNumberMaxLength(text: phone.number)
+        XCTAssertTrue(isValid)
+    }
+
+    func testValidPhoneNumberMaxLengthWithoutStart0() {
+        let delegate = BillingFormViewModelMockDelegate()
+        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), delegate: delegate)
+        let phone = "1234567891234567891234567"
+        let isValid = viewModel.validatePhoneNumberMaxLength(text: phone)
+        XCTAssertTrue(isValid)
+    }
+
+    func testInvalidPhoneNumberMaxLengthWithMoreThan25Digit() {
+        let delegate = BillingFormViewModelMockDelegate()
+        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), delegate: delegate)
+        let phone = "+44 123456789123456789123456789123456789123456789123456789123456789123456789"
+        let isValid = viewModel.validatePhoneNumberMaxLength(text: phone)
+        XCTAssertFalse(isValid)
+    }
     
 }
