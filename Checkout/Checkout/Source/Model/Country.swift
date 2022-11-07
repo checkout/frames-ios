@@ -277,6 +277,15 @@ public struct Country: Equatable {
     ]
   }
 
+    public init?(dialingCode: String) {
+        var dialingCode = dialingCode.components(separatedBy: .decimalDigits.inverted).joined()
+        if let country = Self.allAvailable.first(where: { $0.dialingCode == dialingCode }) {
+            self = country
+        } else {
+            return nil
+        }
+    }
+
   public init?(iso3166Alpha2: String) {
     if let country = Self.allAvailable.first(where: { $0.iso3166Alpha2 == iso3166Alpha2 }) {
       self = country

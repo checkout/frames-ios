@@ -268,4 +268,16 @@ final class CountryTests: XCTestCase {
     XCTAssertEqual(Country(iso3166Alpha2: "UZ"), Country(iso3166Alpha2: "UZ", dialingCode: "998"))
     XCTAssertEqual(Country(iso3166Alpha2: "WF"), Country(iso3166Alpha2: "WF", dialingCode: "681"))
   }
+
+    func testValidInitWithDialingCode() {
+        let dialingCode = "+44"
+        let country = Country(dialingCode: dialingCode)
+        XCTAssertEqual(country?.iso3166Alpha2, "GG")
+    }
+
+    func testInvalidInitWithDialingCode() {
+        let dialingCode = "000"
+        let country = Country(dialingCode: dialingCode)
+        XCTAssertNil(country?.iso3166Alpha2)
+    }
 }
