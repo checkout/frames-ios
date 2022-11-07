@@ -33,7 +33,7 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
     var updateLastCalledWithCountry: Country?
 
     var phoneNumberIsUpdatedCalledTimes = 0
-    var phoneNumberIsUpdatedLastCalledWithNumber: String?
+    var phoneNumberIsUpdatedLastCalledWithNumber: Frames.Phone?
     var phoneNumberIsUpdatedLastCalledWithTag: Int?
 
     var isValidPhoneMaxLengthCalledTimes = 0
@@ -84,7 +84,7 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
         updateLastCalledWithCountry = country
     }
 
-    func phoneNumberIsUpdated(number: String, tag: Int) {
+    func phoneNumberIsUpdated(number: Frames.Phone, tag: Int) {
         phoneNumberIsUpdatedCalledTimes += 1
         phoneNumberIsUpdatedLastCalledWithNumber = number
         phoneNumberIsUpdatedLastCalledWithTag = tag

@@ -13,7 +13,7 @@ class BillingFormTextFieldCellMockDelegate: CellTextFieldDelegate {
     var textFieldDidChangeCharactersLastCalledWithReplacementString: String?
 
     var phoneNumberIsUpdatedCalledTimes = 0
-    var phoneNumberIsUpdatedLastCalledWithNumber: String?
+    var phoneNumberIsUpdatedLastCalledWithNumber: Frames.Phone?
     var phoneNumberIsUpdatedLastCalledWithTag: Int?
 
     var textFieldShouldChangeCharactersInCalledTimes = 0
@@ -42,7 +42,7 @@ class BillingFormTextFieldCellMockDelegate: CellTextFieldDelegate {
     }
     
 
-    func phoneNumberIsUpdated(number: String, tag: Int) {
+    func phoneNumberIsUpdated(number: Frames.Phone, tag: Int) {
         phoneNumberIsUpdatedCalledTimes += 1
         phoneNumberIsUpdatedLastCalledWithNumber = number
         phoneNumberIsUpdatedLastCalledWithTag = tag
