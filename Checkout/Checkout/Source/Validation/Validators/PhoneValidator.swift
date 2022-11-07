@@ -12,6 +12,8 @@ public protocol PhoneValidating {
 }
 
 public final class PhoneValidator: PhoneValidating {
+    public init() {}
+    
     public func validate(_ phone: Phone) -> ValidationResult<ValidationError.Phone> {
         if let number = phone.number,
            number.count < Constants.Phone.phoneMinLength ||

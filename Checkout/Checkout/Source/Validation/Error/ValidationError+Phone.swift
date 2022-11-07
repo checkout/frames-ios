@@ -7,19 +7,19 @@
 
 import Foundation
 
-extension ValidationError {
-/// Enums representing the ValidationError for Phone field.
-  public enum Phone: CheckoutError, CaseIterable {
-    case numberIncorrectLength
-    case countryCodeIncorrectLength
+public extension ValidationError {
+    /// Enums representing the ValidationError for Phone field.
+    enum Phone: CheckoutError, CaseIterable {
+        case numberIncorrectLength
+        case countryCodeIncorrectLength
 
-    public var code: Int {
-      switch self {
-      case .numberIncorrectLength:
-        return 1018
-      case .countryCodeIncorrectLength:
-        return 1019
-      }
+        public var code: Int {
+            switch self {
+                case .numberIncorrectLength:
+                    return 1018
+                case .countryCodeIncorrectLength:
+                    return 1019
+            }
+        }
     }
-  }
 }
