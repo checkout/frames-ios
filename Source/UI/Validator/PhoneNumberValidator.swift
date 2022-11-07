@@ -7,7 +7,7 @@ class PhoneNumberValidator: Validator {
 
     func isInvalid(text: String?) -> Bool {
         guard let text = text else { return true }
-        let number = text.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        let number = text.decimalDigits()
         return number.isEmpty || number.count < minDigitLength || number.count > maxDigitLength
     }
 
