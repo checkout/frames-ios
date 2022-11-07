@@ -18,6 +18,7 @@ protocol BillingFormViewControllerDelegate: AnyObject {
     func cancelButtonIsPressed(sender: UIViewController)
     func update(country: Country)
     func phoneNumberIsUpdated(number: String, tag: Int)
+    func isValidPhoneMaxLength(text: String?) -> Bool
 }
 
 /**
@@ -219,6 +220,10 @@ extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate 
 // MARK: - Text Field Delegate
 
 extension BillingFormViewController: CellTextFieldDelegate {
+    func isValidPhoneMaxLength(text: String?) -> Bool {
+        delegate?.isValidPhoneMaxLength(text: text) ?? true
+    }
+
     func phoneNumberIsUpdated(number: String, tag: Int) {
         delegate?.phoneNumberIsUpdated(number: number, tag: tag)
     }

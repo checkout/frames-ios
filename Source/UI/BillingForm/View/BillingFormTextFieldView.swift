@@ -3,6 +3,7 @@ import Checkout
 
 protocol PhoneNumberTextFieldDelegate: AnyObject {
     func phoneNumberIsUpdated(number: String, tag: Int)
+    func isValidPhoneMaxLength(text: String?) -> Bool
 }
 
 class BillingFormTextFieldView: UIView {
@@ -128,12 +129,9 @@ class BillingFormTextFieldView: UIView {
 
     private func addPhoneNumberTextField() {
         guard phoneNumberTextField == nil else { return }
-        let phoneNumberTextField: BillingFormTextField = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self).disabledAutoresizingIntoConstraints()
-        phoneNumberTextField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
-        phoneNumberTextField.autocorrectionType = .no
-        phoneNumberTextField.delegate = self
-        phoneNumberTextField.backgroundColor = .clear
-        self.phoneNumberTextField = phoneNumberTextField
+        phoneNumberTextField = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self).disabledAutoresizingIntoConstraints()
+        phoneNumberTextField?.autocorrectionType = .no
+        phoneNumberTextField?.backgroundColor = .clear
         addTextFieldToView(phoneNumberTextField)
     }
 
@@ -242,7 +240,8 @@ extension BillingFormTextFieldView {
         mandatoryLabel.bringSubviewToFront(self)
     }
 
-    private func addTextFieldToView(_ textField: UITextField) {
+    private func addTextFieldToView(_ textField: UITextField?) {
+        guard let textField = textField else { return }
         let heightStyle = style?.textfield.height ?? Constants.Style.BillingForm.InputTextField.height.rawValue
         textFieldContainer.addArrangedSubview(textField)
         NSLayoutConstraint.activate([
@@ -269,12 +268,15 @@ extension BillingFormTextFieldView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldReturn() ?? true
     }
-
 }
 
 // MARK: - Phone Number Text Delegate
 
 extension BillingFormTextFieldView: BillingFormPhoneNumberTextDelegate {
+    func isValidPhoneMaxLength(text: String?) -> Bool {
+        phoneNumberDelegate?.isValidPhoneMaxLength(text: text) ?? true
+    }
+
     func phoneNumberIsUpdated(number: String, tag: Int, isValidLength: Bool) {
         guard var style = style else { return }
         style.error?.isHidden = isValidLength

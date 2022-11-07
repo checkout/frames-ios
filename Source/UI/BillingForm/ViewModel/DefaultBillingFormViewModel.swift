@@ -1,5 +1,6 @@
 import UIKit
 import Checkout
+import PhoneNumberKit
 
 /**
  This final class is for billing form list view model logic.
@@ -168,6 +169,19 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         notifyContentChangeToDelegate()
     }
 
+    func validatePhoneNumberMaxLength(text: String?) -> Bool {
+        guard let text = text, !text.isEmpty else { return true }
+        let phoneMaxLength = Checkout.Constants.Phone.phoneMaxLength
+        let region: String? = text.first == "+" ? nil : data?.phone?.country?.iso3166Alpha2
+        let phoneNumberKit = PhoneNumberKit()
+        let phoneNumber = try? phoneNumberKit.parse(text, withRegion: region ?? PhoneNumberKit.defaultRegionCode(), ignoreType: true)
+        guard let phoneNumber = phoneNumber else {
+            let decimalDigitsLength = text.decimalDigits().count
+            return decimalDigitsLength <= phoneMaxLength
+        }
+        return String(phoneNumber.nationalNumber).count <= phoneMaxLength
+    }
+
     private func validateTextOnEndEditing(textField: BillingFormTextField) {
         guard let type = textField.type else { return }
 
@@ -232,6 +246,10 @@ extension DefaultBillingFormViewModel: BillingFormTextFieldDelegate {
 // MARK: - Billing form view controller Delegate
 
 extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
+    func isValidPhoneMaxLength(text: String?) -> Bool {
+        validatePhoneNumberMaxLength(text: text)
+    }
+
     func phoneNumberIsUpdated(number: String, tag: Int) {
         let index = BillingFormCell.phoneNumber(nil).index
         textValueOfCellType[index] = number
