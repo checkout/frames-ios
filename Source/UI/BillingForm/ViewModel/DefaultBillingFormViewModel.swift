@@ -140,13 +140,12 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
     func validate(text: String?, cellStyle: BillingFormCell, row: Int) {
         let currentCellTypeIndex = style.cells[row].index
-        guard let style = cellStyle.style,
-              style.isMandatory else {
+        guard let cellStyle = style.cells[row].style,
+              cellStyle.isMandatory else {
             errorFlagOfCellType[currentCellTypeIndex] = false
             return
         }
-        errorFlagOfCellType[currentCellTypeIndex] = cellStyle.validator.isInvalid(text: text)
-
+        errorFlagOfCellType[currentCellTypeIndex] = style.cells[row].validator.isInvalid(value: text)
     }
 
     func validateTextFieldByCharacter(textField: UITextField, replacementString string: String) {
@@ -250,9 +249,11 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
         validatePhoneNumberMaxLength(text: text)
     }
 
-    func phoneNumberIsUpdated(number: String, tag: Int) {
+    func phoneNumberIsUpdated(number: Phone, tag: Int) {
         let index = BillingFormCell.phoneNumber(nil).index
-        textValueOfCellType[index] = number
+        textValueOfCellType[index] = number.number
+        let currentCellTypeIndex = style.cells[tag].index
+        errorFlagOfCellType[currentCellTypeIndex] = PhoneNumberValidator().isInvalid(value: number)
         updatedRow = tag
         notifyContentChangeToDelegate()
     }

@@ -2,7 +2,7 @@ import UIKit
 import PhoneNumberKit
 
 protocol BillingFormPhoneNumberTextDelegate: AnyObject {
-    func phoneNumberIsUpdated(number: String, tag: Int, isValidLength: Bool)
+    func phoneNumberIsUpdated(number: Phone, tag: Int)
     func isValidPhoneMaxLength(text: String?) -> Bool
 }
 
@@ -27,9 +27,9 @@ final class BillingFormPhoneNumberText: PhoneNumberTextField, BillingFormTextFie
 
     override func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         super.textFieldDidEndEditing(textField, reason: reason)
-        guard let phoneNumber = textField.text else { return }
-        let isInValidLength = PhoneNumberValidator().isInvalid(text: phoneNumber)
-        phoneNumberTextDelegate?.phoneNumberIsUpdated(number: phoneNumber, tag: tag, isValidLength: !isInValidLength)
+        let country = Country(iso3166Alpha2: partialFormatter.currentRegion)
+        let phone = Phone(number: textField.text, country: country)
+        phoneNumberTextDelegate?.phoneNumberIsUpdated(number: phone, tag: tag)
     }
 
     override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

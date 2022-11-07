@@ -2,7 +2,7 @@ import UIKit
 import Checkout
 
 protocol PhoneNumberTextFieldDelegate: AnyObject {
-    func phoneNumberIsUpdated(number: String, tag: Int)
+    func phoneNumberIsUpdated(number: Phone, tag: Int)
     func isValidPhoneMaxLength(text: String?) -> Bool
 }
 
@@ -211,7 +211,7 @@ extension BillingFormTextFieldView {
         NSLayoutConstraint.activate([
             headerStackView.topAnchor.constraint(equalTo: topAnchor),
             headerStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            headerStackView.rightAnchor.constraint(equalTo: rightAnchor)
+            headerStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60)
         ])
     }
 
@@ -234,8 +234,7 @@ extension BillingFormTextFieldView {
         addSubview(mandatoryLabel)
         NSLayoutConstraint.activate([
             mandatoryLabel.centerYAnchor.constraint(equalTo: headerStackView.centerYAnchor),
-            mandatoryLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60)
+            mandatoryLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
         mandatoryLabel.bringSubviewToFront(self)
     }
@@ -273,14 +272,12 @@ extension BillingFormTextFieldView: UITextFieldDelegate {
 // MARK: - Phone Number Text Delegate
 
 extension BillingFormTextFieldView: BillingFormPhoneNumberTextDelegate {
+
     func isValidPhoneMaxLength(text: String?) -> Bool {
         phoneNumberDelegate?.isValidPhoneMaxLength(text: text) ?? true
     }
 
-    func phoneNumberIsUpdated(number: String, tag: Int, isValidLength: Bool) {
-        guard var style = style else { return }
-        style.error?.isHidden = isValidLength
-        errorView.isHidden = isValidLength
+    func phoneNumberIsUpdated(number: Phone, tag: Int) {
         phoneNumberDelegate?.phoneNumberIsUpdated(number: number, tag: tag)
     }
 }

@@ -17,7 +17,7 @@ protocol BillingFormViewControllerDelegate: AnyObject {
     func doneButtonIsPressed(sender: UIViewController)
     func cancelButtonIsPressed(sender: UIViewController)
     func update(country: Country)
-    func phoneNumberIsUpdated(number: String, tag: Int)
+    func phoneNumberIsUpdated(number: Phone, tag: Int)
     func isValidPhoneMaxLength(text: String?) -> Bool
 }
 
@@ -65,7 +65,7 @@ final class BillingFormViewController: UIViewController {
         view.dataSource = self
         view.delegate = self
         view.rowHeight = UITableView.automaticDimension
-        view.estimatedRowHeight = 300
+        view.estimatedRowHeight = 700
         view.sectionHeaderHeight = UITableView.automaticDimension
         view.separatorStyle = .none
         view.showsVerticalScrollIndicator = false
@@ -224,7 +224,7 @@ extension BillingFormViewController: CellTextFieldDelegate {
         delegate?.isValidPhoneMaxLength(text: text) ?? true
     }
 
-    func phoneNumberIsUpdated(number: String, tag: Int) {
+    func phoneNumberIsUpdated(number: Phone, tag: Int) {
         delegate?.phoneNumberIsUpdated(number: number, tag: tag)
     }
 
