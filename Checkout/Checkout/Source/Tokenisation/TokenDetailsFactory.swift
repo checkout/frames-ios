@@ -37,7 +37,7 @@ final class TokenDetailsFactory: TokenDetailsProviding {
     switch tokenType {
     case .card:
       return .card
-    case .applePay:
+    case .applepay:
       return .applePay
     }
   }

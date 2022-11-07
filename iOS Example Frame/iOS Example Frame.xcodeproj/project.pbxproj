@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0BC60B8A28AFBA4D00F30992 /* ThemeDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B8928AFBA4D00F30992 /* ThemeDemo.swift */; };
 		3A51FA6F531B59F9E514DE33 /* Pods_iOS_Example_Frame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FB254FE28DE0FCDB94BAC6 /* Pods_iOS_Example_Frame.framework */; };
-		44E647B3260CEDC900503D6C /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 44E647B2260CEDC800503D6C /* .travis.yml */; };
 		95289A8428AD61DE0036DDEE /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95289A3A28AD61DE0036DDEE /* UIViewControllerExtension.swift */; };
 		95289A8528AD61DE0036DDEE /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95289A3B28AD61DE0036DDEE /* UIViewExtension.swift */; };
 		95289A8628AD61DE0036DDEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95289A3D28AD61DE0036DDEE /* LaunchScreen.storyboard */; };
@@ -63,7 +62,6 @@
 		1099E80F698C7325B120243A /* Pods-iOS Example Frame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example Frame.debug.xcconfig"; path = "Target Support Files/Pods-iOS Example Frame/Pods-iOS Example Frame.debug.xcconfig"; sourceTree = "<group>"; };
 		3DAED23DE034B60868FD06A1 /* Pods-iOS Example Frame-iOS Example FrameUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example Frame-iOS Example FrameUITests.debug.xcconfig"; path = "Target Support Files/Pods-iOS Example Frame-iOS Example FrameUITests/Pods-iOS Example Frame-iOS Example FrameUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		449D4E4E26E7A67300D1A614 /* bitrise.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = bitrise.yml; path = ../bitrise.yml; sourceTree = "<group>"; };
-		44E647B2260CEDC800503D6C /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		660E9B956CB2CE293607C63C /* Pods-iOS Example Frame-iOS Example FrameUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example Frame-iOS Example FrameUITests.release.xcconfig"; path = "Target Support Files/Pods-iOS Example Frame-iOS Example FrameUITests/Pods-iOS Example Frame-iOS Example FrameUITests.release.xcconfig"; sourceTree = "<group>"; };
 		95289A3A28AD61DE0036DDEE /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		95289A3B28AD61DE0036DDEE /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -258,7 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				449D4E4E26E7A67300D1A614 /* bitrise.yml */,
-				44E647B2260CEDC800503D6C /* .travis.yml */,
 				E6646F8C20CE6C0900D8353A /* iOS Example Frame */,
 				E6646F8B20CE6C0900D8353A /* Products */,
 				E6646FAF20CE7A8000D8353A /* Frameworks */,
@@ -390,7 +387,6 @@
 				95289AAA28AD61DE0036DDEE /* GraphikLCG-Bold.otf in Resources */,
 				95289AA128AD61DE0036DDEE /* GraphikLCG-ExtralightItalic.otf in Resources */,
 				95289AA028AD61DE0036DDEE /* GraphikLCG-RegularItalic.otf in Resources */,
-				44E647B3260CEDC900503D6C /* .travis.yml in Resources */,
 				95289A9C28AD61DE0036DDEE /* GraphikLCG-Extralight.otf in Resources */,
 				95289A9928AD61DE0036DDEE /* GraphikLCG-ThinItalic.otf in Resources */,
 				95289A9E28AD61DE0036DDEE /* GraphikLCG-Black.otf in Resources */,
@@ -437,7 +433,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Adds support for Apple Silicon brew directory export \nPATH=\"$PATH:/opt/homebrew/bin\"  \n\nif which swiftlint > /dev/null; then\n  swiftlint --fix --config ../.swiftlint.yml\n  swiftlint --config ../.swiftlint.yml\nelse\n  echo \"error: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Adds support for Apple Silicon brew directory export \nPATH=\"$PATH:/opt/homebrew/bin\"  \n\n";
 		};
 		9E6D51F317159F7AB31B3872 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

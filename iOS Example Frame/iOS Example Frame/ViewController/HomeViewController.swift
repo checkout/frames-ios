@@ -7,6 +7,7 @@
 //
 
 import Frames
+import PassKit
 import UIKit
 
 class HomeViewController: UIViewController {
@@ -70,32 +71,27 @@ class HomeViewController: UIViewController {
   }
 
   @IBAction private func getApplePayData(_ sender: Any) {
-    // Use example Apple Pay payment data.
-    guard let paymentDataURL = Bundle.main.url( forResource: "example_apple_pay_payment_data", withExtension: "json") else {
-      print("Unable to get URL of Apple Pay payment data.")
-      return
-    }
+      let paymentNetworks = [PKPaymentNetwork.amex, .discover, .masterCard, .visa]
+      let paymentItem = PKPaymentSummaryItem.init(label: "Test item", amount: NSDecimalNumber(value: 12.99))
+      if PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: paymentNetworks) {
+          let request = PKPaymentRequest()
+              request.currencyCode = "USD" // 1
+              request.countryCode = "US" // 2
+              request.merchantIdentifier = "merchant.io.michaeltaylor.test"
+              request.merchantCapabilities = PKMerchantCapability.capability3DS // 4
+              request.supportedNetworks = paymentNetworks // 5
+              request.paymentSummaryItems = [paymentItem] // 6
+          guard let paymentVC = PKPaymentAuthorizationViewController(paymentRequest: request) else {
+              displayDefaultAlert(title: "Error", message: "Unable to present Apple Pay authorization.")
+              return
+          }
+              paymentVC.delegate = self
+              self.present(paymentVC, animated: true, completion: nil)
 
-    let paymentData: Data
-
-    do {
-      paymentData = try Data(contentsOf: paymentDataURL)
-    } catch {
-      print(error.localizedDescription)
-      return
-    }
-
-    // Potential Task: public struct ApplePay in Checkout SDK needs a public init otherwise will be treated as internal
-    let applePay = ApplePay(tokenData: paymentData)
-
-    checkoutAPIService.createToken(.applePay(applePay)) { status in
-      switch status {
-        case .failure(let error):
-          self.showAlert(with: error.localizedDescription)
-        case .success(let tokenDetails):
-          self.showAlert(with: tokenDetails.token)
+      } else {
+        displayDefaultAlert(title: "Error", message: "Unable to make Apple Pay transaction.")
       }
-    }
+
   }
 
   @IBAction private func get3DSToken(_ sender: Any) {
@@ -132,6 +128,13 @@ class HomeViewController: UIViewController {
     registerKeyboardHandlers(notificationCenter: notificationCenter,
                              keyboardWillShow: #selector(keyboardWillShow),
                              keyboardWillHide: #selector(keyboardWillHide))
+  }
+
+  private func displayDefaultAlert(title: String?, message: String?) {
+      let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+      let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+      alert.addAction(okAction)
+      self.present(alert, animated: true, completion: nil)
   }
 
   private func updateScrollViewInset(to contentInset: UIEdgeInsets, from notification: Notification) {
@@ -178,4 +181,43 @@ extension HomeViewController: ThreedsWebViewControllerDelegate {
       threeDSWebViewController.dismiss(animated: true, completion: nil)
       showAlert(with: "3DS Fail")
   }
+}
+
+extension HomeViewController: PKPaymentAuthorizationViewControllerDelegate {
+
+    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
+        dismiss(animated: true, completion: nil)
+
+        // pull test payload from static file
+        guard let paymentDataURL = Bundle.main.url( forResource: "example_apple_pay_payment_data", withExtension: "json") else {
+              print("Unable to get URL of Apple Pay payment data.")
+              return
+            }
+            let paymentData: Data
+
+            do {
+              paymentData = try Data(contentsOf: paymentDataURL)
+            } catch {
+              print(error.localizedDescription)
+              return
+            }
+
+            checkoutAPIService.createToken(.applePay(ApplePay(tokenData: paymentData))) { result in
+                switch result {
+                case .success(let tokenDetails):
+                  DispatchQueue.main.async {
+                    self.displayDefaultAlert(title: "Success!", message: tokenDetails.token)
+                  }
+
+                case .failure(let error):
+                  DispatchQueue.main.async {
+                    self.displayDefaultAlert(title: "Error!", message: error.localizedDescription)
+                  }
+                }
+            }
+    }
 }

@@ -47,6 +47,6 @@ struct TokenRequest: Encodable, Equatable {
 
   enum TokenType: String, Codable, Equatable {
     case card
-    case applePay
+    case applepay
   }
 }
