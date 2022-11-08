@@ -58,7 +58,7 @@ final class RequestFactoryTests: XCTestCase {
       XCTAssertEqual(requestParameters.url, URL(string: "https://www.checkout.com/tokens"))
       XCTAssertEqual(requestParameters.additionalHeaders, [
         "Authorization": "Bearer publicKey",
-        "User-Agent": "checkout-sdk-ios/0.1.0"
+        "User-Agent": "checkout-sdk-ios/4.0.0"
       ])
       XCTAssertEqual(requestParameters.contentType, "application/json;charset=UTF-8")
       XCTAssertEqual(requestParameters.timeout, 30)
@@ -73,7 +73,7 @@ final class RequestFactoryTests: XCTestCase {
 
   func test_create_success_applepay() {
     let tokenRequest = TokenRequest(
-      type: .applePay,
+      type: .applepay,
       tokenData: TokenRequest.TokenData(version: "1", data: "acdf", signature: "sig", header: ["header": "value"]),
       number: nil,
       expiryMonth: nil,
@@ -91,7 +91,7 @@ final class RequestFactoryTests: XCTestCase {
       XCTAssertEqual(requestParameters.url, URL(string: "https://www.checkout.com/tokens"))
       XCTAssertEqual(requestParameters.additionalHeaders, [
         "Authorization": "Bearer publicKey",
-        "User-Agent": "checkout-sdk-ios/0.1.0"
+        "User-Agent": "checkout-sdk-ios/4.0.0"
       ])
       XCTAssertEqual(requestParameters.contentType, "application/json;charset=UTF-8")
       XCTAssertEqual(requestParameters.timeout, 30)
@@ -108,7 +108,7 @@ final class RequestFactoryTests: XCTestCase {
     stubBaseURLProvider.baseURLToReturn = URL(string: "https://www.checkout.com")
 
     let tokenRequest = TokenRequest(
-      type: .applePay,
+      type: .applepay,
       tokenData: TokenRequest.TokenData(version: "1", data: "acdf", signature: "sig", header: ["header": "value"]),
       number: nil,
       expiryMonth: nil,

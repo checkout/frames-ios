@@ -59,7 +59,7 @@ final class TokenRequestFactory: TokenRequestProviding {
 
     return .success(
       TokenRequest(
-        type: .applePay,
+        type: .applepay,
         tokenData: tokenData,
         number: nil,
         expiryMonth: nil,
