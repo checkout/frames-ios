@@ -73,7 +73,7 @@ final class RequestFactoryTests: XCTestCase {
 
   func test_create_success_applepay() {
     let tokenRequest = TokenRequest(
-      type: .applePay,
+      type: .applepay,
       tokenData: TokenRequest.TokenData(version: "1", data: "acdf", signature: "sig", header: ["header": "value"]),
       number: nil,
       expiryMonth: nil,
@@ -108,7 +108,7 @@ final class RequestFactoryTests: XCTestCase {
     stubBaseURLProvider.baseURLToReturn = URL(string: "https://www.checkout.com")
 
     let tokenRequest = TokenRequest(
-      type: .applePay,
+      type: .applepay,
       tokenData: TokenRequest.TokenData(version: "1", data: "acdf", signature: "sig", header: ["header": "value"]),
       number: nil,
       expiryMonth: nil,

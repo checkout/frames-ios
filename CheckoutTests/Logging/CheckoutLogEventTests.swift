@@ -43,7 +43,7 @@ class CheckoutLogEventTests: XCTestCase {
 
   func test_tokenRequested_applepay() {
     let subject = CheckoutLogEvent.tokenRequested(CheckoutLogEvent.TokenRequestData(
-      tokenType: .applePay,
+      tokenType: .applepay,
       publicKey: "publicKey"
     ))
     let expectedEvent = Event(
@@ -61,7 +61,7 @@ class CheckoutLogEventTests: XCTestCase {
   func test_tokenResponse_success_200() {
     let subject = CheckoutLogEvent.tokenResponse(
       CheckoutLogEvent.TokenRequestData(
-        tokenType: .applePay,
+        tokenType: .applepay,
         publicKey: "publicKey"
       ),
       CheckoutLogEvent.TokenResponseData(
@@ -92,7 +92,7 @@ class CheckoutLogEventTests: XCTestCase {
   func test_tokenResponse_success_201() {
     let subject = CheckoutLogEvent.tokenResponse(
       CheckoutLogEvent.TokenRequestData(
-        tokenType: .applePay,
+        tokenType: .applepay,
         publicKey: "publicKey"
       ),
       CheckoutLogEvent.TokenResponseData(

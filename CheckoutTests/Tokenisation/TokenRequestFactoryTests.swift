@@ -44,7 +44,7 @@ final class TokenRequestFactoryTests: XCTestCase {
     let applePay = StubProvider.createApplePay()
     let tokenData = try! JSONDecoder().decode(TokenRequest.TokenData.self, from: applePay.tokenData)
     let tokenRequest = StubProvider.createTokenRequest(
-      type: .applePay,
+      type: .applepay,
       tokenData: tokenData,
       number: nil,
       expiryMonth: nil,
