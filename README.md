@@ -428,7 +428,7 @@ func handle(payment: PKPayment) {
 # Migrating
 3DS and Apple Pay processing remain unaffected so using them should still work the same. 
 
-If you're using Frames iOS from versions prior to v4.0.0, this update will bring breaking changes that'll require a little development time.
+If you're using Frames iOS from versions prior to v4 (we would strongly recommend using the latest release), this update will bring breaking changes that'll require a little development time.
 
 Because of our efforts to greatly improve the UI of the Frames and enabling you to customise it to such extents, the approach required is very different. This will require you to:
 - remove usage of Frames older version from your code base. This may be an opportunity to remove a screen as well, or a few other objects that were created only to support older Frames integration!
