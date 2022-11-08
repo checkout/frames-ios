@@ -10,11 +10,11 @@ All notable changes to this project will be documented in this file.
 Released on 2022-11-08
 
 Updates
-• Fix Apple Pay token type [Fix]
-• Fix some typos and cleaned up code [Fix]
-• Font can now be set within the Theme [Fix]
-• Improved efficiency of our 3DSWebView [Enhancement]
-• Enabled host app to use its own navigation controller [Enhancement]
+- Fix Apple Pay token type [Fix]
+- Fix some typos and cleaned up code [Fix]
+- Font can now be set within the Theme [Fix]
+- Improved efficiency of our 3DSWebView [Enhancement]
+- Enabled host app to use its own navigation controller [Enhancement]
 
 All SDK integrators desiring the new SDK should use 4.0.1 onwards, as it fixes some known bugs with 4.0.0.
 
