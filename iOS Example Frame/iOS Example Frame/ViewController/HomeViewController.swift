@@ -7,6 +7,7 @@
 //
 
 import Frames
+import PassKit
 import UIKit
 
 class HomeViewController: UIViewController {
@@ -26,10 +27,10 @@ class HomeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    #if UITEST
-      defaultButton.accessibilityIdentifier = "UITestDefault"
-      theme1Button.accessibilityIdentifier = "UITestTheme1"
-    #endif
+#if UITEST
+    defaultButton.accessibilityIdentifier = "UITestDefault"
+    theme1Button.accessibilityIdentifier = "UITestTheme1"
+#endif
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -53,7 +54,7 @@ class HomeViewController: UIViewController {
 
   @IBAction private func showMatrixTheme(_ sender: Any) {
     customizeNavigationBarAppearance(backgroundColor: UIColor(red: 23 / 255, green: 32 / 255, blue: 30 / 255, alpha: 1),
-                                       foregroundColor: .green)
+                                     foregroundColor: .green)
     let viewController = Factory.getMatrixPaymentViewController { [weak self] result in
       self?.handleTokenResponse(with: result)
     }
@@ -62,7 +63,7 @@ class HomeViewController: UIViewController {
 
   @IBAction private func showOtherTheme(_ sender: Any) {
     customizeNavigationBarAppearance(backgroundColor: UIColor(red: 23 / 255, green: 32 / 255, blue: 30 / 255, alpha: 1),
-                                       foregroundColor: .green)
+                                     foregroundColor: .green)
     let viewController = Factory.getOtherPaymentViewController { [weak self] result in
       self?.handleTokenResponse(with: result)
     }
@@ -70,39 +71,32 @@ class HomeViewController: UIViewController {
   }
 
   @IBAction private func getApplePayData(_ sender: Any) {
-    // Use example Apple Pay payment data.
-    guard let paymentDataURL = Bundle.main.url( forResource: "example_apple_pay_payment_data", withExtension: "json") else {
-      print("Unable to get URL of Apple Pay payment data.")
+    let paymentNetworks: [PKPaymentNetwork] = [.amex, .discover, .masterCard, .visa]
+    let paymentItem = PKPaymentSummaryItem(label: "Test item", amount: NSDecimalNumber(value: 12.99))
+    guard PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: paymentNetworks) else {
+      showAlert(with: "Unable to make Apple Pay transaction.")
       return
     }
-
-    let paymentData: Data
-
-    do {
-      paymentData = try Data(contentsOf: paymentDataURL)
-    } catch {
-      print(error.localizedDescription)
+    let request = PKPaymentRequest()
+    request.currencyCode = "USD"
+    request.countryCode = "US"
+    request.merchantIdentifier = "com.checkout.merchant.io.test.ios"
+    request.merchantCapabilities = PKMerchantCapability.capability3DS
+    request.supportedNetworks = paymentNetworks
+    request.paymentSummaryItems = [paymentItem]
+    guard let paymentVC = PKPaymentAuthorizationViewController(paymentRequest: request) else {
+      showAlert(with: "Unable to present Apple Pay authorization.")
       return
     }
-
-    // Potential Task: public struct ApplePay in Checkout SDK needs a public init otherwise will be treated as internal
-    let applePay = ApplePay(tokenData: paymentData)
-
-    checkoutAPIService.createToken(.applePay(applePay)) { status in
-      switch status {
-        case .failure(let error):
-          self.showAlert(with: error.localizedDescription)
-        case .success(let tokenDetails):
-          self.showAlert(with: tokenDetails.token)
-      }
-    }
+    paymentVC.delegate = self
+    present(paymentVC, animated: true, completion: nil)
   }
 
   @IBAction private func get3DSToken(_ sender: Any) {
     guard let threeDSURLString = threeDSURLTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
           let threeDSURL = URL(string: threeDSURLString) else {
-        showAlert(with: "3DS URL could not be parsed")
-        return
+      showAlert(with: "3DS URL could not be parsed")
+      return
     }
 
     let webViewController = ThreedsWebViewController(environment: .sandbox,
@@ -116,7 +110,7 @@ class HomeViewController: UIViewController {
 
   @objc private func keyboardWillShow(notification: Notification) {
     guard let userInfo = notification.userInfo,
-      let keyboardFrameValue = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue else { return }
+          let keyboardFrameValue = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue else { return }
     var keyboardFrame = keyboardFrameValue.cgRectValue
     keyboardFrame = view.convert(keyboardFrame, from: nil)
     var contentInset: UIEdgeInsets = scrollView.contentInset
@@ -148,16 +142,17 @@ class HomeViewController: UIViewController {
   private func handleTokenResponse(with result: Result<TokenDetails, TokenRequestError>) {
     switch result {
       case .failure(let error):
-        showAlert(with: error.localizedDescription)
+        showAlert(with: error.localizedDescription, title: "Error")
       case .success(let tokenDetails):
-        showAlert(with: tokenDetails.token)
+        showAlert(with: tokenDetails.token, title: "Success")
     }
   }
 
-  private func showAlert(with cardToken: String) {
+  private func showAlert(with message: String, title: String = "Payment") {
     DispatchQueue.main.async {
       let alert = UIAlertController(title: "Payment",
-                                    message: cardToken, preferredStyle: .alert)
+                                    message: message,
+                                    preferredStyle: .alert)
       let action = UIAlertAction(title: "OK", style: .default) { _ in
         alert.dismiss(animated: true, completion: nil)
       }
@@ -170,12 +165,50 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: ThreedsWebViewControllerDelegate {
   func threeDSWebViewControllerAuthenticationDidSucceed(_ threeDSWebViewController: ThreedsWebViewController, token: String?) {
-      threeDSWebViewController.dismiss(animated: true, completion: nil)
-      showAlert(with: "3DS success, token: \(token ?? "nil")")
+    threeDSWebViewController.dismiss(animated: true, completion: nil)
+    showAlert(with: "\(token ?? "nil")", title: "3DS success")
   }
 
   func threeDSWebViewControllerAuthenticationDidFail(_ threeDSWebViewController: ThreedsWebViewController) {
-      threeDSWebViewController.dismiss(animated: true, completion: nil)
-      showAlert(with: "3DS Fail")
+    threeDSWebViewController.dismiss(animated: true, completion: nil)
+    showAlert(with: "3DS Fail")
+  }
+}
+
+extension HomeViewController: PKPaymentAuthorizationViewControllerDelegate {
+
+  func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+    dismiss(animated: true, completion: nil)
+  }
+
+  func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController,
+                                          didAuthorizePayment payment: PKPayment,
+                                          handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
+    dismiss(animated: true, completion: nil)
+
+    // pull test payload from static file
+    guard let paymentDataURL = Bundle.main.url( forResource: "example_apple_pay_payment_data", withExtension: "json") else {
+      print("Unable to get URL of Apple Pay payment data.")
+      return
+    }
+    let paymentData: Data
+
+    do {
+      paymentData = try Data(contentsOf: paymentDataURL)
+    } catch {
+      print(error.localizedDescription)
+      return
+    }
+    let applePay = ApplePay(tokenData: paymentData)
+    checkoutAPIService.createToken(.applePay(applePay)) { result in
+      DispatchQueue.main.async { [weak self] in
+        switch result {
+          case .success(let tokenDetails):
+            self?.showAlert(with: tokenDetails.token, title: "Success")
+          case .failure(let error):
+            self?.showAlert(with: error.localizedDescription, title: "Error")
+        }
+      }
+    }
   }
 }
