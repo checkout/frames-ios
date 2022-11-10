@@ -147,7 +147,7 @@ class HomeViewController: UIViewController {
 
   private func handleApplePayAction() {
     guard let paymentAuthorizationVC = ApplePayCreator.createPaymentAuthorizationViewController(delegate: self) else {
-      // Retrieve sample token from file and pass to `processToken`
+      // If device is not able to handle Apple Pay, use sample token from project to try flow
       guard let paymentData = getSampleDataResponseFromJSONFile() else { return }
       processToken(paymentData)
       return

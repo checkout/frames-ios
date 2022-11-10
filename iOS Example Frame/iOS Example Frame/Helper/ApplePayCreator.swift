@@ -2,14 +2,14 @@ import PassKit
 
 enum ApplePayCreator {
 
-  /// create Apple pay view controller for Authorization
+  /// Create Apple pay view controller for Authorization
   static func createPaymentAuthorizationViewController(delegate: PKPaymentAuthorizationViewControllerDelegate) -> PKPaymentAuthorizationViewController? {
 
     /// Allowed payment  schemes
     let paymentNetworks: [PKPaymentNetwork] = [.amex, .discover, .masterCard, .visa]
 
     guard PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: paymentNetworks) else {
-      print("Unable to make Apple Pay transaction using defined networks")
+      // User is unable to make payments
       return nil
     }
 
@@ -42,11 +42,8 @@ enum ApplePayCreator {
     /// The last item should be the total you wish to charge, and should not be pending
     request.paymentSummaryItems = [paymentItem]
 
-    guard let paymentVC = PKPaymentAuthorizationViewController(paymentRequest: request) else {
-      print("Unable to present Apple Pay authorization.")
-      return nil
-    }
-    paymentVC.delegate = delegate
+    let paymentVC = PKPaymentAuthorizationViewController(paymentRequest: request)
+    paymentVC?.delegate = delegate
     return paymentVC
   }
 
