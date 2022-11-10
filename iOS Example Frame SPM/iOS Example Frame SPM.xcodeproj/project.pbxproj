@@ -12,6 +12,7 @@
 		0BD2ECBF28B65DA10041A942 /* FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2ECBE28B65DA10041A942 /* FrameUITests.swift */; };
 		0BD2ECC128B65EC20041A942 /* XCUIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2ECC028B65EC20041A942 /* XCUIApplication+Extension.swift */; };
 		443FCD9426137A4C009D6DE6 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 443FCD9326137A4C009D6DE6 /* Frames */; };
+		955B092B291CEF0F00DEEAF5 /* ApplePayCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B092A291CEF0F00DEEAF5 /* ApplePayCreator.swift */; };
 		95C8C10D28AD5FEE00B8D3D0 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C0B528AD5FEE00B8D3D0 /* UIViewControllerExtension.swift */; };
 		95C8C10E28AD5FEE00B8D3D0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C0B628AD5FEE00B8D3D0 /* UIViewExtension.swift */; };
 		95C8C10F28AD5FEE00B8D3D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C0B728AD5FEE00B8D3D0 /* AppDelegate.swift */; };
@@ -79,6 +80,7 @@
 		443FCD8F261379CB009D6DE6 /* frames-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "frames-ios"; path = ..; sourceTree = "<group>"; };
 		44E647AC260CEAFF00503D6C /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9554570E28AE91C300C34759 /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		955B092A291CEF0F00DEEAF5 /* ApplePayCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayCreator.swift; sourceTree = "<group>"; };
 		95C8C0B528AD5FEE00B8D3D0 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		95C8C0B628AD5FEE00B8D3D0 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		95C8C0B728AD5FEE00B8D3D0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +172,14 @@
 				95C8C0CA28AD5FEE00B8D3D0 /* Assets.xcassets */,
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		955B0929291CEC1200DEEAF5 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				955B092A291CEF0F00DEEAF5 /* ApplePayCreator.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		95C8C0B428AD5FEE00B8D3D0 /* Extension */ = {
@@ -313,6 +323,7 @@
 				95C8C0CF28AD5FEE00B8D3D0 /* Storyboards */,
 				95C8C10628AD5FEE00B8D3D0 /* Style */,
 				95C8C0C828AD5FEE00B8D3D0 /* ViewController */,
+				955B0929291CEC1200DEEAF5 /* Helper */,
 			);
 			name = "iOS Example Frame";
 			path = "../iOS Example Frame/iOS Example Frame";
@@ -520,6 +531,7 @@
 				95C8C11328AD5FEE00B8D3D0 /* HomeViewController.swift in Sources */,
 				0BC60B5C28AFA4A600F30992 /* ThemeDemo.swift in Sources */,
 				95C8C13D28AD5FEE00B8D3D0 /* Factory.swift in Sources */,
+				955B092B291CEF0F00DEEAF5 /* ApplePayCreator.swift in Sources */,
 				95C8C11A28AD5FEE00B8D3D0 /* UIFont+SFMono.swift in Sources */,
 				95C8C10F28AD5FEE00B8D3D0 /* AppDelegate.swift in Sources */,
 			);
