@@ -41,6 +41,7 @@
 		4422783E2616376E009626A0 /* CheckoutSdkIos.h in Headers */ = {isa = PBXBuildFile; fileRef = 442277E52616376E009626A0 /* CheckoutSdkIos.h */; };
 		44A4DFE5261CC59B00E0C349 /* PhoneNumberKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */; settings = {ATTRIBUTES = (Required, ); }; };
 		57256C7E269F1181001EC3D8 /* Frames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4422775D26163748009626A0 /* Frames.framework */; platformFilter = ios; };
+		955B092E291D00C900DEEAF5 /* ApplePayCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B092D291D00C900DEEAF5 /* ApplePayCreator.swift */; };
 		955B590528D23067006A280C /* PostCodeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B581D28D23066006A280C /* PostCodeValidator.swift */; };
 		955B590628D23067006A280C /* CountryValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B581E28D23066006A280C /* CountryValidator.swift */; };
 		955B590728D23067006A280C /* PhoneNumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B581F28D23066006A280C /* PhoneNumberValidator.swift */; };
@@ -361,6 +362,7 @@
 		44A4DFCF261CC17800E0C349 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 		95433B3C28C9F23900200683 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		95433B3E28C9F23D00200683 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		955B092D291D00C900DEEAF5 /* ApplePayCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplePayCreator.swift; sourceTree = "<group>"; };
 		955B581D28D23066006A280C /* PostCodeValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCodeValidator.swift; sourceTree = "<group>"; };
 		955B581E28D23066006A280C /* CountryValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryValidator.swift; sourceTree = "<group>"; };
 		955B581F28D23066006A280C /* PhoneNumberValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberValidator.swift; sourceTree = "<group>"; };
@@ -725,6 +727,14 @@
 				44A4DFBE261CA91300E0C349 /* PhoneNumberKit.xcframework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		955B092C291D00C900DEEAF5 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				955B092D291D00C900DEEAF5 /* ApplePayCreator.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		955B581B28D23066006A280C /* UI */ = {
@@ -1789,6 +1799,7 @@
 				95EDB1DA28AD407F0029DFA5 /* Storyboards */,
 				95EDB1D528AD3B280029DFA5 /* Style */,
 				95EDB1D628AD40090029DFA5 /* ViewController */,
+				955B092C291D00C900DEEAF5 /* Helper */,
 				F59820112805B75F007AB07C /* Info.plist */,
 			);
 			name = "iOS Example Frame";
@@ -2267,6 +2278,7 @@
 				0BC60B5E28AFB27800F30992 /* ThemeDemo.swift in Sources */,
 				0B194B0928A1132B001AEAFD /* UIFont+Graphik.swift in Sources */,
 				95EDB1D328AD3AFA0029DFA5 /* UIViewExtension.swift in Sources */,
+				955B092E291D00C900DEEAF5 /* ApplePayCreator.swift in Sources */,
 				95EDB1D128AD3AD20029DFA5 /* UIViewControllerExtension.swift in Sources */,
 				F59820192805B75F007AB07C /* AppDelegate.swift in Sources */,
 				95EDB1CB28AC29830029DFA5 /* HomeViewController.swift in Sources */,

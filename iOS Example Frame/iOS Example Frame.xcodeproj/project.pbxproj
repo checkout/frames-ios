@@ -52,6 +52,7 @@
 		95289AAC28AD61DE0036DDEE /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95289A7F28AD61DE0036DDEE /* Factory.swift */; };
 		95289AAD28AD61DE0036DDEE /* CustomStyle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95289A8128AD61DE0036DDEE /* CustomStyle1.swift */; };
 		95289AAE28AD61DE0036DDEE /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95289A8228AD61DE0036DDEE /* Style.swift */; };
+		955B0931291D00E000DEEAF5 /* ApplePayCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B0930291D00E000DEEAF5 /* ApplePayCreator.swift */; };
 		E6646F8E20CE6C0900D8353A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6646F8D20CE6C0900D8353A /* AppDelegate.swift */; };
 		E6646F9520CE6C0A00D8353A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6646F9420CE6C0A00D8353A /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -114,6 +115,7 @@
 		95289A7F28AD61DE0036DDEE /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		95289A8128AD61DE0036DDEE /* CustomStyle1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle1.swift; sourceTree = "<group>"; };
 		95289A8228AD61DE0036DDEE /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		955B0930291D00E000DEEAF5 /* ApplePayCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplePayCreator.swift; sourceTree = "<group>"; };
 		A5FB254FE28DE0FCDB94BAC6 /* Pods_iOS_Example_Frame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_Frame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C143A35EF2223A62DF5C70D7 /* Pods-iOS Example Frame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example Frame.release.xcconfig"; path = "Target Support Files/Pods-iOS Example Frame/Pods-iOS Example Frame.release.xcconfig"; sourceTree = "<group>"; };
 		E620C49520EA2A7A00045DC6 /* FramesIos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FramesIos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,6 +254,14 @@
 			path = Style;
 			sourceTree = "<group>";
 		};
+		955B092F291D00E000DEEAF5 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				955B0930291D00E000DEEAF5 /* ApplePayCreator.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		E6646F8120CE6C0900D8353A = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +293,7 @@
 				95289A3C28AD61DE0036DDEE /* Storyboards */,
 				95289A8028AD61DE0036DDEE /* Style */,
 				95289A4A28AD61DE0036DDEE /* ViewController */,
+				955B092F291D00E000DEEAF5 /* Helper */,
 				E6646F9920CE6C0A00D8353A /* Info.plist */,
 			);
 			path = "iOS Example Frame";
@@ -484,6 +495,7 @@
 				0BC60B8A28AFBA4D00F30992 /* ThemeDemo.swift in Sources */,
 				95289A8B28AD61DE0036DDEE /* UIFont+SFMono.swift in Sources */,
 				95289A8528AD61DE0036DDEE /* UIViewExtension.swift in Sources */,
+				955B0931291D00E000DEEAF5 /* ApplePayCreator.swift in Sources */,
 				95289AAD28AD61DE0036DDEE /* CustomStyle1.swift in Sources */,
 				95289A8428AD61DE0036DDEE /* UIViewControllerExtension.swift in Sources */,
 				95289A9828AD61DE0036DDEE /* UIFont+Graphik.swift in Sources */,
