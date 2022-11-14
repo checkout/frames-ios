@@ -5,6 +5,37 @@ protocol PhoneNumberTextFieldDelegate: AnyObject {
     func phoneNumberIsUpdated(number: String, tag: Int)
 }
 
+class BorderView: UIView {
+
+    private var style: ElementBorderStyle?
+
+    /// shaper layer that draw edges and corners
+    var borderLayer = CAShapeLayer()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        layer.addSublayer(borderLayer)
+    }
+
+    // Keep border layer size in sync with owning view
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard let style = style else { return }
+        borderLayer.frame = bounds
+        borderLayer.updateEdgesAndCorners(with: style)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    /// Update edges and corners style
+    /// - Parameter style: protocol with some parameters for styling border and corners
+    func update(with style: ElementBorderStyle) {
+        self.style = style
+    }
+}
+
 class BillingFormTextFieldView: UIView {
 
     // MARK: - Properties
@@ -30,8 +61,8 @@ class BillingFormTextFieldView: UIView {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var textFieldContainer: UIView = {
-        let view = UIView().disabledAutoresizingIntoConstraints()
+    private(set) lazy var textFieldContainer: BorderView = {
+        let view = BorderView().disabledAutoresizingIntoConstraints()
         view.backgroundColor = .clear
         return view
     }()
@@ -98,10 +129,8 @@ class BillingFormTextFieldView: UIView {
         let borderColor = !(style.error?.isHidden ?? true) ?
         style.textfield.borderStyle.errorColor.cgColor :
         style.textfield.borderStyle.normalColor.cgColor
-
-        textFieldContainer.layer.borderColor = borderColor
-        textFieldContainer.layer.cornerRadius = style.textfield.borderStyle.cornerRadius
-        textFieldContainer.layer.borderWidth = style.textfield.borderStyle.borderWidth
+        textFieldContainer.update(with: style.textfield.borderStyle)
+        textFieldContainer.borderLayer.strokeColor = borderColor
         textFieldContainer.backgroundColor = style.textfield.backgroundColor
     }
 

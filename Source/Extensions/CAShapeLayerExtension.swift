@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 extension CAShapeLayer {
 
     /// Add Edges and corners with style
@@ -20,6 +19,7 @@ extension CAShapeLayer {
         // always fill is clear color
         fillColor = UIColor.clear.cgColor
 
+        lineWidth = style.borderWidth
         let rect = bounds.insetBy(dx: style.cornerRadius / 2,
                                   dy: style.cornerRadius / 2)
         let path = UIBezierPath()
@@ -48,6 +48,7 @@ extension CAShapeLayer {
     ///   - rect: CGRect of current view
     ///   - style: Protocol that provide which edge will be added
     private func updateBorders(with path: UIBezierPath, rect: CGRect, style: ElementBorderStyle) {
+        guard let edges = style.edges else { return }
 
         //  Bottom Left corner Radius
         let isBottomLeftCornerRequired = style.corners?.contains(.bottomLeft) ?? false
@@ -66,8 +67,8 @@ extension CAShapeLayer {
         let isBottomRightCornerRequired = style.corners?.contains(.bottomRight) ?? false
         let bottomRightCornerRadius = isBottomRightCornerRequired ? style.cornerRadius : 0
 
-        //left line
-        if style.edges.contains(.left) {
+        // left line
+        if edges.contains(.left) {
             path.drawLine(startX: rect.minX,
                           startY: rect.minY + topLeftCornerRadius,
                           endX: rect.minX,
@@ -75,7 +76,7 @@ extension CAShapeLayer {
         }
 
         // top line
-        if style.edges.contains(.top) {
+        if edges.contains(.top) {
             path.drawLine(startX: rect.maxX - topRightCornerRadius,
                           startY: rect.minY,
                           endX: rect.minX + topLeftCornerRadius ,
@@ -83,15 +84,15 @@ extension CAShapeLayer {
         }
 
         // right line
-        if style.edges.contains(.right) {
+        if edges.contains(.right) {
             path.drawLine(startX: rect.maxX,
                           startY: rect.maxY - bottomRightCornerRadius,
                           endX: rect.maxX,
-                          endY: rect.minY  + topRightCornerRadius)
+                          endY: rect.minY + topRightCornerRadius)
         }
 
         // bottom line
-        if style.edges.contains(.bottom) {
+        if edges.contains(.bottom) {
             path.drawLine(startX: rect.minX + bottomLeftCornerRadius,
                           startY: rect.maxY,
                           endX: rect.maxX - bottomRightCornerRadius,
@@ -111,7 +112,7 @@ extension CAShapeLayer {
         if corners.contains(.bottomLeft) {
             path.drawCorner(startX: rect.minX + style.cornerRadius,
                             startY: rect.maxY,
-                            endX:  rect.minX,
+                            endX: rect.minX,
                             endY: rect.maxY - style.cornerRadius,
                             controlX: rect.minX,
                             controlY: rect.maxY)
@@ -121,7 +122,7 @@ extension CAShapeLayer {
         if corners.contains(.topLeft) {
             path.drawCorner(startX: rect.minX,
                             startY: rect.minY + style.cornerRadius,
-                            endX:  rect.minX + style.cornerRadius,
+                            endX: rect.minX + style.cornerRadius,
                             endY: rect.minY,
                             controlX: rect.minX,
                             controlY: rect.minY)
@@ -131,7 +132,7 @@ extension CAShapeLayer {
         if corners.contains(.topRight) {
             path.drawCorner(startX: rect.maxX - style.cornerRadius,
                             startY: rect.minY,
-                            endX:  rect.maxX,
+                            endX: rect.maxX,
                             endY: rect.minY + style.cornerRadius,
                             controlX: rect.maxX,
                             controlY: rect.minY)
@@ -141,7 +142,7 @@ extension CAShapeLayer {
         if corners.contains(.bottomRight) {
             path.drawCorner(startX: rect.maxX,
                             startY: rect.maxY - style.cornerRadius,
-                            endX:  rect.maxX - style.cornerRadius,
+                            endX: rect.maxX - style.cornerRadius,
                             endY: rect.maxY,
                             controlX: rect.maxX,
                             controlY: rect.maxY)
