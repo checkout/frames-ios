@@ -96,7 +96,7 @@ class BillingFormTextFieldView: UIView {
 
     private func updateTextFieldContainer(style: CellTextFieldStyle) {
         let borderColor = !(style.error?.isHidden ?? true) ?
-        style.textfield.errorBorderColor.cgColor :
+        style.textfield.borderStyle.errorColor.cgColor :
         style.textfield.normalBorderColor.cgColor
 
         textFieldContainer.layer.borderColor = borderColor

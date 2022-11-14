@@ -104,7 +104,7 @@ class InputView: UIView {
 
     private func updateTextFieldContainer(style: CellTextFieldStyle) {
         let borderColor = !(style.error?.isHidden ?? true) ?
-        style.textfield.errorBorderColor.cgColor :
+        style.textfield.borderStyle.errorColor.cgColor :
         style.textfield.normalBorderColor.cgColor
 
         textFieldContainerBorder.layer.borderColor = borderColor
@@ -217,7 +217,7 @@ extension InputView: TextFieldViewDelegate {
         if shouldEndEditing {
             textFieldContainerBorder.layer.borderColor = (style?.error?.isHidden ?? true) ?
                 style?.textfield.normalBorderColor.cgColor :
-                style?.textfield.errorBorderColor.cgColor
+                style?.textfield.borderStyle.errorColor.cgColor
         }
         return shouldEndEditing
     }
