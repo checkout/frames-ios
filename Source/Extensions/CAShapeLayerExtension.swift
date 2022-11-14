@@ -20,8 +20,8 @@ extension CAShapeLayer {
         // always fill is clear color
         fillColor = UIColor.clear.cgColor
 
-        let rect = bounds.insetBy(dx: style.thickness / 2,
-                                  dy: style.thickness / 2)
+        let rect = bounds.insetBy(dx: style.cornerRadius / 2,
+                                  dy: style.cornerRadius / 2)
         let path = UIBezierPath()
         updateBorders(with: path, rect: rect, style: style)
         updateCorners(with: path, rect: rect, style: style)
