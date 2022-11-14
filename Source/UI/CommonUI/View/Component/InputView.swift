@@ -105,7 +105,7 @@ class InputView: UIView {
     private func updateTextFieldContainer(style: CellTextFieldStyle) {
         let borderColor = !(style.error?.isHidden ?? true) ?
         style.textfield.borderStyle.errorColor.cgColor :
-        style.textfield.normalBorderColor.cgColor
+        style.textfield.borderStyle.normalColor.cgColor
 
         textFieldContainerBorder.layer.borderColor = borderColor
         textFieldContainerBorder.layer.cornerRadius = style.textfield.cornerRadius
@@ -216,7 +216,7 @@ extension InputView: TextFieldViewDelegate {
         let shouldEndEditing = delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString) ?? true
         if shouldEndEditing {
             textFieldContainerBorder.layer.borderColor = (style?.error?.isHidden ?? true) ?
-                style?.textfield.normalBorderColor.cgColor :
+            style?.textfield.borderStyle.borderStyle.normalColor.cgColor :
                 style?.textfield.borderStyle.errorColor.cgColor
         }
         return shouldEndEditing
