@@ -109,7 +109,7 @@ class InputView: UIView {
 
         textFieldContainerBorder.layer.borderColor = borderColor
         textFieldContainerBorder.layer.cornerRadius = style.textfield.borderStyle.cornerRadius
-        textFieldContainerBorder.layer.borderWidth = style.textfield.borderWidth
+        textFieldContainerBorder.layer.borderWidth = style.textfield.borderStyle.borderWidth
         textFieldContainerBorder.backgroundColor = style.textfield.backgroundColor
     }
 

@@ -101,7 +101,7 @@ class BillingFormTextFieldView: UIView {
 
         textFieldContainer.layer.borderColor = borderColor
         textFieldContainer.layer.cornerRadius = style.textfield.borderStyle.cornerRadius
-        textFieldContainer.layer.borderWidth = style.textfield.borderWidth
+        textFieldContainer.layer.borderWidth = style.textfield.borderStyle.borderWidth
         textFieldContainer.backgroundColor = style.textfield.backgroundColor
     }
 
