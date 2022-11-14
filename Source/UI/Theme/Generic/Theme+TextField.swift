@@ -31,7 +31,7 @@ public extension Theme {
         public var normalColor: UIColor
         public var focusColor: UIColor
         public var errorColor: UIColor
-        public var edges: UIRectEdge
+        public var edges: UIRectEdge?
         public var corners: UIRectCorner?
     }
 

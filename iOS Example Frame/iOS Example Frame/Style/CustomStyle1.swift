@@ -215,7 +215,7 @@ private enum StyleOrganiser {
         var normalColor: UIColor = .clear
         var focusColor: UIColor = .clear
         var errorColor: UIColor = Constants.errorColor
-        var edges: UIRectEdge = .all
+        var edges: UIRectEdge? = .all
         var corners: UIRectCorner? = .allCorners
     }
 
