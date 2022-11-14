@@ -16,17 +16,23 @@ public extension Theme {
         public var isSupportingNumericKeyboard = true
         public var textAlignment: NSTextAlignment = .natural
         public var height: Double = 30
-        public var cornerRadius: CGFloat
-        public var borderWidth: CGFloat
         public var placeholder: String?
         public var tintColor: UIColor
-        public var normalBorderColor: UIColor
-        public var focusBorderColor: UIColor
-        public var errorBorderColor: UIColor
         public var isHidden = false
         public var font: UIFont
         public var backgroundColor: UIColor
         public var textColor: UIColor
+        public var borderStyle: ElementBorderStyle
+    }
+
+    struct ThemeBorderStyle: ElementBorderStyle {
+        public var cornerRadius: CGFloat
+        public var borderWidth: CGFloat
+        public var normalColor: UIColor
+        public var focusColor: UIColor
+        public var errorColor: UIColor
+        public var edges: UIRectEdge
+        public var corners: UIRectCorner?
     }
 
     /// Create a TextField Style from text
@@ -35,16 +41,19 @@ public extension Theme {
                         isNumericInput: Bool) -> ThemeTextField {
         ThemeTextField(text: text,
                        isSupportingNumericKeyboard: isNumericInput,
-                       cornerRadius: self.textInputBorderRadius,
-                       borderWidth: self.textInputBorderWidth,
                        placeholder: placeholderText,
                        tintColor: self.primaryFontColor,
-                       normalBorderColor: self.textInputBorderColor,
-                       focusBorderColor: self.focussedTextInputBorderColor,
-                       errorBorderColor: self.errorBorderColor,
                        font: inputFont,
                        backgroundColor: self.textInputBackgroundColor,
-                       textColor: self.primaryFontColor)
+                       textColor: self.primaryFontColor,
+                       borderStyle: ThemeBorderStyle(cornerRadius: self.textInputBorderRadius,
+                                                     borderWidth: self.textInputBorderRadius,
+                                                     normalColor: self.textInputBorderColor,
+                                                     focusColor: self.focussedTextInputBorderColor,
+                                                     errorColor: self.errorBorderColor,
+                                                     edges: .all,
+                                                     corners: nil)
+        )
     }
 
 }
