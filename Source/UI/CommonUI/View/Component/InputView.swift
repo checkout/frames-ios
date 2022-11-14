@@ -216,7 +216,7 @@ extension InputView: TextFieldViewDelegate {
         let shouldEndEditing = delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString) ?? true
         if shouldEndEditing {
             textFieldContainerBorder.layer.borderColor = (style?.error?.isHidden ?? true) ?
-            style?.textfield.borderStyle.borderStyle.normalColor.cgColor :
+            style?.textfield.borderStyle.normalColor.cgColor :
                 style?.textfield.borderStyle.errorColor.cgColor
         }
         return shouldEndEditing
