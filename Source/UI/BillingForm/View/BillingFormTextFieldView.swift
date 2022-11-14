@@ -236,7 +236,7 @@ extension BillingFormTextFieldView: UITextFieldDelegate {
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
-        textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
+        textFieldContainer.layer.borderColor = style?.textfield.borderStyle.focusColor.cgColor
     }
 
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
