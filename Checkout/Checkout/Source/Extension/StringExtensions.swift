@@ -7,8 +7,12 @@
 
 import Foundation
 
-extension String {
+public extension String {
     
+    var decimalDigits: String {
+        components(separatedBy: .decimalDigits.inverted).joined()
+    }
+
     func removeWhitespaces() -> String {
         filter { !$0.isWhitespace }
     }
