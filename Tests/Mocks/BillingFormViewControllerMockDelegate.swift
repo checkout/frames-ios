@@ -40,6 +40,15 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
     var isValidPhoneMaxLengthLastCalledWithText: String?
     var isValidPhoneMaxLengthReturn: Bool = true
 
+
+    var textFieldDidEndEditingCalledTimes = 0
+    var textFieldShouldEndEditingLastCalledWithTag: Int?
+
+    func textFieldDidEndEditing(tag: Int) {
+        textFieldDidEndEditingCalledTimes += 1
+        textFieldShouldEndEditingLastCalledWithTag = tag
+    }
+    
     func doneButtonIsPressed(sender: UIViewController) {
         doneButtonIsPressedCalledTimes += 1
         doneButtonIsPressedLastCalledWithSender = sender

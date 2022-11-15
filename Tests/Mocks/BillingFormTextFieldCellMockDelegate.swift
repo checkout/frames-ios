@@ -2,7 +2,8 @@ import UIKit
 @testable import Frames
 
 class BillingFormTextFieldCellMockDelegate: CellTextFieldDelegate {
-    
+
+
     var textFieldShouldBeginEditingCalledTimes = 0
     var textFieldShouldBeginEditingLastCalledWithTextField: UITextField?
     
@@ -23,6 +24,14 @@ class BillingFormTextFieldCellMockDelegate: CellTextFieldDelegate {
     var isValidPhoneMaxLengthCalledTimes = 0
     var isValidPhoneMaxLengthLastCalledWithText: String?
     var isValidPhoneMaxLengthReturn: Bool = true
+
+    var textFieldDidEndEditingCalledTimes = 0
+    var textFieldShouldEndEditingLastCalledWithTag: Int?
+
+    func textFieldDidEndEditing(tag: Int) {
+        textFieldDidEndEditingCalledTimes += 1
+        textFieldShouldEndEditingLastCalledWithTag = tag
+    }
 
     func textFieldShouldBeginEditing(textField: UITextField) {
         textFieldShouldBeginEditingCalledTimes += 1

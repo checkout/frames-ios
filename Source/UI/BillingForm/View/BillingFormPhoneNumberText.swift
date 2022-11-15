@@ -29,19 +29,29 @@ final class BillingFormPhoneNumberText: PhoneNumberTextField, BillingFormTextFie
     override func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         super.textFieldDidEndEditing(textField, reason: reason)
         let country = Country(iso3166Alpha2: partialFormatter.currentRegion)
-        let phone = Phone(number: textField.text, country: country)
+        let phone = Phone(number: nationalNumber, country: country)
         phoneNumberTextDelegate?.phoneNumberIsUpdated(number: phone, tag: tag)
         phoneNumberTextDelegate?.textFieldDidEndEditing(tag: tag)
     }
 
     override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
         let currentString = (textField.text ?? "") as NSString
-        guard string.isEmpty || string == "+" || !string.decimalDigits.isEmpty else { return false }
+
+        let isFirstCharacterWithPlus = range.location == 0 && string == "+"
+
+        guard range.length == 1 || isFirstCharacterWithPlus || !string.decimalDigits.isEmpty else { return false }
+
         let newString = currentString.replacingCharacters(in: range, with: string)
+
         guard phoneNumberTextDelegate?.isValidPhoneMaxLength(text: newString) == true else { return false }
+
         let country = Country(iso3166Alpha2: partialFormatter.currentRegion)
-        let phone = Phone(number: newString, country: country)
+
+        let phone = Phone(number: nationalNumber, country: country)
+
         phoneNumberTextDelegate?.phoneNumberIsUpdated(number: phone, tag: tag)
+
         return super.textField(textField, shouldChangeCharactersIn: range, replacementString: string)
     }
 
