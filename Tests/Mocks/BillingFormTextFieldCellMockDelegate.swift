@@ -13,7 +13,7 @@ class BillingFormTextFieldCellMockDelegate: CellTextFieldDelegate {
     var textFieldDidChangeCharactersLastCalledWithReplacementString: String?
 
     var phoneNumberIsUpdatedCalledTimes = 0
-    var phoneNumberIsUpdatedLastCalledWithNumber: Frames.Phone?
+    var phoneNumberIsUpdatedLastCalledWithNumber: Phone?
     var phoneNumberIsUpdatedLastCalledWithTag: Int?
 
     var textFieldShouldChangeCharactersInCalledTimes = 0

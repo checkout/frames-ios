@@ -175,7 +175,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         let phoneNumberKit = PhoneNumberKit()
         let phoneNumber = try? phoneNumberKit.parse(text, withRegion: region ?? PhoneNumberKit.defaultRegionCode(), ignoreType: true)
         guard let phoneNumber = phoneNumber else {
-            let decimalDigitsLength = text.decimalDigits().count
+            let decimalDigitsLength = text.decimalDigits.count
             return decimalDigitsLength <= phoneMaxLength
         }
         return String(phoneNumber.nationalNumber).count <= phoneMaxLength
