@@ -4,6 +4,7 @@ import Checkout
 protocol PhoneNumberTextFieldDelegate: AnyObject {
     func phoneNumberIsUpdated(number: Phone, tag: Int)
     func isValidPhoneMaxLength(text: String?) -> Bool
+    func textFieldDidEndEditing(tag: Int)
 }
 
 class BillingFormTextFieldView: UIView {
@@ -257,7 +258,8 @@ extension BillingFormTextFieldView: UITextFieldDelegate {
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
-        textFieldContainer.layer.borderColor = style?.textfield.borderStyle.focusColor.cgColor
+        guard let style = style else { return }
+        textFieldContainerBorder.updateBorderColor(to: style.textfield.borderStyle.focusColor)
     }
 
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
@@ -272,6 +274,9 @@ extension BillingFormTextFieldView: UITextFieldDelegate {
 // MARK: - Phone Number Text Delegate
 
 extension BillingFormTextFieldView: BillingFormPhoneNumberTextDelegate {
+    func textFieldDidEndEditing(tag: Int) {
+        phoneNumberDelegate?.textFieldDidEndEditing(tag: tag)
+    }
 
     func isValidPhoneMaxLength(text: String?) -> Bool {
         phoneNumberDelegate?.isValidPhoneMaxLength(text: text) ?? true

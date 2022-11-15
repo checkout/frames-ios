@@ -3,6 +3,7 @@ import Checkout
 
 protocol CellTextFieldDelegate: AnyObject {
     func phoneNumberIsUpdated(number: Phone, tag: Int)
+    func textFieldDidEndEditing(tag: Int)
     func isValidPhoneMaxLength(text: String?) -> Bool
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn() -> Bool
@@ -91,6 +92,10 @@ extension BillingFormCellTextField: TextFieldViewDelegate {
 }
 
 extension BillingFormCellTextField: PhoneNumberTextFieldDelegate {
+    func textFieldDidEndEditing(tag: Int) {
+        delegate?.textFieldDidEndEditing(tag: tag)
+    }
+
     func isValidPhoneMaxLength(text: String?) -> Bool {
         delegate?.isValidPhoneMaxLength(text: text) ?? true
     }

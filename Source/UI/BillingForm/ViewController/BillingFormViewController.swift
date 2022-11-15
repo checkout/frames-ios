@@ -19,6 +19,7 @@ protocol BillingFormViewControllerDelegate: AnyObject {
     func update(country: Country)
     func phoneNumberIsUpdated(number: Phone, tag: Int)
     func isValidPhoneMaxLength(text: String?) -> Bool
+    func textFieldDidEndEditing(tag: Int)
 }
 
 /**
@@ -131,7 +132,7 @@ final class BillingFormViewController: UIViewController {
     private func refreshCell(at row: Int?) {
         guard let row = row else { return }
         let indexPath = IndexPath(row: row, section: 0)
-        tableView?.reloadRows(at: [indexPath], with: .none)
+        tableView?.reloadRows(at: [indexPath], with: .automatic)
     }
 
     // MARK: - Keyboard
@@ -220,6 +221,10 @@ extension BillingFormViewController: UITableViewDataSource, UITableViewDelegate 
 // MARK: - Text Field Delegate
 
 extension BillingFormViewController: CellTextFieldDelegate {
+    func textFieldDidEndEditing(tag: Int) {
+        delegate?.textFieldDidEndEditing(tag: tag)
+    }
+
     func isValidPhoneMaxLength(text: String?) -> Bool {
         delegate?.isValidPhoneMaxLength(text: text) ?? true
     }

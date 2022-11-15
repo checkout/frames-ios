@@ -245,6 +245,10 @@ extension DefaultBillingFormViewModel: BillingFormTextFieldDelegate {
 // MARK: - Billing form view controller Delegate
 
 extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
+    func textFieldDidEndEditing(tag: Int) {
+        updatedRow = tag
+    }
+
     func isValidPhoneMaxLength(text: String?) -> Bool {
         validatePhoneNumberMaxLength(text: text)
     }
@@ -254,7 +258,6 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
         textValueOfCellType[index] = number.number
         let currentCellTypeIndex = style.cells[tag].index
         errorFlagOfCellType[currentCellTypeIndex] = !PhoneNumberValidator().validate(value: number)
-        updatedRow = tag
         notifyContentChangeToDelegate()
     }
 
