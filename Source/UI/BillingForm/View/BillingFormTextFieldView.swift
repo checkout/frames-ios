@@ -152,8 +152,8 @@ class BillingFormTextFieldView: UIView {
         let borderColor = !(style.error?.isHidden ?? true) ?
         style.textfield.borderStyle.errorColor :
         style.textfield.borderStyle.normalColor
-        textFieldContainer.update(with: style.textfield.borderStyle)
-        textFieldContainer.updateBorderColor(to: borderColor)
+        textFieldContainerBorder.update(with: style.textfield.borderStyle)
+        textFieldContainerBorder.updateBorderColor(to: borderColor)
         textFieldContainer.backgroundColor = style.textfield.backgroundColor
     }
 
