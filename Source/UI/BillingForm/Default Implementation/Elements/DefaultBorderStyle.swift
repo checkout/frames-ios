@@ -2,7 +2,7 @@ import UIKit
 
 struct DefaultBorderStyle: ElementBorderStyle {
     var cornerRadius: CGFloat = 10
-    var borderWidth: CGFloat = 20
+    var borderWidth: CGFloat = 1
     var normalColor: UIColor = FramesUIStyle.Color.borderPrimary
     var focusColor: UIColor = FramesUIStyle.Color.borderActive
     var errorColor: UIColor = FramesUIStyle.Color.borderError

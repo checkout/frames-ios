@@ -11,7 +11,7 @@ extension CAShapeLayer {
 
     /// Add Edges and corners with style
     /// - Parameter style: Protocol that provide which edge or corner will be added with style
-    func updateEdgesAndCorners(with style: ElementBorderStyle) {
+    func createCustomBorder(with style: ElementBorderStyle) {
 
         // if path not nil then it's already added so no need to draw lines or curves again
         guard self.path == nil else { return }
@@ -23,7 +23,7 @@ extension CAShapeLayer {
         let rect = bounds.insetBy(dx: style.cornerRadius / 2,
                                   dy: style.cornerRadius / 2)
         let path = UIBezierPath()
-        updateBorders(with: path, rect: rect, style: style)
+        applyBorders(with: path, rect: rect, style: style)
         updateCorners(with: path, rect: rect, style: style)
         self.path = path.cgPath
     }
@@ -47,7 +47,7 @@ extension CAShapeLayer {
     ///   - path: UIBezierPath that will be added
     ///   - rect: CGRect of current view
     ///   - style: Protocol that provide which edge will be added
-    private func updateBorders(with path: UIBezierPath, rect: CGRect, style: ElementBorderStyle) {
+    private func applyBorders(with path: UIBezierPath, rect: CGRect, style: ElementBorderStyle) {
         guard let edges = style.edges else { return }
 
         //  Bottom Left corner Radius
@@ -57,7 +57,6 @@ extension CAShapeLayer {
         // Top Left corner Radius
         let isTopLeftCornerRequired = style.corners?.contains(.topLeft) ?? false
         let topLeftCornerRadius: CGFloat = isTopLeftCornerRequired ? style.cornerRadius : 0
-        print(topLeftCornerRadius)
 
         //  Top Right corner Radius
         let isTopRightCornerRequired = style.corners?.contains(.topRight) ?? false
@@ -105,7 +104,7 @@ extension CAShapeLayer {
     ///   - path: UIBezierPath
     ///   - rect: CGRect of current view
     ///   - style: Protocol that provide which corners will be added
-    func updateCorners(with path: UIBezierPath, rect: CGRect, style: ElementBorderStyle) {
+    private func updateCorners(with path: UIBezierPath, rect: CGRect, style: ElementBorderStyle) {
         guard let corners = style.corners else { return }
 
         // bottom left corner
