@@ -18,8 +18,8 @@ enum Constants {
   }
 
   enum Phone {
+    public static let phoneMaxLength = 25
     static let phoneMinLength = 6
-    static let phoneMaxLength = 25
     static let countryCodeMinLength = 1
     static let countryCodeMaxLength = 7
   }
