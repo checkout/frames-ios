@@ -41,8 +41,8 @@ final class SecurityCodeViewModel {
             isInputValid = cardValidator.validate(cvv: cvv, cardScheme: scheme) == .success
         }
 
-        guard let cleanedInput = newInput?.filter({ !$0.isWhitespace }),
-              (Int(cleanedInput) ?? 0 > 0) || cleanedInput.isEmpty,
+        guard let cleanedInput = newInput?.decimalDigits,
+              !cleanedInput.isEmpty,
               cleanedInput.count <= inputMaxLength else {
             return
         }

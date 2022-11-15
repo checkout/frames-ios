@@ -68,7 +68,7 @@ final class SecurityCodeViewModelTests: XCTestCase {
         model.updateScheme(to: .mastercard)
         model.updateInput(to: string)
         
-        XCTAssertEqual(model.cvv, "")
+        XCTAssertEqual(model.cvv, "23")
     }
     
     func testValidateDecimalInput() {
@@ -77,7 +77,15 @@ final class SecurityCodeViewModelTests: XCTestCase {
         model.updateScheme(to: .mastercard)
         model.updateInput(to: string)
         
-        XCTAssertEqual(model.cvv, "")
+        XCTAssertEqual(model.cvv, "231")
+    }
+
+    func testValidateZeroDecimalInput() {
+        let string = "0000"
+        let model = createViewModel(maximumCVVLenght: 4)
+        model.updateInput(to: string)
+
+        XCTAssertEqual(model.cvv, "0000")
     }
     
     func testValidateNegativeNumberInput() {
@@ -86,7 +94,7 @@ final class SecurityCodeViewModelTests: XCTestCase {
         model.updateScheme(to: .mastercard)
         model.updateInput(to: string)
         
-        XCTAssertEqual(model.cvv, "")
+        XCTAssertEqual(model.cvv, "63")
     }
     
     func testUpdateWithNewScheme() {
