@@ -1,5 +1,5 @@
 import Foundation
 
 protocol Validator {
-    func isInvalid(value: Any?) -> Bool
+    func validate(value: Any?) -> Bool
 }
