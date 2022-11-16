@@ -159,7 +159,7 @@ final class SecurityCodeViewModelTests: XCTestCase {
                                  isCVVInputValid: Bool = true) -> SecurityCodeViewModel {
         
         mockValidator.validateCVVToReturn = isCVVInputValid ? .success : .failure(.invalidLength)
-        mockValidator.expectedMaxLenghtCVV = maximumCVVLenght
+        mockValidator.expectedMaxLengthCVV = maximumCVVLenght
         return SecurityCodeViewModel(cardValidator: mockValidator)
     }
 }
