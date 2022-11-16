@@ -16,5 +16,13 @@ final class StringExtensionsTests: XCTestCase {
         XCTAssertEqual("          ".removeWhitespaces(), "")
         XCTAssertEqual("ABC DEDF G2344   gdsfg123 -456 7789".removeWhitespaces(), "ABCDEDFG2344gdsfg123-4567789")
     }
+
+    func testDecimalDigits(){
+        XCTAssertEqual("123".decimalDigits, "123")
+        XCTAssertEqual("A123".decimalDigits, "123")
+        XCTAssertEqual("1-2-3 ".decimalDigits, "123")
+        XCTAssertEqual("+1 23".decimalDigits, "123")
+        XCTAssertEqual("(001) 234-34".decimalDigits, "00123434")
+    }
     
 }

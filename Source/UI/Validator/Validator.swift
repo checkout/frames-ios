@@ -1,5 +1,5 @@
 import Foundation
 
 protocol Validator {
-    func validate(text: String?) -> Bool
+    func validate(value: Any?) -> Bool
 }

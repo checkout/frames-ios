@@ -49,13 +49,13 @@ class BillingFormTextFieldViewTests: XCTestCase {
         XCTAssertNotNil(view.phoneNumberTextField)
         XCTAssertEqual(view.phoneNumberTextField?.isHidden, false)
         XCTAssertTrue(view.textField.isHidden)
-        XCTAssertEqual(view.textFieldContainer.subviews.count, 2)
+        XCTAssertEqual(view.textFieldContainer.subviews.count, 1)
         
         view.refreshLayoutComponents()
         XCTAssertNotNil(view.phoneNumberTextField)
         XCTAssertEqual(view.phoneNumberTextField?.isHidden, false)
         XCTAssertTrue(view.textField.isHidden)
-        XCTAssertEqual(view.textFieldContainer.subviews.count, 2)
+        XCTAssertEqual(view.textFieldContainer.subviews.count, 1)
     }
 
     func testNotPhoneNumberInputStyle() {
@@ -86,7 +86,7 @@ class BillingFormTextFieldViewTests: XCTestCase {
         XCTAssertNotNil(view.phoneNumberTextField)
         XCTAssertEqual(view.phoneNumberTextField?.isHidden, false)
         XCTAssertTrue(view.textField.isHidden)
-        XCTAssertEqual(view.textFieldContainer.subviews.count, 2)
+        XCTAssertEqual(view.textFieldContainer.subviews.count, 1)
         
         view.update(style: style, type: .state(nil), tag: 0)
         XCTAssertNil(view.phoneNumberTextField)

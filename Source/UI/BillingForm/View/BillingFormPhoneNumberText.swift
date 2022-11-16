@@ -1,9 +1,10 @@
-import Checkout
 import UIKit
 import PhoneNumberKit
 
 protocol BillingFormPhoneNumberTextDelegate: AnyObject {
-    func phoneNumberIsUpdated(number: String, tag: Int)
+    func phoneNumberIsUpdated(number: Phone, tag: Int)
+    func isValidPhoneMaxLength(text: String?) -> Bool
+    func textFieldDidEndEditing(tag: Int)
 }
 
 // `PhoneNumberTextField` is the parent textfield from `PhoneNumberKit`
@@ -15,7 +16,6 @@ final class BillingFormPhoneNumberText: PhoneNumberTextField, BillingFormTextFie
 
     init(type: BillingFormCell?, tag: Int, phoneNumberTextDelegate: BillingFormPhoneNumberTextDelegate) {
         super.init(frame: .zero)
-        super.delegate = self
         self.type = type
         self.tag = tag
         self.phoneNumberTextDelegate = phoneNumberTextDelegate
@@ -28,7 +28,31 @@ final class BillingFormPhoneNumberText: PhoneNumberTextField, BillingFormTextFie
 
     override func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         super.textFieldDidEndEditing(textField, reason: reason)
-        guard let phoneNumber = text else { return }
-        phoneNumberTextDelegate?.phoneNumberIsUpdated(number: phoneNumber, tag: tag)
+        let country = Country(iso3166Alpha2: partialFormatter.currentRegion)
+        let phone = Phone(number: nationalNumber, country: country)
+        phoneNumberTextDelegate?.phoneNumberIsUpdated(number: phone, tag: tag)
+        phoneNumberTextDelegate?.textFieldDidEndEditing(tag: tag)
     }
+
+    override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        let currentString = (textField.text ?? "") as NSString
+
+        let isFirstCharacterWithPlus = range.location == 0 && string == "+"
+
+        guard range.length == 1 || isFirstCharacterWithPlus || !string.decimalDigits.isEmpty else { return false }
+
+        let newString = currentString.replacingCharacters(in: range, with: string)
+
+        guard phoneNumberTextDelegate?.isValidPhoneMaxLength(text: newString) == true else { return false }
+
+        let country = Country(iso3166Alpha2: partialFormatter.currentRegion)
+
+        let phone = Phone(number: nationalNumber, country: country)
+
+        phoneNumberTextDelegate?.phoneNumberIsUpdated(number: phone, tag: tag)
+
+        return super.textField(textField, shouldChangeCharactersIn: range, replacementString: string)
+    }
+
 }

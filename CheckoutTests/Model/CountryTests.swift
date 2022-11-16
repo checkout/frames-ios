@@ -268,4 +268,5 @@ final class CountryTests: XCTestCase {
     XCTAssertEqual(Country(iso3166Alpha2: "UZ"), Country(iso3166Alpha2: "UZ", dialingCode: "998"))
     XCTAssertEqual(Country(iso3166Alpha2: "WF"), Country(iso3166Alpha2: "WF", dialingCode: "681"))
   }
+
 }

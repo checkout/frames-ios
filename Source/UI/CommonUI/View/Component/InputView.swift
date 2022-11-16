@@ -146,7 +146,8 @@ extension InputView {
         headerStackView.addArrangedSubviews(arrangedSubviews)
         NSLayoutConstraint.activate([
             headerStackView.topAnchor.constraint(equalTo: topAnchor),
-            headerStackView.leadingAnchor.constraint(equalTo: leadingAnchor)        ])
+            headerStackView.leadingAnchor.constraint(equalTo: leadingAnchor)
+        ])
     }
 
     private func setupStackView() {

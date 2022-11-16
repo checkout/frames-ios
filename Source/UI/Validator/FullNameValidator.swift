@@ -1,8 +1,8 @@
 import Foundation
 
 class FullNameValidator: Validator {
-    func validate(text: String?) -> Bool {
-        isEmpty(text: text)
+    func validate(value: Any?) -> Bool {
+        !isEmpty(text: value as? String)
     }
 
     private func isEmpty(text: String?) -> Bool {

@@ -68,7 +68,7 @@ class CardNumberViewModelTests: XCTestCase {
   }
 
   func test_eagerValidate_eagerValidateSuccess_changeTextAndIcon() {
-    let testCases: [Card.Scheme: Constants.Bundle.SchemeIcon] = [
+      let testCases: [Card.Scheme: Frames.Constants.Bundle.SchemeIcon] = [
       .unknown: .blank,
       .mada: .mada,
       .visa: .visa,

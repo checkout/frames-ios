@@ -33,9 +33,22 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
     var updateLastCalledWithCountry: Country?
 
     var phoneNumberIsUpdatedCalledTimes = 0
-    var phoneNumberIsUpdatedLastCalledWithNumber: String?
+    var phoneNumberIsUpdatedLastCalledWithNumber: Frames.Phone?
     var phoneNumberIsUpdatedLastCalledWithTag: Int?
 
+    var isValidPhoneMaxLengthCalledTimes = 0
+    var isValidPhoneMaxLengthLastCalledWithText: String?
+    var isValidPhoneMaxLengthReturn: Bool = true
+
+
+    var textFieldDidEndEditingCalledTimes = 0
+    var textFieldShouldEndEditingLastCalledWithTag: Int?
+
+    func textFieldDidEndEditing(tag: Int) {
+        textFieldDidEndEditingCalledTimes += 1
+        textFieldShouldEndEditingLastCalledWithTag = tag
+    }
+    
     func doneButtonIsPressed(sender: UIViewController) {
         doneButtonIsPressedCalledTimes += 1
         doneButtonIsPressedLastCalledWithSender = sender
@@ -80,9 +93,16 @@ class BillingFormViewControllerMockDelegate: BillingFormViewControllerDelegate {
         updateLastCalledWithCountry = country
     }
 
-    func phoneNumberIsUpdated(number: String, tag: Int) {
+    func phoneNumberIsUpdated(number: Frames.Phone, tag: Int) {
         phoneNumberIsUpdatedCalledTimes += 1
         phoneNumberIsUpdatedLastCalledWithNumber = number
         phoneNumberIsUpdatedLastCalledWithTag = tag
     }
+
+    func isValidPhoneMaxLength(text: String?) -> Bool {
+        isValidPhoneMaxLengthCalledTimes += 1
+        isValidPhoneMaxLengthLastCalledWithText = text
+        return isValidPhoneMaxLengthReturn
+    }
+
 }
