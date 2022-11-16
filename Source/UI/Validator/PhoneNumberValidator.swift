@@ -1,12 +1,11 @@
 import Foundation
 
 class PhoneNumberValidator: Validator {
-    func validate(text: String?) -> Bool {
-        isEmpty(text: text)
-    }
+    private let validator = PhoneValidator()
 
-    private func isEmpty(text: String?) -> Bool {
-        text?.isEmpty ?? false
+    func validate(value: Any?) -> Bool {
+        guard let phoneNumber = (value as? Phone) else { return false }
+        return validator.validate(phoneNumber) == .success
     }
 
 }

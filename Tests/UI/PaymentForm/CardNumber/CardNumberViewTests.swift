@@ -33,7 +33,7 @@ final class CardNumberViewTests: XCTestCase {
     XCTAssertEqual(subject.schemeIcon, .blank)
   }
 
-  func test_textField_rangeIsInvalid_returnTrue() {
+  func test_textField_rangeisValid_returnTrue() {
     // given
     let textField = UITextField()
     textField.text = ""

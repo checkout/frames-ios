@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Constants {
+public enum Constants {
   enum Address {
     static let addressLine1Length = 200
     static let addressLine2Length = 200
@@ -17,12 +17,12 @@ enum Constants {
     static let countryLength = 2
   }
 
-  enum Phone {
-    static let phoneMinLength = 6
-    static let phoneMaxLength = 25
-    static let countryCodeMinLength = 1
-    static let countryCodeMaxLength = 7
-  }
+    public enum Phone {
+        public static let phoneMaxLength = 25
+        static let phoneMinLength = 6
+        static let countryCodeMinLength = 1
+        static let countryCodeMaxLength = 7
+    }
 
   enum Product {
     static let version = "4.0.1"

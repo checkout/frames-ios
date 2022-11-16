@@ -14,3 +14,4 @@ public typealias Country = Checkout.Country
 public typealias TokenDetails = Checkout.TokenDetails
 public typealias TokenRequestError = Checkout.TokenisationError.TokenRequest
 public typealias ApplePay = Checkout.ApplePay
+public typealias PhoneValidator = Checkout.PhoneValidator

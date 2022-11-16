@@ -13,7 +13,7 @@ import Checkout
 
 final class ConstantsSchemeIconTests: XCTestCase {
   func test_schemeInit() {
-    let testCases: [Card.Scheme: Constants.Bundle.SchemeIcon] = [
+      let testCases: [Card.Scheme: Frames.Constants.Bundle.SchemeIcon] = [
       .americanExpress: .americanExpress,
       .dinersClub: .dinersClub,
       .discover: .discover,

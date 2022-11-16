@@ -47,6 +47,7 @@ class ExpiryDateViewTests: XCTestCase {
   func testValidTodayExpiryDate(){
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MM/yy"
+    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
     let dateText = dateFormatter.string(from: Date())
     let error = view.validateInputChanges(of: dateText, newInput: "")
     XCTAssertNil(error)
