@@ -46,7 +46,7 @@ class BillingFormTextFieldView: UIView {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var textFieldContainer: UIView = {
+    private(set) lazy var textFieldContainerBorder: UIView = {
         let view = UIView().disabledAutoresizingIntoConstraints()
         view.backgroundColor = .clear
         return view
