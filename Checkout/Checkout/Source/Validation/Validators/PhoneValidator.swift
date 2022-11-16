@@ -7,6 +7,8 @@
 
 import Foundation
 
+//  https://api-reference.checkout.com/#operation/requestAToken!path=0/phone&t=request
+
 public protocol PhoneValidating {
     func validate(_ phone: Phone) -> ValidationResult<ValidationError.Phone>
 }
