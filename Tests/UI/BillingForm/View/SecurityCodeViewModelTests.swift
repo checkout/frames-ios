@@ -96,6 +96,20 @@ final class SecurityCodeViewModelTests: XCTestCase {
         
         XCTAssertEqual(model.cvv, "63")
     }
+
+    func testValidateInputNumberAfterDeleting() {
+        let model = createViewModel()
+        model.updateScheme(to: .mastercard)
+
+        model.updateInput(to: "00")
+        XCTAssertEqual(model.cvv, "00")
+
+        model.updateInput(to: "")
+        XCTAssertEqual(model.cvv, "")
+
+        model.updateInput(to: "1")
+        XCTAssertEqual(model.cvv, "1")
+    }
     
     func testUpdateWithNewScheme() {
         let model = createViewModel()
@@ -145,7 +159,7 @@ final class SecurityCodeViewModelTests: XCTestCase {
                                  isCVVInputValid: Bool = true) -> SecurityCodeViewModel {
         
         mockValidator.validateCVVToReturn = isCVVInputValid ? .success : .failure(.invalidLength)
-        mockValidator.expectedMaxLenghtCVV = maximumCVVLenght
+        mockValidator.expectedMaxLengthCVV = maximumCVVLenght
         return SecurityCodeViewModel(cardValidator: mockValidator)
     }
 }

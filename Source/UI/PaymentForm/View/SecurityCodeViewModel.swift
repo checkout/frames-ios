@@ -42,7 +42,6 @@ final class SecurityCodeViewModel {
         }
 
         guard let cleanedInput = newInput?.decimalDigits,
-              !cleanedInput.isEmpty,
               cleanedInput.count <= inputMaxLength else {
             return
         }
