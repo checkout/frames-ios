@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 
 #### 4.x Releases
 
+## [4.0.2](https://github.com/checkout/frames-ios/releases/tag/4.0.1)
+
+Released on 2022-11-08
+
+Updates
+- Fix security check validation[Fix]
+- Phone Number validation issue [Fix]
+All SDK integrators desiring the new SDK should use 4.0.1 onwards, as it fixes some known bugs with 4.0.0.
+
+
 ## [4.0.1](https://github.com/checkout/frames-ios/releases/tag/4.0.1)
 
 Released on 2022-11-08
