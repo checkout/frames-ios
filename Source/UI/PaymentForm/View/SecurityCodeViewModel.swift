@@ -42,8 +42,8 @@ final class SecurityCodeViewModel {
         }
 
         guard let cleanedInput = newInput?.decimalDigits,
-              !cleanedInput.isEmpty,
-              cleanedInput.count <= inputMaxLength else {
+              cleanedInput.count <= inputMaxLength ||
+              cleanedInput.isEmpty else {
             return
         }
         cvv = cleanedInput
