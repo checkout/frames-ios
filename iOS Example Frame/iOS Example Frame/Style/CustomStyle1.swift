@@ -196,27 +196,21 @@ private enum StyleOrganiser {
     }
 
     struct TextFieldStyle: ElementTextFieldStyle {
-        var borderStyle: Frames.ElementBorderStyle = BorderStyle()
         var textAlignment: NSTextAlignment = .natural
         var text: String = ""
         var isSupportingNumericKeyboard = true
         var height: Double = 56
+        var cornerRadius: CGFloat = Constants.borderRadius
+        var borderWidth: CGFloat = Constants.borderWidth
         var placeholder: String?
         var tintColor: UIColor = Constants.mainFontColor
+        var normalBorderColor: UIColor = .clear
+        var focusBorderColor: UIColor = .clear
+        var errorBorderColor: UIColor = Constants.errorColor
         var isHidden = false
         var font = UIFont(size: 15)
         var backgroundColor: UIColor = Constants.textFieldBackgroundColor
         var textColor: UIColor = Constants.mainFontColor
-    }
-
-    struct BorderStyle: ElementBorderStyle {
-        var cornerRadius: CGFloat = Constants.borderRadius
-        var borderWidth: CGFloat = Constants.borderWidth
-        var normalColor: UIColor = .clear
-        var focusColor: UIColor = .clear
-        var errorColor: UIColor = Constants.errorColor
-        var edges: UIRectEdge? = .all
-        var corners: UIRectCorner? = .allCorners
     }
 
     struct TitleStyle: ElementStyle {
