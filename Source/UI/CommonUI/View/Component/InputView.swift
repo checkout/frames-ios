@@ -104,12 +104,12 @@ class InputView: UIView {
 
     private func updateTextFieldContainer(style: CellTextFieldStyle) {
         let borderColor = !(style.error?.isHidden ?? true) ?
-        style.textfield.errorBorderColor.cgColor :
-        style.textfield.normalBorderColor.cgColor
+        style.textfield.borderStyle.errorColor.cgColor :
+        style.textfield.borderStyle.normalColor.cgColor
 
         textFieldContainerBorder.layer.borderColor = borderColor
-        textFieldContainerBorder.layer.cornerRadius = style.textfield.cornerRadius
-        textFieldContainerBorder.layer.borderWidth = style.textfield.borderWidth
+        textFieldContainerBorder.layer.cornerRadius = style.textfield.borderStyle.cornerRadius
+        textFieldContainerBorder.layer.borderWidth = style.textfield.borderStyle.borderWidth
         textFieldContainerBorder.backgroundColor = style.textfield.backgroundColor
     }
 
@@ -200,13 +200,13 @@ extension InputView {
 extension InputView: TextFieldViewDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let shouldChangeCharacter = delegate?.textField(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true
-        textFieldContainerBorder.layer.borderColor = style?.textfield.focusBorderColor.cgColor
+        textFieldContainerBorder.layer.borderColor = style?.textfield.borderStyle.focusColor.cgColor
         return shouldChangeCharacter
     }
 
     func textFieldShouldBeginEditing(textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
-        textFieldContainerBorder.layer.borderColor = style?.textfield.focusBorderColor.cgColor
+        textFieldContainerBorder.layer.borderColor = style?.textfield.borderStyle.focusColor.cgColor
     }
 
     func textFieldShouldReturn() -> Bool {
@@ -217,8 +217,8 @@ extension InputView: TextFieldViewDelegate {
         let shouldEndEditing = delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString) ?? true
         if shouldEndEditing {
             textFieldContainerBorder.layer.borderColor = (style?.error?.isHidden ?? true) ?
-                style?.textfield.normalBorderColor.cgColor :
-                style?.textfield.errorBorderColor.cgColor
+            style?.textfield.borderStyle.normalColor.cgColor :
+                style?.textfield.borderStyle.errorColor.cgColor
         }
         return shouldEndEditing
     }
