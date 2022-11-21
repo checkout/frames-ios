@@ -37,10 +37,6 @@ class BillingFormSummaryViewTests: XCTestCase {
     }
 
     func testStyleSummaryContainerView() {
-        XCTAssertEqual(view.summaryContainerView.clipsToBounds, true)
-        XCTAssertEqual(view.summaryContainerView.layer.borderWidth, style.borderWidth)
-        XCTAssertEqual(view.summaryContainerView.layer.cornerRadius, style.cornerRadius)
-        XCTAssertEqual(view.summaryContainerView.layer.borderColor, style.borderColor.cgColor)
         XCTAssertEqual(view.summaryContainerView.backgroundColor, .clear)
     }
 
@@ -50,13 +46,9 @@ class BillingFormSummaryViewTests: XCTestCase {
     }
 
     func testStyleButtonView() {
-        XCTAssertEqual(view.buttonView.layer.cornerRadius, style.button.cornerRadius)
         XCTAssertTrue(view.buttonView.button.isEnabled)
         XCTAssertEqual(view.buttonView.button.tintColor, .clear)
         XCTAssertEqual(view.buttonView.clipsToBounds, true)
-        XCTAssertEqual(view.buttonView.layer.borderColor, style.button.normalBorderColor.cgColor)
-        XCTAssertEqual(view.buttonView.layer.cornerRadius, style.button.cornerRadius)
-        XCTAssertEqual(view.buttonView.layer.borderWidth , style.button.borderWidth)
     }
 
     func testStyleErrorView() {
