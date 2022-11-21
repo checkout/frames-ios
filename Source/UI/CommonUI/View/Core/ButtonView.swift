@@ -9,6 +9,12 @@ class ButtonView: UIView {
     var style: ElementButtonStyle?
     lazy var constraintLeading: NSLayoutConstraint? = buttonTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 120.0)
 
+    private lazy var borderView: BorderView = {
+        let view = BorderView().disabledAutoresizingIntoConstraints()
+        view.backgroundColor = .clear
+        return view
+    }()
+
     var isEnabled = true {
         didSet {
             if let style = style {
@@ -59,9 +65,8 @@ class ButtonView: UIView {
         self.style = style
         backgroundColor = style.backgroundColor
         clipsToBounds = true
-        layer.borderColor = style.normalBorderColor.cgColor
-        layer.cornerRadius = style.cornerRadius
-        layer.borderWidth = style.borderWidth
+        borderView.update(with: style.borderStyle)
+        borderView.updateBorderColor(to: style.borderStyle.normalColor)
         updateButtonStyle(with: style)
         updateLabelStyle(with: style)
     }
@@ -108,6 +113,7 @@ class ButtonView: UIView {
     }
 
     private func setupConstraintsInOrder() {
+        setupBorderView()
         setupButtonTextLabel()
         setupButton()
     }
@@ -124,6 +130,11 @@ class ButtonView: UIView {
             buttonTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             buttonTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+
+    private func setupBorderView() {
+        addSubview(borderView)
+        borderView.setupConstraintEqualTo(view: self)
     }
 
     private func setupLoadingOverlay() {

@@ -28,6 +28,7 @@ final class BorderView: UIView {
     /// - Parameter style: protocol with some parameters for styling border and corners
     func update(with style: ElementBorderStyle) {
         self.style = style
+        borderLayer.createCustomBorder(with: style)
     }
 
     func updateBorderColor(to newBorderColor: UIColor) {
