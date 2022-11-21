@@ -121,7 +121,6 @@ class BillingFormTextFieldView: UIView {
         addTextFieldToView(phoneNumberTextField)
     }
 
-
     private func createTextField() -> BillingFormTextField {
         let view = DefaultBillingFormTextField(type: type, tag: tag).disabledAutoresizingIntoConstraints()
         view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
@@ -216,7 +215,7 @@ extension BillingFormTextFieldView {
         NSLayoutConstraint.activate([
             headerStackView.topAnchor.constraint(equalTo: topAnchor),
             headerStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            headerStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60)
+            headerStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: style?.mandatory?.text.isEmpty ?? true ? 0 : -60)
         ])
     }
 
