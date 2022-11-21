@@ -25,16 +25,6 @@ public extension Theme {
         public var borderStyle: ElementBorderStyle
     }
 
-    struct ThemeBorderStyle: ElementBorderStyle {
-        public var cornerRadius: CGFloat
-        public var borderWidth: CGFloat
-        public var normalColor: UIColor
-        public var focusColor: UIColor
-        public var errorColor: UIColor
-        public var edges: UIRectEdge?
-        public var corners: UIRectCorner?
-    }
-
     /// Create a TextField Style from text
     func buildTextField(text: String,
                         placeholderText: String,
