@@ -13,6 +13,11 @@ extension Constants {
 
       static let animationLength: TimeInterval = 0.25
 
+        enum BorderStyle: Double {
+            case cornerRadius = 10
+            case borderWidth = 1
+        }
+
         enum PaymentForm {
 
           enum Header: Double {
@@ -21,8 +26,6 @@ extension Constants {
             enum InputBillingFormButton: Double {
                 case height = 56
                 case width = 0
-                case cornerRadius = 10
-                case borderWidth = 1
                 case textLeading = 20
             }
 
@@ -52,8 +55,6 @@ extension Constants {
             enum InputCountryButton: Double {
                 case height = 56
                 case width = 0
-                case cornerRadius = 10
-                case borderWidth = 1
                 case textLeading = 20
             }
 

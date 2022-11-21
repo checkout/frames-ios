@@ -2,11 +2,9 @@ import UIKit
 
 public struct DefaultBillingSummaryViewStyle: BillingSummaryViewStyle {
     public var isMandatory = true
-    public var cornerRadius: CGFloat = 10
-    public var borderWidth: CGFloat = 0.5
+    public var borderStyle: ElementBorderStyle = DefaultBorderStyle()
     public var separatorLineColor: UIColor = FramesUIStyle.Color.borderSecondary
     public var backgroundColor: UIColor = .clear
-    public var borderColor: UIColor = FramesUIStyle.Color.borderPrimary
     public var button: ElementButtonStyle = DefaultEditBillingDetailsButtonStyle()
     public var title: ElementStyle? = DefaultTitleLabelStyle(text: Constants.LocalizationKeys.PaymentForm.BillingSummary.title)
     public var hint: ElementStyle? = DefaultHintInputLabelStyle(text: Constants.LocalizationKeys.PaymentForm.BillingSummary.hint)

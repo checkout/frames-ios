@@ -17,15 +17,15 @@ public struct DefaultPayButtonFormStyle: ElementButtonStyle {
   public var activeTintColor: UIColor = FramesUIStyle.Color.actionPrimary
   public var backgroundColor: UIColor = FramesUIStyle.Color.actionPrimary
   public var textColor: UIColor = FramesUIStyle.Color.textActionPrimary
-  public var normalBorderColor: UIColor = .clear
-  public var focusBorderColor: UIColor = .clear
-  public var errorBorderColor: UIColor = .clear
   public var imageTintColor: UIColor = .clear
   public var isHidden = false
   public var isEnabled = false
   public var height: Double = 56
   public var width: Double = 0
-  public var cornerRadius: CGFloat = 10
   public var borderWidth: CGFloat = 0
   public var textLeading: CGFloat = 0
+  public var borderStyle: ElementBorderStyle = DefaultBorderStyle(borderWidth: 0,
+                                                                 normalColor: .clear,
+                                                                 focusColor: .clear,
+                                                                 errorColor: .clear)
 }
