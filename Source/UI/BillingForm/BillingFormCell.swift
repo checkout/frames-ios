@@ -59,7 +59,10 @@ import Foundation
             case .state: return billingFormData?.address?.state
             case .postcode: return billingFormData?.address?.zip
             case .country: return billingFormData?.address?.country?.name
-            case .phoneNumber: return billingFormData?.phone?.number
+            case .phoneNumber:
+                let dialingCode = billingFormData?.phone?.country?.dialingCode ?? ""
+                let number = billingFormData?.phone?.number ?? ""
+                return "+\(String(dialingCode)) \(String(number))"
         }
     }
 }

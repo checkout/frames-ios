@@ -48,7 +48,7 @@ final class BillingFormPhoneNumberText: PhoneNumberTextField, BillingFormTextFie
 
         let country = Country(iso3166Alpha2: partialFormatter.currentRegion)
 
-        let phone = Phone(number: nationalNumber, country: country)
+        let phone = Phone(number: nationalNumber.appending(string), country: country)
 
         phoneNumberTextDelegate?.phoneNumberIsUpdated(number: phone, tag: tag)
 
