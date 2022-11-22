@@ -2,6 +2,7 @@ import UIKit
 import PhoneNumberKit
 
 protocol BillingFormPhoneNumberTextDelegate: AnyObject {
+    func phoneTextFieldDidBeginEditing(_ textField: UITextField)
     func phoneNumberIsUpdated(number: Phone, tag: Int)
     func isValidPhoneMaxLength(text: String?) -> Bool
     func textFieldDidEndEditing(tag: Int)
@@ -24,6 +25,11 @@ final class BillingFormPhoneNumberText: PhoneNumberTextField, BillingFormTextFie
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func textFieldDidBeginEditing(_ textField: UITextField) {
+        super.textFieldDidBeginEditing(textField)
+        phoneNumberTextDelegate?.phoneTextFieldDidBeginEditing(textField)
     }
 
     override func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {

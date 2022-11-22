@@ -271,6 +271,7 @@ extension BillingFormTextFieldView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldReturn() ?? true
     }
+
 }
 
 // MARK: - Phone Number Text Delegate
@@ -286,5 +287,10 @@ extension BillingFormTextFieldView: BillingFormPhoneNumberTextDelegate {
 
     func phoneNumberIsUpdated(number: Phone, tag: Int) {
         phoneNumberDelegate?.phoneNumberIsUpdated(number: number, tag: tag)
+    }
+
+    func phoneTextFieldDidBeginEditing(_ textField: UITextField) {
+        delegate?.textFieldShouldBeginEditing(textField: textField)
+        textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
     }
 }
