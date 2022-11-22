@@ -11,3 +11,11 @@ public struct BillingForm: Equatable {
         self.phone = phone
     }
 }
+
+extension Phone {
+    func displayFormatted() -> String {
+        let nationalNumber = String(number ?? "")
+        let dialingCode = String(country?.dialingCode ?? "")
+        return "+\(dialingCode) \(nationalNumber)"
+    }
+}

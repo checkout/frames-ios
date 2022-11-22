@@ -257,9 +257,7 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
     func phoneNumberIsUpdated(number: Phone, tag: Int) {
         let index = BillingFormCell.phoneNumber(nil).index
         self.phone = number
-        let countryCode = String(number.country?.dialingCode ?? "")
-        let numberString = String(number.number ?? "")
-        textValueOfCellType[index] = "+\(countryCode)\(numberString)"
+        textValueOfCellType[index] = phone?.displayFormatted()
         let currentCellTypeIndex = style.cells[tag].index
         errorFlagOfCellType[currentCellTypeIndex] = !PhoneNumberValidator().validate(value: number)
         notifyContentChangeToDelegate()
