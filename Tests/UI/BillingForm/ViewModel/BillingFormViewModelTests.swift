@@ -81,6 +81,7 @@ class BillingFormViewModelTests: XCTestCase {
         viewModel.textValueOfCellType = textValueOfCellType
         viewModel.delegate = delegate
         viewModel.update(country: country)
+        viewModel.phoneNumberIsUpdated(number: phone, tag: 0)
         viewModel.doneButtonIsPressed(sender: UIViewController())
         
         XCTAssertEqual(delegate.onTapDoneButtonCalledTimes, 1)
@@ -93,7 +94,7 @@ class BillingFormViewModelTests: XCTestCase {
         XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address?.country?.iso3166Alpha2, data.address?.country?.iso3166Alpha2)
         XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address?.country?.dialingCode, data.address?.country?.dialingCode)
         XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address?.country?.name, data.address?.country?.name)
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.phone?.number, data.phone?.number)
+        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.phone, data.phone)
 
     }
     

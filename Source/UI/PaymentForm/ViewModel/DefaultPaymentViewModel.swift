@@ -82,7 +82,9 @@ class DefaultPaymentViewModel: PaymentViewModel {
             case .country: summaryValue.append(billingFormData?.address?.country?.name)
             case .city: summaryValue.append(billingFormData?.address?.city)
             case .postcode: summaryValue.append(billingFormData?.address?.zip)
-            case .phoneNumber: summaryValue.append(billingFormData?.phone?.number)
+            case .phoneNumber:
+                    guard let phoneString = billingFormData?.phone?.displayFormatted(), !phoneString.isEmpty else { return }
+                    summaryValue.append(phoneString)
             }
         }
 

@@ -21,6 +21,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
     private var countryRow: Int?
     private(set) var country: Country?
+    private(set) var phone: Phone?
     private(set) var style: BillingFormStyle
     private(set) var data: BillingForm?
     private(set) var updatedRow: Int? {
@@ -67,14 +68,14 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             let isMandatory = type.style?.isMandatory ?? true
             let value = type.getText(from: data)
             let isEmpty = value?.isEmpty ?? true
-            country = data?.address?.country
             textValueOfCellType[type.index] = isEmpty ? (isMandatory ? nil : "") : value
             errorFlagOfCellType[type.index] = isEmpty ? (value != nil ? isMandatory : nil) : false
         }
+        country = data?.address?.country
         if country == nil,
            let regionCode = Locale.current.regionCode,
            let deviceCountry = Country(iso3166Alpha2: regionCode) {
-            self.country = deviceCountry
+              country = deviceCountry
         }
     }
 
@@ -255,7 +256,8 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
 
     func phoneNumberIsUpdated(number: Phone, tag: Int) {
         let index = BillingFormCell.phoneNumber(nil).index
-        textValueOfCellType[index] = number.number
+        self.phone = number
+        textValueOfCellType[index] = phone?.displayFormatted()
         let currentCellTypeIndex = style.cells[tag].index
         errorFlagOfCellType[currentCellTypeIndex] = !PhoneNumberValidator().validate(value: number)
         notifyContentChangeToDelegate()
@@ -270,10 +272,6 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
     }
 
     func doneButtonIsPressed(sender: UIViewController) {
-
-        let phone = Phone(
-            number: textValueOfCellType[BillingFormCell.phoneNumber(nil).index],
-            country: country)
 
         let address = Address(
             addressLine1: textValueOfCellType[BillingFormCell.addressLine1(nil).index],

@@ -62,16 +62,8 @@ class BillingFormTextFieldView: UIView {
         return view
     }()
 
-    private(set) lazy var textField: BillingFormTextField = {
-        let view = DefaultBillingFormTextField(type: type, tag: tag).disabledAutoresizingIntoConstraints()
-        view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
-        view.autocorrectionType = .no
-        view.delegate = self
-        view.backgroundColor = .clear
-        return  view
-    }()
-
     private(set) var phoneNumberTextField: BillingFormTextField?
+    private(set) var textField: BillingFormTextField?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -115,25 +107,34 @@ class BillingFormTextFieldView: UIView {
 
     func refreshLayoutComponents() {
         guard isPhoneNumberType() else {
-            textField.isHidden = false
             phoneNumberTextField?.removeFromSuperview()
             phoneNumberTextField = nil
+            guard textField == nil else { return }
+            textField = createTextField()
             addTextFieldToView(textField)
             return
         }
-        textField.isHidden = true
-        textField.removeFromSuperview()
-        textField.delegate = nil
-        textField.removeTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
-        addPhoneNumberTextField()
+        textField?.removeFromSuperview()
+        textField = nil
+        guard phoneNumberTextField == nil else { return }
+        phoneNumberTextField = createPhoneNumberTextField()
+        addTextFieldToView(phoneNumberTextField)
     }
 
-    private func addPhoneNumberTextField() {
-        guard phoneNumberTextField == nil else { return }
-        phoneNumberTextField = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self).disabledAutoresizingIntoConstraints()
-        phoneNumberTextField?.autocorrectionType = .no
-        phoneNumberTextField?.backgroundColor = .clear
-        addTextFieldToView(phoneNumberTextField)
+    private func createTextField() -> BillingFormTextField {
+        let view = DefaultBillingFormTextField(type: type, tag: tag).disabledAutoresizingIntoConstraints()
+        view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        view.autocorrectionType = .no
+        view.delegate = self
+        view.backgroundColor = .clear
+        return  view
+    }
+
+    private func createPhoneNumberTextField() -> BillingFormPhoneNumberText {
+        let view = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self).disabledAutoresizingIntoConstraints()
+        view.autocorrectionType = .no
+        view.backgroundColor = .clear
+        return view
     }
 
     private func suggestTextContentType(type: BillingFormCell?) -> UITextContentType? {
@@ -214,7 +215,7 @@ extension BillingFormTextFieldView {
         NSLayoutConstraint.activate([
             headerStackView.topAnchor.constraint(equalTo: topAnchor),
             headerStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            headerStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60)
+            headerStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: style?.mandatory?.text.isEmpty ?? true ? 0 : -60)
         ])
     }
 
@@ -270,6 +271,7 @@ extension BillingFormTextFieldView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldReturn() ?? true
     }
+
 }
 
 // MARK: - Phone Number Text Delegate
@@ -285,5 +287,10 @@ extension BillingFormTextFieldView: BillingFormPhoneNumberTextDelegate {
 
     func phoneNumberIsUpdated(number: Phone, tag: Int) {
         phoneNumberDelegate?.phoneNumberIsUpdated(number: number, tag: tag)
+    }
+
+    func phoneTextFieldDidBeginEditing(_ textField: UITextField) {
+        delegate?.textFieldShouldBeginEditing(textField: textField)
+        textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
     }
 }
