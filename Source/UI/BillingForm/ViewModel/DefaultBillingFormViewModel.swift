@@ -1,6 +1,5 @@
 import UIKit
 import Checkout
-import PhoneNumberKit
 
 /**
  This final class is for billing form list view model logic.
@@ -146,7 +145,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             errorFlagOfCellType[currentCellTypeIndex] = false
             return
         }
-        errorFlagOfCellType[currentCellTypeIndex] = !style.cells[row].validator.validate(value: text)
+        errorFlagOfCellType[currentCellTypeIndex] = !style.cells[row].validator.isValid(text: text ?? "")
     }
 
     func validateTextFieldByCharacter(textField: UITextField, replacementString string: String) {
@@ -167,19 +166,6 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         }
 
         notifyContentChangeToDelegate()
-    }
-
-    func validatePhoneNumberMaxLength(text: String?) -> Bool {
-        guard let text = text, !text.isEmpty else { return true }
-        let phoneMaxLength = Checkout.Constants.Phone.phoneMaxLength
-        let region: String? = text.first == "+" ? nil : data?.phone?.country?.iso3166Alpha2
-        let phoneNumberKit = PhoneNumberKit()
-        let phoneNumber = try? phoneNumberKit.parse(text, withRegion: region ?? PhoneNumberKit.defaultRegionCode(), ignoreType: true)
-        guard let phoneNumber = phoneNumber else {
-            let decimalDigitsLength = text.decimalDigits.count
-            return decimalDigitsLength <= phoneMaxLength
-        }
-        return String(phoneNumber.nationalNumber).count <= phoneMaxLength
     }
 
     private func validateTextOnEndEditing(textField: BillingFormTextField) {
@@ -248,19 +234,6 @@ extension DefaultBillingFormViewModel: BillingFormTextFieldDelegate {
 extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
     func textFieldDidEndEditing(tag: Int) {
         updatedRow = tag
-    }
-
-    func isValidPhoneMaxLength(text: String?) -> Bool {
-        validatePhoneNumberMaxLength(text: text)
-    }
-
-    func phoneNumberIsUpdated(number: Phone, tag: Int) {
-        let index = BillingFormCell.phoneNumber(nil).index
-        self.phone = number
-        textValueOfCellType[index] = phone?.displayFormatted()
-        let currentCellTypeIndex = style.cells[tag].index
-        errorFlagOfCellType[currentCellTypeIndex] = !PhoneNumberValidator().validate(value: number)
-        notifyContentChangeToDelegate()
     }
 
     func update(country: Country) {

@@ -3,10 +3,9 @@ import UIKit
 final class DefaultBillingFormTextField: UITextField, BillingFormTextField {
     var type: BillingFormCell?
 
-    init(type: BillingFormCell?, tag: Int) {
+    init(type: BillingFormCell?) {
         self.type = type
         super.init(frame: .zero)
-        self.tag = tag
     }
 
     required init?(coder: NSCoder) {

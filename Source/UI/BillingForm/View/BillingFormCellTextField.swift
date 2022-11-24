@@ -2,9 +2,7 @@ import UIKit
 import Checkout
 
 protocol CellTextFieldDelegate: AnyObject {
-    func phoneNumberIsUpdated(number: Phone, tag: Int)
     func textFieldDidEndEditing(tag: Int)
-    func isValidPhoneMaxLength(text: String?) -> Bool
     func textFieldShouldBeginEditing(textField: UITextField)
     func textFieldShouldReturn() -> Bool
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool
@@ -19,7 +17,6 @@ final class BillingFormCellTextField: UITableViewCell {
     private lazy var textFieldView: BillingFormTextFieldView? = {
         let view = BillingFormTextFieldView().disabledAutoresizingIntoConstraints()
         view.delegate = self
-        view.phoneNumberDelegate = self
         return view
     }()
 
@@ -29,11 +26,6 @@ final class BillingFormCellTextField: UITableViewCell {
         backgroundColor = .clear
       /// Tap Gesture to dismiss the keyboard on touch on view without canceling touches In current view
       addGestureRecognizer(UIView.keyboardDismissTapGesture)
-    }
-
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        textFieldView?.refreshLayoutComponents()
     }
 
     func update(type: BillingFormCell?, style: CellTextFieldStyle?, tag: Int, textFieldValue: String?) {
@@ -89,18 +81,4 @@ extension BillingFormCellTextField: TextFieldViewDelegate {
         delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString) ?? true
     }
 
-}
-
-extension BillingFormCellTextField: PhoneNumberTextFieldDelegate {
-    func textFieldDidEndEditing(tag: Int) {
-        delegate?.textFieldDidEndEditing(tag: tag)
-    }
-
-    func isValidPhoneMaxLength(text: String?) -> Bool {
-        delegate?.isValidPhoneMaxLength(text: text) ?? true
-    }
-
-    func phoneNumberIsUpdated(number: Phone, tag: Int) {
-        delegate?.phoneNumberIsUpdated(number: number, tag: tag)
-    }
 }
