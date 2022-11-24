@@ -40,4 +40,41 @@ class BillingFormTextFieldViewTests: XCTestCase {
         XCTAssertEqual(view.textField.textColor, style.textfield.textColor)
         XCTAssertEqual(view.textField.tintColor, style.textfield.tintColor)
     }
+    
+    func testUpdateStyleFormatsPhoneNumber() {
+        var style = DefaultBillingFormPhoneNumberCellStyle()
+        style.textfield.text = "01206123123"
+        let view = BillingFormTextFieldView()
+        view.update(style: style, type: .phoneNumber(style), tag: 0)
+        
+        XCTAssertEqual(view.textField.text, "+44 1206 123123")
+    }
+    
+    func testShouldEndEditingIsFormattingDisplay() {
+        let testTextField = UITextField()
+        testTextField.text = "01206123123"
+        let view = BillingFormTextFieldView()
+        let style = DefaultBillingFormPhoneNumberCellStyle()
+        view.update(style: style, type: .phoneNumber(style), tag: 0)
+        
+        XCTAssertEqual(testTextField.text, "01206123123")
+        _ = view.textFieldShouldEndEditing(testTextField)
+        XCTAssertEqual(testTextField.text, "+44 1206 123123")
+    }
+    
+    func testChangeCharactersUsingPhoneNumberValidator() {
+        let testTextField = UITextField()
+        testTextField.text = "01206123123"
+        let style = DefaultBillingFormPhoneNumberCellStyle()
+        let view = BillingFormTextFieldView()
+        view.update(style: style, type: .phoneNumber(style), tag: 0)
+        
+        var shouldChange = view.textField(testTextField, shouldChangeCharactersIn: NSRange(location: 8, length: 0), replacementString: "2")
+        XCTAssertTrue(shouldChange)
+        XCTAssertEqual(view.textField.text, "")
+        
+        shouldChange = view.textField(testTextField, shouldChangeCharactersIn: NSRange(location: 8, length: 0), replacementString: "d")
+        XCTAssertFalse(shouldChange)
+        XCTAssertEqual(view.textField.text, "")
+    }
 }
