@@ -136,7 +136,7 @@ class BillingFormTextFieldView: UIView {
         textField?.type = type
         textField?.tag = tag
         textField?.keyboardType = style.textfield.isSupportingNumericKeyboard ? .phonePad : .default
-        textField?.text = style.textfield.text
+        textField?.text = type?.validator.formatForDisplay(text: style.textfield.text) ?? style.textfield.text
         textField?.font = style.textfield.font
         textField?.placeholder = style.textfield.placeholder
         textField?.textColor = style.textfield.textColor
