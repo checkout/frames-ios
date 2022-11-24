@@ -3,7 +3,7 @@ import Foundation
 class GenericInputValidator: Validator {
 
     func shouldAccept(text: String) -> Bool {
-        !text.isEmpty
+        true
     }
 
     func isValid(text: String) -> Bool {

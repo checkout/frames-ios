@@ -200,7 +200,7 @@ final class PaymentViewModelTests: XCTestCase {
                                             billingFormStyle: DefaultBillingFormStyle(),
                                             supportedSchemes: [.unknown])
         
-        let summaryValue = "User Custom 1\n\n+44 77 1234 1234"
+        let summaryValue = "User Custom 1\n\n+44 7712 341234"
         viewModel.updateBillingSummaryView()
         let expectedSummaryText = try XCTUnwrap(viewModel.paymentFormStyle?.editBillingSummary?.summary?.text)
         XCTAssertEqual(expectedSummaryText, summaryValue)
@@ -230,7 +230,7 @@ final class PaymentViewModelTests: XCTestCase {
                                             billingFormStyle: DefaultBillingFormStyle(),
                                             supportedSchemes: [.unknown])
         let countryName = try XCTUnwrap(country?.name)
-        let summaryValue = "User\n\nCheckout.com\n\nLondon city\n\nLondon County\n\nN12345\n\n\(countryName)\n\n+44 077 1234 1234"
+        let summaryValue = "User\n\nCheckout.com\n\nLondon city\n\nLondon County\n\nN12345\n\n\(countryName)\n\n+44 7712 341234"
         viewModel.updateBillingSummaryView()
         let expectedSummaryText = try XCTUnwrap(viewModel.paymentFormStyle?.editBillingSummary?.summary?.text)
         XCTAssertEqual(expectedSummaryText, summaryValue)

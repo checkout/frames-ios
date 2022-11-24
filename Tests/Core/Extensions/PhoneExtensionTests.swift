@@ -13,10 +13,10 @@ import Checkout
 final class PhoneTests: XCTestCase {
     func testDisplayFormatted() {
         let country = Country(iso3166Alpha2: "GB")
-        let phone = Phone(number: "123456789", country: country)
+        let phone = Phone(number: "01206333222", country: country)
 
         let displayFormatted = phone.displayFormatted()
 
-        XCTAssertEqual(displayFormatted, "+44 123456789")
+        XCTAssertEqual(displayFormatted, "+44 1206 333222")
     }
 }

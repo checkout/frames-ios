@@ -29,68 +29,15 @@ class BillingFormTextFieldViewTests: XCTestCase {
         XCTAssertEqual(view.textFieldContainer.layer.borderWidth, style.textfield.borderWidth)
         XCTAssertEqual(view.textFieldContainer.layer.cornerRadius, style.textfield.cornerRadius)
         XCTAssertEqual(view.textFieldContainer.layer.borderWidth, style.textfield.borderWidth)
-        XCTAssertEqual(view.textField?.keyboardType, .default)
-        XCTAssertEqual(view.textField?.textContentType, .name)
+        XCTAssertEqual(view.textField.keyboardType, .default)
+        XCTAssertEqual(view.textField.textContentType, .name)
     }
 
     func testTextFieldStyle() {
-        XCTAssertEqual(view.textField?.text, style.textfield.text)
-        XCTAssertEqual(view.textField?.font, style.textfield.font)
-        XCTAssertNil(view.textField?.placeholder)
-        XCTAssertEqual(view.textField?.textColor, style.textfield.textColor)
-        XCTAssertEqual(view.textField?.tintColor, style.textfield.tintColor)
-    }
-    
-    func testPhoneNumberInputStyle() {
-        style = DefaultBillingFormFullNameCellStyle()
-        view = BillingFormTextFieldView()
-        view.update(style: style, type: .phoneNumber(nil), tag: 0)
-        
-        XCTAssertNotNil(view.phoneNumberTextField)
-        XCTAssertEqual(view.phoneNumberTextField?.isHidden, false)
-        XCTAssertNil(view.textField)
-        XCTAssertEqual(view.textFieldContainer.subviews.count, 1)
-        
-        view.refreshLayoutComponents()
-        XCTAssertNotNil(view.phoneNumberTextField)
-        XCTAssertEqual(view.phoneNumberTextField?.isHidden, false)
-        XCTAssertNil(view.textField)
-        XCTAssertEqual(view.textFieldContainer.subviews.count, 1)
-    }
-
-    func testNotPhoneNumberInputStyle() {
-        style = DefaultBillingFormFullNameCellStyle()
-        view = BillingFormTextFieldView()
-        view.update(style: style, type: .city(nil), tag: 0)
-        
-        XCTAssertNil(view.phoneNumberTextField)
-        XCTAssertEqual(view.textField?.isHidden, false)
-        XCTAssertEqual(view.textFieldContainer.subviews.count, 1)
-        
-        view.refreshLayoutComponents()
-        XCTAssertNil(view.phoneNumberTextField)
-        XCTAssertEqual(view.textField?.isHidden, false)
-        XCTAssertEqual(view.textFieldContainer.subviews.count, 1)
-    }
-    
-    func testChangingFromTypeToType() {
-        style = DefaultBillingFormFullNameCellStyle()
-        view = BillingFormTextFieldView()
-        view.update(style: style, type: .city(nil), tag: 0)
-        
-        XCTAssertNil(view.phoneNumberTextField)
-        XCTAssertEqual(view.textField?.isHidden, false)
-        XCTAssertEqual(view.textFieldContainer.subviews.count, 1)
-        
-        view.update(style: style, type: .phoneNumber(nil), tag: 0)
-        XCTAssertNotNil(view.phoneNumberTextField)
-        XCTAssertEqual(view.phoneNumberTextField?.isHidden, false)
-        XCTAssertNil(view.textField)
-        XCTAssertEqual(view.textFieldContainer.subviews.count, 1)
-        
-        view.update(style: style, type: .state(nil), tag: 0)
-        XCTAssertNil(view.phoneNumberTextField)
-        XCTAssertEqual(view.textField?.isHidden, false)
-        XCTAssertEqual(view.textFieldContainer.subviews.count, 1)
+        XCTAssertEqual(view.textField.text, style.textfield.text)
+        XCTAssertEqual(view.textField.font, style.textfield.font)
+        XCTAssertNil(view.textField.placeholder)
+        XCTAssertEqual(view.textField.textColor, style.textfield.textColor)
+        XCTAssertEqual(view.textField.tintColor, style.textfield.tintColor)
     }
 }

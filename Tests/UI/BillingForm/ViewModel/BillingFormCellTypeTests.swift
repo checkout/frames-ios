@@ -4,31 +4,31 @@ import XCTest
 class BillingFormCellTests: XCTestCase {
 
     func testFullNameValidatorType() {
-        XCTAssertTrue(BillingFormCell.fullName(nil).validator is FullNameValidator)
+        XCTAssertTrue(BillingFormCell.fullName(nil).validator is GenericInputValidator)
     }
 
     func testaddressLine1ValidatorType() {
-        XCTAssertTrue(BillingFormCell.addressLine1(nil).validator is AddressLine1Validator)
+        XCTAssertTrue(BillingFormCell.addressLine1(nil).validator is GenericInputValidator)
     }
 
     func testaddressLine2ValidatorType() {
-        XCTAssertTrue(BillingFormCell.addressLine2(nil).validator is AddressLine2Validator)
+        XCTAssertTrue(BillingFormCell.addressLine2(nil).validator is GenericInputValidator)
     }
 
     func testCityValidatorType() {
-        XCTAssertTrue(BillingFormCell.city(nil).validator is CityValidator)
+        XCTAssertTrue(BillingFormCell.city(nil).validator is GenericInputValidator)
     }
 
     func testStateValidatorType() {
-        XCTAssertTrue(BillingFormCell.state(nil).validator is StateValidator)
+        XCTAssertTrue(BillingFormCell.state(nil).validator is GenericInputValidator)
     }
 
     func testCountryValidatorType() {
-        XCTAssertTrue(BillingFormCell.country(nil).validator is CountryValidator)
+        XCTAssertTrue(BillingFormCell.country(nil).validator is GenericInputValidator)
     }
 
     func testPostcodeValidatorType() {
-        XCTAssertTrue(BillingFormCell.postcode(nil).validator is PostcodeValidator)
+        XCTAssertTrue(BillingFormCell.postcode(nil).validator is GenericInputValidator)
     }
 
     func testPhoneNumberValidatorType() {
