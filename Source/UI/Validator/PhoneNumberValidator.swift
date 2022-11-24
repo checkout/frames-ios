@@ -5,9 +5,15 @@ import Checkout
 class PhoneNumberValidator: Validator {
     private let validator = PhoneValidator()
     private let phoneKit = PhoneNumberKit()
+    private let validCharacterSet: CharacterSet = {
+        var validInputs = "+ "
+        (0...9).forEach { validInputs.append("\($0)") }
+        return CharacterSet(charactersIn: validInputs)
+    }()
 
     func shouldAccept(text: String) -> Bool {
-        text.count < Checkout.Constants.Phone.phoneMaxLength
+        CharacterSet(charactersIn: text).isSubset(of: validCharacterSet) &&
+            text.count < Checkout.Constants.Phone.phoneMaxLength
     }
 
     func isValid(text: String) -> Bool {
