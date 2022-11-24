@@ -178,6 +178,13 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         textValueOfCellType[type.index] = shouldSaveText ? textField.text : nil
 
         updatedRow = textField.tag
+
+        // Save phone number if phone input is updated
+        guard textField.type == BillingFormCell.phoneNumber(nil) else {
+            return
+        }
+
+        phone = Phone(string: textField.text ?? "")
     }
 
     private func notifyContentChangeToDelegate() {
