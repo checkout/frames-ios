@@ -8,9 +8,9 @@
 import Foundation
 
 extension Phone {
-    
+
     func displayFormatted() -> String {
         PhoneNumberValidator().formatForDisplay(text: "\(country?.dialingCode ?? "")\(number ?? "")")
     }
-    
+
 }
