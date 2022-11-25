@@ -85,4 +85,131 @@ class PhoneNumberValidatorTests: XCTestCase {
         XCTAssertEqual(validator.formatForDisplay(text: testString), "+44 1206 321321")
     }
     
+    
+    // MARK: Check country phone number outcomes
+    func testUKNumber() {
+        let testNumber = "+442073233888"
+        let validator = PhoneNumberValidator()
+        
+        XCTAssertTrue(validator.shouldAccept(text: testNumber))
+        XCTAssertTrue(validator.isValid(text: testNumber))
+        XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+44 20 7323 3888")
+    }
+    
+    func testUSNumber() {
+        let testNumber = "+14156914688"
+        let validator = PhoneNumberValidator()
+        
+        XCTAssertTrue(validator.shouldAccept(text: testNumber))
+        XCTAssertTrue(validator.isValid(text: testNumber))
+        XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+1 415-691-4688")
+    }
+    
+    func testFranceNumber() {
+        let testNumber = "+33187169980"
+        let validator = PhoneNumberValidator()
+        
+        XCTAssertTrue(validator.shouldAccept(text: testNumber))
+        XCTAssertTrue(validator.isValid(text: testNumber))
+        XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+33 1 87 16 99 80")
+    }
+    
+    func testSaudiArabiaNumber() {
+        let testNumber = "+966112735522"
+        let validator = PhoneNumberValidator()
+        
+        XCTAssertTrue(validator.shouldAccept(text: testNumber))
+        XCTAssertTrue(validator.isValid(text: testNumber))
+        XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+966 11 273 5522")
+    }
+    
+    func testUAENumber() {
+        let testNumber = "+97144202886"
+        let validator = PhoneNumberValidator()
+        
+        XCTAssertTrue(validator.shouldAccept(text: testNumber))
+        XCTAssertTrue(validator.isValid(text: testNumber))
+        XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+971 4 420 2886")
+    }
+    
+    func testGermanyNumber() {
+        let testNumber = "+493088789157"
+        let validator = PhoneNumberValidator()
+        
+        XCTAssertTrue(validator.shouldAccept(text: testNumber))
+        XCTAssertTrue(validator.isValid(text: testNumber))
+        XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+49 30 88789157")
+    }
+    
+    func testHongKongNumber() {
+        let testNumber = "+85230024051"
+        let validator = PhoneNumberValidator()
+        
+        XCTAssertTrue(validator.shouldAccept(text: testNumber))
+        XCTAssertTrue(validator.isValid(text: testNumber))
+        XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+852 3002 4051")
+    }
+    
+    func testSingaporeNumber() {
+        let testNumber = "+6569290270"
+        let validator = PhoneNumberValidator()
+        
+        XCTAssertTrue(validator.shouldAccept(text: testNumber))
+        XCTAssertTrue(validator.isValid(text: testNumber))
+        XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+65 6929 0270")
+    }
+    
+    func testPortugalNumber() {
+        let testNumber = "+351221208500"
+        let validator = PhoneNumberValidator()
+        
+        XCTAssertTrue(validator.shouldAccept(text: testNumber))
+        XCTAssertTrue(validator.isValid(text: testNumber))
+        XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+351 22 120 8500")
+    }
+    
+    func testNewZeelandNumber() {
+        let testNumber = "+6498888625"
+        let validator = PhoneNumberValidator()
+        
+        XCTAssertTrue(validator.shouldAccept(text: testNumber))
+        XCTAssertTrue(validator.isValid(text: testNumber))
+        XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+64 9-888 8625")
+    }
+    
+    func testIrelandNumber() {
+        let testNumber = "+35315747380"
+        let validator = PhoneNumberValidator()
+        
+        XCTAssertTrue(validator.shouldAccept(text: testNumber))
+        XCTAssertTrue(validator.isValid(text: testNumber))
+        XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+353 1 574 7380")
+    }
+    
+    func testJapanNumber() {
+        let testNumber = "+81332341077"
+        let validator = PhoneNumberValidator()
+        
+        XCTAssertTrue(validator.shouldAccept(text: testNumber))
+        XCTAssertTrue(validator.isValid(text: testNumber))
+        XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+81 3-3234-1077")
+    }
+    
+    func testSpainNumber() {
+        let testNumber = "+34919012170"
+        let validator = PhoneNumberValidator()
+        
+        XCTAssertTrue(validator.shouldAccept(text: testNumber))
+        XCTAssertTrue(validator.isValid(text: testNumber))
+        XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+34 919 01 21 70")
+    }
+    
+    func testChinaNumber() {
+        let testNumber = "+8602180510459"
+        let validator = PhoneNumberValidator()
+        
+        XCTAssertTrue(validator.shouldAccept(text: testNumber))
+        XCTAssertTrue(validator.isValid(text: testNumber))
+        XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+86 21 8051 0459")
+    }
 }
