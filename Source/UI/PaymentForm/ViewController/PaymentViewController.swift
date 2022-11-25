@@ -11,7 +11,7 @@ protocol PaymentViewControllerDelegate: AnyObject {
 }
 
 // swiftlint:disable file_length
-final class PaymentViewController: UIViewController {
+open class PaymentViewController: UIViewController {
 
   // MARK: - Variables
 
@@ -135,7 +135,7 @@ final class PaymentViewController: UIViewController {
     self.navigationController?.popViewController(animated: true)
   }
 
-  @objc private func keyboardWillShow(notification: Notification) {
+  @objc func keyboardWillShow(notification: Notification) {
     guard let userInfo = notification.userInfo,
     let keyboardFrameValue = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
     var keyboardFrame = keyboardFrameValue.cgRectValue
