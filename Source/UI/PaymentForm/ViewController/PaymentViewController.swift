@@ -141,7 +141,7 @@ final class PaymentViewController: UIViewController {
     var keyboardFrame = keyboardFrameValue.cgRectValue
     keyboardFrame = view.convert(keyboardFrame, from: nil)
     var contentInset: UIEdgeInsets = scrollView.contentInset
-    contentInset.bottom = keyboardFrame.size.height + Constants.Padding.l.rawValue
+      contentInset.bottom = keyboardFrame.size.height + Constants.Padding.l.rawValue - 64.0
     updateScrollViewInset(to: contentInset, from: notification)
   }
 
