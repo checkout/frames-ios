@@ -17,7 +17,7 @@ class PhoneNumberValidatorTests: XCTestCase {
     }
     
     func testShouldAcceptValidCharacterInput() {
-        let testString = "12 + 0345 6789"
+        let testString = "12 + 0345 ) 6789 - ("
         let validator = PhoneNumberValidator()
         XCTAssertTrue(validator.shouldAccept(text: testString))
     }
