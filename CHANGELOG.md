@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file.
 Released on 2022-11-25
 
 Updates
-- Fix Security Code input issue [Fix]
+- Fix Security Code input issue with leading zeros [Fix]
 - Improved phone number validation, improving UX and input handling [Enhancement]
 
 All SDK integrators desiring the new SDK should use 4.0.2 onwards, as it fixes some known bugs with 4.0.1.
