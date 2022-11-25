@@ -6,7 +6,7 @@ class PhoneNumberValidator: Validator {
     private let validator = PhoneValidator()
     private let phoneKit = PhoneNumberKit()
     private let validCharacterSet: CharacterSet = {
-        var validInputs = "+ "
+        var validInputs = "-+() "
         (0...9).forEach { validInputs.append("\($0)") }
         return CharacterSet(charactersIn: validInputs)
     }()
