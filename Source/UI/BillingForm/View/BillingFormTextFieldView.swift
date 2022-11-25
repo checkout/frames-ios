@@ -1,18 +1,11 @@
 import UIKit
 import Checkout
 
-protocol PhoneNumberTextFieldDelegate: AnyObject {
-    func phoneNumberIsUpdated(number: Phone, tag: Int)
-    func isValidPhoneMaxLength(text: String?) -> Bool
-    func textFieldDidEndEditing(tag: Int)
-}
-
 class BillingFormTextFieldView: UIView {
 
     // MARK: - Properties
 
     weak var delegate: TextFieldViewDelegate?
-    weak var phoneNumberDelegate: PhoneNumberTextFieldDelegate?
 
     private var style: CellTextFieldStyle?
     private var type: BillingFormCell?
@@ -62,8 +55,14 @@ class BillingFormTextFieldView: UIView {
         return view
     }()
 
-    private(set) var phoneNumberTextField: BillingFormTextField?
-    private(set) var textField: BillingFormTextField?
+    private(set) lazy var textField: BillingFormTextField = {
+        let view = DefaultBillingFormTextField(type: type).disabledAutoresizingIntoConstraints()
+        view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        view.autocorrectionType = .no
+        view.delegate = self
+        view.backgroundColor = .clear
+        return  view
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -88,53 +87,22 @@ class BillingFormTextFieldView: UIView {
         guard let type = type, let style = style as? CellTextFieldStyle else { return }
         self.type = type
         self.style = style
+        textField.tag = tag
         backgroundColor = style.backgroundColor
 
         mandatoryLabel.isHidden = style.isMandatory || style.title == nil
         headerLabel.isHidden = style.title == nil
         hintLabel.isHidden = style.hint == nil
 
-        refreshLayoutComponents()
+        addTextFieldToView(textField)
 
         headerLabel.update(with: style.title)
         mandatoryLabel.update(with: style.mandatory)
         hintLabel.update(with: style.hint)
 
         updateTextFieldContainer(style: style)
-        updateTextField(style: style, textFieldValue: textFieldValue, tag: tag)
+        update(textField: textField, style: style, textFieldValue: textFieldValue, tag: tag)
         updateErrorView(style: style)
-    }
-
-    func refreshLayoutComponents() {
-        guard isPhoneNumberType() else {
-            phoneNumberTextField?.removeFromSuperview()
-            phoneNumberTextField = nil
-            guard textField == nil else { return }
-            textField = createTextField()
-            addTextFieldToView(textField)
-            return
-        }
-        textField?.removeFromSuperview()
-        textField = nil
-        guard phoneNumberTextField == nil else { return }
-        phoneNumberTextField = createPhoneNumberTextField()
-        addTextFieldToView(phoneNumberTextField)
-    }
-
-    private func createTextField() -> BillingFormTextField {
-        let view = DefaultBillingFormTextField(type: type, tag: tag).disabledAutoresizingIntoConstraints()
-        view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
-        view.autocorrectionType = .no
-        view.delegate = self
-        view.backgroundColor = .clear
-        return  view
-    }
-
-    private func createPhoneNumberTextField() -> BillingFormPhoneNumberText {
-        let view = BillingFormPhoneNumberText(type: type, tag: tag, phoneNumberTextDelegate: self).disabledAutoresizingIntoConstraints()
-        view.autocorrectionType = .no
-        view.backgroundColor = .clear
-        return view
     }
 
     private func suggestTextContentType(type: BillingFormCell?) -> UITextContentType? {
@@ -168,24 +136,12 @@ class BillingFormTextFieldView: UIView {
         textField?.type = type
         textField?.tag = tag
         textField?.keyboardType = style.textfield.isSupportingNumericKeyboard ? .phonePad : .default
-        textField?.text = style.textfield.text
+        textField?.text = type?.validator.formatForDisplay(text: style.textfield.text) ?? style.textfield.text
         textField?.font = style.textfield.font
         textField?.placeholder = style.textfield.placeholder
         textField?.textColor = style.textfield.textColor
         textField?.tintColor = style.textfield.tintColor
         textField?.textContentType = suggestTextContentType(type: type)
-    }
-
-    private func updateTextField(style: CellTextFieldStyle, textFieldValue: String?, tag: Int) {
-        if isPhoneNumberType() {
-            update(textField: phoneNumberTextField, style: style, textFieldValue: textFieldValue, tag: tag)
-            return
-        }
-        update(textField: textField, style: style, textFieldValue: textFieldValue, tag: tag)
-    }
-
-    private func isPhoneNumberType() -> Bool {
-        self.type == .phoneNumber(nil)
     }
 
     private func updateErrorView(style: CellTextFieldStyle) {
@@ -264,33 +220,26 @@ extension BillingFormTextFieldView: UITextFieldDelegate {
         textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
     }
 
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text,
+              let textRange = Range(range, in: text) else {
+            return false
+        }
+        let newText = text.replacingCharacters(in: textRange,
+                                               with: string)
+        return type?.validator.shouldAccept(text: newText) == true
+    }
+
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        delegate?.textFieldShouldEndEditing(textField: textField, replacementString: textField.text ?? "") ?? true
+        if let validator = type?.validator,
+           let text = textField.text {
+            textField.text = validator.formatForDisplay(text: text)
+        }
+        return delegate?.textFieldShouldEndEditing(textField: textField, replacementString: textField.text ?? "") ?? true
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldReturn() ?? true
     }
 
-}
-
-// MARK: - Phone Number Text Delegate
-
-extension BillingFormTextFieldView: BillingFormPhoneNumberTextDelegate {
-    func textFieldDidEndEditing(tag: Int) {
-        phoneNumberDelegate?.textFieldDidEndEditing(tag: tag)
-    }
-
-    func isValidPhoneMaxLength(text: String?) -> Bool {
-        phoneNumberDelegate?.isValidPhoneMaxLength(text: text) ?? true
-    }
-
-    func phoneNumberIsUpdated(number: Phone, tag: Int) {
-        phoneNumberDelegate?.phoneNumberIsUpdated(number: number, tag: tag)
-    }
-
-    func phoneTextFieldDidBeginEditing(_ textField: UITextField) {
-        delegate?.textFieldShouldBeginEditing(textField: textField)
-        textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
-    }
 }

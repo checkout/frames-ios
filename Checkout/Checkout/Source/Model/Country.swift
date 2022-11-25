@@ -284,6 +284,15 @@ public struct Country: Equatable {
       return nil
     }
   }
+    
+    public init?(dialingCode: String) {
+        let cleanDialingCode = dialingCode.replacingOccurrences(of: "+", with: "").removeWhitespaces()
+        if let country = Self.allAvailable.first(where: { $0.dialingCode == cleanDialingCode }) {
+            self = country
+        } else {
+            return nil
+        }
+    }
 
   init(iso3166Alpha2: String, dialingCode: String) {
     self.iso3166Alpha2 = iso3166Alpha2

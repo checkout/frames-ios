@@ -13,13 +13,14 @@ import Foundation
 
     internal var validator: Validator {
         switch self {
-        case .fullName: return FullNameValidator()
-        case .addressLine1: return AddressLine1Validator()
-        case .addressLine2: return AddressLine2Validator()
-        case .city: return CityValidator()
-        case .state: return StateValidator()
-        case .postcode: return PostcodeValidator()
-        case .country: return CountryValidator()
+        case .fullName,
+                .addressLine1,
+                .addressLine2,
+                .city,
+                .state,
+                .postcode,
+                .country:
+            return GenericInputValidator()
         case .phoneNumber: return PhoneNumberValidator()
         }
     }
