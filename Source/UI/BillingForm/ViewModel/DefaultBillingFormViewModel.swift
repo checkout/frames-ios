@@ -71,6 +71,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             errorFlagOfCellType[type.index] = isEmpty ? (value != nil ? isMandatory : nil) : false
         }
         country = data?.address?.country
+        phone = data?.phone
         if country == nil,
            let regionCode = Locale.current.regionCode,
            let deviceCountry = Country(iso3166Alpha2: regionCode) {
@@ -252,7 +253,6 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
     }
 
     func doneButtonIsPressed(sender: UIViewController) {
-
         let address = Address(
             addressLine1: textValueOfCellType[BillingFormCell.addressLine1(nil).index],
             addressLine2: textValueOfCellType[BillingFormCell.addressLine2(nil).index],
