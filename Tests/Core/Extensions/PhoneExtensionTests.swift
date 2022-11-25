@@ -11,7 +11,6 @@ import Checkout
 
 
 final class PhoneTests: XCTestCase {
-    
     func testDisplayFormatted() {
         let country = Country(iso3166Alpha2: "GB")
         let phone = Phone(number: "01206333222", country: country)
@@ -20,23 +19,4 @@ final class PhoneTests: XCTestCase {
 
         XCTAssertEqual(displayFormatted, "+44 1206 333222")
     }
-    
-    func testDisplayFormattedContainsInternationCode() {
-        let country = Country(iso3166Alpha2: "GB")
-        let phone = Phone(number: "+4401206333222", country: country)
-
-        let displayFormatted = phone.displayFormatted()
-
-        XCTAssertEqual(displayFormatted, "+44 1206 333222")
-    }
-    
-    func testDisplayFormattedContainsInvalidNumber() {
-        let country = Country(iso3166Alpha2: "GB")
-        let phone = Phone(number: "+44206333222", country: country)
-
-        let displayFormatted = phone.displayFormatted()
-
-        XCTAssertEqual(displayFormatted, "+44206333222")
-    }
-    
 }

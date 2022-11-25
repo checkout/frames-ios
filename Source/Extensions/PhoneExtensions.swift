@@ -21,11 +21,7 @@ extension Phone {
     }
 
     func displayFormatted() -> String {
-        if number?.starts(with: "+") == true {
-            return PhoneNumberValidator().formatForDisplay(text: number ?? "")
-        } else {
-            return PhoneNumberValidator().formatForDisplay(text: "\(country?.dialingCode ?? "")\(number ?? "")")
-        }
+        PhoneNumberValidator().formatForDisplay(text: "\(country?.dialingCode ?? "")\(number ?? "")")
     }
 
 }
