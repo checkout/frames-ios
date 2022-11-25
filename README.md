@@ -422,6 +422,13 @@ func handle(payment: PKPayment) {
 ```
 
 
+### Phone number validation
+
+Billing address phone number validation will use the device local to set the prefix of the phone number. For example, a UK number will be automatically prefixed with +44.
+
+If users want to enter a phone number that differs from their device local (i.e. a US number when their device local is set up for the UK), they should first provide the country code (e.g. +1) when entering the phone number.
+
+
  
 
 
