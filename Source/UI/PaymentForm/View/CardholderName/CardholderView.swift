@@ -15,7 +15,7 @@ final class CardholderView: UIView {
     lazy var cardholderInputView: InputView = {
         let view = InputView().disabledAutoresizingIntoConstraints()
         view.delegate = self
-        view.textFieldView.textField.textContentType = .name
+        //view.textFieldView.textField.textContentType = .name
         view.textFieldView.textField.keyboardType = .alphabet
         view.textFieldView.textField.autocapitalizationType = .words
         return view
