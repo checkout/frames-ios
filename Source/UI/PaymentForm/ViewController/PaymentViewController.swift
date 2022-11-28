@@ -141,8 +141,8 @@ final class PaymentViewController: UIViewController {
           let kbSize = rect.size
 
       let insets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
-          scrollView.contentInset = insets
-          scrollView.scrollIndicatorInsets = insets
+          //scrollView.contentInset = insets
+          //scrollView.scrollIndicatorInsets = insets
 
           // If active text field is hidden by keyboard, scroll it so it's visible
           // Your application might not need or want this behavior.
