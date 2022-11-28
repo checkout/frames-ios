@@ -149,7 +149,7 @@ final class PaymentViewController: UIViewController {
           var aRect = self.view.frame;
           aRect.size.height -= kbSize.height;
 
-      let activeField: UITextField? = self.view.firstResponder
+      let activeField: UITextField? = self.view.firstResponder as? UITextField
           if let activeField = activeField {
               if !aRect.contains(activeField.frame.origin) {
                   let scrollPoint = CGPoint(x: 0, y: activeField.frame.origin.y-kbSize.height)
