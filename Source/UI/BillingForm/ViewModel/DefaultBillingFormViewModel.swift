@@ -1,6 +1,5 @@
 import UIKit
 import Checkout
-import PhoneNumberKit
 
 /**
  This final class is for billing form list view model logic.
@@ -21,6 +20,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
     private var countryRow: Int?
     private(set) var country: Country?
+    private(set) var phone: Phone?
     private(set) var style: BillingFormStyle
     private(set) var data: BillingForm?
     private(set) var updatedRow: Int? {
@@ -67,14 +67,15 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             let isMandatory = type.style?.isMandatory ?? true
             let value = type.getText(from: data)
             let isEmpty = value?.isEmpty ?? true
-            country = data?.address?.country
             textValueOfCellType[type.index] = isEmpty ? (isMandatory ? nil : "") : value
             errorFlagOfCellType[type.index] = isEmpty ? (value != nil ? isMandatory : nil) : false
         }
+        country = data?.address?.country
+        phone = data?.phone
         if country == nil,
            let regionCode = Locale.current.regionCode,
            let deviceCountry = Country(iso3166Alpha2: regionCode) {
-            self.country = deviceCountry
+              country = deviceCountry
         }
     }
 
@@ -145,7 +146,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             errorFlagOfCellType[currentCellTypeIndex] = false
             return
         }
-        errorFlagOfCellType[currentCellTypeIndex] = !style.cells[row].validator.validate(value: text)
+        errorFlagOfCellType[currentCellTypeIndex] = !style.cells[row].validator.isValid(text: text ?? "")
     }
 
     func validateTextFieldByCharacter(textField: UITextField, replacementString string: String) {
@@ -168,19 +169,6 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         notifyContentChangeToDelegate()
     }
 
-    func validatePhoneNumberMaxLength(text: String?) -> Bool {
-        guard let text = text, !text.isEmpty else { return true }
-        let phoneMaxLength = Checkout.Constants.Phone.phoneMaxLength
-        let region: String? = text.first == "+" ? nil : data?.phone?.country?.iso3166Alpha2
-        let phoneNumberKit = PhoneNumberKit()
-        let phoneNumber = try? phoneNumberKit.parse(text, withRegion: region ?? PhoneNumberKit.defaultRegionCode(), ignoreType: true)
-        guard let phoneNumber = phoneNumber else {
-            let decimalDigitsLength = text.decimalDigits.count
-            return decimalDigitsLength <= phoneMaxLength
-        }
-        return String(phoneNumber.nationalNumber).count <= phoneMaxLength
-    }
-
     private func validateTextOnEndEditing(textField: BillingFormTextField) {
         guard let type = textField.type else { return }
 
@@ -191,6 +179,13 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         textValueOfCellType[type.index] = shouldSaveText ? textField.text : nil
 
         updatedRow = textField.tag
+
+        // Save phone number if phone input is updated
+        guard textField.type == BillingFormCell.phoneNumber(nil) else {
+            return
+        }
+
+        phone = Phone(string: textField.text ?? "")
     }
 
     private func notifyContentChangeToDelegate() {
@@ -249,18 +244,6 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
         updatedRow = tag
     }
 
-    func isValidPhoneMaxLength(text: String?) -> Bool {
-        validatePhoneNumberMaxLength(text: text)
-    }
-
-    func phoneNumberIsUpdated(number: Phone, tag: Int) {
-        let index = BillingFormCell.phoneNumber(nil).index
-        textValueOfCellType[index] = number.number
-        let currentCellTypeIndex = style.cells[tag].index
-        errorFlagOfCellType[currentCellTypeIndex] = !PhoneNumberValidator().validate(value: number)
-        notifyContentChangeToDelegate()
-    }
-
     func update(country: Country) {
         self.country = country
         let index = BillingFormCell.country(nil).index
@@ -270,11 +253,6 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
     }
 
     func doneButtonIsPressed(sender: UIViewController) {
-
-        let phone = Phone(
-            number: textValueOfCellType[BillingFormCell.phoneNumber(nil).index],
-            country: country)
-
         let address = Address(
             addressLine1: textValueOfCellType[BillingFormCell.addressLine1(nil).index],
             addressLine2: textValueOfCellType[BillingFormCell.addressLine2(nil).index],

@@ -29,7 +29,7 @@ class BillingFormViewModelTests: XCTestCase {
         let expectedType = BillingFormCell.fullName(DefaultBillingFormFullNameCellStyle(isMandatory: true))
         let tag = 0
         let text = ""
-        let textField = DefaultBillingFormTextField(type:expectedType, tag: expectedType.index)
+        let textField = DefaultBillingFormTextField(type:expectedType)
         textField.text = text
 
         viewModel.validate(text: textField.text, cellStyle: expectedType, row: tag)
@@ -42,7 +42,7 @@ class BillingFormViewModelTests: XCTestCase {
         let expectedType = BillingFormCell.fullName(nil)
         let text = "fullName"
         let tag = 0
-        let textField = DefaultBillingFormTextField(type: expectedType, tag: tag)
+        let textField = DefaultBillingFormTextField(type: expectedType)
         textField.text = text
         
         viewModel.validate(text: textField.text, cellStyle: expectedType, row: tag)
@@ -93,7 +93,6 @@ class BillingFormViewModelTests: XCTestCase {
         XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address?.country?.iso3166Alpha2, data.address?.country?.iso3166Alpha2)
         XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address?.country?.dialingCode, data.address?.country?.dialingCode)
         XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.address?.country?.name, data.address?.country?.name)
-        XCTAssertEqual(delegate.onTapDoneButtonLastCalledWithData?.phone?.number, data.phone?.number)
 
     }
     
@@ -111,7 +110,7 @@ class BillingFormViewModelTests: XCTestCase {
         viewModel.textValueOfCellType = textValueOfCellType
         viewModel.editDelegate = delegate
         
-        _ = viewModel.textFieldShouldEndEditing(textField: DefaultBillingFormTextField(type: .fullName(nil), tag: 2), replacementString: "text")
+        _ = viewModel.textFieldShouldEndEditing(textField: DefaultBillingFormTextField(type: .fullName(nil)), replacementString: "text")
         
         XCTAssertEqual(delegate.didFinishEditingBillingFormCalledTimes, 0)
         XCTAssertNil(delegate.didFinishEditingBillingFormLastCalledWithSuccessfully)
@@ -132,47 +131,6 @@ class BillingFormViewModelTests: XCTestCase {
         
         viewModel.cancelButtonIsPressed(sender: UIViewController())
         XCTAssertEqual(delegate.onTapCancelButtonCalledTimes, 1)
-    }
-
-    func testValidPhoneNumberMaxLengthWithLessThan25Digit() {
-        let delegate = BillingFormViewModelMockDelegate()
-        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), delegate: delegate)
-        let phone = "+44 123456789"
-        let isValid = viewModel.validatePhoneNumberMaxLength(text: phone)
-        XCTAssertTrue(isValid)
-    }
-
-    func testValidPhoneNumberMaxLengthWithoutCountryCode() {
-        let address = Address(addressLine1: "Test line1",
-                              addressLine2: nil,
-                              city: "London",
-                              state: "London",
-                              zip: "N12345",
-                              country: nil)
-        let phone = Phone(number: "0123456789",
-                          country: Country(iso3166Alpha2: "GB"))
-        let name = "User 1"
-        let billingForm = BillingForm(name: name, address: address, phone: phone)
-        let delegate = BillingFormViewModelMockDelegate()
-        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), data: billingForm, delegate: delegate)
-        let isValid = viewModel.validatePhoneNumberMaxLength(text: phone.number)
-        XCTAssertTrue(isValid)
-    }
-
-    func testValidPhoneNumberMaxLengthWithoutStart0() {
-        let delegate = BillingFormViewModelMockDelegate()
-        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), delegate: delegate)
-        let phone = "1234567891234567891234567"
-        let isValid = viewModel.validatePhoneNumberMaxLength(text: phone)
-        XCTAssertTrue(isValid)
-    }
-
-    func testInvalidPhoneNumberMaxLengthWithMoreThan25Digit() {
-        let delegate = BillingFormViewModelMockDelegate()
-        let viewModel = DefaultBillingFormViewModel(style: DefaultBillingFormStyle(), delegate: delegate)
-        let phone = "+44 123456789123456789123456789123456789123456789123456789123456789123456789"
-        let isValid = viewModel.validatePhoneNumberMaxLength(text: phone)
-        XCTAssertFalse(isValid)
     }
     
 }

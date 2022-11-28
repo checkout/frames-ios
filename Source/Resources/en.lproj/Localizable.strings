@@ -4,9 +4,9 @@
 "missingBillingFormCity" = "Missing City";
 "missingBillingFormCounty" = "Missing County";
 "missingBillingFormPostcode" = "Missing Postcode";
-"missingBillingFormPhoneNumber" = "Missing Phone Number";
+"missingBillingFormPhoneNumber" = "Please enter a valid phone number";
 "missingBillingFormCountry" = "Missing Country";
-"billingFormPhoneNumberHint" = "Phone Number";
+"billingFormPhoneNumberHint" = "We will only use this to confirm identity if neccessary";
 "billingAddressTitle" = "Billing address";
 "BillingFormCountryButtonTitle" = "Please select a country";
 "PaymentFormSummaryViewHintText" = "We need this information as an additional security measure to verify this card.";
