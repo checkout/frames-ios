@@ -153,7 +153,7 @@ final class PaymentViewController: UIViewController {
       
       if activeField == nil {
           activeField = cardholderView.cardholderInputView.textFieldView.textField
-          let scrollPoint = CGPoint(x: 0, y: activeField.frame.origin.y-kbSize.height)
+          let scrollPoint = CGPoint(x: 0, y: activeField!.frame.origin.y-kbSize.height)
           scrollView.setContentOffset(scrollPoint, animated: true)
           return
 
