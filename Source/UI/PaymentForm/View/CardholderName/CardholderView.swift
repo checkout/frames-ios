@@ -12,7 +12,7 @@ final class CardholderView: UIView {
     private var style: CellTextFieldStyle?
     private let viewModel: CardholderViewModel
 
-    private lazy var cardholderInputView: InputView = {
+    lazy var cardholderInputView: InputView = {
         let view = InputView().disabledAutoresizingIntoConstraints()
         view.delegate = self
         view.textFieldView.textField.textContentType = .name

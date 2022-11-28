@@ -152,7 +152,8 @@ final class PaymentViewController: UIViewController {
       let activeField: UITextField? = self.view.firstResponder as? UITextField
       
       if activeField == nil {
-          activeField = cardholderView
+          activeField = cardholderView.cardholderInputView.textFieldView.textField.textContentType = .name
+
       }
           if let activeField = activeField {
               if !aRect.contains(activeField.frame.origin) {

@@ -50,7 +50,7 @@ class InputView: UIView {
         return view
     }()
 
-    private(set) lazy var textFieldView: TextFieldView = {
+    private lazy var textFieldView: TextFieldView = {
         let view = TextFieldView().disabledAutoresizingIntoConstraints()
         view.delegate = self
         return view
