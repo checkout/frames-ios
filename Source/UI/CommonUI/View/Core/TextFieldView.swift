@@ -11,7 +11,7 @@ protocol TextFieldViewDelegate: AnyObject {
 class TextFieldView: UIView {
     weak var delegate: TextFieldViewDelegate?
 
-    private lazy var textField: UITextField = {
+    lazy var textField: UITextField = {
         let view = UITextField()
         view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         view.autocorrectionType = .no
