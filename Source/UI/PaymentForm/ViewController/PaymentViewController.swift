@@ -143,8 +143,7 @@ final class PaymentViewController: UIViewController {
           let kbSize = rect.size
           
           let insets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
-          self.scrollView.contentInset = insets
-          self.scrollView.scrollIndicatorInsets = insets
+          
           
           // If active text field is hidden by keyboard, scroll it so it's visible
           // Your application might not need or want this behavior.
@@ -155,6 +154,8 @@ final class PaymentViewController: UIViewController {
           
           if let activeField = activeField {
               if !aRect.contains(activeField.frame.origin) {
+                  self.scrollView.contentInset = insets
+                  self.scrollView.scrollIndicatorInsets = insets
                   let scrollPoint = CGPoint(x: 0, y: activeField.frame.origin.y-kbSize.height)
                   self.scrollView.setContentOffset(scrollPoint, animated: true)
               }
