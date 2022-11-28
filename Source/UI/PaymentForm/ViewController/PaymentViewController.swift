@@ -152,9 +152,10 @@ final class PaymentViewController: UIViewController {
       var activeField: UITextField? = self.view.firstResponder as? UITextField
       
       if activeField == nil {
-          activeField = cardholderView.cardholderInputView.textFieldView.textField
-          let scrollPoint = CGPoint(x: 0, y: activeField!.frame.origin.y-kbSize.height)
-          scrollView.setContentOffset(scrollPoint, animated: true)
+          cardholderView.cardholderInputView.textFieldView.textField.becomeFirstResponder()
+//          activeField = cardholderView.cardholderInputView.textFieldView.textField
+//          let scrollPoint = CGPoint(x: 0, y: activeField!.frame.origin.y-kbSize.height)
+//          scrollView.setContentOffset(scrollPoint, animated: true)
           return
 
       }
