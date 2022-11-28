@@ -149,10 +149,10 @@ final class PaymentViewController: UIViewController {
           var aRect = self.view.frame;
           aRect.size.height -= kbSize.height;
 
-      let activeField: UITextField? = self.view.firstResponder as? UITextField
+      var activeField: UITextField? = self.view.firstResponder as? UITextField
       
       if activeField == nil {
-          activeField = cardholderView.cardholderInputView.textFieldView.textField.textContentType = .name
+          activeField = cardholderView.cardholderInputView.textFieldView.textField
 
       }
           if let activeField = activeField {
