@@ -136,36 +136,32 @@ final class PaymentViewController: UIViewController {
   }
 
   @objc private func keyboardWillShow(notification: Notification) {
-      let info = notification.userInfo!
-      let rect: CGRect = info[UIResponder.keyboardFrameBeginUserInfoKey] as! CGRect
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+          
+          let info = notification.userInfo!
+          let rect: CGRect = info[UIResponder.keyboardFrameBeginUserInfoKey] as! CGRect
           let kbSize = rect.size
-
-      let insets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
-          //scrollView.contentInset = insets
-          //scrollView.scrollIndicatorInsets = insets
-
+          
+          let insets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
+          scrollView.contentInset = insets
+          scrollView.scrollIndicatorInsets = insets
+          
           // If active text field is hidden by keyboard, scroll it so it's visible
           // Your application might not need or want this behavior.
           var aRect = self.view.frame;
           aRect.size.height -= kbSize.height;
-
-      var activeField: UITextField? = self.view.firstResponder as? UITextField
-      
-      if activeField == nil {
-          cardholderView.cardholderInputView.textFieldView.textField.becomeFirstResponder()
-//          activeField = cardholderView.cardholderInputView.textFieldView.textField
-//          let scrollPoint = CGPoint(x: 0, y: activeField!.frame.origin.y-kbSize.height)
-//          scrollView.setContentOffset(scrollPoint, animated: true)
-          return
-
-      }
+          
+          let activeField: UITextField? = self.view.firstResponder as? UITextField
+          
           if let activeField = activeField {
               if !aRect.contains(activeField.frame.origin) {
                   let scrollPoint = CGPoint(x: 0, y: activeField.frame.origin.y-kbSize.height)
                   scrollView.setContentOffset(scrollPoint, animated: true)
               }
           }
+      }
   }
+      
     
     
 
