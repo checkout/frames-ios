@@ -24,7 +24,7 @@ extension CAShapeLayer {
                                   dy: style.cornerRadius / 2)
         let path = UIBezierPath()
         applyBorders(with: path, rect: rect, style: style)
-        updateCorners(with: path, rect: rect, style: style)
+        applyCorners(with: path, rect: rect, style: style)
         self.path = path.cgPath
     }
 
@@ -104,7 +104,7 @@ extension CAShapeLayer {
     ///   - path: UIBezierPath
     ///   - rect: CGRect of current view
     ///   - style: Protocol that provide which corners will be added
-    private func updateCorners(with path: UIBezierPath, rect: CGRect, style: ElementBorderStyle) {
+    private func applyCorners(with path: UIBezierPath, rect: CGRect, style: ElementBorderStyle) {
         guard let corners = style.corners else { return }
 
         // bottom left corner
