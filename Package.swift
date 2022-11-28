@@ -6,7 +6,7 @@ let package = Package(
     defaultLocalization: "en",
     platforms: [
         .macOS(.v10_12),
-        .iOS(.v10)
+        .iOS(.v12)
     ],
     products: [
         .library(
@@ -23,7 +23,7 @@ let package = Package(
         .package(
             name: "CheckoutEventLoggerKit",
             url: "https://github.com/checkout/checkout-event-logger-ios-framework.git",
-            from: "1.1.1"
+            from: "1.2.0"
         )
     ],
     targets: [
@@ -31,7 +31,8 @@ let package = Package(
             name: "Frames",
             dependencies: [
                 "PhoneNumberKit",
-                "CheckoutEventLoggerKit"
+                "CheckoutEventLoggerKit",
+                "Checkout"
             ],
             path: "Source",
             exclude: ["Suppporting Files/Info.plist"],
@@ -39,9 +40,26 @@ let package = Package(
                 .process("Resources")
             ]
         ),
+        .target(
+            name: "Checkout",
+            dependencies: [
+                "CheckoutEventLoggerKit",
+            ],
+            path: "Checkout/Checkout/Source"
+        ),
+        .testTarget(
+            name: "CheckoutTests",
+            dependencies: [
+                "Checkout"
+            ],
+            path: "CheckoutTests"
+        ),
         .testTarget(
             name: "FramesTests",
-            dependencies: ["Frames"],
+            dependencies: [
+              "Frames",
+              "Checkout"
+            ],
             path: "Tests",
             exclude: ["Info.plist"],
             resources: [

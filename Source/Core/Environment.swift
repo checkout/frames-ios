@@ -1,17 +1,12 @@
 import Foundation
-
-protocol EnvironmentURLProviding {
-    
-    var classicURL: URL { get }
-    var unifiedPaymentsURL: URL { get }
-    
-}
+import Checkout
+import CheckoutEventLoggerKit
 
 /// Checkout API Environment
 ///
 /// - live
 /// - sandbox
-public enum Environment: String, EnvironmentURLProviding {
+@frozen public enum Environment: String {
 
     /// live environment used for production using
     case live
@@ -19,22 +14,21 @@ public enum Environment: String, EnvironmentURLProviding {
     /// sandbox environment used for development
     case sandbox
 
-    var classicURL: URL {
+    var checkoutEnvironment: Checkout.Environment {
         switch self {
         case .live:
-            return URL(staticString: "https://api2.checkout.com/v2/")
+            return .production
         case .sandbox:
-            return URL(staticString: "https://sandbox.checkout.com/api2/v2/")
+            return .sandbox
         }
     }
 
-    var unifiedPaymentsURL: URL {
+    var eventLoggerEnvironment: CheckoutEventLoggerKit.Environment {
         switch self {
         case .live:
-            return URL(staticString: "https://api.checkout.com/")
+            return .production
         case .sandbox:
-            return URL(staticString: "https://api.sandbox.checkout.com/")
+            return .sandbox
         }
     }
-    
 }

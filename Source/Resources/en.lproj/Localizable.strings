@@ -1,26 +1,42 @@
-
-"cardNumber" = "Card Number*";
-"cardholderName" = "Cardholder's name";
-"cardholderNameRequired" = "Cardholder's name*";
-"expirationDate" = "Expiration Date*";
-"cvv" = "CVV*";
-"billingDetails" = "Billing Details";
-"billingDetailsRequired" = "Billing Details*";
+"missingBillingFormFullName" = "Missing Name";
+"missingBillingFormAddressLine1" = "Missing Address Line 1";
+"missingBillingFormAddressLine2" = "Missing Address Line 2";
+"missingBillingFormCity" = "Missing City";
+"missingBillingFormCounty" = "Missing County";
+"missingBillingFormPostcode" = "Missing Postcode";
+"missingBillingFormPhoneNumber" = "Please enter a valid phone number";
+"missingBillingFormCountry" = "Missing Country";
+"billingFormPhoneNumberHint" = "We will only use this to confirm identity if neccessary";
+"billingAddressTitle" = "Billing address";
+"BillingFormCountryButtonTitle" = "Please select a country";
+"PaymentFormSummaryViewHintText" = "We need this information as an additional security measure to verify this card.";
+"AddBillingAddress" = "Add billing address";
+"EditBillingAddress" = "Edit billing address";
+/* Accessory shown alongside input fields to denote that the input is not required for validation when completing request */
+"OptionalInputField" = "Optional";
+/* Title of input section on the Payment Form where user is expected to input the Cardholder name as displayed on card */
+"CardholderInputTitle" = "Cardholder name";
+"ExpiryDate" = "Expiry date";
+"ExpiryDateFormat" = "Format is MM/YY";
+"ExpiryDatePlaceholder" = "_ _  / _ _";
+"ExpiryDateErrorMessageInvalid" = "Please enter a valid expiry date";
+"ExpiryDateErrorMessageInvalidInPast" = "Expiry date is in the past";
+"SecurityCode" = "Security code";
+"SecurityCodeHint" = "3 - 4 digit code on your card";
+"SecurityCodeErrorMessage" = "Please enter a valid security code";
+"PaymentHeaderTitle" = "Payment details";
+"PaymentHeaderSubtitle" = "Accepted cards:";
+"CardNumber" = "Card number";
+"CardNumberErrorMessage" = "Please enter a valid card number";
+"Pay" = "Pay";
+"city" = "City";
+"cancel" = "Cancel";
+"done" = "Done";
 "name" = "Name";
-"countryRegion" = "Country*";
-"addressLine1" = "Address line 1*";
+"countryRegion" = "Country";
+"addressLine1" = "Address line 1";
 "addressLine2" = "Address line 2";
-"state" = "County";
-"postalTown" = "Town*";
-"postcode" = "Postcode*";
-"phone" = "Phone*";
-
-"acceptedCards" = "Accepted Cards";
-
-"cardNumberInvalid" = "The card number is invalid";
-"cardTypeNotAccepted" = "The card type is not accepted";
-"cvvInvalid" = "The cvv is invalid";
-"phoneNumberInvalid" = "Invalid, use country code (e.g. +44)";
-
-"cardViewControllerTitle" = "Payment";
-"addressViewControllerTitle" = "Billing";
+"county" = "County";
+"postcode" = "Postcode";
+"phone" = "Phone";
+"CountrySearchPlaceholder" = "Search…";

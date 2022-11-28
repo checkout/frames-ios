@@ -1,0 +1,9 @@
+parent_config: https://raw.githubusercontent.com/raywenderlich/swift-style-guide/master/com.raywenderlich.swiftlint.yml
+
+nesting:
+  type_level:
+    warning: 2
+  function_level:
+    warning: 3
+cyclomatic_complexity:
+  warning: 12

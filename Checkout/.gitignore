@@ -1,0 +1,13 @@
+.DS_Store
+.Trashes
+*.swp
+
+*.pbxuser
+xcuserdata/
+
+Pods/
+
+
+# SwiftLint Remote Config Cache
+.swiftlint/RemoteConfigCache
+Carthage/
