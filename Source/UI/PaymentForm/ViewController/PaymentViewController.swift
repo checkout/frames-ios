@@ -236,7 +236,7 @@ extension PaymentViewController {
     viewModel.updateCardNumberView = { [weak self] in
       DispatchQueue.main.async {
         self?.updateCardNumber()
-          self?.view.layoutSubviews()
+        self?.view.layoutSubviews()
       }
     }
   }

@@ -12,7 +12,7 @@ public extension Theme {
     /// Theme generated navigation button Style
     struct NavigationButtonStyle: ElementButtonStyle {
         public var borderStyle: ElementBorderStyle
-                public var isEnabled = true
+        public var isEnabled = true
         public var disabledTextColor: UIColor
         public var disabledTintColor: UIColor
         public var activeTintColor: UIColor
