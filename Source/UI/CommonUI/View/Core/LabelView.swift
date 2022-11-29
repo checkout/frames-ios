@@ -1,8 +1,8 @@
 import UIKit
 
-class LabelView: UIView {
+open class LabelView: UIView {
 
-    open private(set) lazy var label: UILabel = {
+    public lazy var label: UILabel = {
         let view = UILabel().disabledAutoresizingIntoConstraints()
         view.backgroundColor = .clear
         view.numberOfLines = 0
