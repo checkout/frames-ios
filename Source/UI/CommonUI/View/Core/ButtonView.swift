@@ -5,7 +5,7 @@ protocol ButtonViewDelegate: AnyObject {
 }
 
 open class ButtonView: UIView {
-    weak var delegate: ButtonViewDelegate?
+    public weak var delegate: ButtonViewDelegate?
     var style: ElementButtonStyle?
     lazy var constraintLeading: NSLayoutConstraint? = buttonTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 120.0)
 
