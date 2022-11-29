@@ -80,7 +80,7 @@ open class PaymentViewController: UIViewController {
   }()
 
    public lazy var payButtonView: ButtonView = {
-    let view = ButtonView(startEnabled: false)
+    let view = ButtonView(startEnabled: true)
     view.delegate = self
       
     return view
