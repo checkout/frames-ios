@@ -82,6 +82,7 @@ open class PaymentViewController: UIViewController {
    public lazy var payButtonView: ButtonView = {
     let view = ButtonView(startEnabled: false)
     view.delegate = self
+      
     return view
   }()
 
@@ -313,8 +314,8 @@ extension PaymentViewController {
   }
 
   private func updatePayButtonView() {
-    guard let style = viewModel.paymentFormStyle?.payButton else { return }
-    payButtonView.update(with: style)
+      // guard let style = viewModel.paymentFormStyle?.payButton else { return }
+   // payButtonView.update(with: style)
   }
 
   private func updateAddBillingFormButtonView() {
