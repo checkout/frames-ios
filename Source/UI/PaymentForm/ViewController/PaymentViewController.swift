@@ -407,7 +407,7 @@ extension PaymentViewController {
 }
 
 extension PaymentViewController: SelectionButtonViewDelegate {
-  func selectionButtonIsPressed() {
+    public func selectionButtonIsPressed() {
     delegate?.addBillingButtonIsPressed(sender: navigationController)
   }
 }

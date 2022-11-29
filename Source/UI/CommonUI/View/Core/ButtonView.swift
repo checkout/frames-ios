@@ -66,7 +66,7 @@ open class ButtonView: UIView {
         updateLabelStyle(with: style)
     }
 
-    @objc private func selectionButtonIsPressed() {
+    @objc public func selectionButtonIsPressed() {
         delegate?.selectionButtonIsPressed(sender: self)
     }
 
