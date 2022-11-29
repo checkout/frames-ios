@@ -413,7 +413,7 @@ extension PaymentViewController: SelectionButtonViewDelegate {
 }
 
 extension PaymentViewController: BillingFormSummaryViewDelegate {
-  func summaryButtonIsPressed() {
+  public func summaryButtonIsPressed() {
     delegate?.editBillingButtonIsPressed(sender: navigationController)
   }
 }
