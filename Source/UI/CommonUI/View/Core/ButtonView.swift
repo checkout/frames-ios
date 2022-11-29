@@ -27,7 +27,7 @@ open class ButtonView: UIView {
     }
 
     public lazy var button: UIButton = {
-        let view = UIButton().disabledAutoresizingIntoConstraints()
+        let view = UIButton(type: .custom).disabledAutoresizingIntoConstraints()
         view.addTarget(self, action: #selector(selectionButtonIsPressed), for: .touchUpInside)
         view.isEnabled = isEnabled
         return view
