@@ -437,7 +437,7 @@ extension PaymentViewController: SecurityCodeViewDelegate {
 }
 
 extension PaymentViewController: ButtonViewDelegate {
-  func selectionButtonIsPressed(sender: UIView) {
+    public func selectionButtonIsPressed(sender: UIView) {
     delegate?.payButtonIsPressed()
   }
 }
