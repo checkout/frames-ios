@@ -21,13 +21,14 @@ final class CAShapeLayerExtensionTests: XCTestCase {
         let layer = CAShapeLayer()
         layer.frame = CGRect(x: minX, y: minY, width: maxX, height: maxY)
         let style = DefaultBorderStyle(edges: edge, corners: nil)
+        let rect = layer.bounds.insetBy(dx: style.cornerRadius / 2, dy: style.cornerRadius / 2)
 
         layer.createCustomBorder(with: style)
         let cgPath = layer.path
 
         let expectedPath = UIBezierPath()
-        let startPoint = CGPoint(x: layer.bounds.minX, y: layer.bounds.minY)
-        let endPoint = CGPoint(x: layer.bounds.minX, y: layer.bounds.maxY)
+        let startPoint = CGPoint(x: rect.minX, y: rect.minY)
+        let endPoint = CGPoint(x: rect.minX, y: rect.maxY)
 
         expectedPath.move(to: startPoint)
         expectedPath.addLine(to: endPoint)
@@ -46,13 +47,14 @@ final class CAShapeLayerExtensionTests: XCTestCase {
         let layer = CAShapeLayer()
         layer.frame = CGRect(x: minX, y: minY, width: maxX, height: maxY)
         let style = DefaultBorderStyle(edges: edge, corners: nil)
+        let rect = layer.bounds.insetBy(dx: style.cornerRadius / 2, dy: style.cornerRadius / 2)
 
         layer.createCustomBorder(with: style)
         let cgPath = layer.path
 
         let expectedPath = UIBezierPath()
-        let startPoint = CGPoint(x: layer.bounds.maxX, y: layer.bounds.maxY)
-        let endPoint = CGPoint(x: layer.bounds.maxX, y: layer.bounds.minY)
+        let startPoint = CGPoint(x: rect.maxX, y: rect.maxY)
+        let endPoint = CGPoint(x: rect.maxX, y: rect.minY)
 
         expectedPath.move(to: startPoint)
         expectedPath.addLine(to: endPoint)
@@ -71,13 +73,14 @@ final class CAShapeLayerExtensionTests: XCTestCase {
         let layer = CAShapeLayer()
         layer.frame = CGRect(x: minX, y: minY, width: maxX, height: maxY)
         let style = DefaultBorderStyle(edges: edge, corners: nil)
+        let rect = layer.bounds.insetBy(dx: style.cornerRadius / 2, dy: style.cornerRadius / 2)
 
         layer.createCustomBorder(with: style)
         let cgPath = layer.path
 
         let expectedPath = UIBezierPath()
-        let startPoint = CGPoint(x: layer.bounds.maxX, y: layer.bounds.minY)
-        let endPoint = CGPoint(x: layer.bounds.minX, y: layer.bounds.minY)
+        let startPoint = CGPoint(x: rect.maxX, y: rect.minY)
+        let endPoint = CGPoint(x: rect.minX, y: rect.minY)
 
         expectedPath.move(to: startPoint)
         expectedPath.addLine(to: endPoint)
@@ -96,13 +99,14 @@ final class CAShapeLayerExtensionTests: XCTestCase {
         let layer = CAShapeLayer()
         layer.frame = CGRect(x: minX, y: minY, width: maxX, height: maxY)
         let style = DefaultBorderStyle(edges: edge, corners: nil)
+        let rect = layer.bounds.insetBy(dx: style.cornerRadius / 2, dy: style.cornerRadius / 2)
 
         layer.createCustomBorder(with: style)
         let cgPath = layer.path
 
         let expectedPath = UIBezierPath()
-        let startPoint = CGPoint(x: layer.bounds.minX, y: layer.bounds.maxY)
-        let endPoint = CGPoint(x: layer.bounds.maxX, y: layer.bounds.maxY)
+        let startPoint = CGPoint(x: rect.minX, y: rect.maxY)
+        let endPoint = CGPoint(x: rect.maxX, y: rect.maxY)
 
         expectedPath.move(to: startPoint)
         expectedPath.addLine(to: endPoint)

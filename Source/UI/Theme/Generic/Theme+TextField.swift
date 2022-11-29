@@ -15,7 +15,7 @@ public extension Theme {
         public var text: String
         public var isSupportingNumericKeyboard = true
         public var textAlignment: NSTextAlignment = .natural
-        public var height: Double = 30
+        public var height: Double = 56
         public var placeholder: String?
         public var tintColor: UIColor
         public var isHidden = false
@@ -23,6 +23,16 @@ public extension Theme {
         public var backgroundColor: UIColor
         public var textColor: UIColor
         public var borderStyle: ElementBorderStyle
+    }
+
+    struct ThemeBorderStyle: ElementBorderStyle {
+        public var cornerRadius: CGFloat
+        public var borderWidth: CGFloat
+        public var normalColor: UIColor
+        public var focusColor: UIColor
+        public var errorColor: UIColor
+        public var edges: UIRectEdge?
+        public var corners: UIRectCorner?
     }
 
     /// Create a TextField Style from text

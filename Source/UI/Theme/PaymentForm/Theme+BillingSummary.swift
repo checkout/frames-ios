@@ -45,16 +45,6 @@ public extension Theme {
         public var error: ElementErrorViewStyle?
     }
 
-    struct ThemeBorderStyle: ElementBorderStyle {
-        public var cornerRadius: CGFloat
-        public var borderWidth: CGFloat
-        public var normalColor: UIColor
-        public var focusColor: UIColor
-        public var errorColor: UIColor
-        public var edges: UIRectEdge?
-        public var corners: UIRectCorner?
-    }
-
     /// Create a Billing Summary from Styles defined for each sub component
     func buildBillingSummary(button: ElementButtonStyle,
                              textField: ThemeTextField,
