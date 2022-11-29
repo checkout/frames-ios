@@ -1,6 +1,6 @@
 import UIKit
 
-protocol ButtonViewDelegate: AnyObject {
+public protocol ButtonViewDelegate: AnyObject {
     func selectionButtonIsPressed(sender: UIView)
 }
 
