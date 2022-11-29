@@ -13,9 +13,9 @@ extension Constants {
 
       static let animationLength: TimeInterval = 0.25
 
-        enum BorderStyle: Double {
-            case cornerRadius = 10
-            case borderWidth = 1
+        enum BorderStyle {
+            static let cornerRadius: Double = 10
+            static let borderWidth: Double = 1
         }
 
         enum PaymentForm {

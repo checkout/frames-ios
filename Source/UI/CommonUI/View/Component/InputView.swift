@@ -222,12 +222,11 @@ extension InputView: TextFieldViewDelegate {
     func textFieldShouldEndEditing(textField: UITextField, replacementString: String) -> Bool {
         let shouldEndEditing = delegate?.textFieldShouldEndEditing(textField: textField, replacementString: replacementString) ?? true
         if shouldEndEditing {
-            if let color = (style?.error?.isHidden ?? true) ?
-            style?.textfield.borderStyle.normalColor :
-                    style?.textfield.borderStyle.errorColor {
+            let normalColor = style?.textfield.borderStyle.normalColor
+            let errorColor = style?.textfield.borderStyle.errorColor
+            if let color = style?.error?.isHidden == true ? normalColor : errorColor {
                 textFieldContainerBorder.updateBorderColor(to: color)
             }
-
         }
         return shouldEndEditing
     }
