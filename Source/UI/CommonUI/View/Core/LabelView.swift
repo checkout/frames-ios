@@ -2,7 +2,7 @@ import UIKit
 
 class LabelView: UIView {
 
-    private(set) lazy var label: UILabel = {
+    open private(set) lazy var label: UILabel = {
         let view = UILabel().disabledAutoresizingIntoConstraints()
         view.backgroundColor = .clear
         view.numberOfLines = 0
@@ -15,7 +15,7 @@ class LabelView: UIView {
         setupConstraintsInOrder()
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

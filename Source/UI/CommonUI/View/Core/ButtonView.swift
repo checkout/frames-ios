@@ -33,7 +33,7 @@ open class ButtonView: UIView {
         return view
     }()
 
-    private(set) lazy var buttonTextLabel: LabelView = {
+    public lazy var buttonTextLabel: LabelView = {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
