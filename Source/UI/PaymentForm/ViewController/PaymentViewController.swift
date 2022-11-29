@@ -96,7 +96,7 @@ open class PaymentViewController: UIViewController {
     super.init(nibName: nil, bundle: nil)
   }
 
-  override func viewDidLoad() {
+    open override func viewDidLoad() {
     super.viewDidLoad()
     UITextField.disableHardwareLayout()
     setupNavigationBar()
@@ -105,12 +105,12 @@ open class PaymentViewController: UIViewController {
     viewModel.updateAll()
   }
 
-  override func viewWillDisappear(_ animated: Bool) {
+    open override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     deregisterKeyboardHandlers(notificationCenter: notificationCenter)
   }
 
-  override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationController?.setNavigationBarHidden(false, animated: animated)
 
@@ -118,7 +118,7 @@ open class PaymentViewController: UIViewController {
     viewModel.viewControllerWillAppear()
   }
 
-  required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
@@ -442,7 +442,7 @@ extension PaymentViewController: ButtonViewDelegate {
 }
 
 extension PaymentViewController: UIScrollViewDelegate {
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
     let contentOffsetY = scrollView.contentOffset.y + scrollView.adjustedContentInset.top
 
     if headerView.frame.maxY > 0, contentOffsetY > headerView.frame.maxY / 2 {
