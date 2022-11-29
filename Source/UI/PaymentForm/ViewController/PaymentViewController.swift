@@ -11,7 +11,7 @@ protocol PaymentViewControllerDelegate: AnyObject {
 }
 
 // swiftlint:disable file_length
-final class PaymentViewController: UIViewController {
+open class PaymentViewController: UIViewController {
 
   // MARK: - Variables
 
