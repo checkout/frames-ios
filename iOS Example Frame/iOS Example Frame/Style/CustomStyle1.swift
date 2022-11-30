@@ -79,6 +79,9 @@ private enum StyleOrganiser {
     }
 
     struct PayButtonFormStyleCustom1: ElementButtonStyle {
+      var borderStyle: Frames.ElementBorderStyle = BorderStyle(normalColor: .clear,
+                                                                focusColor: .clear,
+                                                                errorColor: .clear)
       var image: UIImage?
       var textAlignment: NSTextAlignment = .center
       var text: String = "Pay 100$"
@@ -88,33 +91,26 @@ private enum StyleOrganiser {
       var activeTintColor: UIColor = Constants.mainFontColor
       var backgroundColor: UIColor = Constants.mainFontColor
       var textColor: UIColor = .white
-      var normalBorderColor: UIColor = .clear
-      var focusBorderColor: UIColor = .clear
-      var errorBorderColor: UIColor = .clear
       var imageTintColor: UIColor = .clear
       var isHidden = false
       var isEnabled = true
       var height: Double = 56
       var width: Double = 0
-      var cornerRadius: CGFloat = 10
-      var borderWidth: CGFloat = 0
       var textLeading: CGFloat = 0
     }
 
     struct CancelButtonStyle: ElementButtonStyle {
+        var borderStyle: Frames.ElementBorderStyle = BorderStyle(normalColor: .clear,
+                                                                  focusColor: .clear,
+                                                                  errorColor: .clear)
         var textAlignment: NSTextAlignment = .natural
         var isEnabled = true
         var disabledTextColor: UIColor = Constants.secondaryFontColor
         var disabledTintColor: UIColor = .clear
         var activeTintColor: UIColor = .clear
         var imageTintColor: UIColor = .clear
-        var normalBorderColor: UIColor = .clear
-        var focusBorderColor: UIColor = .clear
-        var errorBorderColor: UIColor = .clear
         var image: UIImage?
         var textLeading: CGFloat = 0
-        var cornerRadius: CGFloat = Constants.borderRadius
-        var borderWidth: CGFloat = Constants.borderWidth
         var height: Double = 60
         var width: Double = 70
         var isHidden = false
@@ -125,19 +121,17 @@ private enum StyleOrganiser {
     }
 
     struct DoneButtonStyle: ElementButtonStyle {
+        var borderStyle: Frames.ElementBorderStyle = BorderStyle(normalColor: .clear,
+                                                                  focusColor: .clear,
+                                                                  errorColor: .clear)
         var textAlignment: NSTextAlignment = .natural
         var isEnabled = true
         var disabledTextColor: UIColor = Constants.secondaryFontColor
         var disabledTintColor: UIColor = .clear
         var activeTintColor: UIColor = .clear
         var imageTintColor: UIColor = .clear
-        var normalBorderColor: UIColor = .clear
-        var focusBorderColor: UIColor = .clear
-        var errorBorderColor: UIColor = .clear
         var image: UIImage?
         var textLeading: CGFloat = 0
-        var cornerRadius: CGFloat = Constants.borderRadius
-        var borderWidth: CGFloat = Constants.borderWidth
         var height: Double = 60
         var width: Double = 70
         var isHidden = false
@@ -277,11 +271,10 @@ private enum StyleOrganiser {
     }
 
     struct BillingSummaryStyle: BillingSummaryViewStyle {
+        var borderStyle: ElementBorderStyle = BorderStyle()
         var summary: ElementStyle? = BillingSummaryElementStyle(text: "")
         var cornerRadius: CGFloat = Constants.borderRadius
-        var borderWidth: CGFloat = Constants.borderWidth
         var separatorLineColor: UIColor = Constants.secondaryFontColor
-        var borderColor: UIColor = Constants.mainFontColor
         var button: ElementButtonStyle = AddBillingDetailsButtonStyle(textLeading: 20, text: "\u{276F} Update Billing Address")
         var isMandatory = true
         var backgroundColor: UIColor = .clear
@@ -296,19 +289,18 @@ private enum StyleOrganiser {
     }
 
     struct AddBillingDetailsButtonStyle: ElementButtonStyle {
+        var borderStyle: Frames.ElementBorderStyle = BorderStyle(normalColor: .clear,
+                                                                  focusColor: .clear,
+                                                                  errorColor: .clear,
+                                                                  corners: nil)
         var textAlignment: NSTextAlignment = .natural
         var isEnabled = true
         var disabledTextColor: UIColor = Constants.secondaryFontColor
         var disabledTintColor: UIColor = Constants.secondaryFontColor
         var activeTintColor: UIColor = Constants.mainFontColor
         var imageTintColor: UIColor = .clear
-        var normalBorderColor: UIColor = .clear
-        var focusBorderColor: UIColor = .clear
-        var errorBorderColor: UIColor = .clear
         var image: UIImage?
         var textLeading: CGFloat = 0
-        var cornerRadius: CGFloat = 0
-        var borderWidth: CGFloat = 0
         var height: Double = 56
         var width: Double = 300
         var isHidden = false
@@ -408,19 +400,17 @@ private enum StyleOrganiser {
     }
 
     struct BillingCountryButton: ElementButtonStyle {
+        var borderStyle: Frames.ElementBorderStyle = BorderStyle(normalColor: .clear,
+                                                                  focusColor: .clear,
+                                                                  errorColor: .clear)
         var textAlignment: NSTextAlignment = .natural
         var isEnabled = true
         var disabledTextColor: UIColor = Constants.secondaryFontColor
         var disabledTintColor: UIColor = .clear
         var activeTintColor: UIColor = Constants.mainFontColor
         var imageTintColor: UIColor = Constants.mainFontColor
-        var normalBorderColor: UIColor = .clear
-        var focusBorderColor: UIColor = .clear
-        var errorBorderColor: UIColor = .clear
         var image: UIImage? = UIImage(named: "arrow_green_down")
         var textLeading: CGFloat = 20
-        var cornerRadius: CGFloat = Constants.borderRadius
-        var borderWidth: CGFloat = 0
         var height: Double = 20
         var width: Double = 80
         var isHidden = false

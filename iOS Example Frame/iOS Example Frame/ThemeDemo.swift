@@ -25,8 +25,6 @@ enum ThemeDemo {
 
         var billingSummary = theme.buildBillingSummary(buttonText: "Change billing details",
                                                        titleText: "Billing details")
-        billingSummary.borderColor = .white
-        billingSummary.borderWidth = 1
 
         var cardholderInput = theme.buildPaymentInput(isTextFieldNumericInput: false,
                                                       titleText: "Cardholder name",

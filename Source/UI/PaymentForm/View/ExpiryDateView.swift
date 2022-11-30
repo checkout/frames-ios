@@ -169,7 +169,8 @@ extension ExpiryDateView: TextFieldViewDelegate {
   }
 
   func textFieldShouldChangeCharactersIn(textField: UITextField, replacementString string: String) {
-      dateInputView.textFieldContainer.layer.borderColor = style?.textfield.borderStyle.focusColor.cgColor
+      guard let style = style else { return }
+      dateInputView.updateBorderColor(with: style.textfield.borderStyle.focusColor)
   }
 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

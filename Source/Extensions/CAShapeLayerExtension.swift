@@ -13,9 +13,6 @@ extension CAShapeLayer {
     /// - Parameter style: Protocol that provide which edge or corner will be added with style
     func createCustomBorder(with style: ElementBorderStyle) {
 
-        // if path not nil then it's already added so no need to draw lines or curves again
-        guard self.path == nil else { return }
-
         // always fill is clear color
         fillColor = UIColor.clear.cgColor
 
