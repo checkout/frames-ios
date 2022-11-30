@@ -10,9 +10,7 @@ class ButtonView: UIView {
     lazy var constraintLeading: NSLayoutConstraint? = buttonTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 120.0)
 
     private(set) lazy var borderView: BorderView = {
-        let view = BorderView().disabledAutoresizingIntoConstraints()
-        view.backgroundColor = .clear
-        return view
+        BorderView().disabledAutoresizingIntoConstraints()
     }()
 
     var isEnabled = true {

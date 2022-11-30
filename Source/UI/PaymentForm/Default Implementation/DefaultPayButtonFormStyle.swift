@@ -22,7 +22,6 @@ public struct DefaultPayButtonFormStyle: ElementButtonStyle {
   public var isEnabled = false
   public var height: Double = 56
   public var width: Double = 0
-  public var borderWidth: CGFloat = 0
   public var textLeading: CGFloat = 0
   public var borderStyle: ElementBorderStyle = DefaultBorderStyle(borderWidth: 0,
                                                                  normalColor: .clear,

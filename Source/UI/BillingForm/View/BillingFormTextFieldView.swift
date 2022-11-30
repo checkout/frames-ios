@@ -40,9 +40,7 @@ class BillingFormTextFieldView: UIView {
     }()
 
     private(set) lazy var textFieldContainerBorder: BorderView = {
-        let view = BorderView().disabledAutoresizingIntoConstraints()
-        view.backgroundColor = .clear
-        return view
+        BorderView().disabledAutoresizingIntoConstraints()
     }()
 
     private(set) lazy var textFieldContainer: UIStackView = {

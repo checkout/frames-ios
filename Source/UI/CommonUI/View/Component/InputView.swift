@@ -102,6 +102,10 @@ class InputView: UIView {
         updateErrorView(style: style)
     }
 
+    func updateBorderColor(with color: UIColor) {
+        textFieldContainerBorder.updateBorderColor(to: color)
+    }
+
     private func updateTextFieldContainer(style: CellTextFieldStyle) {
         let borderColor = !(style.error?.isHidden ?? true) ?
         style.textfield.borderStyle.errorColor :
@@ -120,10 +124,6 @@ class InputView: UIView {
     private func updateErrorView(style: CellTextFieldStyle) {
         errorView.update(style: style.error)
         errorView.isHidden = style.error?.isHidden ?? false
-    }
-
-    func updateBorderColor(with color: UIColor) {
-        textFieldContainerBorder.updateBorderColor(to: color)
     }
 }
 
