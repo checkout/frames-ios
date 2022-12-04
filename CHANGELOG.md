@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 
 #### 4.x Releases
 
+## [4.0.3](https://github.com/checkout/frames-ios/releases/tag/4.0.3)
+
+Released on 2022-12-04
+
+Updates
+- Fix Cocoapods resources in AppStore archive [Fix]
+
 ## [4.0.2](https://github.com/checkout/frames-ios/releases/tag/4.0.2)
 
 Released on 2022-11-25
