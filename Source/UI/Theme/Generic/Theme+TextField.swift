@@ -47,7 +47,7 @@ public extension Theme {
                        backgroundColor: self.textInputBackgroundColor,
                        textColor: self.primaryFontColor,
                        borderStyle: ThemeBorderStyle(cornerRadius: self.textInputBorderRadius,
-                                                     borderWidth: self.textInputBorderRadius,
+                                                     borderWidth: self.textInputBorderWidth,
                                                      normalColor: self.textInputBorderColor,
                                                      focusColor: self.focussedTextInputBorderColor,
                                                      errorColor: self.errorBorderColor,

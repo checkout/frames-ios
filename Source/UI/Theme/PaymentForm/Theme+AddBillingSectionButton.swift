@@ -84,12 +84,12 @@ public extension Theme {
     /// Create an Add Billing Button from using theme and text
     func buildBillingButton(text: String) -> ThemeBillingButton {
         ThemeBillingButton(borderStyle: ThemeBorderStyle(cornerRadius: self.textInputBorderRadius,
-                                                                     borderWidth: self.textInputBorderRadius,
-                                                                     normalColor: self.textInputBorderColor,
-                                                                     focusColor: self.focussedTextInputBorderColor,
-                                                                     errorColor: self.errorBorderColor,
-                                                                     edges: .all,
-                                                                     corners: nil),
+                                                         borderWidth: self.textInputBorderWidth,
+                                                         normalColor: self.textInputBorderColor,
+                                                         focusColor: self.focussedTextInputBorderColor,
+                                                         errorColor: self.errorBorderColor,
+                                                         edges: .all,
+                                                         corners: nil),
                            disabledTextColor: self.secondaryFontColor,
                            disabledTintColor: self.secondaryFontColor,
                            activeTintColor: self.primaryFontColor,
