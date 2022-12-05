@@ -17,8 +17,8 @@ extension CAShapeLayer {
         fillColor = UIColor.clear.cgColor
 
         lineWidth = style.borderWidth
-        let rect = bounds.insetBy(dx: style.cornerRadius / 2,
-                                  dy: style.cornerRadius / 2)
+        let rect = bounds.insetBy(dx: style.borderWidth / 2,
+                                  dy: style.borderWidth / 2)
         let path = UIBezierPath()
         applyBorders(with: path, rect: rect, style: style)
         applyCorners(with: path, rect: rect, style: style)
