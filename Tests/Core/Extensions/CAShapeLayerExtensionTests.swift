@@ -21,7 +21,7 @@ final class CAShapeLayerExtensionTests: XCTestCase {
         let layer = CAShapeLayer()
         layer.frame = CGRect(x: minX, y: minY, width: maxX, height: maxY)
         let style = DefaultBorderStyle(edges: edge, corners: nil)
-        let rect = layer.bounds.insetBy(dx: style.cornerRadius / 2, dy: style.cornerRadius / 2)
+        let rect = layer.bounds.insetBy(dx: style.borderWidth / 2, dy: style.borderWidth / 2)
 
         layer.createCustomBorder(with: style)
         let cgPath = layer.path
@@ -47,7 +47,7 @@ final class CAShapeLayerExtensionTests: XCTestCase {
         let layer = CAShapeLayer()
         layer.frame = CGRect(x: minX, y: minY, width: maxX, height: maxY)
         let style = DefaultBorderStyle(edges: edge, corners: nil)
-        let rect = layer.bounds.insetBy(dx: style.cornerRadius / 2, dy: style.cornerRadius / 2)
+        let rect = layer.bounds.insetBy(dx: style.borderWidth / 2, dy: style.borderWidth / 2)
 
         layer.createCustomBorder(with: style)
         let cgPath = layer.path
@@ -73,7 +73,7 @@ final class CAShapeLayerExtensionTests: XCTestCase {
         let layer = CAShapeLayer()
         layer.frame = CGRect(x: minX, y: minY, width: maxX, height: maxY)
         let style = DefaultBorderStyle(edges: edge, corners: nil)
-        let rect = layer.bounds.insetBy(dx: style.cornerRadius / 2, dy: style.cornerRadius / 2)
+        let rect = layer.bounds.insetBy(dx: style.borderWidth / 2, dy: style.borderWidth / 2)
 
         layer.createCustomBorder(with: style)
         let cgPath = layer.path
@@ -99,7 +99,7 @@ final class CAShapeLayerExtensionTests: XCTestCase {
         let layer = CAShapeLayer()
         layer.frame = CGRect(x: minX, y: minY, width: maxX, height: maxY)
         let style = DefaultBorderStyle(edges: edge, corners: nil)
-        let rect = layer.bounds.insetBy(dx: style.cornerRadius / 2, dy: style.cornerRadius / 2)
+        let rect = layer.bounds.insetBy(dx: style.borderWidth / 2, dy: style.borderWidth / 2)
 
         layer.createCustomBorder(with: style)
         let cgPath = layer.path
