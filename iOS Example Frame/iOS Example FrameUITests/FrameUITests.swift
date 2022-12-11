@@ -124,13 +124,37 @@ final class FrameUITests: XCTestCase {
         app.tapButton(name: "UITestTheme1")
 
         // MARK: Full UI Payment
-        let cardholderTextField = app.scrollViews.children(matching: .other).element(boundBy: 0).children(matching: .other).element(boundBy: 2).children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element
+        let cardholderTextField = app.scrollViews
+            .children(matching: .other).element(boundBy: 0)
+            .children(matching: .other).element(boundBy: 2)
+            .children(matching: .other).element
+            .children(matching: .other).element(boundBy: 1)
+            .children(matching: .other).element
+            .children(matching: .other).element
 
-        let cardNumberTextField = app.scrollViews.children(matching: .other).element(boundBy: 0).children(matching: .other).element(boundBy: 3).children(matching: .other).element.children(matching: .other).element(boundBy: 2).children(matching: .other).element(boundBy: 1).children(matching: .other).element
+        let cardNumberTextField = app.scrollViews
+            .children(matching: .other).element(boundBy: 0)
+            .children(matching: .other).element(boundBy: 3)
+            .children(matching: .other).element
+            .children(matching: .other).element(boundBy: 2)
+            .children(matching: .other).element(boundBy: 1)
+            .children(matching: .other).element
 
-        let expiryTextField = app.scrollViews.children(matching: .other).element(boundBy: 0).children(matching: .other).element(boundBy: 4).children(matching: .other).element.children(matching: .other).element(boundBy: 2).children(matching: .other).element.children(matching: .other).element
+        let expiryTextField = app.scrollViews
+            .children(matching: .other).element(boundBy: 0)
+            .children(matching: .other).element(boundBy: 4)
+            .children(matching: .other).element
+            .children(matching: .other).element(boundBy: 2)
+            .children(matching: .other).element
+            .children(matching: .other).element
 
-        let securityCodeTextField = app.scrollViews.children(matching: .other).element(boundBy: 0).children(matching: .other).element(boundBy: 5).children(matching: .other).element.children(matching: .other).element(boundBy: 2).children(matching: .other).element.children(matching: .other).element
+        let securityCodeTextField = app.scrollViews
+            .children(matching: .other).element(boundBy: 0)
+            .children(matching: .other).element(boundBy: 5)
+            .children(matching: .other).element
+            .children(matching: .other).element(boundBy: 2)
+            .children(matching: .other).element
+            .children(matching: .other).element
 
         let billingButton = app.getButton(name: "Add billing details")
         XCTAssertTrue(billingButton.isEnabled)
@@ -165,12 +189,22 @@ final class FrameUITests: XCTestCase {
 
         let cancelButton = app.navigationBars.buttons.matching(identifier: "Cancel").element
         let doneButton = app.navigationBars.buttons.matching(identifier: "Done").element
-        let addressLine1TextField = app.tables.cells.containing(.staticText, identifier: "Address line 1").children(matching: .textField).element
-        let addressLine2TextField = app.tables.cells.containing(.staticText, identifier: "Address line 2").children(matching: .textField).element
-        let cityTextField = app.tables.cells.containing(.staticText, identifier: "City").children(matching: .textField).element
-        let postcodeTextField = app.tables.cells.containing(.staticText, identifier: "Postcode").children(matching: .textField).element
+        let addressLine1TextField = app.tables
+            .cells.containing(.staticText, identifier: "Address line 1")
+            .children(matching: .textField).element
+        let addressLine2TextField = app.tables
+            .cells.containing(.staticText, identifier: "Address line 2")
+            .children(matching: .textField).element
+        let cityTextField = app.tables
+            .cells.containing(.staticText, identifier: "City")
+            .children(matching: .textField).element
+        let postcodeTextField = app.tables
+            .cells.containing(.staticText, identifier: "Postcode")
+            .children(matching: .textField).element
         let countryButton = app.tables.staticTexts["Select country"]
-        let phoneTextField = app.tables.cells.containing(.staticText, identifier: "Phone number").children(matching: .textField).element
+        let phoneTextField = app.tables
+            .cells.containing(.staticText, identifier: "Phone number")
+            .children(matching: .textField).element
 
         XCTAssertFalse(doneButton.isEnabled)
         XCTAssertTrue(cancelButton.isEnabled)
