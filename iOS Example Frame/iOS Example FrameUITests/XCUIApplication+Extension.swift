@@ -61,13 +61,13 @@ extension XCUIApplication {
         //   and hope it is found
         if !keys[key].exists {
             // !!! Shift is not found under keys, but under buttons !!!
-            buttons["shift"].tap()
-        }
-        if !keys[key].exists {
-            keys["more"].tap()
-        }
-        if !keys[key].exists {
-            buttons["shift"].tap()
+            if buttons["shift"].exists {
+                buttons["shift"].tap()
+            } else if keys["Shift"].exists {
+                keys["Shift"].tap()
+            } else if keys["more"].exists {
+                keys["more"].tap()
+            }
         }
 
         // A fresh simulator will display a hint on using keyboard to the user
