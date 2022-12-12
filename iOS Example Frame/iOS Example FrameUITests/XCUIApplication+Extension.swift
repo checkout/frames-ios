@@ -60,14 +60,18 @@ extension XCUIApplication {
         //   we can try to toggle its inputs with more & shift
         //   and hope it is found
         if !keys[key].exists {
-            // !!! Shift is not found under keys, but under buttons !!!
-            buttons["shift"].tap()
+            /// Shift can be found as a key, as well as a button, depending on simulator and OS
+            if buttons["shift"].exists {
+                buttons["shift"].tap()
+            } else if keys["Shift"].exists {
+                keys["Shift"].tap()
+            }
         }
+
         if !keys[key].exists {
             keys["more"].tap()
-        }
-        if !keys[key].exists {
-            buttons["shift"].tap()
+            keyboardInput(char: char, retryInputIfFailed: false)
+            return
         }
 
         // A fresh simulator will display a hint on using keyboard to the user
