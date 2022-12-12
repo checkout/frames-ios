@@ -13,7 +13,6 @@ import XCTest
 // swiftlint:disable:file multiline_function_chains
 
 final class FrameUITests: XCTestCase {
-// FIX: Failing CI
 
     func testPaymentWithMinimumInput() {
         let app = XCUIApplication()

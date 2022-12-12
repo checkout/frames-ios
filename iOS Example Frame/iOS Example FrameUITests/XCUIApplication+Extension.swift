@@ -63,8 +63,7 @@ extension XCUIApplication {
             // !!! Shift is not found under keys, but under buttons !!!
             if buttons["shift"].exists {
                 buttons["shift"].tap()
-            }
-            if keys["Shift"].exists {
+            } else if keys["Shift"].exists {
                 keys["Shift"].tap()
             }
         }
