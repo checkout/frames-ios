@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 
 #### 4.x Releases
 
+## [4.0.4](https://github.com/checkout/frames-ios/releases/tag/4.0.4)
+
+Released on 2022-12-21
+
+Updates
+- Mapped the `scheme_local` property from the /tokens endpoint via the SDK
+
 ## [4.0.3](https://github.com/checkout/frames-ios/releases/tag/4.0.3)
 
 Released on 2022-12-04
