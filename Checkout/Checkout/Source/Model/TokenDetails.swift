@@ -14,6 +14,7 @@ public struct TokenDetails: Equatable {
   public let expiresOn: String
   public let expiryDate: ExpiryDate
   public let scheme: Card.Scheme?
+  public let schemeLocal: String?
   public let last4: String
   public let bin: String
   public let cardType: String?

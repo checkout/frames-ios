@@ -6,6 +6,7 @@
     "expiry_year": 2020,
     "name": "",
     "scheme": "Visa",
+    "scheme_local": "Mada",
     "last4": "4242",
     "bin": "424242",
     "card_type": "Credit",
