@@ -14,6 +14,7 @@ struct TokenResponse: Decodable, Equatable {
   let expiryMonth: Int
   let expiryYear: Int
   let scheme: String?
+  let schemeLocal: String?
   let last4: String
   let bin: String
   let cardType: String?
