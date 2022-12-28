@@ -165,7 +165,7 @@ final class BillingFormStyleTests: XCTestCase {
     
     // MARK: Test with different billing form data
     func testSummaryFromAllCellsFullInput() {
-        var style = DefaultBillingFormStyle()
+        let style = DefaultBillingFormStyle()
         let testBillingForm = BillingForm(name: "John",
                                           address: Address(addressLine1: "Kong Drive",
                                                            addressLine2: "Blister",
@@ -181,7 +181,7 @@ final class BillingFormStyleTests: XCTestCase {
     }
     
     func testSummaryFromAllCellsOnlyNameInput() {
-        var style = DefaultBillingFormStyle()
+        let style = DefaultBillingFormStyle()
         let testBillingForm = BillingForm(name: "John",
                                           address: nil,
                                           phone: nil)
@@ -192,7 +192,7 @@ final class BillingFormStyleTests: XCTestCase {
     }
     
     func testSummaryFromAllCellsOnlyAddressInput() {
-        var style = DefaultBillingFormStyle()
+        let style = DefaultBillingFormStyle()
         let testBillingForm = BillingForm(name: nil,
                                           address: Address(addressLine1: "Kong Drive",
                                                            addressLine2: "Blister",
@@ -208,7 +208,7 @@ final class BillingFormStyleTests: XCTestCase {
     }
     
     func testSummaryFromAllCellsOnlyPartAddressInput() {
-        var style = DefaultBillingFormStyle()
+        let style = DefaultBillingFormStyle()
         let testBillingForm = BillingForm(name: nil,
                                           address: Address(addressLine1: "Kong Drive",
                                                            addressLine2: nil,
@@ -224,7 +224,7 @@ final class BillingFormStyleTests: XCTestCase {
     }
     
     func testSummaryFromAllCellsOnlyPhoneInput() {
-        var style = DefaultBillingFormStyle()
+        let style = DefaultBillingFormStyle()
         let testBillingForm = BillingForm(name: nil,
                                           address: nil,
                                           phone: Phone(number: "123456", country: Country.allAvailable.last))
