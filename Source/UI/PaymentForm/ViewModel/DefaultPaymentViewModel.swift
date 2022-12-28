@@ -50,25 +50,10 @@ class DefaultPaymentViewModel: PaymentViewModel {
     }
 
     func updateBillingSummaryView() {
-        guard paymentFormStyle?.editBillingSummary != nil else { return }
-        var summaryValue = [String?]()
-
-        billingFormStyle?.cells.forEach {
-            switch $0 {
-            case .fullName: summaryValue.append(billingFormData?.name)
-            case .addressLine1: summaryValue.append(billingFormData?.address?.addressLine1)
-            case .addressLine2: summaryValue.append(billingFormData?.address?.addressLine2)
-            case .state: summaryValue.append(billingFormData?.address?.state)
-            case .country: summaryValue.append(billingFormData?.address?.country?.name)
-            case .city: summaryValue.append(billingFormData?.address?.city)
-            case .postcode: summaryValue.append(billingFormData?.address?.zip)
-            case .phoneNumber:
-                    guard let phoneString = billingFormData?.phone?.displayFormatted(), !phoneString.isEmpty else { return }
-                    summaryValue.append(phoneString)
-            }
-        }
-
-        let summary = updateSummaryValue(with: summaryValue)
+        guard paymentFormStyle?.editBillingSummary != nil,
+              let formStyle = billingFormStyle,
+              let formData = billingFormData else { return }
+        let summary = formStyle.summaryFrom(form: formData)
         guard !summary.isEmpty else {
             let addBillingSummary = paymentFormStyle?.addBillingSummary ?? DefaultAddBillingDetailsViewStyle()
             paymentFormStyle?.addBillingSummary = addBillingSummary
@@ -103,13 +88,6 @@ class DefaultPaymentViewModel: PaymentViewModel {
             return false
         }
         return true
-    }
-
-    private func updateSummaryValue(with summaryValues: [String?]) -> String {
-        summaryValues
-            .compactMap { $0?.trimmingCharacters(in: .whitespaces) }
-            .filter { !$0.isEmpty }
-            .joined(separator: "\n\n")
     }
 
 }
