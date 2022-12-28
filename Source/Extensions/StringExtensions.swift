@@ -15,8 +15,8 @@ extension String {
     }
 }
 
-private class FramesBundle {
-    class var base: Foundation.Bundle {
+private enum FramesBundle {
+    static var base: Foundation.Bundle {
 #if SWIFT_PACKAGE
         let baseBundle = Bundle.module
 #else
