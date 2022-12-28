@@ -1,6 +1,21 @@
 import Checkout
 
+protocol PaymentViewModelDelegate: AnyObject {
+    func loadingStateChanged()
+    func updateEditBillingSummary()
+    func updateAddBillingDetails()
+    func updateExpiryDate()
+    func updateCardholder()
+    func updateCardNumber()
+    func updateCardScheme(_ newScheme: Card.Scheme)
+    func updateSecurityCode()
+    func updatePayButton()
+    func updateHeader()
+    func refreshPayButtonState(isEnabled: Bool)
+}
+
 protocol PaymentViewModel {
+  var delegate: PaymentViewModelDelegate? { get }
   var checkoutAPIService: CheckoutAPIProtocol { get set }
   var billingFormData: BillingForm? { get set }
   var paymentFormStyle: PaymentFormStyle? { get set }
@@ -9,21 +24,15 @@ protocol PaymentViewModel {
   var cardValidator: CardValidator { get set }
   var logger: FramesEventLogging { get }
   var isLoading: Bool { get set }
-  var updateLoading: (() -> Void)? { get set }
-  var updateEditBillingSummaryView: (() -> Void)? { get set }
-  var updateAddBillingDetailsView: (() -> Void)? { get set }
-  var updateExpiryDateView: (() -> Void)? { get set }
-  var updateCardholderView: (() -> Void)? { get set }
-  var updateCardNumberView: (() -> Void)? { get set }
-  var updateSecurityCodeViewScheme: ((Card.Scheme) -> Void)? { get set }
-  var updateSecurityCodeViewStyle: (() -> Void)? { get set }
-  var updatePayButtonView: (() -> Void)? { get set }
-  var updateHeaderView: (() -> Void)? { get set }
-  var shouldEnablePayButton: ((Bool) -> Void)? { get set }
   var cardTokenRequested: ((Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)? { get set }
-  func updateAll()
   func viewControllerWillAppear()
   func viewControllerCancelled()
+  func updateBillingSummaryView()
+  func presentBilling(presenter: UIPresenter)
+  func expiryDateIsUpdated(result: Result<ExpiryDate, ExpiryDateError>)
+  func securityCodeIsUpdated(to newCode: String)
+  func cardholderIsUpdated(value: String)
+  func payButtonIsPressed()
   mutating func preventDuplicateCardholderInput()
 }
 

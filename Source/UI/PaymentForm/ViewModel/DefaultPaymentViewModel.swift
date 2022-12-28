@@ -2,17 +2,7 @@ import UIKit
 import Checkout
 
 class DefaultPaymentViewModel: PaymentViewModel {
-    var updateLoading: (() -> Void)?
-    var updateEditBillingSummaryView: (() -> Void)?
-    var updateAddBillingDetailsView: (() -> Void)?
-    var updateExpiryDateView: (() -> Void)?
-    var updateCardholderView: (() -> Void)?
-    var updateCardNumberView: (() -> Void)?
-    var updateSecurityCodeViewStyle: (() -> Void)?
-    var updatePayButtonView: (() -> Void)?
-    var updateHeaderView: (() -> Void)?
-    var updateSecurityCodeViewScheme: ((Card.Scheme) -> Void)?
-    var shouldEnablePayButton: ((Bool) -> Void)?
+    weak var delegate: PaymentViewModelDelegate?
     var cardTokenRequested: ((Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)?
     var supportedSchemes: [Card.Scheme]
     var cardValidator: CardValidator
@@ -24,7 +14,9 @@ class DefaultPaymentViewModel: PaymentViewModel {
     var billingFormData: BillingForm?
     var isLoading = false {
         didSet {
-            updateLoading?()
+            if isLoading != oldValue {
+                delegate?.loadingStateChanged()
+            }
         }
     }
 
@@ -57,18 +49,6 @@ class DefaultPaymentViewModel: PaymentViewModel {
         logger.log(.paymentFormCanceled)
     }
 
-    func updateAll() {
-        updateHeaderView?()
-        updateCardholderView?()
-        updateCardNumberView?()
-        updateExpiryDateView?()
-        updateSecurityCodeViewStyle?()
-        updatePayButtonView?()
-        if isAddBillingSummaryNotUpdated() {
-            updateBillingSummaryView()
-        }
-    }
-
     func updateBillingSummaryView() {
         guard paymentFormStyle?.editBillingSummary != nil else { return }
         var summaryValue = [String?]()
@@ -92,11 +72,11 @@ class DefaultPaymentViewModel: PaymentViewModel {
         guard !summary.isEmpty else {
             let addBillingSummary = paymentFormStyle?.addBillingSummary ?? DefaultAddBillingDetailsViewStyle()
             paymentFormStyle?.addBillingSummary = addBillingSummary
-            updateAddBillingDetailsView?()
+            delegate?.updateAddBillingDetails()
             return
         }
         paymentFormStyle?.editBillingSummary?.summary?.text = summary
-        updateEditBillingSummaryView?()
+        delegate?.updateEditBillingSummary()
     }
 
     private func updateBillingData(to billingForm: BillingForm) {
@@ -106,7 +86,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
         if let billingName = billingForm.name {
             cardDetails.name = billingName
             paymentFormStyle?.cardholderInput?.textfield.text = billingName
-            updateCardholderView?()
+            delegate?.updateCardholder()
         }
         if isAddBillingSummaryNotUpdated() {
             updateBillingSummaryView()
@@ -119,7 +99,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
                 billingFormData?.phone != nil else {
             let addBillingSummary = paymentFormStyle?.addBillingSummary ?? DefaultAddBillingDetailsViewStyle()
             paymentFormStyle?.addBillingSummary = addBillingSummary
-            updateAddBillingDetailsView?()
+            delegate?.updateAddBillingDetails()
             return false
         }
         return true
@@ -149,7 +129,7 @@ extension DefaultPaymentViewModel: BillingFormViewModelDelegate {
     }
 }
 
-extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
+extension DefaultPaymentViewModel {
     func expiryDateIsUpdated(result: Result<ExpiryDate, ExpiryDateError>) {
         switch result {
         case .failure:
@@ -179,12 +159,12 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
         }
     }
 
-    func addBillingButtonIsPressed(sender: UINavigationController?) {
-        onTapAddressView(sender: sender)
-    }
-
-    func editBillingButtonIsPressed(sender: UINavigationController?) {
-        onTapAddressView(sender: sender)
+    func presentBilling(presenter: UIPresenter) {
+        guard let viewController = FramesFactory.getBillingFormViewController(style: billingFormStyle,
+                                                                              data: billingFormData,
+                                                                              delegate: self,
+                                                                              sender: presenter) else { return }
+        presenter.present(viewController, animated: true)
     }
 
     func cardholderIsUpdated(value: String) {
@@ -194,7 +174,9 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
 
     private func validateMandatoryInputProvided() {
         var isMandatoryInputProvided = false
-        defer { shouldEnablePayButton?(isMandatoryInputProvided) }
+        defer {
+            delegate?.refreshPayButtonState(isEnabled: isMandatoryInputProvided)
+        }
 
         // If a scheme is not recorded the number hasn't started being inputted
         // so we can safely know mandatory fields are not provided
@@ -230,14 +212,6 @@ extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
         isMandatoryInputProvided = true
     }
 
-    private func onTapAddressView(sender: UINavigationController?) {
-        guard let viewController = FramesFactory.getBillingFormViewController(style: billingFormStyle,
-                                                                              data: billingFormData,
-                                                                              delegate: self,
-                                                                              sender: sender) else { return }
-        sender?.present(viewController, animated: true)
-    }
-
     private func logTokenResult(_ result: Result<TokenDetails, TokenisationError.TokenRequest>) {
         switch result {
         case .success(let tokenDetails):
@@ -257,12 +231,12 @@ extension DefaultPaymentViewModel: CardNumberViewModelDelegate {
         case .success(let cardInfo):
             cardDetails.number = cardInfo.cardNumber
             cardDetails.scheme = cardInfo.scheme
-            updateSecurityCodeViewScheme?(cardInfo.scheme)
+            delegate?.updateCardScheme(cardInfo.scheme)
         }
         validateMandatoryInputProvided()
     }
 
     func schemeUpdatedEagerly(to newScheme: Card.Scheme) {
-        updateSecurityCodeViewScheme?(newScheme)
+        delegate?.updateCardScheme(newScheme)
     }
 }

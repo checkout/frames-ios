@@ -1,22 +1,10 @@
 import UIKit
 import Checkout
 
-protocol PaymentViewControllerDelegate: AnyObject {
-  func addBillingButtonIsPressed(sender: UINavigationController?)
-  func editBillingButtonIsPressed(sender: UINavigationController?)
-  func expiryDateIsUpdated(result: Result<ExpiryDate, ExpiryDateError>)
-  func securityCodeIsUpdated(to newCode: String)
-  func cardholderIsUpdated(value: String)
-  func payButtonIsPressed()
-}
-
 // swiftlint:disable file_length
-final class PaymentViewController: UIViewController {
+final class PaymentViewController: UIViewController, UIPresenter {
 
   // MARK: - Variables
-
-  weak var delegate: PaymentViewControllerDelegate?
-
   private(set) var viewModel: PaymentViewModel
   private var notificationCenter = NotificationCenter.default
 
@@ -99,10 +87,17 @@ final class PaymentViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     UITextField.disableHardwareLayout()
+    view.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
+    stackView.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
     setupNavigationBar()
-    setupViewModel()
     setupViewsInOrder()
-    viewModel.updateAll()
+    updateHeader()
+    updateCardholder()
+    updateCardNumber()
+    updateExpiryDate()
+    updateSecurityCode()
+    updatePayButton()
+    viewModel.updateBillingSummaryView()
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -167,158 +162,90 @@ final class PaymentViewController: UIViewController {
   }
 }
 
-// MARK: View Model Integration
+// MARK: ViewModel Delegate
+extension PaymentViewController: PaymentViewModelDelegate {
 
-extension PaymentViewController {
-  private func setupViewModel() {
-    delegate = self.viewModel as? PaymentViewControllerDelegate
-    updateBackgroundViews()
-    setupAddBillingDetailsViewClosure()
-    setupEditBillingSummaryViewClosure()
-    setupExpiryDateViewClosure()
-    setupCardholderViewClosure()
-    setupCardNumberViewClosure()
-    setupSecurityCodeViewClosures()
-    setupPayButtonViewClosure()
-    setupHeaderViewClosure()
-    setupLoadingIndicatorClosure()
-  }
-
-    private func setupLoadingIndicatorClosure() {
-        viewModel.updateLoading = { [weak self] in
-            DispatchQueue.main.async {
-                self?.payButtonView.isLoading = self?.viewModel.isLoading ?? false
-            }
+    func loadingStateChanged() {
+        DispatchQueue.main.async { [weak self] in
+            self?.payButtonView.isLoading = self?.viewModel.isLoading ?? false
         }
     }
 
-  private func setupHeaderViewClosure() {
-    viewModel.updateHeaderView = { [weak self] in
-      DispatchQueue.main.async {
-        self?.updateHeaderView()
-      }
-    }
-  }
-
-  private func setupAddBillingDetailsViewClosure() {
-    viewModel.updateAddBillingDetailsView = { [weak self] in
-      DispatchQueue.main.async {
-        self?.updateAddBillingFormButtonView()
-      }
-    }
-  }
-
-  private func setupEditBillingSummaryViewClosure() {
-    viewModel.updateEditBillingSummaryView = { [weak self] in
-      DispatchQueue.main.async {
-        self?.updateEditBillingSummaryView()
-      }
-    }
-  }
-
-  private func setupExpiryDateViewClosure() {
-    viewModel.updateExpiryDateView = { [weak self] in
-      DispatchQueue.main.async {
-        self?.updateExpiryDate()
-      }
-    }
-  }
-
-  private func setupCardholderViewClosure() {
-    viewModel.updateCardholderView = { [weak self] in
-      DispatchQueue.main.async {
-        self?.updateCardholder()
-      }
-    }
-  }
-
-  private func setupCardNumberViewClosure() {
-    viewModel.updateCardNumberView = { [weak self] in
-      DispatchQueue.main.async {
-        self?.updateCardNumber()
-      }
-    }
-  }
-
-  private func setupSecurityCodeViewClosures() {
-    viewModel.updateSecurityCodeViewStyle = { [weak self] in
-      DispatchQueue.main.async {
-        self?.updateSecurityCode()
-      }
+    func updateEditBillingSummary() {
+        DispatchQueue.main.async { [weak self] in
+            guard let style = self?.viewModel.paymentFormStyle?.editBillingSummary else { return }
+            self?.addBillingFormButtonView.isHidden = true
+            self?.billingFormSummaryView.isHidden = false
+            self?.billingFormSummaryView.update(style: style)
+        }
     }
 
-    viewModel.updateSecurityCodeViewScheme = {  [weak self] scheme in
-      DispatchQueue.main.async {
-        self?.securityCodeView.updateCardScheme(cardScheme: scheme)
-      }
-    }
-  }
-
-  private func setupPayButtonViewClosure() {
-    viewModel.updatePayButtonView = { [weak self] in
-      DispatchQueue.main.async {
-        self?.updatePayButtonView()
-      }
+    func updateAddBillingDetails() {
+        DispatchQueue.main.async { [weak self] in
+            guard let style = self?.viewModel.paymentFormStyle?.addBillingSummary else { return }
+            self?.addBillingFormButtonView.isHidden = false
+            self?.billingFormSummaryView.isHidden = true
+            self?.addBillingFormButtonView.update(style: style)
+        }
     }
 
-    viewModel.shouldEnablePayButton = { [weak self] isEnabled in
-      self?.payButtonView.isEnabled = isEnabled
+    func updateExpiryDate() {
+        DispatchQueue.main.async { [weak self] in
+            guard let style = self?.viewModel.paymentFormStyle?.expiryDate else { return }
+            self?.expiryDateView.update(style: style)
+        }
     }
-  }
 
-  private func updateBackgroundViews() {
-    view.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
-    stackView.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
-  }
+    func updateCardholder() {
+        DispatchQueue.main.async { [weak self] in
+            guard let style = self?.viewModel.paymentFormStyle?.cardholderInput else { return }
+            self?.cardholderView.update(style: style)
+        }
+    }
 
-  private func updateCardholder() {
-    guard let style = viewModel.paymentFormStyle?.cardholderInput else { return }
-    cardholderView.update(style: style)
-  }
+    func updateCardNumber() {
+        DispatchQueue.main.async { [weak self] in
+            guard let style = self?.viewModel.paymentFormStyle?.cardNumber else { return }
+            self?.cardNumberView.update(style: style)
+        }
+    }
 
-  private func updateCardNumber() {
-    guard let style = viewModel.paymentFormStyle?.cardNumber else { return }
-    cardNumberView.update(style: style)
-  }
+    func updateCardScheme(_ newScheme: Card.Scheme) {
+        DispatchQueue.main.async { [weak self] in
+            self?.securityCodeView.updateCardScheme(cardScheme: newScheme)
+        }
+    }
 
-  private func updateExpiryDate() {
-    guard let style = viewModel.paymentFormStyle?.expiryDate else { return }
-    expiryDateView.update(style: style)
-  }
+    func updateSecurityCode() {
+        DispatchQueue.main.async { [weak self] in
+            guard let style = self?.viewModel.paymentFormStyle?.securityCode else { return }
+            self?.securityCodeView.update(style: style)
+        }
+    }
 
-  private func updateSecurityCode() {
-    guard let style = viewModel.paymentFormStyle?.securityCode else { return }
-    securityCodeView.update(style: style)
-  }
+    func updatePayButton() {
+        DispatchQueue.main.async { [weak self] in
+            guard let style = self?.viewModel.paymentFormStyle?.payButton else { return }
+            self?.payButtonView.update(with: style)
+        }
+    }
 
-  private func updatePayButtonView() {
-    guard let style = viewModel.paymentFormStyle?.payButton else { return }
-    payButtonView.update(with: style)
-  }
+    func updateHeader() {
+        DispatchQueue.main.async { [weak self] in
+            guard let style = self?.viewModel.paymentFormStyle?.headerView else { return }
+            self?.headerView.update(style: style)
+            self?.headerBackgroundView.backgroundColor = style.backgroundColor
+        }
+    }
 
-  private func updateAddBillingFormButtonView() {
-    guard let style = viewModel.paymentFormStyle?.addBillingSummary else { return }
-    addBillingFormButtonView.isHidden = false
-    billingFormSummaryView.isHidden = true
-    addBillingFormButtonView.update(style: style)
-  }
-
-  private func updateEditBillingSummaryView() {
-    guard let style = viewModel.paymentFormStyle?.editBillingSummary else { return }
-    addBillingFormButtonView.isHidden = true
-    billingFormSummaryView.isHidden = false
-    billingFormSummaryView.update(style: style)
-  }
-
-  public func updateHeaderView() {
-    guard let style = viewModel.paymentFormStyle?.headerView else { return }
-    headerView.update(style: style)
-    headerBackgroundView.backgroundColor = style.backgroundColor
-  }
+    func refreshPayButtonState(isEnabled: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            self?.payButtonView.isEnabled = isEnabled
+        }
+    }
 }
 
-// MARK: Setup Views
-
+// MARK: Setup UI
 extension PaymentViewController {
   private func setupViewsInOrder() {
     setupScrollView()
@@ -384,39 +311,40 @@ extension PaymentViewController {
   }
 }
 
+// MARK: SubView Delegate
 extension PaymentViewController: SelectionButtonViewDelegate {
   func selectionButtonIsPressed() {
-    delegate?.addBillingButtonIsPressed(sender: navigationController)
+    viewModel.presentBilling(presenter: navigationController ?? self)
   }
 }
 
 extension PaymentViewController: BillingFormSummaryViewDelegate {
   func summaryButtonIsPressed() {
-    delegate?.editBillingButtonIsPressed(sender: navigationController)
+    viewModel.presentBilling(presenter: navigationController ?? self)
   }
 }
 
 extension PaymentViewController: ExpiryDateViewDelegate {
   func update(result: Result<ExpiryDate, ExpiryDateError>) {
-    delegate?.expiryDateIsUpdated(result: result)
+    viewModel.expiryDateIsUpdated(result: result)
   }
 }
 
 extension PaymentViewController: CardholderDelegate {
   func cardholderUpdated(to cardholderInput: String) {
-    delegate?.cardholderIsUpdated(value: cardholderInput)
+    viewModel.cardholderIsUpdated(value: cardholderInput)
   }
 }
 
 extension PaymentViewController: SecurityCodeViewDelegate {
   func update(securityCode: String) {
-    delegate?.securityCodeIsUpdated(to: securityCode)
+    viewModel.securityCodeIsUpdated(to: securityCode)
   }
 }
 
 extension PaymentViewController: ButtonViewDelegate {
   func selectionButtonIsPressed(sender: UIView) {
-    delegate?.payButtonIsPressed()
+    viewModel.payButtonIsPressed()
   }
 }
 

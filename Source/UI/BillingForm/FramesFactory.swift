@@ -26,8 +26,7 @@ public enum FramesFactory {
     static func getBillingFormViewController(style: BillingFormStyle?,
                                              data: BillingForm?,
                                              delegate: BillingFormViewModelDelegate?,
-                                             sender: UINavigationController?) -> UINavigationController? {
-
+                                             sender: UIPresenter?) -> UINavigationController? {
         guard let style = style, !style.cells.isEmpty else { return nil }
         let viewModel = DefaultBillingFormViewModel(style: style, data: data, delegate: delegate)
         let viewController = BillingFormViewController(viewModel: viewModel)
@@ -37,7 +36,7 @@ public enum FramesFactory {
             viewController.isModalInPresentation = true
         }
         let navigationController = UINavigationController(rootViewController: viewController)
-        guard let sender = sender else { return navigationController }
+        guard let sender = sender as? UINavigationController else { return navigationController }
         navigationController.copyStyle(from: sender)
         return navigationController
     }

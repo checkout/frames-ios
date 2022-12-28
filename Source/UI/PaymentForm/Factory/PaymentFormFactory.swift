@@ -20,6 +20,7 @@ public enum PaymentFormFactory {
         viewModel.preventDuplicateCardholderInput()
 
         let viewController = PaymentViewController(viewModel: viewModel)
+        viewModel.delegate = viewController
         viewModel.cardTokenRequested = completionHandler
         logger.log(.paymentFormInitialised(environment: configuration.environment))
         if #available(iOS 13.0, *) {
