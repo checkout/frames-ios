@@ -7,7 +7,8 @@ public protocol BillingFormStyle {
 }
 
 extension BillingFormStyle {
-    func summaryFrom(form: BillingForm) -> String {
+    func summaryFrom(form: BillingForm?) -> String {
+        guard let form = form else { return "" }
         var summaryValues = [String?]()
         cells.forEach {
             switch $0 {

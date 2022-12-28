@@ -51,9 +51,8 @@ class DefaultPaymentViewModel: PaymentViewModel {
 
     func updateBillingSummaryView() {
         guard paymentFormStyle?.editBillingSummary != nil,
-              let formStyle = billingFormStyle,
-              let formData = billingFormData else { return }
-        let summary = formStyle.summaryFrom(form: formData)
+              let formStyle = billingFormStyle else { return }
+        let summary = formStyle.summaryFrom(form: billingFormData)
         guard !summary.isEmpty else {
             let addBillingSummary = paymentFormStyle?.addBillingSummary ?? DefaultAddBillingDetailsViewStyle()
             paymentFormStyle?.addBillingSummary = addBillingSummary

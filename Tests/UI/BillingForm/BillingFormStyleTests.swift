@@ -234,4 +234,11 @@ final class BillingFormStyleTests: XCTestCase {
         XCTAssertEqual(summary, expectedSummary)
     }
     
+    func testSummaryWithNilForm() {
+        let style = DefaultBillingFormStyle()
+        let summary = style.summaryFrom(form: nil)
+        
+        let expectedSummary = ""
+        XCTAssertEqual(summary, expectedSummary)
+    }
 }
