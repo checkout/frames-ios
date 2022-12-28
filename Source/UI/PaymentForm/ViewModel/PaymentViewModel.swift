@@ -4,13 +4,8 @@ protocol PaymentViewModelDelegate: AnyObject {
     func loadingStateChanged()
     func updateEditBillingSummary()
     func updateAddBillingDetails()
-    func updateExpiryDate()
     func updateCardholder()
-    func updateCardNumber()
     func updateCardScheme(_ newScheme: Card.Scheme)
-    func updateSecurityCode()
-    func updatePayButton()
-    func updateHeader()
     func refreshPayButtonState(isEnabled: Bool)
 }
 

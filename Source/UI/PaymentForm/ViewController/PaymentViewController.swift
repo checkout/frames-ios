@@ -87,16 +87,20 @@ final class PaymentViewController: UIViewController, UIPresenter {
   override func viewDidLoad() {
     super.viewDidLoad()
     UITextField.disableHardwareLayout()
-    view.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
-    stackView.backgroundColor = viewModel.paymentFormStyle?.backgroundColor
+    guard let paymentFormStyle = viewModel.paymentFormStyle else {
+      return
+    }
+    view.backgroundColor = paymentFormStyle.backgroundColor
+    stackView.backgroundColor = paymentFormStyle.backgroundColor
     setupNavigationBar()
     setupViewsInOrder()
-    updateHeader()
-    updateCardholder()
-    updateCardNumber()
-    updateExpiryDate()
-    updateSecurityCode()
-    updatePayButton()
+
+    headerView.update(style: paymentFormStyle.headerView)
+    headerBackgroundView.backgroundColor = paymentFormStyle.headerView.backgroundColor
+    cardNumberView.update(style: paymentFormStyle.cardNumber)
+    securityCodeView.update(style: paymentFormStyle.securityCode)
+    payButtonView.update(with: paymentFormStyle.payButton)
+    expiryDateView.update(style: paymentFormStyle.expiryDate)
     viewModel.updateBillingSummaryView()
   }
 
@@ -189,13 +193,6 @@ extension PaymentViewController: PaymentViewModelDelegate {
         }
     }
 
-    func updateExpiryDate() {
-        DispatchQueue.main.async { [weak self] in
-            guard let style = self?.viewModel.paymentFormStyle?.expiryDate else { return }
-            self?.expiryDateView.update(style: style)
-        }
-    }
-
     func updateCardholder() {
         DispatchQueue.main.async { [weak self] in
             guard let style = self?.viewModel.paymentFormStyle?.cardholderInput else { return }
@@ -203,38 +200,9 @@ extension PaymentViewController: PaymentViewModelDelegate {
         }
     }
 
-    func updateCardNumber() {
-        DispatchQueue.main.async { [weak self] in
-            guard let style = self?.viewModel.paymentFormStyle?.cardNumber else { return }
-            self?.cardNumberView.update(style: style)
-        }
-    }
-
     func updateCardScheme(_ newScheme: Card.Scheme) {
         DispatchQueue.main.async { [weak self] in
             self?.securityCodeView.updateCardScheme(cardScheme: newScheme)
-        }
-    }
-
-    func updateSecurityCode() {
-        DispatchQueue.main.async { [weak self] in
-            guard let style = self?.viewModel.paymentFormStyle?.securityCode else { return }
-            self?.securityCodeView.update(style: style)
-        }
-    }
-
-    func updatePayButton() {
-        DispatchQueue.main.async { [weak self] in
-            guard let style = self?.viewModel.paymentFormStyle?.payButton else { return }
-            self?.payButtonView.update(with: style)
-        }
-    }
-
-    func updateHeader() {
-        DispatchQueue.main.async { [weak self] in
-            guard let style = self?.viewModel.paymentFormStyle?.headerView else { return }
-            self?.headerView.update(style: style)
-            self?.headerBackgroundView.backgroundColor = style.backgroundColor
         }
     }
 
