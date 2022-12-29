@@ -15,7 +15,7 @@ public final class ExpiryDateView: UIView {
   /// 5 is the expected text count, for example "11/35".
   private let dateFormatTextCount = 5
   private(set) var style: CellTextFieldStyle?
-  private let cardValidator: CardValidator
+  private let cardValidator: CardValidating
 
   private(set) lazy var dateInputView: InputView = {
     let view = InputView().disabledAutoresizingIntoConstraints()
@@ -23,7 +23,7 @@ public final class ExpiryDateView: UIView {
     return view
   }()
 
-  init(cardValidator: CardValidator) {
+  init(cardValidator: CardValidating) {
     self.cardValidator = cardValidator
     super.init(frame: .zero)
     // setup expiry DateView

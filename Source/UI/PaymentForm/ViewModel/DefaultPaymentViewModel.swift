@@ -6,7 +6,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
     weak var delegate: PaymentViewModelDelegate?
     var cardTokenRequested: ((Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)?
     var supportedSchemes: [Card.Scheme]
-    var cardValidator: CardValidator
+    var cardValidator: CardValidating
     var paymentFormStyle: PaymentFormStyle?
     var billingFormStyle: BillingFormStyle?
     var currentScheme: Card.Scheme = .unknown

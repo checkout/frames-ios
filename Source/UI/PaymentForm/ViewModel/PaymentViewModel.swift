@@ -14,7 +14,7 @@ protocol PaymentViewModel {
   var paymentFormStyle: PaymentFormStyle? { get set }
   var billingFormStyle: BillingFormStyle? { get set }
   var supportedSchemes: [Card.Scheme] { get set }
-  var cardValidator: CardValidator { get set }
+  var cardValidator: CardValidating { get set }
   var isLoading: Bool { get set }
   var cardTokenRequested: ((Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)? { get set }
   func viewControllerWillAppear()
