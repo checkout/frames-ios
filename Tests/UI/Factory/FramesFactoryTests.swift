@@ -31,7 +31,7 @@ class FramesFactoryTests: XCTestCase {
     let formStyle = PaymentStyle(paymentFormStyle: paymentFormStyle, billingFormStyle: billingFormStyle)
     let viewController = PaymentFormFactory.buildViewController(configuration: formConfig, style: formStyle) { _ in }
     let paymentViewController = try XCTUnwrap(viewController as? PaymentViewController)
-    let viewModel = try XCTUnwrap(paymentViewController.viewModel)
+    let viewModel = try XCTUnwrap(paymentViewController.viewModel) as! DefaultPaymentViewModel
 
     XCTAssertNotNil(paymentViewController.viewModel)
     XCTAssertNotNil(viewModel.billingFormData)

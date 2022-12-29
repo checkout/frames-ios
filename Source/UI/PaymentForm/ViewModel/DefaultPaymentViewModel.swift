@@ -2,16 +2,14 @@ import UIKit
 import Checkout
 
 class DefaultPaymentViewModel: PaymentViewModel {
+    // MARK: Protocol conformance
     weak var delegate: PaymentViewModelDelegate?
     var cardTokenRequested: ((Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)?
     var supportedSchemes: [Card.Scheme]
     var cardValidator: CardValidator
-    var logger: FramesEventLogging
-    var checkoutAPIService: CheckoutAPIProtocol
     var paymentFormStyle: PaymentFormStyle?
     var billingFormStyle: BillingFormStyle?
     var currentScheme: Card.Scheme = .unknown
-    var billingFormData: BillingForm?
     var isLoading = false {
         didSet {
             if isLoading != oldValue {
@@ -20,7 +18,10 @@ class DefaultPaymentViewModel: PaymentViewModel {
         }
     }
 
+    var billingFormData: BillingForm?
+    let logger: FramesEventLogging
     private var cardDetails = CardCreationModel()
+    private let checkoutAPIService: CheckoutAPIProtocol
 
     init(checkoutAPIService: CheckoutAPIProtocol,
          cardValidator: CardValidator,
