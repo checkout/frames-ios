@@ -21,7 +21,7 @@ final class DefaultPaymentViewModelTests: XCTestCase {
                                       billingFormStyle: nil,
                                       supportedCardSchemes: testSupportedSchemes)
         
-        XCTAssertTrue(viewModel.cardValidator === testCardValidator)
+        XCTAssertTrue((viewModel.cardValidator as? CardValidator) === testCardValidator)
         XCTAssertTrue((viewModel.logger as? StubFramesEventLogger) === testLogger)
         XCTAssertEqual(viewModel.billingFormData, testBillingFormData)
         XCTAssertEqual(viewModel.supportedSchemes, testSupportedSchemes)

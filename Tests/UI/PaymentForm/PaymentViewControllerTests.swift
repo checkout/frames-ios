@@ -12,7 +12,6 @@ import Checkout
 class PaymentViewControllerTests: XCTestCase {
   var viewController: PaymentViewController!
   var viewModel: DefaultPaymentViewModel!
-  let delegate = PaymentViewControllerMockDelegate()
   let stubCheckoutAPIService = StubCheckoutAPIService()
   
   override func setUp() {
@@ -62,63 +61,121 @@ class PaymentViewControllerTests: XCTestCase {
     XCTAssertTrue(stackView?.subviews[8] is ButtonView) // pay button
   }
   
-  func testCallDelegateMethodOnTapAddBillingButton() {
-    viewController.delegate = delegate
-    let navigationController = UINavigationController(rootViewController: viewController)
-    viewController.selectionButtonIsPressed()
-    XCTAssertEqual(delegate.addBillingButtonIsPressedWithSender.count, 1)
-    XCTAssertEqual(delegate.addBillingButtonIsPressedWithSender.last, navigationController)
-  }
-  
-  func testCallDelegateMethodOnTapEditBillingButton() {
-    viewController.delegate = delegate
-    let navigationController = UINavigationController(rootViewController: viewController)
-    viewController.summaryButtonIsPressed()
-    XCTAssertEqual(delegate.editBillingButtonIsPressedWithSender.count, 1)
-    XCTAssertEqual(delegate.editBillingButtonIsPressedWithSender.last, navigationController)
-  }
-    
-  func testCallDelegateMethodUpdateEditingCardholderView() {
-    let testCardholderValue = "card owner"
-    viewController.delegate = delegate
-    let testExpectation = expectation(description: "Should call completion handler when triggered")
-    delegate.cardholderIsUpdatedCompletionHandler = {
-        testExpectation.fulfill()
-    }
-    viewController.cardholderUpdated(to: testCardholderValue)
-      
-    waitForExpectations(timeout: 0.1)
-    XCTAssertEqual(delegate.cardholderIsUpdatedWithValue, [testCardholderValue])
-  }
+    func testCallViewModelOnTapBillingButton() {
+        let expect = expectation(description: "View Model needs to be called")
+        let viewModel = MockPaymentViewModel()
+        let testViewController = PaymentViewController(viewModel: viewModel)
+        viewModel.presentBillingCompletion = {
+            expect.fulfill()
+            XCTAssertTrue($0 === testViewController)
+        }
         
-  
-  func testCallDelegateMethodFinishEditingExpiryDateView() {
-    viewController.delegate = delegate
-    let expiryDate = ExpiryDate(month: 01, year: 25)
-    viewController.update(result: .success(expiryDate))
-    XCTAssertEqual(delegate.expiryDateIsUpdatedWithValue.count, 1)
-    switch delegate.expiryDateIsUpdatedWithValue.last {
-      case .success(let result):
-        XCTAssertEqual(result, expiryDate)
-      default:
-        XCTFail()
+        testViewController.selectionButtonIsPressed()
+        
+        waitForExpectations(timeout: 0.1)
     }
-
-  }
-  
-  func testCallDelegateMethodFinishEditingSecurityCodeView() {
-    viewController.delegate = delegate
-    let value = "1234"
-    viewController.update(securityCode: value)
-    XCTAssertEqual(delegate.securityCodeIsUpdatedWithValue, [value])
-  }
-
-  func testCallDelegateMethodOnTapPayButton() {
-    viewController.delegate = delegate
-    let button = UIButton()
-    viewController.selectionButtonIsPressed(sender: button)
-    XCTAssertEqual(delegate.payButtonIsPressedCounter, 1)
-  }
+    
+    func testCallViewModelOnTapBillingButtonInsideNavigationController() {
+        let expect = expectation(description: "View Model needs to be called")
+        let viewModel = MockPaymentViewModel()
+        let testViewController = PaymentViewController(viewModel: viewModel)
+        let navController = UINavigationController(rootViewController: testViewController)
+        viewModel.presentBillingCompletion = {
+            expect.fulfill()
+            XCTAssertTrue($0 === navController)
+        }
+        
+        testViewController.selectionButtonIsPressed()
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testCallViewModelOnTapSummaryButton() {
+        let expect = expectation(description: "View Model needs to be called")
+        let viewModel = MockPaymentViewModel()
+        let testViewController = PaymentViewController(viewModel: viewModel)
+        viewModel.presentBillingCompletion = {
+            expect.fulfill()
+            XCTAssertTrue($0 === testViewController)
+        }
+        
+        testViewController.summaryButtonIsPressed()
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testCallViewModelOnTapSummaryButtonInsideNavigationController() {
+        let expect = expectation(description: "View Model needs to be called")
+        let viewModel = MockPaymentViewModel()
+        let testViewController = PaymentViewController(viewModel: viewModel)
+        let navController = UINavigationController(rootViewController: testViewController)
+        viewModel.presentBillingCompletion = {
+            expect.fulfill()
+            XCTAssertTrue($0 === navController)
+        }
+        
+        testViewController.summaryButtonIsPressed()
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testUpdateExpiryDate() {
+        let expect = expectation(description: "View Model needs to be called")
+        let viewModel = MockPaymentViewModel()
+        let testViewController = PaymentViewController(viewModel: viewModel)
+        let testExpiryDate: Result<ExpiryDate, ExpiryDateError> = .success(ExpiryDate(month: 10, year: 2060))
+        viewModel.expiryDateIsUpdatedCompletion = {
+            expect.fulfill()
+            XCTAssertEqual($0, testExpiryDate)
+        }
+        
+        testViewController.update(result: testExpiryDate)
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testUpdateSecurityCode() {
+        let expect = expectation(description: "View Model needs to be called")
+        let viewModel = MockPaymentViewModel()
+        let testViewController = PaymentViewController(viewModel: viewModel)
+        let testSecurityCode = "oa926H"
+        viewModel.securityCodeIsUpdatedCompletion = {
+            expect.fulfill()
+            XCTAssertEqual($0, testSecurityCode)
+        }
+        
+        testViewController.update(securityCode: testSecurityCode)
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testUpdateCardholder() {
+        let expect = expectation(description: "View Model needs to be called")
+        let viewModel = MockPaymentViewModel()
+        let testViewController = PaymentViewController(viewModel: viewModel)
+        let testCardholder = "own3R"
+        viewModel.cardholderIsUpdatedCompletion = {
+            expect.fulfill()
+            XCTAssertEqual($0, testCardholder)
+        }
+        
+        testViewController.cardholderUpdated(to: testCardholder)
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testPayButtonIsPressed() {
+        let expect = expectation(description: "View Model needs to be called")
+        let viewModel = MockPaymentViewModel()
+        let testViewController = PaymentViewController(viewModel: viewModel)
+        viewModel.payButtonIsPressedCompletion = {
+            expect.fulfill()
+        }
+        
+        testViewController.selectionButtonIsPressed(sender: UIView())
+        
+        waitForExpectations(timeout: 0.1)
+    }
   
   func testCardTokenRequested() {
     let expectation = XCTestExpectation(description: #function)
