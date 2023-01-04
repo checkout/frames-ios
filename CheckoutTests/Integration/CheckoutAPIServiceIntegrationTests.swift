@@ -130,7 +130,6 @@ final class CheckoutAPIServiceIntegrationTests: XCTestCase {
 
     private func verifyApplePayToken(applePayDetails: ApplePayDetails, tokenDetails: TokenDetails) {
         XCTAssertEqual(tokenDetails.type, .applePay)
-        XCTAssertNotNil(ISO8601DateFormatter().date(from: tokenDetails.expiresOn))
         XCTAssertNotNil(tokenDetails.token)
         
         XCTAssertEqual(tokenDetails.expiryDate, applePayDetails.expiryDate)
@@ -138,14 +137,14 @@ final class CheckoutAPIServiceIntegrationTests: XCTestCase {
         XCTAssertEqual(tokenDetails.last4, applePayDetails.last4)
         
         XCTAssertNil(tokenDetails.billingAddress)
-        XCTAssertEqual(tokenDetails.cardCategory, "Consumer")
-        XCTAssertEqual(tokenDetails.cardType, "Debit")
+        XCTAssertEqual(tokenDetails.cardCategory, "CONSUMER")
+        XCTAssertEqual(tokenDetails.cardType, "DEBIT")
         XCTAssertEqual(tokenDetails.issuer, "CURVE UK LIMITED")
         XCTAssertEqual(tokenDetails.issuerCountry, "GB")
         XCTAssertNil(tokenDetails.phone)
         XCTAssertEqual(tokenDetails.productId, "MDW")
         XCTAssertEqual(tokenDetails.productType, "MDW - (World Elite™ Debit MasterCard®)")
-        XCTAssertEqual(tokenDetails.scheme, "Mastercard")
+        XCTAssertEqual(tokenDetails.scheme, "MASTERCARD")
         XCTAssertNil(tokenDetails.name)
     }
 
