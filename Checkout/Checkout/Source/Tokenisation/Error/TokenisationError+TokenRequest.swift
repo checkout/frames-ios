@@ -11,6 +11,7 @@ extension TokenisationError {
   public enum TokenRequest: CheckoutError {
     case couldNotBuildURLForRequest
     case applePayTokenInvalid
+    case userCancelled
     case cardValidationError(ValidationError.Card)
     case networkError(NetworkError)
     case serverError(ServerError)
@@ -21,6 +22,8 @@ extension TokenisationError {
         return 3001
       case .applePayTokenInvalid:
         return 1100
+      case .userCancelled:
+        return 0
       case .cardValidationError(let cardValidationError):
         return cardValidationError.code
       case .networkError(let networkError):
