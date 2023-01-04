@@ -15,7 +15,7 @@ final class CheckoutAPIServiceIntegrationTests: XCTestCase {
   override func setUp() {
     super.setUp()
 
-    subject = CheckoutAPIService(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73", environment: .sandbox)
+    subject = CheckoutAPIService(publicKey: "pk_sbox_ym4kqv5lzvjni7utqbliqs2vhqc", environment: .sandbox)
   }
 
   override func tearDown() {

@@ -122,7 +122,7 @@ class CardTokenizationViewController: UIViewController {
       phone: phone)
 
     let checkoutAPIService = CheckoutAPIService(
-      publicKey: "pk_sbox_4zwxstydpp7tytwedivr75oiyie",
+      publicKey: "pk_sbox_ym4kqv5lzvjni7utqbliqs2vhqc",
       environment: .sandbox)
     checkoutAPIService.createToken(.card(card)) { result in
       switch result {

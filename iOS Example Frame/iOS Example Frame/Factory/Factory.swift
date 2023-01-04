@@ -15,7 +15,7 @@ enum Factory {
   static let successURL = URL(string: "https://httpstat.us/200")!
     // swiftlint:disable:next force_unwrapping
   static let failureURL = URL(string: "https://httpstat.us/403")!
-  static let apiKey = "pk_sbox_4zwxstydpp7tytwedivr75oiyie"
+  static let apiKey = "pk_sbox_ym4kqv5lzvjni7utqbliqs2vhqc"
   static let environment: Frames.Environment = .sandbox
 
   static func getDefaultPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenRequestError>) -> Void) -> UIViewController {
