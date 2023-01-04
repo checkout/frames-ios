@@ -699,6 +699,20 @@ final class PaymentViewModelTests: XCTestCase {
         XCTAssertEqual(fakeLogger.logCalledWithFramesLogEvents, [.paymentFormSubmitted, .warn(message: expectedWarnMessage)])
     }
     
+    func testPressCancelTriggerCompletionHandler() {
+        let model = makeViewModel()
+        let expect = expectation(description: "Should call completion handler")
+        
+        model.cardTokenRequested = {
+            expect.fulfill()
+            XCTAssertEqual($0, .failure(.userCancelled))
+        }
+        
+        model.viewControllerCancelled()
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
     func testBillingTapDoneCallback() {
         let testLogger = StubFramesEventLogger()
         let model = makeViewModel(logger: testLogger)

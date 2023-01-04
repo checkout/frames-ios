@@ -11,6 +11,7 @@ Released on 2022-12-21
 
 Updates
 - Mapped the `scheme_local` property from the /tokens endpoint via the SDK
+- Passing new error type `userCancelled` in completion handler for tokenisation journey
 
 ## [4.0.3](https://github.com/checkout/frames-ios/releases/tag/4.0.3)
 

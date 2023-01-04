@@ -55,6 +55,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
 
     func viewControllerCancelled() {
         logger.log(.paymentFormCanceled)
+        cardTokenRequested?(.failure(.userCancelled))
     }
 
     func updateAll() {
