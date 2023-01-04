@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 
 ## [4.0.4](https://github.com/checkout/frames-ios/releases/tag/4.0.4)
 
-Released on 2023-01-04
+Released on 2023-01-05
 
 Updates:
 
