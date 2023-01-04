@@ -107,7 +107,7 @@ final class CheckoutAPIServiceIntegrationTests: XCTestCase {
 
     XCTAssertEqual(
       tokenDetails.scheme,
-      try! CardValidator(environment: .sandbox).validate(cardNumber: card.number).get()
+      try! CardValidator(environment: .sandbox).validate(cardNumber: card.number).get().rawValue
     )
 
     let last4digits = "4242"
@@ -145,7 +145,7 @@ final class CheckoutAPIServiceIntegrationTests: XCTestCase {
         XCTAssertNil(tokenDetails.phone)
         XCTAssertEqual(tokenDetails.productId, "MDW")
         XCTAssertEqual(tokenDetails.productType, "MDW - (World Elite™ Debit MasterCard®)")
-        XCTAssertEqual(tokenDetails.scheme, .mastercard)
+        XCTAssertEqual(tokenDetails.scheme, "Mastercard")
         XCTAssertNil(tokenDetails.name)
     }
 
