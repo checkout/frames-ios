@@ -19,6 +19,6 @@ Pod::Spec.new do |s|
 
   s.dependency 'PhoneNumberKit', '3.3.3'
   s.dependency 'CheckoutEventLoggerKit', '1.2.0'
-  s.dependency 'Checkout', '4.0.2'
+  s.dependency 'Checkout', '4.0.4'
 
 end
