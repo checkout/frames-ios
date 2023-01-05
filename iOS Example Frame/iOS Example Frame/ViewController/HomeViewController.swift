@@ -121,18 +121,31 @@ class HomeViewController: UIViewController {
     }
   }
 
-  private func handleTokenResponse(with result: Result<TokenDetails, TokenRequestError>) {
-    switch result {
-      case .failure(let error):
-        showAlert(with: error.localizedDescription, title: "Error")
-      case .success(let tokenDetails):
-        showAlert(with: tokenDetails.token, title: "Success")
+    private func handleTokenResponse(with result: Result<TokenDetails, TokenRequestError>) {
+        switch result {
+        case .failure(let failure):
+            switch failure {
+            case .userCancelled:
+                print("user tapped cancelled with Error code : \(failure.code)")
+            case .applePayTokenInvalid:
+                showAlert(with: "Error code: \(failure.code)", title: "ApplePay Token Invalid")
+            case .cardValidationError(let cardValidationError):
+                showAlert(with: "Error code: \(cardValidationError.code)", title: "Card Validation Error")
+            case .networkError(let networkError):
+                showAlert(with: "Error code: \(networkError.code)", title: "Network Error")
+            case .serverError(let serverError):
+                showAlert(with: "Error code: \(serverError.code)", title: "Server Error")
+            case .couldNotBuildURLForRequest:
+                showAlert(with: "Error code: \(failure.code)", title: "Could Not Build URL")
+            }
+        case .success(let tokenDetails):
+            showAlert(with: tokenDetails.token, title: "Success")
+        }
     }
-  }
 
   private func showAlert(with message: String, title: String = "Payment") {
     DispatchQueue.main.async {
-      let alert = UIAlertController(title: "Payment",
+      let alert = UIAlertController(title: title,
                                     message: message,
                                     preferredStyle: .alert)
       let action = UIAlertAction(title: "OK", style: .default) { _ in
