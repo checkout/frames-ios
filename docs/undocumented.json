@@ -141,6 +141,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/ehabalsharkawy/Documents/Checkout.com/frames-ios/Source/Core/Models/Typealiases.swift",
+      "line": 17,
+      "symbol": "PhoneValidator",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/ehabalsharkawy/Documents/Checkout.com/frames-ios/Source/UI/3DS/ThreedsWebViewController.swift",
       "line": 86,
       "symbol": "ThreedsWebViewController.didFinishLoading(navigation:success:)",
@@ -219,7 +226,7 @@
     },
     {
       "file": "/Users/ehabalsharkawy/Documents/Checkout.com/frames-ios/Source/UI/BillingForm/BillingFormCell.swift",
-      "line": 67,
+      "line": 68,
       "symbol": "BillingFormCell",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"

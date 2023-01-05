@@ -191,8 +191,13 @@ let style = PaymentStyle(
 ```swift
 let completion: ((Result<TokenDetails, TokenRequestError>) -> Void) = { result in
     switch result {
-    case .failure(let error):
-        print("Failed, received error", error.localizedDescription)
+    case .failure(let failure):
+        if failure == .userCancelled {
+            // Depending on needs, User Cancelled can be handled as an individual failure to complete, an error, or simply a callback that control is returned
+            print("User has cancelled")
+        } else {
+            print("Failed, received error", failure.localizedDescription)
+        }
     case .success(let tokenDetails):
         print("Success, received token", tokenDetails.token)
     }
