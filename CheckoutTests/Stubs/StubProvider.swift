@@ -151,7 +151,7 @@ enum StubProvider {
     token: String = "token",
     expiresOn: String = "expiresOn",
     expiryDate: ExpiryDate = try! CardValidator(environment: .sandbox).validate(expiryMonth: 5, expiryYear: 50).get(),
-    scheme: Card.Scheme? = .visa,
+    scheme: String? = "visa",
     schemeLocal: String? = nil,
     last4: String = "4242",
     bin: String = "424242",

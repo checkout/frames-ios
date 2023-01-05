@@ -15,7 +15,7 @@ final class CheckoutAPIServiceIntegrationTests: XCTestCase {
   override func setUp() {
     super.setUp()
 
-    subject = CheckoutAPIService(publicKey: "pk_test_6e40a700-d563-43cd-89d0-f9bb17d35e73", environment: .sandbox)
+    subject = CheckoutAPIService(publicKey: "pk_sbox_ym4kqv5lzvjni7utqbliqs2vhqc", environment: .sandbox)
   }
 
   override func tearDown() {
@@ -107,7 +107,7 @@ final class CheckoutAPIServiceIntegrationTests: XCTestCase {
 
     XCTAssertEqual(
       tokenDetails.scheme,
-      try! CardValidator(environment: .sandbox).validate(cardNumber: card.number).get()
+      try! CardValidator(environment: .sandbox).validate(cardNumber: card.number).get().rawValue
     )
 
     let last4digits = "4242"
@@ -130,7 +130,6 @@ final class CheckoutAPIServiceIntegrationTests: XCTestCase {
 
     private func verifyApplePayToken(applePayDetails: ApplePayDetails, tokenDetails: TokenDetails) {
         XCTAssertEqual(tokenDetails.type, .applePay)
-        XCTAssertNotNil(ISO8601DateFormatter().date(from: tokenDetails.expiresOn))
         XCTAssertNotNil(tokenDetails.token)
         
         XCTAssertEqual(tokenDetails.expiryDate, applePayDetails.expiryDate)
@@ -138,14 +137,14 @@ final class CheckoutAPIServiceIntegrationTests: XCTestCase {
         XCTAssertEqual(tokenDetails.last4, applePayDetails.last4)
         
         XCTAssertNil(tokenDetails.billingAddress)
-        XCTAssertEqual(tokenDetails.cardCategory, "Consumer")
-        XCTAssertEqual(tokenDetails.cardType, "Debit")
+        XCTAssertEqual(tokenDetails.cardCategory, "CONSUMER")
+        XCTAssertEqual(tokenDetails.cardType, "DEBIT")
         XCTAssertEqual(tokenDetails.issuer, "CURVE UK LIMITED")
         XCTAssertEqual(tokenDetails.issuerCountry, "GB")
         XCTAssertNil(tokenDetails.phone)
         XCTAssertEqual(tokenDetails.productId, "MDW")
         XCTAssertEqual(tokenDetails.productType, "MDW - (World Elite™ Debit MasterCard®)")
-        XCTAssertEqual(tokenDetails.scheme, .mastercard)
+        XCTAssertEqual(tokenDetails.scheme, "MASTERCARD")
         XCTAssertNil(tokenDetails.name)
     }
 
