@@ -123,13 +123,12 @@ class HomeViewController: UIViewController {
 
     private func handleTokenResponse(with result: Result<TokenDetails, TokenRequestError>) {
         switch result {
-        case .failure(let error):
-            let tokenRequestError = error
-            switch tokenRequestError {
+        case .failure(let failure):
+            switch failure {
             case .userCancelled:
-                print("user tapped cancelled with Error code : \(tokenRequestError.code)")
+                print("user tapped cancelled with Error code : \(failure.code)")
             case .applePayTokenInvalid:
-                showAlert(with: "Error code: \(tokenRequestError.code)", title: "ApplePay Token Invalid")
+                showAlert(with: "Error code: \(failure.code)", title: "ApplePay Token Invalid")
             case .cardValidationError(let cardValidationError):
                 showAlert(with: "Error code: \(cardValidationError.code)", title: "Card Validation Error")
             case .networkError(let networkError):
@@ -137,7 +136,7 @@ class HomeViewController: UIViewController {
             case .serverError(let serverError):
                 showAlert(with: "Error code: \(serverError.code)", title: "Server Error")
             case .couldNotBuildURLForRequest:
-                showAlert(with: "Error code: \(tokenRequestError.code)", title: "Could Not Build URL")
+                showAlert(with: "Error code: \(failure.code)", title: "Could Not Build URL")
             }
         case .success(let tokenDetails):
             showAlert(with: tokenDetails.token, title: "Success")
