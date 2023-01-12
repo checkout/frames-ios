@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 
 #### 4.x Releases
 
+## [4.0.4](https://github.com/checkout/frames-ios/releases/tag/4.0.4)
+
+Released on 2023-01-05
+
+Updates:
+
+- Mapped the `scheme_local` property from the /tokens endpoint via the SDK (NAS keys only)
+- Handles cartes_bancaires and mada strings in `scheme` property returned from /tokens endpoint
+- Passing new error type `userCancelled` in completion handler for tokenisation journey
+
 ## [4.0.3](https://github.com/checkout/frames-ios/releases/tag/4.0.3)
 
 Released on 2022-12-04

@@ -63,7 +63,7 @@ final class TokenDetailsFactoryTests: XCTestCase {
         XCTAssertEqual(publicToken.token, testToken)
         XCTAssertEqual(publicToken.expiresOn, testExpiresOn)
         XCTAssertEqual(publicToken.expiryDate, ExpiryDate(month: testExpiryMonth, year: testExpiryYear))
-        XCTAssertEqual(publicToken.scheme, .visa)
+        XCTAssertEqual(publicToken.scheme, "visa")
         XCTAssertEqual(publicToken.schemeLocal, testSchemeLocal)
         XCTAssertEqual(publicToken.last4, testLast4)
         XCTAssertEqual(publicToken.bin, testBin)

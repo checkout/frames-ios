@@ -110,9 +110,9 @@ final class FrameUITests: XCTestCase {
 
         // 9. Press button
         payButton.tap()
-        let alert = app.alerts["Payment"]
+        let alert = app.alerts["Card Validation Error"]
         XCTAssertNotNil(alert)
-        XCTAssertEqual(alert.label, "Payment")
+        XCTAssertEqual(alert.label, "Card Validation Error")
     }
 
     func testPaymentWithFullInputProvided() {
@@ -246,7 +246,7 @@ final class FrameUITests: XCTestCase {
         XCTAssertTrue(doneButton.isEnabled)
 
         // 11. Enter phone number
-        let phoneNumber = "00441234567891"
+        let phoneNumber = "+441206123123"
         app.enterText(phoneNumber, into: phoneTextField)
         app.staticTexts["Phone number"].tap()
         XCTAssertTrue(doneButton.isEnabled)
@@ -261,14 +261,14 @@ final class FrameUITests: XCTestCase {
         XCTAssertTrue(app.label(containingText: postcode).exists)
         XCTAssertTrue(app.label(containingText: city).exists)
         XCTAssertTrue(app.label(containingText: country).exists)
-        XCTAssertTrue(app.label(containingText: "+44 1234 567891").exists)
+        XCTAssertTrue(app.label(containingText: "+44 1206 123123").exists)
         XCTAssertTrue(payButton.isEnabled)
 
         // 14. Press Pay Button
         payButton.tap()
-        let alert = app.alerts["Payment"]
+        let alert = app.alerts["Success"]
         XCTAssertNotNil(alert)
-        XCTAssertEqual(alert.label, "Payment")
+        XCTAssertEqual(alert.label, "Success")
     }
 
  }

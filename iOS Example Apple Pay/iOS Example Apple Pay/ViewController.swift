@@ -12,7 +12,7 @@ PKPaymentAuthorizationViewControllerDelegate {
     @IBOutlet weak var payButtonsView: UIStackView!
     var cardsTableViewHeightConstraint: NSLayoutConstraint?
     
-    let publicKey = "pk_test_03728582-062b-419c-91b5-63ac2a481e07"
+    let publicKey = "pk_sbox_ym4kqv5lzvjni7utqbliqs2vhqc"
     var checkoutAPIClient: CheckoutAPIClient { return CheckoutAPIClient(publicKey: publicKey, environment: .sandbox) }
     let cardUtils = CardUtils()
     var availableSchemes: [CardScheme] = []
