@@ -39,14 +39,14 @@ final class FrameUITests: XCTestCase {
         let payButton = app.getButton(name: "Pay now")
         XCTAssertFalse(payButton.isEnabled)
 
-        // 1. Enter complete valid card number
-        app.enterText("4242424242424242", into: cardNumberTextField)
-        app.staticTexts["Card number"].tap()
-        XCTAssertFalse(payButton.isEnabled)
-
-        // 2. Enter complete valid expiry date
+        // 1. Enter complete valid expiry date
         app.enterText("1288", into: expiryTextField)
         app.staticTexts["Expiry date"].tap()
+        XCTAssertFalse(payButton.isEnabled)
+
+        // 2. Enter complete valid card number
+        app.enterText("4242424242424242", into: cardNumberTextField)
+        app.staticTexts["Card number"].tap()
         XCTAssertTrue(payButton.isEnabled)
 
         // 3. Make card number too short to be valid

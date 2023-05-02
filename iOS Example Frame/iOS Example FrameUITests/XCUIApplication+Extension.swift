@@ -48,7 +48,13 @@ extension XCUIApplication {
             return
         }
         element.tap()
-        (0..<count).forEach { _ in keys["Delete"].tap() }
+        (0..<count).forEach { _ in
+            if keys["delete"].exists {
+                keys["delete"].tap()
+            } else if keys["Delete"].exists {
+                keys["Delete"].tap()
+            }
+        }
     }
 
     private func keyboardInput(char: Character, retryInputIfFailed: Bool = true) {
