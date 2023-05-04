@@ -51,6 +51,19 @@ import Foundation
         }
     }
 
+    var accessibilityIdentifier: String {
+        switch self {
+        case .fullName: return AccessibilityIdentifiers.BillingForm.cardholder
+        case .addressLine1: return AccessibilityIdentifiers.BillingForm.addressLine1
+        case .addressLine2: return AccessibilityIdentifiers.BillingForm.addressLine2
+        case .city: return AccessibilityIdentifiers.BillingForm.city
+        case .state: return AccessibilityIdentifiers.BillingForm.state
+        case .postcode: return AccessibilityIdentifiers.BillingForm.postcode
+        case .country: return ""
+        case .phoneNumber: return AccessibilityIdentifiers.BillingForm.phoneNumber
+        }
+    }
+
     func getText(from billingFormData: BillingForm?) -> String? {
         switch self {
             case .fullName: return billingFormData?.name

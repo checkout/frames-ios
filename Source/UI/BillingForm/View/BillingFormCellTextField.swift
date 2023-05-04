@@ -32,6 +32,7 @@ final class BillingFormCellTextField: UITableViewCell {
         self.type = type
         self.style = style
         self.tag = tag
+        textFieldView?.accessibilityIdentifier = type?.accessibilityIdentifier
         textFieldView?.update(style: style, type: type, textFieldValue: textFieldValue, tag: tag)
     }
 
