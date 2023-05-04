@@ -88,6 +88,7 @@ class BillingFormTextFieldView: UIView {
         self.type = type
         self.style = style
         textField.tag = tag
+        textField.accessibilityIdentifier = type.accessibilityIdentifier
         backgroundColor = style.backgroundColor
 
         mandatoryLabel.isHidden = style.isMandatory || style.title == nil
