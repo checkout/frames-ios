@@ -7,23 +7,23 @@
 
 import Foundation
 
-enum AccessibilityIdentifiers {
+public enum AccessibilityIdentifiers {
 
-    enum PaymentForm {
-        static let cardholder = "CardholderInput"
-        static let cardNumber = "CardNumberInput"
-        static let cardExpiry = "ExpiryDateInput"
-        static let cardSecurityCode = "CardSecurityCodeInput"
+    public enum PaymentForm {
+        static public let cardholder = "CardholderInput"
+        static public let cardNumber = "CardNumberInput"
+        static public let cardExpiry = "ExpiryDateInput"
+        static public let cardSecurityCode = "CardSecurityCodeInput"
     }
 
     enum BillingForm {
-        static let cardholder = "CardholderInput"
-        static let addressLine1 = "AddressLine1Input"
-        static let addressLine2 = "AddressLine2Input"
-        static let city = "CityInput"
-        static let state = "StateInput"
-        static let postcode = "PostcodeInput"
-        static let phoneNumber = "PhoneNumberInput"
+        static public let cardholder = "CardholderInput"
+        static public let addressLine1 = "AddressLine1Input"
+        static public let addressLine2 = "AddressLine2Input"
+        static public let city = "CityInput"
+        static public let state = "StateInput"
+        static public let postcode = "PostcodeInput"
+        static public let phoneNumber = "PhoneNumberInput"
     }
 
 }
