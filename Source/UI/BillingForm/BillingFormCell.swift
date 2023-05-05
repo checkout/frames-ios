@@ -21,7 +21,7 @@ import Foundation
                 .postcode,
                 .country:
             return GenericInputValidator()
-        case .phoneNumber: return PhoneNumberValidator()
+        case .phoneNumber: return PhoneNumberValidator.shared
         }
     }
 

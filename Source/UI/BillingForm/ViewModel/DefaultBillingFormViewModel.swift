@@ -19,11 +19,12 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     var textValueOfCellType = [Int: String]()
 
     private var countryRow: Int?
+    private var phoneRow: Int?
     private(set) var country: Country?
     private(set) var phone: Phone?
     private(set) var style: BillingFormStyle
     private(set) var data: BillingForm?
-    private(set) var updatedRow: Int? {
+    private(set) var updatedRows: [Int] = [] {
         didSet { updateRow?() }
     }
 
@@ -56,6 +57,13 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
             countryRow = indexPath.row
             return getCountryCell(tableView: tableView, indexPath: indexPath, sender: sender)
         }
+
+        // Get a reference of the phone row in the current configuration for UI updating when needed
+        if phoneRow == nil,
+           style.cells[indexPath.row].index == BillingFormCell.phoneNumber(nil).index {
+            phoneRow = indexPath.row
+        }
+
         return getTextFieldCell(tableView: tableView, indexPath: indexPath, sender: sender)
     }
 
@@ -76,6 +84,10 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
            let regionCode = Locale.current.regionCode,
            let deviceCountry = Country(iso3166Alpha2: regionCode) {
               country = deviceCountry
+        }
+
+        if let countryCode = phone?.country?.iso3166Alpha2 ?? country?.iso3166Alpha2 {
+            PhoneNumberValidator.shared.countryCode = countryCode
         }
     }
 
@@ -178,7 +190,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
         textValueOfCellType[type.index] = shouldSaveText ? textField.text : nil
 
-        updatedRow = textField.tag
+        updatedRows = [textField.tag]
 
         // Save phone number if phone input is updated
         guard textField.type == BillingFormCell.phoneNumber(nil) else {
@@ -241,14 +253,22 @@ extension DefaultBillingFormViewModel: BillingFormTextFieldDelegate {
 
 extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
     func textFieldDidEndEditing(tag: Int) {
-        updatedRow = tag
+        updatedRows = [tag]
     }
 
     func update(country: Country) {
+        PhoneNumberValidator.shared.countryCode = country.iso3166Alpha2
         self.country = country
         let index = BillingFormCell.country(nil).index
         textValueOfCellType[index] = country.name
-        updatedRow = countryRow
+
+        let phoneIndex = BillingFormCell.phoneNumber(nil).index
+        if let phoneValue = textValueOfCellType[phoneIndex] {
+            let newPhoneNumber = PhoneNumberValidator.shared.formatForDisplay(text: phoneValue)
+            textValueOfCellType[phoneIndex] = newPhoneNumber
+            errorFlagOfCellType[phoneIndex] = !PhoneNumberValidator.shared.isValid(text: newPhoneNumber)
+        }
+        updatedRows = [countryRow, phoneRow].compactMap { $0 }
         notifyContentChangeToDelegate()
     }
 

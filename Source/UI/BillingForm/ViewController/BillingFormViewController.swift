@@ -122,7 +122,9 @@ final class BillingFormViewController: UIViewController {
         textFieldDelegate = viewModel as? BillingFormTextFieldDelegate
         viewModel.updateRow = { [weak self] in
             DispatchQueue.main.async {
-                self?.refreshCell(at: self?.viewModel.updatedRow)
+                self?.viewModel.updatedRows.forEach {
+                    self?.refreshCell(at: $0)
+                }
             }
         }
     }
