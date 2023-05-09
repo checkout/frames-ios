@@ -250,6 +250,9 @@ class PhoneNumberValidatorTests: XCTestCase {
             paymentFormStyle: nil,
             billingFormStyle: nil,
             supportedSchemes: [.mada])
+        // Just a write action to silence compiler warning. This warnings seems to be
+        // escalated to an error on CI
+        paymentViewModel?.supportedSchemes = [.mada]
         weak var phoneNumberFormatter = PhoneNumberValidator.shared
         XCTAssertNotNil(phoneNumberFormatter)
         
