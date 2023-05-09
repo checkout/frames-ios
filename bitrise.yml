@@ -55,7 +55,7 @@ workflows:
     after_run: []
   _frames-build-spm:
     steps:
-    - xcode-test@2:
+    - xcode-test:
         inputs:
         - project_path: $FRAMES_SPM_PROJECT
         - scheme: $FRAMES_APP_SCHEME
@@ -125,7 +125,7 @@ workflows:
     - cocoapods-install@2.2:
         inputs:
         - podfile_path: $FRAMES_PODFILE
-    - xcode-test@2:
+    - xcode-test:
         inputs:
         - project_path: $FRAMES_COCOAPODS_PROJECT
         - scheme: $FRAMES_APP_SCHEME
@@ -138,7 +138,7 @@ workflows:
     - cache-push@2: {}
   frames-playground:
     steps:
-    - xcode-test@2:
+    - xcode-test:
         inputs:
         - project_path: $FRAMES_SPM_PROJECT
         - scheme: $FRAMES_APP_SCHEME
