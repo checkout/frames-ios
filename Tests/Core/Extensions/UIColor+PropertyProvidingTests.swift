@@ -19,7 +19,7 @@ final class UIColorPropertyProvidingTests: XCTestCase {
     func test_properties() {
         XCTAssertEqual(UIColor.systemBlue.properties, [.alpha: 1.0,
                                                        .blue: 1.0,
-                                                       .red: 0.0,
-                                                       .green: AnyCodable(122.0 / 255.0)])
+                                                       .red: AnyCodable(10.0 / 255.0),
+                                                       .green: AnyCodable(132.0 / 255.0)])
     }
 }
