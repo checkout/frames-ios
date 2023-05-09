@@ -206,5 +206,5 @@ app:
     BITRISE_DISTRIBUTION_METHOD: development
 meta:
   bitrise.io:
-    stack: osx-xcode-14.3.x
-    machine_type_id: g2.4core
+    stack: osx-xcode-14.3.x-ventura
+    machine_type_id: g2-m1.4core
