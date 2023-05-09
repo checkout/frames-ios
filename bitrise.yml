@@ -58,7 +58,7 @@ workflows:
     - script@1:
         title: Build SPM Test project
         inputs:
-        - content: |
+        - content: |-
             xcodebuild test \
                 -project "iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj" \
                 -scheme" "iOS Example Frame" \
