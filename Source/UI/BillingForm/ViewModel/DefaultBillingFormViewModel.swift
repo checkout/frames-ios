@@ -18,8 +18,6 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     var errorFlagOfCellType = [Int: Bool]()
     var textValueOfCellType = [Int: String]()
 
-    private var countryRow: Int?
-    private var phoneRow: Int?
     private(set) var country: Country?
     private(set) var phone: Phone?
     private(set) var style: BillingFormStyle
@@ -28,6 +26,9 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
         didSet { updateRow?() }
     }
 
+    private var countryRow: Int?
+    private var phoneRow: Int?
+    
     // MARK: - Public methods
 
     /**
