@@ -52,6 +52,7 @@ class PhoneNumberValidatorTests: XCTestCase {
     func testIsValidInputValidLocalePhoneNumber() {
         let testString = "01206333222"
         let validator = PhoneNumberValidator()
+        validator.countryCode = "GB"
         XCTAssertTrue(validator.isValid(text: testString))
     }
     
@@ -82,6 +83,7 @@ class PhoneNumberValidatorTests: XCTestCase {
     func testFormatForDisplayValidPhoneNumber() {
         let testString = "01206321321"
         let validator = PhoneNumberValidator()
+        validator.countryCode = "GB"
         XCTAssertEqual(validator.formatForDisplay(text: testString), "+44 1206 321321")
     }
     
@@ -174,7 +176,7 @@ class PhoneNumberValidatorTests: XCTestCase {
         
         XCTAssertTrue(validator.shouldAccept(text: testNumber))
         XCTAssertTrue(validator.isValid(text: testNumber))
-        XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+64 9-888 8625")
+        XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+64 9 888 8625")
     }
     
     func testIrelandNumber() {
@@ -240,9 +242,6 @@ class PhoneNumberValidatorTests: XCTestCase {
          
          Test could also be moved to `DefaultPaymentViewModel` but either way it will create a coupling between the objects in test
          */
-        
-        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
-
         var paymentViewModel: PaymentViewModel? = DefaultPaymentViewModel(
             checkoutAPIService: StubCheckoutAPIService(),
             cardValidator: CardValidator(environment: .sandbox),

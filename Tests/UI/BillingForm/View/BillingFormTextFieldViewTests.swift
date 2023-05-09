@@ -42,6 +42,7 @@ class BillingFormTextFieldViewTests: XCTestCase {
     }
     
     func testUpdateStyleFormatsPhoneNumber() {
+        PhoneNumberValidator.shared.countryCode = "GB"
         var style = DefaultBillingFormPhoneNumberCellStyle()
         style.textfield.text = "01206123123"
         let view = BillingFormTextFieldView()
@@ -51,6 +52,7 @@ class BillingFormTextFieldViewTests: XCTestCase {
     }
     
     func testShouldEndEditingIsFormattingDisplay() {
+        PhoneNumberValidator.shared.countryCode = "GB"
         let testTextField = UITextField()
         testTextField.text = "01206123123"
         let view = BillingFormTextFieldView()
