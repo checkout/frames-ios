@@ -263,6 +263,7 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
         let phoneIndex = BillingFormCell.phoneNumber(nil).index
         if let phoneValue = textValueOfCellType[phoneIndex] {
             let newPhoneNumber = PhoneNumberValidator.shared.formatForDisplay(text: phoneValue)
+            phone = Phone(number: newPhoneNumber, country: country)
             textValueOfCellType[phoneIndex] = newPhoneNumber
             errorFlagOfCellType[phoneIndex] = !PhoneNumberValidator.shared.isValid(text: newPhoneNumber)
         }
