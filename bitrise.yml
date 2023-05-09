@@ -61,7 +61,7 @@ workflows:
         - content: |-
             xcodebuild test \
                 -project "iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj" \
-                -scheme" "iOS Example Frame" \
+                -scheme "iOS Example Frame" \
                 -sdk iphonesimulator \
                 -destination "platform=iOS Simulator,name=iPhone 14" \
                 | xcpretty \
