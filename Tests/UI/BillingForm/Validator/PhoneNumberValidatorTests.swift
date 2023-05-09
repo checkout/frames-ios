@@ -212,4 +212,49 @@ class PhoneNumberValidatorTests: XCTestCase {
         XCTAssertTrue(validator.isValid(text: testNumber))
         XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+86 21 8051 0459")
     }
+    
+    func testSingletonBehaviour() {
+        let testCountryCode = "GB"
+        
+        // GIVEN I need the validator singleton, I will receive a valid singleton to use
+        weak var originalFormatter = PhoneNumberValidator.shared
+        originalFormatter?.countryCode = testCountryCode
+        XCTAssertEqual(originalFormatter?.countryCode, testCountryCode)
+        
+        // WHEN I remove the singleton from memory, the reference I had is deallocated
+        // confirming singleton was removed
+        PhoneNumberValidator.removeSingleton()
+        XCTAssertNil(originalFormatter)
+        
+        // THEN if I need to use singleton again, a NEW one will be created
+        let newFormatter = PhoneNumberValidator.shared
+        XCTAssertNil(originalFormatter)
+        XCTAssertNotEqual(newFormatter.countryCode, testCountryCode)
+    }
+    
+    func testSingletonIsErasedWhenBillingViewModelIsRemoved() {
+        /**
+         Following the previous test, this ensures that the singleton lifetime is correctly coupled to
+         the DefaultPaymentViewModel, as the DefaultPaymentViewModel is the object responsible for the
+         lifetime of the Frames functionality.
+         
+         Test could also be moved to `DefaultPaymentViewModel` but either way it will create a coupling between the objects in test
+         */
+        
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+
+        var paymentViewModel: PaymentViewModel? = DefaultPaymentViewModel(
+            checkoutAPIService: StubCheckoutAPIService(),
+            cardValidator: CardValidator(environment: .sandbox),
+            logger: StubFramesEventLogger(),
+            billingFormData: nil,
+            paymentFormStyle: nil,
+            billingFormStyle: nil,
+            supportedSchemes: [.mada])
+        weak var phoneNumberFormatter = PhoneNumberValidator.shared
+        XCTAssertNotNil(phoneNumberFormatter)
+        
+        paymentViewModel = nil
+        XCTAssertNil(phoneNumberFormatter)
+    }
 }

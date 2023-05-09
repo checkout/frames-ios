@@ -4,8 +4,6 @@ import Checkout
 
 class PhoneNumberValidator: Validator {
 
-    static let shared = PhoneNumberValidator()
-
     var countryCode: String = PhoneNumberKit.defaultRegionCode()
     private let validator = PhoneValidator()
     private let phoneKit = PhoneNumberKit()
@@ -43,6 +41,26 @@ class PhoneNumberValidator: Validator {
         } catch {
             return text
         }
+    }
+
+}
+
+// MARK: Singleton behaviour
+extension PhoneNumberValidator {
+
+    static var shared: PhoneNumberValidator {
+        if let instance {
+            return instance
+        }
+        let newValidator = PhoneNumberValidator()
+        instance = newValidator
+        return newValidator
+    }
+    static private var instance: PhoneNumberValidator?
+
+    /// Will deallocate the singleton source
+    static func removeSingleton() {
+        Self.instance = nil
     }
 
 }
