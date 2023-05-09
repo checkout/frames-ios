@@ -14,7 +14,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     weak var textFieldDelegate: BillingFormTextFieldDelegate?
     weak var delegate: BillingFormViewModelDelegate?
 
-    var updateRow: (() -> Void)?
+    var updateRows: (([Int]) -> Void)?
     var errorFlagOfCellType = [Int: Bool]()
     var textValueOfCellType = [Int: String]()
 
@@ -22,13 +22,10 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
     private(set) var phone: Phone?
     private(set) var style: BillingFormStyle
     private(set) var data: BillingForm?
-    private(set) var updatedRows: [Int] = [] {
-        didSet { updateRow?() }
-    }
 
     private var countryRow: Int?
     private var phoneRow: Int?
-    
+
     // MARK: - Public methods
 
     /**
@@ -191,7 +188,7 @@ final class DefaultBillingFormViewModel: BillingFormViewModel {
 
         textValueOfCellType[type.index] = shouldSaveText ? textField.text : nil
 
-        updatedRows = [textField.tag]
+        updateRows?([textField.tag])
 
         // Save phone number if phone input is updated
         guard textField.type == BillingFormCell.phoneNumber(nil) else {
@@ -254,7 +251,7 @@ extension DefaultBillingFormViewModel: BillingFormTextFieldDelegate {
 
 extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
     func textFieldDidEndEditing(tag: Int) {
-        updatedRows = [tag]
+        updateRows?([tag])
     }
 
     func update(country: Country) {
@@ -269,7 +266,8 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
             textValueOfCellType[phoneIndex] = newPhoneNumber
             errorFlagOfCellType[phoneIndex] = !PhoneNumberValidator.shared.isValid(text: newPhoneNumber)
         }
-        updatedRows = [countryRow, phoneRow].compactMap { $0 }
+        let updatedRowsIndexes = [countryRow, phoneRow].compactMap { $0 }
+        updateRows?(updatedRowsIndexes)
         notifyContentChangeToDelegate()
     }
 

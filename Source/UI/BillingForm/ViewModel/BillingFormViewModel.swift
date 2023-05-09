@@ -13,7 +13,6 @@ protocol BillingFormViewModelEditingDelegate: AnyObject {
 protocol BillingFormViewModel {
     var style: BillingFormStyle { get }
     var data: BillingForm? { get }
-    var updatedRows: [Int] { get }
-    var updateRow: (() -> Void)? { get set }
+    var updateRows: (([Int]) -> Void)? { get set }
     func viewControllerWillAppear()
 }
