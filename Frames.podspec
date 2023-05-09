@@ -17,8 +17,8 @@ Pod::Spec.new do |s|
   s.exclude_files = "Classes/Exclude"
   s.resources = 'Source/Resources/**'
 
-  s.dependency 'PhoneNumberKit', '3.3.3'
-  s.dependency 'CheckoutEventLoggerKit', '1.2.0'
+  s.dependency 'PhoneNumberKit', '~> 3.5.8'
+  s.dependency 'CheckoutEventLoggerKit', '~> 1.2.4'
   s.dependency 'Checkout', '4.0.4'
 
 end

@@ -17,6 +17,6 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'Checkout/Checkout/Source/**/*'
 
-  s.dependency 'CheckoutEventLoggerKit', '1.2.0'
+  s.dependency 'CheckoutEventLoggerKit', '~> 1.2.4'
 
 end
