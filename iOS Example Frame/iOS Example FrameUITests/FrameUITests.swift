@@ -4,7 +4,7 @@
 //
 //  Created by Alex Ioja-Yang on 22/08/2022.
 //  Copyright © 2022 Checkout. All rights reserved.
-// 
+//
 
 import XCTest
 
