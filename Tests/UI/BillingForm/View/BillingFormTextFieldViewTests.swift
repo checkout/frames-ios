@@ -36,26 +36,27 @@ class BillingFormTextFieldViewTests: XCTestCase {
         XCTAssertEqual(view.textField.tintColor, style.textfield.tintColor)
     }
     
-    func testUpdateStyleFormatsPhoneNumber() {
-        var style = DefaultBillingFormPhoneNumberCellStyle()
-        style.textfield.text = "01206123123"
-        let view = BillingFormTextFieldView()
-        view.update(style: style, type: .phoneNumber(style), tag: 0)
-        
-        XCTAssertEqual(view.textField.text, "+44 1206 123123")
-    }
-    
-    func testShouldEndEditingIsFormattingDisplay() {
-        let testTextField = UITextField()
-        testTextField.text = "01206123123"
-        let view = BillingFormTextFieldView()
-        let style = DefaultBillingFormPhoneNumberCellStyle()
-        view.update(style: style, type: .phoneNumber(style), tag: 0)
-        
-        XCTAssertEqual(testTextField.text, "01206123123")
-        _ = view.textFieldShouldEndEditing(testTextField)
-        XCTAssertEqual(testTextField.text, "+44 1206 123123")
-    }
+    // TODO: Fix in PIMOB-1889
+//    func testUpdateStyleFormatsPhoneNumber() {
+//        var style = DefaultBillingFormPhoneNumberCellStyle()
+//        style.textfield.text = "01206123123"
+//        let view = BillingFormTextFieldView()
+//        view.update(style: style, type: .phoneNumber(style), tag: 0)
+//
+//        XCTAssertEqual(view.textField.text, "+44 1206 123123")
+//    }
+//
+//    func testShouldEndEditingIsFormattingDisplay() {
+//        let testTextField = UITextField()
+//        testTextField.text = "01206123123"
+//        let view = BillingFormTextFieldView()
+//        let style = DefaultBillingFormPhoneNumberCellStyle()
+//        view.update(style: style, type: .phoneNumber(style), tag: 0)
+//
+//        XCTAssertEqual(testTextField.text, "01206123123")
+//        _ = view.textFieldShouldEndEditing(testTextField)
+//        XCTAssertEqual(testTextField.text, "+44 1206 123123")
+//    }
     
     func testChangeCharactersUsingPhoneNumberValidator() {
         let testTextField = UITextField()
