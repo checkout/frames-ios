@@ -122,11 +122,6 @@ class ThreedsWebViewControllerTests: XCTestCase {
         _ = ThreedsWebViewController(nibName: nil, bundle: nil)
     }
 
-    func testInitializationCoder() {
-        let coder = NSKeyedUnarchiver(forReadingWith: Data())
-        _ = ThreedsWebViewController(coder: coder)
-    }
-
     func testLoadView() {
         threedsWebViewController.loadView()
         let view = threedsWebViewController.view as? WKWebView

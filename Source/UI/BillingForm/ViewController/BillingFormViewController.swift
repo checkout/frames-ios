@@ -120,17 +120,16 @@ final class BillingFormViewController: UIViewController {
         delegate = viewModel as? BillingFormViewControllerDelegate
         tableViewDelegate = viewModel as? BillingFormTableViewDelegate
         textFieldDelegate = viewModel as? BillingFormTextFieldDelegate
-        viewModel.updateRow = { [weak self] in
+        viewModel.updateRows = { [weak self] rows in
             DispatchQueue.main.async {
-                self?.refreshCell(at: self?.viewModel.updatedRow)
+                self?.refreshCells(at: rows)
             }
         }
     }
 
-    private func refreshCell(at row: Int?) {
-        guard let row = row else { return }
-        let indexPath = IndexPath(row: row, section: 0)
-        tableView?.reloadRows(at: [indexPath], with: .automatic)
+    private func refreshCells(at rows: [Int]) {
+        let indexPaths = rows.map { IndexPath(row: $0, section: 0) }
+        tableView?.reloadRows(at: indexPaths, with: .automatic)
     }
 
     // MARK: - Keyboard

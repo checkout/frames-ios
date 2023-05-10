@@ -49,6 +49,10 @@ class DefaultPaymentViewModel: PaymentViewModel {
         }
     }
 
+    deinit {
+        PhoneNumberValidator.removeSingleton()
+    }
+
     func viewControllerWillAppear() {
         logger.log(.paymentFormPresented)
     }

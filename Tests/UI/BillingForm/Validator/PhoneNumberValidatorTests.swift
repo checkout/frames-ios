@@ -49,12 +49,12 @@ class PhoneNumberValidatorTests: XCTestCase {
         XCTAssertFalse(validator.isValid(text: testString))
     }
 
-    // TODO: Fix in PIMOB-1889
-//    func testIsValidInputValidLocalePhoneNumber() {
-//        let testString = "01206333222"
-//        let validator = PhoneNumberValidator()
-//        XCTAssertTrue(validator.isValid(text: testString))
-//    }
+    func testIsValidInputValidLocalePhoneNumber() {
+        let testString = "01206333222"
+        let validator = PhoneNumberValidator()
+        validator.countryCode = "GB"
+        XCTAssertTrue(validator.isValid(text: testString))
+    }
     
     func testIsValidInputValidInternationalPhoneNumber() {
         let testString = "+919999999999"
@@ -80,12 +80,12 @@ class PhoneNumberValidatorTests: XCTestCase {
         XCTAssertEqual(validator.formatForDisplay(text: testString), "+91 99999 99999")
     }
     
-    // TODO: Fix in PIMOB-1889
-//    func testFormatForDisplayValidPhoneNumber() {
-//        let testString = "01206321321"
-//        let validator = PhoneNumberValidator()
-//        XCTAssertEqual(validator.formatForDisplay(text: testString), "+44 1206 321321")
-//    }
+    func testFormatForDisplayValidPhoneNumber() {
+        let testString = "01206321321"
+        let validator = PhoneNumberValidator()
+        validator.countryCode = "GB"
+        XCTAssertEqual(validator.formatForDisplay(text: testString), "+44 1206 321321")
+    }
     
     
     // MARK: Check country phone number outcomes
@@ -213,5 +213,46 @@ class PhoneNumberValidatorTests: XCTestCase {
         XCTAssertTrue(validator.shouldAccept(text: testNumber))
         XCTAssertTrue(validator.isValid(text: testNumber))
         XCTAssertEqual(validator.formatForDisplay(text: testNumber), "+86 21 8051 0459")
+    }
+    
+    func testSingletonBehaviour() {
+        // GIVEN I need the validator singleton, I will receive a valid singleton to use
+        weak var originalFormatter = PhoneNumberValidator.shared
+        
+        // WHEN I remove the singleton from memory, the reference I had is deallocated
+        // confirming singleton was removed
+        PhoneNumberValidator.removeSingleton()
+        XCTAssertNil(originalFormatter)
+        
+        // THEN if I need to use singleton again, a NEW one will be created
+        let newFormatter = PhoneNumberValidator.shared
+        XCTAssertNil(originalFormatter)
+        XCTAssertFalse(newFormatter === originalFormatter)
+    }
+    
+    func testSingletonIsErasedWhenBillingViewModelIsRemoved() {
+        /**
+         Following the previous test, this ensures that the singleton lifetime is correctly coupled to
+         the DefaultPaymentViewModel, as the DefaultPaymentViewModel is the object responsible for the
+         lifetime of the Frames functionality.
+         
+         Test could also be moved to `DefaultPaymentViewModel` but either way it will create a coupling between the objects in test
+         */
+        var paymentViewModel: PaymentViewModel? = DefaultPaymentViewModel(
+            checkoutAPIService: StubCheckoutAPIService(),
+            cardValidator: CardValidator(environment: .sandbox),
+            logger: StubFramesEventLogger(),
+            billingFormData: nil,
+            paymentFormStyle: nil,
+            billingFormStyle: nil,
+            supportedSchemes: [.mada])
+        // Just a write action to silence compiler warning. This warnings seems to be
+        // escalated to an error on CI
+        paymentViewModel?.supportedSchemes = [.mada]
+        weak var phoneNumberFormatter = PhoneNumberValidator.shared
+        XCTAssertNotNil(phoneNumberFormatter)
+        
+        paymentViewModel = nil
+        XCTAssertNil(phoneNumberFormatter)
     }
 }
