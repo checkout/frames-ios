@@ -7,7 +7,7 @@
 
 import Foundation
 
-// swiftlint:disable:file identifier_name
+// swiftlint:disable identifier_name
 extension Constants {
     static let defaultNavigationHeaderFontSize: Double = 15
 

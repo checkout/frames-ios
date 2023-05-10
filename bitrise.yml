@@ -23,7 +23,7 @@ workflows:
     steps:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@6: {}
+    - git-clone@8: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
     after_run: []
@@ -56,6 +56,7 @@ workflows:
   _frames-build-spm:
     steps:
     - xcode-test@2:
+        title: Build SPM Test project
         inputs:
         - project_path: $FRAMES_SPM_PROJECT
         - scheme: $FRAMES_APP_SCHEME
@@ -81,7 +82,7 @@ workflows:
     steps:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@6: {}
+    - git-clone@8: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
     - script@1:
@@ -97,7 +98,7 @@ workflows:
     steps:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@6: {}
+    - git-clone@8: {}
     - cache-pull@2: {}
     - script@1:
         title: Carthage update
@@ -119,13 +120,13 @@ workflows:
     steps:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@6: {}
+    - git-clone@8: {}
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
     - cocoapods-install@2.2:
         inputs:
         - podfile_path: $FRAMES_PODFILE
-    - xcode-test@2:
+    - xcode-test:
         inputs:
         - project_path: $FRAMES_COCOAPODS_PROJECT
         - scheme: $FRAMES_APP_SCHEME
@@ -138,7 +139,7 @@ workflows:
     - cache-push@2: {}
   frames-playground:
     steps:
-    - xcode-test@2:
+    - xcode-test:
         inputs:
         - project_path: $FRAMES_SPM_PROJECT
         - scheme: $FRAMES_APP_SCHEME
