@@ -6,7 +6,6 @@ included:
     
 excluded:
     - iOS Example Frame/Pods
-    - Tests
      
 opt_in_rules:
     - array_init
