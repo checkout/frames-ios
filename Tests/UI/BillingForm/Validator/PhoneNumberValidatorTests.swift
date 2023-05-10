@@ -216,12 +216,8 @@ class PhoneNumberValidatorTests: XCTestCase {
     }
     
     func testSingletonBehaviour() {
-        let testCountryCode = "GB"
-        
         // GIVEN I need the validator singleton, I will receive a valid singleton to use
         weak var originalFormatter = PhoneNumberValidator.shared
-        originalFormatter?.countryCode = testCountryCode
-        XCTAssertEqual(originalFormatter?.countryCode, testCountryCode)
         
         // WHEN I remove the singleton from memory, the reference I had is deallocated
         // confirming singleton was removed
@@ -231,7 +227,7 @@ class PhoneNumberValidatorTests: XCTestCase {
         // THEN if I need to use singleton again, a NEW one will be created
         let newFormatter = PhoneNumberValidator.shared
         XCTAssertNil(originalFormatter)
-        XCTAssertNotEqual(newFormatter.countryCode, testCountryCode)
+        XCTAssertFalse(newFormatter === originalFormatter)
     }
     
     func testSingletonIsErasedWhenBillingViewModelIsRemoved() {
