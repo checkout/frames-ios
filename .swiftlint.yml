@@ -46,6 +46,7 @@ opt_in_rules:
     - yoda_condition
     
 disabled_rules:
+    - blanket_disable_command
     - discarded_notification_center_observer
     - notification_center_detachment
     - orphaned_doc_comment
