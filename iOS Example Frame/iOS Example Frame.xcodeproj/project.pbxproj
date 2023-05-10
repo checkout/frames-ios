@@ -431,7 +431,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		953A893728AFDD2900C1CDF5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
@@ -442,7 +442,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Adds support for Apple Silicon brew directory export \nPATH=\"$PATH:/opt/homebrew/bin\"  \n\nif which swiftlint > /dev/null; then\n  swiftlint --fix --config ../.swiftlint.yml\n  swiftlint --config ../.swiftlint.yml\nelse\n  echo \"error: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
