@@ -59,13 +59,14 @@ workflows:
         title: Build SPM Test project
         inputs:
         - content: |-
+            cd "iOS Example Frame SPM"
             xcodebuild test \
-                -project "iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj" \
                 -scheme "iOS Example Frame" \
                 -sdk iphonesimulator \
                 -destination "platform=iOS Simulator,name=iPhone 14" \
                 | xcpretty \
                 && exit ${PIPESTATUS[0]}
+            cd ..
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
   _run-uitests:
