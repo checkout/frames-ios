@@ -12,11 +12,11 @@ TODO: Add long description of the pod here.
   s.author = { "Checkout.com Integration" => "integration@checkout.com" }
   s.source       = { :git => "https://github.com/checkout/frames-ios.git", :tag => s.version }
 
-  s.ios.deployment_target = '10.0'
-  s.swift_version = "5.0"
+  s.ios.deployment_target = '11.0'
+  s.swift_version = "5.7"
 
   s.source_files = 'Checkout/Checkout/Source/**/*'
 
-  s.dependency 'CheckoutEventLoggerKit', '1.2.0'
+  s.dependency 'CheckoutEventLoggerKit', '~> 1.2.4'
 
 end

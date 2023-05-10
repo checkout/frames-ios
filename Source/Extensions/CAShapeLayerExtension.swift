@@ -75,7 +75,7 @@ extension CAShapeLayer {
         if edges.contains(.top) {
             path.drawLine(startX: rect.maxX - topRightCornerRadius,
                           startY: rect.minY,
-                          endX: rect.minX + topLeftCornerRadius ,
+                          endX: rect.minX + topLeftCornerRadius,
                           endY: rect.minY)
         }
 

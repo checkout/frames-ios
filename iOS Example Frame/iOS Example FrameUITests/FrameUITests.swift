@@ -8,9 +8,8 @@
 
 import XCTest
 
-// swiftlint:disable:file line_length
-// swiftlint:disable:file function_body_length
-// swiftlint:disable:file multiline_function_chains
+// swiftlint:disable function_body_length
+// swiftlint:disable multiline_function_chains
 
 final class FrameUITests: XCTestCase {
 
