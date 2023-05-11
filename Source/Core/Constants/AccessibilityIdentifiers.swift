@@ -16,7 +16,7 @@ public enum AccessibilityIdentifiers {
         static public let cardSecurityCode = "CardSecurityCodeInput"
     }
 
-    enum BillingForm {
+    public enum BillingForm {
         static public let cardholder = "CardholderInput"
         static public let addressLine1 = "AddressLine1Input"
         static public let addressLine2 = "AddressLine2Input"
