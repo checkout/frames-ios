@@ -28,7 +28,7 @@ class DefaultPaymentViewModel: PaymentViewModel {
         }
     }
 
-    private var cardDetails = CardCreationModel()
+    private var cardDetails: CardCreationModel
 
     init(checkoutAPIService: CheckoutAPIProtocol,
          cardValidator: CardValidator,
@@ -43,6 +43,8 @@ class DefaultPaymentViewModel: PaymentViewModel {
         self.paymentFormStyle = paymentFormStyle
         self.billingFormStyle = billingFormStyle
         self.logger = logger
+        let isCVVOptional = paymentFormStyle?.securityCode == nil
+        self.cardDetails = CardCreationModel(isCVVOptional: isCVVOptional)
 
         if let billingFormData = billingFormData {
             updateBillingData(to: billingFormData)
