@@ -85,4 +85,44 @@ final class CardCreationModelTests: XCTestCase {
         XCTAssertEqual(card?.billingAddress, model.billingAddress)
         XCTAssertEqual(card?.phone, model.phone)
     }
+    
+    func testCVVOptionalTrue() {
+        var model = CardCreationModel(isCVVOptional: true)
+        model.number = "1234"
+        model.expiryDate = ExpiryDate(month: 12, year: 2077)
+        
+        let cardWithoutCVV = model.getCard()
+        XCTAssertNotNil(cardWithoutCVV)
+        XCTAssertNil(cardWithoutCVV?.cvv)
+        
+        model.cvv = "123"
+        let cardWithCVV = model.getCard()
+        XCTAssertNotNil(cardWithoutCVV)
+        XCTAssertEqual(cardWithoutCVV?.cvv, "123")
+        
+        model.cvv = ""
+        let cardWithErasedCVV = model.getCard()
+        XCTAssertNotNil(cardWithoutCVV)
+        XCTAssertNil(cardWithoutCVV?.cvv)
+    }
+    
+    func testCVVOptionalFalse() {
+        var model = CardCreationModel(isCVVOptional: false)
+        model.number = "1234"
+        model.expiryDate = ExpiryDate(month: 12, year: 2077)
+        
+        let cardWithoutCVV = model.getCard()
+        XCTAssertNotNil(cardWithoutCVV)
+        XCTAssertEqual(cardWithoutCVV?.cvv, "")
+        
+        model.cvv = "123"
+        let cardWithCVV = model.getCard()
+        XCTAssertNotNil(cardWithoutCVV)
+        XCTAssertEqual(cardWithoutCVV?.cvv, "123")
+        
+        model.cvv = ""
+        let cardWithErasedCVV = model.getCard()
+        XCTAssertNotNil(cardWithoutCVV)
+        XCTAssertEqual(cardWithoutCVV?.cvv, "")
+    }
 }
