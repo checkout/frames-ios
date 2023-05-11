@@ -52,15 +52,16 @@ import Foundation
     }
 
     var accessibilityIdentifier: String {
+        typealias Identifier = AccessibilityIdentifiers.BillingForm
         switch self {
-        case .fullName: return AccessibilityIdentifiers.BillingForm.cardholder
-        case .addressLine1: return AccessibilityIdentifiers.BillingForm.addressLine1
-        case .addressLine2: return AccessibilityIdentifiers.BillingForm.addressLine2
-        case .city: return AccessibilityIdentifiers.BillingForm.city
-        case .state: return AccessibilityIdentifiers.BillingForm.state
-        case .postcode: return AccessibilityIdentifiers.BillingForm.postcode
+        case .fullName: return Identifier.cardholder
+        case .addressLine1: return Identifier.addressLine1
+        case .addressLine2: return Identifier.addressLine2
+        case .city: return Identifier.city
+        case .state: return Identifier.state
+        case .postcode: return Identifier.postcode
         case .country: return ""
-        case .phoneNumber: return AccessibilityIdentifiers.BillingForm.phoneNumber
+        case .phoneNumber: return Identifier.phoneNumber
         }
     }
 
