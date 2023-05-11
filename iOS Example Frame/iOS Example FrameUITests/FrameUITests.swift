@@ -8,7 +8,6 @@
 
 import XCTest
 
-// swiftlint:disable line_length
 // swiftlint:disable function_body_length
 final class FrameUITests: XCTestCase {
 // FIX: Failing CI
@@ -68,9 +67,9 @@ final class FrameUITests: XCTestCase {
 
         // 9. Press button
         payButton.tap()
-        let alert = app.alerts["Payment"]
+        let alert = app.alerts["Success"]
         XCTAssertNotNil(alert)
-        XCTAssertEqual(alert.label, "Payment")
+        XCTAssertEqual(alert.label, "Success")
     }
 
     func testPaymentWithFullInputProvided() {

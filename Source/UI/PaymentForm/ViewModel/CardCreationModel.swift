@@ -34,16 +34,16 @@ struct CardCreationModel {
                 billingAddress: billingAddress,
                 phone: phone)
   }
-    
+
   private func submissionCVV() -> String? {
     // If CVV is provided, we will submit it
     if !cvv.isEmpty { return cvv }
-      
+
     // If CVV was not provided and the field is optional, return nil
     if isCVVOptional { return nil}
-      
+
     // If CVV was not optional, we return the empty value we
     return cvv
   }
-    
+
 }
