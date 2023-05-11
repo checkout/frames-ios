@@ -97,13 +97,13 @@ final class CardCreationModelTests: XCTestCase {
         
         model.cvv = "123"
         let cardWithCVV = model.getCard()
-        XCTAssertNotNil(cardWithoutCVV)
-        XCTAssertEqual(cardWithoutCVV?.cvv, "123")
+        XCTAssertNotNil(cardWithCVV)
+        XCTAssertEqual(cardWithCVV?.cvv, "123")
         
         model.cvv = ""
         let cardWithErasedCVV = model.getCard()
-        XCTAssertNotNil(cardWithoutCVV)
-        XCTAssertNil(cardWithoutCVV?.cvv)
+        XCTAssertNotNil(cardWithErasedCVV)
+        XCTAssertNil(cardWithErasedCVV?.cvv)
     }
     
     func testCVVOptionalFalse() {
@@ -117,12 +117,12 @@ final class CardCreationModelTests: XCTestCase {
         
         model.cvv = "123"
         let cardWithCVV = model.getCard()
-        XCTAssertNotNil(cardWithoutCVV)
-        XCTAssertEqual(cardWithoutCVV?.cvv, "123")
+        XCTAssertNotNil(cardWithCVV)
+        XCTAssertEqual(cardWithCVV?.cvv, "123")
         
         model.cvv = ""
         let cardWithErasedCVV = model.getCard()
-        XCTAssertNotNil(cardWithoutCVV)
-        XCTAssertEqual(cardWithoutCVV?.cvv, "")
+        XCTAssertNotNil(cardWithErasedCVV)
+        XCTAssertEqual(cardWithErasedCVV?.cvv, "")
     }
 }
