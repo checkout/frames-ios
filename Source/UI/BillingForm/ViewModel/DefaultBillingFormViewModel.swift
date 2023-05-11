@@ -261,7 +261,8 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
         textValueOfCellType[index] = country.name
 
         let phoneIndex = BillingFormCell.phoneNumber(nil).index
-        if let phoneValue = textValueOfCellType[phoneIndex] {
+        if let phoneValue = textValueOfCellType[phoneIndex],
+           !phoneValue.isEmpty {
             let newPhoneNumber = PhoneNumberValidator.shared.formatForDisplay(text: phoneValue)
             phone = Phone(number: newPhoneNumber, country: country)
             textValueOfCellType[phoneIndex] = newPhoneNumber

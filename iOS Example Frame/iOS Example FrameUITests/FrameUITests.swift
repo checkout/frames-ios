@@ -141,7 +141,7 @@ final class FrameUITests: XCTestCase {
         XCTAssertFalse(doneButton.isEnabled)
 
         // 8. Select country
-        let country = "Antarctica"
+        let country = "United Kingdom"
         XCTAssertFalse(app.staticTexts[country].exists)
         countryButton.tap()
         app.tables.staticTexts[country].tap()
@@ -163,7 +163,7 @@ final class FrameUITests: XCTestCase {
         XCTAssertTrue(doneButton.isEnabled)
 
         // 11. Enter phone number
-        let phoneNumber = "01222333123"
+        let phoneNumber = "02073233888"
         app.enterText(phoneNumber, into: phoneTextField)
         app.staticTexts["Phone number"].tap()
         XCTAssertTrue(doneButton.isEnabled)
@@ -178,14 +178,15 @@ final class FrameUITests: XCTestCase {
         XCTAssertTrue(app.label(containingText: postcode).exists)
         XCTAssertTrue(app.label(containingText: city).exists)
         XCTAssertTrue(app.label(containingText: country).exists)
-        XCTAssertTrue(app.label(containingText: phoneNumber).exists)
+        let formattedPhoneNumber = "+44 20 7323 3888"
+        XCTAssertTrue(app.label(containingText: formattedPhoneNumber).exists)
         XCTAssertTrue(payButton.isEnabled)
 
         // 14. Press Pay Button
         payButton.tap()
-        let alert = app.alerts["Payment"]
+        let alert = app.alerts["Success"]
         XCTAssertNotNil(alert)
-        XCTAssertEqual(alert.label, "Payment")
+        XCTAssertEqual(alert.label, "Success")
     }
 
  }
