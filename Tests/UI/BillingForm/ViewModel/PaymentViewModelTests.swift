@@ -652,7 +652,7 @@ final class PaymentViewModelTests: XCTestCase {
         
         model.payButtonIsPressed()
         
-        let expectedPaymentCard = Card(number: cardNumber, expiryDate: expiryDate, name: "", cvv: "", billingAddress: nil, phone: nil)
+        let expectedPaymentCard = Card(number: cardNumber, expiryDate: expiryDate, name: "", cvv: nil, billingAddress: nil, phone: nil)
         XCTAssertTrue(model.isLoading)
         XCTAssertNotNil(fakeService.createTokenCalledWith)
         XCTAssertEqual(fakeService.createTokenCalledWith?.paymentSource, .card(expectedPaymentCard))
