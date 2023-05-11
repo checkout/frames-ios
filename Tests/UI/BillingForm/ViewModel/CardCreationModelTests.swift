@@ -86,7 +86,7 @@ final class CardCreationModelTests: XCTestCase {
         XCTAssertEqual(card?.phone, model.phone)
     }
     
-    func testCVVOptionalTrue() {
+    func testGetCardWithOptionalCVVInput() {
         var model = CardCreationModel(isCVVOptional: true)
         model.number = "1234"
         model.expiryDate = ExpiryDate(month: 12, year: 2077)
@@ -106,7 +106,7 @@ final class CardCreationModelTests: XCTestCase {
         XCTAssertNil(cardWithErasedCVV?.cvv)
     }
     
-    func testCVVOptionalFalse() {
+    func testGetCardWithRequiredCVVInput() {
         var model = CardCreationModel(isCVVOptional: false)
         model.number = "1234"
         model.expiryDate = ExpiryDate(month: 12, year: 2077)
