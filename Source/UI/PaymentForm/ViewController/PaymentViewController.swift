@@ -55,6 +55,7 @@ final class PaymentViewController: UIViewController {
   private lazy var expiryDateView: ExpiryDateView = {
     let view = ExpiryDateView(cardValidator: viewModel.cardValidator)
     view.delegate = self
+    view.accessibilityIdentifier = AccessibilityIdentifiers.PaymentForm.cardExpiry
     return view
   }()
 
@@ -62,6 +63,7 @@ final class PaymentViewController: UIViewController {
     let cardholderViewModel = CardholderViewModel()
     cardholderViewModel.delegate = self
     let view = CardholderView(viewModel: cardholderViewModel)
+    view.accessibilityIdentifier = AccessibilityIdentifiers.PaymentForm.cardholder
     return view
   }()
 
@@ -69,12 +71,14 @@ final class PaymentViewController: UIViewController {
     let cardNumberViewModel = CardNumberViewModel(cardValidator: viewModel.cardValidator, supportedSchemes: viewModel.supportedSchemes)
     cardNumberViewModel.delegate = viewModel as? CardNumberViewModelDelegate
     let cardNumberView = CardNumberView(viewModel: cardNumberViewModel)
+    cardNumberView.accessibilityIdentifier = AccessibilityIdentifiers.PaymentForm.cardNumber
     return cardNumberView
   }()
 
   private lazy var securityCodeView: SecurityCodeView = {
     let viewModel = SecurityCodeViewModel(cardValidator: viewModel.cardValidator)
     let view = SecurityCodeView(viewModel: viewModel)
+    view.accessibilityIdentifier = AccessibilityIdentifiers.PaymentForm.cardSecurityCode
     view.delegate = self
     return view
   }()

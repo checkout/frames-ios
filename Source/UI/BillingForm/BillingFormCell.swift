@@ -51,6 +51,20 @@ import Foundation
         }
     }
 
+    var accessibilityIdentifier: String {
+        typealias Identifier = AccessibilityIdentifiers.BillingForm
+        switch self {
+        case .fullName: return Identifier.cardholder
+        case .addressLine1: return Identifier.addressLine1
+        case .addressLine2: return Identifier.addressLine2
+        case .city: return Identifier.city
+        case .state: return Identifier.state
+        case .postcode: return Identifier.postcode
+        case .country: return ""
+        case .phoneNumber: return Identifier.phoneNumber
+        }
+    }
+
     func getText(from billingFormData: BillingForm?) -> String? {
         switch self {
             case .fullName: return billingFormData?.name
