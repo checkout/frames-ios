@@ -10,6 +10,10 @@ workflows:
     after_run:
     - frames-pr-checks
 
+  uitest-pipeline:
+    after_run:
+      - _frames-set-up
+      - _run-uitests
   # frames pr workflows
   frames-pr-checks:
     after_run:
@@ -208,4 +212,4 @@ app:
 meta:
   bitrise.io:
     stack: osx-xcode-14.3.x-ventura
-    machine_type_id: g2-m1.4core
+    machine_type_id: g2.4core
