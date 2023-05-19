@@ -4,11 +4,11 @@ extension UITextField {
 
     /// Returns a new string in which the characters in a general range have been applied to the current text
     func replacingCharacters(in range: NSRange, with replacementString: String) -> String? {
-        if let text = text,
-           let textRange = Range(range, in: text) {
-            return text.replacingCharacters(in: textRange, with: replacementString)
+        guard let text,
+              let textRange = Range(range, in: text) else {
+            return nil
         }
-        return nil
+        return text.replacingCharacters(in: textRange, with: replacementString)
     }
 
     static func disableHardwareLayout() {
