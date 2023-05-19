@@ -16,6 +16,8 @@ struct ExpiryDateFormatter {
     init(componentSeparator: String = "/",
          cardValidator: CardValidating = CardValidator(environment: .sandbox)) {
         self.separator = componentSeparator
+        // The expected full input will be of format MM{separator}YY
+        // Which leads to our text could being a sum of MM (2 characters), YY (2 characters) and Separator length
         self.dateFormatTextCount = 2 + componentSeparator.count + 2
         self.cardValidator = cardValidator
     }
