@@ -16,7 +16,7 @@ final class UITextFieldExtensionsTests: XCTestCase {
         let textField = UITextField()
         textField.text = startText
         
-        let output = textField.newTextAfter(applyingString: "", at: NSRange(location: 0, length: 0))
+        let output = textField.replacingCharacters(in: NSRange(location: 0, length: 0), with: "")
         XCTAssertEqual(output, startText)
     }
     
@@ -25,7 +25,7 @@ final class UITextFieldExtensionsTests: XCTestCase {
         let textField = UITextField()
         textField.text = startText
         
-        let output = textField.newTextAfter(applyingString: "", at: NSRange(location: startText.count + 2, length: 0))
+        let output = textField.replacingCharacters(in: NSRange(location: startText.count + 2, length: 0), with: "")
         XCTAssertNil(output)
     }
     
@@ -34,7 +34,7 @@ final class UITextFieldExtensionsTests: XCTestCase {
         let textField = UITextField()
         textField.text = startText
         
-        let output = textField.newTextAfter(applyingString: "", at: NSRange(location: 1, length: 3))
+        let output = textField.replacingCharacters(in: NSRange(location: 1, length: 3), with: "")
         XCTAssertEqual(output, "ting")
     }
     
@@ -43,7 +43,7 @@ final class UITextFieldExtensionsTests: XCTestCase {
         let textField = UITextField()
         textField.text = startText
         
-        let output = textField.newTextAfter(applyingString: "1", at: NSRange(location: startText.count, length: 0))
+        let output = textField.replacingCharacters(in: NSRange(location: startText.count, length: 0), with: "1")
         XCTAssertEqual(output, "testing1")
     }
     
@@ -52,7 +52,7 @@ final class UITextFieldExtensionsTests: XCTestCase {
         let textField = UITextField()
         textField.text = startText
         
-        let output = textField.newTextAfter(applyingString: "1", at: NSRange(location: 0, length: 0))
+        let output = textField.replacingCharacters(in: NSRange(location: 0, length: 0), with: "1")
         XCTAssertEqual(output, "1testing")
     }
     
@@ -61,7 +61,7 @@ final class UITextFieldExtensionsTests: XCTestCase {
         let textField = UITextField()
         textField.text = startText
         
-        let output = textField.newTextAfter(applyingString: "1", at: NSRange(location: 4, length: 0))
+        let output = textField.replacingCharacters(in: NSRange(location: 4, length: 0), with: "1")
         XCTAssertEqual(output, "test1ing")
     }
     
@@ -70,7 +70,7 @@ final class UITextFieldExtensionsTests: XCTestCase {
         let textField = UITextField()
         textField.text = startText
         
-        let output = textField.newTextAfter(applyingString: "-try-", at: NSRange(location: 1, length: 3))
+        let output = textField.replacingCharacters(in: NSRange(location: 1, length: 3), with: "-try-")
         XCTAssertEqual(output, "t-try-ing")
     }
     

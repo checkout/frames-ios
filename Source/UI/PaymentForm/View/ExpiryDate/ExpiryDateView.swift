@@ -71,7 +71,7 @@ extension ExpiryDateView: TextFieldViewDelegate {
   }
 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    let outputText = textField.newTextAfter(applyingString: string, at: range) ?? ""
+    let outputText = textField.replacingCharacters(in: range, with: string) ?? ""
 
     defer {
       delegate?.update(result: dateFormatter.createCardExpiry(from: outputText))

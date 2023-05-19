@@ -2,11 +2,11 @@ import UIKit
 
 extension UITextField {
 
-    /// String generated after the range and the modification proposed are applied to current text
-    func newTextAfter(applyingString newString: String, at range: NSRange) -> String? {
+    /// Returns a new string in which the characters in a general range have been applied to the current text
+    func replacingCharacters(in range: NSRange, with replacementString: String) -> String? {
         if let text = text,
            let textRange = Range(range, in: text) {
-            return text.replacingCharacters(in: textRange, with: newString)
+            return text.replacingCharacters(in: textRange, with: replacementString)
         }
         return nil
     }
