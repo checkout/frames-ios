@@ -274,6 +274,7 @@ extension DefaultBillingFormViewModel: BillingFormViewControllerDelegate {
     }
 
     func doneButtonIsPressed(sender: UIViewController) {
+        sender.view.endEditing(true)
         let address = Address(
             addressLine1: textValueOfCellType[BillingFormCell.addressLine1(nil).index],
             addressLine2: textValueOfCellType[BillingFormCell.addressLine2(nil).index],
