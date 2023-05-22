@@ -72,6 +72,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '12.0'
 use_frameworks!
 
+pod 'PhoneNumberKit', :git => 'https://github.com/marmelroy/PhoneNumberKit'
+
 target '<Your Target Name>' do
     pod 'Frames', '~> 4'
 end
