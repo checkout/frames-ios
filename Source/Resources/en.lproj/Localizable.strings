@@ -4,7 +4,7 @@
 "missingBillingFormCity" = "Missing City";
 "missingBillingFormCounty" = "Missing County";
 "missingBillingFormPostcode" = "Missing Postcode";
-"missingBillingFormPhoneNumber" = "Please enter a valid phone number";
+"missingBillingFormPhoneNumber" = "Please enter a valid phone number, with a valid international prefix";
 "missingBillingFormCountry" = "Missing Country";
 "billingFormPhoneNumberHint" = "We will only use this to confirm identity if neccessary";
 "billingAddressTitle" = "Billing address";
