@@ -39,10 +39,8 @@ class BillingFormTextFieldView: UIView {
         LabelView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var textFieldContainerBorder: UIView = {
-        let view = UIView().disabledAutoresizingIntoConstraints()
-        view.backgroundColor = .clear
-        return view
+    private(set) lazy var textFieldContainerBorder: BorderView = {
+        BorderView().disabledAutoresizingIntoConstraints()
     }()
 
     private(set) lazy var textFieldContainer: UIStackView = {
@@ -121,12 +119,10 @@ class BillingFormTextFieldView: UIView {
 
     private func updateTextFieldContainer(style: CellTextFieldStyle) {
         let borderColor = !(style.error?.isHidden ?? true) ?
-        style.textfield.errorBorderColor.cgColor :
-        style.textfield.normalBorderColor.cgColor
-
-        textFieldContainer.layer.borderColor = borderColor
-        textFieldContainer.layer.cornerRadius = style.textfield.cornerRadius
-        textFieldContainer.layer.borderWidth = style.textfield.borderWidth
+        style.textfield.borderStyle.errorColor :
+        style.textfield.borderStyle.normalColor
+        textFieldContainerBorder.update(with: style.textfield.borderStyle)
+        textFieldContainerBorder.updateBorderColor(to: borderColor)
         textFieldContainer.backgroundColor = style.textfield.backgroundColor
     }
 
@@ -218,7 +214,9 @@ extension BillingFormTextFieldView: UITextFieldDelegate {
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldShouldBeginEditing(textField: textField)
-        textFieldContainer.layer.borderColor = style?.textfield.focusBorderColor.cgColor
+        if let color = style?.textfield.borderStyle.focusColor {
+            textFieldContainerBorder.updateBorderColor(to: color)
+        }
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

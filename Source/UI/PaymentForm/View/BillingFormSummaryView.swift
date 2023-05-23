@@ -13,7 +13,9 @@ class BillingFormSummaryView: UIView {
     }()
 
     private(set) lazy var hintLabel: LabelView = {
-        LabelView().disabledAutoresizingIntoConstraints()
+        let view = LabelView().disabledAutoresizingIntoConstraints()
+        view.backgroundColor = .clear
+        return view
     }()
 
     private(set) lazy var summaryLabel: LabelView = {
@@ -24,8 +26,8 @@ class BillingFormSummaryView: UIView {
         UIView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var summaryContainerView: UIView = {
-        UIView().disabledAutoresizingIntoConstraints()
+    private(set) lazy var summaryContainerView: BorderView = {
+        BorderView().disabledAutoresizingIntoConstraints()
     }()
 
     private(set) lazy var imageContainerView: ImageContainerView = {
@@ -49,12 +51,10 @@ class BillingFormSummaryView: UIView {
 
     func update(style: BillingSummaryViewStyle) {
         self.style = style
-        summaryContainerView.clipsToBounds = true
-        summaryContainerView.layer.borderWidth = style.borderWidth
-        summaryContainerView.layer.cornerRadius = style.cornerRadius
-        summaryContainerView.layer.borderColor = style.borderColor.cgColor
-        summaryContainerView.backgroundColor = .clear
 
+        summaryContainerView.update(with: style.borderStyle)
+        summaryContainerView.updateBorderColor(to: style.borderStyle.normalColor)
+        summaryContainerView.backgroundColor = .clear
         summarySeparatorLineView.backgroundColor = style.separatorLineColor
 
         titleLabel.update(with: style.title)

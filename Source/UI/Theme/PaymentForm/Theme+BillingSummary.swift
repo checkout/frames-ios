@@ -12,12 +12,10 @@ public extension Theme {
 
     /// Theme generated Billing Summary Style
     struct ThemeBillingSummary: BillingSummaryViewStyle {
+        public var borderStyle: ElementBorderStyle
         public var summary: ElementStyle?
         public var isMandatory = true
         public var backgroundColor: UIColor = .clear
-        public var borderColor: UIColor
-        public var cornerRadius: CGFloat
-        public var borderWidth: CGFloat
         public var separatorLineColor: UIColor
         public var button: ElementButtonStyle
         public var title: ElementStyle?
@@ -57,10 +55,14 @@ public extension Theme {
         let summary = ThemeSummaryElement(font: inputFont,
                                           textColor: self.secondaryFontColor)
 
-        return ThemeBillingSummary(summary: summary,
-                                   borderColor: self.borderColor,
-                                   cornerRadius: self.borderRadius,
-                                   borderWidth: self.borderWidth,
+        return ThemeBillingSummary(borderStyle: ThemeBorderStyle(cornerRadius: self.textInputBorderRadius,
+                                                                 borderWidth: self.textInputBorderWidth,
+                                                                 normalColor: self.textInputBorderColor,
+                                                                 focusColor: self.focussedTextInputBorderColor,
+                                                                 errorColor: self.errorBorderColor,
+                                                                 edges: .all,
+                                                                 corners: nil),
+                                   summary: summary,
                                    separatorLineColor: self.secondaryFontColor,
                                    button: button,
                                    title: title,
@@ -85,10 +87,14 @@ public extension Theme {
                                           textColor: self.secondaryFontColor)
 
         return ThemeBillingSummary(
+            borderStyle: ThemeBorderStyle(cornerRadius: self.textInputBorderRadius,
+                                          borderWidth: self.textInputBorderWidth,
+                                          normalColor: self.textInputBorderColor,
+                                          focusColor: self.focussedTextInputBorderColor,
+                                          errorColor: self.errorBorderColor,
+                                          edges: .all,
+                                          corners: nil),
             summary: summary,
-            borderColor: self.borderColor,
-            cornerRadius: self.borderRadius,
-            borderWidth: self.borderWidth,
             separatorLineColor: self.secondaryFontColor,
             button: buildBillingButton(text: buttonText),
             title: self.buildTitle(text: titleText),
