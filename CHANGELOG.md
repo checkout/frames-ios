@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 
 #### 4.x Releases
 
+## [4.0.5](https://github.com/checkout/frames-ios/releases/tag/4.0.5)
+
+Released on 2023-05-24
+
+Updates:
+
+- Fixed a minor bug with the pay button not enabling due to inconsistent behaviour with expiry date formatting
+- Improved UI test support, enabling public accessibilityLabels to input fields
+- Updated phone number validation logic, linking the country to the phone number if an international phone code is not provided
+
 ## [4.0.4](https://github.com/checkout/frames-ios/releases/tag/4.0.4)
 
 Released on 2023-01-05

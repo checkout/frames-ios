@@ -297,7 +297,7 @@ var paymentFormStyle = theme.buildPaymentForm(
     securityCode: theme.buildPaymentInput(isTextFieldNumericInput: true,
                                         titleText: "CVV date",
                                         errorText: "Please enter valid security code"),
-    payButton: heme.buildPayButton(text: "Pay now"))
+    payButton: theme.buildPayButton(text: "Pay now"))
 
 // Override a custom property from the resulting payment form style
 paymentFormStyle.payButton.disabledTextColor = UIColor.lightGray
