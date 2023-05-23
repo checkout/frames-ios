@@ -1,9 +1,9 @@
 PODS:
-  - Checkout (4.0.4):
+  - Checkout (4.0.5):
     - CheckoutEventLoggerKit (~> 1.2.4)
   - CheckoutEventLoggerKit (1.2.4)
-  - Frames (4.0.4):
-    - Checkout (= 4.0.4)
+  - Frames (4.0.5):
+    - Checkout (= 4.0.5)
     - CheckoutEventLoggerKit (~> 1.2.4)
     - PhoneNumberKit (~> 3.3.4)
   - PhoneNumberKit (3.3.4):
@@ -29,11 +29,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Checkout: 799071cb6b1edd95ca8a222df5b55625876bc876
+  Checkout: b3c9cc597a9976e4fde544ede1f7ac40a1608d0f
   CheckoutEventLoggerKit: b780dec46295a34942780ea6230d0d5fd08aa05a
-  Frames: 3c4a9761eae491931838402eec6f6fa2224f0712
+  Frames: 496f5cef1588004e381b197c3b8350e532e72211
   PhoneNumberKit: 441e8b26ec88d598e3591de9061eff18f5dd12e8
 
 PODFILE CHECKSUM: 07f3a5ae404c1b006fae27bc610ef74f34a1bfe5
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1
