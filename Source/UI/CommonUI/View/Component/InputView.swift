@@ -40,7 +40,7 @@ class InputView: UIView {
         BorderView().disabledAutoresizingIntoConstraints()
     }()
 
-    private(set) lazy var textFieldContainer: UIStackView = {
+    private lazy var textFieldContainer: UIStackView = {
         let view = UIStackView().disabledAutoresizingIntoConstraints()
         view.axis = .horizontal
         view.isLayoutMarginsRelativeArrangement = true
