@@ -85,6 +85,7 @@ class BillingFormTextFieldView: UIView {
         guard let type = type, let style = style as? CellTextFieldStyle else { return }
         self.type = type
         self.style = style
+        self.accessibilityIdentifier = type.accessibilityIdentifier
         textField.tag = tag
         textField.accessibilityIdentifier = type.accessibilityIdentifier
         backgroundColor = style.backgroundColor
