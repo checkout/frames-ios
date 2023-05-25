@@ -60,6 +60,8 @@ import Foundation
         case .city: return Identifier.city
         case .state: return Identifier.state
         case .postcode: return Identifier.postcode
+        // Country does not require an accessibility identifier as it is detected
+        // differently by UITests, using its label
         case .country: return ""
         case .phoneNumber: return Identifier.phoneNumber
         }

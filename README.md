@@ -72,6 +72,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '12.0'
 use_frameworks!
 
+# PhoneNumberKit has stopped publishing Cocoapods releases to Public Registry
+# This workaround enables application to get the releases straight from source repository 
 pod 'PhoneNumberKit', :git => 'https://github.com/marmelroy/PhoneNumberKit'
 
 target '<Your Target Name>' do
