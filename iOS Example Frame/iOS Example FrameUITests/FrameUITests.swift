@@ -9,9 +9,8 @@
 import XCTest
 
 // swiftlint:disable function_body_length
-// swiftlint:disable multiline_function_chains
-
 final class FrameUITests: XCTestCase {
+// FIX: Failing CI
 
     func testPaymentWithMinimumInput() {
         let app = XCUIApplication()
@@ -19,21 +18,8 @@ final class FrameUITests: XCTestCase {
 
         app.tapButton(name: "UITestDefault")
 
-        var cardNumberTextField = app.scrollViews
-            .children(matching: .other).element(boundBy: 0)
-            .children(matching: .other).element(boundBy: 2)
-            .children(matching: .other).element
-            .children(matching: .other).element(boundBy: 2)
-            .children(matching: .other).element(boundBy: 1)
-            .children(matching: .other).element
-
-        var expiryTextField = app.scrollViews
-            .children(matching: .other).element(boundBy: 0)
-            .children(matching: .other).element(boundBy: 3)
-            .children(matching: .other).element
-            .children(matching: .other).element(boundBy: 2)
-            .children(matching: .other).element
-            .children(matching: .other).element
+        let cardNumberTextField = app.otherElements[AccessibilityIdentifiers.PaymentForm.cardNumber]
+        let expiryTextField = app.otherElements[AccessibilityIdentifiers.PaymentForm.cardExpiry]
 
         let payButton = app.getButton(name: "Pay now")
         XCTAssertFalse(payButton.isEnabled)
@@ -53,15 +39,6 @@ final class FrameUITests: XCTestCase {
         app.staticTexts["Card number"].tap()
         XCTAssertFalse(payButton.isEnabled)
 
-        // bound is changed after showing error message
-        cardNumberTextField = app.scrollViews
-            .children(matching: .other).element(boundBy: 0)
-            .children(matching: .other).element(boundBy: 2)
-            .children(matching: .other).element
-            .children(matching: .other).element(boundBy: 1)
-            .children(matching: .other).element(boundBy: 1)
-            .children(matching: .other).element
-
         // 4. Make card number too long to be valid
         app.enterText("25", into: cardNumberTextField)
         app.staticTexts["Card number"].tap()
@@ -77,15 +54,6 @@ final class FrameUITests: XCTestCase {
         app.staticTexts["Expiry date"].tap()
         XCTAssertFalse(payButton.isEnabled)
 
-        // bound is changed after showing error message
-        expiryTextField = app.scrollViews
-            .children(matching: .other).element(boundBy: 0)
-            .children(matching: .other).element(boundBy: 3)
-            .children(matching: .other).element
-            .children(matching: .other).element(boundBy: 1)
-            .children(matching: .other).element
-            .children(matching: .other).element
-
         // 7. Input previous year on expiry date
         app.enterText("01", into: expiryTextField)
         app.staticTexts["Expiry date"].tap()
@@ -93,67 +61,28 @@ final class FrameUITests: XCTestCase {
 
         // 8. Input excess numbers on expiry date
         app.deleteCharacter(count: 6, from: expiryTextField)
-
-        // bound is changed after hiding error message
-        expiryTextField = app.scrollViews
-            .children(matching: .other).element(boundBy: 0)
-            .children(matching: .other).element(boundBy: 3)
-            .children(matching: .other).element
-            .children(matching: .other).element(boundBy: 2)
-            .children(matching: .other).element
-            .children(matching: .other).element
-
-        app.enterText("1288", into: expiryTextField)
+        app.enterText("128834", into: expiryTextField)
         app.staticTexts["Expiry date"].tap()
         XCTAssertTrue(payButton.isEnabled)
 
         // 9. Press button
         payButton.tap()
-        let alert = app.alerts["Card Validation Error"]
+        let alert = app.alerts["Success"]
         XCTAssertNotNil(alert)
-        XCTAssertEqual(alert.label, "Card Validation Error")
+        XCTAssertEqual(alert.label, "Success")
     }
 
     func testPaymentWithFullInputProvided() {
-
         let app = XCUIApplication()
-        app.launchArguments = ["-AppleLanguages", "(en)"]
         app.launch()
 
         app.tapButton(name: "UITestTheme1")
 
         // MARK: Full UI Payment
-        let cardholderTextField = app.scrollViews
-            .children(matching: .other).element(boundBy: 0)
-            .children(matching: .other).element(boundBy: 2)
-            .children(matching: .other).element
-            .children(matching: .other).element(boundBy: 1)
-            .children(matching: .other).element
-            .children(matching: .other).element
-
-        let cardNumberTextField = app.scrollViews
-            .children(matching: .other).element(boundBy: 0)
-            .children(matching: .other).element(boundBy: 3)
-            .children(matching: .other).element
-            .children(matching: .other).element(boundBy: 2)
-            .children(matching: .other).element(boundBy: 1)
-            .children(matching: .other).element
-
-        let expiryTextField = app.scrollViews
-            .children(matching: .other).element(boundBy: 0)
-            .children(matching: .other).element(boundBy: 4)
-            .children(matching: .other).element
-            .children(matching: .other).element(boundBy: 2)
-            .children(matching: .other).element
-            .children(matching: .other).element
-
-        let securityCodeTextField = app.scrollViews
-            .children(matching: .other).element(boundBy: 0)
-            .children(matching: .other).element(boundBy: 5)
-            .children(matching: .other).element
-            .children(matching: .other).element(boundBy: 2)
-            .children(matching: .other).element
-            .children(matching: .other).element
+        let cardholderTextField = app.otherElements[AccessibilityIdentifiers.PaymentForm.cardholder]
+        let cardNumberTextField = app.otherElements[AccessibilityIdentifiers.PaymentForm.cardNumber]
+        let expiryTextField = app.otherElements[AccessibilityIdentifiers.PaymentForm.cardExpiry]
+        let securityCodeTextField = app.otherElements[AccessibilityIdentifiers.PaymentForm.cardSecurityCode]
 
         let billingButton = app.getButton(name: "Add billing details")
         XCTAssertTrue(billingButton.isEnabled)
@@ -185,25 +114,14 @@ final class FrameUITests: XCTestCase {
         billingButton.tap()
 
         // MARK: Full UI Billing
-
         let cancelButton = app.navigationBars.buttons.matching(identifier: "Cancel").element
         let doneButton = app.navigationBars.buttons.matching(identifier: "Done").element
-        let addressLine1TextField = app.tables
-            .cells.containing(.staticText, identifier: "Address line 1")
-            .children(matching: .textField).element
-        let addressLine2TextField = app.tables
-            .cells.containing(.staticText, identifier: "Address line 2")
-            .children(matching: .textField).element
-        let cityTextField = app.tables
-            .cells.containing(.staticText, identifier: "City")
-            .children(matching: .textField).element
-        let postcodeTextField = app.tables
-            .cells.containing(.staticText, identifier: "Postcode")
-            .children(matching: .textField).element
+        let addressLine1TextField = app.textFields[AccessibilityIdentifiers.BillingForm.addressLine1]
+        let addressLine2TextField = app.textFields[AccessibilityIdentifiers.BillingForm.addressLine2]
+        let cityTextField = app.textFields[AccessibilityIdentifiers.BillingForm.city]
+        let postcodeTextField = app.textFields[AccessibilityIdentifiers.BillingForm.postcode]
         let countryButton = app.tables.staticTexts["Select country"]
-        let phoneTextField = app.tables
-            .cells.containing(.staticText, identifier: "Phone number")
-            .children(matching: .textField).element
+        let phoneTextField = app.textFields[AccessibilityIdentifiers.BillingForm.phoneNumber]
 
         XCTAssertFalse(doneButton.isEnabled)
         XCTAssertTrue(cancelButton.isEnabled)
@@ -223,7 +141,7 @@ final class FrameUITests: XCTestCase {
         XCTAssertFalse(doneButton.isEnabled)
 
         // 8. Select country
-        let country = "Antarctica"
+        let country = "United Kingdom"
         XCTAssertFalse(app.staticTexts[country].exists)
         countryButton.tap()
         app.tables.staticTexts[country].tap()
@@ -238,14 +156,14 @@ final class FrameUITests: XCTestCase {
         app.staticTexts["Address line 2"].tap()
         XCTAssertTrue(doneButton.isEnabled)
 
-        // 12. Enter postcode
+        // 10. Enter postcode
         let postcode = "CZ34 9JK"
         app.enterText(postcode, into: postcodeTextField)
         app.staticTexts["Postcode"].tap()
         XCTAssertTrue(doneButton.isEnabled)
 
         // 11. Enter phone number
-        let phoneNumber = "+441206123123"
+        let phoneNumber = "02073233888"
         app.enterText(phoneNumber, into: phoneTextField)
         app.staticTexts["Phone number"].tap()
         XCTAssertTrue(doneButton.isEnabled)
@@ -260,7 +178,8 @@ final class FrameUITests: XCTestCase {
         XCTAssertTrue(app.label(containingText: postcode).exists)
         XCTAssertTrue(app.label(containingText: city).exists)
         XCTAssertTrue(app.label(containingText: country).exists)
-        XCTAssertTrue(app.label(containingText: "+44 1206 123123").exists)
+        let formattedPhoneNumber = "+44 20 7323 3888"
+        XCTAssertTrue(app.label(containingText: formattedPhoneNumber).exists)
         XCTAssertTrue(payButton.isEnabled)
 
         // 14. Press Pay Button

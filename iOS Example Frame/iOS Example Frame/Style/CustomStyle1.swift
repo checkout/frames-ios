@@ -401,8 +401,8 @@ private enum StyleOrganiser {
 
     struct BillingCountryButton: ElementButtonStyle {
         var borderStyle: Frames.ElementBorderStyle = BorderStyle(normalColor: .clear,
-                                                                  focusColor: .clear,
-                                                                  errorColor: .clear)
+                                                                 focusColor: .clear,
+                                                                 errorColor: .clear)
         var textAlignment: NSTextAlignment = .natural
         var isEnabled = true
         var disabledTextColor: UIColor = Constants.secondaryFontColor

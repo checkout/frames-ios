@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B5CB6AF2A03E5E100ED468B /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5CB6AE2A03E5DF00ED468B /* AccessibilityIdentifiers.swift */; };
 		0BB538AD28B637980060A8DE /* Factory+UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB538AC28B637980060A8DE /* Factory+UITest.swift */; };
 		0BC60B5C28AFA4A600F30992 /* ThemeDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B5B28AFA4A600F30992 /* ThemeDemo.swift */; };
 		0BD2ECBF28B65DA10041A942 /* FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2ECBE28B65DA10041A942 /* FrameUITests.swift */; };
@@ -72,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B5CB6AE2A03E5DF00ED468B /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessibilityIdentifiers.swift; path = ../Source/Core/Constants/AccessibilityIdentifiers.swift; sourceTree = SOURCE_ROOT; };
 		0BB538AC28B637980060A8DE /* Factory+UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Factory+UITest.swift"; sourceTree = "<group>"; };
 		0BC60B5B28AFA4A600F30992 /* ThemeDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeDemo.swift; sourceTree = "<group>"; };
 		0BCCBCEC28DC98F600041870 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 			children = (
 				0BD2ECBE28B65DA10041A942 /* FrameUITests.swift */,
 				0BD2ECC028B65EC20041A942 /* XCUIApplication+Extension.swift */,
+				0B5CB6AE2A03E5DF00ED468B /* AccessibilityIdentifiers.swift */,
 				CB9412DA2825714C00C889E8 /* Info.plist */,
 			);
 			name = "iOS Example FrameUITests";
@@ -513,6 +516,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B5CB6AF2A03E5E100ED468B /* AccessibilityIdentifiers.swift in Sources */,
 				0BD2ECBF28B65DA10041A942 /* FrameUITests.swift in Sources */,
 				0BD2ECC128B65EC20041A942 /* XCUIApplication+Extension.swift in Sources */,
 			);

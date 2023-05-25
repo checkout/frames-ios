@@ -72,6 +72,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '12.0'
 use_frameworks!
 
+# PhoneNumberKit has stopped publishing Cocoapods releases to Public Registry
+# This workaround enables application to get the releases straight from source repository 
+pod 'PhoneNumberKit', :git => 'https://github.com/marmelroy/PhoneNumberKit'
+
 target '<Your Target Name>' do
     pod 'Frames', '~> 4'
 end
@@ -295,7 +299,7 @@ var paymentFormStyle = theme.buildPaymentForm(
     securityCode: theme.buildPaymentInput(isTextFieldNumericInput: true,
                                         titleText: "CVV date",
                                         errorText: "Please enter valid security code"),
-    payButton: heme.buildPayButton(text: "Pay now"))
+    payButton: theme.buildPayButton(text: "Pay now"))
 
 // Override a custom property from the resulting payment form style
 paymentFormStyle.payButton.disabledTextColor = UIColor.lightGray

@@ -21,7 +21,7 @@ import Foundation
                 .postcode,
                 .country:
             return GenericInputValidator()
-        case .phoneNumber: return PhoneNumberValidator()
+        case .phoneNumber: return PhoneNumberValidator.shared
         }
     }
 
@@ -48,6 +48,22 @@ import Foundation
         case .postcode: return 5
         case .country: return 6
         case .phoneNumber: return 7
+        }
+    }
+
+    var accessibilityIdentifier: String {
+        typealias Identifier = AccessibilityIdentifiers.BillingForm
+        switch self {
+        case .fullName: return Identifier.cardholder
+        case .addressLine1: return Identifier.addressLine1
+        case .addressLine2: return Identifier.addressLine2
+        case .city: return Identifier.city
+        case .state: return Identifier.state
+        case .postcode: return Identifier.postcode
+        // Country does not require an accessibility identifier as it is detected
+        // differently by UITests, using its label
+        case .country: return ""
+        case .phoneNumber: return Identifier.phoneNumber
         }
     }
 

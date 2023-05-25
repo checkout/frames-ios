@@ -18,12 +18,12 @@ let package = Package(
         .package(
             name: "PhoneNumberKit",
             url: "https://github.com/marmelroy/PhoneNumberKit.git",
-            from: "3.3.3"
+            from: "3.5.9"
         ),
         .package(
             name: "CheckoutEventLoggerKit",
             url: "https://github.com/checkout/checkout-event-logger-ios-framework.git",
-            from: "1.2.0"
+            from: "1.2.4"
         )
     ],
     targets: [
