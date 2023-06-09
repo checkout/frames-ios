@@ -79,6 +79,10 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
 
 /// The create token method tokenises the user’s card details.
   public func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) {
+      guard !publicKey.isEmpty else {
+          completion(.failure(.missingAPIKey))
+          return
+      }
     let tokenRequestResult = tokenRequestFactory.create(paymentSource: paymentSource)
 
     switch tokenRequestResult {

@@ -12,6 +12,7 @@ extension TokenisationError {
     case couldNotBuildURLForRequest
     case applePayTokenInvalid
     case userCancelled
+    case missingAPIKey
     case cardValidationError(ValidationError.Card)
     case networkError(NetworkError)
     case serverError(ServerError)
@@ -24,6 +25,8 @@ extension TokenisationError {
         return 1100
       case .userCancelled:
         return 0
+      case .missingAPIKey:
+          return 4000
       case .cardValidationError(let cardValidationError):
         return cardValidationError.code
       case .networkError(let networkError):

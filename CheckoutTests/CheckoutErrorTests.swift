@@ -56,6 +56,8 @@ final class CheckoutErrorTests: XCTestCase {
 
     XCTAssertEqual(TokenisationError.TokenRequest.serverError(serverError).code, 3000)
     XCTAssertEqual(TokenisationError.TokenRequest.couldNotBuildURLForRequest.code, 3001)
+      
+    XCTAssertEqual(TokenisationError.TokenRequest.missingAPIKey.code, 4000)
 
     XCTAssertEqual(
       TokenisationError.TokenRequest.cardValidationError(.phone(randomPhoneError)).code,
