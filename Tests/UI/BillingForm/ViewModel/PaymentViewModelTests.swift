@@ -13,7 +13,7 @@ final class PaymentViewModelTests: XCTestCase {
                                               address: Address(addressLine1: "home", addressLine2: "sleeping", city: "rough night", state: "tired", zip: "Zzzz", country: nil),
                                               phone: Phone(number: "notAvailable", country: nil))
         let testSupportedSchemes: [Card.Scheme] = [.discover, .mada]
-        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "casgrs", environment: Environment.sandbox)
 
         let viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
                                                 cardValidator: testCardValidator,
@@ -73,7 +73,7 @@ final class PaymentViewModelTests: XCTestCase {
     
     func testOnBillingScreenShownSendsEventToLogger() {
         let testLogger = StubFramesEventLogger()
-        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "cvvb", environment: Environment.sandbox)
         let viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
                                                 cardValidator: CardValidator(environment: .sandbox),
                                                 logger: testLogger,
@@ -93,7 +93,7 @@ final class PaymentViewModelTests: XCTestCase {
     }
 
     func testUpdateExpiryDateView() {
-        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "cvvb", environment: Environment.sandbox)
         viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
                                             cardValidator: CardValidator(environment: .sandbox),
                                             logger: StubFramesEventLogger(),
@@ -113,7 +113,7 @@ final class PaymentViewModelTests: XCTestCase {
     }
     
     func testUpdateCardholderView() {
-        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "cvvb", environment: Environment.sandbox)
         viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
                                             cardValidator: CardValidator(environment: .sandbox),
                                             logger: StubFramesEventLogger(),
@@ -135,7 +135,7 @@ final class PaymentViewModelTests: XCTestCase {
     }
 
     func testUpdateAddBillingSummaryView() {
-        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "cvvb", environment: Environment.sandbox)
         viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
                                             cardValidator: CardValidator(environment: .sandbox),
                                             logger: StubFramesEventLogger(),
@@ -167,7 +167,7 @@ final class PaymentViewModelTests: XCTestCase {
         let billingFormData = BillingForm(name: userName,
                                           address: address,
                                           phone: phone)
-        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "cvvb", environment: Environment.sandbox)
         viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService, cardValidator: CardValidator(environment: .sandbox),
                                             logger: StubFramesEventLogger(),
                                             billingFormData: billingFormData,
@@ -191,7 +191,7 @@ final class PaymentViewModelTests: XCTestCase {
         let billingFormData = BillingForm(name: userName,
                                           address: nil,
                                           phone: phone)
-        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "cvvb", environment: Environment.sandbox)
         viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
                                             cardValidator: CardValidator(environment: .sandbox),
                                             logger: StubFramesEventLogger(),
@@ -222,7 +222,7 @@ final class PaymentViewModelTests: XCTestCase {
         let billingFormData = BillingForm(name: userName,
                                           address: address,
                                           phone: phone)
-        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "", environment: Environment.sandbox)
+        let checkoutAPIService = Frames.CheckoutAPIService(publicKey: "cvvb", environment: Environment.sandbox)
         viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService, cardValidator: CardValidator(environment: .sandbox),
                                             logger: StubFramesEventLogger(),
                                             billingFormData: billingFormData,
