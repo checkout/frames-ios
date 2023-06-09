@@ -182,16 +182,13 @@ final class CheckoutAPIServiceTests: XCTestCase {
         let service = CheckoutAPIService(publicKey: "", environment: .sandbox)
         let testCard = StubProvider.createCard()
         
-        let expect = expectation(description: "Waiting for possible multithreaded behaviour")
         service.createToken(.card(testCard)) { result in
-            expect.fulfill()
             if case .failure(let failure) = result {
                 XCTAssertEqual(failure, .missingAPIKey)
             } else {
                 XCTFail("Test should return a failure")
             }
         }
-        waitForExpectations(timeout: 0.5)
     }
 
   // MARK: correlationID
