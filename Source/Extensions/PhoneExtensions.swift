@@ -24,7 +24,7 @@ extension Phone {
         if number?.starts(with: "+") == true {
             return PhoneNumberValidator.shared.formatForDisplay(text: number ?? "")
         } else {
-            return PhoneNumberValidator.shared.formatForDisplay(text: "\(country?.dialingCode ?? "")\(number ?? "")")
+            return PhoneNumberValidator.shared.formatForDisplay(text: "+\(country?.dialingCode ?? "")\(number ?? "")")
         }
     }
 
