@@ -16,12 +16,9 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            name: "PhoneNumberKit",
             url: "https://github.com/marmelroy/PhoneNumberKit.git",
-            from: "3.5.9"
-        ),
+            exact: "3.5.9"),
         .package(
-            name: "CheckoutEventLoggerKit",
             url: "https://github.com/checkout/checkout-event-logger-ios-framework.git",
             from: "1.2.4"
         )
