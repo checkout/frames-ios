@@ -177,6 +177,19 @@ final class CheckoutAPIServiceTests: XCTestCase {
 
     XCTAssertEqual(result, .failure(.networkError(.connectionFailed)))
   }
+    
+    func testCreateTokenWithoutAPIKey() {
+        let service = CheckoutAPIService(publicKey: "", environment: .sandbox)
+        let testCard = StubProvider.createCard()
+        
+        service.createToken(.card(testCard)) { result in
+            if case .failure(let failure) = result {
+                XCTAssertEqual(failure, .missingAPIKey)
+            } else {
+                XCTFail("Test should return a failure")
+            }
+        }
+    }
 
   // MARK: correlationID
 
