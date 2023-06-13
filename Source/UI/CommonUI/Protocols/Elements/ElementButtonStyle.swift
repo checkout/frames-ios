@@ -17,6 +17,16 @@ public protocol ElementButtonStyle: ElementStyle {
 
     @available(*, deprecated, message: "Property will be removed soon. Use borderStyle.borderWidth instead")
     var borderWidth: CGFloat { get }
+    
+    @available(*, deprecated, message: "Property will be removed soon. Use borderStyle.normalColor instead")
+    var normalBorderColor: UIColor { get }
+    
+    @available(*, deprecated, message: "Property will be removed soon. Use borderStyle.focusColor instead")
+    var focusBorderColor: UIColor { get }
+    
+    @available(*, deprecated, message: "Property will be removed soon. Use borderStyle.errorColor instead")
+    var errorBorderColor: UIColor { get }
+
 }
 
 public extension ElementButtonStyle {
@@ -28,14 +38,25 @@ public extension ElementButtonStyle {
     var borderWidth: CGFloat {
         Constants.Style.BorderStyle.borderWidth
     }
+    
+    var normalBorderColor: UIColor {
+        FramesUIStyle.Color.borderPrimary
+    }
+    
+    var focusBorderColor: UIColor {
+        FramesUIStyle.Color.borderActive
+    }
+    
+    var errorBorderColor: UIColor {
+        FramesUIStyle.Color.borderError
+    }
 
     var borderStyle: ElementBorderStyle {
-        // Deprecated warning required to encourage migrating away from using these properties
         DefaultBorderStyle(cornerRadius: cornerRadius,
                            borderWidth: borderWidth,
-                           normalColor: FramesUIStyle.Color.borderPrimary,
-                           focusColor: FramesUIStyle.Color.borderActive,
-                           errorColor: FramesUIStyle.Color.borderError,
+                           normalColor: normalBorderColor,
+                           focusColor: focusBorderColor,
+                           errorColor: errorBorderColor,
                            edges: .all,
                            corners: .allCorners)
     }
