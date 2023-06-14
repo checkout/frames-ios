@@ -5,13 +5,13 @@ public protocol BillingSummaryViewStyle: CellButtonStyle {
     var borderStyle: ElementBorderStyle { get }
     var separatorLineColor: UIColor { get set }
 
-    @available(*, deprecated, message: "Property will be removed soon. Use borderStyle.cornerRadius instead")
+    @available(*, deprecated, renamed: "borderStyle.cornerRadius")
     var cornerRadius: CGFloat { get }
 
-    @available(*, deprecated, message: "Property will be removed soon. Use borderStyle.borderWidth instead")
+    @available(*, deprecated, renamed: "borderStyle.borderWidth")
     var borderWidth: CGFloat { get }
-    
-    @available(*, deprecated, message: "Property will be removed soon. Use borderStyle.normalColor instead")
+
+    @available(*, deprecated, renamed: "borderStyle.normalColor")
     var borderColor: UIColor { get }
 }
 
@@ -24,7 +24,7 @@ public extension BillingSummaryViewStyle {
     var borderWidth: CGFloat {
         Constants.Style.BorderStyle.borderWidth
     }
-    
+
     var borderColor: UIColor {
         FramesUIStyle.Color.borderPrimary
     }
