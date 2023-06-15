@@ -56,6 +56,14 @@ public struct Theme {
     public var textInputBorderRadius: CGFloat = 0
     /// Border width around text input fields
     public var textInputBorderWidth: CGFloat = 0
+    /// Border radius around data input sections when showing an error
+    public var errorBorderRadius: CGFloat = 4
+    /// Border width around data input sections when showing an error
+    public var errorBorderWidth: CGFloat = 1
+    /// Border radius around text input fields when showing an error
+    public var errorTextInputBorderRadius: CGFloat = 0
+    /// Border width around text input fields when showing an error
+    public var errorTextInputBorderWidth: CGFloat = 0
 
     public init(primaryFontColor: UIColor,
                 secondaryFontColor: UIColor,

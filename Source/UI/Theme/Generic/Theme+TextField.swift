@@ -12,6 +12,7 @@ public extension Theme {
 
     /// Theme generated TextField style
     struct ThemeTextField: ElementTextFieldStyle {
+        public var borderStyle: ElementBorderStyle
         public var text: String
         public var isSupportingNumericKeyboard = true
         public var textAlignment: NSTextAlignment = .natural
@@ -22,38 +23,92 @@ public extension Theme {
         public var font: UIFont
         public var backgroundColor: UIColor
         public var textColor: UIColor
-        public var borderStyle: ElementBorderStyle
-    }
 
-    struct ThemeBorderStyle: ElementBorderStyle {
-        public var cornerRadius: CGFloat
-        public var borderWidth: CGFloat
-        public var normalColor: UIColor
-        public var focusColor: UIColor
-        public var errorColor: UIColor
-        public var edges: UIRectEdge?
-        public var corners: UIRectCorner?
+        @available(*, deprecated, renamed: "borderStyle.cornerRadius")
+        public var cornerRadius: CGFloat {
+            get { borderStyle.cornerRadius }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: newValue,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.borderWidth")
+        public var borderWidth: CGFloat {
+            get { borderStyle.borderWidth }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: newValue,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.normalColor")
+        public var normalBorderColor: UIColor {
+            get { borderStyle.normalColor }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: newValue,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.focusColor")
+        public var focusBorderColor: UIColor {
+            get { borderStyle.focusColor }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: newValue,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.errorColor")
+        public var errorBorderColor: UIColor {
+            get { borderStyle.errorColor }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: newValue)
+            }
+        }
     }
 
     /// Create a TextField Style from text
     func buildTextField(text: String,
                         placeholderText: String,
                         isNumericInput: Bool) -> ThemeTextField {
-        ThemeTextField(text: text,
-                       isSupportingNumericKeyboard: isNumericInput,
-                       placeholder: placeholderText,
-                       tintColor: self.primaryFontColor,
-                       font: inputFont,
-                       backgroundColor: self.textInputBackgroundColor,
-                       textColor: self.primaryFontColor,
-                       borderStyle: ThemeBorderStyle(cornerRadius: self.textInputBorderRadius,
-                                                     borderWidth: self.textInputBorderWidth,
-                                                     normalColor: self.textInputBorderColor,
-                                                     focusColor: self.focussedTextInputBorderColor,
-                                                     errorColor: self.errorBorderColor,
-                                                     edges: .all,
-                                                     corners: nil)
-        )
+        ThemeTextField(
+            borderStyle: ThemeBorderStyle(cornerRadius: self.textInputBorderRadius,
+                                          borderWidth: self.textInputBorderWidth,
+                                          normalColor: self.textInputBorderColor,
+                                          focusColor: self.focussedTextInputBorderColor,
+                                          errorColor: self.errorBorderColor,
+                                          edges: .all,
+                                          corners: nil),
+            text: text,
+            isSupportingNumericKeyboard: isNumericInput,
+            placeholder: placeholderText,
+            tintColor: self.primaryFontColor,
+            font: inputFont,
+            backgroundColor: self.textInputBackgroundColor,
+            textColor: self.primaryFontColor)
     }
 
 }

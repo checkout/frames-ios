@@ -39,6 +39,71 @@ public extension Theme {
         public var font: UIFont
         public var backgroundColor: UIColor = .clear
         public var textColor: UIColor
+
+        @available(*, deprecated, renamed: "borderStyle.cornerRadius")
+        public var cornerRadius: CGFloat {
+            get { borderStyle.cornerRadius }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: newValue,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.borderWidth")
+        public var borderWidth: CGFloat {
+            get { borderStyle.borderWidth }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: newValue,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.normalColor")
+        public var normalBorderColor: UIColor {
+            get { borderStyle.normalColor }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: newValue,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.focusColor")
+        public var focusBorderColor: UIColor {
+            get { borderStyle.focusColor }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: newValue,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.errorColor")
+        public var errorBorderColor: UIColor {
+            get { borderStyle.errorColor }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: newValue)
+            }
+        }
     }
 
     /// Create an Add Billing Section Button from Styles from core information
@@ -83,19 +148,20 @@ public extension Theme {
 
     /// Create an Add Billing Button from using theme and text
     func buildBillingButton(text: String) -> ThemeBillingButton {
-        ThemeBillingButton(borderStyle: ThemeBorderStyle(cornerRadius: self.textInputBorderRadius,
-                                                         borderWidth: self.textInputBorderWidth,
-                                                         normalColor: self.textInputBorderColor,
-                                                         focusColor: self.focussedTextInputBorderColor,
-                                                         errorColor: self.errorBorderColor,
-                                                         edges: .all,
-                                                         corners: nil),
-                           disabledTextColor: self.secondaryFontColor,
-                           disabledTintColor: self.secondaryFontColor,
-                           activeTintColor: self.primaryFontColor,
-                           text: text,
-                           font: buttonFont,
-                           textColor: self.buttonFontColor)
+        ThemeBillingButton(
+            borderStyle: ThemeBorderStyle(cornerRadius: self.textInputBorderRadius,
+                                          borderWidth: self.textInputBorderWidth,
+                                          normalColor: self.textInputBorderColor,
+                                          focusColor: self.focussedTextInputBorderColor,
+                                          errorColor: self.errorBorderColor,
+                                          edges: .all,
+                                          corners: nil),
+            disabledTextColor: self.secondaryFontColor,
+            disabledTintColor: self.secondaryFontColor,
+            activeTintColor: self.primaryFontColor,
+            text: text,
+            font: buttonFont,
+            textColor: self.buttonFontColor)
     }
 
 }
