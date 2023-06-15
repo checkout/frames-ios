@@ -105,7 +105,9 @@ extension ThemeDemo {
         var payButton = theme.buildPayButton(text: "Pay now")
         payButton.textAlignment = .center
 
-        let billingSummary = theme.buildBillingSummary(buttonText: "Change billing details", titleText: "Billing details")
+        var billingSummary = theme.buildBillingSummary(buttonText: "Change billing details", titleText: "Billing details")
+        billingSummary.borderColor = .white
+        billingSummary.borderWidth = 1
 
         let paymentFormStyle = theme.buildPaymentForm(
             headerView: theme.buildPaymentHeader(title: "Payment details",
