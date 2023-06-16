@@ -6,9 +6,18 @@ final class BorderView: UIView {
 
     /// shaper layer that draw edges and corners
     private var borderLayer = CAShapeLayer()
+    private var backgroundLayer = CAShapeLayer()
+
+    override var backgroundColor: UIColor? {
+        get { UIColor(cgColor: backgroundLayer.backgroundColor ?? UIColor.clear.cgColor) }
+        set {
+            backgroundLayer.fillColor = newValue?.cgColor
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        layer.addSublayer(backgroundLayer)
         layer.addSublayer(borderLayer)
         backgroundColor = .clear
     }
@@ -16,8 +25,10 @@ final class BorderView: UIView {
     // Keep border layer size in sync with owning view
     override func layoutSubviews() {
         super.layoutSubviews()
+        backgroundLayer.frame = bounds
         borderLayer.frame = bounds
         guard let style = style else { return }
+        backgroundLayer.createBackground(with: style)
         borderLayer.createCustomBorder(with: style)
     }
 
