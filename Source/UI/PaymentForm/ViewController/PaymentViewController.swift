@@ -337,7 +337,6 @@ extension PaymentViewController {
     ]
     if let cardholderStyle = viewModel.paymentFormStyle?.cardholderInput {
       paymentViews.append(cardholderView)
-      cardholderView.update(style: cardholderStyle)
     }
     paymentViews.append(contentsOf: [cardNumberView, expiryDateView])
 
