@@ -22,45 +22,6 @@ public extension Theme {
         public var mandatory: ElementStyle?
         public var hint: ElementStyle?
         public var error: ElementErrorViewStyle?
-
-        @available(*, deprecated, renamed: "borderStyle.cornerRadius")
-        public var cornerRadius: CGFloat {
-            get { borderStyle.cornerRadius }
-            set {
-                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
-                borderStyle = ThemeBorderStyle(cornerRadius: newValue,
-                                               borderWidth: themeBorderStyle.borderWidth,
-                                               normalColor: themeBorderStyle.normalColor,
-                                               focusColor: themeBorderStyle.focusColor,
-                                               errorColor: themeBorderStyle.errorColor)
-            }
-        }
-
-        @available(*, deprecated, renamed: "borderStyle.borderWidth")
-        public var borderWidth: CGFloat {
-            get { borderStyle.borderWidth }
-            set {
-                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
-                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
-                                               borderWidth: newValue,
-                                               normalColor: themeBorderStyle.normalColor,
-                                               focusColor: themeBorderStyle.focusColor,
-                                               errorColor: themeBorderStyle.errorColor)
-            }
-        }
-
-        @available(*, deprecated, renamed: "borderStyle.normalColor")
-        public var borderColor: UIColor {
-            get { borderStyle.normalColor }
-            set {
-                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
-                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
-                                               borderWidth: themeBorderStyle.borderWidth,
-                                               normalColor: newValue,
-                                               focusColor: themeBorderStyle.focusColor,
-                                               errorColor: themeBorderStyle.errorColor)
-            }
-        }
     }
 
     /// Theme generated Summary Content Style
