@@ -101,7 +101,7 @@ public extension Theme {
                                           focusColor: self.focussedTextInputBorderColor,
                                           errorColor: self.errorBorderColor,
                                           edges: .all,
-                                          corners: nil),
+                                          corners: .allCorners),
             text: text,
             isSupportingNumericKeyboard: isNumericInput,
             placeholder: placeholderText,

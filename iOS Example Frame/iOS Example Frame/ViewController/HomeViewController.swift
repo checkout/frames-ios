@@ -70,6 +70,14 @@ class HomeViewController: UIViewController {
     navigationController?.pushViewController(viewController, animated: true)
   }
 
+    @IBAction private func showBorderTheme(_ sender: Any) {
+        customizeNavigationBarAppearance(backgroundColor: .white, foregroundColor: .black)
+        let viewController = Factory.getBordersPaymentViewController { [weak self] result in
+          self?.handleTokenResponse(with: result)
+        }
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
   @IBAction private func getApplePayData(_ sender: Any) {
     handleApplePayAction()
   }
