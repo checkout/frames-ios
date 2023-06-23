@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B5CB6AF2A03E5E100ED468B /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5CB6AE2A03E5DF00ED468B /* AccessibilityIdentifiers.swift */; };
+		0BAEDD412A45EE81008C65C2 /* ThemeDemo+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAEDD402A45EE81008C65C2 /* ThemeDemo+Border.swift */; };
 		0BB538AD28B637980060A8DE /* Factory+UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB538AC28B637980060A8DE /* Factory+UITest.swift */; };
 		0BC60B5C28AFA4A600F30992 /* ThemeDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC60B5B28AFA4A600F30992 /* ThemeDemo.swift */; };
 		0BD2ECBF28B65DA10041A942 /* FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2ECBE28B65DA10041A942 /* FrameUITests.swift */; };
@@ -74,6 +75,7 @@
 
 /* Begin PBXFileReference section */
 		0B5CB6AE2A03E5DF00ED468B /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessibilityIdentifiers.swift; path = ../Source/Core/Constants/AccessibilityIdentifiers.swift; sourceTree = SOURCE_ROOT; };
+		0BAEDD402A45EE81008C65C2 /* ThemeDemo+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeDemo+Border.swift"; sourceTree = "<group>"; };
 		0BB538AC28B637980060A8DE /* Factory+UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Factory+UITest.swift"; sourceTree = "<group>"; };
 		0BC60B5B28AFA4A600F30992 /* ThemeDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeDemo.swift; sourceTree = "<group>"; };
 		0BCCBCEC28DC98F600041870 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				95C8C0B728AD5FEE00B8D3D0 /* AppDelegate.swift */,
 				95C8C13E28AD603700B8D3D0 /* Assets.xcassets */,
 				0BC60B5B28AFA4A600F30992 /* ThemeDemo.swift */,
+				0BAEDD402A45EE81008C65C2 /* ThemeDemo+Border.swift */,
 				95C8C0D428AD5FEE00B8D3D0 /* Data */,
 				95C8C0B428AD5FEE00B8D3D0 /* Extension */,
 				95C8C10A28AD5FEE00B8D3D0 /* Factory */,
@@ -528,6 +531,7 @@
 			files = (
 				95C8C13B28AD5FEE00B8D3D0 /* Style.swift in Sources */,
 				95C8C10D28AD5FEE00B8D3D0 /* UIViewControllerExtension.swift in Sources */,
+				0BAEDD412A45EE81008C65C2 /* ThemeDemo+Border.swift in Sources */,
 				95C8C12728AD5FEE00B8D3D0 /* UIFont+Graphik.swift in Sources */,
 				95C8C10E28AD5FEE00B8D3D0 /* UIViewExtension.swift in Sources */,
 				0BB538AD28B637980060A8DE /* Factory+UITest.swift in Sources */,
