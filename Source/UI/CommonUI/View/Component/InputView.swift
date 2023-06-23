@@ -114,6 +114,7 @@ class InputView: UIView {
         textFieldContainerBorder.update(with: style.textfield.borderStyle)
         textFieldContainerBorder.updateBorderColor(to: borderColor)
         textFieldContainerBorder.backgroundColor = style.textfield.backgroundColor
+        textFieldContainerBorder.setNeedsLayout()
     }
 
     private func updateTextFieldContainer(image: UIImage?, animated: Bool) {

@@ -25,6 +25,13 @@ extension CAShapeLayer {
         self.path = path.cgPath
     }
 
+    func createBackground(with style: ElementBorderStyle) {
+        let path = UIBezierPath(roundedRect: frame,
+                                byRoundingCorners: style.corners ?? [],
+                                cornerRadii: CGSize(width: style.cornerRadius, height: style.cornerRadius))
+        self.path = path.cgPath
+    }
+
     /*
      (0,0)  c-----------c  (100,0)
             |           |

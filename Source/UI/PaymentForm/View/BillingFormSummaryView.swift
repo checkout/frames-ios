@@ -54,7 +54,7 @@ class BillingFormSummaryView: UIView {
 
         summaryContainerView.update(with: style.borderStyle)
         summaryContainerView.updateBorderColor(to: style.borderStyle.normalColor)
-        summaryContainerView.backgroundColor = .clear
+        summaryContainerView.backgroundColor = style.backgroundColor
         summarySeparatorLineView.backgroundColor = style.separatorLineColor
 
         titleLabel.update(with: style.title)
@@ -148,6 +148,7 @@ extension BillingFormSummaryView {
             summaryContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             summaryContainerView.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor)
         ])
+        sendSubviewToBack(summaryContainerView)
         bringSubviewToFront(buttonView)
     }
 

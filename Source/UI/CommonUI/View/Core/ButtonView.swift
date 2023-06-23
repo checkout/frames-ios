@@ -61,7 +61,6 @@ class ButtonView: UIView {
 
     func update(with style: ElementButtonStyle) {
         self.style = style
-        backgroundColor = style.backgroundColor
         clipsToBounds = true
         borderView.update(with: style.borderStyle)
         borderView.updateBorderColor(to: style.borderStyle.normalColor)
@@ -74,7 +73,7 @@ class ButtonView: UIView {
     }
 
     private func updateButtonStyle(with style: ElementButtonStyle) {
-        backgroundColor = isEnabled ? style.backgroundColor : style.disabledTintColor
+        borderView.backgroundColor = isEnabled ? style.backgroundColor : style.disabledTintColor
         button.tintColor = .clear
         button.heightAnchor.constraint(equalToConstant: style.height).isActive = true
         button.accessibilityIdentifier = style.text
