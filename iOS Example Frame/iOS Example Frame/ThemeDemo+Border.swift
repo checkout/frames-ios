@@ -13,7 +13,7 @@ extension ThemeDemo {
 
     static func buildBorderExample() -> PaymentStyle {
         var theme = Theme(primaryFontColor: .black,
-                          secondaryFontColor: .darkGray,
+                          secondaryFontColor: .gray,
                           buttonFontColor: .blue,
                           errorFontColor: .red,
                           backgroundColor: .white,
@@ -39,6 +39,7 @@ extension ThemeDemo {
                                                    errorColor: .clear,
                                                    edges: [.top, .bottom],
                                                    corners: .allCorners)
+        payButton.backgroundColor = .lightGray.withAlphaComponent(0.3)
         payButton.textAlignment = .center
 
         let cardNumberInput = theme.buildPaymentInput(isTextFieldNumericInput: true,
