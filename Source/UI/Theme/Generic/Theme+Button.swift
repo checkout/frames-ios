@@ -27,6 +27,71 @@ public extension Theme {
         public var font: UIFont
         public var backgroundColor: UIColor = .clear
         public var textColor: UIColor
+
+        @available(*, deprecated, renamed: "borderStyle.cornerRadius")
+        public var cornerRadius: CGFloat {
+            get { borderStyle.cornerRadius }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: newValue,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.borderWidth")
+        public var borderWidth: CGFloat {
+            get { borderStyle.borderWidth }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: newValue,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.normalColor")
+        public var normalBorderColor: UIColor {
+            get { borderStyle.normalColor }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: newValue,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.focusColor")
+        public var focusBorderColor: UIColor {
+            get { borderStyle.focusColor }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: newValue,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.errorColor")
+        public var errorBorderColor: UIColor {
+            get { borderStyle.errorColor }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: newValue)
+            }
+        }
     }
 
     /// Theme generated Button Style for showing Country Selection to user
@@ -47,6 +112,71 @@ public extension Theme {
         public var font: UIFont
         public var backgroundColor: UIColor
         public var textColor: UIColor
+
+        @available(*, deprecated, renamed: "borderStyle.cornerRadius")
+        public var cornerRadius: CGFloat {
+            get { borderStyle.cornerRadius }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: newValue,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.borderWidth")
+        public var borderWidth: CGFloat {
+            get { borderStyle.borderWidth }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: newValue,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.normalColor")
+        public var normalBorderColor: UIColor {
+            get { borderStyle.normalColor }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: newValue,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.focusColor")
+        public var focusBorderColor: UIColor {
+            get { borderStyle.focusColor }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: newValue,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.errorColor")
+        public var errorBorderColor: UIColor {
+            get { borderStyle.errorColor }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: newValue)
+            }
+        }
     }
 
     /// Create a navigation button style with the provided title
@@ -70,22 +200,23 @@ public extension Theme {
     /// Create a button for launching a Country selection journey
     func buildCountryListButton(text: String,
                                 image: UIImage? = nil) -> CountryListButton {
-        CountryListButton(borderStyle: ThemeBorderStyle(cornerRadius: self.textInputBorderRadius,
-                                                        borderWidth: self.textInputBorderWidth,
-                                                        normalColor: self.textInputBorderColor,
-                                                        focusColor: self.focussedTextInputBorderColor,
-                                                        errorColor: self.errorBorderColor,
-                                                        edges: .all,
-                                                        corners: nil),
-                          disabledTextColor: self.secondaryFontColor,
-                          disabledTintColor: self.secondaryFontColor,
-                          activeTintColor: self.primaryFontColor,
-                          imageTintColor: self.primaryFontColor,
-                          image: image,
-                          text: text,
-                          font: inputFont,
-                          backgroundColor: self.textInputBackgroundColor,
-                          textColor: self.primaryFontColor)
+        CountryListButton(
+            borderStyle: ThemeBorderStyle(cornerRadius: self.textInputBorderRadius,
+                                          borderWidth: self.borderWidth,
+                                          normalColor: self.textInputBorderColor,
+                                          focusColor: self.focussedTextInputBorderColor,
+                                          errorColor: self.errorBorderColor,
+                                          edges: .all,
+                                          corners: nil),
+            disabledTextColor: self.secondaryFontColor,
+            disabledTintColor: self.secondaryFontColor,
+            activeTintColor: self.primaryFontColor,
+            imageTintColor: self.primaryFontColor,
+            image: image,
+            text: text,
+            font: inputFont,
+            backgroundColor: self.textInputBackgroundColor,
+            textColor: self.primaryFontColor)
     }
 
 }

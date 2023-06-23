@@ -22,6 +22,45 @@ public extension Theme {
         public var mandatory: ElementStyle?
         public var hint: ElementStyle?
         public var error: ElementErrorViewStyle?
+
+        @available(*, deprecated, renamed: "borderStyle.cornerRadius")
+        public var cornerRadius: CGFloat {
+            get { borderStyle.cornerRadius }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: newValue,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.borderWidth")
+        public var borderWidth: CGFloat {
+            get { borderStyle.borderWidth }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: newValue,
+                                               normalColor: themeBorderStyle.normalColor,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
+
+        @available(*, deprecated, renamed: "borderStyle.normalColor")
+        public var borderColor: UIColor {
+            get { borderStyle.normalColor }
+            set {
+                guard let themeBorderStyle = borderStyle as? ThemeBorderStyle else { return }
+                borderStyle = ThemeBorderStyle(cornerRadius: themeBorderStyle.cornerRadius,
+                                               borderWidth: themeBorderStyle.borderWidth,
+                                               normalColor: newValue,
+                                               focusColor: themeBorderStyle.focusColor,
+                                               errorColor: themeBorderStyle.errorColor)
+            }
+        }
     }
 
     /// Theme generated Summary Content Style
@@ -54,21 +93,21 @@ public extension Theme {
                              error: ThemeError) -> ThemeBillingSummary {
         let summary = ThemeSummaryElement(font: inputFont,
                                           textColor: self.secondaryFontColor)
-
-        return ThemeBillingSummary(borderStyle: ThemeBorderStyle(cornerRadius: self.textInputBorderRadius,
-                                                                 borderWidth: self.textInputBorderWidth,
-                                                                 normalColor: self.textInputBorderColor,
-                                                                 focusColor: self.focussedTextInputBorderColor,
-                                                                 errorColor: self.errorBorderColor,
-                                                                 edges: .all,
-                                                                 corners: nil),
-                                   summary: summary,
-                                   separatorLineColor: self.secondaryFontColor,
-                                   button: button,
-                                   title: title,
-                                   mandatory: mandatory,
-                                   hint: subtitle,
-                                   error: error)
+        return ThemeBillingSummary(
+            borderStyle: ThemeBorderStyle(cornerRadius: textInputBorderRadius,
+                                          borderWidth: textInputBorderWidth,
+                                          normalColor: textInputBorderColor,
+                                          focusColor: focussedTextInputBorderColor,
+                                          errorColor: errorBorderColor,
+                                          edges: .all,
+                                          corners: nil),
+            summary: summary,
+            separatorLineColor: self.secondaryFontColor,
+            button: button,
+            title: title,
+            mandatory: mandatory,
+            hint: subtitle,
+            error: error)
     }
 
     /// Create a Billing Summary from provided content

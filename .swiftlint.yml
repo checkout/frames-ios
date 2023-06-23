@@ -62,5 +62,7 @@ line_length:
      ignores_urls: true
 
 identifier_name:
+  allowed_symbols:
+    - "_"
   excluded:
     - id
