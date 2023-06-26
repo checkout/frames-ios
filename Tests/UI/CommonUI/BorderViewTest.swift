@@ -16,7 +16,7 @@ final class BorderViewTest: XCTestCase {
 
     func testUpdateStyleDoesNotAddLayer() {
         let borderView = BorderView()
-        let style = DefaultBorderStyle()
+        let style = DefaultBorderStyle(cornerRadius: 0, borderWidth: 0, normalColor: .clear, focusColor: .clear, errorColor: .clear)
         borderView.update(with: style)
         XCTAssertEqual(borderView.layer.sublayers?.count, 2)
     }
@@ -46,7 +46,7 @@ final class BorderViewTest: XCTestCase {
 
     func testUpdateStyleDoesAddPath() throws {
         let borderView = BorderView()
-        let style = DefaultBorderStyle()
+        let style = DefaultBorderStyle(cornerRadius: 0, borderWidth: 0, normalColor: .clear, focusColor: .clear, errorColor: .clear)
         borderView.update(with: style)
         borderView.layoutSubviews()
         
