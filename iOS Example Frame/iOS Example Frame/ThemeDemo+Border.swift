@@ -13,7 +13,7 @@ extension ThemeDemo {
 
     static func buildBorderExample() -> PaymentStyle {
         var theme = Theme(primaryFontColor: .black,
-                          secondaryFontColor: .darkGray,
+                          secondaryFontColor: UIColor(red: 114 / 255, green: 114 / 255, blue: 114 / 255, alpha: 1),
                           buttonFontColor: .blue,
                           errorFontColor: .red,
                           backgroundColor: .white,
@@ -53,16 +53,21 @@ extension ThemeDemo {
         payButton.disabledTintColor = .lightGray.withAlphaComponent(0.2)
 
         let cardNumberInput = theme.buildPaymentInput(isTextFieldNumericInput: true,
-                                                      titleText: "CARD NUMBER")
+                                                      titleText: "CARD NUMBER",
+                                                      errorText: "Please enter valid card number")
         let expiryDateInput = theme.buildPaymentInput(textFieldPlaceholder: "__ / __",
                                                       isTextFieldNumericInput: false,
-                                                      titleText: "EXPIRY DATE")
+                                                      titleText: "EXPIRY DATE",
+                                                      errorText: "Please enter valid expiry date")
         let securityCodeInput = theme.buildPaymentInput(isTextFieldNumericInput: true,
-                                                        titleText: "SECURITY CODE")
+                                                        titleText: "SECURITY CODE",
+                                                        errorText: "Please enter valid security code")
 
+        var paymentHeader = theme.buildPaymentHeader(title: "Payment details",
+                                                     subtitle: "")
+        paymentHeader.shouldHideAcceptedCardsList = true
         return theme.buildPaymentForm(
-            headerView: theme.buildPaymentHeader(title: "Payment details",
-                                                 subtitle: ""),
+            headerView: paymentHeader,
             addBillingButton: theme.buildAddBillingSectionButton(text: "ADD BILLING ADDRESS",
                                                                  isBillingAddressMandatory: false,
                                                                  titleText: "Billing address"),

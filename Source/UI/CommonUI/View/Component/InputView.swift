@@ -225,7 +225,7 @@ extension InputView: TextFieldViewDelegate {
         if let style = style, shouldEndEditing {
             let normalColor = style.textfield.borderStyle.normalColor
             let errorColor = style.textfield.borderStyle.errorColor
-            let textfieldColor = style.error?.isHidden != false ? normalColor : errorColor
+            let textfieldColor = style.error?.isHidden == true ? normalColor : errorColor
             textFieldContainerBorder.updateBorderColor(to: textfieldColor)
         }
         return shouldEndEditing
