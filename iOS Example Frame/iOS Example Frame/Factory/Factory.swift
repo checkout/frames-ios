@@ -59,13 +59,15 @@ enum Factory {
   }
 
     static func getBordersPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenRequestError>) -> Void) -> UIViewController {
-        let address = Address(addressLine1: "78 Marvelous Rd",
-                              addressLine2: nil,
-                              city: "London",
-                              state: nil,
-                              zip: nil,
+
+        let address = Address(addressLine1: "Address line 1",
+                              addressLine2: "Address line 2",
+                              city: "City",
+                              state: "State",
+                              zip: "Postcode",
                               country: Country(iso3166Alpha2: "GB"))
-        let billingFormData = BillingForm(name: "Bob Higgins", address: address, phone: nil)
+        let phone = Phone(number: "77 1234 1234", country: Country(iso3166Alpha2: "GB"))
+        let billingFormData = BillingForm(name: "Full name", address: address, phone: phone)
         let supportedSchemes: [CardScheme] = [.visa, .mastercard, .maestro, .americanExpress, .mada]
         let configuration = PaymentFormConfiguration(apiKey: apiKey,
                                                      environment: environment,

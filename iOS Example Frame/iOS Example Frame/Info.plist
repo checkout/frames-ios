@@ -2,25 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>SF-Mono-Bold.otf</string>
-		<string>SF-Mono-Light.otf</string>
-		<string>SF-Mono-Regular.otf</string>
-		<string>SF-Mono-Heavy.otf</string>
-		<string>SF-Mono-BoldItalic.otf</string>
-		<string>SF-Mono-MediumItalic.otf</string>
-		<string>SF-Mono-RegularItalic.otf</string>
-		<string>SF-Mono-Semibold.otf</string>
-		<string>SF-Mono-SemiboldItalic.otf</string>
-		<string>SF-Mono-Medium.otf</string>
-		<string>SF-Mono-LightItalic.otf</string>
-		<string>SF-Mono-HeavyItalic.otf</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-    <key>ITSAppUsesNonExemptEncryption</key>
-    <false/>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -35,8 +18,37 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SF-Mono-Bold.otf</string>
+		<string>SF-Mono-Light.otf</string>
+		<string>SF-Mono-Regular.otf</string>
+		<string>SF-Mono-Heavy.otf</string>
+		<string>SF-Mono-BoldItalic.otf</string>
+		<string>SF-Mono-MediumItalic.otf</string>
+		<string>SF-Mono-RegularItalic.otf</string>
+		<string>SF-Mono-Semibold.otf</string>
+		<string>SF-Mono-SemiboldItalic.otf</string>
+		<string>SF-Mono-Medium.otf</string>
+		<string>SF-Mono-LightItalic.otf</string>
+		<string>SF-Mono-HeavyItalic.otf</string>
+		<string>Roboto-Black.ttf</string>
+		<string>Roboto-BlackItalic.ttf</string>
+		<string>Roboto-Bold.ttf</string>
+		<string>Roboto-BoldItalic.ttf</string>
+		<string>Roboto-Light.ttf</string>
+		<string>Roboto-LightItalic.ttf</string>
+		<string>Roboto-Medium.ttf</string>
+		<string>Roboto-MediumItalic.ttf</string>
+		<string>Roboto-Regular.ttf</string>
+		<string>Roboto-Italic.ttf</string>
+		<string>Roboto-Thin.ttf</string>
+		<string>Roboto-ThinItalic.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
