@@ -58,6 +58,28 @@ enum Factory {
     return viewController
   }
 
+    static func getBordersPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenRequestError>) -> Void) -> UIViewController {
+
+        let address = Address(addressLine1: "Address line 1",
+                              addressLine2: "Address line 2",
+                              city: "City",
+                              state: "State",
+                              zip: "Postcode",
+                              country: Country(iso3166Alpha2: "GB"))
+        let phone = Phone(number: "77 1234 1234", country: Country(iso3166Alpha2: "GB"))
+        let billingFormData = BillingForm(name: "Full name", address: address, phone: phone)
+        let supportedSchemes: [CardScheme] = [.visa, .mastercard, .maestro, .americanExpress, .mada]
+        let configuration = PaymentFormConfiguration(apiKey: apiKey,
+                                                     environment: environment,
+                                                     supportedSchemes: supportedSchemes,
+                                                     billingFormData: billingFormData)
+        let style = ThemeDemo.buildBorderExample()
+        let viewController = PaymentFormFactory.buildViewController(configuration: configuration,
+                                                                    style: style,
+                                                                    completionHandler: completionHandler)
+        return viewController
+    }
+
   static func getMatrixPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenRequestError>) -> Void) -> UIViewController {
     #if UITEST
     return getCompleteUITestVC(completionHandler: completionHandler)
