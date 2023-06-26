@@ -5,7 +5,7 @@ final class CAShapeLayerExtensionTests: XCTestCase {
 
     func testCreateCustomBorderStyle() {
         let layer = CAShapeLayer()
-        let style = DefaultBorderStyle()
+        let style = DefaultBorderStyle(cornerRadius: 0, borderWidth: 0, normalColor: .clear, focusColor: .clear, errorColor: .clear)
         layer.createCustomBorder(with: style)
         XCTAssertEqual(layer.fillColor, UIColor.clear.cgColor)
         XCTAssertEqual(layer.lineWidth, style.borderWidth)
@@ -20,7 +20,7 @@ final class CAShapeLayerExtensionTests: XCTestCase {
 
         let layer = CAShapeLayer()
         layer.frame = CGRect(x: minX, y: minY, width: maxX, height: maxY)
-        let style = DefaultBorderStyle(edges: edge, corners: nil)
+        let style = DefaultBorderStyle(cornerRadius: 0, borderWidth: 0, normalColor: .clear, focusColor: .clear, errorColor: .clear, edges: edge, corners: nil)
         let rect = layer.bounds.insetBy(dx: style.borderWidth / 2, dy: style.borderWidth / 2)
 
         layer.createCustomBorder(with: style)
@@ -46,7 +46,7 @@ final class CAShapeLayerExtensionTests: XCTestCase {
 
         let layer = CAShapeLayer()
         layer.frame = CGRect(x: minX, y: minY, width: maxX, height: maxY)
-        let style = DefaultBorderStyle(edges: edge, corners: nil)
+        let style = DefaultBorderStyle(cornerRadius: 0, borderWidth: 0, normalColor: .clear, focusColor: .clear, errorColor: .clear, edges: edge, corners: nil)
         let rect = layer.bounds.insetBy(dx: style.borderWidth / 2, dy: style.borderWidth / 2)
 
         layer.createCustomBorder(with: style)
@@ -72,7 +72,7 @@ final class CAShapeLayerExtensionTests: XCTestCase {
 
         let layer = CAShapeLayer()
         layer.frame = CGRect(x: minX, y: minY, width: maxX, height: maxY)
-        let style = DefaultBorderStyle(edges: edge, corners: nil)
+        let style = DefaultBorderStyle(cornerRadius: 0, borderWidth: 0, normalColor: .clear, focusColor: .clear, errorColor: .clear, edges: edge, corners: nil)
         let rect = layer.bounds.insetBy(dx: style.borderWidth / 2, dy: style.borderWidth / 2)
 
         layer.createCustomBorder(with: style)
@@ -98,7 +98,7 @@ final class CAShapeLayerExtensionTests: XCTestCase {
 
         let layer = CAShapeLayer()
         layer.frame = CGRect(x: minX, y: minY, width: maxX, height: maxY)
-        let style = DefaultBorderStyle(edges: edge, corners: nil)
+        let style = DefaultBorderStyle(cornerRadius: 0, borderWidth: 0, normalColor: .clear, focusColor: .clear, errorColor: .clear, edges: edge, corners: nil)
         let rect = layer.bounds.insetBy(dx: style.borderWidth / 2, dy: style.borderWidth / 2)
 
         layer.createCustomBorder(with: style)
