@@ -13,11 +13,21 @@ extension ThemeDemo {
 
     static func buildBorderExample() -> PaymentStyle {
         var theme = Theme(primaryFontColor: .black,
-                          secondaryFontColor: .gray,
+                          secondaryFontColor: .darkGray,
                           buttonFontColor: .blue,
                           errorFontColor: .red,
                           backgroundColor: .white,
                           errorBorderColor: .red)
+        theme.headerFont = UIFont(robotoStyle: .regular,
+                                  size: UIFont.preferredFont(forTextStyle: .title1).pointSize)
+        theme.titleFont = UIFont(robotoStyle: .regular,
+                                 size: UIFont.preferredFont(forTextStyle: .subheadline).pointSize)
+        theme.subtitleFont = UIFont(robotoStyle: .regular,
+                                    size: UIFont.preferredFont(forTextStyle: .footnote).pointSize)
+        theme.inputFont = UIFont(robotoStyle: .regular,
+                                 size: UIFont.preferredFont(forTextStyle: .headline).pointSize)
+        theme.buttonFont = UIFont(robotoStyle: .bold,
+                                  size: UIFont.preferredFont(forTextStyle: .subheadline).pointSize)
         theme.borderColor = .black
         theme.borderWidth = 1
         return PaymentStyle(paymentFormStyle: buildPaymentFormStyle(theme: theme),
@@ -25,43 +35,37 @@ extension ThemeDemo {
     }
 
     private static func buildPaymentFormStyle(theme: Theme) -> Theme.ThemePaymentForm {
-        var billingSummary = theme.buildBillingSummary(buttonText: "Change billing details",
-                                                       titleText: "Billing details")
+        var billingSummary = theme.buildBillingSummary(buttonText: "EDIT BILLING ADDRESS",
+                                                       titleText: "BILLING ADDRESS")
+        billingSummary.separatorLineColor = .clear
         billingSummary.borderStyle.normalColor = .black
-        billingSummary.borderStyle.cornerRadius = 8
         billingSummary.borderStyle.borderWidth = 1
+        billingSummary.button.textColor = .black
+        if #available(iOS 13.0, *) {
+            billingSummary.button.image = UIImage(systemName: "arrow.right")
+        }
 
-        var payButton = theme.buildPayButton(text: "Pay now")
-        payButton.borderStyle = DefaultBorderStyle(cornerRadius: 8,
-                                                   borderWidth: 1,
-                                                   normalColor: .black,
-                                                   focusColor: .clear,
-                                                   errorColor: .clear,
-                                                   edges: [.top, .bottom],
-                                                   corners: .allCorners)
-        payButton.backgroundColor = .lightGray.withAlphaComponent(0.3)
+        var payButton = theme.buildPayButton(text: "PAY £99.99")
+        payButton.backgroundColor = .black
         payButton.textAlignment = .center
+        payButton.textColor = .white
+        payButton.disabledTextColor = .darkGray
+        payButton.disabledTintColor = .lightGray.withAlphaComponent(0.2)
 
         let cardNumberInput = theme.buildPaymentInput(isTextFieldNumericInput: true,
-                                                      titleText: "Card number",
-                                                      errorText: "Please enter valid card number",
-                                                      errorImage: UIImage(named: "warning"))
+                                                      titleText: "CARD NUMBER")
         let expiryDateInput = theme.buildPaymentInput(textFieldPlaceholder: "__ / __",
                                                       isTextFieldNumericInput: false,
-                                                      titleText: "Expiry date",
-                                                      errorText: "Please enter valid expiry date",
-                                                      errorImage: UIImage(named: "warning"))
+                                                      titleText: "EXPIRY DATE")
         let securityCodeInput = theme.buildPaymentInput(isTextFieldNumericInput: true,
-                                                        titleText: "CVV date",
-                                                        errorText: "Please enter valid security code",
-                                                        errorImage: UIImage(named: "warning"))
+                                                        titleText: "SECURITY CODE")
 
         return theme.buildPaymentForm(
             headerView: theme.buildPaymentHeader(title: "Payment details",
-                                                 subtitle: "Accepting your favourite payment methods"),
-            addBillingButton: theme.buildAddBillingSectionButton(text: "Add billing details",
+                                                 subtitle: ""),
+            addBillingButton: theme.buildAddBillingSectionButton(text: "ADD BILLING ADDRESS",
                                                                  isBillingAddressMandatory: false,
-                                                                 titleText: "Billing details"),
+                                                                 titleText: "Billing address"),
             billingSummary: billingSummary,
             cardholder: nil,
             cardNumber: addBorders(to: cardNumberInput),
@@ -71,18 +75,35 @@ extension ThemeDemo {
     }
 
     private static func buildBillingFormStyle(theme: Theme) -> Theme.ThemeBillingForm {
-        let billingNameCell = theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: false, title: "Your name")
-        let billingAddressLine1Cell = theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: true, title: "Address")
-        let billingCityCell = theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: true, title: "City")
-        let billingCountryCell = theme.buildBillingCountryInput(buttonText: "Select your country", title: "Country")
-        let billingPhoneCell = theme.buildBillingInput(text: "", isNumericInput: true, isMandatory: true, title: "Phone number")
+        let billingNameCell = theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: false, title: "FULL NAME")
+        let billingAddressLine1Cell = theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: true, title: "ADDRESS LINE 1")
+        let billingAddressLine2Cell = theme.buildBillingInput(text: "",
+                                                              isNumericInput: false,
+                                                              isMandatory: false,
+                                                              title: "ADDRESS LINE 2",
+                                                              isRequiredText: "Optional")
+        let billingCityCell = theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: true, title: "CITY")
+        let billingStateCell = theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: true, title: "STATE")
+        let billingPostcodeCell = theme.buildBillingInput(text: "", isNumericInput: false, isMandatory: true, title: "POSTCODE/ZIP")
+        var billingCountryCell = theme.buildBillingCountryInput(buttonText: "Please select a country", title: "COUNTRY")
+        if #available(iOS 13.0, *) {
+            billingCountryCell.button.image = UIImage(systemName: "chevron.down")
+        }
+        let billingPhoneCell = theme.buildBillingInput(text: "",
+                                                       isNumericInput: true,
+                                                       isMandatory: true,
+                                                       title: "PHONE NUMBER",
+                                                       subtitle: "We will only use this to confirm identity if necessary")
         return theme.buildBillingForm(
-            header: theme.buildBillingHeader(title: "Billing information",
-                                             cancelButtonTitle: "Cancel",
-                                             doneButtonTitle: "Done"),
+            header: theme.buildBillingHeader(title: "Billing address",
+                                             cancelButtonTitle: "CANCEL",
+                                             doneButtonTitle: "DONE"),
             cells: [.fullName(addBorders(to: billingNameCell)),
                     .addressLine1(addBorders(to: billingAddressLine1Cell)),
+                    .addressLine2(addBorders(to: billingAddressLine2Cell)),
                     .city(addBorders(to: billingCityCell)),
+                    .state(addBorders(to: billingStateCell)),
+                    .postcode(addBorders(to: billingPostcodeCell)),
                     .country(addBorders(to: billingCountryCell)),
                     .phoneNumber(addBorders(to: billingPhoneCell))])
     }
