@@ -15,45 +15,37 @@ public struct DefaultTextField: ElementTextFieldStyle {
 
     @available(*, deprecated, renamed: "borderStyle.cornerRadius")
     public var cornerRadius: CGFloat {
-        get { _cornerRadius }
-        set { _cornerRadius = newValue }
+        get { borderStyle.cornerRadius }
+        set { borderStyle.cornerRadius = newValue }
     }
 
     @available(*, deprecated, renamed: "borderStyle.borderWidth")
     public var borderWidth: CGFloat {
-        get { _borderWidth }
-        set { _borderWidth = newValue }
+        get { borderStyle.borderWidth }
+        set { borderStyle.borderWidth = newValue }
     }
 
     @available(*, deprecated, renamed: "borderStyle.normalColor")
     public var normalBorderColor: UIColor {
-        get { _normalBorderColor }
-        set { _normalBorderColor = newValue }
+        get { borderStyle.normalColor }
+        set { borderStyle.normalColor = newValue }
     }
 
     @available(*, deprecated, renamed: "borderStyle.focusColor")
     public var focusBorderColor: UIColor {
-        get { _focusBorderColor }
-        set { _focusBorderColor = newValue }
+        get { borderStyle.focusColor }
+        set { borderStyle.focusColor = newValue }
     }
 
     @available(*, deprecated, renamed: "borderStyle.errorColor")
     public var errorBorderColor: UIColor {
-        get { _errorBorderColor }
-        set { _errorBorderColor = newValue }
+        get { borderStyle.errorColor }
+        set { borderStyle.errorColor = newValue }
     }
 
-    internal var _cornerRadius: CGFloat = 10
-    internal var _borderWidth: CGFloat = 1
-    internal var _normalBorderColor: UIColor = FramesUIStyle.Color.borderPrimary
-    internal var _focusBorderColor: UIColor = FramesUIStyle.Color.borderActive
-    internal var _errorBorderColor: UIColor = FramesUIStyle.Color.borderError
-
-    public lazy var borderStyle: ElementBorderStyle = {
-        DefaultBorderStyle(cornerRadius: _cornerRadius,
-                           borderWidth: _borderWidth,
-                           normalColor: _normalBorderColor,
-                           focusColor: _focusBorderColor,
-                           errorColor: _errorBorderColor)
-    }()
+    public var borderStyle: ElementBorderStyle = DefaultBorderStyle(cornerRadius: 10,
+                                                                    borderWidth: 1,
+                                                                    normalColor: FramesUIStyle.Color.borderPrimary,
+                                                                    focusColor: FramesUIStyle.Color.borderActive,
+                                                                    errorColor: FramesUIStyle.Color.borderError)
 }
