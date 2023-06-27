@@ -13,31 +13,25 @@ public struct DefaultBillingSummaryViewStyle: BillingSummaryViewStyle {
 
     @available(*, deprecated, renamed: "borderStyle.cornerRadius")
     public var cornerRadius: CGFloat {
-        get { _cornerRadius }
-        set { _cornerRadius = newValue }
+        get { borderStyle.cornerRadius }
+        set { borderStyle.cornerRadius = newValue }
     }
 
     @available(*, deprecated, renamed: "borderStyle.borderWidth")
     public var borderWidth: CGFloat {
-        get { _borderWidth }
-        set { _borderWidth = newValue }
+        get { borderStyle.borderWidth }
+        set { borderStyle.borderWidth = newValue }
     }
 
     @available(*, deprecated, renamed: "borderStyle.normalColor")
     public var borderColor: UIColor {
-        get { _borderColor }
-        set { _borderColor = newValue }
+        get { borderStyle.normalColor }
+        set { borderStyle.normalColor = newValue }
     }
 
-    internal var _cornerRadius: CGFloat = Constants.Style.BorderStyle.cornerRadius
-    internal var _borderWidth: CGFloat = 0.5
-    internal var _borderColor: UIColor = FramesUIStyle.Color.borderPrimary
-
-    public lazy var borderStyle: ElementBorderStyle = {
-        DefaultBorderStyle(cornerRadius: _cornerRadius,
-                           borderWidth: _borderWidth,
-                           normalColor: _borderColor,
-                           focusColor: .clear,
-                           errorColor: .clear)
-    }()
+    public var borderStyle: ElementBorderStyle = DefaultBorderStyle(cornerRadius: Constants.Style.BorderStyle.cornerRadius,
+                                                                    borderWidth: 0.5,
+                                                                    normalColor: FramesUIStyle.Color.borderPrimary,
+                                                                    focusColor: .clear,
+                                                                    errorColor: .clear)
 }
