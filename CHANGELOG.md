@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 
 #### 4.x Releases
 
+## [4.1.0](https://github.com/checkout/frames-ios/releases/tag/4.1.0)
+
+Released on 2023-06-27
+
+Updates:
+
+- Added a new feature to set custom border styles
+- Added validation to avoid the SDK being used with empty public keys
+
 ## [4.0.5](https://github.com/checkout/frames-ios/releases/tag/4.0.5)
 
 Released on 2023-05-24

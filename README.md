@@ -257,6 +257,19 @@ paymentFormStyle.backgroundColor = UIColor.darkGray
 // Change card number input placeholder value
 paymentFormStyle.expiryDate.textfield.placeholder = "00 / 00"
 
+// Add custom border style around the Payment Button
+if var payButton = paymentFormStyle.payButton as? DefaultPayButtonFormStyle {
+  let payButtonBorder = DefaultBorderStyle(
+      cornerRadius: 26,
+      borderWidth: 3,
+      normalColor: .black,
+      focusColor: .clear,
+      errorColor: .red,
+      corners: [.bottomLeft, .topRight])
+  payButton.borderStyle = payButtonBorder
+  paymentFormStyle.payButton = payButton
+}
+
 // Change Payment button text
 paymentFormStyle.payButton.text = "Pay £54.63"
 ```
