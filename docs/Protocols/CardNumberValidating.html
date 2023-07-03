@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CardNumberValidating – Frames iOS SDK reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Protocol/CardNumberValidating" class="dashAnchor"></a>
+
+    <a title="CardNumberValidating Protocol Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          Frames 4.1.0 Docs
+        </a>
+         (23% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/checkout/frames-ios">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">Frames</a>
+      <img class="carat" src="../img/carat.png" />
+      CardNumberValidating
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CardValidator.html">CardValidator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CheckoutAPIService.html">CheckoutAPIService</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CheckoutAPIService.html">CheckoutAPIService</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CountrySelectionViewController.html">CountrySelectionViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/DefaultAddBillingDetailsButtonStyle.html">DefaultAddBillingDetailsButtonStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/DefaultEditBillingDetailsButtonStyle.html">DefaultEditBillingDetailsButtonStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes.html#/c:@M@Frames@objc(cs)PaymentHeaderView">PaymentHeaderView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PhoneValidator.html">PhoneValidator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SecureDisplayView.html">SecureDisplayView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes.html#/c:@M@Frames@objc(cs)SecurityCodeView">SecurityCodeView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ThreeDSWKNavigationHelper.html">ThreeDSWKNavigationHelper</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ThreedsWebViewController.html">ThreedsWebViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/AccessibilityIdentifiers.html">AccessibilityIdentifiers</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/AccessibilityIdentifiers/PaymentForm.html">– PaymentForm</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/AccessibilityIdentifiers/BillingForm.html">– BillingForm</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/BillingFormCell.html">BillingFormCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/CardScheme.html">CardScheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums.html#/s:8Checkout13CardUtilitiesO">CardUtilities</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Constants.html">Constants</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Constants/Phone.html">– Phone</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Environment.html">Environment</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Environment.html">Environment</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/FramesFactory.html">FramesFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/FramesUIStyle.html">FramesUIStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/FramesUIStyle.html#/s:6Frames0A7UIStyleO5ColorO">– Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/FramesUIStyle.html#/s:6Frames0A7UIStyleO4FontO">– Font</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/NetworkError.html">NetworkError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/PaymentFormFactory.html">PaymentFormFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/PaymentSource.html">PaymentSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ThreeDSError.html">ThreeDSError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TokenisationError.html">TokenisationError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TokenisationError/ServerError.html">– ServerError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TokenisationError/TokenRequest.html">– TokenRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationError.html">ValidationError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationError/Address.html">– Address</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationError/CVV.html">– CVV</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationError/Card.html">– Card</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationError/CardNumber.html">– CardNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationError/EagerCardNumber.html">– EagerCardNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationError/ExpiryDate.html">– ExpiryDate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationError/Phone.html">– Phone</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ValidationResult.html">ValidationResult</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:8Checkout20NetworkRequestResultO">NetworkRequestResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/BillingFormHeaderCellStyle.html">BillingFormHeaderCellStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/BillingFormStyle.html">BillingFormStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/BillingSummaryViewStyle.html">BillingSummaryViewStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CVVValidating.html">CVVValidating</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CardNumberValidating.html">CardNumberValidating</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CardValidating.html">CardValidating</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CellButtonStyle.html">CellButtonStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CellStyle.html">CellStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CellTextFieldStyle.html">CellTextFieldStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CheckoutAPIProtocol.html">CheckoutAPIProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CheckoutError.html">CheckoutError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CountrySelectionViewControllerDelegate.html">CountrySelectionViewControllerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ElementBorderStyle.html">ElementBorderStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ElementButtonStyle.html">ElementButtonStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ElementErrorViewStyle.html">ElementErrorViewStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ElementStyle.html">ElementStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ElementTextFieldStyle.html">ElementTextFieldStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ExpiryDateValidating.html">ExpiryDateValidating</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/PaymentFormStyle.html">PaymentFormStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/PaymentHeaderCellStyle.html">PaymentHeaderCellStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/PhoneValidating.html">PhoneValidating</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ThreeDSWKNavigationHelperDelegate.html">ThreeDSWKNavigationHelperDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ThreeDSWKNavigationHelping.html">ThreeDSWKNavigationHelping</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ThreedsWebViewControllerDelegate.html">ThreedsWebViewControllerDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Address.html">Address</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ApplePay.html">ApplePay</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/BillingForm.html">BillingForm</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Card.html">Card</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Card/Scheme.html">– Scheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Country.html">Country</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultAddBillingDetailsViewStyle.html">DefaultAddBillingDetailsViewStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultBillingFormAddressLine1CellStyle.html">DefaultBillingFormAddressLine1CellStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultBillingFormAddressLine2CellStyle.html">DefaultBillingFormAddressLine2CellStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultBillingFormCityCellStyle.html">DefaultBillingFormCityCellStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultBillingFormCountryCellStyle.html">DefaultBillingFormCountryCellStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultBillingFormFullNameCellStyle.html">DefaultBillingFormFullNameCellStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultBillingFormHeaderCellStyle.html">DefaultBillingFormHeaderCellStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultBillingFormPhoneNumberCellStyle.html">DefaultBillingFormPhoneNumberCellStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultBillingFormPostcodeCellStyle.html">DefaultBillingFormPostcodeCellStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultBillingFormStateCellStyle.html">DefaultBillingFormStateCellStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultBillingFormStyle.html">DefaultBillingFormStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultBillingSummaryViewStyle.html">DefaultBillingSummaryViewStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultBorderStyle.html">DefaultBorderStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultCancelButtonFormStyle.html">DefaultCancelButtonFormStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultCardNumberFormStyle.html">DefaultCardNumberFormStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultCardholderFormStyle.html">DefaultCardholderFormStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultCountryFormButtonStyle.html">DefaultCountryFormButtonStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultDoneFormButtonStyle.html">DefaultDoneFormButtonStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultErrorInputLabelStyle.html">DefaultErrorInputLabelStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultExpiryDateFormStyle.html">DefaultExpiryDateFormStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultHeaderLabelFormStyle.html">DefaultHeaderLabelFormStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultHintInputLabelStyle.html">DefaultHintInputLabelStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultPayButtonFormStyle.html">DefaultPayButtonFormStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultPaymentFormStyle.html">DefaultPaymentFormStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultPaymentHeaderCellStyle.html">DefaultPaymentHeaderCellStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultSecurityCodeFormStyle.html">DefaultSecurityCodeFormStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultTextField.html">DefaultTextField</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DefaultTitleLabelStyle.html">DefaultTitleLabelStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ExpiryDate.html">ExpiryDate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PaymentFormConfiguration.html">PaymentFormConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PaymentStyle.html">PaymentStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Phone.html">Phone</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme.html">Theme</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemeBillingCountryInput.html">– ThemeBillingCountryInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemeBillingForm.html">– ThemeBillingForm</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemeBillingHeader.html">– ThemeBillingHeader</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemeBillingInput.html">– ThemeBillingInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemeBorderStyle.html">– ThemeBorderStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/NavigationButtonStyle.html">– NavigationButtonStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/CountryListButton.html">– CountryListButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemeError.html">– ThemeError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemeMandatory.html">– ThemeMandatory</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemePageHeaderTitle.html">– ThemePageHeaderTitle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemeSubtitle.html">– ThemeSubtitle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemeTextField.html">– ThemeTextField</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemeTitle.html">– ThemeTitle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemeAddBillingSectionButton.html">– ThemeAddBillingSectionButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemeBillingButton.html">– ThemeBillingButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemeBillingSummary.html">– ThemeBillingSummary</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemeSummaryElement.html">– ThemeSummaryElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemeBillingModifyButton.html">– ThemeBillingModifyButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemePaymentInput.html">– ThemePaymentInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemePayButton.html">– ThemePayButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemePaymentForm.html">– ThemePaymentForm</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemePaymentHeader.html">– ThemePaymentHeader</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Theme/ThemePaymentHeaderSubtitle.html">– ThemePaymentHeaderSubtitle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/TokenDetails.html">TokenDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/TokenDetails/TokenType.html">– TokenType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/TokenDetails/Phone.html">– Phone</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:6Frames7Addressa">Address</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:6Frames8ApplePaya">ApplePay</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:6Frames4Carda">Card</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:6Frames7Countrya">Country</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:6Frames5Phonea">Phone</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:6Frames14PhoneValidatora">PhoneValidator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:6Frames12TokenDetailsa">TokenDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:6Frames17TokenRequestErrora">TokenRequestError</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>CardNumberValidating</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CardNumberValidating</span></code></pre>
+
+                </div>
+              </div>
+            
+              <div class="slightly-smaller">
+                <a href="https://github.com/checkout/frames-ios/tree/main/Checkout/Checkout/Source/Validation/Validators/CardNumberValidator.swift#L10-L33">Show on GitHub</a>
+              </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Checkout20CardNumberValidatingP16ValidationSchemea"></a>
+                    <a name="//apple_ref/swift/Alias/ValidationScheme" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Checkout20CardNumberValidatingP16ValidationSchemea">ValidationScheme</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">typealias</span> <span class="kt">ValidationScheme</span> <span class="o">=</span> <span class="p">(</span><span class="nv">isComplete</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">scheme</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:6Frames4Carda">Card</a></span><span class="o">.</span><span class="kt">Scheme</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/main/Checkout/Checkout/Source/Validation/Validators/CardNumberValidator.swift#L11">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Checkout20CardNumberValidatingP13eagerValidate04cardC0s6ResultOyAA0B0V6SchemeOAA15ValidationErrorO05EagerbC0OGSS_tF"></a>
+                    <a name="//apple_ref/swift/Method/eagerValidate(cardNumber:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Checkout20CardNumberValidatingP13eagerValidate04cardC0s6ResultOyAA0B0V6SchemeOAA15ValidationErrorO05EagerbC0OGSS_tF">eagerValidate(cardNumber:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Run a validation on an input that is known to be incomplete</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">eagerValidate</span><span class="p">(</span><span class="nv">cardNumber</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Typealiases.html#/s:6Frames4Carda">Card</a></span><span class="o">.</span><span class="kt">Scheme</span><span class="p">,</span> <span class="kt"><a href="../Enums/ValidationError.html">ValidationError</a></span><span class="o">.</span><span class="kt">EagerCardNumber</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cardNumber</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>incomplete card number to be verified if matching a Card Scheme</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Result with a card scheme if matched or a matching error otherwise</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/main/Checkout/Checkout/Source/Validation/Validators/CardNumberValidator.swift#L18">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Checkout20CardNumberValidatingP8validate04cardC0s6ResultOyAA0B0V6SchemeOAA15ValidationErrorO0bC0OGSS_tF"></a>
+                    <a name="//apple_ref/swift/Method/validate(cardNumber:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Checkout20CardNumberValidatingP8validate04cardC0s6ResultOyAA0B0V6SchemeOAA15ValidationErrorO0bC0OGSS_tF">validate(cardNumber:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Run a validation on an input that is expected to be a card number</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="nv">cardNumber</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Typealiases.html#/s:6Frames4Carda">Card</a></span><span class="o">.</span><span class="kt">Scheme</span><span class="p">,</span> <span class="kt"><a href="../Enums/ValidationError.html">ValidationError</a></span><span class="o">.</span><span class="kt">CardNumber</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cardNumber</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>complete card number to be verified if matching a Card Scheme</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Result with a card scheme if matched or a matching error otherwise</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/main/Checkout/Checkout/Source/Validation/Validators/CardNumberValidator.swift#L25">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Checkout20CardNumberValidatingP20validateCompleteness04cardC0s6ResultOySb10isComplete_AA0B0V6SchemeO6schemetAA15ValidationErrorO0bC0OGSS_tF"></a>
+                    <a name="//apple_ref/swift/Method/validateCompleteness(cardNumber:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Checkout20CardNumberValidatingP20validateCompleteness04cardC0s6ResultOySb10isComplete_AA0B0V6SchemeO6schemetAA15ValidationErrorO0bC0OGSS_tF">validateCompleteness(cardNumber:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Run a validation on an input that is expected to match a card number but unknown whether complete or not</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">validateCompleteness</span><span class="p">(</span><span class="nv">cardNumber</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/CardNumberValidating.html#/s:8Checkout20CardNumberValidatingP16ValidationSchemea">ValidationScheme</a></span><span class="p">,</span> <span class="kt"><a href="../Enums/ValidationError.html">ValidationError</a></span><span class="o">.</span><span class="kt">CardNumber</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cardNumber</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>incomplete card number to be verified if matching a Card Scheme</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>ValidationScheme if successful. This will contain the scheme matched and a boolean to describe if input is complete card number or partial.  ValidationError if a scheme could not be matched</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/main/Checkout/Checkout/Source/Validation/Validators/CardNumberValidator.swift#L32">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2023 <a class="link" href="https://www.checkout.com/" target="_blank" rel="external noopener">Checkout.com</a>. All rights reserved. (Last updated: 2023-07-03)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="noopener" rel="external">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="noopener" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
