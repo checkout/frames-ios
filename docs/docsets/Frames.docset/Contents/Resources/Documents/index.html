@@ -20,7 +20,7 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          Frames 4.0.5 Docs
+          Frames 4.1.0 Docs
         </a>
          (18% documented)
       </p>
@@ -63,9 +63,6 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/DefaultEditBillingDetailsButtonStyle.html">DefaultEditBillingDetailsButtonStyle</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes.html#/c:@M@Frames@objc(cs)ExpiryDateView">ExpiryDateView</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes.html#/c:@M@Frames@objc(cs)PaymentHeaderView">PaymentHeaderView</a>
@@ -144,6 +141,9 @@
                 <a class="nav-group-task-link" href="Protocols/CountrySelectionViewControllerDelegate.html">CountrySelectionViewControllerDelegate</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/ElementBorderStyle.html">ElementBorderStyle</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Protocols/ElementButtonStyle.html">ElementButtonStyle</a>
               </li>
               <li class="nav-group-task">
@@ -207,6 +207,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/DefaultBillingSummaryViewStyle.html">DefaultBillingSummaryViewStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/DefaultBorderStyle.html">DefaultBorderStyle</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/DefaultCancelButtonFormStyle.html">DefaultCancelButtonFormStyle</a>
@@ -273,6 +276,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/Theme/ThemeBillingInput.html">– ThemeBillingInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Theme/ThemeBorderStyle.html">– ThemeBorderStyle</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/Theme/NavigationButtonStyle.html">– NavigationButtonStyle</a>
@@ -420,7 +426,7 @@
 <p><a href="http://cocoapods.org">CocoaPods</a> is the traditional dependency manager for Apple projects. Still supported but not always able to validate all its peculiar ways.</p>
 
 <p>Make sure cocoapods is installed on your machine by running</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>pod --version
+<pre class="highlight shell"><code><span class="nv">$ </span>pod <span class="nt">--version</span>
 </code></pre>
 
 <p>Any version newer than <strong>1.10.0</strong> is a good sign. If not installed, or unsupported, follow <a href="https://guides.cocoapods.org/using/getting-started.html">Cocoapods Getting Started</a></p>
@@ -430,17 +436,21 @@
 <span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'12.0'</span>
 <span class="n">use_frameworks!</span>
 
+<span class="c1"># PhoneNumberKit has stopped publishing Cocoapods releases to Public Registry</span>
+<span class="c1"># This workaround enables application to get the releases straight from source repository </span>
+<span class="n">pod</span> <span class="s1">'PhoneNumberKit'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/marmelroy/PhoneNumberKit'</span>
+
 <span class="n">target</span> <span class="s1">'&lt;Your Target Name&gt;'</span> <span class="k">do</span>
     <span class="n">pod</span> <span class="s1">'Frames'</span><span class="p">,</span> <span class="s1">'~&gt; 4'</span>
 <span class="k">end</span>
 </code></pre>
 
 <p>Then, run the following command in terminal:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>pod install
+<pre class="highlight shell"><code><span class="nv">$ </span>pod <span class="nb">install</span>
 </code></pre>
 
 <p>To update your existing Cocoapod dependencies, use:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>pod update
+<pre class="highlight shell"><code><span class="nv">$ </span>pod update
 </code></pre>
 <h3 id='carthage' class='heading'>Carthage</h3>
 
@@ -596,6 +606,19 @@
 
 <span class="c1">// Change card number input placeholder value</span>
 <span class="n">paymentFormStyle</span><span class="o">.</span><span class="n">expiryDate</span><span class="o">.</span><span class="n">textfield</span><span class="o">.</span><span class="n">placeholder</span> <span class="o">=</span> <span class="s">"00 / 00"</span>
+
+<span class="c1">// Add custom border style around the Payment Button</span>
+<span class="k">if</span> <span class="k">var</span> <span class="nv">payButton</span> <span class="o">=</span> <span class="n">paymentFormStyle</span><span class="o">.</span><span class="n">payButton</span> <span class="k">as?</span> <span class="kt">DefaultPayButtonFormStyle</span> <span class="p">{</span>
+  <span class="k">let</span> <span class="nv">payButtonBorder</span> <span class="o">=</span> <span class="kt">DefaultBorderStyle</span><span class="p">(</span>
+      <span class="nv">cornerRadius</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span>
+      <span class="nv">borderWidth</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nv">normalColor</span><span class="p">:</span> <span class="o">.</span><span class="n">black</span><span class="p">,</span>
+      <span class="nv">focusColor</span><span class="p">:</span> <span class="o">.</span><span class="n">clear</span><span class="p">,</span>
+      <span class="nv">errorColor</span><span class="p">:</span> <span class="o">.</span><span class="n">red</span><span class="p">,</span>
+      <span class="nv">corners</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="n">bottomLeft</span><span class="p">,</span> <span class="o">.</span><span class="n">topRight</span><span class="p">])</span>
+  <span class="n">payButton</span><span class="o">.</span><span class="n">borderStyle</span> <span class="o">=</span> <span class="n">payButtonBorder</span>
+  <span class="n">paymentFormStyle</span><span class="o">.</span><span class="n">payButton</span> <span class="o">=</span> <span class="n">payButton</span>
+<span class="p">}</span>
 
 <span class="c1">// Change Payment button text</span>
 <span class="n">paymentFormStyle</span><span class="o">.</span><span class="n">payButton</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">"Pay £54.63"</span>
@@ -799,7 +822,7 @@ present(threeDSWebViewController, animated: true, completion: nil)
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2023 <a class="link" href="https://www.checkout.com/" target="_blank" rel="external noopener">Checkout.com</a>. All rights reserved. (Last updated: 2023-05-23)</p>
+      <p>&copy; 2023 <a class="link" href="https://www.checkout.com/" target="_blank" rel="external noopener">Checkout.com</a>. All rights reserved. (Last updated: 2023-07-03)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="noopener" rel="external">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="noopener" rel="external">Realm</a> project.</p>
     </section>
   </body>
