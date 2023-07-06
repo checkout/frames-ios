@@ -18,7 +18,7 @@ Please read the text so that you understand how to conduct while contributing to
 
 ## Semantic Versioning
 
-FramesIos use [SemVer](http://semver.org/) for versioning.
+frames-ios use [SemVer](http://semver.org/) for versioning.
 
 ## Reporting Issues
 
@@ -34,7 +34,7 @@ Doing this helps prioritize the most common problems and requests.
 When reporting issues, please include the following:
 
 * The version of Xcode you're using
-* The version of iOS or macOS you're targeting
+* The version of iOS you're targeting
 * The full output of any stack trace or compiler error
 * A code snippet that reproduces the described behavior, if applicable
 * Any other details that would be useful in understanding the problem
@@ -45,13 +45,9 @@ This information will help us review and fix your issue faster.
 
 **Before submitting a pull request,** please make sure the following is done:
 
-1.  Fork [the repository](https://github.com/checkout/frames-ios) and create your branch from `master`.
-2.  If you've added code that should be tested, add tests!
+1.  Fork [the repository](https://github.com/checkout/frames-ios) and create your branch from `develop`.
+2.  If you've added code that should be tested, please add tests.
 3.  If you've changed APIs, update the documentation.
 4.  Ensure the test suite passes.
 5.  Format your code.
 6.  Make sure your code lints.
-
-### License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
