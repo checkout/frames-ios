@@ -1,25 +1,5 @@
 # Contributing Guidelines
 
-This document contains information and guidelines about contributing to this project.
-Please read it before you start participating.
-
-**Topics**
-
-* [Asking Questions](#asking-questions)
-* [Reporting Security Issues](#reporting-security-issues)
-* [Reporting Issues](#reporting-other-issues)
-* [Developers Certificate of Origin](#developers-certificate-of-origin)
-* [Code of Conduct](#code-of-conduct)
-
-## [Code of Conduct](./.github/CODE_OF_CONDUCT.md)
-
-Checkout has adopted the Contributor Covenant Code of Conduct for this project.
-Please read the text so that you understand how to conduct while contributing to this project.
-
-## Semantic Versioning
-
-frames-ios use [SemVer](http://semver.org/) for versioning.
-
 ## Reporting Issues
 
 A great way to contribute to the project
