@@ -147,19 +147,10 @@ app:
     FRAMES_SPM_PROJECT: iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj
   - opts:
       is_expand: false
-    FRAMES_CARTHAGE_PROJECT: iOS Example Frame Carthage/iOS Example Frame Carthage.xcworkspace
-  - opts:
-      is_expand: false
     FRAMES_APP_SCHEME: iOS Example Frame
   - opts:
       is_expand: false
     FRAMES_UITEST_SCHEME: UITest
-  - opts:
-      is_expand: false
-    CARTHAGE_XCFRAMEWORK: --use-xcframeworks --platform iOS --cache-builds
-  - opts:
-      is_expand: false
-    CARTHAGE_FOLDER: Carthage
   - opts:
       is_expand: false
     BITRISE_DISTRIBUTION_METHOD: development
