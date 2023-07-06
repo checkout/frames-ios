@@ -1,0 +1,20 @@
+PODS:
+  - Checkout (4.1.0):
+    - CheckoutEventLoggerKit (~> 1.2.4)
+  - CheckoutEventLoggerKit (1.2.4)
+
+DEPENDENCIES:
+  - Checkout
+
+SPEC REPOS:
+  trunk:
+    - Checkout
+    - CheckoutEventLoggerKit
+
+SPEC CHECKSUMS:
+  Checkout: bcb9b655f7476f50bddd381f5cb88a89fb777a7a
+  CheckoutEventLoggerKit: b780dec46295a34942780ea6230d0d5fd08aa05a
+
+PODFILE CHECKSUM: 9948395056503c062d176df683b3f9fed7b5e07c
+
+COCOAPODS: 1.12.1

@@ -54,7 +54,7 @@ enum LogManager: LogManaging {
   }
 
   static func setup(
-    environment: Checkout.Environment,
+    environment: Environment,
     logger: CheckoutEventLogging,
     uiDevice: DeviceInformationProviding,
     dateProvider: DateProviding,
@@ -120,7 +120,7 @@ enum LogManager: LogManaging {
     return logsSent.insert(id).inserted
   }
 
-  private static func loggingEnironment(from environment: Checkout.Environment) -> CheckoutEventLoggerKit.Environment {
+  private static func loggingEnironment(from environment: Environment) -> CheckoutEventLoggerKit.Environment {
     switch environment {
     case .sandbox:
       return .sandbox
@@ -130,11 +130,11 @@ enum LogManager: LogManaging {
   }
 
   private static func registerTypes() {
-    guard !typesRegistered || !(anyCodable is Checkout.AnyCodable) else {
+    guard !typesRegistered || !(anyCodable is AnyCodable) else {
       return
     }
 
-    typesRegistered = anyCodable is Checkout.AnyCodable
+    typesRegistered = anyCodable is AnyCodable
 
     anyCodable?.add(customEquality: { lhs, rhs in
       switch (lhs, rhs) {

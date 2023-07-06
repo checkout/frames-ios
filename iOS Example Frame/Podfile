@@ -6,8 +6,7 @@ target 'iOS Example Frame' do
   use_frameworks!
 
   # Pods for iOS Example Custom
-  pod 'Frames', :path => '../'
-  pod 'Checkout', :path => '../'
+  pod 'Frames'
 
 end
 

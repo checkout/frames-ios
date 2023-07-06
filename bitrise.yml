@@ -5,6 +5,18 @@ trigger_map:
 - pull_request_source_branch: '*'
   workflow: pr-checks
 workflows:
+  _checkout-build-pods:
+    steps:
+    - cocoapods-install@2.2:
+        inputs:
+        - podfile_path: $CHECKOUT_PODFILE
+    - script@1:
+        title: Build Checkout Pods Test project
+        inputs:
+        - content: |
+            xcodebuild "-workspace" "Checkout/Samples/CocoapodsSample/CheckoutCocoapodsSample.xcworkspace" "-scheme" "CheckoutCocoapodsSample" "-configuration" "Debug" "-destination" "name=iPhone 14 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
+    - cache-push@2: {}
+    after_run: []
   _frames-build-pods:
     steps:
     - cocoapods-install@2.2:
@@ -14,9 +26,18 @@ workflows:
         title: Build Pods Test project
         inputs:
         - content: |
-            xcodebuild "-workspace" "iOS Example Frame/iOS Example Frame.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 14 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
+            xcodebuild "-workspace" "Examples/iOS Example Frame/iOS Example Frame.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 14 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
     - cache-push@2: {}
     after_run: []
+  _checkout-build-spm:
+    steps:
+    - xcode-test@2:
+        title: Build Checkout SPM Test project
+        inputs:
+        - project_path: $CHECKOUT_SPM_PROJECT
+        - scheme: $CHECKOUT_APP_SCHEME
+    - deploy-to-bitrise-io@1: {}
+    - cache-push@2: {}
   _frames-build-spm:
     steps:
     - xcode-test@2:
@@ -49,6 +70,14 @@ workflows:
         - simulator_device: $UITEST_SIMULATOR_DEVICE
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
+  _run-checkout-tests:
+    steps:
+    - xcode-test:
+        inputs:
+        - project_path: Checkout/CheckoutTests
+        - simulator_device: $UITEST_SIMULATOR_DEVICE
+    - deploy-to-bitrise-io@1: {}
+    - cache-push@2: {}
   frames-build-pods-release:
     steps:
     - cocoapods-install@1:
@@ -58,7 +87,7 @@ workflows:
         title: Build Pods Test project
         inputs:
         - content: |
-            xcodebuild "-workspace" "iOS Example Frame/iOS Example Frame.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 14 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
+            xcodebuild "-workspace" "Examples/iOS Example Frame/iOS Example Frame.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 14 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
     - cache-push@2: {}
     after_run: []
     before_run:
@@ -98,8 +127,11 @@ workflows:
   frames-pr-checks:
     after_run:
     - _frames-set-up
+    - _checkout-build-pods
     - _frames-build-pods
+    - _checkout-build-spm
     - _frames-build-spm
+    - _run-checkout-tests
     - _run-uitests
     - _frames-slack
   frames-test-spm:
@@ -113,7 +145,7 @@ workflows:
         title: Build SPM Test project
         inputs:
         - content: |
-            xcodebuild "-project" "iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 14 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
+            xcodebuild "-project" "Examples/iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 14 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
     - cache-push@2: {}
     - slack@3:
         inputs:
@@ -135,19 +167,28 @@ app:
     UITEST_SIMULATOR_DEVICE: iPhone 14 Pro
   - opts:
       is_expand: false
-    FRAMES_COCOAPODS_PROJECT: iOS Example Frame/iOS Example Frame.xcworkspace
+    FRAMES_COCOAPODS_PROJECT: Examples/iOS Example Frame/iOS Example Frame.xcworkspace
   - opts:
       is_expand: false
     BITRISE_EXPORT_METHOD: development
   - opts:
       is_expand: false
-    FRAMES_PODFILE: iOS Example Frame/Podfile
+    FRAMES_PODFILE: Examples/iOS Example Frame/Podfile
   - opts:
       is_expand: false
-    FRAMES_SPM_PROJECT: iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj
+    CHECKOUT_PODFILE: Checkout/Samples/CocoapodsSample/CheckoutCocoapodsSample.xcworkspace
+  - opts:
+      is_expand: false
+    FRAMES_SPM_PROJECT: Examples/iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj
+  - opts:
+      is_expand: false
+    CHECKOUT_SPM_PROJECT: Checkout/Samples/SPMSample/CheckoutSPMSample.xcodeproj
   - opts:
       is_expand: false
     FRAMES_APP_SCHEME: iOS Example Frame
+  - opts:
+      is_expand: false
+    CHECKOUT_APP_SCHEME: CheckoutSPMSample
   - opts:
       is_expand: false
     FRAMES_UITEST_SCHEME: UITest

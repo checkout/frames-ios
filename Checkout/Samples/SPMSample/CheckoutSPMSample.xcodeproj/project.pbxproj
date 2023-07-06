@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CB059399275E472B009A69C1 /* Checkout in Frameworks */ = {isa = PBXBuildFile; productRef = CB059398275E472B009A69C1 /* Checkout */; };
+		16AE73592A5C14600031F794 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 16AE73582A5C14600031F794 /* Frames */; };
 		CB23C13F271DC64F00F68C0E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23C139271DC64F00F68C0E /* SceneDelegate.swift */; };
 		CB23C140271DC64F00F68C0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23C13A271DC64F00F68C0E /* ViewController.swift */; };
 		CB23C141271DC64F00F68C0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB23C13B271DC64F00F68C0E /* Assets.xcassets */; };
 		CB23C143271DC64F00F68C0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23C13D271DC64F00F68C0E /* AppDelegate.swift */; };
 		CB23C148271DC77B00F68C0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB23C146271DC77B00F68C0E /* LaunchScreen.storyboard */; };
 		CB23C149271DC77B00F68C0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB23C147271DC77B00F68C0E /* Main.storyboard */; };
-		CB23C14D271DC86200F68C0E /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23C14B271DC7DF00F68C0E /* Test.swift */; };
 		CB44CFE327BBF6040008EC96 /* ExpirationDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44CFE227BBF6040008EC96 /* ExpirationDatePicker.swift */; };
 		CB44CFE527BBF61B0008EC96 /* Timezone+utc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44CFE427BBF61B0008EC96 /* Timezone+utc.swift */; };
 		CB912CD727CD2F85005E11EE /* UIColor+CKO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB912CD627CD2F85005E11EE /* UIColor+CKO.swift */; };
@@ -40,16 +39,6 @@
 		F52609EA27720ACC0016DAE9 /* SampleAppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52609E927720ACC0016DAE9 /* SampleAppError.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		CB7E989B271DC52C00B1A0F4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CB7E9872271DC52800B1A0F4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CB7E9879271DC52800B1A0F4;
-			remoteInfo = CheckoutSDKCocoapodsSample;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		CB23C139271DC64F00F68C0E /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = ../Sample/Source/SceneDelegate.swift; sourceTree = "<group>"; };
 		CB23C13A271DC64F00F68C0E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../Sample/Source/ViewController.swift; sourceTree = "<group>"; };
@@ -58,18 +47,15 @@
 		CB23C13D271DC64F00F68C0E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../Sample/Source/AppDelegate.swift; sourceTree = "<group>"; };
 		CB23C146271DC77B00F68C0E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../Sample/Source/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB23C147271DC77B00F68C0E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Sample/Source/Main.storyboard; sourceTree = "<group>"; };
-		CB23C14B271DC7DF00F68C0E /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Test.swift; path = ../Sample/Test/Test.swift; sourceTree = "<group>"; };
 		CB44CFE227BBF6040008EC96 /* ExpirationDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationDatePicker.swift; sourceTree = "<group>"; };
 		CB44CFE427BBF61B0008EC96 /* Timezone+utc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Timezone+utc.swift"; path = "../Sample/Source/Timezone+utc.swift"; sourceTree = "<group>"; };
 		CB7E987A271DC52800B1A0F4 /* CheckoutSPMSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckoutSPMSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB7E989A271DC52C00B1A0F4 /* CheckoutSPMSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CheckoutSPMSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB912CD627CD2F85005E11EE /* UIColor+CKO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+CKO.swift"; path = "../Sample/Source/UIColor+CKO.swift"; sourceTree = "<group>"; };
 		CBABF8F627BE89EC00AFAC02 /* NoTextEntryUITextFieldHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTextEntryUITextFieldHelper.swift; sourceTree = "<group>"; };
 		CBCA14DF282BCA1100691796 /* ThreeDSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeDSViewController.swift; sourceTree = "<group>"; };
 		CBCA14E0282BCA1100691796 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		CBCA14E1282BCA1100691796 /* ThreeDSViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThreeDSViewController.xib; sourceTree = "<group>"; };
 		CBCA150C282BCA2200691796 /* CardNumberTextFieldDelegateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardNumberTextFieldDelegateHelper.swift; sourceTree = "<group>"; };
-		CBCE3715271EC53400371FE7 /* checkout-sdk-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "checkout-sdk-ios"; path = ..; sourceTree = "<group>"; };
 		F52609CA27720AC30016DAE9 /* ButtonsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsTableViewCell.swift; sourceTree = "<group>"; };
 		F52609CB27720AC30016DAE9 /* ButtonsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonsTableViewCell.xib; sourceTree = "<group>"; };
 		F52609CC27720AC30016DAE9 /* CardTokenizationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardTokenizationViewController.xib; sourceTree = "<group>"; };
@@ -92,14 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB059399275E472B009A69C1 /* Checkout in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CB7E9897271DC52C00B1A0F4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				16AE73592A5C14600031F794 /* Frames in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,20 +111,10 @@
 			name = Source;
 			sourceTree = "<group>";
 		};
-		CB23C14A271DC7CF00F68C0E /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				CB23C14B271DC7DF00F68C0E /* Test.swift */,
-			);
-			name = Test;
-			sourceTree = "<group>";
-		};
 		CB7E9871271DC52800B1A0F4 = {
 			isa = PBXGroup;
 			children = (
 				CB23C137271DC62600F68C0E /* Source */,
-				CB23C14A271DC7CF00F68C0E /* Test */,
-				CBCE3715271EC53400371FE7 /* checkout-sdk-ios */,
 				CB7E987B271DC52800B1A0F4 /* Products */,
 				CB059397275E472A009A69C1 /* Frameworks */,
 			);
@@ -155,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				CB7E987A271DC52800B1A0F4 /* CheckoutSPMSample.app */,
-				CB7E989A271DC52C00B1A0F4 /* CheckoutSPMSampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,7 +206,6 @@
 				CB7E9876271DC52800B1A0F4 /* Sources */,
 				CB7E9877271DC52800B1A0F4 /* Frameworks */,
 				CB7E9878271DC52800B1A0F4 /* Resources */,
-				F56149F8274F782A00599B4A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -246,29 +213,11 @@
 			);
 			name = CheckoutSPMSample;
 			packageProductDependencies = (
-				CB059398275E472B009A69C1 /* Checkout */,
+				16AE73582A5C14600031F794 /* Frames */,
 			);
 			productName = CheckoutSDKCocoapodsSample;
 			productReference = CB7E987A271DC52800B1A0F4 /* CheckoutSPMSample.app */;
 			productType = "com.apple.product-type.application";
-		};
-		CB7E9899271DC52C00B1A0F4 /* CheckoutSPMSampleUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CB7E98AA271DC52C00B1A0F4 /* Build configuration list for PBXNativeTarget "CheckoutSPMSampleUITests" */;
-			buildPhases = (
-				CB7E9896271DC52C00B1A0F4 /* Sources */,
-				CB7E9897271DC52C00B1A0F4 /* Frameworks */,
-				CB7E9898271DC52C00B1A0F4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CB7E989C271DC52C00B1A0F4 /* PBXTargetDependency */,
-			);
-			name = CheckoutSPMSampleUITests;
-			productName = CheckoutSDKCocoapodsSampleUITests;
-			productReference = CB7E989A271DC52C00B1A0F4 /* CheckoutSPMSampleUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -284,10 +233,6 @@
 						CreatedOnToolsVersion = 13.0;
 						LastSwiftMigration = 1300;
 					};
-					CB7E9899271DC52C00B1A0F4 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = CB7E9879271DC52800B1A0F4;
-					};
 				};
 			};
 			buildConfigurationList = CB7E9875271DC52800B1A0F4 /* Build configuration list for PBXProject "CheckoutSPMSample" */;
@@ -299,12 +244,14 @@
 				Base,
 			);
 			mainGroup = CB7E9871271DC52800B1A0F4;
+			packageReferences = (
+				16AE73572A5C14600031F794 /* XCRemoteSwiftPackageReference "frames-ios" */,
+			);
 			productRefGroup = CB7E987B271DC52800B1A0F4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				CB7E9879271DC52800B1A0F4 /* CheckoutSPMSample */,
-				CB7E9899271DC52C00B1A0F4 /* CheckoutSPMSampleUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -327,34 +274,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CB7E9898271DC52C00B1A0F4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		F56149F8274F782A00599B4A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  cd .. \n  swiftlint lint --strict\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CB7E9876271DC52800B1A0F4 /* Sources */ = {
@@ -383,23 +303,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CB7E9896271DC52C00B1A0F4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB23C14D271DC86200F68C0E /* Test.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CB7E989C271DC52C00B1A0F4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CB7E9879271DC52800B1A0F4 /* CheckoutSPMSample */;
-			targetProxy = CB7E989B271DC52C00B1A0F4 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CB7E98A2271DC52C00B1A0F4 /* Debug */ = {
@@ -579,54 +483,6 @@
 			};
 			name = Release;
 		};
-		CB7E98AB271DC52C00B1A0F4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = E32XBQK4Q5;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.checkout.CheckoutSDKCocoapodsSampleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CheckoutSDKCocoapodsSample;
-			};
-			name = Debug;
-		};
-		CB7E98AC271DC52C00B1A0F4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = E32XBQK4Q5;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.checkout.CheckoutSDKCocoapodsSampleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CheckoutSDKCocoapodsSample;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -648,21 +504,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CB7E98AA271DC52C00B1A0F4 /* Build configuration list for PBXNativeTarget "CheckoutSPMSampleUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CB7E98AB271DC52C00B1A0F4 /* Debug */,
-				CB7E98AC271DC52C00B1A0F4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		16AE73572A5C14600031F794 /* XCRemoteSwiftPackageReference "frames-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/checkout/frames-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		CB059398275E472B009A69C1 /* Checkout */ = {
+		16AE73582A5C14600031F794 /* Frames */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Checkout;
+			package = 16AE73572A5C14600031F794 /* XCRemoteSwiftPackageReference "frames-ios" */;
+			productName = Frames;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

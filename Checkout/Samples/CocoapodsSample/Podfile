@@ -1,0 +1,10 @@
+platform :ios, '12.0'
+install! 'cocoapods', :share_schemes_for_development_pods => true
+
+target 'CheckoutCocoapodsSample' do
+  use_frameworks!
+
+  # Pods for CheckoutSDKCocoapodsSample
+  pod 'Checkout'
+
+end
