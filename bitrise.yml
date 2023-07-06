@@ -1,46 +1,10 @@
----
-format_version: '8'
-default_step_lib_source: 'https://github.com/bitrise-io/bitrise-steplib.git'
+format_version: "8"
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: ios
 trigger_map:
 - pull_request_source_branch: '*'
   workflow: pr-checks
 workflows:
-  pr-checks:
-    after_run:
-    - frames-pr-checks
-
-  # frames pr workflows
-  frames-pr-checks:
-    after_run:
-    - _frames-set-up
-    - _frames-build-carthage
-    - _frames-build-pods
-    - _frames-build-spm
-    - _run-uitests
-    - _frames-slack
-  _frames-set-up:
-    steps:
-    - activate-ssh-key@4:
-        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@8: {}
-    - cache-pull@2: {}
-    - certificate-and-profile-installer@1: {}
-    after_run: []
-  _frames-build-carthage:
-    steps:
-    - carthage@3:
-        inputs:
-        - carthage_options: $CARTHAGE_XCFRAMEWORK
-        - github_access_token: $access_token
-    - script@1:
-        title: Build Carthage Test project
-        inputs:
-        - content: |
-            xcodebuild "-workspace" "iOS Example Frame Carthage/iOS Example Frame Carthage.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 14 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
-    - cache-push@2:
-        inputs:
-        - cache_paths: $CARTHAGE_FOLDER
   _frames-build-pods:
     steps:
     - cocoapods-install@2.2:
@@ -62,6 +26,20 @@ workflows:
         - scheme: $FRAMES_APP_SCHEME
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
+  _frames-set-up:
+    steps:
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@8: {}
+    - cache-pull@2: {}
+    - certificate-and-profile-installer@1: {}
+    after_run: []
+  _frames-slack:
+    steps:
+    - slack@3:
+        inputs:
+        - webhook_url: $iOSBuildsChannel
+    after_run: []
   _run-uitests:
     steps:
     - xcode-test:
@@ -71,51 +49,20 @@ workflows:
         - simulator_device: $UITEST_SIMULATOR_DEVICE
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
-  _frames-slack:
+  frames-build-pods-release:
     steps:
-    - slack@3:
+    - cocoapods-install@1:
         inputs:
-        - webhook_url: $iOSBuildsChannel
+        - podfile_path: $FRAMES_PODFILE
+    - script@1:
+        title: Build Pods Test project
+        inputs:
+        - content: |
+            xcodebuild "-workspace" "iOS Example Frame/iOS Example Frame.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 14 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
+    - cache-push@2: {}
     after_run: []
-  
-  frames-test-spm:
-    steps:
-    - activate-ssh-key@4:
-        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@8: {}
-    - cache-pull@2: {}
-    - certificate-and-profile-installer@1: {}
-    - script@1:
-        title: Build SPM Test project
-        inputs:
-        - content: |
-            xcodebuild "-project" "iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 14 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
-    - cache-push@2: {}
-    - slack@3:
-        inputs:
-        - webhook_url: $FRAMES_IOS_BUILDS_CHANNEL
-  frames-test-carthage:
-    steps:
-    - activate-ssh-key@4:
-        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@8: {}
-    - cache-pull@2: {}
-    - script@1:
-        title: Carthage update
-        inputs:
-        - content: |
-            # run carthage update command.
-            carthage update --use-xcframeworks --platform iOS
-    - certificate-and-profile-installer@1: {}
-    - script@1:
-        title: Build project
-        inputs:
-        - content: |
-            # run carthage update command.
-            xcodebuild "-workspace" "iOS Example Frame Carthage/iOS Example Frame Carthage.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "id=0DD4E294-6C62-4FAD-AEBE-B021CF8DAA56" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
-    - cache-push@2: {}
-  
-  # frames misc workflows
+    before_run:
+    - _frames-set-up
   frames-deploy:
     steps:
     - activate-ssh-key@4:
@@ -148,6 +95,32 @@ workflows:
     - slack@3:
         inputs:
         - webhook_url: $FRAMES_IOS_BUILDS_CHANNEL
+  frames-pr-checks:
+    after_run:
+    - _frames-set-up
+    - _frames-build-pods
+    - _frames-build-spm
+    - _run-uitests
+    - _frames-slack
+  frames-test-spm:
+    steps:
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@8: {}
+    - cache-pull@2: {}
+    - certificate-and-profile-installer@1: {}
+    - script@1:
+        title: Build SPM Test project
+        inputs:
+        - content: |
+            xcodebuild "-project" "iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 14 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
+    - cache-push@2: {}
+    - slack@3:
+        inputs:
+        - webhook_url: $FRAMES_IOS_BUILDS_CHANNEL
+  pr-checks:
+    after_run:
+    - frames-pr-checks
   release-pod-frames:
     steps:
     - script@1:
@@ -155,21 +128,6 @@ workflows:
         - content: pod trunk push --allow-warnings Frames.podspec
     before_run:
     - _frames-set-up
-  frames-build-pods-release:
-    steps:
-    - cocoapods-install@1:
-        inputs:
-        - podfile_path: $FRAMES_PODFILE
-    - script@1:
-        title: Build Pods Test project
-        inputs:
-        - content: |
-            xcodebuild "-workspace" "iOS Example Frame/iOS Example Frame.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 14 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
-    - cache-push@2: {}
-    after_run: []
-    before_run:
-    - _frames-set-up
-
 app:
   envs:
   - opts:
@@ -198,7 +156,7 @@ app:
     FRAMES_UITEST_SCHEME: UITest
   - opts:
       is_expand: false
-    CARTHAGE_XCFRAMEWORK: '--use-xcframeworks --platform iOS --cache-builds'
+    CARTHAGE_XCFRAMEWORK: --use-xcframeworks --platform iOS --cache-builds
   - opts:
       is_expand: false
     CARTHAGE_FOLDER: Carthage
