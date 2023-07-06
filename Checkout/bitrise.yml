@@ -8,15 +8,6 @@ trigger_map:
 - pull_request_source_branch: "*"
   workflow: pr
 workflows:
-  _build_test_carthage:
-    steps:
-    - xcode-test@4:
-        inputs:
-        - project_path: "$BITRISE_PROJECT_PATH_SAMPLE_CARTHAGE"
-        - scheme: "$BITRISE_SCHEME"
-    - deploy-to-bitrise-io@2: {}
-    - cache-push@2: {}
-    after_run: []
   _build_test_pods:
     steps:
     - cocoapods-install@2: {}
@@ -59,21 +50,6 @@ workflows:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH_SAMPLE_PODS"
     after_run: []
-  playground_test_carthage:
-    steps:
-    - activate-ssh-key@4:
-        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@6: {}
-    - cache-pull@2: {}
-    - certificate-and-profile-installer@1: {}
-    - xcode-test@4:
-        inputs:
-        - project_path: "$BITRISE_PROJECT_PATH_SAMPLE_CARTHAGE"
-        - scheme: "$BITRISE_SCHEME"
-    - deploy-to-bitrise-io@2: {}
-    - cache-push@2: {}
-    after_run:
-    - _send_slack_message
   playground_test_pods:
     steps:
     - activate-ssh-key@4:
@@ -116,7 +92,6 @@ workflows:
     - _set_up
     - _build_test_pods
     - _build_test_spm
-    - _build_test_carthage
     - _send_slack_message
     before_run: []
   test_pods:
@@ -152,9 +127,6 @@ app:
   - opts:
       is_expand: false
     BITRISE_DISTRIBUTION_METHOD: development
-  - opts:
-      is_expand: false
-    BITRISE_PROJECT_PATH_SAMPLE_CARTHAGE: CarthageSample/CheckoutCarthageSample.xcodeproj
   - opts:
       is_expand: false
     BITRISE_PROJECT_PATH_SAMPLE_SPM: SPMSample/CheckoutSPMSample.xcodeproj
