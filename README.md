@@ -1,6 +1,5 @@
 # Frames iOS
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Frames.svg)](https://img.shields.io/cocoapods/v/Frames)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/checkout/frames-ios?label=carthage)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/checkout/frames-ios?label=spm)
 
 ![Bitrise](https://img.shields.io/bitrise/b458eecbb0222141?token=7EWxlcgiqm8949liUxqcYA)
@@ -49,7 +48,7 @@ You can find the Frames API reference [on our Jazzy docs](https://checkout.githu
 
 # Integration
 
-We've done our best to support the most common distribution methods on iOS for you. We are in strong favour of [SPM](#Swift-Package-Manager) (Swift Package Manager) but if for any reason this doesn't work for you, we're also supporting [Cocoapods](#Cocoapods) and [Carthage](#Carthage).
+We've done our best to support the most common distribution methods on iOS for you. We are in strong favour of [SPM](#Swift-Package-Manager) (Swift Package Manager) but if for any reason this doesn't work for you, we're also supporting [Cocoapods](#Cocoapods).
 
 ### Swift Package Manager
 [Swift Package Manager](https://swift.org/package-manager/) integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies. It should work out of the box on latest Xcode projects since Xcode 11 and has had a lot of community support, seeing huge adoption over the recent years. This makes it our favourite distribution method and the easiest one to integrate, keep updated and build around.
@@ -92,20 +91,6 @@ To update your existing Cocoapod dependencies, use:
 $ pod update
 ```
 
-### Carthage
-
-[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
-
-If you haven't already, [install Carthage](https://github.com/Carthage/Carthage#installing-carthage)
-
-To integrate Frames into your Xcode project using Carthage, specify it in your `Cartfile`:
-
-```
-github "checkout/frames-ios" ~> 4.0
-```
-
-Run `carthage update --use-xcframeworks` to build the framework and drag the built `Frames` into your Xcode project.
-
 
  
 
@@ -114,10 +99,9 @@ Run `carthage update --use-xcframeworks` to build the framework and drag the bui
 
 We've worked with Product and Design to create simple demo applications that showcase our SDKs, that you'll be able to run locally as soon as you clone the repository (whether directly via git or with suggested integration methods).
 
-Our demo apps also test the supported integration methods (SPM, Cocoapods, Carthage), so if you're having any problems there, they should offer a working example. You will find them in the root of the repository, inside respective folders:
+Our demo apps also test the supported integration methods (SPM, Cocoapods), so if you're having any problems there, they should offer a working example. You will find them in the root of the repository, inside respective folders:
 - iOS Example Frame (Using Cocoapods distribution)
 - iOS Example Frame SPM (SPM distribution)
-- iOS Example Frame Carthage (Carthage distribution)
 
 Once running, you will find the home screen with a number of design options. We have tried to make them pretty contrasting to give your UI/UX teammates an idea of what can be achieved. We've also tried to write the code in the simplest way to track and understand how each UI flavour was created. Just start from `HomeViewController.swift` and follow the button actions in code (`@IBAction`) for some examples on how we achieve those UIs.
 
