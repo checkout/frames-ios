@@ -25,7 +25,7 @@
 		0BD2ECBF28B65DA10041A942 /* FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2ECBE28B65DA10041A942 /* FrameUITests.swift */; };
 		0BD2ECC128B65EC20041A942 /* XCUIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2ECC028B65EC20041A942 /* XCUIApplication+Extension.swift */; };
 		16AE74C22A5C1B210031F794 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 16AE74C12A5C1B210031F794 /* Frames */; };
-		443FCD9426137A4C009D6DE6 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 443FCD9326137A4C009D6DE6 /* Frames */; };
+		16D4D5AF2A5C2A0200597925 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 16D4D5AE2A5C2A0200597925 /* Frames */; };
 		955B092B291CEF0F00DEEAF5 /* ApplePayCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B092A291CEF0F00DEEAF5 /* ApplePayCreator.swift */; };
 		95C8C10D28AD5FEE00B8D3D0 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C0B528AD5FEE00B8D3D0 /* UIViewControllerExtension.swift */; };
 		95C8C10E28AD5FEE00B8D3D0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C0B628AD5FEE00B8D3D0 /* UIViewExtension.swift */; };
@@ -172,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16D4D5AF2A5C2A0200597925 /* Frames in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,7 +181,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				16AE74C22A5C1B210031F794 /* Frames in Frameworks */,
-				443FCD9426137A4C009D6DE6 /* Frames in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +399,9 @@
 				9554571528AE91C300C34759 /* PBXTargetDependency */,
 			);
 			name = "iOS Example FrameUITests";
+			packageProductDependencies = (
+				16D4D5AE2A5C2A0200597925 /* Frames */,
+			);
 			productName = "iOS Example FrameUITests";
 			productReference = 16AE74C42A5C1EBB0031F794 /* iOS Example FrameUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -417,7 +420,6 @@
 			);
 			name = "iOS Example Frame";
 			packageProductDependencies = (
-				443FCD9326137A4C009D6DE6 /* Frames */,
 				16AE74C12A5C1B210031F794 /* Frames */,
 			);
 			productName = "iOS Example Frame";
@@ -985,8 +987,9 @@
 			package = 16AE74C02A5C1B210031F794 /* XCRemoteSwiftPackageReference "frames-ios" */;
 			productName = Frames;
 		};
-		443FCD9326137A4C009D6DE6 /* Frames */ = {
+		16D4D5AE2A5C2A0200597925 /* Frames */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 16AE74C02A5C1B210031F794 /* XCRemoteSwiftPackageReference "frames-ios" */;
 			productName = Frames;
 		};
 /* End XCSwiftPackageProductDependency section */
