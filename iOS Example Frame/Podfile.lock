@@ -14,7 +14,7 @@ PODS:
     - PhoneNumberKit/PhoneNumberKitCore
 
 DEPENDENCIES:
-  - Frames
+  - Frames (= 4.1.0)
 
 SPEC REPOS:
   trunk:
@@ -29,6 +29,6 @@ SPEC CHECKSUMS:
   Frames: 632b5d0c5205d2985c74ffc9900e8b475dd8270b
   PhoneNumberKit: 606b5256b19478442edbb4459177b44b0c5a5182
 
-PODFILE CHECKSUM: 846638ced46fee48284f9deb06ab99c72eaf4548
+PODFILE CHECKSUM: 83636c5d922caa8ced25141691adbfd529c853d1
 
 COCOAPODS: 1.12.1
