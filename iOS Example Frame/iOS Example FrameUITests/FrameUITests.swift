@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Frames
 
 // swiftlint:disable function_body_length
 final class FrameUITests: XCTestCase {

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B5CB6AF2A03E5E100ED468B /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5CB6AE2A03E5DF00ED468B /* AccessibilityIdentifiers.swift */; };
 		0BAEDD562A49A3ED008C65C2 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0BAEDD432A49A3ED008C65C2 /* Roboto-Medium.ttf */; };
 		0BAEDD572A49A3ED008C65C2 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0BAEDD442A49A3ED008C65C2 /* Roboto-Light.ttf */; };
 		0BAEDD5A2A49A3ED008C65C2 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0BAEDD472A49A3ED008C65C2 /* Roboto-Regular.ttf */; };
@@ -25,13 +24,13 @@
 		0BB538AD28B637980060A8DE /* Factory+UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB538AC28B637980060A8DE /* Factory+UITest.swift */; };
 		0BD2ECBF28B65DA10041A942 /* FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2ECBE28B65DA10041A942 /* FrameUITests.swift */; };
 		0BD2ECC128B65EC20041A942 /* XCUIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2ECC028B65EC20041A942 /* XCUIApplication+Extension.swift */; };
-		443FCD9426137A4C009D6DE6 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 443FCD9326137A4C009D6DE6 /* Frames */; };
+		16AE74C22A5C1B210031F794 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 16AE74C12A5C1B210031F794 /* Frames */; };
+		16D4D5AF2A5C2A0200597925 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 16D4D5AE2A5C2A0200597925 /* Frames */; };
 		955B092B291CEF0F00DEEAF5 /* ApplePayCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B092A291CEF0F00DEEAF5 /* ApplePayCreator.swift */; };
 		95C8C10D28AD5FEE00B8D3D0 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C0B528AD5FEE00B8D3D0 /* UIViewControllerExtension.swift */; };
 		95C8C10E28AD5FEE00B8D3D0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C0B628AD5FEE00B8D3D0 /* UIViewExtension.swift */; };
 		95C8C10F28AD5FEE00B8D3D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C0B728AD5FEE00B8D3D0 /* AppDelegate.swift */; };
 		95C8C11328AD5FEE00B8D3D0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C0C928AD5FEE00B8D3D0 /* HomeViewController.swift */; };
-		95C8C11428AD5FEE00B8D3D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95C8C0CA28AD5FEE00B8D3D0 /* Assets.xcassets */; };
 		95C8C11528AD5FEE00B8D3D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95C8C0D028AD5FEE00B8D3D0 /* LaunchScreen.storyboard */; };
 		95C8C11628AD5FEE00B8D3D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95C8C0D228AD5FEE00B8D3D0 /* Main.storyboard */; };
 		95C8C11728AD5FEE00B8D3D0 /* example_apple_pay_payment_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 95C8C0D528AD5FEE00B8D3D0 /* example_apple_pay_payment_data.json */; };
@@ -88,7 +87,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0B5CB6AE2A03E5DF00ED468B /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessibilityIdentifiers.swift; path = ../Source/Core/Constants/AccessibilityIdentifiers.swift; sourceTree = SOURCE_ROOT; };
 		0BAEDD432A49A3ED008C65C2 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		0BAEDD442A49A3ED008C65C2 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		0BAEDD472A49A3ED008C65C2 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -107,15 +105,13 @@
 		0BCCBCEC28DC98F600041870 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		0BD2ECBE28B65DA10041A942 /* FrameUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameUITests.swift; sourceTree = "<group>"; };
 		0BD2ECC028B65EC20041A942 /* XCUIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extension.swift"; sourceTree = "<group>"; };
-		443FCD8F261379CB009D6DE6 /* frames-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "frames-ios"; path = ..; sourceTree = "<group>"; };
-		44E647AC260CEAFF00503D6C /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9554570E28AE91C300C34759 /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		16AE74C32A5C1EBB0031F794 /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		16AE74C42A5C1EBB0031F794 /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		955B092A291CEF0F00DEEAF5 /* ApplePayCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayCreator.swift; sourceTree = "<group>"; };
 		95C8C0B528AD5FEE00B8D3D0 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		95C8C0B628AD5FEE00B8D3D0 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		95C8C0B728AD5FEE00B8D3D0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95C8C0C928AD5FEE00B8D3D0 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		95C8C0CA28AD5FEE00B8D3D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95C8C0D128AD5FEE00B8D3D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95C8C0D328AD5FEE00B8D3D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95C8C0D528AD5FEE00B8D3D0 /* example_apple_pay_payment_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example_apple_pay_payment_data.json; sourceTree = "<group>"; };
@@ -169,7 +165,6 @@
 		95E81B2628C60F4000DE87EE /* ar-001 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-001"; path = "ar-001.lproj/Main.strings"; sourceTree = "<group>"; };
 		95EB97DA2A54753000EE6776 /* ThemeDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeDemo.swift; sourceTree = "<group>"; };
 		95EB97DB2A54753000EE6776 /* ThemeDemo+Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ThemeDemo+Border.swift"; sourceTree = "<group>"; };
-		CB9412DA2825714C00C889E8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16D4D5AF2A5C2A0200597925 /* Frames in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,7 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				443FCD9426137A4C009D6DE6 /* Frames in Frameworks */,
+				16AE74C22A5C1B210031F794 /* Frames in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,14 +212,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9556BBCA28AD60BB00A0AF74 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				95C8C0CA28AD5FEE00B8D3D0 /* Assets.xcassets */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		955B0929291CEC1200DEEAF5 /* Helper */ = {
@@ -360,8 +348,6 @@
 			children = (
 				0BD2ECBE28B65DA10041A942 /* FrameUITests.swift */,
 				0BD2ECC028B65EC20041A942 /* XCUIApplication+Extension.swift */,
-				0B5CB6AE2A03E5DF00ED468B /* AccessibilityIdentifiers.swift */,
-				CB9412DA2825714C00C889E8 /* Info.plist */,
 			);
 			name = "iOS Example FrameUITests";
 			path = "../iOS Example Frame/iOS Example FrameUITests";
@@ -390,11 +376,9 @@
 			children = (
 				CBA81CAA27ABDF21000DF192 /* iOS Example Frame */,
 				CB9412D82825714C00C889E8 /* iOS Example FrameUITests */,
-				44E647AC260CEAFF00503D6C /* iOS Example Frame.app */,
-				443FCD8F261379CB009D6DE6 /* frames-ios */,
 				443FCD9226137A4C009D6DE6 /* Frameworks */,
-				9556BBCA28AD60BB00A0AF74 /* Recovered References */,
-				9554570E28AE91C300C34759 /* iOS Example FrameUITests.xctest */,
+				16AE74C32A5C1EBB0031F794 /* iOS Example Frame.app */,
+				16AE74C42A5C1EBB0031F794 /* iOS Example FrameUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -415,8 +399,11 @@
 				9554571528AE91C300C34759 /* PBXTargetDependency */,
 			);
 			name = "iOS Example FrameUITests";
+			packageProductDependencies = (
+				16D4D5AE2A5C2A0200597925 /* Frames */,
+			);
 			productName = "iOS Example FrameUITests";
-			productReference = 9554570E28AE91C300C34759 /* iOS Example FrameUITests.xctest */;
+			productReference = 16AE74C42A5C1EBB0031F794 /* iOS Example FrameUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		E6646F8920CE6C0900D8353A /* iOS Example Frame */ = {
@@ -426,7 +413,6 @@
 				E6646F8620CE6C0900D8353A /* Sources */,
 				E6646F8720CE6C0900D8353A /* Frameworks */,
 				E6646F8820CE6C0900D8353A /* Resources */,
-				0B6A7FDC2891697800F7CC01 /* SwiftLint Script */,
 			);
 			buildRules = (
 			);
@@ -434,10 +420,10 @@
 			);
 			name = "iOS Example Frame";
 			packageProductDependencies = (
-				443FCD9326137A4C009D6DE6 /* Frames */,
+				16AE74C12A5C1B210031F794 /* Frames */,
 			);
 			productName = "iOS Example Frame";
-			productReference = 44E647AC260CEAFF00503D6C /* iOS Example Frame.app */;
+			productReference = 16AE74C32A5C1EBB0031F794 /* iOS Example Frame.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -478,6 +464,7 @@
 			);
 			mainGroup = E6646F8120CE6C0900D8353A;
 			packageReferences = (
+				16AE74C02A5C1B210031F794 /* XCRemoteSwiftPackageReference "frames-ios" */,
 			);
 			productRefGroup = E6646F8120CE6C0900D8353A;
 			projectDirPath = "";
@@ -518,7 +505,6 @@
 				0BAEDD602A49A3ED008C65C2 /* Roboto-ThinItalic.ttf in Resources */,
 				95C8C12228AD5FEE00B8D3D0 /* SF-Mono-Semibold.otf in Resources */,
 				95C8C13528AD5FEE00B8D3D0 /* GraphikLCG-MediumItalic.otf in Resources */,
-				95C8C11428AD5FEE00B8D3D0 /* Assets.xcassets in Resources */,
 				95C8C12928AD5FEE00B8D3D0 /* GraphikLCG-BlackItalic.otf in Resources */,
 				0BAEDD622A49A3ED008C65C2 /* Roboto-BoldItalic.ttf in Resources */,
 				95C8C13728AD5FEE00B8D3D0 /* GraphikLCG-Thin.otf in Resources */,
@@ -556,33 +542,11 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		0B6A7FDC2891697800F7CC01 /* SwiftLint Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "SwiftLint Script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Adds support for Apple Silicon brew directory export \nPATH=\"$PATH:/opt/homebrew/bin\"  \n\nif which swiftlint > /dev/null; then\n  swiftlint --fix --config ../.swiftlint.yml\n  swiftlint --config ../.swiftlint.yml\nelse\n  echo \"error: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		9554570A28AE91C300C34759 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B5CB6AF2A03E5E100ED468B /* AccessibilityIdentifiers.swift in Sources */,
 				0BD2ECBF28B65DA10041A942 /* FrameUITests.swift in Sources */,
 				0BD2ECC128B65EC20041A942 /* XCUIApplication+Extension.swift in Sources */,
 			);
@@ -1006,9 +970,26 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		16AE74C02A5C1B210031F794 /* XCRemoteSwiftPackageReference "frames-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/checkout/frames-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		443FCD9326137A4C009D6DE6 /* Frames */ = {
+		16AE74C12A5C1B210031F794 /* Frames */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 16AE74C02A5C1B210031F794 /* XCRemoteSwiftPackageReference "frames-ios" */;
+			productName = Frames;
+		};
+		16D4D5AE2A5C2A0200597925 /* Frames */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16AE74C02A5C1B210031F794 /* XCRemoteSwiftPackageReference "frames-ios" */;
 			productName = Frames;
 		};
 /* End XCSwiftPackageProductDependency section */

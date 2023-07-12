@@ -5,6 +5,20 @@ trigger_map:
 - pull_request_source_branch: '*'
   workflow: pr-checks
 workflows:
+
+  _checkout-build-pods:
+    steps:
+    - cocoapods-install@2.2:
+        inputs:
+        - podfile_path: $CHECKOUT_PODFILE
+    - script@1:
+        title: Build Checkout Pods Test project
+        inputs:
+        - content: |
+            xcodebuild "-workspace" "Checkout/Samples/CocoapodsSample/CheckoutCocoapodsSample.xcworkspace" "-scheme" "CheckoutCocoapodsSample" "-configuration" "Debug" "-destination" "name=iPhone 14 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
+    - cache-push@2: {}
+    after_run: []
+
   _frames-build-pods:
     steps:
     - cocoapods-install@2.2:
@@ -17,15 +31,27 @@ workflows:
             xcodebuild "-workspace" "iOS Example Frame/iOS Example Frame.xcworkspace" "-scheme" "iOS Example Frame" "-configuration" "Debug" "-destination" "name=iPhone 14 Pro" "COMPILER_INDEX_STORE_ENABLE=NO" "CODE_SIGNING_ALLOWED=NO" "build" | xcpretty
     - cache-push@2: {}
     after_run: []
+
+  _checkout-build-spm:
+    steps:
+    - xcode-build-for-simulator@1:
+        title: Build Checkout SPM Test project
+        inputs:
+        - project_path: $CHECKOUT_SPM_PROJECT
+        - scheme: $CHECKOUT_APP_SCHEME
+    - deploy-to-bitrise-io@1: {}
+    - cache-push@2: {}
+
   _frames-build-spm:
     steps:
-    - xcode-test@2:
+    - xcode-build-for-simulator@1:
         title: Build SPM Test project
         inputs:
         - project_path: $FRAMES_SPM_PROJECT
         - scheme: $FRAMES_APP_SCHEME
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
+
   _frames-set-up:
     steps:
     - activate-ssh-key@4:
@@ -34,12 +60,7 @@ workflows:
     - cache-pull@2: {}
     - certificate-and-profile-installer@1: {}
     after_run: []
-  _frames-slack:
-    steps:
-    - slack@3:
-        inputs:
-        - webhook_url: $iOSBuildsChannel
-    after_run: []
+
   _run-uitests:
     steps:
     - xcode-test:
@@ -49,6 +70,27 @@ workflows:
         - simulator_device: $UITEST_SIMULATOR_DEVICE
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
+
+  _run-checkout-tests:
+    steps:
+    - script@1:
+        title: Run Checkout Unit Tests
+        inputs:
+        - content: |
+            xcodebuild -scheme CheckoutTests test -destination "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest"
+    - deploy-to-bitrise-io@1: {}
+    - cache-push@2: {}
+
+  _run-frames-tests:
+    steps:
+    - script@1:
+        title: Run Frames Unit Tests
+        inputs:
+        - content: |
+            xcodebuild -scheme FramesTests test -destination "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest"
+    - deploy-to-bitrise-io@1: {}
+    - cache-push@2: {}
+
   frames-build-pods-release:
     steps:
     - cocoapods-install@1:
@@ -63,6 +105,7 @@ workflows:
     after_run: []
     before_run:
     - _frames-set-up
+
   frames-deploy:
     steps:
     - activate-ssh-key@4:
@@ -84,6 +127,7 @@ workflows:
         - export_method: $BITRISE_EXPORT_METHOD
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
+
   frames-playground:
     steps:
     - xcode-test:
@@ -95,13 +139,18 @@ workflows:
     - slack@3:
         inputs:
         - webhook_url: $FRAMES_IOS_BUILDS_CHANNEL
+
   frames-pr-checks:
     after_run:
     - _frames-set-up
+    - _run-checkout-tests
+    - _checkout-build-pods
+    - _checkout-build-spm
+    - _run-frames-tests
     - _frames-build-pods
     - _frames-build-spm
     - _run-uitests
-    - _frames-slack
+
   frames-test-spm:
     steps:
     - activate-ssh-key@4:
@@ -118,16 +167,11 @@ workflows:
     - slack@3:
         inputs:
         - webhook_url: $FRAMES_IOS_BUILDS_CHANNEL
+
   pr-checks:
     after_run:
     - frames-pr-checks
-  release-pod-frames:
-    steps:
-    - script@1:
-        inputs:
-        - content: pod trunk push --allow-warnings Frames.podspec
-    before_run:
-    - _frames-set-up
+
 app:
   envs:
   - opts:
@@ -135,13 +179,17 @@ app:
     UITEST_SIMULATOR_DEVICE: iPhone 14 Pro
   - opts:
       is_expand: false
-    FRAMES_COCOAPODS_PROJECT: iOS Example Frame/iOS Example Frame.xcworkspace
-  - opts:
-      is_expand: false
     BITRISE_EXPORT_METHOD: development
   - opts:
       is_expand: false
+    BITRISE_DISTRIBUTION_METHOD: development
+
+  - opts:
+      is_expand: false
     FRAMES_PODFILE: iOS Example Frame/Podfile
+  - opts:
+      is_expand: false
+    FRAMES_COCOAPODS_PROJECT: iOS Example Frame/iOS Example Frame.xcworkspace
   - opts:
       is_expand: false
     FRAMES_SPM_PROJECT: iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj
@@ -153,7 +201,21 @@ app:
     FRAMES_UITEST_SCHEME: UITest
   - opts:
       is_expand: false
-    BITRISE_DISTRIBUTION_METHOD: development
+    FRAMES_TEST_SCHEME: FramesTests
+
+  - opts:
+      is_expand: false
+    CHECKOUT_PODFILE: Checkout/Samples/CocoapodsSample/Podfile
+  - opts:
+      is_expand: false
+    CHECKOUT_SPM_PROJECT: Checkout/Samples/SPMSample/CheckoutSPMSample.xcodeproj
+  - opts:
+      is_expand: false
+    CHECKOUT_APP_SCHEME: CheckoutSPMSample
+  - opts:
+      is_expand: false
+    CHECKOUT_TEST_SCHEME: CheckoutTests
+
 meta:
   bitrise.io:
     stack: osx-xcode-14.3.x-ventura

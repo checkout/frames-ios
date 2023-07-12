@@ -9,22 +9,8 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CB7E9899271DC52C00B1A0F4"
-               BuildableName = "CheckoutSPMSampleUITests.xctest"
-               BlueprintName = "CheckoutSPMSampleUITests"
-               ReferencedContainer = "container:CheckoutSPMSample.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
             buildForProfiling = "NO"
-            buildForArchiving = "NO"
+            buildForArchiving = "YES"
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
@@ -74,9 +60,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CB7E9899271DC52C00B1A0F4"
-            BuildableName = "CheckoutSPMSampleUITests.xctest"
-            BlueprintName = "CheckoutSPMSampleUITests"
+            BlueprintIdentifier = "CB7E9879271DC52800B1A0F4"
+            BuildableName = "CheckoutSPMSample.app"
+            BlueprintName = "CheckoutSPMSample"
             ReferencedContainer = "container:CheckoutSPMSample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
