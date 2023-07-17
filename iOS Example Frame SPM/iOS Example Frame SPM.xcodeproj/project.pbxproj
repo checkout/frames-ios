@@ -24,6 +24,9 @@
 		0BB538AD28B637980060A8DE /* Factory+UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB538AC28B637980060A8DE /* Factory+UITest.swift */; };
 		0BD2ECBF28B65DA10041A942 /* FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2ECBE28B65DA10041A942 /* FrameUITests.swift */; };
 		0BD2ECC128B65EC20041A942 /* XCUIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2ECC028B65EC20041A942 /* XCUIApplication+Extension.swift */; };
+		16857B742A65F15F005CAE39 /* CardTypeTokenCreationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16857B732A65F15F005CAE39 /* CardTypeTokenCreationTests.swift */; };
+		16857B7E2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16857B7D2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift */; };
+		16857B802A65F9A0005CAE39 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 16857B7F2A65F9A0005CAE39 /* Frames */; };
 		16AE74C22A5C1B210031F794 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 16AE74C12A5C1B210031F794 /* Frames */; };
 		16D4D5AF2A5C2A0200597925 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 16D4D5AE2A5C2A0200597925 /* Frames */; };
 		955B092B291CEF0F00DEEAF5 /* ApplePayCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B092A291CEF0F00DEEAF5 /* ApplePayCreator.swift */; };
@@ -77,6 +80,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		16857B772A65F15F005CAE39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E6646F8220CE6C0900D8353A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E6646F8920CE6C0900D8353A;
+			remoteInfo = "iOS Example Frame";
+		};
 		9554571428AE91C300C34759 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E6646F8220CE6C0900D8353A /* Project object */;
@@ -105,6 +115,9 @@
 		0BCCBCEC28DC98F600041870 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		0BD2ECBE28B65DA10041A942 /* FrameUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameUITests.swift; sourceTree = "<group>"; };
 		0BD2ECC028B65EC20041A942 /* XCUIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extension.swift"; sourceTree = "<group>"; };
+		16857B712A65F15F005CAE39 /* iOS Example Frame Integration Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example Frame Integration Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		16857B732A65F15F005CAE39 /* CardTypeTokenCreationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeTokenCreationTests.swift; sourceTree = "<group>"; };
+		16857B7D2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+TestHelpers.swift"; sourceTree = "<group>"; };
 		16AE74C32A5C1EBB0031F794 /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16AE74C42A5C1EBB0031F794 /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		955B092A291CEF0F00DEEAF5 /* ApplePayCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayCreator.swift; sourceTree = "<group>"; };
@@ -168,6 +181,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		16857B6E2A65F15F005CAE39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16857B802A65F9A0005CAE39 /* Frames in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9554570B28AE91C300C34759 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -205,6 +226,15 @@
 				0BAEDD4B2A49A3ED008C65C2 /* Apache License.txt */,
 			);
 			path = Roboto;
+			sourceTree = "<group>";
+		};
+		16857B722A65F15F005CAE39 /* iOS Example Frame Integration Tests */ = {
+			isa = PBXGroup;
+			children = (
+				16857B732A65F15F005CAE39 /* CardTypeTokenCreationTests.swift */,
+				16857B7D2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift */,
+			);
+			path = "iOS Example Frame Integration Tests";
 			sourceTree = "<group>";
 		};
 		443FCD9226137A4C009D6DE6 /* Frameworks */ = {
@@ -376,15 +406,38 @@
 			children = (
 				CBA81CAA27ABDF21000DF192 /* iOS Example Frame */,
 				CB9412D82825714C00C889E8 /* iOS Example FrameUITests */,
+				16857B722A65F15F005CAE39 /* iOS Example Frame Integration Tests */,
 				443FCD9226137A4C009D6DE6 /* Frameworks */,
 				16AE74C32A5C1EBB0031F794 /* iOS Example Frame.app */,
 				16AE74C42A5C1EBB0031F794 /* iOS Example FrameUITests.xctest */,
+				16857B712A65F15F005CAE39 /* iOS Example Frame Integration Tests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		16857B702A65F15F005CAE39 /* iOS Example Frame Integration Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16857B7C2A65F15F005CAE39 /* Build configuration list for PBXNativeTarget "iOS Example Frame Integration Tests" */;
+			buildPhases = (
+				16857B6D2A65F15F005CAE39 /* Sources */,
+				16857B6E2A65F15F005CAE39 /* Frameworks */,
+				16857B6F2A65F15F005CAE39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				16857B782A65F15F005CAE39 /* PBXTargetDependency */,
+			);
+			name = "iOS Example Frame Integration Tests";
+			packageProductDependencies = (
+				16857B7F2A65F9A0005CAE39 /* Frames */,
+			);
+			productName = "iOS Example Frame Integration Tests";
+			productReference = 16857B712A65F15F005CAE39 /* iOS Example Frame Integration Tests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		9554570D28AE91C300C34759 /* iOS Example FrameUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9554571628AE91C300C34759 /* Build configuration list for PBXNativeTarget "iOS Example FrameUITests" */;
@@ -432,10 +485,14 @@
 		E6646F8220CE6C0900D8353A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = Checkout;
 				TargetAttributes = {
+					16857B702A65F15F005CAE39 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = E6646F8920CE6C0900D8353A;
+					};
 					9554570D28AE91C300C34759 = {
 						CreatedOnToolsVersion = 13.4.1;
 						TestTargetID = E6646F8920CE6C0900D8353A;
@@ -472,11 +529,19 @@
 			targets = (
 				E6646F8920CE6C0900D8353A /* iOS Example Frame */,
 				9554570D28AE91C300C34759 /* iOS Example FrameUITests */,
+				16857B702A65F15F005CAE39 /* iOS Example Frame Integration Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		16857B6F2A65F15F005CAE39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9554570C28AE91C300C34759 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -543,6 +608,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		16857B6D2A65F15F005CAE39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16857B742A65F15F005CAE39 /* CardTypeTokenCreationTests.swift in Sources */,
+				16857B7E2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9554570A28AE91C300C34759 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -576,6 +650,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		16857B782A65F15F005CAE39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E6646F8920CE6C0900D8353A /* iOS Example Frame */;
+			targetProxy = 16857B772A65F15F005CAE39 /* PBXContainerItemProxy */;
+		};
 		9554571528AE91C300C34759 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E6646F8920CE6C0900D8353A /* iOS Example Frame */;
@@ -707,6 +786,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.floriel.iOS-Example-Frame";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -726,6 +808,9 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "cko.iOS-Example-FrameUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -733,6 +818,76 @@
 				TVOS_DEPLOYMENT_TARGET = 13.0;
 			};
 			name = UITest;
+		};
+		16857B792A65F15F005CAE39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = E32XBQK4Q5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.checkout.iOS-Example-Frame-Integration-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "iOS Example Frame";
+			};
+			name = Debug;
+		};
+		16857B7A2A65F15F005CAE39 /* UITest */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = E32XBQK4Q5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.checkout.iOS-Example-Frame-Integration-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "iOS Example Frame";
+			};
+			name = UITest;
+		};
+		16857B7B2A65F15F005CAE39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = E32XBQK4Q5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.checkout.iOS-Example-Frame-Integration-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "iOS Example Frame";
+			};
+			name = Release;
 		};
 		9554571728AE91C300C34759 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -748,6 +903,9 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "cko.iOS-Example-FrameUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -769,6 +927,9 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "cko.iOS-Example-FrameUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -910,6 +1071,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.floriel.iOS-Example-Frame";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -930,6 +1094,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.floriel.iOS-Example-Frame";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -938,6 +1105,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		16857B7C2A65F15F005CAE39 /* Build configuration list for PBXNativeTarget "iOS Example Frame Integration Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16857B792A65F15F005CAE39 /* Debug */,
+				16857B7A2A65F15F005CAE39 /* UITest */,
+				16857B7B2A65F15F005CAE39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9554571628AE91C300C34759 /* Build configuration list for PBXNativeTarget "iOS Example FrameUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -982,6 +1159,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		16857B7F2A65F9A0005CAE39 /* Frames */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16AE74C02A5C1B210031F794 /* XCRemoteSwiftPackageReference "frames-ios" */;
+			productName = Frames;
+		};
 		16AE74C12A5C1B210031F794 /* Frames */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 16AE74C02A5C1B210031F794 /* XCRemoteSwiftPackageReference "frames-ios" */;
