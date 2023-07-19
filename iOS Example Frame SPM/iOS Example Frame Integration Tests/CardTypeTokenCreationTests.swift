@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Frames
+import Frames
 
 final class iOS_Example_Frame_Integration_Tests: XCTestCase {
 
@@ -69,5 +69,6 @@ final class iOS_Example_Frame_Integration_Tests: XCTestCase {
         let alert = app.alerts["Success"]
         XCTAssertNotNil(alert)
         XCTAssertEqual(alert.label, "Success")
+        XCTAssertTrue(alert.contains(text: "tok_"))
     }
 }
