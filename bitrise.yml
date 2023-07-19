@@ -170,6 +170,21 @@ workflows:
     before_run:
     - _frames-set-up
 
+  _run-integration-tests:
+    steps:
+    - xcode-test:
+        inputs:
+        - project_path: $FRAMES_SPM_PROJECT
+        - scheme: $FRAMES_INTEGRATION_TEST_SCHEME
+        - simulator_device: $UITEST_SIMULATOR_DEVICE
+    - deploy-to-bitrise-io@1: {}
+    - cache-push@2: {}
+
+  frames-integration-tests:
+    after_run:
+    - _frames-set-up
+    - _run-integration-tests
+
 app:
   envs:
   - opts:
@@ -196,6 +211,9 @@ app:
   - opts:
       is_expand: false
     FRAMES_UITEST_SCHEME: UITest
+  - opts:
+      is_expand: false
+    FRAMES_INTEGRATION_TEST_SCHEME: Integration Tests
   - opts:
       is_expand: false
     CARTHAGE_XCFRAMEWORK: '--use-xcframeworks --platform iOS --cache-builds'
