@@ -42,6 +42,7 @@ final class iOS_Example_Frame_Integration_Tests: XCTestCase {
                                          file: StaticString = #file,
                                          line: UInt = #line) {
         let app = XCUIApplication()
+        app.launchArguments = ["DISABLE_ANIMATIONS"]
         app.launch()
         app.tapButton(name: "UITestDefault")
 

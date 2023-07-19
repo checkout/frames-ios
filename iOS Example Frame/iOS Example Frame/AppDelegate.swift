@@ -14,6 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        if ProcessInfo.processInfo.arguments.contains("DISABLE_ANIMATIONS") {
+            UIView.setAnimationsEnabled(false)
+            UIApplication.shared.keyWindow?.layer.speed = 100
+        }
+
         if #available(iOS 13.0, *) {
             window?.overrideUserInterfaceStyle = .light
         }
