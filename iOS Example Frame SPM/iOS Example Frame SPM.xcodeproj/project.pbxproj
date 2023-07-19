@@ -117,7 +117,7 @@
 		0BD2ECBE28B65DA10041A942 /* FrameUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameUITests.swift; sourceTree = "<group>"; };
 		0BD2ECC028B65EC20041A942 /* XCUIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extension.swift"; sourceTree = "<group>"; };
 		162CD88D2A6827E900027FEF /* XCUIElement+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+TestHelpers.swift"; sourceTree = "<group>"; };
-		16857B712A65F15F005CAE39 /* iOS Example Frame Integration Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example Frame Integration Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		16857B712A65F15F005CAE39 /* iOS Example Frame Regression Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example Frame Regression Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16857B732A65F15F005CAE39 /* CardTypeTokenCreationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeTokenCreationTests.swift; sourceTree = "<group>"; };
 		16857B7D2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+TestHelpers.swift"; sourceTree = "<group>"; };
 		16AE74C32A5C1EBB0031F794 /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -230,14 +230,14 @@
 			path = Roboto;
 			sourceTree = "<group>";
 		};
-		16857B722A65F15F005CAE39 /* iOS Example Frame Integration Tests */ = {
+		16857B722A65F15F005CAE39 /* iOS Example Frame Regression Tests */ = {
 			isa = PBXGroup;
 			children = (
 				16857B732A65F15F005CAE39 /* CardTypeTokenCreationTests.swift */,
 				16857B7D2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift */,
 				162CD88D2A6827E900027FEF /* XCUIElement+TestHelpers.swift */,
 			);
-			path = "iOS Example Frame Integration Tests";
+			path = "iOS Example Frame Regression Tests";
 			sourceTree = "<group>";
 		};
 		443FCD9226137A4C009D6DE6 /* Frameworks */ = {
@@ -409,20 +409,20 @@
 			children = (
 				CBA81CAA27ABDF21000DF192 /* iOS Example Frame */,
 				CB9412D82825714C00C889E8 /* iOS Example FrameUITests */,
-				16857B722A65F15F005CAE39 /* iOS Example Frame Integration Tests */,
+				16857B722A65F15F005CAE39 /* iOS Example Frame Regression Tests */,
 				443FCD9226137A4C009D6DE6 /* Frameworks */,
 				16AE74C32A5C1EBB0031F794 /* iOS Example Frame.app */,
 				16AE74C42A5C1EBB0031F794 /* iOS Example FrameUITests.xctest */,
-				16857B712A65F15F005CAE39 /* iOS Example Frame Integration Tests.xctest */,
+				16857B712A65F15F005CAE39 /* iOS Example Frame Regression Tests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		16857B702A65F15F005CAE39 /* iOS Example Frame Integration Tests */ = {
+		16857B702A65F15F005CAE39 /* iOS Example Frame Regression Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 16857B7C2A65F15F005CAE39 /* Build configuration list for PBXNativeTarget "iOS Example Frame Integration Tests" */;
+			buildConfigurationList = 16857B7C2A65F15F005CAE39 /* Build configuration list for PBXNativeTarget "iOS Example Frame Regression Tests" */;
 			buildPhases = (
 				16857B6D2A65F15F005CAE39 /* Sources */,
 				16857B6E2A65F15F005CAE39 /* Frameworks */,
@@ -433,12 +433,12 @@
 			dependencies = (
 				16857B782A65F15F005CAE39 /* PBXTargetDependency */,
 			);
-			name = "iOS Example Frame Integration Tests";
+			name = "iOS Example Frame Regression Tests";
 			packageProductDependencies = (
 				16857B7F2A65F9A0005CAE39 /* Frames */,
 			);
 			productName = "iOS Example Frame Integration Tests";
-			productReference = 16857B712A65F15F005CAE39 /* iOS Example Frame Integration Tests.xctest */;
+			productReference = 16857B712A65F15F005CAE39 /* iOS Example Frame Regression Tests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		9554570D28AE91C300C34759 /* iOS Example FrameUITests */ = {
@@ -532,7 +532,7 @@
 			targets = (
 				E6646F8920CE6C0900D8353A /* iOS Example Frame */,
 				9554570D28AE91C300C34759 /* iOS Example FrameUITests */,
-				16857B702A65F15F005CAE39 /* iOS Example Frame Integration Tests */,
+				16857B702A65F15F005CAE39 /* iOS Example Frame Regression Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -1109,7 +1109,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		16857B7C2A65F15F005CAE39 /* Build configuration list for PBXNativeTarget "iOS Example Frame Integration Tests" */ = {
+		16857B7C2A65F15F005CAE39 /* Build configuration list for PBXNativeTarget "iOS Example Frame Regression Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				16857B792A65F15F005CAE39 /* Debug */,

@@ -1,6 +1,6 @@
 //
 //  XCUIElement+TestHelpers.swift
-//  iOS Example Frame Integration Tests
+//  iOS Example Frame Regression Tests
 //
 //  Created by Okhan Okbay on 19/07/2023.
 //  Copyright © 2023 Checkout. All rights reserved.

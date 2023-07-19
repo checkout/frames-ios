@@ -20,6 +20,20 @@
                ReferencedContainer = "container:iOS Example Frame SPM.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "16857B702A65F15F005CAE39"
+               BuildableName = "iOS Example Frame Regression Tests.xctest"
+               BlueprintName = "iOS Example Frame Regression Tests"
+               ReferencedContainer = "container:iOS Example Frame SPM.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -37,17 +51,6 @@
                BlueprintIdentifier = "9554570D28AE91C300C34759"
                BuildableName = "iOS Example FrameUITests.xctest"
                BlueprintName = "iOS Example FrameUITests"
-               ReferencedContainer = "container:iOS Example Frame SPM.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "16857B702A65F15F005CAE39"
-               BuildableName = "iOS Example Frame Integration Tests.xctest"
-               BlueprintName = "iOS Example Frame Integration Tests"
                ReferencedContainer = "container:iOS Example Frame SPM.xcodeproj">
             </BuildableReference>
          </TestableReference>
