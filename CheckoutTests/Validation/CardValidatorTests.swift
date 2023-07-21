@@ -178,6 +178,19 @@ extension CardValidatorTests {
     XCTAssertEqual(dateComponents40?.year, 2021)
   }
 
+  
+  func test_validate_expiryMonthYearString_providedDateInThePast_CurrentYear_returnsCorrectError() {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy/MM/dd HH:mm"
+
+    stubCalendar.dateFromComponentsToReturn = formatter.date(from: "2020/10/01 00:00")
+
+    test_validate(
+      expiryMonth: "01",
+      expiryYear: "2023",
+      expectedResult: .failure(.inThePast))
+  }
+  
   func test_validate_expiryMonthYearString_providedDateInThePast_returnsCorrectError() {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy/MM/dd HH:mm"

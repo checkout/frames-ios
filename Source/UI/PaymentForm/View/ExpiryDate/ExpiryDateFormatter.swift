@@ -77,7 +77,13 @@ struct ExpiryDateFormatter {
                 return (displayString, nil)
             }
         }
-        if yearInt < currentYearLast2Digits {
+
+        let date = Date()
+        guard let currentMonthInt = Int(date.month) else {
+          return (nil, nil)
+        }
+
+        if yearInt <= currentYearLast2Digits && Int(month)! < currentMonthInt {
             return (displayString, .inThePast)
         } else {
             return (displayString, nil)
@@ -112,5 +118,13 @@ struct ExpiryDateFormatter {
             return (finalMonth, nil)
         }
         return (finalMonth, String(year))
+    }
+}
+
+extension Date {
+    var month: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM"
+        return dateFormatter.string(from: self)
     }
 }

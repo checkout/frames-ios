@@ -96,7 +96,7 @@ final class FrameUITests: XCTestCase {
         XCTAssertFalse(payButton.isEnabled)
 
         // 2. Enter complete valid expiry date
-        app.enterText("1288", into: expiryTextField)
+        app.enterText("0623", into: expiryTextField)
         app.staticTexts["Expiry date"].tap()
         XCTAssertFalse(payButton.isEnabled)
 
