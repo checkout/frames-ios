@@ -19,9 +19,12 @@ final class CardTypeTokenCreationTests: XCTestCase {
     func testTokenCreation() {
         let cards: [TestCard] = [
             .init(type: "VISA", number: "4485040371536584", securityCode: "123"),
+            .init(type: "VISA", number: "4911830000000", securityCode: "123"),
+            .init(type: "VISA", number: "4917610000000000003", securityCode: "123"),
             .init(type: "Mastercard", number: "5588686116426417", securityCode: "123"),
             .init(type: "American Express", number: "345678901234564", securityCode: "1234"),
             .init(type: "Maestro", number: "6759649826438453", securityCode: "123"),
+            .init(type: "Maestro", number: "6799990100000000019", securityCode: "123"),
             .init(type: "JCB", number: "3528982710432481", securityCode: "123"),
             .init(type: "Diners", number: "36160940933914", securityCode: "123"),
             .init(type: "Discover", number: "6011111111111117", securityCode: "123"),
