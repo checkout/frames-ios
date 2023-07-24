@@ -49,6 +49,17 @@
                ReferencedContainer = "container:..">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "16857B702A65F15F005CAE39"
+               BuildableName = "iOS Example Frame Regression Tests.xctest"
+               BlueprintName = "iOS Example Frame Regression Tests"
+               ReferencedContainer = "container:iOS Example Frame SPM.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

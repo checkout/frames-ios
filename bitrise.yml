@@ -71,6 +71,14 @@ workflows:
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
 
+  _run-regression-tests:
+    steps:
+    - xcode-test:
+        inputs:
+        - project_path: $FRAMES_SPM_PROJECT
+        - scheme: $FRAMES_REGRESSION_TEST_SCHEME
+        - simulator_device: $UITEST_SIMULATOR_DEVICE
+
   _run-checkout-tests:
     steps:
     - script@1:
@@ -151,6 +159,14 @@ workflows:
     - _frames-build-spm
     - _run-uitests
 
+  frames-regression-tests:
+    after_run:
+    - _frames-set-up
+    - _run-regression-tests
+    - slack@3:
+        inputs:
+        - webhook_url: $FRAMES_IOS_BUILDS_CHANNEL
+
   frames-test-spm:
     steps:
     - activate-ssh-key@4:
@@ -201,8 +217,10 @@ app:
     FRAMES_UITEST_SCHEME: UITest
   - opts:
       is_expand: false
+    FRAMES_REGRESSION_TEST_SCHEME: Regression Tests
+  - opts:
+      is_expand: false
     FRAMES_TEST_SCHEME: FramesTests
-
   - opts:
       is_expand: false
     CHECKOUT_PODFILE: Checkout/Samples/CocoapodsSample/Podfile
