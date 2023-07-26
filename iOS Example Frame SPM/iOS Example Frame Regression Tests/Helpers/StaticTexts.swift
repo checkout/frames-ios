@@ -10,4 +10,5 @@ import Foundation
 
 enum StaticTexts {
     static let cardNumberNotValidError = "Please enter a valid card number"
+    static let securityCodeNotValidError = "Please enter a valid security code"
 }
