@@ -163,9 +163,6 @@ workflows:
     after_run:
     - _frames-set-up
     - _run-regression-tests
-    - slack@3:
-        inputs:
-        - webhook_url: $FRAMES_IOS_BUILDS_CHANNEL
 
   frames-test-spm:
     steps:

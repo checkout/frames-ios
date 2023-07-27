@@ -30,6 +30,9 @@
 		16857B802A65F9A0005CAE39 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 16857B7F2A65F9A0005CAE39 /* Frames */; };
 		16AE74C22A5C1B210031F794 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 16AE74C12A5C1B210031F794 /* Frames */; };
 		16D4D5AF2A5C2A0200597925 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 16D4D5AE2A5C2A0200597925 /* Frames */; };
+		16E91A432A7042AD00DC0D98 /* CardValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E91A422A7042AD00DC0D98 /* CardValidationTests.swift */; };
+		16E91A452A70453B00DC0D98 /* TestCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E91A442A70453B00DC0D98 /* TestCard.swift */; };
+		16E91A482A704AC300DC0D98 /* StaticTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E91A472A704AC300DC0D98 /* StaticTexts.swift */; };
 		955B092B291CEF0F00DEEAF5 /* ApplePayCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B092A291CEF0F00DEEAF5 /* ApplePayCreator.swift */; };
 		95C8C10D28AD5FEE00B8D3D0 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C0B528AD5FEE00B8D3D0 /* UIViewControllerExtension.swift */; };
 		95C8C10E28AD5FEE00B8D3D0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C0B628AD5FEE00B8D3D0 /* UIViewExtension.swift */; };
@@ -122,6 +125,9 @@
 		16857B7D2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+TestHelpers.swift"; sourceTree = "<group>"; };
 		16AE74C32A5C1EBB0031F794 /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16AE74C42A5C1EBB0031F794 /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		16E91A422A7042AD00DC0D98 /* CardValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardValidationTests.swift; sourceTree = "<group>"; };
+		16E91A442A70453B00DC0D98 /* TestCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCard.swift; sourceTree = "<group>"; };
+		16E91A472A704AC300DC0D98 /* StaticTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTexts.swift; sourceTree = "<group>"; };
 		955B092A291CEF0F00DEEAF5 /* ApplePayCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayCreator.swift; sourceTree = "<group>"; };
 		95C8C0B528AD5FEE00B8D3D0 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		95C8C0B628AD5FEE00B8D3D0 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -233,11 +239,22 @@
 		16857B722A65F15F005CAE39 /* iOS Example Frame Regression Tests */ = {
 			isa = PBXGroup;
 			children = (
+				16E91A462A7045D500DC0D98 /* Helpers */,
 				16857B732A65F15F005CAE39 /* CardTypeTokenCreationTests.swift */,
-				16857B7D2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift */,
-				162CD88D2A6827E900027FEF /* XCUIElement+TestHelpers.swift */,
+				16E91A422A7042AD00DC0D98 /* CardValidationTests.swift */,
 			);
 			path = "iOS Example Frame Regression Tests";
+			sourceTree = "<group>";
+		};
+		16E91A462A7045D500DC0D98 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				16E91A442A70453B00DC0D98 /* TestCard.swift */,
+				16857B7D2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift */,
+				162CD88D2A6827E900027FEF /* XCUIElement+TestHelpers.swift */,
+				16E91A472A704AC300DC0D98 /* StaticTexts.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		443FCD9226137A4C009D6DE6 /* Frameworks */ = {
@@ -615,8 +632,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16E91A432A7042AD00DC0D98 /* CardValidationTests.swift in Sources */,
 				16857B742A65F15F005CAE39 /* CardTypeTokenCreationTests.swift in Sources */,
+				16E91A452A70453B00DC0D98 /* TestCard.swift in Sources */,
 				16857B7E2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift in Sources */,
+				16E91A482A704AC300DC0D98 /* StaticTexts.swift in Sources */,
 				162CD88E2A6827E900027FEF /* XCUIElement+TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

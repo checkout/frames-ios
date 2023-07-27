@@ -94,3 +94,15 @@ extension XCUIApplication {
         keys[key].tap()
     }
 }
+
+extension XCUIApplication {
+    func launchFrames() {
+        launchArguments = ["DISABLE_ANIMATIONS"]
+        launch()
+        tapButton(name: "UITestDefault")
+    }
+
+    func tapDoneButton() {
+        toolbars.buttons["Done"].tap()
+    }
+}
