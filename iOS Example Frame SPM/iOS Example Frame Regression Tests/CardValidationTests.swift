@@ -68,3 +68,41 @@ final class CardValidationTests: XCTestCase {
         XCTAssertEqual(app.staticTexts[StaticTexts.cardNumberNotValidError].exists, shouldShowError, "Failed for card number: \(card.number) and scheme: \(card.type), shouldShowError: \(shouldShowError)")
     }
 }
+
+extension CardValidationTests {
+    func testSecurityCodeLenghtsAreVerified() {
+        let app = XCUIApplication()
+        app.launchFrames()
+
+        let setOfCards = Set(tokenableTestCards)
+        let maxCardLength = setOfCards.map(\.number.count).max()!
+
+        setOfCards.forEach { card in
+            verifySecurityCodeLength(card: card, maxCardLength: maxCardLength, app: app)
+        }
+    }
+
+    private func verifySecurityCodeLength(card: TestCard,
+                                          maxCardLength: Int,
+                                          app: XCUIApplication,
+                                          file: StaticString = #file,
+                                          line: UInt = #line) {
+
+        let cardNumberTextField = app.otherElements[AccessibilityIdentifiers.PaymentForm.cardNumber]
+        let securityCodeTextField = app.otherElements[AccessibilityIdentifiers.PaymentForm.cardSecurityCode]
+
+        app.deleteCharacter(count: maxCardLength, from: cardNumberTextField)
+        app.deleteCharacter(count: 4, from: securityCodeTextField)
+
+        app.enterText(card.number, into: cardNumberTextField)
+        app.tapDoneButton()
+
+        app.enterText(card.securityCode, into: securityCodeTextField)
+        app.tapDoneButton()
+        XCTAssertFalse(app.staticTexts[StaticTexts.securityCodeNotValidError].exists, "Failed for: \(card.type) \(card.number)")
+
+        app.deleteCharacter(count: 1, from: securityCodeTextField)
+        app.tapDoneButton()
+        XCTAssertTrue(app.staticTexts[StaticTexts.securityCodeNotValidError].exists, "Failed for: \(card.type) \(card.number)")
+    }
+}

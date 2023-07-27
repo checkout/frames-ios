@@ -12,7 +12,7 @@ enum CardType {
     case visa, mastercard,amex, maestro, jcb, diners, discover, mada
 }
 
-struct TestCard {
+struct TestCard: Hashable {
     let type: CardType
     let number: String
     var securityCode: String = "123"
