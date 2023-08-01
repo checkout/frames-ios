@@ -70,6 +70,9 @@ extension ExpiryDateView: TextFieldViewDelegate {
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     let outputText = textField.replacingCharacters(in: range, with: string) ?? ""
 
+    let validationResult = dateFormatter.createCardExpiry(from: outputText)
+    delegate?.update(result: validationResult)
+
     // If string is empty when this is called, it means there was no character added to the change
     // meaning it is a deletion. We will not reformat a deletion as we risk to block user
     // We will just allow TextField to do its lifecycle and record modified value
@@ -87,9 +90,6 @@ extension ExpiryDateView: TextFieldViewDelegate {
     guard displayValue != nil else {
       return false
     }
-
-    let validationResult = dateFormatter.createCardExpiry(from: outputText)
-    delegate?.update(result: validationResult)
 
     switch validationResult {
     case .success:

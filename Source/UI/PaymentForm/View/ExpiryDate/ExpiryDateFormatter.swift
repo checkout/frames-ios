@@ -45,7 +45,7 @@ struct ExpiryDateFormatter {
     /// If the cardScheme is `unknown`, this validates that the cvv is conforming to internal generic standards
     /// - Parameters:
     ///   - input: The input as received from the user facing UI component
-    /// - Returns: Tuple made of a formatted input for displaying to the user and an error if presented input is not valid.
+    /// - Returns: A formatted input for displaying to the user and nil if presented input is not valid.
     /// If displayString is nil, the text in the UI component should be rejected at last valid input should be maintained!
     func formatForDisplay(input: String) -> String? {
         guard input.count <= dateFormatTextCount else {
