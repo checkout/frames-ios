@@ -19,8 +19,6 @@ final class CardValidationSnapshotTests: XCTestCase {
         app.enterText("1228", into: expiryTextField)
         app.tapDoneButton()
 
-        Helper.wait()
-
         assertSnapshot(matching: expiryTextField.screenshot().image, as: .image(precision: 99.9))
     }
 
@@ -31,8 +29,6 @@ final class CardValidationSnapshotTests: XCTestCase {
         let expiryTextField = app.otherElements[AccessibilityIdentifiers.PaymentForm.cardExpiry]
         app.enterText("521", into: expiryTextField)
         app.tapDoneButton()
-
-        Helper.wait()
         
         assertSnapshot(matching: expiryTextField.screenshot().image, as: .image(precision: 99.9))
     }
@@ -45,8 +41,30 @@ final class CardValidationSnapshotTests: XCTestCase {
         app.enterText("122", into: expiryTextField)
         app.tapDoneButton()
 
-        Helper.wait()
-
         assertSnapshot(matching: expiryTextField.screenshot().image, as: .image(precision: 99.9))
+    }
+}
+
+extension CardValidationSnapshotTests {
+    func testCardNumber_Success() {
+        let app = XCUIApplication()
+        app.launchFrames()
+
+        let cardNumberTextField = app.otherElements[AccessibilityIdentifiers.PaymentForm.cardNumber]
+        app.enterText((0...3).reduce(String(), { x, y in return x + "4242" }), into: cardNumberTextField)
+        app.tapDoneButton()
+
+        assertSnapshot(matching: cardNumberTextField.screenshot().image, as: .image(precision: 99.9))
+    }
+
+    func testCardNumber_Failure() {
+        let app = XCUIApplication()
+        app.launchFrames()
+
+        let cardNumberTextField = app.otherElements[AccessibilityIdentifiers.PaymentForm.cardNumber]
+        app.enterText("1", into: cardNumberTextField)
+        app.tapDoneButton()
+
+        assertSnapshot(matching: cardNumberTextField.screenshot().image, as: .image(precision: 99.9))
     }
 }
