@@ -9,12 +9,23 @@ import Foundation
 @testable import Checkout
 
 final class StubCalendar: CalendarProtocol {
+  var currentDateToReturn: Date?
+
+  func current() -> Date {
+    currentDateToReturn ?? Date()
+  }
+
+  var forceToReturnNilComponents: Bool = false
   var dateFromComponentsToReturn: Date?
   private(set) var dateFromComponentsCalledWith: DateComponents?
 
   func date(from components: DateComponents) -> Date? {
     dateFromComponentsCalledWith = components
-    return dateFromComponentsToReturn
+
+    if forceToReturnNilComponents {
+    return nil
+    }
+    return dateFromComponentsToReturn ?? Calendar(identifier: .gregorian).date(from: components)
   }
 
   var dateByAddingOverride = true

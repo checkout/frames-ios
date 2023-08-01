@@ -164,33 +164,37 @@ extension CardValidatorTests {
       expiryYear: "2021",
       expectedResult: .success(ExpiryDate(month: 11, year: 2021)))
 
-    let dateComponents2040 = stubCalendar.dateFromComponentsCalledWith
-    XCTAssertEqual(dateComponents2040?.month, 11)
-    XCTAssertEqual(dateComponents2040?.year, 2021)
+    let components = stubCalendar.dateFromComponentsCalledWith
+    XCTAssertEqual(components?.month, 11)
+    XCTAssertEqual(components?.year, 2021)
+  }
+
+  func test_validate_expiryMonthYearString_providedMontInThePast_SameYear_returnsCorrectError() {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy/MM/dd HH:mm"
+
+    stubCalendar.currentDateToReturn = formatter.date(from: "2023/06/20 00:00")
 
     test_validate(
-      expiryMonth: "11",
-      expiryYear: "2021",
-      expectedResult: .success(ExpiryDate(month: 11, year: 2021)))
-
-    let dateComponents40 = stubCalendar.dateFromComponentsCalledWith
-    XCTAssertEqual(dateComponents40?.month, 11)
-    XCTAssertEqual(dateComponents40?.year, 2021)
+        expiryMonth: "05",
+        expiryYear: "2023",
+        expectedResult: .failure(.inThePast))
   }
 
   func test_validate_expiryMonthYearString_providedDateInThePast_returnsCorrectError() {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy/MM/dd HH:mm"
 
-    stubCalendar.dateFromComponentsToReturn = formatter.date(from: "2020/10/01 00:00")
+    stubCalendar.currentDateToReturn = formatter.date(from: "2023/05/25 00:00")
 
     test_validate(
       expiryMonth: "11",
-      expiryYear: "2040",
+      expiryYear: "2022",
       expectedResult: .failure(.inThePast))
   }
 
   func test_validate_expiryMonthYearString_calendarDateReturnsNil_returnsCorrectError() {
+    stubCalendar.forceToReturnNilComponents = true
     stubCalendar.dateFromComponentsToReturn = nil
     test_validate(
       expiryMonth: "11",
@@ -247,7 +251,7 @@ extension CardValidatorTests {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy/MM/dd HH:mm"
 
-    stubCalendar.dateFromComponentsToReturn = formatter.date(from: "2099/10/01 00:00")
+    stubCalendar.currentDateToReturn = formatter.date(from: "2039/10/01 00:00")
 
     test_validate(
       expiryMonth: 11,
@@ -273,7 +277,9 @@ extension CardValidatorTests {
   private func test_validate(
     expiryMonth: String,
     expiryYear: String,
-    expectedResult: Result<ExpiryDate, ValidationError.ExpiryDate>
+    expectedResult: Result<ExpiryDate, ValidationError.ExpiryDate>,
+    file: StaticString = #file,
+    line: UInt = #line
   ) {
     let result = subject.validate(
       expiryMonth: expiryMonth,
@@ -284,18 +290,18 @@ extension CardValidatorTests {
 
       switch expectedResult {
       case .success(let expectedExpiryDate):
-        XCTAssertEqual(expiryDate, expectedExpiryDate)
+        XCTAssertEqual(expiryDate, expectedExpiryDate, file: file, line: line)
       case .failure(let error):
-        XCTFail(error.localizedDescription)
+        XCTFail(error.localizedDescription, file: file, line: line)
       }
 
     case .failure(let error):
 
       switch expectedResult {
       case .success(let expiryDate):
-        XCTFail("Unexpected successful expiry date validation: \(expiryDate).")
+        XCTFail("Unexpected successful expiry date validation: \(expiryDate).", file: file, line: line)
       case .failure(let expectedError):
-        XCTAssertEqual(expectedError, error)
+        XCTAssertEqual(expectedError, error, file: file, line: line)
       }
     }
   }

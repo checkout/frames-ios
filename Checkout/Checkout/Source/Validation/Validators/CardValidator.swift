@@ -224,7 +224,7 @@ public class CardValidator: CardValidating {
       return .failure(.invalidMonth)
     }
 
-    let currentDate = Date()
+    let currentDate = calendar.current()
     // using UTC-12 as this is the latest timezone where a card could be valid
     let cardExpiryComponents = DateComponents(
       timeZone: .utcMinus12,
