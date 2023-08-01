@@ -13,3 +13,5 @@ enum Helper {
         let _ = XCTWaiter.wait(for: [XCTestExpectation()], timeout: 0.2)
     }
 }
+
+let snapshotPrecision: Float = 99.9
