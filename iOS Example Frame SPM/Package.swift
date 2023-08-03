@@ -1,0 +1,5 @@
+// swift-tools-version:5.6
+// THIS IS TO EXCLUDE SAMPLE PROJECTS FROM PACKAGE DISTRIBUTION
+import PackageDescription
+let package = Package()
+// THIS IS TO EXCLUDE SAMPLE PROJECTS FROM PACKAGE DISTRIBUTION
