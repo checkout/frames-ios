@@ -4,7 +4,7 @@ import Checkout
 protocol PaymentViewControllerDelegate: AnyObject {
   func addBillingButtonIsPressed(sender: UINavigationController?)
   func editBillingButtonIsPressed(sender: UINavigationController?)
-  func expiryDateIsUpdated(result: Result<ExpiryDate, ExpiryDateError>)
+  func expiryDateIsUpdated(result: Result<ExpiryDate, ValidationError.ExpiryDate>)
   func securityCodeIsUpdated(to newCode: String)
   func cardholderIsUpdated(value: String)
   func payButtonIsPressed()
@@ -400,7 +400,7 @@ extension PaymentViewController: BillingFormSummaryViewDelegate {
 }
 
 extension PaymentViewController: ExpiryDateViewDelegate {
-  func update(result: Result<ExpiryDate, ExpiryDateError>) {
+  func update(result: Result<ExpiryDate, ValidationError.ExpiryDate>) {
     delegate?.expiryDateIsUpdated(result: result)
   }
 }

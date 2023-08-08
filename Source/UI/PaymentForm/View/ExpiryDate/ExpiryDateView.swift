@@ -1,12 +1,8 @@
 import UIKit
 import Checkout
 
-enum ExpiryDateError: Error {
-  case invalidCode
-}
-
 protocol ExpiryDateViewDelegate: AnyObject {
-  func update(result: Result<ExpiryDate, ExpiryDateError>)
+  func update(result: Result<ExpiryDate, ValidationError.ExpiryDate>)
 }
 
 final class ExpiryDateView: UIView {
@@ -59,7 +55,7 @@ extension ExpiryDateView: TextFieldViewDelegate {
     guard textField.text?.count ?? 0 != dateFormatter.dateFormatTextCount else {
       return true
     }
-    let (displayValue, _) = dateFormatter.formatForDisplay(input: textField.text ?? "")
+    let displayValue = dateFormatter.formatForDisplay(input: textField.text ?? "")
     updateErrorViewStyle(isHidden: false,
                          textfieldText: displayValue,
                          error: .incompleteYear)
@@ -74,9 +70,9 @@ extension ExpiryDateView: TextFieldViewDelegate {
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     let outputText = textField.replacingCharacters(in: range, with: string) ?? ""
 
-    defer {
-      delegate?.update(result: dateFormatter.createCardExpiry(from: outputText))
-    }
+    let validationResult = dateFormatter.createCardExpiry(from: outputText)
+    delegate?.update(result: validationResult)
+
     // If string is empty when this is called, it means there was no character added to the change
     // meaning it is a deletion. We will not reformat a deletion as we risk to block user
     // We will just allow TextField to do its lifecycle and record modified value
@@ -87,18 +83,26 @@ extension ExpiryDateView: TextFieldViewDelegate {
 
     // When the input is changed we will reformat it for display, notifying its consumers
     // of the new value
-    let (displayValue, error) = dateFormatter.formatForDisplay(input: outputText)
+    let displayValue = dateFormatter.formatForDisplay(input: outputText)
 
     // Receiving nil from the formatting means the new input is invalid and we should not accept it,
     // dropping it completely
     guard displayValue != nil else {
       return false
     }
-    updateErrorViewStyle(isHidden: error == nil,
-                         textfieldText: displayValue,
-                         error: error)
-    // As we notify consumers, we already update the input value, so we do not want
-    // the lifecycle to duplicate the update
+
+    switch validationResult {
+    case .success:
+        updateErrorViewStyle(isHidden: true,
+                              textfieldText: displayValue,
+                              error: nil)
+
+    case .failure(let error):
+        updateErrorViewStyle(isHidden: false,
+                               textfieldText: displayValue,
+                               error: error)
+    }
+
     return false
   }
 }
