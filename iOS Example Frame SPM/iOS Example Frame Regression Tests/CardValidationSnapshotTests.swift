@@ -11,7 +11,7 @@ import SnapshotTesting
 import XCTest
 
 final class CardValidationSnapshotTests: XCTestCase {
-    func testExpiryDateFormat_Success() {
+    func test_ExpiryDate_Success() {
         let app = XCUIApplication()
         app.launchFrames()
 
@@ -19,10 +19,12 @@ final class CardValidationSnapshotTests: XCTestCase {
         app.enterText("1228", into: expiryTextField)
         app.tapDoneButton()
 
-        assertSnapshot(matching: expiryTextField.screenshot().image, as: .image, record: false)
+        Helper.wait()
+
+        assertSnapshot(matching: expiryTextField.screenshot().image, as: .image(precision: 99.9))
     }
 
-    func testExpiryDateFormat_Failure() {
+    func test_ExpiryDate_InThePast_Failure() {
         let app = XCUIApplication()
         app.launchFrames()
 
@@ -30,6 +32,21 @@ final class CardValidationSnapshotTests: XCTestCase {
         app.enterText("521", into: expiryTextField)
         app.tapDoneButton()
 
-        assertSnapshot(matching: expiryTextField.screenshot().image, as: .image, record: false)
+        Helper.wait()
+        
+        assertSnapshot(matching: expiryTextField.screenshot().image, as: .image(precision: 99.9))
+    }
+
+    func test_ExpiryDate_Invalid_Failure() {
+        let app = XCUIApplication()
+        app.launchFrames()
+
+        let expiryTextField = app.otherElements[AccessibilityIdentifiers.PaymentForm.cardExpiry]
+        app.enterText("122", into: expiryTextField)
+        app.tapDoneButton()
+
+        Helper.wait()
+
+        assertSnapshot(matching: expiryTextField.screenshot().image, as: .image(precision: 99.9))
     }
 }

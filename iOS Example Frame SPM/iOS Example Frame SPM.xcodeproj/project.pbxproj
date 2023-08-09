@@ -32,6 +32,7 @@
 		16C3F8402A7927ED00690639 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 16C3F83F2A7927ED00690639 /* SnapshotTesting */; };
 		16C3F8422A7956EA00690639 /* CardValidationSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3F8412A7956EA00690639 /* CardValidationSnapshotTests.swift */; };
 		16D4D5AF2A5C2A0200597925 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 16D4D5AE2A5C2A0200597925 /* Frames */; };
+		16E0AD482A8455F0003C9DDC /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0AD472A8455F0003C9DDC /* Helper.swift */; };
 		16E91A432A7042AD00DC0D98 /* CardValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E91A422A7042AD00DC0D98 /* CardValidationTests.swift */; };
 		16E91A452A70453B00DC0D98 /* TestCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E91A442A70453B00DC0D98 /* TestCard.swift */; };
 		16E91A482A704AC300DC0D98 /* StaticTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E91A472A704AC300DC0D98 /* StaticTexts.swift */; };
@@ -128,6 +129,7 @@
 		16AE74C32A5C1EBB0031F794 /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16AE74C42A5C1EBB0031F794 /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16C3F8412A7956EA00690639 /* CardValidationSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardValidationSnapshotTests.swift; sourceTree = "<group>"; };
+		16E0AD472A8455F0003C9DDC /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		16E91A422A7042AD00DC0D98 /* CardValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardValidationTests.swift; sourceTree = "<group>"; };
 		16E91A442A70453B00DC0D98 /* TestCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCard.swift; sourceTree = "<group>"; };
 		16E91A472A704AC300DC0D98 /* StaticTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTexts.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				16857B7D2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift */,
 				162CD88D2A6827E900027FEF /* XCUIElement+TestHelpers.swift */,
 				16E91A472A704AC300DC0D98 /* StaticTexts.swift */,
+				16E0AD472A8455F0003C9DDC /* Helper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				16E91A482A704AC300DC0D98 /* StaticTexts.swift in Sources */,
 				16C3F8422A7956EA00690639 /* CardValidationSnapshotTests.swift in Sources */,
 				162CD88E2A6827E900027FEF /* XCUIElement+TestHelpers.swift in Sources */,
+				16E0AD482A8455F0003C9DDC /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
