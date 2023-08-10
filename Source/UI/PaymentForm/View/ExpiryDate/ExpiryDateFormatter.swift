@@ -22,19 +22,22 @@ struct ExpiryDateFormatter {
         self.cardValidator = cardValidator
     }
 
-    func createCardExpiry(from input: String) -> Result<ExpiryDate, ExpiryDateError> {
+    func createCardExpiry(from input: String) -> Result<ExpiryDate, ValidationError.ExpiryDate> {
         let components = getComponents(from: input)
-        guard let month = components.month,
-              let year = components.year else {
-            return .failure(.invalidCode)
+        guard let month = components.month else {
+            return .failure(.invalidMonth)
+        }
+
+        guard let year = components.year else {
+            return .failure(.invalidYear)
         }
 
         let validationOutcome = cardValidator.validate(expiryMonth: month, expiryYear: year)
         switch validationOutcome {
         case .success(let expiryDate):
             return .success(expiryDate)
-        case .failure:
-            return .failure(.invalidCode)
+        case .failure(let error):
+            return .failure(error)
         }
     }
 
@@ -42,16 +45,16 @@ struct ExpiryDateFormatter {
     /// If the cardScheme is `unknown`, this validates that the cvv is conforming to internal generic standards
     /// - Parameters:
     ///   - input: The input as received from the user facing UI component
-    /// - Returns: Tuple made of a formatted input for displaying to the user and an error if presented input is not valid.
+    /// - Returns: A formatted input for displaying to the user and nil if presented input is not valid.
     /// If displayString is nil, the text in the UI component should be rejected at last valid input should be maintained!
-    func formatForDisplay(input: String) -> (displayString: String?, validationError: ValidationError.ExpiryDate?) {
+    func formatForDisplay(input: String) -> String? {
         guard input.count <= dateFormatTextCount else {
-            return (nil, nil)
+            return nil
         }
         let (month, year) = getComponents(from: input)
 
         guard let month else {
-            return (nil, nil)
+            return nil
         }
         var displayString = ""
         if month.count == 1 {
@@ -62,7 +65,7 @@ struct ExpiryDateFormatter {
 
         guard let year,
               let yearInt = Int(year) else {
-            return (displayString, nil)
+            return displayString
         }
 
         displayString += year
@@ -72,15 +75,15 @@ struct ExpiryDateFormatter {
         if year.count == 1 {
             let currentDecade = Int(currentYearLast2Digits / 10)
             if yearInt < currentDecade {
-                return (displayString, .inThePast)
+                return displayString
             } else {
-                return (displayString, nil)
+                return displayString
             }
         }
         if yearInt < currentYearLast2Digits {
-            return (displayString, .inThePast)
+            return displayString
         } else {
-            return (displayString, nil)
+            return displayString
         }
     }
 

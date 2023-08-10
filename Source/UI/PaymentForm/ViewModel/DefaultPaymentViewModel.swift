@@ -157,7 +157,7 @@ extension DefaultPaymentViewModel: BillingFormViewModelDelegate {
 }
 
 extension DefaultPaymentViewModel: PaymentViewControllerDelegate {
-    func expiryDateIsUpdated(result: Result<ExpiryDate, ExpiryDateError>) {
+    func expiryDateIsUpdated(result: Result<ExpiryDate, ValidationError.ExpiryDate>) {
         switch result {
         case .failure:
             cardDetails.expiryDate = nil

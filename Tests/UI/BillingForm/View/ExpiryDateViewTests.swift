@@ -45,7 +45,7 @@ class ExpiryDateViewTests: XCTestCase {
         view.delegate = mockDelegate
         let textField = UITextField()
         textField.text = dateText
-        XCTAssertTrue(view.textField(textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: ""))
+        XCTAssertFalse(view.textField(textField, shouldChangeCharactersIn: NSRange(location: 0, length: 5), replacementString: dateText))
         XCTAssertTrue(view.style?.error?.isHidden == true)
         XCTAssertEqual(view.style?.textfield.text, dateText)
         
@@ -72,7 +72,7 @@ class ExpiryDateViewTests: XCTestCase {
         XCTAssertEqual(mockDelegate.receivedResults.count, 1)
         switch mockDelegate.receivedResults.first {
         case .failure(let error):
-            XCTAssertEqual(error, .invalidCode)
+            XCTAssertEqual(error, .inThePast)
         default:
             XCTFail("Should call delegate with a failure!")
         }
