@@ -37,8 +37,8 @@ final class CardTypeTokenCreationTests: XCTestCase {
         let payButton = app.getButton(name: "Pay")
         payButton.tap()
         let alert = app.alerts["Success"]
-        XCTAssertNotNil(alert)
-        XCTAssertEqual(alert.label, "Success")
-        XCTAssertTrue(alert.contains(text: "tok_"))
+        XCTAssertNotNil(alert, file: file, line: line)
+        XCTAssertEqual(alert.label, "Success", file: file, line: line)
+        XCTAssertTrue(alert.contains(text: "tok_"), file: file, line: line)
     }
 }
