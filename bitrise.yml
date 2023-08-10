@@ -77,7 +77,10 @@ workflows:
         inputs:
         - project_path: $FRAMES_SPM_PROJECT
         - scheme: $FRAMES_REGRESSION_TEST_SCHEME
+        - destination: platform=iOS Simulator,name=iPhone 14 Pro,OS=latest
         - simulator_device: $UITEST_SIMULATOR_DEVICE
+    - deploy-to-bitrise-io@2.3: {}
+    - cache-push@2: {}
 
   _run-checkout-tests:
     steps:
