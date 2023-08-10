@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CalendarProtocol {
+protocol CalendarProtocol: DateProviding {
   func date(from components: DateComponents) -> Date?
   func date(byAdding component: Calendar.Component, value: Int, to date: Date, wrappingComponents: Bool) -> Date?
   func component(_ component: Calendar.Component, from date: Date) -> Int

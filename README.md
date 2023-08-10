@@ -1,5 +1,6 @@
 # Frames iOS
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Frames.svg)](https://img.shields.io/cocoapods/v/Frames)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/checkout/frames-ios?label=carthage)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/checkout/frames-ios?label=spm)
 
 ![Bitrise](https://img.shields.io/bitrise/b458eecbb0222141?token=7EWxlcgiqm8949liUxqcYA)
@@ -21,7 +22,7 @@
 
 ## Documentation
 
-Frames for iOS tokenises consumer data for use within [Checkout.com](https://www.checkout.com)'s payment infrastructure. We want to abstract all the complexity in taking payments and building a payment screen from your Mobile Application and allow you to focus on your core business.
+Frames for iOS tokenises consumer data for use within [Checkout.com](https://www.checkout.com)'s payment infrastructure. We abstract away the complexity of taking payments, building payment UIs, and handling sensitive data.
 
 - [Integration](#Integration): _a guide for consuming our SDK in your iOS app_
 
@@ -33,12 +34,12 @@ Frames for iOS tokenises consumer data for use within [Checkout.com](https://www
 
 - [Other features](#Other-features): _How we help with Apple Pay & 3D Secure Challenges_
 
-- [Migrating](#Migrating): _If you have used 3.5.x version before_
+- [Migrating](#Migrating-from-3.X.X-to-4.X.X): _If you have used 3.5.x version (or lower) before_
 
 - [License](#License)
 
 
-Complete information will be found in the [Checkout Docs](https://docs.checkout.com/integrate/sdks/ios-sdk).
+More integration information can be found in the [Checkout Docs](https://docs.checkout.com/integrate/sdks/ios-sdk).
    
 You can find the Frames API reference [on our Jazzy docs](https://checkout.github.io/frames-ios/index.html).
 
@@ -48,16 +49,16 @@ You can find the Frames API reference [on our Jazzy docs](https://checkout.githu
 
 # Integration
 
-We've done our best to support the most common distribution methods on iOS for you. We are in strong favour of [SPM](#Swift-Package-Manager) (Swift Package Manager) but if for any reason this doesn't work for you, we're also supporting [Cocoapods](#Cocoapods).
+We've done our best to support the most common distribution methods on iOS. We are in strong favour of [SPM](#Swift-Package-Manager) (Swift Package Manager) but if for any reason this doesn't work for you, we also support [Cocoapods](#Cocoapods) and [Carthage](#Carthage).
 
 ### Swift Package Manager
-[Swift Package Manager](https://swift.org/package-manager/) integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies. It should work out of the box on latest Xcode projects since Xcode 11 and has had a lot of community support, seeing huge adoption over the recent years. This makes it our favourite distribution method and the easiest one to integrate, keep updated and build around.
+[Swift Package Manager](https://swift.org/package-manager/) integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies. It should work out of the box on latest Xcode projects since Xcode 11 and has had a lot of community support, seeing huge adoption over the recent years. This is our preferred distribution method for Frames iOS and is the easiest one to integrate, keep updated and build around.
 
-If you've never used it before, get started with Apple's step by step guide into [adding package dependencies to your app](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app) and we'll boost your project in no time! Just use this repository's URL (https://github.com/checkout/frames-ios) when adding dependency.
+If you've never used it before, get started with Apple's step by step guide into [adding package dependencies to your app](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app) . Just use this repository's URL (https://github.com/checkout/frames-ios) when adding dependency.
 
 
 ### CocoaPods
-[CocoaPods](http://cocoapods.org) is the traditional dependency manager for Apple projects. Still supported but not always able to validate all its peculiar ways.
+[CocoaPods](http://cocoapods.org) is the traditional dependency manager for Apple projects. We do support it, but recommend using SPM given it is Apple's preferred dependency manager.
 
 Make sure cocoapods is installed on your machine by running
 ```bash
@@ -91,19 +92,34 @@ To update your existing Cocoapod dependencies, use:
 $ pod update
 ```
 
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+If you haven't already, [install Carthage](https://github.com/Carthage/Carthage#installing-carthage)
+
+To integrate Frames into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```
+github "checkout/frames-ios" ~> 4.0
+```
+
+Run `carthage update --use-xcframeworks` to build the framework and drag the built `Frames` into your Xcode project.
+
 
  
 
 
 # Demo projects
 
-We've worked with Product and Design to create simple demo applications that showcase our SDKs, that you'll be able to run locally as soon as you clone the repository (whether directly via git or with suggested integration methods).
+Our sample application showcases our prebuilt UIs and how our SDK works. You can run this locally once you clone the repository (whether directly via git or with suggested integration methods).
 
-Our demo apps also test the supported integration methods (SPM, Cocoapods), so if you're having any problems there, they should offer a working example. You will find them in the root of the repository, inside respective folders:
+Our demo apps also test the supported integration methods (SPM, Cocoapods, Carthage), so if you're having any problems there, they should offer a working example. You will find them in the root of the repository, inside respective folders:
 - iOS Example Frame (Using Cocoapods distribution)
 - iOS Example Frame SPM (SPM distribution)
+- iOS Example Frame Carthage (Carthage distribution)
 
-Once running, you will find the home screen with a number of design options. We have tried to make them pretty contrasting to give your UI/UX teammates an idea of what can be achieved. We've also tried to write the code in the simplest way to track and understand how each UI flavour was created. Just start from `HomeViewController.swift` and follow the button actions in code (`@IBAction`) for some examples on how we achieve those UIs.
+Once running, you will find the home screen with a number of design options. We have tried to make contrasting payment UIs to give you an idea of what can be achieved. We've also tried to write the code in the simplest way to track and understand how each UI flavour was created. Just start from `HomeViewController.swift` and follow the button actions in code (`@IBAction`) for some examples on how we achieve those UIs.
 
 
 
@@ -113,7 +129,7 @@ Once running, you will find the home screen with a number of design options. We 
 
 # Get started
 
-If you got here, we'll either assume you've completed Integration or you're just curious. If none, then please complete [Integration](#Integration) first.
+This section assumes you've completed initial Integration. If you haven't, then please complete [Integration](#Integration) first.
 
 #### 1. Import `Frames`
 <sub>If unsure where to do it, the ViewController that will be presenting the journey is a good start</sub>
@@ -223,9 +239,11 @@ navigationController?.pushViewController(framesViewController, animated: true)
 
 
 # Make it your own
-<sub>!!! Any customisation needs to be done before creating the ViewController. Once style is submitted to the factory, any changes done on it will not be reflected in the UI !!!</sub>
+<sub> Any customisation needs to be done before creating the ViewController. Once style is submitted to the factory, any changes done on it will not be reflected in the UI </sub>
 
-We have been working hard to provide a selection of ways to make it your own. In order of complexity we'll start with:
+:exclamation:**Note that building your own UI can place you in a higher band of PCI compliance. In order to remain in the lowest level of PCI compliance, we recommend using one of the UI options listed below**:exclamation:
+ 
+In order of complexity we'll start with:
 
 
 ### Modify Default
@@ -405,7 +423,7 @@ extension YourViewController: ThreedsWebViewControllerDelegate {
 
 ### Using Apple Pay
 
-We are able to handle `PKPayment` token data from Apple Pay.
+We are able to handle `PKPayment` token data from Apple Pay, which translates an Apple Pay token into a Checkout.com token for you to pay with from your backend.
 
 ```swift
 // Prepare the service
@@ -438,7 +456,7 @@ If users want to enter a phone number that differs from their device local (i.e.
  
 
 
-# Migrating
+# Migrating from 3.X.X to 4.X.X 
 3DS and Apple Pay processing remain unaffected so using them should still work the same. 
 
 If you're using Frames iOS from versions prior to v4 (we would strongly recommend using the latest release), this update will bring breaking changes that'll require a little development time.

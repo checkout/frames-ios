@@ -7,6 +7,11 @@
 
 import Foundation
 
-extension Calendar: CalendarProtocol { }
+extension Calendar: CalendarProtocol {
+    func current() -> Date {
+        Date()
+    }
+}
+
 extension JSONEncoder: Encoding { }
 extension JSONDecoder: Decoding { }

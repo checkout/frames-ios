@@ -11,9 +11,9 @@ import Checkout
 
 final class MockExpiryDateViewDelegate: ExpiryDateViewDelegate {
     
-    var receivedResults = [Result<Checkout.ExpiryDate, Frames.ExpiryDateError>]()
+    var receivedResults = [Result<Checkout.ExpiryDate, ValidationError.ExpiryDate>]()
     
-    func update(result: Result<Checkout.ExpiryDate, Frames.ExpiryDateError>) {
+    func update(result: Result<Checkout.ExpiryDate, ValidationError.ExpiryDate>) {
         receivedResults.append(result)
     }
     
