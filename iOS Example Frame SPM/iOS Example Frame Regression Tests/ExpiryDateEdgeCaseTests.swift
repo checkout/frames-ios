@@ -14,6 +14,13 @@ final class ExpiryDateEdgeCaseTests: XCTestCase {
         let app = XCUIApplication()
         app.launchFrames()
 
+        let currentMonth = Calendar.current.component(.month, from: Date())
+
+        guard currentMonth > 1 else {
+            _ = XCTSkip("If we get the previous month, we'll end up with getting next year's 12th month in this case")
+            return
+        }
+
         let previousMonthDate = Calendar.current.date(byAdding: .month, value: -1, to: Date())!
         let previousMonth = String(Calendar.current.component(.month, from: previousMonthDate))
         let currentYear = String(Calendar.current.component(.year, from: Date())).suffix(2)
