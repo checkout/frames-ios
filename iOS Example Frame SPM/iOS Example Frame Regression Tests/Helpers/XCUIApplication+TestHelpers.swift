@@ -9,29 +9,29 @@
 import XCTest
 
 extension XCUIApplication {
-
+    
     private enum Constants {
         static let maximumWaitForElement = 10.0
     }
-
+    
     // MARK: Static Texts
     func label(containingText string: String) -> XCUIElement {
         let predicate = NSPredicate(format: "label CONTAINS %@", string)
         return staticTexts.element(matching: predicate)
     }
-
+    
     // MARK: Buttons
     func tapButton(name: String) {
         let predicate = NSPredicate(format: "identifier LIKE %@", name)
         let button = buttons.element(matching: predicate)
         button.tap()
     }
-
+    
     func getButton(name: String) -> XCUIElement {
         let predicate = NSPredicate(format: "identifier LIKE %@", name)
         return buttons.element(matching: predicate)
     }
-
+    
     // MARK: Text input
     func enterText(_ text: String, into element: XCUIElement) {
         guard element.waitForExistence(timeout: Constants.maximumWaitForElement) else {
@@ -42,7 +42,7 @@ extension XCUIApplication {
             keyboardInput(char: $0)
         }
     }
-
+    
     func deleteCharacter(count: Int, from element: XCUIElement) {
         guard element.waitForExistence(timeout: Constants.maximumWaitForElement) else {
             return
@@ -56,7 +56,7 @@ extension XCUIApplication {
             }
         }
     }
-
+    
     private func keyboardInput(char: Character, retryInputIfFailed: Bool = true) {
         var key = "\(char)"
         if key == " " {
@@ -73,13 +73,13 @@ extension XCUIApplication {
                 keys["Shift"].tap()
             }
         }
-
+        
         if !keys[key].exists {
             keys["more"].tap()
             keyboardInput(char: char, retryInputIfFailed: false)
             return
         }
-
+        
         // A fresh simulator will display a hint on using keyboard to the user
         // If this is the first attempt at setting input we can check for it
         if retryInputIfFailed,
@@ -88,7 +88,7 @@ extension XCUIApplication {
             keyboardInput(char: char, retryInputIfFailed: false)
             return
         }
-
+        
         // If after all checks the key is still not found, we will still invoke it
         //   allowing test to fail and snapshot to be generated showing UI
         keys[key].tap()
@@ -97,14 +97,17 @@ extension XCUIApplication {
 
 extension XCUIApplication {
     func launchFrames() {
-        launchArguments = ["DISABLE_ANIMATIONS"]
+        launchArguments += ["DISABLE_ANIMATIONS"]
         launch()
         tapButton(name: "UITestDefault")
     }
-
+    
     func tapDoneButton() {
-        toolbars.buttons["Done"].tap()
-        
-        Helper.wait()
+        toolbars.buttons.element(boundBy: 2).tap()
+    }
+    
+    func set(language: Language) {
+        launchArguments += ["-AppleLanguages", "(\(language.rawValue))"]
+        launchArguments += ["-AppleLocale", language.locale]
     }
 }

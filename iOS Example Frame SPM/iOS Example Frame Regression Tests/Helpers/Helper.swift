@@ -14,4 +14,4 @@ enum Helper {
     }
 }
 
-let snapshotPrecision: Float = 99.9
+let snapshotPrecision: Float = 100
