@@ -100,11 +100,11 @@ extension XCUIApplication {
         launchArguments = ["DISABLE_ANIMATIONS"]
         launch()
         tapButton(name: "UITestDefault")
-
-        Helper.wait()
     }
 
     func tapDoneButton() {
         toolbars.buttons["Done"].tap()
+        
+        Helper.wait()
     }
 }
