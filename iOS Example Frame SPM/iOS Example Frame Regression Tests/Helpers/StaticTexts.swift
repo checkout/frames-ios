@@ -10,5 +10,7 @@ import Foundation
 
 enum StaticTexts {
     static let cardNumberNotValidError = "Please enter a valid card number"
+    static let expiryDateIsInThePastError = "Expiry date is in the past"
+    static let expiryDateIsNotValidError = "Please enter a valid expiry date"
     static let securityCodeNotValidError = "Please enter a valid security code"
 }

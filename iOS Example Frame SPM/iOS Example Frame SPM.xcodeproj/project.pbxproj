@@ -36,6 +36,7 @@
 		16D4D5AF2A5C2A0200597925 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 16D4D5AE2A5C2A0200597925 /* Frames */; };
 		16E0AD482A8455F0003C9DDC /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0AD472A8455F0003C9DDC /* Helper.swift */; };
 		16E5ADDD2A8547F700E78675 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E5ADDC2A8547F700E78675 /* Language.swift */; };
+		16E5ADDF2A854ED700E78675 /* ExpiryDateEdgeCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E5ADDE2A854ED700E78675 /* ExpiryDateEdgeCaseTests.swift */; };
 		16E91A432A7042AD00DC0D98 /* CardValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E91A422A7042AD00DC0D98 /* CardValidationTests.swift */; };
 		16E91A452A70453B00DC0D98 /* TestCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E91A442A70453B00DC0D98 /* TestCard.swift */; };
 		16E91A482A704AC300DC0D98 /* StaticTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E91A472A704AC300DC0D98 /* StaticTexts.swift */; };
@@ -136,6 +137,7 @@
 		16C3F8412A7956EA00690639 /* CardValidationSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardValidationSnapshotTests.swift; sourceTree = "<group>"; };
 		16E0AD472A8455F0003C9DDC /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		16E5ADDC2A8547F700E78675 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		16E5ADDE2A854ED700E78675 /* ExpiryDateEdgeCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiryDateEdgeCaseTests.swift; sourceTree = "<group>"; };
 		16E91A422A7042AD00DC0D98 /* CardValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardValidationTests.swift; sourceTree = "<group>"; };
 		16E91A442A70453B00DC0D98 /* TestCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCard.swift; sourceTree = "<group>"; };
 		16E91A472A704AC300DC0D98 /* StaticTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTexts.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				16E91A422A7042AD00DC0D98 /* CardValidationTests.swift */,
 				16C3F8412A7956EA00690639 /* CardValidationSnapshotTests.swift */,
 				169DF1472A7BFB1B00891DF0 /* CardSchemeFormatSnapshotTests.swift */,
+				16E5ADDE2A854ED700E78675 /* ExpiryDateEdgeCaseTests.swift */,
 			);
 			path = "iOS Example Frame Regression Tests";
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 				16857B742A65F15F005CAE39 /* CardTypeTokenCreationTests.swift in Sources */,
 				169DF1482A7BFB1B00891DF0 /* CardSchemeFormatSnapshotTests.swift in Sources */,
 				16E91A452A70453B00DC0D98 /* TestCard.swift in Sources */,
+				16E5ADDF2A854ED700E78675 /* ExpiryDateEdgeCaseTests.swift in Sources */,
 				16E5ADDD2A8547F700E78675 /* Language.swift in Sources */,
 				16857B7E2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift in Sources */,
 				16E91A482A704AC300DC0D98 /* StaticTexts.swift in Sources */,
