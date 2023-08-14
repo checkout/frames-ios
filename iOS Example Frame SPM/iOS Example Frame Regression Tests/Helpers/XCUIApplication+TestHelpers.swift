@@ -109,7 +109,7 @@ extension XCUIApplication {
     }
     
     func set(language: Language) {
-        launchArguments += ["-AppleLanguages", "(\(language.rawValue))"]
+        launchArguments += ["-AppleLanguages", "(\(language.rawValue), \(Language.en.rawValue))"]
         launchArguments += ["-AppleLocale", language.locale]
     }
 }
