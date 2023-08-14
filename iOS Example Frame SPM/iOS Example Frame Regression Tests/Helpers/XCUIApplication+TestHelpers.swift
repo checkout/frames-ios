@@ -75,9 +75,18 @@ extension XCUIApplication {
         }
         
         if !keys[key].exists {
-            keys["more"].tap()
-            keyboardInput(char: char, retryInputIfFailed: false)
-            return
+            let nextKeyboardEnglish = "Next keyboard"
+            let nextKeyboardArabic = "لوحة المفاتيح التالية"
+
+            if buttons[nextKeyboardEnglish].exists {
+                buttons[nextKeyboardEnglish].tap()
+                keyboardInput(char: char, retryInputIfFailed: false)
+                return
+            } else if buttons[nextKeyboardArabic].exists {
+                buttons[nextKeyboardArabic].tap()
+                keyboardInput(char: char, retryInputIfFailed: false)
+                return
+            }
         }
         
         // A fresh simulator will display a hint on using keyboard to the user
