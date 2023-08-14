@@ -104,6 +104,8 @@ extension XCUIApplication {
     
     func tapDoneButton() {
         toolbars.buttons.element(boundBy: 2).tap()
+
+        Helper.wait()
     }
     
     func set(language: Language) {
