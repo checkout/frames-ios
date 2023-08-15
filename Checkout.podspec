@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '11.0'
   s.swift_version = "5.7"
 
-  s.source_files = 'Source/**/*.swift'
-  s.exclude_files = "Samples/**"
+  s.source_files = 'Checkout/Source/**/*.swift'
+  s.exclude_files = "Checkout/Samples/**"
 
   s.dependency 'CheckoutEventLoggerKit', '~> 1.2.4'
 
