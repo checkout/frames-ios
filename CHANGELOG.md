@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 
 #### 4.x Releases
 
+## [4.2.0](https://github.com/checkout/frames-ios/releases/tag/4.2.0)
+
+Released on 2023-08-15
+
+Updates:
+
+- Structural non-breaking changes to the project
+- Carthage support and sample projects are removed
+- Sample projects for SPM and Cocoapods are removed from the SPM distribution
+- Automated regression tests and snapshot tests are added 
+
+
+## [4.1.1](https://github.com/checkout/frames-ios/releases/tag/4.1.1)
+
+Released on 2023-08-10
+
+Updates:
+
+- Fixes an error that validates expiry date when the date input is in the same year but on a previous month
+
 ## [4.1.0](https://github.com/checkout/frames-ios/releases/tag/4.1.0)
 
 Released on 2023-06-27

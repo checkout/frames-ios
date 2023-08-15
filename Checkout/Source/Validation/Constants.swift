@@ -25,7 +25,7 @@ public enum Constants {
     }
 
   enum Product {
-    static let version = "4.1.1"
+    static let version = "4.2.0"
     static let name = "checkout-ios-sdk"
     static let userAgent = "checkout-sdk-ios/\(version)"
   }
