@@ -1,5 +1,5 @@
 PODS:
-  - Checkout (4.1.1):
+  - Checkout (4.2.0):
     - CheckoutEventLoggerKit (~> 1.2.4)
   - CheckoutEventLoggerKit (1.2.4)
 
@@ -12,7 +12,7 @@ SPEC REPOS:
     - CheckoutEventLoggerKit
 
 SPEC CHECKSUMS:
-  Checkout: d54d720654c18a2d0c3666acbd1752e8a3c455fc
+  Checkout: 7015595d6318c822cd81c3d73bf780507f99f60c
   CheckoutEventLoggerKit: b780dec46295a34942780ea6230d0d5fd08aa05a
 
 PODFILE CHECKSUM: 4ba1f8758ad74e15c9805de325a88bc4f977165e
