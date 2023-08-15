@@ -27,10 +27,8 @@ class HomeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-#if UITEST
     defaultButton.accessibilityIdentifier = "UITestDefault"
     theme1Button.accessibilityIdentifier = "UITestTheme1"
-#endif
   }
 
   override func viewWillDisappear(_ animated: Bool) {

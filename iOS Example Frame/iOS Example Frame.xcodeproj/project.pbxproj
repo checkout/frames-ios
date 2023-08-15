@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -76,7 +76,6 @@
 		1083E6EC0F0AFED5ED8C3EA1 /* Pods_iOS_Example_Frame_iOS_Example_FrameUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_Frame_iOS_Example_FrameUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1099E80F698C7325B120243A /* Pods-iOS Example Frame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example Frame.debug.xcconfig"; path = "Target Support Files/Pods-iOS Example Frame/Pods-iOS Example Frame.debug.xcconfig"; sourceTree = "<group>"; };
 		3DAED23DE034B60868FD06A1 /* Pods-iOS Example Frame-iOS Example FrameUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example Frame-iOS Example FrameUITests.debug.xcconfig"; path = "Target Support Files/Pods-iOS Example Frame-iOS Example FrameUITests/Pods-iOS Example Frame-iOS Example FrameUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		449D4E4E26E7A67300D1A614 /* bitrise.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = bitrise.yml; path = ../bitrise.yml; sourceTree = "<group>"; };
 		660E9B956CB2CE293607C63C /* Pods-iOS Example Frame-iOS Example FrameUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example Frame-iOS Example FrameUITests.release.xcconfig"; path = "Target Support Files/Pods-iOS Example Frame-iOS Example FrameUITests/Pods-iOS Example Frame-iOS Example FrameUITests.release.xcconfig"; sourceTree = "<group>"; };
 		95015EB22A544E6100D1C54D /* ThemeDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeDemo.swift; sourceTree = "<group>"; };
 		95015EB32A544E6200D1C54D /* ThemeDemo+Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ThemeDemo+Border.swift"; sourceTree = "<group>"; };
@@ -318,7 +317,6 @@
 		E6646F8120CE6C0900D8353A = {
 			isa = PBXGroup;
 			children = (
-				449D4E4E26E7A67300D1A614 /* bitrise.yml */,
 				E6646F8C20CE6C0900D8353A /* iOS Example Frame */,
 				E6646F8B20CE6C0900D8353A /* Products */,
 				E6646FAF20CE7A8000D8353A /* Frameworks */,
@@ -385,7 +383,6 @@
 				E6646F8720CE6C0900D8353A /* Frameworks */,
 				E6646F8820CE6C0900D8353A /* Resources */,
 				AB074D63097241ECA1D82051 /* [CP] Embed Pods Frameworks */,
-				953A893728AFDD2900C1CDF5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -402,8 +399,9 @@
 		E6646F8220CE6C0900D8353A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = Checkout;
 				TargetAttributes = {
 					E6646F8920CE6C0900D8353A = {
@@ -495,23 +493,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		953A893728AFDD2900C1CDF5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Adds support for Apple Silicon brew directory export \nPATH=\"$PATH:/opt/homebrew/bin\"  \n\nif which swiftlint > /dev/null; then\n  swiftlint --fix --config ../.swiftlint.yml\n  swiftlint --config ../.swiftlint.yml\nelse\n  echo \"error: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
 		9E6D51F317159F7AB31B3872 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -647,6 +628,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -708,6 +690,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

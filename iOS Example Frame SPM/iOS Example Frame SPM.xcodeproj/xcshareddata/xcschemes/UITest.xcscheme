@@ -20,6 +20,20 @@
                ReferencedContainer = "container:iOS Example Frame SPM.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "16857B702A65F15F005CAE39"
+               BuildableName = "iOS Example Frame Regression Tests.xctest"
+               BlueprintName = "iOS Example Frame Regression Tests"
+               ReferencedContainer = "container:iOS Example Frame SPM.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

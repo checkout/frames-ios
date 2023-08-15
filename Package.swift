@@ -44,7 +44,7 @@ let package = Package(
                 .product(name: "CheckoutEventLoggerKit",
                          package: "checkout-event-logger-ios-framework"),
             ],
-            path: "Checkout/Checkout/Source"
+            path: "Checkout/Source"
         ),
         .testTarget(
             name: "CheckoutTests",
