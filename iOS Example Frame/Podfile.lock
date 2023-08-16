@@ -1,20 +1,20 @@
 PODS:
-  - Checkout (4.1.0):
+  - Checkout (4.2.0):
     - CheckoutEventLoggerKit (~> 1.2.4)
   - CheckoutEventLoggerKit (1.2.4)
-  - Frames (4.1.0):
-    - Checkout (= 4.1.0)
+  - Frames (4.2.0):
+    - Checkout (= 4.2.0)
     - CheckoutEventLoggerKit (~> 1.2.4)
     - PhoneNumberKit
-  - PhoneNumberKit (3.6.5):
-    - PhoneNumberKit/PhoneNumberKitCore (= 3.6.5)
-    - PhoneNumberKit/UIKit (= 3.6.5)
-  - PhoneNumberKit/PhoneNumberKitCore (3.6.5)
-  - PhoneNumberKit/UIKit (3.6.5):
+  - PhoneNumberKit (3.6.7):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.6.7)
+    - PhoneNumberKit/UIKit (= 3.6.7)
+  - PhoneNumberKit/PhoneNumberKitCore (3.6.7)
+  - PhoneNumberKit/UIKit (3.6.7):
     - PhoneNumberKit/PhoneNumberKitCore
 
 DEPENDENCIES:
-  - Frames (= 4.1.0)
+  - Frames (~> 4.0)
 
 SPEC REPOS:
   trunk:
@@ -24,11 +24,11 @@ SPEC REPOS:
     - PhoneNumberKit
 
 SPEC CHECKSUMS:
-  Checkout: bcb9b655f7476f50bddd381f5cb88a89fb777a7a
+  Checkout: 7015595d6318c822cd81c3d73bf780507f99f60c
   CheckoutEventLoggerKit: b780dec46295a34942780ea6230d0d5fd08aa05a
-  Frames: 632b5d0c5205d2985c74ffc9900e8b475dd8270b
-  PhoneNumberKit: 606b5256b19478442edbb4459177b44b0c5a5182
+  Frames: ce1ad1ac535687e85f34ef04ae353b52837b1bb4
+  PhoneNumberKit: 43b5169526cc417398c8f13f77c97552c1c6ed76
 
-PODFILE CHECKSUM: 83636c5d922caa8ced25141691adbfd529c853d1
+PODFILE CHECKSUM: fba393caadd9a0d23d2a78e0cd4503696997986c
 
 COCOAPODS: 1.12.1

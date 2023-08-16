@@ -76,7 +76,7 @@ use_frameworks!
 pod 'PhoneNumberKit', :git => 'https://github.com/marmelroy/PhoneNumberKit'
 
 target '<Your Target Name>' do
-    pod 'Frames', '~> 4'
+    pod 'Frames', '~> 4.0'
 end
 ```
 
