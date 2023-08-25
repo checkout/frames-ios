@@ -11,7 +11,7 @@ protocol PaymentViewControllerDelegate: AnyObject {
 }
 
 // swiftlint:disable file_length
-final class PaymentViewController: UIViewController {
+final class FramesPaymentViewController: UIViewController {
 
   // MARK: - Variables
 
@@ -173,7 +173,7 @@ final class PaymentViewController: UIViewController {
 
 // MARK: View Model Integration
 
-extension PaymentViewController {
+extension FramesPaymentViewController {
   private func setupViewModel() {
     delegate = self.viewModel as? PaymentViewControllerDelegate
     updateBackgroundViews()
@@ -323,7 +323,7 @@ extension PaymentViewController {
 
 // MARK: Setup Views
 
-extension PaymentViewController {
+extension FramesPaymentViewController {
   private func setupViewsInOrder() {
     setupScrollView()
     setupStackView()
@@ -387,43 +387,43 @@ extension PaymentViewController {
   }
 }
 
-extension PaymentViewController: SelectionButtonViewDelegate {
+extension FramesPaymentViewController: SelectionButtonViewDelegate {
   func selectionButtonIsPressed() {
     delegate?.addBillingButtonIsPressed(sender: navigationController)
   }
 }
 
-extension PaymentViewController: BillingFormSummaryViewDelegate {
+extension FramesPaymentViewController: BillingFormSummaryViewDelegate {
   func summaryButtonIsPressed() {
     delegate?.editBillingButtonIsPressed(sender: navigationController)
   }
 }
 
-extension PaymentViewController: ExpiryDateViewDelegate {
+extension FramesPaymentViewController: ExpiryDateViewDelegate {
   func update(result: Result<ExpiryDate, ValidationError.ExpiryDate>) {
     delegate?.expiryDateIsUpdated(result: result)
   }
 }
 
-extension PaymentViewController: CardholderDelegate {
+extension FramesPaymentViewController: CardholderDelegate {
   func cardholderUpdated(to cardholderInput: String) {
     delegate?.cardholderIsUpdated(value: cardholderInput)
   }
 }
 
-extension PaymentViewController: SecurityCodeViewDelegate {
+extension FramesPaymentViewController: SecurityCodeViewDelegate {
   func update(securityCode: String) {
     delegate?.securityCodeIsUpdated(to: securityCode)
   }
 }
 
-extension PaymentViewController: ButtonViewDelegate {
+extension FramesPaymentViewController: ButtonViewDelegate {
   func selectionButtonIsPressed(sender: UIView) {
     delegate?.payButtonIsPressed()
   }
 }
 
-extension PaymentViewController: UIScrollViewDelegate {
+extension FramesPaymentViewController: UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     let contentOffsetY = scrollView.contentOffset.y + scrollView.adjustedContentInset.top
 
