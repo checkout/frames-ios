@@ -30,7 +30,7 @@ class FramesFactoryTests: XCTestCase {
     let formConfig = PaymentFormConfiguration(apiKey: "", environment: .sandbox, supportedSchemes: [.visa], billingFormData: billingForm)
     let formStyle = PaymentStyle(paymentFormStyle: paymentFormStyle, billingFormStyle: billingFormStyle)
     let viewController = PaymentFormFactory.buildViewController(configuration: formConfig, style: formStyle) { _ in }
-    let paymentViewController = try XCTUnwrap(viewController as? PaymentViewController)
+    let paymentViewController = try XCTUnwrap(viewController as? FramesPaymentViewController)
     let viewModel = try XCTUnwrap(paymentViewController.viewModel)
 
     XCTAssertNotNil(paymentViewController.viewModel)
