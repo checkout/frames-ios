@@ -1,0 +1,122 @@
+name: Verify PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - 'main'
+      - 'develop'
+      - 'release/*'
+
+env:
+  destination: "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest"
+  configuration: "Debug"
+  noIndex: "COMPILER_INDEX_STORE_ENABLE=NO"
+  noSigning: "CODE_SIGNING_ALLOWED=NO"
+  versionXcode: "14.3.1"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checkout:
+    name: Checkout Verification
+    runs-on: macos-13
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Select Xcode
+        run: |
+          sudo xcode-select -switch /Applications/Xcode_${versionXcode}.app && /usr/bin/xcodebuild -version
+
+      - name: Log xcodebuild Version
+        run: |
+          xcodebuild -version
+
+      - name: Run Checkout Tests
+        run: |
+          set -o pipefail && xcodebuild -scheme "${scheme}" test -destination "${destination}" "${noIndex}" "${noSigning}" | xcpretty
+        env:
+          scheme: CheckoutTests
+
+      - name: Build Checkout SPM Test Project
+        run: |
+          set -o pipefail && xcodebuild "build" "-project" "${path}" "-scheme" "${scheme}" "-configuration" "${configuration}" "-destination" "${destination}" "${noIndex}" "${noSigning}" | xcpretty
+        env:
+          path: "Checkout/Samples/SPMSample/CheckoutSPMSample.xcodeproj"
+          scheme: "CheckoutSPMSample"
+
+      - name: Checkout Pod Update
+        run: |
+          cd Checkout/Samples/CocoapodsSample
+          pod update
+
+      - name: Build Checkout CocoaPods Test Project
+        run: |
+          set -o pipefail && xcodebuild "build" "-workspace" "${path}" "-scheme" "${scheme}" "-configuration" "${configuration}" "-destination" "${destination}" "${noIndex}" "${noSigning}" | xcpretty
+        env:
+          path: "Checkout/Samples/CocoapodsSample/CheckoutCocoapodsSample.xcworkspace"
+          scheme: "CheckoutCocoapodsSample"
+
+  frames:
+    name: Frames Verification
+    runs-on: macos-13
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Select Xcode
+        run: |
+          sudo xcode-select -switch /Applications/Xcode_${versionXcode}.app && /usr/bin/xcodebuild -version
+
+      - name: Log xcodebuild Version
+        run: |
+          xcodebuild -version
+
+      - name: Run Frames Unit Tests
+        run: |
+          set -o pipefail && xcodebuild -scheme "${scheme}" test -destination "${destination}" "${noIndex}" "${noSigning}" | xcpretty
+        env:
+          scheme: "FramesTests"
+
+      - name: Build Frames SPM Test Project
+        run: |
+          set -o pipefail && xcodebuild "build" "-project" "${path}" "-scheme" "${scheme}" "-configuration" "${configuration}" "-destination" "${destination}" "${noIndex}" "${noSigning}" | xcpretty
+        env:
+          path: "iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj"
+          scheme: "iOS Example Frame"
+
+      - name: Frames Pod Update
+        run: |
+          cd iOS\ Example\ Frame
+          pod update
+
+      - name: Build Frames CocoaPods Test Project
+        run: |
+          set -o pipefail && xcodebuild "build" "-workspace" "${path}" "-scheme" "${scheme}" "-configuration" "${configuration}" "-destination" "${destination}" "${noIndex}" "${noSigning}" | xcpretty
+        env:
+          path: "iOS Example Frame/iOS Example Frame.xcworkspace"
+          scheme: "iOS Example Frame"
+
+  run-ui-tests:
+    name: Run UI Tests
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Log xcodebuild Version
+        run: |
+          xcodebuild -version
+
+      - name: Run UI Tests
+        run: |
+          set -o pipefail && xcodebuild test "-project" "${path}" "-scheme" "${scheme}" "-configuration" "${scheme}" "-destination" "${destination}"
+        env:
+          path: "iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj"
+          scheme: "UITest"
