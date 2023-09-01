@@ -19,7 +19,7 @@ public enum PaymentFormFactory {
                                                 supportedSchemes: configuration.supportedSchemes)
         viewModel.preventDuplicateCardholderInput()
 
-        let viewController = PaymentViewController(viewModel: viewModel)
+        let viewController = FramesPaymentViewController(viewModel: viewModel)
         viewModel.cardTokenRequested = completionHandler
         logger.log(.paymentFormInitialised(environment: configuration.environment))
         if #available(iOS 13.0, *) {
