@@ -22,7 +22,7 @@ concurrency:
 jobs:
   checkout:
     name: Checkout Verification
-    runs-on: macos-13
+    runs-on: macos-13-xl
     
     steps:
       - name: Checkout
@@ -30,7 +30,7 @@ jobs:
 
       - name: Select Xcode
         run: |
-          sudo xcode-select -switch /Applications/Xcode_${versionXcode}.app && /usr/bin/xcodebuild -version
+          sudo xcode-select -switch /Applications/Xcode_${versionXcode}.app
 
       - name: Log xcodebuild Version
         run: |
@@ -63,7 +63,7 @@ jobs:
 
   frames:
     name: Frames Verification
-    runs-on: macos-13
+    runs-on: macos-13-xl
 
     steps:
       - name: Checkout
@@ -71,7 +71,7 @@ jobs:
 
       - name: Select Xcode
         run: |
-          sudo xcode-select -switch /Applications/Xcode_${versionXcode}.app && /usr/bin/xcodebuild -version
+          sudo xcode-select -switch /Applications/Xcode_${versionXcode}.app
 
       - name: Log xcodebuild Version
         run: |
@@ -104,11 +104,15 @@ jobs:
 
   run-ui-tests:
     name: Run UI Tests
-    runs-on: macos-latest
+    runs-on: macos-12-xl
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Select Xcode
+        run: |
+          sudo xcode-select -switch /Applications/Xcode_14.2.app
 
       - name: Log xcodebuild Version
         run: |
@@ -116,7 +120,7 @@ jobs:
 
       - name: Run UI Tests
         run: |
-          set -o pipefail && xcodebuild test "-project" "${path}" "-scheme" "${scheme}" "-configuration" "${scheme}" "-destination" "${destination}"
+          set -o pipefail && xcodebuild test "-project" "${path}" "-scheme" "${scheme}" "-configuration" "${scheme}" "-destination" "${destination}" | xcpretty
         env:
           path: "iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj"
           scheme: "UITest"

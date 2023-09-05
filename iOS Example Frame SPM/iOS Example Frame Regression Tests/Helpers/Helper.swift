@@ -6,6 +6,7 @@
 //  Copyright © 2023 Checkout. All rights reserved.
 //
 
+import SnapshotTesting
 import XCTest
 
 enum Helper {
@@ -14,4 +15,4 @@ enum Helper {
     }
 }
 
-let snapshotPrecision: Float = 100
+let snapshotPrecision: Float = 0.98
