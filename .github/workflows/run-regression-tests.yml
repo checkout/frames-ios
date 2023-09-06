@@ -1,13 +1,6 @@
 name: Run Regression Tests
 
-#on: workflow_dispatch
-on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-    branches:
-      - 'main'
-      - 'develop'
-      - 'release/*'
+on: workflow_dispatch
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -34,12 +27,16 @@ jobs:
         run: |
           set -o pipefail && xcodebuild "test" "-project" "iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj" "-scheme" "Regression Tests" "-configuration" "Debug" "-destination" "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest" | xcpretty
 
-      - name: Upload Artifacts
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: Test Results and Logs
-          path: "~/Library/Developer/Xcode/DerivedData/*/Logs/Test/"
+#
+# Comment out below only when needed, to avoid overhead.
+#
+
+#      - name: Upload Artifacts
+#        if: always()
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: Test Results and Logs
+#          path: "~/Library/Developer/Xcode/DerivedData/*/Logs/Test/"
 
 #      - name: Upload Generated Screenshots
 #        if: always()

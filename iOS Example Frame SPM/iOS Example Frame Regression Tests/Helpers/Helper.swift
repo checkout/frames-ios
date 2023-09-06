@@ -6,7 +6,6 @@
 //  Copyright © 2023 Checkout. All rights reserved.
 //
 
-import SnapshotTesting
 import XCTest
 
 enum Helper {
