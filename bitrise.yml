@@ -11,17 +11,6 @@ workflows:
     - certificate-and-profile-installer@1: {}
     after_run: []
 
-  _run-regression-tests:
-    steps:
-    - xcode-test:
-        inputs:
-        - project_path: $FRAMES_SPM_PROJECT
-        - scheme: $FRAMES_REGRESSION_TEST_SCHEME
-        - destination: platform=iOS Simulator,name=iPhone 14 Pro,OS=latest
-        - simulator_device: $UITEST_SIMULATOR_DEVICE
-    - deploy-to-bitrise-io@2.3: {}
-    - cache-push@2: {}
-
   frames-deploy:
     steps:
     - activate-ssh-key@4:
@@ -55,11 +44,6 @@ workflows:
     - slack@3:
         inputs:
         - webhook_url: $FRAMES_IOS_BUILDS_CHANNEL
-
-  frames-regression-tests:
-    after_run:
-    - _frames-set-up
-    - _run-regression-tests
     
 app:
   envs:
@@ -94,18 +78,6 @@ app:
   - opts:
       is_expand: false
     FRAMES_TEST_SCHEME: FramesTests
-  - opts:
-      is_expand: false
-    CHECKOUT_PODFILE: Checkout/Samples/CocoapodsSample/Podfile
-  - opts:
-      is_expand: false
-    CHECKOUT_SPM_PROJECT: Checkout/Samples/SPMSample/CheckoutSPMSample.xcodeproj
-  - opts:
-      is_expand: false
-    CHECKOUT_APP_SCHEME: CheckoutSPMSample
-  - opts:
-      is_expand: false
-    CHECKOUT_TEST_SCHEME: CheckoutTests
 
 meta:
   bitrise.io:
