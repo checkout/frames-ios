@@ -1,3 +1,5 @@
+![Checkout.com](https://github.com/checkout/frames-ios/blob/main/.github/checkout-logo.png)
+
 # Frames iOS
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Frames.svg)](https://img.shields.io/cocoapods/v/Frames)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/checkout/frames-ios?label=spm)
