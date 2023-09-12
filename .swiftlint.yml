@@ -1,11 +1,16 @@
 included:
-    - Source
-    - iOS Example Frame
-    - iOS Example Frame Carthage
-    - iOS Example Frame SPM
+    - "Checkout"
+    - "Source"
+    - "iOS Example Frame"
+    - "iOS Example Frame SPM"
     
 excluded:
-    - iOS Example Frame/Pods
+    - "iOS Example Frame/Pods"
+    - "Checkout/Samples/CocoapodsSample/Pods"
+    - "CheckoutTests"
+    - "Tests"
+    - "iOS Example Frame SPM/iOS Example Frame Regression Tests"
+    - "iOS Example Frame/iOS Example FrameUITests"
      
 opt_in_rules:
     - array_init
