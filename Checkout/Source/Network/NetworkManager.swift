@@ -20,7 +20,6 @@ class NetworkManager: RequestExecuting {
   private let decoder: Decoding
   private let session: URLSession
 
-
   init(decoder: Decoding, session: URLSession) {
     self.decoder = decoder
     self.session = session

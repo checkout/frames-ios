@@ -15,20 +15,20 @@ public protocol PhoneValidating {
 
 public final class PhoneValidator: PhoneValidating {
     public init() {}
-    
+
     public func validate(_ phone: Phone) -> ValidationResult<ValidationError.Phone> {
         if let number = phone.number,
            number.count < Constants.Phone.phoneMinLength ||
             number.count > Constants.Phone.phoneMaxLength {
             return .failure(.numberIncorrectLength)
         }
-        
+
         if let countryCode = phone.country?.dialingCode,
            countryCode.count < Constants.Phone.countryCodeMinLength ||
             countryCode.count > Constants.Phone.countryCodeMaxLength {
             return .failure(.countryCodeIncorrectLength)
         }
-        
+
         return .success
     }
 }
