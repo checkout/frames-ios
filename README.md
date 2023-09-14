@@ -1,4 +1,4 @@
-![Checkout.com](https://github.com/checkout/frames-ios/blob/main/.github/checkout-logo.png)
+![Checkout.com](https://github.com/checkout/frames-ios/blob/main/.github/media/checkout-logo.png)
 
 # Frames iOS
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Frames.svg)](https://img.shields.io/cocoapods/v/Frames)
@@ -7,7 +7,7 @@
 ![license](https://img.shields.io/github/license/checkout/frames-ios.svg)
 
 <div align="center">
-    <img width=40% src="https://github.com/checkout/frames-ios/blob/main/.github/screenshots/demo-frames-ios.webp?raw=true">
+    <img width=40% src="https://github.com/checkout/frames-ios/blob/main/.github/media/demo-frames-ios.webp?raw=true">
 </div>
 
 ## Requirements
@@ -458,7 +458,13 @@ We would like to point out the great benefits that we think v4+ brings to our SD
 
 
  
+## CHANGELOG
 
+Find our CHANGELOG.md [here](https://github.com/checkout/frames-ios/blob/main/.github/CHANGELOG.md).
+
+## CONTRIBUTING
+
+Find our guide to start contributing [here](https://github.com/checkout/frames-ios/blob/main/.github/CONTRIBUTING.md).
 
 ## License
 
