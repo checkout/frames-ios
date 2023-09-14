@@ -17,8 +17,6 @@
 - Swift 5.3+
 
  
-
-
 ## Documentation
 
 Frames for iOS tokenises consumer data for use within [Checkout.com](https://www.checkout.com)'s payment infrastructure. We abstract away the complexity of taking payments, building payment UIs, and handling sensitive data.
