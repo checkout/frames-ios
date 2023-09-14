@@ -458,11 +458,11 @@ We would like to point out the great benefits that we think v4+ brings to our SD
 
 
  
-## CHANGELOG
+## Changelog
 
 Find our CHANGELOG.md [here](https://github.com/checkout/frames-ios/blob/main/.github/CHANGELOG.md).
 
-## CONTRIBUTING
+## Contributing
 
 Find our guide to start contributing [here](https://github.com/checkout/frames-ios/blob/main/.github/CONTRIBUTING.md).
 
