@@ -57,6 +57,6 @@ jobs:
         run: |
           git branch $BRANCH_NAME
           git checkout $BRANCH_NAME
-          git add .
+          git add ".github/docs"
           git commit -m "Update jazzy docs"
           git push -u origin $BRANCH_NAME --force
