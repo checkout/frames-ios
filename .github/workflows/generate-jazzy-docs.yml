@@ -1,0 +1,62 @@
+name: Generate Jazzy Docs
+
+on:
+  workflow_dispatch
+  
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generate-jazzy-docs:
+    name: Generate Docs
+    runs-on: macos-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@5311f05890856149502132d25c4a24985a00d426
+        with:
+          ruby-version: 3.2.2
+
+      - name: Install SourceKitten
+        run: |
+          brew install sourcekitten
+
+      - name: Install Jazzy
+        run: |
+          gem install jazzy
+
+      - name: Pod Install Frames
+        run: |
+          cd "iOS Example Frame"
+          pod install
+
+      - name: Pod Install Checkout
+        run: |
+          cd "Checkout/Samples/CocoapodsSample"
+          pod install
+
+      - name: Generate Docs
+        run: sh .github/scripts/buildDocs.sh
+
+      - name: Upload Generated Jazzy Docs
+        uses: actions/upload-artifact@v3
+        with:
+          name: Jazzy Docs
+          path: ".github/docs"
+
+      - name: Create Branch
+        env:
+          BRANCH_NAME: "update/jazzy-docs"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git branch $BRANCH_NAME
+          git checkout $BRANCH_NAME
+          git add .
+          git commit -m "Update jazzy docs"
+          git push -u origin $BRANCH_NAME --force
