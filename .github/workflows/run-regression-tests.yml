@@ -1,6 +1,10 @@
 name: Run Regression Tests
 
-on: workflow_dispatch
+on:
+  pull_request:
+    types: [ labeled ]
+
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -8,6 +12,7 @@ concurrency:
 
 jobs:
   run-regression-tests:
+    if: contains(github.event.pull_request.labels.*.name, 'Run Regression Tests')
     name: Run Regression Tests
     runs-on: macos-12-xl
 

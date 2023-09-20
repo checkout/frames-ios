@@ -1,14 +1,19 @@
 name: Validate For App Store
 
-on: workflow_dispatch
+on:
+  pull_request:
+    types: [ labeled ]
+
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
-  
+
 jobs:
   validate_for_app_store:
-    name: Validate
+    if: contains(github.event.pull_request.labels.*.name, 'Validate For App Store')
+    name: Validate For App Store
     environment: AppStoreValidation
     runs-on: macos-12-xl
 
