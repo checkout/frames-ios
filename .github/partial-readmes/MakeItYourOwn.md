@@ -7,7 +7,7 @@ In order of complexity we'll start with:
 
 
 ### Modify Default
-In our [Get started](https://github.com/checkout/frames-ios/blob/feature/partial-readmes/.github/partial-readmes/GetStarted.md) example we have used Default Style to get something working quickly. If that was mostly what you were looking for, then you'll be happy to know that each component is mutable and you should easily be able to customise individual properties. This is also used as example in our demo projects inside `Factory.swift`, in the method `getDefaultPaymentViewController`.
+In our [Get started](https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/GetStarted.md) example we have used Default Style to get something working quickly. If that was mostly what you were looking for, then you'll be happy to know that each component is mutable and you should easily be able to customise individual properties. This is also used as example in our demo projects inside `Factory.swift`, in the method `getDefaultPaymentViewController`.
 
 Example:
 ```swift

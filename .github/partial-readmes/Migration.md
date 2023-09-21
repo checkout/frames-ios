@@ -5,7 +5,7 @@ If you're using Frames iOS from versions prior to v4 (we would strongly recommen
 
 Because of our efforts to greatly improve the UI of the Frames and enabling you to customise it to such extents, the approach required is very different. This will require you to:
 - remove usage of Frames older version from your code base. This may be an opportunity to remove a screen as well, or a few other objects that were created only to support older Frames integration!
-- [Get started](https://github.com/checkout/frames-ios/blob/feature/partial-readmes/.github/partial-readmes/GetStarted.md)
+- [Get started](https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/GetStarted.md)
 
 
 We would like to point out the great benefits that we think v4+ brings to our SDK, like:

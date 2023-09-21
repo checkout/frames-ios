@@ -23,15 +23,15 @@ Frames for iOS tokenises consumer data for use within [Checkout.com](https://www
 
 - [Demo projects](#Demo-projects): _We've created projects showcasing the range of functionality available in our SDKs while testing each distribution method offered_
 
-- [Integration](https://github.com/checkout/frames-ios/blob/feature/partial-readmes/.github/partial-readmes/Integration.md): _a guide for consuming our SDK in your iOS app_
+- [Integration](https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/Integration.md): _a guide for consuming our SDK in your iOS app_
 
-- [Get started](https://github.com/checkout/frames-ios/blob/feature/partial-readmes/.github/partial-readmes/GetStarted.md): _Start testing what you can achieve by presenting inside your Applications UI_ 
+- [Get started](https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/GetStarted.md): _Start testing what you can achieve by presenting inside your Applications UI_ 
 
-- [Make it your own](https://github.com/checkout/frames-ios/blob/feature/partial-readmes/.github/partial-readmes/MakeItYourOwn.md): _Customising the UI to become a part of your app_
+- [Make it your own](https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/MakeItYourOwn.md): _Customising the UI to become a part of your app_
 
-- [Other features](https://github.com/checkout/frames-ios/blob/feature/partial-readmes/.github/partial-readmes/OtherFeatures.md): _How we help with Apple Pay & 3D Secure Challenges_
+- [Other features](https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/OtherFeatures.md): _How we help with Apple Pay & 3D Secure Challenges_
 
-- [Migrating](https://github.com/checkout/frames-ios/blob/feature/partial-readmes/.github/partial-readmes/Migration.md): _If you have used 3.5.x version (or lower) before_
+- [Migrating](https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/Migration.md): _If you have used 3.5.x version (or lower) before_
 
 - [License](#License)
 
