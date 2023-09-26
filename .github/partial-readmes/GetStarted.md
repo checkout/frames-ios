@@ -1,6 +1,6 @@
 # Get started
 
-This section assumes you've completed initial Integration. If you haven't, then please complete [Integration](#Integration) first.
+This section assumes you've completed initial Integration. If you haven't, then please complete [Integration](https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/Integration.md) first.
 
 #### 1. Import `Frames`
 <sub>If unsure where to do it, the ViewController that will be presenting the journey is a good start</sub>
@@ -46,7 +46,7 @@ let configuration = PaymentFormConfiguration(
 
  
 #### 3. Prepare the Styling for the UI
-<sub>We will cover [Make it your own](#Make-it-your-own) later, for now we'll use Default Style</sub>
+<sub>We will cover [Make it your own](https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/MakeItYourOwn.md) later, for now we'll use Default Style</sub>
 ```swift
 // Style applied on Card input screen (Payment Form)
 let paymentFormStyle = DefaultPaymentFormStyle()
