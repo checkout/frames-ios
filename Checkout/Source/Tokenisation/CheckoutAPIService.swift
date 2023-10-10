@@ -11,6 +11,7 @@ import CheckoutEventLoggerKit
 
 public protocol CheckoutAPIProtocol {
   func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)
+  func createSecurityCodeToken(securityCode: String, completion: @escaping (Result<SecurityCodeTokenDetails, TokenisationError.SecurityCodeError>) -> Void)
   var correlationID: String { get }
 }
 
@@ -102,7 +103,7 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
 
   private func createToken(tokenRequest: TokenRequest, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) {
     let requestParameterResult = requestFactory.create(
-      request: .token(tokenRequest: tokenRequest, publicKey: publicKey)
+      request: .cardToken(tokenRequest: tokenRequest, publicKey: publicKey)
     )
 
     switch requestParameterResult {
@@ -167,6 +168,48 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
     case .networkError:
       // we received no response, so nothing to log
       break
+    }
+  }
+}
+
+// MARK: Security Code Request
+
+extension CheckoutAPIService {
+  public func createSecurityCodeToken(securityCode: String, completion: @escaping (Result<SecurityCodeTokenDetails, TokenisationError.SecurityCodeError>) -> Void) {
+    guard !publicKey.isEmpty else {
+      completion(.failure(.missingAPIKey))
+      return
+    }
+
+    let request = SecurityCodeRequest(tokenData: TokenData(securityCode: securityCode))
+    let requestParameterResult = requestFactory.create(request: .securityCodeToken(request: request, publicKey: publicKey))
+
+    switch requestParameterResult {
+    case .success(let requestParameters):
+      createSecurityCodeToken(requestParameters: requestParameters, completion: completion)
+    case .failure(let error):
+      switch error {
+      case .baseURLCouldNotBeConvertedToComponents, .couldNotBuildURL:
+        completion(.failure(.couldNotBuildURLForRequest))
+      }
+    }
+  }
+
+  private func createSecurityCodeToken(requestParameters: NetworkManager.RequestParameters, completion: @escaping (Result<SecurityCodeTokenDetails, TokenisationError.SecurityCodeError>) -> Void) {
+    requestExecutor.execute(
+      requestParameters,
+      responseType: SecurityCodeResponse.self,
+      responseErrorType: TokenisationError.ServerError.self
+    ) { [tokenDetailsFactory] tokenResponseResult, httpURLResponse in
+      switch tokenResponseResult {
+      case .response(let tokenResponse):
+        let tokenDetails = tokenDetailsFactory.create(tokenResponse: tokenResponse)
+        completion(.success(tokenDetails))
+      case .errorResponse(let errorResponse):
+        completion(.failure(.serverError(errorResponse)))
+      case .networkError(let networkError):
+        completion(.failure(.networkError(networkError)))
+      }
     }
   }
 }

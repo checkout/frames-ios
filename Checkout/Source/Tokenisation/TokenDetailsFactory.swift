@@ -9,6 +9,7 @@ import Foundation
 
 protocol TokenDetailsProviding {
   func create(tokenResponse: TokenResponse) -> TokenDetails
+  func create(tokenResponse: SecurityCodeResponse) -> SecurityCodeTokenDetails
 }
 
 final class TokenDetailsFactory: TokenDetailsProviding {
@@ -63,5 +64,14 @@ final class TokenDetailsFactory: TokenDetailsProviding {
 
   private func create(phone: TokenRequest.Phone) -> TokenDetails.Phone {
     return TokenDetails.Phone(number: phone.number, countryCode: phone.countryCode)
+  }
+}
+
+extension TokenDetailsFactory {
+  func create(tokenResponse: SecurityCodeResponse) -> SecurityCodeTokenDetails {
+    return SecurityCodeTokenDetails(
+      type: tokenResponse.type,
+      token: tokenResponse.token,
+      expiresOn: tokenResponse.expiresOn)
   }
 }

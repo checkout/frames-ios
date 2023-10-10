@@ -618,6 +618,9 @@
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled" title="Pay Now"/>
+                                                        <connections>
+                                                            <action selector="defaultPayButtonTapped:" destination="xGu-ci-qoq" eventType="touchUpInside" id="Lnr-yy-HXo"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -647,6 +650,9 @@
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled" title="Pay Now"/>
+                                                        <connections>
+                                                            <action selector="customPayButtonTapped:" destination="xGu-ci-qoq" eventType="touchUpInside" id="vHt-2v-guy"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>

@@ -30,6 +30,18 @@ final class SecurityCodeViewController: UIViewController {
     }
   }
 
+  @IBAction func defaultPayButtonTapped(_ sender: Any) {
+    defaultSecurityCodeComponent.createToken { [weak self] result in
+      switch result {
+      case .success(let tokenDetails):
+        self?.showAlert(with: tokenDetails.token, title: "Success")
+
+      case .failure(let error):
+        self?.showAlert(with: error.localizedDescription, title: "Failure")
+      }
+    }
+  }
+
   func setupCustomSecurityCodeComponent() {
     let style = SecurityCodeComponentStyle(text: .init(),
                                            font: UIFont.systemFont(ofSize: 24),
@@ -49,6 +61,18 @@ final class SecurityCodeViewController: UIViewController {
     customSecurityCodeComponent.configure(with: configuration) { [weak self] isSecurityCodeValid in
       DispatchQueue.main.async {
         self?.customPayButton.isEnabled = isSecurityCodeValid
+      }
+    }
+  }
+
+  @IBAction func customPayButtonTapped(_ sender: Any) {
+    customSecurityCodeComponent.createToken { [weak self] result in
+      switch result {
+      case .success(let tokenDetails):
+        self?.showAlert(with: tokenDetails.token, title: "Success")
+
+      case .failure(let error):
+        self?.showAlert(with: error.localizedDescription, title: "Failure")
       }
     }
   }
@@ -92,5 +116,20 @@ extension SecurityCodeViewController {
 
   @objc private func popViewController() {
     navigationController?.popViewController(animated: true)
+  }
+}
+
+extension SecurityCodeViewController {
+  private func showAlert(with message: String, title: String = "Payment") {
+    DispatchQueue.main.async {
+      let alert = UIAlertController(title: title,
+                                    message: message,
+                                    preferredStyle: .alert)
+      let action = UIAlertAction(title: "OK", style: .default) { _ in
+        alert.dismiss(animated: true)
+      }
+      alert.addAction(action)
+      self.present(alert, animated: true)
+    }
   }
 }

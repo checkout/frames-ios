@@ -50,7 +50,7 @@ final class RequestFactoryTests: XCTestCase {
       phone: TokenRequest.Phone(number: "123456", countryCode: "1")
     )
 
-    let result = subject.create(request: .token(tokenRequest: tokenRequest, publicKey: "publicKey"))
+    let result = subject.create(request: .cardToken(tokenRequest: tokenRequest, publicKey: "publicKey"))
 
     switch result {
     case .success(let requestParameters):
@@ -83,7 +83,7 @@ final class RequestFactoryTests: XCTestCase {
       billingAddress: nil,
       phone: nil)
 
-    let result = subject.create(request: .token(tokenRequest: tokenRequest, publicKey: "publicKey"))
+    let result = subject.create(request: .cardToken(tokenRequest: tokenRequest, publicKey: "publicKey"))
 
     switch result {
     case .success(let requestParameters):
@@ -118,7 +118,7 @@ final class RequestFactoryTests: XCTestCase {
       billingAddress: nil,
       phone: nil)
 
-    let result = subject.create(request: .token(tokenRequest: tokenRequest, publicKey: "publicKey"))
+    let result = subject.create(request: .cardToken(tokenRequest: tokenRequest, publicKey: "publicKey"))
 
     switch result {
     case .success:

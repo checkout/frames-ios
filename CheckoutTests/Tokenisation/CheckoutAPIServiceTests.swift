@@ -72,7 +72,7 @@ final class CheckoutAPIServiceTests: XCTestCase {
     stubRequestExecutor.executeCalledWithCompletion?(.response(tokenResponse), HTTPURLResponse())
 
     XCTAssertEqual(stubTokenRequestFactory.createCalledWith, .card(card))
-    XCTAssertEqual(stubRequestFactory.createCalledWith, .token(tokenRequest: tokenRequest, publicKey: "publicKey"))
+    XCTAssertEqual(stubRequestFactory.createCalledWith, .cardToken(tokenRequest: tokenRequest, publicKey: "publicKey"))
 
     XCTAssertEqual(stubRequestExecutor.executeCalledWithRequestParameters, requestParameters)
     XCTAssertTrue(stubRequestExecutor.executeCalledWithResponseType == TokenResponse.self)
