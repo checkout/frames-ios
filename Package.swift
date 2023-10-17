@@ -20,7 +20,7 @@ let package = Package(
             exact: "3.5.9"),
         .package(
             url: "https://github.com/checkout/checkout-event-logger-ios-framework.git",
-            from: "1.2.4"
+            from: "1.2.3"
         )
     ],
     targets: [
