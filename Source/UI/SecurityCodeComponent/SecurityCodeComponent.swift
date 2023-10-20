@@ -25,7 +25,8 @@ public final class SecurityCodeComponent: UIView {
 }
 
 extension SecurityCodeComponent {
-  public func configure(with configuration: SecurityCodeComponentConfiguration, isSecurityCodeValid: @escaping (Bool) -> Void) {
+  public func configure(with configuration: SecurityCodeComponentConfiguration,
+                        isSecurityCodeValid: @escaping (Bool) -> Void) {
     self.configuration = configuration
     self.isSecurityCodeValid = isSecurityCodeValid
 
