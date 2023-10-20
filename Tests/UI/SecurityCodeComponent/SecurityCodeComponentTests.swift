@@ -12,12 +12,8 @@ final class SecurityCodeComponentTests: XCTestCase {
   let sut = SecurityCodeComponent()
   var mockconfig = SecurityCodeComponentConfiguration(apiKey: "some_api_key", environment: .sandbox)
 
-  func test_whenConfigureIsCalled_thenRequiredPropertiesAreSet() {
-
-  }
-
   func test_whenUpdateIsCalledWith_thenISSecurityCodeValidCalledWithCorrectResult() {
-    let testMatrix: [(scheme: Card.Scheme, securityCode: String, expectedResult: Bool)] = [
+    let testMatrix: [(scheme: Card.Scheme?, securityCode: String, expectedResult: Bool)] = [
       (.visa, "", false),
       (.visa, "1", false),
       (.visa, "12", false),
@@ -33,6 +29,11 @@ final class SecurityCodeComponentTests: XCTestCase {
       (.unknown, "12", false),
       (.unknown, "123", true),
       (.unknown, "1234", true),
+      (nil, "", false),
+      (nil, "1", false),
+      (nil, "12", false),
+      (nil, "123", true),
+      (nil, "1234", true),
     ]
 
     testMatrix.forEach { testData in
