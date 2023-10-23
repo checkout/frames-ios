@@ -25,7 +25,7 @@ public struct SecurityCodeComponentConfiguration {
   let environment: Environment
   public var style: SecurityCodeComponentStyle
   public var cardScheme: Card.Scheme?
-  
+
   public init(apiKey: String,
               environment: Environment,
               style: SecurityCodeComponentStyle? = nil,
@@ -33,7 +33,7 @@ public struct SecurityCodeComponentConfiguration {
     self.apiKey = apiKey
     self.environment = environment
     self.cardScheme = cardScheme
-    
+
     if let style = style {
       self.style = style
     } else {

@@ -52,7 +52,7 @@ extension SecurityCodeComponent {
 
 extension SecurityCodeComponent: SecurityCodeViewDelegate {
   func update(securityCode: String) {
-    guard securityCode.isEmpty else {
+    guard !securityCode.isEmpty else {
       isSecurityCodeValid(false)
       return
     }

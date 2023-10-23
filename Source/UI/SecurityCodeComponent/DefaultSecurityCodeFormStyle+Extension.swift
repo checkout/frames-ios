@@ -31,7 +31,6 @@ extension DefaultSecurityCodeFormStyle {
                                                                       normalColor: .clear,
                                                                       focusColor: .clear,
                                                                       errorColor: .clear))
-    
-    
+
   }
 }

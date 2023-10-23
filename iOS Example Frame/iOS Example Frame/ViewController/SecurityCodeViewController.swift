@@ -51,7 +51,7 @@ final class SecurityCodeViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     defaultSecurityCodeComponent.accessibilityIdentifier = "DefaultSecurityCodeComponent"
     defaultPayButton.accessibilityIdentifier = "DefaultPayButton"
     customSecurityCodeComponent.accessibilityIdentifier = "CustomSecurityCodeComponent"

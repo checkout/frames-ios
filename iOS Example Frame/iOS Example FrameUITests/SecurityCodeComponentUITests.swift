@@ -49,7 +49,9 @@ final class SecurityCodeComponentUITests: XCTestCase {
         XCTAssertFalse(testData.payButton.isEnabled)
       }
       app.enterText(testData.text, into: testData.component)
-      XCTAssertEqual(testData.payButton.isEnabled, testData.isPayButtonEnabled)
+      XCTAssertEqual(testData.payButton.isEnabled,
+                     testData.isPayButtonEnabled,
+                     "Failed at component: \(testData.component), text: \(testData.text)")
     }
 
     // TODO: Add tokenisation test

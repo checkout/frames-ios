@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
   @IBOutlet private weak var defaultButton: UIButton!
   @IBOutlet private weak var theme1Button: UIButton!
   @IBOutlet weak var securityCodeComponentButton: UIButton!
-  
+
   private var notificationCenter: NotificationCenter = .default
   private lazy var checkoutAPIService = Frames.CheckoutAPIService(publicKey: Factory.apiKey, environment: .sandbox)
 
