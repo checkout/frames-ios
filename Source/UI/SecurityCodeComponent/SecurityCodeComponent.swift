@@ -39,7 +39,7 @@ extension SecurityCodeComponent {
 
     let view = SecurityCodeView(viewModel: viewModel)
     view.update(style: DefaultSecurityCodeFormStyle(securityCodeComponentStyle: configuration.style))
-    view.accessibilityIdentifier = AccessibilityIdentifiers.PaymentForm.cardSecurityCode
+    view.accessibilityIdentifier = AccessibilityIdentifiers.SecurityCodeComponent.textField
     view.delegate = self
 
     view.frame = bounds
@@ -52,7 +52,7 @@ extension SecurityCodeComponent {
 
 extension SecurityCodeComponent: SecurityCodeViewDelegate {
   func update(securityCode: String) {
-    guard securityCode.count > 0 else {
+    guard securityCode.isEmpty else {
       isSecurityCodeValid(false)
       return
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NL5-0J-36O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NL5-0J-36O">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="5376" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -320,8 +320,8 @@
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGZ-0T-Pev">
                                                                 <rect key="frame" x="0.0" y="0.0" width="175" height="60"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CVV Component" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="os2-7q-87l">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="175" height="60"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security Code Component" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="os2-7q-87l">
+                                                                        <rect key="frame" x="8" y="8" width="159" height="44"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -340,12 +340,12 @@
                                                                 <constraints>
                                                                     <constraint firstItem="x3h-d8-bIl" firstAttribute="leading" secondItem="kGZ-0T-Pev" secondAttribute="leading" id="0CF-E7-4eD"/>
                                                                     <constraint firstItem="x3h-d8-bIl" firstAttribute="top" secondItem="kGZ-0T-Pev" secondAttribute="top" id="5I5-xl-s1k"/>
-                                                                    <constraint firstItem="os2-7q-87l" firstAttribute="top" secondItem="kGZ-0T-Pev" secondAttribute="top" id="6gt-2g-rlG"/>
-                                                                    <constraint firstItem="os2-7q-87l" firstAttribute="leading" secondItem="kGZ-0T-Pev" secondAttribute="leading" id="80R-lB-YcQ"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="os2-7q-87l" secondAttribute="bottom" id="AU5-pA-h8A"/>
+                                                                    <constraint firstItem="os2-7q-87l" firstAttribute="top" secondItem="kGZ-0T-Pev" secondAttribute="top" constant="8" id="6gt-2g-rlG"/>
+                                                                    <constraint firstItem="os2-7q-87l" firstAttribute="leading" secondItem="kGZ-0T-Pev" secondAttribute="leading" constant="8" id="80R-lB-YcQ"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="os2-7q-87l" secondAttribute="bottom" constant="8" id="AU5-pA-h8A"/>
                                                                     <constraint firstAttribute="bottom" secondItem="x3h-d8-bIl" secondAttribute="bottom" id="SHS-hn-JIW"/>
                                                                     <constraint firstAttribute="trailing" secondItem="x3h-d8-bIl" secondAttribute="trailing" id="YNr-oG-Pt1"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="os2-7q-87l" secondAttribute="trailing" id="mQH-i3-clK"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="os2-7q-87l" secondAttribute="trailing" constant="8" id="mQH-i3-clK"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
@@ -574,6 +574,7 @@
                     <connections>
                         <outlet property="defaultButton" destination="npI-wS-PHN" id="RZO-Tf-AdO"/>
                         <outlet property="scrollView" destination="yAX-V1-VAD" id="678-IM-Fpd"/>
+                        <outlet property="securityCodeComponentButton" destination="x3h-d8-bIl" id="RXb-Dg-azD"/>
                         <outlet property="theme1Button" destination="Vy0-I7-Zjz" id="aqu-YN-W1n"/>
                         <outlet property="threeDSURLTextField" destination="nvN-3Z-pAr" id="frP-Bh-MKg"/>
                     </connections>
@@ -608,6 +609,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2E4-Rg-0ur" customClass="SecurityCodeComponent" customModule="Frames">
                                                         <rect key="frame" x="0.0" y="0.0" width="242" height="50"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="DefaultSecurityCodeComponent"/>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGn-ND-Fe3">
                                                         <rect key="frame" x="258" y="8" width="100" height="34.333333333333336"/>
@@ -636,6 +638,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrd-VP-5SD" customClass="SecurityCodeComponent" customModule="Frames">
                                                         <rect key="frame" x="0.0" y="0.0" width="242" height="50"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="CustomSecurityCodeComponent"/>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBC-QF-Joq">
                                                         <rect key="frame" x="258" y="8" width="100" height="34.333333333333336"/>

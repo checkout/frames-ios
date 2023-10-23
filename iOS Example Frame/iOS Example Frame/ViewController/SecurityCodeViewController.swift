@@ -34,7 +34,7 @@ final class SecurityCodeViewController: UIViewController {
                                            textAlignment: .natural,
                                            textColor: .red,
                                            tintColor: .red,
-                                           placeholder: "Enter the security code here")
+                                           placeholder: "Enter here")
 
     configuration.cardScheme = Card.Scheme(rawValue: "AMERICAN EXPRESS")
     configuration.style = style
@@ -42,6 +42,7 @@ final class SecurityCodeViewController: UIViewController {
     customSecurityCodeComponent.backgroundColor = .green
     customSecurityCodeComponent.layer.borderColor = UIColor.blue.cgColor
     customSecurityCodeComponent.layer.borderWidth = 2
+    customSecurityCodeComponent.layer.cornerRadius = 8
 
     customSecurityCodeComponent.configure(with: configuration) { [weak self] isSecurityCodeValid in
       self?.customPayButton.isEnabled = isSecurityCodeValid
@@ -50,7 +51,11 @@ final class SecurityCodeViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    
+    defaultSecurityCodeComponent.accessibilityIdentifier = "DefaultSecurityCodeComponent"
+    defaultPayButton.accessibilityIdentifier = "DefaultPayButton"
+    customSecurityCodeComponent.accessibilityIdentifier = "CustomSecurityCodeComponent"
+    customPayButton.accessibilityIdentifier = "CustomPayButton"
     setupNavigationBar()
   }
 

@@ -93,4 +93,8 @@ extension XCUIApplication {
         //   allowing test to fail and snapshot to be generated showing UI
         keys[key].tap()
     }
+
+    func tapDoneButton() {
+      toolbars.buttons.element(boundBy: 2).tap()
+    }
 }
