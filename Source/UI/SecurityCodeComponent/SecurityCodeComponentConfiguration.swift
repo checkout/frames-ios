@@ -9,7 +9,7 @@ import Checkout
 import UIKit
 
 /**
- Lets you configure and style the SecurityCodeComponent
+ Configures and styles the SecurityCodeComponent
 
  - apiKey: The API Key you receive from checkout.com
  - environment: Production or sandbox

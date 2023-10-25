@@ -25,6 +25,12 @@ public final class SecurityCodeComponent: UIView {
 }
 
 extension SecurityCodeComponent {
+  /**
+   Method to configure SecurityCodeComponent and get the validation updates
+   - configuration: See SecurityCodeComponentConfiguration documentation for the details
+   - isSecurityCodeValid: A boolean value that indicates if the security code that was input by the user is valid or not.
+   If a cardScheme is passed in the configuration, validation is being evaluated for the scheme. If no cardScheme is passed, then the security code is considered as valid for 3 and 4 digits.
+   */
   public func configure(with configuration: SecurityCodeComponentConfiguration,
                         isSecurityCodeValid: @escaping (Bool) -> Void) {
     self.configuration = configuration

@@ -24,7 +24,9 @@ final class SecurityCodeViewController: UIViewController {
     configuration.cardScheme = Card.Scheme(rawValue: "VISA")
 
     defaultSecurityCodeComponent.configure(with: configuration) { [weak self] isSecurityCodeValid in
-      self?.defaultPayButton.isEnabled = isSecurityCodeValid
+      DispatchQueue.main.async {
+        self?.defaultPayButton.isEnabled = isSecurityCodeValid
+      }
     }
   }
 
@@ -45,7 +47,9 @@ final class SecurityCodeViewController: UIViewController {
     customSecurityCodeComponent.layer.cornerRadius = 8
 
     customSecurityCodeComponent.configure(with: configuration) { [weak self] isSecurityCodeValid in
-      self?.customPayButton.isEnabled = isSecurityCodeValid
+      DispatchQueue.main.async {
+        self?.customPayButton.isEnabled = isSecurityCodeValid
+      }
     }
   }
 
