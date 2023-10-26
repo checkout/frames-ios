@@ -21,7 +21,7 @@ final class CardSchemeFormatSnapshotTests: XCTestCase {
             app.enterText(card.number, into: cardNumberTextField)
             app.tapDoneButton()
             
-            assertSnapshot(matching: cardNumberTextField.screenshot().image, as: .image)
+            assertSnapshot(matching: cardNumberTextField.screenshot().image, as: .image(perceptualPrecision: snapshotPrecision))
         }
     }
 }

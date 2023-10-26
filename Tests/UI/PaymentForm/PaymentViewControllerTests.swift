@@ -10,7 +10,7 @@ import Checkout
 @testable import Frames
 
 class PaymentViewControllerTests: XCTestCase {
-  var viewController: PaymentViewController!
+  var viewController: FramesPaymentViewController!
   var viewModel: DefaultPaymentViewModel!
   let delegate = PaymentViewControllerMockDelegate()
   let stubCheckoutAPIService = StubCheckoutAPIService()
@@ -34,7 +34,7 @@ class PaymentViewControllerTests: XCTestCase {
                                         paymentFormStyle: DefaultPaymentFormStyle(),
                                         billingFormStyle: DefaultBillingFormStyle(),
                                         supportedSchemes: [.discover, .mada])
-    viewController = PaymentViewController(viewModel: viewModel)
+    viewController = FramesPaymentViewController(viewModel: viewModel)
   }
   
   func testPaymentViewsHierarchy() {
@@ -155,7 +155,7 @@ class PaymentViewControllerTests: XCTestCase {
                                                 paymentFormStyle: nil,
                                                 billingFormStyle: nil,
                                                 supportedSchemes: [])
-    let testVC = PaymentViewController(viewModel: testViewModel)
+    let testVC = FramesPaymentViewController(viewModel: testViewModel)
     
     let expect = expectation(description: "Free up main thread in case UI work influences outcome")
     testVC.viewDidLoad()
@@ -183,7 +183,7 @@ class PaymentViewControllerTests: XCTestCase {
                                                 paymentFormStyle: nil,
                                                 billingFormStyle: nil,
                                                 supportedSchemes: [])
-    let testVC = PaymentViewController(viewModel: testViewModel)
+    let testVC = FramesPaymentViewController(viewModel: testViewModel)
     
     XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
     XCTAssertTrue(testLogger.logCalledWithFramesLogEvents.isEmpty)

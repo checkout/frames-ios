@@ -28,7 +28,6 @@
 		16857B742A65F15F005CAE39 /* CardTypeTokenCreationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16857B732A65F15F005CAE39 /* CardTypeTokenCreationTests.swift */; };
 		16857B7E2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16857B7D2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift */; };
 		16857B802A65F9A0005CAE39 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 16857B7F2A65F9A0005CAE39 /* Frames */; };
-		169DF1462A7A777F00891DF0 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169DF1452A7A777F00891DF0 /* Languages.swift */; };
 		169DF1482A7BFB1B00891DF0 /* CardSchemeFormatSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169DF1472A7BFB1B00891DF0 /* CardSchemeFormatSnapshotTests.swift */; };
 		16AE74C22A5C1B210031F794 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 16AE74C12A5C1B210031F794 /* Frames */; };
 		16C3F8402A7927ED00690639 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 16C3F83F2A7927ED00690639 /* SnapshotTesting */; };
@@ -130,7 +129,6 @@
 		16857B712A65F15F005CAE39 /* iOS Example Frame Regression Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example Frame Regression Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16857B732A65F15F005CAE39 /* CardTypeTokenCreationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeTokenCreationTests.swift; sourceTree = "<group>"; };
 		16857B7D2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+TestHelpers.swift"; sourceTree = "<group>"; };
-		169DF1452A7A777F00891DF0 /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		169DF1472A7BFB1B00891DF0 /* CardSchemeFormatSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSchemeFormatSnapshotTests.swift; sourceTree = "<group>"; };
 		16AE74C32A5C1EBB0031F794 /* iOS Example Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16AE74C42A5C1EBB0031F794 /* iOS Example FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -825,8 +823,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E32XBQK4Q5;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = E32XBQK4Q5;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				INFOPLIST_FILE = "../iOS Example Frame/iOS Example Frame/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -834,8 +835,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.floriel.iOS-Example-Frame";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.checkout.iOS-Example-Frame-SPM";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AppStoreValidationFrames-Automated-Debug";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -877,7 +880,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = E32XBQK4Q5;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -901,7 +904,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = E32XBQK4Q5;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.checkout.iOS-Example-Frame-Regression-Tests";
@@ -924,7 +927,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = E32XBQK4Q5;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.checkout.iOS-Example-Frame-Regression-Tests";
@@ -1110,8 +1113,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E32XBQK4Q5;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = E32XBQK4Q5;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				INFOPLIST_FILE = "../iOS Example Frame/iOS Example Frame/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1119,8 +1125,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.floriel.iOS-Example-Frame";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.checkout.iOS-Example-Frame-SPM";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AppStoreValidationFrames-Automated-Debug";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1133,8 +1141,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E32XBQK4Q5;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = E32XBQK4Q5;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				INFOPLIST_FILE = "../iOS Example Frame/iOS Example Frame/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1142,8 +1153,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.floriel.iOS-Example-Frame";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.checkout.iOS-Example-Frame-SPM";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AppStoreValidationFrames-Automated";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1202,16 +1215,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/checkout/frames-ios";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
+				kind = exactVersion;
+				version = 4.2.1;
 			};
 		};
 		16C3F83E2A7927ED00690639 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				kind = exactVersion;
+				version = 1.12.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

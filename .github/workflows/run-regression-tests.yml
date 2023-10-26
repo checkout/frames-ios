@@ -1,0 +1,51 @@
+name: Run Regression Tests
+
+on:
+  pull_request:
+    types: [ labeled ]
+
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run-regression-tests:
+    if: contains(github.event.pull_request.labels.*.name, 'Run Regression Tests')
+    name: Run Regression Tests
+    runs-on: macos-12-xl
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Select Xcode
+        run: |
+          sudo xcode-select -switch /Applications/Xcode_14.2.app
+          
+      - name: Log xcodebuild Version
+        run: |
+          xcodebuild -version
+
+      - name: Run Regression Tests
+        run: |
+          set -o pipefail && xcodebuild "test" "-project" "iOS Example Frame SPM/iOS Example Frame SPM.xcodeproj" "-scheme" "Regression Tests" "-configuration" "Debug" "-destination" "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest" | xcpretty
+
+#
+# Comment out below only when needed, to avoid overhead.
+#
+
+#      - name: Upload Artifacts
+#        if: always()
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: Test Results and Logs
+#          path: "~/Library/Developer/Xcode/DerivedData/*/Logs/Test/"
+
+#      - name: Upload Generated Screenshots
+#        if: always()
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: Test Results and Logs
+#          path: "iOS\ Example\ Frame\ SPM/iOS\ Example\ Frame\ Regression\ Tests/__Snapshots__"

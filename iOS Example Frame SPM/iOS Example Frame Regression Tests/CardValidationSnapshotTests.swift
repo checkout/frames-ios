@@ -27,7 +27,7 @@ extension CardValidationSnapshotTests {
         app.enterText(cardNumber, into: cardNumberTextField)
         app.tapDoneButton()
         
-        assertSnapshot(matching: cardNumberTextField.screenshot().image, as: .image(precision: snapshotPrecision))
+        assertSnapshot(matching: cardNumberTextField.screenshot().image, as: .image(perceptualPrecision: snapshotPrecision))
     }
     
     func testCardNumber_Failure() {
@@ -40,7 +40,7 @@ extension CardValidationSnapshotTests {
             app.enterText("1", into: cardNumberTextField)
             app.tapDoneButton()
             
-            assertSnapshot(matching: cardNumberTextField.screenshot().image, as: .image(precision: snapshotPrecision))
+            assertSnapshot(matching: cardNumberTextField.screenshot().image, as: .image(perceptualPrecision: snapshotPrecision))
         }
     }
 }
@@ -56,7 +56,7 @@ extension CardValidationSnapshotTests {
         app.enterText("1228", into: expiryTextField)
         app.tapDoneButton()
         
-        assertSnapshot(matching: expiryTextField.screenshot().image, as: .image(precision: snapshotPrecision))
+        assertSnapshot(matching: expiryTextField.screenshot().image, as: .image(perceptualPrecision: snapshotPrecision))
     }
     
     func test_ExpiryDate_InThePast_Failure() {
@@ -69,7 +69,7 @@ extension CardValidationSnapshotTests {
             app.enterText("521", into: expiryTextField)
             app.tapDoneButton()
             
-            assertSnapshot(matching: expiryTextField.screenshot().image, as: .image(precision: snapshotPrecision))
+            assertSnapshot(matching: expiryTextField.screenshot().image, as: .image(perceptualPrecision: snapshotPrecision))
         }
     }
     
@@ -83,7 +83,7 @@ extension CardValidationSnapshotTests {
             app.enterText("122", into: expiryTextField)
             app.tapDoneButton()
             
-            assertSnapshot(matching: expiryTextField.screenshot().image, as: .image(precision: snapshotPrecision))
+            assertSnapshot(matching: expiryTextField.screenshot().image, as: .image(perceptualPrecision: snapshotPrecision))
         }
     }
 }
@@ -103,7 +103,7 @@ extension CardValidationSnapshotTests {
         app.enterText("123", into: securityCodeTextField)
         app.tapDoneButton()
         
-        assertSnapshot(matching: securityCodeTextField.screenshot().image, as: .image(precision: snapshotPrecision))
+        assertSnapshot(matching: securityCodeTextField.screenshot().image, as: .image(perceptualPrecision: snapshotPrecision))
     }
     
     func testSecurityCode_Failure() {
@@ -120,7 +120,7 @@ extension CardValidationSnapshotTests {
             app.enterText("45", into: securityCodeTextField)
             app.tapDoneButton()
             
-            assertSnapshot(matching: securityCodeTextField.screenshot().image, as: .image(precision: snapshotPrecision))
+            assertSnapshot(matching: securityCodeTextField.screenshot().image, as: .image(perceptualPrecision: snapshotPrecision))
         }
     }
 }

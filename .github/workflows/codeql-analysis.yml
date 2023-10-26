@@ -1,0 +1,54 @@
+name: "Run CodeQL"
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'develop'
+      - 'release/*'
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches:
+      - 'main'
+      - 'develop'
+      - 'release/*'
+  schedule:
+    - cron: '34 2 * * 0'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: [ macos-latest ]
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'swift' ]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    # Initializes the CodeQL tools for scanning.
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: ${{ matrix.language }}
+        queries: security-and-quality
+
+    - name: Build
+      run: |
+        xcodebuild -scheme Frames -destination "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest"
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2

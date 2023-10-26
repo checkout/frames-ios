@@ -20,14 +20,13 @@ extension Card {
   ///   - Mastercard
   ///   - Visa
   public enum Scheme: CaseIterable, Equatable, Hashable {
-      
+
     public static var allCases: [Card.Scheme] = [.unknown, .discover, .mada, .mastercard, .maestro(length: 0), .americanExpress, .dinersClub, .jcb, .visa]
 
-      
     private enum Constants {
       static let validCVVLengthsUnknownScheme = [0, 3, 4]
     }
-      
+
     case unknown
     case mada
     case visa
@@ -136,7 +135,7 @@ extension Card {
         return [3]
       }
     }
-      
+
     public var rawValue: String {
         switch self {
         case .unknown:
@@ -159,7 +158,7 @@ extension Card {
             return "jcb"
         }
     }
-      
+
     /// map of card scheme to indexes of spaces in formatted card number string
     /// eg. a visa card has gaps at 4, 8 and 12. 4242424242424242 becomes 4242 4242 4242 4242
     public var cardGaps: [Int] {
@@ -174,7 +173,7 @@ extension Card {
             return [4, 10]
         }
     }
-      
+
     /// maximum card length for any scheme
     private static let maxCardLengthAllSchemes = 19
 

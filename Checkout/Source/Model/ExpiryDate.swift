@@ -11,7 +11,7 @@ import Foundation
 public struct ExpiryDate: Equatable {
     public let month: Int
     public let year: Int
-    
+
     public init(month: Int, year: Int) {
         self.month = month
         self.year = year
