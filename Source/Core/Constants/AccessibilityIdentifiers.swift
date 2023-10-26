@@ -40,4 +40,8 @@ public enum AccessibilityIdentifiers {
         static public let phoneNumber = "PhoneNumberInput"
     }
 
+    public enum SecurityCodeComponent {
+        /// Identify security code component text field
+        static public let textField = "SecurityCodeTextField"
+    }
 }

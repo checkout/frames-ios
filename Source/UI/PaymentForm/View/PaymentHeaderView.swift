@@ -9,7 +9,7 @@
 import UIKit
 import Checkout
 
-public final class PaymentHeaderView: UIView {
+final class PaymentHeaderView: UIView {
   private var style: PaymentHeaderCellStyle?
 
   private let supportedSchemes: [Card.Scheme]

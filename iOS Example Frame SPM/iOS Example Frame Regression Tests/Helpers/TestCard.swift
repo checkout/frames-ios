@@ -38,7 +38,7 @@ let tokenableTestCards: [TestCard] = [
 ]
 
 /**
- These are luhn numbers that are just 1 character less with the least character count of the relevant card schemes
+ These are luhn numbers that are just 1 character less than the min character count of the relevant card schemes
  For example, Visa cards must be at least 13 characters and must start with 44.
  So, we needed a luhn number that starts with 4 and is 12 digits.
  To see that we check the character count beyond the luhn verifications.
