@@ -331,7 +331,7 @@
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain"/>
                                                                         <connections>
-                                                                            <segue destination="xGu-ci-qoq" kind="push" id="6G4-XL-7iy"/>
+                                                                            <segue destination="xGu-ci-qoq" kind="show" id="6G4-XL-7iy"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>

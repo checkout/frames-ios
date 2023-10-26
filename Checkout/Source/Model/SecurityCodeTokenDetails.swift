@@ -1,5 +1,5 @@
 // 
-//  File.swift
+//  SecurityCodeTokenDetails.swift
 //  
 //
 //  Created by Okhan Okbay on 10/10/2023.
