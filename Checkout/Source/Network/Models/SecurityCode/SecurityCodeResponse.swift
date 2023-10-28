@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct SecurityCodeResponse: Decodable {
-  let type: String
-  let token: String
-  let expiresOn: String
+public struct SecurityCodeResponse: Decodable {
+  public let type: String
+  public let token: String
+  public let expiresOn: String
 }

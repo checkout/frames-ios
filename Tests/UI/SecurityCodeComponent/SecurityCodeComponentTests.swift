@@ -11,8 +11,98 @@ import XCTest
 final class SecurityCodeComponentTests: XCTestCase {
   let sut = SecurityCodeComponent()
   var mockconfig = SecurityCodeComponentConfiguration(apiKey: "some_api_key", environment: .sandbox)
+}
 
-  func test_whenUpdateIsCalledWith_thenISSecurityCodeValidCalledWithCorrectResult() {
+// MARK: Unit tests
+extension SecurityCodeComponentTests {
+  func test_whenConfigureIsCalled_thenRelevantPropertiesAreInitialised() {
+    sut.configure(with: mockconfig, isSecurityCodeValid: { _ in })
+    XCTAssertNotNil(sut.cardValidator)
+    XCTAssertNotNil(sut.checkoutAPIService)
+    XCTAssertNotNil(sut.configuration)
+    XCTAssertNotNil(sut.isSecurityCodeValid)
+    XCTAssertNotNil(sut.view)
+  }
+  
+  func test_whenUpdateIsCalledWithEmptyString_thenIsSecurityCodeValidCalledWithFalse() {
+    sut.isSecurityCodeValid = { isSecurityCodeValid in
+      XCTAssertFalse(isSecurityCodeValid)
+    }
+    sut.update(securityCode: "")
+  }
+  
+  func test_whenUpdateIsCalledWithValidSecurityCode_thenIsSecurityCodeValidCalledWithTrue() {
+    sut.configure(with: mockconfig) { isSecurityCodeValid in
+      XCTAssertTrue(isSecurityCodeValid)
+    }
+    
+    let mockCardValidator = MockCardValidator()
+    mockCardValidator.expectedIsValidCVV = true
+    sut.cardValidator = mockCardValidator
+    
+    // we can pass in any string because we define the return value of `func isValid(_:_:)` in MockCardValidator
+    sut.update(securityCode: "any_string")
+  }
+  
+  func test_whenUpdateIsCalledWithInvalidSecurityCode_thenIsSecurityCodeValidCalledWithFalse() {
+    sut.configure(with: mockconfig) { isSecurityCodeValid in
+      XCTAssertFalse(isSecurityCodeValid)
+    }
+    
+    let mockCardValidator = MockCardValidator()
+    mockCardValidator.expectedIsValidCVV = false
+    sut.cardValidator = mockCardValidator
+    
+    // we can pass in any string because we define the return value of `func isValid(_:_:)` in MockCardValidator
+    sut.update(securityCode: "any_string")
+  }
+  
+  func test_whenCreateTokenCalledWithInvalidInput_thenCompletionCalledWithInvalidSecurityCodeError() {
+    sut.configure(with: mockconfig, isSecurityCodeValid: { _ in })
+    
+    let mockCardValidator = MockCardValidator()
+    mockCardValidator.expectedIsValidCVV = false
+    sut.cardValidator = mockCardValidator
+    
+    sut.createToken { result in
+      XCTAssertEqual(result, .failure(.invalidSecurityCode))
+    }
+  }
+  
+  func test_whenCreateTokenCalledWithValidInput_thenCompletionCalledWithCheckoutAPIServiceResponse() {
+    sut.configure(with: mockconfig, isSecurityCodeValid: { _ in })
+    
+    let mockCardValidator = MockCardValidator()
+    mockCardValidator.expectedIsValidCVV = true
+    sut.cardValidator = mockCardValidator
+    
+    let mockCheckoutAPIService = StubCheckoutAPIService()
+    sut.checkoutAPIService = mockCheckoutAPIService
+    
+    let successTokenDetails = SecurityCodeTokenDetails(type: "cvv", token: "some_token", expiresOn: "some_expiry_date")
+    mockCheckoutAPIService.createSecurityCodeTokenCompletionResult = .success(successTokenDetails)
+    
+    sut.createToken { result in
+      XCTAssertEqual(result, .success(successTokenDetails))
+    }
+    
+    mockCheckoutAPIService.createSecurityCodeTokenCompletionResult = .failure(.invalidSecurityCode)
+    
+    sut.createToken { result in
+      XCTAssertEqual(result, .failure(.invalidSecurityCode))
+    }
+  }
+}
+
+extension SecurityCodeTokenDetails: Equatable {
+  public static func == (lhs: SecurityCodeTokenDetails, rhs: SecurityCodeTokenDetails) -> Bool {
+    lhs.type == rhs.type && lhs.token == rhs.token && lhs.expiresOn == rhs.expiresOn
+  }
+}
+
+// MARK: End to end tests
+extension SecurityCodeComponentTests {
+  func test_whenUpdateIsCalled_thenISSecurityCodeValidCalledWithCorrectResult() {
     let testMatrix: [(scheme: Card.Scheme?, securityCode: String, expectedResult: Bool)] = [
       (.visa, "", false),
       (.visa, "1", false),
@@ -35,13 +125,13 @@ final class SecurityCodeComponentTests: XCTestCase {
       (nil, "123", true),
       (nil, "1234", true),
     ]
-
+    
     testMatrix.forEach { testData in
       mockconfig.cardScheme = testData.scheme
       verify(securityCode: testData.securityCode, expectedResult: testData.expectedResult)
     }
   }
-
+  
   func verify(securityCode: String,
               expectedResult: Bool,
               file: StaticString = #file,

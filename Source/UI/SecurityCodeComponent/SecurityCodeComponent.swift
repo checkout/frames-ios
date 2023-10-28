@@ -10,15 +10,15 @@ import UIKit
 
 public final class SecurityCodeComponent: UIView {
   // Wrapped and protected inner view
-  private var view: SecurityCodeView!
+  var view: SecurityCodeView!
   
   // func configure(_:_:) arguments
-  private var configuration: SecurityCodeComponentConfiguration!
-  private var isSecurityCodeValid: ((Bool) -> Void)!
+  var configuration: SecurityCodeComponentConfiguration!
+  var isSecurityCodeValid: ((Bool) -> Void)!
 
   // func configure(_:_:) initialised properties. They depend on the configuration argument
-  private var cardValidator: CardValidating!
-  private var checkoutAPIService: Checkout.CheckoutAPIService!
+  var cardValidator: CardValidating!
+  var checkoutAPIService: CheckoutAPIProtocol!
 
   // func update(_:) managed property
   private var securityCode: String = .init()
@@ -47,8 +47,8 @@ extension SecurityCodeComponent {
     self.isSecurityCodeValid = isSecurityCodeValid
     
     cardValidator = CardValidator(environment: configuration.environment.checkoutEnvironment)
-    checkoutAPIService = Checkout.CheckoutAPIService(publicKey: configuration.apiKey,
-                                                     environment: configuration.environment.checkoutEnvironment)
+    checkoutAPIService = CheckoutAPIService(publicKey: configuration.apiKey,
+                                               environment: configuration.environment)
     
     let viewModel = SecurityCodeViewModel(cardValidator: cardValidator)
     if let initialCardScheme = configuration.cardScheme {
@@ -79,7 +79,7 @@ extension SecurityCodeComponent: SecurityCodeViewDelegate {
     isSecurityCodeValid(isCurrentSecurityCodeInputValid)
   }
 
-  private var isCurrentSecurityCodeInputValid: Bool {
+  var isCurrentSecurityCodeInputValid: Bool {
     return cardValidator.isValid(cvv: securityCode, for: configuration.cardScheme ?? .unknown)
   }
 }

@@ -11,7 +11,7 @@ import CheckoutEventLoggerKit
 
 public protocol CheckoutAPIProtocol {
   func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)
-  func createSecurityCodeToken(securityCode: String, completion: @escaping (Result<SecurityCodeTokenDetails, TokenisationError.SecurityCodeError>) -> Void)
+  func createSecurityCodeToken(securityCode: String, completion: @escaping (Result<SecurityCodeResponse, TokenisationError.SecurityCodeError>) -> Void)
   var correlationID: String { get }
 }
 
@@ -175,7 +175,7 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
 // MARK: Security Code Request
 
 extension CheckoutAPIService {
-  public func createSecurityCodeToken(securityCode: String, completion: @escaping (Result<SecurityCodeTokenDetails, TokenisationError.SecurityCodeError>) -> Void) {
+  public func createSecurityCodeToken(securityCode: String, completion: @escaping (Result<SecurityCodeResponse, TokenisationError.SecurityCodeError>) -> Void) {
     guard !publicKey.isEmpty else {
       completion(.failure(.missingAPIKey))
       return
@@ -195,16 +195,15 @@ extension CheckoutAPIService {
     }
   }
 
-  private func createSecurityCodeToken(requestParameters: NetworkManager.RequestParameters, completion: @escaping (Result<SecurityCodeTokenDetails, TokenisationError.SecurityCodeError>) -> Void) {
+  private func createSecurityCodeToken(requestParameters: NetworkManager.RequestParameters, completion: @escaping (Result<SecurityCodeResponse, TokenisationError.SecurityCodeError>) -> Void) {
     requestExecutor.execute(
       requestParameters,
       responseType: SecurityCodeResponse.self,
       responseErrorType: TokenisationError.ServerError.self
-    ) { [tokenDetailsFactory] tokenResponseResult, httpURLResponse in
+    ) { tokenResponseResult, httpURLResponse in
       switch tokenResponseResult {
       case .response(let tokenResponse):
-        let tokenDetails = tokenDetailsFactory.create(tokenResponse: tokenResponse)
-        completion(.success(tokenDetails))
+        completion(.success(tokenResponse))
       case .errorResponse(let errorResponse):
         completion(.failure(.serverError(errorResponse)))
       case .networkError(let networkError):
