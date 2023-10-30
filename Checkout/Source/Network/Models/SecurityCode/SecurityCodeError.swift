@@ -18,9 +18,9 @@ extension TokenisationError {
     public var code: Int {
       switch self {
       case .missingAPIKey:
-        return 4000
+        return 4001
       case .couldNotBuildURLForRequest:
-        return 3001
+        return 3007
       case .networkError(let networkError):
         return networkError.code
       case .serverError(let serverError):

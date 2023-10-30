@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SecurityCodeResponse: Decodable {
+public struct SecurityCodeResponse: Decodable, Equatable {
   public let type: String
   public let token: String
   public let expiresOn: String

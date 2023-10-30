@@ -85,6 +85,10 @@ extension SecurityCodeComponent: SecurityCodeViewDelegate {
 }
 
 extension SecurityCodeComponent {
+  /**
+   Method to create a security code token
+   - completion: Either returns SecurityCodeTokenDetails or a relevant set of errors
+   */
   public func createToken(completion: @escaping (Result<SecurityCodeTokenDetails, TokenisationError.SecurityCodeError>) -> Void) {
 
     guard isCurrentSecurityCodeInputValid else {
