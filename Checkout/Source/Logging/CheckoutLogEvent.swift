@@ -16,6 +16,8 @@ enum CheckoutLogEvent: Equatable {
   case validateExpiryString
   case validateExpiryInteger
   case validateCVV
+  case cvvRequested(SecurityCodeTokenRequestData)
+  case cvvResponse(SecurityCodeTokenRequestData, TokenResponseData)
 
   func event(date: Date) -> Event {
     Event(
@@ -39,9 +41,9 @@ enum CheckoutLogEvent: Equatable {
 
   private var typeIdentifier: String {
     switch self {
-    case .tokenRequested:
+    case .tokenRequested, .cvvRequested:
       return "token_requested"
-    case .tokenResponse:
+    case .tokenResponse, .cvvResponse:
       return "token_response"
     case .cardValidator:
       return "card_validator"
@@ -63,9 +65,10 @@ enum CheckoutLogEvent: Equatable {
       .validateCardNumber,
       .validateExpiryString,
       .validateExpiryInteger,
-      .validateCVV:
+      .validateCVV,
+      .cvvRequested:
       return .info
-    case .tokenResponse(_, let tokenResponseData):
+    case .tokenResponse(_, let tokenResponseData), .cvvResponse(_, let tokenResponseData):
       return level(from: tokenResponseData.httpStatusCode)
     }
   }
@@ -95,6 +98,23 @@ enum CheckoutLogEvent: Equatable {
       return mergeDictionaries(
         [
           .tokenType: tokenRequestData.tokenType?.rawValue.lowercased(),
+          .publicKey: tokenRequestData.publicKey,
+          .tokenID: tokenResponseData.tokenID,
+          .scheme: tokenResponseData.scheme
+        ],
+        [.httpStatusCode: tokenResponseData.httpStatusCode],
+        [.serverError: tokenResponseData.serverError]
+      )
+    case .cvvRequested(let tokenRequestData):
+      return [
+        .tokenType: tokenRequestData.tokenType,
+        .publicKey: tokenRequestData.publicKey
+      ].compactMapValues { $0 }
+
+    case let .cvvResponse(tokenRequestData, tokenResponseData):
+      return mergeDictionaries(
+        [
+          .tokenType: tokenRequestData.tokenType,
           .publicKey: tokenRequestData.publicKey,
           .tokenID: tokenResponseData.tokenID,
           .scheme: tokenResponseData.scheme
