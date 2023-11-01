@@ -107,14 +107,14 @@ enum CheckoutLogEvent: Equatable {
       )
     case .cvvRequested(let tokenRequestData):
       return [
-        .tokenType: tokenRequestData.tokenType,
+        .tokenType: tokenRequestData.tokenType?.rawValue.lowercased(),
         .publicKey: tokenRequestData.publicKey
       ].compactMapValues { $0 }
 
     case let .cvvResponse(tokenRequestData, tokenResponseData):
       return mergeDictionaries(
         [
-          .tokenType: tokenRequestData.tokenType,
+          .tokenType: tokenRequestData.tokenType?.rawValue.lowercased(),
           .publicKey: tokenRequestData.publicKey,
           .tokenID: tokenResponseData.tokenID,
           .scheme: tokenResponseData.scheme

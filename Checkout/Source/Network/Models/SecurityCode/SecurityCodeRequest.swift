@@ -21,6 +21,6 @@ struct TokenData: Encodable, Equatable {
 }
 
 // For logging purposes only
-enum SecurityCodeTokenType: String {
+enum SecurityCodeTokenType: String, Codable, Equatable {
   case cvv
 }

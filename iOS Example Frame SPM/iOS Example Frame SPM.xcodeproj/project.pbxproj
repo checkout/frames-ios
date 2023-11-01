@@ -1235,7 +1235,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/checkout/frames-ios";
 			requirement = {
-				branch = "feature/cvv-component-tokenisation";
+				branch = "feature/cvv-component-logging";
 				kind = branch;
 			};
 		};
