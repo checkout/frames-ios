@@ -16,7 +16,9 @@ final class SecurityCodeComponentTests: XCTestCase {
 // MARK: Unit tests
 extension SecurityCodeComponentTests {
   func test_whenConfigureIsCalled_thenRelevantPropertiesAreInitialised() {
-    sut.configure(with: mockconfig, isSecurityCodeValid: { _ in })
+    sut.configure(with: mockconfig, isSecurityCodeValid: { _ in
+      // Just an empty closure to be passed in since it's not necessary in the context of this test
+    })
     XCTAssertNotNil(sut.cardValidator)
     XCTAssertNotNil(sut.checkoutAPIService)
     XCTAssertNotNil(sut.configuration)
@@ -58,8 +60,10 @@ extension SecurityCodeComponentTests {
   }
   
   func test_whenCreateTokenCalledWithInvalidInput_thenCompletionCalledWithInvalidSecurityCodeError() {
-    sut.configure(with: mockconfig, isSecurityCodeValid: { _ in })
-    
+    sut.configure(with: mockconfig, isSecurityCodeValid: { _ in
+      // Just an empty closure to be passed in since it's not necessary in the context of this test
+    })
+
     let mockCardValidator = MockCardValidator()
     mockCardValidator.expectedIsValidCVV = false
     sut.cardValidator = mockCardValidator
@@ -70,8 +74,10 @@ extension SecurityCodeComponentTests {
   }
   
   func test_whenCreateTokenCalledWithValidInput_thenCompletionCalledWithCheckoutAPIServiceResponse() {
-    sut.configure(with: mockconfig, isSecurityCodeValid: { _ in })
-    
+    sut.configure(with: mockconfig, isSecurityCodeValid: { _ in
+      // Just an empty closure to be passed in since it's not necessary in the context of this test
+    })
+
     let mockCardValidator = MockCardValidator()
     mockCardValidator.expectedIsValidCVV = true
     sut.cardValidator = mockCardValidator
