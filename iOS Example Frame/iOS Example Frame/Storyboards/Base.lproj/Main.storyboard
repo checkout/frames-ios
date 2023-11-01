@@ -617,7 +617,7 @@
                                                             <constraint firstAttribute="width" constant="100" id="u4G-kX-3oE"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="filled" title="Pay Now"/>
+                                                        <buttonConfiguration key="configuration" style="filled" title="Tokenise"/>
                                                         <connections>
                                                             <action selector="defaultPayButtonTapped:" destination="xGu-ci-qoq" eventType="touchUpInside" id="Lnr-yy-HXo"/>
                                                         </connections>
@@ -649,7 +649,7 @@
                                                             <constraint firstAttribute="width" constant="100" id="5J2-1c-06l"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="filled" title="Pay Now"/>
+                                                        <buttonConfiguration key="configuration" style="filled" title="Tokenise"/>
                                                         <connections>
                                                             <action selector="customPayButtonTapped:" destination="xGu-ci-qoq" eventType="touchUpInside" id="vHt-2v-guy"/>
                                                         </connections>
