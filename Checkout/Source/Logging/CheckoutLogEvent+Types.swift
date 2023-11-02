@@ -13,6 +13,11 @@ extension CheckoutLogEvent {
     let publicKey: String
   }
 
+  struct SecurityCodeTokenRequestData: Equatable {
+    let tokenType: SecurityCodeTokenType?
+    let publicKey: String
+  }
+
   struct TokenResponseData: Equatable {
     let tokenID: String?
     let scheme: String?

@@ -19,3 +19,8 @@ struct TokenData: Encodable, Equatable {
     case securityCode = "cvv"
   }
 }
+
+// For logging purposes only
+enum SecurityCodeTokenType: String, Codable, Equatable {
+  case cvv
+}
