@@ -54,6 +54,19 @@ final class SecurityCodeComponentUITests: XCTestCase {
                      "Failed at component: \(testData.component), text: \(testData.text)")
     }
 
-    // TODO: Add tokenisation test
+    let verify = {
+      let alert = app.alerts["Success"]
+      XCTAssertNotNil(alert)
+      XCTAssertEqual(alert.label, "Success")
+      XCTAssertTrue(alert.contains(text: "tok_"))
+    }
+
+    defaultPayButton.tap()
+    verify()
+
+    app.alerts["Success"].buttons["OK"].tap()
+
+    customPayButton.tap()
+    verify()
   }
 }

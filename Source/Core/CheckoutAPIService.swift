@@ -14,6 +14,7 @@ protocol CheckoutAPIProtocol {
     var logger: FramesEventLogging { get }
     init(publicKey: String, environment: Environment)
     func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)
+    func createSecurityCodeToken(securityCode: String, completion: @escaping (Result<SecurityCodeTokenDetails, TokenisationError.SecurityCodeError>) -> Void)
 }
 
 public final class CheckoutAPIService: CheckoutAPIProtocol {
@@ -34,5 +35,16 @@ public final class CheckoutAPIService: CheckoutAPIProtocol {
 
     public func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) {
         checkoutAPIService.createToken(paymentSource, completion: completion)
+    }
+
+    public func createSecurityCodeToken(securityCode: String, completion: @escaping (Result<SecurityCodeTokenDetails, TokenisationError.SecurityCodeError>) -> Void) {
+      checkoutAPIService.createSecurityCodeToken(securityCode: securityCode) { result in
+        switch result {
+        case .success(let securityCodeResponse):
+          completion(.success(SecurityCodeTokenDetails(response: securityCodeResponse)))
+        case .failure(let error):
+          completion(.failure(error))
+        }
+      }
     }
 }
