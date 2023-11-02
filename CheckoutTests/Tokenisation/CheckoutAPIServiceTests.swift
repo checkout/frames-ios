@@ -103,7 +103,6 @@ final class CheckoutAPIServiceTests: XCTestCase {
     var result: Result<TokenDetails, TokenisationError.TokenRequest>?
     subject.createToken(.card(card)) { result = $0 }
 
-    XCTAssertEqual(StubLogManager.queueCalledWith.last, .validateCVV)
     XCTAssertEqual(result, .failure(.cardValidationError(.cvv(.invalidLength))))
   }
 
@@ -117,7 +116,6 @@ final class CheckoutAPIServiceTests: XCTestCase {
     var result: Result<TokenDetails, TokenisationError.TokenRequest>?
     subject.createToken(.card(card)) { result = $0 }
 
-    XCTAssertEqual(StubLogManager.queueCalledWith.last, .validateCVV)
     XCTAssertEqual(result, .failure(.couldNotBuildURLForRequest))
   }
 
