@@ -639,9 +639,17 @@
                                                 <rect key="frame" x="0.0" y="27.333333333333314" width="358" height="50"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrd-VP-5SD" customClass="SecurityCodeComponent" customModule="Frames">
-                                                        <rect key="frame" x="0.0" y="0.0" width="242" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="156" height="50"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="CustomSecurityCodeComponent"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EUs-oe-SOn">
+                                                        <rect key="frame" x="172" y="0.0" width="70" height="50"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="NeY-M6-dcq"/>
+                                                            <constraint firstAttribute="width" constant="70" id="mCv-py-miI"/>
+                                                        </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBC-QF-Joq">
                                                         <rect key="frame" x="258" y="8" width="100" height="34.333333333333336"/>
