@@ -31,6 +31,8 @@ Frames for iOS tokenises consumer data for use within [Checkout.com](https://www
 
 - [Other features](https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/OtherFeatures.md): _How we help with Apple Pay & 3D Secure Challenges_
 
+- [Security code component](https://github.com/checkout/frames-ios/blob/update/4.3.0/.github/partial-readmes/SecurityCodeComponent.md): _Create a secure token for the security code_
+
 - [Migrating](https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/Migration.md): _If you have used 3.5.x version (or lower) before_
 
 - [License](#License)
