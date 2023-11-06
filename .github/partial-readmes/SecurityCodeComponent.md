@@ -12,7 +12,7 @@ var configuration = SecurityCodeComponentConfiguration(apiKey: "PUBLIC_KEY",    
 
 ### Step 2: Create a UIView
 
-Either create a UIView on storyboard and define the `Custom Class` and `Module` like below and create an `IBOutlet` in the code counterpart:
+Either create a UIView on storyboard (or a nib file) and define the `Custom Class` and `Module` like below and create an `IBOutlet` in the code counterpart:
 
 <img width="727" alt="Screenshot 2023-11-06 at 11 46 34" src="https://github.com/checkout/frames-ios/assets/125963311/ee19b1f8-f3eb-47ee-a20a-e328bdba7001">
 
