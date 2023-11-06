@@ -26,9 +26,9 @@ parentView.addSubview(securityCodeView)
 
 ### Step 3: Style the component
 
-Since we are using a secure display view, it shouldn't be possible to edit the properties of the inner text field. Hence, we provide the `SecurityCodeComponentStyle` type for it to be configured. Other than text style, all the other things can be configured like any other `UIView`s.
+We are using a secure display view so it won't be possible to edit the properties of the inner text field. We provide the `SecurityCodeComponentStyle` to allow the component to be configured. Other than text style, all other attributes can be configured like any other `UIView`.
 
-Security code view has a `clear` background by default.
+Note that security code view has a `clear` background by default.
 
 ```swift
     let style = SecurityCodeComponentStyle(text: .init(),
@@ -42,7 +42,7 @@ configuration.style = style
 
 ### Step 4: Inject an optional card scheme for granular security code validation
 
-If you don't define a card scheme, then all 3 and 4 digit security codes are considered valid for all card schemes. So, you won't utilise the early rejection from SDK level but will get the error from the API level if you don't define a card scheme. If the CVV is length 0, the SDK will throw a validation error when calling `createToken` independent from the injected card scheme.
+If you don't define a card scheme, then all 3 and 4 digit security codes are considered valid for all card schemes. If you don't use the SDKs front-end validation, you will get an error at the API level if you don't define a card scheme and the CVV is invalid. If the CVV is length 0, the SDK will throw a validation error when calling `createToken` independent from the injected card scheme.
 
 ```swift
 configuration.cardScheme = Card.Scheme(rawValue: "VISA") // or you can directly use `Card.Scheme.visa`. You should be getting the scheme name string values from your backend.
