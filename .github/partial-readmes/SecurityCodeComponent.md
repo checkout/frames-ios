@@ -3,7 +3,7 @@ Use our security code component to make a compliant saved card payment in region
 
 Within this flow, we will securely tokenise the security code and return a security code token to your application layer, which you can then use to continue the payment flow with.
 
-### Step 1: Initialise the configuration with secrets
+### Step 1: Initialise the configuration
 
 ```swift
 var configuration = SecurityCodeComponentConfiguration(apiKey: "PUBLIC_KEY",                        // set your public key
@@ -12,13 +12,11 @@ var configuration = SecurityCodeComponentConfiguration(apiKey: "PUBLIC_KEY",    
 
 ### Step 2: Create a UIView
 
-Either create a UIView on storyboard and define the `Custom Class` and `Module` like below and create an `IBOutlet` in the code counterpart:
+Either create a UIView on storyboard (or a nib file) and define the `Custom Class` and `Module` like below and create an `IBOutlet` in the code counterpart:
 
 <img width="727" alt="Screenshot 2023-11-06 at 11 46 34" src="https://github.com/checkout/frames-ios/assets/125963311/ee19b1f8-f3eb-47ee-a20a-e328bdba7001">
 
-
-
-Or, create it fully programmatically:
+Or, create it programmatically:
 
 ```swift
 let securityCodeView = SecurityCodeComponent()
@@ -28,23 +26,23 @@ parentView.addSubview(securityCodeView)
 
 ### Step 3: Style the component
 
-Since we are using a secure display view, it shouldn't be possible to edit the properties of the inner text field. Hence, we provide the `SecurityCodeComponentStyle` type for it to be configured. Other than text style, all the other things can be configured like any other `UIView`s.
+We are using a secure display view so it won't be possible to edit the properties of the inner text field. We provide the `SecurityCodeComponentStyle` to allow the component to be configured. Other than text style, all other attributes can be configured like any other `UIView`.
 
-Security code view has a `clear` background by default.
+Note that security code view has a `clear` background by default.
 
 ```swift
-let style = SecurityCodeComponentStyle(textAlignment: .natural,
-                                           text: .init(),
-                                           placeholder: "Enter CVV here",
+    let style = SecurityCodeComponentStyle(text: .init(),
+                                           font: UIFont.systemFont(ofSize: 24),
+                                           textAlignment: .natural,
                                            textColor: .red,
                                            tintColor: .red,
-                                           font: UIFont.systemFont(ofSize: 24))
+                                           placeholder: "Enter here")
 configuration.style = style
 ```
 
 ### Step 4: Inject an optional card scheme for granular security code validation
 
-If you don't define a card scheme, then all 3 and 4 digit security codes are considered valid for all card schemes. So, you won't utilise the early rejection from SDK level but will get the error from the API level if you don't define a card scheme. If the CVV is length 0, the SDK will throw a validation error when calling `createToken` independent from the injected card scheme.
+If you don't define a card scheme, then all 3 and 4 digit security codes are considered valid for all card schemes. If you don't use the SDKs front-end validation, you will get an error at the API level if you don't define a card scheme and the CVV is invalid. If the CVV is length 0, the SDK will throw a validation error when calling `createToken` independent from the injected card scheme.
 
 ```swift
 configuration.cardScheme = Card.Scheme(rawValue: "VISA") // or you can directly use `Card.Scheme.visa`. You should be getting the scheme name string values from your backend.
@@ -55,7 +53,7 @@ configuration.cardScheme = Card.Scheme(rawValue: "VISA") // or you can directly 
 ```swift
 securityCodeView.configure(with: configuration) { [weak self] isSecurityCodeValid in
   DispatchQueue.main.async {
-    self?.defaultPayButton.isEnabled = isSecurityCodeValid 
+    self?.payButton.isEnabled = isSecurityCodeValid 
   }  
  }
 ```
