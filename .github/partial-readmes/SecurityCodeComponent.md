@@ -3,7 +3,7 @@ Use our security code component to make a compliant saved card payment in region
 
 Within this flow, we will securely tokenise the security code and return a security code token to your application layer, which you can then use to continue the payment flow with.
 
-### Step 1: Initialise the configuration with secrets
+### Step 1: Initialise the configuration
 
 ```swift
 var configuration = SecurityCodeComponentConfiguration(apiKey: "PUBLIC_KEY",                        // set your public key
@@ -16,9 +16,7 @@ Either create a UIView on storyboard and define the `Custom Class` and `Module` 
 
 <img width="727" alt="Screenshot 2023-11-06 at 11 46 34" src="https://github.com/checkout/frames-ios/assets/125963311/ee19b1f8-f3eb-47ee-a20a-e328bdba7001">
 
-
-
-Or, create it fully programmatically:
+Or, create it programmatically:
 
 ```swift
 let securityCodeView = SecurityCodeComponent()
@@ -33,12 +31,12 @@ Since we are using a secure display view, it shouldn't be possible to edit the p
 Security code view has a `clear` background by default.
 
 ```swift
-let style = SecurityCodeComponentStyle(textAlignment: .natural,
-                                           text: .init(),
-                                           placeholder: "Enter CVV here",
+    let style = SecurityCodeComponentStyle(text: .init(),
+                                           font: UIFont.systemFont(ofSize: 24),
+                                           textAlignment: .natural,
                                            textColor: .red,
                                            tintColor: .red,
-                                           font: UIFont.systemFont(ofSize: 24))
+                                           placeholder: "Enter here")
 configuration.style = style
 ```
 
@@ -55,7 +53,7 @@ configuration.cardScheme = Card.Scheme(rawValue: "VISA") // or you can directly 
 ```swift
 securityCodeView.configure(with: configuration) { [weak self] isSecurityCodeValid in
   DispatchQueue.main.async {
-    self?.defaultPayButton.isEnabled = isSecurityCodeValid 
+    self?.payButton.isEnabled = isSecurityCodeValid 
   }  
  }
 ```
