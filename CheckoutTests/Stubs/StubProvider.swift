@@ -210,3 +210,13 @@ enum StubProvider {
   """
   // swiftlint:enable indentation_width line_length
 }
+
+extension StubProvider {
+  static func createSecurityCodeRequest() -> SecurityCodeRequest {
+    .init(tokenData: .init(securityCode: "123"))
+  }
+
+  static func createSecurityCodeResponse() -> SecurityCodeResponse {
+    .init(type: "cvv", token: "some_token", expiresOn: "some_date")
+  }
+}

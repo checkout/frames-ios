@@ -163,3 +163,23 @@ final class CheckoutAPIServiceIntegrationTests: XCTestCase {
     let last4: String
   }
 }
+
+extension CheckoutAPIServiceIntegrationTests {
+  func test_createSecurityCodeToken() {
+    let expectation = XCTestExpectation(description: "Waiting for security code token creation")
+
+    var securityCodeTokenDetailsResult: Result<SecurityCodeResponse, TokenisationError.SecurityCodeError>?
+    subject.createSecurityCodeToken(securityCode: "1234") { result in
+      securityCodeTokenDetailsResult = result
+      expectation.fulfill()
+    }
+
+    wait(for: [expectation], timeout: 35)
+
+    let response = try? securityCodeTokenDetailsResult?.get()
+    XCTAssertNotNil(response)
+    XCTAssertEqual(response?.type, "cvv")
+    XCTAssertNotNil(response?.token)
+    XCTAssertNotNil(response?.expiresOn)
+  }
+}

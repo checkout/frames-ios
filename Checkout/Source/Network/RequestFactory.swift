@@ -36,19 +36,22 @@ final class RequestFactory: RequestProviding {
   }
 
   enum Request: Equatable {
-    case token(tokenRequest: TokenRequest, publicKey: String)
+    case cardToken(tokenRequest: TokenRequest, publicKey: String)
+    case securityCodeToken(request: SecurityCodeRequest, publicKey: String)
 
     var httpMethod: NetworkManager.RequestParameters.Method {
       switch self {
-      case .token:
+      case .cardToken, .securityCodeToken:
         return .post
       }
     }
 
     func httpBody(encoder: Encoding) -> Data? {
       switch self {
-      case .token(let tokenRequest, _):
-        return try? encoder.encode(tokenRequest)
+      case .cardToken(let request, _):
+        return try? encoder.encode(request)
+      case .securityCodeToken(let request, _):
+        return try? encoder.encode(request)
       }
     }
 
@@ -58,7 +61,7 @@ final class RequestFactory: RequestProviding {
 
     var additionalHeaders: [String: String] {
       switch self {
-      case let .token(_, publicKey):
+      case let .cardToken(_, publicKey), let .securityCodeToken(_, publicKey):
         return [
           "Authorization": "Bearer \(publicKey)",
           "User-Agent": Constants.Product.userAgent
@@ -76,7 +79,7 @@ final class RequestFactory: RequestProviding {
       }
 
       switch self {
-      case .token:
+      case .cardToken, .securityCodeToken:
         urlComponents.path += "tokens"
       }
 

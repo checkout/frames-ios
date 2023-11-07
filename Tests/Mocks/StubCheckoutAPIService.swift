@@ -11,6 +11,7 @@
 final class StubCheckoutAPIService: Frames.CheckoutAPIProtocol {
   var cardValidatorToReturn = MockCardValidator()
   var createTokenCompletionResult: (Result<TokenDetails, TokenisationError.TokenRequest>)?
+  var createSecurityCodeTokenCompletionResult: (Result<SecurityCodeTokenDetails, TokenisationError.SecurityCodeError>)?
   var loggerToReturn = StubFramesEventLogger()
   var logger: FramesEventLogging {
     loggerCalled = true
@@ -22,6 +23,7 @@ final class StubCheckoutAPIService: Frames.CheckoutAPIProtocol {
   }
 
   private(set) var createTokenCalledWith: (paymentSource: PaymentSource, completion: (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)?
+  private(set) var createSecurityCodeTokenCalledWith: (securityCode: String, completion: (Result<SecurityCodeTokenDetails, TokenisationError.SecurityCodeError>) -> Void)?
   private(set) var cardValidatorCalled = false
   private(set) var loggerCalled = false
 
@@ -36,6 +38,12 @@ final class StubCheckoutAPIService: Frames.CheckoutAPIProtocol {
         }
     }
 
+    func createSecurityCodeToken(securityCode: String, completion: @escaping (Result<SecurityCodeTokenDetails, TokenisationError.SecurityCodeError>) -> Void) {
+        createSecurityCodeTokenCalledWith = (securityCode, completion)
+        if let result = createSecurityCodeTokenCompletionResult {
+          completion(result)
+        }
+    }
 }
 
 extension StubCheckoutAPIService {

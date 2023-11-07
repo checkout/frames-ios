@@ -13,7 +13,7 @@ if EDITED_FILES=$(git diff HEAD origin/main --name-only --diff-filter=d | grep "
   if [ -z "$EDITED_FILES" ]; then
     echo "No edited .swift files found."
   else
-    swiftlint lint $EDITED_FILES | sed -E 's/^(.*):([0-9]+):([0-9]+): (warning|error|[^:]+): (.*)/::\4 title=Lint error,file=\1,line=\2,col=\3::\5\n\1:\2:\3/'
+    swiftlint lint $EDITED_FILES | sed -E -n 's/^(.*):([0-9]+):([0-9]+): error: (.*)/::error file=\1,line=\2,col=\3::\4\n\1:\2:\3/p'
   fi
 else
   echo "No changes in .swift files found."

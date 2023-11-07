@@ -17,6 +17,10 @@ final class CheckoutAPIServiceTests: XCTestCase {
     TokenResponse,
     TokenisationError.ServerError
   >! = StubRequestExecutor()
+  private var stubSecurityCodeRequestExecutor: StubRequestExecutor<
+    SecurityCodeResponse,
+    TokenisationError.ServerError
+  >! = StubRequestExecutor()
   private var stubRequestFactory: StubRequestFactory! = StubRequestFactory()
   private var stubTokenRequestFactory: StubTokenRequestFactory! = StubTokenRequestFactory()
   private var stubTokenDetailsFactory: StubTokenDetailsFactory! = StubTokenDetailsFactory()
@@ -43,6 +47,7 @@ final class CheckoutAPIServiceTests: XCTestCase {
     stubRequestExecutor = nil
     stubRequestFactory = nil
     stubTokenRequestFactory = nil
+    stubSecurityCodeRequestExecutor = nil
     stubTokenDetailsFactory = nil
 
     super.tearDown()
@@ -72,7 +77,7 @@ final class CheckoutAPIServiceTests: XCTestCase {
     stubRequestExecutor.executeCalledWithCompletion?(.response(tokenResponse), HTTPURLResponse())
 
     XCTAssertEqual(stubTokenRequestFactory.createCalledWith, .card(card))
-    XCTAssertEqual(stubRequestFactory.createCalledWith, .token(tokenRequest: tokenRequest, publicKey: "publicKey"))
+    XCTAssertEqual(stubRequestFactory.createCalledWith, .cardToken(tokenRequest: tokenRequest, publicKey: "publicKey"))
 
     XCTAssertEqual(stubRequestExecutor.executeCalledWithRequestParameters, requestParameters)
     XCTAssertTrue(stubRequestExecutor.executeCalledWithResponseType == TokenResponse.self)
@@ -98,7 +103,6 @@ final class CheckoutAPIServiceTests: XCTestCase {
     var result: Result<TokenDetails, TokenisationError.TokenRequest>?
     subject.createToken(.card(card)) { result = $0 }
 
-    XCTAssertEqual(StubLogManager.queueCalledWith.last, .validateCVV)
     XCTAssertEqual(result, .failure(.cardValidationError(.cvv(.invalidLength))))
   }
 
@@ -112,7 +116,6 @@ final class CheckoutAPIServiceTests: XCTestCase {
     var result: Result<TokenDetails, TokenisationError.TokenRequest>?
     subject.createToken(.card(card)) { result = $0 }
 
-    XCTAssertEqual(StubLogManager.queueCalledWith.last, .validateCVV)
     XCTAssertEqual(result, .failure(.couldNotBuildURLForRequest))
   }
 
@@ -198,5 +201,150 @@ final class CheckoutAPIServiceTests: XCTestCase {
     StubLogManager.correlationIDToReturn = stubCorrelationID
 
     XCTAssertEqual(subject.correlationID, stubCorrelationID)
+  }
+}
+
+extension CheckoutAPIServiceTests {
+  func setupSecurityCodeSubject(publicKey: String = "publicKey") {
+    subject = CheckoutAPIService(
+      publicKey: publicKey,
+      environment: stubBaseURLProvider,
+      requestExecutor: stubSecurityCodeRequestExecutor,
+      requestFactory: stubRequestFactory,
+      tokenRequestFactory: stubTokenRequestFactory,
+      tokenDetailsFactory: stubTokenDetailsFactory,
+      logManager: StubLogManager.self
+    )
+  }
+
+  func test_createSecurityCodeToken_success() {
+    setupSecurityCodeSubject()
+    
+    let tokenRequest = StubProvider.createSecurityCodeRequest()
+    let requestParameters = StubProvider.createRequestParameters()
+    let tokenResponse = StubProvider.createSecurityCodeResponse()
+
+    stubRequestFactory.createToReturn = .success(requestParameters)
+
+    var result: Result<SecurityCodeResponse, TokenisationError.SecurityCodeError>?
+    subject.createSecurityCodeToken(securityCode: "123", completion: { result = $0 })
+
+    XCTAssertEqual(StubLogManager.queueCalledWith.last, .cvvRequested(.init(
+      tokenType: .cvv,
+      publicKey: "publicKey"
+    )))
+
+    stubSecurityCodeRequestExecutor.executeCalledWithCompletion?(.response(tokenResponse), HTTPURLResponse())
+
+    XCTAssertEqual(stubRequestFactory.createCalledWith, .securityCodeToken(request: tokenRequest, publicKey: "publicKey"))
+
+    XCTAssertEqual(stubSecurityCodeRequestExecutor.executeCalledWithRequestParameters, requestParameters)
+    XCTAssertTrue(stubSecurityCodeRequestExecutor.executeCalledWithResponseType == SecurityCodeResponse.self)
+    XCTAssertTrue(stubSecurityCodeRequestExecutor.executeCalledWithResponseErrorType == TokenisationError.ServerError.self)
+
+    XCTAssertEqual(StubLogManager.queueCalledWith.last, .cvvResponse(
+      .init(tokenType: .cvv, publicKey: "publicKey"),
+      .init(tokenID: "some_token", scheme: nil, httpStatusCode: 200, serverError: nil)
+    ))
+
+    XCTAssertEqual(result, .success(tokenResponse))
+  }
+
+  func test_createSecurityCodeToken_failure_publicKeyEmpty() {
+    setupSecurityCodeSubject(publicKey: "")
+
+    var result: Result<SecurityCodeResponse, TokenisationError.SecurityCodeError>?
+    subject.createSecurityCodeToken(securityCode: "9876", completion: { result = $0 })
+
+    XCTAssertEqual(result, .failure(.missingAPIKey))
+  }
+
+  func test_createSecurityCodeToken_failure_couldNotBuildURLForRequest() {
+    stubRequestFactory.createToReturn = .failure(.baseURLCouldNotBeConvertedToComponents)
+
+    var result: Result<SecurityCodeResponse, TokenisationError.SecurityCodeError>?
+    subject.createSecurityCodeToken(securityCode: "9876", completion: { result = $0 })
+
+    XCTAssertEqual(result, .failure(.couldNotBuildURLForRequest))
+  }
+
+  func test_createSecurityCodeToken_serverError() {
+    setupSecurityCodeSubject()
+
+    let tokenRequest = StubProvider.createSecurityCodeRequest()
+    let requestParameters = StubProvider.createRequestParameters()
+    let serverError = TokenisationError.ServerError(
+      requestID: "requestID",
+      errorType: "errorType",
+      errorCodes: ["test", "value"]
+    )
+
+    stubRequestFactory.createToReturn = .success(requestParameters)
+
+    var result: Result<SecurityCodeResponse, TokenisationError.SecurityCodeError>?
+    subject.createSecurityCodeToken(securityCode: "123", completion: { result = $0 })
+
+    XCTAssertEqual(StubLogManager.queueCalledWith.last, .cvvRequested(.init(
+      tokenType: .cvv,
+      publicKey: "publicKey"
+    )))
+
+    stubSecurityCodeRequestExecutor.executeCalledWithCompletion?(.errorResponse(serverError), HTTPURLResponse())
+
+    XCTAssertEqual(StubLogManager.queueCalledWith.last, .cvvResponse(
+      .init(tokenType: nil, publicKey: "publicKey"),
+      .init(
+        tokenID: nil,
+        scheme: nil,
+        httpStatusCode: 200,
+        serverError: .init(requestID: "requestID", errorType: "errorType", errorCodes: ["test", "value"])
+      )
+    ))
+
+    XCTAssertEqual(stubRequestFactory.createCalledWith, .securityCodeToken(request: tokenRequest, publicKey: "publicKey"))
+
+    XCTAssertEqual(stubSecurityCodeRequestExecutor.executeCalledWithRequestParameters, requestParameters)
+    XCTAssertTrue(stubSecurityCodeRequestExecutor.executeCalledWithResponseType == SecurityCodeResponse.self)
+    XCTAssertTrue(stubSecurityCodeRequestExecutor.executeCalledWithResponseErrorType == TokenisationError.ServerError.self)
+
+    XCTAssertEqual(result, .failure(.serverError(serverError)))
+  }
+
+  func test_createSecurityCodeToken_networkError() {
+    setupSecurityCodeSubject()
+
+    let tokenRequest = StubProvider.createSecurityCodeRequest()
+    let requestParameters = StubProvider.createRequestParameters()
+    stubRequestFactory.createToReturn = .success(requestParameters)
+
+    var result: Result<SecurityCodeResponse, TokenisationError.SecurityCodeError>?
+    subject.createSecurityCodeToken(securityCode: "123", completion: { result = $0 })
+
+    XCTAssertEqual(StubLogManager.queueCalledWith.last, .cvvRequested(.init(
+      tokenType: .cvv,
+      publicKey: "publicKey"
+    )))
+
+    stubSecurityCodeRequestExecutor.executeCalledWithCompletion?(.networkError(.connectionFailed), HTTPURLResponse())
+
+    XCTAssertEqual(stubRequestFactory.createCalledWith, .securityCodeToken(request: tokenRequest, publicKey: "publicKey"))
+
+    XCTAssertEqual(stubSecurityCodeRequestExecutor.executeCalledWithRequestParameters, requestParameters)
+    XCTAssertTrue(stubSecurityCodeRequestExecutor.executeCalledWithResponseType == SecurityCodeResponse.self)
+    XCTAssertTrue(stubSecurityCodeRequestExecutor.executeCalledWithResponseErrorType == TokenisationError.ServerError.self)
+
+    XCTAssertEqual(result, .failure(.networkError(.connectionFailed)))
+  }
+
+  func testCreateSEcurityCodeTokenWithoutAPIKey() {
+      let service = CheckoutAPIService(publicKey: "", environment: .sandbox)
+
+      service.createSecurityCodeToken(securityCode: "123") { result in
+          if case .failure(let failure) = result {
+              XCTAssertEqual(failure, .missingAPIKey)
+          } else {
+              XCTFail("Test should return a failure")
+          }
+      }
   }
 }

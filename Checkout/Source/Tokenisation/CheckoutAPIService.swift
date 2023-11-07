@@ -11,6 +11,7 @@ import CheckoutEventLoggerKit
 
 public protocol CheckoutAPIProtocol {
   func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)
+  func createSecurityCodeToken(securityCode: String, completion: @escaping (Result<SecurityCodeResponse, TokenisationError.SecurityCodeError>) -> Void)
   var correlationID: String { get }
 }
 
@@ -102,7 +103,7 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
 
   private func createToken(tokenRequest: TokenRequest, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) {
     let requestParameterResult = requestFactory.create(
-      request: .token(tokenRequest: tokenRequest, publicKey: publicKey)
+      request: .cardToken(tokenRequest: tokenRequest, publicKey: publicKey)
     )
 
     switch requestParameterResult {
@@ -164,6 +165,83 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
       )
 
       logManager.queue(event: .tokenResponse(tokenRequestData, tokenResponseData))
+    case .networkError:
+      // we received no response, so nothing to log
+      break
+    }
+  }
+}
+
+// MARK: Security Code Request
+
+extension CheckoutAPIService {
+  public func createSecurityCodeToken(securityCode: String, completion: @escaping (Result<SecurityCodeResponse, TokenisationError.SecurityCodeError>) -> Void) {
+    guard !publicKey.isEmpty else {
+      completion(.failure(.missingAPIKey))
+      return
+    }
+
+    let request = SecurityCodeRequest(tokenData: TokenData(securityCode: securityCode))
+    let requestParameterResult = requestFactory.create(request: .securityCodeToken(request: request, publicKey: publicKey))
+
+    switch requestParameterResult {
+    case .success(let requestParameters):
+      logManager.queue(event: .cvvRequested(CheckoutLogEvent.SecurityCodeTokenRequestData(
+        tokenType: .cvv,
+        publicKey: publicKey
+      )))
+      createSecurityCodeToken(requestParameters: requestParameters, completion: completion)
+    case .failure(let error):
+      switch error {
+      case .baseURLCouldNotBeConvertedToComponents, .couldNotBuildURL:
+        completion(.failure(.couldNotBuildURLForRequest))
+      }
+    }
+  }
+
+  private func createSecurityCodeToken(requestParameters: NetworkManager.RequestParameters, completion: @escaping (Result<SecurityCodeResponse, TokenisationError.SecurityCodeError>) -> Void) {
+    requestExecutor.execute(
+      requestParameters,
+      responseType: SecurityCodeResponse.self,
+      responseErrorType: TokenisationError.ServerError.self
+    ) { [logManager, logSecurityCodeTokenResponse] tokenResponseResult, httpURLResponse in
+      logSecurityCodeTokenResponse(tokenResponseResult, httpURLResponse)
+
+      switch tokenResponseResult {
+      case .response(let tokenResponse):
+        completion(.success(tokenResponse))
+      case .errorResponse(let errorResponse):
+        completion(.failure(.serverError(errorResponse)))
+      case .networkError(let networkError):
+        completion(.failure(.networkError(networkError)))
+      }
+
+      logManager.resetCorrelationID()
+    }
+  }
+
+  private func logSecurityCodeTokenResponse(tokenResponseResult: NetworkRequestResult<SecurityCodeResponse, TokenisationError.ServerError>, httpURLResponse: HTTPURLResponse?) {
+    switch tokenResponseResult {
+    case .response(let tokenResponse):
+      let tokenRequestData = CheckoutLogEvent.SecurityCodeTokenRequestData(tokenType: .cvv, publicKey: publicKey)
+      let tokenResponseData = CheckoutLogEvent.TokenResponseData(
+        tokenID: tokenResponse.token,
+        scheme: nil,
+        httpStatusCode: httpURLResponse?.statusCode,
+        serverError: nil
+      )
+
+      logManager.queue(event: .cvvResponse(tokenRequestData, tokenResponseData))
+    case .errorResponse(let errorResponse):
+      let tokenRequestData = CheckoutLogEvent.SecurityCodeTokenRequestData(tokenType: nil, publicKey: publicKey)
+      let tokenResponseData = CheckoutLogEvent.TokenResponseData(
+        tokenID: nil,
+        scheme: nil,
+        httpStatusCode: httpURLResponse?.statusCode,
+        serverError: errorResponse
+      )
+
+      logManager.queue(event: .cvvResponse(tokenRequestData, tokenResponseData))
     case .networkError:
       // we received no response, so nothing to log
       break
