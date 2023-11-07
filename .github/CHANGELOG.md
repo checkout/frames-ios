@@ -11,7 +11,7 @@ Released on 2023-11-07
 
 Updates:
 
-- Security code component is ready to use. 
+- Added a security code component for CVV tokenisation. 
 
 ## [4.2.1](https://github.com/checkout/frames-ios/releases/tag/4.2.1)
 
