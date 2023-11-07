@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 #### 4.x Releases
 
+## [4.3.0](https://github.com/checkout/frames-ios/releases/tag/4.2.1)
+
+Released on 2023-11-07
+
+Updates:
+
+- Security code component is ready to use. 
+
 ## [4.2.1](https://github.com/checkout/frames-ios/releases/tag/4.2.1)
 
 Released on 2023-08-25
