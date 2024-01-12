@@ -344,7 +344,9 @@ extension FramesPaymentViewController {
       paymentViews.append(securityCodeView)
     }
 
-    if viewModel.paymentFormStyle?.addBillingSummary != nil && viewModel.paymentFormStyle?.editBillingSummary != nil {
+    if viewModel.billingFormStyle != nil &&
+        viewModel.paymentFormStyle?.addBillingSummary != nil &&
+        viewModel.paymentFormStyle?.editBillingSummary != nil {
       paymentViews.append(contentsOf: [
         addBillingFormButtonView,
         billingFormSummaryView])

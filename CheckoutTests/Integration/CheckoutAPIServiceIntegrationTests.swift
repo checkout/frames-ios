@@ -139,7 +139,7 @@ final class CheckoutAPIServiceIntegrationTests: XCTestCase {
         XCTAssertNil(tokenDetails.billingAddress)
         XCTAssertEqual(tokenDetails.cardCategory, "CONSUMER")
         XCTAssertEqual(tokenDetails.cardType, "DEBIT")
-        XCTAssertEqual(tokenDetails.issuer, "WISE PAYMENTS LIMITED")
+        XCTAssertEqual(tokenDetails.issuer, "CURVE UK LIMITED")
         XCTAssertEqual(tokenDetails.issuerCountry, "GB")
         XCTAssertNil(tokenDetails.phone)
         XCTAssertEqual(tokenDetails.productId, "MDW")
