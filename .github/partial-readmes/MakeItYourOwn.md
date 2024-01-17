@@ -37,6 +37,12 @@ paymentFormStyle.payButton.text = "Pay £54.63"
 ```
 We wouldn't recommend this approach if you're looking to override many values, since you would need to individually identify and change every property. But it can work for small tweaks.
 
+To deactivate the billing address, include the following code lines within the getDefaultPaymentViewController() function in the Factory.swift file:
+```swift
+    paymentFormStyle.editBillingSummary = nil
+    paymentFormStyle.addBillingSummary = nil
+```
+
 
 ### Use Theme
 In our Demo projects we also demo this approach in `ThemeDemo.swift`. With the Theme, we are aiming to give you a design system that you can use to create the full UI style by providing a small number of properties that we will share across to sub components. Since you might not fully agree with our mapping, you can still individually change each component afterwards (as in the Modify Default example).
