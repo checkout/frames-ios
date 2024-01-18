@@ -9,7 +9,7 @@ import Foundation
 
 public struct PaymentStyle {
     let paymentFormStyle: PaymentFormStyle
-    let billingFormStyle: BillingFormStyle
+    let billingFormStyle: BillingFormStyle?
 
     /**
      Define the payment form UI Styling
@@ -19,7 +19,7 @@ public struct PaymentStyle {
         - billingFormStyle: UI Styling for the billing form if the user will interact with the address billing
      */
     public init(paymentFormStyle: PaymentFormStyle,
-                billingFormStyle: BillingFormStyle) {
+                billingFormStyle: BillingFormStyle? = nil) {
         self.paymentFormStyle = paymentFormStyle
         self.billingFormStyle = billingFormStyle
     }
