@@ -6,7 +6,7 @@ target 'iOS Example Frame' do
   use_frameworks!
 
   # Pods for iOS Example Custom
-  pod 'Frames', '4.3.0'
+  pod 'Frames', :git => 'https://github.com/checkout/frames-ios.git', :branch => 'aashna/PIMOB-2358-disable_billing_address'
 
 end
 
