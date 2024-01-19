@@ -1235,7 +1235,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/checkout/frames-ios";
 			requirement = {
-				branch = "aashna/PIMOB-2358-disable_billing_address";
+				branch = "fix/update-readme";
 				kind = branch;
 			};
 		};
