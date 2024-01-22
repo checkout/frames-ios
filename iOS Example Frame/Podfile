@@ -6,7 +6,7 @@ target 'iOS Example Frame' do
   use_frameworks!
 
   # Pods for iOS Example Custom
-  pod 'Frames', :git => 'https://github.com/checkout/frames-ios.git', :branch => 'fix/update-readme'
+  pod 'Frames', '4.3.1'
 
 end
 

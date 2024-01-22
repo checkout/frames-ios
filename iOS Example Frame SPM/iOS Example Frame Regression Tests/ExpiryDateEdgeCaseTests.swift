@@ -37,10 +37,11 @@ final class ExpiryDateEdgeCaseTests: XCTestCase {
         let app = XCUIApplication()
         app.launchFrames()
 
-        let currentMonth = String(Calendar.current.component(.month, from: Date()))
+        var currentMonth = String(Calendar.current.component(.month, from: Date()))
         let currentYear = String(Calendar.current.component(.year, from: Date())).suffix(2)
 
         let expiryTextField = app.otherElements[AccessibilityIdentifiers.PaymentForm.cardExpiry]
+        currentMonth = currentMonth.count == 1 ? "0" + currentMonth : currentMonth
         app.enterText(currentMonth + currentYear, into: expiryTextField)
         app.tapDoneButton()
 
