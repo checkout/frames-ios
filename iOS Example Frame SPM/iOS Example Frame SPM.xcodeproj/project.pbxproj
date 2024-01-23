@@ -24,10 +24,9 @@
 		0BB538AD28B637980060A8DE /* Factory+UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB538AC28B637980060A8DE /* Factory+UITest.swift */; };
 		0BD2ECBF28B65DA10041A942 /* FrameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2ECBE28B65DA10041A942 /* FrameUITests.swift */; };
 		0BD2ECC128B65EC20041A942 /* XCUIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2ECC028B65EC20041A942 /* XCUIApplication+Extension.swift */; };
-		1629C0812AF562A5001BD3D9 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 1629C0802AF562A5001BD3D9 /* Frames */; };
-		1629C0842AF562D4001BD3D9 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 1629C0832AF562D4001BD3D9 /* Frames */; };
-		1629C0872AF56418001BD3D9 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 1629C0862AF56418001BD3D9 /* Frames */; };
-		1629C0892AF5641D001BD3D9 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 1629C0882AF5641D001BD3D9 /* Frames */; };
+		1629C08C2AF90379001BD3D9 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 1629C08B2AF90379001BD3D9 /* Frames */; };
+		1629C08E2AF905A4001BD3D9 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 1629C08D2AF905A4001BD3D9 /* Frames */; };
+		1629C0902AF905A8001BD3D9 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 1629C08F2AF905A8001BD3D9 /* Frames */; };
 		162CD88E2A6827E900027FEF /* XCUIElement+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162CD88D2A6827E900027FEF /* XCUIElement+TestHelpers.swift */; };
 		16857B742A65F15F005CAE39 /* CardTypeTokenCreationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16857B732A65F15F005CAE39 /* CardTypeTokenCreationTests.swift */; };
 		16857B7E2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16857B7D2A65F3F3005CAE39 /* XCUIApplication+TestHelpers.swift */; };
@@ -129,7 +128,6 @@
 		0BCCBCEC28DC98F600041870 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		0BD2ECBE28B65DA10041A942 /* FrameUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameUITests.swift; sourceTree = "<group>"; };
 		0BD2ECC028B65EC20041A942 /* XCUIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extension.swift"; sourceTree = "<group>"; };
-		1629C0852AF5640F001BD3D9 /* frames-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "frames-ios"; path = ..; sourceTree = "<group>"; };
 		162CD88D2A6827E900027FEF /* XCUIElement+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+TestHelpers.swift"; sourceTree = "<group>"; };
 		16857B712A65F15F005CAE39 /* iOS Example Frame Regression Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Example Frame Regression Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16857B732A65F15F005CAE39 /* CardTypeTokenCreationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeTokenCreationTests.swift; sourceTree = "<group>"; };
@@ -212,7 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1629C0892AF5641D001BD3D9 /* Frames in Frameworks */,
+				1629C0902AF905A8001BD3D9 /* Frames in Frameworks */,
 				16C3F8402A7927ED00690639 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,7 +219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1629C0872AF56418001BD3D9 /* Frames in Frameworks */,
+				1629C08E2AF905A4001BD3D9 /* Frames in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,8 +227,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1629C0842AF562D4001BD3D9 /* Frames in Frameworks */,
-				1629C0812AF562A5001BD3D9 /* Frames in Frameworks */,
+				1629C08C2AF90379001BD3D9 /* Frames in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,7 +458,6 @@
 		E6646F8120CE6C0900D8353A = {
 			isa = PBXGroup;
 			children = (
-				1629C0852AF5640F001BD3D9 /* frames-ios */,
 				CBA81CAA27ABDF21000DF192 /* iOS Example Frame */,
 				CB9412D82825714C00C889E8 /* iOS Example FrameUITests */,
 				16857B722A65F15F005CAE39 /* iOS Example Frame Regression Tests */,
@@ -491,7 +487,7 @@
 			name = "iOS Example Frame Regression Tests";
 			packageProductDependencies = (
 				16C3F83F2A7927ED00690639 /* SnapshotTesting */,
-				1629C0882AF5641D001BD3D9 /* Frames */,
+				1629C08F2AF905A8001BD3D9 /* Frames */,
 			);
 			productName = "iOS Example Frame Regression Tests";
 			productReference = 16857B712A65F15F005CAE39 /* iOS Example Frame Regression Tests.xctest */;
@@ -512,7 +508,7 @@
 			);
 			name = "iOS Example FrameUITests";
 			packageProductDependencies = (
-				1629C0862AF56418001BD3D9 /* Frames */,
+				1629C08D2AF905A4001BD3D9 /* Frames */,
 			);
 			productName = "iOS Example FrameUITests";
 			productReference = 16AE74C42A5C1EBB0031F794 /* iOS Example FrameUITests.xctest */;
@@ -532,8 +528,7 @@
 			);
 			name = "iOS Example Frame";
 			packageProductDependencies = (
-				1629C0802AF562A5001BD3D9 /* Frames */,
-				1629C0832AF562D4001BD3D9 /* Frames */,
+				1629C08B2AF90379001BD3D9 /* Frames */,
 			);
 			productName = "iOS Example Frame";
 			productReference = 16AE74C32A5C1EBB0031F794 /* iOS Example Frame.app */;
@@ -582,6 +577,7 @@
 			mainGroup = E6646F8120CE6C0900D8353A;
 			packageReferences = (
 				16C3F83E2A7927ED00690639 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				1629C08A2AF90379001BD3D9 /* XCRemoteSwiftPackageReference "frames-ios" */,
 			);
 			productRefGroup = E6646F8120CE6C0900D8353A;
 			projectDirPath = "";
@@ -1235,6 +1231,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1629C08A2AF90379001BD3D9 /* XCRemoteSwiftPackageReference "frames-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/checkout/frames-ios";
+			requirement = {
+				kind = exactVersion;
+				version = 4.3.1;
+			};
+		};
 		16C3F83E2A7927ED00690639 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
@@ -1246,20 +1250,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1629C0802AF562A5001BD3D9 /* Frames */ = {
+		1629C08B2AF90379001BD3D9 /* Frames */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 1629C08A2AF90379001BD3D9 /* XCRemoteSwiftPackageReference "frames-ios" */;
 			productName = Frames;
 		};
-		1629C0832AF562D4001BD3D9 /* Frames */ = {
+		1629C08D2AF905A4001BD3D9 /* Frames */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 1629C08A2AF90379001BD3D9 /* XCRemoteSwiftPackageReference "frames-ios" */;
 			productName = Frames;
 		};
-		1629C0862AF56418001BD3D9 /* Frames */ = {
+		1629C08F2AF905A8001BD3D9 /* Frames */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Frames;
-		};
-		1629C0882AF5641D001BD3D9 /* Frames */ = {
-			isa = XCSwiftPackageProductDependency;
+			package = 1629C08A2AF90379001BD3D9 /* XCRemoteSwiftPackageReference "frames-ios" */;
 			productName = Frames;
 		};
 		16C3F83F2A7927ED00690639 /* SnapshotTesting */ = {
