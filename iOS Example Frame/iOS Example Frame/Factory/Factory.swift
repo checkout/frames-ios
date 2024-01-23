@@ -36,10 +36,14 @@ enum Factory {
     let phone = Phone(number: "77 1234 1234", country: country)
 
     let billingFormData = BillingForm(name: "Bình Inyene", address: address, phone: phone)
-
+    
     let billingFormStyle = FramesFactory.defaultBillingFormStyle
 
     let paymentFormStyle = FramesFactory.defaultPaymentFormStyle
+      
+      // Comment out below lines to hide billing address (Optional)
+      // paymentFormStyle.editBillingSummary = nil
+      // paymentFormStyle.addBillingSummary = nil
 
     let supportedSchemes: [CardScheme] = [.mada, .visa, .mastercard, .maestro, .americanExpress, .discover, .dinersClub, .jcb]
 

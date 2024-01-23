@@ -1236,7 +1236,7 @@
 			repositoryURL = "https://github.com/checkout/frames-ios";
 			requirement = {
 				kind = exactVersion;
-				version = 4.3.0;
+				version = 4.3.1;
 			};
 		};
 		16C3F83E2A7927ED00690639 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
