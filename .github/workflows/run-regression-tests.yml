@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   run-regression-tests:
-    if: contains(github.event.pull_request.labels.*.name, 'Run Regression Tests')
+    if: (github.event_name == 'workflow_dispatch') || (contains(github.event.pull_request.labels.*.name, 'Run Regression Tests'))
     name: Run Regression Tests
     runs-on: macos-12-xl
 

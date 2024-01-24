@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   validate_for_app_store:
-    if: contains(github.event.pull_request.labels.*.name, 'Validate For App Store')
+    if: (github.event_name == 'workflow_dispatch') || contains(github.event.pull_request.labels.*.name, 'Validate For App Store')
     name: Validate For App Store
     environment: AppStoreValidation
     runs-on: macos-12-xl
