@@ -21,8 +21,6 @@
 
 Frames for iOS tokenises consumer data for use within [Checkout.com](https://www.checkout.com)'s payment infrastructure. We abstract away the complexity of taking payments, building payment UIs, and handling sensitive data.
 
-- [Demo projects](#Demo-projects): _We've created projects showcasing the range of functionality available in our SDKs while testing each distribution method offered_
-
 - [Integration](https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/Integration.md): _a guide for consuming our SDK in your iOS app_
 
 - [Get started](https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/GetStarted.md): _Start testing what you can achieve by presenting inside your Applications UI_ 
@@ -34,8 +32,6 @@ Frames for iOS tokenises consumer data for use within [Checkout.com](https://www
 - [Make a hosted security code payment](https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/SecurityCodeComponent.md): _Make a compliant saved card payment with hosted security code tokenisation_
 
 - [Migrating](https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/Migration.md): _If you have used 3.5.x version (or lower) before_
-
-- [License](#License)
 
 
 More integration information can be found in the [Checkout Docs](https://docs.checkout.com/integrate/sdks/ios-sdk).
@@ -60,6 +56,6 @@ Find our CHANGELOG.md [here](https://github.com/checkout/frames-ios/blob/main/.g
 
 Find our guide to start contributing [here](https://github.com/checkout/frames-ios/blob/main/.github/CONTRIBUTING.md).
 
-## License
+## Licence
 
-Frames iOS is released under the MIT license. [See LICENSE](https://github.com/checkout/frames-ios/blob/main/LICENSE) for details.
+Frames iOS is released under the MIT licence. [See LICENSE](https://github.com/checkout/frames-ios/blob/main/LICENSE) for details.
