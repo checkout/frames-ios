@@ -20,13 +20,44 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  analyze:
+    name: Analyze
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Determine Changed Files
+        id: get_files_changed
+        run: echo "::set-output name=files_changed::${{ toJson(github.event.pull_request.files.*.filename) }}"
+
+      - name: Check if only README.md is changed
+        id: check_readme_only_changed
+        run: |
+          CHANGED_FILES="[]"
+          if [ "${CHANGED_FILES}" = "[]" ]; then
+            echo "No changed files found."
+            echo "::set-output name=files_changed_without_readme::true"
+            exit 0
+          fi
+
+          README_CHANGED=$(echo "${CHANGED_FILES}" | grep -c "README.md")
+          if [ "${README_CHANGED}" -eq 1 ]; then
+            echo "README.md is the only changed file."
+            echo "::set-output name=files_changed_without_readme::false"
+          else
+            echo "README.md is not the only changed file."
+            echo "::set-output name=files_changed_without_readme::true"
+          fi
+
   lint:
     name: SwiftLint
     runs-on: macos-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Lint Edited Files
         run: bash .github/scripts/lintEditedFiles.sh
@@ -35,10 +66,12 @@ jobs:
     name: Checkout Verification
     runs-on: macos-13-xl
     needs: lint
-    
+    # Skip the job if only README.md is changed
+    if: ${{ needs.prerequisite.outputs.files_changed_without_readme == 'true' }}
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Select Xcode
         run: |
@@ -77,10 +110,12 @@ jobs:
     name: Frames Verification
     runs-on: macos-13-xl
     needs: lint
+    # Skip the job if only README.md is changed
+    if: ${{ needs.lint.outputs.files_changed_without_readme == 'true' }}
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Select Xcode
         run: |
@@ -119,10 +154,12 @@ jobs:
     name: Run UI Tests
     runs-on: macos-12-xl
     needs: lint
+    # Skip the job if only README.md is changed
+    if: ${{ needs.lint.outputs.files_changed_without_readme == 'true' }}
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Select Xcode
         run: |
