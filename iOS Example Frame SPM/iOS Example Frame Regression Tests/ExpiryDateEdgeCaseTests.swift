@@ -22,7 +22,8 @@ final class ExpiryDateEdgeCaseTests: XCTestCase {
         }
 
         let previousMonthDate = Calendar.current.date(byAdding: .month, value: -1, to: Date())!
-        let previousMonth = String(Calendar.current.component(.month, from: previousMonthDate))
+        var previousMonth = String(Calendar.current.component(.month, from: previousMonthDate))
+        previousMonth = previousMonth.count == 1 ? "0" + previousMonth : previousMonth
         let currentYear = String(Calendar.current.component(.year, from: Date())).suffix(2)
 
         let expiryTextField = app.otherElements[AccessibilityIdentifiers.PaymentForm.cardExpiry]
