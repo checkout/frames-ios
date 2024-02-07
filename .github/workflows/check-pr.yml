@@ -20,13 +20,43 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  analyze:
+    name: Analyze
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Determine Changed Files
+        id: get_files_changed
+        run: |
+          echo "::set-output name=files_changed::$(bash .github/scripts/get_changed_files.sh)"
+
+      - name: Analyze if only Readme.md is changed
+        run: |
+          CHANGED_FILES="${{ steps.get_files_changed.outputs.files_changed }}"
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No changed files found."
+            echo "::set-output name=files_changed_without_readme::true"
+            exit 0
+          fi
+          
+          if echo "$CHANGED_FILES" | grep -q -v '\.md$'; then
+            echo "README.md is not the only changed file."
+            echo "::set-output name=files_changed_without_readme:true"
+          else
+            echo "README.md is the only changed file."
+            echo "::set-output name=files_changed_without_readme::false"
+          fi
+
   lint:
     name: SwiftLint
     runs-on: macos-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Lint Edited Files
         run: bash .github/scripts/lintEditedFiles.sh
@@ -34,11 +64,13 @@ jobs:
   checkout:
     name: Checkout Verification
     runs-on: macos-13-xl
-    needs: lint
-    
+    needs: [analyze, lint]
+    # Skip the job if only README.md is changed
+    if: ${{ needs.analyze.outputs.files_changed_without_readme == 'true' }}
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Select Xcode
         run: |
@@ -63,7 +95,7 @@ jobs:
 
       - name: Checkout Pod Update
         run: |
-          cd Checkout/Samples/CocoapodsSample
+          cd "Checkout/Samples/CocoapodsSample"
           pod update
 
       - name: Build Checkout CocoaPods Test Project
@@ -76,11 +108,13 @@ jobs:
   frames:
     name: Frames Verification
     runs-on: macos-13-xl
-    needs: lint
+    needs: [analyze, lint]
+    # Skip the job if only README.md is changed
+    if: ${{ needs.analyze.outputs.files_changed_without_readme == 'true' }}
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Select Xcode
         run: |
@@ -105,7 +139,7 @@ jobs:
 
       - name: Frames Pod Update
         run: |
-          cd iOS\ Example\ Frame
+          cd "iOS Example Frame"
           pod update
 
       - name: Build Frames CocoaPods Test Project
@@ -118,11 +152,13 @@ jobs:
   run-ui-tests:
     name: Run UI Tests
     runs-on: macos-12-xl
-    needs: lint
+    needs: [analyze, lint]
+    # Skip the job if only README.md is changed
+    if: ${{ needs.analyze.outputs.files_changed_without_readme == 'true' }}
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Select Xcode
         run: |
