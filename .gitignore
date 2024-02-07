@@ -132,8 +132,7 @@ iOSInjectionProject/
 ### SwiftPM ###
 Packages
 xcuserdata
-Package.resolved
-*/Package.resolved
+## */Package.resolved
 IDEWorkspaceChecks.plist
 
 
@@ -148,7 +147,7 @@ contents.xcworkspacedata
 /*.gcno
 
 ### Xcode Patch ###
-*.xcodeproj/project.workspace/xcshareddata/swiftpm/Package.resolved
+## *.xcodeproj/project.workspace/xcshareddata/swiftpm/Package.resolved
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 */IDEWorkspaceChecks.plist
