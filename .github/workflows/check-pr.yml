@@ -44,7 +44,7 @@ jobs:
           
           if echo "$CHANGED_FILES" | grep -q -v '\.md$'; then
             echo "README.md is not the only changed file."
-            echo "::set-output name=files_changed_without_readme:true"
+            echo "::set-output name=files_changed_without_readme::true"
           else
             echo "README.md is the only changed file."
             echo "::set-output name=files_changed_without_readme::false"
