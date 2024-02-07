@@ -7,7 +7,14 @@ jobs:
     environment: CocoaPodsRelease
     runs-on: macos-12-xl
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      
+      - name: Check current branch
+        run: |
+          if [[ "${GITHUB_REF#refs/heads/}" != "main" && "${GITHUB_REF#refs/heads/}" != release/* ]]; then
+            echo "This workflow is expected to run on the main or release branch only."
+            exit 1
+          fi
 
       - name: Publish Checkout.podspec
         run: |
