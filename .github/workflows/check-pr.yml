@@ -149,7 +149,7 @@ jobs:
     # Skip the job if only README.md is changed
     if: ${{ needs.analyze.outputs.files_changed_without_readme == 'true' }}
 
-     steps:
+    steps:
       - name: Checkout
         uses: actions/checkout@v4
 
