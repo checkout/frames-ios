@@ -60,8 +60,6 @@ jobs:
     name: Checkout Verification
     runs-on: macos-13-xl
     needs: [analyze, lint]
-    # Skip the job if only README.md is changed
-    if: ${{ needs.analyze.outputs.files_changed_without_readme == 'false' }}
 
     steps:
       - name: Checkout
@@ -151,7 +149,7 @@ jobs:
     # Skip the job if only README.md is changed
     if: ${{ needs.analyze.outputs.files_changed_without_readme == 'true' }}
 
-    steps:
+     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
