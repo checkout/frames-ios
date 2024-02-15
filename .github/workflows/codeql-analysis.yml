@@ -45,10 +45,17 @@ jobs:
       with:
         languages: ${{ matrix.language }}
         queries: security-and-quality
-
-    - name: Build
+        
+    - name: Build Frames
       run: |
         xcodebuild -scheme Frames -destination "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest"
 
-    - name: Perform CodeQL Analysis
+    - name: Build FramesTests
+      run: |
+        xcodebuild -scheme FramesTests -destination "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest" test
+
+    # Perform analysis on the code
+    - name: Analyze code with CodeQL
       uses: github/codeql-action/analyze@v2
+      with:
+          database: ${{ github.workspace }}
