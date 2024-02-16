@@ -54,8 +54,16 @@ jobs:
       run: |
         xcodebuild -scheme FramesTests -destination "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest" test
 
+    - name: Build iOS Example Frame SPM
+      run: |
+        cd iOS\ Example\ Frame\ SPM
+        xcodebuild build -scheme  iOS\ Example\ Frame -destination "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest"
+
+    - name: Build UITest
+      run: |
+        cd iOS\ Example\ Frame\ SPM
+        xcodebuild -scheme UITest -destination "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest"
+
     # Perform analysis on the code
     - name: Analyze code with CodeQL
       uses: github/codeql-action/analyze@v2
-      with:
-          database: ${{ github.workspace }}
