@@ -1,6 +1,51 @@
 {
   "pins" : [
     {
+      "identity" : "checkout-event-logger-ios-framework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/checkout/checkout-event-logger-ios-framework.git",
+      "state" : {
+        "revision" : "a914d754b4ffb1843730e8e1f8e7e60c4bf81cf9",
+        "version" : "1.2.4"
+      }
+    },
+    {
+      "identity" : "checkout-risk-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/checkout/checkout-risk-sdk-ios.git",
+      "state" : {
+        "revision" : "4823f05166dca8392a41b56b975515c7e0f1a8da",
+        "version" : "2.0.1"
+      }
+    },
+    {
+      "identity" : "fingerprintjs-pro-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fingerprintjs/fingerprintjs-pro-ios",
+      "state" : {
+        "revision" : "ceb8b845ec99727ee9f78869a51688c6daa16bd8",
+        "version" : "2.2.0"
+      }
+    },
+    {
+      "identity" : "frames-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/checkout/frames-ios",
+      "state" : {
+        "branch" : "PRISM-10522-risk-i-os-is-added-to-frames-i-os",
+        "revision" : "de71eed3638875dac5af1d3ca01de6e5704420ea"
+      }
+    },
+    {
+      "identity" : "phonenumberkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/marmelroy/PhoneNumberKit.git",
+      "state" : {
+        "revision" : "6edd6e38a30aec087cb97f7377edf876c29a427e",
+        "version" : "3.5.9"
+      }
+    },
+    {
       "identity" : "swift-snapshot-testing",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-snapshot-testing",

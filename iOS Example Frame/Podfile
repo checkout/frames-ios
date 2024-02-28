@@ -6,7 +6,8 @@ target 'iOS Example Frame' do
   use_frameworks!
 
   # Pods for iOS Example Custom
-  pod 'Frames', '4.3.1'
+  # pod 'Frames', '4.3.1'
+  pod 'Frames', :git => 'https://github.com/checkout/frames-ios', :branch => 'PRISM-10522-risk-i-os-is-added-to-frames-i-os'
 
 end
 
