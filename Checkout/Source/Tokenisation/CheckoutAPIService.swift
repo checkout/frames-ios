@@ -1,6 +1,6 @@
 //
 //  CheckoutAPIService.swift
-//  
+//
 //
 //  Created by Harry Brown on 23/11/2021.
 //
@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import CheckoutEventLoggerKit
+import Risk
 
 public protocol CheckoutAPIProtocol {
   func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)
@@ -15,12 +16,20 @@ public protocol CheckoutAPIProtocol {
   var correlationID: String { get }
 }
 
+protocol RiskProtocol: AnyObject {
+    func configure(completion: @escaping (Result<Void, RiskError.Configuration>) -> Void)
+    func publishData (cardToken: String?, completion: @escaping (Result<PublishRiskData, RiskError.Publish>) -> Void)
+}
+
+extension Risk: RiskProtocol {}
+
 final public class CheckoutAPIService: CheckoutAPIProtocol {
   private let requestExecutor: RequestExecuting
   private let requestFactory: RequestProviding
   private let tokenRequestFactory: TokenRequestProviding
   private let tokenDetailsFactory: TokenDetailsProviding
   private let logManager: LogManaging.Type
+  private var riskSDK: RiskProtocol
 
   private let publicKey: String
   private let environment: BaseURLProviding
@@ -41,7 +50,18 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
     let tokenRequestFactory = TokenRequestFactory(cardValidator: cardValidator, decoder: snakeCaseJSONDecoder)
     let tokenDetailsFactory = TokenDetailsFactory()
     let logManager = LogManager.self
-
+      
+    var riskEnvironment: RiskEnvironment
+    switch environment {
+    case .production:
+      riskEnvironment = .production
+    case .sandbox:
+      riskEnvironment = .sandbox
+    }
+      
+    let riskConfig = RiskConfig(publicKey: publicKey, environment: riskEnvironment, framesMode: true)
+    let riskSDK = Risk.init(config: riskConfig)
+      
     logManager.setup(
       environment: environment,
       logger: CheckoutEventLogger(productName: Constants.Product.name),
@@ -57,7 +77,8 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
       requestFactory: requestFactory,
       tokenRequestFactory: tokenRequestFactory,
       tokenDetailsFactory: tokenDetailsFactory,
-      logManager: logManager)
+      logManager: logManager,
+      riskSDK: riskSDK)
   }
 
   init(
@@ -67,7 +88,8 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
     requestFactory: RequestProviding,
     tokenRequestFactory: TokenRequestProviding,
     tokenDetailsFactory: TokenDetailsProviding,
-    logManager: LogManaging.Type
+    logManager: LogManaging.Type,
+    riskSDK: RiskProtocol
   ) {
     self.publicKey = publicKey
     self.environment = environment
@@ -76,6 +98,7 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
     self.tokenRequestFactory = tokenRequestFactory
     self.tokenDetailsFactory = tokenDetailsFactory
     self.logManager = logManager
+    self.riskSDK = riskSDK
   }
 
 /// The create token method tokenises the user’s card details.
@@ -126,12 +149,22 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
       requestParameters,
       responseType: TokenResponse.self,
       responseErrorType: TokenisationError.ServerError.self
-    ) { [tokenDetailsFactory, logManager, logTokenResponse] tokenResponseResult, httpURLResponse in
+    ) { [weak self, tokenDetailsFactory, logManager, logTokenResponse] tokenResponseResult, httpURLResponse in
       logTokenResponse(tokenResponseResult, httpURLResponse)
 
       switch tokenResponseResult {
       case .response(let tokenResponse):
         let tokenDetails = tokenDetailsFactory.create(tokenResponse: tokenResponse)
+          
+        guard let self else { return }
+        self.riskSDK.configure { configurationResult in
+              switch configurationResult {
+              case .failure: break
+              case .success():
+                self.riskSDK.publishData(cardToken: tokenDetails.token) { _ in }
+              }
+          }
+          
         completion(.success(tokenDetails))
       case .errorResponse(let errorResponse):
         completion(.failure(.serverError(errorResponse)))

@@ -1,33 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "checkout-event-logger-ios-framework",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/checkout/checkout-event-logger-ios-framework.git",
-      "state" : {
-        "revision" : "a914d754b4ffb1843730e8e1f8e7e60c4bf81cf9",
-        "version" : "1.2.4"
-      }
-    },
-    {
-      "identity" : "frames-ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/checkout/frames-ios",
-      "state" : {
-        "revision" : "347e873ff9702d5783709bed5d4b6b28adfca3ab",
-        "version" : "4.3.1"
-      }
-    },
-    {
-      "identity" : "phonenumberkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/marmelroy/PhoneNumberKit.git",
-      "state" : {
-        "revision" : "6edd6e38a30aec087cb97f7377edf876c29a427e",
-        "version" : "3.5.9"
-      }
-    },
-    {
       "identity" : "swift-snapshot-testing",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-snapshot-testing",
