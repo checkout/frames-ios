@@ -24,6 +24,7 @@ final class CheckoutAPIServiceTests: XCTestCase {
   private var stubRequestFactory: StubRequestFactory! = StubRequestFactory()
   private var stubTokenRequestFactory: StubTokenRequestFactory! = StubTokenRequestFactory()
   private var stubTokenDetailsFactory: StubTokenDetailsFactory! = StubTokenDetailsFactory()
+  private var stubRisk: StubRisk! = .init()
 
 
   override func setUp() {
@@ -36,7 +37,8 @@ final class CheckoutAPIServiceTests: XCTestCase {
       requestFactory: stubRequestFactory,
       tokenRequestFactory: stubTokenRequestFactory,
       tokenDetailsFactory: stubTokenDetailsFactory,
-      logManager: StubLogManager.self
+      logManager: StubLogManager.self,
+      riskSDK: stubRisk
     )
   }
 
@@ -49,6 +51,7 @@ final class CheckoutAPIServiceTests: XCTestCase {
     stubTokenRequestFactory = nil
     stubSecurityCodeRequestExecutor = nil
     stubTokenDetailsFactory = nil
+    stubRisk = nil
 
     super.tearDown()
   }
@@ -90,6 +93,8 @@ final class CheckoutAPIServiceTests: XCTestCase {
       .init(tokenID: "token", scheme: "visa", httpStatusCode: 200, serverError: nil)
     ))
 
+    XCTAssertEqual(stubRisk.configureCalledCount, 1)
+    XCTAssertEqual(stubRisk.publishDataCalledCount, 1)
     XCTAssertEqual(result, .success(tokenDetails))
   }
 
@@ -213,7 +218,8 @@ extension CheckoutAPIServiceTests {
       requestFactory: stubRequestFactory,
       tokenRequestFactory: stubTokenRequestFactory,
       tokenDetailsFactory: stubTokenDetailsFactory,
-      logManager: StubLogManager.self
+      logManager: StubLogManager.self,
+      riskSDK: stubRisk
     )
   }
 

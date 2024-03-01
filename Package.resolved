@@ -10,6 +10,24 @@
       }
     },
     {
+      "identity" : "checkout-risk-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/checkout/checkout-risk-sdk-ios.git",
+      "state" : {
+        "revision" : "4823f05166dca8392a41b56b975515c7e0f1a8da",
+        "version" : "2.0.1"
+      }
+    },
+    {
+      "identity" : "fingerprintjs-pro-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fingerprintjs/fingerprintjs-pro-ios",
+      "state" : {
+        "revision" : "ceb8b845ec99727ee9f78869a51688c6daa16bd8",
+        "version" : "2.2.0"
+      }
+    },
+    {
       "identity" : "phonenumberkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/marmelroy/PhoneNumberKit.git",
