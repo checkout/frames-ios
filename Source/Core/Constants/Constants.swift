@@ -8,7 +8,7 @@
 enum Constants {
 
     static let productName = "frames-ios-sdk"
-    static let version = "4.3.1"
+    static let version = "4.3.2"
     static let userAgent = "checkout-sdk-frames-ios/\(version)"
 
     enum Logging {

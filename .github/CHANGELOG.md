@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 #### 4.x Releases
 
+## [4.3.2](https://github.com/checkout/frames-ios/releases/tag/4.3.2)
+
+Released on 2024-03-01
+
+Updates:
+
+- Send risk data via Risk SDK for the opted-in customers. No public changes.
+
 ## [4.3.1](https://github.com/checkout/frames-ios/releases/tag/4.3.1)
 
 Released on 2024-01-19
