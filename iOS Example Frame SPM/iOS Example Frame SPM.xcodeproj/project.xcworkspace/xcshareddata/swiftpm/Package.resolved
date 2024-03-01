@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/checkout/frames-ios",
       "state" : {
-        "branch" : "PRISM-10522-risk-i-os-is-added-to-frames-i-os",
-        "revision" : "de71eed3638875dac5af1d3ca01de6e5704420ea"
+        "revision" : "2dae4f877e3a1882172c749e3bf4c32228b9d6a3",
+        "version" : "4.3.2"
       }
     },
     {
