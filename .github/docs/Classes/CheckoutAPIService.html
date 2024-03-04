@@ -21,7 +21,7 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          Frames 4.2.1 Docs
+          Frames 4.3.2 Docs
         </a>
          (23% documented)
       </p>
@@ -72,13 +72,13 @@
                 <a class="nav-group-task-link" href="../Classes/DefaultEditBillingDetailsButtonStyle.html">DefaultEditBillingDetailsButtonStyle</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes.html#/c:@M@Frames@objc(cs)PaymentHeaderView">PaymentHeaderView</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/PhoneValidator.html">PhoneValidator</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/SecureDisplayView.html">SecureDisplayView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SecurityCodeComponent.html">SecurityCodeComponent</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes.html#/c:@M@Frames@objc(cs)SecurityCodeView">SecurityCodeView</a>
@@ -102,6 +102,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/AccessibilityIdentifiers/BillingForm.html">â€“ BillingForm</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/AccessibilityIdentifiers/SecurityCodeComponent.html">â€“ SecurityCodeComponent</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/BillingFormCell.html">BillingFormCell</a>
@@ -150,6 +153,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/TokenisationError.html">TokenisationError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TokenisationError/SecurityCodeError.html">â€“ SecurityCodeError</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/TokenisationError/ServerError.html">â€“ ServerError</a>
@@ -392,6 +398,18 @@
                 <a class="nav-group-task-link" href="../Structs/Phone.html">Phone</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SecurityCodeComponentConfiguration.html">SecurityCodeComponentConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SecurityCodeComponentStyle.html">SecurityCodeComponentStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SecurityCodeResponse.html">SecurityCodeResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SecurityCodeTokenDetails.html">SecurityCodeTokenDetails</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/Theme.html">Theme</a>
               </li>
               <li class="nav-group-task">
@@ -496,6 +514,9 @@
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:6Frames14PhoneValidatora">PhoneValidator</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:6Frames17SecurityCodeErrora">SecurityCodeError</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Typealiases.html#/s:6Frames12TokenDetailsa">TokenDetails</a>
               </li>
               <li class="nav-group-task">
@@ -519,7 +540,7 @@
               </div>
             
               <div class="slightly-smaller">
-                <a href="https://github.com/checkout/frames-ios/tree/main/Checkout/Samples/CocoapodsSample/Pods/Checkout/Checkout/Source/Tokenisation/CheckoutAPIService.swift#L17-L172">Show on GitHub</a>
+                <a href="https://github.com/checkout/frames-ios/tree/main/Checkout/Samples/CocoapodsSample/Pods/Checkout/Checkout/Source/Tokenisation/CheckoutAPIService.swift#L26-L206">Show on GitHub</a>
               </div>
           </div>
         </section>
@@ -554,7 +575,7 @@ CheckoutAPIService holds the core tokenisation logic methods to tokenise a userâ
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/checkout/frames-ios/tree/main/Checkout/Samples/CocoapodsSample/Pods/Checkout/Checkout/Source/Tokenisation/CheckoutAPIService.swift#L29-L60">Show on GitHub</a>
+                        <a href="https://github.com/checkout/frames-ios/tree/main/Checkout/Samples/CocoapodsSample/Pods/Checkout/Checkout/Source/Tokenisation/CheckoutAPIService.swift#L39-L82">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -584,7 +605,7 @@ CheckoutAPIService holds the core tokenisation logic methods to tokenise a userâ
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/checkout/frames-ios/tree/main/Checkout/Samples/CocoapodsSample/Pods/Checkout/Checkout/Source/Tokenisation/CheckoutAPIService.swift#L81-L94">Show on GitHub</a>
+                        <a href="https://github.com/checkout/frames-ios/tree/main/Checkout/Samples/CocoapodsSample/Pods/Checkout/Checkout/Source/Tokenisation/CheckoutAPIService.swift#L105-L118">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -614,7 +635,49 @@ CheckoutAPIService holds the core tokenisation logic methods to tokenise a userâ
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/checkout/frames-ios/tree/main/Checkout/Samples/CocoapodsSample/Pods/Checkout/Checkout/Source/Tokenisation/CheckoutAPIService.swift#L97-L99">Show on GitHub</a>
+                        <a href="https://github.com/checkout/frames-ios/tree/main/Checkout/Samples/CocoapodsSample/Pods/Checkout/Checkout/Source/Tokenisation/CheckoutAPIService.swift#L121-L123">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Security%20Code%20Request"></a>
+                <a name="//apple_ref/swift/Section/Security Code Request" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Security%20Code%20Request"></a>
+                  <h3 class="section-name"><span>Security Code Request</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Checkout0A10APIServiceC23createSecurityCodeToken08securityE010completionySS_ys6ResultOyAA0dE8ResponseVAA17TokenisationErrorO0deL0OGctF"></a>
+                    <a name="//apple_ref/swift/Method/createSecurityCodeToken(securityCode:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Checkout0A10APIServiceC23createSecurityCodeToken08securityE010completionySS_ys6ResultOyAA0dE8ResponseVAA17TokenisationErrorO0deL0OGctF">createSecurityCodeToken(securityCode:<wbr>completion:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">createSecurityCodeToken</span><span class="p">(</span><span class="nv">securityCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/SecurityCodeResponse.html">SecurityCodeResponse</a></span><span class="p">,</span> <span class="kt"><a href="../Enums/TokenisationError.html">TokenisationError</a></span><span class="o">.</span><span class="kt"><a href="../Typealiases.html#/s:6Frames17SecurityCodeErrora">SecurityCodeError</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/main/Checkout/Samples/CocoapodsSample/Pods/Checkout/Checkout/Source/Tokenisation/CheckoutAPIService.swift#L211-L233">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -627,7 +690,7 @@ CheckoutAPIService holds the core tokenisation logic methods to tokenise a userâ
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2023 <a class="link" href="https://www.checkout.com/" target="_blank" rel="external noopener">Checkout.com</a>. All rights reserved. (Last updated: 2023-09-21)</p>
+      <p>&copy; 2024 <a class="link" href="https://www.checkout.com/" target="_blank" rel="external noopener">Checkout.com</a>. All rights reserved. (Last updated: 2024-03-04)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="noopener" rel="external">jazzy â™ªâ™« v0.14.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="noopener" rel="external">Realm</a> project.</p>
     </section>
   </body>

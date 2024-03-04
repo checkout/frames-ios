@@ -20,7 +20,7 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          Frames 4.2.1 Docs
+          Frames 4.3.2 Docs
         </a>
          (23% documented)
       </p>
@@ -71,13 +71,13 @@
                 <a class="nav-group-task-link" href="Classes/DefaultEditBillingDetailsButtonStyle.html">DefaultEditBillingDetailsButtonStyle</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes.html#/c:@M@Frames@objc(cs)PaymentHeaderView">PaymentHeaderView</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/PhoneValidator.html">PhoneValidator</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SecureDisplayView.html">SecureDisplayView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SecurityCodeComponent.html">SecurityCodeComponent</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes.html#/c:@M@Frames@objc(cs)SecurityCodeView">SecurityCodeView</a>
@@ -101,6 +101,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/AccessibilityIdentifiers/BillingForm.html">– BillingForm</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/AccessibilityIdentifiers/SecurityCodeComponent.html">– SecurityCodeComponent</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/BillingFormCell.html">BillingFormCell</a>
@@ -149,6 +152,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/TokenisationError.html">TokenisationError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TokenisationError/SecurityCodeError.html">– SecurityCodeError</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/TokenisationError/ServerError.html">– ServerError</a>
@@ -391,6 +397,18 @@
                 <a class="nav-group-task-link" href="Structs/Phone.html">Phone</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/SecurityCodeComponentConfiguration.html">SecurityCodeComponentConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/SecurityCodeComponentStyle.html">SecurityCodeComponentStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/SecurityCodeResponse.html">SecurityCodeResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/SecurityCodeTokenDetails.html">SecurityCodeTokenDetails</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/Theme.html">Theme</a>
               </li>
               <li class="nav-group-task">
@@ -495,6 +513,9 @@
                 <a class="nav-group-task-link" href="Typealiases.html#/s:6Frames14PhoneValidatora">PhoneValidator</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:6Frames17SecurityCodeErrora">SecurityCodeError</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:6Frames12TokenDetailsa">TokenDetails</a>
               </li>
               <li class="nav-group-task">
@@ -534,13 +555,12 @@
 <p>Frames for iOS tokenises consumer data for use within <a href="https://www.checkout.com">Checkout.com</a>&rsquo;s payment infrastructure. We abstract away the complexity of taking payments, building payment UIs, and handling sensitive data.</p>
 
 <ul>
-<li><p><a href="#Demo-projects">Demo projects</a>: <em>We&rsquo;ve created projects showcasing the range of functionality available in our SDKs while testing each distribution method offered</em></p></li>
 <li><p><a href="https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/Integration.md">Integration</a>: <em>a guide for consuming our SDK in your iOS app</em></p></li>
 <li><p><a href="https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/GetStarted.md">Get started</a>: <em>Start testing what you can achieve by presenting inside your Applications UI</em> </p></li>
 <li><p><a href="https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/MakeItYourOwn.md">Make it your own</a>: <em>Customising the UI to become a part of your app</em></p></li>
 <li><p><a href="https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/OtherFeatures.md">Other features</a>: <em>How we help with Apple Pay &amp; 3D Secure Challenges</em></p></li>
+<li><p><a href="https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/SecurityCodeComponent.md">Make a hosted security code payment</a>: <em>Make a compliant saved card payment with hosted security code tokenisation</em></p></li>
 <li><p><a href="https://github.com/checkout/frames-ios/blob/main/.github/partial-readmes/Migration.md">Migrating</a>: <em>If you have used 3.5.x version (or lower) before</em></p></li>
-<li><p><a href="#License">License</a></p></li>
 </ul>
 
 <p>More integration information can be found in the <a href="https://docs.checkout.com/integrate/sdks/ios-sdk">Checkout Docs</a>.</p>
@@ -565,9 +585,9 @@
 <h2 id='contributing' class='heading'>Contributing</h2>
 
 <p>Find our guide to start contributing <a href="https://github.com/checkout/frames-ios/blob/main/.github/CONTRIBUTING.md">here</a>.</p>
-<h2 id='license' class='heading'>License</h2>
+<h2 id='licence' class='heading'>Licence</h2>
 
-<p>Frames iOS is released under the MIT license. <a href="https://github.com/checkout/frames-ios/blob/main/LICENSE">See LICENSE</a> for details.</p>
+<p>Frames iOS is released under the MIT licence. <a href="https://github.com/checkout/frames-ios/blob/main/LICENSE">See LICENSE</a> for details.</p>
 
           </div>
         </section>
@@ -576,7 +596,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2023 <a class="link" href="https://www.checkout.com/" target="_blank" rel="external noopener">Checkout.com</a>. All rights reserved. (Last updated: 2023-09-21)</p>
+      <p>&copy; 2024 <a class="link" href="https://www.checkout.com/" target="_blank" rel="external noopener">Checkout.com</a>. All rights reserved. (Last updated: 2024-03-04)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="noopener" rel="external">jazzy ♪♫ v0.14.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="noopener" rel="external">Realm</a> project.</p>
     </section>
   </body>

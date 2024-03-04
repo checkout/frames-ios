@@ -2,23 +2,37 @@
   "warnings": [
     {
       "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/Core/CheckoutAPIService.swift",
-      "line": 19,
+      "line": 20,
       "symbol": "CheckoutAPIService",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/Core/CheckoutAPIService.swift",
-      "line": 25,
+      "line": 26,
       "symbol": "CheckoutAPIService.init(publicKey:environment:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/Core/CheckoutAPIService.swift",
-      "line": 35,
+      "line": 36,
       "symbol": "CheckoutAPIService.createToken(_:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/Core/CheckoutAPIService.swift",
+      "line": 40,
+      "symbol": "CheckoutAPIService.createSecurityCodeToken(securityCode:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/Core/Constants/AccessibilityIdentifiers.swift",
+      "line": 43,
+      "symbol": "AccessibilityIdentifiers.SecurityCodeComponent",
+      "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
@@ -92,6 +106,34 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/Core/Models/SecurityCodeTokenDetails.swift",
+      "line": 11,
+      "symbol": "SecurityCodeTokenDetails",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/Core/Models/SecurityCodeTokenDetails.swift",
+      "line": 12,
+      "symbol": "SecurityCodeTokenDetails.type",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/Core/Models/SecurityCodeTokenDetails.swift",
+      "line": 13,
+      "symbol": "SecurityCodeTokenDetails.token",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/Core/Models/SecurityCodeTokenDetails.swift",
+      "line": 14,
+      "symbol": "SecurityCodeTokenDetails.expiresOn",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/Core/Models/Typealiases.swift",
       "line": 10,
       "symbol": "Card",
@@ -144,6 +186,13 @@
       "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/Core/Models/Typealiases.swift",
       "line": 17,
       "symbol": "PhoneValidator",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/Core/Models/Typealiases.swift",
+      "line": 18,
+      "symbol": "SecurityCodeError",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
@@ -3578,13 +3627,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/UI/PaymentForm/View/PaymentHeaderView.swift",
-      "line": 12,
-      "symbol": "PaymentHeaderView",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/UI/PaymentForm/View/SecurityCodeView.swift",
       "line": 15,
       "symbol": "SecurityCodeView",
@@ -3595,6 +3637,97 @@
       "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/UI/PaymentForm/ViewController/FramesPaymentViewController.swift",
       "line": 317,
       "symbol": "FramesPaymentViewController.updateHeaderView()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/UI/SecurityCodeComponent/SecurityCodeComponent.swift",
+      "line": 11,
+      "symbol": "SecurityCodeComponent",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/UI/SecurityCodeComponent/SecurityCodeComponent.swift",
+      "line": 37,
+      "symbol": "SecurityCodeComponent",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/UI/SecurityCodeComponent/SecurityCodeComponent.swift",
+      "line": 87,
+      "symbol": "SecurityCodeComponent",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/UI/SecurityCodeComponent/SecurityCodeComponentConfiguration.swift",
+      "line": 26,
+      "symbol": "SecurityCodeComponentConfiguration.style",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/UI/SecurityCodeComponent/SecurityCodeComponentConfiguration.swift",
+      "line": 27,
+      "symbol": "SecurityCodeComponentConfiguration.cardScheme",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/UI/SecurityCodeComponent/SecurityCodeComponentConfiguration.swift",
+      "line": 29,
+      "symbol": "SecurityCodeComponentConfiguration.init(apiKey:environment:style:cardScheme:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/UI/SecurityCodeComponent/SecurityCodeComponentStyle.swift",
+      "line": 18,
+      "symbol": "SecurityCodeComponentStyle.text",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/UI/SecurityCodeComponent/SecurityCodeComponentStyle.swift",
+      "line": 19,
+      "symbol": "SecurityCodeComponentStyle.font",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/UI/SecurityCodeComponent/SecurityCodeComponentStyle.swift",
+      "line": 20,
+      "symbol": "SecurityCodeComponentStyle.textAlignment",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/UI/SecurityCodeComponent/SecurityCodeComponentStyle.swift",
+      "line": 21,
+      "symbol": "SecurityCodeComponentStyle.textColor",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/UI/SecurityCodeComponent/SecurityCodeComponentStyle.swift",
+      "line": 22,
+      "symbol": "SecurityCodeComponentStyle.tintColor",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/UI/SecurityCodeComponent/SecurityCodeComponentStyle.swift",
+      "line": 23,
+      "symbol": "SecurityCodeComponentStyle.placeholder",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/frames-ios/frames-ios/iOS Example Frame/Pods/Frames/Source/UI/SecurityCodeComponent/SecurityCodeComponentStyle.swift",
+      "line": 25,
+      "symbol": "SecurityCodeComponentStyle.init(text:font:textAlignment:textColor:tintColor:placeholder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },

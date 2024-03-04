@@ -21,7 +21,7 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          Frames 4.2.1 Docs
+          Frames 4.3.2 Docs
         </a>
          (23% documented)
       </p>
@@ -72,13 +72,13 @@
                 <a class="nav-group-task-link" href="Classes/DefaultEditBillingDetailsButtonStyle.html">DefaultEditBillingDetailsButtonStyle</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes.html#/c:@M@Frames@objc(cs)PaymentHeaderView">PaymentHeaderView</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/PhoneValidator.html">PhoneValidator</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SecureDisplayView.html">SecureDisplayView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SecurityCodeComponent.html">SecurityCodeComponent</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes.html#/c:@M@Frames@objc(cs)SecurityCodeView">SecurityCodeView</a>
@@ -102,6 +102,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/AccessibilityIdentifiers/BillingForm.html">– BillingForm</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/AccessibilityIdentifiers/SecurityCodeComponent.html">– SecurityCodeComponent</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/BillingFormCell.html">BillingFormCell</a>
@@ -150,6 +153,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/TokenisationError.html">TokenisationError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TokenisationError/SecurityCodeError.html">– SecurityCodeError</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/TokenisationError/ServerError.html">– ServerError</a>
@@ -392,6 +398,18 @@
                 <a class="nav-group-task-link" href="Structs/Phone.html">Phone</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/SecurityCodeComponentConfiguration.html">SecurityCodeComponentConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/SecurityCodeComponentStyle.html">SecurityCodeComponentStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/SecurityCodeResponse.html">SecurityCodeResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/SecurityCodeTokenDetails.html">SecurityCodeTokenDetails</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/Theme.html">Theme</a>
               </li>
               <li class="nav-group-task">
@@ -496,6 +514,9 @@
                 <a class="nav-group-task-link" href="Typealiases.html#/s:6Frames14PhoneValidatora">PhoneValidator</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:6Frames17SecurityCodeErrora">SecurityCodeError</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Typealiases.html#/s:6Frames12TokenDetailsa">TokenDetails</a>
               </li>
               <li class="nav-group-task">
@@ -519,6 +540,37 @@
           <div class="section-content">
             <div class="task-group">
               <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Frames24SecurityCodeTokenDetailsV"></a>
+                    <a name="//apple_ref/swift/Struct/SecurityCodeTokenDetails" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Frames24SecurityCodeTokenDetailsV">SecurityCodeTokenDetails</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Structs/SecurityCodeTokenDetails.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">SecurityCodeTokenDetails</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/main/iOS Example Frame/Pods/Frames/Source/Core/Models/SecurityCodeTokenDetails.swift#L11-L27">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -1483,6 +1535,84 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:6Frames34SecurityCodeComponentConfigurationV"></a>
+                    <a name="//apple_ref/swift/Struct/SecurityCodeComponentConfiguration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Frames34SecurityCodeComponentConfigurationV">SecurityCodeComponentConfiguration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Configures and styles the SecurityCodeComponent</p>
+
+<ul>
+<li>apiKey: The API Key you receive from checkout.com</li>
+<li>environment: Production or sandbox</li>
+<li>cardScheme: Optional card scheme
+
+<ul>
+<li>If provided, card scheme&rsquo;s validation rules apply (e.g. VISA = 3 digits, American Express = 4 digits etc.)</li>
+<li>If not provided, security code is treated as valid for 3 and 4 digits</li>
+</ul></li>
+<li>style: Security Code Component wraps a text field in a secure way.
+To style the inner properties like font, textColor etc, you must alter the style.</li>
+</ul>
+
+                        <a href="Structs/SecurityCodeComponentConfiguration.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">SecurityCodeComponentConfiguration</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/main/iOS Example Frame/Pods/Frames/Source/UI/SecurityCodeComponent/SecurityCodeComponentConfiguration.swift#L23-L48">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Frames26SecurityCodeComponentStyleV"></a>
+                    <a name="//apple_ref/swift/Struct/SecurityCodeComponentStyle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Frames26SecurityCodeComponentStyleV">SecurityCodeComponentStyle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>All the other UI relevant changes shall be done on the UIView instance of your project.
+The reason that these properties are presented to be modified here is that
+   they are embedded in SecureDisplayView and shouldn&rsquo;t be reachable other than
+   via SecurityCodeComponentStyle.</p>
+
+                        <a href="Structs/SecurityCodeComponentStyle.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">SecurityCodeComponentStyle</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/main/iOS Example Frame/Pods/Frames/Source/UI/SecurityCodeComponent/SecurityCodeComponentStyle.swift#L17-L38">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:6Frames5ThemeV"></a>
                     <a name="//apple_ref/swift/Struct/Theme" class="dashAnchor"></a>
                     <a class="token" href="#/s:6Frames5ThemeV">Theme</a>
@@ -1727,6 +1857,36 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8Checkout20SecurityCodeResponseV"></a>
+                    <a name="//apple_ref/swift/Struct/SecurityCodeResponse" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Checkout20SecurityCodeResponseV">SecurityCodeResponse</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Structs/SecurityCodeResponse.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">SecurityCodeResponse</span> <span class="p">:</span> <span class="kt">Decodable</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/checkout/frames-ios/tree/main/Checkout/Samples/CocoapodsSample/Pods/Checkout/Checkout/Source/Network/Models/SecurityCode/SecurityCodeResponse.swift#L10-L19">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -1735,7 +1895,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2023 <a class="link" href="https://www.checkout.com/" target="_blank" rel="external noopener">Checkout.com</a>. All rights reserved. (Last updated: 2023-09-21)</p>
+      <p>&copy; 2024 <a class="link" href="https://www.checkout.com/" target="_blank" rel="external noopener">Checkout.com</a>. All rights reserved. (Last updated: 2024-03-04)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="noopener" rel="external">jazzy ♪♫ v0.14.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="noopener" rel="external">Realm</a> project.</p>
     </section>
   </body>
