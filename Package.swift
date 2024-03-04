@@ -19,6 +19,9 @@ let package = Package(
             url: "https://github.com/marmelroy/PhoneNumberKit.git",
             exact: "3.5.9"),
         .package(
+            url: "https://github.com/checkout/checkout-risk-sdk-ios.git",
+            exact: "2.0.1"),
+        .package(
             url: "https://github.com/checkout/checkout-event-logger-ios-framework.git",
             from: "1.2.4"
         )
@@ -29,6 +32,7 @@ let package = Package(
             dependencies: [
                 .product(name: "CheckoutEventLoggerKit",
                          package: "checkout-event-logger-ios-framework"),
+                .product(name: "Risk", package: "checkout-risk-sdk-ios"),
                 "PhoneNumberKit",
                 "Checkout"
             ],
@@ -43,6 +47,7 @@ let package = Package(
             dependencies: [
                 .product(name: "CheckoutEventLoggerKit",
                          package: "checkout-event-logger-ios-framework"),
+                .product(name: "Risk", package: "checkout-risk-sdk-ios"),
             ],
             path: "Checkout/Source"
         ),

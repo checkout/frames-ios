@@ -10,12 +10,30 @@
       }
     },
     {
+      "identity" : "checkout-risk-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/checkout/checkout-risk-sdk-ios.git",
+      "state" : {
+        "revision" : "4823f05166dca8392a41b56b975515c7e0f1a8da",
+        "version" : "2.0.1"
+      }
+    },
+    {
+      "identity" : "fingerprintjs-pro-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fingerprintjs/fingerprintjs-pro-ios",
+      "state" : {
+        "revision" : "ceb8b845ec99727ee9f78869a51688c6daa16bd8",
+        "version" : "2.2.0"
+      }
+    },
+    {
       "identity" : "frames-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/checkout/frames-ios",
       "state" : {
-        "revision" : "347e873ff9702d5783709bed5d4b6b28adfca3ab",
-        "version" : "4.3.1"
+        "revision" : "2dae4f877e3a1882172c749e3bf4c32228b9d6a3",
+        "version" : "4.3.2"
       }
     },
     {
