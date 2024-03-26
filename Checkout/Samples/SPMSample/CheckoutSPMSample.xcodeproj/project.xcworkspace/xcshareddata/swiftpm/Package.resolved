@@ -1,4 +1,5 @@
 {
+  "originHash" : "7798b3f49dc3db57f852eea46d1454b7808add05a95e8d76dd9047b1be391a6f",
   "pins" : [
     {
       "identity" : "checkout-event-logger-ios-framework",
@@ -14,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/checkout/checkout-risk-sdk-ios.git",
       "state" : {
-        "revision" : "4823f05166dca8392a41b56b975515c7e0f1a8da",
-        "version" : "2.0.1"
+        "revision" : "a5df46ecd4324661459faa9e9ac18d627b4d26aa",
+        "version" : "2.0.3"
       }
     },
     {
@@ -32,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/checkout/frames-ios",
       "state" : {
-        "revision" : "2dae4f877e3a1882172c749e3bf4c32228b9d6a3",
-        "version" : "4.3.2"
+        "branch" : "feature/pass-correlation-id-to-risk-sdk",
+        "revision" : "0a0df16b3494aedfc176be64f5c3aca0398ab468"
       }
     },
     {
@@ -46,5 +47,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

@@ -5,6 +5,7 @@ target 'CheckoutCocoapodsSample' do
   use_frameworks!
 
   # Pods for CheckoutSDKCocoapodsSample
-  pod 'Checkout', '4.3.2'
+  # pod 'Checkout', '4.3.2'
+  pod 'Frames', :git => 'https://github.com/checkout/frames-ios', :branch => 'feature/pass-correlation-id-to-risk-sdk'
 
 end

@@ -511,8 +511,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/checkout/frames-ios";
 			requirement = {
-				kind = exactVersion;
-				version = 4.3.2;
+				branch = "feature/pass-correlation-id-to-risk-sdk";
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
