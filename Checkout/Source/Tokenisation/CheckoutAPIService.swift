@@ -59,7 +59,7 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
       riskEnvironment = .sandbox
     }
       
-    let riskConfig = RiskConfig(publicKey: publicKey, environment: riskEnvironment, framesMode: true)
+    let riskConfig = RiskConfig(publicKey: publicKey, environment: riskEnvironment, framesMode: true, correlationId: logManager.correlationID)
     let riskSDK = Risk.init(config: riskConfig)
       
     logManager.setup(
