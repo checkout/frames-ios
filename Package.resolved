@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/checkout/checkout-risk-sdk-ios.git",
       "state" : {
-        "revision" : "4823f05166dca8392a41b56b975515c7e0f1a8da",
-        "version" : "2.0.1"
+        "revision" : "a5df46ecd4324661459faa9e9ac18d627b4d26aa",
+        "version" : "2.0.3"
       }
     },
     {
