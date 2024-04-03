@@ -19,10 +19,17 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
+env:
+  destination: "platform=iOS Simulator,name=iPhone 15 Pro,OS=latest"
+  configuration: "Debug"
+  noIndex: "COMPILER_INDEX_STORE_ENABLE=NO"
+  noSigning: "CODE_SIGNING_ALLOWED=NO"
+  versionXcode: "15.3"
+
 jobs:
   analyze:
     name: Analyze
-    runs-on: [ macos-latest ]
+    runs-on: [ macos-13-xl ]
     permissions:
       actions: read
       contents: read
@@ -32,6 +39,14 @@ jobs:
       fail-fast: false
       matrix:
         language: [ 'swift' ]
+
+    - name: Select Xcode
+      run: |
+        sudo xcode-select -switch /Applications/Xcode_${versionXcode}.app
+
+    - name: Log xcodebuild Version
+      run: |
+        xcodebuild -version
 
     steps:
     - name: Checkout repository
@@ -48,21 +63,25 @@ jobs:
         
     - name: Build Frames
       run: |
-        xcodebuild -scheme Frames -destination "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest"
+        xcodebuild -scheme Frames -destination "${destination}" "${noIndex}" "${noSigning}" | xcpretty
+
+    - name: Build CheckoutTests
+      run: |
+        xcodebuild -scheme CheckoutTests -destination "${destination}" "${noIndex}" "${noSigning}" | xcpretty
 
     - name: Build FramesTests
       run: |
-        xcodebuild -scheme FramesTests -destination "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest" test
+        xcodebuild -scheme FramesTests -destination "${destination}" "${noIndex}" "${noSigning}" | xcpretty
 
     - name: Build iOS Example Frame SPM
       run: |
         cd iOS\ Example\ Frame\ SPM
-        xcodebuild build -scheme  iOS\ Example\ Frame -destination "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest"
+        xcodebuild build -scheme  iOS\ Example\ Frame -destination "${destination}" "${noIndex}" "${noSigning}" | xcpretty
 
     - name: Build UITest
       run: |
         cd iOS\ Example\ Frame\ SPM
-        xcodebuild -scheme UITest -destination "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest"
+        xcodebuild -scheme UITest -destination "${destination}" "${noIndex}" "${noSigning}" | xcpretty
 
     # Perform analysis on the code
     - name: Analyze code with CodeQL
