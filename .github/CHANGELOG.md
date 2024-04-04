@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 
 #### 4.x Releases
 
+## [4.3.3](https://github.com/checkout/frames-ios/releases/tag/4.3.3)
+
+Released on 2024-04-04
+
+Updates:
+
+- Included a Correlation ID enhancement in our logging.
+
+
 ## [4.3.2](https://github.com/checkout/frames-ios/releases/tag/4.3.2)
 
 Released on 2024-03-01

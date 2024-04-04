@@ -6,8 +6,7 @@ target 'iOS Example Frame' do
   use_frameworks!
 
   # Pods for iOS Example Custom
-  # pod 'Frames', '4.3.2'
-  pod 'Frames', :git => 'https://github.com/checkout/frames-ios', :branch => 'feature/pass-correlation-id-to-risk-sdk'
+  pod 'Frames', '4.3.3'
  
 end
 
