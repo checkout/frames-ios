@@ -66,7 +66,7 @@ final class CheckoutAPIServiceIntegrationTests: XCTestCase {
 
     // details associated with default apple pay token
     let expectedApplePayDetails = ApplePayDetails(
-      expiryDate: try! CardValidator(environment: .sandbox).validate(expiryMonth: 3, expiryYear: 24).get(),
+      expiryDate: .init(month: 3, year: 2024),
       bin: "537426",
       last4: "7789"
     )
