@@ -124,7 +124,7 @@ final class CheckoutAPIServiceTests: XCTestCase {
     XCTAssertEqual(result, .failure(.couldNotBuildURLForRequest))
   }
 
-  func test_createToken_failure_serverError() {
+  func test_createToken_failure_card_payment_serverError() {
     let card = StubProvider.createCard()
     let tokenRequest = StubProvider.createTokenRequest()
     let requestParameters = StubProvider.createRequestParameters()
@@ -148,7 +148,7 @@ final class CheckoutAPIServiceTests: XCTestCase {
     stubRequestExecutor.executeCalledWithCompletion?(.errorResponse(serverError), HTTPURLResponse())
 
     XCTAssertEqual(StubLogManager.queueCalledWith.last, .tokenResponse(
-      .init(tokenType: nil, publicKey: "publicKey"),
+      .init(tokenType: .card, publicKey: "publicKey"),
       .init(
         tokenID: nil,
         scheme: nil,
