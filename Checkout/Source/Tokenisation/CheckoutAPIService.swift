@@ -135,7 +135,7 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
         tokenType: tokenRequest.type,
         publicKey: publicKey
       )))
-      createToken(requestParameters: requestParameters, completion: completion)
+      createToken(requestParameters: requestParameters, paymentType: tokenRequest.type, completion: completion)
     case .failure(let error):
       switch error {
       case .baseURLCouldNotBeConvertedToComponents, .couldNotBuildURL:
@@ -144,13 +144,15 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
     }
   }
 
-  private func createToken(requestParameters: NetworkManager.RequestParameters, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) {
+  private func createToken(requestParameters: NetworkManager.RequestParameters,
+                           paymentType: TokenRequest.TokenType,
+                           completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) {
     requestExecutor.execute(
       requestParameters,
       responseType: TokenResponse.self,
       responseErrorType: TokenisationError.ServerError.self
     ) { [weak self, tokenDetailsFactory, logManager, logTokenResponse] tokenResponseResult, httpURLResponse in
-      logTokenResponse(tokenResponseResult, httpURLResponse)
+      logTokenResponse(tokenResponseResult, paymentType, httpURLResponse)
 
       switch tokenResponseResult {
       case .response(let tokenResponse):
@@ -176,10 +178,12 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
     }
   }
 
-  private func logTokenResponse(tokenResponseResult: NetworkRequestResult<TokenResponse, TokenisationError.ServerError>, httpURLResponse: HTTPURLResponse?) {
+  private func logTokenResponse(tokenResponseResult: NetworkRequestResult<TokenResponse, TokenisationError.ServerError>,
+                                paymentType: TokenRequest.TokenType,
+                                httpURLResponse: HTTPURLResponse?) {
     switch tokenResponseResult {
     case .response(let tokenResponse):
-      let tokenRequestData = CheckoutLogEvent.TokenRequestData(tokenType: tokenResponse.type, publicKey: publicKey)
+      let tokenRequestData = CheckoutLogEvent.TokenRequestData(tokenType: paymentType, publicKey: publicKey)
       let tokenResponseData = CheckoutLogEvent.TokenResponseData(
         tokenID: tokenResponse.token,
         scheme: tokenResponse.scheme,
@@ -189,7 +193,7 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
 
       logManager.queue(event: .tokenResponse(tokenRequestData, tokenResponseData))
     case .errorResponse(let errorResponse):
-      let tokenRequestData = CheckoutLogEvent.TokenRequestData(tokenType: nil, publicKey: publicKey)
+      let tokenRequestData = CheckoutLogEvent.TokenRequestData(tokenType: paymentType, publicKey: publicKey)
       let tokenResponseData = CheckoutLogEvent.TokenResponseData(
         tokenID: nil,
         scheme: nil,
