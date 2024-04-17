@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 
 #### 4.x Releases
 
+## [4.3.4](https://github.com/checkout/frames-ios/releases/tag/4.3.4)
+
+Released on 2024-04-17
+
+Updates:
+
+- Small internal logging data structure alteration. No public or breaking changes. 
+
+
 ## [4.3.3](https://github.com/checkout/frames-ios/releases/tag/4.3.3)
 
 Released on 2024-04-04
