@@ -22,7 +22,7 @@ concurrency:
 jobs:
   lint:
     name: SwiftLint
-    runs-on: macos-latest
+    runs-on: macos-13-large
 
     steps:
       - name: Checkout
@@ -33,7 +33,7 @@ jobs:
 
   checkout:
     name: Checkout Verification
-    runs-on: macos-13-xl
+    runs-on: macos-13-xlarge
     needs: lint
     
     steps:
@@ -75,7 +75,7 @@ jobs:
 
   frames:
     name: Frames Verification
-    runs-on: macos-13-xl
+    runs-on: macos-13-xlarge
     needs: lint
 
     steps:
