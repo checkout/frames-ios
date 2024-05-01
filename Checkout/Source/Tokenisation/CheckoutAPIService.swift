@@ -59,9 +59,6 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
       riskEnvironment = .sandbox
     }
       
-    let riskConfig = RiskConfig(publicKey: publicKey, environment: riskEnvironment, framesMode: true, correlationId: logManager.correlationID)
-    let riskSDK = Risk.init(config: riskConfig)
-      
     logManager.setup(
       environment: environment,
       logger: CheckoutEventLogger(productName: Constants.Product.name),
@@ -69,6 +66,10 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
       dateProvider: DateProvider(),
       anyCodable: AnyCodable()
     )
+    
+    let framesOptions = FramesOptions(productIdentifier: Constants.Product.name, version: Constants.Product.version, correlationId: logManager.correlationID)
+    let riskConfig = RiskConfig(publicKey: publicKey, environment: riskEnvironment, framesOptions: framesOptions)
+    let riskSDK = Risk.init(config: riskConfig)
 
     self.init(
       publicKey: publicKey,
