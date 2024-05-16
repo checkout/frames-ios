@@ -162,13 +162,14 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
         guard let self else { return }
         self.riskSDK.configure { configurationResult in
               switch configurationResult {
-              case .failure: break
+              case .failure:
+                  completion(.success(tokenDetails))
               case .success():
-                self.riskSDK.publishData(cardToken: tokenDetails.token) { _ in }
+                  self.riskSDK.publishData(cardToken: tokenDetails.token) { _ in
+                      completion(.success(tokenDetails))
+                  }
               }
           }
-          
-        completion(.success(tokenDetails))
       case .errorResponse(let errorResponse):
         completion(.failure(.serverError(errorResponse)))
       case .networkError(let networkError):
