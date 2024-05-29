@@ -67,7 +67,7 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
       anyCodable: AnyCodable()
     )
     
-    let framesOptions = FramesOptions(productIdentifier: Constants.Product.name, version: Constants.Product.version, correlationId: logManager.correlationID)
+    let framesOptions = FramesOptions(productIdentifier: Constants.Product.name, version: Constants.Product.version)
     let riskConfig = RiskConfig(publicKey: publicKey, environment: riskEnvironment, framesOptions: framesOptions)
     let riskSDK = Risk.init(config: riskConfig)
 
