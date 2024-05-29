@@ -166,6 +166,7 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
                   completion(.success(tokenDetails))
               case .success():
                   self.riskSDK.publishData(cardToken: tokenDetails.token) { _ in
+                      self.logManager.queue(event: .riskSDKCompletion)
                       completion(.success(tokenDetails))
                   }
               }
