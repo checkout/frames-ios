@@ -168,16 +168,17 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
                   self.riskSDK.publishData(cardToken: tokenDetails.token) { _ in
                       self.logManager.queue(event: .riskSDKCompletion)
                       completion(.success(tokenDetails))
+                      logManager.resetCorrelationID()
                   }
               }
           }
       case .errorResponse(let errorResponse):
         completion(.failure(.serverError(errorResponse)))
+        logManager.resetCorrelationID()
       case .networkError(let networkError):
         completion(.failure(.networkError(networkError)))
+        logManager.resetCorrelationID()
       }
-
-      logManager.resetCorrelationID()
     }
   }
 
