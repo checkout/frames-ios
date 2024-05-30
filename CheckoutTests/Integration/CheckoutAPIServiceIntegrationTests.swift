@@ -61,38 +61,39 @@ final class CheckoutAPIServiceIntegrationTests: XCTestCase {
     }
   }
 
-  func test_createApplePayToken() {
-    let applePay = StubProvider.createApplePay()
-
-    // details associated with default apple pay token
-    let expectedApplePayDetails = ApplePayDetails(
-      expiryDate: .init(month: 3, year: 2024),
-      bin: "537426",
-      last4: "7789"
-    )
-
-    let expectation = XCTestExpectation(description: "Waiting for token creation")
-    var tokenDetailsResult: Result<TokenDetails, TokenisationError.TokenRequest>?
-
-    subject.createToken(.applePay(applePay)) {
-      tokenDetailsResult = $0
-      expectation.fulfill()
-    }
-
-    wait(for: [expectation], timeout: 35)
-
-    guard let tokenDetailsResult = tokenDetailsResult else {
-      XCTFail("expected tokenDetailsResult")
-      return
-    }
-
-    switch tokenDetailsResult {
-    case .success(let tokenDetails):
-      verifyApplePayToken(applePayDetails: expectedApplePayDetails, tokenDetails: tokenDetails)
-    case .failure(let tokenisationError):
-      XCTFail("expected success, received error, code: \(tokenisationError.code)")
-    }
-  }
+  #warning("Commented out until we get a new dummy Apple Pay token for stubbing purposes")
+//  func test_createApplePayToken() {
+//    let applePay = StubProvider.createApplePay()
+//
+//    // details associated with default apple pay token
+//    let expectedApplePayDetails = ApplePayDetails(
+//      expiryDate: .init(month: 3, year: 2024),
+//      bin: "537426",
+//      last4: "7789"
+//    )
+//
+//    let expectation = XCTestExpectation(description: "Waiting for token creation")
+//    var tokenDetailsResult: Result<TokenDetails, TokenisationError.TokenRequest>?
+//
+//    subject.createToken(.applePay(applePay)) {
+//      tokenDetailsResult = $0
+//      expectation.fulfill()
+//    }
+//
+//    wait(for: [expectation], timeout: 35)
+//
+//    guard let tokenDetailsResult = tokenDetailsResult else {
+//      XCTFail("expected tokenDetailsResult")
+//      return
+//    }
+//
+//    switch tokenDetailsResult {
+//    case .success(let tokenDetails):
+//      verifyApplePayToken(applePayDetails: expectedApplePayDetails, tokenDetails: tokenDetails)
+//    case .failure(let tokenisationError):
+//      XCTFail("expected success, received error, code: \(tokenisationError.code)")
+//    }
+//  }
 
   private func verifyCardToken(
     card: Card,
