@@ -67,7 +67,7 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
       anyCodable: AnyCodable()
     )
     
-    let framesOptions = FramesOptions(productIdentifier: Constants.Product.name, version: Constants.Product.version, correlationId: logManager.correlationID)
+    let framesOptions = FramesOptions(productIdentifier: Constants.Product.name, version: Constants.Product.version)
     let riskConfig = RiskConfig(publicKey: publicKey, environment: riskEnvironment, framesOptions: framesOptions)
     let riskSDK = Risk.init(config: riskConfig)
 
@@ -162,20 +162,23 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
         guard let self else { return }
         self.riskSDK.configure { configurationResult in
               switch configurationResult {
-              case .failure: break
+              case .failure:
+                  completion(.success(tokenDetails))
               case .success():
-                self.riskSDK.publishData(cardToken: tokenDetails.token) { _ in }
+                  self.riskSDK.publishData(cardToken: tokenDetails.token) { _ in
+                      logManager.queue(event: .riskSDKCompletion)
+                      completion(.success(tokenDetails))
+                      logManager.resetCorrelationID()
+                  }
               }
           }
-          
-        completion(.success(tokenDetails))
       case .errorResponse(let errorResponse):
         completion(.failure(.serverError(errorResponse)))
+        logManager.resetCorrelationID()
       case .networkError(let networkError):
         completion(.failure(.networkError(networkError)))
+        logManager.resetCorrelationID()
       }
-
-      logManager.resetCorrelationID()
     }
   }
 

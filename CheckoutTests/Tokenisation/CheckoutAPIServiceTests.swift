@@ -88,7 +88,7 @@ final class CheckoutAPIServiceTests: XCTestCase {
 
     XCTAssertEqual(stubTokenDetailsFactory.createCalledWith, tokenResponse)
 
-    XCTAssertEqual(StubLogManager.queueCalledWith.last, .tokenResponse(
+    XCTAssertEqual(StubLogManager.queueCalledWith.dropLast().last, .tokenResponse(
       .init(tokenType: .card, publicKey: "publicKey"),
       .init(tokenID: "token", scheme: "visa", httpStatusCode: 200, serverError: nil)
     ))
