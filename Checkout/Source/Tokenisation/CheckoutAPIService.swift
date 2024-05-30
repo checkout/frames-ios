@@ -159,11 +159,16 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
       case .response(let tokenResponse):
         let tokenDetails = tokenDetailsFactory.create(tokenResponse: tokenResponse)
           
-        guard let self else { return }
+        guard let self else {
+          logManager.resetCorrelationID()
+          return
+        }
+
         self.riskSDK.configure { configurationResult in
               switch configurationResult {
               case .failure:
                   completion(.success(tokenDetails))
+                  logManager.resetCorrelationID()
               case .success():
                   self.riskSDK.publishData(cardToken: tokenDetails.token) { _ in
                       logManager.queue(event: .riskSDKCompletion)
