@@ -17,7 +17,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/marmelroy/PhoneNumberKit.git",
-            exact: "3.5.9"),
+            from: "3.5.9"),
         .package(
             url: "https://github.com/checkout/checkout-risk-sdk-ios.git",
             exact: "3.0.2"),
