@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'Checkout'
-  s.version = '4.3.6'
+  s.version = '4.3.7'
   s.summary = 'Checkout SDK for iOS'
 
   s.description = <<-DESC
@@ -20,6 +20,6 @@ Pod::Spec.new do |s|
   s.exclude_files = "Checkout/Samples/**"
 
   s.dependency 'CheckoutEventLoggerKit', '~> 1.2.4'
-  s.dependency 'Risk', '3.0.2'
+  s.dependency 'Risk', '3.0.3'
 
 end
