@@ -6,7 +6,8 @@ target 'iOS Example Frame' do
   use_frameworks!
 
   # Pods for iOS Example Custom
-  pod 'Frames', '4.3.6'
+# pod 'Frames', '4.3.6'
+  pod 'Frames', :git => 'https://github.com/checkout/frames-ios.git', :branch => 'feature/risk-sdk-timeout-recovery'
  
 end
 

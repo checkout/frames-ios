@@ -145,6 +145,10 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
     }
   }
 
+  let timeoutInterval: TimeInterval = 5.0
+  private let taskCompletionQueue = DispatchQueue(label: "taskCompletionQueue", qos: .userInitiated)
+  private var isTaskCompleted = false
+
   private func createToken(requestParameters: NetworkManager.RequestParameters,
                            paymentType: TokenRequest.TokenType,
                            completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void) {
@@ -164,25 +168,58 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
           return
         }
 
-        self.riskSDK.configure { configurationResult in
-              switch configurationResult {
-              case .failure:
-                  completion(.success(tokenDetails))
-                  logManager.resetCorrelationID()
-              case .success():
-                  self.riskSDK.publishData(cardToken: tokenDetails.token) { _ in
-                      logManager.queue(event: .riskSDKCompletion)
-                      completion(.success(tokenDetails))
-                      logManager.resetCorrelationID()
-                  }
-              }
-          }
+        self.callRiskSDK(tokenDetails: tokenDetails) {
+          completion(.success(tokenDetails))
+        }
+
       case .errorResponse(let errorResponse):
         completion(.failure(.serverError(errorResponse)))
         logManager.resetCorrelationID()
       case .networkError(let networkError):
         completion(.failure(.networkError(networkError)))
         logManager.resetCorrelationID()
+      }
+    }
+  }
+
+  private func callRiskSDK(tokenDetails: TokenDetails,
+                           completion: @escaping () -> Void) {
+
+    /* Risk SDK calls can be finalised in 3 different ways
+     1. When Risk SDK's configure(...) function completed successfully and publishData(...) completed successfully or not
+     2. When Risk SDK's configure(...) function completed with failure
+     3. When Risk SDK's configure(...) or publishData(...) functions hang and don't call their completion blocks.
+        In this case, we wait for `self.timeoutInterval` amount of time and call the completion block anyway.
+
+     All these operations are done synchronously to avoid the completion closure getting called multiple times.
+    */
+
+    let finaliseRiskSDKCalls = {
+      self.taskCompletionQueue.sync {
+        if !self.isTaskCompleted {
+          self.isTaskCompleted = true
+          completion()
+        }
+      }
+    }
+
+    DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + timeoutInterval) {
+      finaliseRiskSDKCalls()
+      self.logManager.queue(event: .riskSDKTimeOut)
+    }
+
+    self.riskSDK.configure { [weak self] configurationResult in
+      guard let self else { return }
+      switch configurationResult {
+      case .failure:
+        finaliseRiskSDKCalls()
+        self.logManager.resetCorrelationID()
+      case .success():
+        self.riskSDK.publishData(cardToken: tokenDetails.token) { _ in
+          self.logManager.queue(event: .riskSDKCompletion)
+          finaliseRiskSDKCalls()
+          self.logManager.resetCorrelationID()
+        }
       }
     }
   }

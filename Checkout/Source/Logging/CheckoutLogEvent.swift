@@ -19,6 +19,7 @@ enum CheckoutLogEvent: Equatable {
   case cvvRequested(SecurityCodeTokenRequestData)
   case cvvResponse(SecurityCodeTokenRequestData, TokenResponseData)
   case riskSDKCompletion
+  case riskSDKTimeOut
 
   func event(date: Date) -> Event {
     Event(
@@ -58,6 +59,8 @@ enum CheckoutLogEvent: Equatable {
       return "card_validator_cvv"
     case .riskSDKCompletion:
       return "risk_sdk_completion"
+    case .riskSDKTimeOut:
+      return "risk_sdk_time_out"
     }
   }
 
@@ -70,7 +73,8 @@ enum CheckoutLogEvent: Equatable {
       .validateExpiryInteger,
       .validateCVV,
       .cvvRequested,
-      .riskSDKCompletion:
+      .riskSDKCompletion,
+      .riskSDKTimeOut:
       return .info
     case .tokenResponse(_, let tokenResponseData),
         .cvvResponse(_, let tokenResponseData):
@@ -93,7 +97,8 @@ enum CheckoutLogEvent: Equatable {
       .validateExpiryString,
       .validateExpiryInteger,
       .validateCVV,
-      .riskSDKCompletion:
+      .riskSDKCompletion,
+      .riskSDKTimeOut:
       return [:]
     case let .tokenRequested(tokenRequestData):
       return [
