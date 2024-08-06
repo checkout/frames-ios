@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 
 #### 4.x Releases
 
+
+## [4.3.7](https://github.com/checkout/frames-ios/releases/tag/4.3.7)
+
+Released on 2024-08-06
+
+Updates:
+
+- Removing the need to await for Risk SDK completion
+
+## [4.3.6](https://github.com/checkout/frames-ios/releases/tag/4.3.6)
+
+Released on 2024-05-30
+
+Updates:
+
+- Fixing a crash within the Risk SDK implementation.
+
 ## [4.3.5](https://github.com/checkout/frames-ios/releases/tag/4.3.5)
 
 Released on 2024-05-01

@@ -5,6 +5,5 @@ target 'CheckoutCocoapodsSample' do
   use_frameworks!
 
   # Pods for CheckoutSDKCocoapodsSample
-  pod 'Checkout', '4.3.6'
-
+  pod 'Checkout', '4.3.7'
 end
