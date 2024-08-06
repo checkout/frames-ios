@@ -1238,8 +1238,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/checkout/frames-ios";
 			requirement = {
-				branch = "feature/risk-sdk-timeout-recovery";
-				kind = branch;
+				kind = exactVersion;
+				version = 4.3.7;
 			};
 		};
 		16C3F83E2A7927ED00690639 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
