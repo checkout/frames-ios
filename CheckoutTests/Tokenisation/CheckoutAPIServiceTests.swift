@@ -354,3 +354,67 @@ extension CheckoutAPIServiceTests {
       }
   }
 }
+
+// Risk SDK Timeout Recovery Tests
+extension CheckoutAPIServiceTests {
+  func testWhenRiskSDKCallsCompletionThenFramesReturnsSuccess() {
+    let card = StubProvider.createCard()
+    let tokenRequest = StubProvider.createTokenRequest()
+    let requestParameters = StubProvider.createRequestParameters()
+    let tokenResponse = StubProvider.createTokenResponse()
+    let tokenDetails = StubProvider.createTokenDetails()
+
+    stubTokenRequestFactory.createToReturn = .success(tokenRequest)
+    stubRequestFactory.createToReturn = .success(requestParameters)
+    stubTokenDetailsFactory.createToReturn = tokenDetails
+
+    var result: Result<TokenDetails, TokenisationError.TokenRequest>?
+    subject.createToken(.card(card)) { result = $0 }
+    stubRequestExecutor.executeCalledWithCompletion?(.response(tokenResponse), HTTPURLResponse())
+
+    XCTAssertEqual(stubRisk.configureCalledCount, 1)
+    XCTAssertEqual(stubRisk.publishDataCalledCount, 1)
+    XCTAssertEqual(result, .success(tokenDetails))
+  }
+
+  func testWhenRiskSDKConfigureHangsThenFramesSDKCancelsWaitingRiskSDKAndCallsCompletionBlockAnywayAfterTimeout() {
+    stubRisk.shouldConfigureFunctionCallCompletion = false // Configure function will hang forever before it calls its completion closure
+    verifyRiskSDKTimeoutRecovery(timeoutAddition: 1, expectedConfigureCallCount: 1, expectedPublishDataCallCount: 0)
+  }
+
+  func testWhenRiskSDKPublishHangsThenFramesSDKCancelsWaitingRiskSDKAndCallsCompletionBlockAnywayAfterTimeout() {
+    stubRisk.shouldPublishFunctionCallCompletion = false // Publish data function will hang forever before it calls its completion closure
+    verifyRiskSDKTimeoutRecovery(timeoutAddition: 1, expectedConfigureCallCount: 1, expectedPublishDataCallCount: 1)
+  }
+
+  func verifyRiskSDKTimeoutRecovery(timeoutAddition: Double,
+                                    expectedConfigureCallCount: Int,
+                                    expectedPublishDataCallCount: Int,
+                                    file: StaticString = #file,
+                                    line: UInt = #line) {
+    let card = StubProvider.createCard()
+    let tokenRequest = StubProvider.createTokenRequest()
+    let tokenResponse = StubProvider.createTokenResponse()
+    let requestParameters = StubProvider.createRequestParameters()
+    let tokenDetails = StubProvider.createTokenDetails()
+
+    stubTokenRequestFactory.createToReturn = .success(tokenRequest)
+    stubRequestFactory.createToReturn = .success(requestParameters)
+    stubTokenDetailsFactory.createToReturn = tokenDetails
+
+    let expectation = self.expectation(description: "Frames will time out awaiting Risk SDK result")
+
+    var _: Result<TokenDetails, TokenisationError.TokenRequest>?
+    subject.createToken(.card(card)) {
+
+      XCTAssertEqual(self.stubRisk.configureCalledCount, expectedConfigureCallCount, file: file, line: line)
+      XCTAssertEqual(self.stubRisk.publishDataCalledCount, expectedPublishDataCallCount, file: file, line: line)
+      XCTAssertEqual($0, .success(tokenDetails), file: file, line: line)
+
+      expectation.fulfill()
+    }
+    stubRequestExecutor.executeCalledWithCompletion?(.response(tokenResponse), HTTPURLResponse())
+
+    waitForExpectations(timeout: subject.timeoutInterval + timeoutAddition)
+  }
+}
