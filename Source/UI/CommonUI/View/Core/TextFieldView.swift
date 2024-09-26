@@ -17,7 +17,6 @@ class TextFieldView: UIView {
         view.autocorrectionType = .no
         view.delegate = self
         view.backgroundColor = .clear
-        addKeyboardToolbarNavigation(textFields: [view])
         return  view
     }()
 
