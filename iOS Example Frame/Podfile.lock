@@ -1,34 +1,53 @@
 PODS:
-  - Checkout (4.3.0):
+  - Checkout (4.3.7):
     - CheckoutEventLoggerKit (~> 1.2.4)
+    - Risk (= 3.0.2)
   - CheckoutEventLoggerKit (1.2.4)
-  - Frames (4.3.0):
-    - Checkout (= 4.3.0)
+  - FingerprintPro (2.2.0)
+  - Frames (4.3.7):
+    - Checkout (= 4.3.7)
     - CheckoutEventLoggerKit (~> 1.2.4)
-    - PhoneNumberKit
-  - PhoneNumberKit (3.7.4):
-    - PhoneNumberKit/PhoneNumberKitCore (= 3.7.4)
-    - PhoneNumberKit/UIKit (= 3.7.4)
-  - PhoneNumberKit/PhoneNumberKitCore (3.7.4)
-  - PhoneNumberKit/UIKit (3.7.4):
+    - PhoneNumberKit (~> 4.0)
+  - PhoneNumberKit (4.0.1):
+    - PhoneNumberKit/PhoneNumberKitCore (= 4.0.1)
+    - PhoneNumberKit/UIKit (= 4.0.1)
+  - PhoneNumberKit/PhoneNumberKitCore (4.0.1)
+  - PhoneNumberKit/UIKit (4.0.1):
     - PhoneNumberKit/PhoneNumberKitCore
+  - Risk (3.0.2):
+    - CheckoutEventLoggerKit (~> 1.2.4)
+    - FingerprintPro (= 2.2.0)
 
 DEPENDENCIES:
-  - Frames (= 4.3.0)
+  - Frames (from `https://github.com/checkout/frames-ios.git`, branch `update/spm_dependacies`)
+  - PhoneNumberKit (~> 4.0)
 
 SPEC REPOS:
   trunk:
     - Checkout
     - CheckoutEventLoggerKit
-    - Frames
+    - FingerprintPro
     - PhoneNumberKit
+    - Risk
+
+EXTERNAL SOURCES:
+  Frames:
+    :branch: update/spm_dependacies
+    :git: https://github.com/checkout/frames-ios.git
+
+CHECKOUT OPTIONS:
+  Frames:
+    :commit: 22ba0ab903c3c93c8fa7751fef1434e4497d1c6c
+    :git: https://github.com/checkout/frames-ios.git
 
 SPEC CHECKSUMS:
-  Checkout: 942b292115d9d0a5e10738001a58370bb8d1ef9b
+  Checkout: 5d909e76355e8cfefa32c7520de50fa54185adf2
   CheckoutEventLoggerKit: b780dec46295a34942780ea6230d0d5fd08aa05a
-  Frames: d21139b41665842d9ede5228c62bc7c70aec31bf
-  PhoneNumberKit: e3c4dc9f65bc2036639898095c2ab1ef89348f64
+  FingerprintPro: 72e35dc0315b75ba36eafaaed996dbb2f35f7326
+  Frames: a448616a3b6079ddb82a57e638f3ec324f6640bd
+  PhoneNumberKit: a74155066daa6450475f6a029068eb919fb00d5d
+  Risk: a0732fef94dfddfa76ca70dbe0e5fe0f05557ec1
 
-PODFILE CHECKSUM: 77203c081fb461931e02ea92d808ea83d0c61cc9
+PODFILE CHECKSUM: fd9165f567ac3a0a1e4318b9754bbf378aa18ac1
 
-COCOAPODS: 1.14.2
+COCOAPODS: 1.16.2

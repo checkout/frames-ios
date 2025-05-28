@@ -4,9 +4,9 @@ import Checkout
 
 class PhoneNumberValidator: Validator {
 
-    var countryCode: String = PhoneNumberKit.defaultRegionCode()
+    var countryCode: String = PhoneNumberUtility.defaultRegionCode()
     private let validator = PhoneValidator()
-    private let phoneKit = PhoneNumberKit()
+    private let phoneKit = PhoneNumberUtility()
     private let validCharacterSet: CharacterSet = {
         var validInputs = "-+() "
         (0...9).forEach { validInputs.append("\($0)") }

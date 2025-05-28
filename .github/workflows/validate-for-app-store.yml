@@ -15,11 +15,11 @@ jobs:
     if: (github.event_name == 'workflow_dispatch') || contains(github.event.pull_request.labels.*.name, 'Validate For App Store')
     name: Validate For App Store
     environment: AppStoreValidation
-    runs-on: macos-latest
+    runs-on: macos-15-xlarge
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - name: Install the Apple certificate and provisioning profile
         env:
           BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}

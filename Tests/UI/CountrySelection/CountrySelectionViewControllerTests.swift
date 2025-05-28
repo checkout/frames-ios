@@ -15,7 +15,7 @@ class MockDelegate: CountrySelectionViewControllerDelegate {
 class CountrySelectionViewControllerTests: XCTestCase {
 
     var countrySelectionViewController = CountrySelectionViewController()
-    let numberOfCountries = 256
+    let numberOfCountries = 257
 
     override func setUp() {
         super.setUp()

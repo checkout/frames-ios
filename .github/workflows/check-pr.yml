@@ -9,11 +9,11 @@ on:
       - 'release/*'
 
 env:
-  destination: "platform=iOS Simulator,name=iPhone 14 Pro,OS=latest"
+  destination: "platform=iOS Simulator,name=iPhone 16 Pro,OS=latest"
   configuration: "Debug"
   noIndex: "COMPILER_INDEX_STORE_ENABLE=NO"
   noSigning: "CODE_SIGNING_ALLOWED=NO"
-  versionXcode: "14.3.1"
+  versionXcode: "16.0"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -22,23 +22,23 @@ concurrency:
 jobs:
   lint:
     name: SwiftLint
-    runs-on: macos-13-large
+    runs-on: macos-15-large
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
       - name: Lint Edited Files
         run: bash .github/scripts/lintEditedFiles.sh
 
   checkout:
     name: Checkout Verification
-    runs-on: macos-13-xlarge
+    runs-on: macos-15-xlarge
     needs: lint
     
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
       - name: Select Xcode
         run: |
@@ -75,12 +75,12 @@ jobs:
 
   frames:
     name: Frames Verification
-    runs-on: macos-13-xlarge
+    runs-on: macos-15-xlarge
     needs: lint
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
       - name: Select Xcode
         run: |
@@ -117,16 +117,16 @@ jobs:
 
   run-ui-tests:
     name: Run UI Tests
-    runs-on: macos-12-xl
+    runs-on: macos-15-xlarge
     needs: lint
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
       - name: Select Xcode
         run: |
-          sudo xcode-select -switch /Applications/Xcode_14.2.app
+          sudo xcode-select -switch /Applications/Xcode_16.0.app
 
       - name: Log xcodebuild Version
         run: |
