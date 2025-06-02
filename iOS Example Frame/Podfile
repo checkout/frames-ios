@@ -6,7 +6,6 @@ target 'iOS Example Frame' do
   use_frameworks!
 
   # Pods for iOS Example Custom
-  pod 'PhoneNumberKit', '~> 4.0'
   pod 'Frames', :git => 'https://github.com/checkout/frames-ios.git', :branch => 'update/spm_dependacies'
 end
 

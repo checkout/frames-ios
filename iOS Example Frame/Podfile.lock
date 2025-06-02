@@ -20,7 +20,6 @@ PODS:
 
 DEPENDENCIES:
   - Frames (from `https://github.com/checkout/frames-ios.git`, branch `update/spm_dependacies`)
-  - PhoneNumberKit (~> 4.0)
 
 SPEC REPOS:
   trunk:
@@ -48,6 +47,6 @@ SPEC CHECKSUMS:
   PhoneNumberKit: a74155066daa6450475f6a029068eb919fb00d5d
   Risk: a0732fef94dfddfa76ca70dbe0e5fe0f05557ec1
 
-PODFILE CHECKSUM: fd9165f567ac3a0a1e4318b9754bbf378aa18ac1
+PODFILE CHECKSUM: af187378f7f557970453534618a82fb7efd4e1c2
 
 COCOAPODS: 1.16.2
