@@ -1,11 +1,11 @@
 PODS:
-  - Checkout (4.3.7):
+  - Checkout (4.3.8):
     - CheckoutEventLoggerKit (~> 1.2.4)
     - Risk (= 3.0.2)
   - CheckoutEventLoggerKit (1.2.4)
   - FingerprintPro (2.2.0)
-  - Frames (4.3.7):
-    - Checkout (= 4.3.7)
+  - Frames (4.3.8):
+    - Checkout (= 4.3.8)
     - CheckoutEventLoggerKit (~> 1.2.4)
     - PhoneNumberKit (~> 4.0)
   - PhoneNumberKit (4.0.1):
