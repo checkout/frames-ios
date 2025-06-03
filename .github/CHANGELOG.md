@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 
 #### 4.x Releases
 
+## [4.3.8](https://github.com/checkout/frames-ios/releases/tag/4.3.8)
+
+Released on 2025-06-03
+
+Updates:
+
+- Update minimum version to iOS 13+
+- Update Risk SDK from min version 3.0.2
+- Update PhoneNumberKit from min version 4.0+
+- Fixed issues
 
 ## [4.3.7](https://github.com/checkout/frames-ios/releases/tag/4.3.7)
 
