@@ -41,7 +41,6 @@
 		16E91A432A7042AD00DC0D98 /* CardValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E91A422A7042AD00DC0D98 /* CardValidationTests.swift */; };
 		16E91A452A70453B00DC0D98 /* TestCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E91A442A70453B00DC0D98 /* TestCard.swift */; };
 		16E91A482A704AC300DC0D98 /* StaticTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E91A472A704AC300DC0D98 /* StaticTexts.swift */; };
-		950F88642DE884BE0041D2E7 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 950F88632DE884BE0041D2E7 /* Frames */; };
 		955B092B291CEF0F00DEEAF5 /* ApplePayCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955B092A291CEF0F00DEEAF5 /* ApplePayCreator.swift */; };
 		95C8C10D28AD5FEE00B8D3D0 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C0B528AD5FEE00B8D3D0 /* UIViewControllerExtension.swift */; };
 		95C8C10E28AD5FEE00B8D3D0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8C0B628AD5FEE00B8D3D0 /* UIViewExtension.swift */; };
@@ -227,7 +226,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				950F88642DE884BE0041D2E7 /* Frames in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1245,7 +1243,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/checkout/frames-ios";
 			requirement = {
-				branch = update/spm_dependacies;
+				branch = main;
 				kind = branch;
 			};
 		};
