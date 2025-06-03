@@ -13,13 +13,13 @@ Pod::Spec.new do |s|
   s.author   = { "Checkout.com Integration" => "integration@checkout.com" }
   s.source   = { :git => "https://github.com/checkout/frames-ios.git", :tag => s.version }
 
-  s.ios.deployment_target = '12.0'
+  s.ios.deployment_target = '13.0'
   s.swift_version = "5.7"
 
   s.source_files = 'Checkout/Source/**/*.swift'
   s.exclude_files = "Checkout/Samples/**"
 
   s.dependency 'CheckoutEventLoggerKit', '~> 1.2.4'
-  s.dependency 'Risk', '3.0.2'
+  s.dependency 'Risk', '~> 3.0.2'
 
 end

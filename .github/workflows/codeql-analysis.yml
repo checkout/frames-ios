@@ -20,16 +20,16 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  destination: "platform=iOS Simulator,name=iPhone 15 Pro,OS=latest"
+  destination: "platform=iOS Simulator,name=iPhone 16 Pro,OS=latest"
   configuration: "Debug"
   noIndex: "COMPILER_INDEX_STORE_ENABLE=NO"
   noSigning: "CODE_SIGNING_ALLOWED=NO"
-  versionXcode: "15.2"
+  versionXcode: "16.0"
 
 jobs:
   analyze:
     name: Analyze
-    runs-on: [ macos-13-large ]
+    runs-on: [ macos-15-xlarge ]
     permissions:
       actions: read
       contents: read
@@ -42,7 +42,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       with:
         submodules: recursive
 
