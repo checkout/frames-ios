@@ -5,5 +5,5 @@ target 'CheckoutCocoapodsSample' do
   use_frameworks!
 
   # Pods for CheckoutSDKCocoapodsSample
-  pod 'Checkout', :git => 'https://github.com/checkout/frames-ios.git', :branch => 'newVersion/4.3.8'
+  pod 'Checkout', '4.3.8'
 end
