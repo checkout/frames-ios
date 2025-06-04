@@ -38,14 +38,14 @@ jobs:
 
 #      - name: Upload Artifacts
 #        if: always()
-#        uses: actions/upload-artifact@v3
+#        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
 #        with:
 #          name: Test Results and Logs
 #          path: "~/Library/Developer/Xcode/DerivedData/*/Logs/Test/"
 
 #      - name: Upload Generated Screenshots
 #        if: always()
-#        uses: actions/upload-artifact@v3
+#        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
 #        with:
 #          name: Test Results and Logs
 #          path: "iOS\ Example\ Frame\ SPM/iOS\ Example\ Frame\ Regression\ Tests/__Snapshots__"
