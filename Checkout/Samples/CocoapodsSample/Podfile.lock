@@ -9,23 +9,14 @@ PODS:
     - FingerprintPro (~> 2.7.0)
 
 DEPENDENCIES:
-  - Checkout (from `https://github.com/checkout/frames-ios.git`, branch `newVersion/4.3.8`)
+  - Checkout (= 4.3.8)
 
 SPEC REPOS:
   trunk:
+    - Checkout
     - CheckoutEventLoggerKit
     - FingerprintPro
     - Risk
-
-EXTERNAL SOURCES:
-  Checkout:
-    :branch: newVersion/4.3.8
-    :git: https://github.com/checkout/frames-ios.git
-
-CHECKOUT OPTIONS:
-  Checkout:
-    :commit: 700863771ce9b3af1c42a9d020cec9120b2ee96b
-    :git: https://github.com/checkout/frames-ios.git
 
 SPEC CHECKSUMS:
   Checkout: 609314d0c54a079d4c0ddfcfa7011367a12f225a
@@ -33,6 +24,6 @@ SPEC CHECKSUMS:
   FingerprintPro: 0c7dbd28fc83751ca64b06328e2fb22bbc7ed118
   Risk: 6c0fdbf826f741b028ec9158198404ce267d0d3e
 
-PODFILE CHECKSUM: 4ee6ae5b7c361a07bee18adca7c5eab132fe3e40
+PODFILE CHECKSUM: 9b0372a870e3437a2232753690edfe8385c4d6e0
 
 COCOAPODS: 1.16.2
