@@ -19,6 +19,7 @@ jobs:
       - name: Publish Checkout.podspec
         run: |
           gem install cocoapods
+          pod trunk register mobilesdkteam@checkout.com
           pod trunk push Checkout.podspec --allow-warnings  --verbose
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
