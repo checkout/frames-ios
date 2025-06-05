@@ -1,11 +1,11 @@
 PODS:
-  - Checkout (4.3.7):
+  - Checkout (4.3.8):
     - CheckoutEventLoggerKit (~> 1.2.4)
-    - Risk (= 3.0.2)
+    - Risk (~> 3.0.2)
   - CheckoutEventLoggerKit (1.2.4)
-  - FingerprintPro (2.2.0)
-  - Frames (4.3.7):
-    - Checkout (= 4.3.7)
+  - FingerprintPro (2.7.0)
+  - Frames (4.3.8):
+    - Checkout (= 4.3.8)
     - CheckoutEventLoggerKit (~> 1.2.4)
     - PhoneNumberKit (~> 4.0)
   - PhoneNumberKit (4.0.1):
@@ -14,39 +14,30 @@ PODS:
   - PhoneNumberKit/PhoneNumberKitCore (4.0.1)
   - PhoneNumberKit/UIKit (4.0.1):
     - PhoneNumberKit/PhoneNumberKitCore
-  - Risk (3.0.2):
+  - Risk (3.0.4):
     - CheckoutEventLoggerKit (~> 1.2.4)
-    - FingerprintPro (= 2.2.0)
+    - FingerprintPro (~> 2.7.0)
 
 DEPENDENCIES:
-  - Frames (from `https://github.com/checkout/frames-ios.git`, branch `update/spm_dependacies`)
+  - Frames (= 4.3.8)
 
 SPEC REPOS:
   trunk:
     - Checkout
     - CheckoutEventLoggerKit
     - FingerprintPro
+    - Frames
     - PhoneNumberKit
     - Risk
 
-EXTERNAL SOURCES:
-  Frames:
-    :branch: update/spm_dependacies
-    :git: https://github.com/checkout/frames-ios.git
-
-CHECKOUT OPTIONS:
-  Frames:
-    :commit: 22ba0ab903c3c93c8fa7751fef1434e4497d1c6c
-    :git: https://github.com/checkout/frames-ios.git
-
 SPEC CHECKSUMS:
-  Checkout: 5d909e76355e8cfefa32c7520de50fa54185adf2
+  Checkout: 609314d0c54a079d4c0ddfcfa7011367a12f225a
   CheckoutEventLoggerKit: b780dec46295a34942780ea6230d0d5fd08aa05a
-  FingerprintPro: 72e35dc0315b75ba36eafaaed996dbb2f35f7326
-  Frames: a448616a3b6079ddb82a57e638f3ec324f6640bd
+  FingerprintPro: 0c7dbd28fc83751ca64b06328e2fb22bbc7ed118
+  Frames: 7cad5e39665bf9d610dcf44b3ff42f6b051ca268
   PhoneNumberKit: a74155066daa6450475f6a029068eb919fb00d5d
-  Risk: a0732fef94dfddfa76ca70dbe0e5fe0f05557ec1
+  Risk: 6c0fdbf826f741b028ec9158198404ce267d0d3e
 
-PODFILE CHECKSUM: af187378f7f557970453534618a82fb7efd4e1c2
+PODFILE CHECKSUM: d9265d982988f39d7b723f95d839da2ec8d13da3
 
 COCOAPODS: 1.16.2

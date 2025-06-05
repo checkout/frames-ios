@@ -5,7 +5,7 @@ on: workflow_dispatch
 jobs:
   publish:
     environment: CocoaPodsRelease
-    runs-on: macos-12-xl
+    runs-on: macos-15-xlarge
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       
@@ -19,6 +19,7 @@ jobs:
       - name: Publish Checkout.podspec
         run: |
           gem install cocoapods
-          pod trunk push Checkout.podspec --allow-warnings
+          pod trunk register mobilesdkteam@checkout.com
+          pod trunk push Checkout.podspec --allow-warnings  --verbose
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
