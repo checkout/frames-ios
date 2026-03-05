@@ -20,7 +20,7 @@ let package = Package(
             from: "4.0.0"),
         .package(
             url: "https://github.com/checkout/checkout-risk-sdk-ios.git",
-            from: "3.0.2"),
+            from: "4.0.2"),
         .package(
             url: "https://github.com/checkout/checkout-event-logger-ios-framework.git",
             from: "1.2.4"

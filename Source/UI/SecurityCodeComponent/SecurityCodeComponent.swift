@@ -48,7 +48,8 @@ extension SecurityCodeComponent {
     
     cardValidator = CardValidator(environment: configuration.environment.checkoutEnvironment)
     checkoutAPIService = CheckoutAPIService(publicKey: configuration.apiKey,
-                                               environment: configuration.environment)
+                                            environment: configuration.environment,
+                                            baseURLPrefix: configuration.baseURLPrefix)
     
     let viewModel = SecurityCodeViewModel(cardValidator: cardValidator)
     if let initialCardScheme = configuration.cardScheme {

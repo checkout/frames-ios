@@ -10,10 +10,10 @@ import Foundation
 
 // swiftlint:disable force_unwrapping
 final class StubBaseURLProvider: BaseURLProviding {
-  var baseURLToReturn = URL(string: "https://www.checkout.com/")!
+  var baseURLToReturn: URL? = URL(string: "https://www.checkout.com/")!
   private(set) var baseURLCalled = false
 
-  var baseURL: URL {
+  var baseURL: URL? {
     baseURLCalled = true
     return baseURLToReturn
   }

@@ -12,7 +12,7 @@ import CheckoutEventLoggerKit
 protocol CheckoutAPIProtocol {
     var cardValidator: CardValidating { get }
     var logger: FramesEventLogging { get }
-    init(publicKey: String, environment: Environment)
+    init(publicKey: String, environment: Environment, baseURLPrefix: String?)
     func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)
     func createSecurityCodeToken(securityCode: String, completion: @escaping (Result<SecurityCodeTokenDetails, TokenisationError.SecurityCodeError>) -> Void)
 }
@@ -23,8 +23,8 @@ public final class CheckoutAPIService: CheckoutAPIProtocol {
     let logger: FramesEventLogging
     private let checkoutAPIService: Checkout.CheckoutAPIProtocol
 
-    public init(publicKey: String, environment: Environment) {
-        let checkoutAPIService = Checkout.CheckoutAPIService(publicKey: publicKey, environment: environment.checkoutEnvironment)
+    public init(publicKey: String, environment: Environment, baseURLPrefix: String? = nil) {
+        let checkoutAPIService = Checkout.CheckoutAPIService(publicKey: publicKey, environment: environment.checkoutEnvironment, baseURLPrefix: baseURLPrefix)
         let cardValidator = CardValidator(environment: environment.checkoutEnvironment)
         let logger = FramesEventLogger(environment: environment, correlationID: checkoutAPIService.correlationID)
 

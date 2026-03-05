@@ -9,7 +9,8 @@ public enum PaymentFormFactory {
         let logger = FramesEventLogger(environment: configuration.environment, correlationID: UUID().uuidString)
         let cardValidator = CardValidator(environment: configuration.environment.checkoutEnvironment)
         let checkoutAPIService = CheckoutAPIService(publicKey: configuration.serviceAPIKey,
-                                                    environment: configuration.environment)
+                                                    environment: configuration.environment,
+                                                    baseURLPrefix: configuration.baseURLPrefix)
         var viewModel = DefaultPaymentViewModel(checkoutAPIService: checkoutAPIService,
                                                 cardValidator: cardValidator,
                                                 logger: logger,

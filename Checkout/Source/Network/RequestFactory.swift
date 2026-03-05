@@ -74,7 +74,9 @@ final class RequestFactory: RequestProviding {
     }
 
     func url(baseURLProvider: BaseURLProviding) -> Result<URL, RequestError> {
-      guard var urlComponents = URLComponents(url: baseURLProvider.baseURL, resolvingAgainstBaseURL: false) else {
+      guard let baseURL =  baseURLProvider.baseURL,
+              var urlComponents = URLComponents(url:baseURL,
+                                                resolvingAgainstBaseURL: false) else {
         return .failure(.baseURLCouldNotBeConvertedToComponents)
       }
 

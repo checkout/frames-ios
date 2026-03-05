@@ -19,7 +19,8 @@ extension Factory {
         let configuration = PaymentFormConfiguration(apiKey: apiKey,
                                                      environment: environment,
                                                      supportedSchemes: supportedSchemes,
-                                                     billingFormData: nil)
+                                                     billingFormData: nil,
+                                                     baseURLPrefix: baseURLPrefix)
         let style = ThemeDemo.buildMinimalUITest()
 
         let viewController = PaymentFormFactory.buildViewController(configuration: configuration,
@@ -35,7 +36,8 @@ extension Factory {
         let configuration = PaymentFormConfiguration(apiKey: apiKey,
                                                      environment: environment,
                                                      supportedSchemes: supportedSchemes,
-                                                     billingFormData: nil)
+                                                     billingFormData: nil,
+                                                     baseURLPrefix: baseURLPrefix)
         let style = ThemeDemo.buildCompleteUITest()
 
         let viewController = PaymentFormFactory.buildViewController(configuration: configuration,
