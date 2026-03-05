@@ -5,8 +5,10 @@ target 'iOS Example Frame' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for iOS Example Custom
-  pod 'Frames', '4.3.8'
+  # Pods for iOS Example Custom (local Frames from repo root)
+  pod 'Frames', :path => '../' 
+  pod 'Checkout', :path => '../'
+
 end
 
 post_install do |installer|
