@@ -11,6 +11,12 @@ import XCTest
 class StubCheckoutEventLogger: CheckoutEventLogging {
   private(set) var logCalledWith: [Event] = []
   var logExpectation: XCTestExpectation?
+
+  /// Reset accumulated log events so tests can assert on a clean slate. Call after flushing the queue in setUp.
+  func resetLogCalledWith() {
+    logCalledWith = []
+  }
+
   func log(event: Event) {
     logCalledWith.append(event)
     logExpectation?.fulfill()

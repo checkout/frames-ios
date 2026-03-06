@@ -4,29 +4,45 @@ PODS:
     - Risk (~> 4.0.1)
   - CheckoutEventLoggerKit (1.2.4)
   - FingerprintPro (2.13.0)
+  - Frames (4.4.0):
+    - Checkout (= 4.4.0)
+    - CheckoutEventLoggerKit (~> 1.2.4)
+    - PhoneNumberKit (~> 4.0)
+  - PhoneNumberKit (4.2.0):
+    - PhoneNumberKit/PhoneNumberKitCore (= 4.2.0)
+    - PhoneNumberKit/UIKit (= 4.2.0)
+  - PhoneNumberKit/PhoneNumberKitCore (4.2.0)
+  - PhoneNumberKit/UIKit (4.2.0):
+    - PhoneNumberKit/PhoneNumberKitCore
   - Risk (4.0.1):
     - CheckoutEventLoggerKit (~> 1.2.4)
     - FingerprintPro (< 3.0.0, >= 2.7.0)
 
 DEPENDENCIES:
-  - Checkout (from `../../../`)
+  - Checkout (from `../`)
+  - Frames (from `../`)
 
 SPEC REPOS:
   trunk:
     - CheckoutEventLoggerKit
     - FingerprintPro
+    - PhoneNumberKit
     - Risk
 
 EXTERNAL SOURCES:
   Checkout:
-    :path: "../../../"
+    :path: "../"
+  Frames:
+    :path: "../"
 
 SPEC CHECKSUMS:
   Checkout: 74ea5696bde3c3b85656c2b5c6446a07c8e89195
   CheckoutEventLoggerKit: b780dec46295a34942780ea6230d0d5fd08aa05a
   FingerprintPro: 2f419138022451a72f783db9c94967f5a68e9977
+  Frames: cfe3e6809097ca3a08d0e935103195833512bf61
+  PhoneNumberKit: b05dfa2fd6ae53cc51e9684aa1967b00aa26899b
   Risk: e8ee31ba847b6cce1d4c384a9bb49d78fc34cdc5
 
-PODFILE CHECKSUM: 36c08580c11dc09229142a4df18cbb3b7682087d
+PODFILE CHECKSUM: 731ac4454e9a98bc4604ec10a2460a43b5c042a5
 
 COCOAPODS: 1.16.2

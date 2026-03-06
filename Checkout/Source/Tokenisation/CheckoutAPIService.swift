@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 import CheckoutEventLoggerKit
+#if canImport(RiskSDK)
 import RiskSDK
+#elseif  canImport(Risk)
+import Risk
+#endif
 
 public protocol CheckoutAPIProtocol {
   func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)

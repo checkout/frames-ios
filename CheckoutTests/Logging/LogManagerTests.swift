@@ -21,9 +21,19 @@ final class LogManagerTests: XCTestCase {
   override func setUp() {
     super.setUp()
 
-    let logQueueFlushExpectation = XCTestExpectation()
-    subject.queue(event: .cardValidator) { logQueueFlushExpectation.fulfill() }
-    wait(for: [logQueueFlushExpectation], timeout: 5)
+    // Configure LogManager with stubs, then drain the serial logging queue synchronously.
+    // Using _drainLoggingQueueForTesting (loggingQueue.sync {}) avoids depending on the run loop
+    // to schedule .background QoS work, which is unreliable in CI.
+    subject.setup(
+      environment: .sandbox,
+      logger: stubCheckoutEventLogger,
+      uiDevice: stubDeviceInformationProvider,
+      dateProvider: stubDateProvider,
+      anyCodable: stubAnyCodable
+    )
+    subject.queue(event: .cardValidator) { }
+    LogManager._drainLoggingQueueForTesting()
+    stubCheckoutEventLogger.resetLogCalledWith()
   }
 
   override func tearDown() {
@@ -89,9 +99,6 @@ final class LogManagerTests: XCTestCase {
   }
 
   func test_setup_production() {
-    let correlationIDExpectation = XCTestExpectation()
-    stubCheckoutEventLogger.addMetadateExpectations.append(correlationIDExpectation)
-
     subject.setup(
       environment: .production,
       logger: stubCheckoutEventLogger,
@@ -99,6 +106,7 @@ final class LogManagerTests: XCTestCase {
       dateProvider: stubDateProvider,
       anyCodable: stubAnyCodable
     )
+    LogManager._drainLoggingQueueForTesting()
 
     #if DEBUG
     XCTAssertEqual(stubCheckoutEventLogger.enableLocalProcessorCalledWith, .debug)
@@ -142,8 +150,6 @@ final class LogManagerTests: XCTestCase {
     #endif
 
     #if !SWIFT_PACKAGE
-    wait(for: [correlationIDExpectation], timeout: 5)
-
     XCTAssertEqual(
       stubCheckoutEventLogger.addMetadataCalledWith.first?.metadata,
       CheckoutEventLogger.MetadataKey.correlationID.rawValue
@@ -154,8 +160,6 @@ final class LogManagerTests: XCTestCase {
   }
 
   func test_queue() {
-    let initialCorrelationIDExpectation = XCTestExpectation()
-    stubCheckoutEventLogger.addMetadateExpectations.append(initialCorrelationIDExpectation)
     subject.setup(
       environment: .sandbox,
       logger: stubCheckoutEventLogger,
@@ -163,13 +167,10 @@ final class LogManagerTests: XCTestCase {
       dateProvider: stubDateProvider,
       anyCodable: stubAnyCodable
     )
-    wait(for: [initialCorrelationIDExpectation], timeout: 3)
+    LogManager._drainLoggingQueueForTesting()
 
-    let expectation = XCTestExpectation(description: "Waiting for token creation")
-    stubCheckoutEventLogger.logExpectation = expectation
     subject.queue(event: .tokenRequested(CheckoutLogEvent.TokenRequestData(tokenType: .card, publicKey: "publicKey")))
-
-    wait(for: [expectation], timeout: 3)
+    LogManager._drainLoggingQueueForTesting()
 
     XCTAssertEqual(
       stubCheckoutEventLogger.logCalledWith,
@@ -193,11 +194,8 @@ final class LogManagerTests: XCTestCase {
       anyCodable: stubAnyCodable
     )
 
-    let expectation = XCTestExpectation(description: "Waiting for token creation")
-    stubCheckoutEventLogger.logExpectation = expectation
     subject.queue(event: .cardValidator)
-
-    wait(for: [expectation], timeout: 10)
+    LogManager._drainLoggingQueueForTesting()
 
     XCTAssertEqual(
       stubCheckoutEventLogger.logCalledWith,
@@ -211,16 +209,14 @@ final class LogManagerTests: XCTestCase {
       ]
     )
 
+    // Queue cardValidator a second time — it should not log again (one-time event).
     subject.queue(event: .cardValidator)
 
-    // queueing another event here to flush the log queue
-    let expectation2 = XCTestExpectation(description: "Waiting for token creation")
-    stubCheckoutEventLogger.logExpectation = expectation2
+    // Queue tokenRequested to ensure the second cardValidator has been processed.
     subject.queue(event: .tokenRequested(CheckoutLogEvent.TokenRequestData(tokenType: .card, publicKey: "publicKey")))
+    LogManager._drainLoggingQueueForTesting()
 
-    wait(for: [expectation2], timeout: 10)
-
-    // checking that card_validator only got logged once
+    // card_validator should appear only once.
     XCTAssertEqual(
       stubCheckoutEventLogger.logCalledWith,
       [
@@ -241,10 +237,8 @@ final class LogManagerTests: XCTestCase {
   }
 
   func test_resetCorrelationID() {
-    let initialCorrelationIDExpectation = XCTestExpectation()
-    let resetCorrelationIDExpectation = XCTestExpectation()
-
-    stubCheckoutEventLogger.addMetadateExpectations.append(initialCorrelationIDExpectation)
+    // setUp's setup() call = add() #1.
+    // This test's setup() call = add() #2.
     subject.setup(
       environment: .sandbox,
       logger: stubCheckoutEventLogger,
@@ -252,13 +246,13 @@ final class LogManagerTests: XCTestCase {
       dateProvider: stubDateProvider,
       anyCodable: stubAnyCodable
     )
+    LogManager._drainLoggingQueueForTesting()
 
-    wait(for: [initialCorrelationIDExpectation], timeout: 3)
-    stubCheckoutEventLogger.addMetadateExpectations.append(resetCorrelationIDExpectation)
+    // Explicit reset = add() #3.
     subject.resetCorrelationID()
-    wait(for: [resetCorrelationIDExpectation], timeout: 3)
+    LogManager._drainLoggingQueueForTesting()
 
-    XCTAssertEqual(stubCheckoutEventLogger.addMetadataCalledWith.count, 2)
+    XCTAssertEqual(stubCheckoutEventLogger.addMetadataCalledWith.count, 3)
     XCTAssertTrue(stubCheckoutEventLogger.addMetadataCalledWith.allSatisfy {
       $0.metadata == CheckoutEventLogger.MetadataKey.correlationID.rawValue
     })
@@ -267,11 +261,11 @@ final class LogManagerTests: XCTestCase {
   // MARK: correlationID
 
   func test_correlationID() {
+    // setUp's setup() already set a new correlationID — capture it as the baseline.
     let initialCorrelationID = subject.correlationID
     XCTAssertNotNil(UUID(uuidString: initialCorrelationID), "failed to verify initialCorrelationID was a UUID")
 
-    let resetCorrelationIDExpectation = XCTestExpectation()
-    stubCheckoutEventLogger.addMetadateExpectations.append(resetCorrelationIDExpectation)
+    // A second setup() triggers resetCorrelationID() which generates a new UUID.
     subject.setup(
       environment: .sandbox,
       logger: stubCheckoutEventLogger,
@@ -279,21 +273,16 @@ final class LogManagerTests: XCTestCase {
       dateProvider: stubDateProvider,
       anyCodable: stubAnyCodable
     )
-
-    wait(for: [resetCorrelationIDExpectation], timeout: 3)
+    LogManager._drainLoggingQueueForTesting()
     let newCorrelationID = subject.correlationID
 
     XCTAssertNotNil(UUID(uuidString: newCorrelationID), "failed to verify newCorrelationID was a UUID")
-
     XCTAssertNotEqual(initialCorrelationID, newCorrelationID, "expected correlationIDs to change")
   }
 
   // MARK: registerTypes
 
   func test_registerTypes_TokenisationError_ServerError() {
-    let addCorrelationIDExpectation = XCTestExpectation()
-    stubCheckoutEventLogger.addMetadateExpectations.append(addCorrelationIDExpectation)
-
     subject.setup(
       environment: .sandbox,
       logger: stubCheckoutEventLogger,
@@ -301,6 +290,7 @@ final class LogManagerTests: XCTestCase {
       dateProvider: stubDateProvider,
       anyCodable: stubAnyCodable
     )
+    LogManager._drainLoggingQueueForTesting()
 
     let serverError = TokenisationError.ServerError(
       requestID: "requestID",
@@ -322,7 +312,5 @@ final class LogManagerTests: XCTestCase {
 
     let encodeCalledWith = stubSingleValueEncodingContainer.encodeCalledWith as? TokenisationError.ServerError
     XCTAssertEqual(encodeCalledWith, serverError)
-
-    wait(for: [addCorrelationIDExpectation], timeout: 3)
   }
 }
