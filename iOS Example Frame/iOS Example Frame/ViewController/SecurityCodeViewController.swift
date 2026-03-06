@@ -18,7 +18,8 @@ final class SecurityCodeViewController: UIViewController {
   @IBOutlet private weak var customPayButton: UIButton!
 
   var configuration = SecurityCodeComponentConfiguration(apiKey: Factory.apiKey,
-                                                         environment: Factory.environment)
+                                                         environment: Factory.environment,
+                                                         baseURLPrefix: Factory.baseURLPrefix)
 
   func setupDefaultSecurityCodeComponent() {
     configuration.cardScheme = Card.Scheme(rawValue: "VISA")

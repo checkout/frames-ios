@@ -9,11 +9,11 @@ on:
       - 'release/*'
 
 env:
-  destination: "platform=iOS Simulator,name=iPhone 16 Pro,OS=latest"
+  destination: "platform=iOS Simulator,name=iPhone 17 Pro,OS=26.1"
   configuration: "Debug"
   noIndex: "COMPILER_INDEX_STORE_ENABLE=NO"
   noSigning: "CODE_SIGNING_ALLOWED=NO"
-  versionXcode: "16.0"
+  versionXcode: "26.2"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -126,7 +126,7 @@ jobs:
 
       - name: Select Xcode
         run: |
-          sudo xcode-select -switch /Applications/Xcode_16.0.app
+          sudo xcode-select -switch /Applications/Xcode_26.2.app
 
       - name: Log xcodebuild Version
         run: |

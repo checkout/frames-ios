@@ -106,6 +106,13 @@ enum LogManager: LogManaging {
     }
   }
 
+  /// Synchronously waits for all previously enqueued log work to finish.
+  /// Uses `loggingQueue.sync {}` so it is safe to call from any thread except the logging queue's own thread.
+  /// For test use only — not part of the public API.
+  static func _drainLoggingQueueForTesting() {
+    loggingQueue.sync { }
+  }
+
   private static func log(_ event: CheckoutLogEvent, date: Date) {
     let logEvent = event.event(date: date)
 

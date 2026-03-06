@@ -6,7 +6,11 @@
 //
 
 import Foundation
+#if canImport(RiskSDK)
+@testable import RiskSDK
+#elseif  canImport(Risk)
 @testable import Risk
+#endif
 @testable import Checkout
 
 // swiftlint:disable large_tuple

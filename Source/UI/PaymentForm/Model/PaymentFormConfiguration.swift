@@ -13,6 +13,7 @@ public struct PaymentFormConfiguration {
     let environment: Environment
     let supportedSchemes: [Card.Scheme]
     let billingFormData: BillingForm?
+    let baseURLPrefix: String?
 
     /**
      Create a configuration for the Payment form
@@ -22,14 +23,17 @@ public struct PaymentFormConfiguration {
         - environment: Enum describing the environment the SDK is running in
         - supportedSchemes: Card schemes supported for receiving payments. Accurate declaration of supported schemes will improve customer experience
         - billingFormData: Pre filled Billing form information to be included and help reduce user input if known
+        - baseURLPrefix: Optional subdomain prefix for the API base URL (e.g. "msdd" produces "msdd.api.checkout.com")
      */
     public init(apiKey: String,
                 environment: Environment,
                 supportedSchemes: [CardScheme],
-                billingFormData: BillingForm?) {
+                billingFormData: BillingForm?,
+                baseURLPrefix: String? = nil) {
         self.serviceAPIKey = apiKey
         self.environment = environment
         self.supportedSchemes = supportedSchemes.compactMap { $0.mapToCheckoutCardScheme() }
         self.billingFormData = billingFormData
+        self.baseURLPrefix = baseURLPrefix
     }
 }

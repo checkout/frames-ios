@@ -1,29 +1,32 @@
 PODS:
-  - Checkout (4.3.8):
+  - Checkout (4.4.0):
     - CheckoutEventLoggerKit (~> 1.2.4)
-    - Risk (~> 3.0.2)
+    - Risk (~> 4.0.1)
   - CheckoutEventLoggerKit (1.2.4)
-  - FingerprintPro (2.7.0)
-  - Risk (3.0.4):
+  - FingerprintPro (2.13.0)
+  - Risk (4.0.1):
     - CheckoutEventLoggerKit (~> 1.2.4)
-    - FingerprintPro (~> 2.7.0)
+    - FingerprintPro (< 3.0.0, >= 2.7.0)
 
 DEPENDENCIES:
-  - Checkout (= 4.3.8)
+  - Checkout (from `../../../`)
 
 SPEC REPOS:
   trunk:
-    - Checkout
     - CheckoutEventLoggerKit
     - FingerprintPro
     - Risk
 
-SPEC CHECKSUMS:
-  Checkout: 609314d0c54a079d4c0ddfcfa7011367a12f225a
-  CheckoutEventLoggerKit: b780dec46295a34942780ea6230d0d5fd08aa05a
-  FingerprintPro: 0c7dbd28fc83751ca64b06328e2fb22bbc7ed118
-  Risk: 6c0fdbf826f741b028ec9158198404ce267d0d3e
+EXTERNAL SOURCES:
+  Checkout:
+    :path: "../../../"
 
-PODFILE CHECKSUM: 9b0372a870e3437a2232753690edfe8385c4d6e0
+SPEC CHECKSUMS:
+  Checkout: 74ea5696bde3c3b85656c2b5c6446a07c8e89195
+  CheckoutEventLoggerKit: b780dec46295a34942780ea6230d0d5fd08aa05a
+  FingerprintPro: 2f419138022451a72f783db9c94967f5a68e9977
+  Risk: e8ee31ba847b6cce1d4c384a9bb49d78fc34cdc5
+
+PODFILE CHECKSUM: 36c08580c11dc09229142a4df18cbb3b7682087d
 
 COCOAPODS: 1.16.2

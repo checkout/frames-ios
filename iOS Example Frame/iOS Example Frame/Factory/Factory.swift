@@ -17,6 +17,8 @@ enum Factory {
   static let failureURL = URL(string: "https://httpstat.us/403")!
   static let apiKey = "pk_sbox_ym4kqv5lzvjni7utqbliqs2vhqc"
   static let environment: Frames.Environment = .sandbox
+  /// Optional subdomain prefix for API base URL (e.g. "sa" → "sa.api.sandbox.checkout.com"). Set to nil to use default host.
+  static let baseURLPrefix: String? = nil
 
   static func getDefaultPaymentViewController(completionHandler: @escaping (Result<TokenDetails, TokenRequestError>) -> Void) -> UIViewController {
     #if UITEST
@@ -50,7 +52,8 @@ enum Factory {
     let configuration = PaymentFormConfiguration(apiKey: apiKey,
                                                  environment: environment,
                                                  supportedSchemes: supportedSchemes,
-                                                 billingFormData: billingFormData)
+                                                 billingFormData: billingFormData,
+                                                 baseURLPrefix: baseURLPrefix)
 
     let style = PaymentStyle(paymentFormStyle: paymentFormStyle,
                              billingFormStyle: billingFormStyle)
@@ -76,7 +79,8 @@ enum Factory {
         let configuration = PaymentFormConfiguration(apiKey: apiKey,
                                                      environment: environment,
                                                      supportedSchemes: supportedSchemes,
-                                                     billingFormData: billingFormData)
+                                                     billingFormData: billingFormData,
+                                                     baseURLPrefix: baseURLPrefix)
         let style = ThemeDemo.buildBorderExample()
         let viewController = PaymentFormFactory.buildViewController(configuration: configuration,
                                                                     style: style,
@@ -112,7 +116,8 @@ enum Factory {
     let configuration = PaymentFormConfiguration(apiKey: apiKey,
                                                  environment: environment,
                                                  supportedSchemes: supportedSchemes,
-                                                 billingFormData: billingFormData)
+                                                 billingFormData: billingFormData,
+                                                 baseURLPrefix: baseURLPrefix)
 
     let style = PaymentStyle(paymentFormStyle: paymentFormStyle,
                              billingFormStyle: billingFormStyle)
@@ -140,7 +145,8 @@ enum Factory {
     let configuration = PaymentFormConfiguration(apiKey: apiKey,
                                                  environment: environment,
                                                  supportedSchemes: supportedSchemes,
-                                                 billingFormData: billingFormData)
+                                                 billingFormData: billingFormData,
+                                                 baseURLPrefix: baseURLPrefix)
 
       let style = ThemeDemo.buildCustom2Example()
 

@@ -27,7 +27,7 @@ final class StubCheckoutAPIService: Frames.CheckoutAPIProtocol {
   private(set) var cardValidatorCalled = false
   private(set) var loggerCalled = false
 
-  convenience init(publicKey: String, environment: Frames.Environment) {
+  convenience init(publicKey: String, environment: Frames.Environment, baseURLPrefix: String? = nil) {
     self.init()
   }
 

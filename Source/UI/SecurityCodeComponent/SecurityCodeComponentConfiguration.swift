@@ -17,7 +17,9 @@ import UIKit
     - If provided, card scheme's validation rules apply (e.g. VISA = 3 digits, American Express = 4 digits etc.)
     - If not provided, security code is treated as valid for 3 and 4 digits
  - style: Security Code Component wraps a text field in a secure way.
- To style the inner properties like font, textColor etc, you must alter the style.
+   To style the inner properties like font, textColor etc, you must alter the style.
+ - baseURLPrefix: Optional subdomain prefix for the API base URL (e.g. "msdd" produces "msdd.api.checkout.com").
+   Whitespace is trimmed; empty or nil uses the default host.
  */
 
 public struct SecurityCodeComponentConfiguration {
@@ -25,14 +27,17 @@ public struct SecurityCodeComponentConfiguration {
   let environment: Environment
   public var style: SecurityCodeComponentStyle
   public var cardScheme: Card.Scheme?
+  let baseURLPrefix: String?
 
   public init(apiKey: String,
               environment: Environment,
               style: SecurityCodeComponentStyle? = nil,
-              cardScheme: Card.Scheme? = nil) {
+              cardScheme: Card.Scheme? = nil,
+              baseURLPrefix: String? = nil) {
     self.apiKey = apiKey
     self.environment = environment
     self.cardScheme = cardScheme
+    self.baseURLPrefix = baseURLPrefix
 
     if let style = style {
       self.style = style

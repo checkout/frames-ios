@@ -23,7 +23,7 @@ class HomeViewController: UIViewController {
   @IBOutlet weak var securityCodeComponentButton: UIButton!
 
   private var notificationCenter: NotificationCenter = .default
-  private lazy var checkoutAPIService = Frames.CheckoutAPIService(publicKey: Factory.apiKey, environment: Factory.environment)
+  private lazy var checkoutAPIService = Frames.CheckoutAPIService(publicKey: Factory.apiKey, environment: Factory.environment, baseURLPrefix: Factory.baseURLPrefix)
 
   override func viewDidLoad() {
     super.viewDidLoad()

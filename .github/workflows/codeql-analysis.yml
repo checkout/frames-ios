@@ -20,11 +20,11 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  destination: "platform=iOS Simulator,name=iPhone 16 Pro,OS=latest"
+  destination: "platform=iOS Simulator,name=iPhone 17 Pro,OS=latest"
   configuration: "Debug"
   noIndex: "COMPILER_INDEX_STORE_ENABLE=NO"
   noSigning: "CODE_SIGNING_ALLOWED=NO"
-  versionXcode: "16.0"
+  versionXcode: "26.2"
 
 jobs:
   analyze:

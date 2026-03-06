@@ -1,4 +1,5 @@
 {
+  "originHash" : "981fa1f5373edc5df30736289e51afb37c0d442fd1f452eb90bd458c57c83394",
   "pins" : [
     {
       "identity" : "checkout-event-logger-ios-framework",
@@ -14,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/checkout/checkout-risk-sdk-ios.git",
       "state" : {
-        "revision" : "26f77f09129e78bbab76b7c8916437e309c5051a",
-        "version" : "3.0.2"
+        "revision" : "7f944921720dc879b63ac3bb51f56dd6eb50919c",
+        "version" : "4.0.2"
       }
     },
     {
@@ -23,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/fingerprintjs/fingerprintjs-pro-ios",
       "state" : {
-        "revision" : "ceb8b845ec99727ee9f78869a51688c6daa16bd8",
-        "version" : "2.2.0"
+        "revision" : "21bcfcfd2e1bce943f668a7748f8a7e1154f0ac2",
+        "version" : "2.13.0"
       }
     },
     {
@@ -32,10 +33,19 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/marmelroy/PhoneNumberKit.git",
       "state" : {
-        "revision" : "288b99e9e99926bc8be41220802df83c059fac9b",
-        "version" : "4.0.2"
+        "revision" : "ad20aba8db84a6ba373abfcffe38b1c8e6f8258b",
+        "version" : "4.2.7"
+      }
+    },
+    {
+      "identity" : "swift-snapshot-testing",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-snapshot-testing",
+      "state" : {
+        "revision" : "26ed3a2b4a2df47917ca9b790a57f91285b923fb",
+        "version" : "1.12.0"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

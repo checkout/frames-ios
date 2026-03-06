@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 import CheckoutEventLoggerKit
+#if canImport(RiskSDK)
+import RiskSDK
+#elseif  canImport(Risk)
 import Risk
+#endif
 
 public protocol CheckoutAPIProtocol {
   func createToken(_ paymentSource: PaymentSource, completion: @escaping (Result<TokenDetails, TokenisationError.TokenRequest>) -> Void)
@@ -36,7 +40,7 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
 
 /// Initializes a CheckoutAPIService object with public key and Environment.
 /// CheckoutAPIService holds the core tokenisation logic methods to tokenise a user’s card details
-  public convenience init(publicKey: String, environment: Environment) {
+  public convenience init(publicKey: String, environment: Environment, baseURLPrefix: String? = nil) {
     let snakeCaseJSONEncoder = JSONEncoder()
     let snakeCaseJSONDecoder = JSONDecoder()
 
@@ -46,7 +50,8 @@ final public class CheckoutAPIService: CheckoutAPIProtocol {
     let cardValidator = CardValidator(environment: environment)
 
     let networkManager = NetworkManager(decoder: snakeCaseJSONDecoder, session: .shared)
-    let requestFactory = RequestFactory(encoder: snakeCaseJSONEncoder, baseURLProvider: environment)
+    let baseURLProvider = EnvironmentURLProvider(environment: environment, baseURLPrefix: baseURLPrefix)
+    let requestFactory = RequestFactory(encoder: snakeCaseJSONEncoder, baseURLProvider: baseURLProvider)
     let tokenRequestFactory = TokenRequestFactory(cardValidator: cardValidator, decoder: snakeCaseJSONDecoder)
     let tokenDetailsFactory = TokenDetailsFactory()
     let logManager = LogManager.self
