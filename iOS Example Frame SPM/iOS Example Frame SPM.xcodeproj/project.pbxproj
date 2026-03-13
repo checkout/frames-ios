@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -90,6 +90,9 @@
 		95EB97DC2A54753000EE6776 /* ThemeDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EB97DA2A54753000EE6776 /* ThemeDemo.swift */; };
 		95EB97DD2A54753000EE6776 /* ThemeDemo+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EB97DB2A54753000EE6776 /* ThemeDemo+Border.swift */; };
 		AB60148E2F59BD6000526B0F /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = AB60148D2F59BD6000526B0F /* Frames */; };
+		FFFC42F82F63186600BB6CC2 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 1629C08B2AF90379001BD3D9 /* Frames */; };
+		FFFC42F92F63186600BB6CC2 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = 958E51042DE74B3E0003F4B0 /* Frames */; };
+		FFFC42FC2F6328EA00BB6CC2 /* Frames in Frameworks */ = {isa = PBXBuildFile; productRef = FFFC42FB2F6328EA00BB6CC2 /* Frames */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,6 +230,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFFC42FC2F6328EA00BB6CC2 /* Frames in Frameworks */,
+				FFFC42F92F63186600BB6CC2 /* Frames in Frameworks */,
+				FFFC42F82F63186600BB6CC2 /* Frames in Frameworks */,
 				AB60148E2F59BD6000526B0F /* Frames in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -531,6 +537,7 @@
 				1629C08B2AF90379001BD3D9 /* Frames */,
 				958E51042DE74B3E0003F4B0 /* Frames */,
 				AB60148D2F59BD6000526B0F /* Frames */,
+				FFFC42FB2F6328EA00BB6CC2 /* Frames */,
 			);
 			productName = "iOS Example Frame";
 			productReference = 16AE74C32A5C1EBB0031F794 /* iOS Example Frame.app */;
@@ -579,7 +586,7 @@
 			mainGroup = E6646F8120CE6C0900D8353A;
 			packageReferences = (
 				16C3F83E2A7927ED00690639 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
-				AB60148C2F59BD6000526B0F /* XCLocalSwiftPackageReference "../../frames-ios" */,
+				FFFC42FA2F6328EA00BB6CC2 /* XCRemoteSwiftPackageReference "frames-ios" */,
 			);
 			productRefGroup = E6646F8120CE6C0900D8353A;
 			projectDirPath = "";
@@ -1232,13 +1239,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		AB60148C2F59BD6000526B0F /* XCLocalSwiftPackageReference "../../frames-ios" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../frames-ios";
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
 		16C3F83E2A7927ED00690639 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -1246,6 +1246,14 @@
 			requirement = {
 				kind = exactVersion;
 				version = 1.12.0;
+			};
+		};
+		FFFC42FA2F6328EA00BB6CC2 /* XCRemoteSwiftPackageReference "frames-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/checkout/frames-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1274,6 +1282,11 @@
 		};
 		AB60148D2F59BD6000526B0F /* Frames */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = Frames;
+		};
+		FFFC42FB2F6328EA00BB6CC2 /* Frames */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFFC42FA2F6328EA00BB6CC2 /* XCRemoteSwiftPackageReference "frames-ios" */;
 			productName = Frames;
 		};
 /* End XCSwiftPackageProductDependency section */
