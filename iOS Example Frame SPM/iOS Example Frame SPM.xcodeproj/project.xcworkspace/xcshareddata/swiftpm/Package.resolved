@@ -1,5 +1,5 @@
 {
-  "originHash" : "981fa1f5373edc5df30736289e51afb37c0d442fd1f452eb90bd458c57c83394",
+  "originHash" : "f27d8fb9eaa74b44dc2ae0c3ea57528767b57ac6effdeb77f93fb990cfc04f3f",
   "pins" : [
     {
       "identity" : "checkout-event-logger-ios-framework",
@@ -26,6 +26,15 @@
       "state" : {
         "revision" : "21bcfcfd2e1bce943f668a7748f8a7e1154f0ac2",
         "version" : "2.13.0"
+      }
+    },
+    {
+      "identity" : "frames-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/checkout/frames-ios",
+      "state" : {
+        "revision" : "335ea15376434f762d40b2d0db5c9c982582143d",
+        "version" : "4.4.0"
       }
     },
     {
