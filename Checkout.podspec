@@ -20,6 +20,6 @@ Pod::Spec.new do |s|
   s.exclude_files = "Checkout/Samples/**"
 
   s.dependency 'CheckoutEventLoggerKit', '~> 1.2.4'
-  s.dependency 'Risk', '~> 4.0.1'
+  s.dependency 'Risk', '~> 6.0.1'
 
 end
