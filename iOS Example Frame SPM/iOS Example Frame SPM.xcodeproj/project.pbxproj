@@ -1253,7 +1253,7 @@
 			repositoryURL = "https://github.com/checkout/frames-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.4.0;
+				minimumVersion = 4.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
