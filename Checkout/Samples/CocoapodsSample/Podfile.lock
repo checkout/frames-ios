@@ -1,5 +1,5 @@
 PODS:
-  - Checkout (4.4.0):
+  - Checkout (4.5.0):
     - CheckoutEventLoggerKit (~> 1.2.4)
     - Risk (~> 6.0.1)
   - CheckoutEventLoggerKit (1.2.4)
@@ -29,7 +29,7 @@ EXTERNAL SOURCES:
     :path: "../../../"
 
 SPEC CHECKSUMS:
-  Checkout: 781443909f4edc8fc11906d8a77553f2c129b56b
+  Checkout: e209a32fdbc31fc2e30dc70baf54ca73aaa70f27
   CheckoutEventLoggerKit: b780dec46295a34942780ea6230d0d5fd08aa05a
   FingerprintJS: afb6185cf6951b60adc334f41d63e2e0a520bcf4
   FingerprintPro: 9a703bc7fb00413ffe5624bcbb07b62129f00ab6

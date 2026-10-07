@@ -1,5 +1,5 @@
 PODS:
-  - Checkout (4.4.0):
+  - Checkout (4.5.0):
     - CheckoutEventLoggerKit (~> 1.2.4)
     - Risk (~> 6.0.1)
   - CheckoutEventLoggerKit (1.2.4)
@@ -9,8 +9,8 @@ PODS:
     - FingerprintJS/SystemControl
   - FingerprintJS/SystemControl (1.7.0)
   - FingerprintPro (2.17.2)
-  - Frames (4.4.0):
-    - Checkout (= 4.4.0)
+  - Frames (4.5.0):
+    - Checkout (= 4.5.0)
     - CheckoutEventLoggerKit (~> 1.2.4)
     - PhoneNumberKit (~> 4.0)
   - PhoneNumberKit (4.2.0):
@@ -43,11 +43,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Checkout: 781443909f4edc8fc11906d8a77553f2c129b56b
+  Checkout: e209a32fdbc31fc2e30dc70baf54ca73aaa70f27
   CheckoutEventLoggerKit: b780dec46295a34942780ea6230d0d5fd08aa05a
   FingerprintJS: afb6185cf6951b60adc334f41d63e2e0a520bcf4
   FingerprintPro: 9a703bc7fb00413ffe5624bcbb07b62129f00ab6
-  Frames: cfe3e6809097ca3a08d0e935103195833512bf61
+  Frames: 08035f604e47851ae872b8989eca2cf73b23569e
   PhoneNumberKit: 8b6138c92080c3f72a2c10f1d4e881bd316eef41
   Risk: 9fc0f6688a284ab40d41b1c5ac8301b62c4dc53c
 
