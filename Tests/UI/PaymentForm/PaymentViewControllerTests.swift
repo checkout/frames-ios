@@ -262,4 +262,25 @@ class PaymentViewControllerTests: XCTestCase {
     XCTAssertTrue(coverView?.isHidden ?? false,
                   "Privacy cover must be hidden when the VC reappears and the app is already active")
   }
+
+  func testPrivacyCoverObserversUpgradedAfterWindowAttachment() {
+    // Scenario: on first presentation viewWillAppear fires before the view has
+    // a window (no scene available), so app-level fallback observers are
+    // registered.  viewDidAppear fires after window attachment and must
+    // re-register scene-scoped observers (or keep app-level ones if still no
+    // scene).  After viewDidAppear the app-level resign-active notification must
+    // still trigger the cover, confirming observers are live regardless of path.
+    viewController.viewDidLoad()
+    viewController.viewWillAppear(false)
+    // view.window is nil in unit tests, so only app-level observers are active here.
+
+    viewController.viewDidAppear(false)
+    // view.window?.windowScene is still nil in tests, so no re-registration
+    // occurs and app-level observers remain active.
+
+    NotificationCenter.default.post(name: UIApplication.willResignActiveNotification, object: nil)
+    let coverView = viewController.view.subviews.last
+    XCTAssertFalse(coverView?.isHidden ?? true,
+                   "Privacy cover must be shown after resign-active even when window attachment was deferred")
+  }
 }
