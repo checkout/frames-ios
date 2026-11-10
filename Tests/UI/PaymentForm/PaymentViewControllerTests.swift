@@ -42,8 +42,10 @@ class PaymentViewControllerTests: XCTestCase {
     viewController.viewDidLayoutSubviews()
     
     let mainView = viewController.view
-    XCTAssertEqual(mainView?.subviews.count, 1)
+    XCTAssertEqual(mainView?.subviews.count, 2)
     XCTAssertTrue(mainView?.subviews[0] is UIScrollView)
+    // Privacy cover is added last so it can be brought to front when active.
+    XCTAssertFalse(mainView?.subviews[1] is UIScrollView)
     
     let scrollView = mainView?.subviews[0]
     XCTAssertEqual(scrollView?.subviews.count, 1)
@@ -193,5 +195,47 @@ class PaymentViewControllerTests: XCTestCase {
     XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
     XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.count, 1)
     XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.first, .paymentFormPresented)
+  }
+
+  // MARK: - Privacy cover tests
+
+  func testPrivacyCoverIsHiddenInitially() {
+    viewController.viewDidLoad()
+    let coverView = viewController.view.subviews.last
+    XCTAssertNotNil(coverView, "Privacy cover view should be in the hierarchy")
+    XCTAssertTrue(coverView?.isHidden ?? false, "Privacy cover should be hidden when the app is active")
+  }
+
+  func testPrivacyCoverIsShownWhenAppResignsActive() {
+    viewController.viewDidLoad()
+    viewController.viewWillAppear(false)
+
+    NotificationCenter.default.post(name: UIApplication.willResignActiveNotification, object: nil)
+
+    let coverView = viewController.view.subviews.last
+    XCTAssertFalse(coverView?.isHidden ?? true, "Privacy cover should be visible when the app resigns active")
+  }
+
+  func testPrivacyCoverIsHiddenWhenAppBecomesActive() {
+    viewController.viewDidLoad()
+    viewController.viewWillAppear(false)
+
+    NotificationCenter.default.post(name: UIApplication.willResignActiveNotification, object: nil)
+    NotificationCenter.default.post(name: UIApplication.didBecomeActiveNotification, object: nil)
+
+    let coverView = viewController.view.subviews.last
+    XCTAssertTrue(coverView?.isHidden ?? false, "Privacy cover should be hidden after the app becomes active again")
+  }
+
+  func testPrivacyCoverObserversRemovedOnDisappear() {
+    viewController.viewDidLoad()
+    viewController.viewWillAppear(false)
+    viewController.viewWillDisappear(false)
+
+    // After deregistration, resignActive should not show the cover.
+    NotificationCenter.default.post(name: UIApplication.willResignActiveNotification, object: nil)
+
+    let coverView = viewController.view.subviews.last
+    XCTAssertTrue(coverView?.isHidden ?? false, "Privacy cover should stay hidden after observers are deregistered")
   }
 }

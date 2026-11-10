@@ -20,6 +20,18 @@ final class FramesPaymentViewController: UIViewController {
   private(set) var viewModel: PaymentViewModel
   private var notificationCenter = NotificationCenter.default
 
+  // MARK: - Privacy cover
+
+  /// Opaque overlay shown while the app is inactive so the system snapshot
+  /// (app-switcher thumbnail) contains no card data.
+  private lazy var privacyCoverView: UIView = {
+    let cover = UIView()
+    cover.backgroundColor = .systemBackground
+    cover.translatesAutoresizingMaskIntoConstraints = false
+    cover.isHidden = true
+    return cover
+  }()
+
   // MARK: - UI properties
 
   private lazy var headerView: PaymentHeaderView = {
@@ -106,12 +118,14 @@ final class FramesPaymentViewController: UIViewController {
     setupNavigationBar()
     setupViewModel()
     setupViewsInOrder()
+    setupPrivacyCover()
     viewModel.updateAll()
   }
 
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     deregisterKeyboardHandlers(notificationCenter: notificationCenter)
+    deregisterPrivacyCoverHandlers()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -119,6 +133,7 @@ final class FramesPaymentViewController: UIViewController {
     navigationController?.setNavigationBarHidden(false, animated: animated)
 
     setUpKeyboard()
+    registerPrivacyCoverHandlers()
     viewModel.viewControllerWillAppear()
   }
 
@@ -157,6 +172,57 @@ final class FramesPaymentViewController: UIViewController {
     registerKeyboardHandlers(notificationCenter: notificationCenter,
                              keyboardWillShow: #selector(keyboardWillShow),
                              keyboardWillHide: #selector(keyboardWillHide))
+  }
+
+  // MARK: - Privacy cover
+
+  private func setupPrivacyCover() {
+    view.addSubview(privacyCoverView)
+    NSLayoutConstraint.activate([
+      privacyCoverView.topAnchor.constraint(equalTo: view.topAnchor),
+      privacyCoverView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      privacyCoverView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      privacyCoverView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+    ])
+  }
+
+  private func registerPrivacyCoverHandlers() {
+    notificationCenter.addObserver(self,
+                                   selector: #selector(addPrivacyCover),
+                                   name: UIApplication.willResignActiveNotification,
+                                   object: nil)
+    notificationCenter.addObserver(self,
+                                   selector: #selector(removePrivacyCover),
+                                   name: UIApplication.didBecomeActiveNotification,
+                                   object: nil)
+    if #available(iOS 13.0, *) {
+      notificationCenter.addObserver(self,
+                                     selector: #selector(addPrivacyCover),
+                                     name: UIScene.willDeactivateNotification,
+                                     object: nil)
+      notificationCenter.addObserver(self,
+                                     selector: #selector(removePrivacyCover),
+                                     name: UIScene.didActivateNotification,
+                                     object: nil)
+    }
+  }
+
+  private func deregisterPrivacyCoverHandlers() {
+    notificationCenter.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
+    notificationCenter.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
+    if #available(iOS 13.0, *) {
+      notificationCenter.removeObserver(self, name: UIScene.willDeactivateNotification, object: nil)
+      notificationCenter.removeObserver(self, name: UIScene.didActivateNotification, object: nil)
+    }
+  }
+
+  @objc private func addPrivacyCover() {
+    view.bringSubviewToFront(privacyCoverView)
+    privacyCoverView.isHidden = false
+  }
+
+  @objc private func removePrivacyCover() {
+    privacyCoverView.isHidden = true
   }
 
   private func updateScrollViewInset(to contentInset: UIEdgeInsets, from notification: Notification) {
