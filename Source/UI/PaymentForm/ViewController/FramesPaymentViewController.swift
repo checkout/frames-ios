@@ -187,23 +187,32 @@ final class FramesPaymentViewController: UIViewController {
   }
 
   private func registerPrivacyCoverHandlers() {
-    notificationCenter.addObserver(self,
-                                   selector: #selector(addPrivacyCover),
-                                   name: UIApplication.willResignActiveNotification,
-                                   object: nil)
-    notificationCenter.addObserver(self,
-                                   selector: #selector(removePrivacyCover),
-                                   name: UIApplication.didBecomeActiveNotification,
-                                   object: nil)
-    if #available(iOS 13.0, *) {
+    if #available(iOS 13.0, *), let owningScene = view.window?.windowScene {
+      // Scope notifications to the specific scene that owns this window so that
+      // activity in an unrelated window/scene cannot affect this cover.
       notificationCenter.addObserver(self,
                                      selector: #selector(addPrivacyCover),
                                      name: UIScene.willDeactivateNotification,
-                                     object: nil)
+                                     object: owningScene)
       notificationCenter.addObserver(self,
                                      selector: #selector(removePrivacyCover),
                                      name: UIScene.didActivateNotification,
+                                     object: owningScene)
+      // Sync immediately: if the VC reappears while the scene is already inactive
+      // (e.g. app-switched while the VC was off-screen), show the cover now.
+      syncPrivacyCoverToCurrentState(scene: owningScene)
+    } else {
+      // Fallback for pre-scene hosts: use application-level notifications.
+      notificationCenter.addObserver(self,
+                                     selector: #selector(addPrivacyCover),
+                                     name: UIApplication.willResignActiveNotification,
                                      object: nil)
+      notificationCenter.addObserver(self,
+                                     selector: #selector(removePrivacyCover),
+                                     name: UIApplication.didBecomeActiveNotification,
+                                     object: nil)
+      // Sync immediately against the current application state.
+      syncPrivacyCoverToCurrentState(scene: nil)
     }
   }
 
@@ -213,6 +222,24 @@ final class FramesPaymentViewController: UIViewController {
     if #available(iOS 13.0, *) {
       notificationCenter.removeObserver(self, name: UIScene.willDeactivateNotification, object: nil)
       notificationCenter.removeObserver(self, name: UIScene.didActivateNotification, object: nil)
+    }
+  }
+
+  /// Aligns cover visibility with the current activation state so stale cover
+  /// state cannot persist across disappear/appear cycles.
+  private func syncPrivacyCoverToCurrentState(scene: AnyObject?) {
+    if #available(iOS 13.0, *), let windowScene = scene as? UIWindowScene {
+      if windowScene.activationState == .foregroundActive {
+        removePrivacyCover()
+      } else {
+        addPrivacyCover()
+      }
+    } else {
+      if UIApplication.shared.applicationState == .active {
+        removePrivacyCover()
+      } else {
+        addPrivacyCover()
+      }
     }
   }
 

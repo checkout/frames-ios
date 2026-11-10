@@ -238,4 +238,28 @@ class PaymentViewControllerTests: XCTestCase {
     let coverView = viewController.view.subviews.last
     XCTAssertTrue(coverView?.isHidden ?? false, "Privacy cover should stay hidden after observers are deregistered")
   }
+
+  func testPrivacyCoverSyncedOnReappearAfterMissedActivation() {
+    // Scenario: cover is shown, the VC disappears, the app becomes active while
+    // the VC is off-screen (so the didBecomeActive notification is missed), then
+    // the VC reappears.  The cover must be hidden when reappear runs.
+    viewController.viewDidLoad()
+    viewController.viewWillAppear(false)
+
+    // Show the cover.
+    NotificationCenter.default.post(name: UIApplication.willResignActiveNotification, object: nil)
+    let coverView = viewController.view.subviews.last
+    XCTAssertFalse(coverView?.isHidden ?? true, "Cover should be visible after resign-active")
+
+    // VC disappears and observers are removed.
+    viewController.viewWillDisappear(false)
+
+    // App becomes active while VC is off-screen – notification not observed.
+    // (No post here; UIApplication.shared.applicationState is .active in XCTest.)
+
+    // VC reappears; syncPrivacyCoverToCurrentState should hide the cover.
+    viewController.viewWillAppear(false)
+    XCTAssertTrue(coverView?.isHidden ?? false,
+                  "Privacy cover must be hidden when the VC reappears and the app is already active")
+  }
 }
