@@ -130,6 +130,13 @@ final class FramesPaymentViewController: UIViewController {
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     deregisterKeyboardHandlers(notificationCenter: notificationCenter)
+    // Privacy cover observers are intentionally kept active until viewDidDisappear
+    // so the cover can still fire during animated/interactive navigation transitions
+    // while the payment view is still on screen.
+  }
+
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
     deregisterPrivacyCoverHandlers()
   }
 
