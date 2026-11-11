@@ -20,6 +20,11 @@ final class FramesPaymentViewController: UIViewController {
   private(set) var viewModel: PaymentViewModel
   private var notificationCenter = NotificationCenter.default
 
+  /// Overridable in tests to supply a scene object without requiring a real
+  /// scene-backed window. When nil the implementation resolves the scene from
+  /// view.window?.windowScene at registration time.
+  var windowSceneProvider: (() -> AnyObject?)?
+
   // MARK: - Privacy cover
 
   /// Opaque overlay shown while the app is inactive so the system snapshot
@@ -141,9 +146,9 @@ final class FramesPaymentViewController: UIViewController {
     super.viewDidAppear(animated)
     // The view is now attached to a window. If viewWillAppear registered
     // app-level fallback observers because no scene was available yet,
-    // re-register now that view.window?.windowScene is resolvable so that
-    // scene-scoped observers are used for the remainder of the presentation.
-    if #available(iOS 13.0, *), view.window?.windowScene != nil {
+    // re-register now that the owning scene is resolvable so that scene-scoped
+    // observers are used for the remainder of the presentation.
+    if #available(iOS 13.0, *), resolvedWindowScene() != nil {
       deregisterPrivacyCoverHandlers()
       registerPrivacyCoverHandlers()
     }
@@ -199,7 +204,7 @@ final class FramesPaymentViewController: UIViewController {
   }
 
   private func registerPrivacyCoverHandlers() {
-    if #available(iOS 13.0, *), let owningScene = view.window?.windowScene {
+    if #available(iOS 13.0, *), let owningScene = resolvedWindowScene() {
       // Scope notifications to the specific scene that owns this window so that
       // activity in an unrelated window/scene cannot affect this cover.
       notificationCenter.addObserver(self,
@@ -226,6 +231,16 @@ final class FramesPaymentViewController: UIViewController {
       // Sync immediately against the current application state.
       syncPrivacyCoverToCurrentState(scene: nil)
     }
+  }
+
+  /// Returns the scene token to scope notifications to. Uses windowSceneProvider
+  /// when injected (for tests); otherwise falls back to view.window?.windowScene.
+  @available(iOS 13.0, *)
+  private func resolvedWindowScene() -> AnyObject? {
+    if let provider = windowSceneProvider {
+      return provider()
+    }
+    return view.window?.windowScene
   }
 
   private func deregisterPrivacyCoverHandlers() {

@@ -264,23 +264,43 @@ class PaymentViewControllerTests: XCTestCase {
   }
 
   func testPrivacyCoverObserversUpgradedAfterWindowAttachment() {
-    // Scenario: on first presentation viewWillAppear fires before the view has
-    // a window (no scene available), so app-level fallback observers are
-    // registered.  viewDidAppear fires after window attachment and must
-    // re-register scene-scoped observers (or keep app-level ones if still no
-    // scene).  After viewDidAppear the app-level resign-active notification must
-    // still trigger the cover, confirming observers are live regardless of path.
+    // Scenario: viewWillAppear fires before a scene is available (windowSceneProvider
+    // returns nil), so app-level fallback observers are registered. viewDidAppear fires
+    // with a scene now available; it must deregister fallback observers and re-register
+    // scene-scoped ones. After the upgrade, app-level notifications must NOT affect the
+    // cover, and scene-scoped notifications MUST.
+    let sceneToken = NSObject()
     viewController.viewDidLoad()
+
+    // Phase 1 – no scene yet; app-level observers are registered.
+    viewController.windowSceneProvider = { nil }
     viewController.viewWillAppear(false)
-    // view.window is nil in unit tests, so only app-level observers are active here.
 
+    // Phase 2 – scene becomes available; viewDidAppear triggers the upgrade.
+    viewController.windowSceneProvider = { [weak sceneToken] in sceneToken }
     viewController.viewDidAppear(false)
-    // view.window?.windowScene is still nil in tests, so no re-registration
-    // occurs and app-level observers remain active.
 
-    NotificationCenter.default.post(name: UIApplication.willResignActiveNotification, object: nil)
     let coverView = viewController.view.subviews.last
-    XCTAssertFalse(coverView?.isHidden ?? true,
-                   "Privacy cover must be shown after resign-active even when window attachment was deferred")
+
+    // After upgrade, app-level resign-active must NOT show the cover.
+    NotificationCenter.default.post(name: UIApplication.willResignActiveNotification, object: nil)
+    XCTAssertTrue(coverView?.isHidden ?? false,
+                  "App-level notifications must not affect the cover after scene-scoped upgrade")
+
+    // After upgrade, owning-scene deactivation MUST show the cover.
+    if #available(iOS 13.0, *) {
+      NotificationCenter.default.post(name: UIScene.willDeactivateNotification, object: sceneToken)
+      XCTAssertFalse(coverView?.isHidden ?? true,
+                     "Cover must be shown when the owning-scene deactivation notification fires")
+
+      // A notification from an UNRELATED scene object must leave the cover unchanged.
+      NotificationCenter.default.post(name: UIScene.didActivateNotification, object: sceneToken)
+      XCTAssertTrue(coverView?.isHidden ?? false, "Cover should be hidden after scene re-activation")
+
+      let unrelatedToken = NSObject()
+      NotificationCenter.default.post(name: UIScene.willDeactivateNotification, object: unrelatedToken)
+      XCTAssertTrue(coverView?.isHidden ?? false,
+                    "An unrelated-scene notification must not affect the cover")
+    }
   }
 }
