@@ -237,9 +237,12 @@ class PaymentViewControllerTests: XCTestCase {
     XCTAssertFalse(coverView?.isHidden ?? true,
                    "Privacy cover must still respond between viewWillDisappear and viewDidDisappear")
 
+    // Reset the cover while observers are still registered.
+    NotificationCenter.default.post(name: UIApplication.didBecomeActiveNotification, object: nil)
+    XCTAssertTrue(coverView?.isHidden ?? false, "Privacy cover should hide when the app becomes active")
+
     // After viewDidDisappear, observers are removed and the cover no longer responds.
     viewController.viewDidDisappear(false)
-    NotificationCenter.default.post(name: UIApplication.didBecomeActiveNotification, object: nil)
     NotificationCenter.default.post(name: UIApplication.willResignActiveNotification, object: nil)
     XCTAssertTrue(coverView?.isHidden ?? false,
                   "Privacy cover must not respond after viewDidDisappear deregisters observers")
