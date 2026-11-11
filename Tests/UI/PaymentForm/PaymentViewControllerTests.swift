@@ -42,8 +42,10 @@ class PaymentViewControllerTests: XCTestCase {
     viewController.viewDidLayoutSubviews()
     
     let mainView = viewController.view
-    XCTAssertEqual(mainView?.subviews.count, 1)
+    XCTAssertEqual(mainView?.subviews.count, 2)
     XCTAssertTrue(mainView?.subviews[0] is UIScrollView)
+    // Privacy cover is added last so it can be brought to front when active.
+    XCTAssertFalse(mainView?.subviews[1] is UIScrollView)
     
     let scrollView = mainView?.subviews[0]
     XCTAssertEqual(scrollView?.subviews.count, 1)
@@ -193,5 +195,122 @@ class PaymentViewControllerTests: XCTestCase {
     XCTAssertTrue(testLogger.addCalledWithMetadataPairs.isEmpty)
     XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.count, 1)
     XCTAssertEqual(testLogger.logCalledWithFramesLogEvents.first, .paymentFormPresented)
+  }
+
+  // MARK: - Privacy cover tests
+
+  func testPrivacyCoverIsHiddenInitially() {
+    viewController.viewDidLoad()
+    let coverView = viewController.view.subviews.last
+    XCTAssertNotNil(coverView, "Privacy cover view should be in the hierarchy")
+    XCTAssertTrue(coverView?.isHidden ?? false, "Privacy cover should be hidden when the app is active")
+  }
+
+  func testPrivacyCoverIsShownWhenAppResignsActive() {
+    viewController.viewDidLoad()
+    viewController.viewWillAppear(false)
+
+    NotificationCenter.default.post(name: UIApplication.willResignActiveNotification, object: nil)
+
+    let coverView = viewController.view.subviews.last
+    XCTAssertFalse(coverView?.isHidden ?? true, "Privacy cover should be visible when the app resigns active")
+  }
+
+  func testPrivacyCoverIsHiddenWhenAppBecomesActive() {
+    viewController.viewDidLoad()
+    viewController.viewWillAppear(false)
+
+    NotificationCenter.default.post(name: UIApplication.willResignActiveNotification, object: nil)
+    NotificationCenter.default.post(name: UIApplication.didBecomeActiveNotification, object: nil)
+
+    let coverView = viewController.view.subviews.last
+    XCTAssertTrue(coverView?.isHidden ?? false, "Privacy cover should be hidden after the app becomes active again")
+  }
+
+  func testPrivacyCoverObserversRemovedOnDisappear() {
+    viewController.viewDidLoad()
+    viewController.viewWillAppear(false)
+    // Observers remain active through viewWillDisappear (to cover animated transitions).
+    viewController.viewWillDisappear(false)
+    NotificationCenter.default.post(name: UIApplication.willResignActiveNotification, object: nil)
+    let coverView = viewController.view.subviews.last
+    XCTAssertFalse(coverView?.isHidden ?? true,
+                   "Privacy cover must still respond between viewWillDisappear and viewDidDisappear")
+
+    // Reset the cover while observers are still registered.
+    NotificationCenter.default.post(name: UIApplication.didBecomeActiveNotification, object: nil)
+    XCTAssertTrue(coverView?.isHidden ?? false, "Privacy cover should hide when the app becomes active")
+
+    // After viewDidDisappear, observers are removed and the cover no longer responds.
+    viewController.viewDidDisappear(false)
+    NotificationCenter.default.post(name: UIApplication.willResignActiveNotification, object: nil)
+    XCTAssertTrue(coverView?.isHidden ?? false,
+                  "Privacy cover must not respond after viewDidDisappear deregisters observers")
+  }
+
+  func testPrivacyCoverSyncedOnReappearAfterMissedActivation() {
+    // Scenario: cover is shown, the VC disappears, the app becomes active while
+    // the VC is off-screen (so the didBecomeActive notification is missed), then
+    // the VC reappears.  The cover must be hidden when reappear runs.
+    viewController.viewDidLoad()
+    viewController.viewWillAppear(false)
+
+    // Show the cover.
+    NotificationCenter.default.post(name: UIApplication.willResignActiveNotification, object: nil)
+    let coverView = viewController.view.subviews.last
+    XCTAssertFalse(coverView?.isHidden ?? true, "Cover should be visible after resign-active")
+
+    // VC fully disappears and observers are removed.
+    viewController.viewWillDisappear(false)
+    viewController.viewDidDisappear(false)
+
+    // App becomes active while VC is off-screen – notification not observed.
+    // (No post here; UIApplication.shared.applicationState is .active in XCTest.)
+
+    // VC reappears; syncPrivacyCoverToCurrentState should hide the cover.
+    viewController.viewWillAppear(false)
+    XCTAssertTrue(coverView?.isHidden ?? false,
+                  "Privacy cover must be hidden when the VC reappears and the app is already active")
+  }
+
+  func testPrivacyCoverObserversUpgradedAfterWindowAttachment() {
+    // Scenario: viewWillAppear fires before a scene is available (windowSceneProvider
+    // returns nil), so app-level fallback observers are registered. viewDidAppear fires
+    // with a scene now available; it must deregister fallback observers and re-register
+    // scene-scoped ones. After the upgrade, app-level notifications must NOT affect the
+    // cover, and scene-scoped notifications MUST.
+    let sceneToken = NSObject()
+    viewController.viewDidLoad()
+
+    // Phase 1 – no scene yet; app-level observers are registered.
+    viewController.windowSceneProvider = { nil }
+    viewController.viewWillAppear(false)
+
+    // Phase 2 – scene becomes available; viewDidAppear triggers the upgrade.
+    viewController.windowSceneProvider = { [weak sceneToken] in sceneToken }
+    viewController.viewDidAppear(false)
+
+    let coverView = viewController.view.subviews.last
+
+    // After upgrade, app-level resign-active must NOT show the cover.
+    NotificationCenter.default.post(name: UIApplication.willResignActiveNotification, object: nil)
+    XCTAssertTrue(coverView?.isHidden ?? false,
+                  "App-level notifications must not affect the cover after scene-scoped upgrade")
+
+    // After upgrade, owning-scene deactivation MUST show the cover.
+    if #available(iOS 13.0, *) {
+      NotificationCenter.default.post(name: UIScene.willDeactivateNotification, object: sceneToken)
+      XCTAssertFalse(coverView?.isHidden ?? true,
+                     "Cover must be shown when the owning-scene deactivation notification fires")
+
+      // A notification from an UNRELATED scene object must leave the cover unchanged.
+      NotificationCenter.default.post(name: UIScene.didActivateNotification, object: sceneToken)
+      XCTAssertTrue(coverView?.isHidden ?? false, "Cover should be hidden after scene re-activation")
+
+      let unrelatedToken = NSObject()
+      NotificationCenter.default.post(name: UIScene.willDeactivateNotification, object: unrelatedToken)
+      XCTAssertTrue(coverView?.isHidden ?? false,
+                    "An unrelated-scene notification must not affect the cover")
+    }
   }
 }

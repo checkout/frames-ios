@@ -20,6 +20,23 @@ final class FramesPaymentViewController: UIViewController {
   private(set) var viewModel: PaymentViewModel
   private var notificationCenter = NotificationCenter.default
 
+  /// Overridable in tests to supply a scene object without requiring a real
+  /// scene-backed window. When nil the implementation resolves the scene from
+  /// view.window?.windowScene at registration time.
+  var windowSceneProvider: (() -> AnyObject?)?
+
+  // MARK: - Privacy cover
+
+  /// Opaque overlay shown while the app is inactive so the system snapshot
+  /// (app-switcher thumbnail) contains no card data.
+  private lazy var privacyCoverView: UIView = {
+    let cover = UIView()
+    cover.backgroundColor = .systemBackground
+    cover.translatesAutoresizingMaskIntoConstraints = false
+    cover.isHidden = true
+    return cover
+  }()
+
   // MARK: - UI properties
 
   private lazy var headerView: PaymentHeaderView = {
@@ -106,12 +123,21 @@ final class FramesPaymentViewController: UIViewController {
     setupNavigationBar()
     setupViewModel()
     setupViewsInOrder()
+    setupPrivacyCover()
     viewModel.updateAll()
   }
 
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     deregisterKeyboardHandlers(notificationCenter: notificationCenter)
+    // Privacy cover observers are intentionally kept active until viewDidDisappear
+    // so the cover can still fire during animated/interactive navigation transitions
+    // while the payment view is still on screen.
+  }
+
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    deregisterPrivacyCoverHandlers()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -119,7 +145,20 @@ final class FramesPaymentViewController: UIViewController {
     navigationController?.setNavigationBarHidden(false, animated: animated)
 
     setUpKeyboard()
+    registerPrivacyCoverHandlers()
     viewModel.viewControllerWillAppear()
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    // The view is now attached to a window. If viewWillAppear registered
+    // app-level fallback observers because no scene was available yet,
+    // re-register now that the owning scene is resolvable so that scene-scoped
+    // observers are used for the remainder of the presentation.
+    if #available(iOS 13.0, *), resolvedWindowScene() != nil {
+      deregisterPrivacyCoverHandlers()
+      registerPrivacyCoverHandlers()
+    }
   }
 
   required init?(coder: NSCoder) {
@@ -157,6 +196,94 @@ final class FramesPaymentViewController: UIViewController {
     registerKeyboardHandlers(notificationCenter: notificationCenter,
                              keyboardWillShow: #selector(keyboardWillShow),
                              keyboardWillHide: #selector(keyboardWillHide))
+  }
+
+  // MARK: - Privacy cover
+
+  private func setupPrivacyCover() {
+    view.addSubview(privacyCoverView)
+    NSLayoutConstraint.activate([
+      privacyCoverView.topAnchor.constraint(equalTo: view.topAnchor),
+      privacyCoverView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      privacyCoverView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      privacyCoverView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+    ])
+  }
+
+  private func registerPrivacyCoverHandlers() {
+    if #available(iOS 13.0, *), let owningScene = resolvedWindowScene() {
+      // Scope notifications to the specific scene that owns this window so that
+      // activity in an unrelated window/scene cannot affect this cover.
+      notificationCenter.addObserver(self,
+                                     selector: #selector(addPrivacyCover),
+                                     name: UIScene.willDeactivateNotification,
+                                     object: owningScene)
+      notificationCenter.addObserver(self,
+                                     selector: #selector(removePrivacyCover),
+                                     name: UIScene.didActivateNotification,
+                                     object: owningScene)
+      // Sync immediately: if the VC reappears while the scene is already inactive
+      // (e.g. app-switched while the VC was off-screen), show the cover now.
+      syncPrivacyCoverToCurrentState(scene: owningScene)
+    } else {
+      // Fallback for pre-scene hosts: use application-level notifications.
+      notificationCenter.addObserver(self,
+                                     selector: #selector(addPrivacyCover),
+                                     name: UIApplication.willResignActiveNotification,
+                                     object: nil)
+      notificationCenter.addObserver(self,
+                                     selector: #selector(removePrivacyCover),
+                                     name: UIApplication.didBecomeActiveNotification,
+                                     object: nil)
+      // Sync immediately against the current application state.
+      syncPrivacyCoverToCurrentState(scene: nil)
+    }
+  }
+
+  /// Returns the scene token to scope notifications to. Uses windowSceneProvider
+  /// when injected (for tests); otherwise falls back to view.window?.windowScene.
+  @available(iOS 13.0, *)
+  private func resolvedWindowScene() -> AnyObject? {
+    if let provider = windowSceneProvider {
+      return provider()
+    }
+    return view.window?.windowScene
+  }
+
+  private func deregisterPrivacyCoverHandlers() {
+    notificationCenter.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
+    notificationCenter.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
+    if #available(iOS 13.0, *) {
+      notificationCenter.removeObserver(self, name: UIScene.willDeactivateNotification, object: nil)
+      notificationCenter.removeObserver(self, name: UIScene.didActivateNotification, object: nil)
+    }
+  }
+
+  /// Aligns cover visibility with the current activation state so stale cover
+  /// state cannot persist across disappear/appear cycles.
+  private func syncPrivacyCoverToCurrentState(scene: AnyObject?) {
+    if #available(iOS 13.0, *), let windowScene = scene as? UIWindowScene {
+      if windowScene.activationState == .foregroundActive {
+        removePrivacyCover()
+      } else {
+        addPrivacyCover()
+      }
+    } else {
+      if UIApplication.shared.applicationState == .active {
+        removePrivacyCover()
+      } else {
+        addPrivacyCover()
+      }
+    }
+  }
+
+  @objc private func addPrivacyCover() {
+    view.bringSubviewToFront(privacyCoverView)
+    privacyCoverView.isHidden = false
+  }
+
+  @objc private func removePrivacyCover() {
+    privacyCoverView.isHidden = true
   }
 
   private func updateScrollViewInset(to contentInset: UIEdgeInsets, from notification: Notification) {
